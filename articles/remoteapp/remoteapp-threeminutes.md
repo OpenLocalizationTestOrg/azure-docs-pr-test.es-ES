@@ -1,6 +1,6 @@
 ---
-title: Prueba de Azure RemoteApp en un dispositivo en tres minutos o menos | Microsoft Docs
-description: "Pruebe la funcionalidad de Azure RemoteApp sin instalar el servicio."
+title: aaaTry Azure RemoteApp en su dispositivo en 3 minutos o menos | Documentos de Microsoft
+description: Pruebe Azure RemoteApp funcionalidad sin necesidad de instalar el servicio de Hola.
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 3373e37b8efb1bd7d9b7e6c4fb8d3db468c1ad02
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d1ef9aab67c82e6c5f5024226f4a5e42e8c55a87
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="try-azure-remoteapp-on-your-device-in-3-minutes-or-less"></a>Pruebe RemoteApp en su dispositivo en tres minutos o menos
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
-¿Desea ver Azure RemoteApp en su dispositivo? Puede tener acceso a una demostración de nuestra implementación durante 10 minutos, siempre que tenga una cuenta Microsoft. Tenemos disponible Office y algunas otras aplicaciones. Se trata de una excelente manera de probar la experiencia del usuario con Azure RemoteApp en menos de tres minutos.
+¿Desea toosee Azure RemoteApp en el dispositivo? Puede tener acceso a una demostración de nuestra implementación durante 10 minutos, siempre que tenga una cuenta Microsoft. Tenemos disponible Office y algunas otras aplicaciones. Se trata de una excelente manera tootest unidad Hola experiencia del usuario de Azure RemoteApp en menos de 3 minutos.
 
 ¿Le interesa?
 
-1. Vaya a [http://remoteapp.azure.com](http://remoteapp.azure.com).
-2. Haga clic en **Instalar cliente** en la esquina superior derecha.  
-3. El sistema detecta automáticamente el dispositivo y lo dirigirá al cliente correspondiente. Instale el cliente.
+1. Vaya tootoo[http://remoteapp.azure.com](http://remoteapp.azure.com).
+2. Haga clic en **instalar el cliente de** en la esquina superior derecha de Hola.  
+3. sistema de Hello automáticamente detecta el dispositivo y le permitirán a toohello cliente para el dispositivo. Instalar el cliente de Hola.
 4. Vuelva a [http://remoteapp.azure.com](http://remoteapp.azure.com) e inicie sesión con su cuenta Microsoft.
 
 Ahora puede tener acceso a aplicaciones que se ejecutan en tiempo real en Azure RemoteApp.
 
-Su opinión es importante. Al final de cada sesión, verá un cuadro de diálogo para ingresar sus comentarios. Si tiene un momento, indíquenos sus opiniones y permítanos saber si quisiera que Microsoft se pusiera en contacto con usted para obtener información adicional.
+Su opinión es importante. Al final de Hola de cada sesión, aparecerá un cuadro de diálogo por sus comentarios. Si tiene un minuto, cuéntenos sus ideas y háganoslo saber si le gustaría toocontact de Microsoft, para obtener información adicional.
 
 > [!NOTE]
-> Debido a que este es un entorno controlado para uso de demostración, no tenemos habilitado el acceso externo a Internet desde las aplicaciones de demostración publicadas. Por lo tanto, servicios como OneDrive no se encuentran accesibles. Además, también está desactivado el uso compartido del portapapeles (copiar y pegar) y la redirección de impresora y USB.  
+> Porque se trata de un entorno controlado para fines de demostración, no hemos habilitado internet externos acceso desde Hola publica aplicaciones de demostración. Por lo tanto, servicios como OneDrive no se encuentran accesibles. Además, también está desactivado el uso compartido del portapapeles (copiar y pegar) y la redirección de impresora y USB.  
 > 
 > 
 

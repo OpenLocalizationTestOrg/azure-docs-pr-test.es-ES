@@ -1,5 +1,5 @@
 ---
-title: "Límites de recursos de Azure SQL Database | Microsoft Docs"
+title: "Límites de recursos de base de datos de SQL aaaAzure | Documentos de Microsoft"
 description: "En esta página se describen algunos límites de recursos comunes para Base de datos SQL de Azure."
 services: sql-database
 documentationcenter: na
@@ -15,61 +15,61 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/12/2017
 ms.author: carlrab
-ms.openlocfilehash: e75458db79e6c15f8d5155b71f04a20fa21818ff
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3e7be4fdc74e802d37274690531caaf138bcedb0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sql-database-resource-limits"></a>Límites de recursos de Base de datos SQL
 ## <a name="overview"></a>Información general
-Azure SQL Database administra los recursos disponibles para una base de datos mediante dos mecanismos diferentes: **Resources Governance** (Regulación de recursos) y **Enforcement of Limits** (Aplicación de límites). Este tema explica estas dos áreas principales de la administración de recursos.
+La base de datos de SQL Azure administra Hola recursos disponibles tooa base de datos mediante dos mecanismos diferentes: **regulación de recursos** y **cumplimiento de límites**. Este tema explica estas dos áreas principales de la administración de recursos.
 
 ## <a name="resource-governance"></a>Regulador de recursos
-Uno de los objetivos de diseño de los niveles de servicio Básico, Estándar, Premium y Premium RS es que la instancia de Azure SQL Database se comporte como si la base de datos se ejecutase en su propio equipo, aislada de otras bases de datos. La regulación de recursos emula este comportamiento. Si el uso de recursos agregados alcanza el máximo de CPU disponible, memoria, E/S de registro y los recursos de E/S de datos asignados a la base de datos, el regulador de recursos pone en cola las consultas en ejecución y asignará recursos a las consultas en cola a medida que se vayan liberando.
+Uno de los objetivos de diseño de Hola de niveles de servicio Basic, Standard, Premium y Premium RS hello es como si la base de datos de Hola se ejecuta en su propia máquina, aislada de otras bases de datos para toobehave de base de datos de SQL Azure. La regulación de recursos emula este comportamiento. Si agrega Hola utilización de recursos alcanza Hola máxima disponible CPU, memoria, E/S de registro y base de datos de toohello asignado de recursos de E/S de datos, la regulación de recursos de las consultas de las colas en ejecución y asignar recursos toohello en cola las consultas que libere.
 
-Como en un equipo dedicado, el uso de todos los recursos disponibles, provoca una ejecución más larga de las consultas en ejecución, lo que a su vez puede provocar la finalización del tiempo de espera de los comandos en el cliente. Las aplicaciones con lógica de reintento agresivo y aplicaciones que ejecutan consultas en la base de datos con una frecuencia alta, pueden encontrar mensajes de error al intentar ejecutar nuevas consultas cuando se ha alcanzado el límite de solicitudes simultáneas.
+Como en un equipo dedicado, utilización de todos los resultados de recursos disponibles en una ejecución más larga de ejecución de las consultas, lo que puede traducirse en los tiempos de espera de comando en el cliente de Hola. Las aplicaciones con lógica de reintento agresiva y las aplicaciones que se ejecutan consultas en la base de datos de hello con gran frecuencia pueden encontrar mensajes de error al intentar tooexecute nuevas consultas cuando se ha alcanzado el límite de Hola de solicitudes simultáneas.
 
 ### <a name="recommendations"></a>Recomendaciones:
-Supervisar el uso de recursos y los tiempos de respuesta promedio de las consultas cuando se aproxime al uso máximo de una base de datos. Cuando encuentre latencias de consulta más elevadas generalmente tienen tres opciones:
+Supervisar el uso de recursos de Hola y tiempos de respuesta promedio de Hola de consultas cuando se acerque a la utilización máxima de Hola de una base de datos. Cuando encuentre latencias de consulta más elevadas generalmente tienen tres opciones:
 
-1. Reducir el número de solicitudes entrantes a la base de datos para evitar que el tiempo de espera finalice y las solicitudes se apilen.
-2. Asignar un nivel de rendimiento superior a la base de datos.
-3. Optimizar las consultas para reducir el uso de recursos de cada consulta. Para obtener más información, consulte la sección de sugerencias/optimizació de consulta en el artículo de Guía de rendimiento de Base de datos SQL de Azure.
+1. Reduzca el número de Hola de entrante solicitudes toohello base de datos tooprevent hello y tiempo de espera apilen de solicitudes.
+2. Asignar una base de datos de toohello de nivel superior de rendimiento.
+3. Optimizar la utilización de recursos de las consultas tooreduce Hola de cada consulta. Para obtener más información, consulte la sección de optimización/sugerencias de consulta en el artículo de guía de rendimiento de base de datos de SQL Azure Hola Hola.
 
 ## <a name="enforcement-of-limits"></a>Aplicación de límites
-Al denegar nuevas solicitudes cuando se alcanzan los límites, se aplican recursos otros recursos diferentes de la CPU, memoria, registro de E/S y datos de E/S. Cuando una base de datos alcanza el límite de tamaño máximo configurado, inserciones y actualizaciones que aumentan el tamaño de los datos no funcione correctamente, mientras selecciona y elimina continuarán funcionando. Los clientes reciben un [mensaje de error](sql-database-develop-error-messages.md) dependiendo del límite que alcance.
+Al denegar nuevas solicitudes cuando se alcanzan los límites, se aplican recursos otros recursos diferentes de la CPU, memoria, registro de E/S y datos de E/S. Cuando una base de datos alcanza el límite de tamaño máximo de hello configurado, inserciones y actualizaciones que aumentarán el tamaño de datos producirá un error, mientras selecciona y elimina continuar toowork. Los clientes reciben una [mensaje de error](sql-database-develop-error-messages.md) según el límite de Hola que se ha alcanzado.
 
-Por ejemplo, el número de conexiones a una base de datos SQL y el número de solicitudes simultáneas que se pueden procesar está restringido. La Base de datos SQL permite que el número de conexiones a la base de datos sea mayor que el número de solicitudes simultáneas para admitir la agrupación de conexiones. Mientras que el número de conexiones que están disponibles fácilmente puede controlarse mediante la aplicación, el número de solicitudes paralelas suele ser más difícil de calcular y controlar. Los errores se producen especialmente durante las cargas máximas cuando la aplicación envía demasiadas solicitudes o la base de datos alcanza su límite de recursos y empieza a amontonar los subprocesos de trabajo debido a consultas de ejecución más largas.
+Por ejemplo, número de Hola de base de datos SQL de las conexiones tooa y número de Hola de solicitudes simultáneas que pueden ser procesados están restringidos. Base de datos SQL permite a Hola número de conexiones toohello base de datos toobe mayor número de Hola de agrupación de conexiones de toosupport de solicitudes simultáneas. Aunque el número de Hola de conexiones que están disponibles fácilmente puede controlarse mediante la aplicación hello, Hola número de solicitudes paralelas suele veces más difícil tooestimate y toocontrol. Especialmente durante las cargas punta cuando Hola aplicación envía demasiadas solicitudes o base de datos de hello alcanza su límite de recursos y empieza a apilar subprocesos de trabajo debido a las consultas en ejecución toolonger, se pueden encontrar errores.
 
 ## <a name="service-tiers-and-performance-levels"></a>Niveles de servicio y niveles de rendimiento
 Existen niveles de servicio y rendimiento para los grupos elásticos y bases de datos únicas.
 
 ### <a name="single-databases"></a>Bases de datos únicas
-Para una base de datos única, los límites de una base de datos se definen mediante el nivel de servicio de base de datos el nivel de rendimiento. En la tabla siguiente se describen las características de las bases de datos de nivel Básico, Estándar, Premium y Premium RS en distintos niveles de rendimiento.
+Para una base de datos, Hola base de datos servicio capa y nivel de rendimiento define los límites de Hola de una base de datos. Hello en la tabla siguiente describe las características de Hola de bases de datos Basic, Standard, Premium y Premium RS en distintos niveles de rendimiento.
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
 > [!IMPORTANT]
-> Los clientes que usan los niveles de rendimiento P11 y P15 pueden usar hasta 4 TB de almacenamiento incluido sin cargo adicional. Esta opción de 4 TB se encuentra actualmente disponibles en las siguientes regiones: Este de EE. UU. 2, oeste de EE. UU., Virginia Gob. EE. UU., Europa Occidental, Alemania Central, Asia Suroriental, Japón Oriental, Este de Australia, Canadá Central y Canadá Oriental.
+> Pueden usar los clientes que usan los niveles de rendimiento P11 y P15 hasta too4 TB de almacenamiento incluyen sin cargo adicional. Esta opción de 4 TB está disponible actualmente en hello siguientes regiones: nos East2, oeste de Estados Unidos, nos Gov Virginia, Europa occidental, Alemania Central, sur Asia oriental, este de Japón, Australia Oriental, Canadá Central y este de Canadá.
 >
 
 ### <a name="elastic-pools"></a>Grupos elásticos
-[Grupos elásticos](sql-database-elastic-pool.md) comparten recursos entre bases de datos del grupo. En la tabla siguiente se describen las características de los grupos elásticos de nivel Básico, Estándar, Premium y Premium RS.
+[Grupos elásticos](sql-database-elastic-pool.md) compartir recursos entre las bases de datos en bloque de Hola. Hello en la tabla siguiente describe las características de Hola de Basic, Standard, Premium y Premium RS grupos elásticos.
 
 [!INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
-Para obtener una definición expandida de cada recurso enumerado en las tablas anteriores, consulte las descripciones en [Límites y capacidades de nivel de servicio](sql-database-performance-guidance.md#service-tier-capabilities-and-limits). Para obtener una descripción general de los niveles de servicio, consulte [Niveles de servicio y niveles de rendimiento de Base de datos SQL de Azure](sql-database-service-tiers.md).
+Para una definición expandida de cada recurso que se enumeran en hello anterior tablas, vea las descripciones de hello en [límites y capacidades de nivel de servicio](sql-database-performance-guidance.md#service-tier-capabilities-and-limits). Para obtener una descripción general de los niveles de servicio, consulte [Niveles de servicio y niveles de rendimiento de Base de datos SQL de Azure](sql-database-service-tiers.md).
 
 ## <a name="other-sql-database-limits"></a>Otros límites de Base de datos SQL
 | Ámbito | Límite | Description |
 | --- | --- | --- |
-| Bases de datos que usan exportación automatizada por suscripción |10 |La exportación automatizada le permite crear una programación personalizada para realizar copias de seguridad de las bases de datos SQL. La versión preliminar de esta característica finalizará el 1 de marzo de 2017.  |
-| Bases de datos por servidor |Hasta 5000 |Se permiten hasta 5000 bases de datos por servidor. |
-| DTU por servidor |45000 |Se permiten 45000 DTU por servidor para el aprovisionamiento de bases de datos independientes y grupos elásticos. El número total de grupos y bases de datos independientes permitidos por servidor está limitado únicamente por el número de DTU de servidor.  
+| Bases de datos que usan exportación automatizada por suscripción |10 |Exportación automatizada permite toocreate una programación personalizada para copia de seguridad de las bases de datos SQL. vista previa de Hola de esta característica va a finalizar en el 1 de marzo de 2017.  |
+| Bases de datos por servidor |Seguridad too5000 |Seguridad too5000 se permiten las bases de datos por servidor. |
+| DTU por servidor |45000 |Se permiten 45000 DTU por servidor para el aprovisionamiento de bases de datos independientes y grupos elásticos. número total de Hola de bases de datos independiente y grupos permitidas por el servidor está limitado únicamente por número de Hola de servidor Dtu.  
 
 > [!IMPORTANT]
-> La exportación automática de Azure SQL Database Automated Export se encuentra ahora en versión preliminar y se retirará el 1 de marzo de 2017. A partir del 1 de diciembre de 2016, ya no podrá configurar la exportación automatizada en cualquier instancia de SQL Database. Los trabajos de exportación automatizada existentes continuarán funcionando hasta el 1 de marzo de 2017. A partir del 1 de diciembre de 2016, podrá usar la [retención de copias de seguridad a largo plazo](sql-database-long-term-retention.md) o [Azure Automation](../automation/automation-intro.md) para archivar las bases de datos SQL periódicamente mediante PowerShell de acuerdo con la programación que elija. Para obtener un script de ejemplo, puede descargar [este que está disponible en GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export).
+> La exportación automática de Azure SQL Database Automated Export se encuentra ahora en versión preliminar y se retirará el 1 de marzo de 2017. A partir del 1 de diciembre de 2016, ya no podrás exportación puede tooconfigure automatizada en cualquier base de datos SQL. Todos los trabajos de exportación automatizada existente continuará toowork hasta el 1 de marzo de 2017. Después del 1 de diciembre de 2016, puede usar [retención de copia de seguridad a largo plazo](sql-database-long-term-retention.md) o [automatización de Azure](../automation/automation-intro.md) tooarchive bases de datos SQL periódicamente con PowerShell periódicamente según programación tooa de su elección. Para obtener un script de ejemplo, puede descargar hello [GitHub del script de ejemplo](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export).
 >
 
 

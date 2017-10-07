@@ -1,6 +1,6 @@
 ---
-title: 'Funciones de la plantilla de Azure Resource Manager: matrices y objetos | Microsoft Docs'
-description: Describe las funciones para usar en una plantilla de Azure Resource Manager para trabajar con matrices y objetos.
+title: 'plantilla de administrador de recursos de aaaAzure las funciones: las matrices y los objetos | Documentos de Microsoft'
+description: Describe hello toouse de funciones en una plantilla de administrador de recursos de Azure para trabajar con objetos y matrices.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0bd9ec41761c9ce575f3bcf4d1f8e8578b83e01c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e5f1a9b2a71039562eae7e48c2474a1fa59a7bea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Funciones de matriz y de objeto para las plantillas de Azure Resource Manager 
 
@@ -42,20 +42,20 @@ Resource Manager ofrece varias funciones para trabajar con matrices y objetos.
 * [take](#take)
 * [union](#union)
 
-Para obtener una matriz de valores de cadena delimitada por un valor, consulte [split](resource-group-template-functions-string.md#split).
+tooget una matriz de valores de cadena delimitada por un valor, vea [dividir](resource-group-template-functions-string.md#split).
 
 <a id="array" />
 
 ## <a name="array"></a>array
 `array(convertToArray)`
 
-Convierte el valor en una matriz.
+Convierte la matriz de hello valores tooan.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Sí |entero, cadena, matriz u objeto |Valor que se convierte en matriz. |
+| convertToArray |Sí |entero, cadena, matriz u objeto |matriz de Hello valores tooconvert tooan. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -63,7 +63,7 @@ Una matriz.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar la función de matriz con diferentes tipos.
+Hello en el ejemplo siguiente se muestra cómo toouse Hola función de matriz con los diferentes tipos.
 
 ```json
 {
@@ -102,7 +102,7 @@ En el ejemplo siguiente se muestra cómo utilizar la función de matriz con dife
 }
 ```
 
-El resultado del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -115,22 +115,22 @@ El resultado del ejemplo anterior con los valores predeterminados es:
 ## <a name="coalesce"></a>coalesce
 `coalesce(arg1, arg2, arg3, ...)`
 
-Devuelve el primer valor no nulo de los parámetros. Las cadenas vacías, las matrices vacías y los objetos vacíos no son nulos.
+Devuelve el primer valor distinto de null de parámetros de Hola. Las cadenas vacías, las matrices vacías y los objetos vacíos no son nulos.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |entero, cadena, matriz u objeto |El primer valor para comprobar si hay valores nulos. |
-| argumentos adicionales |No |entero, cadena, matriz u objeto |Valores adicionales para probar si hay valores nulos. |
+| arg1 |Sí |entero, cadena, matriz u objeto |Hola primer valor tootest si hay valores null. |
+| argumentos adicionales |No |entero, cadena, matriz u objeto |Valores adicionales tootest si hay valores null. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-El valor de los primeros parámetros que no son nulos, que puede ser una cadena, un entero, una matriz o un objeto. Es nulo si todos los parámetros son nulos. 
+valor de Hola de parámetros distintos de null primera hello, que puede ser una cadena, int, matriz u objeto. Es nulo si todos los parámetros son nulos. 
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra el resultado de los diferentes usos de coalesce.
+Hello en el ejemplo siguiente se muestra la salida de hello desde diferentes usos de coalesce.
 
 ```json
 {
@@ -176,7 +176,7 @@ En el ejemplo siguiente se muestra el resultado de los diferentes usos de coales
 }
 ```
 
-El resultado del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -191,23 +191,23 @@ El resultado del ejemplo anterior con los valores predeterminados es:
 ## <a name="concat"></a>concat
 `concat(arg1, arg2, arg3, ...)`
 
-Combina varias matrices y devuelve la matriz concatenada, o combina varios valores de cadena y devuelve la cadena concatenada. 
+Combina varias matrices y devuelve una matriz concatenado de hello, o combina varios valores de cadena y devuelve la cadena Hola concatenado. 
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz o cadena |La primera matriz o cadena para la concatenación. |
+| arg1 |Sí |matriz o cadena |Hola primera matriz o cadena para la concatenación. |
 | argumentos adicionales |No |matriz o cadena |Matrices o cadenas adicionales en orden secuencial para la concatenación. |
 
-Esta función puede tomar cualquier número de argumentos y puede aceptar cadenas o matrices para los parámetros.
+Esta función puede tomar cualquier número de argumentos y puede aceptar cadenas o las matrices de parámetros de Hola.
 
 ### <a name="return-value"></a>Valor devuelto
 Una cadena o matriz de valores concatenados.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo combinar dos matrices.
+Hola de ejemplo siguiente muestra cómo toocombine dos matrices.
 
 ```json
 {
@@ -242,13 +242,13 @@ En el ejemplo siguiente se muestra cómo combinar dos matrices.
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | return | Matriz | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-En el ejemplo siguiente se muestra cómo combinar dos valores de cadena y devolver una cadena concatenada.
+Hola de ejemplo siguiente muestra cómo toocombine dos valores de cadena y devolver una cadena concatenada.
 
 ```json
 {
@@ -270,7 +270,7 @@ En el ejemplo siguiente se muestra cómo combinar dos valores de cadena y devolv
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -287,16 +287,16 @@ Comprueba si una matriz contiene un valor, un objeto contiene una clave o una ca
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| container |Sí |matriz, objeto o cadena |El valor que contiene el valor para buscar. |
-| itemToFind |Sí |cadena o entero |El valor para buscar. |
+| container |Sí |matriz, objeto o cadena |valor de Hola que contiene Hola valor toofind. |
+| itemToFind |Sí |cadena o entero |Hola toofind de valor. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-**True** si el elemento se encuentra; en caso contrario, **False**.
+**True** si Hola elemento se encuentra; en caso contrario, **False**.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar contains con diferentes tipos:
+Hello en el ejemplo siguiente se muestra cómo toouse contiene con tipos diferentes:
 
 ```json
 {
@@ -347,7 +347,7 @@ En el ejemplo siguiente se muestra cómo utilizar contains con diferentes tipos:
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -363,14 +363,14 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="createarray"></a>createarray
 `createArray (arg1, arg2, arg3, ...)`
 
-Crea una matriz a partir de los parámetros.
+Crea una matriz de parámetros de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |Cadena, entero, matriz u objeto |El primer valor en la matriz. |
-| argumentos adicionales |No |Cadena, entero, matriz u objeto |Valores adicionales en la matriz. |
+| arg1 |Sí |Cadena, entero, matriz u objeto |Hola primer valor de matriz de Hola. |
+| argumentos adicionales |No |Cadena, entero, matriz u objeto |Valores adicionales en la matriz de Hola. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -378,7 +378,7 @@ Una matriz.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar createArray con diferentes tipos:
+Hola siguiente ejemplo se muestra cómo toouse createArray con tipos diferentes:
 
 ```json
 {
@@ -417,7 +417,7 @@ En el ejemplo siguiente se muestra cómo utilizar createArray con diferentes tip
 }
 ```
 
-El resultado del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -438,15 +438,15 @@ Determina si una matriz, un objeto o una cadena están vacíos.
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Sí |matriz, objeto o cadena |El valor para comprobar si está vacío. |
+| itemToTest |Sí |matriz, objeto o cadena |Hola toocheck valor si está vacía. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Devuelve **True** si el valor está vacío; en caso contrario, **False**.
+Devuelve **True** si el valor de hello está vacía; en caso contrario, **False**.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se comprueba si una matriz, un objeto y una cadena están vacíos.
+Hola siguiente ejemplo comprueba si una matriz, el objeto y la cadena están vacías.
 
 ```json
 {
@@ -485,7 +485,7 @@ En el ejemplo siguiente se comprueba si una matriz, un objeto y una cadena está
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -498,21 +498,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="first"></a>first
 `first(arg1)`
 
-Devuelve el primer elemento de la matriz o el primer carácter de la cadena.
+Devuelve Hola el primer elemento de matriz de Hola o el primer carácter de la cadena de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz o cadena |El valor para recuperar el primer elemento o carácter. |
+| arg1 |Sí |matriz o cadena |Hola valor tooretrieve Hola primer elemento o carácter. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-El tipo (cadena, entero, matriz u objeto) del primer elemento en una matriz o el primer carácter de una cadena.
+Hola tipo (string, int, matriz u objeto) del primer elemento en una matriz de Hola u Hola el primer carácter de una cadena.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar la primera función con una matriz y una cadena.
+Hello en el ejemplo siguiente se muestra cómo toouse Hola primera función con una matriz y una cadena.
 
 ```json
 {
@@ -539,7 +539,7 @@ En el ejemplo siguiente se muestra cómo utilizar la primera función con una ma
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -551,23 +551,23 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="intersection"></a>intersección
 `intersection(arg1, arg2, arg3, ...)`
 
-Devuelve una única matriz u objeto con los elementos comunes de los parámetros.
+Devuelve una matriz único o un objeto con elementos comunes de Hola de parámetros de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz u objeto |El primer valor que se utilizará para buscar elementos comunes. |
-| arg2 |Sí |matriz u objeto |El segundo valor que se utilizará para buscar elementos comunes. |
-| argumentos adicionales |No |matriz u objeto |Valores adicionales que se utilizarán para buscar elementos comunes. |
+| arg1 |Sí |matriz u objeto |Hola primer toouse de valor para buscar elementos comunes. |
+| arg2 |Sí |matriz u objeto |Hola segundo toouse de valor para buscar elementos comunes. |
+| argumentos adicionales |No |matriz u objeto |Toouse valores adicionales para buscar elementos comunes. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una matriz o un objeto con los elementos comunes.
+Una matriz o un objeto con elementos comunes de Hola.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar la intersección con matrices y objetos:
+Hola de ejemplo siguiente muestra cómo toouse intersección con las matrices y los objetos:
 
 ```json
 {
@@ -606,7 +606,7 @@ En el ejemplo siguiente se muestra cómo utilizar la intersección con matrices 
 }
 ```
 
-El resultado del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -623,16 +623,16 @@ Devuelve un objeto JSON.
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |cadena |Valor que se va a convertir en JSON. |
+| arg1 |Sí |cadena |Hola valor tooconvert tooJSON. |
 
 
 ### <a name="return-value"></a>Valor devuelto
 
-Objeto JSON de la cadena especificada o un objeto vacío si se especifica **null**.
+Especifica el objeto JSON de Hola de hello cadena o un objeto vacío cuando **null** se especifica.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar la intersección con matrices y objetos:
+Hola de ejemplo siguiente muestra cómo toouse intersección con las matrices y los objetos:
 
 ```json
 {
@@ -653,7 +653,7 @@ En el ejemplo siguiente se muestra cómo utilizar la intersección con matrices 
 }
 ```
 
-El resultado del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -665,21 +665,21 @@ El resultado del ejemplo anterior con los valores predeterminados es:
 ## <a name="last"></a>last
 `last (arg1)`
 
-Devuelve el último elemento de la matriz o el último carácter de la cadena.
+Devuelve Hola último elemento de matriz de Hola o último carácter de la cadena de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz o cadena |El valor para recuperar el último elemento o carácter. |
+| arg1 |Sí |matriz o cadena |Hola value tooretrieve Hola última (elemento) o carácter. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-El tipo (cadena, entero, matriz u objeto) del último elemento de una matriz o el último carácter de una cadena.
+Hola tipo (string, int, matriz u objeto) del último elemento en una matriz de Hola u Hola último carácter de una cadena.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar la última función con una matriz y una cadena.
+Hello en el ejemplo siguiente se muestra cómo toouse Hola última función con una matriz y una cadena.
 
 ```json
 {
@@ -706,7 +706,7 @@ En el ejemplo siguiente se muestra cómo utilizar la última función con una ma
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -718,13 +718,13 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="length"></a>length
 `length(arg1)`
 
-Devuelve el número de elementos de una matriz, o los caracteres de una cadena.
+Devuelve el número de Hola de elementos de una matriz o caracteres de una cadena.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz o cadena |La matriz que se usará para obtener el número de elementos, o la cadena que se usará para obtener el número de caracteres. |
+| arg1 |Sí |matriz o cadena |Hola toouse de matriz para obtener el número de Hola de elementos u Hola toouse de cadena para obtener el número de Hola de caracteres. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -732,7 +732,7 @@ Un entero.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar length con una matriz y una cadena:
+Hola siguiente ejemplo se muestra cómo toouse longitud con una matriz y la cadena:
 
 ```json
 {
@@ -766,14 +766,14 @@ En el ejemplo siguiente se muestra cómo utilizar length con una matriz y una ca
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
 
-Puede usar esta función con una matriz para especificar el número de iteraciones al crear recursos. En el ejemplo siguiente, el parámetro **siteNames** debería hacer referencia a una matriz de nombres que se usará al crear los sitios web.
+Puede usar esta función con un número de iteraciones Hola de toospecify de matriz al crear recursos. En el siguiente ejemplo de Hola Hola parámetro **siteNames** haría referencia tooan matriz de nombres toouse al crear sitios web de Hola.
 
 ```json
 "copy": {
@@ -789,21 +789,21 @@ Para más información sobre cómo usar esta función con una matriz, vea [Creac
 ## <a name="min"></a>Min
 `min(arg1)`
 
-Devuelve el valor mínimo de una matriz de enteros o una lista separada por comas de enteros.
+Devuelve Hola valor mínimo de una matriz de enteros o una lista separada por comas de números enteros.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz de enteros, o lista separada por comas de enteros |La colección para obtener el valor mínimo. |
+| arg1 |Sí |matriz de enteros, o lista separada por comas de enteros |Hola tooget Hola mínimo valor de la colección. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Un entero que representa el valor mínimo.
+Un entero que representa el valor mínimo de Hola.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar min con una matriz y una lista de enteros:
+Hola siguiente ejemplo se muestra cómo min toouse con una matriz y una lista de enteros:
 
 ```json
 {
@@ -829,7 +829,7 @@ En el ejemplo siguiente se muestra cómo utilizar min con una matriz y una lista
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -841,21 +841,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="max"></a>max
 `max(arg1)`
 
-Devuelve el valor máximo de una matriz de enteros o una lista separada por comas de enteros.
+Devuelve Hola valor máximo de una matriz de enteros o una lista separada por comas de números enteros.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz de enteros, o lista separada por comas de enteros |La colección para obtener el valor máximo. |
+| arg1 |Sí |matriz de enteros, o lista separada por comas de enteros |Hola tooget Hola máximo valor de la colección. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Un entero que representa el valor máximo.
+Un entero que representa el valor máximo de Hola.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar max con una matriz y una lista de enteros:
+Hola siguiente ejemplo se muestra cómo toouse máximo con una matriz y una lista de enteros:
 
 ```json
 {
@@ -881,7 +881,7 @@ En el ejemplo siguiente se muestra cómo utilizar max con una matriz y una lista
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -899,8 +899,8 @@ Crea una matriz de enteros a partir de un entero de inicio y contiene un número
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| startingInteger |Sí |int |El primer entero de la matriz. |
-| numberofElements |Sí |int |El número de enteros en la matriz. |
+| startingInteger |Sí |int |primer entero de Hello en la matriz de Hola. |
+| numberofElements |Sí |int |número de Hola de enteros en la matriz de Hola. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -908,7 +908,7 @@ Una matriz de enteros.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar la función range:
+Hola de ejemplo siguiente muestra cómo toouse Hola función intervalo:
 
 ```json
 {
@@ -934,7 +934,7 @@ En el ejemplo siguiente se muestra cómo utilizar la función range:
 }
 ```
 
-El resultado del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -945,14 +945,14 @@ El resultado del ejemplo anterior con los valores predeterminados es:
 ## <a name="skip"></a>skip
 `skip(originalValue, numberToSkip)`
 
-Devuelve una matriz con todos los elementos después del número especificado de la matriz, o devuelve una cadena con todos los caracteres después del número especificado en la cadena.
+Devuelve una matriz con todos los elementos de hello después Hola número especificado en la matriz de Hola o devuelve una cadena con todos los caracteres de hello después Hola el número especificado en la cadena de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| originalValue |Sí |matriz o cadena |La matriz o cadena que se usará para la omisión. |
-| numberToSkip |Sí |int |El número de elementos o caracteres que se van a omitir. Si este valor es 0 o un valor inferior, se devuelven todos los elementos o caracteres del valor. Si es mayor que la longitud de la matriz o la cadena, se devuelve una matriz o cadena vacía. |
+| originalValue |Sí |matriz o cadena |Hola toouse de matriz o de cadena para pasar por alto. |
+| numberToSkip |Sí |int |número de Hola de tooskip elementos o caracteres. Si este valor es 0 o menos, todos los elementos de Hola o se devuelven los caracteres en valor de Hola. Si es mayor que la longitud de cadena o matriz de Hola Hola, se devuelve una matriz vacía o una cadena. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -960,7 +960,7 @@ Una matriz o cadena.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se omite el número especificado de elementos de la matriz, y el número especificado de caracteres de la cadena.
+Hola siguiendo el ejemplo omite Hola número especificado de elementos de matriz de Hola y Hola especifica el número de caracteres en una cadena.
 
 ```json
 {
@@ -1002,7 +1002,7 @@ En el ejemplo siguiente se omite el número especificado de elementos de la matr
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1014,14 +1014,14 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="take"></a>take
 `take(originalValue, numberToTake)`
 
-Devuelve una matriz con el número especificado de elementos desde el inicio de la matriz, o una cadena con el número especificado de caracteres desde el inicio de la cadena.
+Devuelve una matriz con hello un número especificado de elementos de Hola inicio de matriz de hello, o una cadena con hello número especificado de caracteres desde el principio de Hola de cadena Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| originalValue |Sí |matriz o cadena |La matriz o cadena de la que se van a tomar los elementos. |
-| numberToTake |Sí |int |El número de elementos o caracteres que se van a tomar. Si este valor es 0 o un valor inferior, se devolverá una matriz o cadena vacía. Si es mayor que la longitud de la matriz o cadena especificada, se devuelven todos los elementos de la matriz o cadena. |
+| originalValue |Sí |matriz o cadena |Hola array o string tootake Hola elementos. |
+| numberToTake |Sí |int |número de Hola de tootake elementos o caracteres. Si este valor es 0 o un valor inferior, se devolverá una matriz o cadena vacía. Si es mayor que la longitud de Hola de hello con cadena o una matriz, se devuelven todos los elementos de hello en la matriz de Hola o de cadena. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -1029,7 +1029,7 @@ Una matriz o cadena.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se toma el número especificado de elementos de la matriz y de caracteres de la cadena.
+Hola siguiendo el ejemplo hello de toma un número especificado de elementos de matriz de Hola y los caracteres de una cadena.
 
 ```json
 {
@@ -1071,7 +1071,7 @@ En el ejemplo siguiente se toma el número especificado de elementos de la matri
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1083,15 +1083,15 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="union"></a>union
 `union(arg1, arg2, arg3, ...)`
 
-Devuelve una única matriz u objeto con todos los elementos de los parámetros. Los valores o las claves duplicados solo se incluyen una vez.
+Devuelve una matriz único o un objeto con todos los elementos de parámetros de Hola. Los valores o las claves duplicados solo se incluyen una vez.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz u objeto |El primer valor que se utiliza para unir elementos. |
-| arg2 |Sí |matriz u objeto |El segundo valor que se utiliza para unir elementos. |
-| argumentos adicionales |No |matriz u objeto |Valores adicionales que se utilizan para unir elementos. |
+| arg1 |Sí |matriz u objeto |Hola primer valor toouse para combinar elementos. |
+| arg2 |Sí |matriz u objeto |Hola segundo valor toouse para combinar elementos. |
+| argumentos adicionales |No |matriz u objeto |Toouse valores adicionales para combinar elementos. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -1099,7 +1099,7 @@ Una matriz u objeto.
 
 ### <a name="example"></a>Ejemplo
 
-En el ejemplo siguiente se muestra cómo utilizar la unión con matrices y objetos:
+Hola de ejemplo siguiente muestra cómo toouse unión con las matrices y los objetos:
 
 ```json
 {
@@ -1138,7 +1138,7 @@ En el ejemplo siguiente se muestra cómo utilizar la unión con matrices y objet
 }
 ```
 
-El resultado del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1146,8 +1146,8 @@ El resultado del ejemplo anterior con los valores predeterminados es:
 | arrayOutput | Matriz | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener una descripción de las secciones de una plantilla de Azure Resource Manager, vea [Creación de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
-* Para combinar varias plantillas, vea [Uso de plantillas vinculadas con Azure Resource Manager](resource-group-linked-templates.md).
-* Para iterar una cantidad de veces específica al crear un tipo de recurso, vea [Creación de varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
-* Para saber cómo implementar la plantilla que creó, consulte [Implementación de una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
+* Para obtener una descripción de las secciones de hello en una plantilla de Azure Resource Manager, consulte [plantillas del Administrador de recursos de Azure de creación](resource-group-authoring-templates.md).
+* toomerge varias plantillas, consulte [mediante plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).
+* tooiterate un número especificado de veces al crear un tipo de recurso, vea [crear varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
+* toosee cómo toodeploy plantilla de Hola que haya creado, vea [implementar una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
 

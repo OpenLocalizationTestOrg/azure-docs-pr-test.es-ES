@@ -1,6 +1,6 @@
 ---
-title: "Introducción al SDK de Windows Phone Silverlight para Azure Mobile Engagement | Microsoft Docs"
-description: "Introducción al SDK de Windows Phone Silverlight para Azure Mobile Engagement"
+title: "aaaAzure Mobile Engagement Windows Phone Silverlight información general del SDK | Documentos de Microsoft"
+description: "Información general de Windows Phone Silverlight SDK de Azure Mobile Engagement hello"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,38 +14,38 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.openlocfilehash: c4e8ceee4104c3d3a6c3e6b79322ba1cf8463b22
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ff2febed2202127e0538373ebbabe674993ce39d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-phone-silverlight-sdk-overview-for-azure-mobile-engagement"></a>Introducción al SDK de Windows Phone Silverlight para Azure Mobile Engagement
-Comience aquí para obtener los detalles sobre cómo integrar Azure Mobile Engagement en una aplicación de Windows Phone Silverlight. Si primero quiere probarlo, asegúrese de completar nuestro [tutorial de 15 minutos](mobile-engagement-windows-phone-get-started.md).
+Empiece aquí detalles de hello tooget acerca de cómo toointegrate Azure Mobile Engagement en un Windows Phone Silverlight App. Si desea que toogive que un bloque try en primer lugar, asegúrese de que complete nuestro [tutorial de 15 minutos](mobile-engagement-windows-phone-get-started.md).
 
-Haga clic para ver el [contenido del SDK](mobile-engagement-windows-phone-sdk-content.md)
+Haga clic en hello toosee [contenido de SDK](mobile-engagement-windows-phone-sdk-content.md)
 
 ## <a name="integration-procedures"></a>Procedimientos de integración
-1. Comience aquí: [Cómo integrar Mobile Engagement en su aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
-2. Para las notificaciones: [Integración de cobertura (notificaciones) en su aplicación Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement-reach.md)
-3. Implementación del plan de etiquetas: [Cómo usar la API de etiquetado avanzado de Mobile Engagement en la aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md)
+1. Empiece aquí: [cómo toointegrate Mobile Engagement en la aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+2. Para las notificaciones: [cómo toointegrate alcance (notificaciones) en la aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement-reach.md)
+3. Implementación del plan de etiqueta: [cómo toouse Hola avanzada Mobile Engagement etiquetado API en la aplicación de Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md)
 
 ## <a name="release-notes"></a>Notas de la versión
 ###<a name="331-11032016"></a>3.3.1 (03/11/2016)
-Parte del paquete NuGet *MicrosoftAzure.MobileEngagement***v3.4.1**
+Parte del programa Hola a *MicrosoftAzure.MobileEngagement* paquete Nuget **v3.4.1**
 
 * Mejoras de estabilidad.
 
-Para la versión anterior, consulte las [notas de la versión completas](mobile-engagement-windows-phone-release-notes.md)
+Para la versión anterior, consulte hello [completar notas de la versión](mobile-engagement-windows-phone-release-notes.md)
 
 ## <a name="upgrade-procedures"></a>Procedimientos de actualización
-Si ya integró una versión anterior de nuestro SDK en la aplicación, debería tener en cuenta los siguientes puntos a la hora de actualizar el SDK.
+Si ya ha integrado una versión anterior de nuestro SDK en la aplicación, tener hello tooconsider siguientes puntos al actualizar Hola SDK.
 
-Es posible que tenga que seguir varios procedimientos si se perdió varias versiones del SDK. Consulte los [procedimientos de actualización](mobile-engagement-windows-phone-upgrade-procedure.md)completos. Por ejemplo, si migra desde 0.10.1 a 0.11.0, primero debe seguir el procedimiento "de 0.9.0 a 0.10.1" y luego el procedimiento "de 0.10.1 a 0.11.0".
+Puede tener toofollow varios procedimientos si ejecutado varias versiones de hello SDK. Vea Hola completa [actualizar procedimientos](mobile-engagement-windows-phone-upgrade-procedure.md). Por ejemplo, si migra desde 0.10.1 too0.11.0 tiene toofirst siga Hola "de 0.9.0 too0.10.1" procedimiento, a continuación, Hola "de 0.10.1 too0.11.0" procedimiento.
 
-### <a name="from-200-to-330"></a>De 2.0.0 a 3.3.0
+### <a name="from-200-too330"></a>Desde 2.0.0 too3.3.0
 #### <a name="test-logs"></a>Registros de prueba
-Los registros de consola generados por el SDK ahora se pueden habilitar, deshabilitar o filtrar. Para personalizar esto, actualice la propiedad `EngagementAgent.Instance.TestLogEnabled` a uno de los valores disponibles en la enumeración `EngagementTestLogLevel`, por ejemplo:
+Registros de la consola producidos por hello SDK ahora pueden habilitada, deshabilitada o filtrado. toocustomize, propiedad de hello actualización `EngagementAgent.Instance.TestLogEnabled` tooone del valor de hello disponible de hello `EngagementTestLogLevel` enumeración, por ejemplo:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();

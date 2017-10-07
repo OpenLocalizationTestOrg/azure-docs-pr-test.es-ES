@@ -1,5 +1,5 @@
 ---
-title: P+F sobre Azure Event Hubs | Microsoft Docs
+title: "Preguntas más frecuentes de los centros de eventos aaaAzure | Documentos de Microsoft"
 description: Preguntas frecuentes sobre Azure Event Hubs (P+F)
 services: event-hubs
 documentationcenter: na
@@ -14,86 +14,86 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: e208e970de58505553802a4ed27d7f9da4070866
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cc0844edcc38ad167cde9497d58d44155fc90b7a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Preguntas frecuentes sobre Event Hubs
 
 ## <a name="general"></a>General
 
-### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>¿Cuál es la diferencia entre los niveles Básico y Estándar de Event Hubs?
+### <a name="what-is-hello-difference-between-event-hubs-basic-and-standard-tiers"></a>¿Cuál es la diferencia de hello entre niveles estándares y básico de centros de eventos?
 
-El nivel Estándar de Azure Event Hubs proporciona más características de las disponibles en el nivel Básico. Estas son las características disponibles en el nivel Estándar:
+nivel estándar de Hola de centros de eventos de Azure proporciona características más allá de lo que está disponible en el nivel básico de Hola. Hola siguientes características se incluyen con estándar:
 * Retención de eventos más prolongada
-* Más conexiones asíncronas, con un cargo por uso por encima del límite de más del número incluido
+* Conexiones asíncronas adicionales, con un cargo por encima del límite durante más de número de hello incluido
 * Más de un único grupo de consumidores
 * [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
 
-Para más información sobre los planes de tarifa, incluido Event Hubs dedicado, vea los [detalles de los precios de Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
+Para obtener más información sobre los precios de niveles, incluidos dedicado de concentradores de eventos, vea hello [detalles de precios de centros de eventos](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="what-are-event-hubs-throughput-units"></a>¿Qué son las unidades de procesamiento de los Centros de eventos?
 
-Las unidades de procesamiento de Event Hubs se seleccionan explícitamente mediante el Portal de Azure clásico o las plantillas de Resource Manager para Event Hubs. Las unidades de procesamiento se aplican a todos los centros de eventos de un espacio de nombres de Event Hubs, y cada unidad de procesamiento da derecho al espacio de nombres a las siguientes funcionalidades:
+Seleccionar explícitamente las unidades de rendimiento de los centros de eventos, ya sea a través del portal de Azure de Hola o plantillas de administrador de recursos de centros de eventos. Unidades de rendimiento aplican tooall centros de eventos en un espacio de nombres de los centros de eventos, y cada unidad de rendimiento da derecho hello toohello de espacio de nombres siguientes capacidades:
 
-* Hasta 1 MB por segundo de eventos de entrada (eventos enviados a un centro de eventos), pero no más de 1000 eventos de entrada, operaciones de administración o llamadas a la API de control por segundo.
-* Hasta 2 MB por segundo de eventos de salida (eventos consumidos en un centro de eventos).
-* Hasta 84 GB de almacenamiento de eventos (suficiente para el período de retención predeterminado de 24 horas).
+* Too1 MB por segundo de eventos de entrada (eventos enviados a un concentrador de eventos), pero no más de 1000 eventos de entrada, las operaciones de administración o un control llamadas de API por segundo.
+* Too2 MB por segundo de eventos de salida (eventos consumidos de un concentrador de eventos).
+* Backup too84 GB de almacenamiento de eventos (suficiente para el período de retención de 24 horas de hello predeterminado).
 
-Las unidades de procesamiento de los Centros de eventos se facturan por horas, según el número máximo de unidades seleccionadas durante la hora en cuestión.
+Unidades de rendimiento de los centros de eventos se facturan por horas, según Hola número máximo de unidades seleccionadas durante hello tiene hora.
 
 ### <a name="how-are-event-hubs-throughput-unit-limits-enforced"></a>¿Cómo se aplican los límites de unidades de rendimiento de los Centros de eventos?
-Si el procesamiento total de entrada o la tasa total de eventos de entrada en todos los centros de eventos de un espacio de nombres superan el número total de unidades de procesamiento permitidas, los remitentes quedan sujetos a limitaciones y reciben errores que indican que se superó la cuota de entrada.
+Si el rendimiento de entrada totales de Hola o frecuencia de eventos de entrada totales de hello en todos los concentradores de eventos en un espacio de nombres supera acumuladas de unidad de rendimiento agregado hello, remitentes están limitados y recibirán errores para indicarles que se ha superado esa cuota de entrada de Hola.
 
-Si el procesamiento total de salida o la tasa total de eventos de salida en todos los centros de eventos de un espacio de nombres superan el número total de unidades de procesamiento permitidas, los receptores quedan sujetos a limitaciones y reciben errores que indican que se superó la cuota de salida. Las cuotas de entrada y de salida se aplican por separado, por lo que ningún remitente puede provocar que se ralentice el consumo de eventos ni ningún receptor puede impedir que los eventos se envíen a un centro de eventos.
+Si el rendimiento de salida total de Hola o tasa de salida de hello total de eventos en todos los concentradores de eventos en un espacio de nombres supera acumuladas de unidad de rendimiento agregado hello, receptores están limitados y recibirán errores para indicarles que se ha superado esa cuota de salida de hello. Las cuotas de entrada y salida se aplican por separado, por lo que ningún remitente pueda provocar eventos consumo tooslow hacia abajo, así como tampoco puede un receptor de impedir que los eventos se envíen a un concentrador de eventos.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-selected"></a>¿Hay un límite en el número de unidades de procesamiento que se pueden seleccionar?
-Hay una cuota predeterminada de 20 unidades de procesamiento por espacio de nombres. Puede solicitar una cuota de unidades de procesamiento mayor, si rellena una incidencia de soporte técnico. Más allá del límite de 20 unidades de procesamiento, hay disponibles paquetes de 20 y 100 unidades de procesamiento. Tenga en cuenta que al usar más de 20 unidades de procesamiento, se quita la capacidad de cambiar el número de unidades de procesamiento sin rellenar una incidencia de soporte técnico.
+### <a name="is-there-a-limit-on-hello-number-of-throughput-units-that-can-be-selected"></a>¿Hay un límite del número de Hola de unidades de rendimiento que se pueden seleccionar?
+Hay una cuota predeterminada de 20 unidades de procesamiento por espacio de nombres. Puede solicitar una cuota de unidades de procesamiento mayor, si rellena una incidencia de soporte técnico. Más allá del límite de unidad de rendimiento 20 hello, los paquetes están disponibles en 20 y 100 unidades de rendimiento. Tenga en cuenta que el uso de más de 20 unidades de rendimiento quita el número de Hola de toochange de hello capacidad de unidades de rendimiento sin presentar una incidencia de soporte técnico.
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>¿Se puede usar una sola conexión AMQP para enviar y recibir en varios centros de eventos?
-Sí, siempre y cuando todos los centros de eventos se encuentren en el mismo espacio de nombres.
+### <a name="can-i-use-a-single-amqp-connection-toosend-and-receive-from-multiple-event-hubs"></a>¿Puedo usar un único toosend de conexión de AMQP y recibir de varios centros de eventos?
+Sí, siempre y cuando todos los concentradores de eventos de Hola Hola mismo espacio de nombres.
 
-### <a name="what-is-the-maximum-retention-period-for-events"></a>¿Cuál es el período de retención máximo para eventos?
-El nivel Standard de los Centros de eventos admite actualmente un período de retención máximo de 7 días. Tenga en cuenta que los centros de eventos no están concebidos como almacén de datos permanente. Los períodos de retención superiores a 24 horas están pensados para escenarios en los que es útil volver a reproducir un flujo de eventos en los mismos sistemas; por ejemplo, para entrenar o comprobar un nuevo modelo de aprendizaje automático con datos existentes. Si necesita conservar los mensajes más de siete días, habilite [Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) en el centro de eventos para extraer los datos de este a la cuenta de almacenamiento o la cuenta de servicio de Azure Data Lake que prefiera. Si habilita Capture, se le cobrará un cargo en función de la unidad de procesamiento comprada.
+### <a name="what-is-hello-maximum-retention-period-for-events"></a>¿Cuál es el período de retención máximo de Hola de eventos?
+El nivel Standard de los Centros de eventos admite actualmente un período de retención máximo de 7 días. Tenga en cuenta que los centros de eventos no están concebidos como almacén de datos permanente. Períodos de retención mayores que 24 horas están pensadas para escenarios en los que es conveniente tooreplay un evento transmitir a Hola mismos sistemas; Por ejemplo, tootrain o comprobar un nuevo modelo de aprendizaje automático en los datos existentes. Si necesita un mensaje retención más allá de 7 días, lo que permite [captura de los centros de eventos](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) en tu evento concentrador extrae datos de Hola de su cuenta de almacenamiento de toohello de concentrador de eventos o la cuenta de servicio de lago de datos de Azure de su elección. Si habilita Capture, se le cobrará un cargo en función de la unidad de procesamiento comprada.
 
 ### <a name="where-is-azure-event-hubs-available"></a>¿Dónde está disponible Azure Event Hubs?
-Azure Event Hubs está disponible en todas las regiones de Azure admitidas. Para obtener una lista, visite la página [Regiones de Azure](https://azure.microsoft.com/regions/).  
+Azure Event Hubs está disponible en todas las regiones de Azure admitidas. Para obtener una lista, visite hello [regiones de Azure](https://azure.microsoft.com/regions/) página.  
 
 ## <a name="best-practices"></a>Prácticas recomendadas
 
 ### <a name="how-many-partitions-do-i-need"></a>¿Cuántas particiones necesito?
-Tenga en cuenta que el número de particiones de un centro de eventos no se puede modificar después de la configuración. Por lo tanto, es importante considerar cuántas particiones necesita antes de comenzar. 
+Por favor, tenga en cuenta que Hola recuento de particiones en un centro de eventos no se puede modificar después de la instalación. Con esto en mente, es importante toothink sobre cuántas particiones necesita antes de comenzar. 
 
-Event Hubs está diseñado para permitir un lector de partición única por grupo de consumidores. En la mayoría de los casos de uso, el valor predeterminado de cuatro particiones es suficiente. Si desea escalar el procesamiento de eventos, tal vez desee agregar particiones adicionales. No hay ningún límite de procesamiento específico en una partición; pero el número total de unidades de procesamiento limita el procesamiento agregado en el espacio de nombres. A medida que aumenta el número de unidades de procesamiento en el espacio de nombres, puede que necesite particiones adicionales para permitir que los lectores simultáneos logren su propio procesamiento máximo.
+Los concentradores de eventos es tooallow diseñado un lector de una sola partición por grupo de consumidores. En la mayoría de los casos de uso, la configuración predeterminada de Hola de cuatro particiones es suficiente. Si desea tooscale el procesamiento de eventos, puede que desee tooconsider agregar particiones adicionales. No hay ningún límite de rendimiento específico en una partición, sin embargo, el rendimiento agregado hello en el espacio de nombres está limitado por número de Hola de unidades de rendimiento. Medida que aumenta el número de Hola de unidades de rendimiento en el espacio de nombres, puede que desee particiones adicionales tooallow lectores simultáneos tooachieve su propio rendimiento máximo.
 
-Pero si tiene un modelo en el que su aplicación tiene afinidad con una partición determinada, aumentar el número de particiones puede que no suponga ventaja alguna. Para más información al respecto, vea [Disponibilidad y coherencia](event-hubs-availability-and-consistency.md).
+Sin embargo, si tiene un modelo en el que la aplicación tiene una partición determinada de tooa de afinidad, aumentar Hola número de particiones puede no ser de cualquier tooyou beneficio. Para más información al respecto, vea [Disponibilidad y coherencia](event-hubs-availability-and-consistency.md).
 
 ## <a name="pricing"></a>Precios
 
 ### <a name="where-can-i-find-more-pricing-information"></a>¿Dónde puedo encontrar más información sobre precios?
-Para obtener una completa información sobre los precios de los Centros de eventos, consulte los [detalles de precios de los Centros de eventos](https://azure.microsoft.com/pricing/details/event-hubs/).
+Para obtener información completa sobre los precios de centros de eventos, vea hello [detalles de precios de centros de eventos](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>¿Hay un cargo por retener eventos de los Centros de eventos durante más de 24 horas?
-El nivel Estándar de Event Hubs permite períodos de retención de mensajes superiores a 24 horas, hasta un máximo de 7 días. Si el tamaño del número total de eventos almacenados supera la asignación de almacenamiento para el número de unidades de procesamiento seleccionadas (84 GB por unidad de procesamiento), el tamaño que supere la asignación se cargará con la tarifa publicada de almacenamiento de blobs de Azure. La asignación de almacenamiento en cada unidad de procesamiento cubre todos los costos de almacenamiento de los períodos de retención de 24 horas (valor predeterminado), incluso aunque la unidad de procesamiento se consuma hasta la asignación de entrada máxima.
+nivel de concentradores de eventos estándar de Hello permiten retención de mensajes períodos más de 24 horas, durante un máximo de 7 días. Si el tamaño de Hola de número total de Hola de eventos almacenados supera la asignación de almacenamiento de hello para el número de Hola de unidades de rendimiento seleccionadas (84 GB por unidad de rendimiento), tamaño de Hola que supera la asignación de Hola se aplican cargos en hello publicado tarifa de almacenamiento de blobs de Azure. asignación de almacenamiento de Hello en cada unidad de rendimiento cubre todos los costos de almacenamiento de información durante períodos de retención de 24 horas (valor predeterminado de hello) incluso si la unidad de rendimiento de Hola se usa una asignación de entrada máxima de toohello.
 
-### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>¿Cómo se calcula y se cobra el tamaño de almacenamiento de los Centros de eventos?
-El tamaño total de todos los eventos almacenados, incluida la sobrecarga interna de encabezados de eventos o las estructuras de almacenamiento en disco de todos los centros de eventos, se mide a lo largo del día. Al final del día, se calcula el tamaño máximo de almacenamiento. La asignación de almacenamiento diario se calcula basándose en el número mínimo de unidades de procesamiento seleccionadas durante el día (cada unidad de procesamiento ofrece una asignación de 84 GB). Si el tamaño total supera la asignación de almacenamiento diaria calculada, el exceso de almacenamiento se factura con las tarifas de almacenamiento de blobs de Azure (con la tarifa de **almacenamiento con redundancia local** ).
+### <a name="how-is-hello-event-hubs-storage-size-calculated-and-charged"></a>¿Cómo se calcula y se cobra de hello tamaño de almacenamiento de los centros de eventos?
+Hola el tamaño total de todos los eventos almacenados, incluida la sobrecarga interna de encabezados del evento o en las estructuras de almacenamiento de disco en todos los concentradores de eventos, se mide a lo largo del día de Hola. Al final de Hola de hello día, se calcula el tamaño de almacenamiento máximo de Hola. asignación de almacenamiento diaria Hola se calcula basándose en un mínimo de unidades de rendimiento seleccionadas durante el día de hello (cada unidad de rendimiento proporciona una asignación de 84 GB) Hola. Si se supera el tamaño total de Hola Hola calcula diariamente de asignación de almacenamiento, almacenamiento de exceso de Hola se factura con las tarifas de almacenamiento de blobs de Azure (en hello **almacenamiento localmente redundante** velocidad).
 
 ### <a name="how-are-event-hubs-ingress-events-calculated"></a>¿Cómo se calculan los eventos de entrada de los Centros de eventos?
-Cada evento enviado a un centro de eventos cuenta como mensaje facturable. Un *evento de entrada* se define como una unidad de datos que es menor o igual que 64 KB. Cualquier evento que tenga un tamaño menor o igual que 64 KB se considera un evento facturable. Si el evento es mayor de 64 KB, el número de eventos facturables se calcula según el tamaño del evento, en múltiplos de 64 KB. Por ejemplo, un evento de 8 KB enviado al centro de eventos se factura como un evento, pero un mensaje de 96 KB enviado al Centro de eventos se factura como dos eventos.
+Cada evento enviar tooan concentrador de eventos cuenta como un mensaje facturable. Un *eventos de entrada* se define como una unidad de datos que es menor o igual too64 KB. Cualquier evento que sea menor o igual too64 KB de tamaño se considera toobe un evento facturable. Si el evento de hello es mayor que 64 KB, número de Hola de eventos facturables se calcula según el tamaño del evento toohello, en múltiplos de 64 KB. Por ejemplo, un evento de 8 KB enviado toohello concentrador de eventos se factura como un evento, pero un mensaje de 96 KB enviado toohello concentrador de eventos se factura dos eventos.
 
-Los eventos consumidos en un centro de eventos, así como las operaciones de administración y las llamadas de control (como los puntos de comprobación), no se cuentan como eventos de entrada facturables, pero se acumulan hasta llegar a la asignación de unidades de procesamiento.
+Eventos consumidos de un concentrador de eventos, así como las operaciones de administración y llamadas de control como puntos de control, no se cuentan como eventos de entrada facturable, pero incrementan la asignación de unidad de rendimiento toohello.
 
-### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>¿Los cargos por conexión desacoplada se aplican a los Centros de eventos?
-Los cargos de conexión se aplican solo cuando se usa el protocolo AMQP. No hay ningún cargo de conexión por el envío de eventos mediante HTTP, independientemente del número de sistemas o dispositivos emisores. Si tiene previsto usar AMQP (por ejemplo, para conseguir un flujo de eventos más eficiente o para habilitar la comunicación bidireccional en escenarios de comando y control de IoT), vea la página de [información de precios de Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) para obtener información sobre el número de conexiones incluidas en cada nivel de servicio.
+### <a name="do-brokered-connection-charges-apply-tooevent-hubs"></a>¿Pueden aplicar cargos por conexión asíncrona concentradores tooEvent?
+Se aplican cargos de conexión solo cuando se usa el protocolo AMQP Hola. No hay ningún cargo de conexión para el envío de eventos mediante HTTP, independientemente del número de Hola de envío de sistemas o dispositivos. Si tiene previsto toouse AMQP (por ejemplo, tooachieve más eventos de transmisión por secuencias o tooenable bidireccional una comunicación eficaz en escenarios de comando y control de IoT), vea hello [información sobre los precios de centros de eventos](https://azure.microsoft.com/pricing/details/event-hubs/) página para obtener más información acerca de cómo número de conexiones se incluye en cada nivel de servicio.
 
 ### <a name="how-is-event-hubs-capture-billed"></a>¿Cómo se factura Event Hubs Capture?
-Capture se habilita cuando algún centro de eventos del espacio de nombres tiene la opción Capture habilitada. Event Hubs Capture se factura por horas y por unidad de procesamiento comprada. A medida que el número de unidades de procesamiento aumenta o disminuye, la facturación de Event Hubs Capture refleja estos cambios en incrementos de horas completas. Para más información sobre Event Hubs Capture, vea los [detalles de los precios de Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
+Está habilitada la captura cuando cualquier centro de eventos en el espacio de nombres de hello tiene habilitada la opción de captura de Hola. Event Hubs Capture se factura por horas y por unidad de procesamiento comprada. Tal como Hola recuento de unidad de rendimiento aumenta o disminuye, captura de los centros de eventos facturación refleja estos cambios en incrementos de una hora completa. Para más información sobre Event Hubs Capture, vea los [detalles de los precios de Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>¿Se me cobrará la cuenta de almacenamiento que seleccione para Event Hubs Capture?
-Capture usa la cuenta de almacenamiento que se especifique al habilitarlo en un servicio centro de eventos. Dado que esta es su cuenta de almacenamiento, los cambios efectuados en esta configuración se facturan en su suscripción de Azure.
+### <a name="will-i-be-billed-for-hello-storage-account-i-select-for-event-hubs-capture"></a>¿Cobrarán Hola cuenta de almacenamiento que se selecciona para la captura de los centros de eventos?
+Capture usa la cuenta de almacenamiento que se especifique al habilitarlo en un servicio centro de eventos. Como se trata de la cuenta de almacenamiento, los cambios de esta configuración son tooyour facturación de suscripción de Azure.
 
 ## <a name="quotas"></a>Cuotas
 
@@ -102,19 +102,19 @@ Para obtener una lista de todas las cuotas de los centros Event Hubs, consulte [
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
-### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>¿Cuáles son algunas de las excepciones generadas por los centros Event Hubs y sus acciones sugeridas?
+### <a name="what-are-some-of-hello-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>¿Cuáles son algunas de las excepciones de hello generadas por sus acciones sugeridas y centros de eventos?
 Para obtener una lista de posibles excepciones de Event Hubs, consulte [Información general sobre excepciones](event-hubs-messaging-exceptions.md).
 
 ### <a name="diagnostic-logs"></a>Registros de diagnóstico
-Event Hubs admite dos tipos de [registros de diagnóstico](event-hubs-diagnostic-logs.md): los registros de errores de Capture y los registros operativos. Ambos, se representan en JSON y se pueden activar a través de Azure Portal.
+Los concentradores de eventos admite dos tipos de [registros de diagnóstico](event-hubs-diagnostic-logs.md) -registros de errores de captura y registros operativos - de los cuales se representan en json y se pueden activar a través de Hola portal de Azure.
 
 ### <a name="support-and-sla"></a>SLA y soporte técnico
-El soporte técnico para los Centros de eventos está disponible a través de los [foros de la comunidad](https://social.msdn.microsoft.com/forums/azure/home). Se ofrece de forma gratuita soporte técnico para la administración de suscripciones y la facturación.
+El soporte técnico de los centros de eventos está disponible a través de hello [foros de la Comunidad](https://social.msdn.microsoft.com/forums/azure/home). Se ofrece de forma gratuita soporte técnico para la administración de suscripciones y la facturación.
 
-Para más información sobre nuestro SLA, consulte la página [Acuerdos de nivel de servicio](https://azure.microsoft.com/support/legal/sla/) .
+toolearn más información sobre nuestro SLA, consulte hello [contratos de nivel de servicio](https://azure.microsoft.com/support/legal/sla/) página.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información acerca de Event Hubs, visite los vínculos siguientes:
+Para obtener más información acerca de los centros de eventos información visitando Hola siguientes vínculos:
 
 * [Información general de Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Creación de un centro de eventos](event-hubs-create.md)

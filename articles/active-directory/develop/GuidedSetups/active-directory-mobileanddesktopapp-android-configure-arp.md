@@ -1,5 +1,5 @@
 ---
-title: "Introducción a Android en Azure AD v2: configuración | Microsoft Docs"
+title: "aaaAzure AD v2 para introducción de Android: configurar | Documentos de Microsoft"
 description: "Cómo puede una aplicación de Android obtener un token de acceso y llamar a las API Graph que requieren tokens de acceso desde el punto de conexión de Azure Active Directory v2"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,26 +15,26 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: c09937582118ebcc5b8cbc1f43a0a2019f2f7a89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eaa41805c92212154ee8d51d3eb3aee1202eef1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="add-the-applications-registration-information-to-your-app"></a>Adición de información de registro de la aplicación a su aplicación
+## <a name="add-hello-applications-registration-information-tooyour-app"></a>Agregar aplicación de tooyour de información de registro de la aplicación hello
 
-En este paso, debe agregar el identificador de cliente a su proyecto.
+En este paso, necesita proyecto tooyour de tooadd Hola Id. de cliente.
 
 1.  Abra `MainActivity` (en `app` > `java` > *`{host}.{namespace}`*)
-2.  Reemplace la línea que empieza con `final static String CLIENT_ID` por:
+2.  Reemplace la línea hello a partir de `final static String CLIENT_ID` con:
 ```java
-final static String CLIENT_ID = "[Enter the application Id here]";
+final static String CLIENT_ID = "[Enter hello application Id here]";
 ```
 3. Abra `app` > `manifests` > `AndroidManifest.xml`
-4. Agregue la siguiente actividad al nodo `manifest\application`. De este modo se registra un `BrowserTabActivity` para permitir que el sistema operativo reanude la aplicación después de completar la autenticación:
+4. Agregar Hola después actividad demasiado`manifest\application` nodo. En este registro un `BrowserTabActivity` tooallow Hola tooresume de sistema operativo de la aplicación después de completar la autenticación de hello:
 
 ```xml
-<!--Intent filter to capture System Browser calling back to our app after Sign In-->
+<!--Intent filter toocapture System Browser calling back tooour app after Sign In-->
 <activity
     android:name="com.microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -43,8 +43,8 @@ final static String CLIENT_ID = "[Enter the application Id here]";
         <category android:name="android.intent.category.BROWSABLE" />
 
         <!--Add in your scheme/host from registered redirect URI-->
-        <!--By default, the scheme should be similar to 'msal[appId]' -->
-        <data android:scheme="msal[Enter the application Id here]"
+        <!--By default, hello scheme should be similar too'msal[appId]' -->
+        <data android:scheme="msal[Enter hello application Id here]"
             android:host="auth" />
     </intent-filter>
 </activity>

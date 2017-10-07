@@ -1,6 +1,6 @@
 ---
-title: Uso de Azure Portal para crear un centro de IoT | Microsoft Docs
-description: "Describe sobre cómo crear, administrar y eliminar los centros de IoT Hub de Azure a través de Azure Portal. Incluye información sobre los niveles de precios, el escalado, la seguridad y la configuración de la mensajería."
+title: aaaUse Hola toocreate portal Azure de un centro de IoT | Documentos de Microsoft
+description: "Cómo toocreate, administrar y eliminar centros de IoT de Azure a través de hello portal de Azure. Incluye información sobre los niveles de precios, el escalado, la seguridad y la configuración de la mensajería."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2017
 ms.author: dobett
-ms.openlocfilehash: bca7eea5f44bbed3b784b56edaac235161b43e5e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 383968c90ee7ef3bff85a6c90efbf5f0e8fbb208
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-iot-hub-using-the-azure-portal"></a>Creación de una instancia de IoT Hub mediante Azure Portal
+# <a name="create-an-iot-hub-using-hello-azure-portal"></a>Crear un centro de IoT con hello portal de Azure
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 En este artículo se describe:
 
-* Cómo buscar el servicio IoT Hub en Azure Portal.
-* Cómo crear y administrar instancias de IoT Hub.
+* ¿Cómo toofind Hola servicio del centro de IoT Hola portal de Azure.
+* ¿Cómo toocreate y administrar centros de IoT.
 
-## <a name="where-to-find-the-iot-hub-service"></a>Dónde buscar el servicio IoT Hub
+## <a name="where-toofind-hello-iot-hub-service"></a>Donde toofind Hola servicio del centro de IoT
 
-Puede buscar el servicio IoT Hub en las siguientes ubicaciones del portal:
+Puede encontrar Hola servicio del centro de IoT Hola ubicaciones en el portal de hello siguientes:
 
 * Elija **+ Nuevo** y después **Internet de las cosas**.
-* En Marketplace, elija **Internet de las cosas**.
+* Hola Marketplace, elija **Internet de las cosas**.
 
 ## <a name="create-an-iot-hub"></a>Crear un centro de IoT
 
-Puede crear un IoT Hub con los métodos siguientes:
+Puede crear un centro de IoT con hello siguientes métodos:
 
-* La opción **+ Nuevo** abre la hoja que se muestra en la siguiente captura de pantalla. Los pasos para crear el Centro de IoT con este método y con Marketplace son idénticos.
-* En Marketplace, elija **Crear** para abrir la hoja que se muestra en la siguiente captura de pantalla.
+* Hola **+ nuevo** opción abre una hoja de Hola se muestra en la siguiente captura de pantalla de Hola. Hola pasos para crear el centro de IoT de Hola a través de este método y a través de marketplace de hello son idénticos.
+* Hola Marketplace, elija **crear** hoja de hello tooopen se muestra en la siguiente captura de pantalla de Hola.
 
-En las secciones siguientes se describen los distintos pasos para crear una instancia de IoT Hub:
+Hello las secciones siguientes describen Hola varios pasos toocreate un centro de IoT:
 
-### <a name="choose-the-name-of-the-iot-hub"></a>Elección del nombre del Centro de IoT
+### <a name="choose-hello-name-of-hello-iot-hub"></a>Elegir nombre de Hola de centro de IoT Hola
 
-Para crear un centro de IoT, debe asignar un nombre al centro. Este nombre debe ser exclusivo para distinguirlo en todas las instancias de IoT Hub.
+toocreate un centro de IoT, debe asignar un nombre centro de IoT Hola. Este nombre debe ser exclusivo para distinguirlo en todas las instancias de IoT Hub.
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-### <a name="choose-the-pricing-tier"></a>Elección del plan de tarifa
+### <a name="choose-hello-pricing-tier"></a>Elija el nivel de precios de Hola
 
-Puede elegir entre cuatro niveles: **Gratis**, **Estándar 1**, **Estándar 2** y **Estándar S3**. El nivel Gratis permite solo la conexión de 500 dispositivos con el Centro de IoT y hasta 8000 mensajes al día.
+Puede elegir entre cuatro niveles: **Gratis**, **Estándar 1**, **Estándar 2** y **Estándar S3**. nivel gratis Hola permite sólo 500 toobe dispositivos conectados toohello centro de IoT y sube too8, 000 mensajes al día.
 
-**Estándar S1**: use la edición S1 de las soluciones de IoT con un gran número de dispositivos, y cada uno de ellos genera pequeñas cantidades de datos. Cada unidad de la edición S1 permite transmitir hasta 400.000 mensajes por día a través de todos los dispositivos conectados.
+**Estándar S1**: edición de hello S1 de uso para las soluciones de IoT con un gran número de dispositivos que cada uno de ellos genera pequeñas cantidades de datos. Permite que cada unidad de edición de hello S1 un too400, 000 mensajes al día a través de todos los dispositivos conectados.
 
-**Estándar S2**: use la edición S2 de las soluciones de IoT en las que los dispositivos generan grandes cantidades de datos. Cada unidad de la edición S2 permite transmitir hasta 6 millones de mensajes al día entre todos los dispositivos conectados.
+**Estándar S2**: edición de hello S2 de uso para las soluciones de IoT en el que los dispositivos generar grandes cantidades de datos. Permite que cada unidad de edición de hello S2 un too6 millones de mensajes al día entre todos los dispositivos conectados.
 
-**Estándar S3**: use la edición S3 de las soluciones de IoT que generan grandes cantidades de datos. Cada unidad de la edición S3 permite transmitir hasta 300 millones de mensajes al día entre todos los dispositivos conectados.
+**Estándar S3**: edición de hello S3 de uso para las soluciones de IoT que generan un gran volumen de datos. Permite que cada unidad de edición de S3 Hola un too300 millones de mensajes al día entre todos los dispositivos conectados.
 
 ![][4]
 
@@ -68,77 +68,77 @@ Puede elegir entre cuatro niveles: **Gratis**, **Estándar 1**, **Estándar 2** 
 
 ### <a name="iot-hub-units"></a>Unidades del Centro de IoT
 
-El número de mensajes que se permiten por unidad al día depende del plan de tarifa del centro. Por ejemplo, si desea que el Centro de IoT admita la entrada de 700 000 mensajes, elija dos unidades del nivel de S1.
+número de Hello permitido por unidad al día de mensajes depende de nivel de precios de la base de datos central. Por ejemplo, si desea hello toosupport entrada de centro de IoT de 700 000 mensajes, elija dos unidades de nivel de S1.
 
-### <a name="device-to-cloud-partitions-and-resource-group"></a>Dispositivo para particiones en la nube y grupo de recursos
+### <a name="device-toocloud-partitions-and-resource-group"></a>Las particiones toocloud del dispositivo y el grupo de recursos
 
-Puede cambiar el número de particiones para un centro de IoT. El número predeterminado de particiones es cuatro, pero puede elegir un número diferente de la lista desplegable.
+Puede cambiar el número de Hola de particiones para un centro de IoT. número de particiones de Hello predeterminado es 4, puede elegir un número diferente de la lista desplegable de Hola.
 
-No es necesario crear explícitamente un grupo de recursos vacío. Al crear un recurso, puede elegir entre crear un grupo de recursos o usar uno existente.
+No es necesario tooexplicitly crear un grupo de recursos vacío. Cuando se crea un recurso, puede elegir cualquier toocreate un nuevo o usar un grupo de recursos existente.
 
 ![][5]
 
 ### <a name="choose-subscription"></a>Elección de la suscripción
 
-Azure IoT Hub muestra automáticamente la lista de suscripciones de Azure a la que está vinculada la cuenta de usuario. Puede elegir la suscripción de Azure a la que desea asociar la instancia de IoT Hub.
+Centro de IoT de Azure Hola de listas de cuenta de usuario de las suscripciones de Azure Hola se vincula automáticamente a. Puede elegir el centro de IoT de hello suscripción de Azure tooassociate Hola a.
 
-### <a name="choose-the-location"></a>Selección de la ubicación
+### <a name="choose-hello-location"></a>Elegir ubicación de Hola
 
-La opción de ubicación proporciona una lista de las regiones en las que se ofrece IoT Hub.
+opción de ubicación de Hello proporciona una lista de regiones de Hola donde centro de IoT no está disponible.
 
-### <a name="create-the-iot-hub"></a>Creación del Centro de IoT
+### <a name="create-hello-iot-hub"></a>Crear centro de IoT Hola
 
-Cuando se completen todos los pasos anteriores, ya se puede crear la instancia de IoT Hub. Haga clic en **Crear** para iniciar el proceso de back-end para crear e implementar la instancia de IoT Hub con las opciones elegidas.
+Una vez completados todos los pasos anteriores, puede crear centro de IoT Hola. Haga clic en **crear** toostart Hola proceso back-end toocreate e implementar centro de IoT Hola con opciones de Hola que haya elegido.
 
-La creación de IoT Hub puede tardar unos minutos, ya que la implementación back-end necesita tiempo para ejecutarse en los servidores de ubicación adecuados.
+Centro de IoT Hola de unos minutos toocreate puede tardar como tarda toorun de implementación de back-end de hello en los servidores de la ubicación apropiada de Hola.
 
-## <a name="change-the-settings-of-the-iot-hub"></a>Cambio de la configuración del Centro de IoT
+## <a name="change-hello-settings-of-hello-iot-hub"></a>Cambiar la configuración de Hola de centro de IoT Hola
 
-Puede cambiar la configuración de un Centro de IoT después de crearlo desde la hoja Centro de IoT.
+Puede cambiar configuración de Hola de un centro de IoT existente después de que se crea a partir de la hoja de centro de IoT Hola.
 
 ![][8]
 
-**Directivas de acceso compartido**: estas directivas definen los permisos para que los dispositivos y servicios se conecten a IoT Hub. Para acceder a estas directivas, haga clic en **Directivas de acceso compartido** en **General**. En esta hoja puede modificar las directivas existentes o agregar una nueva.
+**Directivas de acceso compartido**: estas directivas definen los permisos de Hola para dispositivos y servicios tooIoT tooconnect concentrador. Para acceder a estas directivas, haga clic en **Directivas de acceso compartido** en **General**. En esta hoja puede modificar las directivas existentes o agregar una nueva.
 
 ### <a name="create-a-policy"></a>Para crear una directiva
 
-* Haga clic en **Agregar** para abrir una hoja. Aquí puede escribir el nombre de la nueva directiva y los permisos que quiere asociar a esta directiva, tal como se muestra en la siguiente ilustración:
+* Haga clic en **agregar** tooopen una hoja. Aquí puede escribir el nuevo nombre de directiva de Hola y permisos Hola desea tooassociate con esta directiva, tal y como se muestra en hello siguiente figura:
 
-    Hay varios permisos que se pueden asociar a estas directivas compartidas. Las directivas **Lectura del Registro** y **Escritura del Registro** conceden derechos de acceso de lectura y escritura para el registro de identidades. Si selecciona la opción de escritura, se elegirá automáticamente la opción de lectura.
+    Hay varios permisos que se pueden asociar a estas directivas compartidas. Hola **lectura del registro** y **escritura del registro** directivas conceden lectura y el registro de identidad de toohello de derechos de acceso de escritura. Elegir la opción de escritura de hello automáticamente elige Hola lee opción.
 
-    La directiva **Conexión del servicio** concede permiso de acceso a los puntos de conexión de servicio como **Recepción del dispositivo a la nube**. La directiva **Conexión del dispositivo** concede permisos para enviar y recibir mensajes con los puntos de conexión del dispositivo de IoT Hub.
+    Hola **servicio conectar** directiva concede permiso tooaccess los extremos de servicio como **dispositivo a la nube de recepción**. Hola **dispositivo conectar** directiva concede permisos para enviar y recibir mensajes mediante los puntos de conexión de hello centro de IoT del dispositivo.
 
-* Haga clic en **Crear** para agregar la directiva recién creada a la lista existente.
+* Haga clic en **crear** tooadd este recién creado lista existente de directiva toohello.
 
 ![][10]
 
 ## <a name="endpoints"></a>Puntos de conexión
 
-Haga clic en **Endpoints** (Puntos de conexión) para mostrar una lista de puntos de conexión para el centro de IoT que está modificando. Hay dos tipos de puntos de conexión: los integrados en el centro de IoT y los que agrega al centro de IoT después de crearlo.
+Haga clic en **extremos** toodisplay una lista de extremos de centro de IoT de Hola que va a modificar. Hay dos tipos de puntos de conexión: puntos de conexión que se integran en el centro de IoT de Hola y extremos que agregue centro de IoT toohello después de su creación.
 
 ![][11]
 
 ### <a name="built-in-endpoints"></a>Puntos de conexión integrados
 
-Hay dos puntos de conexión integrados: **Cloud to device feedback** (Comentarios de la nube al dispositivo) y **Events** (Eventos).
+Hay dos puntos de conexión integrados: **toodevice comentarios en la nube** y **eventos**.
 
-* Configuración de **Cloud to device feedback** (Comentarios de la nube al dispositivo): esta configuración tiene dos opciones secundarias: **Cloud to Device TTL** (TTL de nube a dispositivo) (período de vida) y **Retention time** (Tiempo de retención) (en horas) para los mensajes. Al crear por primera vez un centro de IoT, ambas configuraciones tienen el valor predeterminado de una hora. Para ajustar la configuración, use los controles deslizantes o escriba los valores.
-* Configuración de **Events** (Eventos): esta configuración tiene distintas opciones secundarias, algunas de solo lectura. Estas opciones secundarias se describen en la lista siguiente:
+* **Toodevice comentarios en la nube** configuración: esta opción no tiene dos subsettings: **tooDevice TTL en la nube** (período de vida) y **tiempo de retención** (en horas) para mensajes de saludo. Cuando el primer crea un centro de IoT, ambas configuraciones tienen valor predeterminado de Hola de una hora. tooadjust estas opciones, utilice los controles deslizantes de Hola o escriba los valores de hello.
+* Configuración de **Events** (Eventos): esta configuración tiene distintas opciones secundarias, algunas de solo lectura. Hola lista siguiente describe estas opciones:
 
-  * **Partitions** (Particiones): se establece un valor predeterminado cuando se crea el centro de IoT. Esta opción permite cambiar el número de particiones.
+  * **Las particiones**: se establece un valor predeterminado cuando se crea el centro de IoT Hola. Puede cambiar Hola número de particiones a través de esta configuración.
 
-  * **Punto de conexión y nombre compatible del Centro de eventos**: Cuando se crea IoT Hub, se crea internamente un Event Hub al que el usuario podría necesitar acceder en determinadas circunstancias. No se pueden personalizar los valores de nombre y punto de conexión compatibles con el centro de eventos, pero los puede copiar al hacer clic en **Copy** (Copiar).
+  * **Nombre de evento compatible con el centro y el extremo**: cuando se crea el centro de IoT hello, un concentrador de eventos lo creó internamente que puede necesita acceder a toounder determinadas circunstancias. No se pueden personalizar los valores de nombre y el extremo de hello compatible con el concentrador de eventos, pero se puede copiar, haga clic en **copia**.
 
-  * **Retention Time** (Tiempo de retención): se establece en un día de forma predeterminada, pero se puede cambiar gracias a la lista desplegable. Este valor está en días para la configuración del dispositivo a la nube.
+  * **Tiempo de retención**: establecer tooone día de forma predeterminada, pero puede cambiarlo mediante la lista desplegable de Hola. Este valor está en días para la configuración de dispositivo para la nube de Hola.
 
-  * **Grupos de consumidores**: los grupos de consumidores permiten que varios lectores lean mensajes con independencia de la instancia de IoT Hub desde la que lo hagan. Cada Centro de IoT se crea con un grupo de consumidores predeterminado. Sin embargo, con esta configuración puede agregar o eliminar grupos de consumidores en los centros de IoT.
+  * **Grupos de consumidores**: grupos de consumidores habilitar varios mensajes de tooread lectores independientemente de centro de IoT Hola. Cada Centro de IoT se crea con un grupo de consumidores predeterminado. Sin embargo, puede agregar o eliminar centros de IoT consumidor grupos tooyour con esta configuración.
 
   > [!NOTE]
-  > El grupo de consumidores predeterminado no se puede modificar ni eliminar.
+  > grupo de consumidores de Hello predeterminado no se pueden modificar ni eliminar.
 
 ### <a name="custom-endpoints"></a>Puntos de conexión personalizados
 
-Puede agregar puntos de conexión personalizados al centro de IoT a través del portal. En la hoja **Endpoints** (Puntos de conexión), haga clic en **Add** (Agregar) de la parte superior para abrir la hoja **Add endpoint** (Agregar punto de conexión). Escriba la información necesaria y haga clic en **OK** (Aceptar). El punto de conexión personalizado aparecerá ahora en la hoja principal de **Endpoints** (Puntos de conexión).
+Puede agregar extremos personalizados en el centro de IoT mediante el portal de Hola. De hello **extremos** hoja, haga clic en **agregar** en Hola tooopen superior Hola **Agregar extremo** hoja. Escriba información de hello necesario, a continuación, haga clic en **Aceptar**. El punto de conexión personalizado aparece ahora en hello principal **extremos** hoja.
 
 ![][13]
 
@@ -146,42 +146,42 @@ Puede leer más sobre los puntos de conexión personalizados en [Referencia: Pun
 
 ## <a name="routes"></a>Rutas
 
-Haga clic en **Routes** (Rutas) para administrar el envío de mensajes del dispositivo a la nube de IoT Hub.
+Haga clic en **rutas** toomanage cómo centro de IoT envía los mensajes del dispositivo a la nube.
 
 ![][14]
 
-Puede agregar rutas adicionales a su IoT Hub; para ello, haga clic en **Agregar** en la parte superior de la hoja **Rutas**, escriba la información necesaria y haga clic en **Aceptar**. La ruta aparecerá en la lista de la hoja principal de **Rutas**. Puede editar una ruta al hacer clic en ella en la lista de rutas. Para habilitar una ruta, haga clic en ella en la lista de rutas y establezca el control de alternancia de **Habilitar** en **Desactivado**. Para guardar los cambios, haga clic en **Aceptar** en la parte inferior de la hoja.
+Puede agregar el centro de IoT de rutas tooyour haciendo clic en **agregar** en parte superior de Hola de hello **rutas*** hoja, especificar información de hello necesario y haga clic en **Aceptar**. La ruta, a continuación, se muestra en hello principal **rutas** hoja. Puede editar una ruta haciendo clic en él en la lista de Hola de rutas. tooenable una ruta, haga clic en él en la lista de Hola de rutas y establezca hello **habilitado** alternar demasiado**desactivar**. cambio de hello toosave, haga clic en **Aceptar** final Hola de hoja de Hola.
 
 ![][15]
 
 ## <a name="pricing-and-scale"></a>Precios y escala
 
-El precio de un Centro de IoT existente se puede cambiar mediante la configuración **Precios** , con las siguientes excepciones:
+Hola de precios de un centro de IoT existente pueden cambiarse a través de hello **precios** configuración con hello siguientes excepciones:
 
-* En la implementación actual, un Centro de IoT con una SKU gratuita no puede cambiar de nivel a una de las SKU de pago o viceversa.
-* Solo puede haber un único IoT Hub de nivel Gratis en la suscripción de Azure.
+* En la implementación actual de hello, un centro de IoT a una SKU libre no puede cambiar tooone de niveles de hello SKU, de pago, o viceversa.
+* Solo puede haber un centro de IoT de nivel gratuito en hello suscripción de Azure.
 
 ![][12]
 
-Puede cambiar de un nivel superior a uno inferior solo cuando el número de mensajes enviados ese día exceda la cuota del nivel inferior. Por ejemplo, si el número de mensajes por día supera los 400 000, se puede cambiar el nivel para IoT Hub. Sin embargo, si cambia al nivel S1, el centro de IoT está limitado durante ese día.
+Puede mover de un nivel superior de toolower sólo cuando el número Hola de mensajes enviados a ese día superar la cuota de hello para el nivel inferior de Hola. Por ejemplo, si número Hola de mensajes al día supera 400.000, Hola nivel para hello IoT hub puede cambiarse. Sin embargo, si cambia el nivel de S1 toohello centro de IoT Hola está limitado durante ese día.
 
-## <a name="delete-the-iot-hub"></a>Eliminación del Centro de IoT
+## <a name="delete-hello-iot-hub"></a>Eliminar el centro de IoT Hola
 
-Puede examinar el Centro de IoT que desea eliminar haciendo clic en **Examinar**y, a continuación, seleccionar el centro adecuado que desea eliminar. Para eliminar la instancia de IoT Hub, haga clic en el botón **Eliminar** debajo del nombre de dicha instancia.
+Puede examinar desee toodelete haciendo clic en el centro de IoT de toohello **examinar**, y, a continuación, elegir Hola toodelete concentrador adecuado. toodelete Hola centro de IoT, haga clic en hello **eliminar** botón situado debajo del nombre del centro de IoT Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Siga estos vínculos para más información sobre la administración del Centro de IoT de Azure:
+Siga estos toolearn de vínculos más acerca de cómo administrar el centro de IoT de Azure:
 
 * [Administración masiva de dispositivos de IoT][lnk-bulk]
 * [Métricas de IoT Hub][lnk-metrics]
 * [Supervisión de operaciones][lnk-monitor]
 
-Para explorar aún más las funcionalidades de IoT Hub, consulte:
+toofurther explorar las capacidades de Hola de centro de IoT, vea:
 
 * [Guía para desarrolladores de IoT Hub][lnk-devguide]
 * [Simular un dispositivo con IoT Edge][lnk-iotedge]
-* [Protección total de la solución de IoT][lnk-securing]
+* [Proteger la solución de IoT de hello masa][lnk-securing]
 
 [4]: ./media/iot-hub-create-through-portal/create-iothub.png
 [5]: ./media/iot-hub-create-through-portal/location1.png

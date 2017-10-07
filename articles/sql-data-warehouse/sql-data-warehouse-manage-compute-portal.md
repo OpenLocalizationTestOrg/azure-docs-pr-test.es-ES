@@ -1,6 +1,6 @@
 ---
-title: "Administración de la potencia de proceso en Azure SQL Data Warehouse (Azure Portal) | Microsoft Docs"
-description: Tareas del Portal de Azure para administrar la potencia de proceso. Escalado de los recursos de proceso ajustando DWU. Pausar y reanudar recursos de proceso para ahorrar costos.
+title: "capacidad de almacenamiento de datos de SQL Azure (portal de Azure) de cálculo aaaManage | Documentos de Microsoft"
+description: Capacidad de proceso de tareas del portal Azure toomanage. Escalado de los recursos de proceso ajustando DWU. O bien, puede pausar y reanudar los costos de toosave de recursos de proceso.
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 63888d5dd103b585cf18e4787d3e779810163e3d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b2e84b3763e97ce88c190eecfb64b2d06f727229
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>Administración de la potencia de proceso en Almacenamiento de datos SQL de Azure (Portal de Azure)
 > [!div class="op_single_selector"]
@@ -35,15 +35,15 @@ ms.lasthandoff: 07/11/2017
 ## <a name="scale-compute-power"></a>Escalado de la potencia de proceso
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-Para cambiar los recursos de proceso:
+recursos de proceso de toochange:
 
-1. Abra [Azure Portal][Azure portal], abra la base de datos y haga clic en **Escalar**.
+1. Abra hello [portal de Azure][Azure portal], abra la base de datos y haga clic en **escala**.
 
     ![Haga clic en Escala][1]
-2. En la hoja Escalar, mueva el control deslizante izquierdo o derecho para cambiar el valor de DWU.
+2. En la hoja de la escala de hello, mover regulador Hola a la izquierda o hacia la derecha toochange configuración de la unidad de Hola.
 
     ![Mueva el control deslizante][2]
-3. Haga clic en **Save**. Aparece un mensaje de confirmación. Haga clic en **Sí** para confirmar o **No** para cancelar.
+3. Haga clic en **Save**. Aparece un mensaje de confirmación. Haga clic en **Sí** tooconfirm o **no** toocancel.
 
     ![Haga clic en Guardar][3]
 
@@ -52,16 +52,16 @@ Para cambiar los recursos de proceso:
 ## <a name="pause-compute"></a>Pausa del proceso
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-Para pausar una base de datos:
+toopause una base de datos:
 
-1. Abra [Azure Portal][Azure portal] y la base de datos. Tenga en cuenta que el estado sea **En línea**.
+1. Abra hello [portal de Azure] [ Azure portal] y abra la base de datos. Tenga en cuenta que Hola estado es **Online**.
 
     ![Estado En línea][6]
-2. Para suspender los recursos de proceso y memoria, haga clic en **Pausar**. Aparece un mensaje de confirmación. Haga clic en **Sí** para confirmar o **No** para cancelar.
+2. Haga clic en recursos de proceso y memoria de toosuspend, **pausa**, y, a continuación, aparece un mensaje de confirmación. Haga clic en **Sí** tooconfirm o **no** toocancel.
 
     ![Confirme la pausa][7]
-3. Mientras Almacenamiento de datos SQL está iniciando la base de datos, el estado será **En pausa**.
-4. Cuando el estado sea **En pausa**, se realizará la operación de pausa y ya no se le cobrará por DWU.
+3. Durante el almacenamiento de datos SQL es inicio de base de datos de hello, estado de hello es **pausar**.
+4. Cuando el estado de hello es **en pausa**, se realiza la operación de pausa de Hola y se ya no se le cobrará por a Dwu.
 
     ![Estado de pausa][4]
 
@@ -70,16 +70,16 @@ Para pausar una base de datos:
 ## <a name="resume-compute"></a>Reanudación del proceso
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-Para reanudar una base de datos:
+tooresume una base de datos:
 
-1. Abra [Azure Portal][Azure portal] y la base de datos. Tenga en cuenta que el estado sea **En pausa**.
+1. Abra hello [portal de Azure] [ Azure portal] y abra la base de datos. Tenga en cuenta que Hola estado es **en pausa**.
 
     ![Base de datos de pausa][4]
-2. Para reanudar la base de datos, haga clic en **Iniciar**. Aparece un mensaje de confirmación. Haga clic en **Sí** para confirmar o **No** para cancelar.
+2. Haga clic en el base de datos de hello tooresume **iniciar**, y, a continuación, aparece un mensaje de confirmación. Haga clic en **Sí** tooconfirm o **no** toocancel.
 
     ![Confirme la reanudación][5]
-3. Mientras Almacenamiento de datos SQL está iniciando la base de datos, el estado será "Reanudando".
-4. Cuando el estado sea **En línea**, la base de datos estará lista.
+3. Durante el almacenamiento de datos SQL es inicio de base de datos de hello, el estado de hello es "Reanudar".
+4. Cuando el estado de hello es **en línea**, base de datos de hello está listo.
 
     ![Estado En línea][6]
 

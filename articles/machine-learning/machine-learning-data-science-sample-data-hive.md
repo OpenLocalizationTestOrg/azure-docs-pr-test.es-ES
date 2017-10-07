@@ -1,5 +1,5 @@
 ---
-title: Muestreo de datos en tablas de HDInsight Hive de Azure | Microsoft Docs
+title: aaaSample datos en tablas de HDInsight Hive de Azure | Documentos de Microsoft
 description: "Reducción del muestreo de datos en tablas de HDInsight Hive (Hadopop) de Azure"
 services: machine-learning,hdinsight
 documentationcenter: 
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: d46297dfaf85976114fbf610803e5f1a997041e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5f86df9b5a18facc875f437abfb004dbe3a06ea4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Muestreo de datos en tablas de HDInsight Hive de Azure
-En este artículo, se describe cómo reducir la muestra de datos almacenados en tablas de HDInsight Hive de Azure mediante consultas de Hive. Se explican tres métodos de muestreo normalmente utilizados:
+En este artículo, se describen los datos de ejemplo de toodown cómo almacenados en tablas de HDInsight Hive de Azure usan consultas de Hive. Se explican tres métodos de muestreo normalmente utilizados:
 
 * Muestreo aleatorio uniforme
 * Muestreo aleatorio por grupos
 * Muestreo estratificado
 
-El siguiente **menú** está vinculado a temas que describen cómo realizar un muestreo de datos desde varios entornos de almacenamiento.
+siguiente Hello **menú** vincula tootopics que describen cómo toosample datos desde varios entornos de almacenamiento.
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
 **¿Por qué realizar un muestreo de los datos?**
-Si el conjunto de datos que pretende analizar es grande, es recomendable reducirlo a un tamaño más pequeño, pero representativo, que sea más manejable. Esto facilita la comprensión y exploración de los datos, y el diseño de características. Su rol en el proceso de ciencia de datos en equipos es permitir la rápida creación de prototipos de las funciones de procesamiento de datos y de los modelos de aprendizaje automático.
+Si piensa tooanalyze de conjunto de datos de hello es grande, normalmente es un tooreduce de datos de ejemplo toodown Hola buena idea tooa más pequeño pero representativo y más fáciles de administrar el tamaño. Esto facilita la comprensión y exploración de los datos, y el diseño de características. Su función en hello proceso de ciencia de datos de equipo es tooenable la creación de prototipos rápida de las funciones de procesamiento de datos de Hola y modelos de aprendizaje automático.
 
-Esta tarea de muestreo es un paso en el [proceso de ciencia de datos en equipos (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Esta tarea de muestreo es un paso en hello [proceso de ciencia de datos de equipo (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-## <a name="how-to-submit-hive-queries"></a>Cómo enviar consultas de Hive
-Las consultas de subárbol se pueden enviar desde la consola de línea de comandos de Hadoop del nodo principal del clúster de Hadoop. Para ello, inicie sesión en el nodo principal del clúster de Hadoop, abra la consola de la línea de comandos de Hadoop y envíe las consultas de Hive desde allí. Para obtener instrucciones sobre el envío de consultas de Hive en la consola de línea de comandos de Hadoop, consulte [Envío de consultas de Hive](machine-learning-data-science-move-hive-tables.md#submit).
+## <a name="how-toosubmit-hive-queries"></a>¿Cómo toosubmit consultas de Hive
+Las consultas de Hive pueden enviarse desde la consola de línea de comandos de Hadoop de hello en del nodo principal del clúster de Hadoop de Hola Hola. toodo esto, inicie sesión en el nodo principal de Hola de clúster de Hadoop de hello, abra Hola consola de línea de comandos de Hadoop así como enviar consultas de Hive Hola desde allí. Para obtener instrucciones sobre cómo enviar consultas de Hive en la consola de línea de comandos de Hadoop de hello, consulte [cómo tooSubmit consultas de Hive](machine-learning-data-science-move-hive-tables.md#submit).
 
 ## <a name="uniform"></a> Muestra aleatoria uniforme
-El muestreo aleatorio uniforme implica que cada fila del conjunto de datos tiene la misma probabilidad de muestreo. Esto se puede implementar añadiendo un campo adicional de rand() al conjunto de datos en la consulta "select" interna, y en la consulta "select" externa esa condición en ese campo aleatorio.
+Muestreo aleatorio uniforme significa que cada fila de conjunto de datos de hello tiene la misma probabilidad de que se va a muestrear. Esto puede implementarse mediante la adición de un conjunto de datos de campo adicional rand() toohello en la consulta "select" interna de Hola y de Hola externa consulta "select" esa condición en ese campo aleatorio.
 
 Aquí se muestra una consulta de ejemplo:
 
@@ -55,11 +55,11 @@ Aquí se muestra una consulta de ejemplo:
         )a
     where samplekey<='${hiveconf:sampleRate}'
 
-En este caso, `<sample rate, 0-1>` especifica la proporción de registros que los usuarios quieren usar como muestra.
+En este caso, `<sample rate, 0-1>` especifica la proporción de Hola de registros que desean que los usuarios de hello toosample.
 
 ## <a name="group"></a> Muestreo aleatorio por grupos
-Cuando se realiza un muestreo de datos de categoría, podría querer incluir o excluir todas las instancias de algún valor concreto de una variable de categoría. Esto es lo que significa "muestreo por grupos".
-Por ejemplo, si tiene una variable de categoría "Estado", que tiene como valores NY, MA, CA, NJ, PA, etc., querrá que los registros de un mismo estado estén siempre juntos, ya están muestreados o no.
+Cuando los datos de categorías de muestreo, puede que desee tooeither incluir o excluir todas las instancias de Hola de algún valor de una variable de categoría determinado. Esto es lo que significa "muestreo por grupos".
+Por ejemplo, si tiene una variable de categoría "Estado", que tiene valores de Nueva York, MA, CA, NJ, PA, etcetera, desea que los registros de hello mismo estado ser siempre juntos, si están muestreadas o no.
 
 Aquí se muestra una consulta de ejemplo que realiza un muestreo por grupo:
 
@@ -88,7 +88,7 @@ Aquí se muestra una consulta de ejemplo que realiza un muestreo por grupo:
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>Muestreo estratificado
-El muestreo aleatorio se estratifica con respecto a una variable de categoría cuando las muestras obtenidas tienen valores de esa categoría que se encuentran en la misma proporción que en la población original de la que se obtuvieron las muestras. En el mismo ejemplo que el anterior, suponga que los datos tienen subpoblaciones según los estados; por ejemplo, NJ tiene 100 observaciones, NY tiene 60 observaciones y WA tiene 300 observaciones. Si especifica que la tasa de muestreo estratificado sea 0,5, la muestra obtenida debería tener aproximadamente 50, 30 y 150 observaciones de NJ, NY y WA, respectivamente.
+Muestreo aleatorio es estratificado con sentido tooa variable de categoría cuando las muestras Hola obtenidas tienen valores de categorías es que se encuentran en hello misma relación como en la población de hello primario desde qué Hola se obtuvieron los ejemplos. Uso de Hola mismo ejemplo anterior, supongamos que los datos tienen subcarpetas rellenados por los Estados, digamos NJ tiene 100 observaciones, NY tiene 60 observaciones y WA tiene 300 observaciones. Si se especifica la velocidad de Hola de estratificado muestreo toobe 0,5, a continuación, hello muestra obtenido debe tener aproximadamente 50, 30 y 150 observaciones de nueva Jersey y Nueva York, WA respectivamente.
 
 Aquí se muestra una consulta de ejemplo:
 

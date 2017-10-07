@@ -1,6 +1,6 @@
 ---
-title: "Generación de perfiles de datos de los orígenes de datos"
-description: "Este artículo de procedimientos destaca cómo incluir perfiles de datos de nivel de tabla y de columna al registrar orígenes de datos en el Catálogo de datos de Azure y cómo utilizar perfiles de datos para entender los orígenes de datos."
+title: "orígenes de datos de perfil de aaaHow tooData"
+description: "Tooarticle cómo resaltar cómo los perfiles de datos de nivel de tabla y columna tooinclude para registrar orígenes de datos en el catálogo de datos de Azure y cómo datos toouse perfiles toounderstand orígenes de datos."
 services: data-catalog
 documentationcenter: 
 author: spelluru
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
-ms.openlocfilehash: 8f4174f0ed74706b8275c8b1f0a62753f2834fa2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 12c9f38501cdaee903d0dcbbdd0b82395f35a187
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-profile-data-sources"></a>Orígenes de datos de perfiles de datos
 ## <a name="introduction"></a>Introducción
-**Catálogo de datos de Microsoft Azure** es un servicio en la nube totalmente administrado que actúa como sistema de registro y de detección de orígenes de datos empresariales. En otras palabras, el **Catálogo de datos de Azure** consiste en ayudar a las personas a detectar, comprender y usar orígenes de datos, y en ayudar a las organizaciones a obtener más valor de sus datos. Cuando un origen de datos se registra en el **Catálogo de datos de Azure**, el servicio copia e indexa sus metadatos, pero eso no es todo.
+**Catálogo de datos de Microsoft Azure** es un servicio en la nube totalmente administrado que actúa como sistema de registro y de detección de orígenes de datos empresariales. En otras palabras, **el catálogo de datos** es todo acerca de las personas le ayuda a detectar, comprender y usar orígenes de datos, y ayudar a las organizaciones tooget más valor de sus datos existentes. Cuando se registra un origen de datos con **el catálogo de datos**, sus metadatos se copian y se indizan por servicio de hello, pero el caso de hello no termina aquí.
 
-La característica de **perfiles de datos** de **Azure Data Catalog** examina los datos de orígenes de datos admitidos en el catálogo y recopila estadísticas e información sobre esos datos. Es fácil incluir un perfil de sus recursos de datos. Al registrar un recurso de datos, elija **Incluir perfil de datos** en la herramienta de registro de orígenes de datos.
+Hola **perfiles de datos** característica de **el catálogo de datos** examina Hola datos desde orígenes de datos admitidos en el catálogo y recopila las estadísticas e información sobre esos datos. Es fácil tooinclude un perfil de sus activos de datos. Al registrar un recurso de datos, elija **incluyen el perfil de datos** en la herramienta de registro de origen de datos de Hola.
 
 ## <a name="what-is-data-profiling"></a>¿Qué es la generación de perfiles de datos?
-La generación de perfiles de datos examina los datos del origen de datos que se registra y recopila estadísticas e información sobre esos datos. Durante la detección del origen de datos, estas estadísticas pueden ayudar a los usuarios a determinar la idoneidad de los datos para resolver sus problemas empresariales.
+Generación de perfiles de datos examina los datos de Hola Hola origen de datos que se va a registrar y recopila las estadísticas e información sobre esos datos. Durante la detección del origen de datos, estas estadísticas pueden ayudarle a determinar la idoneidad de Hola de hello datos toosolve sus problemas empresariales.
 
-<!-- In [How to discover data sources](data-catalog-how-to-discover.md), you learn about **Azure Data Catalog's** extensive search capabilities including searching for data assets that have a profile. See [How to include a data profile when registering a data source](#howto). -->
+<!-- In [How toodiscover data sources](data-catalog-how-to-discover.md), you learn about **Azure Data Catalog's** extensive search capabilities including searching for data assets that have a profile. See [How tooinclude a data profile when registering a data source](#howto). -->
 
-Los siguientes orígenes de datos admiten la generación de perfiles de datos:
+Hello orígenes de datos siguientes admiten la generación de perfiles de datos:
 
 * Vistas y tablas de SQL Server (incluidos Almacenamiento de datos SQL y Base de datos SQL de Azure)
 * Vistas y tablas de Oracle
@@ -41,35 +41,35 @@ Los siguientes orígenes de datos admiten la generación de perfiles de datos:
 
 Incluir los perfiles de datos al registrar lo recursos de datos ayuda a los usuarios a responder preguntas acerca de los orígenes de datos, incluidas:
 
-* ¿Puede utilizarse para solucionar mi problema empresarial?
-* ¿Los datos se ajustan a estándares o patrones específicos?
-* ¿Cuáles son algunas de las anomalías del origen de datos?
+* ¿Puede ser usado toosolve mi problema empresarial?
+* ¿Ajustan datos hello tooparticular estándares o patrones?
+* ¿Cuáles son algunas de las anomalías de Hola Hola del origen de datos?
 * ¿Cuáles son los posibles retos de integración de estos datos en mi aplicación?
 
 > [!NOTE]
-> También puede agregar documentación a un recurso para describir cómo se pueden integrar los datos en una aplicación. Consulte [Documentación de los orígenes de datos](data-catalog-how-to-documentation.md).
+> También puede agregar documentación tooan asset toodescribe cómo se pueden integrar datos en una aplicación. Vea [cómo orígenes de datos de toodocument](data-catalog-how-to-documentation.md).
 >
 >
 
 <a name="howto"/>
 
-## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Cómo incluir un perfil de datos al registrar un origen de datos
-Es fácil incluir un perfil de sus origen de datos. Al registrar un origen de datos, en el panel **Objetos que se registrarán** de la herramienta de registro de orígenes de datos, elija **Incluir perfil de datos**.
+## <a name="how-tooinclude-a-data-profile-when-registering-a-data-source"></a>Cómo generar perfiles de datos tooinclude al registrar un origen de datos
+Es fácil tooinclude un perfil del origen de datos. Al registrar un origen de datos, en hello **toobe de objetos registrado** el panel del registro del origen de datos de Hola de herramientas, elija **incluyen el perfil de datos**.
 
 ![](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
-Para más información sobre cómo registrar orígenes de datos, vea [Registro de orígenes de datos](data-catalog-how-to-register.md) e [Introducción a Azure Data Catalog](data-catalog-get-started.md).
+toolearn Obtenga más información sobre cómo ver los orígenes de datos de tooregister, [cómo orígenes de datos de tooregister](data-catalog-how-to-register.md) y [empezar a trabajar con el catálogo de datos](data-catalog-get-started.md).
 
 ## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Filtrado de recursos de datos que incluyen perfiles de datos
-Para detectar los recursos de datos que incluyen un perfil de datos, puede incluir `has:tableDataProfiles` o `has:columnsDataProfiles` como uno de los términos de búsqueda.
+toodiscover los activos de datos que incluyen un perfil de datos, puede incluir `has:tableDataProfiles` o `has:columnsDataProfiles` como uno de los términos de búsqueda.
 
 > [!NOTE]
-> Al seleccionar **Incluir perfil de datos** en la herramienta de registro de orígenes de datos, se incluye la información de perfil de nivel de columna y tabla. Sin embargo, la API de Data Catalog permite que los recursos de datos se registren con un único conjunto de información de perfil.
+> Seleccionar **incluyen el perfil de datos** en datos Hola herramienta de registro de origen incluye la tabla y la información de perfil de nivel de columna. Sin embargo, hello API de catálogo de datos permite toobe de activos de datos registrado con un solo conjunto de información de perfil incluida.
 >
 >
 
 ## <a name="viewing-data-profile-information"></a>Visualización de la información del perfil de datos
-Una vez que encuentre un origen de datos adecuado con un perfil, puede ver los detalles del perfil de datos. Para ver el perfil de datos, seleccione un recurso de datos y elija **Perfil de datos** en la ventana del portal de Catálogo de datos.
+Una vez que encuentre un origen de datos adecuado con un perfil, puede ver detalles del perfil de datos Hola. datos de hello tooview perfil, seleccione un recurso de datos y elija **perfil de datos** en la ventana del portal Hola catálogo de datos.
 
 ![](media/data-catalog-data-profile/data-catalog-view.png)
 
@@ -78,7 +78,7 @@ Un perfil de datos del **Catálogo de datos de Azure** muestra la información d
 ### <a name="object-data-profile"></a>Perfil de datos de objeto
 * Número de filas
 * Tamaño de la tabla
-* Cuándo se actualizó por última vez el objeto
+* Se actualizó por última vez el objeto de Hola
 
 ### <a name="column-data-profile"></a>Perfil de datos de columna
 * Tipo de datos de columna
@@ -87,8 +87,8 @@ Un perfil de datos del **Catálogo de datos de Azure** muestra la información d
 * Mínimo, máximo, promedio y desviación estándar para los valores de las columnas
 
 ## <a name="summary"></a>Resumen
-La generación de perfiles de datos proporciona estadísticas e información sobre los recursos de datos registrados para ayudar a los usuarios a determinar la idoneidad de los datos para resolver problemas empresariales. Junto con la anotación y documentación de los orígenes de datos, los perfiles de datos pueden dar a los usuarios una comprensión más profunda de los datos.
+Datos de generación de perfiles proporciona estadísticas y obtener información sobre registrado toohelp de activos de datos determina la idoneidad de Hola Hola datos toosolve problemas del negocio. Junto con la anotación y documentación de los orígenes de datos, los perfiles de datos pueden dar a los usuarios una comprensión más profunda de los datos.
 
 ## <a name="see-also"></a>Otras referencias
-* [Registro de orígenes de datos](data-catalog-how-to-register.md)
+* [¿Cómo tooregister los orígenes de datos](data-catalog-how-to-register.md)
 * [Introducción al Catálogo de datos de Azure](data-catalog-get-started.md)

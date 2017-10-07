@@ -1,6 +1,6 @@
 ---
-title: "Pronóstico meteorológico mediante la utilización de Azure Machine Learning con datos de IoT Hub | Microsoft Docs"
-description: "Use Azure Machine Learning para predecir la posibilidad de lluvia en función de los datos de temperatura y humedad que IoT Hub recopila de un sensor."
+title: "previsión de uso de aprendizaje automático de Azure con datos desde el centro de IoT de aaaWeather | Documentos de Microsoft"
+description: "Usar aprendizaje automático de Azure toopredict Hola oportunidad de lluvia basada en humedad y temperatura Hola datos que recopila su centro de IoT de un sensor."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,125 +15,125 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.openlocfilehash: 50ae54b9476c49b80236e295c0bf244df8236cff
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 04abe97558ccfc152bae2e0d435033433c0023dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Pronóstico meteorológico con los datos del sensor de IoT Hub en Azure Machine Learning
+# <a name="weather-forecast-using-hello-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Boletín meteorológico utilizando los datos de sensor de Hola desde el centro de IoT en aprendizaje automático de Azure
 
 ![Diagrama integral](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-El aprendizaje automático es una técnica de ciencia de datos que ayuda a los equipos a aprender de los datos existentes para prever tendencias, resultados y comportamientos futuros. Azure Machine Learning es un servicio de análisis predictivo en la nube que permite crear e implementar rápidamente modelos predictivos como soluciones de análisis.
+Aprendizaje automático es una técnica de ciencia de datos que ayuda a los equipos Obtenga información acerca de las tendencias, resultados y comportamientos de futuras de tooforecast de datos existente. Aprendizaje automático de Azure es un servicio de análisis predictivos de nube que hace posible tooquickly crear e implementar modelos de predicción como soluciones de análisis.
 
 ## <a name="what-you-learn"></a>Conocimientos que adquirirá
 
-Obtenga información sobre cómo usar Azure Machine Learning para realizar pronósticos meteorológicos, como la posibilidad de lluvia, con los datos de temperatura y humedad de Azure IoT Hub. La posibilidad de lluvia es el resultado de un modelo de pronóstico meteorológico preparado. El modelo se basa en datos históricos para predecir la posibilidad de lluvia en función de la temperatura y la humedad.
+Obtenga información acerca cómo toouse aprendizaje automático de Azure toodo boletín meteorológico (posibilidad de lluvia) utilizando Hola temperatura y humedad datos desde el centro de IoT de Azure. posibilidad de Hola de lluvia es la salida de hello de un modelo de predicción meteorológica preparada. modelo de Hola se basa en la posibilidad de tooforecast de datos históricos de lluvia en función de la temperatura y humedad.
 
 ## <a name="what-you-do"></a>Qué debe hacer
 
-- Implementar el modelo de pronóstico meteorológico como un servicio web.
+- Implementar el modelo de predicción de hello tiempo como un servicio web.
 - Preparar el IoT Hub para el acceso a datos mediante la adición de un grupo de consumidores.
-- Crear un trabajo de Stream Analytics y configurar el trabajo para:
+- Crear un trabajo de análisis de transmisiones y configurar el trabajo de hello para:
   - Leer los datos de temperatura y humedad de IoT Hub.
-  - Llamar al servicio web para saber la posibilidad de lluvia.
-  - Guardar el resultado en Azure Blob Storage.
-- Usar el Explorador de Microsoft Azure Storage para consultar el pronóstico meteorológico.
+  - Llame a oportunidad de lluvia de hello web servicio tooget Hola.
+  - Ahorrar espacio de almacenamiento de blobs de Azure de hello resultado tooan.
+- Use Microsoft Azure Storage Explorer tooview boletín meteorológico Hola.
 
 ## <a name="what-you-need"></a>Lo que necesita
 
-- Tutorial [Instalación de su dispositivo](iot-hub-raspberry-pi-kit-node-get-started.md) completado donde se abordan los siguientes requisitos:
+- Tutorial [configurar su dispositivo](iot-hub-raspberry-pi-kit-node-get-started.md) completado donde abordan las Hola según los requisitos:
   - Una suscripción de Azure activa.
   - Un centro de Azure IoT en su suscripción.
-  - Una aplicación cliente que envía mensajes a su centro de Azure IoT.
+  - Una aplicación de cliente que envía el centro de IoT de Azure de tooyour de mensajes.
 - Una cuenta de Azure Machine Learning Studio. ([Pruebe Machine Learning Studio gratis](https://studio.azureml.net/)).
 
-## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Implementación del modelo de pronóstico meteorológico como un servicio web
+## <a name="deploy-hello-weather-prediction-model-as-a-web-service"></a>Implementar el modelo de predicción de hello tiempo como un servicio web
 
-1. Vaya a la [página del modelo de pronóstico meteorológico](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
+1. Vaya toohello [página de modelo de predicción de tiempo](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
 1. Haga clic en **Abrir en Studio** en Microsoft Azure Machine Learning Studio.
-   ![Abrir la página del modelo de pronóstico meteorológico en la Galería de Cortana Intelligence](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
-1. Haga clic en **Ejecutar** para validar los pasos del modelo. Este paso puede tardar 2 minutos en completarse.
-   ![Abrir el modelo de pronóstico meteorológico en Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![Página de modelo de predicción Hola abierto el tiempo en la Galería de inteligencia de Cortana](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
+1. Haga clic en **ejecutar** toovalidate Hola los pasos en el modelo de Hola. Este paso puede tardar toocomplete de 2 minutos.
+   ![Modelo de predicción de tiempo de hello abrir en estudio de aprendizaje automático de Azure](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. Haga clic en **CONFIGURAR SERVICIO WEB** > **Servicio web predictivo**.
-   ![Implementar el modelo de pronóstico meteorológico en Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. En el diagrama, arrastre el módulo **Entrada de servicio web** a algún lugar cerca del módulo **Puntuar modelo**.
-1. Conecte el módulo **Entrada de servicio web** con el módulo **Puntuar modelo**.
+   ![Implementar el modelo de predicción de tiempo de hello en estudio de aprendizaje automático de Azure](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
+1. En el diagrama de hello, arrastre hello **Web proporcionados por el servicio** módulo en algún lugar cerca hello **puntuar modelo** módulo.
+1. Conectar hello **Web proporcionados por el servicio** módulo toohello **puntuar modelo** módulo.
    ![Conectar dos módulos en Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
-1. Haga clic en **EJECUTAR** para validar los pasos del modelo.
-1. Haga clic en **IMPLEMENTAR SERVICIO WEB** para implementar el modelo como un servicio web.
-1. En el panel del modelo, descargue **Excel 2010 o el libro anterior** para **SOLICITUD/RESPUESTA**.
+1. Haga clic en **ejecutar** toovalidate Hola los pasos en el modelo de Hola.
+1. Haga clic en **implementar el servicio de WEB** modelo de hello toodeploy como un servicio web.
+1. En el panel de hello del modelo de hello, descargue Hola **Excel 2010 o el libro anterior** para **solicitud/respuesta**.
 
    > [!Note]
-   > Asegúrese de descargar **Excel 2010 o el libro anterior** aunque ejecute la última versión de Excel en el equipo.
+   > Asegúrese de que descargue hello **Excel 2010 o el libro anterior** incluso si está ejecutando una versión posterior de Excel en el equipo.
 
-   ![Descargar Excel para el punto de conexión SOLICITUD/RESPUESTA](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![Descargar Hola Excel para punto de conexión de respuesta de solicitud de Hola](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
 
-1. Abra el libro de Excel, tome nota de la **DIRECCIÓN URL DEL SERVICIO WEB** y de la **CLAVE DE ACCESO**.
+1. Abra el libro de Excel de hello, tome nota de hello **dirección URL del servicio WEB** y **clave de acceso**.
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
 ## <a name="create-configure-and-run-a-stream-analytics-job"></a>Creación, configuración y ejecución de un trabajo de Stream Analytics
 
-### <a name="create-a-stream-analytics-job"></a>Creación de un trabajo de Stream Analytics
+### <a name="create-a-stream-analytics-job"></a>Creación de un trabajo de Análisis de transmisiones
 
-1. En [Azure Portal](https://ms.portal.azure.com/), haga clic en **Nuev** > **Internet de las cosas** > **Trabajo de Stream Analytics**.
-1. Escriba la siguiente información para el trabajo.
+1. Hola [portal de Azure](https://ms.portal.azure.com/), haga clic en **New** > **Internet de las cosas** > **trabajo de análisis de transmisiones**.
+1. Escriba Hola siguiendo la información de trabajo de Hola.
 
-   **Nombre del trabajo**: el nombre del trabajo. El nombre debe ser único globalmente.
+   **Nombre del trabajo**: nombre de hello del trabajo de Hola. nombre de Hello debe ser único globalmente.
 
-   **Grupo de recursos**: use el mismo grupo de recursos que usa el IoT Hub.
+   **Grupo de recursos**: Use Hola mismo grupo de recursos que usa el centro de IoT.
 
-   **Ubicación**: use la misma ubicación que el grupo de recursos.
+   **Ubicación**: Use Hola misma ubicación que el grupo de recursos.
 
-   **Anclar al panel**: active esta opción para facilitar el acceso al IoT Hub desde el panel.
+   **PIN toodashboard**: Active esta opción para el centro de IoT tooyour de fácil acceso desde el panel de Hola.
 
    ![Creación de un trabajo de Stream Analytics en Azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
 1. Haga clic en **Crear**.
 
-### <a name="add-an-input-to-the-stream-analytics-job"></a>Adición de una entrada al trabajo de Stream Analytics
+### <a name="add-an-input-toohello-stream-analytics-job"></a>Agregar un trabajo de análisis de transmisiones de entrada toohello
 
-1. Abra el trabajo de Stream Analytics.
+1. Trabajo de análisis de transmisiones de hello abierto.
 1. En **Topología de trabajo**, haga clic en **Entradas**.
-1. En el panel **Entradas**, haga clic en **Agregar** y, a continuación, escriba la siguiente información:
+1. Hola **entradas** panel, haga clic en **agregar**y, a continuación, escriba Hola siguiente información:
 
-   **Alias de entrada**: el alias único para la entrada.
+   **Alias de entrada**: alias único de hello para la entrada de Hola.
 
    **Origen**: seleccione **IoT Hub**.
 
-   **Grupo de consumidores**: seleccione el grupo de consumidores que ha creado.
+   **Grupo de consumidores**: grupo de consumidores de hello Select que creó.
 
-   ![Adición de una entrada al trabajo de Stream Analytics en Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
+   ![Agregar un trabajo de análisis de transmisiones de entrada toohello en Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
 1. Haga clic en **Crear**.
 
-### <a name="add-an-output-to-the-stream-analytics-job"></a>Adición de una salida al trabajo de Stream Analytics
+### <a name="add-an-output-toohello-stream-analytics-job"></a>Agregar un trabajo de análisis de transmisiones de salida toohello
 
 1. En **Topología de trabajo**, haga clic en **Salidas**.
-1. En el panel **Salidas**, haga clic en **Agregar** y, a continuación, escriba la siguiente información:
+1. Hola **salidas** panel, haga clic en **agregar**y, a continuación, escriba Hola siguiente información:
 
-   **Alias de salida**: el alias único para la salida.
+   **Alias de salida**: alias único de hello para la salida de hello.
 
    **Receptor**: seleccione **Blob Storage**.
 
-   **Cuenta de almacenamiento**: la cuenta de almacenamiento para Blob Storage. Puede crear una cuenta de almacenamiento o usar una existente.
+   **Cuenta de almacenamiento**: Hola cuenta de almacenamiento para el almacenamiento de blobs. Puede crear una cuenta de almacenamiento o usar una existente.
 
-   **Contenedor**: el contenedor donde se guarda el blob. Puede crear un contenedor o usar uno existente.
+   **Contenedor**: contenedor Hola donde se guarda el blob de Hola. Puede crear un contenedor o usar uno existente.
 
    **Formato de serialización de eventos**: seleccione **CSV**.
 
-   ![Adición de una salida al trabajo de Stream Analytics en Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
+   ![Agregar un trabajo de análisis de transmisiones de salida toohello en Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
 1. Haga clic en **Crear**.
 
-### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Adición de una función al trabajo de Stream Analytics para llamar al servicio web implementado
+### <a name="add-a-function-toohello-stream-analytics-job-toocall-hello-web-service-you-deployed"></a>Agregar un servicio análisis de transmisiones trabajo toocall hello web implementó toohello de función
 
 1. En **Topología de trabajo**, haga clic en **Funciones** > **Agregar**.
-1. Escriba la siguiente información:
+1. Escriba Hola siguiente información:
 
    **Alias de función**: escriba `machinelearning`.
 
@@ -141,18 +141,18 @@ Obtenga información sobre cómo usar Azure Machine Learning para realizar pron�
 
    **Opción de importación**: seleccione **Importar de una suscripción distinta**.
 
-   **Dirección URL**: escriba la DIRECCIÓN URL DEL SERVICIO WEB que anotó del libro de Excel.
+   **Dirección URL**: escriba Hola dirección URL del servicio WEB que anotó hacia abajo del libro de Excel de Hola.
 
-   **Clave**: escriba la CLAVE DE ACCESO que anotó del libro de Excel.
+   **Clave**: escriba Hola clave de acceso que anotó hacia abajo del libro de Excel de Hola.
 
-   ![Adición de una función al trabajo de Stream Analytics en Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
+   ![Agregar un trabajo de análisis de transmisiones de función toohello en Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
 1. Haga clic en **Crear**.
 
-### <a name="configure-the-query-of-the-stream-analytics-job"></a>Configuración de la consulta del trabajo de Stream Analytics
+### <a name="configure-hello-query-of-hello-stream-analytics-job"></a>Configurar consulta Hola de trabajo de análisis de transmisiones de Hola
 
 1. En **Topología de trabajo**, haga clic en **Consulta**.
-1. Reemplace el código existente por el código siguiente:
+1. Reemplace código existente de hello con hello siguiente código:
 
    ```sql
    WITH machinelearning AS (
@@ -163,33 +163,33 @@ Obtenga información sobre cómo usar Azure Machine Learning para realizar pron�
    From machinelearning
    ```
 
-   Reemplace `[YourInputAlias]` por el alias de entrada del trabajo.
+   Reemplace `[YourInputAlias]` con el alias de Hola de entrada de trabajo de Hola.
 
-   Reemplace `[YourOutputAlias]` por el alias de salida del trabajo.
+   Reemplace `[YourOutputAlias]` con el alias de salida de hello de trabajo de Hola.
 
 1. Haga clic en **Guardar**.
 
-### <a name="run-the-stream-analytics-job"></a>Ejecución del trabajo de Stream Analytics
+### <a name="run-hello-stream-analytics-job"></a>Ejecutar trabajo de análisis de transmisiones de Hola
 
-En el trabajo de Stream Analytics, haga clic en **Iniciar** > **Ahora** > **Iniciar**. Una vez que el trabajo se inicia correctamente, su estado cambia de **Detenido** a **En ejecución**.
+En el trabajo de análisis de transmisiones de hello, haga clic en **iniciar** > **ahora** > **iniciar**. Una vez que se inicia correctamente el trabajo de hello, cambia el estado del trabajo de Hola de **detenido** demasiado**ejecutando**.
 
-![Ejecución del trabajo de Stream Analytics](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
+![Ejecutar trabajo de análisis de transmisiones de Hola](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
-## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Uso del Explorador de Microsoft Azure Storage para consultar el pronóstico meteorológico
+## <a name="use-microsoft-azure-storage-explorer-tooview-hello-weather-forecast"></a>Use Microsoft Azure Storage Explorer tooview boletín meteorológico Hola
 
-Ejecute la aplicación cliente para empezar a recopilar y enviar datos de temperatura y humedad a IoT Hub. Por cada mensaje que IoT Hub recibe, el trabajo de Stream Analytics llama al servicio web de pronóstico meteorológico para producir la posibilidad de lluvia. El resultado se guarda luego en Azure Blob Storage. El Explorador de Azure Storage es una herramienta que puede usar para consultar el resultado.
+Ejecute toostart de aplicación de cliente de hello recopilar y enviar la temperatura y humedad centro de IoT de tooyour de datos. Para cada mensaje que recibe de su centro de IoT, trabajo de análisis de transmisiones de hello llama Hola boletín meteorológico web servicio tooproduce Hola posibilidad de lluvia. a continuación, se guarda el resultado de Hello tooyour almacenamiento de blobs de Azure. Explorador de almacenamiento de Azure es una herramienta que puede usar el resultado de hello tooview.
 
 1. [Descargue e instale el Explorador de Microsoft Azure Storage](http://storageexplorer.com/).
 1. Abra el Explorador de Azure Storage.
-1. Inicie sesión en la cuenta de Azure.
+1. Inicie sesión en tooyour cuenta de Azure.
 1. Seleccione su suscripción.
 1. Haga clic en la suscripción > **Cuentas de almacenamiento** > su cuenta de almacenamiento > **Contenedores de blob** > su contenedor.
-1. Abra un archivo .csv para ver el resultado. La última columna registra la posibilidad de lluvia.
+1. Abrir un resultado de hello de toosee de archivo CSV. registros de columna último Hola Hola posibilidad de lluvia.
 
    ![Obtención del resultado del pronóstico meteorológico con Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
 
 ## <a name="summary"></a>Resumen
 
-Ha usado Azure Machine Learning correctamente para predecir la posibilidad de lluvia en función de los datos de temperatura y humedad que IoT Hub recibe.
+Posibilidad de hello tooproduce de aprendizaje automático de Azure de lluvia basado en datos de temperatura y humedad de Hola que recibe de su centro de IoT se usó correctamente.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

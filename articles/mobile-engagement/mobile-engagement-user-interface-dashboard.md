@@ -1,6 +1,6 @@
 ---
-title: 'Interfaz de usuario de Azure Mobile Engagement: panel'
-description: "Obtenga información acerca de cómo ver y administrar gráficos de datos acerca de su aplicación mediante Azure Mobile Engagement"
+title: Interfaz de usuario de Mobile Engagement - aaaAzure de panel
+description: "Obtenga información acerca de cómo tooview y administrar los gráficos de datos sobre la aplicación con Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d834c01cb748a962d50006398b75b381fa6d8cef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>Cómo ver y administrar los gráficos de datos de la aplicación
-La sección del panel de la interfaz de usuario permite a los clientes crear gráficos personalizados para maximizar su tiempo al proporcionar la información exacta que desean en lugar de buscar en la sección de análisis. Un panel muestra las tendencias de la aplicación y los recuentos de usuarios activos para las distintas versiones de la aplicación durante un momento dado (hora/día/semana/mes/personalizado). Las tendencias mostradas se basan en los últimos 7 días.
+# <a name="how-tooview-and-manage-charts-of-data-about-your-application"></a>¿Cómo tooview y administrar los gráficos de datos acerca de la aplicación
+Hola sección del panel de interfaz de usuario permite personalizar clientes toocreate de hello gráficos toomaximize su tiempo proporcionando información exacta de Hola que deseen en lugar de buscar en la sección de análisis de Hola. Un panel muestra las tendencias de saludo de la aplicación y los recuentos de usuarios activos de hello hello las distintas versiones de la aplicación durante un momento dado (hora/día/semana/mes/personalizada). tendencias de Hola se muestra se basan en hello últimos 7 días.
 
-### <a name="see-also"></a>Consulte también
+### <a name="see-also"></a>Otras referencias
 * [Guía de resolución de problemas: Análisis][Link 21]
 
 ## <a name="dashboard"></a>Panel
-* Puede agregar gráficos a un panel vacía seleccionando la acción "Enviar al panel" en el menú de engranaje de cualquier gráfico de la sección de análisis de la interfaz de usuario que le gustaría ver en un panel.
+* Puede agregar panel vacío de gráficos tooan eligiendo Hola "envío toodashboard" acción de menú de engranaje de hello del gráfico en la sección de análisis de Hola de Hola que desearía toosee en un panel de la interfaz de usuario.
 
 ## <a name="-add-a-dashboard"></a>+ (Agregar un panel)
-* Puede utilizar el elemento de menú de la cinta de opciones "+" para crear un nuevo panel que se mostrará en el menú de la cinta de opciones.
+* Puede usar Hola "+" toocreate de elemento de menú un nuevo panel que se mostrará en el menú de la cinta de opciones de saludo de la cinta de opciones.
 
 ## <a name="gear-menu"></a>Menú de engranaje
-* Puede utilizar el menú de engranaje de un panel para eliminar, cambiar el nombre, compartir o programar (recepción por correo electrónico) de su panel. Puede utilizar la opción de programación para definir la programación en la que le gustaría recibir su panel personalizado por correo electrónico. Puede programar recibirlo diaria, semanal o mensualmente. Puede elegir la hora del día y el día de la semana o el día del mes en el que le gustaría recibir el correo electrónico. Su dirección de correo electrónico y la zona horaria se basan en los valores configurados en la sección Mi cuenta de la interfaz de usuario.
+* Puede usar el menú de engranaje de Hola de panel tooDelete, Rename, recurso compartido o de programación (recepción de correo electrónico) del panel. Puede usar el panel personalizado de hello opción toodefine Hola plan en el que le gustaría tooreceive por correo electrónico. Puede programar tooreceive diaria, semanal o mensual. Puede elegir tiempo Hola del día de Hola y el día de Hola de hello semana o día del mes de hello cuándo deseas que correo electrónico de hello tooreceive. La dirección de correo electrónico y la zona horaria se basan en la configuración de Hola que ha definido en hello sección Mi cuenta de hello interfaz de usuario.
   
   ![dashboard1][34]
 

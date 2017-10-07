@@ -1,6 +1,6 @@
 ---
-title: "Inserción segura de los Centros de notificaciones de Azure"
-description: "Obtenga información acerca de cómo enviar notificaciones de inserción seguras a una aplicación iOS desde Azure. Ejemplos de código escritos en Objective-C y C#."
+title: "aaaAzure notificación concentradores seguros Push"
+description: "Obtenga información acerca de cómo toosend segura push aplicación de iOS de tooan de notificaciones de Azure. Ejemplos de código escritos en Objective-C y C#."
 documentationcenter: ios
 author: ysxu
 manager: erikre
@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: e5f09fb3716303bb21fe7442aa6fa8832174838e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 86dd8d7042e5b9e55d2d7ff41cb42f23831fc575
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Inserción segura de los Centros de notificaciones de Azure
 > [!div class="op_single_selector"]
@@ -29,22 +29,22 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="overview"></a>Información general
-La compatibilidad con las notificaciones push en Microsoft Azure le permite tener acceso a una infraestructura multiplataforma y de escalamiento horizontal fácil de usar, que simplifica considerablemente la implementación de notificaciones push tanto en aplicaciones de consumidor como en aplicaciones empresariales para plataformas móviles.
+Compatibilidad con notificaciones de inserción de Microsoft Azure le permite tooaccess una infraestructura de inserción fácil de usar, varias plataformas y escala horizontal, que simplifica considerablemente la implementación de Hola de notificaciones de inserción para las aplicaciones de consumidor y empresa para dispositivos móviles plataformas.
 
-Debido a restricciones reguladoras o de seguridad, algunas veces una aplicación podría querer incluir algo en la notificación que no se puede trasmitir a través de la infraestructura de las notificaciones de inserción estándar. En este tutorial se describe cómo lograr la misma experiencia enviando información importante a través de una conexión segura y autenticada entre el dispositivo cliente y el back-end de la aplicación.
+A veces debido a restricciones de seguridad o tooregulatory, una aplicación podría querer tooinclude algo en la notificación de Hola que no se transmiten a través de la infraestructura de notificaciones de inserción estándar Hola. Este tutorial describe cómo tooachieve Hola misma experiencia mediante el envío de información confidencial a través de una conexión segura autenticada entre el dispositivo de cliente de Hola y Hola backend de la aplicación.
 
-A un alto nivel, el flujo es el siguiente:
+En un nivel alto, flujo de hello es como sigue:
 
-1. El back-end de la aplicación:
+1. Hola aplicación back-end:
    * Almacena la carga segura en la base de datos back-end.
-   * Envía el identificador de esta notificación al dispositivo (no se envía información segura).
-2. La aplicación del dispositivo, cuando recibe la información:
-   * El dispositivo entra en contacto con el back-end que solicita la carga segura.
-   * La aplicación puede mostrar la carga como una notificación en el dispositivo.
+   * Envía el Id. de Hola de este dispositivo de toohello de notificación (se envía ninguna información segura).
+2. aplicación Hello en dispositivo hello, al recibir la notificación de hello:
+   * dispositivo de Hello contacta con hello back-end que lo solicita Hola carga de seguridad.
+   * aplicación Hello puede mostrar carga hello como una notificación en el dispositivo de Hola.
 
-Es importante tener en cuenta que en el flujo anterior (y en este tutorial), asumimos que el dispositivo almacena un token de autenticación localmente y, después, el usuario inicia sesión. Esto garantiza una experiencia sin ningún problema, ya que el dispositivo puede recuperar la carga segura de la notificación usando este token. Si la aplicación no almacena tokens de autenticación en el dispositivo, o si estos tokens han expirado, la aplicación del dispositivo, al recibir la notificación, debe mostrar una notificación genérica pidiendo al usuario que inicie la aplicación. Después, la aplicación autentica al usuario y muestra la carga de la notificación.
+Es importante toonote que Hola anterior flujo (y en este tutorial), se da por supuesto ese dispositivo Hola almacena un token de autenticación en el almacenamiento local, después de hello usuario inicia sesión en. Esto garantiza una experiencia completamente sin problemas, como dispositivo de hello puede recuperar la carga de seguridad de la notificación de hello con este token. Si la aplicación no almacena tokens de autenticación en el dispositivo de hello, o si pueden haber expirado estos tokens, hello del dispositivo, tras recibir la notificación de Hola debe mostrar una notificación genérica preguntar aplicación Hola de hello usuario toolaunch. aplicación Hello, a continuación, autentica el usuario de Hola y muestra la carga de notificaciones de Hola.
 
-Este tutorial Inserción segura muestra cómo enviar una notificación de inserción de forma segura. El tutorial se basa en el tutorial [Notificar a los usuarios](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) , por lo que debe completar los pasos de ese tutorial primero.
+Este tutorial de inserción seguros se muestra cómo toosend una notificación de inserción de forma segura. tutorial de Hola se basa en hello [informar a los usuarios](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tutorial, por lo que debe completar los pasos de hello en ese tutorial primero.
 
 > [!NOTE]
 > Este tutorial asume que ha creado y configurado el centro de notificaciones tal como se describe en [Introducción a los Centros de notificaciones (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md).
@@ -53,20 +53,20 @@ Este tutorial Inserción segura muestra cómo enviar una notificación de inserc
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-ios-project"></a>Modificación del proyecto iOS
-Una vez modificado el back-end de la aplicación para enviar solamente el *id* de una notificación, deberá modificar la aplicación iOS para que administre dicha notificación y devuelva la llamada a su back-end para recuperar el mensaje seguro que se debe mostrar.
+## <a name="modify-hello-ios-project"></a>Modificar el proyecto de iOS de Hola
+Ahora que ha modificado su Hola solo de aplicación back-end toosend *identificador* de una notificación, deberá toochange su toohandle de aplicación de iOS que notificación y devolución de llamada su Hola de back-end tooretrieve seguros toobe de mensaje que se muestra.
 
-Para lograr este objetivo, tenemos que escribir la lógica para recuperar el contenido seguro del back-end de la aplicación.
+tooachieve este objetivo, tenemos toowrite Hola lógica tooretrieve Hola contenido seguro de Hola back-end de la aplicación.
 
-1. En **AppDelegate.m**, asegúrese de que la aplicación se registra para notificaciones silenciosas de manera a procesar el identificador de notificación enviado desde el back-end. Agregue la opción **UIRemoteNotificationTypeNewsstandContentAvailability** en didFinishLaunchingWithOptions:
+1. En **AppDelegate.m**, asegúrese de registros de aplicación Hola seguro para las notificaciones de modo silenciosas por lo que procesa el identificador de notificación de hello enviado desde Hola back-end. Agregar hello **UIRemoteNotificationTypeNewsstandContentAvailability** opción en didFinishLaunchingWithOptions:
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
-2. En su **AppDelegate.m** , agregue una sección de implementación en la parte superior con la siguiente declaración:
+2. En su **AppDelegate.m** agrega una sección de implementación en la parte superior de hello con hello siguiente declaración:
    
         @interface AppDelegate ()
         - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
         @end
-3. Después, en la sección de implementación, agregue el siguiente código, sustituyendo el marcador de posición `{back-end endpoint}` por el extremo para el back-end obtenido anteriormente:
+3. A continuación, agregue Hola Hola de sección implementación siguiente código, sustituyendo el marcador de posición de hello `{back-end endpoint}` con punto de conexión de hello para el back-end obtenido anteriormente:
 
 ```
         NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -115,13 +115,13 @@ Para lograr este objetivo, tenemos que escribir la lógica para recuperar el con
         }
 ```
 
-    This method calls your app back-end to retrieve the notification content using the credentials stored in the shared preferences.
+    This method calls your app back-end tooretrieve hello notification content using hello credentials stored in hello shared preferences.
 
-1. Ahora tenemos que administrar la notificación entrante y usar el método anterior para recuperar el contenido para mostrar. Primero, tenemos que habilitar la aplicación iOS para que se ejecute en segundo plano cuando reciba una notificación de inserción. En **XCode**, seleccione el proyecto de aplicación en el panel izquierdo y, a continuación, haga clic en el destino de la aplicación principal en la sección **Targets** (Destinos) del panel central.
-2. A continuación, haga clic en la pestaña **Capabilities** (Funcionalidades) situada en la parte superior del panel central y active la casilla **Remote Notifications** (Notificaciones remotas).
+1. Ahora estamos tienen toohandle Hola entrantes notificación y utilizar método hello anteriormente tooretrieve Hola contenido toodisplay. En primer lugar, tenemos tooenable su toorun de aplicación de iOS en segundo plano de hello al recibir una notificación de inserción. En **XCode**, seleccione el proyecto de aplicación en el panel izquierdo de Hola y luego haga clic en el destino de la aplicación principal en hello **destinos** sección del panel central de Hola.
+2. A continuación, haga clic en su **capacidades** pestaña princip Hola de su panel central y compruebe hello **notificaciones remoto** casilla de verificación.
    
     ![][IOS1]
-3. En **AppDelegate.m** , agregue el método siguiente para administrar las notificaciones de inserción:
+3. En **AppDelegate.m** agregar Hola siguiendo las notificaciones de inserción de toohandle de método:
    
         -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
         {
@@ -144,13 +144,13 @@ Para lograr este objetivo, tenemos que escribir la lógica para recuperar el con
    
         }
    
-    Tenga en cuenta que es preferible administrar los casos de propiedad de encabezado de autenticación ausente o rechazo por el backend. La administración específica de estos casos depende principalmente de la experiencia del usuario de destino. Una opción es mostrar una notificación con un mensaje genérico para el usuario con el fin de que se autentique para recuperar la notificación real.
+    Tenga en cuenta que es preferible toohandle casos de Hola de propiedad de encabezado de autenticación que falta o el rechazo por hello back-end. control específico de Hola de estos casos dependen principalmente de la experiencia del usuario de destino. Una opción es toodisplay una notificación con un mensaje genérico para la notificación de real de hello usuario tooauthenticate tooretrieve Hola.
 
-## <a name="run-the-application"></a>Ejecución de la aplicación
-Para ejecutar la aplicación, realice las siguientes tareas:
+## <a name="run-hello-application"></a>Ejecutar aplicación Hola
+toorun Hola aplicación, Hola siguientes:
 
-1. En XCode, ejecute la aplicación en un dispositivo iOS físico (las notificaciones de inserción no funcionarán en el simulador).
-2. En la interfaz de usuario de la aplicación iOS, escriba un nombre de usuario y contraseña. Esta información puede ser cualquier cadena, pero deben tener el mismo valor.
-3. En la interfaz de usuario de la aplicación iOS, haga clic en **Log in**(Iniciar sesión). A continuación, haga clic en **Send push**(Enviar inserción). Debe ver la notificación segura mostrada en el centro notificaciones.
+1. En XCode, ejecute la aplicación hello en un dispositivo de E/s físicas (inserción notificaciones no funcionará en el simulador de hello).
+2. En la aplicación de iOS de hello interfaz de usuario, escriba un nombre de usuario y una contraseña. Pueden ser cualquier cadena, pero deben ser Hola el mismo valor.
+3. En la aplicación de iOS de hello interfaz de usuario, haga clic en **sesión**. A continuación, haga clic en **Enviar inserción**. Debería ver notificaciones seguras Hola se muestra en el centro de notificaciones.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

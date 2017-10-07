@@ -1,5 +1,5 @@
 ---
-title: Actualizaciones de esquema, 1 de junio de 2016 (Azure Logic Apps) | Microsoft Docs
+title: aaaSchema actualiza junio-1-2016 - Azure Logic Apps | Documentos de Microsoft
 description: "Creación de definiciones de JSON para Azure Logic Apps con la versión de esquema del 1 de junio de 2016"
 author: jeffhollan
 manager: anneta
@@ -15,21 +15,21 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b0347fbbd692a93b63a2f8b741402a225450b35a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Actualizaciones de esquema para Azure Logic Apps, 1 de junio de 2016
 
-Esta nueva versión de esquema y API de Azure Logic Apps incluye importantes mejoras que aportan una mayor confiabilidad a las aplicaciones lógicas y facilitan su uso:
+Este nuevo esquema y la API de la versión para las aplicaciones lógicas de Azure incluye mejoras claves que hacen que las aplicaciones lógicas más toouse más fácil y confiable:
 
 * [Ámbitos](#scopes): le permiten agrupar o anidar acciones como una colección de acciones.
 * [Condiciones y bucles](#conditions-loops): ahora son acciones de primera clase.
-* Ordenación más precisa para ejecutar acciones con la propiedad `runAfter`, sustituyendo `dependsOn`.
+* Ordenación más precisa para ejecutar acciones con hello `runAfter` propiedad, reemplazar`dependsOn`
 
-Para actualizar las aplicaciones lógicas del esquema de versión preliminar del 1 de agosto de 2015 al esquema del 1 de junio de 2016, [consulte la sección de actualización](##upgrade-your-schema).
+tooupgrade las aplicaciones lógicas de Hola 1 de agosto de 2015, obtenga una vista previa toohello 1 de junio de 2016 de esquema [desproteger la sección actualización de hello](##upgrade-your-schema).
 
 <a name="scopes"></a>
 ## <a name="scopes"></a>Ámbitos
@@ -88,9 +88,9 @@ En las versiones anteriores del esquema, las condiciones y los bucles eran pará
 <a name="run-after"></a>
 ## <a name="runafter-property"></a>Propiedad "runAfter"
 
-La propiedad `runAfter` reemplaza a `dependsOn`, por lo que se proporciona una mayor precisión al especificar el orden de ejecución de las acciones según el estado de acciones anteriores.
+Hola `runAfter` propiedad reemplaza `dependsOn`, lo que proporciona mayor precisión cuando se especifica el orden de hello ejecutar acciones de acuerdo con el estado de Hola de acciones anteriores.
 
-La propiedad `dependsOn` era sinónimo de "la acción se ejecutó correctamente", no importa cuántas veces quisiera ejecutar una acción, en función de si la acción anterior era correcta, tenía un error o se había omitido. La propiedad `runAfter` ofrece esa flexibilidad como un objeto que especifica todos los nombres de acciones después de los cuales se ejecuta el objeto. Esta propiedad también define una matriz de estados que son aceptables como desencadenadores. Por ejemplo, si quisiera ejecutar una acción después de que el paso A se realiza correctamente y también después de que el paso B se realiza correctamente o produce error, construiría esta propiedad `runAfter`:
+Hola `dependsOn` propiedad era sinónimo de "acción de Hola se ejecutó y se realizó correctamente", independientemente de cuántas veces desea tooexecute una acción, en función de si la acción anterior Hola fue correcta, no se pudo o se omite. Hola `runAfter` propiedad proporciona la flexibilidad como un objeto que especifica todos Hola transcurrido el cual hello objeto ejecuta los nombres de acción. Esta propiedad también define una matriz de estados que son aceptables como desencadenadores. Por ejemplo, si deseara toorun después de un paso se realiza correctamente y también después paso B se realiza correctamente o se produce un error, crear esto `runAfter` propiedad:
 
 ```
 {
@@ -104,59 +104,59 @@ La propiedad `dependsOn` era sinónimo de "la acción se ejecutó correctamente"
 
 ## <a name="upgrade-your-schema"></a>Actualización del esquema
 
-La actualización al nuevo esquema se realiza en solo unos cuantos pasos. El proceso de actualización incluye ejecutar el script de actualización, guardarlo como una nueva aplicación lógica y, posiblemente, sobrescribir la antigua aplicación lógica, si lo desea.
+Actualizar toohello nuevo esquema solo tiene unos pocos pasos. Hello proceso de actualización incluye ejecutar script de actualización de hello, guardar como una nueva aplicación de lógica y, si lo desea, posiblemente sobrescribiendo la aplicación de lógica de hello anterior.
 
-1. Abra la aplicación lógica en Azure Portal.
+1. Hola portal de Azure, abra la aplicación lógica.
 
-2. Vaya a **Overview** (Información general). En la barra de herramientas de aplicaciones lógicas, elija **Actualizar esquema**.
+2. Vaya demasiado**Introducción**. En la barra de herramientas de aplicación de lógica de hello, elija **actualizar esquema**.
    
     ![Selección del esquema de actualización][1]
    
-    Se devuelve la definición actualizada, que puede copiar y pegar en una definición de recurso si es necesario. 
-    Pero **se recomienda firmemente** elegir **Guardar como** para asegurarse de que todas las referencias de conexión sean válidas en la aplicación lógica actualizada.
+    Hello definición actualizada se devuelve, que puede copiar y pegar en una definición de recursos si es necesario. 
+    Sin embargo, se **recomienda** elige **Guardar como** toomake seguro de que todas las referencias de conexión son válidas en hello actualiza la aplicación lógica.
 
-3. En la barra de herramientas de la hoja de actualización, elija **Guardar como**.
+3. En la barra de herramientas de actualización de hoja de hello, elija **Guardar como**.
 
-4. Escriba el nombre y el estado de la aplicación lógica. Para implementar la aplicación lógica actualizada, elija **Crear**.
+4. Escriba el nombre de la lógica de Hola y el estado. toodeploy la aplicación lógica actualizado, elija **crear**.
 
 5. Confirme que la aplicación lógica actualizada funciona según lo previsto.
    
    > [!NOTE]
-   > Si usa un desencadenador manual o de solicitud, la dirección URL de devolución de llamada cambia en la nueva aplicación lógica. Pruebe la nueva dirección URL para asegurarse de que funciona completamente. Para conservar las direcciones URL anteriores, puede clonarlas a través de la aplicación lógica existente.
+   > Si usas un desencadenador manual o de solicitud, dirección URL de devolución de llamada de hello cambia en la nueva aplicación de lógica. Experiencia de prueba Hola nueva dirección URL toomake seguro hello-to-end. toopreserve URL anterior, puede clonar a través de la aplicación lógica existente.
 
-6. *Opcional*: para sobrescribir la aplicación lógica anterior con la nueva versión de esquema, en la barra de herramientas, elija **Clonar**, junto a **Actualizar esquema**. Este paso solo es necesario si quiere mantener el mismo identificador de recurso o dirección URL del desencadenador de solicitud de la aplicación lógica.
+6. *Opcional* toooverwrite la aplicación lógica anterior con la versión de esquema nuevo hello, en la barra de herramientas de hello, elija **clon**, al lado de demasiado**actualizar esquema**. Este paso es necesario únicamente si desea tookeep Hola mismo recurso Id. de solicitud de desencadenador dirección URL o de la aplicación lógica.
 
 ### <a name="upgrade-tool-notes"></a>Notas de la herramienta de actualización
 
 #### <a name="mapping-conditions"></a>Condiciones de asignación
 
-En la definición actualizada, la herramienta hace todo lo posible por agrupar las acciones de bifurcación true y false como un ámbito. En concreto, el patrón de diseñador de `@equals(actions('a').status, 'Skipped')` debe aparecer como una acción `else`. Sin embargo, si la herramienta detecta patrones irreconocibles, podría crear condiciones distintas para la bifurcación true y false. Si es necesario, puede volver a asignar acciones después de la actualización.
+En la definición de hello actualizado, herramienta de hello realiza un mayor esfuerzo en Agrupar acciones de bifurcación true y false como un ámbito. En concreto, patrón diseñador Hola de `@equals(actions('a').status, 'Skipped')` debería aparecer como un `else` acción. Sin embargo, si herramienta Hola detecta patrones irreconocibles, herramienta de hello podría crear condiciones individuales para true hello y rama false Hola. Si es necesario, puede volver a asignar acciones después de la actualización.
 
 #### <a name="foreach-loop-with-condition"></a>Bucle "foreach" con condición
 
-En el nuevo esquema, puede usar la acción de filtro para replicar el patrón de un bucle `foreach` con una condición por elemento, pero este cambio debe ocurrir automáticamente al actualizar. La condición se convierte en una acción de filtro delante del bucle foreach para devolver solo una matriz de elementos que coincidan con la condición, y esa matriz se pasa a la acción de foreach. Para ver un ejemplo, consulte [Bucles y ámbitos](../logic-apps/logic-apps-loops-and-scopes.md).
+En el nuevo esquema de hello, puede usar patrón hello tooreplicate de acción de filtro de Hola de un `foreach` bucle con una condición por cada elemento, pero este cambio debe ocurrir automáticamente cuando se actualiza. condición de Hola se convierte en una acción de filtrado antes de un bucle foreach Hola para devolver solo una matriz de elementos que coinciden con la condición de Hola y esa matriz se pasa a la acción de foreach Hola. Para ver un ejemplo, consulte [Bucles y ámbitos](../logic-apps/logic-apps-loops-and-scopes.md).
 
 #### <a name="resource-tags"></a>Etiquetas del recurso
 
-Después de actualizar, se quitan las etiquetas del recurso, por lo que debe restablecerlas para el flujo de trabajo actualizado.
+Después de actualizar, se quitan las etiquetas del recurso, por lo que debe restablecer de flujo de trabajo de hello actualizado.
 
 ## <a name="other-changes"></a>Otros cambios
 
-### <a name="renamed-manual-trigger-to-request-trigger"></a>Cambio de nombre de desencadenador "manual" a desencadenador "request"
+### <a name="renamed-manual-trigger-toorequest-trigger"></a>Cambiar el nombre de desencadenador 'manual' too'request' desencadenador
 
-El tipo de desencadenador `manual` está en desuso y ahora se llama `request` con el tipo `http`. Este cambio crea una mayor coherencia para la clase de patrón que el desencadenador suele compilar.
+Hola `manual` tipo de desencadenador se ha desusado y se cambia el nombre demasiado`request` con tipo `http`. Este cambio crea más coherencia de tipo hello del patrón de Hola desencadenador es toobuild usado.
 
 ### <a name="new-filter-action"></a>Nueva acción 'filtro'
 
-Para filtrar una matriz grande hasta un conjunto de elementos más pequeño, el nuevo tipo `filter` acepta una matriz y una condición, evalúa la condición de cada elemento y devuelve una matriz con los elementos que cumplen la condición.
+una matriz grande hacia abajo tooa conjunto más pequeño de elementos, new hello toofilter `filter` tipo acepta una matriz y una condición, se evalúa como condición de Hola para cada elemento y devuelve una matriz con los elementos que cumplen la condición de Hola.
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>Restricciones de las acciones "foreach" y "until"
 
-Los bucles `foreach` y `until` están limitados a una sola acción.
+Hola `foreach` y `until` bucle están restringidos tooa única acción.
 
 ### <a name="new-trackedproperties-for-actions"></a>Nueva propiedad "trackedProperties" para las acciones
 
-Las acciones pueden tener ahora una propiedad adicional llamada `trackedProperties`, que está relacionada con las propiedades `runAfter` y `type`. Este objeto especifica determinadas entradas o salidas de acciones que desea incluir en la telemetría de Azure Diagnostic, que se emiten como parte de un flujo de trabajo. Por ejemplo:
+Acciones ahora pueden tener una propiedad adicional denominada `trackedProperties`, que es el mismo nivel toohello `runAfter` y `type` propiedades. Este objeto especifica algunas entradas de acción o salidas que desea tooinclude de telemetría de diagnóstico de Azure hello, genera como parte de un flujo de trabajo. Por ejemplo:
 
 ```
 {                

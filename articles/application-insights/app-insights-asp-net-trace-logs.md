@@ -1,5 +1,5 @@
 ---
-title: "Exploración de registros de seguimiento de .NET en Application Insights"
+title: los registros de seguimiento de .NET de aaaExplore en Application Insights
 description: Busque registros generados con Seguimiento, NLog o Log4Net.
 services: application-insights
 documentationcenter: .net
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/3/2017
 ms.author: bwren
-ms.openlocfilehash: 68e03bf10167ecde675d62782de7063aea9e81d9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 6bfcd9e5751c3656236d7eb2fc09321740171a70
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Exploración de registros de seguimiento de .NET en Application Insights
-Si usa NLog, log4Net o System.Diagnostics.Trace para realizar el seguimiento de diagnósticos en la aplicación ASP.NET, sus registros se pueden enviar a [Azure Application Insights][start], donde puede explorarlos y buscarlos. Los registros se combinarán con los otros informes de telemetría procedente de su aplicación, y así podrá identificar los seguimientos asociados con el mantenimiento de cada solicitud de usuario y correlacionarlos con otros eventos e informes de excepciones.
+Si usa NLog, log4Net o System.Diagnostics.Trace para el seguimiento de diagnóstico en la aplicación de ASP.NET, puede que los registros que se envían demasiado[Azure Application Insights][start], donde puede explorar y buscar ellos. Los registros se combinará con hello otro telemetría procedentes de la aplicación, para que pueda identificar Hola seguimientos asociados con cada solicitud del usuario de mantenimiento y ponerlos en correlación con eventos e informes de excepción.
 
 > [!NOTE]
-> ¿Necesita el módulo de captura de registros? Es un adaptador útil para registradores de terceros, pero si aún no está usando NLog, log4Net o System.Diagnostics.Trace, considere la posibilidad de llamar directamente a [Application Insights TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) .
+> ¿Necesita que el módulo de captura de registro de hello? Es un adaptador útil para registradores de terceros, pero si aún no está usando NLog, log4Net o System.Diagnostics.Trace, considere la posibilidad de llamar directamente a [Application Insights TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) .
 >
 >
 
 ## <a name="install-logging-on-your-app"></a>Instalación del registro en la aplicación
 Instale el marco de registro elegido en su proyecto. Esto debería producir una entrada en app.config o web.config.
 
-Si usa System.Diagnostics.Trace, debe agregar una entrada a web.config:
+Si usas System.Diagnostics.Trace, deberá tooadd un tooweb.config de entrada:
 
 ```XML
 
@@ -47,28 +47,28 @@ Si usa System.Diagnostics.Trace, debe agregar una entrada a web.config:
      </system.diagnostics>
    </configuration>
 ```
-## <a name="configure-application-insights-to-collect-logs"></a>Configuración de Application Insights para recopilar registros
-Si todavía no lo ha hecho, **[agregue Application Insights a su proyecto](app-insights-asp-net.md)**. Verá una opción para incluir el compilador de registros.
+## <a name="configure-application-insights-toocollect-logs"></a>Configurar registros de toocollect Application Insights
+**[Agregar proyecto de Application Insights tooyour](app-insights-asp-net.md)**  si aún no lo ha hecho todavía. Verá un compilador de registros de opción tooinclude Hola.
 
-O **configure Application Insights** haciendo clic con el botón derecho en el proyecto en el Explorador de soluciones. Seleccione la opción de **Configurar recolección de seguimientos**.
+O **configure Application Insights** haciendo clic con el botón derecho en el proyecto en el Explorador de soluciones. Seleccione la opción de hello demasiado**configurar la recopilación de seguimiento**.
 
 *¿No aparece ningún menú de Application Insights ni una opción de compilador de registros?* Pruebe la [solución de problemas](#troubleshooting).
 
 ## <a name="manual-installation"></a>Instalación manual
-Utilice este método si el tipo de proyecto no es compatible con el programa de instalación de Application Insights (por ejemplo, un proyecto de escritorio de Windows).
+Utilice este método si el tipo de proyecto no es compatible con el instalador de Application Insights hello (por ejemplo un proyecto escritorio de Windows).
 
-1. Si planea usar log4Net o NLog, instálelo en su proyecto.
+1. Si tiene previsto toouse log4Net o NLog, instálelo en el proyecto.
 2. En el Explorador de soluciones, haga clic con el botón derecho en el proyecto y seleccione **Administrar paquetes de NuGet**.
 3. Busque "Application Insights"
-4. Seleccione el paquete adecuado entre los siguientes:
+4. Seleccione el paquete adecuado de hello - uno de:
 
-   * Microsoft.ApplicationInsights.TraceListener (para capturar las llamadas de System.Diagnostics.Trace)
-   * Microsoft.ApplicationInsights.EventSourceListener (para capturar eventos EventSource)
-   * Microsoft.ApplicationInsights.EtwListener (para capturar eventos ETW)
+   * Microsoft.ApplicationInsights.TraceListener (llamadas a System.Diagnostics.Trace toocapture)
+   * Microsoft.ApplicationInsights.EventSourceListener (toocapture EventSource eventos)
+   * Microsoft.ApplicationInsights.EtwListener (toocapture los eventos ETW)
    * Microsoft.ApplicationInsights.NLogTarget
    * Microsoft.ApplicationInsights.Log4NetAppender
 
-El paquete de NuGet instala los ensamblados necesarios y también modifica el archivo web.config o app.config.
+paquete de NuGet Hola instala a los ensamblados necesarios de Hola y también modifica el archivo web.config o app.config.
 
 ## <a name="insert-diagnostic-log-calls"></a>Insertar llamadas de registro de diagnóstico
 Si usa System.Diagnostics.Trace, una llamada típica sería:
@@ -80,7 +80,7 @@ Si prefiere log4net o NLog:
     logger.Warn("Slow response - database01");
 
 ## <a name="using-eventsource-events"></a>Uso de eventos EventSource
-Puede configurar eventos [System.Diagnostics.Tracing.EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) para enviarse a Application Insights como seguimientos. Primero, instale el paquete de NuGet `Microsoft.ApplicationInsights.EventSourceListener`. Luego, edite la sección `TelemetryModules` del archivo [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
+Puede configurar [System.Diagnostics.Tracing.EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) tooApplication de toobe enviado eventos visión como seguimientos. En primer lugar, instale hello `Microsoft.ApplicationInsights.EventSourceListener` paquete NuGet. A continuación, edite `TelemetryModules` sección de hello [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) archivo.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -90,13 +90,13 @@ Puede configurar eventos [System.Diagnostics.Tracing.EventSource](https://msdn.m
     </Add>
 ```
 
-En cada origen, puede establecer los siguientes parámetros:
- * `Name` especifica el nombre del evento EventSource que se recopilará.
- * `Level` especifica el nivel de registro que se recopilará. Puede ser `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose` o `Warning`.
- * `Keywords` especifica el valor del entero de combinaciones de palabras clave que se usará (opcional).
+Para cada origen, puede establecer Hola parámetros siguientes:
+ * `Name`Especifica el nombre de Hola de hello EventSource toocollect.
+ * `Level`Especifica hello toocollect de nivel de registro. Puede ser `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose` o `Warning`.
+ * `Keywords`(Opcional) especifica el valor entero hello toouse de combinaciones de palabras clave.
 
 ## <a name="using-diagnosticsource-events"></a>Uso de eventos de DiagnosticSource
-Puede configurar eventos [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) para enviarlos a Application Insights como seguimientos. Primero, instale el paquete de NuGet [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener). Seguidamente, edite la sección `TelemetryModules` del archivo [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
+Puede configurar [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) tooApplication de toobe enviado eventos visión como seguimientos. En primer lugar, instale hello [ `Microsoft.ApplicationInsights.DiagnosticSourceListener` ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) paquete NuGet. A continuación, edite hello `TelemetryModules` sección de hello [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) archivo.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.DiagnsoticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
@@ -106,13 +106,13 @@ Puede configurar eventos [System.Diagnostics.DiagnosticSource](https://github.co
     </Add>
 ```
 
-Para cada instancia de DiagnosticSource que quiera seguir, agregue una entrada con el atributo `Name` establecido con el nombre de la instancia DiagnosticSource.
+Para cada DiagnosticSource desea tootrace, agregue una entrada con hello `Name` toohello nombre de su DiagnosticSource del conjunto de atributos.
 
 ## <a name="using-etw-events"></a>Uso de eventos ETW
-Puede configurar eventos ETW para enviarse a Application Insights como seguimientos. Primero, instale el paquete de NuGet `Microsoft.ApplicationInsights.EtwCollector`. Luego, edite la sección `TelemetryModules` del archivo [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
+Puede configurar toobe de eventos ETW enviado tooApplication visión como seguimientos. En primer lugar, instale hello `Microsoft.ApplicationInsights.EtwCollector` paquete NuGet. A continuación, edite `TelemetryModules` sección de hello [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) archivo.
 
 > [!NOTE] 
-> Solo se pueden recopilar eventos ETW si el proceso que hospeda el SDK se ejecuta bajo una identidad que sea miembro de "Usuarios del registro de rendimiento" o los administradores.
+> Solo se pueden recopilar eventos ETW si Hola Hola de hospedaje de proceso SDK se está ejecutando bajo una identidad que sea miembro de "Usuarios del registro de rendimiento" o los administradores.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule, Microsoft.ApplicationInsights.EtwCollector">
@@ -122,35 +122,35 @@ Puede configurar eventos ETW para enviarse a Application Insights como seguimien
     </Add>
 ```
 
-En cada origen, puede establecer los siguientes parámetros:
- * `ProviderName` es el nombre del proveedor ETW que se recopilará.
- * `ProviderGuid` especifica el GUID del proveedor ETW que se recopilará, que puede usarse en lugar de `ProviderName`.
- * `Level` establece el nivel de registro que se recopilará. Puede ser `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose` o `Warning`.
- * `Keywords` establece el valor del entero de combinaciones de palabras clave que se usará (opcional).
+Para cada origen, puede establecer Hola parámetros siguientes:
+ * `ProviderName`es el nombre de Hola de toocollect de proveedor ETW de Hola.
+ * `ProviderGuid`Especifica Hola GUID de hello toocollect de proveedor ETW, se puede utilizar en lugar de `ProviderName`.
+ * `Level`establece hello toocollect de nivel de registro. Puede ser `Critical`, `Error`, `Informational`, `LogAlways`, `Verbose` o `Warning`.
+ * `Keywords`Valor entero de la palabra clave combinaciones toouse Hola a conjuntos (opcionales).
 
-## <a name="using-the-trace-api-directly"></a>Uso de la API de seguimiento directamente
-Puede llamar directamente a la API de seguimiento de Application Insights. Los adaptadores de registro usan esta API.
+## <a name="using-hello-trace-api-directly"></a>Directamente con la API de seguimiento de Hola
+Puede llamar directamente a API de seguimiento de hello Application Insights. los adaptadores de registro de Hello utilizan esta API.
 
 Por ejemplo:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
-Una ventaja de TrackTrace es que puede colocar datos relativamente largos en el mensaje. Por ejemplo, aquí podría codificar datos POST.
+La ventaja de TrackTrace es que puede colocar datos relativamente largos en mensajes de bienvenida. Por ejemplo, aquí podría codificar datos POST.
 
-Además, puede agregar un nivel de gravedad al mensaje. Y, al igual que con otra telemetría, puede agregar valores de propiedad que puede usar para ayudar a filtrar o buscar distintos conjuntos de seguimientos. Por ejemplo:
+Además, puede agregar un mensaje de tooyour de nivel de gravedad. Y, al igual que otros telemetría, puede agregar valores de propiedad que se puede utilizar toohelp filtrar o buscar para diferentes conjuntos de seguimientos. Por ejemplo:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-Esto permitiría filtrar fácilmente en [Búsqueda][diagnostic] todos los mensajes de un determinado nivel de gravedad relativos a una determinada base de datos.
+Esto permitiría que, en [búsqueda][diagnostic], tooeasily filtrar todos los mensajes de saludo de un nivel de gravedad determinado relacionados con la base de datos determinada tooa.
 
 ## <a name="explore-your-logs"></a>Explorar los registros
 Ejecute la aplicación, ya sea en modo de depuración o mediante su implementación para que esté activa.
 
-En la hoja de información general de su aplicación del [portal de Application Insights][portal], elija [Buscar][diagnostic].
+En la hoja de información general de la aplicación en [portal de Application Insights hello][portal], elija [búsqueda][diagnostic].
 
 ![En Application Insights, elija Buscar.](./media/app-insights-asp-net-trace-logs/020-diagnostic-search.png)
 
@@ -160,11 +160,11 @@ Por ejemplo, puede:
 
 * Filtrar por seguimientos de registro, o por elementos con determinadas propiedades
 * Inspeccionar un elemento específico en detalle
-* Encontrar otros informes de telemetría relacionados con la misma solicitud de usuario (es decir, con el mismo OperationId)
-* Guardar la configuración de esta página como favorita
+* Buscar otra telemetría relacionada con toohello misma solicitud de usuario (es decir, con Hola mismo OperationId)
+* Guardar configuración de Hola de esta página como favorito
 
 > [!NOTE]
-> **Muestreo.** Si la aplicación envía una gran cantidad de datos y usa el SDK de Application Insights para ASP.NET versión 2.0.0-beta3 o posterior, la característica de muestreo adaptativo puede operar y enviar solamente un porcentaje de los datos de telemetría. [Obtenga más información sobre el muestreo.](app-insights-sampling.md)
+> **Muestreo.** Si la aplicación envía una gran cantidad de datos y utilizas Hola Application Insights SDK para ASP.NET versión 2.0.0-beta3 o posterior, característica de muestreo adaptativo de hello puede operar y enviar solamente un porcentaje de la telemetría. [Aprenda más sobre el muestreo.](app-insights-sampling.md)
 >
 >
 
@@ -175,30 +175,30 @@ Por ejemplo, puede:
 
 ## <a name="troubleshooting"></a>Solución de problemas
 ### <a name="how-do-i-do-this-for-java"></a>¿Cómo se puede hacer para Java?
-Utilice los [adaptadores de registro de Java](app-insights-java-trace-logs.md).
+Hola de uso [adaptadores de registro de Java](app-insights-java-trace-logs.md).
 
-### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>No aparece la opción de Application Insights en el menú contextual del proyecto
-* Compruebe si las herramientas de Application Insights están instaladas en este equipo de desarrollo. En el menú Herramientas de Visual Studio, en Extensiones y actualizaciones, busque Herramientas de Application Insights. Si no se encuentran en la pestaña Instalado, abra la pestaña En línea e instálelas.
+### <a name="theres-no-application-insights-option-on-hello-project-context-menu"></a>No hay ninguna opción de Application Insights en el menú contextual del proyecto Hola
+* Compruebe si las herramientas de Application Insights están instaladas en este equipo de desarrollo. En el menú Herramientas de Visual Studio, en Extensiones y actualizaciones, busque Herramientas de Application Insights. Si no se encuentra en la ficha de hello instalado, abra hello en línea pestaña e instálelo.
 * Podría tratarse de un tipo de proyecto no admitido por las herramientas de Application Insights. Use la [instalación manual](#manual-installation).
 
-### <a name="no-log-adapter-option-in-the-configuration-tool"></a>No aparece la opción de adaptador en la herramienta de configuración
-* Debe instalar primero el marco de registro.
+### <a name="no-log-adapter-option-in-hello-configuration-tool"></a>Ninguna opción de adaptador de registro en la herramienta de configuración de Hola
+* En primer lugar debe marco de registro de hello tooinstall.
 * Si usa System.Diagnostics.Trace, asegúrese de que lo ha [configurado en `web.config`](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
-* ¿Tiene la versión más reciente de Application Insights? En el menú **Herramientas** de Visual Studio, elija **Extensiones y actualizaciones** y abra la pestaña **Actualizaciones**. Si Developer Analytics Tools está instalado, haga clic para actualizarlo.
+* ¿Tengo versión más reciente de Hola de Application Insights? En Visual Studio **herramientas** menú, elija **extensiones y actualizaciones**, abra hello y **actualizaciones** ficha. Si hay herramientas de análisis de desarrollador, haga clic en tooupdate se.
 
 ### <a name="emptykey"></a>Aparece el mensaje de error "La clave de instrumentación no puede estar vacía".
-Parece que ha instalado el paquete de NuGet del adaptador de registro sin tener que instalar Application Insights.
+Parece que instaló Hola registro paquete Nuget de adaptador sin tener que instalar Application Insights.
 
-En el Explorador de soluciones, haga clic con el botón derecho en `ApplicationInsights.config` y elija **Actualizar Application Insights**. Aparecerá un cuadro de diálogo que le invita a iniciar sesión en Azure y a crear un recurso de Application Insights, o a volver a utilizar uno existente. Esto debería solucionarlo.
+En el Explorador de soluciones, haga clic con el botón derecho en `ApplicationInsights.config` y elija **Actualizar Application Insights**. Obtendrá un cuadro de diálogo que le invita toosign en tooAzure y cree un recurso de Application Insights, o volver a utilizar uno existente. Esto debería solucionarlo.
 
-### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>Puedo ver seguimientos en Búsqueda de diagnóstico, pero no los otros eventos.
-A veces, el paso de todos los eventos y solicitudes por la canalización puede llevar un rato.
+### <a name="i-can-see-traces-in-diagnostic-search-but-not-hello-other-events"></a>Puedo ver seguimientos en la búsqueda de diagnóstico, pero no Hola otros eventos
+A veces puede tardar unos instantes para todos los tooget Hola de eventos y las solicitudes a través de la canalización de Hola.
 
 ### <a name="limits"></a>¿Qué cantidad de datos se conserva?
-Hay varios factores que afectan a la cantidad de datos que se conservan. Consulte la sección [Límites](app-insights-api-custom-events-metrics.md#limits) de la página de métricas de eventos de cliente para más información. 
+Varios factores afectan a cantidad Hola de los datos almacenados. Vea hello [límites](app-insights-api-custom-events-metrics.md#limits) sección de página de las métricas de eventos de cliente de Hola para obtener más información. 
 
-### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>No veo algunas de las entradas del registro que esperaba
-Si la aplicación envía una gran cantidad de datos y usa el SDK de Application Insights para ASP.NET versión 2.0.0-beta3 o posterior, la característica de muestreo adaptativo puede operar y enviar solamente un porcentaje de los datos de telemetría. [Obtenga más información sobre el muestreo.](app-insights-sampling.md)
+### <a name="im-not-seeing-some-of-hello-log-entries-that-i-expect"></a>No veo algunas entradas del registro de hello que espero
+Si la aplicación envía una gran cantidad de datos y utilizas Hola Application Insights SDK para ASP.NET versión 2.0.0-beta3 o posterior, característica de muestreo adaptativo de hello puede operar y enviar solamente un porcentaje de la telemetría. [Aprenda más sobre el muestreo.](app-insights-sampling.md)
 
 ## <a name="add"></a>Pasos siguientes
 * [Configuración de pruebas de disponibilidad y de capacidad de respuesta][availability]

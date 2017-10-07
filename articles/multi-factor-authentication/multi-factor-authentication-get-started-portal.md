@@ -1,6 +1,6 @@
 ---
-title: Portal de usuarios para el Servidor Azure MFA | Microsoft Docs
-description: "En esta página de Azure Multi-Factor Authentication, se describe cómo empezar a trabajar con Azure MFA y el Portal de usuarios."
+title: portal de aaaUser de servidor de MFA de Azure | Documentos de Microsoft
+description: "Se trata de una página de autenticación multifactor de Azure de Hola que describe cómo se inicia tooget con Azure MFA y el portal de usuarios de Hola."
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
@@ -15,170 +15,170 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.openlocfilehash: a4eb403d3d21b7dbe63c2645b488a7bddb6d39fd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0e36644c3d780249fb98d5da654e9d267c63561a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Portal de usuarios para el Servidor Azure Multi-Factor Authentication
+# <a name="user-portal-for-hello-azure-multi-factor-authentication-server"></a>Portal de usuarios para saludo del servidor de autenticación multifactor de Azure
 
-El Portal de usuarios es un sitio web de IIS que permite a los usuarios inscribirse en Azure Multi-Factor Authentication (MFA) y mantener sus cuentas. Un usuario puede cambiar el número de teléfono, modificar el PIN o evitar la verificación en dos pasos durante su próximo inicio de sesión.
+portal de usuarios de Hello es un sitio web IIS que permite a los usuarios tooenroll en Azure la autenticación multifactor (MFA) y mantener sus cuentas. Un usuario puede cambiar su número de teléfono, cambiar su código PIN o elija toobypass verificacion durante su siguiente inicio de sesión.
 
-Los usuarios inician sesión en el portal de usuarios con el nombre de usuario y la contraseña normales y, después, completan una llamada de verificación en dos pasos o responden a preguntas de seguridad para completar la autenticación. Si se permite la inscripción de usuarios, los usuarios configurarán su número de teléfono y su PIN la primera vez que inicien sesión en el Portal de usuarios.
+Los usuarios iniciar sesión en el portal de usuarios de toohello con su nombre de usuario y contraseña, a continuación, completar una llamada de verificación en dos pasos o responder toocomplete de preguntas de seguridad de la autenticación. Si se permite la inscripción de usuario, los usuarios configurar sus hello PIN y el número de teléfono primera vez que inicien sesión en el portal de usuarios de toohello.
 
-Es posible que se configuren administradores para el Portal de usuarios y que se les conceda permiso para agregar usuarios nuevos y actualizar los existentes.
+Los administradores del portal de usuarios se puede configurar y conceder permiso tooadd nuevos usuarios y actualizar usuarios existentes.
 
-Según su entorno, puede que desee implementar el Portal de usuarios en el mismo servidor que el Servidor Microsoft Azure Multi-Factor Authentication o en otro servidor con conexión a Internet.
+Dependiendo de su entorno, puede que desee toodeploy portal de usuarios de hello en hello mismo servidor como servidor de autenticación multifactor de Azure o en otro servidor orientado a internet.
 
 ![Portal de usuarios de MFA](./media/multi-factor-authentication-get-started-portal/portal.png)
 
 > [!NOTE]
-> El portal de usuarios solo está disponible con el Servidor Multi-Factor Authentication. Si utiliza Multi-Factor Authentication en la nube, remita a sus usuarios a [Configuración de mi cuenta para la verificación en dos pasos](./end-user/multi-factor-authentication-end-user-first-time.md) o [Administración de la configuración de la verificación en dos pasos](./end-user/multi-factor-authentication-end-user-manage-settings.md).
+> portal de usuarios de Hello solo está disponible con el servidor de autenticación multifactor. Si utiliza la autenticación multifactor en la nube de hello, consulte su toohello usuarios [su cuenta para la verificación en dos pasos de instalación](./end-user/multi-factor-authentication-end-user-first-time.md) o [administrar la configuración de verificación en dos pasos](./end-user/multi-factor-authentication-end-user-manage-settings.md).
 
-## <a name="install-the-web-service-sdk"></a>Instalación del SDK del servicio web
+## <a name="install-hello-web-service-sdk"></a>Instalar SDK del servicio web Hola
 
-En ambos escenarios, si el SDK del servicio web de Azure Multi-Factor Authentication aún **no** está instalado en el Servidor Azure Multi-Factor Authentication (MFA), siga los pasos que se indican a continuación.
+En estos escenarios, si hello SDK de servicio Web de Azure Multi-factor Authentication es **no** ya instalados en hello servidor Azure Multi-factor Authentication (MFA), Hola completa los pasos siguientes.
 
-1. Abra la consola del Servidor Multi-Factor Authentication.
-2. Vaya a **Web Service SDK** (SDK del servicio web) y seleccione **Install Web Service SDK** (Instalar SDK del servicio web).
-3. Complete la instalación mediante los valores predeterminados a menos que necesite cambiarlos por algún motivo.
-4. Enlace un certificado SSL al sitio en IIS.
+1. Abra la consola de servidor de autenticación multifactor de Hola.
+2. Vaya toohello **SDK del servicio Web** y seleccione **instalar SDK del servicio Web**.
+3. Instalación de hello completa con los valores predeterminados de Hola a menos que necesite toochange les por algún motivo.
+4. Enlazar un sitio de toohello de certificado SSL en IIS.
 
-Si tiene alguna pregunta acerca de cómo configurar un certificado SSL en un servidor IIS, consulte el artículo [How to Set Up SSL on IIS](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Configuración de un certificado SSL en IIS)///.
+Si tiene alguna pregunta acerca de cómo configurar un certificado SSL en un servidor IIS, vea el artículo de hello [cómo configurar SSL en IIS tooSet](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
-El SDK del servicio web debe estar protegido con un certificado SSL. Un certificado autofirmado es adecuado para este propósito. Importe el certificado al almacén "Entidades de certificación de raíz de confianza" de la cuenta Equipo local en el servidor web del Portal de usuarios para que confíe en ese certificado cuando inicie la conexión SSL.
+Hola SDK del servicio Web debe estar protegido con un certificado SSL. Un certificado autofirmado es adecuado para este propósito. Importar certificado Hola Hola "Entidades de certificación de raíz de confianza" almacén de cuenta de equipo Local de hello en el servidor web de Portal de usuarios de Hola para que confíe en ese certificado cuando se inicie la conexión de SSL de Hola.
 
 ![SDK del servicio web de configuración del Servidor MFA](./media/multi-factor-authentication-get-started-portal/sdk.png)
 
-## <a name="deploy-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>Implementación del Portal de usuarios en el mismo servidor que el Servidor Azure Multi-Factor Authentication
+## <a name="deploy-hello-user-portal-on-hello-same-server-as-hello-azure-multi-factor-authentication-server"></a>Implementar el portal de usuarios de hello en hello mismo servidor como servidor Azure Multi-factor Authentication Hola
 
-Los siguientes requisitos previos son obligatorios para instalar el Portal de usuarios en el **mismo servidor** que el Servidor Azure Multi-Factor Authentication:
+Hello requisitos previos siguientes son necesarios tooinstall portal de usuarios de hello en hello **mismo servidor** como Hola servidor Azure Multi-factor Authentication:
 
 * IIS, incluido ASP.NET y compatibilidad con la metabase de IIS 6 (para IIS 7 o posterior).
-* Una cuenta con derechos de administrador para el equipo y el dominio, si corresponde. La cuenta necesita permisos para crear grupos de seguridad de Active Directory.
-* Proteja el portal de usuarios con un certificado SSL.
-* Proteja el SDK del servicio web Azure Multi-Factor Authentication con un certificado SSL.
+* Una cuenta con derechos de administrador para el equipo de Hola y dominio, si es aplicable. cuenta de Hello tiene grupos de seguridad de Active Directory de toocreate de permisos.
+* Portal de usuarios de hello segura con un certificado SSL.
+* Hola SDK de servicio Web de Azure Multi-factor Authentication segura con un certificado SSL.
 
-Para implementar el portal de usuarios, siga estos pasos:
+toodeploy Hola portal, seguimiento de usuario de estos pasos:
 
-1. Abra la consola del Servidor Azure Multi-Factor Authentication, haga clic en el icono **Portal de usuarios** en el menú de la izquierda y en **Instalar portal de usuarios**.
-2. Complete la instalación mediante los valores predeterminados a menos que necesite cambiarlos por algún motivo.
-3. Enlace un certificado SSL al sitio en IIS.
+1. Abra la consola de servidor de autenticación multifactor de Azure de hello, haga clic en hello **Portal de usuarios** icono Hola deja menú, a continuación, haga clic en **instalar Portal de usuarios**.
+2. Instalación de hello completa con los valores predeterminados de Hola a menos que necesite toochange les por algún motivo.
+3. Enlazar un sitio de toohello de certificado SSL en IIS
 
    > [!NOTE]
    > Este certificado SSL suele ser un certificado SSL firmado públicamente.
 
-4. Abra un explorador web desde cualquier equipo y vaya a la dirección URL donde se instaló el Portal de usuarios (por ejemplo, https://mfa.contoso.com/MultiFactorAuth). Asegúrese de que no aparezca ningún error ni advertencia de certificado.
+4. Abra un explorador web desde cualquier equipo y explorar dirección URL de toohello donde se instaló el portal de usuarios de hello (ejemplo: https://mfa.contoso.com/MultiFactorAuth). Asegúrese de que no aparezca ningún error ni advertencia de certificado.
 
 ![Instalación del Portal de usuarios del servidor MFA](./media/multi-factor-authentication-get-started-portal/install.png)
 
-Si tiene alguna pregunta acerca de cómo configurar un certificado SSL en un servidor IIS, consulte el artículo [How to Set Up SSL on IIS](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Configuración de un certificado SSL en IIS)///.
+Si tiene alguna pregunta acerca de cómo configurar un certificado SSL en un servidor IIS, vea el artículo de hello [cómo configurar SSL en IIS tooSet](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
-## <a name="deploy-the-user-portal-on-a-separate-server"></a>Implementación del portal de usuarios en un servidor independiente
+## <a name="deploy-hello-user-portal-on-a-separate-server"></a>Implementar el portal de usuarios de hello en un servidor independiente
 
-Si el servidor donde se ejecuta el Servidor Azure Multi-Factor Authentication no es accesible desde Internet, debería instalar el Portal de usuarios en un **servidor independiente que sí lo sea**.
+Si servidor de Hola donde se ejecuta el servidor de autenticación multifactor de Azure no es accesible desde internet, debe instalar el portal de usuarios de hello en un **servidor independiente y orientado a internet**.
 
-Si su organización usa la aplicación Microsoft Authenticator como uno de los métodos de verificación y desea implementar el portal de usuarios en su propio servidor, complete los siguientes requisitos:
+Si su organización usa Hola aplicación Authenticator de Microsoft como uno de los métodos de comprobación de Hola y desea toodeploy portal de usuarios de hello en su propio servidor, realizar Hola según los requisitos:
 
-* Use la versión 6.0 o posterior del Servidor Azure Multi-Factor Authentication.
-* Instale el portal de usuarios en un servidor web que sea accesible desde Internet con Microsoft Internet Information Services (IIS) 6.x o posterior.
-* Si utiliza IIS 6.x, asegúrese de que ASP.NET v2.0.50727 esté instalado, registrado y establecido en **Permitido**.
+* Usar la versión 6.0 o posterior del programa Hola a servidor de autenticación multifactor de Azure.
+* Instalar el portal de usuarios de hello en un servidor de web accesibles desde internet ejecuta Microsoft internet Information Services (IIS) 6.x o superior.
+* Cuando se usa IIS 6.x, asegúrese de ASP.NET v2.0.50727 está instalado, registrado y establecido demasiado**permitido**.
 * Si usa IIS 7.x o superior, IIS, incluida la autenticación básica, ASP.NET y la compatibilidad con la metabase de IIS 6.
-* Proteja el portal de usuarios con un certificado SSL.
-* Proteja el SDK del servicio web Azure Multi-Factor Authentication con un certificado SSL.
-* Asegúrese de que el portal de usuarios pueda conectarse al SDK del servicio web Azure Multi-Factor Authentication a través de SSL.
-* Asegúrese de que el portal de usuarios pueda autenticarse en el SDK del servicio web Azure Multi-Factor Authentication mediante las credenciales de una cuenta de servicio del grupo de seguridad "PhoneFactor Admins". La cuenta de servicio y el grupo existen en Active Directory si el Servidor Azure Multi-Factor Authentication se ejecuta en un servidor unido al dominio. La cuenta de servicio y el grupo existen localmente en Servidor Azure Multi-Factor Authentication si no está unido al dominio.
+* Portal de usuarios de hello segura con un certificado SSL.
+* Hola SDK de servicio Web de Azure Multi-factor Authentication segura con un certificado SSL.
+* Asegúrese de que portal de usuarios de hello puede conectarse toohello SDK de servicio Web de Azure Multi-factor Authentication a través de SSL.
+* Asegúrese de que portal de usuarios de hello puede autenticar toohello SDK de servicio Web de Azure Multi-factor Authentication con credenciales de Hola de una cuenta de servicio en el grupo de seguridad de "PhoneFactor Admins" Hola. Esta cuenta de servicio y el grupo deben existir en Active Directory si Hola servidor Azure Multi-factor Authentication se ejecuta en un servidor unido a un dominio. Esta cuenta de servicio y el grupo existen localmente en hello servidor Azure Multi-factor Authentication si no es tooa Unidos a un dominio.
 
-Para instalar el portal de usuarios en un servidor diferente a Servidor Azure Multi-Factor Authentication, se deben seguir estos pasos:
+Instalar portal de usuarios de hello en un servidor distinto del servidor Azure Multi-factor Authentication Hola requiere Hola pasos:
 
-1. **En el servidor MFA**, vaya a la ruta de instalación (por ejemplo: C:\Archivos de programa\Multi-Factor Authentication Server) y copie el archivo **MultiFactorAuthenticationUserPortalSetup64** en una ubicación accesible para el servidor con conexión a Internet en el que lo instalará.
-2. **En el servidor web con conexión a Internet**, ejecute el archivo de instalación MultiFactorAuthenticationUserPortalSetup64 como administrador, cambie el sitio si lo desea y modifique el directorio Virtual a un nombre corto, si lo prefiere.
-3. Enlace un certificado SSL al sitio en IIS.
+1. **En el servidor MFA hello**, examinar ruta de instalación de toohello (ejemplo: C:\Program programa\multi-Factor Authentication Server) y copiar el archivo de hello **MultiFactorAuthenticationUserPortalSetup64** tooa ubicación donde se instalará el servidor de conexión a internet toohello accesible.
+2. **En servidor de web a través de internet de hello**, ejecute el archivo de instalación de hello MultiFactorAuthenticationUserPortalSetup64 como administrador, cambiar Hola sitio si lo desea y cambiar el nombre corto de hello Virtual directory tooa si lo desea.
+3. Enlazar un sitio de toohello de certificado SSL en IIS.
 
    > [!NOTE]
    > Este certificado SSL suele ser un certificado SSL firmado públicamente.
 
-4. Vaya a **C:\inetpub\wwwroot\MultiFactorAuth**
-5. Edite el archivo Web.Config en el Bloc de notas
+4. Examinar demasiado**C:\inetpub\wwwroot\MultiFactorAuth**
+5. Editar el archivo Web.Config de hello en el Bloc de notas
 
-    * Busque la clave **"USE_WEB_SERVICE_SDK"** y cambie **value="false"** a **value="true"**
-    * Busque la clave **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** y cambie **value=""** a **value="DOMAIN\User"** donde "DOMAIN\User" es una cuenta de servicio que forma parte del grupo "PhoneFactor Admins".
-    * Busque la clave **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** y cambie **value=""** a **value="Password"** donde Password es la contraseña de la cuenta de servicio escrita en la línea anterior.
-    * Busque el valor **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** y cambie esta dirección URL del marcador de posición a la dirección URL del SDK del servicio web que se instaló en el paso 2.
-    * Guarde el archivo Web.Config y cierre el Bloc de notas.
+    * Buscar la clave de hello **"USE_WEB_SERVICE_SDK"** y cambiar **valor = "false"** demasiado**valor = "true"**
+    * Buscar la clave de hello **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** y cambiar **valor = ""** demasiado**valor = "Dominio\usuario"** donde dominio ombre de usuario es una cuenta de servicio que forma parte de Grupo de "PhoneFactor Admins".
+    * Buscar la clave de hello **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** y cambiar **valor = ""** demasiado**valor = "Contraseña"** donde contraseña es la contraseña Hola Hola servicio Cuenta especificada en la línea anterior de Hola.
+    * Buscar valor hello **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** y cambie esta toohello de dirección URL de marcador de posición URL de SDK del servicio Web se instaló en el paso 2.
+    * Guarde el archivo Web.Config de hello y cierre el Bloc de notas.
 
-6. Abra un explorador web desde cualquier equipo y vaya a la dirección URL donde se instaló el Portal de usuarios (por ejemplo, https://mfa.contoso.com/MultiFactorAuth). Asegúrese de que no aparezca ningún error ni advertencia de certificado.
+6. Abra un explorador web desde cualquier equipo y explorar dirección URL de toohello donde se instaló el portal de usuarios de hello (ejemplo: https://mfa.contoso.com/MultiFactorAuth). Asegúrese de que no aparezca ningún error ni advertencia de certificado.
 
-Si tiene alguna pregunta acerca de cómo configurar un certificado SSL en un servidor IIS, consulte el artículo [How to Set Up SSL on IIS](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Configuración de un certificado SSL en IIS)///.
+Si tiene alguna pregunta acerca de cómo configurar un certificado SSL en un servidor IIS, vea el artículo de hello [cómo configurar SSL en IIS tooSet](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
-## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Establecimiento de la configuración del Portal de usuarios en el Servidor Azure Multi-Factor Authentication
+## <a name="configure-user-portal-settings-in-hello-azure-multi-factor-authentication-server"></a>Configurar las opciones de portal de usuario en hello servidor Azure Multi-factor Authentication
 
-Ahora que el Portal del usuario está instalado, debe configurar el Servidor Azure Multi-Factor Authentication para que funcione con el portal.
+Ahora se instala dicho portal de usuarios de hello, deberá tooconfigure Hola servidor Azure Multi-factor Authentication toowork con el portal de Hola.
 
-1. En la consola del Servidor Azure Multi-Factor Authentication, haga clic en el icono **Portal de usuarios**. En la pestaña Settings (Configuración), escriba la dirección URL del Portal de usuarios en el cuadro de texto **User Portal URL** (URL del Portal de usuarios). Si se ha habilitado la funcionalidad de correo electrónico, esta dirección URL se incluye en los mensajes de correo electrónico que se envían a los usuarios cuando se importan al Servidor Azure Multi-Factor Authentication.
-2. Elija la configuración que desea usar en el Portal de usuarios. Por ejemplo, si se permite que los usuarios elijan sus métodos de autenticación, asegúrese de que **Permitir a los usuarios seleccionar el método** esté activado, junto con los métodos entre los que pueden elegir.
-3. Defina quiénes deben ser los administradores en la pestaña **Administradores**. Puede crear permisos administrativos granulares mediante las casillas y listas desplegables en los cuadros Agregar y Editar.
+1. En la consola de servidor de autenticación multifactor de Azure de hello, haga clic en hello **Portal de usuarios** icono. En la pestaña de configuración de hello, escriba portal de usuarios de hello URL toohello con hello **dirección URL del Portal de usuario** cuadro de texto. Si se ha habilitado la funcionalidad de correo electrónico, esta dirección URL se incluye en los mensajes de correo electrónico de Hola se envían toousers cuando se importan en hello servidor Azure Multi-factor Authentication.
+2. Elija la configuración de Hola que desea toouse Hola Portal de usuarios. Por ejemplo, si los usuarios pueden toochoose Asegúrese de los métodos de autenticación, que **permitir que los usuarios tooselect método** se activa, junto con los métodos de Hola que pueden elegir.
+3. Definir quién debe ser administradores en hello **administradores** ficha. Puede crear permisos administrativos granulares con casillas de verificación de Hola y listas desplegables en los cuadros de hello Agregar/editar.
 
 Configuración opcional:
-- **Preguntas de seguridad**: defina las preguntas de seguridad aprobadas para el entorno y el idioma en el que aparecen.
+- **Preguntas de seguridad** -definir aprobado preguntas de seguridad para el idioma de hello y entorno aparecen en.
 - **Sesiones superadas**: configure la integración del portal de usuario con un sitio web basado en formularios con MFA.
-- **IP de confianza**: permita a los usuarios omitir MFA al autenticar desde una lista de direcciones IP o intervalos de confianza.
+- **IP de confianza** -permitir que los usuarios tooskip MFA al autenticar en una lista de direcciones IP o intervalos de confianza.
 
 ![Configurar el Portal de usuarios del servidor MFA](./media/multi-factor-authentication-get-started-portal/config.png)
 
-Servidor Azure Multi-Factor Authentication ofrece varias opciones para el portal de usuarios. En la tabla siguiente se proporciona una lista de estas opciones y se obtiene una explicación de para qué se usan.
+Servidor de la autenticación multifactor de Azure ofrece varias opciones para el portal de usuarios de Hola. Hello tabla siguiente proporciona una lista de estas opciones y una explicación de lo que se utilizan.
 
 | Configuración del portal de usuarios | Description |
 |:--- |:--- |
-| URL del portal de usuarios | Especifique la dirección URL en la que se hospedará el portal. |
-| Autenticación principal | Especifique el tipo de autenticación que se usará al iniciar sesión en el portal. Autenticación de Windows, Radius o LDAP. |
-| Permitir que los usuarios inicien sesión | Permite a los usuarios especificar un nombre de usuario y una contraseña en la página de inicio de sesión del Portal de usuarios. Si no está seleccionada esta opción, las casillas se atenuarán. |
-| Permitir inscripción de usuario | Permite al usuario inscribirse en Multi-Factor Authentication al llevarlo a una pantalla de configuración en la que se solicita información adicional, como el número de teléfono. Solicitar teléfono de reserva permite a los usuarios especificar un número de teléfono secundario. Solicita un token OATH de terceros permite a los usuarios especificar un token OATH de terceros. |
-| Permitir a los usuarios iniciar Omisión por única vez | Permite a los usuarios iniciar Omisión por única vez. Si un usuario configura esta opción, entrará en vigor la próxima vez que el usuario inicie sesión. Solicitar segundos de omisión proporciona al usuario un cuadro para que puedan cambiar el valor predeterminado de 300 segundos. De lo contrario, la omisión por única vez solo funciona durante 300 segundos. |
-| Permitir a los usuarios seleccionar el método  | Permite a los usuarios especificar su método de contacto principal. Este método puede consistir en una llamada de teléfono, un mensaje de texto, una aplicación móvil o un token OATH. |
-| Permitir a los usuarios seleccionar el idioma | Permite a los usuarios cambiar el idioma que se usa para la llamada de teléfono, el mensaje de texto, la aplicación móvil o el token OATH. |
-| Permitir a los usuarios activar la aplicación móvil | Permite a los usuarios generar un código de activación para completar el proceso de activación de la aplicación móvil que se usa con el servidor.  También puede establecer el número de dispositivos en los que se puede activar la aplicación, entre 1 y 10. |
-| Usar preguntas de seguridad para la reserva | Permite preguntas de seguridad en caso de que la verificación en dos pasos genere un error. Puede especificar el número de preguntas de seguridad que se deben responder correctamente. |
-| Permitir a los usuarios asociar el token OATH de terceros | Permite a los usuarios especificar un token OATH de terceros. |
-| Usar token OATH para la reserva | Permite el uso de un token OATH en caso de que la verificación en dos pasos no sea correcta. También puede especificar el tiempo de espera de la sesión en minutos. |
-| Habilitación del registro | Habilita el registro en el Portal de usuarios. Los archivos de registro se encuentra en C:\Archivos de programa\Multi-Factor Authentication Server\Logs. |
+| URL del portal de usuarios | Escriba la dirección URL de Hola de donde se hospeda el portal de Hola. |
+| Autenticación principal | Especificar tipo de Hola de toouse de autenticación cuando inicien sesión en el portal de toohello. Autenticación de Windows, Radius o LDAP. |
+| Permitir que los usuarios toolog en | Permitir a los usuarios tooenter un nombre de usuario y una contraseña en página de inicio de sesión de hello para el portal de usuarios de Hola. Si no se selecciona esta opción, cuadros de hello aparecen atenuadas. |
+| Permitir inscripción de usuario | Permitir un tooenroll de usuario en la autenticación multifactor y tomarlas tooa pantalla de configuración que les solicite información adicional, como el número de teléfono. Solicitar teléfono de reserva permite a los usuarios toospecify un número de teléfono secundario. Símbolo del sistema de terceros token OATH permite toospecify a los usuarios un token OATH de terceros. |
+| Permitir que los usuarios tooinitiate omisión por única vez | Permitir que los usuarios tooinitiate una omisión por única vez. Si un usuario configure esta opción, será necesario Hola efecto siguiente tiempo Hola usuario inicia sesión. Solicitar un bypass segundos proporciona usuario Hola con un cuadro para que puedan cambiar el valor predeterminado de Hola de 300 segundos. En caso contrario, la omisión por única vez Hola sólo es buena durante 300 segundos. |
+| Permitir a los usuarios tooselect (método) | Permitir que los usuarios toospecify su método de contacto principal. Este método puede consistir en una llamada de teléfono, un mensaje de texto, una aplicación móvil o un token OATH. |
+| Permitir a los usuarios tooselect idioma | Permitir a los usuarios de lenguaje de hello toochange que se usa para hello llamada de teléfono, mensaje de texto, aplicación móvil o token OATH. |
+| Permitir que la aplicación móvil de los usuarios tooactivate | Permitir que los usuarios toogenerate un activación código toocomplete Hola aplicación móvil activación proceso que se usa con el servidor de Hola.  También puede establecer el número de Hola de dispositivos que se pueden activar aplicación de hello en, entre 1 y 10. |
+| Usar preguntas de seguridad para la reserva | Permite preguntas de seguridad en caso de que la verificación en dos pasos genere un error. Puede especificar el número de Hola de preguntas de seguridad que se debe responder correctamente. |
+| Permitir que el token OATH de terceros de los usuarios tooassociate | Permitir que los usuarios toospecify un token OATH de terceros. |
+| Usar token OATH para la reserva | Permitir uso Hola de un token OATH en caso de que no es correcta la verificación en dos pasos. También puede especificar el tiempo de espera de sesión de hello en minutos. |
+| Habilitación del registro | Habilitar el registro en el portal de usuarios de Hola. Hello archivos de registro se encuentra en: C:\Program programa\multi-Factor Authentication Server\Logs. |
 
-La mayoría de estas configuraciones son visibles para el usuario del portal una vez que están habilitados y hayan iniciado sesión en el Portal de usuarios.
+Estos valores se convierten en usuario toohello visible en el portal de hello una vez que están activados y han iniciado sesión en el portal de usuarios de toohello.
 
 ![Configuración del portal de usuarios](./media/multi-factor-authentication-get-started-portal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>Autoservicio de inscripción de usuarios
 
-Si desea que los usuarios inicien sesión y se inscriban, debe seleccionar las opciones **Allow users to log in** (Permitir que los usuarios inicien sesión) y **Allow user enrollment** (Permitir inscripción de usuario) en la pestaña Settings (Configuración). Recuerde que la configuración que seleccione afectará a la experiencia de inicio de sesión del usuario.
+Si desea que su toosign a los usuarios e inscribir, debe seleccionar hello **permitir que los usuarios toolog en** y **permitir la inscripción de usuario** opciones en la ficha de configuración de Hola. Recuerde que la configuración de Hola que seleccione afectan a la experiencia de inicio de sesión del usuario de Hola.
 
-Por ejemplo, cuando un usuario inicia sesión en el Portal de usuarios por primera vez, pasa a la página Azure Multi-Factor Authentication User Setup (Configuración de usuario de Azure Multi-Factor Authentication). Dependiendo de cómo haya configurado Azure Multi-Factor Authentication, el usuario puede seleccionar el método de autenticación.
+Por ejemplo, cuando un usuario inicia sesión en el portal de usuarios de toohello para hello primera vez, a continuación, se toman toohello página de configuración de usuario de autenticación multifactor de Azure. Dependiendo de cómo haya configurado la autenticación multifactor Azure, usuario de hello puede ser capaz de tooselect su método de autenticación.
 
-Si seleccionan el método de verificación Voice Call (Llamada de voz) o está preconfigurado para usar ese método, la página solicitará al usuario que escriba su número de teléfono principal y la extensión, si procede. También puede especificar un número de teléfono de reserva.
+Si selecciona método de comprobación de llamada de voz de Hola o han sido previamente configurado toouse ese método, página de hello solicita Hola usuario tooenter su número de teléfono principal y la extensión, si corresponde. También pueden ser permitido tooenter un número de teléfono de reserva.
 
 ![Registrar número de teléfono principal y de reserva](./media/multi-factor-authentication-get-started-portal/backupphone.png)
 
-Si el usuario debe usar un PIN al realizar la autenticación, la página le pedirá que lo cree. Después de escribir sus números de teléfono y PIN (si procede), el usuario hace clic en el botón **Call Me Now to Authenticate** (Llamarme ahora para autenticar). Azure Multi-Factor Authentication llevará a cabo una verificación mediante llamada de teléfono al número de teléfono principal del usuario. El usuario debe responder a la llamada de teléfono y escribir su PIN (si procede) y presione # para avanzar al siguiente paso del proceso de autoinscripción.
+Si el usuario de hello toouse requiere un PIN para la autenticación, página Hola les solicita toocreate un PIN. Después de escribir sus números de teléfono y PIN (si procede), el usuario de hello, haga clic en hello **Llamarme ahora tooAuthenticate** botón. La autenticación multifactor Azure realiza el número de teléfono principal del usuario toohello de comprobación de llamada de teléfono. usuario Hola debe responder llamada de teléfono de Hola y escriba su PIN (si procede) y presione # toomove toohello siguiente paso del proceso de inscripción automática de Hola.
 
-Si el usuario selecciona el método de verificación Text Message (Mensaje de texto) o se ha configurado previamente para usar este método, la página solicitará al usuario su número de teléfono móvil. Si el usuario debe usar un PIN al realizar la autenticación, la página también le pedirá que escriba un PIN.  Después de escribir su número de teléfono y PIN (si procede), el usuario hace clic en el botón **Text Me Now to Authenticate** (Enviarme un SMS ahora para autenticar). Azure Multi-Factor Authentication llevará a cabo una verificación mediante un SMS al teléfono móvil del usuario. El usuario recibe el mensaje de texto con un código de acceso de un solo uso, responde al mensaje con ese código más su PIN (si procede).
+Si el usuario Hola selecciona el método de verificación de los mensajes de texto de Hola o se ha configurado previamente toouse ese método, página Hola pide a usuario Hola su número de teléfono móvil. Si el usuario de hello toouse requiere un PIN para la autenticación, página de hello también les solicita tooenter un PIN.  Después de escribir su número de teléfono y PIN (si procede), el usuario de hello, haga clic en hello **Enviarme un SMS ahora tooAuthenticate** botón. La autenticación multifactor Azure realiza teléfono móvil SMS comprobación toohello de un usuario. usuario de Hello recibe el mensaje de texto hello con un solo-tiempo-código de acceso (OTP) y, a continuación, mensaje de toohello de respuestas con ese OTP más su PIN (si procede).
 
 ![SMS del portal de usuarios](./media/multi-factor-authentication-get-started-portal/text.png)
 
-Si el usuario selecciona el método de verificación Mobile App (Aplicación móvil), la página solicitará al usuario que instale la aplicación Microsoft Authenticator en su dispositivo y genere un código de activación. Después de instalar la aplicación, el usuario hace clic en el botón Generate Activation Code (Generar código de activación).
+Si Hola seleccionará el método de comprobación de aplicación móvil de hello, página Hola solicita la aplicación hello usuario tooinstall Hola Microsoft Authenticator en su dispositivo y generar un código de activación. Después de instalar la aplicación hello, usuario de hello, hace clic en botón Generar código de activación de Hola.
 
 > [!NOTE]
-> Para usar la aplicación Microsoft Authenticator, el usuario debe habilitar las notificaciones de inserción para su dispositivo.
+> aplicación de Microsoft Authenticator de hello toouse, usuario Hola debe habilitar las notificaciones de inserción para su dispositivo.
 
-A continuación, la página muestra un código de activación y una dirección URL, junto con la imagen de un código de barras. Si el usuario debe usar un PIN al realizar la autenticación, la página también le pedirá que escriba un PIN. El usuario escribe el código de activación y la dirección URL en la aplicación Microsoft Authenticator o usa el escáner para digitalizar la imagen del código de barras y hace clic en el botón Activate (Activar).
+página de Hello, a continuación, muestra un código de activación y una dirección URL junto con una imagen de código de barras. Si el usuario de hello toouse requiere un PIN para la autenticación, página de hello además les solicita tooenter un PIN. usuario Hola entra en el código de activación de Hola y la dirección URL en la aplicación de Microsoft Authenticator de Hola o usa imagen de código de barras de hello código de barras escáner tooscan Hola y hace clic en el botón Activar de Hola.
 
-Una vez completada la activación, el usuario hace clic en el botón **Authenticate Me Now** (Autenticarme ahora). Azure Multi-Factor Authentication llevará a cabo una verificación en la aplicación móvil del usuario. El usuario debe escribir su PIN (si procede) y presionar el botón Autenticar en su aplicación móvil para avanzar al siguiente paso del proceso de autoinscripción.
+Una vez completada la activación de hello, usuario de hello, haga clic en hello **Autenticarme ahora** botón. La autenticación multifactor Azure realiza la aplicación móvil del usuario de toohello de comprobación. usuario de Hello debe introducir su PIN (si procede) y presione el botón de autenticar de hello en su aplicación móvil toomove en toohello siguiente paso del proceso de inscripción automática de Hola.
 
-Si los administradores han configurado Servidor Azure Multi-Factor Authentication para recopilar preguntas y respuestas acerca de la seguridad, el usuario pasa a la página de preguntas de seguridad. El usuario debe seleccionar cuatro preguntas de seguridad y proporcionar respuestas a las preguntas seleccionadas.
+Si han configurado los administradores de Hola Hola servidor Azure Multi-factor Authentication toocollect seguridad preguntas y respuestas, usuario hello, a continuación, se toma la página de preguntas de seguridad toohello. usuario de Hello debe seleccionar cuatro preguntas de seguridad y proporcionar respuestas preguntas tootheir seleccionado.
 
 ![Preguntas de seguridad del portal de usuarios](./media/multi-factor-authentication-get-started-portal/secq.png)
 
-La autoinscripción del usuario ahora está completa y el usuario inicia sesión en el Portal de usuarios. Los usuarios pueden iniciar sesión en el Portal de usuarios en cualquier momento para cambiar sus números de teléfono, PIN, métodos de autenticación y preguntas de seguridad si sus administradores permiten la modificación de sus métodos.
+inscripción automática de usuarios de Hola se habrá completada y usuario de hello ha iniciado sesión en el portal de usuarios de toohello. Los usuarios puedan iniciar sesión en el portal de usuarios de toohello en cualquier momento en hello futuras toochange sus números de teléfono, PIN, métodos de autenticación y preguntas de seguridad si cambiar sus métodos se permite los administradores.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- [Implementación del servicio web de aplicaciones móviles del Servidor Azure Multi-Factor Authentication](multi-factor-authentication-get-started-server-webservice.md)
+- [Implementar el servicio Web de aplicación móvil de Azure Multi-factor Authentication Server Hola](multi-factor-authentication-get-started-server-webservice.md)

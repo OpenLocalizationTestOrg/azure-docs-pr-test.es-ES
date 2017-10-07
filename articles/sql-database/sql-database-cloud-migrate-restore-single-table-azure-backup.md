@@ -1,6 +1,6 @@
 ---
-title: "Restaurar una única tabla de la copia de seguridad de Azure SQL Database | Microsoft Docs"
-description: "Obtenga información sobre cómo restaurar una única tabla de la copia de seguridad de Base de datos SQL de Azure."
+title: aaaRestore una sola tabla de copia de seguridad de base de datos de SQL de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toorestore una sola tabla de copia de seguridad de base de datos de SQL Azure."
 services: sql-database
 documentationcenter: 
 author: dalechen
@@ -15,35 +15,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: daleche
-ms.openlocfilehash: 8c750c503d10ea63b9665958b96db2dfea3d9a3c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 696d2ac87a70bccdf063bfecb8255723404aa5bd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-restore-a-single-table-from-an-azure-sql-database-backup"></a>Restauración de una única tabla a partir de una copia de seguridad de Base de datos SQL de Azure
-Puede pasarle que haya modificado algunos datos por error en una base de datos SQL y ahora desee recuperar la única tabla afectada. En este artículo se describe cómo restaurar una única tabla de una base de datos desde una de las [copias de seguridad automáticas](sql-database-automated-backups.md)de Base de datos SQL.
+# <a name="how-toorestore-a-single-table-from-an-azure-sql-database-backup"></a>Cómo toorestore una sola tabla desde una copia de seguridad de base de datos de SQL Azure
+Puede encontrarse con una situación en la que modificar accidentalmente algunos datos en una base de datos SQL y ahora desea toorecover Hola única afectados tabla. Este artículo describe cómo toorestore una sola tabla en una base de datos de una base de datos SQL de hello [copias de seguridad automáticas](sql-database-automated-backups.md).
 
-## <a name="preparation-steps-rename-the-table-and-restore-a-copy-of-the-database"></a>Pasos de preparación: cambiar el nombre de la tabla y restaurar una copia de la base de datos
-1. Identifique la tabla en la base de datos SQL de Azure que desee reemplazar por la copia restaurada. Use Microsoft SQL Management Studio para cambiar el nombre de la tabla. Por ejemplo, cambie el nombre de la tabla como &lt;nombre de la tabla&gt;_old.
+## <a name="preparation-steps-rename-hello-table-and-restore-a-copy-of-hello-database"></a>Pasos de preparación: cambiar el nombre de tabla de Hola y restaure una copia de base de datos de Hola
+1. Identificar la tabla de hello en la base de datos de SQL Azure que desea tooreplace con copia de hello restaurado. Utilice la tabla de Microsoft SQL Management Studio toorename Hola. Por ejemplo, cambiar el nombre de tabla de hello como &lt;nombre de la tabla&gt;_old.
    
    > [!NOTE]
-   > Para evitar que se bloquee, asegúrese de que no haya ninguna actividad ejecutándose en la tabla a la que le está cambiando el nombre. Si encuentra algún problema, realice este procedimiento durante una ventana de mantenimiento.
+   > tooavoid está bloqueado, asegúrese de que no hay ninguna actividad ejecutar en la tabla de Hola que ha cambiado. Si encuentra algún problema, realice este procedimiento durante una ventana de mantenimiento.
    >
 
-2. Restaure una copia de seguridad de su base de datos al punto temporal que desee recuperar; para ello, siga los pasos descritos en [Restauración a un momento dado](sql-database-recovery-using-backups.md#point-in-time-restore).
+2. Restaurar una copia de seguridad de su punto de tooa de base de datos en el tiempo que desea que toorecover toousing hello [punto-In_Time restaurar](sql-database-recovery-using-backups.md#point-in-time-restore) pasos.
    
    > [!NOTE]
-   > El nombre de la base de datos restaurada tendrá el formato nombreBaseDeDatos+MarcaDeTiempo; por ejemplo, **AdventureWorks2012_2016-01-01T22-12Z**. Con este paso no se sobrescribe el nombre de la base de datos existente en el servidor. Se trata de una medida de seguridad, diseñada para permitirle comprobar la base de datos restaurada antes de deshacerse de su base de datos actual y cambiar el nombre de la base de datos restaurada para su uso en producción.
+   > nombre de Hola de base de datos de hello restaurar será en formato de marca de tiempo + DBName Hola; Por ejemplo, **Adventureworks2012_2016-01-01T22-12Z**. Este paso no sobrescribe el nombre de base de datos existente de hello en el servidor de Hola. Se trata de una medida de seguridad, y está pensado tooallow se tooverify Hola restaura base de datos antes de quitar la base de datos actual y cambiar el nombre de base de datos de hello restaurar para su uso en producción.
    
-## <a name="copying-the-table-from-the-restored-database-by-using-the-sql-database-migration-tool"></a>Copiar la tabla de la base de datos restaurada mediante la herramienta de migración de Base de datos SQL
+## <a name="copying-hello-table-from-hello-restored-database-by-using-hello-sql-database-migration-tool"></a>Copiando la tabla Hola de hello restaurado la base de datos mediante el uso de la herramienta de migración de base de datos de SQL de Hola
 
-1. Descargue e instale el [Asistente para migración de Base de datos SQL](https://sqlazuremw.codeplex.com).
-2. Abra el Asistente para migración de SQL Database; en la página **Select Process** (Seleccionar proceso), seleccione **Base de datos en la sección Analyze/Migrate** (Analizar o migrar) y, después, haga clic en **Siguiente**.
+1. Descargue e instale hello [Asistente para migración de base de datos de SQL](https://sqlazuremw.codeplex.com).
+2. Abra Hola Asistente para migración de base de datos de SQL, en hello **Seleccionar proceso** , seleccione **base de datos en analizar/migrar**y, a continuación, haga clic en **siguiente**.
 
    ![Asistente para migración de Base de datos SQL: seleccionar proceso](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/1.png)
 
-3. En el cuadro de diálogo **Conectar con el servidor** , aplique la configuración siguiente:
+3. Hola **conectar tooServer** diálogo cuadro, aplique Hola después de configuración:
 
    * Nombre del servidor: **su servidor SQL**
    * Autenticación: **Autenticación de SQL Server**
@@ -52,31 +52,31 @@ Puede pasarle que haya modificado algunos datos por error en una base de datos S
    * **Master DB (List all databases)** [BD maestra (Enumerar todas las bases de datos)]
    
    > [!NOTE]
-   > De forma predeterminada, el asistente guarda la información de inicio de sesión. Si no quiere que lo haga, seleccione **Forget Login Information (No recordar la información de inicio de sesión)**.
+   > De forma predeterminada el Asistente de hello guarda la información de inicio de sesión. Si no quiere que lo haga, seleccione **Forget Login Information (No recordar la información de inicio de sesión)**.
    >
    
      ![Asistente para migración de base de datos SQL: seleccionar origen, paso 1](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/2.png)
-4. En el cuadro de diálogo **Seleccionar origen**, seleccione el nombre de la base de datos que ha restaurado en la sección **Pasos de preparación** como el origen y, después, haga clic en **Siguiente**.
+4. Hola **Seleccionar origen** cuadro de diálogo, el nombre de la base de datos de hello seleccione Restaurar de hello **pasos de preparación** como origen de la sección y, a continuación, haga clic en **siguiente**.
    
     ![Asistente para migración de base de datos SQL: seleccionar origen, paso 2](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/3.png)
-5. En el cuadro de diálogo **Elegir objetos**, seleccione la opción **Seleccionar objetos de base de datos específicos** y, después, seleccione la tabla (o tablas) que quiera migrar al servidor de destino.
+5. Hola **elegir objetos** cuadro de diálogo, seleccione hello **seleccionar objetos de base de datos específica** opción y, a continuación, seleccione table(or tables) Hola que desea que el servidor de destino de toomigrate toohello.
    ![Asistente para migración de base de datos SQL: elegir objetos](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/4.png)
-6. En la página **Resumen del Asistente para scripts**, haga clic en **Sí** cuando se le pregunte si está listo para generar un script de SQL. También tiene la opción de guardar el script TSQL para usarlo más adelante.
+6. En hello **resumen del Asistente para secuencia de comandos** página, haga clic en **Sí** cuando se le pregunta acerca de si está listo toogenerate una secuencia de comandos SQL. También tiene Hola Hola toosave secuencia de comandos TSQL opción para su uso posterior.
    ![Asistente para migración de base de datos SQL: resumen del Asistente de scripts](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/5.png)
-7. En la página **Results Summary** (Resumen de resultados), haga clic en **Siguiente**.
+7. En hello **resumen de los resultados** página, haga clic en **siguiente**.
    ![Asistente para migración de base de datos SQL: resumen de resultados](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/6.png)
-8. En la página **Setup Target Server Connection** (Configurar conexión del servidor de destino), haga clic en **Conectar con el servidor** y, después, escriba los detalles de la manera siguiente:
+8. En hello **configurar conexión de servidor de destino** página, haga clic en **conectar tooServer**y, a continuación, escriba los detalles de hello como se indica a continuación:
    
    * **Nombre del servidor**: instancia de servidor de destino
    * **Autenticación**: **Autenticación de SQL Server**. Escriba sus credenciales de inicio de sesión.
-   * **Base de datos**: **Master DB (List all databases)** [BD maestra (Enumerar todas las bases de datos)]. Esta opción enumera todas las bases de datos del servidor de destino.
+   * **Base de datos**: **Master DB (List all databases)** [BD maestra (Enumerar todas las bases de datos)]. Esta opción muestra todas las bases de datos de hello en el servidor de destino de Hola.
      
      ![Asistente para migración de base de datos SQL: configurar conexión del servidor de destino](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/7.png)
-9. Haga clic en **Conectar**, seleccione la base de datos de destino a la que desea mover la tabla y, después, haga clic en **Siguiente**. Esto debe finalizar con la ejecución del script generado anteriormente, y debería ver una copia de la tabla que se ha movido recientemente en la base de datos de destino.
+9. Haga clic en **conectar**, seleccione la base de datos de destino de Hola que desea toomove Hola tabla y, a continuación, haga clic en **siguiente**. Esto debería termine de ejecutar script de Hola generado previamente y debería ver Hola recién movido la base de datos de destino de toohello copiada de tabla.
 
 ## <a name="verification-step"></a>Paso de comprobación
 
-- Consulte y pruebe la tabla copiada recientemente para asegurarse de que los datos estén intactos. Tras la confirmación, puede deshacerse de la tabla a la que ha cambiado el nombre en la sección **Pasos de preparación**. (por ejemplo, &lt;nombre de la tabla&gt;_old).
+- Hola de consultas y pruebas recién había copiado tabla toomake seguro de que los datos de hello están intactos. Tras la confirmación, puede quitar el formulario de hello cambia el nombre de tabla **pasos de preparación** sección. (por ejemplo, &lt;nombre de la tabla&gt;_old).
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Información general: copias de seguridad automatizadas de Base de datos SQL](sql-database-automated-backups.md)

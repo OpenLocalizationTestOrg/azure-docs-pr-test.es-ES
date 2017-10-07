@@ -1,6 +1,6 @@
 ---
-title: "Consulte de un índice (API de .NET - Azure Search) | Microsoft Docs"
-description: "Cree una consulta de búsqueda en Búsqueda de Azure y use los parámetros de búsqueda para filtrar y ordenar los resultados de búsqueda."
+title: "aaa \"consultar un índice (API de .NET - búsqueda de Azure) | Documentos de Microsoft\""
+description: "Crear una consulta de búsqueda en búsqueda de Azure y usar resultados de búsqueda de toofilter y de ordenación de los parámetros de búsqueda."
 services: search
 manager: jhubbard
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/19/2017
 ms.author: brjohnst
-ms.openlocfilehash: 52bd0fd4cf70401dcf881c7f28d5cd91397bb059
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8b3ba1cd1270aad038fb48d9053fcff35d243e13
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="query-your-azure-search-index-using-the-net-sdk"></a>Consultas del índice de Búsqueda de Azure con el SDK de .NET
+# <a name="query-your-azure-search-index-using-hello-net-sdk"></a>Consultar el índice de búsqueda de Azure con hello SDK para .NET
 > [!div class="op_single_selector"]
 > * [Información general](search-query-overview.md)
 > * [Portal](search-explorer.md)
@@ -28,31 +28,31 @@ ms.lasthandoff: 08/03/2017
 > 
 > 
 
-En este artículo se muestra cómo realizar una consulta en un índice con el [SDK de .NET de Búsqueda de Azure](https://aka.ms/search-sdk).
+En este artículo le mostrará cómo tooquery un índice utilizando Hola [SDK de .NET de búsqueda de Azure](https://aka.ms/search-sdk).
 
 Antes de comenzar este tutorial, debe haber [creado ya un índice de Azure Search](search-what-is-an-index.md) y [haberlo rellenado con datos](search-what-is-data-import.md).
 
 > [!NOTE]
-> Todo el código de ejemplo de este artículo está escrito en C#. El código fuente completo se puede encontrar [en GitHub](http://aka.ms/search-dotnet-howto). Consulte el [SDK de Azure Search para .NET](search-howto-dotnet-sdk.md) para ver un tutorial más detallado sobre el código de ejemplo.
+> Todo el código de ejemplo de este artículo está escrito en C#. Puede encontrar el código fuente completo hello [en GitHub](http://aka.ms/search-dotnet-howto). También puede leer sobre hello [SDK de .NET de búsqueda de Azure](search-howto-dotnet-sdk.md) para un tutorial más detallado del código de ejemplo de Hola.
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Identificación de la clave de API de consulta del servicio de Búsqueda de Azure
-Ahora que ha creado un índice de Búsqueda de Azure, está casi listo para emitir consultas mediante el SDK de .NET. En primer lugar, debe obtener una de las claves de API de consulta que se generaron para aprovisionar el servicio de búsqueda. El SDK para .NET enviará esta clave de API en cada solicitud al servicio. Tener una clave válida genera la confianza, solicitud a solicitud, entre la aplicación que envía la solicitud y el servicio que se encarga de ella.
+Ahora que ha creado un índice de búsqueda de Azure, son consultas tooissue casi listo con hello .NET SDK. En primer lugar, necesitará tooobtain uno Hola consulta claves de api que se generó para aprovisionar el servicio de búsqueda de Hola. Hola .NET SDK enviará esta clave de api en cada servicio de tooyour de solicitud. Tener una clave válida establece la confianza, por cada solicitud, entre Hola aplicación enviando Hola solicitud y el servicio de Hola que los controle.
 
-1. Para buscar las claves de API del servicio, puede iniciar sesión en [Azure Portal](https://portal.azure.com/)
-2. Vaya a la hoja de servicio de Búsqueda de Azure
-3. Haga clic en el icono "Claves"
+1. toofind puede iniciar sesión en toohello de claves de api de su servicio [portal de Azure](https://portal.azure.com/)
+2. Vaya hoja del servicio de búsqueda de Azure tooyour
+3. Haga clic en hello icono "Claves"
 
 El servicio tendrá *claves de administración* y *claves de consulta*.
 
-* Sus *claves de administración* principal y secundaria permiten conceder derechos completos para todas las operaciones, incluida la capacidad para administrar el servicio, crear y eliminar índices, indexadores y orígenes de datos. Existen dos claves, de forma que puede usar la clave secundaria si decide volver a generar la clave principal y viceversa.
-* Las *claves de consulta* conceden acceso de solo lectura a índices y documentos y normalmente se distribuyen entre las aplicaciones cliente que emiten solicitudes de búsqueda.
+* El principal y secundaria *claves de administración* conceder derechos completos tooall operaciones, incluido el servicio de hello capacidad toomanage hello, crear y eliminar índices, los indizadores y orígenes de datos. Existen dos claves para que pueda continuar la clave secundaria de hello toouse si decide tooregenerate Hola primary key y viceversa.
+* Su *claves de consulta* conceder acceso de solo lectura tooindexes y documentos, y son aplicaciones tooclient normalmente distribuida que emiten solicitudes de búsqueda.
 
-Para consultar un índice, puede utilizar una de las claves de consulta. Las claves de administración también se pueden utilizar para las consultas, pero debe utilizar una clave de consulta en el código de aplicación ya que esto se adapta mejor al [principio de privilegios mínimos](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
+Para fines de Hola de consultar un índice, puede usar una de las claves de consulta. Las claves de administración también pueden usarse para las consultas, pero debe usar una clave de consulta en el código de aplicación de manera esto mejor hello [principio de privilegios mínimos](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
-## <a name="create-an-instance-of-the-searchindexclient-class"></a>Creación de una instancia de la clase SearchIndexClient
-Para emitir consultas con el SDK de .NET de Búsqueda de Azure, necesitará crear una instancia de la clase `SearchIndexClient` . Esta clase tiene varios constructores. El que desea tiene el nombre del servicio de búsqueda, el nombre del índice y un objeto `SearchCredentials` como parámetros. `SearchCredentials` incluye su clave de API.
+## <a name="create-an-instance-of-hello-searchindexclient-class"></a>Cree una instancia de hello SearchIndexClient (clase)
+consultas de tooissue con hello SDK de .NET de búsqueda de Azure, deberá toocreate una instancia de Hola `SearchIndexClient` clase. Esta clase tiene varios constructores. Hola uno desea que toma el nombre del servicio de búsqueda, el nombre del índice y un `SearchCredentials` objeto como parámetros. `SearchCredentials` incluye su clave de API.
 
-El código siguiente crea una nueva instancia de `SearchIndexClient` para el índice "hotels" (creado en [Creación de un índice de Azure Search mediante el SDK de .NET](search-create-index-dotnet.md)) con los valores de nombre de servicio de búsqueda y clave de API que se almacenan en el archivo de configuración de la aplicación (`appsettings.json` en el caso de la [aplicación de ejemplo](http://aka.ms/search-dotnet-howto)):
+código de Hello siguiente crea un nuevo `SearchIndexClient` para índice de "hoteles" Hola (creado en [crear un índice de búsqueda de Azure usando Hola .NET SDK](search-create-index-dotnet.md)) con valores para el nombre de servicio de búsqueda de Hola y clave de api que se almacenan en la configuración de la aplicación hello archivo (`appsettings.json` en caso de hello de hello [aplicación de ejemplo](http://aka.ms/search-dotnet-howto)):
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
@@ -65,24 +65,24 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-`SearchIndexClient` tiene una propiedad `Documents`. Esta propiedad proporciona todos los métodos que necesita para consultar los índices de Búsqueda de Azure.
+`SearchIndexClient` tiene una propiedad `Documents`. Esta propiedad proporciona que todos Hola métodos que necesita tooquery índices de búsqueda de Azure.
 
 ## <a name="query-your-index"></a>Consulta del índice
-Buscar con el SDK de .NET es tan sencillo como llamar al método `Documents.Search` en su `SearchIndexClient`. Este método usa unos cuantos parámetros, incluido el texto de búsqueda, además de un objeto `SearchParameters` que se puede usar para refinar la consulta.
+Buscar con hello SDK para .NET es tan sencillo como Hola llamada `Documents.Search` método en su `SearchIndexClient`. Este método toma unos parámetros, incluido el texto de búsqueda de hello, junto con un `SearchParameters` objeto que puede ser usado toofurther refine Hola consulta.
 
 #### <a name="types-of-queries"></a>Tipos de consultas
-Los dos [tipos de consultas](search-query-overview.md#types-of-queries) principales que usará son `search` y `filter`. Una consulta `search` realiza búsquedas de uno o más términos en todos los campos *habilitados para búsqueda* del índice. Una consulta `filter` evalúa una expresión booleana en todos los campos *filtrables* de un índice.
+main Hola dos [tipos de consulta](search-query-overview.md#types-of-queries) va a utilizar son `search` y `filter`. Una consulta `search` realiza búsquedas de uno o más términos en todos los campos *habilitados para búsqueda* del índice. Una consulta `filter` evalúa una expresión booleana en todos los campos *filtrables* de un índice.
 
-Tanto los filtros como las búsquedas se realizan con el método `Documents.Search` . Se puede pasar una consulta de búsqueda en el parámetro `searchText`, mientras que una expresión de filtro se puede pasar en la propiedad `Filter` de la clase `SearchParameters`. Para filtrar sin buscar, solo tiene que pasar `"*"` al parámetro `searchText`. Para buscar sin filtrar, simplemente deje la propiedad `Filter` sin establecer, o no pase ninguna instancia de `SearchParameters`.
+Búsquedas y filtros se realizan con hello `Documents.Search` método. Puede pasarse a una consulta de búsqueda de hello `searchText` parámetro, mientras que puede pasarse a una expresión de filtro de hello `Filter` propiedad de hello `SearchParameters` clase. toofilter sin buscar, sólo tiene que pasar `"*"` para hello `searchText` parámetro. toosearch sin filtrar, deje hello `Filter` propiedad no se establece, o no pase un `SearchParameters` en absoluto de la instancia.
 
 #### <a name="example-queries"></a>Consultas de ejemplo
-El código de ejemplo siguiente muestra algunas formas de consultar el índice "hoteles" definido en [Creación de un índice de Búsqueda de Azure con el SDK de .NET](search-create-index-dotnet.md#DefineIndex). Tenga en cuenta que los documentos que se devuelven con los resultados de búsqueda son instancias de la clase `Hotel` , que se definió en [Importación de datos en Búsqueda de Azure con el SDK de .NET](search-import-data-dotnet.md#HotelClass). El código de ejemplo usa un método `WriteDocuments` para enviar los resultados de búsqueda a la consola. Este método se describe en la sección siguiente.
+Hola siguiente código de ejemplo muestra varias maneras diferentes tooquery Hola "hoteles" índice definido en [crear un índice de búsqueda de Azure con .NET SDK hello](search-create-index-dotnet.md#DefineIndex). Tenga en cuenta que documentos Hola devueltos con los resultados de la búsqueda de hello son instancias de hello `Hotel` (clase), que se ha definido en [Hola de importación de datos en búsqueda de Azure con .NET SDK](search-import-data-dotnet.md#HotelClass). código de ejemplo de Hola hace uso de un `WriteDocuments` consola de toohello de resultados de búsqueda de método toooutput Hola. Este método se describe en la sección siguiente Hola.
 
 ```csharp
 SearchParameters parameters;
 DocumentSearchResult<Hotel> results;
 
-Console.WriteLine("Search the entire index for the term 'budget' and return only the hotelName field:\n");
+Console.WriteLine("Search hello entire index for hello term 'budget' and return only hello hotelName field:\n");
 
 parameters =
     new SearchParameters()
@@ -94,8 +94,8 @@ results = indexClient.Documents.Search<Hotel>("budget", parameters);
 
 WriteDocuments(results);
 
-Console.Write("Apply a filter to the index to find hotels cheaper than $150 per night, ");
-Console.WriteLine("and return the hotelId and description:\n");
+Console.Write("Apply a filter toohello index toofind hotels cheaper than $150 per night, ");
+Console.WriteLine("and return hello hotelId and description:\n");
 
 parameters =
     new SearchParameters()
@@ -108,8 +108,8 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 
 WriteDocuments(results);
 
-Console.Write("Search the entire index, order by a specific field (lastRenovationDate) ");
-Console.Write("in descending order, take the top two results, and show only hotelName and ");
+Console.Write("Search hello entire index, order by a specific field (lastRenovationDate) ");
+Console.Write("in descending order, take hello top two results, and show only hotelName and ");
 Console.WriteLine("lastRenovationDate:\n");
 
 parameters =
@@ -124,7 +124,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 
 WriteDocuments(results);
 
-Console.WriteLine("Search the entire index for the term 'motel':\n");
+Console.WriteLine("Search hello entire index for hello term 'motel':\n");
 
 parameters = new SearchParameters();
 results = indexClient.Documents.Search<Hotel>("motel", parameters);
@@ -133,7 +133,7 @@ WriteDocuments(results);
 ```
 
 ## <a name="handle-search-results"></a>Control de los resultados de la búsqueda
-El método `Documents.Search` devuelve un objeto `DocumentSearchResult` que contiene los resultados de la consulta. En el ejemplo de la sección anterior, se usa un método llamado `WriteDocuments` para enviar los resultados de búsqueda a la consola:
+Hola `Documents.Search` método devuelve un `DocumentSearchResult` objeto que contiene los resultados de Hola de consulta de Hola. ejemplo de Hola en la sección anterior de hello usa un método llamado `WriteDocuments` consola toohello de toooutput Hola búsqueda resultados:
 
 ```csharp
 private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
@@ -147,27 +147,27 @@ private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
 }
 ```
 
-Este es el aspecto de los resultados de las consultas de la sección anterior, suponiendo que el índice "hoteles" contenga los datos de ejemplo de [Importación de datos en Búsqueda de Azure con el SDK de .NET](search-import-data-dotnet.md):
+Aquí está lo que parecen resultados hello como para las consultas de hello en la sección anterior de hello, suponiendo un índice de hoteles"Hola" se rellena con datos de ejemplo de Hola en [Hola de importación de datos en búsqueda de Azure con .NET SDK](search-import-data-dotnet.md):
 
 ```
-Search the entire index for the term 'budget' and return only the hotelName field:
+Search hello entire index for hello term 'budget' and return only hello hotelName field:
 
 Name: Roach Motel
 
-Apply a filter to the index to find hotels cheaper than $150 per night, and return the hotelId and description:
+Apply a filter toohello index toofind hotels cheaper than $150 per night, and return hello hotelId and description:
 
 ID: 2   Description: Cheapest hotel in town
-ID: 3   Description: Close to town hall and the river
+ID: 3   Description: Close tootown hall and hello river
 
-Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
+Search hello entire index, order by a specific field (lastRenovationDate) in descending order, take hello top two results, and show only hotelName and lastRenovationDate:
 
 Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
 Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
 
-Search the entire index for the term 'motel':
+Search hello entire index for hello term 'motel':
 
 ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Description (French): Hôtel le moins cher en ville      Name: Roach Motel       Category: Budget        Tags: [motel, budget]   Parking included: yes   Smoking allowed: yes    Last renovated on: 4/28/1982 12:00:00 AM +00:00 Rating: 1/5     Location: Latitude 49.678581, longitude -122.131577
 ```
 
-El código de ejemplo anterior envía los resultados de búsqueda a la consola. Del mismo modo, necesitará mostrar los resultados de búsqueda en su propia aplicación. Consulte [este ejemplo en GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) para ver cómo representar los resultados de búsqueda en una aplicación web basada en ASP.NET MVC.
+código de ejemplo de Hola anterior usa resultados de la búsqueda de hello consola toooutput. Del mismo modo, necesitará toodisplay resultados de la búsqueda en su propia aplicación. Vea [en este ejemplo en GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) para obtener un ejemplo de cómo toorender búsqueda da como resultado una aplicación web basada en ASP.NET MVC.
 

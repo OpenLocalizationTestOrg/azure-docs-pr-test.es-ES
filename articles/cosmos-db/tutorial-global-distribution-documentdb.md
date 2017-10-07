@@ -1,6 +1,6 @@
 ---
-title: "Tutorial de distribución global de Azure Cosmos DB para la API de DocumentDB | Microsoft Docs"
-description: "Obtenga información sobre cómo configurar la distribución global de Azure Cosmos DB con la API de DocumentDB."
+title: "tutorial de distribución global de Cosmos DB aaaAzure de API de documentos | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo usar de distribución global de base de datos de Azure Cosmos toosetup Hola API de documentos."
 services: cosmos-db
 keywords: "distribución global, documentdb"
 documentationcenter: 
@@ -15,51 +15,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: f4d8efe9814bd28bb902567a23b541bc9b5414a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a1d5f01faa62407fbbc9c078ef4a9589a1a29219
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-documentdb-api"></a>Configuración de la distribución global de Azure Cosmos DB con la API de DocumentDB
+# <a name="how-toosetup-azure-cosmos-db-global-distribution-using-hello-documentdb-api"></a>Cómo usar de distribución global de base de datos de Azure Cosmos toosetup Hola API de documentos
 
-En este artículo se muestra cómo usar Azure Portal para configurar la distribución global de Azure Cosmos DB y luego conectarse con la API de DocumentDB.
+En este artículo, le mostramos cómo toouse Hola toosetup portal Azure distribución global de base de datos de Azure Cosmos y, a continuación, conectarse con hello API de documentos.
 
-En este artículo se tratan las tareas siguientes: 
+En este artículo se trata Hola siguientes tareas: 
 
 > [!div class="checklist"]
-> * Configuración de la distribución global con Azure Portal
-> * Configuración de la distribución global con las [API de DocumentDB](documentdb-introduction.md)
+> * Configure la distribución global con hello portal de Azure
+> * Configure la distribución global con hello [DocumentDB APIs](documentdb-introduction.md)
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-documentdb-api"></a>Conexión a una región de preferencia con la API de DocumentDB
+## <a name="connecting-tooa-preferred-region-using-hello-documentdb-api"></a>Conexión tooa región preferida mediante Hola API de documentos
 
-Para aprovechar las ventajas de la [distribución global](distribute-data-globally.md), las aplicaciones cliente pueden especificar la lista del orden de preferencia de regiones que se usará para llevar a cabo operaciones de documentos. Esto puede hacerse estableciendo la directiva de conexión. Según la configuración de la cuenta de Azure Cosmos DB, la disponibilidad regional actual y la lista de preferencias especificada, el SDK de DocumentDB elegirá el punto de conexión óptimo para realizar las operaciones de lectura y escritura.
+En orden tootake aprovechar [distribución global](distribute-data-globally.md), pueden especificar las aplicaciones cliente hello ordenada la lista de preferencias de regiones toobe usa operaciones de documento tooperform. Esto puede hacerse mediante el establecimiento de directivas de conexión de Hola. En función de la configuración de cuenta de base de datos de Azure Cosmos hello, disponibilidad regional actual y la lista de preferencias de hello especificado, Hola mayoría extremo óptimo se elegirá por hello DocumentDB SDK tooperform escribir y las operaciones de lectura.
 
-Esta lista de preferencias se especifica cuando se inicializa una conexión mediante los SDK de DocumentDB. Los SDK aceptan un parámetro opcional "PreferredLocations", que es una lista ordenada de regiones de Azure.
+Esta lista de preferencias se especifica al inicializar una conexión mediante el SDK de DocumentDB Hola. Hola SDK aceptan un parámetro opcional "PreferredLocations" que es una lista ordenada de regiones de Azure.
 
-El SDK enviará automáticamente todas las escrituras a la región de escritura actual.
+Hola SDK enviará automáticamente todas las escrituras toohello actual escritura región.
 
-Todas las lecturas se enviarán a la primera región disponible en la lista de PreferredLocations. Si se produce un error en la solicitud, el cliente pasará a la siguiente región de la lista y así sucesivamente.
+Todas las lecturas se enviarán toohello primera región disponible en la lista de PreferredLocations Hola. Si se produce un error en la solicitud de Hola, cliente hello producirá un error hacia abajo de la región de hello lista toohello siguiente y así sucesivamente.
 
-Los SDK solo intentarán leer en las regiones especificadas en PreferredLocations. Así que, por ejemplo, si la cuenta de base de datos está disponible en tres regiones, pero el cliente solo especifica dos de las regiones de no escritura para PreferredLocations, no se atenderá ninguna lectura desde la región de escritura, incluso en caso de conmutación por error.
+Hola SDK sólo intentará tooread de regiones de hello especificado en PreferredLocations. Por lo tanto, por ejemplo, si Hola cuenta de base de datos está disponible en tres regiones, pero cliente hello especifica sólo dos de las regiones de escritura de Hola para PreferredLocations, a continuación, ninguna de las lecturas se servirá fuera del área de escritura de hello, incluso en caso de hello de conmutación por error.
 
-La aplicación puede comprobar los puntos de conexión de escritura y lectura actuales elegidos por el SDK. Para ello, comprueba dos propiedades, WriteEndpoint y ReadEndpoint, disponibles en el SDK 1.8 y versiones posteriores.
+aplicación Hello puede comprobar el extremo de escritura actual de Hola y leer extremo elegido por hello SDK comprobación dos propiedades, WriteEndpoint y ReadEndpoint, disponible en la versión SDK 1.8 y versiones posteriores.
 
-Si la propiedad PreferredLocations no está establecida, atenderá todas las solicitudes procedentes de la región de escritura actual.
+Si no se establece la propiedad PreferredLocations hello, todas las solicitudes se servirá de región de escritura actual de Hola.
 
 ## <a name="net-sdk"></a>.NET SDK
-Se puede usar el SDK sin cambiar el código. En este caso, el SDK dirige automáticamente tanto las lecturas como las escrituras a la región de escritura actual.
+Hola SDK se puede utilizar sin cambios de código. En este caso, Hola SDK automáticamente dirige las lecturas y escribe toohello actual región de escritura.
 
-En la versión 1.8 y posteriores del SDK de .NET, el parámetro ConnectionPolicy para el constructor DocumentClient tiene una propiedad denominada Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Esta propiedad es del tipo Collection `<string>` y debería contener una lista de nombres de región. Se da formato a los valores de cadena según la columna Nombre de región en la página [Regiones de Azure][regions], sin espacios antes ni después del primer y el último carácter, respectivamente.
+En la versión 1.8 y versiones posterior de hello .NET SDK, parámetro de ConnectionPolicy hello para el constructor de hello DocumentClient tiene una propiedad denominada Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. Esta propiedad es del tipo Collection `<string>` y debería contener una lista de nombres de región. se da formato a valores de cadena de Hola por cada columna de nombre de la región de hello en hello [regiones de Azure] [ regions] página, sin espacios en blanco antes o después de hello primero y último carácter respectivamente.
 
-Los puntos de conexión de lectura y escritura actuales están disponibles en DocumentClient.ReadEndpoint y DocumentClient.WriteEndpoint, respectivamente.
+escritura actual de Hola y de lecturas de puntos de conexión están disponibles en DocumentClient.WriteEndpoint y DocumentClient.ReadEndpoint respectivamente.
 
 > [!NOTE]
-> Las direcciones URL de los puntos de conexión no deben considerarse constantes de larga duración. El servicio puede actualizarlas en cualquier momento. El SDK administra este cambio automáticamente.
+> Hola las direcciones URL para los extremos de hello no deberían considerarse como constantes de larga duración. servicio de Hello puede actualizarlos en cualquier momento. Hola SDK controla automáticamente este cambio.
 >
 >
 
@@ -81,44 +81,44 @@ DocumentClient docClient = new DocumentClient(
     accountKey,
     connectionPolicy);
 
-// connect to DocDB
+// connect tooDocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
 ## <a name="nodejs-javascript-and-python-sdks"></a>SDK de NodeJS, JavaScript y Python
-Se puede usar el SDK sin cambiar el código. En este caso, el SDK dirigirá automáticamente tanto las lecturas como las escrituras a la región de escritura actual.
+Hola SDK se puede utilizar sin cambios de código. En este caso, Hola que SDK dirigirá automáticamente lee tanto escribe toohello actual región de escritura.
 
-En la versión 1.8 y posteriores de cada SDK, el parámetro ConnectionPolicy para el constructor DocumentClient tiene una nueva propiedad denominada DocumentClient.ConnectionPolicy.PreferredLocations. Este parámetro es una matriz de cadenas que acepta una lista de nombres de región. Se da formato a los nombres según la columna Nombre de región en la página [Regiones de Azure][regions]. También puede usar las constantes predefinidas en el objeto de conveniencia AzureDocuments.Regions.
+En la versión 1.8 y posteriores de cada SDK hello ConnectionPolicy parámetro para hello DocumentClient constructor una nueva propiedad llamada DocumentClient.ConnectionPolicy.PreferredLocations. Este parámetro es una matriz de cadenas que acepta una lista de nombres de región. se da formato a los nombres de Hola por cada columna de nombre de la región de Hola Hola [regiones de Azure] [ regions] página. También puede utilizar constantes de hello predefinido en objeto de comodidad de hello AzureDocuments.Regions
 
-Los puntos de conexión de lectura y escritura actuales están disponibles en DocumentClient.getReadEndpoint y DocumentClient.getWriteEndpoint, respectivamente.
+escritura actual de Hola y de lecturas de puntos de conexión están disponibles en DocumentClient.getWriteEndpoint y DocumentClient.getReadEndpoint respectivamente.
 
 > [!NOTE]
-> Las direcciones URL de los puntos de conexión no deben considerarse constantes de larga duración. El servicio puede actualizarlas en cualquier momento. El SDK administrará este cambio automáticamente.
+> Hola las direcciones URL para los extremos de hello no deberían considerarse como constantes de larga duración. servicio de Hello puede actualizarlos en cualquier momento. Hola SDK controlará este cambio automáticamente.
 >
 >
 
-A continuación, se muestra un ejemplo de código para JavaScript y NodeJS. Python y Java siguen el mismo patrón.
+A continuación, se muestra un ejemplo de código para JavaScript y NodeJS. Python y Java seguirá Hola mismo patrón.
 
 ```java
 // Creating a ConnectionPolicy object
 var connectionPolicy = new DocumentBase.ConnectionPolicy();
 
-// Setting read region selection preference, in the following order -
+// Setting read region selection preference, in hello following order -
 // 1 - West US
 // 2 - East US
 // 3 - North Europe
 connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
 
-// initialize the connection
+// initialize hello connection
 var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
 ```
 
 ## <a name="rest"></a>REST
-Una vez que una cuenta de base de datos está disponible en varias regiones, los clientes pueden consultar su disponibilidad llevando a cabo una solicitud GET en el siguiente URI.
+Una vez que una cuenta de base de datos pone a su disposición en varias regiones, los clientes pueden consultar la disponibilidad mediante la realización de una solicitud GET en hello después de URI.
 
     https://{databaseaccount}.documents.azure.com/
 
-El servicio devolverá una lista de regiones y los URI de punto de conexión de Azure Cosmos DB correspondientes para las réplicas. Se indicará la región de escritura actual en la respuesta. Después, el cliente puede seleccionar el punto de conexión adecuado para las demás solicitudes de API de REST como sigue.
+servicio de Hello devolverá una lista de regiones y su correspondiente base de datos de Azure Cosmos URI de extremo para las réplicas de Hola. región de escritura actual de Hola se indicará en la respuesta de Hola. cliente de Hola como se indica a continuación, a continuación, puede seleccionar un punto de conexión adecuado de Hola para todas las otras solicitudes de API de REST.
 
 Respuesta de ejemplo
 
@@ -153,27 +153,27 @@ Respuesta de ejemplo
     }
 
 
-* Todas las solicitudes PUT, POST y DELETE deben ir al URI de escritura indicado.
-* Todas las solicitudes GET y las demás solicitudes de solo lectura (como las consultas) pueden ir a cualquier punto de conexión elegido por el cliente.
+* Las solicitudes de todos los PUT, POST y DELETE deben ir toohello indicado escribir URI
+* Obtiene todos los y otras solicitudes de solo lectura (por ejemplo, las consultas) pueden enviarse extremo tooany de elección del cliente de Hola
 
-Las solicitudes de escritura a regiones de solo lectura producirán un error con el código de error HTTP 403 ("Prohibido").
+Escribir solicitudes solo tooread regiones se producirá un error con código de error HTTP 403 "(prohibido).
 
-Si la región de escritura cambia después de la fase de descubrimiento inicial del cliente, se producirá un error en las escrituras posteriores a la región de escritura anterior con el código de error HTTP 403 ("Prohibido"). A continuación, el cliente debería de nuevo conseguir con GET la lista de regiones para obtener la región de escritura actualizada.
+Si cambia el área de escritura de hello después de la fase de detección inicial del cliente de hello, posterior escribe toohello anterior región de escritura se producirá un error con código de error HTTP 403 "(prohibido). cliente Hello debe, a continuación, obtener lista de Hola de regiones nuevo tooget Hola escritura actualizada región.
 
-De este modo finaliza este tutorial. Para información sobre cómo administrar la coherencia de la cuenta replicada globalmente, lea [Niveles de coherencia en Azure Cosmos DB](consistency-levels.md). Para más información sobre cómo funciona la replicación global de bases de datos en Azure Cosmos DB, consulte [Distribución global de datos con Azure Cosmos DB](distribute-data-globally.md).
+De este modo finaliza este tutorial. Obtener información sobre cómo toomanage Hola coherencia de la cuenta replicada a nivel mundial leyendo [niveles de coherencia en la base de datos de Azure Cosmos](consistency-levels.md). Para más información sobre cómo funciona la replicación global de bases de datos en Azure Cosmos DB, consulte [Distribución global de datos con Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, ha hecho lo siguiente:
+En este tutorial, ha hecho siguiente de hello:
 
 > [!div class="checklist"]
-> * Configuración de la distribución global con Azure Portal
-> * Configuración de la distribución global con las API de DocumentDB
+> * Configure la distribución global con hello portal de Azure
+> * Configure la distribución global con hello DocumentDB APIs
 
-Ahora puede continuar en el tutorial siguiente para aprender a desarrollar localmente con el emulador local de Azure Cosmos DB.
+Ahora puede continuar toohello siguiente tutorial toolearn cómo toodevelop localmente mediante Hola emulador local de base de datos de Azure Cosmos.
 
 > [!div class="nextstepaction"]
-> [Desarrollo local con el emulador](local-emulator.md)
+> [Desarrollar localmente con el emulador de Hola](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
 

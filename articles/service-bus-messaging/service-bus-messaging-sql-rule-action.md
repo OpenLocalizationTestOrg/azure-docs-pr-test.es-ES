@@ -1,5 +1,5 @@
 ---
-title: Referencia de la sintaxis de SQLRuleAction en Azure | Microsoft Docs
+title: referencia de la sintaxis de aaaSQLRuleAction en Azure | Documentos de Microsoft
 description: "Obtenga más información sobre la gramática de SQLRuleAction."
 services: service-bus-messaging
 documentationcenter: na
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: sethm
-ms.openlocfilehash: 7379b7f58563675f28d77928d933c0d9c7992e71
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ef281f942847bcc535b83a5ffb30d03539734f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sqlruleaction-syntax"></a>Sintaxis de SQLRuleAction
 
-*SqlRuleAction* es una instancia de la clase [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) y representa un conjunto de acciones escritos en una sintaxis basada en el lenguaje SQL que se realizan en un objeto [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).   
+A *SqlRuleAction* es una instancia de hello [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) clase y representa conjunto de acciones escritos en lenguaje SQL en función de sintaxis que se realizan contra un [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).   
   
-Este tema describe los detalles de la gramática de acción de reglas SQL.  
+En este tema muestra detalles acerca de hello gramática de acción de regla SQL.  
   
 ```  
 <statements> ::=
@@ -64,11 +64,11 @@ Este tema describe los detalles de la gramática de acción de reglas SQL.
   
 ## <a name="arguments"></a>Argumentos  
   
--   `<scope>` es una cadena opcional que indica el ámbito de `<property_name>`. Los valores válidos son `sys` o `user`. El valor `sys` indica el ámbito del sistema, donde `<property_name>` es un nombre de propiedad pública de [Clase BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` indica el ámbito de usuario, donde `<property_name>` es una clave del diccionario [Clase BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). El ámbito de `user` es el predeterminado si no se especifica `<scope>`.  
+-   `<scope>`es una cadena opcional que indica el ámbito de Hola de hello `<property_name>`. Los valores válidos son `sys` o `user`. Hola `sys` valor indica el ámbito del sistema donde `<property_name>` es un nombre de propiedad pública de hello [clase BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`indica el ámbito de usuario donde `<property_name>` es una clave de hello [clase BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) diccionario. `user`ámbito es el ámbito predeterminado de hello si `<scope>` no se ha especificado.  
   
 ### <a name="remarks"></a>Comentarios  
 
-Un intento de acceso a una propiedad de sistema que no existe es un error, mientras que uno a una propiedad de usuario inexistente, no lo es. En su lugar, una propiedad de usuario inexistente internamente se evalúa como un valor desconocido. Un valor desconocido se trata de una forma especial durante la evaluación de operador.  
+Un intento de tooaccess una propiedad inexistente por el sistema es un error, mientras que una propiedad de usuario de tooaccess un inexistente intento no es un error. En su lugar, una propiedad de usuario inexistente internamente se evalúa como un valor desconocido. Un valor desconocido se trata de una forma especial durante la evaluación de operador.  
   
 ## <a name="propertyname"></a>property_name  
   
@@ -83,7 +83,7 @@ Un intento de acceso a una propiedad de sistema que no existe es un error, mient
 ```  
   
 ### <a name="arguments"></a>Argumentos  
- `<regular_identifier>` es una cadena que se representa mediante la siguiente expresión regular:  
+ `<regular_identifier>`es una cadena representada por hello después de expresión regular:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
@@ -97,7 +97,7 @@ Un intento de acceso a una propiedad de sistema que no existe es un error, mient
   
  `<regular_identifier>` no puede ser una palabra clave reservada.  
   
- `<delimited_identifier>` es cualquier cadena que se incluye con corchetes izquierdos y derechos ([]). Un corchete derecho se representan como dos corchetes derechos. A continuación, se muestran ejemplos de `<delimited_identifier>`:  
+ `<delimited_identifier>` es cualquier cadena que se incluye con corchetes izquierdos y derechos ([]). Un corchete derecho se representan como dos corchetes derechos. Hello siguientes son ejemplos de `<delimited_identifier>`:  
   
 ```  
 [Property With Space]  
@@ -105,7 +105,7 @@ Un intento de acceso a una propiedad de sistema que no existe es un error, mient
   
 ```  
   
- `<quoted_identifier>` es cualquier cadena que se incluye entre comillas dobles. Las comillas dobles en el identificador se representan como dos comillas dobles. No se recomienda utilizar identificadores entre comillas, ya que pueden confundirse fácilmente con una constante de cadena. Si es posible, utilice un identificador delimitado. A continuación, se muestra un ejemplo de `<quoted_identifier>`:  
+ `<quoted_identifier>` es cualquier cadena que se incluye entre comillas dobles. Las comillas dobles en el identificador se representan como dos comillas dobles. No se recomienda toouse identificadores entrecomillados, ya que pueden confundirse fácilmente con una constante de cadena. Si es posible, utilice un identificador delimitado. Hello aquí te mostramos un ejemplo de `<quoted_identifier>`:  
   
 ```  
 "Contoso & Northwind"  
@@ -120,7 +120,7 @@ Un intento de acceso a una propiedad de sistema que no existe es un error, mient
   
 ### <a name="remarks"></a>Comentarios
   
- `<pattern>` debe ser una expresión que se evalúa como una cadena. Se utiliza como patrón para el operador LIKE.      Puede contener los siguientes caracteres comodín:  
+ `<pattern>` debe ser una expresión que se evalúa como una cadena. Se utiliza como patrón para hello LIKE (operador).      Puede contener Hola siguientes caracteres comodín:  
   
 -   `%`: cualquier cadena de cero o más caracteres.  
   
@@ -135,7 +135,7 @@ Un intento de acceso a una propiedad de sistema que no existe es un error, mient
   
 ### <a name="remarks"></a>Comentarios
   
- `<escape_char>` debe ser una expresión que se evalúa como una cadena de longitud 1. Se utiliza como carácter de escape para el operador LIKE.  
+ `<escape_char>` debe ser una expresión que se evalúa como una cadena de longitud 1. Se utiliza como carácter de escape para hello LIKE (operador).  
   
  Por ejemplo, `property LIKE 'ABC\%' ESCAPE '\'` coincide con `ABC%`, en lugar de con una cadena que comienza con `ABC`.  
   
@@ -148,27 +148,27 @@ Un intento de acceso a una propiedad de sistema que no existe es un error, mient
   
 ### <a name="arguments"></a>Argumentos  
   
--   `<integer_constant>` es una cadena de números que no se incluyen entre comillas y no contienen decimales. Los valores se almacenan como `System.Int64` internamente y siguen el mismo intervalo.  
+-   `<integer_constant>` es una cadena de números que no se incluyen entre comillas y no contienen decimales. Hola valores se almacenan como `System.Int64` internamente, y seguimiento Hola mismo intervalo.  
   
-     A continuación, se muestran ejemplos de constantes largas:  
+     siguiente Hola es ejemplos de constantes largo:  
   
     ```  
     1894  
     2  
     ```  
   
--   `<decimal_constant>` es una cadena de números que no se incluyen entre comillas y contienen un separador decimal. Los valores se almacenan como `System.Double` internamente y siguen el mismo intervalo o la misma precisión.  
+-   `<decimal_constant>` es una cadena de números que no se incluyen entre comillas y contienen un separador decimal. Hola valores se almacenan como `System.Double` internamente y seguir Hola mismo intervalo y precisión.  
   
-     En una versión futura, este número podría almacenarse en un tipo de datos diferente para admitir la semántica de número exacto. Por lo tanto, no debe confiar en el hecho de que el tipo de datos subyacente es `System.Double` en `<decimal_constant>`.  
+     En una versión futura, este número puede almacenarse en una datos diferentes toosupport exacta numérica la semántica de tipos, por lo que no deben depender Hola hechos Hola subyacente es el tipo de datos `System.Double` para `<decimal_constant>`.  
   
-     A continuación, se muestran ejemplos de constantes decimales:  
+     siguiente Hola es ejemplos de constantes de tipo decimal:  
   
     ```  
     1894.1204  
     2.0  
     ```  
   
--   `<approximate_number_constant>` es un número escrito en la notación científica. Los valores se almacenan como `System.Double` internamente y siguen el mismo intervalo o la misma precisión. A continuación, se muestran ejemplos de constantes de número aproximado:  
+-   `<approximate_number_constant>` es un número escrito en la notación científica. Hola valores se almacenan como `System.Double` internamente y seguir Hola mismo intervalo y precisión. siguiente Hola es ejemplos de constantes de número aproximados:  
   
     ```  
     101.5E5  
@@ -184,7 +184,7 @@ Un intento de acceso a una propiedad de sistema que no existe es un error, mient
   
 ### <a name="remarks"></a>Comentarios
   
-Las constantes booleanas se representan mediante las palabras clave `TRUE` o `FALSE`. Los valores se almacenan como `System.Boolean`.  
+Constantes booleanas se representan mediante palabras clave de hello `TRUE` o `FALSE`. Hola valores se almacenan como `System.Boolean`.  
   
 ## <a name="stringconstant"></a>string_constant  
   
@@ -206,18 +206,18 @@ Las constantes de cadena se incluyen entre comillas simples y contienen caracter
   
 ### <a name="remarks"></a>Comentarios  
 
-La función `newid()` devuelve un elemento **System.Guid** generado por el método `System.Guid.NewGuid()`.  
+Hola `newid()` función devuelve un **System.Guid** generados por hello `System.Guid.NewGuid()` método.  
   
-La función `property(name)` devuelve el valor de la propiedad a la que hace referencia `name`. El valor `name` puede ser cualquier expresión válida que devuelve un valor de cadena.  
+Hola `property(name)` función devuelve el valor de Hola de propiedad Hola al que hace referencia `name`. Hola `name` valor puede ser cualquier expresión válida que devuelve un valor de cadena.  
   
 ## <a name="considerations"></a>Consideraciones
 
-- SET se usa para crear una nueva propiedad o actualizar el valor de una propiedad existente.
-- REMOVE se utiliza para quitar una propiedad.
-- SET realiza la conversión implícita si es posible cuando el tipo de expresión y el tipo de propiedad existentes son diferentes.
+- CONJUNTO es toocreate usa un nuevo valor de Hola de propiedad o actualización de una propiedad existente.
+- QUITAR es tooremove usa una propiedad.
+- Si es posible conjunto realiza conversión implícita al tipo de expresión de Hola y el tipo de propiedad existentes de hello son diferentes.
 - La acción no se realiza correctamente si se hace referencia a propiedades del sistema inexistentes.
 - La acción no se realiza correctamente si se hace referencia a propiedades del usuario inexistentes.
-- Una propiedad de usuario inexistente se evalúa como desconocida internamente siguiendo la misma semántica que [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) al evaluar los operadores.
+- Una propiedad de usuario inexistente se evalúa como "Desconocido" internamente, siguiente Hola misma semántica que [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) al evaluar los operadores.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

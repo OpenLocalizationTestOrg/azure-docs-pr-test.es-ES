@@ -1,6 +1,6 @@
 ---
-title: Alertas en tiempo real en la red CDN de Azure | Microsoft Docs
-description: "Alertas en tiempo real en la red CDN de Microsoft Azure. Las alertas en tiempo real proporcionan notificaciones acerca del rendimiento de los puntos de conexión en un perfil de la red CDN."
+title: alertas en tiempo real de aaaAzure CDN | Documentos de Microsoft
+description: Alertas en tiempo real en la red CDN de Microsoft Azure. Alertas en tiempo real proporcionan notificaciones sobre el rendimiento de Hola de extremos de hello en el perfil de CDN.
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6e66eb076ac7220823a848b5047f147d4101cd55
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 269c90437088bbc41bf899a8c02749e8e6f3006c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Alertas en tiempo real en la red CDN de Microsoft Azure
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Información general
-En este documento se explican las alertas en tiempo real en la red CDN de Microsoft Azure. Esta funcionalidad proporciona notificaciones en tiempo real acerca del rendimiento de los puntos de conexión en un perfil de la red CDN.  Las alertas de correo o de HTTP se pueden configurar por:
+En este documento se explican las alertas en tiempo real en la red CDN de Microsoft Azure. Esta funcionalidad proporciona notificaciones en tiempo real sobre el rendimiento de Hola de extremos de hello en el perfil de CDN.  Las alertas de correo o de HTTP se pueden configurar por:
 
 * Ancho de banda
 * Códigos de estado
@@ -32,67 +32,67 @@ En este documento se explican las alertas en tiempo real en la red CDN de Micros
 * Conexiones
 
 ## <a name="creating-a-real-time-alert"></a>Creación de una alerta en tiempo real
-1. En el [Portal de Azure](https://portal.azure.com), vaya a su perfil de la red CDN.
+1. Hola [Portal de Azure](https://portal.azure.com), examinar el perfil de CDN tooyour.
    
     ![Hoja del perfil de red CDN](./media/cdn-real-time-alerts/cdn-profile-blade.png)
-2. En la hoja de perfil de CDN, haga clic en el botón **Administrar** .
+2. En la hoja de perfil CDN Hola, haga clic en hello **administrar** botón.
    
     ![Botón de administración de hoja de perfil de red CDN](./media/cdn-real-time-alerts/cdn-manage-btn.png)
    
-    Se abre el portal de administración de CDN.
-3. Mantenga el mouse sobre la pestaña **Análisis** y, después, sobre el control flotante **Estadísticas en tiempo real**.  Haga clic en **Real-Time Alerts**(Alertas en tiempo real).
+    se abre el portal de administración de red CDN Hola.
+3. Mantenga el mouse sobre hello **análisis** ficha y, a continuación, mantenga el mouse sobre hello **estadísticas en tiempo real** ventana flotante.  Haga clic en **Real-Time Alerts**(Alertas en tiempo real).
    
     ![Portal de administración de la red CDN](./media/cdn-real-time-alerts/cdn-premium-portal.png)
    
-    Se muestra la lista de las configuraciones de alerta existentes (si hay alguna).
-4. Haga clic en el botón **Add Alert** (Agregar alerta).
+    se muestra la lista de Hola de las configuraciones de alerta existentes (si existe).
+4. Haga clic en hello **Agregar alerta** botón.
    
     ![Botón Add Alert (Agregar alerta)](./media/cdn-real-time-alerts/cdn-add-alert.png)
    
     Se muestra un formulario para crear una alerta nueva.
    
     ![Formulario de alerta nueva](./media/cdn-real-time-alerts/cdn-new-alert.png)
-5. Si quiere que esta alerta se active al hacer clic en **Guardar**, active la casilla **Alerta habilitada**.
-6. Escriba un nombre descriptivo para la alerta en el campo **Name** (Nombre).
-7. En la lista desplegable **Tipo de medio**, seleccione **Objeto grande HTTP**.
+5. Si desea que esta alerta toobe activa al hacer clic en **guardar**, comprobar hello **alerta habilitada** casilla de verificación.
+6. Escriba un nombre descriptivo para la alerta en hello **nombre** campo.
+7. Hola **tipo de medio** lista desplegable, seleccione **objetos grandes de HTTP**.
    
     ![Tipo de medio con objetos HTTP grande seleccionado](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > Necesita seleccionar **Objeto grande HTTP** en **Tipo de medio**.  **CDN de Azure de Verizon**no usa las restantes opciones.  Si no se selecciona **HTTP Large Object** (Objeto HTTP grande), la alerta nunca se desencadenará.
+   > Debe seleccionar **objetos grandes de HTTP** como hello **tipo de medio**.  Hello otras opciones no se usan por **CDN de Azure de Verizon**.  Error tooselect **objetos grandes de HTTP** hará que la alerta se desencadena toonever.
    > 
    > 
-8. Cree la **expresión** que quiera supervisar (para hacerlo, seleccione una **métrica**, un **operador** y un **valor desencadenador**).
+8. Crear un **expresión** toomonitor seleccionando un **métrica**, **operador**, y **desencadenar valor**.
    
-   * En **Metric**(Métrica), seleccione el tipo de condición que desea supervisar.  **Bandwidth Mbps** (Mbps de ancho de banda) es la cantidad de uso del ancho de banda, en megabits por segundo.  **Total Connections** (Total de conexiones) es el número de conexiones HTTP simultáneas a nuestros servidores perimetrales.  Vea las definiciones de los diferentes estados de la memoria caché y códigos de estado en [Azure CDN Cache Status Codes](https://msdn.microsoft.com/library/mt759237.aspx) (Códigos de estado de la memoria caché de la red CDN de Azure) y [Azure CDN HTTP Status Codes](https://msdn.microsoft.com/library/mt759238.aspx) (Códigos de estado HTTP de la red CDN de Azure).
-   * **Operator** (Operador) es el operador matemático que establece la relación entre la métrica y el valor del desencadenador.
-   * **Trigger Value** (Valor de desencadenador) es el valor de umbral que debe cumplirse para enviarse una notificación.
+   * Para **métrica**, seleccione tipo hello de condición que desee supervisar.  **Mbps de ancho de banda** es la cantidad de Hola de uso de ancho de banda en megabits por segundo.  **Total de conexiones** es número de Hola de tooour de conexiones HTTP simultánea servidores perimetrales.  Para obtener definiciones de saludo diversos estados de memoria caché y códigos de estado, consulte [códigos de estado de memoria caché de CDN de Azure](https://msdn.microsoft.com/library/mt759237.aspx) y [códigos de estado de HTTP de CDN de Azure](https://msdn.microsoft.com/library/mt759238.aspx)
+   * **Operador** es Hola operador matemático que establece Hola relación entre la métrica de Hola y el valor de desencadenador de Hola.
+   * **Desencadenar valor** es el valor de umbral de Hola que debe cumplirse antes de que se enviará una notificación de.
      
-     En el ejemplo siguiente, la expresión creada indica el deseo de recibir notificación cuando el número de códigos de estado 404 es superior a 25.
+     Hola ejemplo siguiente, expresión Hola que se crearon indica que me gustaría toobe una notificación cuando el número de hello 404 códigos de estado es mayor que 25.
      
      ![Expresión de ejemplo de alerta en tiempo real](./media/cdn-real-time-alerts/cdn-expression.png)
-9. En **Interval**(Intervalo), especifique la frecuencia con que desea que se evalúe la expresión.
-10. En la lista desplegable **Notify on** (Notificar el), seleccione si desea recibir una notificación cuando la expresión sea verdadera.
+9. Para **intervalo**, escriba la frecuencia con que desea que la expresión Hola evaluada.
+10. Hola **que se notifique** lista desplegable, seleccione cuándo desea toobe una notificación cuando hello expresión es verdadera.
     
-    * **Condition Start** (Inicio de condición) indica que se enviará una notificación la primera vez que se detecte la condición especificada.
-    * **Condition End** (Fin de condición) indica que se enviará una notificación cuando la condición especificada deje de detectarse. Esta notificación solo se puede desencadenar después de que nuestro sistema de supervisión de red detecta que se ha producido el problema especificado.
-    * **Continuous** (Continuo) indica que se enviará una notificación cada vez que el sistema de supervisión de red detecte el problema especificado. Tenga en cuenta que el sistema de supervisión de red solo comprobará una vez por intervalo si existe el problema especificado.
-    * **Condition Start and End** (Inicio y fin de condición) indica que se enviará una notificación la primera vez que se detecte el problema especificado y se volverá a enviar cuando deje de detectarse.
-11. Si desea recibir notificaciones por correo electrónico, active la casilla **Notify by Email** (Notificar por correo electrónico).  
+    * **Condición de inicio** indica que se enviará una notificación cuando Hola especifica primero se detecta la condición.
+    * **Condición final** indica que se enviará una notificación cuando Hola especificado ya no se detecta la condición. Solo se puede desencadenar esta notificación después de nuestro sistema de supervisión de red ha detectado que Hola especificado insuficiente.
+    * **Continuo** indica que se enviará una notificación cada vez que Hola sistema de supervisión de red detecta Hola especificada condición. Tenga en cuenta esa red Hola supervisión sistema sólo comprobación de una vez por intervalo de hello condición especificada.
+    * **Condición inicial y final** indica que se enviará una notificación Hola se detecta la primera vez que Hola condición especificada y una vez más cuando se detecta ya no es la condición de Hola.
+11. Si desea tooreceive notificaciones por correo electrónico, active hello **notificar por correo electrónico** casilla de verificación.  
     
     ![Formulario de notificación por correo electrónico](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
-    En el campo **To** (Para), escriba la dirección de correo electrónico a la que desea que se envíen las notificaciones. En **Subject** (Asunto) y **Body** (Cuerpo) puede dejar los valores predeterminados o puede personalizar el mensaje con la lista **Available keywords** (Palabras clave disponibles) para insertar de forma dinámica los datos de las alertas al enviar el mensaje.
+    Hola **a** , escriba la dirección de correo electrónico de Hola donde desea que las notificaciones envió. Para **asunto** y **cuerpo**, puede dejar predeterminado de Hola o sólo puede personalizar el mensaje de Hola mediante hello **palabras clave disponibles** lista toodynamically insertar datos de alertas cuando se envía el mensaje de bienvenida.
     
     > [!NOTE]
-    > Para probar la notificación que se va a enviar por correo electrónico, haga clic en el botón **Test Notification** (Probar notificación), pero solo después de que la configuración de alertas se haya guardado.
+    > Puede probar la notificación por correo electrónico de hello haciendo clic en hello **notificación de prueba** button, pero solo después de que se ha guardado la configuración de alertas de Hola.
     > 
     > 
-12. Si desea que las notificaciones se publique en un servidor web, active la casilla **Notify by HTTP Post** (Notificar mediante HTTP Post).
+12. Si desea que registra el servidor web de tooa de toobe de notificaciones, compruebe hello **notificar mediante HTTP Post** casilla de verificación.
     
     ![Formulario de notificación de HTTP Post](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    En el campo **Url** , escriba la dirección URL en que desea que se publique el mensaje HTTP. En el cuadro de texto **Headers** (Encabezados), escriba los encabezados HTTP que se enviarán en la solicitud.  En **Body** (Cuerpo) puede personalizar el mensaje con la lista **Available keywords** (Palabras clave disponibles) para insertar de forma dinámica los datos de las alertas al enviar el mensaje.  Los valores predeterminados de **Headers** (Encabezados) y **Body** (Cuerpo) son una carga XML similar a la del ejemplo siguiente.
+    Hola **dirección Url** , escriba la dirección URL de hello, donde desea que el mensaje de bienvenida HTTP publica. Hola **encabezados** cuadro de texto, escriba Hola HTTP encabezados toobe enviado en la solicitud de saludo.  Para **cuerpo** sólo puede personalizar el mensaje de Hola mediante hello **palabras clave disponibles** lista toodynamically insertar datos de alertas cuando se envía el mensaje de bienvenida.  **Encabezados de** y **cuerpo** predeterminado tooan XML carga similar toohello ejemplo siguiente.
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
@@ -101,10 +101,10 @@ En este documento se explican las alertas en tiempo real en la red CDN de Micros
     ```
     
     > [!NOTE]
-    > Para probar la notificación mediante HTTP Post, haga clic en el botón **Test Notification** (Probar notificación), pero solo después de que la configuración de alertas se haya guardado.
+    > Puede probar Hola notificación HTTP Post haciendo clic en hello **notificación de prueba** button, pero solo después de que se ha guardado la configuración de alertas de Hola.
     > 
     > 
-13. Haga clic en el botón **Save** (Guardar) la configuración de las alertas.  Si activó **Alert Enabled** (Alerta habilitada) en el paso 5, la alerta ya está activa.
+13. Haga clic en hello **guardar** botón toosave la configuración de alertas.  Si activó **Alert Enabled** (Alerta habilitada) en el paso 5, la alerta ya está activa.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Análisis de [estadísticas en tiempo real en la CDN de Microsoft Azure](cdn-real-time-stats.md)

@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre los registros de contenedor de Azure: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a crear y mantener registros de contenedor para almacenar las imágenes de implementación con un servicio de registro de Docker administrado. Tutoriales, referencias de API y mucho más."
+title: "aaaAzure documentación del registro de contenedor - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate y mantener la implementación de imágenes con un servicio administrado de registro de Docker de contenedor registros toostore. Tutoriales, referencias de API y mucho más."
 services: container-registry
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 3962f34170cf3a19fe51b2f90b49fa21e01fc6cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d759eb2b00b59797cfdf8ce3b4071317a574c2b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-container-registry-documentation"></a>Documentación de Azure Container Registry
 
-Aprenda a usar Container Registry para almacenar y administrar imágenes para todo tipo de implementaciones de contenedor. Los tutoriales, la referencia de la API de REST y otra documentación muestran cómo crear y mantener registros de contenedor con este servicio de registro de Docker administrado.
+Obtenga información acerca de cómo toouse toostore de registro de contenedor y administrar imágenes para todos los tipos de implementaciones de contenedor. Tutoriales, referencia de la API de REST y otra documentación mostrarle cómo toocreate y mantener registros de contenedor con este administra el servicio de registro de Docker.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -52,7 +52,7 @@ Aprenda a usar Container Registry para almacenar y administrar imágenes para to
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Comenzar a crear un registro con el portal</h3>
+                        <h3>Empezar a crear un registro con el portal de Hola</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ Aprenda a usar Container Registry para almacenar y administrar imágenes para to
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Comenzar a crear un registro con la CLI</h3>
+                        <h3>Empezar a crear un registro con hello CLI</h3>
                     </div>
                 </div>
             </div>

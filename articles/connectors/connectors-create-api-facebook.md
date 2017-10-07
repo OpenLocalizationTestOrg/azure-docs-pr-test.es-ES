@@ -1,6 +1,6 @@
 ---
-title: "Incorporación del conector de Facebook a Logic Apps | Microsoft Docs"
-description: "Información general del conector de Facebook con parámetros de la API de REST"
+title: "Conector de Facebook aaaAdd hello en las aplicaciones lógicas | Documentos de Microsoft"
+description: "Información general del conector de Facebook Hola con parámetros de la API de REST"
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: e10a30ccef3e81cb3d7749696453d82b8958d076
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 962c6ed5d36e465de9d485d50e5c6dca6d44f470
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-facebook-connector"></a>Introducción al conector de Facebook
-Conéctese a Facebook y publique en una biografía, obtenga una fuente de página y mucho más. Con Facebook, puede hacer lo siguiente:
+# <a name="get-started-with-hello-facebook-connector"></a>Empezar a trabajar con el conector de Facebook Hola
+Conectar tooFacebook y después de la escala de tiempo tooa, obtener una página de fuentes de distribución y mucho más. Con Facebook, puede hacer lo siguiente:
 
-* Compilar el flujo de negocio en función de los datos que obtiene de Facebook. 
+* Genera el flujo de negocios basado en datos de hello que obtendrá de Facebook. 
 * Utilizar un desencadenador cuando se reciba un nuevo mensaje.
-* Usar acciones para publicar en la biografía, obtener una fuente de página y mucho más. Estas acciones obtienen una respuesta y luego dejan el resultado a disposición de otras acciones. Por ejemplo, cuando haya un nuevo mensaje en su biografía, puede tomar ese mensaje e insertarlo en su fuente de Twitter. 
+* Las acciones de uso que registrar la escala de tiempo tooyour, obtener una página de fuentes de distribución y mucho más. Estas acciones obtención una respuesta y, a continuación, asegúrese de salida de hello disponibles para las demás acciones. Por ejemplo, cuando hay una nueva entrada en la escala de tiempo, puede tomar esa entrada e insertarlo tooyour fuente de Twitter. 
 
 Puede empezar creando una aplicación lógica ahora. Para ello, consulte [Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-facebook"></a>Creación de una conexión a Facebook
-Al agregar este conector a las aplicaciones lógicas, debe autorizar a estas para que se conecten a su Facebook.
+## <a name="create-a-connection-toofacebook"></a>Crear una conexión tooFacebook
+Al agregar las aplicaciones lógicas de tooyour este conector, debe autorizar lógica aplicaciones tooconnect tooyour Facebook.
 
-1. Inicie sesión en su cuenta de Facebook.
-2. Seleccione **Authorize**(Autorizar) y permita que sus aplicaciones lógicas se conecten y utilicen su aplicación de Facebook. 
+1. Inicie sesión en tooyour cuenta de Facebook
+2. Seleccione **Authorize**y permitir su tooconnect de aplicaciones de la lógica y usar su Facebook. 
 
-> [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
+> [!INCLUDE [Steps toocreate a connection tooFacebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
 
 ## <a name="connector-specific-details"></a>Detalles específicos del conector
 
-Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/facebook/).
+Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/facebook/).
 
 ## <a name="more-connectors"></a>Más conectores
-Volver a la [lista de API](apis-list.md).
+Volver atrás toohello [lista de las API](apis-list.md).

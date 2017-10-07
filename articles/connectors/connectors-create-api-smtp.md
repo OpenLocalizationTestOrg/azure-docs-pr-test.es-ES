@@ -1,6 +1,6 @@
 ---
-title: Conector de SMTP en Azure Logic Apps | Microsoft Docs
-description: "Cree aplicaciones lógicas con el Servicio de aplicaciones de Azure. Conexión a SMTP para envío de correo electrónico."
+title: "Conector de aaaSMTP en las aplicaciones lógicas de Azure | Documentos de Microsoft"
+description: "Cree aplicaciones lógicas con el Servicio de aplicaciones de Azure. Conecte el correo electrónico de toosend tooSMTP."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,58 +15,58 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 1cf96bbf8bd215d7ddb3c99860a5cb4e668be3c2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 36bb836851014d24f2e069fda8376ad7a08c943b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-smtp-connector"></a>Introducción al conector de SMTP
-Conexión a SMTP para envío de correo electrónico.
+# <a name="get-started-with-hello-smtp-connector"></a>Empezar a trabajar con el conector SMTP de Hola
+Conecte el correo electrónico de toosend tooSMTP.
 
-Para poder usar [un conector](apis-list.md), primero debe crear una aplicación lógica. Por tanto, puede comenzar [creando una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).
+toouse [cualquier conector](apis-list.md), primero debe toocreate una aplicación lógica. Por tanto, puede comenzar [creando una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="connect-to-smtp"></a>Conexión a SMTP
-Para que la aplicación lógica pueda acceder a un servicio, primero debe crear una *conexión* con dicho servicio. Una [conexión](connectors-overview.md) proporciona conectividad entre una aplicación lógica y otro servicio. Por ejemplo, para conectarse a SMTP, primero es preciso crear una *conexión* a SMTP. Para crear una conexión, escriba las credenciales que utiliza normalmente para acceder al servicio al que se conecta. Por lo tanto, en el ejemplo de SMTP, escriba las credenciales de su nombre de conexión, la dirección del servidor SMTP y la información de inicio de sesión de usuario para crear una conexión a SMTP.  
+## <a name="connect-toosmtp"></a>Conectar tooSMTP
+Antes de que la aplicación lógica puede tener acceso a cualquier servicio, primero debe toocreate una *conexión* toohello servicio. Una [conexión](connectors-overview.md) proporciona conectividad entre una aplicación lógica y otro servicio. Por ejemplo, tooconnect tooSMTP, primero debe SMTP *conexión*. toocreate una conexión, escriba las credenciales de Hola que suele usar tooaccess se conectan a un servicio de Hola. Por lo tanto, en el ejemplo de Hola SMTP, escriba nombre de la conexión de hello credenciales tooyour, dirección del servidor SMTP y tooSMTP de conexión de usuario inicio de sesión información toocreate Hola.  
 
-### <a name="create-a-connection-to-smtp"></a>Creación de una conexión a SMTP
-> [!INCLUDE [Steps to create a connection to SMTP](../../includes/connectors-create-api-smtp.md)]
+### <a name="create-a-connection-toosmtp"></a>Crear una conexión tooSMTP
+> [!INCLUDE [Steps toocreate a connection tooSMTP](../../includes/connectors-create-api-smtp.md)]
 > 
 > 
 
 ## <a name="use-an-smtp-trigger"></a>Uso de un desencadenador de SMTP
-Un desencadenador es un evento que se puede utilizar para iniciar el flujo de trabajo definido en una aplicación lógica. [Más información sobre los desencadenadores](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Un desencadenador es un evento que puede ser utilizados toostart de flujo de trabajo Hola definido en una aplicación de la lógica. [Más información sobre los desencadenadores](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
-En este ejemplo, como SMTP no tiene un desencadenador propio, usaremos el desencadenador **Salesforce - When an object is created (Salesforce - Cuando se crea un objeto)**. Este desencadenador se activa al crear un objeto en Salesforce. En nuestro ejemplo, vamos a configurarlo para que cada vez que se crea un cliente potencial en Salesforce, se produzca una acción *Enviar correo electrónico* a través del conector SMTP con una notificación sobre el cliente potencial que se está creando.
+En este ejemplo, dado que SMTP no tiene un desencadenador de su propio, usaremos hello **Salesforce - cuando se crea un objeto** desencadenador. Este desencadenador se activa al crear un objeto en Salesforce. En nuestro ejemplo, configuraremos lo modo que cada vez que se crea un nuevo cliente potencial en Salesforce, un *enviar correo electrónico* acción tiene lugar mediante el conector de hello SMTP con una notificación de hello nuevo cliente potencial que se está creando.
 
-1. Escriba *salesforce* en el cuadro de búsqueda del diseñador de Logic Apps y seleccione el desencadenador **Salesforce - When an object is created** (Salesforce: cuando se crea un archivo).  
+1. Escriba *salesforce* en el cuadro de búsqueda de hello en el Diseñador de aplicaciones de lógica de hello, a continuación, seleccione hello **Salesforce - cuando se crea un objeto** desencadenador.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
-2. Se muestra el control **When an object is created** (Cuando se crea un objeto).
+2. Hola **cuando se crea un objeto** se muestra el control.
    ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
-3. Seleccione el **tipo de objeto** y luego *Lead* (Cliente potencial) en la lista de objetos. En este paso está indicando que va a crear un desencadenador que enviará una notificación a su aplicación lógica cada vez que se cree un nuevo cliente potencial en Salesforce.  
+3. Seleccione hello **tipo de objeto** , a continuación, seleccione *provocar* de lista de Hola de objetos. En este paso está indicando que va a crear un desencadenador que enviará una notificación a su aplicación lógica cada vez que se cree un nuevo cliente potencial en Salesforce.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
-4. Se ha creado el desencadenador.  
+4. se ha creado el desencadenador de Hola.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
 
 ## <a name="use-an-smtp-action"></a>Uso de una acción de SMTP
-Una acción es una operación que se lleva a cabo mediante el flujo de trabajo definido en una aplicación lógica. [Más información acerca de las acciones](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Una acción es una operación que se llevan a cabo definidos en una aplicación de la lógica de flujo de trabajo de Hola. [Más información acerca de las acciones](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
-Ahora que se ha agregado el desencadenador, siga estos pasos para agregar una acción de SMTP que se produzca cuando se crea un cliente potencial en Salesforce.
+Ahora que hello desencadenador se ha agregado, siga estos acción de tooadd SMTP de pasos que se produce cuando se crea un nuevo cliente potencial en Salesforce.
 
-1. Seleccione **+ Nuevo paso** para agregar la acción que quiere que se ejecute cuando se cree un cliente potencial.  
+1. Seleccione **+ nuevo paso** acción de hello tooadd le gustaría tootake cuando se crea un nuevo cliente potencial.  
    ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
-2. Seleccione **Add an action**(Agregar una acción). Se abrirá el cuadro de búsqueda en el que podrá buscar cualquier acción que quiera realizar.  
+2. Seleccione **Add an action**(Agregar una acción). Este cuadro de búsqueda de hello abre donde puede buscar cualquier acción desea que tootake.  
    ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)  
-3. Escriba *smtp* para buscar todas las acciones relacionadas con SMTP.  
-4. Seleccione **SMTP - Send Email (SMTP - Enviar correo electrónico)** como la acción que se realizará cuando se crea el cliente potencial. Se abre el bloque de control de acción. Tendrá que establecer la conexión de SMTP en el bloque de diseñador si no lo ha hecho previamente.  
+3. Escriba *smtp* toosearch para acciones relacionadas tooSMTP.  
+4. Seleccione **SMTP - enviar correo electrónico** como Hola tootake acción cuando se crea el nuevo cliente potencial de Hola. se abre el bloque de control de acción de Hola. Tendrá tooestablish la conexión de smtp en el bloque de diseñador Hola si aún no lo hecho previamente.  
    ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)    
-5. Indique la información de correo electrónico que quiera en el bloque **SMTP - Send Email (SMTP - Enviar correo electrónico)**.  
+5. Entrada de la información de correo electrónico deseado en hello **SMTP - enviar correo electrónico** bloque.  
    ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
-6. Guarde el trabajo para activar el flujo de trabajo.  
+6. Guardar su trabajo en orden tooactivate el flujo de trabajo.  
 
 ## <a name="connector-specific-details"></a>Detalles específicos del conector
 
-Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/smtpconnector/).
+Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/smtpconnector/).
 
 ## <a name="more-connectors"></a>Más conectores
-Volver a la [lista de API](apis-list.md).
+Volver atrás toohello [lista de las API](apis-list.md).

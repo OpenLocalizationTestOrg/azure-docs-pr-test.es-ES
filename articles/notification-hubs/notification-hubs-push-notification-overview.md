@@ -1,6 +1,6 @@
 ---
-title: Centros de notificaciones de Azure
-description: "Aprenda a agregar funcionalidades de notificación push con Azure Notification Hubs."
+title: aaaAzure centros de notificaciones
+description: "Obtenga información acerca de cómo tooadd push capacidades de notificación con centros de notificaciones de Azure."
 author: ysxu
 manager: erikre
 editor: 
@@ -14,29 +14,29 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 1/17/2017
 ms.author: yuaxu
-ms.openlocfilehash: a1be0b13cd1feb582a23965df142e44d90ac6851
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 78ce34b6b094b560c8002ab9652f7ba4563c5c74
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-notification-hubs"></a>Centros de notificaciones de Azure
 ## <a name="overview"></a>Información general
-Azure Notification Hubs proporciona un motor de inserción fácil de usar, multiplataforma y escalado horizontalmente. Con una única llamada de API multiplataforma puede enviar fácilmente notificaciones push específicas y personalizadas a cualquier plataforma móvil desde cualquier back-end local o en la nube.
+Azure Notification Hubs proporciona un motor de inserción fácil de usar, multiplataforma y escalado horizontalmente. Con una llamada de API sencilla multiplataforma, puede enviar fácilmente plataforma móvil de tooany de notificaciones de inserción de destino y personalizada desde cualquier back-end de nube o local.
 
 Notification Hubs funciona muy bien tanto para escenarios empresariales como de consumidores. Estos son algunos ejemplos de para qué utilizan los clientes Notification Hubs:
 
-* Enviar notificaciones de noticias de última hora a millones de usuarios con baja latencia.
-* Enviar cupones basados en la ubicación a segmentos de usuarios interesados.
-* Enviar notificaciones relacionadas con eventos a usuarios o grupos para aplicaciones de medios, deportivas, de finanzas o de juegos.
-* Insertar contenido promocional en aplicaciones para ponerse en contacto y comercializar con clientes.
+* Enviar notificaciones toomillions de separación de noticias con una latencia baja.
+* Envíe cupones basados en ubicación toointerested segmentos de usuarios.
+* Enviar notificaciones relacionadas con el evento toousers o grupos de aplicaciones de medios/deportes/finance/juegos.
+* Insertar contenido promocional tooapps tooengage y mercado toocustomers.
 * Informar a los usuarios sobre eventos empresariales como, por ejemplo, nuevos mensajes o elementos de trabajo.
 * Enviar códigos para Multi-Factor Authentication.
 
 ## <a name="what-are-push-notifications"></a>¿Qué son las notificaciones de inserción?
-Las notificaciones push son una forma de comunicación de aplicación a usuario en la que los usuarios de aplicaciones móviles reciben una notificación con determinada información que desean, por lo general, en un cuadro de diálogo o una ventana emergente. Normalmente, los usuarios pueden elegir ver o descartar el mensaje y, si eligen lo primero, se abrirá la aplicación móvil que les ha comunicado la notificación.
+Las notificaciones push son una forma de comunicación de aplicación a usuario en la que los usuarios de aplicaciones móviles reciben una notificación con determinada información que desean, por lo general, en un cuadro de diálogo o una ventana emergente. Los usuarios normalmente pueden elegir tooview o descartar el mensaje de bienvenida, y elegir primero Hola se abrirá Hola aplicación móvil que les ha comunicado la notificación de Hola.
 
-Las notificaciones push son vitales para las aplicaciones de consumidor, ya que aumentan el uso y la interacción de las aplicaciones, así como para las aplicaciones empresariales porque comunican información empresarial actualizada. Es la mejor forma de comunicación de aplicación a usuario porque ahorra energía para los dispositivos móviles, es flexible para los remitentes de notificaciones y está disponible cuando las aplicaciones correspondientes no están activas.
+Las notificaciones push son vitales para las aplicaciones de consumidor, ya que aumentan el uso y la interacción de las aplicaciones, así como para las aplicaciones empresariales porque comunican información empresarial actualizada. Es mejor comunicación de aplicaciones para usuario Hola porque resulta eficaz para la energía para dispositivos móviles, flexibles para los remitentes de las notificaciones de Hola y de disponibilidad mientras las aplicaciones correspondientes no están activas.
 
 Más información acerca de las notificaciones push de algunas plataformas populares:
 * [iOS](https://developer.apple.com/notifications/)
@@ -44,44 +44,44 @@ Más información acerca de las notificaciones push de algunas plataformas popul
 * [Windows](http://msdn.microsoft.com/library/windows/apps/hh779725.aspx)
 
 ## <a name="how-push-notifications-work"></a>Funcionamiento de las notificaciones de inserción
-Las notificaciones push se entregan a través de unas infraestructuras específicas para la plataforma llamadas *Sistemas de notificación de plataforma* (PNS). Ofrecen funcionalidades de inserción esenciales para la entrega de un mensaje a un dispositivo con un identificador proporcionado y no tienen ninguna interfaz común. Para enviar una notificación a todos los clientes mediante las versiones de iOS, Android y Windows de una aplicación, el desarrollador debe trabajar con APNS (Apple Push Notification Service), FCM (Firebase Cloud Messaging), WNS (Servicio de notificaciones de Windows) al procesar por lotes los envíos.
+Las notificaciones push se entregan a través de unas infraestructuras específicas para la plataforma llamadas *Sistemas de notificación de plataforma* (PNS). Ofrecen las funcionalidades de inserción de equipos toodelivery dispositivo de tooa de mensajes con proporcionado controlar y no tienen ninguna interfaz común. toosend una notificación tooall clientes a través de hello iOS, Android y Windows versiones de una aplicación, desarrollador Hola debe trabajar con APNS (servicio de notificaciones Push de Apple), FCM (Firebase Cloud Messaging) y WNS (servicio de notificación de Windows), al procesamiento por lotes Hola se envía.
 
 A continuación se muestra cómo funciona la inserción, a nivel general:
 
-1. La aplicación cliente decide si desea recibir inserciones, por lo que se pone en contacto con el PNS correspondiente para recuperar su identificador de inserción único y temporal. El tipo de identificador depende del sistema (por ejemplo, WNS tiene URI mientras APNS tiene tokens).
-2. La aplicación cliente almacena este identificador en el back-end o el proveedor de la aplicación.
-3. Para enviar una notificación push, el back-end de la aplicación se pone en contacto con el PNS a través del identificador para dirigirse a una aplicación cliente específica.
-4. El PNS reenvía la notificación al dispositivo que especifica el identificador.
+1. aplicación de cliente de Hello decide que desea tooreceive inserta, por tanto, Hola contactos correspondiente PNS tooretrieve su identificador único y temporal de inserción. tipo de identificador Hello depende de sistema de hello (por ejemplo, WNS tiene URI mientras APN tiene tokens).
+2. aplicación de cliente de Hello almacena este identificador en el back-end de la aplicación de Hola o proveedor.
+3. toosend una notificación de inserción, back-end de la aplicación de Hola se pone en contacto con hello PNS con tootarget de identificador hello en una aplicación de cliente específico.
+4. Hola PNS reenvía el dispositivo de toohello de notificación de hello especificado por el identificador hello.
 
 ![][0]
 
-## <a name="the-challenges-of-push-notifications"></a>Los desafíos de las notificaciones de inserción
-A pesar de que los PNS son muy potentes, de todos modos dejan mucho trabajo al desarrollador de aplicaciones para poder implementar incluso escenarios comunes de notificaciones push, como la difusión o el envío de notificaciones push a usuarios segmentados.
+## <a name="hello-challenges-of-push-notifications"></a>Hola desafíos de notificaciones de inserción
+Mientras PNSes son eficaces, dejan el desarrollador de aplicaciones de trabajo toohello en orden tooimplement incluso inserción notificación escenarios comunes, como la difusión o enviar los usuarios de toosegmented de notificaciones de inserción.
 
-La inserción es una de las características más solicitadas en servicios de dispositivos móviles en la nube, ya que su funcionamiento requiere infraestructuras complejas que no están relacionadas con la lógica de negocios principal de la aplicación. Algunos de los desafíos que presenta la infraestructura son:
+Inserción es uno de hello solicitado más características de servicios de dispositivos móviles en la nube, porque su espacio de trabajo requiere infraestructuras complejas de lógica empresarial principal de la aplicación toohello no relacionados. Algunos de los desafíos de hello son:
 
 * **Dependencia de la plataforma**: 
 
-  * El back-end debe tener una lógica, dependiente de la plataforma, compleja y difícil de mantener para enviar notificaciones a dispositivos de distintas plataformas, ya que los PNS no están unificados.
+  * Hola back-end debe toohave compleja y difícil de mantener la lógica depende de la plataforma toosend notificaciones toodevices en varias plataformas como PNSes no están unificados.
 * **Escala**:
 
-  * Según las directrices de PNS, se deben actualizar los tokens de dispositivo cada vez que se inicia la aplicación. Esto significa que el back-end debe tratar con una gran cantidad de tráfico y acceso de bases de datos solo para mantener actualizados los tokens. Cuando el número de dispositivos aumenta a centenares y miles de millones, la creación y el mantenimiento de esta infraestructura supone un costo enorme.
-  * La mayoría de los PNS no son compatibles con la difusión a varios dispositivos. Esto significa que una simple difusión a un millón de dispositivos genera un millón de llamadas a los PNS. El escalado de esta cantidad de tráfico con una latencia mínima no es algo trivial.
+  * Según las directrices de PNS, se deben actualizar los tokens de dispositivo cada vez que se inicia la aplicación. Esto significa Hola back-end se trabaja con una gran cantidad de tráfico y solo los tokens de hello tookeep actualizados de acceso de la base de datos. Cuando toohundreds y miles de millones, aumenta el número de Hola de dispositivos, el costo de Hola de crear y mantener esta infraestructura es masivo.
+  * PNSes mayoría no son compatibles con dispositivos toomultiple difusión. Esto significa que una simple tooa difusión resultados de millones de dispositivos en llamadas de un millón toohello PNSes. El escalado de esta cantidad de tráfico con una latencia mínima no es algo trivial.
 * **Enrutamiento**:
   
-  * Aunque los PNS proporcionan una manera de enviar mensajes a dispositivos, la mayoría de las notificaciones de aplicaciones se dirigen a usuarios o grupos de interés. Esto significa que el back-end debe mantener un registro para asociar dispositivos a grupos de interés, usuarios, propiedades, etc. Esta sobrecarga se agrega al tiempo de comercialización total y a los costos de mantenimiento de una aplicación.
+  * Aunque PNSes proporcionar un toodevices de mensajes de manera toosend, la mayoría de las notificaciones de aplicaciones se dirigen a los usuarios o grupos de interés. Esto significa Hola back-end debe mantener los dispositivos con grupos de interés, los usuarios, las propiedades, etcetera tooassociate del registro. Esta sobrecarga agrega costes de toomarket y el mantenimiento del tiempo de toohello de una aplicación.
 
 ## <a name="why-use-notification-hubs"></a>¿Por qué usar los Centros de notificaciones?
-Notification Hubs elimina todas las complejidades asociadas con la habilitación de una inserción propia. Su infraestructura de notificaciones push multiplataforma y escalada horizontalmente reduce los códigos relativos a la inserción y simplifica el back-end. Con Notification Hubs, los dispositivos solo son responsables de registrar identificadores de PNS con un centro, mientras que el back-end envía mensajes a usuarios o grupos de interés, tal como se muestra en la ilustración siguiente:
+Notification Hubs elimina todas las complejidades asociadas con la habilitación de una inserción propia. Su infraestructura de notificaciones push multiplataforma y escalada horizontalmente reduce los códigos relativos a la inserción y simplifica el back-end. Con centros de notificaciones son simplemente responsables de registrar los controladores de PNS con un concentrador, mientras Hola back-end envía mensajes toousers o grupos de interés, como se muestra en la figura siguiente de Hola dispositivos:
 
 ![][1]
 
-Notification Hubs es un motor de inserción listo para usar que presenta las siguientes ventajas:
+Centros de notificaciones es el motor de inserción listos para usar con hello siguientes ventajas:
 
 * **Multiplataforma**
 
   * Compatibilidad para las principales plataformas push incluidos iOS, Android, Windows, Kindle y Baidu.
-  * Una interfaz común para insertar en todas las plataformas en formatos específicos de la plataforma o independientes de esta sin ningún tipo de trabajo específico de la plataforma.
+  * Una interfaz toopush tooall plataformas comunes en formatos específicos de la plataforma o independiente de la plataforma con ningún tipo de trabajo específico de la plataforma.
   * Administración de controladores de dispositivos en un único lugar.
 * **Back-ends cruzados**
   
@@ -89,46 +89,46 @@ Notification Hubs es un motor de inserción listo para usar que presenta las sig
   * .NET, Node.js, Java, etc.
 * **Conjunto completo de patrones de entrega**:
 
-  * *Difusión para una o varias plataformas*: puede difundir al instante a millones de dispositivos entre plataformas con una sola llamada API.
-  * *Inserción en dispositivo*: puede destinar las notificaciones a dispositivos individuales.
-  * *Inserción en usuario*: las características de etiquetas y plantillas le ayudan a llegar a todos los dispositivos multiplataforma de un usuario.
-  * *Inserción en segmento con etiquetas dinámicas*: las característica de etiquetas le ayudan a segmentar dispositivos e insertar en ellos en función de sus necesidades, tanto si va a enviar a un segmento como si lo envía a una expresión de segmentos (p. ej. AND activo reside en Seattle NO es un usuario nuevo). En lugar de limitarse a la publicación-suscripción, puede actualizar las etiquetas de dispositivo en cualquier lugar y en cualquier momento.
+  * *Difusión tooone o varias plataformas*: al instante puede difundir toomillions de dispositivos entre plataformas con una sola llamada API.
+  * *Insertar toodevice*: puede tener como destino dispositivos de tooindividual de notificaciones.
+  * *Insertar toouser*: características de etiquetas y plantillas le ayudarán a llegar a todos los dispositivos multiplataforma de un usuario.
+  * *Insertar toosegment con etiquetas dinámicas*: característica etiquetas le ayuda a segmentar dispositivos e insertar toothem según las necesidades tooyour, si va a enviar el segmento de tooone o una expresión de segmentos (p. ej. active AND reside en Seattle no nuevo usuario). En lugar de ser toopub-sub restringido, puede actualizar las etiquetas del dispositivo en cualquier lugar y en cualquier momento.
   * *Inserción localizada*: la característica de plantillas le ayuda a obtener la localización sin alterar el código de back-end.
-  * *Inserción silenciosa*: puede habilitar el modelo de inserción a extracción enviando notificaciones silenciosas a dispositivos y desencadenándolos para que realicen ciertas extracciones o acciones.
-  * *Inserción programada*: puede programar el envío de notificaciones en cualquier momento.
-  * *Inserción directa*: puede omitir el registro de dispositivos con nuestro servicio y procesar por lotes directamente las inserciones a una lista de identificadores de dispositivo.
+  * *Inserción silenciosa*: puede permite patrón de inserción para la extracción de hello enviando notificaciones silenciosa toodevices y desencadenar ellos toocomplete determinados extrae o acciones.
+  * *Programado inserción*: puede programar toosend notificaciones en cualquier momento.
+  * *Dirigir inserción*: puede omitir el registro dispositivos con nuestro servicio y directamente tooa lista de inserción de lote de controladores de dispositivo.
   * *Inserción personalizada*: las variables de inserción de dispositivo le ayudan a enviar notificaciones push personalizadas específicas de dispositivo con pares de clave-valor personalizados.
 * **Telemetría enriquecida**
   
-  * La telemetría de inserción general, dispositivo, error y operación está disponible en Azure Portal y mediante programación.
-  * La telemetría por mensaje realiza el seguimiento de cada inserción desde la llamada de la solicitud inicial a nuestro servicio, procesando por lotes correctamente el envío de las inserciones.
-  * Platform Notification System Feedback (Comentarios del Sistema de notificación de plataforma) comunica todos los comentarios de los Sistemas de notificación de plataforma para ayudar en la depuración.
+  * Telemetría general de inserción, dispositivo, error y operación está disponible en hello portal de Azure y mediante programación.
+  * Por cada mensaje telemetría pistas cada inserción desde el servicio de tooour de llamada de solicitud inicial correctamente procesamiento por lotes Hola emite.
+  * Comentarios de sistema de notificación de plataforma se comunica a todos los comentarios de tooassist de sistemas de notificación de plataforma en la depuración.
 * **Escalabilidad** 
   
-  * Enviar mensajes rápidos a millones de dispositivos sin tener que volver a diseñar la arquitectura o realizar el particionamiento del dispositivo.
+  * Enviar mensajes rápida toomillions de dispositivos sin tener que volver a diseñar o dispositivo particionamiento.
 * **Seguridad**
 
   * Firma de acceso compartido (SAS) o autenticación federada.
 
 ## <a name="integration-with-app-service-mobile-apps"></a>Integración con las Aplicaciones móviles del Servicio de aplicaciones
-Para facilitar una experiencia perfecta y unificadora entre servicios de Azure, [Aplicaciones móviles del Servicio de aplicaciones] tiene compatibilidad integrada con notificaciones push mediante centros de notificaciones. [Aplicaciones móviles del Servicio de aplicaciones] ofrecen una plataforma de desarrollo de aplicaciones móviles altamente escalable y disponible globalmente para desarrolladores empresariales e integradores de sistemas que proporciona un amplio conjunto de funcionalidades a desarrolladores móviles.
+una experiencia perfecta y unificador a través de servicios de Azure, toofacilitate [aplicación del servicio de aplicaciones móviles] tiene compatibilidad integrada para las notificaciones de inserción con centros de notificaciones. [aplicación del servicio de aplicaciones móviles] ofrece una plataforma de desarrollo de aplicaciones móviles muy escalable, que están disponibles globalmente para los desarrolladores empresariales y los integradores que ofrece un amplio conjunto de capacidades toomobile a los desarrolladores.
 
-Los desarrolladores de aplicaciones móviles pueden usar centros de notificaciones con el siguiente flujo de trabajo:
+Los desarrolladores de aplicaciones móviles pueden utilizar los centros de notificaciones con hello siguiendo el flujo de trabajo:
 
 1. Recuperar controlador PNS de dispositivo
 2. Registrar el dispositivo con Notification Hubs a través de la API adecuada del registro del SDK de cliente de Mobile Apps
-   * Tenga en cuenta que las aplicaciones móviles eliminan todas las etiquetas en los registros por motivos de seguridad. Trabaje con centros de notificaciones desde su back-end directamente para asociar etiquetas a dispositivos.
+   * Tenga en cuenta que las aplicaciones móviles eliminan todas las etiquetas en los registros por motivos de seguridad. Trabajar con los centros de notificaciones desde el back-end directamente tooassociate etiquetas con dispositivos.
 3. Enviar notificaciones desde su back-end de aplicación con los centros de notificaciones
 
-Estas son algunas ventajas para los desarrolladores de esta integración:
+Estos son algunos comodidades poner toodevelopers con esta integración:
 
-* **SKD de cliente de Mobile Apps**: estos SDK multiplataforma ofrecen API simples para el registro y se comunican con el centro de notificaciones vinculado con la aplicación móvil automáticamente. Los desarrolladores no tienen que indagar en las credenciales de los Centros de notificaciones y trabajar con un servicio adicional.
+* **SDK de cliente de aplicaciones móviles**: estos SDK multiplataformas proporcionan API simples para el registro y hablar centro de notificaciones toohello vinculada con la aplicación móvil de hello automáticamente. Los desarrolladores no necesitan toodig a través de las credenciales de los centros de notificaciones y trabajar con un servicio adicional.
 
-  * *Inserción en usuario*: los SDK etiquetan automáticamente el dispositivo específico con un identificador de usuario autenticado de Mobile Apps para habilitar la inserción en un escenario de usuario.
-  * *Inserción en dispositivo*: los SDK utilizan automáticamente el identificador de instalación de Mobile Apps como GUID para registrarse con Notification Hubs, lo que permite que los desarrolladores no tengan que mantener varios GUID de servicio.
-* **Modelo de instalación**: Mobile Apps funciona con el modelo de inserción más reciente de Notification Hubs para representar todas las propiedades de inserción asociadas a un dispositivo en una instalación de JSON que se alinea con Servicios de notificaciones de inserción y es sencillo de usar.
-* **Flexibilidad**: los desarrolladores siempre pueden elegir trabajar con Notification Hubs directamente, incluso con la integración implementada.
-* **Experiencia integrada en [Azure Portal]**: la inserción como funcionalidad se representa visualmente en Mobile Apps y los desarrolladores pueden trabajar fácilmente con el centro de notificaciones asociado a través de Mobile Apps.
+  * *Insertar toouser*: Hola SDK etiqueta automáticamente hello tiene dispositivos con aplicaciones móviles autenticados Id. de usuario tooenable toouser caso de la inserción.
+  * *Insertar toodevice*: Hola SDK automáticamente usar hello identificador de instalación de aplicaciones móviles como GUID tooregister con centros de notificaciones, ahorrar a los desarrolladores problemas Hola de mantener varios GUID de servicio.
+* **Modelo de instalación**: aplicaciones móviles funciona con última inserción modelo toorepresent los centros de notificaciones todas las propiedades asociadas a un dispositivo en una instalación de JSON que se alinea con los servicios de notificación de inserción y es fácil toouse de inserción.
+* **Flexibilidad**: los desarrolladores pueden elegir siempre toowork con centros de notificaciones directamente incluso con la integración de hello en su lugar.
+* **Experiencia en integrada [portal de Azure]**: inserción como una capacidad se representa visualmente en aplicaciones móviles y los desarrolladores pueden trabajar fácilmente con el centro de notificaciones asociada de Hola a través de aplicaciones móviles.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Más información acerca de los Centros de notificaciones en estos temas:
@@ -150,7 +150,7 @@ Más información acerca de los Centros de notificaciones en estos temas:
 [Xamarin.Android]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
 [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
 [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
-[Aplicaciones móviles del Servicio de aplicaciones]: https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/
+[aplicación del servicio de aplicaciones móviles]: https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/
 [templates]: notification-hubs-templates-cross-platform-push-messages.md
-[Azure Portal]: https://portal.azure.com
+[portal de Azure]: https://portal.azure.com
 [tags]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)

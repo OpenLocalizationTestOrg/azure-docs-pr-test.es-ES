@@ -1,6 +1,6 @@
 ---
-title: "Recorte de vídeos con Media Encoder Standard - Azure | Microsoft Docs"
-description: "Este artículo muestra cómo recortar vídeos con el Codificador multimedia estándar."
+title: "aaaHow toocrop vídeos con Media Encoder Standard - Azure | Documentos de Microsoft"
+description: "Este artículo se muestra cómo toocrop vídeos con Media Encoder estándar."
 services: media-services
 documentationcenter: 
 author: anilmur
@@ -14,31 +14,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: anilmur;juliako;
-ms.openlocfilehash: 60d0ce14a271fcbe698559da95ca011cb888b221
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2b4ac3d96228b93c890a38c57c4913988de1e8bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Recorte de vídeos con Codificador multimedia estándar
-Puede utilizar el Codificador multimedia estándar (MES) para recortar el vídeo de entrada. Recortar es el proceso que consiste en la selección de una ventana rectangular en el fotograma de vídeo y la codificación solo de los píxeles que están dentro de esa ventana. El diagrama siguiente puede ayudarle a ilustrar el proceso.
+Puede utilizar medios codificador estándar (MES) toocrop la entrada de vídeo. Recortar es el proceso de Hola para seleccionar una ventana rectangular en fotogramas de vídeo de Hola y codificación simplemente píxeles de hello dentro de esa ventana. Hola después de diagrama le ayuda a ilustrar el proceso de Hola.
 
 ![Recortar un vídeo](./media/media-services-crop-video/media-services-crop-video01.png)
 
-Suponga que tiene como entrada un vídeo con una resolución de 1920 x 1080 píxeles (relación de aspecto 16:9), pero que tiene barras negras (formato pillarbox) a izquierda y derecha, por lo que sólo una ventana de 4:3 o 1440 x 1080 píxeles contiene vídeo activo. Puede usar el MES para recortar o editar las barras negras y codificar la región de 1440 x 1080 píxeles.
+Imagine que tiene como entrada un vídeo que tenga una resolución de 1920 x 1080 píxeles (relación de aspecto 16:9), pero tiene barras de color negro (pillar cuadros) en hello izquierdo y derecho, por lo que solo una ventana de 4:3 o 1440 x 1080 píxeles contiene vídeo active. Puede usar toocrop MES o editar out barras Hola negro y codificar la región de 1440 x 1080 Hola.
 
-Recortar en MES es una fase previa al procesamiento, por ello, los parámetros de recorte del valor predeterminado de codificación se aplican al vídeo de entrada original. La codificación es una fase posterior y los valores de anchura y altura se aplicarán al vídeo *previamente procesado* y no al vídeo original. Al diseñar el valor predeterminado debe hacer lo siguiente: (a) seleccione los parámetros de recorte basándose en el vídeo de entrada original y (b), seleccione la configuración de codificación basándose en el vídeo recortado. Si no coincide la configuración de la codificación con el vídeo recortado, el resultado no será el esperado.
+Recortar en MES es una fase previa al procesamiento, por lo que aplican los parámetros de recorte de hello en el valor predeterminado de codificación de hello toohello vídeo de entrada original. La codificación es una fase posterior, y configuración de ancho/alto de Hola aplica toohello *preprocesa* vídeo y no toohello de vídeo original. Al diseñar sus valores preestablecidos necesita toodo Hola siguiente: (a) seleccione parámetros de recorte de hello basados en vídeo de entrada original de Hola y (b), seleccione su codificar la configuración en función de hello recortada vídeo. Si no coinciden los codificar toohello configuración recorta el vídeo, la salida de hello no será tal como se esperaba.
 
-El [siguiente](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) tema muestra cómo crear un trabajo de codificación con el MES y cómo especificar un valor predeterminado personalizado para la tarea de codificación. 
+Hola [siguiente](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) tema muestra cómo toocreate un trabajo de codificación con el MES y cómo toospecify personalizado preestablecido para Hola tarea de codificación. 
 
 ## <a name="creating-a-custom-preset"></a>Creación de un valor predeterminado personalizado
-En el ejemplo que aparece en el diagrama:
+En el ejemplo de Hola que se muestra en el diagrama de hello:
 
 1. La entrada original es 1920 x 1080
-2. Debe recortarse a una salida de 1440 x 1080, centrada en el marco de entrada
+2. Necesita toobe recorta tooan salida de 1440 x 1080, que se centra en el marco de entrada de Hola
 3. Esto significa un desplazamiento X (1920 – 1440) / 2 = 240 y un desplazamiento Y de cero
-4. La anchura y altura del rectángulo de recorte son 1440 y 1080, respectivamente
-5. En la fase de codificación, la ASK producirá tres capas, con resoluciones de 1440 x 1080, 960 x 720 y 480 x 360, respectivamente
+4. Hola ancho y alto del rectángulo de recorte de hello son 1440 y 1080, respectivamente
+5. Hola fase de codificación, hello solicitar es tooproduce tres capas, son resoluciones 1440 x 1080, 960 x 720 y 480 x 360, respectivamente
 
 ### <a name="json-preset"></a>Valor preestablecido JSON
     {
@@ -126,19 +126,19 @@ En el ejemplo que aparece en el diagrama:
 
 
 ## <a name="restrictions-on-cropping"></a>Restricciones en el recorte
-La función de recorte está pensada para ser manual. Debe cargar el vídeo de entrada en una herramienta de edición apropiada que le permita seleccionar los fotogramas de interés, colocar el cursor para determinar los desplazamientos del rectángulo de recorte y determinar el valor predeterminado de codificación que se ajusta a ese determinado vídeo, etc. Esta característica no está pensada para habilitar cosas como: detección automática y eliminación de bordes negros en formato letterbox o pillarbox en el vídeo de entrada.
+el objetivo de Hello recortar característica es toobe manual. Deberá tooload la entrada de vídeo en una herramienta de edición adecuada que permite seleccionar las tramas de interés, coloque Hola cursor toodetermine desplazamientos para recortar el rectángulo de hello, toodetermine Hola valor preestablecido de codificación que se ajusta para que ese etcetera de vídeo determinado. Esta característica no se pretende tooenable cosas como: la detección automática y eliminación de bordes negros panorámica/pantalla normal en la entrada de vídeo.
 
-Se aplican las siguientes restricciones a la característica de recorte. Si estos no se cumplen, la tarea de codificación puede producir un error o generar una salida inesperada.
+Las restricciones siguientes aplican toohello recortar la característica. Si no se cumplen estas, Hola codificar tareas pueden producir errores o generar un resultado inesperado.
 
-1. Las coordenadas y el tamaño del rectángulo de recorte deben ajustarse al vídeo de entrada
-2. Como se mencionó anteriormente, la anchura y altura de la configuración de codificación se tienen que corresponder con el vídeo recortado
-3. El recorte se aplica a vídeos capturados en modo horizontal (es decir, no es aplicable a los vídeos grabados con un smartphone sujeto verticalmente o en modo vertical)
+1. Hello las coordenadas y el tamaño del rectángulo de recorte de hello tienen toofit dentro de vídeo de entrada de Hola
+2. Como se mencionó anteriormente, Hola ancho y alto en hello codifican valores tienen toohello toocorrespond recorta vídeo
+3. Recortar aplica toovideos capturada en modo horizontal (es decir, no es aplicable toovideos registrados con un smartphone mantenida verticalmente o en modo vertical)
 4. Funciona mejor con vídeo progresivo capturado con píxeles cuadrados
 
 ## <a name="provide-feedback"></a>Envío de comentarios
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Paso siguiente
-Consulte las rutas de aprendizaje de los Servicios multimedia de Azure para conocer las magníficas características ofrecidas por AMS.  
+Vea servicios de multimedia de Azure toohelp de rutas de acceso que conozcas excelentes características que ofrece AMS de aprendizaje.  
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

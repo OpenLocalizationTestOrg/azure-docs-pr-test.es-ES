@@ -1,6 +1,6 @@
 ---
-title: "Introducción a la CLI de Azure para Batch | Microsoft Docs"
-description: "Obtenga una introducción rápida a los comandos de Batch en la CLI de Azure para administrar los recursos del servicio Azure Batch"
+title: aaaGet a trabajar con CLI de Azure para lote | Documentos de Microsoft
+description: "Obtenga una introducción rápida toohello comandos del lote de CLI de Azure para administrar los recursos del servicio Azure Batch"
 services: batch
 documentationcenter: 
 author: tamram
@@ -15,90 +15,90 @@ ms.workload: big-compute
 ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9bee0344ba70c50cda36a87ea617906283040ff9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 14f28311ecb16c8097d0d304a4ad89de282a2e9b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Administración de recursos de Batch con la CLI de Azure
 
-La CLI 2.0 de Azure es la nueva experiencia de línea de comandos de Azure para administrar recursos de Azure. Se puede usar en macOS, Linux y Windows. La CLI de Azure 2.0 está optimizada para administrar recursos de Azure desde la línea de comandos. Puede usarla para administrar cuentas de Azure Batch y administrar recursos, como grupos, trabajos y tareas. Con la CLI de Azure, puede realizar mediante scripts muchas de las mismas tareas que lleva a cabo con las API de Batch, Azure Portal y los cmdlets PowerShell de Batch.
+Hola 2.0 de CLI de Azure es la nueva experiencia de línea de comandos de Azure para administrar recursos de Azure. Se puede usar en macOS, Linux y Windows. 2.0 de CLI de Azure está optimizado para administrar recursos de Azure desde la línea de comandos de Hola. Puede usar hello Azure CLI toomanage su cuenta de lote de Azure y sus recursos de toomanage como grupos, los trabajos y tareas. Con hello CLI de Azure, puede crear scripts de muchas de Hola Hola de mismas tareas que llevar a cabo con las API de lote, portal de Azure y cmdlets de PowerShell de lote.
 
-En este artículo se proporciona una introducción al uso de la [CLI de Azure versión 2.0](https://docs.microsoft.com/cli/azure/overview) con Batch. Consulte [Introducción a la CLI de Azure 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) para información general sobre el uso de la CLI con Azure.
+En este artículo se proporciona una introducción al uso de la [CLI de Azure versión 2.0](https://docs.microsoft.com/cli/azure/overview) con Batch. Vea [empezar a trabajar con Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) para obtener información general del uso de hello CLI con Azure.
 
-Microsoft recomienda usar la versión más reciente de la CLI de Azure, la versión 2.0. Para más información acerca de la versión 2.0, consulte [Azure Command Line 2.0 now generally available](https://azure.microsoft.com/blog/announcing-general-availability-of-vm-storage-and-network-azure-cli-2-0/) (La línea de comandos de Azure 2.0 está ahora disponible con carácter general).
+Microsoft recomienda el uso de la versión más reciente de Hola de hello CLI de Azure, versión 2.0. Para más información acerca de la versión 2.0, consulte [Azure Command Line 2.0 now generally available](https://azure.microsoft.com/blog/announcing-general-availability-of-vm-storage-and-network-azure-cli-2-0/) (La línea de comandos de Azure 2.0 está ahora disponible con carácter general).
 
-## <a name="set-up-the-azure-cli"></a>Configuración de la CLI de Azure
+## <a name="set-up-hello-azure-cli"></a>Configurar Hola CLI de Azure
 
-Para instalar la CLI de Azure, siga los pasos descritos en [Instalación de la CLI de Azure](https://docs.microsoft.com/cli/azure/install-azure-cli.md).
+Hola tooinstall CLI de Azure, siga los pasos de hello descritos en [Install hello Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli.md).
 
 > [!TIP]
-> Se recomienda actualizar su instalación de la CLI de Azure con frecuencia para aprovechar las mejoras y actualizaciones del servicio.
+> Le recomendamos que actualice la instalación de CLI de Azure con frecuencia tootake aprovechar las mejoras y las actualizaciones del servicio.
 > 
 > 
 
 ## <a name="command-help"></a>Ayuda de comandos
 
-Para mostrar texto de ayuda para todos los comandos de la CLI de Azure, anexe `-h` al comando. Omita el resto de las opciones. Por ejemplo:
+Puede mostrar texto de ayuda para todos los comandos en hello Azure CLI anexando `-h` toohello comando. Omita el resto de las opciones. Por ejemplo:
 
-* Para obtener ayuda sobre el comando `az` escriba: `az -h`
-* Para obtener una lista de todos los comandos de Batch en la CLI, utilice: `az batch -h`
-* Para obtener ayuda acerca de la creación de una cuenta de Batch, escriba: `az batch account create -h`
+* Ayuda de tooget para hello `az` , escriba:`az -h`
+* tooget una lista de todos los comandos de proceso por lotes de hello CLI, use:`az batch -h`
+* tooget ayuda acerca de cómo crear una cuenta de lote, escriba:`az batch account create -h`
 
-En caso de duda, utilice la opción de línea de comandos `-h` para obtener ayuda sobre cualquier comando de CLI de Azure.
+En caso de duda, usar hello `-h` opción de línea de comandos tooget ayuda sobre cualquier comando de CLI de Azure.
 
 > [!NOTE]
-> Las versiones anteriores de la CLI de Azure usaban `azure` delante de un comando de CLI. En la versión 2.0, todos los comandos van precedidos de `az`. Asegúrese de actualizar los scripts para que usen la nueva sintaxis con la versión 2.0.
+> Las versiones anteriores de hello CLI de Azure usa `azure` toopreface un comando CLI. En la versión 2.0, todos los comandos van precedidos de `az`. Ser tooupdate seguro de las scripts toouse Hola nueva sintaxis con la versión 2.0.
 >
 >  
 
-Además, consulte la documentación de referencia de la CLI de Azure para más información sobre los [comandos de la CLI de Azure para Batch](https://docs.microsoft.com/cli/azure/batch). 
+Además, consulte la documentación de referencia de CLI de Azure de toohello para obtener más información acerca de [comandos de CLI de Azure para lote](https://docs.microsoft.com/cli/azure/batch). 
 
 ## <a name="log-in-and-authenticate"></a>Inicio de sesión y autenticación
 
-Para utilizar la CLI de Azure con Batch, debe iniciar sesión y autenticarse. Hay dos pasos sencillos que seguir:
+Hola toouse CLI de Azure con el lote, necesita toolog en y autenticar. Hay dos toofollow sencillos pasos:
 
-1. **Inicie sesión en Azure.** Al iniciar sesión en Azure, logra acceso a los comandos de Azure Resource Manager, incluidos los del [servicio de administración de Batch](batch-management-dotnet.md).  
-2. **Inicie sesión en su cuenta de Batch.** Al iniciar sesión en su cuenta de Batch, logra acceso a los comandos del servicio Batch.   
+1. **Inicie sesión en Azure.** Iniciar sesión en Azure proporciona acceso a comandos del Administrador de recursos de tooAzure, incluidos los [servicio de administración de lotes](batch-management-dotnet.md) comandos.  
+2. **Inicie sesión en su cuenta de Batch.** Iniciar sesión en la le proporciona la cuenta de lote acceder a comandos de servicio de tooBatch.   
 
-### <a name="log-in-to-azure"></a>Inicie sesión en Azure.
+### <a name="log-in-tooazure"></a>Inicie sesión en tooAzure
 
-Hay varias maneras diferentes de iniciar sesión en Azure, las cuales se describen en detalle en [Inicio de sesión con la CLI de Azure 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli):
+Hay unos toolog de distintas maneras en Azure, se describe en detalle en [iniciar sesión con Azure CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli):
 
-1. [Inicie sesión de forma interactiva](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#interactive-log-in). Inicie sesión de forma interactiva cuando ejecute comandos de la CLI de Azure desde la línea de comandos.
+1. [Inicie sesión de forma interactiva](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#interactive-log-in). Inicie sesión forma interactiva cuando se ejecutan comandos de CLI de Azure desde la línea de comandos de Hola.
 2. [Inicie sesión con una entidad de servicio](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#logging-in-with-a-service-principal). Inicie sesión con una entidad de servicio cuando ejecute comandos de la CLI de Azure desde un script o una aplicación.
 
-Para este artículo, se muestra cómo iniciar sesión de forma interactiva en Azure. Escriba [az login](https://docs.microsoft.com/cli/azure/#login) en la línea de comandos:
+Para fines de Hola de este artículo, le mostramos cómo toolog en Azure interactivamente. Tipo de [inicio de sesión de az](https://docs.microsoft.com/cli/azure/#login) en línea de comandos de hello:
 
 ```azurecli
-# Log in to Azure and authenticate interactively.
+# Log in tooAzure and authenticate interactively.
 az login
 ```
 
-El comando `az login` devuelve un token que puede usar para autenticarse, como se muestra aquí. Siga las instrucciones proporcionadas para abrir una página web y enviar el token a Azure:
+Hola `az login` comando devuelve un símbolo (token) que puede usar tooauthenticate, como se muestra aquí. Siga las instrucciones proporcionadas de hello tooopen una página web y enviar Hola token tooAzure:
 
-![Inicie sesión en Azure.](./media/batch-cli-get-started/az-login.png)
+![Inicie sesión en tooAzure](./media/batch-cli-get-started/az-login.png)
 
-Los ejemplos en la sección [Scripts de shell de ejemplo](#sample-shell-scripts) también muestran cómo iniciar la sesión de la CLI de Azure mediante el inicio interactivo en Azure. Una vez que haya iniciado sesión, puede llamar a comandos para trabajar con recursos de administración de Batch, incluidas cuentas de Batch, claves, paquetes de aplicación y cuotas.  
+muestran ejemplos de Hello en hello [scripts de shell de ejemplo](#sample-shell-scripts) sección también muestran cómo toostart la sesión de CLI de Azure mediante el registro en Azure de forma interactiva. Una vez que haya iniciado sesión, puede llamar a comandos toowork con recursos de administración de lotes, incluidas las cuentas, las claves, paquetes de aplicaciones y las cuotas de lote.  
 
-### <a name="log-in-to-your-batch-account"></a>Inicio de sesión en la cuenta de Batch
+### <a name="log-in-tooyour-batch-account"></a>Inicie sesión en tooyour cuenta de lote
 
-Para usar la CLI de Azure para administrar recursos de Batch, como grupos, trabajos y tareas, debe iniciar sesión en su cuenta de Batch y autenticarse. Para iniciar sesión en el servicio Batch, use el comando [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login). 
+toouse hello Azure CLI toomanage lote recursos, como los grupos, los trabajos y las tareas, que necesita toolog en su cuenta de lote y autentica. toolog en toohello servicio por lotes, utilice hello [inicio de sesión de cuenta de lote de az](https://docs.microsoft.com/cli/azure/batch/account#login) comando. 
 
 Tiene dos opciones para autenticarse en su cuenta de Batch:
 
 - **Mediante la autenticación de Azure Active Directory (Azure AD).** 
 
-    La autenticación con Azure AD es el valor predeterminado cuando se usa la CLI de Azure con Batch y se recomienda para la mayoría de los escenarios. 
+    Autenticar con Azure AD es predeterminado de hello cuando usas Hola CLI de Azure con el lote y se recomienda para la mayoría de los escenarios. 
     
-    Cuando inicia sesión en Azure de forma interactiva, como se describe en la sección anterior, sus credenciales se almacenan en caché, por lo que la CLI de Azure puede iniciar sesión en su cuenta de Batch con esas mismas credenciales. Si inicia sesión Azure con una entidad de servicio, esas credenciales también se usan para iniciar sesión en su cuenta de Batch.
+    Cuando inicie sesión en tooAzure interactivamente, tal y como se describe en la sección anterior de hello, se almacenan en caché en sus credenciales, por lo que Hola CLI de Azure puede iniciar la sesión tooyour con las mismas credenciales de cuenta de lote. Si ha iniciado sesión en tooAzure con una entidad de servicio, esas credenciales también son toolog utilizado en tooyour cuenta de lote.
 
-    Una ventaja de Azure AD es que ofrece control de acceso basado en rol (RBAC). Con RBAC, el acceso de un usuario depende de su rol asignado, y no de si posee o no las claves de cuenta. En lugar de administrar claves de cuenta, puede administrar roles RBAC y dejar que Azure AD se encargue del acceso y la autenticación.  
+    Una ventaja de Azure AD es que ofrece control de acceso basado en rol (RBAC). Con RBAC, acceso de un usuario depende de su rol asignado, en lugar de o no poseen claves de cuenta de hello. En lugar de administrar claves de cuenta, puede administrar roles RBAC y dejar que Azure AD se encargue del acceso y la autenticación.  
 
-    Es necesario autenticarse con Azure AD si ha creado su cuenta de Azure Batch con el modo de asignación de grupo establecido en "Suscripción del usuario". 
+    Autenticar con Azure AD es necesario si ha creado su cuenta de lote de Azure con su modo de asignación de grupo configurada too'User suscripción '. 
 
-    Para iniciar sesión en su cuenta de Batch con Azure AD, llame al comando [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login): 
+    toolog en tooyour lote cuenta con Azure AD, llame a hello [inicio de sesión de cuenta de lote de az](https://docs.microsoft.com/cli/azure/batch/account#login) comando: 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
@@ -106,25 +106,25 @@ Tiene dos opciones para autenticarse en su cuenta de Batch:
 
 - **Mediante la autenticación de clave compartida.**
 
-    La [autenticación de clave compartida](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key) usa las claves de acceso de su cuenta para autenticar comandos de la CLI de Azure para el servicio Batch.
+    [La autenticación Shared Key](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key) usa la cuenta acceso claves tooauthenticate comandos de CLI de Azure para hello procesar por lotes de servicio.
 
-    Si va a crear scripts de la CLI de Azure para automatizar la llamada a comandos de Batch, puede usar la autenticación de clave compartida o una entidad de servicio de Azure AD. En algunos escenarios, puede resultar más sencillo usar la autenticación de clave compartida que crear una entidad de servicio.  
+    Si va a crear las secuencias de comandos de CLI de Azure tooautomate comandos del lote que realiza la llamada, puede usar la autenticación de clave compartida o una entidad de servicio de Azure AD. En algunos escenarios, puede resultar más sencillo usar la autenticación de clave compartida que crear una entidad de servicio.  
 
-    Para iniciar sesión con autenticación de clave compartida, incluya la opción `--shared-key-auth` en la línea de comandos:
+    toolog con la autenticación de clave compartida, incluyen hello `--shared-key-auth` opción en línea de comandos de hello:
 
     ```azurecli
     az batch account login -g myresourcegroup -n mybatchaccount --shared-key-auth
     ```
 
-Los ejemplos en la sección [Scripts de shell de ejemplo](#sample-shell-scripts) muestran cómo iniciar sesión en su cuenta de Batch con la CLI de Azure mediante Azure AD y la clave compartida.
+muestran ejemplos de Hello en hello [scripts de shell de ejemplo](#sample-shell-scripts) sección mostrará cómo toolog en su cuenta de lote con Hola CLI de Azure mediante Azure AD y la clave compartida.
 
 ## <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Uso de plantillas y transferencia de archivos de la CLI de Azure Batch (versión preliminar)
 
-Puede utilizar la CLI de Azure para ejecutar trabajos completos de Batch sin escribir código. Los archivos de plantilla de Batch admiten la creación de grupos, trabajos y tareas con la CLI de Azure. También puede utilizar la CLI de Azure para cargar archivos de entrada de trabajos en la cuenta de Azure Storage asociada con la cuenta de Batch y descargar los archivos de salida de trabajos. Para más información, consulte [Uso de plantillas y transferencia de archivos de la CLI de Azure Batch (versión preliminar)](batch-cli-templates.md).
+Puede usar hello Azure CLI toorun lote trabajos-to-end sin escribir código. Archivos de plantilla de proceso por lotes admiten crear grupos, los trabajos y tareas con hello CLI de Azure. También puede usar archivos de entrada de trabajo de hello Azure CLI tooupload toohello cuenta de almacenamiento de Azure asociada con hello cuenta de lote y descargan archivos de salida de trabajo del mismo. Para más información, consulte [Uso de plantillas y transferencia de archivos de la CLI de Azure Batch (versión preliminar)](batch-cli-templates.md).
 
 ## <a name="sample-shell-scripts"></a>Scripts de shell de ejemplo
 
-Los scripts de ejemplo en la tabla siguiente muestran cómo usar comandos de la CLI de Azure con el servicio Batch y el servicio de administración de Batch para realizar tareas habituales. Estos scripts de ejemplo tratan muchos de los comandos disponibles en la CLI de Azure para Batch. 
+scripts de ejemplo de Hola enumeran en hello siguiente tabla se muestran cómo comandos toouse CLI de Azure con el servicio de lote de Hola y tareas comunes de administración de lotes servicio tooaccomplish. Estas secuencias de comandos de ejemplo tratan muchos de hello comandos disponibles en hello CLI de Azure para el lote. 
 
 | Script | Notas |
 |---|---|
@@ -135,61 +135,61 @@ Los scripts de ejemplo en la tabla siguiente muestran cómo usar comandos de la 
 
 ## <a name="json-files-for-resource-creation"></a>Archivos JSON para la creación de recursos
 
-Al crear recursos de Batch, como grupos y trabajos, puede especificar un archivo JSON que contenga la configuración del recurso nuevo, en lugar de pasar sus parámetros como opciones de la línea de comandos. Por ejemplo:
+Al crear recursos de proceso por lotes como grupos y los trabajos, puede especificar un archivo JSON que contiene la configuración del nuevo recurso de hello en lugar de pasar sus parámetros como opciones de línea de comandos. Por ejemplo:
 
 ```azurecli
 az batch pool create my_batch_pool.json
 ```
 
-Aunque puede crear la mayoría de los recursos de Batch solo con las opciones de la línea de comandos, algunas características requieren que especifique un archivo con formato JSON que contenga los detalles de los recursos. Por ejemplo, si desea especificar archivos de recursos para una tarea de inicio, debe utilizar un archivo JSON.
+Si bien puede crear más recursos de proceso por lotes utilizando únicamente las opciones de línea de comandos, algunas características requieren que se especifique un archivo con formato JSON que contiene los detalles de recursos de Hola. Por ejemplo, debe usar un archivo JSON si desea que los archivos de recursos de toospecify de una tarea de inicio.
 
-Para ver la sintaxis JSON necesaria para crear un recurso, consulte la documentación de [referencia de API de REST de Batch][rest_api]. Todos los temas sobre la incorporación de *tipos de recurso* en la referencia de API de REST contienen scripts JSON de ejemplo para crear el recurso correspondiente. Puede usar esos scripts JSON de ejemplo como plantillas para los archivos JSON que se usan con la CLI de Azure. Por ejemplo, para ver la sintaxis JSON para crear grupos, consulte [Add a pool to an account][rest_add_pool] (Incorporación de un grupo a una cuenta).
+Hola toosee sintaxis de JSON requiere toocreate un recurso, consulte toohello [referencia de la API de REST de lote] [ rest_api] documentación. Cada "agregar *tipo de recurso*" temas de referencia de la API de REST de hello contiene scripts de JSON de ejemplo para la creación de ese recurso. Puede usar los scripts JSON de ejemplo como plantillas para toouse de archivos JSON con hello CLI de Azure. Por ejemplo, hello toosee sintaxis de JSON para la creación de grupo, consulte demasiado[agregar una cuenta del grupo de tooan][rest_add_pool].
 
 Para un script de ejemplo que especifica un archivo JSON, consulte [Ejecutar un trabajo y tareas con Batch](./scripts/batch-cli-sample-run-job.md).
 
 > [!NOTE]
-> Si especifica un archivo JSON al crear un recurso, se pasan por alto los restantes parámetros que especifique en la línea de comandos de dicho recurso.
+> Si especifica un archivo JSON cuando se crea un recurso, se omite cualquier otro parámetro que especifique en la línea de comandos de Hola para ese recurso.
 > 
 > 
 
 ## <a name="efficient-queries-for-batch-resources"></a>Consultas eficaces para recursos de Batch
 
-Cada tipo de recurso de proceso de Batch admite un comando `list` que consulta la cuenta de Batch y enumera los recursos de ese tipo. Por ejemplo, puede enumerar los grupos de su cuenta y las tareas de un trabajo:
+Cada tipo de recurso de proceso de Batch admite un comando `list` que consulta la cuenta de Batch y enumera los recursos de ese tipo. Por ejemplo, puede enumerar grupos de hello en sus cuenta y hello las tareas en un trabajo:
 
 ```azurecli
 az batch pool list
 az batch task list --job-id job001
 ```
 
-Cuando consulta el servicio Batch con una operación `list`, puede especificar una cláusula OData para limitar la cantidad de datos devueltos. Dado que todo el filtrado se produce en el lado servidor, solo se devuelven los datos que solicite. Use estas cláusulas para ahorrar ancho de banda (y, por consiguiente, tiempo) al realizar operaciones de lista.
+Al consultar el servicio de lote de hello con un `list` operación, puede especificar una cantidad de OData cláusula toolimit Hola de los datos devueltos. Dado que todos los filtros, aparece el servidor, solo los datos de hello que solicitar cruza conexión Hola. Usar estas ancho de banda de cláusulas toosave (y por lo tanto tiempo) al realizar operaciones de lista.
 
-En la tabla siguiente se describen las cláusulas OData admitidas por el servicio Batch:
+Hello tabla siguiente describen las cláusulas de OData Hola admitidas Hola servicio por lotes:
 
 | Cláusula | Descripción |
 |---|---|
 | `--select-clause [select-clause]` | Devuelve un subconjunto de propiedades para cada entidad. |
-| `--filter-clause [filter-clause]` | Devuelve solo las entidades que coincidan con la expresión OData especificada. |
-| `--expand-clause [expand-clause]` | Obtiene la información de la entidad en una única llamada REST subyacente. Actualmente, la cláusula expand solo admite la propiedad `stats`. |
+| `--filter-clause [filter-clause]` | Devuelve solo las entidades que coincide con hello especifican expresiones de OData. |
+| `--expand-clause [expand-clause]` | Obtiene la información de entidad de hello en una sola llamada REST subyacente. Hola expanda cláusula actualmente admite solo Hola `stats` propiedad. |
 
-Para un script de ejemplo que muestra cómo usar una cláusula OData, consulte [Ejecutar un trabajo y tareas con Batch](./scripts/batch-cli-sample-run-job.md).
+Para obtener un ejemplo de script que se muestra cómo toouse una cláusula de OData, vea [ejecutar un trabajo y las tareas con lote](./scripts/batch-cli-sample-run-job.md).
 
-Para más información sobre cómo realizar consultas de lista eficaces con cláusulas OData, consulte [Consulta del servicio Azure Batch con eficacia](batch-efficient-list-queries.md).
+Para obtener más información acerca de cómo realizar consultas de lista eficaz con las cláusulas de OData, vea [consultar el servicio de Azure Batch Hola eficazmente](batch-efficient-list-queries.md).
 
 ## <a name="troubleshooting-tips"></a>Sugerencias de solución de problemas
 
-Las siguientes sugerencias pueden ayudarle cuando esté solucionando problemas de la CLI de Azure:
+Hello las sugerencias siguientes pueden ayudarle a cuando esté solucionando problemas de CLI de Azure:
 
-* Use `-h` para obtener **texto de ayuda** de cualquier comando de CLI.
-* Use `-v` y `-vv` para mostrar la salida **detallada** de comandos. Cuando se incluye la marca `-vv`, la CLI de Azure muestra las solicitudes y respuestas REST en sí. Estos modificadores son útiles para mostrar la salida completa del error.
-* Puede ver la **salida del comando como JSON** con la opción `--json`. Por ejemplo, `az batch pool show pool001 --json` muestra las propiedades de pool001 en formato JSON. Puede copiar y modificar esta salida para usarla en `--json-file` (consulte [Archivos JSON](#json-files) en este mismo artículo).
-<!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
-* El [foro de Batch][batch_forum] está supervisado por los miembros del equipo de Batch. Puede publicar en él sus preguntas si experimenta problemas o desea obtener ayuda acerca de una operación concreta.
+* Use `-h` tooget **texto de Ayuda** para cualquier comando de CLI
+* Use `-v` y `-vv` toodisplay **detallado** salida de comandos. Hola cuando `-vv` se incluye la marca, Hola CLI de Azure muestra hello real REST solicitudes y respuestas. Estos modificadores son útiles para mostrar la salida completa del error.
+* Puede ver **comando salida JSON** con hello `--json` opción. Por ejemplo, `az batch pool show pool001 --json` muestra las propiedades de pool001 en formato JSON. Luego puede copiar y modificar este toouse de salida en un `--json-file` (consulte [archivos JSON](#json-files) anteriormente en este artículo).
+<!---Loc Comment: Please, check link [JSON files] since it's not redirecting tooany location.--->
+* Hola [foro de lote] [ batch_forum] supervisado por los miembros del equipo de lote. Puede publicar en él sus preguntas si experimenta problemas o desea obtener ayuda acerca de una operación concreta.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+* Para obtener más información acerca de hello CLI de Azure, vea hello [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 * Para más información sobre los recursos de Batch, consulte [Introducción a Azure Batch para desarrolladores](batch-api-basics.md).
-* Para más información sobre el uso de plantillas de Batch para crear grupos, trabajos y tareas sin escribir código, consulte [Uso de plantillas y transferencia de archivos de la CLI de Azure Batch (versión preliminar)](batch-cli-templates.md).
+* Para obtener más información sobre el uso de grupos de plantillas toocreate por lotes, los trabajos y tareas sin escribir código, consulte [usar plantillas de CLI de lote de Azure y transferencia de archivos (vista previa)](batch-cli-templates.md).
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md

@@ -1,6 +1,6 @@
 ---
-title: Uso de Azure File Storage con Linux | Microsoft Docs
-description: Aprenda a montar un recurso compartido de archivos de Azure mediante SMB en Linux.
+title: almacenamiento de archivos de Azure con Linux aaaUse | Documentos de Microsoft
+description: "Obtenga información acerca de cómo compartir toomount un archivo de Azure a través de SMB en Linux."
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/8/2017
 ms.author: renash
-ms.openlocfilehash: d8987082c559a374b8d19fd69e20cf5e81cb25ef
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: eeaa24b7f9e646724c5d86ae1e80dfdadaff34fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-file-storage-with-linux"></a>Uso de Azure File Storage con Linux
-[Azure File Storage](../storage-dotnet-how-to-use-files.md) es el sistema de archivos en la nube de Microsoft fácil de usar. Los recursos compartidos de Azure File se pueden montar en distribuciones de Linux mediante el [paquete cifs-utils](https://wiki.samba.org/index.php/LinuxCIFS_utils) del [proyecto de Samba](https://www.samba.org/). En este artículo se muestran dos maneras de montar un recurso compartido de Azure File: a petición, con el comando `mount` y al inicio, mediante la creación de una entrada en `/etc/fstab`.
+[Almacenamiento de Azure archivo](../storage-dotnet-how-to-use-files.md) es sistema de archivos de nube de Microsoft toouse fácil. Azure recursos compartidos de archivos se pueden montar en las distribuciones de Linux con hello [cifs-utils paquete](https://wiki.samba.org/index.php/LinuxCIFS_utils) de hello [proyecto Samba](https://www.samba.org/). Este artículo muestra un recurso compartido de archivos de Azure de toomount de dos maneras: a petición con hello `mount` de comandos y de arranque mediante la creación de una entrada en `/etc/fstab`.
 
 > [!NOTE]  
-> Para montar un recurso compartido de Azure File fuera de la región de Azure en la que se hospeda, bien sea en local o en una región distinta de Azure, el sistema operativo debe admitir la funcionalidad de cifrado de SMB 3.0. La característica de cifrado de SMB 3.0 para Linux se introdujo en el kernel 4.11. Esta característica permite el montaje de recursos compartidos de Azure File desde el entorno local o una región distinta de Azure. En el momento de la publicación, esta funcionalidad se ha usado en Ubuntu 16.04 y en versiones anteriores.
+> En orden toomount un recurso compartido de archivos de Azure fuera Hola región de Azure que se hospeda en, como local o en una región distinta de Azure, Hola SO debe admitir funcionalidad de cifrado de Hola de SMB 3.0. La característica de cifrado de SMB 3.0 para Linux se introdujo en el kernel 4.11. Esta característica permite el montaje de recursos compartidos de Azure File desde el entorno local o una región distinta de Azure. En tiempo de presentación de la publicación, esta funcionalidad ha sido utilizados tooUbuntu desde 16.04 y versiones posteriores.
 
 
-## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Requisitos previos para el montaje de un recurso compartido de Azure File con Linux y el paquete cifs-utils
-* **Seleccionar una distribución de Linux que pueda tener instalado el paquete cifs-utils**: Microsoft recomienda las siguientes distribuciones de Linux de la galería de imágenes de Azure:
+## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-hello-cifs-utils-package"></a>Requisitos previos para el montaje de un recurso compartido de archivos de Azure paquete cifs-utils hello y Linux
+* **Seleccionar una distribución de Linux que se puede tener instalado el paquete de utilidades de cifs Hola**: Microsoft recomienda Hola siguiendo las distribuciones de Linux en la Galería de imágenes de Azure hello:
 
     * Ubuntu Server 14.04+
     * RHEL 7+
@@ -37,82 +37,82 @@ ms.lasthandoff: 08/29/2017
     * openSUSE 13.2+
     * SUSE Linux Enterprise Server 12
 
-* <a id="install-cifs-utils"></a>**El paquete cifs-utils está instalado**: este paquete se puede instalar con el administrador de paquetes de la distribución de Linux de su elección. 
+* <a id="install-cifs-utils"></a>**Hello cifs-utils paquete está instalado**: Hola cifs-utils puede instalarse mediante el Administrador de paquetes de saludo en la distribución de Linux Hola de su elección. 
 
-    En distribuciones de **Ubuntu** y **Debian**, use el administrador de paquetes `apt-get`:
+    En **Ubuntu** y **Debian-based** distribuciones, usar hello `apt-get` Administrador de paquetes:
 
     ```
     sudo apt-get update
     sudo apt-get install cifs-utils
     ```
 
-    En **RHEL** y **CentOS**, use el administrador de paquetes `yum`:
+    En **RHEL** y **CentOS**, usar hello `yum` Administrador de paquetes:
 
     ```
     sudo yum install samba-client samba-common cifs-utils
     ```
 
-    En **openSUSE**, use el administrador de paquetes `zypper`:
+    En **openSUSE**, usar hello `zypper` Administrador de paquetes:
 
     ```
     sudo zypper install samba*
     ```
 
-    En otras distribuciones, use el administrador de paquetes apropiado o [compile desde el origen](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
+    En otras distribuciones, utilice el Administrador de paquetes apropiada de Hola o [compilar desde origen](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
 
-* **Decidir sobre los permisos de archivo o directorio del recurso compartido montado**: en los ejemplos siguientes, usamos 0777 para proporcionar permisos de lectura, escritura y ejecución a todos los usuarios. Puede reemplazarlos por otros [permisos chmod](https://en.wikipedia.org/wiki/Chmod), según prefiera. 
+* **Decidir de permisos de directorios/archivos de hello del recurso compartido montado de Hola**: en los siguientes ejemplos de hello, usamos 0777, toogive leer, escribir y ejecutar los usuarios de tooall de permisos. Puede reemplazarlos por otros [permisos chmod](https://en.wikipedia.org/wiki/Chmod), según prefiera. 
 
-* **Nombre de la cuenta de almacenamiento**: para montar un recurso compartido de archivos de Azure, necesitará el nombre de la cuenta de almacenamiento.
+* **Nombre de la cuenta de almacenamiento**: toomount compartir de un archivo de Azure, se necesita Hola nombre de cuenta de almacenamiento de Hola.
 
-* **Clave de la cuenta de almacenamiento**: para montar un recurso compartido de archivos de Azure, necesitará la clave principal (o secundaria) de la cuenta de almacenamiento. Actualmente no se admiten claves SAS para el montaje.
+* **Clave de la cuenta de almacenamiento**: toomount compartir de un archivo de Azure, se necesita Hola clave de almacenamiento principal (o secundario). Actualmente no se admiten claves SAS para el montaje.
 
-* **Asegurarse de que el puerto 445 está abierto**: SMB se comunica a través del puerto TCP 445, así que compruebe que el firewall no bloquea el puerto TCP 445 en la máquina cliente.
+* **Asegúrese de que el puerto 445 está abierto**: SMB se comunica a través del puerto TCP 445 - comprobar toosee si el firewall no bloquea el TCP puertos 445 del equipo cliente.
 
-## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Montaje del recurso compartido de Azure File a petición con `mount`
-1. **[Instale el paquete cifs-utils correspondiente a su distribución de Linux](#install-cifs-utils)**.
+## <a name="mount-hello-azure-file-share-on-demand-with-mount"></a>Montar Hola a petición con recurso compartido de archivos de Azure`mount`
+1. **[Instalar el paquete de utilidades de cifs Hola para su distribución de Linux](#install-cifs-utils)**.
 
-2. **Cree una carpeta para el punto de montaje**: esta operación se puede hacer en cualquier parte del sistema de archivos.
+2. **Cree una carpeta para el punto de montaje de Hola**: Esto puede realizarse en cualquier lugar en el sistema de archivos de Hola.
 
     ```
     mkdir mymountpoint
     ```
 
-3. **Use el comando mount para montar el recurso compartido de Azure File**: no olvide reemplazar `<storage-account-name>`, `<share-name>`, `<storage-account-key>` y por la información correcta.
+3. **Use Hola montaje comando toomount hello Azure recurso compartido de archivos**: Recuerde tooreplace `<storage-account-name>`, `<share-name>`, y `<storage-account-key>` con la información adecuada Hola.
 
     ```
     sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> ./mymountpoint -o vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
-> Cuando haya terminado de usar el recurso compartido de Azure File, puede usar `sudo umount ./mymountpoint` para desmontarlo.
+> Cuando haya terminado de usar Hola recurso compartido de archivos de Azure, puede usar `sudo umount ./mymountpoint` recurso compartido de hello toounmount.
 
-## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Creación de un punto de montaje persistente para el recurso compartido de Azure File`/etc/fstab`
-1. **[Instale el paquete cifs-utils correspondiente a su distribución de Linux](#install-cifs-utils)**.
+## <a name="create-a-persistent-mount-point-for-hello-azure-file-share-with-etcfstab"></a>Crear un punto de montaje persistente para hello Azure recurso compartido de archivos`/etc/fstab`
+1. **[Instalar el paquete de utilidades de cifs Hola para su distribución de Linux](#install-cifs-utils)**.
 
-2. **Cree una carpeta para el punto de montaje**: esta operación se puede realizar en cualquier parte del sistema de archivos, pero debe tener en cuenta la ruta de acceso absoluta de la carpeta. En el ejemplo siguiente se crea una carpeta en la raíz.
+2. **Cree una carpeta para el punto de montaje de Hola**: Esto puede realizarse en cualquier lugar en el sistema de archivos de hello, pero debe toonote Hola ruta de acceso absoluta carpeta Hola. Hola de ejemplo siguiente crea una carpeta bajo la raíz.
 
     ```
     sudo mkdir /mymountpoint
     ```
 
-3. **Use el siguiente comando para anexar la siguiente línea a `/etc/fstab`** : no olvide reemplazar `<storage-account-name>`, `<share-name>`, y `<storage-account-key>` por la información correcta.
+3. **Siguiente Hola de uso de comandos hello tooappend siguen demasiado`/etc/fstab`**: Recuerde tooreplace `<storage-account-name>`, `<share-name>`, y `<storage-account-key>` con la información adecuada Hola.
 
     ```
     sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
     ```
 
 > [!Note]  
-> Puede usar `sudo mount -a` para montar el recurso compartido de Azure File después de editar `/etc/fstab` en lugar de reiniciar el sistema.
+> Puede usar `sudo mount -a` toomount recurso compartido de archivos de Azure de hello después de editar `/etc/fstab` en lugar de reiniciar el sistema.
 
 ## <a name="feedback"></a>Comentarios
-Usuarios de Linux: nos gustaría conocer su opinión.
+Los usuarios de Linux, dudes toohear del usuario.
 
-Azure File Storage para el grupo de usuarios de Linux cuenta con un foro donde puede compartir sus comentarios a medida que evalúa y adopta File Storage en Linux. Envíe un correo electrónico a [Usuarios de Linux de Azure File Storage](mailto:azurefileslinuxusers@microsoft.com) para unirse al grupo de usuarios.
+Hola almacenamiento de archivos de Azure para el grupo de usuarios de Linux proporciona un foro para usted tooshare comentarios como evaluar y adoptar el almacenamiento de archivos en Linux. Correo electrónico [almacenamiento de archivos de Azure a los usuarios de Linux](mailto:azurefileslinuxusers@microsoft.com) grupo de usuarios de toojoin Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Consulte los vínculos siguientes para obtener más información acerca Azure File Storage.
 * [Referencia de la API REST del servicio de archivos](http://msdn.microsoft.com/library/azure/dn167006.aspx)
-* [Uso de AzCopy con Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-* [Uso de la CLI de Azure con Azure Storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
+* [Cómo toouse AzCopy con almacenamiento de Microsoft Azure](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Uso de hello CLI de Azure con el almacenamiento de Azure](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Preguntas más frecuentes](../storage-files-faq.md)
 * [Solución de problemas](storage-troubleshoot-linux-file-connection-problems.md)

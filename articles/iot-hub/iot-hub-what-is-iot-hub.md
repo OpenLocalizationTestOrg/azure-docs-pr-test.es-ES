@@ -1,6 +1,6 @@
 ---
-title: "Información general del Azure IoT Hub | Microsoft Docs"
-description: "Información general del servicio IoT Hub de Azure: qué es IoT Hub, la conectividad de dispositivos, los patrones de comunicación de Internet de las cosas, puertas de enlace y el patrón de comunicación asistida por servicios"
+title: "información general del centro de IoT aaaAzure | Documentos de Microsoft"
+description: "Información general de hello servicio del centro de IoT de Azure: ¿qué es el centro de IoT, conectividad de dispositivos, internet de patrones de comunicación de cosas, las puertas de enlace y patrón de comunicación asistidas por el servicio de Hola"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -15,70 +15,70 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d290ee8a3cee1242f14726b5cf7ca531a3f5830a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0b46868a1ec9e13c8f107b90269c5307f4ba27c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="overview-of-the-azure-iot-hub-service"></a>Introducción al servicio Azure IoT Hub
+# <a name="overview-of-hello-azure-iot-hub-service"></a>Información general de hello servicio del centro de IoT de Azure
 
-Bienvenido al Centro de IoT de Azure. En este artículo se ofrece información general sobre Azure IoT Hub y se describe por qué debería usar este servicio para implementar una solución de Internet de las cosas (IoT). El Centro de IoT de Azure es un servicio totalmente administrado que permite la comunicación bidireccional fiable y segura entre millones de dispositivos IoT y un back-end de soluciones. Centro de IoT de Azure:
+Página principal del centro de IoT tooAzure. En este artículo se proporciona información general del centro de IoT de Azure y describe por qué debería usar este tooimplement servicio una solución de Internet de las cosas (IoT). El Centro de IoT de Azure es un servicio totalmente administrado que permite la comunicación bidireccional fiable y segura entre millones de dispositivos IoT y un back-end de soluciones. Centro de IoT de Azure:
 
 * Proporciona varias opciones de comunicación de dispositivo a la nube y de la nube al dispositivo, como métodos de solicitud y respuesta, mensajería unidireccional y transferencia de archivos.
-* Proporciona enrutamiento de mensajes declarativos integrado a otros servicios de Azure.
+* Proporciona mensajes declarativa integrado enrutamiento tooother servicios de Azure.
 * Proporciona almacenamiento consultable para metadatos del dispositivo e información de estado sincronizada.
 * Habilita las comunicaciones seguras y el control de acceso con claves de seguridad por dispositivo o certificados X.509.
 * Proporciona una supervisión exhaustiva para la conectividad de dispositivos y los eventos de administración de identidad de dispositivos.
-* Incluye bibliotecas de dispositivos para las plataformas y los lenguajes más populares.
+* Incluye bibliotecas de dispositivo para los lenguajes más populares de Hola y plataformas.
 
-En el artículo [Comparación de IoT Hub y Event Hubs][lnk-compare] se describen las diferencias clave entre estos dos servicios y se resaltan las ventajas del uso de IoT Hub en las soluciones de IoT.
+artículo de Hello [comparación de centro de IoT y concentradores de eventos] [ lnk-compare] hello las principales diferencias entre estos dos servicios se describe y resalta las ventajas de Hola de usar el centro de IoT en sus soluciones de IoT.
 
-Para más información sobre cómo Azure y IoT Hub ayudan a proteger la solución de IoT, consulte [Seguridad de Internet de las cosas desde el principio][lnk-security-ground-up].
+Para obtener más información sobre cómo Azure y centro de IoT ayudar a proteger la solución de IoT, consulte [seguridad de Internet de las cosas de hello masa][lnk-security-ground-up].
 
 ![Centro de IoT de Azure como solución de puerta de enlace de nube en Internet de las cosas][img-architecture]
 
 > [!NOTE]
-> Para ver un análisis detallado de la arquitectura de IoT, consulte el PDF [Microsoft Azure IoT Reference Architecture][lnk-refarch] (Arquitectura de referencia de IoT de Microsoft Azure).
+> Para obtener una explicación más detallada de la arquitectura de IoT, vea hello [arquitectura de referencia de Microsoft Azure IoT][lnk-refarch].
 
 ## <a name="iot-device-connectivity-challenges"></a>Problemas de conectividad de dispositivos IoT
 
-El Centro de IoT y las bibliotecas de dispositivo le ayudan a superar los desafíos derivados de la conexión confiable y segura de dispositivos al back-end de soluciones. Dispositivos IoT:
+Centro de IoT y Hola bibliotecas de dispositivo le ayudarán a desafíos de hello toomeet de cómo tooreliably y conectarse de forma segura los dispositivos toohello solución back-end. Dispositivos IoT:
 
 * A menudo son sistemas insertados sin operador humano.
 * Pueden encontrarse en ubicaciones remotas, donde el acceso físico resulta costoso.
-* Es posible que solo sean accesibles a través del back-end de soluciones.
+* Solo puede ser accesible a través de hello solución back-end.
 * Es posible que tengan limitaciones de recursos de procesamiento y alimentación.
 * Es posible que tengan conectividad de red intermitente, lenta o costosa.
-* Es posible que necesiten usar protocolos de aplicación propios, personalizados o específicos de determinados sectores.
+* Puede necesitar toouse protocolos de aplicación propios, personalizados o específicos del sector.
 * Pueden crearse mediante un amplio conjunto de plataformas populares de hardware y software.
 
-Además de los requisitos anteriores, toda solución de IoT debe ser capaz de ofrecer escalabilidad, seguridad y fiabilidad. Esto da lugar a un conjunto de requisitos de conectividad cuya implementación resulta compleja y lenta si se realiza con tecnologías tradicionales como, por ejemplo, los contenedores web y los agentes de mensajería.
+Además toohello requisitos anteriores, cualquier solución de IoT debe también ofrecen escalabilidad, seguridad y confiabilidad. conjunto resultante de Hola de requisitos de conectividad es tooimplement de disco duro y llevar mucho tiempo cuando se usa las tecnologías tradicionales, como contenedores de web y agentes de mensajería.
 
 ## <a name="why-use-azure-iot-hub"></a>¿Por qué usar Azure IoT Hub?
 
-Además de un amplio conjunto de opciones de comunicación [del dispositivo a la nube][lnk-d2c-guidance] y [de la nube al dispositivo][lnk-c2d-guidance], como mensajería, transferencias de archivos y métodos de solicitud y respuesta, las direcciones de Azure IoT Hub supera los problemas de conectividad de los dispositivos de las maneras siguientes:
+Además conjunto enriquecido de tooa de [dispositivo a la nube] [ lnk-d2c-guidance] y [en la nube al dispositivo] [ lnk-c2d-guidance] opciones de comunicación, como mensajería, de archivos las transferencias y métodos de solicitud y respuesta, direcciones de centro de IoT de Azure Hola desafíos de conectividad del dispositivo en hello siguientes maneras:
 
-* **Dispositivos gemelos**. Con los [dispositivos gemelos][lnk-twins] puede almacenar, sincronizar y consultar metadatos e información de estado de los dispositivos. Los dispositivos gemelos son documentos JSON que almacenan información sobre el estado de los dispositivos (metadatos, configuraciones y condiciones). IoT Hub conserva un dispositivo gemelo por cada dispositivo que se conecta a IoT Hub.
+* **Dispositivos gemelos**. Con los [dispositivos gemelos][lnk-twins] puede almacenar, sincronizar y consultar metadatos e información de estado de los dispositivos. Los dispositivos gemelos son documentos JSON que almacenan información sobre el estado de los dispositivos (metadatos, configuraciones y condiciones). Centro de IoT conserva a un gemelas de dispositivo para cada dispositivo que conecte tooIoT concentrador.
 
-* **Autenticación por dispositivo y conectividad segura**. Puede aprovisionar cada dispositivo con su propia [clave de seguridad][lnk-devguide-security] para permitirle conectarse a IoT Hub. El [registro de identidades de IoT Hub][lnk-devguide-identityregistry] almacena identidades y claves en una solución. Un back-end de soluciones puede agregar dispositivos individuales para permitir o denegar listas que permitan controlar por completo el acceso a los dispositivos.
+* **Autenticación por dispositivo y conectividad segura**. Puede aprovisionar cada dispositivo con su propio [clave de seguridad] [ lnk-devguide-security] tooenable, tooconnect tooIoT concentrador. Hola [del registro de la identidad de centro de IoT] [ lnk-devguide-identityregistry] almacena identidades de dispositivos y las claves en una solución. Un back-end de soluciones puede agregar dispositivos individuales tooallow o denegar listas tooenable un control completo sobre el acceso a los dispositivos.
 
-* **Enrutamiento de mensajes de dispositivo a nube a servicios de Azure según reglas declarativas**. IoT Hub permite definir rutas de mensajes basadas en reglas de enrutamiento para controlar dónde el centro envía mensajes de dispositivo a nube. Las reglas de enrutamiento no requieren que se escriba ningún código y pueden sustituir a los distribuidores de mensajes personalizados posteriores a la ingesta.
+* **Ruta de dispositivo a nube mensajes servicios tooAzure en función de reglas declarativas**. Centro de IoT permite toodefine mensaje rutas en función de enrutamiento de reglas toocontrol, donde el concentrador envía mensajes del dispositivo a la nube. Las reglas de enrutamiento no requieren toowrite cualquier código y pueden tener lugar de Hola de distribuidores de mensajes personalizados de posterior a la recopilación.
 
-* **Supervisión de operaciones de conectividad del dispositivo**. Puede recibir registros de operación detallados sobre operaciones de administración de identidad de dispositivos y eventos de conectividad de dispositivos. Esta funcionalidad de supervisión permite que la solución de IoT identifique los problemas de conectividad, como los dispositivos que intentan conectarse con credenciales incorrectas, envían mensajes con demasiada frecuencia o rechazan todos los mensajes de la nube al dispositivo.
+* **Supervisión de operaciones de conectividad del dispositivo**. Puede recibir registros de operación detallados sobre operaciones de administración de identidad de dispositivos y eventos de conectividad de dispositivos. Esta función de supervisión permite a los problemas de conectividad de IoT solución tooidentify, como los dispositivos que intente tooconnect con credenciales incorrectas, enviar mensajes con demasiada frecuencia o rechazar todos los mensajes en la nube al dispositivo.
 
 * **Amplio conjunto de bibliotecas de dispositivos**. Los [SDK de dispositivo IoT de Azure][lnk-device-sdks] están disponibles y son compatibles con varios lenguajes y plataformas: C para muchas distribuciones de Linux, Windows y sistemas operativos en tiempo real. Los SDK de dispositivos IoT de Azure admiten lenguajes administrados como C#, Java y JavaScript.
 
-* **Extensibilidad y protocolos de IoT**. Si la solución no puede usar las bibliotecas de dispositivos, el Centro de IoT expone un protocolo público que permite a los dispositivos usar los protocolos MQTT v3.1.1, HTTP 1.1 o AMQP 1.0 de forma nativa. También puede ampliar IoT Hub para ofrecer soporte para protocolos personalizados mediante:
+* **Extensibilidad y protocolos de IoT**. Si la solución no utiliza las bibliotecas de dispositivo de hello, centro de IoT expone un protocolo público que permite a dispositivos toonatively uso hello MQTT v3.1.1, HTTP 1.1 o protocolos de AMQP 1.0. También puede extender toosupport centro de IoT para protocolos personalizados por:
 
-  * Creación de una puerta de enlace de campo con [Azure IoT Edge][lnk-iot-edge] que convierte su protocolo personalizado en uno de los tres protocolos compatibles con IoT Hub.
-  * Personalización de la [puerta de enlace de protocolo de IoT de Azure][protocol-gateway], un componente de código abierto que se ejecuta en la nube.
+  * Crear una puerta de enlace de campo con [Azure IoT borde] [ lnk-iot-edge] que convierte su tooone de protocolo personalizado de hello tres protocolos entienden por centro de IoT.
+  * Hola personalizar [puerta de enlace de IoT de Azure protocolo][protocol-gateway], un componente de código abierto que se ejecuta en la nube de Hola.
 
-* **Escala**. El centro de IoT de Azure se puede escalar a millones de dispositivos conectados de manera simultánea y a millones de eventos por segundo.
+* **Escala**. Centro de IoT de Azure escala toomillions de dispositivos conectados al mismo tiempo y millones de eventos por segundo.
 
 ## <a name="gateways"></a>Puertas de enlace
 
-Una puerta de enlace en una solución IoT es normalmente una [puerta de enlace de protocolo][lnk-iotedge] implementada en la nube o una [puerta de enlace de campo][lnk-field-gateway] implementada localmente con sus dispositivos. Una puerta de enlace de protocolo realiza la traducción de protocolos, por ejemplo, de MQTT a AMQP. Una puerta de enlace de campo puede ejecutar análisis en el perímetro, tomar decisiones sujetas a limitaciones temporales para reducir la latencia, proporcionar servicios de administración del dispositivo, aplicar restricciones de privacidad y seguridad y realizar la traducción de protocolos. Ambos tipos de puerta de enlace actúan como intermediarios entre los dispositivos y el Centro de IoT.
+Una puerta de enlace en una solución de IoT es normalmente un [puerta de enlace de protocolo] [ lnk-iotedge] que se haya implementado en la nube de Hola o [puerta de enlace de campo] [ lnk-field-gateway] es decir implementado de forma local con los dispositivos. Una puerta de enlace de protocolo realiza la traducción de protocolos, por ejemplo MQTT tooAMQP. Una puerta de enlace de campo puede ejecutar análisis en el borde de hello, tomar decisiones de sujetos a limitación temporal tooreduce latencia, proporcionar servicios de administración de dispositivos, aplicar restricciones de privacidad y seguridad y realizará la traducción de protocolos. Ambos tipos de puerta de enlace actúan como intermediarios entre los dispositivos y el Centro de IoT.
 
 Una puerta de enlace de campo es diferente de un dispositivo de enrutamiento de tráfico simple (como un firewall o un dispositivo de traducción de direcciones de red) porque normalmente desempeña un rol activo en la administración del acceso y del flujo de la información en su solución.
 
@@ -86,35 +86,35 @@ Una solución puede incluir tanto puertas de enlace de protocolo como de campo.
 
 ## <a name="how-does-iot-hub-work"></a>¿Cómo funciona el Centro de IoT?
 
-Azure IoT Hub implementa el modelo de [comunicación asistida por servicio][lnk-service-assisted-pattern] para mediar en las interacciones entre los dispositivos y su back-end de soluciones. El objetivo de la comunicación asistida por servicio es establecer rutas de acceso de comunicación bidireccional de confianza entre un sistema de control (como el Centro de IoT) y los dispositivos con una finalidad específica implementados en espacios físicos que no son de confianza. El patrón establece los principios siguientes:
+Centro de IoT de Azure implementa hello [asistidas por el servicio de comunicación] [ lnk-service-assisted-pattern] back-end de las interacciones de patrón toomediate Hola entre los dispositivos y la solución. objetivo de Hola de comunicación asistidas por el servicio es tooestablish vías de comunicación de confianza bidireccional entre un sistema de control, como centro de IoT y dispositivos de propósito especial que se implementan en espacio físico no es de confianza. patrón de Hello establece Hola siguientes principios:
 
 * La seguridad tiene prioridad sobre el resto de las funciones.
 
-* Los dispositivos no aceptan información de redes no solicitadas. Un dispositivo establece todas las conexiones y las rutas en modo de solo salida. Para que un dispositivo reciba comandos desde el back-end de la solución, dicho dispositivo debe iniciar una conexión con regularidad para comprobar si hay comandos pendientes de procesar.
+* Los dispositivos no aceptan información de redes no solicitadas. Un dispositivo establece todas las conexiones y las rutas en modo de solo salida. Para un dispositivo se tooreceive un comando de back-end de soluciones de hello, dispositivo Hola debe iniciarse con regularidad un toocheck de conexión para cualquier tooprocess de comandos pendientes.
 
-* Los dispositivos solo deben conectarse o establecer rutas a servicios conocidos a los que están emparejados, como un Centro de IoT.
+* Solo deben conectarse dispositivos tooor establecer servicios toowell conocidos de las rutas que estén al mismo nivel, como centro de IoT.
 
-* La ruta de comunicación entre el dispositivo y el servicio o el dispositivo y puerta de enlace se protege en el nivel del protocolo de aplicaciones.
+* ruta de comunicación de Hello entre dispositivos y servicios o entre dispositivos y puerta de enlace se protege en la capa del protocolo de aplicación Hola.
 
 * La autenticación y la autorización de nivel de sistema se basan en las identidades de cada dispositivo. Hacen los permisos y las credenciales de acceso revocables casi al instante.
 
-* La comunicación bidireccional de dispositivos con conexión esporádica debido a problemas de alimentación o de conectividad puede realizarse mediante el mantenimiento de comandos y notificaciones en los dispositivos hasta que uno de ellos se conecte para recibirlos. El Centro de IoT mantiene colas específicas de dispositivos para los comandos que envía.
+* Se facilita la comunicación bidireccional para dispositivos que se conectan de forma esporádica due toopower o problemas de conectividad, se conservan los comandos y notificaciones de dispositivo hasta que un dispositivo conecta tooreceive ellos. Centro de IoT mantiene colas específico del dispositivo para los comandos de Hola que envía.
 
-* Los datos de carga de aplicaciones se protegen por separado para proteger el tránsito a través de las puertas de enlace a un servicio determinado.
+* Datos de carga de la aplicación está protegidos por separado para tránsito protegido a través del servicio determinado tooa de puertas de enlace.
 
-El sector de la telefonía móvil ha usado el patrón de comunicación asistida por servicio a una escala enorme para implementar servicios de notificación push como, por ejemplo, [Windows Push Notification Services][lnk-wns], [Google Cloud Messaging][lnk-google-messaging] y [Apple Push Notification Service][lnk-apple-push].
+Hello sector móvil usado por modelo de comunicación asistidas por el servicio de hello en servicios de notificación de inserción de gran escala tooimplement como [servicios de notificaciones de inserción de Windows][lnk-wns], [De mensajería de nube de Google][lnk-google-messaging], y [servicio de notificaciones de inserción de Apple][lnk-apple-push].
 
 IoT Hub es compatible con la ruta de acceso de emparejamiento público de ExpressRoute.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para aprender a enviar mensajes desde un dispositivo y recibirlos desde IoT Hub, y para saber cómo configurar rutas de mensajes, consulte [Envío y recepción de mensajes con IoT Hub][lnk-send-messages].
+vea toolearn cómo toosend mensajes desde un dispositivo y recibirlos desde el centro de IoT, así como cómo enruta el mensaje de tooconfigure, [enviar y recibir mensajes con el centro de IoT][lnk-send-messages].
 
-Para saber cómo IoT Hub posibilita la administración de dispositivos basada en estándares para administrar, configurar y actualizar sus dispositivos de forma remota, consulte [Información general sobre la administración de dispositivos con IoT Hub][lnk-device-management].
+toolearn cómo centro de IoT permite la administración de dispositivos basada en estándares tooremotely administrar, configurar y actualizar los dispositivos, consulte [información general de administración de dispositivos con el centro de IoT][lnk-device-management].
 
-Para implementar aplicaciones cliente que se ejecuten en una gran variedad de plataformas de hardware de dispositivo y sistemas operativos, puede usar los SDK de dispositivo IoT de Azure. Los SDK de dispositivo incluyen bibliotecas que facilitan el envío de telemetría a un IoT Hub y la recepción de mensajes de la nube al dispositivo. Al usar los SDK de dispositivo, puede elegir entre varios protocolos de red para comunicarse con IoT Hub. Para más información, consulte la [información sobre los SDK de dispositivo][lnk-device-sdks].
+tooimplement las aplicaciones de cliente en una amplia variedad de plataformas de hardware de dispositivos y sistemas operativos, puede usar dispositivos de IoT de Azure de hello SDK. dispositivo de Hello SDK incluye bibliotecas que facilitan el envío telemetría tooan IoT hub y la recepción en la nube al dispositivo de mensajes. Cuando se utilizan dispositivos de hello SDK, puede elegir entre diversos toocommunicate de protocolos de red con el centro de IoT. toolearn más información, vea hello [obtener información acerca del dispositivo SDK][lnk-device-sdks].
 
-Para comenzar a escribir código y ejecutar algunos ejemplos, consulte el tutorial [Introducción a IoT Hub][lnk-get-started].
+tooget iniciado escribiendo código y ejecutar algunos ejemplos, vea hello [empezar a trabajar con el centro de IoT] [ lnk-get-started] tutorial.
 
 [img-architecture]: media/iot-hub-what-is-iot-hub/hubarchitecture.png
 

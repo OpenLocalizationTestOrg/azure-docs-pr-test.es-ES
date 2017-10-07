@@ -1,6 +1,6 @@
 ---
-title: "Administración de almacenes y servidores de Copia de seguridad de Azure mediante el modelo de implementación clásica | Microsoft Docs"
-description: Use este tutorial para aprender a administrar almacenes y servidores de Copia de seguridad de Azure.
+title: "almacenes de credenciales de copia de seguridad de Azure aaaManage y servidores Azure usando el modelo de implementación clásica de hello | Documentos de Microsoft"
+description: "Use este tutorial toolearn cómo almacenes de credenciales toomanage copia de seguridad de Azure y los servidores."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -14,79 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: markgal;
-ms.openlocfilehash: 91451b2cdc42ed05ef7c1ba9c66ad5b4b45dd788
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6c38b04f4a76604bfd639a9b2d58237ce44e2386
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>Administración de almacenes y servidores de Copia de seguridad de Azure mediante el modelo de implementación clásica
+# <a name="manage-azure-backup-vaults-and-servers-using-hello-classic-deployment-model"></a>Administrar servidores mediante el modelo de implementación clásica de Hola y almacenes de copia de seguridad de Azure
 > [!div class="op_single_selector"]
 > * [Resource Manager](backup-azure-manage-windows-server.md)
 > * [Clásico](backup-azure-manage-windows-server-classic.md)
 >
 >
 
-En este artículo encontrará información general sobre las tareas de administración de copias de seguridad que tiene disponibles en el Portal de Azure clásico y el agente de Copia de seguridad de Microsoft Azure.
+En este artículo encontrará información general sobre las tareas de administración de copia de seguridad de hello disponibles a través del portal de Azure clásico de Hola y el agente de copia de seguridad de Microsoft Azure Hola.
 
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo de Resource Manager.
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../azure-resource-manager/resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola.
 
 > [!IMPORTANT]
-> Ahora puede actualizar los almacenes de Backup a almacenes de Recovery Services. Para más información, consulte el artículo [Actualización de un almacén de Backup a un almacén de Recovery Services](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft anima a actualizar los almacenes de Backup a almacenes de Recovery Services.<br/> A partir del 15 de octubre de 2017, no podrá usar PowerShell para crear almacenes de Backup. **El 1 de noviembre de 2017**:
->- Todos los almacenes de Backup restantes se actualizarán automáticamente a almacenes de Recovery Services.
->- No podrá acceder a los datos de copia de seguridad en el portal clásico. En su lugar, utilice Azure Portal para tener acceso a los datos de copia de seguridad en los almacenes de Recovery Services.
+> Ahora puede actualizar los almacenes de servicios de tooRecovery de almacenes de copia de seguridad. Para obtener más información, consulte el artículo de hello [actualizar un tooa de almacén de copia de seguridad del almacén de servicios de recuperación](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft le anima tooupgrade tooRecovery almacenes de servicios de almacenes de credenciales de la copia de seguridad.<br/> Después de 15 de octubre de 2017, no puede usar almacenes de copia de seguridad de toocreate de PowerShell. **El 1 de noviembre de 2017**:
+>- Todos los almacenes de copia de seguridad restantes será almacenes de servicios de tooRecovery actualizado automáticamente.
+>- No será capaz de tooaccess los datos de copia de seguridad en el portal clásico de Hola. En su lugar, use hello tooaccess portal Azure los datos de copia de seguridad en los almacenes de servicios de recuperación.
 >
 
 ## <a name="management-portal-tasks"></a>Tareas del Portal de administración
-1. Inicie sesión en el [Portal de administración](https://manage.windowsazure.com).
-2. Haga clic en **Servicios de recuperación**y luego en el nombre del almacén de copia de seguridad para ver la página de inicio rápido.
+1. Inicie sesión en toohello [Portal de administración](https://manage.windowsazure.com).
+2. Haga clic en **servicios de recuperación**, a continuación, haga clic en nombre de Hola de página de inicio rápido de almacén de copia de seguridad tooview Hola.
 
     ![Servicios de recuperación](./media/backup-azure-manage-windows-server-classic/rs-left-nav.png)
 
-Si selecciona las opciones que se encuentran en la parte superior de la página de Inicio rápido, podrá ver las tareas de administración disponibles.
+Seleccionando las opciones de hello al principio de Hola de página de inicio rápido de hello, puede ver las tareas de administración disponibles Hola.
 
 ![Administración de pestañas](./media/backup-azure-manage-windows-server-classic/qs-page.png)
 
 ### <a name="dashboard"></a>Panel
-Seleccione **Panel** para ver información general sobre el uso del servidor. En la **información general del uso** se incluyen los siguientes datos:
+Seleccione **panel** información general del uso de Hola de toosee para servidor hello. Hola **información general del uso** incluye:
 
-* El número de servidores de Windows registrados en la nube
-* El número de máquinas virtuales de Azure protegidas en la nube
-* La cantidad total de espacio de almacenamiento utilizada en Azure
-* El estado de los trabajos recientes
+* número de Hola de servidores de Windows registrados toocloud
+* número de Hello máquinas virtuales de Azure protegidas en la nube
+* almacenamiento total Hola usado en Azure
+* estado de Hola de trabajos recientes
 
-En la parte inferior del panel puede llevar a cabo las tareas siguientes:
+Final de Hola de hello panel puede realizar Hola siguiente las tareas:
 
-* **Administrar certificado** : si se ha usado un certificado para registrar el servidor, utilícelo para actualizar el certificado. Si usa credenciales de almacén, no utilice **Administrar certificado**.
-* **Eliminar** : elimina el almacén de copia de seguridad actual. En caso de que ya no se use un almacén de credenciales de copia de seguridad, puede eliminarlo para liberar espacio de almacenamiento. **Eliminar** solo está habilitado después de que todos los servidores registrados se hayan eliminado del almacén.
+* **Administrar certificado** : si un certificado era tooregister usado Hola servidor, siga este certificado de hello tooupdate. Si usa credenciales de almacén, no utilice **Administrar certificado**.
+* **Eliminar** -almacén de copia de seguridad actual de eliminaciones Hola. Si ya no se utiliza un almacén de copia de seguridad, puede eliminarla toofree liberar espacio de almacenamiento. **Eliminar** solo se habilita después de que todos los servidores registrados que se haya eliminado del almacén de Hola.
 
 ![Copia de seguridad de las tareas del panel](./media/backup-azure-manage-windows-server-classic/dashboard-tasks.png)
 
 ## <a name="registered-items"></a>Elementos registrados
-Seleccione la opción **Elementos registrados** para ver los nombres de los servidores que se registraron en este almacén de claves.
+Seleccione **elementos registrados** nombres de hello tooview de servidores de Hola que están registran toothis almacén.
 
 ![Elementos registrados](./media/backup-azure-manage-windows-server-classic/registered-items.png)
 
-El filtro **Tipo** tiene como valor predeterminado la opción Máquina virtual de Azure. Para ver los nombres de los servidores que están registrados en este almacén, seleccione **Servidor de Windows** en el menú desplegable.
+Hola **tipo** tooAzure Máquina Virtual de valores predeterminados de filtro. nombres de hello tooview servidores Hola almacén toothis registrados, seleccione **Windows server** de hello menú desplegable.
 
-Aquí puede realizar las siguientes tareas:
+Desde aquí puede realizar Hola siguientes tareas:
 
-* **Permitir nuevo registro**: cuando se selecciona esta opción para un servidor, puede usar el **Asistente para registro** del agente local de Microsoft Azure Backup para registrar el servidor en el almacén de copia de seguridad por segunda vez. Es posible que necesite volver a registrarse debido a un error en el certificado o si un servidor tuvo que reconstruirse.
-* **Eliminar** : elimina un servidor del almacén de copias seguridad. Todos los datos almacenados asociados con el servidor se eliminan inmediatamente.
+* **Permitir un nuevo registro** : cuando se selecciona esta opción para un servidor puede usar hello **Asistente para registro** en hello en copia de seguridad de Microsoft Azure agente tooregister Hola servidor local con el almacén de copia de seguridad de hello una segunda vez . Puede que tenga el registro toore debido a error de tooan en el certificado de Hola o si un servidor tuviera toobe vuelve a generar.
+* **Eliminar** -elimina un servidor de almacén de copia de seguridad de Hola. Todos los datos de hello almacenado asociados con el servidor de Hola se elimina inmediatamente.
 
     ![Tareas de elementos registrados](./media/backup-azure-manage-windows-server-classic/registered-items-tasks.png)
 
 ## <a name="protected-items"></a>Elementos protegidos
-Haga clic en **Elementos protegidos** para ver los elementos de los que se han hecho copias de seguridad desde los servidores.
+Seleccione **elementos protegidos** elementos de hello tooview que hayan copias de seguridad de los servidores de Hola.
 
 ![Elementos protegidos](./media/backup-azure-manage-windows-server-classic/protected-items.png)
 
 ## <a name="configure"></a>Configuración
-Desde la pestaña **Configurar** , puede seleccionar la opción de redundancia de almacenamiento idónea. El mejor momento para seleccionar la opción de redundancia de almacenamiento es justo después de la creación del almacén y antes de que las máquinas se registren en este.
+De hello **configurar** ficha puede seleccionar la opción de redundancia de almacenamiento adecuada de Hola. Hola mejor tiempo tooselect Hola almacenamiento redundancia opción es justo después de crear un almacén y antes de que todas las máquinas estén tooit registrado.
 
 > [!WARNING]
-> Una vez que un elemento se ha registrado en el almacén, la opción de redundancia de almacenamiento está bloqueada y no se puede modificar.
+> Una vez que un elemento se ha registrado toohello almacén, opción de redundancia de almacenamiento de hello está bloqueado y no se puede modificar.
 >
 >
 
@@ -96,11 +96,11 @@ Consulte este artículo para más información sobre la [redundancia de almacena
 
 ## <a name="microsoft-azure-backup-agent-tasks"></a>Tareas del agente de Copia de seguridad de Microsoft Azure
 ### <a name="console"></a>Consola
-Abra el **agente de Copia de seguridad de Microsoft Azure** (puede encontrarlo si busca en su equipo *Copia de seguridad de Microsoft Azure*).
+Abra hello **agente de copia de seguridad de Microsoft Azure** (puede encontrarlo buscando en el equipo para *copia de seguridad de Microsoft Azure*).
 
 ![Agente de copia de seguridad](./media/backup-azure-manage-windows-server-classic/snap-in-search.png)
 
-Con las **acciones** disponibles en la parte derecha de la consola del agente de Copia de seguridad, podrá llevar a cabo las siguientes tareas de administración:
+De hello **acciones** disponible en hello derecha de la consola de agente de copia de seguridad de hello puede realizar Hola después de las tareas de administración:
 
 * Registrar un servidor
 * Programación de una copia de seguridad
@@ -110,75 +110,75 @@ Con las **acciones** disponibles en la parte derecha de la consola del agente de
 ![Acciones de la consola de agente](./media/backup-azure-manage-windows-server-classic/console-actions.png)
 
 > [!NOTE]
-> Para **recuperar datos**, consulte [Restauración de archivos en una máquina de Windows Server o del cliente de Windows](backup-azure-restore-windows-server.md).
+> demasiado**recuperar datos**, consulte [restaurar archivos tooa Windows server o el equipo cliente de Windows](backup-azure-restore-windows-server.md).
 >
 >
 
 ### <a name="modify-an-existing-backup"></a>Modificación de una copia de seguridad existente
-1. En el agente de Copia de seguridad de Microsoft Azure, haga clic en **Programar copia de seguridad**.
+1. En el agente de copia de seguridad de Microsoft Azure hello, haga clic en **programar copias de seguridad**.
 
     ![Programar una copia de seguridad de Windows Server](./media/backup-azure-manage-windows-server-classic/schedule-backup.png)
-2. En el **Asistente para programar copias de seguridad**, deje activada la opción **Cambiar la hora o las horas de las copias de seguridad** y haga clic en **Siguiente**.
+2. Hola **Asistente para la programación de copia de seguridad** deje hello **realizar cambios horas o los elementos de toobackup** opción seleccionada y haga clic en **siguiente**.
 
     ![Modificación de una copia de seguridad programada](./media/backup-azure-manage-windows-server-classic/modify-or-stop-a-scheduled-backup.png)
-3. Si quiere agregar o cambiar elementos, en la pantalla **Seleccionar elementos de los que realizar copia de seguridad**, haga clic en **Agregar elementos**.
+3. Si desea tooadd o cambiar elementos en hello **seleccionar elementos tooBackup** pantalla haga clic en **agregar elementos**.
 
-    También puede establecer preferencias en **Configuración de exclusión** , en esta página del asistente. Si quiere excluir archivos o tipos de archivos, lea el procedimiento para agregar [configuración de exclusión](#exclusion-settings).
-4. Seleccione los archivos y las carpetas de los que quiere realizar la copia de seguridad y haga clic en **Aceptar**.
+    También puede establecer **configuración de exclusión** desde esta página del Asistente para saludo. Si desea que los archivos tooexclude o tipos de archivo leen el procedimiento de Hola para agregar [configuración de exclusión](#exclusion-settings).
+4. Seleccione Hola archivos y carpetas que desee tooback seguridad y haga clic en **bien**.
 
     ![Agregar elementos](./media/backup-azure-manage-windows-server-classic/add-items-modify.png)
-5. Especifique la **programación de copia de seguridad** y haga clic en **Siguiente**.
+5. Especificar hello **programar copia de seguridad** y haga clic en **siguiente**.
 
     Puede programar copias de seguridad diarias (un máximo de 3 veces al día) o semanales.
 
     ![Especificación de la programación de copias de seguridad](./media/backup-azure-manage-windows-server-classic/specify-backup-schedule-modify-close.png)
 
    > [!NOTE]
-   > En este [artículo](backup-azure-backup-cloud-as-tape.md)se explica detalladamente cómo especificar la programación de copias de seguridad.
+   > Especificar la programación de copia de seguridad de Hola se explica con detalle en esta [artículo](backup-azure-backup-cloud-as-tape.md).
    >
    >
-6. Seleccione la **directiva de retención de la copia de seguridad** y haga clic en **Siguiente**.
+6. Seleccione hello **directiva de retención** para copia de seguridad de Hola y haga clic en **siguiente**.
 
     ![Selección de la directiva de retención](./media/backup-azure-manage-windows-server-classic/select-retention-policy-modify.png)
-7. En la pantalla **Confirmación**, revise la información y haga clic en **Finalizar**.
-8. Cuando el asistente finalice la creación de la **programación de copia de seguridad**, haga clic en **Cerrar**.
+7. En hello **confirmación** Hola revisar la información de la pantalla y haga clic en **finalizar**.
+8. Una vez que el Asistente de hello finaliza la creación de hello **programar copia de seguridad**, haga clic en **cerrar**.
 
-    Tras modificar la protección, puede confirmar que las copias de seguridad se estén activando correctamente; para ello, vaya a la pestaña **Trabajos** y confirme que se hayan reflejado los cambios en los trabajos de copia de seguridad.
+    Después de modificar la protección, puede confirmar que las copias de seguridad se activan correctamente por van toohello **trabajos** ficha y confirmar que los cambios se reflejan en hello trabajos de copia de seguridad.
 
 ### <a name="enable-network-throttling"></a>Habilitación de la limitación de la red
-En el agente de Azure Backup se incluye la pestaña Limitación, donde podrá controlar cómo se utiliza el ancho de banda de red durante la transferencia de datos. Este control puede resultar de ayuda si necesita realizar una copia de seguridad de los datos durante las horas de trabajo, pero no quiere que el proceso interfiera con otro tráfico de Internet. La limitación de la transferencia de datos se aplica a las actividades de copia de seguridad y restauración.  
+agente de copia de seguridad de Azure Hola incluye una pestaña de limitación que permite toocontrol uso de ancho de banda de red durante la transferencia de datos. Este control puede ser útil si necesita tooback los datos durante las horas laborables, pero no desea hello toointerfere de proceso de copia de seguridad con otro tráfico de internet. Limitación de datos transferencia aplica tooback seguridad y restaurar las actividades.  
 
-Para habilitar la limitación, siga estos pasos:
+tooenable limitación:
 
-1. En el **agente de Backup**, haga clic en **Cambiar propiedades**.
-2. Active la casilla **Habilitar límite de uso del ancho de banda de Internet para las operaciones de copia de seguridad** .
+1. Hola **agente de copia de seguridad**, haga clic en **cambiar las propiedades de**.
+2. Seleccione hello **Habilitar límite para las operaciones de copia de seguridad de uso de ancho de banda de internet** casilla de verificación.
 
     ![Limitación de la red](./media/backup-azure-manage-windows-server-classic/throttling-dialog.png)
-3. Una vez que se ha habilitado la limitación, especifique el ancho de banda permitido para la transferencia de datos de copia de seguridad durante la **jornada laboral** y las **horas de descanso**.
+3. Una vez habilitada la limitación, especifique Hola permitido ancho de banda para transfirieron datos de copia de seguridad durante la **horas laborables** y **horas de descanso**.
 
-    Los valores de ancho de banda comienzan en 512 kilobytes por segundo (Kbps) y pueden subir hasta 1023 megabytes por segundo (Mbps). También puede designar el inicio y el final de la **jornada laboral**, así como qué días de la semana se consideran laborables. El tiempo no comprendido en la jornada laboral designada se considera horas de descanso.
+    los valores de ancho de banda de Hello comienzan en 512 kilobytes por segundo (Kbps) y pueden crecer hasta too1023 megabytes por segundo (Mbps). También puede designar el inicio de Hola y de fin para **horas laborables**, y los días de la semana de Hola se consideran trabajo días. tiempo de Hello fuera Hola designado horas laborables es considerada toobe horas de descanso.
 4. Haga clic en **Aceptar**.
 
 ## <a name="exclusion-settings"></a>Configuración de exclusión
-1. Abra el **agente de Copia de seguridad de Microsoft Azure** (puede encontrarlo si busca en su equipo *Copia de seguridad de Microsoft Azure*).
+1. Abra hello **agente de copia de seguridad de Microsoft Azure** (puede encontrarlo buscando en el equipo para *copia de seguridad de Microsoft Azure*).
 
     ![Apertura del agente de copia de seguridad](./media/backup-azure-manage-windows-server-classic/snap-in-search.png)
-2. En el agente de Copia de seguridad de Microsoft Azure, haga clic en **Programar copia de seguridad**.
+2. En el agente de copia de seguridad de Microsoft Azure hello, haga clic en **programar copias de seguridad**.
 
     ![Programar una copia de seguridad de Windows Server](./media/backup-azure-manage-windows-server-classic/schedule-backup.png)
-3. En el Asistente para programar copias de seguridad deje activada la opción **Cambiar la hora o las horas de las copias de seguridad** y haga clic en **Siguiente**.
+3. Hola Asistente para la programación de copia de seguridad deje hello **realizar cambios horas o los elementos de toobackup** opción seleccionada y haga clic en **siguiente**.
 
     ![Modificación de una programación](./media/backup-azure-manage-windows-server-classic/modify-or-stop-a-scheduled-backup.png)
 4. Haga clic en **Configuración de exclusión**.
 
-    ![Selección de elementos para su exclusión](./media/backup-azure-manage-windows-server-classic/exclusion-settings.png)
+    ![Selección de elementos tooexclude](./media/backup-azure-manage-windows-server-classic/exclusion-settings.png)
 5. Haga clic en **Agregar exclusión**.
 
     ![Adición de exclusiones](./media/backup-azure-manage-windows-server-classic/add-exclusion.png)
-6. Seleccione la ubicación y, después, haga clic en **Aceptar**.
+6. Seleccionar ubicación de hello y, a continuación, haga clic en **Aceptar**.
 
     ![Selección de una ubicación para la exclusión](./media/backup-azure-manage-windows-server-classic/exclusion-location.png)
-7. Agregue la extensión de archivo en el campo **Tipo de archivo** .
+7. Agregar extensión de archivo de Hola Hola **tipo de archivo** campo.
 
     ![Exclusión por tipo de archivo](./media/backup-azure-manage-windows-server-classic/exclude-file-type.png)
 
@@ -186,15 +186,15 @@ Para habilitar la limitación, siga estos pasos:
 
     ![Ejemplo de tipo de archivo](./media/backup-azure-manage-windows-server-classic/exclude-mp3.png)
 
-    Para agregar otra extensión, haga clic en **Agregar exclusión** y especifique otra extensión de tipo de archivo (por ejemplo, .jpeg).
+    tooadd otra extensión, haga clic en **Agregar exclusión** y escriba otra extensión de tipo de archivo (agregar una extensión de JPEG).
 
     ![Otro ejemplo de tipo de archivo](./media/backup-azure-manage-windows-server-classic/exclude-jpg.png)
-8. Cuando haya agregado todas las extensiones, haga clic en **Aceptar**.
-9. Avance por las distintas pantallas del Asistente para programar copias de seguridad haciendo clic en **Siguiente** hasta llegar a la página **Confirmación** y, después, en **Finalizar**.
+8. Cuando haya agregado todas las extensiones de hello, haga clic en **Aceptar**.
+9. Continuar a través de hello Asistente para la programación de copia de seguridad haciendo clic en **siguiente** hasta hello **página de confirmación**, a continuación, haga clic en **finalizar**.
 
     ![Confirmación de exclusión](./media/backup-azure-manage-windows-server-classic/finish-exclusions.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Restauración de Windows Server o el cliente de Windows desde Azure](backup-azure-restore-windows-server.md)
-* Para obtener más información sobre Azure Backup, consulte [Información general de Azure Backup](backup-introduction-to-azure-backup.md)
-* Visite el [Foro de Azure Backup](http://go.microsoft.com/fwlink/p/?LinkId=290933)
+* toolearn más información acerca de la copia de seguridad de Azure, consulte [información general sobre la copia de seguridad de Azure](backup-introduction-to-azure-backup.md)
+* Visite hello [foro de copia de seguridad de Azure](http://go.microsoft.com/fwlink/p/?LinkId=290933)

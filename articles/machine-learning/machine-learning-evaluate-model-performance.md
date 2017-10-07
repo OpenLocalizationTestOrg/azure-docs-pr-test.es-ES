@@ -1,6 +1,6 @@
 ---
-title: "Evaluación del rendimiento de un modelo en Machine Learning | Microsoft Docs"
-description: "Explica cómo evaluar el rendimiento de un modelo en Aprendizaje automático de Azure."
+title: "rendimiento de los modelos aaaEvaluate en aprendizaje automático | Documentos de Microsoft"
+description: "Explica cómo tooevaluate modelo rendimiento aprendizaje automático de Azure."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: d9576e0059f2e77a684e518389182e713f0a4f09
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 03477368758dbb13aa6f54c5d27fb215615d1f9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Evaluación del rendimiento de un modelo en Aprendizaje automático de Azure
-En este artículo se muestra cómo evaluar el rendimiento de un modelo en Azure Machine Learning Studio y se proporciona una breve explicación de las métricas disponibles para esta tarea. Se presentan tres escenarios comunes de aprendizaje supervisado: 
+# <a name="how-tooevaluate-model-performance-in-azure-machine-learning"></a>¿Cómo tooevaluate modelo rendimiento aprendizaje automático de Azure
+Este artículo demuestra cómo tooevaluate Hola de rendimiento de un modelo en estudio de aprendizaje automático de Azure y proporciona una breve explicación de las métricas de hello disponibles para esta tarea. Se presentan tres escenarios comunes de aprendizaje supervisado: 
 
 * regresión
 * clasificación binaria 
@@ -29,24 +29,24 @@ En este artículo se muestra cómo evaluar el rendimiento de un modelo en Azure 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-La evaluación del rendimiento de un modelo es una de las fases principales en el proceso de ciencia de datos. Indica el nivel de acierto de las puntuaciones (predicciones) de un conjunto de datos mediante un modelo entrenado. 
+Evaluar el rendimiento de Hola de un modelo es uno de etapas principales de hello en el proceso de ciencia de datos Hola. Indica éxito Hola puntuación (predicciones) de un conjunto de datos ha sido mediante un modelo entrenado. 
 
-Azure Machine Learning admite la evaluación de modelos a través de dos de sus módulos principales de aprendizaje automático: [Evaluar modelo][evaluate-model] y [Validar modelo de forma cruzada][cross-validate-model]. Estos módulos permiten ver el rendimiento del modelo como un número de métricas que se usan habitualmente en estadísticas y aprendizaje automático.
+Azure Machine Learning admite la evaluación de modelos a través de dos de sus módulos principales de aprendizaje automático: [Evaluar modelo][evaluate-model] y [Validar modelo de forma cruzada][cross-validate-model]. Estos módulos le permiten toosee cómo realiza el modelo en cuanto a un número de métricas que se usan habitualmente en las estadísticas y el aprendizaje automático.
 
 ## <a name="evaluation-vs-cross-validation"></a>Evaluación frente a Validación cruzada
-La evaluación y la validación cruzada son métodos estándares para medir el rendimiento de un modelo. Ambos generan métricas de evaluación que puede inspeccionar o comparar con las de otros modelos.
+Evaluación y validación cruzada son rendimiento de hello toomeasure de forma estándar del modelo. Ambos generan métricas de evaluación que puede inspeccionar o comparar con las de otros modelos.
 
-[Evaluar modelo][evaluate-model] espera un conjunto de datos puntuado como entrada (o 2 en caso de que quiera comparar el rendimiento de 2 modelos distintos). Esto implica que debe entrenar el modelo mediante el módulo [Train Model][train-model] (Entrenar modelo) y realizar predicciones sobre algún conjunto de datos con el módulo [Puntuar modelo][score-model], antes de poder evaluar los resultados. La evaluación se basa en las etiquetas y probabilidades puntuadas junto con las etiquetas verdaderas, las cuales son el resultado del módulo [Puntuar modelo][score-model].
+[Evaluar el modelo de] [ evaluate-model] espera un conjunto de datos con puntuación como entrada (o 2 caso en que desea que el rendimiento de hello toocompare de 2 modelos diferentes). Esto significa que necesita tootrain el modelo usando hello [entrenar modelo] [ train-model] módulo y realizar predicciones sobre algún conjunto de datos mediante hello [puntuar modelo] [ score-model] módulo, para poder evaluar los resultados de Hola. Hello evaluación se basa Hola puntuado etiquetas/probabilidades junto con etiquetas de hello es true, todos los cuales son salida Hola [puntuar modelo] [ score-model] módulo.
 
-De forma alternativa, es posible usar la validación cruzada para realizar automáticamente varias operaciones de entrenamiento, puntuación y evaluación (10 subconjuntos) en distintos subconjuntos de los datos de entrada. Los datos de entrada se dividen en 10 partes, donde una se reserva para las pruebas y las otras 9 para el entrenamiento. Este proceso se repite 10 veces y se calcula el promedio de las métricas de evaluación. Esto ayuda a determinar el nivel al que un modelo se podría generalizar para nuevos conjuntos de datos. El módulo [Validar modelo de forma cruzada][cross-validate-model] toma un modelo sin entrenar y algunos conjuntos de datos con etiquetas y genera los resultados de la evaluación de cada uno de los 10 subconjuntos, además de los resultados promediados.
+Como alternativa, puede usar la validación cruzada tooperform una serie de puntuación de entrenar evaluar operaciones (10 subconjuntos) automáticamente en distintos subconjuntos de datos de entrada de Hola. datos de entrada de Hola se dividen en partes de 10, que está reservado para las pruebas y Hola otros 9 para el entrenamiento. Este proceso se repite 10 veces y se calcula el promedio de las métricas de evaluación de Hola. Esto ayuda a determinar el grado en que un modelo podría extrapolarse toonew conjuntos de datos. Hola [modelo de validación cruzada] [ cross-validate-model] módulo toma en un modelo no entrenado y algunos resultados de evaluación de Hola de conjunto de datos y los resultados de cada uno de Hola la etiqueta 10 subconjuntos, además toohello Promediar resultados.
 
-En las siguientes secciones, se crearán modelos de clasificación y regresión simples, y se evaluará su rendimiento con los módulos [Evaluar modelo][evaluate-model] y [Validar modelo de forma cruzada][cross-validate-model].
+Hola siguientes secciones, se generar modelos de regresión y de clasificación simples y evaluar su rendimiento, con ambos hello [evaluar modelo] [ evaluate-model] hello y [realizar una validación cruzada Modelo] [ cross-validate-model] módulos.
 
 ## <a name="evaluating-a-regression-model"></a>Evaluación de un modelo de regresión
-Supongamos que quiere predecir el precio de un automóvil mediante algunas características, como sus dimensiones, caballos de potencia, especificaciones del motor, etc. Se trata de un problema de regresión típico, donde la variable objetivo (*price*) es un valor numérico continuo. Podemos generar un modelo de regresión lineal simple que, dados los valores de las características de un automóvil determinado, pueda predecir el precio de ese automóvil. Este modelo de regresión se puede usar para puntuar el mismo conjunto de datos con que se entrenó. Cuando se tienen los precios predichos de todos los automóviles, se puede evaluar el rendimiento del modelo con una comparación de cuánto se desvían en promedio las predicciones de los precios reales. Para ilustrar esto, se usa el conjunto de datos *Información sobre los precios de los automóviles (datos sin procesar)* disponible en la sección **Conjuntos de datos almacenados** en Estudio de aprendizaje automático de Azure.
+Supongamos que desea toopredict precio del automóvil mediante algunas características, como dimensiones, potencia, las especificaciones de motor y así sucesivamente. Se trata de un problema de regresión típicos, donde Hola variable de destino (*precio*) es un valor numérico continuo. Podemos incluir un modelo de regresión lineal simple que, dada la característica de hello valores de un automóvil determinado, puede predecir precio Hola de ese automóvil. Este modelo de regresión se puede utilizar tooscore Hola se entrenó en mismo conjunto de datos. Una vez que nos hemos hello predichos precios de automóviles Hola todos, se podemos evaluar el rendimiento de Hola de modelo de hello examinando cuánto predicciones Hola se desvían de precios reales de hello en promedio. tooillustrate, usamos hello *conjunto de datos (Raw) de precios de automóviles* disponibles en hello **conjuntos de datos guardados** sección en estudio de aprendizaje automático de Azure.
 
-### <a name="creating-the-experiment"></a>Creación del experimento
-Agregue los módulos siguientes al área de trabajo en Estudio de aprendizaje automático de Azure:
+### <a name="creating-hello-experiment"></a>Creación de hello experimento
+Agregue Hola después de área de trabajo de tooyour de módulos de estudio de aprendizaje automático de Azure:
 
 * Información sobre los precios de los automóviles (datos sin procesar)
 * [Regresión lineal][linear-regression]
@@ -54,41 +54,41 @@ Agregue los módulos siguientes al área de trabajo en Estudio de aprendizaje au
 * [Puntuar modelo][score-model]
 * [Evaluar modelo][evaluate-model]
 
-Conecte los puertos, tal y como se muestra en la Ilustración 1 y establezca la columna de etiqueta del módulo [Train Model][train-model] (Entrenar modelo) en *price*.
+Conectar puertos de hello tal y como se muestra a continuación en la figura 1 y la columna de etiqueta de Hola de conjunto de hello [entrenar modelo] [ train-model] módulo demasiado*precio*.
 
 ![Evaluación de un modelo de regresión](media/machine-learning-evaluate-model-performance/1.png)
 
 Figura 1. Evaluación de un modelo de regresión.
 
-### <a name="inspecting-the-evaluation-results"></a>Inspección de los resultados de la evaluación
-Después de ejecutar el experimento, puede hacer clic en el puerto de salida del módulo [Evaluar modelo][evaluate-model] y seleccionar *Visualizar* para ver los resultados de la evaluación. Las métricas de evaluación disponibles para los modelos de regresión son: *Mean Absolute Error*, *Root Mean Absolute Error*, *Relative Absolute Error*, *Relative Squared Error* y *Coefficient of Determination*.
+### <a name="inspecting-hello-evaluation-results"></a>Inspeccionar los resultados de la evaluación de Hola
+Después de la ejecución experimento de hello, puede hacer clic en puerto de salida de hello de hello [evaluar modelo] [ evaluate-model] módulo y seleccione *visualizar* toosee resultados de la evaluación de Hola. Hola métricas de evaluación disponibles para los modelos de regresión son: *desviación significa*, *Error absoluto medio raíz significa*, *Error absoluto relativo*, * Error cuadrático relativo*, hello y *coeficiente de determinación*.
 
-El término "error" representa aquí la diferencia entre el valor predicho y el valor verdadero. Normalmente, se calcula el valor absoluto o el cuadrado de esta diferencia para capturar la magnitud total de errores en todas las instancias, dado que la diferencia entre el valor verdadero y el predicho puede ser negativa en algunos casos. Las métricas de error miden el rendimiento de predicción de un modelo de regresión en cuanto a la desviación media de sus predicciones a partir de los valores reales. Los valores de error más bajos implican que el modelo es más preciso a la hora de realizar predicciones. Una métrica de error general de 0 significa que el modelo se ajusta a los datos perfectamente.
+término de Hola "error" representa la diferencia de hello entre Hola valor predicho y el valor de true Hola. valor absoluto de Hola o hello cuadrado de esta diferencia son normalmente calculada toocapture Hola total magnitud de los errores en todas las instancias, como diferencia de hello entre Hola predecir y valor true puede ser negativo en algunos casos. las métricas de error de Hola medir el rendimiento de predicción de Hola de un modelo de regresión en términos de la desviación media de Hola de sus predicciones a partir de valores true Hola. Los valores más bajos de error significan modelo hello es más precisa para realizar predicciones. Una métrica de error general de 0 significa que Hola modelo se adapta perfectamente a datos de Hola.
 
-El coeficiente de determinación, que también se conoce como R cuadrado, es también una manera estándar de medir cuánto se adapta el modelo a los datos. Se puede interpretar como la proporción de la variación que explica el modelo. Una mayor proporción es mejor en este caso, donde 1 indica un ajuste perfecto.
+coeficiente de Hola de determinación, que también se conoce como R cuadrado, también es una manera estándar de medir el grado en que modelo Hola se adapta a los datos de Hola. Se puede interpretar como proporción de hello de la variación explicado el modelo de Hola. Una mayor proporción es mejor en este caso, donde 1 indica un ajuste perfecto.
 
 ![Métricas de evaluación de regresión lineal](media/machine-learning-evaluate-model-performance/2.png)
 
 Ilustración 2. Métricas de evaluación de regresión lineal.
 
 ### <a name="using-cross-validation"></a>Uso de la validación cruzada
-Como se mencionó anteriormente, puede realizar entrenamientos, puntuaciones y evaluaciones de forma repetida y automática mediante el módulo [Validar modelo de forma cruzada][cross-validate-model]. Lo único que necesita en este caso es un conjunto de datos, un modelo sin entrenar y un módulo [Validar modelo de forma cruzada][cross-validate-model] (consulte la ilustración siguiente). Tenga en cuenta que debe establecer la columna de etiqueta en *price* en las propiedades del módulo [Validar modelo de forma cruzada][cross-validate-model].
+Tal y como se mencionó anteriormente, puede realizar entrenamiento repetido, puntuación y las evaluaciones de forma automática utilizando Hola [modelo de validación cruzada] [ cross-validate-model] módulo. Lo único que necesita en este caso es un conjunto de datos, un modelo sin entrenar y un módulo [Validar modelo de forma cruzada][cross-validate-model] (consulte la ilustración siguiente). Tenga en cuenta que necesita demasiado columna de etiqueta de hello tooset*precio* en hello [modelo de validación cruzada] [ cross-validate-model] propiedades del módulo.
 
 ![Validación cruzada de un modelo de regresión](media/machine-learning-evaluate-model-performance/3.png)
 
 Figura 3. Validación cruzada de un modelo de regresión.
 
-Después de ejecutar el experimento, puede inspeccionar los resultados de la evaluación haciendo clic en el puerto de salida derecho del módulo [Validar modelo de forma cruzada][cross-validate-model]. Esto proporcionará una vista detallada de las métricas de cada iteración (subconjunto) y los resultados promediados de cada una de las métricas (Figura 4).
+Después de la ejecución experimento de hello, puede inspeccionar resultados de la evaluación de hello haciendo clic en el puerto de salida derecha Hola de hello [modelo de validación cruzada] [ cross-validate-model] módulo. Esto le dará una vista detallada de las métricas de Hola para cada iteración (subconjunto) y Hola Promediar resultados de cada una de las métricas de hello (ilustración 4).
 
 ![Resultados de la validación cruzada de un modelo de regresión](media/machine-learning-evaluate-model-performance/4.png)
 
 Figura 4. Resultados de la validación cruzada de un modelo de regresión.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Evaluación de un modelo de clasificación binaria
-En un escenario de clasificación binaria, la variable objetivo tiene solo dos resultados posibles, por ejemplo: {0, 1} o {false, true}, {negative, positive}. Suponga que tiene un conjunto de datos de empleados adultos con algunas variables demográficas y de empleo, y se le pide que prediga el nivel de ingresos, una variable binaria con los valores {“<=50K”, “>50K”}. En otras palabras, la clase negativa representa a los empleados que tienen un sueldo menor o igual a 50.000 al año y la clase positiva representa a los demás empleados. Al igual que en el escenario de regresión, se entrenaría un modelo, se puntuarían algunos datos y se evaluarían los resultados. La principal diferencia es la elección de las métricas que Aprendizaje automático de Azure calcula y da como resultado. Para ilustrar el escenario de predicción del nivel de ingresos, se usará el conjunto de datos [Adult](http://archive.ics.uci.edu/ml/datasets/Adult) para crear un experimento de Aprendizaje automático de Azure y evaluar el rendimiento de un modelo de regresión logística de dos clases, un clasificador binario que se usa con frecuencia.
+En un escenario de clasificación binaria, variable de destino de hello tiene solo dos resultados posibles, por ejemplo: {0, 1} o {false, true}, {negativo, positivo}. Suponga que tiene un conjunto de datos de empleados para adultos con algunos demográficos y variables de empleo y que se le pide el nivel de ingresos toopredict hello, una variable binaria con valores de hello {"< = 50K", "> 50K"}. En otras palabras, clase negativo de hello representa los empleados de Hola que menor o igual que too50K por año y Hola positivo clase representa todos los demás empleados. Como en el escenario de regresión de hello, se podría entrenar un modelo, puntuación algunos datos y evaluar los resultados de Hola. Hola principal diferencia es la opción de Hola de métricas de que aprendizaje automático de Azure calcula y salidas. escenario de predicción de nivel de ingresos de hello tooillustrate, usaremos hello [para adultos](http://archive.ics.uci.edu/ml/datasets/Adult) toocreate de conjunto de datos un aprendizaje automático de Azure experimentar y evaluar el rendimiento de Hola de un modelo de regresión logística de dos clases, un archivo binario usado clasificador.
 
-### <a name="creating-the-experiment"></a>Creación del experimento
-Agregue los módulos siguientes al área de trabajo en Estudio de aprendizaje automático de Azure:
+### <a name="creating-hello-experiment"></a>Creación de hello experimento
+Agregue Hola después de área de trabajo de tooyour de módulos de estudio de aprendizaje automático de Azure:
 
 * Conjunto de datos de clasificación binaria de ingresos en el censo de adultos
 * [Regresión logística de dos clases][two-class-logistic-regression]
@@ -96,35 +96,35 @@ Agregue los módulos siguientes al área de trabajo en Estudio de aprendizaje au
 * [Puntuar modelo][score-model]
 * [Evaluar modelo][evaluate-model]
 
-Conecte los puertos tal y como se muestra en la Ilustración 5 y establezca la columna de etiqueta del módulo [Train Model][train-model] (Entrenar modelo) en *income*.
+Conectar puertos de hello tal y como se muestra a continuación en la figura 5 y la columna de etiqueta de Hola de conjunto de hello [entrenar modelo] [ train-model] módulo demasiado*ingresos*.
 
 ![Evaluación de un modelo de clasificación binaria](media/machine-learning-evaluate-model-performance/5.png)
 
 Figura 5. Evaluación de un modelo de clasificación binaria.
 
-### <a name="inspecting-the-evaluation-results"></a>Inspección de los resultados de la evaluación
-Después de ejecutar el experimento, puede hacer clic en el puerto de salida del módulo [Evaluar modelo][evaluate-model] y seleccionar *Visualizar* para ver los resultados de la evaluación (ilustración 7). Las métricas de evaluación disponibles para los modelos de clasificación binaria son: *Accuracy*, *Precision*, *Recall*, *F1 Score* y *AUC*. Además, el módulo genera una matriz de confusión que muestra el número de positivos verdaderos, falsos negativos, falsos positivos y negativos verdaderos, así como curvas *ROC*, *Precision/Recall* y *Lift*.
+### <a name="inspecting-hello-evaluation-results"></a>Inspeccionar los resultados de la evaluación de Hola
+Después de la ejecución experimento de hello, puede hacer clic en puerto de salida de hello de hello [evaluar modelo] [ evaluate-model] módulo y seleccione *visualizar* resultados de evaluación de hello toosee (Ilustración 7). Hola métricas de evaluación disponibles para los modelos de clasificación binaria son: *precisión*, *precisión*, *recuerde*, *F1 puntuación*, y *AUC*. Además, el módulo de hello genera una matriz de confusión que muestra el número de Hola de verdaderos positivos, falsos negativos, falsos positivos y negativos es true, así como *ROC*, *precisión/recuperación*y *Elevación* curvas.
 
-La precisión es simplemente la proporción de instancias clasificadas correctamente. Suele ser la primera métrica que se comprueba al evaluar un clasificador. Sin embargo, si los datos de prueba están descompensados (en el caso en que la mayoría de las instancias pertenecen a una de las clases) o está más interesado en el rendimiento de una de las clases, la precisión no captura realmente la eficacia de un clasificador. En el escenario de clasificación del nivel de ingresos, suponga que está realizando pruebas en datos donde el 99 % de las instancias representan personas con un sueldo menor o igual a 50.000 al año. Es posible conseguir una precisión de 0,99 al predecir la clase "<=50.000" para todas las instancias. En este caso, el clasificador parece hacer un buen trabajo global, pero en realidad no clasifica correctamente ninguno de las personas con ingresos elevados (1 %) correctamente.
+Precisión es simplemente un Hola proporción de instancias clasificadas correctamente. Suele ser métrica primera Hola que mirar al evaluar un clasificador. Sin embargo, cuando los datos de prueba de hello están asimétrica (donde la mayoría de las instancias de hello pertenecen tooone de clases de hello) o está más interesado en el rendimiento de hello en cualquiera de las clases de hello, precisión realmente no captura eficacia Hola de un clasificador. En el escenario de nivel de clasificación de ingresos hello, suponga que está probando en algunos datos donde 99% de las instancias de hello representan usuarios disfrutar de menor o igual too50K por año. Es posible tooachieve una exactitud 0,99 por predecir clase hello "< = 50K" para todas las instancias. Clasificador de Hello en este caso aparece toobe haciendo un buen trabajo global, pero en realidad, se produce un error tooclassify cualquiera de las personas con ingresos elevados de hello (Hola 1%) correctamente.
 
-Por ese motivo, es útil calcular métricas adicionales que capturen aspectos más específicos de la evaluación. Antes de entrar a los detalles de dichas métricas, es importante comprender la matriz de confusión de una evaluación de clasificación binaria. Las etiquetas de clase en el conjunto de entrenamiento pueden tomar solo dos valores posibles, a los que normalmente podemos referirnos como positivo o negativo. Las instancias positivas y negativas que un clasificador predice correctamente se denominan positivos verdaderos (TP) y negativos verdaderos (TN), respectivamente. De forma similar, las instancias clasificadas incorrectamente se denominan falsos positivos (FP) y falsos negativos (FN). La matriz de confusión es simplemente una tabla que muestra el número de instancias que se encuentran bajo cada una de estas cuatro categorías. Aprendizaje automático de Azure decide automáticamente cuál de las dos clases en el conjunto de datos es la clase positiva. Si las etiquetas de clase son valores booleanos o enteros, se asignan las instancias etiquetadas como 'true' o '1' a la clase positiva. Si las etiquetas son cadenas, como en el caso del conjunto de datos de los ingresos, las etiquetas se ordenan alfabéticamente y se elige que el primer nivel sea la clase negativa, mientras que el segundo nivel es la clase positiva.
+Por esta razón, resulta útil toocompute otras métricas que capturen los aspectos más específicos de evaluación de Hola. Antes de entrar en detalles de Hola de esas métricas, es importante toounderstand matriz de confusión Hola supone una evaluación de clasificación binaria. clase Hello las etiquetas en el conjunto de entrenamiento de hello pueden tardar en solo 2 posibles valores, que se suele hacer referencia tooas positivo o negativo. instancias positivos y negativos de Hola que un clasificador predice correctamente se denominan (TP) de verdaderos positivos y negativos true (TN), respectivamente. De igual forma, se denominan instancias Hola clasificado incorrectamente (FP) de falsos positivos y falsos negativos (FN). matriz de confusión Hello es simplemente una tabla que muestra el número de Hola de instancias que se encuentran en cada una de estas 4 categorías. Aprendizaje automático de Azure automáticamente decide cuál de las dos clases de hello en el conjunto de datos de hello es clase positivo de hello. Si las etiquetas de clase de hello son un valor booleano o enteros, Hola instancias con la etiqueta 'true' o '1' se asignan clase positivo Hola. Si las etiquetas de hello son cadenas, como en caso de hello del conjunto de datos de ingresos hello, las etiquetas de Hola se ordenan alfabéticamente y primer nivel de Hola se elige clase negativo de hello toobe mientras Hola segundo nivel es clase positivo Hola.
 
 ![Matriz de confusión de la clasificación binaria](media/machine-learning-evaluate-model-performance/6a.png)
 
 Figura 6. Matriz de confusión de la clasificación binaria.
 
-Volviendo al problema de clasificación de ingresos, existen varias preguntas de evaluación que querríamos preguntar para ayudarnos a comprender el rendimiento del clasificador utilizado. Una pregunta muy natural es: "De los individuos que el modelo predijo que ganan >50.000 (TP+FP), cuántos se han clasificado correctamente (TP)?" Puede responder esta pregunta observando la **Precisión** del modelo, que es la proporción de positivos que se han clasificado correctamente: TP/(TP+FP). Otra pregunta común es "De todos los empleados con ingresos >50.000 (TP+FN), ¿cuántos predijo el clasificador correctamente (TP)?". Esto es en realidad la **Recuperación** o la tasa de positivos verdaderos: TP/(TP+FN) del clasificador. Observará que hay una evidente compensación entre la precisión y la recuperación. Por ejemplo, dado un conjunto de datos relativamente equilibrado, un clasificador que prediga principalmente instancias positivas tendría una recuperación alta, pero una precisión más baja, ya que muchas de las instancias negativas se clasificarían incorrectamente y se produciría un número mayor de falsos positivos. Para ver un gráfico de cómo varían estas dos métricas, haga clic en la curva de "PRECISIÓN/RECUPERACIÓN" en la página de salida de resultados de evaluación (parte superior izquierda de la Figura 7).
+Si vuelve toohello problema de clasificación de ingresos, sería aconsejable tooask varias cuestiones de evaluación que nos ayudan a comprender el rendimiento de Hola de clasificador Hola utilizado. Una pregunta muy natural es: ' fuera de usuarios de Hola que Hola modelo toobe predicho ganar > 50 K (TP + FP), cuántos se han clasificado correctamente (TP)? " Puede responder esta pregunta examinando hello **precisión** de modelo de hello, que es la proporción de Hola de positivos que se han clasificado correctamente: TP/(TP+FP). Otra pregunta común es "fuera de todos los Hola alta ganancias empleados con ingresos > 50 k (TP + FN), cuántos Hola clasificador clasificar correctamente (TP)". Esto es realmente hello **recuerde**, u Hola verdadero positivo tasa: TP/(TP+FN) de clasificador Hola. Observará que hay una evidente compensación entre la precisión y la recuperación. Por ejemplo, dado un conjunto de datos relativamente equilibrada, un clasificador que predice principalmente positivos instancias, tendría una recuperación alta, pero ¿se clasifican incorrectamente una precisión baja en su lugar tantas instancias negativo Hola resultante en un gran número de falsos positivos. toosee un gráfico de cómo modificar estos dos métricas, puede hacer clic en la curva de hello ' Precisión/recuperación' en la página de salida de resultados de evaluación de hello (parte superior izquierda de la figura 7).
 
 ![Resultados de la evaluación de clasificación binaria](media/machine-learning-evaluate-model-performance/7.png)
 
-Ilustración 7. Resultados de la evaluación de clasificación binaria.
+ Ilustración 7. Resultados de la evaluación de clasificación binaria.
 
-Otra métrica relacionada que se usa con frecuencia es **F1 Score**, que tiene en cuenta la precisión y la recuperación. Es la media armónica de estas 2 métricas y se calcula como tal: F1 = 2 (precisión x recuperación) / (precisión + recuperación). La puntuación de F1 score es una buena forma de resumir la evaluación en un número único, pero siempre es una práctica recomendada comprobar la precisión y la recuperación juntas para comprender mejor cómo se comporta un clasificador.
+Otro relacionados con la métrica que se utiliza a menudo es hello **F1 puntuación**, que toma la precisión y la recuperación en consideración. Es la media armónica de Hola de estas métricas de 2 y se calcula como tal: F1 = 2 (recuerde precisión x) / (precisión + recuperación). puntuación de F1 de Hello es una evaluación de buena forma toosummarize hello en un número único, pero siempre es una toolook buenas prácticas en precisión y recuperación toobetter junto comprender cómo se comporta un clasificador.
 
-Además, es posible inspeccionar la tasa de positivos verdaderos frente a la de falsos positivos en la curva **Característica operativa del receptor (ROC)** y el valor del **área bajo la curva (AUC)** correspondiente. Cuanto más se acerque esta curva a la esquina superior izquierda, mejor será el rendimiento del clasificador (es decir, se maximiza la tasa de positivos verdaderos a la vez que se minimiza la de falsos positivos). Las curvas que están cerca de la diagonal del gráfico son el resultado de los clasificadores que tienden a realizar predicciones que se acercan a una estimación aleatoria.
+Asimismo, uno puede inspeccionar tasa positivo true de hello frente a Hola de falsos positivos en hello **característica de funcionamiento de receptor (ROC)** curva y Hola correspondiente **área en hello curva (AUC)** valor. Hello más cerca esta curve toohello superior izquierda de la esquina, el rendimiento del clasificador del Hola de mejor hello es (es decir maximizar Hola true positivo velocidad y reduce su índice de falsos positivos hello). Curvas de toohello cerrar diagonal de Hola trazado, resultado de clasificadores que suelen toomake predicciones cerrar toorandom adivinanzas.
 
 ### <a name="using-cross-validation"></a>Uso de la validación cruzada
-Como en el ejemplo de regresión, podemos realizar una validación cruzada para entrenar, puntuar y evaluar de forma repetida y automática diferentes subconjuntos de datos. De forma similar, es posible usar el módulo [Validar modelo de forma cruzada][cross-validate-model], un modelo de regresión logística sin entrenar y un conjunto de datos. La columna de etiqueta debe establecerse en *income* en las propiedades del módulo [Validar modelo de forma cruzada][cross-validate-model]. Después de ejecutar el experimento y hacer clic en el puerto de la salida derecha del módulo [Validar modelo de forma cruzada][cross-validate-model], es posible ver los valores de métricas de clasificación binaria de cada subconjunto, además de las desviaciones media y estándar de cada uno. 
+Como en el ejemplo de regresión de hello, podemos realizar la validación cruzada toorepeatedly entrenar, puntuación y evaluar diferentes subconjuntos de datos de hello automáticamente. De forma similar, podemos usar hello [modelo de validación cruzada] [ cross-validate-model] módulo, un modelo de regresión logística no entrenado y un conjunto de datos. columna de etiqueta de Hello debe establecerse demasiado*ingresos* en hello [modelo de validación cruzada] [ cross-validate-model] propiedades del módulo. Después de puerto de hello de salida ejecutan experimentación hello y haciendo clic en hello derecho [modelo de validación cruzada] [ cross-validate-model] módulo, podemos ver valores de métrica de clasificación binaria de Hola para cada subconjunto, además toohello Media y desviación estándar de cada uno de ellos. 
 
 ![Validación cruzada de un modelo de clasificación binaria](media/machine-learning-evaluate-model-performance/8.png)
 
@@ -135,10 +135,10 @@ Figura 8. Validación cruzada de un modelo de clasificación binaria.
 Figura 9. Resultados de la validación cruzada de un clasificador binario.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Evaluación de un modelo de clasificación multiclase
-En este experimento se usará el conocido conjunto de datos [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris "), que contiene las instancias de tres tipos (clases) distintos de la planta iris. Hay 4 valores de características (longitud y ancho del sépalo y del pétalo) para cada instancia. En los experimentos anteriores se entrenaron y probaron los modelos con los mismos conjuntos de datos. Aquí usaremos el módulo [Split Data][split] (Dividir datos) para crear dos subconjuntos de los datos, con el fin de entrenar en el primero y puntuar y evaluar en el segundo. El conjunto de datos Iris está disponible públicamente en [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) (Repositorio de aprendizaje automático de UCI) y se puede descargar mediante un módulo [Importar datos][import-data].
+En este experimento usaremos Hola popular [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") conjunto de datos que contiene las instancias de 3 diferentes tipos (clases) de planta de iris Hola. Hay 4 valores de características (longitud y ancho del sépalo y del pétalo) para cada instancia. En los experimentos anteriores Hola se entrena y modelos probados hello mediante Hola mismos conjuntos de datos. En este caso, usaremos hello [dividir datos] [ split] subconjuntos de toocreate 2 de módulo de datos de hello, entrene en hello en primer lugar y puntuación y evalúe en hello segundo. Hello conjunto de datos de Iris esté disponible públicamente en hello [repositorio de aprendizaje automático UCI](http://archive.ics.uci.edu/ml/index.html)y puede descargarse con un [importar datos] [ import-data] módulo.
 
-### <a name="creating-the-experiment"></a>Creación del experimento
-Agregue los módulos siguientes al área de trabajo en Estudio de aprendizaje automático de Azure:
+### <a name="creating-hello-experiment"></a>Creación de hello experimento
+Agregue Hola después de área de trabajo de tooyour de módulos de estudio de aprendizaje automático de Azure:
 
 * [Importar datos][import-data]
 * [Bosque de decisión multiclase][multiclass-decision-forest]
@@ -147,27 +147,27 @@ Agregue los módulos siguientes al área de trabajo en Estudio de aprendizaje au
 * [Puntuar modelo][score-model]
 * [Evaluar modelo][evaluate-model]
 
-Conecte los puertos tal como se muestra a continuación en la Figura 10.
+Conectar puertos de hello tal y como se muestra a continuación en la figura 10.
 
-Establezca el índice de la columna de etiqueta del módulo [Train Model][train-model] (Entrenar modelo) en 5. El conjunto de datos no tiene fila de encabezado, pero se sabe que las etiquetas de clase están en la quinta columna.
+Establece el índice de columna de etiqueta de Hola de hello [entrenar modelo] [ train-model] too5 de módulo. conjunto de datos de Hello no tiene ninguna fila de encabezado pero sabemos que esa clase hello las etiquetas son en hello quinta columna.
 
-Haga clic en el módulo [Importar datos][import-data] y establezca la propiedad *Origen de datos* en *Dirección URL web a través de HTTP*, y la dirección *URL* en http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
+Haga clic en hello [importar datos] [ import-data] módulo conjunto hello y *origen de datos* propiedad demasiado*dirección URL Web a través de HTTP*, hello y *dirección URL * toohttp://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
 
-Establezca la fracción de instancias que se usará para el entrenamiento en el módulo [Split Data][split] (Dividir datos) (0,7 por ejemplo).
+Fracción de Hola de conjunto de toobe de instancias que se usa para el entrenamiento en hello [dividir datos] [ split] módulo (0,7 por ejemplo).
 
 ![Evaluar un clasificador multiclase](media/machine-learning-evaluate-model-performance/10.png)
 
 Figura 10. Evaluar un clasificador multiclase
 
-### <a name="inspecting-the-evaluation-results"></a>Inspección de los resultados de la evaluación
-Ejecute el experimento y haga clic en el puerto de salida de [Evaluar modelo][evaluate-model]. En este caso, los resultados de la evaluación se presentan en forma de una matriz de confusión. La matriz muestra las instancias reales frente a las predichas para las tres clases.
+### <a name="inspecting-hello-evaluation-results"></a>Inspeccionar los resultados de la evaluación de Hola
+Ejecute el experimento de Hola y haga clic en puerto de salida de hello de [evaluar modelo][evaluate-model]. resultados de la evaluación de Hola se presentan en forma de Hola de una matriz de confusión, en este caso. matriz de Hello muestra hello real frente a instancias de predicción para todas las clases de 3.
 
 ![Resultados de la evaluación de clasificación multiclase](media/machine-learning-evaluate-model-performance/11.png)
 
 Figura 11. Resultados de la evaluación de clasificación multiclase.
 
 ### <a name="using-cross-validation"></a>Uso de la validación cruzada
-Como se mencionó anteriormente, puede realizar entrenamientos, puntuaciones y evaluaciones de forma repetida y automática mediante el módulo [Validar modelo de forma cruzada][cross-validate-model]. Necesitaría un conjunto de datos, un modelo sin entrenar y un módulo [Validar modelo de forma cruzada][cross-validate-model] (consulte la ilustración siguiente). De nuevo, debe establecer la columna de etiqueta del módulo [Evaluar modelo de forma cruzada][cross-validate-model] (en este caso, índice 5 de columna). Después de ejecutar el experimento y hacer clic en el puerto de salida derecho de [Validar modelo de forma cruzada][cross-validate-model], puede inspeccionar los valores de métricas de cada subconjunto, así como las desviaciones media y estándar. Las métricas que se muestran aquí son similares a las descritas en el caso de clasificación binaria. Sin embargo, tenga en cuenta que en la clasificación multiclase, se realiza el cálculo de los positivos y negativos verdaderos, y de los falsos positivos y negativos con un recuento por clase, ya que no existe ninguna clase general positiva o negativa. Por ejemplo, al calcular la precisión o la recuperación de la clase 'Iris-setosa', se supone que se trata de la clase positiva y que todas las demás son negativas.
+Tal y como se mencionó anteriormente, puede realizar entrenamiento repetido, puntuación y las evaluaciones de forma automática utilizando Hola [modelo de validación cruzada] [ cross-validate-model] módulo. Necesitaría un conjunto de datos, un modelo sin entrenar y un módulo [Validar modelo de forma cruzada][cross-validate-model] (consulte la ilustración siguiente). Vuelva a necesario columna de etiqueta de hello tooset de hello [modelo de validación cruzada] [ cross-validate-model] módulo (índice de columna 5 en este caso). Después de puerto de hello de salida ejecutan experimentación hello y haga clic en el derecho de Hola [modelo de validación cruzada][cross-validate-model], puede inspeccionar los valores de métrica de Hola para cada subconjunto como Hola Media y desviación estándar. métricas de Hello mostradas aquí están Hola similar toohello que se han tratado en caso de clasificación binaria de Hola. Sin embargo, tenga en cuenta que en la clasificación multiclase, informática Hola verdaderos positivos o negativos y falsos positivos o negativos contando en forma de clase por clase, ya que no existe ninguna clase general positiva o negativa. Por ejemplo, cuando informático precisión de Hola o recuperación de hello 'Iris setosa' clase, se supone que es clase positivo de hello y todos los demás como negativo.
 
 ![Validación cruzada de un modelo de clasificación multiclase](media/machine-learning-evaluate-model-performance/12.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Importación de datos desde un archivo en Azure Machine Learning Studio | Microsoft Docs"
-description: "Obtenga información sobre cómo cargar un archivo de datos de entrenamiento desde la unidad de disco duro a Azure Machine Learning Studio. Esto crea un módulo de conjunto de datos en el área de trabajo."
+title: "aaaImport datos de un archivo en estudio de aprendizaje automático de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooupload datos de entrenamiento de archivos desde su tooAzure de unidad de disco duro estudio de aprendizaje automático. Esto crea un módulo de conjunto de datos en el área de trabajo de Hola."
 keywords: "importar datos, formato de datos, tipos de datos, orígenes de datos, datos de entrenamiento"
 services: machine-learning
 documentationcenter: 
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;bradsev
-ms.openlocfilehash: 18010864160ceb2d76aea37196e6944bbe426457
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 636facd9042145382c953a1c75969149ede6f6fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="import-training-data-from-a-file-on-your-hard-drive-into-machine-learning-studio"></a>Importar datos de entrenamiento desde un archivo en la unidad de disco duro en Machine Learning Studio
 [!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
-Obtenga información sobre cómo cargar un archivo de datos desde la unidad de disco duro para usar como datos de entrenamiento en Azure Machine Learning Studio. Al importar el archivo de datos, dispone de un módulo de conjunto de datos listo para su uso en el área de trabajo.
+Obtenga información acerca de cómo tooupload datos de un archivo de la unidad de disco duro toouse como datos de entrenamiento en estudio de aprendizaje automático de Azure. Al importar el archivo de datos de hello, dispone de un módulo de conjunto de datos listo para su uso en el área de trabajo.
 
-## <a name="steps-to-import-data-from-a-local-file"></a>Pasos para importar datos desde un archivo local
-Para importar datos desde una unidad de disco duro local, siga estos pasos:
+## <a name="steps-tooimport-data-from-a-local-file"></a>Datos de tooimport pasos desde un archivo local
+Hola tooimport datos desde una unidad de disco duro local, después de:
 
-1. Haga clic en **+NUEVO** en la parte inferior de la ventana de Estudio de aprendizaje automático.
+1. Haga clic en **+ nuevo** final Hola de ventana de estudio de aprendizaje automático de hello.
 2. Seleccione **CONJUNTO DE DATOS** y **DESDE ARCHIVO LOCAL**.
-3. En el cuadro de diálogo **Cargar un nuevo conjunto de datos** , vaya al archivo que desea cargar.
-4. Escriba un nombre, identifique el tipo de datos y, si lo desea, escriba una descripción. Se recomienda incluir una descripción: le permite registrar cualquier característica acerca de los datos que quiera recordar cuando use los datos en el futuro.
-5. La casilla **Esta es la versión nueva de un conjunto de datos existente** le permite actualizar una base de datos existente con datos nuevos. Haga clic en esta casilla y, después, escriba el nombre de un conjunto de datos existente.
+3. Hola **cargar un nuevo conjunto de datos** cuadro de diálogo, archivo de toohello de examen que desee tooupload
+4. Escriba un nombre, identifique el tipo de datos de hello y, opcionalmente, escriba una descripción. Se recomienda una descripción: le permite toorecord características acerca de los datos de Hola que desea tooremember cuando se usan datos de hello en el futuro de Hola.
+5. Hola casilla **es Hola nueva versión de un conjunto de datos existente** permite tooupdate un conjunto de datos existente con nuevos datos. Haga clic en esta casilla de verificación y, a continuación, escriba nombre de Hola de un conjunto de datos existente.
 
 ![Carga de un conjunto de datos nuevo](media/machine-learning-import-data-from-local-file/upload-dataset.png)
 
-Durante la carga, verá un mensaje que le indica que se está cargando el archivo. El tiempo de la carga dependerá del tamaño de los datos y de la velocidad de conexión con el servicio. Si sabe que el archivo tardará mucho tiempo en cargarse, puede realizar otras operaciones en Estudio de aprendizaje automático mientras espera. Sin embargo, si cierra el explorador, la carga de los datos genera un error.
+Durante la carga, verá un mensaje que le indica que se está cargando el archivo. Cargar tiempo depende de tamaño de hello de la velocidad de hello y datos de su servicio de toohello de conexión. Si conoce el archivo hello tardará mucho tiempo, puede hacer otras cosas en estudio de aprendizaje automático mientras espera. Sin embargo, cierre el Explorador de hello hace toofail de carga de datos de Hola.
 
 ## <a name="dataset-module-is-ready-for-use"></a>Módulo de conjunto de datos listo para usarse
-Una vez que los datos estén cargados, se almacenan en un módulo de conjunto de datos y se encontrarán disponibles para cualquier experimento que se realice en su área de trabajo.
+Una vez que se cargan los datos, se almacena en un módulo de conjunto de datos y es experimento tooany disponible en el área de trabajo.
 
-Cuando edita un experimento, puede encontrar los conjuntos de datos que ha creado en la lista **My Datasets** (Mis conjuntos de datos) que aparece en la lista **Saved Datasets** (Conjuntos de datos guardados) en la paleta de módulos. Puede arrastrar y colocar el conjunto de datos en el lienzo de experimento cuando desee usarlo para profundizar en su análisis o para Machine Learning.
+Cuando se edita un experimento, puede encontrar Hola conjuntos de datos que ha creado en hello **Mis conjuntos de datos** lista bajo hello **conjuntos de datos guardados** lista en la paleta de módulo de Hola. Puede arrastrar y drop Hola dataset al lienzo del experimento de hello cuando desee que el conjunto de datos de toouse hello para el análisis adicional y aprendizaje automático.

@@ -1,6 +1,6 @@
 ---
-title: "Configuración de la descarga SSL para Azure Application Gateway mediante Azure Portal | Microsoft Docs"
-description: "En esta página se ofrecen instrucciones para crear una puerta de enlace de aplicaciones con descarga SSL mediante el portal"
+title: 'Portal de Azure - puerta de enlace de aplicaciones de Azure: la descarga de SSL aaaConfigure | Documentos de Microsoft'
+description: "Esta página proporciona toocreate de instrucciones mediante el portal de Hola la descarga de una puerta de enlace de la aplicación con SSL"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,81 +14,81 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: f61be0cc4c9274c9914f7c468ce48a2a3d0a4f4a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e87ac0bbe10ac45e307c18802741c7bc31764a20
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-portal"></a>Configuración de una puerta de enlace de aplicaciones para la descarga SSL mediante el portal
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-hello-portal"></a>Configurar una puerta de enlace de la aplicación para la descarga SSL mediante el portal de Hola
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-ssl-portal.md)
-> * [PowerShell de Azure Resource Manager](application-gateway-ssl-arm.md)
+> * [Portal de Azure](application-gateway-ssl-portal.md)
+> * [PowerShell del Administrador de recursos de Azure](application-gateway-ssl-arm.md)
 > * [Azure Classic PowerShell](application-gateway-ssl.md)
 > * [CLI de Azure 2.0](application-gateway-ssl-cli.md)
 
-Azure Application Gateway puede configurarse para terminar la sesión Capa de sockets seguros (SSL) en la puerta de enlace para evitar las costosas tareas de descifrado SSL que tienen lugar en la granja de servidores web. La descarga SSL también simplifica la configuración del servidor front-end y la administración de la aplicación web.
+Puerta de enlace de aplicación de Azure puede ser configurado tooterminate Hola Secure Sockets Layer (SSL) sesión en hello puerta de enlace tooavoid costoso SSL descifrado tareas toohappen en la granja de servidores de hello web. Descarga SSL también simplifica la administración de aplicación web de Hola y el programa de instalación del servidor front-end de Hola.
 
 ## <a name="scenario"></a>Escenario
 
-El siguiente escenario pasa por la configuración de la descarga SSL en una puerta de enlace de aplicaciones existente. El escenario supone que ya ha seguido los pasos para [crear una puerta de enlace de aplicaciones](application-gateway-create-gateway-portal.md).
+Hola siguiendo escenario va a través de configuración de la descarga de SSL en una puerta de enlace de la aplicación existente. Hello escenario se supone que ya ha seguido los pasos de hello demasiado[crear una puerta de enlace de la aplicación](application-gateway-create-gateway-portal.md).
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-Para configurar la descarga SSL con una puerta de enlace de aplicaciones, se requiere un certificado. Este certificado se carga en la puerta de enlace de aplicaciones y se usa para cifrar y descifrar el tráfico enviado a través de SSL. El certificado debe estar en formato Intercambio de información personal (.pfx). Este formato de archivo permite la exportación de la clave privada, necesaria para que la puerta de enlace de aplicaciones realice el cifrado y descifrado del tráfico.
+descarga SSL de tooconfigure con una puerta de enlace de la aplicación, se requiere un certificado. Este certificado se carga en la puerta de enlace de aplicaciones de hello, utiliza tooencrypt y descifrar el tráfico de hello enviado a través de SSL. certificado de Hello debe toobe en formato de intercambio de información Personal (pfx). Este formato de archivo permite Hola privada toobe clave exportado que requiere Hola aplicación puerta de enlace tooperform Hola cifrado y descifrado de tráfico.
 
 ## <a name="add-an-https-listener"></a>Incorporación de un agente de escucha HTTPS
 
-El agente de escucha HTTPS busca tráfico en función de su configuración y ayuda a enrutar el tráfico a los grupos de back-end.
+escucha HTTPS de Hello busca tráfico basándose en su configuración y ayuda a los grupos de ruta Hola tráfico toohello back-end.
 
 ### <a name="step-1"></a>Paso 1
 
-Vaya a Azure Portal y seleccione una puerta de enlace de aplicaciones existente.
+Navegue toohello portal de Azure y seleccione una puerta de enlace de la aplicación existente
 
 ### <a name="step-2"></a>Paso 2
 
-Haga clic en Agentes de escucha y en el botón Agregar para agregar un agente de escucha.
+Haga clic en agentes de escucha y haga clic en hello Agregar botón tooadd un agente de escucha.
 
 ![hoja de información general de puerta de enlace de aplicaciones][1]
 
 ### <a name="step-3"></a>Paso 3
 
-Rellene la información necesaria para el agente de escucha y cargue el certificado .pfx. Cuando haya terminado, haga clic en Aceptar.
+Rellene Hola la información necesaria para el agente de escucha de Hola y Hola .pfx certificado de carga, cuando haya terminado, haga clic en Aceptar.
 
-**Nombre** : este valor es un nombre descriptivo del agente de escucha.
+**Nombre de** -este valor es un nombre descriptivo del agente de escucha de Hola.
 
-**Configuración de direcciones IP de front-end** : este valor es la configuración de direcciones IP de front-end usada para el agente de escucha.
+**Configuración de IP de Frontend** -este valor es la configuración de IP de front-end de Hola que se usa para el agente de escucha de Hola.
 
-**Puerto front-end (nombre/puerto)** : un nombre descriptivo para el puerto usado en el front-end de la puerta de enlace de aplicaciones y el puerto real usado.
+**Puerto de front-end (nombre/puerto)** -un nombre descriptivo para el puerto de hello usado en front-end de Hola de puerta de enlace de aplicaciones de Hola y Hola puerto real se utilizan.
 
-**Protocolo** : un modificador para determinar si se usa https o http para el front-end.
+**Protocolo** -un toodetermine conmutador si se utiliza https o http para front-end de Hola.
 
 **Certificado (nombre/contraseña)** : si se usa la descarga SSL, un certificado .pfx se requiere para esta configuración, al igual que un nombre y contraseña descriptivos.
 
 ![agregar hoja del agente de escucha][2]
 
-## <a name="create-a-rule-and-associate-it-to-the-listener"></a>Creación de una regla y asociación de la misma al agente de escucha
+## <a name="create-a-rule-and-associate-it-toohello-listener"></a>Crear una regla y asociar el agente de escucha de toohello
 
-Ahora se ha creado el agente de escucha. Es hora de crear una regla para controlar el tráfico desde el agente de escucha. Las reglas definen cómo se enruta el tráfico a los grupos de back-end basándose en varias opciones de configuración, incluido el uso o no de afinidad de sesión basada en cookies, protocolos y sondeos de puertos y estados.
+se ha creado el agente de escucha de Hola. Es hora toocreate un tráfico de hello toohandle de regla de agente de escucha de Hola. Las reglas definen cómo el tráfico es enrutado toohello grupos de back-end en función de varios valores de configuración, incluso si se usa la afinidad de sesión basado en cookies, protocolo, puerto y comprobaciones de mantenimiento.
 
 ### <a name="step-1"></a>Paso 1
 
-Haga clic en las **reglas** de la puerta de enlace de aplicaciones y, a continuación, en Agregar.
+Haga clic en hello **reglas** de puerta de enlace de aplicación Hola y, a continuación, haga clic en Agregar.
 
 ![hoja de reglas de puerta de enlace de aplicaciones][3]
 
 ### <a name="step-2"></a>Paso 2
 
-En la hoja **Agregar regla básica** , escriba el nombre descriptivo para la regla y elija el agente de escucha creado en el paso anterior. Elija el grupo de back-end y la configuración HTTP adecuados y haga clic en **Aceptar**
+En hello **Agregar regla básica** hoja, escriba Hola nombre descriptivo para la regla de Hola y elija el agente de escucha de hello creado en el paso anterior de Hola. Elija grupo back-end adecuados de Hola y configuración de http y haga clic en **Aceptar**
 
 ![ventana de configuración de https][4]
 
-Ahora, la configuración está guardada en la puerta de enlace de aplicaciones. El proceso de guardar para esta configuración puede tardar un rato antes de que pueda verse a través del portal o de PowerShell. Una vez guardada, la puerta de enlace de aplicaciones controla el cifrado y descifrado del tráfico. Todo el tráfico entre la puerta de enlace de aplicaciones y los servidores web de back-end se controlará mediante http. Cualquier comunicación dirigida de nuevo al cliente iniciada mediante https se devolverá al cliente cifrado.
+configuración de Hello ahora se guarda toohello puerta de enlace de aplicaciones. Hola guardar proceso para esta configuración puede tardar unos instantes antes de que se tooview disponible a través del portal de Hola o PowerShell. Puerta de enlace de aplicaciones una vez guardado Hola controla Hola cifrado y descifrado de tráfico. Se controlará todo el tráfico entre la puerta de enlace de aplicaciones de Hola y servidores de hello back-end web a través de http. Cualquier cliente de atrás toohello comunicación si inicia a través de https se devolverán a cliente toohello cifrada.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para aprender a configurar un sondeo de estado personalizado con Azure Application Gateway, consulte la sección sobre cómo [crear un sondeo de estado personalizado](application-gateway-create-gateway-portal.md).
+toolearn cómo tooconfigure personalizada del estado de sondeo con puerta de enlace de aplicaciones de Azure, consulte [crear un sondeo de estado personalizado](application-gateway-create-gateway-portal.md).
 
 [1]: ./media/application-gateway-ssl-portal/figure1.png
 [2]: ./media/application-gateway-ssl-portal/figure2.png

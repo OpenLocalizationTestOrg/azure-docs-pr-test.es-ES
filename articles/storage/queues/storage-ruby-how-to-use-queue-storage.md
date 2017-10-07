@@ -1,6 +1,6 @@
 ---
-title: Uso de Queue Storage en Ruby | Microsoft Docs
-description: "Aprenda a utilizar el servicio Cola de Azure para crear y eliminar colas e insertar, obtener y eliminar mensajes. Los ejemplos están escritos en Ruby."
+title: aaaHow toouse Queue storage from. Ruby | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate del servicio de cola de Azure de toouse hello y colas de delete y insert, obtener y eliminar mensajes. Los ejemplos están escritos en Ruby."
 services: storage
 documentationcenter: ruby
 author: robinsh
@@ -14,20 +14,20 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-ms.openlocfilehash: b1a7dd36af6c45bf085342cdf9c1c926a5040792
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c8eacac058442419cb9e8fe62cb69ad7ef1e2fc4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-queue-storage-from-ruby"></a>Uso del almacenamiento de colas de Ruby
+# <a name="how-toouse-queue-storage-from-ruby"></a>¿Cómo toouse Queue storage from. Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Información general
-Esta guía muestra cómo realizar algunas tareas comunes a través del servicio de almacenamiento en cola de Microsoft Azure. Los ejemplos están escritos usando la API Ruby de Azure.
-Entre los escenarios descritos se incluyen **insertar**, **ojear**, **obtener** y **eliminar** mensajes de la cola, así como **crear y eliminar colas**.
+Esta guía le mostrará cómo tooperform escenarios comunes con Hola servicio almacenamiento de cola de Microsoft Azure. ejemplos de Hola se escriben con hello Ruby API de Azure.
+Hello escenarios descritos se incluyen **insertar**, **leerlo**, **obtener**, y **eliminar** cola los mensajes, así como  **crear y eliminar colas**.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -36,44 +36,44 @@ Entre los escenarios descritos se incluyen **insertar**, **ojear**, **obtener** 
 ## <a name="create-a-ruby-application"></a>Creación de una aplicación de Ruby
 Cree una aplicación de Ruby. Para instrucciones, consulte [Aplicación web de Ruby on Rails en una máquina virtual de Azure](../../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md).
 
-## <a name="configure-your-application-to-access-storage"></a>Configuración de la aplicación para obtener acceso al almacenamiento
-Para usar el almacenamiento de Azure tendrá que descargar y usar el paquete Ruby azure, que incluye un conjunto de útiles bibliotecas que se comunican con los servicios REST de almacenamiento.
+## <a name="configure-your-application-tooaccess-storage"></a>Configurar la aplicación tooAccess almacenamiento
+toouse almacenamiento de Azure, necesitará toodownload y use Hola Ruby paquete de azure, que incluye un conjunto de bibliotecas de conveniencia que se comunican con servicios REST de almacenamiento de Hola.
 
-### <a name="use-rubygems-to-obtain-the-package"></a>Uso de RubyGems para obtener el paquete
+### <a name="use-rubygems-tooobtain-hello-package"></a>Use el paquete de RubyGems tooobtain Hola
 1. Use una interfaz de línea de comandos como **PowerShell** (Windows), **Terminal** (Mac) o **Bash** (Unix).
-2. Escriba "gem install azure" en la ventana de comandos para instalar la gema y las dependencias.
+2. Escriba "indicador instalar azure" en el indicador de hello comando ventana tooinstall hello y dependencias.
 
-### <a name="import-the-package"></a>Importación del paquete
-Con el editor de texto que prefiera, agregue lo siguiente al principio del archivo de Ruby en el que pretenda utilizar el almacenamiento:
+### <a name="import-hello-package"></a>Importar paquete de Hola
+Utilice el editor de texto, agregue Hola después de la parte superior de toohello de hello archivo Ruby donde piensa toouse almacenamiento:
 
 ```ruby
 require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Configuración de una conexión de almacenamiento de Azure
-El módulo azure leerá las variables de entorno **AZURE\_STORAGE\_ACCOUNT** y **AZURE\_STORAGE\_ACCESS_KEY** para obtener información necesaria para conectarse a su cuenta de Azure Storage. Si no se establecen estas variables de entorno, debe especificar la información de la cuenta antes de usar **Azure::QueueService** con el siguiente código:
+módulo de Hello azure leerá las variables de entorno de hello **AZURE\_almacenamiento\_cuenta** y **AZURE\_almacenamiento\_ACCESS_KEY** para cuenta de almacenamiento de Azure de tooconnect tooyour la información necesaria. Si no se establecen estas variables de entorno, debe especificar la información de la cuenta de hello antes de usar **Azure::QueueService** con hello siguiente código:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
 Azure.config.storage_access_key = "<your Azure storage access key>"
 ```
 
-Para obtener estos valores desde una cuenta de almacenamiento de Azure Resource Manager o clásica en el Portal de Azure:
+tooobtain estos valores de un clásico o el Administrador de recursos de almacenamiento de la cuenta de hello portal de Azure:
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. Vaya a la cuenta de almacenamiento que desea utilizar.
-3. En la hoja Configuración que se encuentra a la derecha, haga clic en **Claves de acceso**.
-4. En la hoja Claves de acceso que aparece, verá la clave de acceso 1 y 2. Puede usar cualquiera de estas. 
-5. Haga clic en el icono de copia para copiar la clave en el Portapapeles. 
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. Navegar por cuenta de almacenamiento toohello que desea toouse.
+3. En la hoja de configuración de hello en hello derecho, haga clic en **teclas de acceso**.
+4. En la hoja las claves de acceso Hola que aparece, podrá ver clave de acceso de hello 1 y 2 de clave de acceso. Puede usar cualquiera de estas. 
+5. Haga clic en el Portapapeles de hello copia icono toocopy hello toohello clave. 
 
 ## <a name="how-to-create-a-queue"></a>Creación de una cola
-El siguiente código crea un objeto **Azure::QueueService** , que permite trabajar con colas.
+Hello código siguiente se crea un **Azure::QueueService** objeto, lo que permite toowork con colas.
 
 ```ruby
 azure_queue_service = Azure::QueueService.new
 ```
 
-Utilice el método **create_queue()** para crear una cola con el nombre especificado.
+Hola de uso **create_queue()** método toocreate una cola con hello nombre especificado.
 
 ```ruby
 begin
@@ -84,27 +84,27 @@ end
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Inserción de un mensaje en una cola
-Para insertar un mensaje en una cola, utilice el método **create_message()** para crear un nuevo mensaje y agregarlo a la cola.
+tooinsert un mensaje en una cola, use hello **create_message()** método toocreate un mensaje nuevo y agregue toohello cola.
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Inspección del siguiente mensaje
-Puede inspeccionar el mensaje situado en la parte delantera de una cola, sin quitarlo de la cola, mediante una llamada al método **peek\_messages()**. De forma predeterminada, **peek\_messages()** inspecciona un único mensaje. También puede indicar cuántos mensajes desea inspeccionar.
+## <a name="how-to-peek-at-hello-next-message"></a>Cómo: Ver en el siguiente mensaje de Hola
+Puede inspeccionar mensaje hello en la parte delantera de Hola de una cola sin quitarlo de la cola de Hola por Hola que realiza la llamada **peek\_messages()** método. De forma predeterminada, **peek\_messages()** inspecciona un único mensaje. También puede especificar cuántos mensajes desea toopeek.
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
   {:number_of_messages => 10})
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Extracción del siguiente mensaje de la cola
+## <a name="how-to-dequeue-hello-next-message"></a>Cómo: Hola siguiente mensaje de eliminación de cola
 Puede borrar un mensaje de una cola en dos pasos.
 
-1. Al llamar a **list\_messages()**, obtiene, de forma predeterminada, el siguiente mensaje en una cola. También puede indicar cuántos mensajes desea obtener. Los mensajes devueltos por **list\_messages()** se hacen invisibles para cualquier otro código que lea mensajes de esta cola. Usted proporciona el tiempo de espera de la visibilidad en segundos a modo de parámetro.
-2. Para terminar quitando el mensaje de la cola, también debe llamar a **delete_message()**.
+1. Cuando se llama a **lista\_messages()**, obtener el siguiente mensaje de Hola en una cola de forma predeterminada. También puede especificar cuántos mensajes desea tooget. Hola mensajes procedentes de **lista\_messages()** se convierte en invisible tooany otro código que lee mensajes de esta cola. Pasar en tiempo de espera de visibilidad de hello en segundos como un parámetro.
+2. toofinish al quitar el mensaje de saludo de cola de hello, también debe llamar a **delete_message()**.
 
-Este proceso de extracción de un mensaje que consta de dos pasos garantiza que si su código no puede procesar un mensaje a causa de un error de hardware o software, otra instancia de su código puede obtener el mismo mensaje e intentarlo de nuevo. El código llama a **delete\_message()** justo después de que se haya procesado el mensaje.
+Este proceso de dos pasos de la eliminación de un mensaje garantiza cuando los tooprocess se produce un error de código puede obtener un mensaje debido a un error toohardware o software, otra instancia del código Hola mismo mensaje e inténtelo de nuevo. Las llamadas de código **eliminar\_message()** justo después de que se ha procesado el mensaje de bienvenida.
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -112,8 +112,8 @@ azure_queue_service.delete_message("test-queue",
   messages[0].id, messages[0].pop_receipt)
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Cambio del contenido de un mensaje en cola
-Puede cambiar el contenido de un mensaje local en la cola. El código siguiente usa el método **update_message()** para actualizar un mensaje. Este método devolverá una tupla que contiene la recepción de confirmación del mensaje en cola y un valor de fecha y hora UTC que representa el momento en que el mensaje estará visible en la cola.
+## <a name="how-to-change-hello-contents-of-a-queued-message"></a>Cómo: Cambiar el contenido de Hola de un mensaje en cola
+Puede cambiar el contenido de Hola de un mensaje en lugar de en la cola de Hola. código de Hello siguiente utiliza hello **update_message()** método tooupdate un mensaje. método Hello devolverá una tupla que contiene la confirmación de recepción de Hola Hola del mensaje de cola y un valor de hora de fecha UTC que representa al mensaje de saludo será visible en la cola de Hola.
 
 ```ruby
 message = azure_queue_service.list_messages("test-queue", 30)
@@ -126,9 +126,9 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
 Hay dos formas de personalizar la recuperación de mensajes de una cola.
 
 1. En primer lugar, puede obtener un lote de mensajes.
-2. En segundo lugar, puede establecer un tiempo de espera de la invisibilidad más largo o más corto para que el código disponga de más o menos tiempo para procesar cada mensaje.
+2. Puede establecer un tiempo de espera de invisibilidad mayores o menores, lo que permite el código más o menos toofully tiempo procesar cada mensaje.
 
-El siguiente ejemplo de código utiliza el método **list\_messages()** para obtener 15 mensajes en una llamada. A continuación, imprime y elimina cada mensaje. También establece el tiempo de espera de la invisibilidad en cinco minutos para cada mensaje.
+ejemplo de código siguiente Hello usa Hola **lista\_messages()** tooget 15 mensajes de método en una llamada. A continuación, imprime y elimina cada mensaje. También establece los minutos de toofive de tiempo de espera de invisibilidad de Hola para cada mensaje.
 
 ```ruby
 azure_queue_service.list_messages("test-queue", 300
@@ -138,8 +138,8 @@ azure_queue_service.list_messages("test-queue", 300
 end
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Obtención de la longitud de la cola
-Puede obtener una estimación del número de mensajes existentes en la cola. El método **get\_queue\_metadata()** solicita a Queue service que devuelva el recuento aproximado de mensajes y metadatos sobre la cola.
+## <a name="how-to-get-hello-queue-length"></a>Cómo: Obtener la longitud de la cola de Hola
+Puede obtener una estimación del número de Hola de mensajes en cola de Hola. Hola **obtener\_cola\_metadata()** método pide número aproximado de mensajes de Hola de tooreturn de servicio de hello cola y los metadatos acerca de la cola de Hola.
 
 ```ruby
 message_count, metadata = azure_queue_service.get_queue_metadata(
@@ -147,16 +147,16 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Eliminación de una cola
-Para eliminar una cola y todos los mensajes contenidos en ella, llame al método **delete\_queue()** en el objeto de cola.
+toodelete una cola y todos los mensajes de Hola contenidas en ella, llamada hello **eliminar\_queue()** método hello en objetos de cola.
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que está familiarizado con los aspectos básicos del almacenamiento de colas, utilice estos vínculos para obtener más información acerca de tareas de almacenamiento más complejas.
+Ahora que ha aprendido conceptos básicos de Hola de almacenamiento de la cola, siga estos toolearn vínculos acerca de las tareas más complejas de almacenamiento.
 
-* Visite el [blog del equipo de almacenamiento de Azure](http://blogs.msdn.com/b/windowsazurestorage/)
-* Visite el repositorio de [SDK de Azure para Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) en GitHub
+* Visite hello [Blog del equipo de almacenamiento de Azure](http://blogs.msdn.com/b/windowsazurestorage/)
+* Visite hello [Azure SDK para Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repositorio en GitHub
 
-Podrá encontrar una comparación entre Azure Queue Service, que se explica en este artículo, y Azure Service Bus Queues, que se explican en el artículo [Utilización de las colas de Service Bus](/develop/ruby/how-to-guides/service-bus-queues/), en el documento [Colas de Azure y Colas de Service Bus: comparación y diferencias](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md).
+Para obtener una comparación entre Hola el servicio de cola de Azure se describe en este artículo y colas de Bus de servicio de Azure descrito en hello [cómo toouse colas de Service Bus](/develop/ruby/how-to-guides/service-bus-queues/) artículo, consulte [colas de Azure y colas de Bus de servicio: comparación y Contrastar](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

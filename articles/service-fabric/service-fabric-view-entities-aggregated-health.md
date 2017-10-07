@@ -1,6 +1,6 @@
 ---
-title: "Visualización del mantenimiento agregado de entidades de Azure Service Fabric | Microsoft Docs"
-description: "Se describe cómo consultar, ver y evaluar el mantenimiento agregado de entidades de Azure Service Fabric, a través de consultas de mantenimiento y consultas generales."
+title: aaaHow tooview Azure Service Fabric entidades agregan mantenimiento | Documentos de Microsoft
+description: "Describe cómo ver tooquery y evaluar el estado de las entidades de Azure Service Fabric agregados, a través de consultas de estado y consultas generales."
 services: service-fabric
 documentationcenter: .net
 author: oanapl
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: b97972b1bdc28a17fb9c3a0e997738f5bd0b5d15
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: add810551cac26d2b4ff81b57d94ddd780c2cc2f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-service-fabric-health-reports"></a>Vista de los informes de estado de Service Fabric
-Azure Service Fabric presenta un [modelo de mantenimiento](service-fabric-health-introduction.md) con entidades de estado en las que componentes y guardianes del sistema pueden notificar las condiciones locales que están supervisando. El [almacén de estado](service-fabric-health-introduction.md#health-store) agrega todos los datos de mantenimiento para determinar si las entidades son correctas.
+Azure Service Fabric presenta un [modelo de mantenimiento](service-fabric-health-introduction.md) con entidades de estado en las que componentes y guardianes del sistema pueden notificar las condiciones locales que están supervisando. Hola [almacén de estado](service-fabric-health-introduction.md#health-store) agrega todos los toodetermine de datos de estado si las entidades están en buen estadas.
 
-El clúster se rellena automáticamente con informes de estado enviados por los componentes del sistema. Lea más en [Uso de informes de mantenimiento del sistema para solucionar problemas](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
+clúster de Hola se rellena automáticamente con los informes de estado enviados por componentes del sistema Hola. Más información, lea [tootroubleshoot de informes de mantenimiento del sistema de uso](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
 
-Service Fabric proporciona varias maneras de obtener el mantenimiento agregado de las entidades:
+Service Fabric proporciona varias maneras tooget Hola agregado mantenimiento de entidades de hello:
 
 * [Explorador de Service Fabric](service-fabric-visualizing-your-cluster.md) y otras herramientas de visualización
 * Consultas de mantenimiento (a través de PowerShell, API o REST)
-* Consultas generales que devuelven una lista de entidades con el estado como una de las propiedades (a través de PowerShell, API o REST)
+* General, las consultas que devuelven una lista de entidades que tienen el estado como una de las propiedades de hello (a través de PowerShell, API o REST)
 
-Para demostrar estas opciones, vamos a usar un clúster local con los nodos y la [aplicación fabric:/WordCount](http://aka.ms/servicefabric-wordcountapp). La aplicación **fabric:/WordCount** contiene dos servicios predeterminados, uno con estado de tipo `WordCountServiceType` y otro sin estado de tipo `WordCountWebServiceType`. He cambiado el archivo `ApplicationManifest.xml` para requerir siete réplicas de destino para el servicio con estado y una partición. Dado que hay solo cinco nodos en el clúster, los componentes del sistema notifican una advertencia en la partición del servicio porque está por debajo del número de destino.
+toodemonstrate estas opciones, vamos a usar un clúster local con cinco nodos y hello [fabric: / aplicación WordCount](http://aka.ms/servicefabric-wordcountapp). Hola **fabric: / WordCount** aplicación contiene dos servicios de manera predeterminada, un servicio con estado de tipo `WordCountServiceType`y un servicio sin estado de tipo `WordCountWebServiceType`. He cambiado hello `ApplicationManifest.xml` toorequire siete réplicas de destino para el servicio con estado hello y una partición. Porque hay solo cinco nodos en clúster de hello, componentes del sistema Hola notificar una advertencia en la partición de servicio de hello porque es inferior al recuento de destino de Hola.
 
 ```xml
 <Service Name="WordCountService">
@@ -48,17 +48,17 @@ Para demostrar estas opciones, vamos a usar un clúster local con los nodos y la
 ```
 
 ## <a name="health-in-service-fabric-explorer"></a>Mantenimiento del Explorador de Service Fabric
-El Explorador de Service Fabric proporciona una vista visual del clúster. En la imagen siguiente, puede ver que:
+Explorador de Service Fabric proporciona una vista visual de clúster de Hola. En la imagen de hello siguiente, puede ver que:
 
-* La aplicación **fabric:/WordCount** está en rojo (en error) porque tiene un evento de error notificado por **MyWatchdog** para la propiedad **Availability**.
-* Uno de sus servicios, **fabric:/WordCount/WordCountService** está en amarillo (en advertencia). El servicio está configurado con siete réplicas y el clúster tiene cinco nodos, por lo que no se pueden colocar dos réplicas. Aunque no se muestra aquí, la partición de servicio está en amarillo debido al informe del sistema de `System.FM` que indica que `Partition is below target replica or instance count` (la partición está por debajo del número de instancias o réplicas de destino). La partición en amarillo desencadena el servicio en amarillo.
-* El clúster está en rojo debido a la aplicación en rojo.
+* Hola aplicación **fabric: / WordCount** está en rojo (en error) porque tiene un evento de error notificado por **MyWatchdog** para la propiedad de hello **disponibilidad**.
+* Uno de sus servicios, **fabric:/WordCount/WordCountService** está en amarillo (en advertencia). Hola servicio está configurado con siete réplicas y clúster de hello tiene cinco nodos, por lo que no se puede colocar dos repicas. Aunque no se muestra aquí, la partición de servicio de hello es amarilla debido a un informe del sistema de `System.FM` que indique que `Partition is below target replica or instance count`. desencadenadores de partición amarillo Hola Hola servicio amarillo.
+* clúster de Hello es rojo debido a la aplicación hello rojo.
 
-La evaluación usa las directivas predeterminadas del manifiesto de clúster y el manifiesto de aplicación. Son directivas estrictas y no toleran ningún error.
+evaluación de Hello usa las directivas predeterminadas de manifiesto de clúster de Hola y el manifiesto de aplicación. Son directivas estrictas y no toleran ningún error.
 
-Vista del clúster con el Explorador de Service Fabric.
+Vista de clúster de hello con Service Fabric Explorer:
 
-![Vista del clúster con el Explorador de Service Fabric.][1]
+![Vista de clúster de hello con Service Fabric Explorer.][1]
 
 [1]: ./media/service-fabric-view-entities-aggregated-health/servicefabric-explorer-cluster-health.png
 
@@ -69,47 +69,47 @@ Vista del clúster con el Explorador de Service Fabric.
 >
 
 ## <a name="health-queries"></a>Consultas de mantenimiento
-Service Fabric expone las consultas de mantenimiento para cada uno de los [tipos de entidad](service-fabric-health-introduction.md#health-entities-and-hierarchy)admitidos. Se puede acceder a ellas mediante la API, con los métodos de [FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), los cmdlets de PowerShell y REST. Estas consultas devuelven información completa de mantenimiento sobre la entidad: el estado de mantenimiento agregado, los eventos de mantenimiento de la entidad, los estados de mantenimiento de los elementos secundarios (si procede), las evaluaciones de estado incorrecto y las estadísticas de mantenimiento de los elementos secundarios (cuando corresponde).
+Service Fabric expone consultas de estado para cada uno de hello admitida [tipos de entidad](service-fabric-health-introduction.md#health-entities-and-hierarchy). Son accesibles a través de API, utilizando los métodos en hello [FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), cmdlets de PowerShell y REST. Estas consultas devuelven información de estado acerca de la entidad de hello: Hola agrega el estado, los eventos de estado de entidad, Estados de mantenimiento de elemento secundario (si procede), evaluaciones en mal estado (cuando la entidad de hello no es correcto) y las estadísticas de estado de los elementos secundarios (cuando aplicable).
 
 > [!NOTE]
-> Se devuelve una entidad de mantenimiento cuando se rellena completamente en el Almacén de estado. La entidad debe estar activa (no eliminada) y tener un informe de sistema. Sus entidades primarias en la cadena de jerarquía deben tener también informes del sistema. Si no se cumple alguna de estas condiciones, las consultas de mantenimiento devuelven una excepción [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) con el código [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` que muestra por qué no se devuelve la entidad.
+> Una entidad de estado se devuelve cuando se completa en el almacén de estado de Hola. entidad de Hello debe estar activo (no eliminado) y tiene un informe de sistema. Sus entidades primario en la cadena de jerarquía de hello también deben tener informes del sistema. Si no se cumple alguna de estas condiciones, mantenimiento de hello las consultas devuelven un [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) con [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` que muestra por qué no se devuelve la entidad de Hola.
 >
 >
 
-Las consultas de mantenimiento requieren pasar el identificador de entidad, que depende del tipo de entidad. Las consultas aceptan parámetros de directivas de mantenimiento opcionales. Si no se especifican directivas de mantenimiento, se usan para la evaluación las [directivas de mantenimiento](service-fabric-health-introduction.md#health-policies) del manifiesto de aplicación o de clúster. Si los manifiestos no contienen una definición de las directivas de mantenimiento, para la evaluación se usan las predeterminadas. Las directivas de mantenimiento predeterminadas no toleran errores. También aceptan filtros para devolver solo los elementos secundarios o eventos parciales, los que respetan los filtros especificados. Otro filtro permite excluir las estadísticas de los elementos secundarios.
+consultas de estado de Hello deben pasar el identificador de entidad de hello, que depende del tipo de entidad de Hola. las consultas de Hello aceptan parámetros de la directiva de mantenimiento opcional. Si no se especifica ninguna directiva de mantenimiento, Hola [las directivas de mantenimiento](service-fabric-health-introduction.md#health-policies) del manifiesto de clúster o una aplicación Hola se usan para la evaluación. Si Hola manifiestos no contienen una definición de las directivas de mantenimiento, directivas de mantenimiento de hello predeterminadas se usan para la evaluación. las directivas de mantenimiento de Hello predeterminado no tolerar los errores. las consultas de Hello también aceptan filtros para devolver solo los elementos secundarios parciales o eventos--hello las que respetan Hola filtros especificados. Otro filtro permite excluir las estadísticas de los elementos secundarios de Hola.
 
 > [!NOTE]
-> Los filtros de salida se aplican en el servidor, por lo que se reduce el tamaño de la respuesta del mensaje. Recomendamos usar los filtros de salida para limitar los datos devueltos en lugar de aplicar filtros en el cliente.
+> se aplican los filtros de salida de Hello en servidor hello, por lo que se reduce el tamaño de respuesta del mensaje de Hola. Se recomienda que utilice los filtros de salida de hello toolimit Hola datos devuelven, en lugar de aplican filtros en el lado del cliente de Hola.
 >
 >
 
 Contiene el mantenimiento de la entidad:
 
-* El estado de mantenimiento agregado de la entidad. El Almacén de estado lo calcula en función de los informes de mantenimiento de la entidad, los estados de mantenimiento de los elementos secundarios (si procede) y las directivas de mantenimiento. Lea más sobre la [evaluación del mantenimiento de entidades](service-fabric-health-introduction.md#health-evaluation).  
-* Eventos de mantenimiento de la entidad.
-* La colección de los estados de mantenimiento de todos los elementos secundarios de las entidades que pueden tener elementos secundarios. Los estados de mantenimiento contienen identificadores de entidad y el estado de mantenimiento agregado. Para obtener el mantenimiento completo de un elemento secundario, llame al mantenimiento de consultas del tipo de entidad secundaria y pase el identificador de elementos secundarios.
-* Si la entidad no es correcta, las evaluaciones de mantenimiento incorrecto apuntan al informe que desencadenó el estado de la entidad. Las evaluaciones son recursivas, contienen las evaluaciones de mantenimiento de los elementos secundarios que desencadenaron el estado de mantenimiento actual. Por ejemplo, un guardián notificó un error en una réplica. El estado de la aplicación muestra una evaluación de estado incorrecto debido a un servicio con un estado incorrecto; este estado del servicio se debe a que una partición tiene un error; el estado de la partición es incorrecto debido a que una réplica tiene otro error; el estado de la réplica es incorrecto debido al informe de estado de error del guardián.
-* Las estadísticas de estado de todos los tipos de elementos secundarios de las entidades que los tienen. Por ejemplo, el estado del clúster muestra el número total de aplicaciones, servicios, particiones, réplicas y entidades implementadas en el clúster. El estado del servicio muestra el número total de particiones y réplicas en el servicio especificado.
+* Hola estado agregado de entidad de Hola. Calculado por el almacén de estado de hello basándose en los informes de estado de entidad, Estados de mantenimiento de elemento secundario (si procede) y las directivas de mantenimiento. Lea más sobre la [evaluación del mantenimiento de entidades](service-fabric-health-introduction.md#health-evaluation).  
+* Hola eventos de estado de una entidad de Hola.
+* colección de Hola de Estados de mantenimiento de todos los elementos secundarios para las entidades de Hola que pueden tener elementos secundarios. Estados de mantenimiento de Hello contienen los identificadores de entidad y Hola estado agregado. tooget estado para un elemento secundario, llamar a estado de consulta de hello para el tipo de entidad de secundarios de Hola y pase identificador secundario de Hola.
+* evaluaciones en mal estado Hello toohello de ese punto de informes que desencadenan estado de Hola de entidad de hello, si Hola entidad no es correcto. las evaluaciones de Hello son recursivos, que contiene evaluaciones del mantenimiento de los elementos secundarios Hola que desencadenó el estado de mantenimiento actual. Por ejemplo, un guardián notificó un error en una réplica. estado de la aplicación Hello muestra una evaluación incorrecto debido tooan servicio incorrecto; servicio de Hello está en mal estado vencimiento partición tooa error; partición de Hello está en mal estado vencimiento réplica tooa error; réplica de Hello está en mal estado debido a informes de estado de error de guardián toohello.
+* estadísticas de estado de Hola para todos los tipos de elementos secundarios de entidades de Hola que tienen elementos secundarios. Por ejemplo, el estado del clúster muestra el número total de Hola de aplicaciones, servicios, particiones, las réplicas e implementa entidades de clúster de Hola. Estado del servicio muestra el número total de Hola de particiones y réplicas en hello servicio especificado.
 
 ## <a name="get-cluster-health"></a>Obtención del mantenimiento de clúster
-Devuelve el mantenimiento de la entidad del clúster y contiene los estados de mantenimiento de aplicaciones y nodos (elementos secundarios del clúster). Entrada:
+Devuelve Hola mantenimiento de entidad de clúster de Hola y contiene los Estados de mantenimiento de Hola de aplicaciones y nodos (elementos secundarios del clúster de hello). Entrada:
 
-* [Opcional] La directiva de mantenimiento del clúster utilizada para evaluar los nodos y los eventos del clúster.
-* [Opcional] La asignación de directivas de mantenimiento de aplicaciones, con las directivas de mantenimiento usadas para invalidar las directivas de manifiesto de aplicación.
-* [Opcional] Filtros para eventos, nodos y aplicaciones que especifican las entradas que son de interés y se deben devolver en el resultado (por ejemplo, únicamente los errores o advertencias y errores). Todos los eventos, nodos y aplicaciones se utilizan para evaluar el mantenimiento agregado de la entidad, independientemente del filtro.
-* [Opcional] Filtro para excluir las estadísticas de estado.
-* [Opcional] Filtro para incluir las estadísticas de estado fabric:/System. Solo se pude aplicar cuando no se excluyen las estadísticas de estado. De forma predeterminada, las estadísticas de estado incluyen solo las estadísticas de las aplicaciones de usuario y no la aplicación del sistema.
+* Directiva de mantenimiento de clúster [opcional] Hola utiliza nodos de hello tooevaluate y eventos de clúster de Hola.
+* Asignación de directiva de mantenimiento de aplicación Hola [opcional], con las directivas de mantenimiento de hello usa directivas de manifiesto de aplicación de Hola de toooverride.
+* [Opcional] Filtros de eventos, nodos y aplicaciones que especifican las entradas que son de interés y se deben devolver en el resultado de hello (por ejemplo, únicamente, los errores o las advertencias y errores). Todos los eventos, nodos y aplicaciones son mantenimiento de entidad agregado hello tooevaluate usado, independientemente del filtro de Hola.
+* [Opcional] Filtrar las estadísticas de estado de tooexclude.
+* [Opcional] Filtrar tooinclude fabric: / Hola de las estadísticas de estado del sistema en las estadísticas de estado. Solo se aplica cuando no se excluyen las estadísticas de estado de Hola. De forma predeterminada, las estadísticas de estado de Hola incluyen solo las estadísticas de las aplicaciones de usuario y aplicación del sistema no Hola.
 
 ### <a name="api"></a>API
-Para obtener el mantenimiento del clúster, cree una instancia de `FabricClient` y llame al método [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) en su instancia de **HealthManager**.
+tooget estado del clúster, cree una `FabricClient` llamada hello y [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) método en su **HealthManager**.
 
-La siguiente llamada obtiene el mantenimiento del clúster:
+Hello llamada siguiente obtiene el estado del clúster hello:
 
 ```csharp
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync();
 ```
 
-El código siguiente obtiene el mantenimiento del clúster mediante una directiva de mantenimiento personalizada del clúster y filtros para nodos y aplicaciones. Especifica que las estadísticas de estado incluyen las de tipo fabric:/System. Crea la clase [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription), que contiene toda la información de entrada.
+Hola código siguiente obtiene el estado del clúster hello mediante una directiva de mantenimiento de clúster personalizado y filtra los nodos y aplicaciones. Especifica que las estadísticas de estado de hello incluyen tejido hello: / estadísticas del sistema. Crea [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthquerydescription), que contiene información de entrada de Hola.
 
 ```csharp
 var policy = new ClusterHealthPolicy()
@@ -141,11 +141,11 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-El cmdlet para obtener el mantenimiento del clúster es [Get-ServiceFabricClusterHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealth). Conéctese primero al clúster mediante el cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+es el estado de clúster de Hola Hola cmdlet tooget [ServiceFabricClusterHealth Get](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealth). En primer lugar, conectar toohello clúster mediante el uso de hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet.
 
-El estado del clúster es igual a cinco nodos, la aplicación del sistema y fabric:/WordCount se configuran tal como se ha descrito.
+Hola estado del clúster de hello es cinco nodos, la aplicación de sistema de Hola y fabric: / WordCount configurado como se describe.
 
-El siguiente cmdlet obtiene el mantenimiento del clúster con directivas de mantenimiento predeterminadas. El estado de mantenimiento agregado está en advertencia, porque también lo está la aplicación fabric:/WordCount. Observe cómo las evaluaciones de mantenimiento incorrecto muestran detalles de las condiciones que desencadenaron el mantenimiento agregado.
+Hola siguiendo el cmdlet Obtiene el estado del clúster mediante el uso de directivas de mantenimiento de forma predeterminada. Hello estado agregado una advertencia, ya que Hola fabric: / aplicación WordCount produce una advertencia. Tenga en cuenta cómo evaluaciones en mal estado Hola proporcionan detalles de las condiciones de Hola que desencadenó Hola agregado mantenimiento.
 
 ```xml
 PS D:\ServiceFabric> Get-ServiceFabricClusterHealth
@@ -202,7 +202,7 @@ HealthStatistics        :
                           Application           : 0 Ok, 1 Warning, 0 Error
 ```
 
-El siguiente cmdlet de PowerShell obtiene el mantenimiento del clúster mediante una directiva de aplicación personalizada. Filtra los resultados para obtener solo los nodos y las aplicaciones con error o advertencia. Como resultado, no se devuelve ningún nodo, ya que todos son correctos. Solo la aplicación fabric:/WordCount respeta el filtro de aplicaciones. Puesto que la directiva personalizada especifica que hay que considerar que las advertencias son errores en la aplicación fabric:/WordCount, la aplicación se evalúa como en error y lo mismo el clúster.
+Hello siguiente cmdlet de PowerShell obtiene Hola mantenimiento de clúster de hello mediante una directiva de aplicación personalizada. Filtra los resultados tooget sólo las aplicaciones y los nodos de error o advertencia. Como resultado, no se devuelve ningún nodo, ya que todos son correctos. Hola solo fabric: / aplicación WordCount respeta el filtro de aplicaciones de Hola. Directiva personalizada de hello especifica tooconsider advertencias como errores de tejido de hello: / aplicación WordCount, aplicación hello se evalúa como erróneo y, por lo que es clúster Hola.
 
 ```powershell
 PS D:\ServiceFabric> $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
@@ -239,25 +239,25 @@ HealthEvents            : None
 ```
 
 ### <a name="rest"></a>REST
-Puede obtener el mantenimiento del clúster con una [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster) o una [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy) que incluye las directivas de mantenimiento descritas en el cuerpo.
+Puede obtener el estado del clúster con un [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster) o un [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy) que incluye las directivas de mantenimiento que se describe en el cuerpo de Hola.
 
 ## <a name="get-node-health"></a>Obtención del mantenimiento de nodo
-Devuelve el mantenimiento de una entidad del nodo y contiene los eventos de mantenimiento notificados en el nodo. Entrada:
+Devuelve Hola estado de una entidad del nodo y contiene eventos de estado de hello notificados en el nodo de Hola. Entrada:
 
-* [Obligatorio] El nombre de nodo que identifica al nodo.
-* [Opcional] La configuración de la directiva de mantenimiento del clúster usada para evaluar el mantenimiento.
-* [Opcional] Filtros para eventos que especifican las entradas que son de interés y se deben devolver en el resultado (por ejemplo, únicamente errores o advertencias y errores). Todos los eventos se utilizan para evaluar el mantenimiento agregado de la entidad, independientemente del filtro.
+* Nombre de nodo de hello [obligatorio] que identifica el nodo de Hola.
+* Configuración de directiva de mantenimiento de clúster de hello [opcional] usa tooevaluate mantenimiento.
+* [Opcional] Filtros para los eventos que especifican las entradas que son de interés y se deben devolver en el resultado de hello (por ejemplo, únicamente, los errores o las advertencias y errores). Todos los eventos son mantenimiento de entidad agregado hello tooevaluate usado, independientemente del filtro de Hola.
 
 ### <a name="api"></a>API
-Para obtener el mantenimiento del nodo mediante la API, cree una instancia de `FabricClient` y llame al método [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) en su instancia de HealthManager.
+estado de nodo de tooget a través de hello API, cree un `FabricClient` llamada hello y [GetNodeHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getnodehealthasync) método en su HealthManager.
 
-El código siguiente obtiene el mantenimiento del nodo para el nombre de nodo especificado:
+Hello código siguiente obtiene mantenimiento de nodo de hello para el nombre del nodo especificado de hello:
 
 ```csharp
 NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(nodeName);
 ```
 
-El código siguiente obtiene el mantenimiento del nodo para el nombre de nodo especificado, y pasa un filtro de eventos y la directiva personalizada mediante [NodeHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.nodehealthquerydescription):
+Hello código siguiente obtiene el estado del nodo de Hola para hello especificado nombre de nodo y pasa en el filtro de eventos y una directiva personalizada a través de [NodeHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.nodehealthquerydescription):
 
 ```csharp
 var queryDescription = new NodeHealthQueryDescription(nodeName)
@@ -270,8 +270,8 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 ```
 
 ### <a name="powershell"></a>PowerShell
-El cmdlet para obtener el mantenimiento del nodo es [Get-ServiceFabricNodeHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnodehealth). Conéctese primero al clúster mediante el cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
-El siguiente cmdlet obtiene el mantenimiento del nodo mediante directivas de mantenimiento predeterminadas:
+el estado del nodo Hola cmdlet tooget hello es [ServiceFabricNodeHealth Get](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnodehealth). En primer lugar, conectar toohello clúster mediante el uso de hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet.
+Hola siguiente cmdlet Obtiene el mantenimiento de nodo de hello mediante el uso de directivas de mantenimiento de manera predeterminada:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricNodeHealth _Node_1
@@ -293,7 +293,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 4:40:47 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-El siguiente cmdlet obtiene el mantenimiento de todos los nodos del clúster:
+Hello siguiente cmdlet obtiene Hola mantenimiento de todos los nodos de clúster de hello:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricNode | Get-ServiceFabricNodeHealth | select NodeName, AggregatedHealthState | ft -AutoSize
@@ -308,26 +308,26 @@ _Node_0                     Ok
 ```
 
 ### <a name="rest"></a>REST
-Puede obtener el mantenimiento del nodo con una [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node) o una [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy) que incluye las directivas de mantenimiento descritas en el cuerpo.
+Puede obtener el estado de nodo con un [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node) o un [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy) que incluye las directivas de mantenimiento que se describe en el cuerpo de Hola.
 
 ## <a name="get-application-health"></a>Obtención del mantenimiento de la aplicación
-Devuelve el mantenimiento de una entidad de aplicación. Contiene los estados de mantenimiento de la aplicación implementada y de los elementos secundarios del servicio. Entrada:
+Devuelve el estado de saludo de una entidad de la aplicación. Contiene los Estados de mantenimiento de Hola de aplicación hello implementado y elementos secundarios de servicio. Entrada:
 
-* [Obligatorio] El nombre de la aplicación (URI) que identifica la aplicación.
-* [Opcional] La directiva de mantenimiento de aplicación usada para invalidar las directivas de manifiesto de aplicación.
-* [Opcional] Filtros para eventos, servicios y aplicaciones implementadas que especifican las entradas que son de interés y se deben devolver en el resultado (por ejemplo, únicamente errores o advertencias y errores). Todos los eventos, servicios y aplicaciones implementadas se utilizan para evaluar el mantenimiento agregado de la entidad, independientemente del filtro.
-* [Opcional] Filtro para excluir las estadísticas de estado. Si no se especifica, las estadísticas de estado incluyen los estados correcto, de advertencia y recuento de errores para todos los elementos secundarios de la aplicación: servicios, particiones, réplicas, aplicaciones implementadas y paquetes de servicio implementados.
+* Hola [obligatorio] nombre de la aplicación (URI) que identifica la aplicación hello.
+* Directiva de mantenimiento de aplicación Hola [opcional] usa directivas de manifiesto de aplicación de Hola de toooverride.
+* [Opcional] Filtros de eventos, servicios y aplicaciones implementadas que especifican las entradas que son de interés y se deben devolver en el resultado de hello (por ejemplo, únicamente, los errores o las advertencias y errores). Todos los eventos, servicios y aplicaciones implementadas son mantenimiento de entidad agregado hello tooevaluate usado, independientemente del filtro de Hola.
+* [Opcional] Filtrar las estadísticas de estado de hello tooexclude. Si no se especifica, las estadísticas de estado de hello incluyen Aceptar hello, de advertencia y de recuento de errores para todos los elementos secundarios de la aplicación: servicios, particiones, las réplicas, las aplicaciones implementadas y paquetes de servicio implementados.
 
 ### <a name="api"></a>API
-Para obtener el mantenimiento de la aplicación, cree una instancia de `FabricClient` y llame al método [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) en su instancia de HealthManager.
+estado de la aplicación de tooget, crear un `FabricClient` llamada hello y [GetApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getapplicationhealthasync) método en su HealthManager.
 
-El código siguiente obtiene el mantenimiento de la aplicación para el nombre de aplicación especificado (URI):
+Hello código siguiente obtiene el estado de aplicaciones de hello para el nombre de aplicación especificado hello (URI):
 
 ```csharp
 ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplicationHealthAsync(applicationName);
 ```
 
-El código siguiente obtiene el mantenimiento de la aplicación para el nombre de aplicación especificado (URI), con filtros y directivas personalizadas especificados mediante [ApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationhealthquerydescription).
+Hello código siguiente obtiene el estado de aplicaciones de hello para el nombre de aplicación especificado hello (URI), con los filtros y las directivas personalizadas especifican a través de [ApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationhealthquerydescription).
 
 ```csharp
 HealthStateFilter warningAndErrors = HealthStateFilter.Error | HealthStateFilter.Warning;
@@ -356,9 +356,9 @@ ApplicationHealth applicationHealth = await fabricClient.HealthManager.GetApplic
 ```
 
 ### <a name="powershell"></a>PowerShell
-El cmdlet para obtener el mantenimiento de la aplicación es [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps). Conéctese primero al clúster mediante el cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+es el estado de aplicaciones de Hola Hola cmdlet tooget [ServiceFabricApplicationHealth Get](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps). En primer lugar, conectar toohello clúster mediante el uso de hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet.
 
-El siguiente cmdlet devuelve el mantenimiento de la aplicación **fabric:/WordCount** :
+Hello siguiente cmdlet devuelve mantenimiento Hola de hello **fabric: / WordCount** aplicación:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth fabric:/WordCount
@@ -426,7 +426,7 @@ HealthStatistics                :
                                   DeployedApplication   : 5 Ok, 0 Warning, 0 Error
 ```
 
-El siguiente cmdlet de PowerShell pasa directivas personalizadas. También filtra los elementos secundarios y los eventos.
+Hola siguiendo los pasos de cmdlet de PowerShell de directivas personalizadas. También filtra los elementos secundarios y los eventos.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth -ApplicationName fabric:/WordCount -ConsiderWarningAsError $true -ServicesFilter Error -EventsFilter Error -DeployedApplicationsFilter Error -ExcludeHealthStatistics
@@ -454,26 +454,26 @@ HealthEvents                    : None
 ```
 
 ### <a name="rest"></a>REST
-Puede obtener el mantenimiento de la aplicación con una [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application) o una [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy) que incluye las directivas de mantenimiento descritas en el cuerpo.
+Puede obtener el estado de aplicación con un [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application) o un [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy) que incluye las directivas de mantenimiento que se describe en el cuerpo de Hola.
 
 ## <a name="get-service-health"></a>Obtención del mantenimiento del servicio
-Devuelve el mantenimiento de una entidad del servicio. Contiene los estados de mantenimiento de la partición. Entrada:
+Devuelve el estado de saludo de una entidad de servicio. Contiene los Estados de mantenimiento de partición Hola. Entrada:
 
-* [Obligatorio] El nombre del servicio (URI) que identifica el servicio.
-* [Opcional] La directiva de mantenimiento de aplicación usada para invalidar la directiva de manifiesto de aplicación.
-* [Opcional] Filtros para eventos y particiones que especifican las entradas que son de interés y se deben devolver en el resultado (por ejemplo, únicamente errores o advertencias y errores). Todos los eventos y particiones se utilizan para evaluar el mantenimiento agregado de la entidad, independientemente del filtro.
-* [Opcional] Filtro para excluir las estadísticas de estado. Si no se especifica, las estadísticas de estado muestran el estado correcto, de advertencia y recuento de errores para todas las particiones y réplicas del servicio.
+* Hola [obligatorio] nombre del servicio (URI) que identifica el servicio de Hola.
+* Directiva de mantenimiento de aplicación Hola [opcional] usa la directiva del manifiesto de aplicación toooverride Hola.
+* [Opcional] Filtros de eventos y las particiones que especifican las entradas que son de interés y se deben devolver en el resultado de hello (por ejemplo, únicamente, los errores o las advertencias y errores). Todos los eventos y las particiones son mantenimiento de entidad agregado hello tooevaluate usado, independientemente del filtro de Hola.
+* [Opcional] Filtrar las estadísticas de estado de tooexclude. Si no se especifica, Hola Hola de mostrar las estadísticas de estado correcto, advertencia y error de recuento de todas las particiones y réplicas de servicio de Hola.
 
 ### <a name="api"></a>API
-Para obtener el mantenimiento del servicio mediante la API, cree una instancia de `FabricClient` y llame al método [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) en su instancia de HealthManager.
+estado del servicio tooget a través de hello API, cree un `FabricClient` llamada hello y [GetServiceHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getservicehealthasync) método en su HealthManager.
 
-En el ejemplo siguiente se obtiene el mantenimiento de un servicio con el nombre de servicio especificado (URI):
+Hello en el ejemplo siguiente se obtiene Hola mantenimiento de un servicio con el nombre de servicio especificado (URI):
 
 ```charp
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
-El código siguiente obtiene el mantenimiento del servicio para el nombre de servicio especificado (URI), mediante la especificación de filtros y directivas personalizadas con la clase [ServiceHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicehealthquerydescription):
+Hello código siguiente obtiene Hola estado del servicio para el nombre de servicio especificado de hello (URI), especificar filtros y una directiva personalizada a través de [ServiceHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicehealthquerydescription):
 
 ```csharp
 var queryDescription = new ServiceHealthQueryDescription(serviceName)
@@ -486,9 +486,9 @@ ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthA
 ```
 
 ### <a name="powershell"></a>PowerShell
-El cmdlet para obtener el mantenimiento del servicio es [Get-ServiceFabricServiceHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicehealth). Conéctese primero al clúster mediante el cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+es el estado del servicio de Hello cmdlet tooget hello [ServiceFabricServiceHealth Get](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicehealth). En primer lugar, conectar toohello clúster mediante el uso de hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet.
 
-El siguiente cmdlet obtiene el mantenimiento del servicio con directivas de mantenimiento predeterminadas.
+Hola siguiendo el cmdlet Obtiene el estado del servicio de hello mediante el uso de directivas de mantenimiento de manera predeterminada:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricServiceHealth -ServiceName fabric:/WordCount/WordCountService
@@ -526,27 +526,27 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-Puede obtener el mantenimiento del servicio con una [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service) o una [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy) que incluye las directivas de mantenimiento descritas en el cuerpo.
+Puede obtener el estado del servicio con un [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service) o un [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy) que incluye las directivas de mantenimiento que se describe en el cuerpo de Hola.
 
 ## <a name="get-partition-health"></a>Obtención del mantenimiento de partición
-Devuelve el mantenimiento de una entidad de partición. Contiene los estados de mantenimiento de la réplica. Entrada:
+Devuelve el estado de saludo de una entidad de la partición. Contiene los Estados de mantenimiento de réplica de Hola. Entrada:
 
-* [Obligatorio] El identificador de partición (GUID) que identifica la partición.
-* [Opcional] La directiva de mantenimiento de aplicación usada para invalidar la directiva de manifiesto de aplicación.
-* [Opcional] Filtros de eventos y réplicas que especifican las entradas que son de interés y se deben devolver en el resultado (por ejemplo, únicamente errores o advertencias y errores). Todos los eventos y réplicas se utilizan para evaluar el mantenimiento agregado de la entidad, independientemente del filtro.
-* [Opcional] Filtro para excluir las estadísticas de estado. Si no se especifica, las estadísticas de estado muestran cuántas réplicas están en estado correcto, de advertencia y de error.
+* Partición de hello [obligatorio] identificador (GUID) que identifica la partición de Hola.
+* Directiva de mantenimiento de aplicación Hola [opcional] usa la directiva del manifiesto de aplicación toooverride Hola.
+* [Opcional] Filtros de eventos y las réplicas que especifican las entradas que son de interés y se deben devolver en el resultado de hello (por ejemplo, únicamente, los errores o las advertencias y errores). Todos los eventos y réplicas son mantenimiento de entidad agregado hello tooevaluate usado, independientemente del filtro de Hola.
+* [Opcional] Filtrar las estadísticas de estado de tooexclude. Si no se especifica, muestran las estadísticas de estado de hello cuántas réplicas están en Aceptar, advertencia y error de Estados.
 
 ### <a name="api"></a>API
-Para obtener el mantenimiento de la partición mediante la API, cree una instancia de `FabricClient` y llame al método [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) en su instancia de HealthManager. Para especificar parámetros opcionales, cree [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription).
+estado de la partición de tooget a través de hello API, cree un `FabricClient` llamada hello y [GetPartitionHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getpartitionhealthasync) método en su HealthManager. crear parámetros opcionales toospecify [PartitionHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.partitionhealthquerydescription).
 
 ```csharp
 PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionHealthAsync(partitionId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-El cmdlet para obtener el mantenimiento de la partición es [Get-ServiceFabricPartitionHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth). Conéctese primero al clúster mediante el cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+Mantenimiento de partición de Hello cmdlet tooget hello es [ServiceFabricPartitionHealth Get](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricpartitionhealth). En primer lugar, conectar toohello clúster mediante el uso de hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet.
 
-El siguiente cmdlet obtiene el estado de todas las particiones del servicio **fabric:/WordCount/WordCountService** y filtra los estados de mantenimiento de las réplicas:
+Hello siguiente obtiene mantenimiento Hola para todas las particiones de hello **fabric: / WordCount/WordCountService** servicio y filtra los Estados de mantenimiento de réplica:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None
@@ -585,8 +585,8 @@ HealthEvents          :
                         SentAt                : 7/13/2017 6:35:17 PM
                         ReceivedAt            : 7/13/2017 6:35:18 PM
                         TTL                   : 00:01:05
-                        Description           : The Load Balancer was unable to find a placement for one or more of the Service's Replicas:
-                        Secondary replica could not be placed due to the following constraints and properties:  
+                        Description           : hello Load Balancer was unable toofind a placement for one or more of hello Service's Replicas:
+                        Secondary replica could not be placed due toohello following constraints and properties:  
                         TargetReplicaSetSize: 7
                         Placement Constraint: N/A
                         Parent Service: N/A
@@ -618,26 +618,26 @@ HealthStatistics      :
 ```
 
 ### <a name="rest"></a>REST
-Puede obtener el mantenimiento de la partición con una [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition) o una [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) que incluye las directivas de mantenimiento descritas en el cuerpo.
+Puede obtener el estado de la partición con un [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition) o un [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy) que incluye las directivas de mantenimiento que se describe en el cuerpo de Hola.
 
 ## <a name="get-replica-health"></a>Obtención del mantenimiento de réplica
-Devuelve el mantenimiento de una réplica de servicio con estado o una instancia de servicio sin estado. Entrada:
+Devuelve el estado de saludo de una réplica de servicio con estado o una instancia de servicio sin estado. Entrada:
 
-* [Obligatorio] El identificador de partición (GUID) y el identificador de réplica que identifica a la réplica.
-* [Opcional] Los parámetros de la directiva de mantenimiento de aplicación usados para invalidar las directivas de manifiesto de aplicación.
-* [Opcional] Filtros para eventos que especifican las entradas que son de interés y se deben devolver en el resultado (por ejemplo, únicamente errores o advertencias y errores). Todos los eventos se utilizan para evaluar el mantenimiento agregado de la entidad, independientemente del filtro.
+* [Obligatorio] Hola identificador (GUID) y la réplica Id. de partición que identifica la réplica de Hola.
+* Parámetros de la directiva de mantenimiento de hello [opcional] aplicación utilizan directivas de manifiesto de aplicación de Hola de toooverride.
+* [Opcional] Filtros para los eventos que especifican las entradas que son de interés y se deben devolver en el resultado de hello (por ejemplo, únicamente, los errores o las advertencias y errores). Todos los eventos son mantenimiento de entidad agregado hello tooevaluate usado, independientemente del filtro de Hola.
 
 ### <a name="api"></a>API
-Para obtener el mantenimiento de la réplica mediante la API, cree una instancia de `FabricClient` y llame al método [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) en su instancia de HealthManager. Para especificar parámetros avanzados, utilice [ReplicaHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription).
+Mantenimiento de réplica de hello tooget a través de hello API, cree un `FabricClient` llamada hello y [GetReplicaHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getreplicahealthasync) método en su HealthManager. parámetros avanzados, uso de toospecify [ReplicaHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.replicahealthquerydescription).
 
 ```csharp
 ReplicaHealth replicaHealth = await fabricClient.HealthManager.GetReplicaHealthAsync(partitionId, replicaId);
 ```
 
 ### <a name="powershell"></a>PowerShell
-El cmdlet para obtener el mantenimiento de la réplica es [Get-ServiceFabricReplicaHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricreplicahealth). Conéctese primero al clúster mediante el cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+el estado de réplica de Hola Hola cmdlet tooget es [ServiceFabricReplicaHealth Get](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricreplicahealth). En primer lugar, conectar toohello clúster mediante el uso de hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet.
 
-El cmdlet siguiente obtiene el mantenimiento de la réplica principal para todas las particiones del servicio:
+Hello siguiente cmdlet obtiene Hola mantenimiento de réplica principal de Hola para todas las particiones del servicio de hello:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
@@ -661,18 +661,18 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Puede obtener el mantenimiento de la réplica con una [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica) o una[solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy) que incluye las directivas de mantenimiento descritas en el cuerpo.
+Puede obtener el estado de réplica con un [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica) o un [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy) que incluye las directivas de mantenimiento que se describe en el cuerpo de Hola.
 
 ## <a name="get-deployed-application-health"></a>Obtención del mantenimiento de la aplicación implementada
-Devuelve el mantenimiento de una aplicación implementada en una actividad del nodo. Contiene los estados de mantenimiento del paquete de servicio implementado. Entrada:
+Devuelve el estado de saludo de una aplicación implementada en una entidad del nodo. Contiene Estados de mantenimiento de paquete de servicio de hello implementado. Entrada:
 
-* [Obligatorio] El nombre de la aplicación (URI) y el nombre del nodo (cadena) que identifican a la aplicación implementada
-* [Opcional] La directiva de mantenimiento de aplicación usada para invalidar las directivas de manifiesto de aplicación.
-* [Opcional] Filtros de eventos y paquetes de servicio implementados que especifican las entradas que son de interés y se deben devolver en el resultado (por ejemplo, únicamente errores o advertencias y errores). Todos los eventos y paquetes de servicio implementados se utilizan para evaluar el mantenimiento agregado de la entidad, independientemente del filtro.
-* [Opcional] Filtro para excluir las estadísticas de estado. Si no se especifica, las estadísticas de estado muestran el número de paquetes de servicio implementados en los estados de mantenimiento correcto, de advertencia y de error.
+* Nombre de la aplicación hello [obligatorio] (URI) y el nombre de nodo (cadena) que identifican Hola implementan la aplicación.
+* Directiva de mantenimiento de aplicación Hola [opcional] usa directivas de manifiesto de aplicación de Hola de toooverride.
+* [Opcional] Filtros de eventos y paquetes de servicio implementado que especifican las entradas que son de interés y se deben devolver en el resultado de hello (por ejemplo, únicamente, los errores o las advertencias y errores). Todos los eventos y paquetes de servicio implementados son mantenimiento de entidad agregado hello tooevaluate usado, independientemente del filtro de Hola.
+* [Opcional] Filtrar las estadísticas de estado de tooexclude. Si no se especifica, las estadísticas de estado de hello mostrarán número de Hola de paquetes de servicio implementados en los Estados de mantenimiento de Aceptar, advertencia y error.
 
 ### <a name="api"></a>API
-Para obtener el mantenimiento de una aplicación implementada en un nodo mediante la API, cree una instancia de `FabricClient` y llame al método [GetDeployedApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) en su instancia de HealthManager. Para especificar parámetros opcionales, utilice [DeployedApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription).
+estado de hello tooget de una aplicación implementada en un nodo a través de hello API, cree un `FabricClient` llamada hello y [GetDeployedApplicationHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedapplicationhealthasync) método en su HealthManager. toospecify parámetros opcionales, use [DeployedApplicationHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedapplicationhealthquerydescription).
 
 ```csharp
 DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedApplicationHealthAsync(
@@ -680,9 +680,9 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ```
 
 ### <a name="powershell"></a>PowerShell
-El cmdlet para obtener el mantenimiento de la aplicación implementada es [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps). Conéctese primero al clúster mediante el cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) . Para averiguar dónde está implementada una aplicación, ejecute [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) y observe los elementos secundarios de la aplicación implementada.
+Hola estado de la aplicación de cmdlet tooget Hola implementado es [ServiceFabricDeployedApplicationHealth Get](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps). En primer lugar, conectar toohello clúster mediante el uso de hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet. toofind out donde se implementa una aplicación, ejecutar [ServiceFabricApplicationHealth Get](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) y vistazo Hola implementa elementos secundarios de la aplicación.
 
-El siguiente cmdlet obtiene el mantenimiento de la aplicación **fabric:/WordCount** implementada en **_Node_2**.
+Hello siguiente obtiene mantenimiento Hola de hello **fabric: / WordCount** aplicación implementada en **_Node_2**.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_0
@@ -710,7 +710,7 @@ HealthEvents                       :
                                      SentAt                : 7/13/2017 5:57:06 PM
                                      ReceivedAt            : 7/13/2017 5:57:17 PM
                                      TTL                   : Infinite
-                                     Description           : The application was activated successfully.
+                                     Description           : hello application was activated successfully.
                                      RemoveWhenExpired     : False
                                      IsExpired             : False
                                      Transitions           : Error->Ok = 7/13/2017 5:57:17 PM, LastWarning = 1/1/0001 12:00:00 AM
@@ -720,17 +720,17 @@ HealthStatistics                   :
 ```
 
 ### <a name="rest"></a>REST
-Puede obtener el mantenimiento de la aplicación implementada con una [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application) o una [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy) que incluye las directivas de mantenimiento descritas en el cuerpo.
+Puede obtener el estado de la aplicación implementada con un [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application) o un [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy) que incluye las directivas de mantenimiento que se describe en el cuerpo de Hola.
 
 ## <a name="get-deployed-service-package-health"></a>Obtención del mantenimiento del paquete de servicio implementado
-Devuelve el mantenimiento de una entidad de paquete de servicio implementado. Entrada:
+Devuelve Hola estado de una entidad de paquete de servicio implementado. Entrada:
 
-* [Obligatorio] El nombre de la aplicación (URI), el nombre del nodo (cadena) y el nombre del manifiesto de servicio (cadena) que identifican al paquete de servicio implementado.
-* [Opcional] La directiva de mantenimiento de aplicación usada para invalidar la directiva de manifiesto de aplicación.
-* [Opcional] Filtros para eventos que especifican las entradas que son de interés y se deben devolver en el resultado (por ejemplo, únicamente errores o advertencias y errores). Todos los eventos se utilizan para evaluar el mantenimiento agregado de la entidad, independientemente del filtro.
+* Nombre de la aplicación hello [obligatorio] (URI), nombre de nodo (cadena) y el nombre de manifiesto de servicio (cadena) que identifican Hola implementan el paquete de servicio.
+* Directiva de mantenimiento de aplicación Hola [opcional] usa la directiva del manifiesto de aplicación toooverride Hola.
+* [Opcional] Filtros para los eventos que especifican las entradas que son de interés y se deben devolver en el resultado de hello (por ejemplo, únicamente, los errores o las advertencias y errores). Todos los eventos son mantenimiento de entidad agregado hello tooevaluate usado, independientemente del filtro de Hola.
 
 ### <a name="api"></a>API
-Para obtener el mantenimiento de un paquete de servicio implementado mediante la API, cree una instancia de `FabricClient` y llame al método [GetDeployedServicePackageHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) en su instancia de HealthManager. Para especificar parámetros opcionales, utilice [DeployedServicePackageHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription).
+estado de hello tooget de un paquete de servicio implementado a través de hello API, cree un `FabricClient` llamada hello y [GetDeployedServicePackageHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getdeployedservicepackagehealthasync) método en su HealthManager. toospecify parámetros opcionales, use [DeployedServicePackageHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.deployedservicepackagehealthquerydescription).
 
 ```csharp
 DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeployedServicePackageHealthAsync(
@@ -738,9 +738,9 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ```
 
 ### <a name="powershell"></a>PowerShell
-El cmdlet para obtener el mantenimiento del paquete de servicio implementado es [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). Conéctese primero al clúster mediante el cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) . Para averiguar dónde está implementada una aplicación, ejecute [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) y examine las aplicaciones implementadas. Para ver qué paquetes de servicio están en una aplicación, examine los elementos secundarios del paquete de servicio implementado en la salida de [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) .
+Hola mantenimiento del paquete de servicio de cmdlet tooget Hola implementado es [ServiceFabricDeployedServicePackageHealth Get](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth). En primer lugar, conectar toohello clúster mediante el uso de hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet. toosee donde se implementa una aplicación, ejecutar [ServiceFabricApplicationHealth Get](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) y ver las aplicaciones de hello implementado. toosee que los paquetes de servicio están en una aplicación, busque en hello implementa elementos secundarios de paquete de servicio en hello [ServiceFabricDeployedApplicationHealth Get](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) salida.
 
-El siguiente cmdlet obtiene el mantenimiento del paquete de servicio **WordCountServicePkg** de la aplicación **fabric:/WordCount** implementada en **_Node_2**. La entidad tiene informes **System.Hosting** para la activación correcta del paquete de servicio y del punto de entrada, y para el registro correcto del tipo de servicio.
+Hello siguiente obtiene mantenimiento Hola de hello **WordCountServicePkg** paquete del servicio de hello **fabric: / WordCount** aplicación implementada en **_Node_2**. entidad de Hello tiene **System.Hosting** informes para una activación correcta del paquete de servicio y punto de entrada y el registro de tipo de servicio correcta.
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
@@ -759,7 +759,7 @@ HealthEvents               :
                              SentAt                : 7/13/2017 5:57:06 PM
                              ReceivedAt            : 7/13/2017 5:57:18 PM
                              TTL                   : Infinite
-                             Description           : The ServicePackage was activated successfully.
+                             Description           : hello ServicePackage was activated successfully.
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
@@ -771,7 +771,7 @@ HealthEvents               :
                              SentAt                : 7/13/2017 5:57:06 PM
                              ReceivedAt            : 7/13/2017 5:57:18 PM
                              TTL                   : Infinite
-                             Description           : The CodePackage was activated successfully.
+                             Description           : hello CodePackage was activated successfully.
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
@@ -783,51 +783,51 @@ HealthEvents               :
                              SentAt                : 7/13/2017 5:57:07 PM
                              ReceivedAt            : 7/13/2017 5:57:18 PM
                              TTL                   : Infinite
-                             Description           : The ServiceType was registered successfully.
+                             Description           : hello ServiceType was registered successfully.
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
 ### <a name="rest"></a>REST
-Puede obtener el mantenimiento del paquete de servicio implementado con una [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package) o una [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy) que incluye las directivas de mantenimiento descritas en el cuerpo.
+Puede obtener el estado del paquete de servicio implementado con un [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package) o un [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy) que incluye las directivas de mantenimiento que se describe en el cuerpo de Hola.
 
 ## <a name="health-chunk-queries"></a>Consultas de fragmentos de mantenimiento
-Las consultas de fragmentos de mantenimiento pueden devolver elementos secundarios de clúster de varios niveles (recursivamente), según los filtros de entrada. Admite filtros avanzados que permiten una gran flexibilidad al elegir los elementos secundarios que se devuelven. Los filtros pueden especificar elementos secundarios por el identificador único o por otros identificadores de grupo o estados de mantenimiento. De forma predeterminada, no se incluye ningún elemento secundario, a diferencia de los comandos de mantenimiento que siempre incluyen elementos secundarios de primer nivel.
+las consultas de fragmento de mantenimiento de Hello pueden devolver a elementos secundarios de clúster de varios niveles (recursivamente), por los filtros de entrada. Admite filtros avanzados que permiten una gran flexibilidad al elegir elementos secundarios de hello toobe devuelto. los filtros de Hello pueden especificar a elementos secundarios por identificador único de Hola o por otros identificadores de grupo o Estados de mantenimiento. De forma predeterminada, ningún elemento secundario se incluyen, como comandos de toohealth lugar que siempre incluyen a elementos secundarios de primer nivel.
 
-Las [consultas de mantenimiento](service-fabric-view-entities-aggregated-health.md#health-queries) solo devuelven elementos secundarios de primer nivel de la entidad especificada, según los filtros necesarios. Para obtener los elementos secundarios de los elementos secundarios, debe llamar a las API de mantenimiento adicionales para cada entidad que sea de interés. De igual forma, para obtener el mantenimiento de entidades específicas, debe llamar a una API de mantenimiento para cada entidad deseada. El filtrado avanzado de consultas de fragmentos le permite solicitar varios elementos de interés en una consulta, lo que reduce el tamaño del mensaje y el número de mensajes.
+Hola [consultas de estado](service-fabric-view-entities-aggregated-health.md#health-queries) devueltos elementos secundarios de primer nivel sólo de hello especificado entidad por filtros necesarios. Hola tooget los elementos secundarios de elementos secundarios de hello, debe llamar a las API de estado adicional para cada entidad de interés. De forma similar, mantenimiento de hello tooget de entidades específicas, debe llamar a mantenimiento de una API para cada entidad deseada. Hello fragmento consulta filtrado avanzado permite toorequest varios elementos de interés en una sola consulta, lo que minimiza el tamaño del mensaje de Hola y número de Hola de mensajes.
 
-El valor de la consulta de fragmentos es que puede obtener el estado de mantenimiento para más entidades del clúster (posiblemente todas las entidades del clúster que comienzan en la raíz requerida) en una llamada. Puede expresar consultas de mantenimiento complejas, por ejemplo:
+valor de Hola de consulta de fragmento de hello es que puede obtener el estado más entidades de clúster (potencialmente todas las entidades de clúster a partir de raíz necesario) en una llamada. Puede expresar consultas de mantenimiento complejas, por ejemplo:
 
 * Devolver solo las aplicaciones con error y, para esas aplicaciones, incluir todos los servicios con advertencias o errores. Para los servicios devueltos, incluir todas las particiones.
-* Devolver solo el mantenimiento de cuatro aplicaciones, especificadas por sus nombres.
-* Devolver solo el mantenimiento de aplicaciones de un tipo de aplicación deseado.
-* Devolver todas las entidades implementadas en un nodo. Devuelve todas las aplicaciones, todas las aplicaciones implementadas en el nodo especificado y todos los paquetes de servicio implementados en ese nodo.
+* Devolver solo el estado de Hola de cuatro aplicaciones, especificado por sus nombres.
+* Devolver solo Hola estado de las aplicaciones de un tipo de aplicación que desee.
+* Devolver todas las entidades implementadas en un nodo. Devuelve todas las aplicaciones, todas las aplicaciones implementadas en el nodo especificado hello y todos los paquetes de servicio de hello implementado en ese nodo.
 * Devolver todas las réplicas con error. Devuelve todas las aplicaciones, los servicios, las particiones y solo las réplicas con error.
 * Devolver todas las aplicaciones. Para un servicio especificado, incluir todas las particiones.
 
-Actualmente, la consulta de fragmentos de mantenimiento se expone solo para la entidad del clúster. Devuelve un fragmento de estado del clúster, que contiene:
+Actualmente, la consulta de fragmento de mantenimiento de Hola se expone solo para la entidad de clúster de Hola. Devuelve un fragmento de estado del clúster, que contiene:
 
-* El estado de mantenimiento agregado del clúster.
-* La lista de fragmentos de estado de mantenimiento de nodos que respetan los filtros de entrada.
-* La lista de fragmentos de estado de mantenimiento de aplicaciones que respetan los filtros de entrada. Cada fragmento de estado de mantenimiento de aplicación contiene una lista de fragmentos con todos los servicios que respetan los filtros de entrada y una lista de fragmentos con todas las aplicaciones implementadas que respetan los filtros. Igual para los elementos secundarios de servicios y aplicaciones implementadas. De este modo, todas las entidades del clúster pueden devolverse potencialmente si se solicitan, de una manera jerárquica.
+* estado de mantenimiento de clúster agregado Hola.
+* lista de fragmento del estado de mantenimiento Hola de nodos que respeta los filtros de entrada.
+* lista de fragmento del estado de mantenimiento Hola de aplicaciones que respetan los filtros de entrada. Cada fragmento de estado de mantenimiento de aplicación contiene una lista de fragmentos con todos los servicios que respetan los filtros de entrada y una lista de fragmentos con todas las aplicaciones implementadas que respeta los filtros de Hola. Igual para los elementos secundarios de hello de servicios y las aplicaciones implementadas. De esta manera, todas las entidades de clúster de hello pueden devolverse potencialmente si solicita de forma jerárquica.
 
 ### <a name="cluster-health-chunk-query"></a>Consulta de fragmentos de mantenimiento del clúster
-Devuelve el mantenimiento de la entidad del clúster y contiene los fragmentos del estado de mantenimiento jerárquico de los elementos secundarios necesarios. Entrada:
+Devuelve Hola mantenimiento de entidad de clúster de Hola y contiene fragmentos de estado de mantenimiento jerárquica Hola de los elementos secundarios necesarios. Entrada:
 
-* [Opcional] La directiva de mantenimiento del clúster utilizada para evaluar los nodos y los eventos del clúster.
-* [Opcional] La asignación de directivas de mantenimiento de aplicaciones, con las directivas de mantenimiento usadas para invalidar las directivas de manifiesto de aplicación.
-* [Opcional] Filtros para nodos y aplicaciones que especifican las entradas que son de interés y se deben devolver en el resultado. Los filtros son específicos de una entidad o grupo de entidades o son aplicables a todas las entidades de ese nivel. La lista de filtros puede contener un filtro general o filtros para identificadores específicos a fin de precisar más las entidades devueltas por la consulta. Si está vacía, no se devuelven los elementos secundarios de forma predeterminada.
-  Más información sobre los filtros en [NodeHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) y [ApplicationHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter). Los filtros de aplicación pueden especificar de forma recursiva filtros avanzados para elementos secundarios.
+* Directiva de mantenimiento de clúster [opcional] Hola utiliza nodos de hello tooevaluate y eventos de clúster de Hola.
+* Asignación de directiva de mantenimiento de aplicación Hola [opcional], con las directivas de mantenimiento de hello usa directivas de manifiesto de aplicación de Hola de toooverride.
+* [Opcional] Filtros para los nodos y las aplicaciones que especifican las entradas que son de interés y se deben devolver en el resultado de hello. Hola filtros son tooan específico/grupo de entidad de entidades o entidades tooall aplicables en ese nivel. lista de Hola de filtros puede contener un filtro general o filtros para entidades de toofine detalle específico de identificadores devueltos por la consulta de Hola. Si está vacío, no se devuelven los elementos secundarios de Hola de forma predeterminada.
+  Obtenga más información sobre filtros de hello en [NodeHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.nodehealthstatefilter) y [ApplicationHealthStateFilter](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthstatefilter). recursivamente de Hello aplicación filtros puede especificar filtros avanzados para los elementos secundarios.
 
-El resultado del fragmento incluye los elementos secundarios que respetan los filtros.
+resultado del fragmento de Hello incluye a los elementos secundarios de hello respetan los filtros de Hola.
 
-Actualmente, la consulta de fragmentos no devuelve evaluaciones de mantenimiento incorrecto o eventos de entidad. Esta información adicional puede obtenerse mediante la consulta de mantenimiento del clúster existente.
+Actualmente, consulta de fragmento de hello no devolver evaluaciones en mal estado o los eventos de la entidad. Esa información adicional se puede obtener mediante la consulta del estado de clúster existente de Hola.
 
 ### <a name="api"></a>API
-Para obtener fragmentos de mantenimiento del clúster, cree una instancia de `FabricClient` y llame al método [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) en su instancia de **HealthManager**. Puede pasar [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) para describir directivas de mantenimiento y filtros avanzados.
+estado del clúster tooget los fragmentos, cree un `FabricClient` llamada hello y [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) método en su **HealthManager**. Se puede pasar en [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) las directivas de mantenimiento de toodescribe y filtros avanzados.
 
-El código siguiente obtiene fragmentos de mantenimiento del clúster con filtros avanzados.
+Hello código siguiente obtiene fragmentos de mantenimiento de clúster con filtros avanzados.
 
 ```csharp
 var queryDescription = new ClusterHealthChunkQueryDescription();
@@ -857,7 +857,7 @@ var wordCountServiceFilter = new ServiceHealthStateFilter()
 };
 wordCountServiceFilter.PartitionFilters.Add(wordCountServicePartitionFilter);
 
-// Application filter: for specific application, return no services except the ones of interest
+// Application filter: for specific application, return no services except hello ones of interest
 var wordCountApplicationFilter = new ApplicationHealthStateFilter()
     {
         // Always return fabric:/WordCount application
@@ -871,9 +871,9 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 ```
 
 ### <a name="powershell"></a>PowerShell
-El cmdlet para obtener el mantenimiento del clúster es [Get-ServiceFabricClusterChunkHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). Conéctese primero al clúster mediante el cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) .
+es el estado de clúster de Hola Hola cmdlet tooget [ServiceFabricClusterChunkHealth Get](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterhealthchunk). En primer lugar, conectar toohello clúster mediante el uso de hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet.
 
-El código siguiente obtiene los nodos solo si se encuentran en estado de error, a excepción de un nodo específico, que se debe devolver siempre.
+Hello código siguiente obtiene nodos solo si están en Error excepto para un nodo específico, que siempre se debe devolver.
 
 ```xml
 PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -881,7 +881,7 @@ $allFilter = [System.Fabric.Health.HealthStateFilter]::All;
 
 $nodeFilter1 = New-Object System.Fabric.Health.NodeHealthStateFilter -Property @{HealthStateFilter=$errorFilter}
 $nodeFilter2 = New-Object System.Fabric.Health.NodeHealthStateFilter -Property @{NodeNameFilter="_Node_1";HealthStateFilter=$allFilter}
-# Create node filter list that will be passed in the cmdlet
+# Create node filter list that will be passed in hello cmdlet
 $nodeFilters = New-Object System.Collections.Generic.List[System.Fabric.Health.NodeHealthStateFilter]
 $nodeFilters.Add($nodeFilter1)
 $nodeFilters.Add($nodeFilter2)
@@ -899,7 +899,7 @@ NodeHealthStateChunks        :
 ApplicationHealthStateChunks : None
 ```
 
-El siguiente cmdlet obtiene fragmentos del clúster con filtros de aplicación.
+Hola siguiendo el cmdlet obtiene fragmentos de clúster con los filtros de aplicación.
 
 ```xml
 PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -965,7 +965,7 @@ ApplicationHealthStateChunks :
                                         HealthState           : Error
 ```
 
-El siguiente cmdlet devuelve todas las entidades implementadas en un nodo.
+Hello siguiente cmdlet devuelve implementadas todas las entidades en un nodo.
 
 ```xml
 PS D:\ServiceFabric> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -1021,56 +1021,56 @@ ApplicationHealthStateChunks :
 ```
 
 ### <a name="rest"></a>REST
-Puede obtener fragmentos de mantenimiento del clúster con una [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks) o una [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster) que incluye las directivas de mantenimiento y filtros avanzados descritos en el cuerpo.
+Puede obtener el fragmento de estado del clúster con un [solicitud GET](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks) o un [solicitud POST](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster) que incluye las directivas de mantenimiento y los filtros avanzados se describe en el cuerpo de Hola.
 
 ## <a name="general-queries"></a>Consultas generales
-Las consultas generales devuelven una lista de entidades de Service Fabric de un tipo especificado. Se exponen mediante la API (por medio de los métodos de **FabricClient.QueryManager**), los cmdlets de PowerShell y REST. Estas consultas agregan subconsultas de varios componentes. Uno de ellos es el [Almacén de estado](service-fabric-health-introduction.md#health-store), que rellena el estado de mantenimiento agregado para cada resultado de consulta.  
+Las consultas generales devuelven una lista de entidades de Service Fabric de un tipo especificado. Estas propiedades se exponen a través de la API de hello (mediante los métodos de hello en **FabricClient.QueryManager**), cmdlets de PowerShell y REST. Estas consultas agregan subconsultas de varios componentes. Uno de ellos es hello [almacén de estado](service-fabric-health-introduction.md#health-store), que rellena Hola agrega el estado de mantenimiento para cada resultado de la consulta.  
 
 > [!NOTE]
-> Las consultas generales devuelven el estado de mantenimiento agregado de la entidad y no contienen los datos completos de mantenimiento. Si el mantenimiento de una entidad no es correcto, puede seguir con las consultas de mantenimiento para obtener toda su información de mantenimiento, como eventos, estados de mantenimiento de los elementos secundarios y evaluaciones de mantenimiento incorrecto.
+> Consultas generales devuelven Hola agregado el estado de entidad de hello y no contienen datos de estado enriquecido. Si una entidad no es correcto, puede seguir con estado consultas tooget toda su información de estado, incluidos los eventos y Estados de mantenimiento de secundarios, evaluaciones en mal estado.
 >
 >
 
-Si las consultas generales devuelven un estado de mantenimiento desconocido para una entidad, es posible que el almacén de estado no tenga datos completos sobre la entidad. También es posible que una subconsulta al almacén de estado no fuera correcta (por ejemplo, se produjo un error de comunicación o se limitó el almacén de estado). Realice un seguimiento con una consulta de mantenimiento para la entidad. Si la subconsulta se encontró con errores transitorios, como problemas de red, esta consulta de seguimiento puede ser de ayuda. También le puede proporcionar más detalles del almacén de estado sobre por qué no se expone la entidad.
+Si las consultas generales devuelven un estado desconocido para una entidad, es posible que ese almacén de estado de hello no tiene datos completos sobre la entidad de Hola. También es posible que un almacén de estado de subconsulta toohello no era correcta (por ejemplo, se produjo un error de comunicación o se limitó el almacén de estado de hello). Realizar un seguimiento con una consulta de estado de entidad de Hola. Si la subconsulta Hola detectó errores transitorios, como problemas de red, es posible que pueda realizar esta consulta de seguimiento. Pueden también proporcionan más detalles de hello health store sobre por qué no se expone la entidad de Hola.
 
-Las consultas que contienen **HealthState** para las entidades son las siguientes:
+Hola las consultas que contienen **HealthState** para las entidades son:
 
-* Lista de nodos: devuelve los nodos de la lista del clúster (paginada).
+* Lista de nodos: devuelve nodos de la lista de hello en clúster hello (paginado).
   * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
   * PowerShell: Get-ServiceFabricNode.
-* Lista de aplicaciones: devuelve la lista de aplicaciones del clúster (paginada).
+* Lista de aplicaciones: devuelve una lista de aplicaciones en clúster de hello (paginado) Hola.
   * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
   * PowerShell: Get-ServiceFabricApplication.
-* Lista de servicios: devuelve la lista de servicios de una aplicación (paginada).
+* Lista de servicios: devuelve la lista de hello de servicios en una aplicación (paginado).
   * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
   * PowerShell: Get-ServiceFabricService.
-* Lista de particiones: devuelve la lista de particiones de un servicio (paginada).
+* Lista de particiones: devuelve la lista de Hola de particiones en un servicio (paginado).
   * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
   * PowerShell: Get-ServiceFabricPartition.
-* Lista de réplicas: devuelve la lista de réplicas de una partición (paginada).
+* La lista de réplicas: devuelve la lista de Hola de réplicas de una partición (paginado).
   * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
   * PowerShell: Get-ServiceFabricReplica.
-* Lista de aplicaciones implementadas: devuelve la lista de aplicaciones implementadas en un nodo.
+* Implementa la lista de aplicaciones: devuelve una lista de las aplicaciones implementadas en un nodo Hola.
   * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
   * PowerShell: Get-ServiceFabricDeployedApplication.
-* Lista de paquetes de servicio implementados: devuelve la lista de paquetes de servicio de una aplicación implementada.
+* Implementa lista de paquetes de servicio: devuelve una lista de paquetes de servicio en una aplicación implementada Hola.
   * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
   * PowerShell: Get-ServiceFabricDeployedApplication.
 
 > [!NOTE]
-> Algunas de las consultas devuelven resultados paginados. La devolución de estas consultas es una lista que se deriva de [PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1). Si los resultados no caben en un mensaje, solo se devuelve una página y ContinuationToken, que realiza el seguimiento de dónde se detuvo la enumeración. Continúe llamando a la misma consulta y pase el token de continuación de la consulta anterior para obtener los siguientes resultados.
+> Algunas de las consultas de hello devuelven resultados paginados. Hello devuelto de estas consultas es una lista que se deriva de [PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1). Si los resultados de hello no ajustan a un mensaje, se devuelve solo una página y un ContinuationToken que realiza un seguimiento de dónde ha detenido la enumeración. Continuar toocall Hola igual de consulta y pase un token de continuación de Hola de hello anterior tooget siguientes resultados de la consulta.
 >
 >
 
 ### <a name="examples"></a>Ejemplos
-El código siguiente obtiene las aplicaciones incorrectas en el clúster:
+Hello código siguiente obtiene aplicaciones en mal estado hello en clúster de hello:
 
 ```csharp
 var applications = fabricClient.QueryManager.GetApplicationListAsync().Result.Where(
   app => app.HealthState == HealthState.Error);
 ```
 
-El siguiente cmdlet obtiene los detalles de la aplicación fabric:/WordCount. Observe que el estado de mantenimiento está en advertencia.
+Hello siguiente cmdlet obtiene los detalles de la aplicación hello para el tejido de hello: / aplicación WordCount. Observe que el estado de mantenimiento está en advertencia.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/WordCount
@@ -1090,7 +1090,7 @@ ApplicationParameters  : { "WordCountWebService_InstanceCount" = "1";
                          [ProcessId] -tid [ThreadId]","EnvironmentBlock":"_NO_DEBUG_HEAP=1\u0000"}]" }
 ```
 
-El siguiente cmdlet obtiene los servicios con un estado de mantenimiento de error:
+Hello siguiente cmdlet obtiene servicios Hola con un estado de error:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplication | Get-ServiceFabricService | where {$_.HealthState -eq "Error"}
@@ -1107,13 +1107,13 @@ HealthState            : Error
 ```
 
 ## <a name="cluster-and-application-upgrades"></a>Actualización de clústeres y aplicaciones
-Durante una actualización supervisada del clúster y la aplicación, Service Fabric comprueba el mantenimiento para asegurarse de que todo está correcto. Si una entidad es incorrecta según se ha evaluado mediante las directivas de mantenimiento configuradas, la actualización aplica directivas específicas de actualización para determinar la próxima acción. La actualización se puede poner en pausa para permitir la interacción de los usuarios (por ejemplo, corregir las condiciones de error o cambiar las directivas), o se puede revertir automáticamente a la versión buena anterior.
+Durante una actualización supervisada de clúster de Hola y de aplicación, Service Fabric comprueba tooensure de mantenimiento que todo es correcto. Si una entidad está en mal estada según se ha evaluado mediante el uso de las directivas de mantenimiento configurada, actualización Hola aplica siguiente acción de directivas específicas de la actualización toodetermine Hola. actualización de Hello puede ser tooallow en pausa interacción del usuario (por ejemplo, corregir las condiciones de error o cambiar las directivas) o lo puede revierten automáticamente toohello de versión anterior válida.
 
-Durante la actualización de un *clúster* , puede obtener su estado de actualización. El estado de actualización incluye las evaluaciones de mantenimiento incorrecto, que señalan lo que está mal en el clúster. Si se revierte la actualización debido a problemas de mantenimiento, el estado de actualización recuerda las razones del último mantenimiento incorrecto. Esta información puede ayudar a los administradores a investigar qué salió mal después de que se revirtiera o detuviera la actualización.
+Durante una *clúster* actualización, puede obtener estado de actualización de clúster de Hola. estado de actualización de Hello incluye evaluaciones en mal estado, qué toowhat punto está en mal estado en el clúster de Hola. Si se revierte la actualización Hola debido a problemas de toohealth, estado de actualización de hello recuerda a motivos de mal estado último Hola. Esta información puede ayudar a los administradores a investigar qué salió mal después de la actualización de hello revertido o detenido.
 
-De igual forma, durante la actualización de una *aplicación* , las evaluaciones de mantenimiento incorrecto están contenidas en el estado de actualización de la aplicación.
+De forma similar, durante un *aplicación* actualización, las evaluaciones en mal estado se encuentran en estado de actualización de aplicación Hola.
 
-A continuación se muestra el estado de actualización de la aplicación para una aplicación fabric/WordCount modificada. Un guardián ha informado de un error en una de sus réplicas. La actualización se revierte porque no se respetan las comprobaciones de mantenimiento.
+Hello siguiente muestra estado de actualización de aplicación Hola de un tejido modificado: / aplicación WordCount. Un guardián ha informado de un error en una de sus réplicas. actualización de Hello es gradual porque no se respeten la hello las comprobaciones de mantenimiento.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationUpgrade fabric:/WordCount
@@ -1167,12 +1167,12 @@ ForceRestart                  : False
 UpgradeReplicaSetCheckTimeout : 00:15:00
 ```
 
-Más información sobre la [actualización de aplicaciones de Service Fabric](service-fabric-application-upgrade.md).
+Obtener más información acerca de hello [actualización de la aplicación de Service Fabric](service-fabric-application-upgrade.md).
 
-## <a name="use-health-evaluations-to-troubleshoot"></a>Uso de las evaluaciones de mantenimiento para solucionar problemas
-Siempre que haya un problema con el clúster o una aplicación, consulte el mantenimiento del clúster o de la aplicación para analizar lo que pasa. Las evaluaciones de mantenimiento incorrecto proporcionan detalles sobre lo que activó el estado incorrecto actual. Si lo necesita, puede explorar en profundidad las entidades secundarias incorrectas para identificar la causa principal.
+## <a name="use-health-evaluations-tootroubleshoot"></a>Usar tootroubleshoot de evaluaciones de estado
+Siempre que haya un problema con el clúster de Hola o una aplicación, mire toopinpoint de mantenimiento de clúster o una aplicación Hola cuál es el problema. evaluaciones en mal estado Hola proporcionan detalles sobre qué Hola desencadenadas mal estado actual. Si necesita, puede profundizar en mal estado secundario entidades tooidentify Hola causa.
 
-Por ejemplo, considere una aplicación con un estado incorrecto porque hay un informe de errores en una de sus réplicas. El siguiente cmdlet de Powershell muestra las evaluaciones de estado incorrecto:
+Por ejemplo, considere una aplicación con un estado incorrecto porque hay un informe de errores en una de sus réplicas. Hello siguiente cmdlet de Powershell muestra evaluaciones en mal estado hello:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricApplicationHealth fabric:/WordCount -EventsFilter None -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
@@ -1200,7 +1200,7 @@ DeployedApplicationHealthStates : None
 HealthEvents                    : None
 ```
 
-Puede mirar la réplica para obtener más información:
+Puede mirar Hola réplica tooget obtener más información:
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricReplicaHealth -ReplicaOrInstanceId 131444422260002646 -PartitionId af2e3e44-a8f8-45ac-9f31-4093eb897600
@@ -1239,16 +1239,16 @@ HealthEvents          :
 ```
 
 > [!NOTE]
-> Las evaluaciones de mantenimiento incorrecto muestran la razón principal de que la entidad se evaluara con el estado de mantenimiento actual. Puede haber muchos otros eventos que desencadenen este estado pero no se reflejan en las evaluaciones. Para más información, explore en profundidad las entidades de mantenimiento para averiguar todos los informes de mantenimiento incorrecto en el clúster.
+> Hello evaluaciones en mal estado Mostrar hello primer motivo Hola entidad es evalúa toocurrent estado de mantenimiento. Puede haber varios otros eventos que desencadenan este estado, pero no se reflejan en las evaluaciones de Hola. tooget obtener más información, explorar en profundidad en hello mantenimiento entidades toofigure todos los informes de hello incorrecto en clúster de Hola.
 >
 >
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Utilización de informes de mantenimiento del sistema para solucionar problemas](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+[Usar tootroubleshoot de informes de estado de sistema](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 
 [Incorporación de informes de mantenimiento de Service Fabric personalizados](service-fabric-report-health.md)
 
-[Notificación y comprobación del estado del servicio](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+[¿Cómo tooreport y comprobación de estado de servicio](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
 [Supervisión y diagnóstico de los servicios localmente](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 

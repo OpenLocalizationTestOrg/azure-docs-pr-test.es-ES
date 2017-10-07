@@ -6,8 +6,8 @@
 ## [Integración de Jenkins y Kubernetes](/azure/container-service/container-service-kubernetes-jenkins)
 ## [Jenkins y CLI de Azure](/azure/jenkins/execute-cli-jenkins-pipeline)
 ## [Docker, GitHub y Jenkins](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
-## [Implementación en App Service](/azure/jenkins/deploy-Jenkins-app-service-plugin)
-# Guías de procedimientos
+## [Implementar tooApp servicio](/azure/jenkins/deploy-Jenkins-app-service-plugin)
+# Cómo tooguides
 ## [Protección de Jenkins en Azure](https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/)
 # Recursos
 ## [Azure Roadmap](https://azure.microsoft.com/roadmap/)

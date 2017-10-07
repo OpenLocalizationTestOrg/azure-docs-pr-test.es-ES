@@ -1,6 +1,6 @@
 ---
-title: "Envío de notificaciones entre plataformas a los usuarios con Centros de notificaciones (ASP.NET)"
-description: "Obtenga información acerca de cómo utilizar las plantillas de los Centros de notificaciones para enviar, en una sola solicitud, una notificación independiente de plataforma que tenga como destino todas las plataformas."
+title: aaaSend notificaciones multiplataforma toousers con centros de notificaciones (ASP.NET)
+description: "Obtenga información acerca de cómo toosend toouse de las plantillas de los centros de notificaciones, en una sola solicitud, una notificación independiente de la plataforma que tenga como destino todas las plataformas."
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,26 +14,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: ef971fcfe68978ea9ce0810c69efbe134bb15f8a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f105b871b809e739dd5c05ea819ad135e842ebb0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Envío de notificaciones entre plataformas a los usuarios con Centros de notificaciones
-En el tutorial anterior, [Notificación a los usuarios con Centros de notificaciones], aprendió a insertar notificaciones en todos los dispositivos que tiene registrado un usuario autenticado específico. En ese tutorial, se necesitaban varias solicitudes para enviar una notificación a cada plataforma de cliente compatible. Los Centros de notificaciones son compatibles con plantillas, que le permiten especificar cómo un dispositivo específico desea recibir notificaciones. Con esto se simplifica el envío de notificaciones entre plataformas. Este tema muestra cómo aprovecha las plantillas para enviar, en una sola solicitud, una notificación independiente de la plataforma que se dirige a todas las plataformas. Para más información sobre las plantillas, consulte [Introducción a Azure Notification Hubs][Templates].
+# <a name="send-cross-platform-notifications-toousers-with-notification-hubs"></a>Enviar notificaciones multiplataforma toousers con centros de notificaciones
+En el tutorial anterior hello [notificar a los usuarios con centros de notificaciones], ha aprendido cómo los dispositivos de toopush notificaciones tooall registran por un usuario autenticado concreto. En este tutorial, varias solicitudes eran toosend requiere una plataforma de cliente de tooeach admitida la notificación. Notificación de concentradores es compatible con plantillas, que le permiten especificar cómo desea que las notificaciones de tooreceive un dispositivo específico. Con esto se simplifica el envío de notificaciones entre plataformas. Este tema se muestra cómo tootake aprovechar toosend de plantillas, en una sola solicitud, una notificación independiente de la plataforma que tenga como destino todas las plataformas. Para más información sobre las plantillas, consulte [Introducción a Azure Notification Hubs][Templates].
 > [!IMPORTANT]
 > Los proyectos de Windows Phone 8.1 y versiones anteriores no se admiten en Visual Studio 2017. Para más información, consulte [Compatibilidad y destinatarios de la plataforma de Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
 > [!NOTE]
-> Los Centros de notificaciones permiten que un dispositivo registre varias plantillas con la misma etiqueta. En este caso, un mensaje entrante dirigido a esa etiqueta da lugar a que se entreguen varias notificaciones al dispositivo, una por cada plantilla. Esto le permite mostrar el mismo mensaje en varias notificaciones visuales, como distintivo y como notificación del sistema en una aplicación de la Tienda Windows.
+> Centros de notificaciones permite que un dispositivo tooregister varias plantillas con hello misma etiqueta. En este caso, un mensaje entrante que se generan varias notificaciones de etiqueta de destino entrega toohello dispositivo, uno por cada plantilla. Esto permite toodisplay Hola mismo mensaje en varias notificaciones visuales, por ejemplo, como un distintivo y como una notificación del sistema en una aplicación de la tienda de Windows.
 > 
 > 
 
-Lleve a cabo los siguientes pasos para enviar notificaciones entre plataformas mediante plantillas:
+Completar Hola siguiendo las notificaciones de pasos toosend multiplataforma mediante plantillas:
 
-1. En el Explorador de soluciones en Visual Studio, expanda la carpeta **Controladores** y, a continuación, abra el archivo RegisterController.cs.
-2. Encuentre el bloque de código en el método **Put** que crea un registro y reemplace el contenido de `switch` por el código siguiente:
+1. Hola el Explorador de soluciones en Visual Studio, expanda hello **controladores** carpeta y, a continuación, archivo de RegisterController.cs de hello abierto.
+2. Busque el bloque de Hola de código de hello **colocar** método que crea un nuevo registro reemplazar hello `switch` contenido con el siguiente código de hello:
    
         switch (deviceUpdate.Platform)
         {
@@ -62,8 +62,8 @@ Lleve a cabo los siguientes pasos para enviar notificaciones entre plataformas m
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
         }
    
-    Este código llama al método específico de la plataforma para crear un registro de plantilla en lugar de un registro nativo. No se deben modificar los registros existentes, dado que los registros de plantilla derivan de los registros nativos.
-3. En el controlador **Notifications**, reemplace el método **sendNotification** por el código siguiente:
+    Este código llama Hola método específico de la plataforma toocreate un registro de plantilla en lugar de un registro nativo. No se deben modificar los registros existentes, dado que los registros de plantilla derivan de los registros nativos.
+3. Hola **notificaciones** controlador, replace hello **sendNotification** método con el siguiente código de hello:
    
         public async Task<HttpResponseMessage> Post()
         {
@@ -76,17 +76,17 @@ Lleve a cabo los siguientes pasos para enviar notificaciones entre plataformas m
             return Request.CreateResponse(HttpStatusCode.OK);
         }
    
-    Este código envía una notificación a todas las plataformas al mismo tiempo y sin que sea necesario especificar una carga nativa. Los Centros de notificaciones crean y entregan la carga correcta a cada dispositivo con el valor de *etiqueta* especificado, como se indica en las plantillas registradas.
+    Este código envía una notificación tooall plataformas en Hola mismo tiempo y sin necesidad de toospecify una carga nativo. Compilaciones de centros de notificaciones y entrega Hola dispositivo tooevery de carga correcto con hello proporciona *etiqueta* valor, según lo especificado en las plantillas de hello registrado.
 4. Publique de nuevo su proyecto de back-end de WebApi.
-5. Ejecute la aplicación cliente otra vez y compruebe que el registro se realice correctamente.
-6. (Opcional) Implemente la aplicación cliente en un segundo dispositivo y, a continuación, ejecute la aplicación.
+5. Vuelva a ejecutar la aplicación de cliente de hello y compruebe que el registro se realiza correctamente.
+6. (Opcional) Implementar el dispositivo de segundo de tooa de aplicación de cliente de Hola y luego ejecute la aplicación hello.
    
     Observe que aparecerá una notificación en cada dispositivo.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Ahora que completó este tutorial, obtenga más información acerca de los Centros de notificaciones y las plantillas en estos temas:
 
-* **[Uso de los Centros de notificaciones para enviar noticias de última hora]** <br/>(C# para Tienda Windows / iOS)Muestra otro escenario para el uso de las plantillas
+* **[Usar toosend centros de notificaciones noticias de última hora]** <br/>(C# para Tienda Windows / iOS)Muestra otro escenario para el uso de las plantillas
 * **[Introducción a Azure Notification Hubs][Templates]**<br/>Este tema de información general contiene información más detallada sobre las plantillas.
 
 <!-- Anchors. -->
@@ -97,12 +97,12 @@ Ahora que completó este tutorial, obtenga más información acerca de los Centr
 
 
 <!-- URLs. -->
-[Push to users ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[Push to users Mobile Services]: /manage/services/notification-hubs/notify-users/
+[Push toousers ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
+[Push toousers Mobile Services]: /manage/services/notification-hubs/notify-users/
 [Visual Studio 2012 Express for Windows 8]: http://go.microsoft.com/fwlink/?LinkId=257546
 
-[Uso de los Centros de notificaciones para enviar noticias de última hora]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Usar toosend centros de notificaciones noticias de última hora]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: http://go.microsoft.com/fwlink/p/?LinkId=314257
-[Notificación a los usuarios con Centros de notificaciones]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[notificar a los usuarios con centros de notificaciones]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
-[Notification Hub How to for Windows Store]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
+[Notification Hub How toofor Windows Store]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx

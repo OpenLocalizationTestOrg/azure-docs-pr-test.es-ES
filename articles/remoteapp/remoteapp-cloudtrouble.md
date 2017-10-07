@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas con las colecciones en la nube de RemoteApp: creación | Microsoft Docs"
-description: "Obtenga información sobre cómo solucionar problemas con la creación de las colecciones en la nube de RemoteApp"
+title: "colecciones de nube de RemoteApp aaaTroubleshoot - creación | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tootroubleshoot RemoteApp en la nube de errores de creación de colección"
 services: remoteapp
 documentationcenter: 
 author: vkbucha
@@ -13,36 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 304ba7c5057b27c459bccbb75d3a711567757675
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9484ecbdb048ede8df725215b313e049cc7648f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-creating-remoteapp-cloud-collections"></a>Solución de problemas de creación de colecciones en la nube de RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Para obtener más información, lea el [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) .
+> Azure RemoteApp dejará de estar disponible el 31 de agosto de 2017. Hola de lectura [anuncio](https://go.microsoft.com/fwlink/?linkid=821148) para obtener más información.
 > 
 > 
 
-Si tiene problemas para crear una colección en la nube, consulte la siguiente información.
+Si tiene problemas para crear una colección en la nube, consulte Hola siguiente información.
 
 ## <a name="your-image-is-invalid"></a>La imagen no es válida
-Si ve un mensaje como "GoldImageInvalid" cuando esté esperando a que Azure aprovisione la colección, la imagen de plantilla no cumple [los requisitos definidos para la imagen](remoteapp-imagereqs.md). Por lo tanto, consulte los [requisitos](remoteapp-imagereqs.md), corrija la imagen y pruebe a crear la colección de nuevo.
+Si ve un mensaje como "GoldImageInvalid" cuando se está esperando tooprovision Azure la colección, significa que la imagen de plantilla no cumple con hello [define los requisitos de la imagen](remoteapp-imagereqs.md). Por lo tanto, vaya a leerlos [requisitos](remoteapp-imagereqs.md), corrija la imagen e inténtelo de toocreate volver a la colección.
 
-## <a name="common-errors-seen-in-the-azure-management-portal"></a>Errores comunes vistos en el Portal de administración de Azure
+## <a name="common-errors-seen-in-hello-azure-management-portal"></a>Errores comunes que se muestra en el portal de administración de Azure de Hola
     DNS server could not be reached
     ProvisioningTimeout
 
-Las colecciones en la nube a menudo presentan errores durante la creación debido a que se usan imágenes personalizadas.  Si ve uno de los anteriores errores y usa una imagen personalizada para crear la colección, revise lo siguiente:
+Las colecciones en la nube a menudo presentan errores durante la creación debido a que se usan imágenes personalizadas.  Si ve alguno de Hola por encima de los errores y se usa una imagen personalizada toocreate hello, consulte Hola siguientes cosas:
 
-* Asegúrese de que la imagen personalizada que cargó cumple con los requisitos de imagen.
-* Con frecuencia, el problema común es que la imagen no está preparada con sysprep correctamente.  
-* Compruebe que la imagen puede arrancar dentro de Hyper-V o intente crear una máquina virtual de IAAS directamente en su suscripción de Azure con la imagen. Si la máquina virtual no arranca y no se inicia, esto normalmente indica que la imagen personalizada no se preparó correctamente.  Compruebe que la imagen personalizada se creó según lo establecido en Creación de una imagen de plantilla personalizada para RemoteApp.
+* Asegúrese de que esa imagen personalizada hello cargado cumple los requisitos de imagen.
+* Con mayor frecuencia problema común de hello es que esa imagen hello no estaba correctamente preparada con Sysprep.  
+* Comprobar la imagen de hello pueda arrancar dentro de Hyper-V o intente crear una VM de IAAS directamente en su suscripción de Azure con imagen Hola. Si se produce un error en la VM de hello tooboot y no se inicia, a continuación, esto normalmente indica que esa imagen personalizada hello no estaba preparada correctamente.  Compruebe la imagen personalizada de Hola se creó después de hello cómo toocreate una plantilla personalizada de la imagen de RemoteApp
 
-Si usa una de las imágenes de Microsoft incluidas en su suscripción, intente crear nuevamente la colección. Si el problema persiste, póngase en contacto con Soporte técnico de Microsoft.
+Si está utilizando uno de imágenes de Microsoft de hello incluidas con su suscripción, intente volver a la colección de Hola de toocreate. Si no se soluciona el problema de hello, a continuación, póngase en contacto con soporte técnico de Microsoft.
 
     PlatformImageTrialModeOnly
 
-Si recibe este error, normalmente significa que ha actualizado a una cuenta de pago pero intenta usar una imagen proporcionada por Microsoft que solo es válida durante el modo de prueba del servicio. En este caso, intente crear nuevamente la colección en la nube, pero asegúrese de especificar la imagen correcta.
+Si ve este error normalmente significa que se hayan actualizado tooa pago cuenta pero que está tratando de toouse una imagen de Microsoft proporcionado es válida solo durante el modo de evaluación de hello del servicio de Hola. En este caso, intente toocreate volver a la colección en la nube, pero ser seguro toospecify Hola correcto imagen.
 

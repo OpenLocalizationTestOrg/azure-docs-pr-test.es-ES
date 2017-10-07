@@ -1,6 +1,6 @@
 ---
-title: Pruebas de escala y rendimiento de Azure Cosmos DB | Microsoft Docs
-description: "Más información sobre cómo realizar pruebas de escala y de rendimiento con Azure Cosmos DB"
+title: aaaAzure Cosmos DB escala y pruebas de rendimiento | Documentos de Microsoft
+description: "Obtenga información acerca de cómo escalar tooperform y pruebas de rendimiento con base de datos de Azure Cosmos"
 keywords: pruebas de rendimiento
 services: cosmos-db
 author: arramac
@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: arramac
-ms.openlocfilehash: b5a1edd08819e82437c5b22d8eb131665d7c9645
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 46d1217e11a39ee970a868de9a5c5dfcf52cedf3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Pruebas de escala y rendimiento con Azure Cosmos DB
-Las pruebas de escala y rendimiento representan un paso clave en el desarrollo de aplicaciones. Para muchas aplicaciones, el nivel de la base de datos repercute significativamente en la escalabilidad y el rendimiento generales y, por tanto, es un componente esencial de las pruebas de rendimiento. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) está diseñado específicamente para el escalado flexible y un rendimiento predecible y, por lo tanto, supone una elección excelente para aplicaciones que necesitan un nivel de base de datos de alto rendimiento. 
+Las pruebas de escala y rendimiento representan un paso clave en el desarrollo de aplicaciones. Para muchas aplicaciones, el nivel de base de datos de hello tiene un impacto significativo en Hola el rendimiento general y la escalabilidad, y es, por tanto, un componente esencial del rendimiento de las pruebas. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) está diseñado específicamente para el escalado flexible y un rendimiento predecible y, por lo tanto, supone una elección excelente para aplicaciones que necesitan un nivel de base de datos de alto rendimiento. 
 
-Este artículo es una referencia para los desarrolladores que implementan conjuntos de pruebas de rendimiento para sus cargas de trabajo de Cosmos DB o evalúan Cosmos DB para escenarios de aplicaciones de alto rendimiento. Se centra principalmente en las pruebas de rendimiento aislado de la base de datos, pero también incluye prácticas recomendadas para las aplicaciones de producción.
+Este artículo es una referencia para los desarrolladores que implementan conjuntos de pruebas de rendimiento para sus cargas de trabajo de Cosmos DB o evalúan Cosmos DB para escenarios de aplicaciones de alto rendimiento. Se centra principalmente en las pruebas de rendimiento aislado de base de datos de hello, pero también incluye prácticas recomendadas para las aplicaciones de producción.
 
-Después de leer este artículo, podrá responder a las siguientes preguntas:   
+Después de leer este artículo, será hello tooanswer pueda siguientes preguntas:   
 
 * ¿Dónde puedo encontrar una aplicación cliente de .NET de ejemplo para pruebas de rendimiento de Azure Cosmos DB? 
 * ¿Cómo se pueden alcanzar niveles de alto rendimiento con Cosmos DB desde mi aplicación cliente?
 
-Para empezar a trabajar con código, descargue el proyecto del [ejemplo de pruebas de rendimiento de Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark). 
+tooget a trabajar con código, descargue proyecto Hola de [ejemplo de pruebas de rendimiento de Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark). 
 
 > [!NOTE]
-> El objetivo de esta aplicación es demostrar las mejores prácticas para sacarle un mayor partido a Cosmos DB con un pequeño número de equipos cliente. La finalidad no es demostrar la capacidad máxima del servicio, que puede ampliarse sin límites.
+> objetivo de Hola de esta aplicación es toodemonstrate prácticas recomendadas para extraer un mejor rendimiento de la base de datos de Cosmos con un número reducido de equipos cliente. Esto no realizó la capacidad de toodemonstrate Hola máxima del servicio de hello, que puede escalar limitlessly.
 > 
 > 
 
-Si busca opciones de configuración de cliente para mejorar el rendimiento de Cosmos DB, consulte [Sugerencias de rendimiento para Azure Cosmos DB](performance-tips.md).
+Si está buscando tooimprove de opciones de configuración de cliente DB Cosmos rendimiento, consulte [sugerencias de rendimiento de base de datos de Azure Cosmos](performance-tips.md).
 
-## <a name="run-the-performance-testing-application"></a>Ejecute la aplicación de pruebas de rendimiento
-La forma más rápida de empezar es compilar y ejecutar este ejemplo de .NET, tal como se describe en los pasos siguientes. También puede revisar el código fuente e implementar configuraciones similares a sus propias aplicaciones cliente.
+## <a name="run-hello-performance-testing-application"></a>Ejecutar la aplicación de prueba de rendimiento de Hola
+Hola tooget de manera más rápida iniciado es toocompile y ejemplo de Hola ejecución .NET a continuación, como se describe en estos pasos Hola. También puede revisar el código fuente de hello e implementar aplicaciones de cliente propio de tooyour configuraciones similares.
 
-**Paso 1:** descargue el proyecto del [ejemplo de pruebas de rendimiento de Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) o bifurque el repositorio de GitHub.
+**Paso 1:** proyecto Hola de descarga de [ejemplo de pruebas de rendimiento de Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), o en el repositorio de GitHub de Hola de bifurcación.
 
-**Paso 2:** modifique la configuración de EndpointUrl, AuthorizationKey, CollectionThroughput y DocumentTemplate (opcional) en el archivo App.config.
+**Paso 2:** modificar la configuración de Hola de EndpointUrl, AuthorizationKey, CollectionThroughput y DocumentTemplate (opcional) en un archivo App.config.
 
 > [!NOTE]
-> Antes de aprovisionar colecciones con un alto rendimiento, vea la [página de precios](https://azure.microsoft.com/pricing/details/cosmos-db/) para estimar los costos por colección. Azure Cosmos DB factura el almacenamiento y el rendimiento de forma independiente por horas, por lo que puede ahorrar costos si elimina o reduce el rendimiento de las colecciones de Azure Cosmos DB una vez realizadas las pruebas.
+> Antes de aprovisionar colecciones con un alto rendimiento, consulte toohello [página de precios](https://azure.microsoft.com/pricing/details/cosmos-db/) los costos de hello tooestimate por colección. Base de datos de Azure Cosmos facturas almacenamiento y rendimiento de forma independiente en concreto cada hora, por lo que puede ahorrar costos al eliminar o reducir el rendimiento de las colecciones de base de datos de Azure Cosmos Hola después de realizar pruebas.
 > 
 > 
 
-**Paso 3:** compile y ejecute la aplicación de consola en la línea de comandos. El resultado debe ser parecido a lo siguiente:
+**Paso 3:** compilar y ejecutar la aplicación de consola de hello desde línea de comandos de Hola. Obtendrá unos resultados similares a Hola siguientes:
 
     Summary:
     ---------------------------------------------------------------------
@@ -98,15 +98,15 @@ La forma más rápida de empezar es compilar y ejecutar este ejemplo de .NET, ta
     DocumentDBBenchmark completed successfully.
 
 
-**Paso 4 (si es necesario):** el rendimiento notificado (RU/s) de la herramienta debe ser igual o mayor que el rendimiento de aprovisionamiento de la colección. Si no es así, puede alcanzar el límite si aumenta el valor de DegreeOfParallelism en incrementos pequeños. Si el rendimiento de la aplicación cliente se estanca, iniciar varias instancias de la aplicación en los mismos equipos u otros distintos lo ayudará a alcanzar el límite de aprovisionamiento en distintas instancias. Si necesita ayuda con este paso, escriba un correo electrónico a askcosmosdb@microsoft.com o rellene una incidencia de soporte técnico desde [Azure Portal](https://portal.azure.com).
+**Paso 4 (si es necesario):** Hola rendimiento notificado (RU/s) de la herramienta de hello debe ser Hola igual o mayor que el rendimiento aprovisionado Hola de colección de Hola. De lo contrario, creciente hello DegreeOfParallelism en incrementos pequeños puede ayudarle a alcanzar el límite de Hola. Si meseta de rendimiento de Hola desde la aplicación cliente, iniciar varias instancias de la aplicación hello en Hola iguales o distintos equipos le ayudará a alcanzar el límite de hello aprovisionado en hello instancias diferentes. Si necesita ayuda con este paso, escriba un correo electrónico tooaskcosmosdb@microsoft.com o presentar una incidencia de soporte técnico de hello [Portal de Azure](https://portal.azure.com).
 
-Una vez que se ejecute la aplicación, puede probar diferentes [directivas de indexación](indexing-policies.md) y [niveles de coherencia](consistency-levels.md) para conocer su repercusión en el rendimiento y la latencia. También puede revisar el código fuente e implementar configuraciones similares a sus propios conjuntos de pruebas o aplicaciones de producción.
+Una vez que tenga la aplicación hello ejecutando, puede probar diferentes [directivas de indexación](indexing-policies.md) y [niveles de coherencia](consistency-levels.md) toounderstand su impacto sobre el rendimiento y la latencia. También puede revisar el código fuente de hello e implementar las aplicaciones de producción o de conjuntos de pruebas propias de tooyour de configuraciones similares.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este artículo, vimos cómo puede realizar pruebas de rendimiento y escala con Cosmos DB usando una aplicación de consola .NET. Consulte los siguientes vínculos para obtener información adicional acerca de cómo trabajar con Azure Cosmos DB.
+En este artículo, vimos cómo puede realizar pruebas de rendimiento y escala con Cosmos DB usando una aplicación de consola .NET. Consulte toohello vínculos siguientes para obtener información adicional sobre cómo trabajar con la base de datos de Azure Cosmos.
 
 * [Ejemplo de pruebas de rendimiento de Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
-* [Opciones de configuración de cliente para mejorar el rendimiento de Azure Cosmos DB](performance-tips.md)
+* [Tooimprove de opciones de configuración de cliente rendimiento de base de datos de Azure Cosmos](performance-tips.md)
 * [Creación de particiones en el servidor en Azure Cosmos DB](partition-data.md)
 
 

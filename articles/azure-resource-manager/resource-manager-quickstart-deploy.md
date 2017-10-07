@@ -1,6 +1,6 @@
 ---
-title: "Implementación de recursos en Azure | Microsoft Docs"
-description: Use Azure PowerShell o la CLI de Azure para implementar recursos en Azure. Los recursos se definen en una plantilla de Resource Manager.
+title: aaaDeploy recursos tooAzure | Documentos de Microsoft
+description: Utilice tooAzure de recursos toodeploy de Azure PowerShell o CLI de Azure. recursos de Hola se definen en una plantilla de administrador de recursos.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2017
 ms.author: tomfitz
-ms.openlocfilehash: 19d5ec337a18b1a159de05ed611b2ccd0c15c592
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0cd3f8ad45af1fb85c78899b56f6807d00b859f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-resources-to-azure"></a>Implementación de recursos en Azure
+# <a name="deploy-resources-tooazure"></a>Implementar tooAzure de recursos
 
-En este tema se muestra cómo implementar recursos en la suscripción de Azure. Puede usar Azure PowerShell o la CLI de Azure para implementar una plantilla de Resource Manager que define la infraestructura de la solución.
+Este tema se muestra cómo toodeploy recursos tooyour suscripción de Azure. Puede usar Azure PowerShell o CLI de Azure toodeploy una plantilla de administrador de recursos que define la infraestructura de Hola para su solución.
 
-Para ver una introducción de los conceptos de Resource Manager, consulte [Información general sobre Azure Resource Manager](resource-group-overview.md).
+Para una tooconcepts de introducción del Administrador de recursos, consulte [Introducción a Azure Resource Manager](resource-group-overview.md).
 
 ## <a name="steps-for-deployment"></a>Pasos para la implementación
 
-En este tema se da por supuesto que implementa la [plantilla de almacenamiento de ejemplo](#example-storage-template) que aparece aquí. Puede usar una plantilla distinta, pero los parámetros que escriba serán diferentes a los que se muestran en este tema.
+En este tema se da por supuesto que se va a implementar hello [plantilla de almacenamiento de ejemplo](#example-storage-template) en este tema. Puede usar una plantilla diferente, pero los parámetros de Hola que se pasan son diferentes que se muestra en este tema.
 
-Después de crear una plantilla, los pasos generales para implementar la plantilla son los siguientes:
+Después de crear una plantilla, los pasos generales para implementar la plantilla de hello son:
 
-1. Inicie sesión en su cuenta.
-2. Seleccione la suscripción que se va a usar (solo es necesario si tiene varias suscripciones y quiere usar una distinta a la suscripción predeterminada).
+1. Inicie sesión en la cuenta de tooyour
+2. Seleccione Hola suscripción toouse (sólo es necesario si tiene varias suscripciones, y desea toouse uno que no sea suscripción predeterminada de hello)
 3. Crear un grupo de recursos
-4. Implementación de la plantilla
+4. Implementar la plantilla de Hola
 5. Compruebe el estado de la implementación.
 
-Las secciones siguientes muestran cómo llevar a cabo esos pasos con [PowerShell](#powershell) o la [CLI de Azure](#azure-cli).
+Hello secciones siguientes muestran cómo tooperform los pasos con [PowerShell](#powershell) o [CLI de Azure](#azure-cli).
 
 ## <a name="powershell"></a>PowerShell
 
-1. Para instalar Azure PowerShell, consulte [Introducción a los cmdlets de Azure PowerShell](/powershell/azure/overview).
+1. tooinstall PowerShell de Azure, consulte [empezar a trabajar con cmdlets de PowerShell de Azure](/powershell/azure/overview).
 
-2. Para empezar rápidamente con la implementación, use los siguientes cmdlets:
+2. tooquickly Introducción a la implementación, use Hola siguientes cmdlets:
 
   ```powershell
   Login-AzureRmAccount
@@ -54,13 +54,13 @@ Las secciones siguientes muestran cómo llevar a cabo esos pasos con [PowerShell
   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleGroup -TemplateFile c:\MyTemplates\azuredeploy.json 
   ```
 
-  El cmdlet `Set-AzureRmContext` solo se necesita si desea usar una suscripción distinta de la suscripción predeterminada. Para ver todas las suscripciones y sus identificadores, use:
+  Hola `Set-AzureRmContext` cmdlet solo es necesario si desea toouse una suscripción que no sea de su suscripción de manera predeterminada. toosee todas sus suscripciones y sus identificadores, use:
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-3. La implementación puede demorar unos minutos en completarse. Cuando termine, verá un mensaje similar al siguiente:
+3. implementación de Hello puede tardar unos toocomplete minutos. Cuando termine, verá un mensaje similar al siguiente:
 
   ```powershell
   DeploymentName          : ExampleDeployment
@@ -70,14 +70,14 @@ Las secciones siguientes muestran cómo llevar a cabo esos pasos con [PowerShell
   ...
   ```
 
-4. Para ver el grupo de recursos y la cuenta de almacenamiento que se implementaron en la suscripción, use:
+4. toosee creados por su cuenta de almacenamiento y el grupo de recursos implementa tooyour suscripción, utilice lo siguiente:
 
   ```powershell
   Get-AzureRmResourceGroup -Name ExampleGroup
   Find-AzureRmResource -ResourceGroupNameEquals ExampleGroup
   ```
 
-5. Puede especificar parámetros de plantilla como parámetros de PowerShell cuando implemente una plantilla. El ejemplo anterior no incluía ningún parámetro de plantilla, por lo que se usaron los valores predeterminados en la plantilla. Para implementar otra cuenta de almacenamiento y proporcionar valores de parámetro para el prefijo de nombre del almacenamiento y la SKU de la cuenta de almacenamiento, use:
+5. Puede especificar parámetros de plantilla como parámetros de PowerShell cuando implemente una plantilla. Hello ejemplo anterior no incluía los parámetros de plantilla, por lo que se usaron los valores predeterminados de hello en plantilla Hola. toodeploy otro almacenamiento de la cuenta y proporcionar los valores de parámetro de prefijo de nombre de almacenamiento de Hola y cuenta de almacenamiento de hello SKU, utilice:
 
   ```powershell
   New-AzureRmResourceGroupDeployment -Name ExampleDeployment2 -ResourceGroupName ExampleGroup -TemplateFile c:\MyTemplates\azuredeploy.json -storageNamePrefix "contoso" -storageSKU "Standard_GRS"
@@ -85,11 +85,11 @@ Las secciones siguientes muestran cómo llevar a cabo esos pasos con [PowerShell
 
   Ahora tiene dos cuentas de almacenamiento en el grupo de recursos. 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>CLI de Azure
 
-1. Para instalar la CLI de Azure, consulte [Instalación de la CLI de Azure 2.0](/cli/azure/install-az-cli2).
+1. tooinstall CLI de Azure, consulte [instalar Azure CLI 2.0](/cli/azure/install-az-cli2).
 
-2. Para empezar a trabajar rápidamente con la implementación, use los siguientes comandos:
+2. tooquickly Introducción a la implementación, usar hello siguientes comandos:
 
   ```azurecli
   az login
@@ -99,26 +99,26 @@ Las secciones siguientes muestran cómo llevar a cabo esos pasos con [PowerShell
   az group deployment create --name ExampleDeployment --resource-group ExampleGroup --template-file c:\MyTemplates\azuredeploy.json
   ```
 
-  El comando `az account set` solo se necesita si desea usar una suscripción distinta de la suscripción predeterminada. Para ver todas las suscripciones y sus identificadores, use:
+  Hola `az account set` comando sólo es necesario si desea toouse una suscripción que no sea de su suscripción de manera predeterminada. toosee todas sus suscripciones y sus identificadores, use:
 
   ```azurecli
   az account list
   ```
 
-3. La implementación puede demorar unos minutos en completarse. Cuando termine, verá un mensaje similar al siguiente:
+3. implementación de Hello puede tardar unos toocomplete minutos. Cuando termine, verá un mensaje similar al siguiente:
 
   ```azurecli
   "provisioningState": "Succeeded",
   ```
 
-4. Para ver el grupo de recursos y la cuenta de almacenamiento que se implementaron en la suscripción, use:
+4. toosee creados por su cuenta de almacenamiento y el grupo de recursos implementa tooyour suscripción, utilice lo siguiente:
 
   ```azurecli
   az group show --name ExampleGroup
   az resource list --resource-group ExampleGroup
   ```
 
-5. Puede especificar parámetros de plantilla como parámetros de PowerShell cuando implemente una plantilla. El ejemplo anterior no incluía ningún parámetro de plantilla, por lo que se usaron los valores predeterminados en la plantilla. Para implementar otra cuenta de almacenamiento y proporcionar valores de parámetro para el prefijo de nombre del almacenamiento y la SKU de la cuenta de almacenamiento, use:
+5. Puede especificar parámetros de plantilla como parámetros de PowerShell cuando implemente una plantilla. Hello ejemplo anterior no incluía los parámetros de plantilla, por lo que se usaron los valores predeterminados de hello en plantilla Hola. toodeploy otro almacenamiento de la cuenta y proporcionar los valores de parámetro de prefijo de nombre de almacenamiento de Hola y cuenta de almacenamiento de hello SKU, utilice:
 
   ```azurecli
   az group deployment create --name ExampleDeployment2 --resource-group ExampleGroup --template-file c:\MyTemplates\azuredeploy.json --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
@@ -128,7 +128,7 @@ Las secciones siguientes muestran cómo llevar a cabo esos pasos con [PowerShell
 
 ## <a name="example-storage-template"></a>Plantilla de almacenamiento de ejemplo
 
-Use la plantilla de ejemplo siguiente para implementar una cuenta de almacenamiento en la suscripción:
+Usar hello después toodeploy de plantilla de ejemplo tooyour suscripción a una cuenta de almacenamiento:
 
 ```json
 {
@@ -140,7 +140,7 @@ Use la plantilla de ejemplo siguiente para implementar una cuenta de almacenamie
       "maxLength": 11,
       "defaultValue": "storage",
       "metadata": {
-        "description": "The value to use for starting the storage account name."
+        "description": "hello value toouse for starting hello storage account name."
       }
     },
     "storageSKU": {
@@ -154,7 +154,7 @@ Use la plantilla de ejemplo siguiente para implementar una cuenta de almacenamie
       ],
       "defaultValue": "Standard_LRS",
       "metadata": {
-        "description": "The type of replication to use for the storage account."
+        "description": "hello type of replication toouse for hello storage account."
       }
     }
   },
@@ -182,8 +182,8 @@ Use la plantilla de ejemplo siguiente para implementar una cuenta de almacenamie
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para información detallada sobre cómo usar PowerShell para implementar plantillas, consulte [Implementación de recursos con las plantillas de Resource Manager y Azure PowerShell](/azure/azure-resource-manager/resource-group-template-deploy).
-* Para información detallada sobre cómo usar la CLI de Azure para implementar plantillas, consulte [Implementación de recursos con plantillas de Resource Manager y la CLI de Azure](/azure/azure-resource-manager/resource-group-template-deploy-cli).
+* Para obtener información detallada sobre el uso de plantillas de toodeploy de PowerShell, consulte [implementar los recursos con plantillas de administrador de recursos y Azure PowerShell](/azure/azure-resource-manager/resource-group-template-deploy).
+* Para obtener información detallada sobre el uso de plantillas de toodeploy de CLI de Azure, consulte [implementar los recursos con plantillas de administrador de recursos y la CLI de Azure](/azure/azure-resource-manager/resource-group-template-deploy-cli).
 
 
 

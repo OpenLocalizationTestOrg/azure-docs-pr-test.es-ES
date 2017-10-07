@@ -1,6 +1,6 @@
 ---
-title: Asignar un nombre DNS personalizado a Azure Web Apps | Microsoft Docs
-description: "Aprenda a agregar un nombre de dominio DNS personalizado (dominio personal) a una aplicación web, un back-end de una aplicación móvil o una aplicación de API en Azure App Service."
+title: aaaMap un DNS personalizado existente nombre de las aplicaciones Web tooAzure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooadd un dominio DNS personalizado existente nombre de aplicación de web (dominio personal) tooa, back-end de aplicación móvil o aplicación de API de servicio de aplicaciones de Azure."
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,17 +15,17 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 973cda462e8d258cc848e1036891c7f8af043102
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2c4eea3c56c758ca11355554321ffa52dd2c6b9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Asignar un nombre DNS personalizado a Azure Web Apps
+# <a name="map-an-existing-custom-dns-name-tooazure-web-apps"></a>Asignar un tooAzure de nombre DNS personalizado existente aplicaciones Web
 
-[Azure Web Apps](app-service-web-overview.md) proporciona un servicio de hospedaje web muy escalable y con aplicación de revisiones de un modo automático. En este tutorial se muestra cómo asignar un nombre DNS personalizado a Azure Web Apps.
+[Azure Web Apps](app-service-web-overview.md) proporciona un servicio de hospedaje web muy escalable y con aplicación de revisiones de un modo automático. Este tutorial muestra cómo toomap un DNS personalizado existente nombre tooAzure las aplicaciones Web.
 
-![Navegación en el portal a la aplicación de Azure](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
+![Aplicación de navegación del portal tooAzure](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
 En este tutorial, aprenderá a:
 
@@ -35,66 +35,66 @@ En este tutorial, aprenderá a:
 > * Asignar un dominio con comodín (por ejemplo, `*.contoso.com`) mediante el uso de un registro CNAME
 > * Automatizar la asignación de dominio con scripts
 
-Puede usar un **registro CNAME** o un **registro A** para asignar un nombre DNS personalizado a App Service. 
+Puede usar un **registro CNAME** o un **un registro** toomap un DNS personalizado nombre tooApp servicio. 
 
 > [!NOTE]
 > Se recomienda usar un CNAME para todos los nombres DNS personalizados, excepto un dominio raíz (por ejemplo, `contoso.com`).
 
-Para migrar un sitio en vivo y su nombre de dominio DNS a App Service, consulte [Migración de un nombre DNS activo a Azure App Service](app-service-custom-domain-name-migrate.md).
+toomigrate un sitio en vivo y su nombre de dominio DNS tooApp servicio, consulte [migrar un tooAzure de nombre DNS servicio de aplicaciones active](app-service-custom-domain-name-migrate.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para completar este tutorial:
+toocomplete este tutorial:
 
 * [Cree una aplicación de App Service](/azure/app-service/) o use alguna aplicación que haya creado para otro tutorial.
-* Adquiera un nombre de dominio y asegúrese de que tiene acceso al registro de DNS de su proveedor de dominio (por ejemplo, GoDaddy).
+* Comprar un nombre de dominio y asegúrese de que dispone del registro DNS de acceso toohello para su proveedor de dominio (por ejemplo, GoDaddy).
 
-  Por ejemplo, para agregar entradas DNS para `contoso.com` y `www.contoso.com`, debe poder configurar las opciones de DNS del dominio raíz de `contoso.com`.
+  Por ejemplo, tooadd entradas DNS para `contoso.com` y `www.contoso.com`, debe ser la configuración de DNS de hello tooconfigure capaz de hello `contoso.com` dominio raíz.
 
   > [!NOTE]
-  > Si no tiene un nombre de dominio, considere la posibilidad de [comprar un dominio mediante Azure Portal](custom-dns-web-site-buydomains-web-app.md). 
+  > Si no tiene un dominio existente de nombres, considere la posibilidad de [comprar un dominio con Hola portal de Azure](custom-dns-web-site-buydomains-web-app.md). 
 
-## <a name="prepare-the-app"></a>Preparación de la aplicación
+## <a name="prepare-hello-app"></a>Preparar la aplicación hello
 
-Para asignar un nombre DNS personalizado a una aplicación web, el [plan de App Service](https://azure.microsoft.com/pricing/details/app-service/) de dicha aplicación debe ser un nivel de pago (**Compartido**, **Básico**, **Estándar** o **Premium**). En este paso, asegúrese de que la aplicación de App Service se encuentra en el plan de tarifa compatible.
+toomap una personalizado DNS nombre tooa la aplicación web, aplicación web de hello [plan de servicio de aplicaciones](https://azure.microsoft.com/pricing/details/app-service/) debe ser una capa de pagada (**Shared**, **básica**, **estándar**, o  **Premium**). En este paso, asegúrese de que ese servicio de aplicaciones de aplicación se encuentre en Hola Hola admite el nivel de precios.
 
-### <a name="sign-in-to-azure"></a>Inicio de sesión en Azure
+### <a name="sign-in-tooazure"></a>Inicie sesión en tooAzure
 
-Abra [Azure Portal](https://portal.azure.com) e inicie sesión con su cuenta de Azure.
+Abra hello [portal de Azure](https://portal.azure.com) e inicie sesión con su cuenta de Azure.
 
-### <a name="navigate-to-the-app-in-the-azure-portal"></a>Navegue hasta la aplicación en Azure Portal
+### <a name="navigate-toohello-app-in-hello-azure-portal"></a>Navegue toohello aplicación Hola portal de Azure
 
-En el menú izquierdo, seleccione **App Services** y, después, el nombre de la aplicación.
+En el menú izquierdo de hello, seleccione **servicios de aplicaciones**y, a continuación, seleccione nombre de Hola de aplicación hello.
 
-![Navegación en el portal a la aplicación de Azure](./media/app-service-web-tutorial-custom-domain/select-app.png)
+![Aplicación de navegación del portal tooAzure](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
-Consulte la página de administración de la aplicación de App Service.  
+Verá que la página de administración de Hola de hello aplicación de servicio de aplicaciones.  
 
 <a name="checkpricing"></a>
 
-### <a name="check-the-pricing-tier"></a>Comprobar el plan de tarifa
+### <a name="check-hello-pricing-tier"></a>Hola de comprobación de nivel de precios
 
-En el panel de navegación izquierdo de la página de la aplicación, desplácese hasta la sección **Configuración** y seleccione **Escalar verticalmente (plan de App Service)**.
+Hola a la izquierda de la página de la aplicación hello, desplácese toohello **configuración** sección y seleccione **escalar verticalmente (plan de servicio de aplicaciones)**.
 
 ![Menú Escalar verticalmente](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-El nivel actual de la aplicación aparece resaltado con un cuadro azul. Asegúrese de que la aplicación web no está en el nivel **Gratis**. No se admiten DNS personalizados en el nivel **Gratis**. 
+nivel actual de la aplicación Hello aparece resaltado por un borde azul. Compruebe que dicha aplicación hello no esté en hello toomake **libre** capa. DNS personalizado no se admite en hello **libre** capa. 
 
 ![Comprobar plan de tarifa](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Si el plan de App Service no es **Gratis**, cierre la página **Elija su plan de tarifa** y vaya directamente a [Asignar un registro CNAME](#cname).
+Si hello plan de servicio de aplicaciones no es **libre**, cierre hello **elegir el nivel de precios** página y omitir demasiado[asignar un registro CNAME](#cname).
 
 <a name="scaleup"></a>
 
-### <a name="scale-up-the-app-service-plan"></a>Escalado verticalmente del plan de App Service
+### <a name="scale-up-hello-app-service-plan"></a>Escalar verticalmente Hola plan de servicio de aplicaciones
 
-Seleccione alguno de los niveles de pago (**Compartido**, **Básico**, **Estándar** o **Premium**). 
+Seleccione cualquiera de los niveles de hello no disponibles (**Shared**, **básica**, **estándar**, o **Premium**). 
 
 Haga clic en **Seleccionar**.
 
 ![Comprobar plan de tarifa](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
-Cuando vea la siguiente notificación, significará que la operación de escalado se habrá completado.
+Cuando vea Hola siguientes a la notificación, la operación de escalado de hello está completa.
 
 ![Confirmación de la operación de escalado](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
@@ -102,49 +102,49 @@ Cuando vea la siguiente notificación, significará que la operación de escalad
 
 ## <a name="map-a-cname-record"></a>Asignar un registro CNAME
 
-En el ejemplo del tutorial, agregue un registro CNAME para el subdominio `www` (por ejemplo, `www.contoso.com`).
+En el ejemplo hello del tutorial, agregará un registro CNAME para hello `www` subdominio (por ejemplo, `www.contoso.com`).
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
-### <a name="create-the-cname-record"></a>Crear un registro CNAME
+### <a name="create-hello-cname-record"></a>Crear registro CNAME Hola
 
-Agregue un registro CNAME para asignar un subdominio al nombre de host predeterminado de la aplicación (`<app_name>.azurewebsites.net`).
+Agregar un toomap registro CNAME en el nombre de host de la aplicación de toohello subdominio predeterminado (`<app_name>.azurewebsites.net`).
 
-En el caso del dominio `www.contoso.com` del ejemplo, agregue un registro CNAME que asigne el nombre `www` a `<app_name>.azurewebsites.net`.
+Para hello `www.contoso.com` ejemplo de un dominio, agregue un registro CNAME que asigna nombre hello `www` demasiado`<app_name>.azurewebsites.net`.
 
-Después de agregar CNAME, la página de registros DNS es como la del ejemplo siguiente:
+Después de agregar Hola CNAME, página de registros DNS de hello aspecto Hola siguiente ejemplo:
 
-![Navegación en el portal a la aplicación de Azure](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+![Aplicación de navegación del portal tooAzure](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
-### <a name="enable-the-cname-record-mapping-in-azure"></a>Habilitación de la asignación de registros CNAME en Azure
+### <a name="enable-hello-cname-record-mapping-in-azure"></a>Habilitar asignación de registro CNAME de hello en Azure
 
-En el panel de navegación izquierdo de la página de la aplicación en Azure Portal, seleccione **Dominios personalizados**. 
+Hola dejado de navegación de página de la aplicación Hola Hola portal de Azure, seleccione **los dominios personalizados**. 
 
 ![Menú Dominio personalizado](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-En la página **Dominios personalizados** de la aplicación, agregue el nombre DNS personalizado completo (`www.contoso.com`) a la lista.
+Hola **los dominios personalizados** página de la aplicación hello, agregar Hola personalizado nombre DNS completo (`www.contoso.com`) toohello lista.
 
-Seleccione el icono **+** situado junto a **Agregar nombre de host**.
+Seleccione hello  **+**  icono siguiente demasiado**Agregar nombre de host**.
 
 ![Agregar nombre de host](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Escriba el nombre de dominio completo para el que ha agregado un registro CNAME, como `www.contoso.com`. 
+Nombre de dominio completo de tipo hello que ha agregado un registro CNAME, como `www.contoso.com`. 
 
 Seleccione **Validar**.
 
-Se activa el botón **Agregar nombre de host**. 
+Hola **Agregar nombre de host** se activa el botón. 
 
-Asegúrese de que en **Tipo de registro de nombre de host** está seleccionado **CNAME (www.example.com o cualquier subdominio)**.
+Asegúrese de que **tipo de registro de nombre de host** se establece demasiado**CNAME (www.example.com o cualquier subdominio)**.
 
 Seleccione **Agregar nombre de host**.
 
-![Agregar nombre DNS a la aplicación](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+![Agregar aplicación de toohello de nombre DNS](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-El nuevo nombre de host puede tardar un tiempo en reflejarse en la página **Dominios personalizados** de la aplicación. Intente actualizar el explorador para actualizar los datos.
+Puede tardar algún tiempo Hola nuevo nombre de host toobe reflejado en la aplicación hello **los dominios personalizados** página. Intente actualizar los datos de saludo explorador tooupdate Hola.
 
 ![Registro CNAME agregado](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
-Si se olvidó de un paso o cometió un error tipográfico en alguna parte anteriormente, verá un error de comprobación en la parte inferior de la página.
+Si falta un paso o cometió un alguna versión anterior, verá un error de comprobación en parte inferior de Hola de página Hola.
 
 ![Error de comprobación](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
@@ -152,69 +152,69 @@ Si se olvidó de un paso o cometió un error tipográfico en alguna parte anteri
 
 ## <a name="map-an-a-record"></a>Asignar un registro A
 
-En el ejemplo del tutorial, se agrega un registro A al dominio raíz (por ejemplo, `contoso.com`). 
+En el ejemplo de tutorial de hello, agregar un registro a para el dominio raíz de hello (por ejemplo, `contoso.com`). 
 
 <a name="info"></a>
 
-### <a name="copy-the-apps-ip-address"></a>Copiar la dirección IP de la aplicación
+### <a name="copy-hello-apps-ip-address"></a>Copie la dirección IP de la aplicación hello
 
-Para asignar un registro A, se necesita la dirección IP externa de la aplicación. Dicha dirección IP se puede encontrar en la página **Dominios personalizados** de la aplicación en Azure Portal.
+toomap un registro, necesita la dirección IP externa de la aplicación hello. Puede encontrar esta dirección IP en la aplicación hello **los dominios personalizados** página Hola portal de Azure.
 
-En el panel de navegación izquierdo de la página de la aplicación en Azure Portal, seleccione **Dominios personalizados**. 
+Hola dejado de navegación de página de la aplicación Hola Hola portal de Azure, seleccione **los dominios personalizados**. 
 
 ![Menú Dominio personalizado](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-En la página **Dominios personalizados**, copie la dirección IP de la aplicación.
+Hola **los dominios personalizados** página, copie la dirección IP de la aplicación hello.
 
-![Navegación en el portal a la aplicación de Azure](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+![Aplicación de navegación del portal tooAzure](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
-### <a name="create-the-a-record"></a>Crear el registro A
+### <a name="create-hello-a-record"></a>Crear registro Hola
 
-Para asignar un registro A a un aplicación, App Service requiere **dos** registros DNS:
+toomap un registro tooan aplicación, servicio de aplicaciones requiere **dos** registros DNS:
 
-- Un registro **A** que se asigna a la dirección IP de la aplicación.
-- Un registro **TXT** que se asigna al nombre de host predeterminado de la aplicación `<app_name>.azurewebsites.net`. App Service usa este registro solo durante la configuración para comprobar que posee el dominio personalizado. Después de que el dominio personalizado se valida y se configura en App Service, puede eliminar el registro TXT. 
+- Un **A** registrar la dirección IP de la aplicación de toomap toohello.
+- A **TXT** registrar el nombre de host de la aplicación de toomap toohello predeterminado `<app_name>.azurewebsites.net`. Servicio de aplicaciones usa este registro solo durante la configuración, tooverify que posee el dominio personalizado de Hola. Después de que el dominio personalizado se valida y se configura en App Service, puede eliminar el registro TXT. 
 
-En el dominio `contoso.com` del ejemplo, cree los registros D y TXT según la tabla siguiente (`@` suele representar el dominio raíz). 
+Para hello `contoso.com` ejemplo de un dominio, crear registros de A y TXT Hola según toohello en la tabla siguiente (`@` normalmente representa Hola dominio raíz). 
 
 | Tipo de registro | Host | Valor |
 | - | - | - |
-| Una  | `@` | Dirección IP de [Copiar la dirección IP de la aplicación](#info) |
+| Una  | `@` | Dirección IP de [dirección IP de la aplicación de copia Hola](#info) |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
 
-Cuando se agregan los registros, la página de registros DNS es como la del ejemplo siguiente:
+Cuando se agregan registros hello, Hola página de registros DNS es similar a Hola siguiente ejemplo:
 
 ![Página de registros DNS](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
 <a name="enable-a"></a>
 
-### <a name="enable-the-a-record-mapping-in-the-app"></a>Habilitar la asignación de registros A en la aplicación
+### <a name="enable-hello-a-record-mapping-in-hello-app"></a>Habilitar una asignación de registro de la aplicación hello Hola
 
-De vuelta a la página **Dominios personalizados** de la aplicación en Azure Portal, agregue el nombre DNS personalizado completo (por ejemplo, `contoso.com`) a la lista.
+En la aplicación hello **los dominios personalizados** página Hola portal de Azure, agregue Hola personalizado nombre DNS completo (por ejemplo, `contoso.com`) toohello lista.
 
-Seleccione el icono **+** situado junto a **Agregar nombre de host**.
+Seleccione hello  **+**  icono siguiente demasiado**Agregar nombre de host**.
 
 ![Agregar nombre de host](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
 
-Escriba el nombre de dominio completo para el que ha configurado el registro A, como `contoso.com`.
+Nombre de dominio completo de tipo hello que ha configurado como registro de hello A, `contoso.com`.
 
 Seleccione **Validar**.
 
-Se activa el botón **Agregar nombre de host**. 
+Hola **Agregar nombre de host** se activa el botón. 
 
-Asegúrese de que el **tipo de registro de nombre de host** esté establecido en el **registro D (ejemplo.com)**.
+Asegúrese de que **tipo de registro de nombre de host** se establece demasiado**un registro (ejemplo.com)**.
 
 Seleccione **Agregar nombre de host**.
 
-![Agregar nombre DNS a la aplicación](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
+![Agregar aplicación de toohello de nombre DNS](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-El nuevo nombre de host puede tardar un tiempo en reflejarse en la página **Dominios personalizados** de la aplicación. Intente actualizar el explorador para actualizar los datos.
+Puede tardar algún tiempo Hola nuevo nombre de host toobe reflejado en la aplicación hello **los dominios personalizados** página. Intente actualizar los datos de saludo explorador tooupdate Hola.
 
 ![Registro D agregado](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
-Si se olvidó de un paso o cometió un error tipográfico en alguna parte anteriormente, verá un error de comprobación en la parte inferior de la página.
+Si falta un paso o cometió un alguna versión anterior, verá un error de comprobación en parte inferior de Hola de página Hola.
 
 ![Error de comprobación](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
@@ -222,61 +222,61 @@ Si se olvidó de un paso o cometió un error tipográfico en alguna parte anteri
 
 ## <a name="map-a-wildcard-domain"></a>Asignar un dominio con caracteres comodín
 
-En el ejemplo del tutorial, asigne un [nombre DNS con caracteres comodín](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (por ejemplo, `*.contoso.com`) a la aplicación de App Service mediante la adición de un registro CNAME. 
+En el ejemplo de tutorial de hello, asigne un [nombre DNS de carácter comodín](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (por ejemplo, `*.contoso.com`) toohello aplicación de servicio de aplicaciones mediante la adición de un registro CNAME. 
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
-### <a name="create-the-cname-record"></a>Crear un registro CNAME
+### <a name="create-hello-cname-record"></a>Crear registro CNAME Hola
 
-Agregue un registro CNAME para asignar un nombre con caracteres comodín al nombre de host predeterminado de la aplicación (`<app_name>.azurewebsites.net`).
+Agregar un toomap registro CNAME en el nombre de host de la aplicación toohello de nombre de carácter comodín predeterminado (`<app_name>.azurewebsites.net`).
 
-En el dominio `*.contoso.com` del ejemplo, el registro CNAME asignará el nombre `*` a `<app_name>.azurewebsites.net`.
+Para hello `*.contoso.com` ejemplo de un dominio, Hola registro CNAME asignará el nombre de hello `*` demasiado`<app_name>.azurewebsites.net`.
 
-Cuando se agrega CNAME, la página de registros DNS es como la del ejemplo siguiente:
+Cuando se agrega Hola CNAME, Hola página de registros DNS es similar a Hola siguiente ejemplo:
 
-![Navegación en el portal a la aplicación de Azure](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
+![Aplicación de navegación del portal tooAzure](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
 
-### <a name="enable-the-cname-record-mapping-in-the-app"></a>Habilitación de la asignación del registro CNAME en la aplicación
+### <a name="enable-hello-cname-record-mapping-in-hello-app"></a>Habilitar asignación de registro CNAME de hello en la aplicación hello
 
-Ahora puede agregar cualquier subdominio que coincida con el nombre con caracteres comodín a la aplicación (por ejemplo, `sub1.contoso.com` y `sub2.contoso.com` coinciden con `*.contoso.com`). 
+Ahora puede agregar cualquier subdominio que coincida con la aplicación de hello comodín nombre toohello (por ejemplo, `sub1.contoso.com` y `sub2.contoso.com` coincide con `*.contoso.com`). 
 
-En el panel de navegación izquierdo de la página de la aplicación en Azure Portal, seleccione **Dominios personalizados**. 
+Hola dejado de navegación de página de la aplicación Hola Hola portal de Azure, seleccione **los dominios personalizados**. 
 
 ![Menú Dominio personalizado](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Seleccione el icono **+** situado junto a **Agregar nombre de host**.
+Seleccione hello  **+**  icono siguiente demasiado**Agregar nombre de host**.
 
 ![Agregar nombre de host](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Escriba un nombre de dominio completo que coincida con el dominio con caracteres comodín (por ejemplo, `sub1.contoso.com`) y, después, seleccione **Validar**.
+Escriba un nombre de dominio completo que coincide con el dominio de hello comodín (por ejemplo, `sub1.contoso.com`) y, a continuación, seleccione **validar**.
 
-Se activa el botón **Agregar nombre de host**. 
+Hola **Agregar nombre de host** se activa el botón. 
 
-Asegúrese de que en **Tipo de registro de nombre de host** está seleccionado **Registro CNAME (www.example.com o cualquier subdominio)**.
+Asegúrese de que **tipo de registro de nombre de host** se establece demasiado**registro CNAME (www.example.com o cualquier subdominio)**.
 
 Seleccione **Agregar nombre de host**.
 
-![Agregar nombre DNS a la aplicación](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
+![Agregar aplicación de toohello de nombre DNS](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-El nuevo nombre de host puede tardar un tiempo en reflejarse en la página **Dominios personalizados** de la aplicación. Intente actualizar el explorador para actualizar los datos.
+Puede tardar algún tiempo Hola nuevo nombre de host toobe reflejado en la aplicación hello **los dominios personalizados** página. Intente actualizar los datos de saludo explorador tooupdate Hola.
 
-Vuelva a seleccionar el icono **+** de nuevo para agregar otro nombre de host que coincida con el dominio con caracteres comodín. Por ejemplo, agregue `sub2.contoso.com`.
+Seleccione hello  **+**  icono nuevo tooadd otro nombre de host que coincide con el dominio comodín Hola. Por ejemplo, agregue `sub2.contoso.com`.
 
 ![Registro CNAME agregado](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 ## <a name="test-in-browser"></a>Probar en el explorador
 
-Desplácese a los nombres DNS que configuró anteriormente (por ejemplo, `contoso.com`, `www.contoso.com`, `sub1.contoso.com` y `sub2.contoso.com`).
+Examinar toohello nombres DNS que configuró anteriormente (por ejemplo, `contoso.com`, `www.contoso.com`, `sub1.contoso.com`, y `sub2.contoso.com`).
 
-![Navegación en el portal a la aplicación de Azure](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
+![Aplicación de navegación del portal tooAzure](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
 ## <a name="automate-with-scripts"></a>Automatizar con scripts
 
-Puede automatizar la administración e dominios personalizados con scripts, mediante la [CLI de Azure](/cli/azure/install-azure-cli) o [Azure PowerShell](/powershell/azure/overview). 
+Se puede automatizar la administración de dominios personalizados con secuencias de comandos, mediante hello [CLI de Azure](/cli/azure/install-azure-cli) o [Azure PowerShell](/powershell/azure/overview). 
 
 ### <a name="azure-cli"></a>CLI de Azure 
 
-El comando siguiente agrega un nombre DNS personalizado configurado a una aplicación de App Service. 
+Hola siguiente comando agrega un tooan de nombre DNS personalizado configurado aplicación de servicio de aplicaciones. 
 
 ```bash 
 az appservice web config hostname add \
@@ -285,11 +285,11 @@ az appservice web config hostname add \
     --name <fully_qualified_domain_name> 
 ``` 
 
-Para más información, consulte [Asignación de un dominio personalizado a una aplicación web](scripts/app-service-cli-configure-custom-domain.md). 
+Para obtener más información, consulte [asignar una aplicación web de tooa de dominio personalizado](scripts/app-service-cli-configure-custom-domain.md). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
-El comando siguiente agrega un nombre DNS personalizado configurado a una aplicación de App Service. 
+Hola siguiente comando agrega un tooan de nombre DNS personalizado configurado aplicación de servicio de aplicaciones. 
 
 ```PowerShell  
 Set-AzureRmWebApp `
@@ -298,7 +298,7 @@ Set-AzureRmWebApp `
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
-Para obtener más información, vea [Asignación de un dominio personalizado a una aplicación web](scripts/app-service-powershell-configure-custom-domain.md).
+Para obtener más información, consulte [asignar una aplicación web de tooa de dominio personalizado](scripts/app-service-powershell-configure-custom-domain.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
@@ -310,7 +310,7 @@ En este tutorial, ha aprendido cómo:
 > * Asignar un dominio con comodín mediante el uso de un registro CNAME
 > * Automatizar la asignación de dominio con scripts
 
-Pase al siguiente tutorial para aprender a enlazar un certificado SSL personalizado a una aplicación web.
+Avanzar toohello siguiente tutorial toolearn cómo toobind un personalizado SSL certificate tooa web app.
 
 > [!div class="nextstepaction"]
-> [Enlazar un certificado SSL personalizado a Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Enlazar un tooAzure de certificado SSL personalizado aplicaciones Web existente](app-service-web-tutorial-custom-ssl.md)

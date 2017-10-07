@@ -1,6 +1,6 @@
 ---
-title: Apache Storm con componentes de Python - Azure HDInsight | Microsoft Docs
-description: "Aprenda a crear una topología de Apache Storm que use componentes de Python."
+title: aaaApache Storm con los componentes de Python - HDInsight de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate una topología de Apache Storm que usa componentes de Python."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,20 +16,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/04/2017
 ms.author: larryfr
-ms.openlocfilehash: 305c4060ad81458b254e66a4bad6dfd7bf69b28d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 143c639623f1992f913900a7c52d6e3f03c701e2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Desarrollo de topologías Apache Storm con Python en HDInsight
 
-Aprenda a crear una topología de Apache Storm que use componentes de Python. Apache Storm admite varios lenguajes, e incluso le permite combinar componentes de varios lenguajes en una topología. El marco de trabajo de Flux (introducido con Storm 0.10.0) permite crear fácilmente soluciones que usan componentes de Python.
+Obtenga información acerca de cómo toocreate una topología de Apache Storm que usa componentes de Python. Apache Storm admite varios idiomas, incluso permitiendo que toocombine componentes de varios idiomas en una topología. Hello flujo marco de trabajo (que se introdujo con Storm 0.10.0) permite tooeasily crear soluciones que usan componentes de Python.
 
 > [!IMPORTANT]
-> La información de este documento se probó con Storm en HDInsight 3.6. Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> información de Hello en este documento se probó con Storm en 3.6 de HDInsight. Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-El código de este proyecto está disponible en [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
+código de Hello para este proyecto está disponible en [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -39,17 +39,17 @@ El código de este proyecto está disponible en [https://github.com/Azure-Sample
 
 * Maven 3
 
-* (Opcional) Un entorno de desarrollo de Storm local. Un entorno de Storm local solo es necesario si desea ejecutar localmente la topología. Para más información, consulte [Setting up a development environment](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) (Configuración de un entorno de desarrollo).
+* (Opcional) Un entorno de desarrollo de Storm local. Un entorno de Storm local solo es necesario si desea que la topología de hello toorun localmente. Para más información, consulte [Setting up a development environment](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) (Configuración de un entorno de desarrollo).
 
 ## <a name="storm-multi-language-support"></a>Compatibilidad con varios lenguajes de Storm
 
-Apache Storm se ha diseñado para funcionar con componentes escritos con cualquier lenguaje de programación. Los componentes deben aprender a trabajar con la [definición Thrift para Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Para Python, se proporciona un módulo como parte del proyecto de Apache Storm que le permite interactuar fácilmente con Storm. Puede encontrar este módulo en [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm era toowork diseñada con componentes escritos mediante cualquier lenguaje de programación. componentes de Hello deben entender cómo toowork con hello [definición Thrift para Storm](https://github.com/apache/storm/blob/master/storm-core/src/storm.thrift). Para Python, un módulo se proporciona como parte del proyecto de Apache Storm Hola que le permite tooeasily interfaz con Storm. Puede encontrar este módulo en [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
-Storm es un proceso de Java que se ejecuta en Máquina virtual Java (JVM). Los componentes escritos en otros lenguajes se ejecutan como subprocesos. Storm se comunica con estos subprocesos mediante mensajes JSON enviados a través de stdin y stdout. Se puede encontrar más detalles sobre la comunicación entre los componentes en la documentación de [Multi-lang protocolo](https://storm.apache.org/documentation/Multilang-protocol.html) (Protocolo de varios lenguajes).
+Storm es un proceso de Java que se ejecuta en hello Máquina Virtual Java (JVM). Los componentes escritos en otros lenguajes se ejecutan como subprocesos. Hola Storm se comunica con estos subprocesos con mensajes JSON enviados a través de stdin/stdout. Encontrará más detalles sobre la comunicación entre componentes en hello [Multi-lang protocolo](https://storm.apache.org/documentation/Multilang-protocol.html) documentación.
 
-## <a name="python-with-the-flux-framework"></a>Python con el marco de trabajo de Flux
+## <a name="python-with-hello-flux-framework"></a>Python con el marco de trabajo de un flujo de Hola
 
-El marco de trabajo de Flux le permite definir las topologías de Storm de forma independiente con respecto a los componentes. El marco de trabajo de Flux usa YAML para definir la topología de Storm. El siguiente texto es un ejemplo de cómo se hace referencia a un componente de Python en el documento de YAML:
+marco de trabajo de un flujo de Hello permite topologías de Storm toodefine por separado de los componentes de Hola. marco de trabajo de un flujo de Hello usa topología aluvión YAML toodefine Hola. Hola texto siguiente es un ejemplo de cómo un componente de Python en el documento de hello YAML tooreference:
 
 ```yaml
 # Spout definitions
@@ -65,33 +65,33 @@ spouts:
     parallelism: 1
 ```
 
-La clase `FluxShellSpout` se usa para iniciar el script `sentencespout.py` que implementa el spout.
+Hola clase `FluxShellSpout` es toostart usado hello `sentencespout.py` secuencia de comandos que implementa pitorro Hola.
 
-Flux espera que los scripts de Python estén en el directorio `/resources` dentro del archivo jar que contiene la topología. Por ello, este ejemplo almacena los scripts de Python en el directorio `/multilang/resources`. El archivo `pom.xml` incluye este archivo mediante el siguiente código XML:
+Un flujo espera toobe de scripts de Python Hola Hola `/resources` directorio dentro de archivo jar de Hola que contenga Hola topología. Por lo que este ejemplo almacena scripts de Python Hola Hola `/multilang/resources` directory. Hola `pom.xml` incluye este archivo mediante Hola continuación de XML:
 
 ```xml
-<!-- include the Python components -->
+<!-- include hello Python components -->
 <resource>
     <directory>${basedir}/multilang</directory>
     <filtering>false</filtering>
 </resource>
 ```
 
-Como se mencionó anteriormente, hay un archivo `storm.py` que implementa la definición de Thrift para Storm. El marco de trabajo de Flux incluye `storm.py` automáticamente cuando se compila el proyecto, por lo que no tiene que preocuparse de incluirlo.
+Como se mencionó anteriormente, hay un `storm.py` archivo que implementa la definición de Thrift de Hola para Storm. marco de trabajo de un flujo de Hello incluye `storm.py` cuando proyecto Hola se genera automáticamente, por lo que no tiene tooworry de incluirlo.
 
-## <a name="build-the-project"></a>Compilación del proyecto
+## <a name="build-hello-project"></a>Compile el proyecto de Hola
 
-Desde la raíz del proyecto, use el comando siguiente:
+Desde la raíz de hello del proyecto de hello, use Hola siguiente comando:
 
 ```bash
 mvn clean compile package
 ```
 
-Este comando crea un archivo `target/WordCount-1.0-SNAPSHOT.jar` que contiene la topología compilada.
+Este comando crea un `target/WordCount-1.0-SNAPSHOT.jar` archivo que contiene Hola compila topología.
 
-## <a name="run-the-topology-locally"></a>Ejecución de la topología de manera local
+## <a name="run-hello-topology-locally"></a>Ejecutar topología Hola localmente
 
-Para ejecutar la topología de manera local, use el siguiente comando:
+topología de hello toorun localmente, utilice Hola siguiente comando:
 
 ```bash
 storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.yaml
@@ -100,58 +100,58 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 > [!NOTE]
 > Este comando requiere un entorno de desarrollo de Storm local. Para más información, consulte [Setting up a development environment](http://storm.apache.org/releases/1.0.1/Setting-up-development-environment.html) (Configuración de un entorno de desarrollo).
 
-Una vez que se inicia la topología, esta emite información en la consola local que se parece al siguiente texto:
+Una vez Hola topología inicia, emite información toohello consola local similar toohello siguiente texto:
 
 
-    24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
+    24302 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting hello cow jumped over hello moon
     24302 [Thread-30] INFO  o.a.s.t.ShellBolt - ShellLog pid:2438, name:splitter-bolt Emitting the
     24302 [Thread-28] INFO  o.a.s.t.ShellBolt - ShellLog pid:2437, name:counter-bolt Emitting years:160
     24302 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=the, count=599}
     24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=seven, count=302}
     24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=dwarfs, count=143}
-    24303 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting the cow jumped over the moon
+    24303 [Thread-25-sentence-spout-executor[4 4]] INFO  o.a.s.s.ShellSpout - ShellLog pid:2436, name:sentence-spout Emiting hello cow jumped over hello moon
     24303 [Thread-30] INFO  o.a.s.t.ShellBolt - ShellLog pid:2438, name:splitter-bolt Emitting cow
     24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 
 
-Para detener la topología, use __Ctrl+C__.
+topología de hello toostop, use __Ctrl + C__.
 
-## <a name="run-the-storm-topology-on-hdinsight"></a>Ejecutar la topología de Storm en HDInsight
+## <a name="run-hello-storm-topology-on-hdinsight"></a>Ejecutar topología aluvión de hello en HDInsight
 
-1. Use el siguiente comando para copiar el archivo `WordCount-1.0-SNAPSHOT.jar` en el clúster de Storm en HDInsight:
+1. Siguiente Hola de uso del comando hello toocopy `WordCount-1.0-SNAPSHOT.jar` archivo tooyour Storm en clúster de HDInsight:
 
     ```bash
     scp target\WordCount-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-    Reemplace `sshuser` con el usuario SSH para el clúster. Reemplace `mycluster` por el nombre del clúster. Puede que se le solicite que escriba la contraseña del usuario de SSH.
+    Reemplace `sshuser` con el usuario SSH de hello para el clúster. Reemplace `mycluster` con el nombre del clúster de Hola. Es posible que la contraseña de hello tooenter solicitada para el usuario SSH Hola.
 
     Para más información sobre cómo usar SSH y SCP, consulte [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Una vez cargado el archivo, conéctese al clúster mediante SSH:
+2. Una vez que se ha cargado el archivo hello, conectar clúster toohello mediante SSH:
 
     ```bash
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. En la sesión SSH, use el siguiente comando para iniciar la topología en el clúster:
+3. Desde la sesión de SSH de hello, utilice Hola después de topología de comando toostart hello en clúster de hello:
 
     ```bash
     storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -r -R /topology.yaml
     ```
 
-3. Puede usar la interfaz de usuario de Storm para ver la topología en el clúster. Esta interfaz de usuario web se encuentra en https://mycluster.azurehdinsight.net/stormui. Reemplace `mycluster` por el nombre del clúster.
+3. Puede usar topología de hello Storm UI tooview hello en clúster de Hola. Hola aluvión de interfaz de usuario se encuentra en https://mycluster.azurehdinsight.net/stormui. Reemplace `mycluster` por el nombre del clúster.
 
 > [!NOTE]
-> Cuando se ha iniciado una topología Storm, esta se ejecuta hasta que se detiene. Para detener la topología, use uno de los siguientes métodos:
+> Cuando se ha iniciado una topología Storm, esta se ejecuta hasta que se detiene. topología de hello toostop, utilice uno de los siguientes métodos de hello:
 >
-> * El comando `storm kill TOPOLOGYNAME` desde la línea de comandos.
-> * El botón **Terminar** en la interfaz de usuario de Storm.
+> * Hola `storm kill TOPOLOGYNAME` comando desde la línea de comandos de Hola
+> * Hola **Kill** botón Hola aluvión de interfaz de usuario.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Consulte los siguientes documentos para ver otras maneras de usar Python con HDInsight.
+Vea Hola después de documentos para otro toouse maneras de Python con HDInsight:
 
-* [Uso de Python para la transmisión de trabajos de MapReduce](hdinsight-hadoop-streaming-python.md)
-* [Uso de funciones definidas por el usuario (UDF) de Python en Pig y Hive](hdinsight-python.md)
+* [¿Cómo toouse Python para los trabajos MapReduce de streaming](hdinsight-hadoop-streaming-python.md)
+* [¿Cómo toouse Python usuario definida por las funciones (UDF) en Pig y Hive](hdinsight-python.md)

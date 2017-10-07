@@ -1,6 +1,6 @@
 ---
-title: "Conexión de Raspberry Pi (Node) a Azure IoT: Lección 1: Obtención de las herramientas (macOS) | Microsoft Docs"
-description: "Descargue e instale las herramientas y el software necesarios para la primera aplicación de ejemplo de Pi en macOS."
+title: "Conectar frambuesa Pi (nodo) tooAzure IoT - lección 1: obtener herramientas (macOS) | Documentos de Microsoft"
+description: "Descargue e instale las herramientas que necesitan Hola y el software para la primera aplicación de ejemplo hello de Pi en macOS."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,71 +17,71 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 6c2338baa8e88bab4c4be64568220f53178943cd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 382b066cb7ece7ffdeb22b162b725727b22e5fac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-macos-1010"></a>Obtención de las herramientas (Mac OS 10.10)
+# <a name="get-hello-tools-macos-1010"></a>Obtener herramientas de hello (macOS 10.10)
 > [!div class="op_single_selector"]
 > * [Windows 7 o posterior](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
 > * [Ubuntu 16.04](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-ubuntu.md)
 > * [macOS 10.10](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-mac.md)
 
 ## <a name="what-you-will-do"></a>Lo que hará
-Descargue las herramientas de desarrollo y el software para la primera aplicación de ejemplo de Raspberry Pi 3. Si tiene problemas, busque soluciones en la [página de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
+Descargar herramientas de desarrollo de Hola y el software de hello para la primera aplicación de ejemplo hello para el 3 de frambuesa Pi. Si tiene problemas, buscar soluciones en hello [página solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 En este artículo, aprenderá lo siguiente:
 
-* Cómo instalar Git y Node.js
-  * [Git](https://git-scm.com) es un sistema de control de versiones distribuido de código. La aplicación de ejemplo de este artículo se almacena en Git.
+* ¿Cómo tooinstall Git y Node.js.
+  * [Git](https://git-scm.com) es un sistema de control de versiones distribuido de código. aplicación de ejemplo de Hola para este artículo se almacena en Git.
   * [Node.js](https://nodejs.org/en/) es un entorno de tiempo de ejecución de JavaScript con un amplio ecosistema de paquetes.
-* Cómo usar NPM para instalar las herramientas de desarrollo de Node.js adicionales.
-  * La versión mínima necesaria de Node.js es 4.5 LTS.
-  * [NPM](https://www.npmjs.com) es uno de los administradores de paquetes para Node.js.
+* ¿Cómo toouse NPM tooinstall adicionales Node.js las herramientas de desarrollo.
+  * Hola mínima versión requerida del Node.js es 4.5 LTS.
+  * [NPM](https://www.npmjs.com) es uno de hello administradores de paquetes para Node.js.
 
 ## <a name="what-you-need"></a>Lo que necesita
-Para completar esta operación, necesitará:
+toocomplete esta operación, debe:
 
-* Una conexión a Internet para descargar el software y las herramientas de desarrollo necesarias
+* Un toodownload de conexión de Internet Hola herramientas de desarrollo y Hola software.
 * Un equipo Mac que ejecute macOS Yosemite (10.10) o posterior
 
 ## <a name="install-git-and-nodejs"></a>Instalación de Git y Node.js
-Para instalar Git y Node.js, use la utilidad de administración de paquetes [Homebrew](http://brew.sh) siguiendo estos pasos:
+tooinstall Git y Node.js, usar hello [Homebrew](http://brew.sh) utilidad de administración del paquete, siga estos pasos:
 
-1. Instale Homebrew. Si ya ha instalado Homebrew, vaya al paso 2.
+1. Instale Homebrew. Si ya ha instalado Homebrew, vaya toostep 2.
    
-   1. Presione `Cmd + Space` y escriba `Terminal` para abrir una ventana de terminal.
-   2. Ejecute el siguiente comando:
+   1. Presione `Cmd + Space` y escriba `Terminal` tooopen un terminal.
+   2. Ejecute el siguiente comando de hello:
       
       ```bash
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
       ```
-2. Instale Git y Node.js ejecutando el comando siguiente:
+2. Instale Git y Node.js con hello siguiente comando:
    
    ```bash
    brew install node git
    ```
 
 ## <a name="install-additional-nodejs-development-tools"></a>Instalación de herramientas de desarrollo de Node.js adicionales
-Utilice [gulp.js](http://gulpjs.com) para automatizar la implementación de la aplicación de ejemplo en Pi. Utilice [device-discovery-cli](https://github.com/Azure/device-discovery-cli) para recuperar información de la red de los dispositivos de IoT.
+Use [gulp.js](http://gulpjs.com) implementación de hello tooautomate de tooPi de aplicación de ejemplo de Hola. Hola de uso [cli de detección de dispositivo](https://github.com/Azure/device-discovery-cli) tooretrieve información de red acerca de los dispositivos de IoT.
 
-Instale `gulp` y `device-discovery-cli` ejecutando el comando siguiente en la ventana de terminal:
+Instalar `gulp` y `device-discovery-cli` ejecutando Hola siguiente comando en terminal hello:
 
 ```bash
 npm install -g device-discovery-cli gulp
 ```
 
-Si experimenta problemas al instalar Node.js y estas herramientas de desarrollo adicionales en Mac OS, consulte la [Guía de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md) para ver soluciones a problemas comunes.
+Si experimenta problemas de instalación de Node.js y estas herramientas de desarrollo adicional en macOS, vea hello [Guía de solución de problemas](iot-hub-raspberry-pi-kit-node-troubleshooting.md) para soluciones toocommon problemas.
 
 ## <a name="install-visual-studio-code"></a>Instalación de Visual Studio Code
-[Descargue](https://code.visualstudio.com/docs/setup/osx) e instale Visual Studio Code. Visual Studio Code es un editor de código fuente ligero pero eficaz para Windows, Linux y Mac OS. Use este editor más adelante en el tutorial para editar el código de ejemplo.
+[Descargue](https://code.visualstudio.com/docs/setup/osx) e instale Visual Studio Code. Visual Studio Code es un editor de código fuente ligero pero eficaz para Windows, Linux y Mac OS. Utilice este editor más adelante en el código de ejemplo de Hola tooedit tutorial Hola.
 
 ## <a name="summary"></a>Resumen
-Ha instalado las herramientas de desarrollo y el software necesarios para la primera aplicación de ejemplo. En la siguiente tarea, creará, implementará y ejecutará la aplicación de ejemplo en Pi.
+Ha instalado herramientas de desarrollo de hello necesario y software para la primera aplicación de ejemplo Hola. Hola siguiente tarea es toocreate, implementar y ejecutar la aplicación de ejemplo de Hola en Pi.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Creación e implementación de la aplicación de intermitencia de ejemplo](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
+[Crear e implementar la aplicación de ejemplo de Hola parpadeo](iot-hub-raspberry-pi-kit-node-lesson1-deploy-blink-app.md)
 

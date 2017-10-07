@@ -1,6 +1,6 @@
 ---
-title: Entrega continua para Cloud Services con Visual Studio Online | Microsoft Docs
-description: "Obtenga información acerca de cómo configurar la entrega continua para aplicaciones en la nube de Azure sin guardar la clave de almacenamiento de la información de diagnóstico en los archivos de configuración de servicio"
+title: Servicios de entrega de aaaContinuous para la nube con Visual Studio Online | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooset la entrega continua de Azure en la nube aplicaciones sin guardar archivos de configuración de servicio de almacenamiento toohello clave de diagnóstico"
 services: cloud-services
 documentationcenter: 
 author: cawa
@@ -14,83 +14,83 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/02/2016
 ms.author: cawa
-ms.openlocfilehash: 7e70f92d4d1333ca6cbac5876e5ccbc763bd915c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dc87d049e46daf8b8a26ee4450ebd9b7910f287b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="securely-save-cloud-services-diagnostics-storage-key-and-setup-continuous-integration-and-deployment-to-azure-using-visual-studio-online"></a>Guarde de forma segura la clave de almacenamiento de la información de diagnóstico de Cloud Services y configure la integración e implementación continua en Azure mediante Visual Studio Online
- Es una práctica común para abrir proyectos de código fuente hoy en día. Guardar los secretos de aplicación en archivos de configuración ya no es una práctica segura, ya que se producen vulnerabilidades de seguridad procedentes de los secretos que se filtran desde los controles de código fuente públicos. Almacenar el secreto como texto no cifrado en un archivo de una canalización de integración continua no es seguro ya que los servidores de compilación podrían convertirse en recursos compartidos en el entorno en la nube. Este artículo explica cómo Visual Studio y Visual Studio Online mitiga los problemas de seguridad durante el desarrollo y el proceso de integración continua.
+# <a name="securely-save-cloud-services-diagnostics-storage-key-and-setup-continuous-integration-and-deployment-tooazure-using-visual-studio-online"></a>Securely guardar en la nube servicios de almacenamiento de información clave de diagnóstico y tooAzure de integración continua el programa de instalación e implementación mediante Visual Studio Online
+ Hoy en día es un proyectos de código fuente de tooopen práctica común. Guardar los secretos de aplicación en archivos de configuración ya no es una práctica segura, ya que se producen vulnerabilidades de seguridad procedentes de los secretos que se filtran desde los controles de código fuente públicos. Almacenamiento secreto como texto no cifrado en un archivo en una canalización de integración continua no es segura ya sea porque pudieron ser servidores de compilación los recursos compartidos en el entorno de nube de Hola. Este artículo explica cómo Visual Studio y Visual Studio Online mitiga los riesgos de seguridad de Hola durante el desarrollo y el proceso de integración continua.
 
 ## <a name="remove-diagnostics-storage-key-secret-in-project-configuration-file"></a>Eliminación del secreto de la clave de almacenamiento de la información de diagnóstico del archivo de configuración de proyecto
-La extensión de diagnósticos de Cloud Services requiere Azure Storage para guardar los resultados de diagnóstico. Anteriormente, la cadena de conexión de almacenamiento se especificaba en los archivos de configuración (.cscfg) de Cloud Services y podría incorporarse al control de código fuente. En la versión más reciente de Azure SDK se ha cambiado el comportamiento de forma que solo se almacena una cadena de conexión parcial y la clave se sustituye por un token. Los siguientes pasos describen el funcionamiento de las nuevas herramientas de Cloud Services:
+La extensión de diagnósticos de Cloud Services requiere Azure Storage para guardar los resultados de diagnóstico. Anteriormente la cadena de conexión de almacenamiento de Hola se especifica en archivos de configuración (.cscfg) de servicios en la nube de Hola y podría activarse en el control de toosource. En la versión más reciente de Azure SDK de hello hemos cambiado almacén tooonly Hola comportamiento que una parcial cadena de conexión con la clave de hello reemplazado por un símbolo (token). Hola pasos describe el funcionamiento de nuevas herramientas de servicios en la nube hello:
 
-### <a name="1-open-the-role-designer"></a>1. Apertura del diseñador de roles
-* Haga doble clic o haga clic con el botón secundario en un rol de Cloud Services para abrir el diseñador de roles
+### <a name="1-open-hello-role-designer"></a>1. Abra el Diseñador de roles de Hola
+* Haga doble clic o haga clic con el botón secundario en un diseñador de roles de tooopen de rol de servicios en la nube
 
 ![Abra el diseñador de roles][0]
 
 ### <a name="2-under-diagnostics-section-a-new-check-box-dont-remove-storage-key-secret-from-project-is-added"></a>2. En la sección de diagnósticos, se ha agregado una nueva casilla de verificación "Don’t remove storage key secret from project" (No quitar secreto de la clave de almacenamiento del proyecto)
-* Si está utilizando el emulador de almacenamiento local, esta casilla está deshabilitada porque no hay ningún secreto que administrar para la cadena de conexión local, que es UseDevelopmentStorage=true.
+* Si usas el emulador de almacenamiento local de hello, esta casilla está deshabilitada porque no hay ningún secreto toomanage de cadena de conexión local de hello, que es UseDevelopmentStorage = true.
 
 ![La cadena de conexión del emulador de almacenamiento local no es un secreto][1]
 
-* Si va a crear un nuevo proyecto, esta casilla de verificación estará desactivada de forma predeterminada. Esto da como resultado que la sección de clave de almacenamiento de la cadena de conexión de almacenamiento seleccionada se sustituye por un token. El valor del token se encuentra en la carpeta AppData Roaming actual del usuario, por ejemplo: C:\Users\contosouser\AppData\Roaming\Microsoft\CloudService
+* Si va a crear un nuevo proyecto, esta casilla de verificación estará desactivada de forma predeterminada. Esto da como resultado de sección de clave de almacenamiento de Hola de cadena de conexión de almacenamiento de hello seleccionado se reemplazan con un token. Hello valor del token de Hola se encontrará en la carpeta AppData móviles del usuario actual de hello, por ejemplo: C:\Users\contosouser\AppData\Roaming\Microsoft\CloudService
 
-> Tenga en cuenta que la carpeta user\AppData tiene un acceso controlado mediante el inicio de sesión de usuario y se considera un lugar seguro para almacenar secretos de desarrollo.
+> Tenga en cuenta esa carpeta user\AppData de hello es cuyo acceso esté controlado por inicio de sesión de usuario y se considera un lugar seguro toostore los secretos de desarrollo.
 > 
 > 
 
 ![La clave de almacenamiento se guarda en la carpeta del perfil de usuario][2]
 
 ### <a name="3-select-a-diagnostics-storage-account"></a>3. Selección de la cuenta de almacenamiento de información de diagnóstico
-* Seleccione una cuenta de almacenamiento en el cuadro de diálogo que se inicia haciendo clic en el botón "..." . Observe cómo la cadena de conexión de almacenamiento generada no tendrá la clave de cuenta de almacenamiento.
+* Seleccione una cuenta de almacenamiento del cuadro de diálogo de hello iniciada haciendo clic en "..." hello . Tenga en cuenta cómo cadena de conexión de almacenamiento de hello generado no tendrá clave de cuenta de almacenamiento de Hola.
 * Por ejemplo: DefaultEndpointsProtocol=https;AccountName=contosostorage;AccountKey=$(*clouddiagstrg.key*)
 
-### <a name="4----debugging-the-project"></a>4.    Depuración del proyecto
-* Presione F5 para empezar la depuración en Visual Studio. Todo debería funcionar de la misma manera que antes.
+### <a name="4----debugging-hello-project"></a>4.    Depurar el proyecto de Hola
+* F5 toostart de depuración en Visual Studio. Todo lo que debería funcionar en hello igual manera que antes.
   ![Inicie la depuración localmente][3]
 
 ### <a name="5-publish-project-from-visual-studio"></a>5. Publicación del proyecto desde Visual Studio
-* Inicie el cuadro de diálogo Publicar y continúe con las instrucciones de inicio de sesión para publicar la aplicación en Azure.
+* Hola iniciar cuadro de diálogo Publicar y continúe con las instrucciones de inicio de sesión toopublish hello applicaion tooAzure.
 
 ### <a name="6-additional-information"></a>6. Información adicional
-> Nota: El panel de configuración del diseñador de roles permanecerá igual que está ahora. Si desea utilizar la característica de administración de secretos para diagnósticos, vaya a la pestaña de configuraciones.
+> Nota: el panel de configuración de hello en el Diseñador de roles de hello permanecerá tal cual por ahora. Si desea características de administración de secretos de toouse hello para el diagnóstico, vaya toohello configuraciones (pestaña).
 > 
 > 
 
 ![Incorporación de la configuración][4]
 
-> Nota: Si está habilitada, se almacenará la clave de Application Insights como texto sin formato. La clave solo se utiliza para los contenidos de carga, de modo que no se ve comprometida la seguridad de ningún dato confidencial.
+> Nota: Si está habilitada, se almacenará Hola Application Insights clave como texto sin formato. clave de Hola sólo se utiliza para el contenido de la carga de modo que ningún dato confidencial estarán en riesgo de comprometer.
 > 
 > 
 
 ## <a name="build-and-publish-a-cloud-services-project-using-visual-studio-online-task-templates"></a>Compilación y publicación de un proyecto de Cloud Services mediante plantillas de tareas en Visual Studio Online
-* Los pasos siguientes muestran cómo configurar la integración continua para proyectos de Cloud Services con tareas de Visual Studio Online:
+* Hola pasos se muestra cómo usar tareas en línea de Visual Studio de proyectos de toosetup integración continua para servicios en la nube:
   ### <a name="1----obtain-a-vso-account"></a>1.    Obtenga una cuenta de VSO
 * [Crear cuenta de Visual Studio Online] [ Create Visual Studio Online account] si aún no tiene uno
 * [Crear proyecto de equipo] [ Create team project] en su cuenta en línea de Visual Studio
 
 ### <a name="2----setup-source-control-in-visual-studio"></a>2.    Configuración del control de código fuente en Visual Studio
-* Conéctese a un proyecto de equipo
+* Conectar el proyecto de equipo de tooa
 
-![Conéctese a un proyecto de equipo][5]
+![Conectar tooteam proyecto][5]
 
-![Seleccione el proyecto de equipo al que conectarse][6]
+![Seleccione tooconnect de proyecto de equipo a][6]
 
-* Agregue el proyecto al control de código fuente
+* Agregar el control de toosource de proyecto
 
-![Agregue el proyecto al control de código fuente][7]
+![Agregar proyecto toosource control][7]
 
-![Asigne el proyecto a una carpeta de control de código fuente][8]
+![Carpeta de control de código fuente de mapa proyecto tooa][8]
 
 * Compruebe el proyecto desde Team Explorer
 
-![Proteja un proyecto en el control de código fuente][9]
+![Compruebe en el control de toosource de proyectos][9]
 
 ### <a name="3----configure-build-process"></a>3.    Configuración del proceso de compilación
-* Vaya al proyecto de equipo y agregue un nuevo proceso de compilación, Templates
+* Examinar el proyecto de equipo de tooyour y agregue un nuevo proceso de compilación, plantillas
 
 ![Agregue una nueva compilación][10]
 
@@ -100,7 +100,7 @@ La extensión de diagnósticos de Cloud Services requiere Azure Storage para gua
 
 ![Seleccione la plantilla de tarea de compilación de Visual Studio][12]
 
-* Edite la entrada de la tarea de compilación. Personalice los parámetros de compilación según sus necesidades
+* Edite la entrada de la tarea de compilación. Por favor, personalizar la generación de Hola que tenga parámetros según tooyour
 
 ![Configure la tarea de compilación][13]
 
@@ -110,19 +110,19 @@ La extensión de diagnósticos de Cloud Services requiere Azure Storage para gua
 
 ![Configure las variables de compilación][14]
 
-* Agregue una tarea para cargar el destino de compilación
+* Agregar una caída de compilación de tooupload de tarea
 
 ![Elija publicar tarea de destino de compilación][15]
 
 ![Configure la tarea de publicación de destino de compilación][16]
 
-* Ejecute la compilación
+* Ejecute hello compilación
 
 ![Ponga en cola la nueva compilación][17]
 
 ![Vea el resumen de compilación][18]
 
-* Si la compilación se ha realizado correctamente, verá un resultado parecido al siguiente
+* Si se realiza correctamente la compilación de hello verá un toobelow similar de resultado
 
 ![Resultado de la compilación][19]
 
@@ -131,28 +131,28 @@ La extensión de diagnósticos de Cloud Services requiere Azure Storage para gua
 
 ![Cree una nueva versión][20]
 
-* Seleccione la tarea de implementación de Azure Cloud Services
+* Seleccione la tarea de implementación de servicios de nube de Azure de hello
 
 ![Seleccione la tarea de implementación de Azure Cloud Services][21]
 
-* Como la clave de la cuenta de almacenamiento no está activada en el control de código fuente, es preciso especificar la clave secreta para establecer las extensiones de diagnóstico. Expanda la sección **Opciones avanzadas para Creación de un nuevo servicio** y edite la entrada de parámetro de **claves de cuenta de almacenamiento de información de diagnósticos**. Esta entrada ocupa varias líneas de par clave-valor con el formato **[RoleName]:$(StorageAccountKey)**
+* Como no está activada la clave de cuenta de almacenamiento de hello en control toosource, necesitamos clave secreta de hello toospecify para configurar extensiones de diagnóstico. Expanda hello **opciones avanzadas para crear un nuevo servicio** sección y editar hello **claves de cuenta de almacenamiento de diagnósticos** proporcionados por el parámetro. Esta entrada se toma en varias líneas de par clave-valor en formato de Hola de **[RoleName]:$(StorageAccountKey)**
 
-> Nota: Si la cuenta de almacenamiento de información de diagnóstico pertenece a la misma suscripción en la que publicará la aplicación de Cloud Services, no es necesario que introduzca la clave de la entrada de la tarea de implementación. La implementación obtendrá mediante programación la información de almacenamiento de la suscripción
+> Nota: si su cuenta de almacenamiento está por debajo de diagnóstico hello misma suscripción donde publicará la aplicación de servicios en la nube de hello, no tiene clave de hello tooenter de entrada de tarea de implementación de hello; implementación de Hola obtendrá mediante programación la información de almacenamiento Hola desde su suscripción
 > 
 > 
 
 ![Configuración de la tarea de implementación de Azure Cloud Services][22]
 
-* Use variables de compilación de secretos para guardar las claves de almacenamiento. Para enmascarar una variable como secreto, haga clic en el icono de bloqueo en el lado derecho de la entrada Variables
+* Secreto de uso de compilación variables toosave claves de almacenamiento. toomask haga clic en una variable como secreto en el icono de candado de hello en hello derecha de hello las Variables de entrada
 
 ![Guardar las claves de almacenamiento en variables de compilación de secreto][23]
 
-* Cree una versión e implemente el proyecto en Azure
+* Crear una versión e implementar su proyecto tooAzure
 
 ![Cree una nueva versión][24]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información sobre la configuración de extensiones de diagnóstico para los servicios de nube de Azure, consulte [habilitar diagnósticos en los servicios de nube de Azure con PowerShell][Enable diagnostics in Azure Cloud Services using PowerShell]
+toolearn más información acerca de la configuración de extensiones de diagnóstico para los servicios de nube de Azure, visite [habilitar diagnósticos en los servicios de nube de Azure con PowerShell][Enable diagnostics in Azure Cloud Services using PowerShell]
 
 [Create Visual Studio Online account]:https://www.visualstudio.com/team-services/
 [Create team project]: https://www.visualstudio.com/it-it/docs/setup-admin/team-services/connect-to-visual-studio-team-services

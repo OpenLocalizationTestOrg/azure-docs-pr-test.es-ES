@@ -1,6 +1,6 @@
 ---
 title: "Dispositivo SensorTag y puerta de enlace de Azure IoT: Lección 2: Obtención de las herramientas (Ubuntu) | Microsoft Docs"
-description: Instale las herramientas y el software en el equipo host que ejecuta Ubuntu, cree una instancia de IoT Hub y registre el dispositivo en ella.
+description: Instalar software de Hola y herramientas de hello en el equipo host ejecuta Ubuntu, crear un centro de IoT y registrar el dispositivo en el centro de IoT Hola.
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,13 +17,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 234b60e1f8eaff52ce07f54d4d12de2421cc1a52
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c9edca91e791ef914b1920178b66eadd12ae0281
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-ubuntu-1604"></a>Obtención de las herramientas (Ubuntu 16.04)
+# <a name="get-hello-tools-ubuntu-1604"></a>Obtener herramientas de hello (Ubuntu 16.04)
 > [!div class="op_single_selector"]
 > * [Windows 7 o posterior](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
 > * [Ubuntu 16.04](iot-hub-gateway-kit-c-lesson2-get-the-tools-ubuntu.md)
@@ -32,36 +32,36 @@ ms.lasthandoff: 07/11/2017
 ## <a name="what-you-will-do"></a>Lo que hará
 
 - Instale Git, Node.js, Gulp y Python.
-- Instalación de la interfaz de la línea de comandos de Azure (CLI de Azure) 
+- Instalar hello Azure interfaz de línea de comandos (CLI de Azure). 
 
-Si tiene problemas, busque soluciones en la [página de solución de problemas](iot-hub-gateway-kit-c-troubleshooting.md).
+Si tiene problemas, buscar soluciones en hello [página solución de problemas](iot-hub-gateway-kit-c-troubleshooting.md).
 ## <a name="what-you-will-learn"></a>Lo qué aprenderá
 
 En esta lección, aprenderá lo siguiente:
 
-- Cómo instalar Git y Node.js
-  - Git es un sistema de control de versiones distribuido de código abierto. La aplicación de ejemplo de esta lección se almacena en Git.
-  - Node.js es un entorno de tiempo de ejecución de JavaScript con un amplio ecosistema de paquetes.
-- Uso de NPM para instalar las herramientas de desarrollo de Node.js.
-  - La versión mínima necesaria de Node.js es 4.5 LTS.
-  - NPM es uno de los administradores de paquetes para Node.js.
-- Instalación de Visual Studio Code.
+- ¿Cómo tooinstall Git y Node.js.
+  - Git es un sistema de control de versiones distribuido de código abierto. aplicación de ejemplo de Hola en esta lección se almacena en Git.
+  - Node.js es un entorno en tiempo de ejecución de JavaScript con un amplio ecosistema de paquetes.
+- Cómo las herramientas de desarrollo toouse NPM tooinstall Node.js.
+  - Hola mínima versión requerida del Node.js es 4.5 LTS.
+  - NPM es uno de los administradores de paquetes de saludo para Node.js.
+- Cómo tooinstall código Visual Studio.
   - Visual Studio Code es un editor de código fuente multiplataforma ligero pero eficaz para Windows, Linux y macOS. Ofrece un elevado nivel de compatibilidad para la depuración, control de Git insertado, resaltado de sintaxis, función inteligente de autocompletar código, fragmentos de código y refactorización de código.
-- Instalación de la CLI de Azure
-  - La CLI de Azure proporciona una experiencia de línea de comandos multiplataforma en Azure. De este modo, puede trabajar directamente desde la línea de comandos para aprovisionar y administrar los recursos.
-- Uso de la CLI de Azure para crear una instancia de IoT Hub.
+- ¿Cómo tooinstall Hola CLI de Azure
+  - Hola CLI de Azure proporciona una experiencia de línea de comandos multiplataforma de Azure. Puede trabaja directamente desde una línea de comandos tooprovision y administrar recursos.
+- ¿Cómo toouse Hola toocreate de CLI de Azure de un centro de IoT.
 
 ## <a name="what-you-need"></a>Lo que necesita
 
-- Una conexión a Internet para descargar las herramientas y el software.
+- Un toodownload de conexión de Internet Hola herramientas y software.
 - Un equipo que ejecute Ubuntu 16.04 o posterior
 
 ## <a name="install-git-and-nodejs"></a>Instalación de Git y Node.js
 
-Para instalar Git y Node.js, siga estos pasos:
+tooinstall Git y Node.js, siga estos pasos:
 
-1. Presione `Ctrl + Alt + T` para abrir una ventana de terminal.
-2. Ejecute los comandos siguientes:
+1. Presione `Ctrl + Alt + T` tooopen un terminal.
+2. Ejecute hello siguientes comandos:
 
    ```bash
    sudo apt-get update
@@ -72,24 +72,24 @@ Para instalar Git y Node.js, siga estos pasos:
 
 ## <a name="install-nodejs-development-tools"></a>Instalación de herramientas de desarrollo de Node.js
 
-Use [gulp.js](http://gulpjs.com/) para automatizar la implementación y ejecución de scripts.
+Usa [gulp.js](http://gulpjs.com/) tooautomate implementación y ejecución de secuencias de comandos.
 
-Para instalar Gulp, ejecute el comando siguiente en una ventana del terminal:
+gulp tooinstall, ejecute hello siguiente comando en terminal hello:
 
 ```bash
 sudo npm install -g gulp
 ```
 
-Si tiene problemas con la instalación, consulte la [guía de solución de problemas](iot-hub-gateway-kit-c-troubleshooting.md) para solucionar problemas comunes.
+Si experimenta problemas con la instalación de hello, vea Hola [Guía de solución de problemas](iot-hub-gateway-kit-c-troubleshooting.md) para soluciones toocommon problemas.
 
 > [!Note]
-> Se precisan Node, NPM y Gulp para ejecutar scripts de automatización desarrollados en Node.js.
+> Nodo, NPM y Gulp son scripts de automatización necesarios toorun desarrollados en Node.js.
 
-## <a name="install-the-azure-cli"></a>Instalación de la CLI de Azure
+## <a name="install-hello-azure-cli"></a>Instalar Hola CLI de Azure
 
-Para instalar la CLI de Azure, siga estos pasos:
+Hola tooinstall CLI de Azure, siga estos pasos:
 
-1. Ejecute los siguientes comandos en una ventana de terminal:
+1. Ejecute hello siga los comandos de terminal de hello:
 
    ```bash
    sudo apt-get update
@@ -101,25 +101,25 @@ Para instalar la CLI de Azure, siga estos pasos:
    sudo pip install --upgrade azure-cli-iot
    ```
 
-   La instalación puede tardar 5 minutos.
+   instalación de Hello puede tardar 5 minutos.
 
-2. Compruebe la instalación ejecutando el comando siguiente:
+2. Comprobar la instalación de hello ejecutando Hola siguiente comando:
 
    ```bash
    az iot -h
    ```
-Si la instalación se realiza correctamente, verá el siguiente resultado.
+Debería ver la siguiente Hola de salida si la instalación de hello es correcta.
 ![Verificación de la instalación de la CLI de Azure](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_ubuntu.png)
 
 ### <a name="install-visual-studio-code"></a>Instalación de Visual Studio Code
 
-Use Visual Studio Code, como se explica más adelante en este tutorial, para editar los archivos de configuración.
+Usar código de Visual Studio posteriormente en archivos de configuración del tutorial tooedit Hola.
 
 [Descargue](https://code.visualstudio.com/docs/setup/linux) e instale Visual Studio Code.
 
 ## <a name="summary"></a>Resumen
 
-Ha instalado todas las herramientas y el software necesarios en el equipo host. La siguiente tarea consiste en utilizar la CLI de Azure para crear una instancia de IoT Hub y registrar el dispositivo en ella.
+Ha instalado todas las herramientas de hello necesario y el software en el equipo host. La siguiente tarea es toouse hello Azure CLI toocreate un centro de IoT y registrar el dispositivo en el centro de IoT.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Creación de una instancia de IoT Hub y registro del dispositivo](iot-hub-gateway-kit-c-lesson2-register-device.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: bwren
-ms.openlocfilehash: 8bdaf9592ed29371ecfe8e9e5d2f8da9ac1795bb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 14b363c934a018ce72be97d1a0b74a6c2210656e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Análisis del desarrollador: lenguajes y plataformas e integraciones
 Estos elementos son implementaciones de [Application Insights](app-insights-overview.md) sobre las que tenemos noticias, que incluyen también algunas de terceros.
@@ -41,7 +41,7 @@ Estos elementos son implementaciones de [Application Insights](app-insights-over
 * [ASP.NET Core](app-insights-asp-net-core.md)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
 * [Azure Web Apps](app-insights-azure-web-apps.md)
-* [Azure Cloud Services](app-insights-cloudservices.md)&#151;incluidos los roles web y de trabajo
+* [Azure Cloud Services](app-insights-cloudservices.md)&amp;#151;incluidos los roles web y de trabajo
 * [Funciones de Azure](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 * [Docker](app-insights-docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
@@ -82,4 +82,4 @@ Estos elementos son implementaciones de [Application Insights](app-insights-over
 * [Análisis de transmisiones](app-insights-export-power-bi.md)
 
 ## <a name="projects"></a> Creación de su propio SDK
-Si no hay todavía un SDK para el lenguaje o plataforma, quizás desee crear uno. Examine el código de los SDK existentes que aparecen en el [proyecto de SDK de Application Insights en GitHub](https://github.com/Microsoft/AppInsights-Home).
+¿Si no existe aún un SDK para el lenguaje o plataforma, quizás le gustaría toobuild uno? Eche un vistazo a código de hello de hello existente SDK enumerado en hello [proyecto Application Insights SDK en GitHub](https://github.com/Microsoft/AppInsights-Home).

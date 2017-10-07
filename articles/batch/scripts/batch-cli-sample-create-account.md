@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de script de la CLI de Azure: creación de una cuenta de Batch | Microsoft Docs"
+title: Ejemplo de secuencia de comandos de CLI - aaaAzure crear una cuenta de lote | Documentos de Microsoft
 description: "Ejemplo de script de la CLI de Azure: creación de una cuenta de Batch"
 services: batch
 documentationcenter: 
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.openlocfilehash: 698978fd717091c49a1375e222f46f4325431223
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 62b640eebbafdd1081822a638fd0720121ef067a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-batch-account-with-the-azure-cli"></a>Creación de una cuenta de Batch con la CLI de Azure
+# <a name="create-a-batch-account-with-hello-azure-cli"></a>Crear una cuenta de lote con hello CLI de Azure
 
-Este script crea una cuenta de Azure Batch y muestra cómo se pueden consultar y actualizar las distintas propiedades de la cuenta.
+Este script crea una cuenta de lote de Azure y muestra cómo varias propiedades de cuenta de hello pueden consultar y actualizar.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Instale la CLI de Azure con las instrucciones que se encuentran en la [guía de instalación de la CLI de Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) si aún no lo ha hecho.
+Instalación Hola CLI de Azure utilizando instrucciones de hello proporcionadas en hello [Guía de instalación de CLI de Azure](https://docs.microsoft.com/cli/azure/install-azure-cli), si aún no lo ha hecho.
 
 ## <a name="batch-account-sample-script"></a>Script de ejemplo de la cuenta de Batch
 
-Cuando crea una cuenta de Batch, la configuración predeterminada indica que el servicio de Batch asigna de forma interna sus nodos de ejecución. Los nodos de ejecución asignados estarán sujetos a una cuota de núcleos independiente y la cuenta se puede autenticar ya sea a través de credenciales clave compartidas o un token de Azure Active Directory.
+Cuando se crea una cuenta de lote, de forma predeterminada los nodos de proceso se asignan internamente por hello servicio por lotes. Nodos de proceso asignadas será cuota de núcleos independiente de tooa de asunto y cuenta de hello se puede autenticar mediante credenciales de clave compartida o un símbolo (token) de Active directorio de Azure.
 
-[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account.sh "Creación de cuenta")]
+[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account.sh "Create Account")]
 
 ## <a name="batch-account-using-user-subscription-sample-script"></a>Cuenta de Batch con un script de ejemplo de suscripción de usuario
 
-También puede optar porque Batch cree los nodos de ejecución en su propia suscripción de Azure.
-Las cuentas que asignan nodos de ejecución en la suscripción se deben autenticar a través de un token de Azure Active Directory y los nodos de ejecución asignados se contabilizarán en la cuota de suscripciones. Para crear una cuenta de este modo, debe especificar una referencia de Key Vault cuando cree la cuenta.
+También puede optar por lotes toohave crear sus nodos de proceso en su propia suscripción de Azure.
+Las cuentas que se asignan a proceso nodos en su suscripción deben ser autenticados mediante un símbolo (token) de Azure Active Directory y los nodos de proceso de hello asignados contará para la cuota de suscripción. toocreate una cuenta en este modo, al crear la cuenta de hello, uno debe especificar una referencia de almacén de claves.
 
-[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account-user-subscription.sh  "Creación de una cuenta con suscripción de usuario")]
+[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account-user-subscription.sh  "Create Account using User Subscription")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación
 
-Después de ejecutar cualquiera de los scripts de ejemplo anteriores, ejecute el comando siguiente para quitar el grupo de recursos y todos los recursos relacionados (incluidas cuentas Batch, cuentas de Azure Storage y Azure Key Vault).
+Después de ejecutar cualquiera de Hola por encima de las secuencias de comandos de ejemplo, ejecute hello después comando tooremove el grupo de recursos y todos ellos relacionados con recursos (incluidas las cuentas de lote, las cuentas de almacenamiento de Azure y almacenes de claves de Azure).
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -51,23 +51,23 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear un grupo de recursos, una cuenta de Batch y todos los recursos relacionados. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza Hola siguientes comandos toocreate un grupo de recursos, cuenta de lote y todos ellos relacionados con recursos. Cada comando de la tabla de hello vincula documentación específica del toocommand.
 
 | Comando | Notas |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
-| [az batch account create](https://docs.microsoft.com/cli/azure/batch/account#create) | Crea la cuenta de Batch.  |
-| [az batch account set](https://docs.microsoft.com/cli/azure/batch/account#set) | Actualiza las propiedades de la cuenta de Batch.  |
-| [az batch account show](https://docs.microsoft.com/cli/azure/batch/account#show) | Recupera los detalles de la cuenta de Batch especificada.  |
-| [az batch account keys list](https://docs.microsoft.com/cli/azure/batch/account/keys#list) | Recupera las claves de acceso de la cuenta de Batch especificada.  |
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | Realiza la autenticación respecto de la cuenta de Batch especificada para una mayor interacción de la CLI.  |
+| [az batch account create](https://docs.microsoft.com/cli/azure/batch/account#create) | Crea la cuenta de lote de Hola.  |
+| [az batch account set](https://docs.microsoft.com/cli/azure/batch/account#set) | Actualiza las propiedades del programa Hola a cuenta de lote.  |
+| [az batch account show](https://docs.microsoft.com/cli/azure/batch/account#show) | Recupera detalles de hello especifican cuenta de lote.  |
+| [az batch account keys list](https://docs.microsoft.com/cli/azure/batch/account/keys#list) | Recupera las teclas de acceso de Hola de hello especifican cuenta de lote.  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | Autentica contra Hola especificado cuenta para la interacción de CLI más de lote.  |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#create) | Crea una cuenta de almacenamiento. |
 | [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#create) | Crea un almacén de claves. |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#set-policy) | Actualiza la directiva de seguridad del almacén de Key Vault especificado. |
+| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#set-policy) | Actualizar directiva de seguridad de Hola de almacén de claves especificado Hola. |
 | [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | Elimina un grupo de recursos, incluidos todos los recursos anidados. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Puede encontrar ejemplos de script adicionales de la CLI de Batch en la [documentación de la CLI de Azure Batch](../batch-cli-samples.md).
+Encontrará más ejemplos de secuencias de comandos de CLI de lote en hello [documentación de CLI de lote de Azure](../batch-cli-samples.md).

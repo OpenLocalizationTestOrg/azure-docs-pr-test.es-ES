@@ -1,6 +1,6 @@
 ---
-title: "Creación de clústeres de HDInsight con Data Lake Store como almacenamiento predeterminado mediante PowerShell | Microsoft Docs"
-description: "Uso de Azure PowerShell para crear y usar clústeres de HDInsight con Azure Data Lake Store"
+title: "clústeres de HDInsight aaaCreate con almacén de Data Lake como almacenamiento predeterminado mediante PowerShell | Documentos de Microsoft"
+description: "Utilice toocreate de PowerShell de Azure y clústeres de HDInsight con el almacén de Azure Data Lake"
 services: data-lake-store,hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/08/2017
 ms.author: nitinme
-ms.openlocfilehash: 77eb83b80312eca401e6f60d57ed6a5668ea442e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a5c0ad416da6ad9bd07204af2ebb6b7470916085
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>Creación de clústeres de HDInsight con Data Lake Store como almacenamiento predeterminado mediante PowerShell
 > [!div class="op_single_selector"]
-> * [Uso de Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Usar hello portal de Azure](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Uso de PowerShell (para el almacenamiento predeterminado)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Uso de PowerShell (para almacenamiento adicional)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Uso de Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
-Obtenga información sobre cómo usar Azure PowerShell para configurar clústeres de Azure HDInsight con Azure Data Lake Store, como almacenamiento predeterminado. Para obtener instrucciones sobre la creación de un clúster de HDInsight con Azure Data Lake Store como almacenamiento adicional, consulte [Uso de Azure PowerShell para crear clústeres de HDInsight con Data Lake Store (como almacenamiento adicional)](data-lake-store-hdinsight-hadoop-use-powershell.md).
+Obtenga información acerca de cómo clústeres toouse tooconfigure de PowerShell de Azure HDInsight de Azure con Azure almacén de Data Lake, como almacenamiento predeterminado. Para obtener instrucciones sobre la creación de un clúster de HDInsight con Azure Data Lake Store como almacenamiento adicional, consulte [Uso de Azure PowerShell para crear clústeres de HDInsight con Data Lake Store (como almacenamiento adicional)](data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 Estas son algunas consideraciones importantes que deben tenerse en cuenta al usar HDInsight con Data Lake Store:
 
-* La opción para crear clústeres de HDInsight con acceso a Data Lake Store como almacenamiento predeterminado está disponible para la versión 3.5 y 3.6 de HDInsight.
+* clústeres de HDInsight de Hello opción toocreate con acceso tooData Lake almacén como almacenamiento predeterminado está disponible para HDInsight versión 3.5 y 3.6.
 
-* La opción para crear clústeres de HDInsight con acceso a Data Lake Store como almacenamiento predeterminado *no está disponible* para clústeres de HDInsight Premium.
+* Hola opción toocreate clústeres de HDInsight con acceso tooData Lake almacén como almacenamiento predeterminado es *no está disponible* para los clústeres de HDInsight Premium.
 
-Para configurar HDInsight para trabajar con Data Lake Store con PowerShell, siga las instrucciones que aparecen en las cinco secciones siguientes.
+tooconfigure toowork de HDInsight con el almacén de Data Lake con PowerShell, siga las instrucciones de hello en las secciones siguientes cinco de Hola.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de comenzar este tutorial, asegúrese de que se cumplen los requisitos siguientes:
+Antes de comenzar este tutorial, asegúrese de que se cumple Hola según los requisitos:
 
-* **Suscripción a Azure**: Vaya a [Cree su cuenta gratuita de Azure hoy mismo](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1.0 o posterior**: Consulte [How to install and configure PowerShell](/powershell/azure/overview) (Instalación y configuración de PowerShell).
-* **Kit de desarrollo de software (SDK) de Windows**: Para instalar el SDK de Windows, vaya a [Descargas y herramientas para Windows 10](https://dev.windows.com/en-us/downloads). El SDK se usa para crear un certificado de seguridad.
-* **Entidad de servicio de Azure Active Directory**: Este tutorial describe cómo crear una entidad de servicio en Azure Active Directory (Azure AD). Sin embargo, para crear una entidad de servicio, debe ser administrador de Azure AD. Si ya lo es, puede hacer caso omiso a este requisito previo y continuar con el tutorial.
+* **Una suscripción de Azure**: vaya demasiado[evaluación gratuita de Azure obtener](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure PowerShell 1.0 o mayor**: vea [cómo tooinstall y configurar PowerShell](/powershell/azure/overview).
+* **Kit de desarrollo de Software (SDK) de Windows**: tooinstall SDK de Windows, vaya demasiado[descarga y las herramientas para Windows 10](https://dev.windows.com/en-us/downloads). Hola SDK es toocreate usa un certificado de seguridad.
+* **Entidad de servicio de Azure Active Directory**: en este tutorial se describe cómo toocreate una entidad de servicio en Azure Active Directory (Azure AD). Sin embargo, toocreate una entidad de servicio, debe ser un administrador de Azure AD. Si es administrador, puede omitir este requisito previo y continuar con tutorial Hola.
 
     >[!NOTE]
-    >Solamente puede crear una entidad de servicio si es administrador de Azure AD. Su administrador de Azure AD debe generar una entidad de servicio antes de crear un clúster de HDInsight con Data Lake Store. La entidad de servicio se debe crear con un certificado, tal y como se describe en [Creación de entidad de servicio con certificado](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
+    >Solamente puede crear una entidad de servicio si es administrador de Azure AD. Su administrador de Azure AD debe generar una entidad de servicio antes de crear un clúster de HDInsight con Data Lake Store. Hello entidad de servicio debe crearse con un certificado, como se describe en [crear una entidad de servicio con el certificado](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
     >
 
 ## <a name="create-a-data-lake-store-account"></a>Crear una cuenta de Almacén de Data Lake
-Para crear una cuenta de Data Lake Store, realice el siguiente procedimiento:
+toocreate una cuenta de almacén de Data Lake Hola siguientes:
 
-1. En el escritorio, abra una ventana de PowerShell y escriba los siguientes fragmentos de código: Cuando se le pida que inicie sesión, hágalo como uno de los propietarios o administradores de la suscripción. 
+1. Desde el escritorio, abra una ventana de PowerShell y, a continuación, escriba los siguientes fragmentos de Hola. Cuando esté toosign solicitada en Inicio de sesión como uno de los administradores de suscripciones de Hola o propietarios. 
 
-        # Sign in to your Azure account
+        # Sign in tooyour Azure account
         Login-AzureRmAccount
 
-        # List all the subscriptions associated to your account
+        # List all hello subscriptions associated tooyour account
         Get-AzureRmSubscription
 
         # Select a subscription
@@ -67,7 +67,7 @@ Para crear una cuenta de Data Lake Store, realice el siguiente procedimiento:
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Si registra el proveedor de recursos de Data Lake Store y recibe un error similar a `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, su suscripción podría no estar en la lista de permitidas para Data Lake Store. Para habilitar la suscripción de Azure para la versión preliminar pública de Data Lake Store, siga las instrucciones que se encuentran en [Introducción a Azure Data Lake Store mediante Azure Portal](data-lake-store-get-started-portal.md).
+    > Si registrar proveedor de recursos de almacén de Data Lake hello y recibe un mensaje de error similar demasiado`Register-AzureRmResourceProvider : InvalidResourceNamespace: hello resource namespace 'Microsoft.DataLakeStore' is invalid`, su suscripción no estén en la lista blanca para almacén de Data Lake. tooenable su suscripción de Azure para preview pública de almacén de Data Lake de hello, siga las instrucciones de hello en [empezar a trabajar con el almacén de Azure Data Lake utilizando Hola portal de Azure](data-lake-store-get-started-portal.md).
     >
 
 2. Una cuenta de Data Lake Store se asocia con un grupo de recursos de Azure. Comience a crear un grupo de recursos.
@@ -83,12 +83,12 @@ Para crear una cuenta de Data Lake Store, realice el siguiente procedimiento:
         Tags              :
         ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
 
-3. Cree una cuenta de Data Lake Store. El nombre de cuenta que especifique solo debe contener letras minúsculas y números.
+3. Cree una cuenta de Data Lake Store. cuenta de Hello nombre que especifique debe contener solo letras minúsculas y números.
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    Debe ver algo parecido a lo siguiente:
+    Debería ver una salida similar Hola siguiente:
 
         ...
         ProvisioningState           : Succeeded
@@ -105,44 +105,44 @@ Para crear una cuenta de Data Lake Store, realice el siguiente procedimiento:
         Location                    : East US 2
         Tags                        : {}
 
-4. El uso de Data Lake Store como almacenamiento predeterminado requiere especificar una ruta de acceso raíz en la que se copiarán los archivos específicos del clúster durante su creación. Para crear una ruta de acceso raíz, que es **/clusters/hdiadlcluster** en el fragmento de código, use los cmdlets siguientes:
+4. El uso de almacén de Data Lake como almacenamiento predeterminado requiere toospecify que una ruta de acceso los raíz toowhich Hola específicos para clúster archivos se copian durante la creación del clúster. una ruta de acceso raíz, que es toocreate **/clústeres/hdiadlcluster** en el fragmento de código de hello, usar hello siguientes cmdlets:
 
         $myrootdir = "/"
         New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $myrootdir/clusters/hdiadlcluster
 
 
-## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>Configuración de la autenticación para el acceso basado en roles al Almacén de Data Lake
-Cada una de las suscripciones de Azure está asociada a una entidad de Azure AD. Los usuarios y los servicios que acceden a los recursos de la suscripción Azure Portal o la API de Azure Resource Manager deben autenticarse primero en Azure AD. Para conceder acceso a servicios y suscripciones de Azure, se les asigna el rol adecuado en un recurso de Azure. Para los servicios, una entidad de servicio identifica al servicio en Azure AD.
+## <a name="set-up-authentication-for-role-based-access-toodata-lake-store"></a>Configure la autenticación para basada en roles acceder tooData Lake almacén
+Cada una de las suscripciones de Azure está asociada a una entidad de Azure AD. Los usuarios y servicios que acceder a los recursos de suscripción mediante el uso de Hola portal de Azure u Hola API del Administrador de recursos de Azure deben autenticarse primero con Azure AD. Se concede acceso tooAzure suscripciones y servicios mediante la asignación de rol adecuado de hello en un recurso de Azure. Servicios, una entidad de servicio identifica el servicio de hello en Azure AD.
 
-En esta sección se muestra cómo conceder a un servicio de aplicación, como HDInsight, acceso a un recurso de Azure (la cuenta de Data Lake Store que creó anteriormente). La forma de hacerlo es crear una entidad de servicio para la aplicación y asignarla roles a través de PowerShell.
+Esta sección muestra cómo service toogrant una aplicación, por ejemplo, HDInsight, tooan de acceso a recursos de Azure (Hola cuenta de almacén de Data Lake que creó anteriormente). La forma de hacerlo es mediante la creación de un servicio principal para la aplicación hello y asignación de roles tooit a través de PowerShell.
 
-Para configurar la autenticación de Active Directory para Azure Data Lake, realice las tareas en las dos secciones siguientes.
+tooset la autenticación de Active Directory para Azure Data Lake, realizar tareas de Hola Hola siguientes dos secciones.
 
 ### <a name="create-a-self-signed-certificate"></a>Creación de un certificado autofirmado
-Asegúrese de que tiene [Windows SDK](https://dev.windows.com/en-us/downloads) instalado antes de continuar con los pasos de esta sección. También debe crear un directorio, como *C:\mycertdir*, donde creará el certificado.
+Asegúrese de que tiene [Windows SDK](https://dev.windows.com/en-us/downloads) instalado antes de continuar con hello pasos de esta sección. Debe también ha creado un directorio, como *C:\mycertdir*, donde crear certificado Hola.
 
-1. En la ventana de PowerShell, vaya a la ubicación donde instaló Windows SDK (normalmente, *C:\Archivos de programa (x86)\Windows Kits\10\bin\x86*) y use la utilidad [MakeCert][makecert] para crear un certificado autofirmado y una clave privada. Use los comandos siguientes:
+1. Desde la ventana de PowerShell de hello, vaya ubicación toohello donde se instaló el SDK de Windows (normalmente, *C:\Program Files (x86) \Windows Kits\10\bin\x86*) y usar hello [MakeCert] [ makecert] toocreate utilidad un certificado autofirmado y una clave privada. Usar hello siguientes comandos:
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
 
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
-    Se le pedirá que escriba la contraseña de la clave privada. Después de que el comando se ejecute correctamente, debería ver los archivos **CertFile.cer** y **mykey.pvk** en el directorio de certificado que especificó.
-2. Emplee la utilidad [Pvk2Pfx][pvk2pfx] para convertir los archivos .pvk y .cer que MakeCert creó en un archivo .pfx. Ejecute el siguiente comando:
+    Es posible que la contraseña de clave privada tooenter solicitadas Hola. Después de que el comando de Hola se ejecuta correctamente, debería ver **CertFile.cer** y **mykey.pvk** en directorio de certificado de Hola que especificó.
+2. Hola de uso [Pvk2Pfx] [ pvk2pfx] utilidad tooconvert Hola .pvk y .cer archivos archivo .pfx MakeCert tooa creado. Ejecute el siguiente comando de hello:
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    Cuando se le pida, escriba la contraseña de la clave privada que especificó antes. El valor especificado para el parámetro **-po** es la contraseña asociada al archivo .pfx. Cuando el comando se haya completado correctamente, debería ver un archivo **CertFile.pfx** en el directorio de certificado que especificó.
+    Cuando se le pida, escriba Hola contraseña de clave privada que especificó anteriormente. Hola valor especificado en hello **-po** parámetro es la contraseña de Hola que esté asociada con el archivo .pfx de hello. Una vez se ha completado correctamente el comando hello, también debería observar una **CertFile.pfx** en directorio de certificado de Hola que especificó.
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>Creación de una aplicación en Azure AD y una entidad de servicio
-En esta sección, creará una entidad de servicio para una aplicación de Azure AD, asignará un rol a la entidad de servicio y la autenticará como la entidad de servicio proporcionando un certificado. Para crear una aplicación en Azure AD, ejecute los comandos siguientes:
+En esta sección, cree a una entidad de servicio para una aplicación de Azure AD, asignar a una entidad de servicio de rol toohello y autenticarse como entidad de servicio de hello proporcionando un certificado. toocreate una aplicación en Azure AD, ejecute hello siguientes comandos:
 
-1. Pegue los siguientes cmdlets en la ventana de consola de PowerShell. Asegúrese de que el valor especificado para la propiedad **- DisplayName** sea único. Los valores de **-HomePage** e **-IdentiferUris** son valores de marcador de posición y no se comprueban.
+1. Pegue Hola siguientes cmdlets en la ventana de consola de PowerShell de hello. Asegúrese de que ese valor de Hola que especifique para hello **- DisplayName** propiedad es única. Hola valores para **- página principal** y **- IdentiferUris** son valores de marcador de posición y no se comprueban.
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host –Prompt "Enter hello password" # This is hello password you specified for hello .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 
@@ -159,26 +159,26 @@ En esta sección, creará una entidad de servicio para una aplicación de Azure 
             -EndDate $certificatePFX.NotAfter
 
         $applicationId = $application.ApplicationId
-2. Cree una entidad de servicio mediante el identificador de aplicación.
+2. Crear a una entidad de servicio mediante el uso de Id. de aplicación Hola.
 
         $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
-3. Conceda a la entidad de servicio acceso a la raíz de Data Lake Store y a todas las carpetas de la ruta de acceso raíz que especificó anteriormente. Use los siguientes cmdlets:
+3. Conceda raíz del almacén de Data Lake de toohello de hello servicio acceso principal y todas las carpetas de hello en la ruta de acceso raíz de Hola que especificó anteriormente. Usar hello siguientes cmdlets:
 
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /clusters -AceType User -Id $objectId -Permissions All
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
 
-## <a name="create-an-hdinsight-linux-cluster-with-data-lake-store-as-the-default-storage"></a>Creación de un clúster de HDInsight en Linux con Data Lake Store como almacenamiento predeterminado
+## <a name="create-an-hdinsight-linux-cluster-with-data-lake-store-as-hello-default-storage"></a>Crear un clúster de HDInsight Linux con el almacén de Data Lake como almacenamiento predeterminado de Hola
 
-En esta sección, creará un clúster de Hadoop en HDInsight basado en Linux con Data Lake Store como almacenamiento predeterminado. En esta versión, el clúster de HDInsight y Data Lake Store deben estar en la misma ubicación.
+En esta sección, creará un clúster de HDInsight Hadoop Linux con el almacén de Data Lake como almacenamiento predeterminado de Hola. En esta versión, Hola clúster de HDInsight y almacén de Data Lake debe ser Hola misma ubicación.
 
-1. Recupere el identificador de inquilino de suscripción y almacénelo para usarlo más adelante.
+1. Recuperar el Id. de inquilino de suscripción de Hola y almacenarlo toouse más tarde.
 
         $tenantID = (Get-AzureRmContext).Tenant.TenantId
 
-2. Cree el clúster de HDInsight mediante los cmdlets siguientes:
+2. Crear el clúster de HDInsight de hello mediante Hola siguientes cmdlets:
 
         # Set these variables
 
@@ -186,7 +186,7 @@ En esta sección, creará un clúster de Hadoop en HDInsight basado en Linux con
         $storageAccountName = $dataLakeStoreName                       # Data Lake Store account name
         $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
         $clusterName = "<unique cluster name>"
-        $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
+        $clusterNodes = <ClusterSizeInNodes>            # hello number of nodes in hello HDInsight cluster
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
@@ -208,20 +208,20 @@ En esta sección, creará un clúster de Hadoop en HDInsight basado en Linux con
                -CertificateFilePath $certificateFilePath `
                -CertificatePassword $password
 
-    Cuando el cmdlet se haya completado correctamente, debería ver una salida con la información del clúster.
+    Después de hello cmdlet se ha completado correctamente, debería ver una salida que muestra detalles del clúster Hola.
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-store"></a>Ejecución de trabajos de prueba en el clúster de HDInsight para usar Data Lake Store
-Después de configurar un clúster de HDInsight, puede ejecutar trabajos de prueba en él para garantizar que puede acceder a Data Lake Store. Para hacerlo, ejecute un trabajo de Hive de ejemplo para crear una tabla que usa los datos de ejemplo que ya están disponibles en Data Lake Store en *<cluster root>/example/data/sample.log*.
+## <a name="run-test-jobs-on-hello-hdinsight-cluster-toouse-data-lake-store"></a>Ejecutar trabajos de prueba en toouse de clúster de HDInsight de hello almacén de Data Lake
+Después de haber configurado un clúster de HDInsight, puede ejecutar trabajos de prueba en el mismo tooensure que puede tener acceso a almacén de Data Lake. toodo por lo tanto, ejecute un toocreate de trabajo de Hive de ejemplo una tabla que usa datos de ejemplo de Hola que ya está disponibles en el almacén de Data Lake en  *<cluster root>/example/data/sample.log*.
 
-En esta sección, realiza una conexión de Secure Shell (SSH) en el clúster de HDInsight en Linux que creó y luego ejecute una consulta de Hive de ejemplo.
+En esta sección, se realiza una conexión de Secure Shell (SSH) en hello clúster de HDInsight Linux que creó y, a continuación, ejecutar una consulta de Hive de ejemplo.
 
-* Si usa un cliente Windows para realizar una conexión SSH en el clúster, consulte [Uso de SSH con clústeres de HDInsight desde PuTTY en Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
-* Si usa un cliente Linux para realizar una conexión SSH en el clúster, consulte [Uso de SSH con HDInsight (Hadoop) desde Bash en Windows 10, Linux, Unix u OS X](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* Si usas un toomake de cliente de Windows una conexión SSH en el clúster hello, consulte [utilizar SSH con Linux-based Hadoop en HDInsight de Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* Si usas un toomake de cliente de Linux una conexión SSH en el clúster hello, consulte [utilizar SSH con Linux-based Hadoop en HDInsight de Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Después de haber realizado la conexión, inicie la interfaz de la línea de comandos (CLI) de Hive con el siguiente comando:
+1. Después de realizar la conexión de hello, iniciar la interfaz de línea de comandos de hello Hive (CLI) mediante Hola siguiente comando:
 
         hive
-2. Use la CLI para especificar las siguientes instrucciones para crear una tabla nueva denominada **vehicles** con los datos de ejemplo de Data Lake Store:
+2. Use Hola CLI tooenter Hola siguiendo las instrucciones toocreate una nueva tabla denominada **vehículos** mediante el uso de datos de ejemplo de Hola en almacén de Data Lake:
 
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -229,28 +229,28 @@ En esta sección, realiza una conexión de Secure Shell (SSH) en el clúster de 
         STORED AS TEXTFILE LOCATION 'adl:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    Debería ver el resultado de la consulta en la consola SSH.
+    Debería ver el resultado de la consulta de hello en la consola de SSH de Hola.
 
     >[!NOTE]
-    >La ruta de acceso a los datos de ejemplo del comando CREATE TABLE anterior es `adl:///example/data/`, donde `adl:///` es la raíz de clúster. Siguiendo el ejemplo de la raíz de clúster especificada en este tutorial, el comando es `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`. Puede usar la alternativa más corta o proporcionar la ruta de acceso a la raíz de clúster completa.
+    >Hola datos de ejemplo de ruta de acceso toohello Hola anterior comando CREATE TABLE están `adl:///example/data/`, donde `adl:///` es Hola clúster raíz. Después de ejemplo de Hola de raíz de clúster de Hola que se especifica en este tutorial, el comando de hello es `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`. Puede usar alternativa más corto de Hola o proporcionar Hola ruta de acceso completa toohello clúster raíz.
     >
 
 ## <a name="access-data-lake-store-by-using-hdfs-commands"></a>Acceso a Data Lake Store mediante comandos de HDFS
-Después de configurar el clúster de HDInsight para que use Data Lake Store, puede usar los comandos de shell del sistema de archivos distribuido de hadoop (HDFS) para acceder al almacén.
+Después de haber configurado el almacén de hello HDInsight clúster toouse Data Lake, puede usar almacén de sistema de archivos distribuido de Hadoop (HDFS) shell comandos tooaccess Hola.
 
-En esta sección, realiza una conexión SSH en el clúster de HDInsight en Linux que creó y luego ejecuta los comandos de HDFS.
+En esta sección, se realiza una conexión SSH en hello clúster de HDInsight Linux que ha creado y, a continuación, ejecutar comandos HDFS Hola.
 
-* Si usa un cliente Windows para realizar una conexión SSH en el clúster, consulte [Uso de SSH con clústeres de HDInsight desde PuTTY en Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
-* Si usa un cliente Linux para realizar una conexión SSH en el clúster, consulte [Uso de SSH con HDInsight (Hadoop) desde Bash en Windows 10, Linux, Unix u OS X](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* Si usas un toomake de cliente de Windows una conexión SSH en el clúster hello, consulte [utilizar SSH con Linux-based Hadoop en HDInsight de Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* Si usas un toomake de cliente de Linux una conexión SSH en el clúster hello, consulte [utilizar SSH con Linux-based Hadoop en HDInsight de Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Después de realizar la conexión, pasa a enumerar los archivos de Data Lake Store mediante el siguiente comando de sistema de archivos de HDFS.
+Una vez que haya realizado la conexión de hello, enumerar archivos de hello en el almacén de Data Lake mediante Hola siguiente comando de sistema de archivo HDFS.
 
     hdfs dfs -ls adl:///
 
-También puede usar el comando `hdfs dfs -put` para cargar algunos archivos en Data Lake Store y después usar `hdfs dfs -ls` para comprobar si los archivos se cargaron correctamente.
+También puede usar hello `hdfs dfs -put` comando tooupload un almacén de archivos tooData Lake y, a continuación, usar `hdfs dfs -ls` tooverify si los archivos de saludo se cargaron correctamente.
 
-## <a name="see-also"></a>Consulte también
-* [Azure Portal: Creación de un clúster de HDInsight para usar Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+## <a name="see-also"></a>Otras referencias
+* [Portal de Azure: crear un toouse de clúster de HDInsight almacén de Data Lake](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

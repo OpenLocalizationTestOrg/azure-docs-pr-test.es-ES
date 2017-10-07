@@ -1,5 +1,5 @@
 ---
-title: "Azure Mobile Engagement - Guía de introducción con prácticas recomendadas"
+title: aaaAzure Mobile Engagement Getting Started Guide con los procedimientos recomendados
 description: "Guía de introducción para Azure Mobile Engagement y prácticas recomendadas para la incorporación"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3f81c34fe74f741a60ca511caa55c312af73b1c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement - Guía de introducción con prácticas recomendadas
 ## <a name="overview"></a>Información general
-**La pantalla del móvil es un espacio repleto:** en 2013, un estudio reveló que un dispositivo móvil medio tenía 27 aplicaciones instaladas. Los usuarios solían pasar normalmente unas 30 horas al mes en sus aplicaciones. La mayor parte de este tiempo se dedicaba a las redes sociales y a los juegos (unas 20 horas). En 2014, el mercado de Android tenía alrededor de 1,5 millones de aplicaciones entre las que podían elegir los usuarios. La tienda de Apple contenía aproximadamente 1,2 millones de aplicaciones. El uso de aplicaciones móviles sigue aumentando a medida que los desarrolladores compiten en este mercado en expansión. 
+**pantalla de bienvenida móvil es un espacio muy atestado:** en 2013, se encuentra un estudio de dispositivos móviles promedio de hello tenían 27 aplicaciones instaladas. Los usuarios solían pasar normalmente unas 30 horas al mes en sus aplicaciones. La mayor parte de este tiempo se dedicaba a las redes sociales y a los juegos (unas 20 horas). 2014, Hola mercado Android tenía alrededor de 1,5 millones de aplicaciones para toochoose a los usuarios de. tienda de Apple Hola contenía aproximadamente 1,2 millones aplicaciones. El uso de aplicaciones móviles sigue aumentando a medida que los desarrolladores compiten en este mercado en expansión. 
 
-El usuario de móvil medio instalará y desinstalará aplicaciones con mucha frecuencia en función de sus intereses y experiencias en las aplicaciones. Para determinar el éxito de una aplicación, resulta crucial saber algo más que cuántos usuarios van a instalar la aplicación. Es importante conocer la utilidad de la aplicación y si esa tendencia de uso está cambiando. Las siguientes preguntas son fundamentales:
+usuario promedio móvil de Hello van a instalar y desinstalar aplicaciones con frecuencia según cambiar intereses y las experiencias de aplicación. Éxito de hello toodetermine de orden de una aplicación resulta vital tooknow más que simplemente cuántos usuarios instalan la aplicación. Es importante tooknow cómo útil es la aplicación y si ese tendencias de uso está cambiando. Hola siguientes preguntas es importante:
 
-* ¿Están los usuarios empezando a pensar que su aplicación no es interesante o está obsoleta? 
+* ¿Los usuarios empiezan toofind la aplicación no interesa u obsoleta? 
 * ¿Cuántos usuarios han dejado de usar su aplicación? 
 * ¿Está la tendencia de adquisición de la aplicación subiendo o bajando?
-* ¿Pueden los usuarios completar o no los flujos de trabajo debido a problemas con la aplicación o por falta de interés? 
-* ¿Puede mantener la utilidad y pertinencia de su aplicación agregando nuevo contenido para su base de usuarios? 
-* ¿Este nuevo contenido será el mismo para todos los usuarios o se centrará en segmentos de usuario según el comportamiento de la aplicación? 
+* ¿No se usuarios superan los flujos de trabajo toocomplete debido a problemas con la aplicación hello o falta de interés? 
+* ¿Puede mantener la aplicación relevante y útil mediante la aplicación de usuario de nueva tooyour contenido base? 
+* ¿Este contenido nuevo sería Hola igual para todos los usuarios o tiene el foco en segmentos de usuario basados en el comportamiento de la aplicación? 
 
-Respuestas a preguntas similares a estas pueden ayudar a ampliar la duración y los ingresos de su aplicación. También pueden ayudarle a definir y mantener su base de usuarios. 
+Respuestas tooquestions similar toothese podría ayudar a prolongar la vida hello y los ingresos de la aplicación. También pueden ayudarle a definir y mantener su base de usuarios. 
 
-Las aplicaciones relacionadas con multimedia suelen tener algunos de los máximos índices de retención entre los usuarios. Una de las razones de esto es que se proporcionan constantemente nuevos contenidos a los usuarios. La adopción temprana de las notificaciones push útiles dirigidas a un segmento de usuarios suele tener un gran impacto en la retención de la aplicación. 
+Medios relacionados con las aplicaciones suelen toohave algunos de retención máximo de hello entre usuarios. Una razón para esto es que están proporcionando constantemente toousers contenido nuevo. Adopción temprana de las notificaciones de inserción útil dirige el segmento de usuario tooa tiende toohave un gran impacto en la retención de la aplicación. 
 
-El programa Azure Mobile Engagement está diseñado para ayudar a aumentar la vida y la retención de la aplicación al proporcionar un método para recopilar y analizar información detallada sobre el uso de la aplicación. Le permitirá clasificar su base de usuarios en función del comportamiento y crear campañas concretas para entregar notificaciones push y mensajes de la aplicación para segmentos de usuarios identificados. Los indicadores clave de rendimiento (KPI) miden la actividad de los usuarios en los distintos aspectos de la aplicación. Azure Mobile Engagement proporciona los métodos que necesita para determinar estos KPI. Ayuda a aumentar la rentabilidad de la inversión (ROI) al proporcionar la infraestructura que necesita para aumentar el compromiso con la aplicación móvil. 
+programa de Azure Mobile Engagement Hello es toohelp diseñada ampliar la vida de Hola y retención de la aplicación proporcionando un método toogather y analizar información detallada sobre el uso de saludo de la aplicación. Le ayudará a clasificar su base de usuarios según toobehavior y crear campañas tiene el foco para entregar notificaciones de inserción y los mensajes de aplicación tooidentified segmentos de usuarios. Los indicadores clave de rendimiento (KPI) miden la actividad de los usuarios en los distintos aspectos de la aplicación. Azure Mobile Engagement proporciona métodos de hello necesita toodetermine estos KPI. Ayuda a aumentar Hola retorno de la inversión (ROI) al proporcionar la infraestructura de hello necesita tooincrease interacción con la aplicación móvil. 
 
-Para sacar el máximo partido de Azure Mobile Engagement, debe comenzar con un plan de compromiso bien diseñado. El plan le ayudará a identificar los datos pormenorizados que necesita para poder segmentar la base de usuarios. Esto puede basarse en el comportamiento y las experiencias de la aplicación. Para que el plan sea correcto, es recomendable definir claramente los KPI que medirán los objetivos de la aplicación. Con unos indicadores de rendimiento claramente definidos, puede insertar fácilmente la lógica necesaria en la aplicación para recopilar datos específicos que usará para analizar y evaluar los KPI. Este tema es una guía de prácticas recomendadas para definir los KPI que va a utilizar con el plan de compromiso. 
+Hola tooget de orden más fuera de Azure Mobile Engagement, deberá toostart con un plan de contratación bien diseñada. El plan ayudará a identificar deberá toobe puede toosegment el usuario de base de datos pormenorizados Hola. Esto puede basarse en el comportamiento y las experiencias de la aplicación. En orden para su toobe de plan correcta, es un tooclearly de práctica recomendada definir Hola KPI que mida objetivos de saludo de la aplicación. Con indicadores de rendimiento desactive definidos, puede insertar fácilmente lógica necesaria hello en sus toocollect bien específica datos de la aplicación que tendrá que usar tooanalyze y evaluar los KPI. Este tema es una guía de prácticas recomendadas para definir el KPI de Hola que va a utilizar con el plan de contratación. 
 
-## <a name="step-1-define-your-kpis-to-fit-the-bet-model"></a>Paso 1: Definición de los KPI para que se ajusten al modelo BET
-Definir correctamente los KPI puede ser una tarea difícil de realizar. Las aplicaciones diseñadas para diferentes sectores tienen sus propias características y objetivos. Esto tiende a confundir el enfoque. Para evitar esta situación, hay que clasificar los objetivos y los KPI en tres categorías principales: **Negocio**, **Compromiso** y **Técnico**. Esto es lo que denominamos **modelo BET**.
+## <a name="step-1-define-your-kpis-toofit-hello-bet-model"></a>Paso 1: Definir el modelo de opción de KPI toofit Hola
+Definir correctamente los KPI puede ser una tarea difícil toocomplete. Las aplicaciones diseñadas para diferentes sectores tienen sus propias características y objetivos. Esto puede suelen tooconfuse el enfoque. toohelp evitar esto, los objetivos y los KPI debe clasificarse en tres categorías principales: **Business**, **interacción**, y **técnica**. Esto es lo que llamamos hello **modelo PROBABLES**.
 
-Un buen plan puede tener objetivos con KPI que miden los éxitos en cada una de las siguientes categorías del modelo BET.
+Un buen plan puede tener objetivos con los KPI de Hola que miden las operaciones correctas de hello en cada uno de hello siguientes categorías de modelo de opción de Hola.
 
 #### <a name="business-kpis"></a>KPI de negocio
-Los KPI de negocio son los más fáciles de crear. Probablemente ya los había definido de algún modo al planear su aplicación móvil. Estos KPI ayudan en general a medir los ingresos y la rentabilidad de la inversión de la aplicación. En la lista siguiente se proporcionan algunos ejemplos de KPI de negocio que le pueden ayudar a definir los indicadores de rendimiento:
+KPI comerciales deben hello más fácil parte toobuild. Probablemente ya los había definido de algún modo al planear su aplicación móvil. Estos KPI ayudan en general a medir los ingresos y la rentabilidad de la inversión de la aplicación. Hello siguiente lista proporciona algunos ejemplos de KPI de negocio que puede orientarse al definir los indicadores de rendimiento:
 
 * KPI de negocio de medios
   * Número de anuncios pulsados
@@ -70,177 +70,177 @@ Los KPI de negocio son los más fáciles de crear. Probablemente ya los había d
   * Alertas pulsadas o activadas       
 
 #### <a name="engagement-kpis"></a>KPI de compromiso
-Un KPI de compromiso es un indicador de rendimiento que mide el nivel de compromiso de los usuarios. Las tendencias en este campo ayudan a determinar el período de retención de la aplicación. Estos son algunos indicadores de rendimiento de ejemplo para este tipo de KPI:
+Un KPI de contratación es un rendimiento indicador toomeasure Hola la participación de los usuarios. Las tendencias en esta área ayudan a determinar retención hello de la aplicación. Estos son algunos indicadores de rendimiento de ejemplo para este tipo de KPI:
 
-* Usuarios activos en los últimos siete días
-* Número de usuarios inactivos en los últimos siete días
-* Número de usuarios que no usaron la aplicación en 30 días  
+* Usuarios activos en hello últimos 7 días
+* Recuento de usuarios inactivos de hello últimos 7 días
+* Recuento de usuarios que no se han usado la aplicación hello en 30 días  
 
-Algunos factores externos obvios pueden influir en los indicadores en este campo. Por ejemplo, puede pensar que un dispositivo móvil está con el usuario en todo momento. Esto puede ser o no verdad. Una aplicación de juegos tiende a usarse más en vacaciones cuando un jugador tiene más tiempo de jugar porque está fuera del trabajo o de la escuela.   
+Algunos factores externos obvios pueden influir en los indicadores en este campo. Por ejemplo, puede considerar un toobe de dispositivos móviles con un usuario en todo momento. Esto puede ser o no verdad. Una aplicación de juegos podría suelen toohave un mayor uso alrededor de las vacaciones cuando un jugador puede que se reproduzca más al trabajo o fuera del centro educativo.   
 
-Unos KPI bien definidos en esta categoría deberían ayudarle a medir la relación entre la aplicación y sus clientes.
+Bien definida en esta categoría, los KPI le ayudarán a medir la relación de hello entre la aplicación y sus clientes.
 
 #### <a name="technical-kpis"></a>KPI técnicos
-Los indicadores de rendimiento de esta categoría le ayudan a determinar si la aplicación se está comportando correctamente, se cuelga o se bloquea. Estos indicadores pueden medir el estado de la aplicación y determinar los problemas de uso que pueden impedir su uso. La información recopilada para esta categoría también puede contener información de rendimiento de cierta importancia para los equipos de marketing. Los datos también pueden ser útiles para solucionar problemas de TI y ayudan a que los equipos de soporte técnico identifiquen errores no notificados. 
+Los indicadores de rendimiento de esta categoría le ayudan a determinar si la aplicación se está comportando correctamente, se cuelga o se bloquea. Pueden medir Hola estado de la aplicación y determinar los problemas de facilidad de uso que pueden impedir que los usuarios utilizando la aplicación hello estos indicadores. Información recopilada para esta categoría también podría contener información sobre el rendimiento sería equipos toomarketing relevante. datos de Hello también pudieron ser útiles para solucionar problemas de TI y compatibilidad con los equipos toohelp identificar errores no notificados. 
 
 A continuación se muestran algunos ejemplos de KPI técnicos:
 
 * Recuento e información de excepciones controladas o no controladas 
 * Marca de tiempo del último bloqueo
 * Último botón pulsado o última página visitada
-* Uso de memoria de la aplicación
+* Uso de memoria de la aplicación hello
 * Velocidad de fotogramas de la aplicación
-* Versión del sistema operativo en el que se está ejecutando la aplicación
+* Versión del SO Hola aplicación se ejecuta en
 * Versión de la aplicación
 
-Definir estos KPI ayuda a medir el rendimiento de la aplicación y a detectar posibles errores. Este indicadores deberían ayudar a reducir el tiempo que necesita para ofrecer una corrección a sus clientes. También pueden ayudar a definir un segmento de usuarios que han tenido problemas específicos. Puede usar esta segmentación de usuarios para crear campañas y proporcionar notificaciones sobre posibles promociones y correcciones disponibles que ayuden a recuperar la satisfacción del cliente. 
+Definir estos toohelp KPI miden el rendimiento aplicación y detectar posibles errores. Este indicadores deben ayudar a reducir el tiempo de hello que necesita toodeliver una corrección para sus clientes. También pueden ayudar a definir un segmento de usuarios que han tenido problemas específicos. Puede usar que segmentación toocreate campañas toodeliver las notificaciones de usuario con respecto a las revisiones disponibles y posibles toohelp promociones recuperación la satisfacción del cliente. 
 
 #### <a name="playbook-exercise-1-create-your-kpi-dashboard"></a>Ejercicio 1 del cuaderno de estrategias: Creación del panel de KPI
-Al definir la estrategia de marketing, los KPI deben presentar una vista para cada uno de los objetivos principales. Los puntos de datos deben estar claramente definidos, ya que le permitirán recopilar información fundamental para supervisar la aplicación y el comportamiento del usuario final.
+Al definir la estrategia de marketing, los KPI deben presentar una vista para cada uno de los objetivos principales. Deben ser los puntos de datos definida claramente que le permitirá toomonitor información vital toocollect su comportamiento hello y aplicación de usuario final de Hola.
 
-Cree un panel de KPI que contenga la siguiente información
+Crear un panel KPI que contiene Hola debajo de información
 
-1. ¿Cuáles son los KPI para la aplicación?
-2. ¿Qué puntos de datos voy a usar para representar cada KPI?
+1. ¿Qué hello KPI para la aplicación hello?
+2. ¿Los datos que apunta will utilizo toorepresent cada KPI?
 3. ¿Dónde se encuentran estos datos para mi aplicación (es decir, pantalla, configuración, sistema...)?
 4. ¿Se puede reproducir una secuencia de compromiso para este KPI?
 
-Puede usar la hoja de cálculo **KPI Builder** (Generador de KPI) que encontrará en [Media Playbook Template][Media Playbook link] (Plantilla del cuaderno de estrategias de medios) para ver ejemplos y recomendaciones.
+Puede usar hello **KPI generador** hoja de cálculo en nuestra [la plantilla de Guía multimedia] [ Media Playbook link] para ejemplos e instrucciones.
 
 ## <a name="step-2-your-engagement-program"></a>Paso 2: El programa de compromiso
-Un gran programa de compromiso de móviles debe considerarse como un componente clave de la aplicación. Debe incluir indudablemente un magnífico programa de bienvenida que se ejecute para un usuario durante los primeros días de uso de una aplicación. Suele tener un efecto muy positivo en el compromiso y la retención de la aplicación. Los estudios demuestran que la mayoría de los usuarios dejan de usar una aplicación pocos días después de su instalación. Desea esforzarse por alcanzar o superar el interés ante las expectativas del cliente desde el principio mientras el usuario sigue aún centrado en la aplicación. Asegúrese de que presenta el valor y las ventajas más importantes de la aplicación a los clientes. 
+Un gran programa de compromiso de móviles debe considerarse como un componente clave de la aplicación. Sin duda debe incluir un programa Bienvenido excelente que se ejecuta para un usuario durante el saludo primeros días de uso de la aplicación. Esto suele toohave un efecto muy positivo de contratación y retención de la aplicación. Los estudios han demostrado que mayoría Hola de detención de los usuarios mediante un Hola aplicación primeros días después de la instalación. No se desea toostrive toomeet o exceder interés determinante expectativa del cliente al principio mientras usuario Hola todavía se centra en la aplicación. Asegúrese de que presente clave-valor hello y las ventajas de la aplicación tooyour clientes. 
 
 ![](./media/mobile-engagement-getting-started-best-practices/unsegmented-push-notifications.png)
 
-Las notificaciones push son la mejor forma de lograr un compromiso temprano por parte de los usuarios de dispositivos móviles. Sin embargo, se debe tener mucho cuidado al segmentar los usuarios para las notificaciones push. Porque si un usuario se siente como si recibiera correo no deseado o notificaciones sin interés, puede tener graves consecuencias. En unos pocos clics, un usuario puede borrar la aplicación para no volver a ella jamás. El usuario debe recibir un valor muy personalizado de la aplicación en lugar de un correo no deseado genérico.
+Notificaciones de inserción son Hola mejor enfoque tooearly las contrataciones con usuarios de dispositivos móviles. Sin embargo, se debe tener mucho cuidado al segmentar los usuarios para las notificaciones push. Porque si un usuario se siente como si recibiera correo no deseado o notificaciones sin interés, puede tener graves consecuencias. En pocos clics, un usuario puede eliminar la aplicación nunca tooreturn. usuario de Hello debería recibir muy personalizada valor en la aplicación en lugar de spam genérico.
 
-Una vez que los usuarios están comprometidos activamente, el programa de compromiso puede ayudar a controlar otros aspectos de la aplicación.
+Una vez que los usuarios están comprometidos activamente, a continuación, el programa de interacción puede ayudar a otros aspectos de la aplicación hello.
 
-Por ejemplo, puede configurar una campaña que solicite a los usuarios activos que califiquen la aplicación. Puesto que este segmento de usuarios es el más activo y tiene la mayor experiencia con la aplicación, puede esperar que su evaluación sea muy precisa. Una vez que tenga una evaluación de la aplicación alta, esto puede ayudarle a impulsar la descarga orgánica de la aplicación, así como a reducir los costos de adquisición de nuevos clientes.
+Por ejemplo, podría configurar una campaña que solicita los usuarios activos toorate la aplicación. Dado que este segmento de usuario es hello más activo y tiene Hola mayoría experiencia con la aplicación, se podría esperar toogive Hola clasificación sean más preciso. Una vez que tenga una clasificación de aplicación alta, puede ayudar a aumentar descarga orgánicas de saludo de la aplicación y reducir los costos de adquisición del cliente nuevo.
 
 #### <a name="engagement-sequence"></a>Secuencia de compromiso
-Un programa de compromiso global incluye distintas secuencias de compromiso. Cada secuencia está dirigida a alcanzar varios objetivos.
+Un programa de compromiso global incluye distintas secuencias de compromiso. Cada secuencia tiene como objetivo tooreach varios objetivos.
 
 ###### <a name="life-push-sequence"></a>Secuencia push de ciclo de vida
-Los objetivos de una secuencia push de ciclo de vida son diferentes en función del ciclo de vida del compromiso del usuario con la aplicación. Un usuario determinado puede ser nuevo, inactivo o muy activo. En diferentes etapas del ciclo de vida de un compromiso, los usuarios pueden beneficiarse de contenido nuevo en forma de sugerencias o vínculos a la documentación. 
+objetivos de Hola para una secuencia de inserción del vida son diferentes según el ciclo de vida de hello de interacción del usuario de hello con la aplicación hello. Un usuario determinado puede ser nuevo, inactivo o muy activo. En distintas fases del ciclo de vida de una interacción, los usuarios pueden beneficiarse de su contenido nuevo en forma de Hola de toodocumentation sugerencias o vínculos. 
 
-Por ejemplo un nuevo usuario necesita ayuda para orientarse hacia una aplicación o beneficiarse de un nuevo incentivo de usuario similar al siguiente la primera vez que inicie la aplicación...
+Por ejemplo un nuevo usuario necesita ayudar a obtener tooan orientado a aplicaciones o beneficiarse de un nuevo toohello similar estímulo de usuario después de hello primera vez que inician la aplicación hello...
 
-*"¡Nos alegramos de verle por aquí! No se olvide de iniciar sesión para obtener el primer mes gratis."*
+*"Toohave placer incorporarlo! Recuerde toologin tooget el mes 1 libre! "*
 
 ###### <a name="behavioral-push-sequence"></a>Secuencia push de comportamiento
-La secuencia push de comportamiento tiene por objetivo aumentar el uso en función del comportamiento de los usuarios recopilado para la aplicación.  
+secuencia de inserción de comportamiento de Hello tiene como objetivo uso tooincrease basado en el comportamiento de usuario recopilado para la aplicación hello.  
 
-Por ejemplo, un usuario muy activo de una aplicación de fútbol de fantasía puede beneficiarse de la siguiente notificación push...
+Por ejemplo, un usuario de una aplicación de fútbol fantasía muy activo podría beneficiarse de está ocupado con hello siguientes a la notificación de inserción...
 
-*"Juan, ¡eres un verdadero hincha del fútbol! Inicie sesión en nuestra sección Liga Nacional y obtenga un acceso gratuito a la Liga de Campeones."*
+*"Juan, ¡eres un verdadero hincha del fútbol! Inicie sesión en la sección de la NFL tooour y ganar acceso gratuito toohello SuperBowl!"*
 
 ###### <a name="alerting-push-sequence"></a>Secuencia push de alertas
-Los usuarios sabrán apreciar las noticias relevantes de sus intereses. Una secuencia push de alertas mejora el compromiso enviando alertas basadas en los intereses que un usuario demuestra tener claramente. Esto puede ser explícito cuando un usuario selecciona sus propios intereses en la aplicación. Puede también determinarse implícitamente basándose en los datos recopilados durante la interacción del usuario con la aplicación.
+Los usuarios sabrán apreciar las noticias relevantes de sus intereses. Una secuencia push de alertas mejora el compromiso enviando alertas basadas en los intereses que un usuario demuestra tener claramente. Podría tratarse de explícita cuando un usuario selecciona sus propios intereses en aplicación hello. Puede también determinarse implícitamente en función de los datos recopilados durante la interacción del usuario con la aplicación hello.
 
-Por ejemplo, el usuario de una aplicación de comercio electrónico puede comprar con regularidad una marca específica de café que usted captó con un KPI de negocio. La alerta siguiente puede mejorar el compromiso de este usuario con la aplicación.
+Por ejemplo, usuario de Hola de una aplicación de comercio electrónico con regularidad puede comprar una marca específica de café que ha capturado con un negocio KPI. Hello alerta siguiente puede mejorar la interacción del usuario con la aplicación hello.
 
-*"Hola, María, una de sus marcas favoritas de café estará en venta con un 25% de descuento la primera semana de septiembre de 2015. Le apreciamos mucho como cliente y queríamos asegurarnos de que usted lo supiera."*
+*"Hola Wes, uno de sus marcas favoritas de café estarán en venta 25% Hola primera semana de septiembre de 2015. Le agradecemos como un cliente y deseaba toomake que fuera compatible con".*
 
 ###### <a name="rentention-push-sequence"></a>Secuencia push de retención
-El objetivo de esta secuencia es retener a los usuarios mediante campañas de notificación push repetitivas para impulsar un hábito regular de compromiso con la aplicación. Esto puede ayudar a aumentar la retención de la aplicación si el usuario aprecia las interacciones. 
+Esta secuencia objetivos tooretain a los usuarios mediante una toohelp de las campañas de notificación de inserción repetitivos unidad un hábito regular de póngase en contacto con la aplicación hello. Esto puede ayudar a aumentar la retención de aplicación si el usuario de hello disfruta interacciones Hola. 
 
-Por ejemplo, el usuario de una aplicación relacionada con el deporte puede recibir la siguiente notificación push semanalmente basándose en los equipos favoritos del usuario:
+Por ejemplo, el usuario Hola de una aplicación relacionados de deportes recibe Hola siguientes a la notificación de inserción semanal en función de los equipos favoritos del usuario de hello:
 
-*"Para poder ganar 200 puntos, vote si el Real Madrid ganará el partido contra el FC Barcelona esta semana."*
+*"Para una toowin posibilidad de 200 puntos, vaya voto si Hola New York Yankees prevalecerá su juego esta semana en Toronto azul Jays!"*
 
-#### <a name="the-3w-approach"></a>Enfoque de 3W
-Dominar las distintas secuencias push le ayudará a comprometerse con los usuarios finales. Sin embargo, deberá usar el enfoque de las 3 W para personalizar las notificaciones. El enfoque de las 3 W debe abordar las preguntas Quién, Qué y Cuándo (Who, What y When en inglés) para cada notificación. Si responde claramente a estas tres preguntas, sus notificaciones estarán correctamente enfocadas hacia el compromiso.
+#### <a name="hello-3w-approach"></a>enfoque de Hello 3 w
+Controla las secuencias de inserción diferentes Hola le ayudará a ponerse en contacto con los usuarios finales. Sin embargo, todavía necesita toouse Hola 3 w enfoque para personalizar las notificaciones. Hello 3 w enfoque debe abordar que, ¿qué sucede y cuándo de cada notificación. Si responde claramente a estas tres preguntas, sus notificaciones estarán correctamente enfocadas hacia el compromiso.
 
 ![](./media/mobile-engagement-getting-started-best-practices/who-what-when.png)
 
-###### <a name="who-the-user-segment-that-will-receive-messages"></a>Quién: segmento de usuarios que recibirá los mensajes
-Las notificaciones push a los usuarios deben considerarse como un canal de comunicación muy confidencial. Asegúrese de que las notificaciones que desea enviar a un segmento de usuarios estén bien enfocadas hacia los intereses de ese segmento de usuarios. Es muy probable que una notificación mal dirigida tenga un efecto negativo en un usuario. Puede considerarla como correo no deseado y llevar a la desinstalación de la aplicación. 
+###### <a name="who-hello-user-segment-that-will-receive-messages"></a>Quién: Hola segmento de usuario que recibirá mensajes
+Los usuarios de tooyour de notificaciones de inserción se debe considerar un canal de comunicación muy sensibles. Asegúrese de que las notificaciones de hello tienen como objetivo de segmento de usuario de toosend tooa son intereses toohello bien con ámbito de ese segmento de usuario. Una notificación incorrectamente enrutada es toohave es muy probable que un efecto negativo en un usuario. Puede considerar spam a la aplicación tooyour que se están desinstalando. 
 
-Use una combinación de criterios técnicos y de comportamiento específicos al definir los segmentos de usuarios que van a recibir las notificaciones. Un ejemplo sencillo al definir un segmento de usuarios puede ser parecido a la siguiente declaración:
+Use una combinación de criterios técnicos y de comportamiento específicos al definir los segmentos de usuarios que van a recibir las notificaciones. Un ejemplo sencillo definir un segmento de usuario podría ser similar toohello siguiente instrucción:
 
-"Todos los usuarios que iniciaron una aplicación móvil por primera vez hace tres días, visitaron la página de inicio de sesión dos veces sin terminar de completar el inicio de sesión".
+"Todos los usuarios que inicien Hola una aplicación móvil para hello primera vez hace tres días y han visitado la página de inicio de sesión de hello dos veces sin completarla realmente un inicio de sesión".
 
-Esta declaración ayuda a identificar los datos que puede necesitar recopilar para dar apoyo a un escenario específico.
+Esa instrucción ayuda a identificar datos Hola necesitaría toocollect toosupport un escenario concreto.
 
-###### <a name="what-the-message-that-you-will-send"></a>Qué: el mensaje que se va a enviar
+###### <a name="what-hello-message-that-you-will-send"></a>¿Qué: mensaje de Hola que vaya a enviar
 **Tono**
 
-En sus compromisos, use un tono que sea adecuado para los usuarios segmentados. Esto es, indudablemente, una estupenda forma para conectar con los usuarios finales y promover el interés de un usuario por la aplicación. 
+En sus compromisos, use un tono que sea adecuado para los usuarios segmentados. Esto es definitivamente un tooconnect buena forma con los usuarios finales y promueva interés de un usuario de la aplicación. 
 
 **Redireccionamiento**
 
-Una notificación push puede usarse para algo más que para la apertura de la aplicación. Si el mensaje de notificación proporciona un contexto como noticias de difusión o la promoción de un producto, esta notificación puede tener un vínculo profundo directo con el contenido preciso de la aplicación. Para ello, debe crear un esquema de direcciones URL para que la aplicación pueda administrar el redireccionamiento. Cuando trabaja en sus secuencias de compromiso, esto es un paso importante del que no se debe olvidar.
+Una notificación de inserción puede usarse para abrir más de una aplicación Hola. Si hello mensaje de notificación proporciona un contexto, como noticias de difusión o la promoción de un producto, este vínculo profundo de mayo de notificación directamente toohello derecha el contenido dentro de la aplicación hello. toosupport esto, debe crear una dirección URL de aplicación de esquema toolet hello administren la redirección de Hola. Cuando trabaja en sus secuencias de compromiso, esto es un paso importante del que no se debe olvidar.
 
-También es posible administrar el redireccionamiento para otros sistemas. Por ejemplo, con una dirección URL de acción es posible redirigir a los usuarios finales a muchos otros sistemas, incluidos los siguientes:
+También es posible administrar el redireccionamiento para otros sistemas. Por ejemplo, es posible tooredirect toomany de los usuarios finales con una dirección URL de acción de otros sistemas incluidos Hola siguientes:
 
 * Un sitio web
 * Un buzón de correo electrónico con mensajes ya configurados
 * Un buzón de SMS
 * Un servicio de marcado telefónico
-* Directamente al almacén de la aplicación para la evaluación de la aplicación. 
+* Directamente toohello tienda de aplicaciones para la aplicación hello de clasificación. 
 
-Esto ofrece muchas oportunidades para aumentar el compromiso de los usuarios finales y crear reglas automáticas para mejorar el rendimiento.
+Esto proporciona numerosas oportunidades de tooengage los usuarios finales y crear las reglas automáticas de rendimiento tooimprove.
 
 **Formato y contenido**
 
 Hay distintos tipos y formatos de notificación push:
 
-1. **Anuncios** : permite enviar mensajes publicitarios a los usuarios en diferentes momentos (fuera de la aplicación, en la aplicación o en cualquier momento).
-2. **Sondeos** : permite recopilar información de los usuarios finales mediante el planteamiento de preguntas. Estas respuestas están luego disponibles al crear criterios para los usuarios finales de destino.
-3. **Inserciones de datos** : permite enviar un archivo de datos binario o Base 64 para actualizar la aplicación. La información contenida en una inserción de datos se envía a la aplicación para personalizar la experiencia de los usuarios en la aplicación. La aplicación debe estar diseñada para admitir los datos de una inserción de datos.
-4. **Iconos (solo en Windows Phone)** : permite usar el servicio de notificaciones push de Microsoft (MPNS) para enviar notificaciones push nativas que contienen datos XML (admitido a partir de SDK versión 0.9.0. La carga final de los iconos no puede superar los 32 kilobytes). El mensaje aparece directamente en el icono del panel.
-5. **Vista web** : una vista web es una ventana emergente con contenido web. Este elemento emergente aparece cuando el usuario final hace clic en la notificación de inserción. Una vista web le permite interactuar más con el usuario final.
+1. **Anuncios** : le permite toosend publicidad mensajes toousers en diferentes momentos (fuera de la aplicación, en la aplicación o en cualquier momento).
+2. **Sondeos** : habilitado toogather información de los usuarios finales cuando les pregunta preguntas. Las respuestas, a continuación, están disponibles cuando se crean criterios tootarget los usuarios finales.
+3. **Inserciones de datos** : le permite toosend un archivo binario o base64 datos archivo tooupdate aplicación hello. información de Hello contenida en una inserción de datos se envía tooyour aplicación toopersonalize Hola experiencia de los usuarios de la aplicación. La aplicación necesita toobe diseñado toosupport Hola datos en una inserción de datos.
+4. **Iconos (solo Windows Phone)** : habilitado toouse Hola servicio de notificaciones de inserción de Microsoft (MPNS) toosend notificación de inserción nativa que contiene datos XML (admitidos desde el SDK versión 0.9.0. carga final de Hello en los mosaicos no puede superar los 32 kilobytes.). mensaje de bienvenida aparece directamente en el icono de la placa.
+5. **Vista web** : una vista web es una ventana emergente con contenido web. Este elemento emergente aparece cuando se hace clic en para el usuario final de hello en la notificación de inserción de Hola. Una vista web le permite toohave más interacción con el usuario final de Hola.
 
 > [!NOTE]
-> Asegúrese de que el contenido que se va a enviar como notificación push cumple con las directrices de la plataforma correspondiente (iOS, Android, Windows) para desarrollar aplicaciones y enviar notificaciones push.
+> Asegúrese de que va a enviar como notificaciones de inserción de contenido de Hola sea compatible con plataforma respectiva hello (iOS, Android, Windows) directrices para el desarrollo de aplicaciones y enviar notificaciones de inserción.
 > 
 > 
 
-###### <a name="when-the-timing-of-your-campaign"></a>Cuándo: el plazo de la campaña.
-¿Cuándo es el mejor momento para activar una campaña que desencadena notificaciones push? ¿Debe ser manual o automática? ¿Debe ser periódica? Determinar la frecuencia o el momento adecuado es esencial para aumentar el compromiso de los usuarios y obtener los mejores resultados. Para cada escenario y secuencia de compromiso, debe especificar cuál será el mejor momento para enviar notificaciones push. Estos son algunos ejemplos:
+###### <a name="when-hello-timing-of-your-campaign"></a>Cuándo: Hola tiempo de la campaña
+¿Cuándo es Hola mejor tiempo tooactivate una campaña desencadenar notificaciones de inserción? ¿Debe ser manual o automática? ¿Debe ser periódica? Determinantes momento oportuno de Hola o frecuencia es esencial tooengage a los usuarios obtener los mejores resultados de Hola. Para cada secuencia de interacciones y escenario, debe especificar cuándo estará Hola mejor tiempo toosend notificaciones de inserción. Estos son algunos ejemplos:
 
 ![](./media/mobile-engagement-getting-started-best-practices/campaign-timing-examples.png)
 
 Si va a enviar a diario muchas notificaciones, debe tener en cuenta que los usuarios pueden percibir las comunicaciones como correo no deseado. 
 
-Azure Mobile Engagement proporciona dos maneras de intentar evitar que las comunicaciones se perciban como correo no deseado. En primer lugar, use una segmentación concreta para asegurarse de que no se dirige a los mismos usuarios. Además, Azure Mobile Engagement proporciona una característica de "cuota". Esta característica puede limitar las notificaciones enviadas para una campaña. Por ejemplo, establecer una cuota predeterminada en 5 por semana garantizará que un usuario incluido como parte del segmento de usuarios de una campaña no reciba más de cinco notificaciones en esa semana.
+Azure Mobile Engagement proporciona dos maneras de toohelp evitar las comunicaciones que se percibe como correo no deseado. En primer lugar, utilice concretos segmentación tooensure hace Hola de destino no mismos usuarios. Además, Azure Mobile Engagement proporciona una característica de "cuota". Esta característica puede limitar las notificaciones enviadas para una campaña. Por ejemplo, establecer una too5 de cuota predeterminados por semana garantizará que un usuario que se incluye como parte del segmento de usuario de campaña de hello recibe notificaciones de no más de 5 para esa semana.
 
 #### <a name="playbook-exercise-2-create-your-engagement-program"></a>Ejercicio 2 del cuaderno de estrategias: Creación del programa de compromiso
-Dedique un tiempo a resumir los objetivos y a definir las campañas que piensa desarrollar con secuencias específicas. Asegúrese de aplicar el enfoque de las 3 W a las notificaciones de sus campañas. 
+Dedique tiempo resumir los objetivos y la definición de las campañas de hello espera tooplay mediante secuencias específicas. Asegúrese de que las notificaciones de hello 3 w enfoque toohello se aplican en sus campañas. 
 
-Puede usar la hoja de cálculo **Engagement Program** (Programa de compromiso) en [Media Playbook Template][Media Playbook link] (Plantilla del cuaderno de estrategias de medios) para ver ejemplos y recomendaciones.
+Hola de uso **programa interacción** hoja de cálculo de hello [la plantilla de Guía multimedia] [ Media Playbook link] para obtener ejemplos e instrucciones.
 
 ## <a name="step-3-app-integration"></a>Paso 3: Integración de la aplicación
 #### <a name="create-a-tag-plan"></a>Creación de un plan de etiquetas
-Para integrar Azure Mobile Engagement en la aplicación, debe crear un plan de etiquetas. El plan de etiquetas constituye la piedra angular del proyecto. Define la relación entre las especificaciones de marketing, el flujo de trabajo de la aplicación y los datos de etiquetas reales recopilados en la aplicación para medir los KPI. Indica qué análisis podrá ver en el portal. También ayuda a definir segmentos de usuarios y a enviar notificaciones push enfocadas hacia el compromiso de los usuarios finales. Una vez definido el plan de etiquetas, agregar el código para integrarlo en su aplicación es sencillo mediante el SDK de Azure Mobile Engagement.
+toointegrate Azure Mobile Engagement en la aplicación necesitará toocreate un plan de etiqueta. plan de etiqueta de Hello es pilares de hello del proyecto de Hola. Define la relación de hello entre las especificaciones de marketing, flujo de trabajo de Hola de aplicación hello y los datos de etiqueta real Hola recopilados en toomeasure de aplicación Hola KPI. Indica qué análisis, podrá toosee en el portal de Hola. También ayuda a definir segmentos de usuarios y enviar tooengage de notificaciones de inserción tiene el foco de los usuarios finales. Una vez que tenga el plan de la etiqueta de hello definido, agregar toointegrate de código de hello en su aplicación es sencillo con hello Azure Mobile Engagement SDK.
 
-Un plan de etiquetas no debe etiquetarlo todo en una aplicación. Solo debe incluir los datos de etiquetas que forman parte de su estrategia de Mobile Engagement. Esto probablemente variará de una aplicación a otra. [Media Playbook Template][Media Playbook link] (Plantilla del cuaderno de estrategias de medios) proporcionada por Azure Mobile Engagement le ayuda a crear un plan de etiquetas con un método determinado. Use la hoja de cálculo **Tag Plan** (Plan de etiquetas) como guía para crear su plan de etiquetas.
+Un plan de etiquetas no debe etiquetarlo todo en una aplicación. Solo debe incluir los datos de etiquetas que forman parte de su estrategia de Mobile Engagement. Esto probablemente variará de una aplicación a otra. Hola [la plantilla de Guía multimedia] [ Media Playbook link] proporcionado por Azure Mobile Engagement le ayuda a crear un plan de etiqueta con un método determinado. Hola de uso **etiqueta Plan** previsto de la etiqueta de hoja de cálculo como un toobuilding de guía.
 
-Al definir una sección de etiqueta en la hoja de cálculo, sea muy específico. Esto es muy importante para evitar confusiones. Proporcione detalles de cada escenario esperado en el que se enviará cada etiqueta. Incluya el nombre de la actividad en la que está insertada cada etiqueta. Debería estar todo incluido en la parte **Informative** (Informativa) de la hoja de cálculo. La hoja de cálculo Tag Plan (Plan de etiquetas) debe ser la referencia principal para la comprobación de la prueba. 
+Al definir una sección de etiqueta en la hoja de cálculo de hello, ser muy específico. Esto es muy importante tooavoid confusión. Proporcione detalles de cada escenario esperado en el que se enviará cada etiqueta. Incluir nombre de Hola de actividad de hello donde se incrusta cada etiqueta. Esto todos se debe incluir en hello **Informative** forma parte de la hoja de cálculo de Hola. hoja de cálculo de Hello etiqueta plan debe ser referencia principal de hello para la comprobación de la prueba. 
 
-En la sección **Data to collect** (Datos para recopilar), el equipo de desarrollo debe buscar los tipos, nombres, valores y pares de clave/valor de información adicional necesarios para cada etiqueta que se insertará en la aplicación.
+Hola **toocollect datos** sección, el equipo de desarrollo debe buscar tipos de hello, los nombres, valores y pares de clave/valor de información adicional necesarias para cada etiqueta que se incrustarán en la aplicación hello.
 
-Se recomienda revisar el plan de etiquetas con todos los equipos asociados al proyecto. Realice las correcciones necesarias y confirme que todo está claro para los equipos de desarrollo y marketing.
+Se recomienda revisar el plan de etiqueta de Hola a todos los equipos asociados con el proyecto de Hola. Realice las correcciones necesarias y confirme que todo está claro para los equipos de desarrollo y marketing.
 
-La hoja de cálculo **Statement of work** (Declaración de trabajo) se puede usar para que sirva de guía a todos los implicados en el proyecto.
+Hola **instrucción de trabajo** hoja de cálculo puede ser guía toohelp usado todos los usuarios implicados en el proyecto de Hola.
 
 #### <a name="data-types"></a>Tipo de datos
 Estos son los tipos comunes de datos compatibles con Azure Mobile Engagement.
 
 ###### <a name="devices-and-users"></a>Dispositivos y usuarios
-Azure Mobile Engagement identifica a los usuarios mediante la generación de un identificador único para cada dispositivo. Este identificador se denomina identificador de dispositivo (o deviceid). Se genera de tal forma que todas las aplicaciones que se ejecutan en el mismo dispositivo comparten el mismo identificador de este tipo.
+Azure Mobile Engagement identifica a los usuarios mediante la generación de un identificador único para cada dispositivo. Este identificador se denomina identificador de dispositivo de hello (o deviceid). Se genera de forma que todas las aplicaciones que se ejecutan en ese mismo recurso compartido de dispositivo Hola mismo identificador de dispositivo.
 
 ###### <a name="sessions-and-activities"></a>Sesiones y actividades
-Una sesión es una instancia de la aplicación que  ejecuta un usuario. La sesión abarca desde el momento en que el usuario inicia la aplicación hasta que se detiene.
+Una sesión es una instancia de la aplicación hello siendo ejecutado por un usuario. sesión de Hello abarca de tiempo de hello usuario Hola inicia la aplicación hello, hasta que se detiene.
 
-Una actividad es una agrupación lógica de un conjunto de acciones que puede realizar la aplicación. Suele ser una pantalla concreta de la aplicación pero puede ser que cualquier cosa definida por la lógica de la aplicación. Como mínimo, debe etiquetar cada pantalla o actividad de la aplicación. Esto le permitirá comprender la ruta del usuario.
+Una actividad es una agrupación lógica de un conjunto de cosas que puede hacer la aplicación hello durante una sesión. Suele ser una pantalla determinada en la aplicación hello, pero puede ser que cualquier cosa definidas por lógica de Hola de aplicación hello. Como mínimo, debe etiquetar cada pantalla o actividad de la aplicación. Esto le permitirá toounderstand Hola usuario-ruta de acceso.
 
 ###### <a name="events"></a>Eventos
-Los eventos se usan para notificar la interacción del usuario con la aplicación. Pueden ser acciones instantáneas, como compartir contenido o iniciar un vídeo. El etiquetado de eventos le proporcionará recopilaciones de datos que muestran cómo interactúan los usuarios con la aplicación. 
+Los eventos son tooreport usado interacción del usuario con la aplicación hello. Pueden ser acciones instantáneas, como compartir contenido o iniciar un vídeo. Etiquetado de eventos le proporcionará las colecciones de datos que muestran cómo los usuarios interactúan con la aplicación hello. 
 
 ###### <a name="jobs"></a>Trabajos
-Los trabajos se usan para notificar acciones que tienen una duración. Algunos ejemplos pueden incluir:
+Trabajos son acciones tooreport usadas que tienen una duración. Algunos ejemplos pueden incluir:
 
 * Ejecución de llamadas a la API
 * Tiempo de visualización de anuncios
@@ -249,46 +249,46 @@ Los trabajos se usan para notificar acciones que tienen una duración. Algunos e
 * Reproducción de un vídeo
 
 ###### <a name="errors"></a>Errors
-Los errores se usan para notificar problemas detectados por la aplicación. Por ejemplo, acciones de usuario incorrectas o errores de llamadas a la API.
+Los errores son problemas detectados por la aplicación hello de tooreport usado. Por ejemplo, acciones de usuario incorrectas o errores de llamadas a la API.
 
 ###### <a name="application-information"></a>Información de la aplicación
-La información de la aplicación (App-Info) se usa para etiquetar los datos relacionados con la experiencia de un usuario con una aplicación. Se genera mediante la interacción de un usuario con la aplicación. 
+Se utiliza la información de la aplicación (App-Info) tootag datos relacionados con la experiencia de usuario de tooa con una aplicación. Se genera mediante la interacción del usuario con la aplicación hello. 
 
-Para una clave app-info determinada, Azure Mobile Engagement solo realiza un seguimiento del valor más reciente (sin historial). App-info revela el estado de la aplicación o de los usuarios finales. Por ejemplo, el estado de inicio de sesión o el grupo de productos favoritos de un usuario.
+Para una clave determinada de información de la aplicación, Azure Mobile Engagement solo realiza un seguimiento de valor más reciente de hello (ningún historial). App-info revela estado de saludo de la aplicación o los usuarios finales. Por ejemplo el estado de inicio de sesión de Hola o el grupo de producto favoritos de un usuario.
 
 ###### <a name="crash-data"></a>Datos de bloqueo
-Datos de bloqueo recopilados automáticamente por los errores de aplicación de informes de SDK de Mobile Engagement no controlados por la aplicación. Por ejemplo, una excepción no controlada que se produzca.
+Bloqueo de datos recopilados automáticamente por errores de aplicación Hola SDK de Mobile Engagement informes no controlados por la aplicación hello. Por ejemplo, una excepción no controlada que se produzca.
 
 ###### <a name="extra-data"></a>Datos adicionales
-Los eventos, errores, actividades y trabajos se pueden mejorar mediante parámetros. Se trata de información adicional que un desarrollador puede proporcionar como datos específicos de la aplicación. Esto es importante para definir una segmentación específica. 
+Los eventos, errores, actividades y trabajos se pueden mejorar mediante parámetros. Se trata de un desarrollador puede proporcionar como datos específicos de la aplicación hello de información adicional. Esto es importante para definir una segmentación específica. 
 
-Por ejemplo, el valor de una etiqueta "article" le permitirá segmentar los usuarios finales según quién vea ese artículo determinado. Sin embargo, quizás no sea suficiente. Sería mejor si esa misma etiqueta "article" incluyera también información adicional, como "news_category" dentro de una actividad. Esto podría ser útil para determinar dinámicamente las categorías favoritas para el usuario. 
+Por ejemplo, valor de Hola de una etiqueta "artículo" le permitirá toosegment los usuarios finales en función de quién ve ese artículo determinado. Sin embargo, quizás no sea suficiente. Sería mejor si esa misma etiqueta "article" incluyera también información adicional, como "news_category" dentro de una actividad. Esto resultaría útil toodetermine dinámicamente Hola categorías favoritas para usuario Hola. 
 
-La información adicional se notifica como par clave/valor. En el ejemplo de esta aplicación de medios, la información adicional para "news_category" sería el valor de esa categoría. Por ejemplo, "deporte", "economía" o "política".
+La información adicional se notifica como par clave/valor. En el ejemplo de Hola para esta aplicación de medios, información adicional de Hola para "news_category" sería valor Hola para esa categoría. Por ejemplo, "deporte", "economía" o "política".
 
 #### <a name="tag-and-sdk-integration"></a>Etiquetas e integración de SDK
-Para obtener instrucciones paso a paso a fin de integrar el SDK de Azure Mobile Engagement en la aplicación, siga la documentación de [Integración del SDK de Windows Universal Apps Engagement](mobile-engagement-windows-store-integrate-engagement.md) en el sitio web de Azure. Elija la plataforma de destino de los vínculos en la parte superior de la página.
+Para obtener instrucciones paso a paso para la integración de hello Azure Mobile Engagement SDK en la aplicación, siga hello [integración con el SDK interacción](mobile-engagement-windows-store-integrate-engagement.md) documentación en el sitio Web de Azure. Elija la plataforma de destino de vínculos de hello en parte superior de Hola de esa página.
 
-Se recomienda crear proyectos para las dos aplicaciones creadas por encima de Azure Mobile Engagement. Una para el almacenamiento provisional de desarrollo y prueba y otra, para el almacenamiento provisional de producción. Su equipo de TI puede promover el almacenamiento provisional de la prueba a la producción cuando las pruebas de aceptación por el usuario se realicen correctamente.
+Se recomienda crear proyectos para las dos aplicaciones creadas por encima de Azure Mobile Engagement. Uno para hello otro para el almacenamiento provisional de producción y ensayo de prueba y desarrollo. Su equipo de TI, a continuación, puede promover de prueba tooproduction de almacenamiento provisional cuando la prueba de aceptación de usuario de hello es correcta.
 
 #### <a name="user-acceptance-testing-uat"></a>Pruebas de aceptación por el usuario (UAT)
 Las pruebas de aceptación por el usuario (UAT) implican asegurarse de que todo funciona tal como se diseñó. Los flujos de trabajo pueden realizarse y recopilar todos los datos necesarios en función de su plan de etiquetas:
 
-* El etiquetado de información debe implementarse según los conceptos de AZME documentados.
+* Etiquetado de información debe aplicarse en según toodocumented conceptos AZME
 * Se recopila toda la información que necesita (incluidos el valor de información adicional, el valor de información de la aplicación).
-* Coincidencias de nomenclatura según el plan de etiquetas.
+* Nomenclatura coincide con tooyout correspondiente Plan de etiqueta
 * No hay etiquetas duplicadas enviadas.
 
-Pruebe minuciosamente todos los tipos de comportamiento de notificación que insertó en la aplicación.
+Probar exhaustivamente todos los tipos de Hola de comportamiento de las notificaciones que se han incrustado en la aplicación
 
 * Anuncios, sondeos, inserciones de datos fuera de la aplicación y en la aplicación
 * Vistas web y de texto
 * Actualización de notificaciones y categorías
 
 #### <a name="setup"></a>Configuración
-La configuración de Azure Mobile Engagement es muy sencilla. Toda la documentación relacionada con la interfaz de usuario está disponible en el sitio web de Azure Mobile Engagement [Cómo navegar por la interfaz de usuario](mobile-engagement-user-interface-home.md).
+La configuración de Azure Mobile Engagement es muy sencilla. Toda la documentación de hello relacionados con la interfaz de usuario de toohello está disponible en el sitio Web de Azure Mobile Engagement hello, [cómo toonavigate Hola interfaz de usuario](mobile-engagement-user-interface-home.md).
 
-Se recomienda comenzar por la configuración de los roles adecuados y las pertenencias a roles para los usuarios del proyecto. Esto ayuda a administrar el acceso adecuado a la plataforma para todos los usuarios. Los roles pueden incluir:
+Se recomienda que primero debe configurar los roles adecuados de Hola y pertenencias a roles para los usuarios de hello del proyecto. Esto ayuda a administrar el acceso adecuado toohello plataforma para todos los usuarios. Los roles pueden incluir:
 
 * Administradores
 * Desarrolladores
@@ -296,27 +296,27 @@ Se recomienda comenzar por la configuración de los roles adecuados y las perten
 
 Posteriormente:
 
-* Registre su deviceID para probar en su propio dispositivo.
-* Vaya a la configuración de la cuenta y configure la zona horaria para que la hora de envío de gráficos y notificaciones esté establecida para su zona horaria.
-* Vaya a la configuración de la aplicación y registre la "App-info" necesaria para llegar a los usuarios finales que estén a su alcance.
+* Registrar su tootest de Id. de dispositivo en el propio dispositivo.
+* Ir toohello configuración de la cuenta y configurar gráficos de toohave de zona horaria de Hola y la hora de entrega de notificación establecida con su zona horaria.
+* Vaya toohello configuración de la aplicación y registrar Hola "App-info" necesita tootarget por el usuario final a su alcance.
 
-Para obtener más información sobre cómo ejecutar la primera campaña de notificación push, consulte [Cómo empezar a usar y administrar inserciones para llegar a los usuarios finales](mobile-engagement-how-tos.md).
+Para obtener más información sobre cómo toorun la primera inserción campaña de notificación, revisión [cómo tooget a usar y administrar inserta tooreach a los usuarios finales de tooyour](mobile-engagement-how-tos.md).
 
 ## <a name="conclusion"></a>Conclusión
 Los programas de compromiso son iterativos y debe mejorarlos continuamente según vaya sabiendo lo que funciona mejor para su aplicación. 
 
-Al principio, al ir desarrollando su experiencia con las estrategias de compromiso, no intente crear una estrategia completa de compromiso global. Adopte un enfoque paso a paso para identificar los KPI y saber cómo sacar partido de ellos. La estrategia de contratación será única para cada aplicación.
+Inicialmente, al desarrollar experiencia con interacción estrategias no intente toobuild una estrategia de contratación global completa. Adoptar un enfoque de paso a paso la identificación de los KPI y cómo tooleverage ellos. La estrategia de contratación será única para cada aplicación.
 
-Una vez conseguida una mayor experiencia, puede agregar lo siguiente a sus programas de compromiso:
+Una vez haya desarrollado cierta experiencia que podría agregar Hola siguientes tooyour interacción programas:
 
-* Seguimiento: adquiere usuarios y probablemente defina orígenes de recopilación de datos. Azure Mobile Engagement se puede vincular a orígenes de recopilación de datos. Le permite supervisar el rendimiento de cada origen. Esta información será interesante para aumentar al máximo la inversión de la adquisición. 
+* Seguimiento: adquiere usuarios y probablemente defina orígenes de recopilación de datos. Interacción móvil Azure puede ser orígenes de la colección de toodata vinculado. Permite toomonitor prestaciones de cada origen. Esta información será toomaximize interesante su inversión de adquisición. 
 * Pruebas A/B: es una parte esencial del programa de compromiso. Cada aplicación tiene sus propias características específicas. Con pruebas A/B, puede mejorar el programa de compromiso.
-* Ubicación geográfica: se trata de una gran oportunidad para las marcas. Gracias a esta característica puede ponerse en contacto con los usuarios en el lugar correcto y la hora adecuada. Se recomienda comprobar que ha reunido suficientes datos de comportamiento de los usuarios finales antes de comenzar a usar la ubicación geográfica.
-* Inserción de datos: la inserción de datos es una inserción invisible. La inserción de datos permite personalizar la aplicación basándose en el comportamiento de los usuarios finales. Por ejemplo, si un segmento de usuarios consulta a menudo productos de alta tecnología, el propietario de la aplicación puede enviar una inserción de datos que se usará para personalizar su página principal con contenido de alta tecnología.
+* Ubicación geográfica: se trata de una gran oportunidad para las marcas. Característica de toothis gracias puede llegar en el momento y lugar derecho Hola. Se recomienda comprobar que recopile suficientes datos de comportamiento del usuario final antes de iniciar toouse ubicación geográfica.
+* Inserción de datos: la inserción de datos es una inserción invisible. La inserción de datos permite personalizar la aplicación basándose en el comportamiento de los usuarios finales. Por ejemplo, si un segmento de usuario a menudo consulta productos de vanguardia, propietario de la aplicación hello puede enviar una inserción de datos que se usará para personalizar su página principal con contenido de alta tecnología.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Creación de una cuenta de Azure Mobile Engagement](mobile-engagement-create.md)
-* Visite [Definición de la estrategia de Mobile Engagement](mobile-engagement-define-your-mobile-engagement-strategy.md) para aprender sobre la definición de la estrategia de Mobile Engagement.
+* Visite [defina su estrategia de Mobile Engagement](mobile-engagement-define-your-mobile-engagement-strategy.md) toolearn más acerca de cómo definir la estrategia de Mobile Engagement.
 
 <!--Image references-->
 

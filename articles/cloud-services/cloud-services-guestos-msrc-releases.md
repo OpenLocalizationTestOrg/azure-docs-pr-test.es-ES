@@ -1,6 +1,6 @@
 ---
-title: Lista de actualizaciones aplicadas al SO invitado de Azure | Microsoft Docs
-description: Lista de las actualizaciones aplicadas a las versiones del SO invitado.
+title: aaaList de actualizaciones aplicadas toohello SO invitado de Azure | Documentos de Microsoft
+description: lista de Hola de actualizaciones aplicadas tooGuest OS libera
 services: cloud-services
 documentationcenter: na
 author: raiye
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 8/24/2017
 ms.author: raiye
-ms.openlocfilehash: 09c433ccf54c84ee2ae40c3ba3ccd84e7462124c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac604bc8ea6a0c4aa9a9e0ae01ecde2f92a04e15
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-guest-os"></a>SO invitado de Azure
-En las tablas siguientes se muestran las actualizaciones del Centro de respuestas de seguridad de Microsoft (MSRC) aplicadas al sistema operativo invitado de Azure. Busque en este artículo para determinar si una actualización concreta se aplica al SO invitado que usa. Las actualizaciones siempre se pasan a la [familia][family-explain] concreta en que se introdujeron.
+Hello en las tablas siguientes muestran Hola actualiza Microsoft Security Response Center (MSRC) aplica toohello SO invitado de Azure. Buscar este artículo toodetermine si una actualización determinada aplica toohello SO invitado que está usando. Las actualizaciones siempre son acumulativas para hello determinado [familia] [ family-explain] se introdujeron en.
 
 ## <a name="august-guest-os"></a>SO invitado de agosto
 | Categoría de productos | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
@@ -173,7 +173,7 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 | MS16-134 |[3193706] |Actualización de seguridad para el controlador del Sistema de archivos de registro común |5.3, 4.38, 3.45, 2.57 |8 de noviembre de 2016 |
 | MS16-135 |[3199135] |Actualización de seguridad para controladores de modo kernel |5.3, 4.38, 3.45, 2.57 |8 de noviembre de 2016 |
 | MS16-137 |[3199173]   |Actualización de seguridad para los métodos de autenticación de Windows |5.3, 4.38, 3.45, 2.57 |8 de noviembre de 2016 |
-| MS16-138 |[3199647] |Actualización de seguridad para la unidad de disco duro virtual de Microsoft |5.3, 4.38 y 3.45 |8 de noviembre de 2016 |
+| MS16-138 |[3199647] |Actualización de seguridad tooMicrosoft unidad de disco duro Virtual |5.3, 4.38 y 3.45 |8 de noviembre de 2016 |
 | MS16-139 |[3199720] |Actualización de seguridad para el kernel de Windows |2.57 |8 de noviembre de 2016 |
 | MS16-140 |[3193479] |Actualización de seguridad para el Administrador de arranque |5.3, 4.38 y 3.45 |8 de noviembre de 2016 |
 | MS16-142 |[3198467] |Actualización de seguridad acumulativa para Internet Explorer |2.57, 4.38 y 5.3 |8 de noviembre de 2016 |
@@ -253,8 +253,8 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 ## <a name="june-guest-os"></a>SO invitado de junio
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
 | --- | --- | --- | --- | --- |
-| MS16-035 |[3141780] |Actualización de seguridad de .NET Framework tratar la omisión de la característica de seguridad |4.33, 3.40, 2.52 |14 de junio de 2016 |
-| Advisory |[3155527] |Actualización de conjuntos de cifrado para FalseStart |4.33, 3.40 |14 de junio de 2016 |
+| MS16-035 |[3141780] |Actualización de seguridad de .NET Framework tooAddress omisión de la característica de seguridad |4.33, 3.40, 2.52 |14 de junio de 2016 |
+| Advisory |[3155527] |Actualizar conjuntos de tooCipher para FalseStart |4.33, 3.40 |14 de junio de 2016 |
 | MS16-063 |[3163649] |Actualización de seguridad acumulativa para Internet Explorer |4.33, 3.40, 2.52 |14 de junio de 2016 |
 | MS16-069 |[3163640] |Actualización de seguridad acumulativa para JScript y VBScript |2.52 |14 de junio de 2016 |
 | MS16-071 |[3164065] |Actualización de seguridad para el servidor DNS de Microsoft Windows |4.33, 3.40 |14 de junio de 2016 |
@@ -268,9 +268,9 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 | MS16-081 |[3160352] |Actualización de seguridad para Active Directory |4.33, 3.40, 2.52 |14 de junio de 2016 |
 | N/D |[2922223] |No se puede cambiar la hora del sistema si está habilitada la entrada de registro RealTimeIsUniversal en Windows |2.52 |14 de junio de 2016 |
 | N/D |[3121255] |Error de detención "0x00000024" en FsRtlNotifyFilterReportChange y la copia del archivo puede generar un error en Windows |2.52 |14 de junio de 2016 |
-| N/D |[3125424] |Los interbloqueos LSASS hacen que Windows Server 2012 R2 o Windows Server 2012 no respondan |4.33, 3.40 |14 de junio de 2016 |
+| N/D |[3125424] |Interbloqueos LSASS causa Windows Server 2012 R2 o Windows Server 2012 no toorespond |4.33, 3.40 |14 de junio de 2016 |
 | N/D |[3125574] |Cómodo paquete acumulativo de actualizaciones para Windows 7 SP1 y Windows Server 2008 R2 SP1 |2.52 |14 de junio de 2016 |
-| N/D |[3140245] |Actualización para habilitar TLS 1.1 y TLS 1.2 como un protocolo seguro predeterminado de WinHTTP en Windows |3.40, 2.52 |14 de junio de 2016 |
+| N/D |[3140245] |Actualizar tooenable TLS 1.1 y 1.2 de TLS como un protocolos seguros predeterminado de WinHTTP en Windows |3.40, 2.52 |14 de junio de 2016 |
 | N/D |[3146604] |El servicio WMI se bloquea de forma aleatoria en Windows Server 2012 R2 o Windows Server 2012 |4.33, 3.40 |14 de junio de 2016 |
 | N/D |[3149157] |Mejoras de confiabilidad y escalabilidad en TCP/IP para Windows 8.1 y Windows Server 2012 R2 |4.33 |14 de junio de 2016 |
 | N/D |[3156416] |Paquete acumulativo de actualizaciones de mayo de 2016 de Windows Server 2012 |3.40 |14 de junio de 2016 |
@@ -285,13 +285,13 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 | MS16-055 |[3156754] |Actualización de seguridad para el componente de gráficos de Microsoft |4.32, 3.39, 2.51 |10 de mayo de 2016 |
 | MS16-057 |[3156987] |Actualización de seguridad para Windows Shell |4.32 |10 de mayo de 2016 |
 | MS16-060 |[3154846] |Actualización de seguridad para el kernel de Windows |4.32, 3.39, 2.51 |10 de mayo de 2016 |
-| MS16-061 |[3155520] |Actualización de seguridad para RPC |4.32, 3.39, 2.51 |10 de mayo de 2016 |
+| MS16-061 |[3155520] |TooRPC de actualización de seguridad |4.32, 3.39, 2.51 |10 de mayo de 2016 |
 | MS16-062 |[3158222] |Actualización de seguridad para controladores de modo kernel |4.32, 3.39, 2.51 |10 de mayo de 2016 |
 | MS16-065 |[3156757] |Actualización de seguridad para .NET Framework |4.32, 3.39, 2.51 |10 de mayo de 2016 |
 | MS16-067 |[3155784] |Actualización de seguridad para el controlador del administrador de volúmenes |4.32, 3.39 |10 de mayo de 2016 |
 | N/D |[3148851] |Cambios de zona horaria para Rusia en Windows  |4.32, 3.39, 2.51 |10 de mayo de 2016 |
 | N/D |[3133977] |BitLocker no puede cifrar unidades debido a bloqueos de servicio en el proceso svchost.exe en Windows 7 o Windows Server 2008 R2  |2.51 |10 de mayo de 2016 |
-| N/D |[3133681] |Las máquinas virtuales no responden a la operación de SCVMM en Windows Server 2012 R2  |4.32 |10 de mayo de 2016 |
+| N/D |[3133681] |Máquinas virtuales no responder tooyour operación en SCVMM en Windows Server 2012 R2  |4.32 |10 de mayo de 2016 |
 | N/D |[3123245] |La actualización mejora la identificación de agotamiento del puerto en Windows Server 2012 R2  |4.32 |10 de mayo de 2016 |
 | N/D |[Deshabilitar RC4] | Aviso de seguridad de Microsoft: actualización para deshabilitar RC4  |4.32, 3.39, 2.51 |10 de mayo de 2016 |
 
@@ -310,40 +310,40 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
 | --- | --- | --- | --- | --- |
 | MS16-023 |[3142015] |Actualización de seguridad acumulativa para Internet Explorer |4.30, 3.37, 2.49 |8 de marzo de 2016 |
-| MS16-026 |[3143148] |Actualización de seguridad de Graphic Fonts para tratar la ejecución remota de código |4.30, 3.37, 2.49 |8 de marzo de 2016 |
-| MS16-027 |[3143146] |Actualizaciones de seguridad de Reproductor de Windows Media para tratar la ejecución remota de código |4.30, 3.37, 2.49 |8 de marzo de 2016 |
-| MS16-028 |[3143081] |Actualización de seguridad de Microsoft Windows PDF Library para tratar la ejecución remota de código |4.30, 3.37 |8 de marzo de 2016 |
-| MS16-030 |[3143136] |Actualización de seguridad de Windows OLE para tratar la ejecución remota de código |4.30, 3.37, 2.49 |8 de marzo de 2016 |
-| MS16-031 |[3140410] |Actualización de seguridad de Microsoft Windows para tratar la elevación de privilegios |2.49 |8 de marzo de 2016 |
-| MS16-032 |[3143141] |Actualización de seguridad de Inicio de sesión secundario para tratar la elevación de privilegios |4.30, 3.37, 2.49 |8 de marzo de 2016 |
-| MS16-033 |[3143142] |Actualización de seguridad del Controlador de clase de almacenamiento USB para tratar la elevación de privilegios |4.30, 3.37, 2.49 |8 de marzo de 2016 |
-| MS16-034 |[3143145] |Actualizaciones de seguridad del controlador modo kernel para tratar la elevación de privilegios |4.30, 3.37, 2.49 |8 de marzo de 2016 |
+| MS16-026 |[3143148] |Actualización de seguridad tooGraphic fuentes tooAddress ejecución remota de código |4.30, 3.37, 2.49 |8 de marzo de 2016 |
+| MS16-027 |[3143146] |Seguridad actualizaciones para el Reproductor de Windows Media tooaddress ejecución remota de código |4.30, 3.37, 2.49 |8 de marzo de 2016 |
+| MS16-028 |[3143081] |Actualización de seguridad de Microsoft Windows PDF Library tooAddress ejecución remota de código |4.30, 3.37 |8 de marzo de 2016 |
+| MS16-030 |[3143136] |Seguridad actualización para Windows OLE tooAddress ejecución remota de código |4.30, 3.37, 2.49 |8 de marzo de 2016 |
+| MS16-031 |[3140410] |Actualización de seguridad de Microsoft Windows tooAddress elevación de privilegios |2.49 |8 de marzo de 2016 |
+| MS16-032 |[3143141] |Actualización de seguridad tooSecondary tooAddress elevación de privilegios de inicio de sesión |4.30, 3.37, 2.49 |8 de marzo de 2016 |
+| MS16-033 |[3143142] |Actualización de seguridad tooUSB tooAddress de controlador de clase de almacenamiento masivo elevación de privilegios |4.30, 3.37, 2.49 |8 de marzo de 2016 |
+| MS16-034 |[3143145] |Actualizaciones de seguridad para el controlador en modo Kernel tooaddress elevación de privilegios |4.30, 3.37, 2.49 |8 de marzo de 2016 |
 
 ## <a name="february-guest-os"></a>SO invitado de febrero
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
 | --- | --- | --- | --- | --- |
 | MS16-009 |[3134220] |Actualización de seguridad acumulativa para Internet Explorer |4.29, 3.36, 2.48 |9 de febrero de 2016 |
-| MS16-013 |[3134811] |Actualización de seguridad de Windows Journal para tratar la ejecución remota de código |4.29, 3.36, 2.48 |9 de febrero de 2016 |
-| MS16-014 |[3134228] |Actualización de seguridad de Microsoft Windows para tratar la ejecución remota de código |4.29, 3.36, 2.48 |9 de febrero de 2016 |
-| MS16-016 |[3136041] |Actualización de seguridad de WebDAV para tratar la elevación de privilegios |4.29, 3.36, 2.48 |9 de febrero de 2016 |
-| MS16-018 |[3136082] |Actualización de seguridad de los controladores del modo Kernel de Windows para tratar la elevación de privilegios |4.29, 3.36, 2.48 |9 de febrero de 2016 |
-| MS16-019 |[3137893] |Actualización de seguridad de .NET Framework para tratar la ejecución remota de código |4.29, 3.36, 2.48 |9 de febrero de 2016 |
-| MS16-021 |[3133043] |Actualización de seguridad del servidor NPS RADIUS para tratar la denegación de servicio |4.29, 3.36, 2.48 |9 de febrero de 2016 |
-| Documento informativo sobre seguridad de Microsoft |[3109853] |Actualización para mejorar la interoperabilidad de TLS |4.29, 3.36 |9 de febrero de 2016 |
+| MS16-013 |[3134811] |TooWindows de actualización de seguridad diario tooAddress ejecución remota de código |4.29, 3.36, 2.48 |9 de febrero de 2016 |
+| MS16-014 |[3134228] |Actualización de seguridad tooMicrosoft Windows tooAddress ejecución remota de código |4.29, 3.36, 2.48 |9 de febrero de 2016 |
+| MS16-016 |[3136041] |TooAddress de tooWebDAV de actualización de seguridad de elevación de privilegios |4.29, 3.36, 2.48 |9 de febrero de 2016 |
+| MS16-018 |[3136082] |Actualización de controlador de modo Kernel de Windows de seguridad tooAddress elevación de privilegios |4.29, 3.36, 2.48 |9 de febrero de 2016 |
+| MS16-019 |[3137893] |Actualización de seguridad de .NET Framework tooAddress ejecución remota de código |4.29, 3.36, 2.48 |9 de febrero de 2016 |
+| MS16-021 |[3133043] |Actualización de seguridad de servidor de RADIUS NPS tooAddress denegación de servicio |4.29, 3.36, 2.48 |9 de febrero de 2016 |
+| Documento informativo sobre seguridad de Microsoft |[3109853] |Actualizar tooImprove interoperabilidad de TLS |4.29, 3.36 |9 de febrero de 2016 |
 | Volver a publicar la versión-MS15-101 |[3089662] |Una vulnerabilidad en  .NET Framework podría permitir la divulgación de información |4.29, 3.36, 2.48 |9 de febrero de 2016 |
-| Volver a publicar la versión-MS15-118 |[3104507] |Actualización de seguridad de .NET Framework para tratar la elevación de privilegios |4.29, 3.36, 2.48 |9 de febrero de 2016 |
-| Volver a publicar la versión-MS15-128 |[3104503] |Actualizaciones de seguridad del componente de gráficos de Microsoft para tratar la ejecución remota de código |4.29, 3.36, 2.48 |9 de febrero de 2016 |
+| Volver a publicar la versión-MS15-118 |[3104507] |Actualizaciones de seguridad de .NET Framework tooAddress elevación de privilegios |4.29, 3.36, 2.48 |9 de febrero de 2016 |
+| Volver a publicar la versión-MS15-128 |[3104503] |Actualizaciones de seguridad para la ejecución remota de código del componente de gráficos de Microsoft tooAddress |4.29, 3.36, 2.48 |9 de febrero de 2016 |
 
 ## <a name="january-guest-os"></a>SO invitado de enero
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
 | --- | --- | --- | --- | --- |
 | MS16-001 |[3124903] |Actualización de seguridad acumulativa para Internet Explorer |4.28, 3.35, 2.47 |12 de enero de 2016 |
 | MS16-003 |[3125540] |Actualización de seguridad acumulativa para JScript y VBScript |2.47 |12 de enero de 2016 |
-| MS16-005 |[3124584] |Actualización de seguridad de los controladores del modo kernel de Windows para tratar la ejecución remota de código |4.28, 3.35, 2.47 |12 de enero de 2016 |
-| MS16-007 |[3124901] |Actualización de seguridad de Microsoft Windows para tratar la ejecución remota de código |4.28, 3.35, 2.47 |12 de enero de 2016 |
-| MS16-008 |[3124605] |Actualización de seguridad del kernel para tratar la elevación de privilegios |4.28, 3.35, 2.47 |12 de enero de 2016 |
+| MS16-005 |[3124584] |Actualización de controladores de modo Kernel de Windows de seguridad tooAddress ejecución remota de código |4.28, 3.35, 2.47 |12 de enero de 2016 |
+| MS16-007 |[3124901] |Actualización de seguridad de Microsoft Windows tooAddress ejecución remota de código |4.28, 3.35, 2.47 |12 de enero de 2016 |
+| MS16-008 |[3124605] |Actualización de seguridad para la elevación de privilegios del Kernel tooAddress |4.28, 3.35, 2.47 |12 de enero de 2016 |
 | Revisión de documento informativo sobre seguridad de Microsoft |[2755801] |Actualización para vulnerabilidades en Adobe Flash Player en Internet Explorer (KB paquete: por determinar) - Marcador de posición de documento informativo |4.28, 3.35 |12 de enero de 2016 |
-| Documento informativo sobre seguridad de Microsoft |[3109853] |Actualización para mejorar la interoperabilidad de TLS |4.28, 3.35 |12 de enero de 2016 |
+| Documento informativo sobre seguridad de Microsoft |[3109853] |Actualizar tooImprove interoperabilidad de TLS |4.28, 3.35 |12 de enero de 2016 |
 | Documento informativo sobre seguridad de Microsoft |[3123479] |Degradación del algoritmo hash SHA-1 para el Programa de certificados raíz de Microsoft |4.28, 3.35, 2.47 |12 de enero de 2016 |
 | Documento informativo sobre seguridad de Microsoft |[2736233] |Actualizaciones para bits de cierre de ActiveX |4.28, 3.35, 2.47 |12 de enero de 2016 |
 
@@ -351,36 +351,36 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
 | --- | --- | --- | --- | --- |
 | MS15-124 |[3116180] |Actualización de seguridad acumulativa para Internet Explorer |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
-| MS15-126 |[3116178] |Actualización de seguridad de Microsoft VBScript y JScript para tratar la ejecución remota de código |2.46 |8 de diciembre de 2015 |
-| MS15-127 |[3100465] |Actualización de seguridad de DNS de Microsoft Windows para tratar la ejecución remota de código |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
-| MS15-128 |[3104503] |Actualizaciones de seguridad del componente de gráficos de Microsoft para tratar la ejecución remota de código |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
-| MS15-132 |[3116162] |Actualización de seguridad de Windows para tratar la ejecución remota de código |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
-| MS15-133 |[3116130] |Actualización de seguridad del kernel de Windows PGM para tratar la elevación de privilegios |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
-| MS15-134 |[3108669] |Actualización de seguridad de Windows Media Center para tratar la ejecución remota de código |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
-| MS15-135 |[3119075] |Actualización de seguridad de los controladores del modo del kernel de Windows para tratar la elevación de privilegios |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
+| MS15-126 |[3116178] |Actualización de seguridad de Microsoft VBScript y JScript tooAddress ejecución remota de código |2.46 |8 de diciembre de 2015 |
+| MS15-127 |[3100465] |Actualización de seguridad de Microsoft Windows DNS tooAddress ejecución remota de código |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
+| MS15-128 |[3104503] |Actualizaciones de seguridad para la ejecución remota de código del componente de gráficos de Microsoft tooAddress |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
+| MS15-132 |[3116162] |Actualización para Windows de seguridad tooAddress ejecución remota de código |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
+| MS15-133 |[3116130] |Seguridad actualización para Windows PGM tooAddress elevación de privilegios |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
+| MS15-134 |[3108669] |Actualización para Windows Media Center de seguridad tooAddress ejecución remota de código |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
+| MS15-135 |[3119075] |Actualización para Windows Kernel controladores en modo de seguridad tooAddress elevación de privilegios |4.27, 3.34, 2.46 |8 de diciembre de 2015 |
 
 ## <a name="november-guest-os"></a>SO invitado de noviembre
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
 | --- | --- | --- | --- | --- |
 | MS15-112 |[3104517] |Actualización de seguridad acumulativa para Internet Explorer |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
-| MS15-114 |[3100213] |Actualización de seguridad de Windows Journal para tratar la ejecución remota de código |2.45 |10 de noviembre de 2015 |
-| MS15-115 |[3105864] |Actualización de seguridad de Microsoft Windows para tratar la ejecución remota de código |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
-| MS15-117 |[3101722] |Actualización de seguridad de NDIS para tratar la elevación de privilegios |2.45 |10 de noviembre de 2015 |
-| MS15-118 |[3104507] |Actualización de seguridad de .NET Framework para tratar la elevación de privilegios |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
-| MS15-119 |[3104521] |Actualización de seguridad de Winsock para tratar la elevación de privilegios |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
-| MS15-120 |[3102939] |Actualización de seguridad de IPSec para tratar la denegación de servicio |4.26, 3.33 |10 de noviembre de 2015 |
-| MS15-121 |[3081320] |Actualización de seguridad a Schannel para tratar la suplantación de identidad |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
-| MS15-122 |[3105256] |Actualización de seguridad de Kerberos tratar la omisión de la característica de seguridad |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
+| MS15-114 |[3100213] |Actualización para Windows Journal de seguridad tooAddress ejecución remota de código |2.45 |10 de noviembre de 2015 |
+| MS15-115 |[3105864] |Actualización de seguridad de Microsoft Windows tooAddress ejecución remota de código |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
+| MS15-117 |[3101722] |Actualización de seguridad de NDIS tooAddress elevación de privilegios |2.45 |10 de noviembre de 2015 |
+| MS15-118 |[3104507] |Actualizaciones de seguridad de .NET Framework tooAddress elevación de privilegios |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
+| MS15-119 |[3104521] |Actualización de seguridad de Winsock tooAddress elevación de privilegios |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
+| MS15-120 |[3102939] |Actualización de seguridad de IPSec tooAddress denegación de servicio |4.26, 3.33 |10 de noviembre de 2015 |
+| MS15-121 |[3081320] |TooAddress de tooSchannel de actualización de seguridad suplantación de identidad |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
+| MS15-122 |[3105256] |Actualización de seguridad de Kerberos tooAddress omisión de la característica de seguridad |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
 | Documento informativo sobre seguridad de Microsoft |[3097966] |La revelación de forma involuntaria de los certificados digitales puede provocar la suplantación de identidades |4.26, 3.33, 2.45 |10 de noviembre de 2015 |
 
 ## <a name="october-guest-os"></a>SO invitado de octubre
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
 | --- | --- | --- | --- | --- |
 | MS15-106 |[3096441] |Actualización de seguridad acumulativa para Internet Explorer |4.25, 3.32, 2.44 |13 de octubre de 2015 |
-| MS15-108 |[3089659] |Actualización de seguridad de JScript y VBScript para tratar la posible ejecución remota de código |2.44 |13 de octubre de 2015 |
-| MS15-109 |[3096443] |Actualización de seguridad de Windows Shell para tratar la ejecución remota de código |4.25, 3.32, 2.44 |13 de octubre de 2015 |
-| MS15-111 |[3096447] |Actualización de seguridad del kernel de Windows para tratar la elevación de privilegios |4.25, 3.32, 2.44 |13 de octubre de 2015 |
-| Documento informativo sobre seguridad de Microsoft |[3092627] |Actualización de septiembre de 2015 para corregir bloqueos de Windows o de aplicaciones después de instalar la actualización de seguridad 3076895 |4.25, 3.32, 2.44 |13 de octubre de 2015 |
+| MS15-108 |[3089659] |Actualización de seguridad para JScript y VBScript tooAddress posibles ejecución remota de código |2.44 |13 de octubre de 2015 |
+| MS15-109 |[3096443] |Seguridad Update for Windows Shell tooAddress ejecución remota de código |4.25, 3.32, 2.44 |13 de octubre de 2015 |
+| MS15-111 |[3096447] |Seguridad actualización para Windows Kernel tooAddress elevación de privilegios |4.25, 3.32, 2.44 |13 de octubre de 2015 |
+| Documento informativo sobre seguridad de Microsoft |[3092627] |Toofix Windows o una aplicación se bloquea después de instalar la actualización de seguridad 3076895 de actualización de septiembre de 2015 |4.25, 3.32, 2.44 |13 de octubre de 2015 |
 
 ## <a name="september-guest-os"></a>SO invitado de septiembre
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
@@ -421,7 +421,7 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 | MS15-075 |[3072633] |Una vulnerabilidad en OLE podría permitir la elevación de privilegios |4.22, 3.29, 2.41 |14 de julio de 2015 |
 | MS15-076 |[3067505] |Una vulnerabilidad en llamada a procedimiento remoto de Windows podría permitir la elevación de privilegios |4.22, 3.29, 2.41 |14 de julio de 2015 |
 | MS15-077 |[3077657] |Una vulnerabilidad en el controlador de fuentes ATM podría permitir la elevación de privilegios |4.22, 3.29, 2.41 |14 de julio de 2015 |
-| N/D |[3057154] |Actualización para restringir el uso del cifrado DES |4.22, 3.29, 2.41 |14 de julio de 2015 |
+| N/D |[3057154] |Actualizar tooRestrict uso de cifrado DES |4.22, 3.29, 2.41 |14 de julio de 2015 |
 
 ## <a name="june-guest-os"></a>SO invitado de junio
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
@@ -454,7 +454,7 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 | MS15-040 |[3045711] |Una vulnerabilidad en ADFS podría permitir la divulgación de información |4,20; 3,27; 2,39 |17 de abril de 2015 |
 | MS15-041 |[3048010] |Una vulnerabilidad en  .NET Framework podría permitir la divulgación de información |4,20; 3,27; 2,39 |17 de abril de 2015 |
 | MS15-042 |[3047234] |Una vulnerabilidad en Windows Hyper-V podría permitir la denegación de servicio |4,20; 3,27; 2,39 |17 de abril de 2015 |
-| N/D |[3045755] |Actualización para mejorar la autenticación PKU2U |4,20; 3,27; 2,39 |17 de abril de 2015 |
+| N/D |[3045755] |Actualizar tooImprove PKU2U autenticación |4,20; 3,27; 2,39 |17 de abril de 2015 |
 
 ## <a name="april-guest-os"></a>SO invitado de abril
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
@@ -477,7 +477,7 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 | MS15-030 |[3039976] |Una vulnerabilidad en el Protocolo de escritorio remoto podría permitir la denegación de servicio |4,18; 3,25; 2,37 |N/D |
 
 > [!NOTE]
-> El boletín MS15-031 puede aparecer como desinstalado. Sin embargo, no se aplica a esta versión del SO invitado.
+> El boletín MS15-031 puede aparecer como desinstalado. Sin embargo, no se aplica toothis lanzamiento del SO invitado.
 >
 >
 
@@ -490,7 +490,7 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 | MS15-014 |[3004361] |Una vulnerabilidad de SMB podría permitir la omisión de la característica de seguridad |4,17; 3,24; 2,36 |N/D |
 | MS15-015 |[3031432] |Una vulnerabilidad de Microsoft Windows podría permitir la elevación de privilegios |4,17; 3,24; 2,36 |N/D |
 | MS15-016 |[3029944] |Una vulnerabilidad del componente de gráficos de Microsoft podría permitir la divulgación de información |4,17; 3,24; 2,36 |N/D |
-| N/D |[3004375] |Actualización para mejorar la auditoría de línea de comandos de Windows<p/>**Nota**: se instala pero la clave del registro para habilitarlo está desactivada |4,17; 3,24; 2,36 |N/D |
+| N/D |[3004375] |Actualizar tooImprove auditoría de la línea de comandos de Windows<p/>**Tenga en cuenta**: este archivo se instala pero tooenable de clave de registro de hello, que se ha desactivado |4,17; 3,24; 2,36 |N/D |
 
 ## <a name="january-guest-os"></a>SO invitado de enero
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
@@ -511,17 +511,17 @@ En las tablas siguientes se muestran las actualizaciones del Centro de respuesta
 ## <a name="december-guest-os"></a>SO invitado de diciembre
 | Identificador de boletín | Artículo de KB principal | Descripción de las vulnerabilidades | SO invitado | Fecha de primera introducción |
 | --- | --- | --- | --- | --- |
-| N/D |[3013776] |El sistema se bloquea cuando se usa una cuenta de dominio para iniciar una aplicación |4,15; 3,22; 2,34 |13 de enero de 2015 |
+| N/D |[3013776] |El sistema se bloquea cuando se usa un toostart de cuenta de dominio una aplicación |4,15; 3,22; 2,34 |13 de enero de 2015 |
 | N/D |[3013043] |Los datos del sistema de archivos están dañados en un equipo con Windows que tiene más de un nodo NUMA |4,15; 3,22; 2,34 |13 de enero de 2015 |
 | N/D |[3012712] |Los nuevos bloques de datos se inicializan incorrectamente cuando se expande un VHD de diferenciación |4,15; 3,22; 2,34 |13 de enero de 2015 |
 | N/D |[3004905] |Mejora de Windows Hyper-V para máquinas virtuales Linux que tienen sistemas de archivos mayores de 2 TB |4,15; 3,22; 2,34 |13 de enero de 2015 |
 | N/D |[3004394] |Actualización de diciembre de 2014 del Programa de certificados raíz de Windows en Windows |4,15; 3,22; 2,34 |13 de enero de 2015 |
-| N/D |[2999323] |Se ha cambiado el texto del identificador de evento 17 |4,15; 3,22; 2,34 |13 de enero de 2015 |
-| N/D |[3013488] |Larga espera para restablecer el servidor WSUS cuando se importan archivos CSA en Windows Server 2012 R2 o Windows Server 2012 |4,15; 3,22; 2,34 |13 de enero de 2015 |
+| N/D |[2999323] |se cambia el texto Hello identificador de evento 17 |4,15; 3,22; 2,34 |13 de enero de 2015 |
+| N/D |[3013488] |Servidor WSUS de tooreset larga espera cuando se importan archivos CSA en Windows Server 2012 R2 o Windows Server 2012 |4,15; 3,22; 2,34 |13 de enero de 2015 |
 | N/D |[3012325] |Actualización de entradas de la base de datos de Windows APN para los operadores de telefonía móvil DIGI, Vodafone y Telekom en Windows 8.1 y Windows 8 |4,15; 3,22; 2,34 |13 de enero de 2015 |
 | N/D |[3007054] |Siempre se muestra la opción de impresión protegida con PIN al imprimir un documento en una aplicación de la Tienda Windows en Windows |4,15; 3,22; 2,34 |13 de enero de 2015 |
 | N/D |[2999802] |Se imprimen líneas sólidas en lugar de líneas de puntos en Windows |4,15; 3,22; 2,34 |13 de enero de 2015 |
-| N/D |[2896881] |Tiempo de inicio de sesión largo cuando se usa el comando de VBScript AddPrinterConnection para asignar impresoras a usuarios durante el proceso de inicio de sesión en Windows |4,15; 3,22; 2,34 |13 de enero de 2015 |
+| N/D |[2896881] |Hora de inicio de sesión largo cuando usas Hola toomap impresoras de comando de AddPrinterConnection VBScript para los usuarios durante el proceso de inicio de sesión en Windows |4,15; 3,22; 2,34 |13 de enero de 2015 |
 
 
 [4034658]: http://support.microsoft.com/kb/4034658

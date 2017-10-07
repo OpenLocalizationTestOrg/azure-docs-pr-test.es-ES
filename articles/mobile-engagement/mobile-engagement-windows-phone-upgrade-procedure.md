@@ -1,5 +1,5 @@
 ---
-title: "Procedimientos de actualización del SDK de Windows Phone Silverlight"
+title: "Procedimientos de actualización de Phone Silverlight SDK aaaWindows"
 description: "Procedimientos de actualización de SDK de Windows Phone Silverlight para Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: f87f65788075c7f4067e77946e1bcbc8f3709317
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d72e7b8a59ef2c0a95b22efbf1e5257271399ddc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-phone-silverlight-sdk-upgrade-procedures"></a>Procedimientos de actualización del SDK de Windows Phone Silverlight
-Si ya integró una versión anterior de nuestro SDK en la aplicación, debería tener en cuenta los siguientes puntos a la hora de actualizar el SDK.
+Si ya ha integrado una versión anterior de nuestro SDK en la aplicación, tener hello tooconsider siguientes puntos al actualizar Hola SDK.
 
-Es posible que tenga que seguir varios procedimientos si se perdió varias versiones del SDK. Por ejemplo, si migra desde 0.10.1 a 0.11.0, primero debe seguir el procedimiento "de 0.9.0 a 0.10.1" y luego el procedimiento "de 0.10.1 a 0.11.0".
+Puede tener toofollow varios procedimientos si ejecutado varias versiones de hello SDK. Por ejemplo, si migra desde 0.10.1 too0.11.0 tiene toofirst siga Hola "de 0.9.0 too0.10.1" procedimiento, a continuación, Hola "de 0.10.1 too0.11.0" procedimiento.
 
-## <a name="from-200-to-330"></a>De 2.0.0 a 3.3.0
+## <a name="from-200-too330"></a>Desde 2.0.0 too3.3.0
 ### <a name="test-logs"></a>Registros de prueba
-Los registros de consola generados por el SDK ahora se pueden habilitar, deshabilitar o filtrar. Para personalizar esto, actualice la propiedad `EngagementAgent.Instance.TestLogEnabled` a uno de los valores disponibles en la enumeración `EngagementTestLogLevel`, por ejemplo:
+Registros de la consola producidos por hello SDK ahora pueden habilitada, deshabilitada o filtrado. toocustomize, propiedad de hello actualización `EngagementAgent.Instance.TestLogEnabled` tooone del valor de hello disponible de hello `EngagementTestLogLevel` enumeración, por ejemplo:
 
             EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
             EngagementAgent.Instance.Init();
 
-## <a name="from-111-to-200"></a>De 1.1.1 a 2.0.0
-A continuación se describe cómo migrar una integración del SDK desde el servicio Capptain que ofrece Capptain SAS en una aplicación con la tecnología de Azure Mobile Engagement. 
+## <a name="from-111-too200"></a>Desde 1.1.1 too2.0.0
+Hello siguiente describe cómo toomigrate una integración con el SDK de hello Capptain servicio ofrecido por Capptain SAS en una aplicación con la tecnología de Azure Mobile Engagement. 
 
 > [!IMPORTANT]
-> Capptain y Mobile Engagement no son los mismos servicios, y el procedimiento que se indica a continuación destaca únicamente cómo migrar la aplicación cliente. La migración del SDK en la aplicación NO migrará los datos desde los servidores Capptain a los servidores Mobile Engagement.
+> Capptain e interacción móvil no se Hola los mismos servicios y procedimiento Hola indicado a continuación sólo resalta cómo toomigrate Hola aplicación cliente. Migrar Hola SDK en la aplicación hello no migrará los datos de hello Capptain toohello Mobile Engagement servidores
 > 
 > 
 
-Si va a migrar desde una versión anterior, consulte el sitio web de Capptain para migrar a 1.1.1 en primer lugar luego aplique el siguiente procedimiento.
+Si va a migrar desde una versión anterior, por favor, consulte hello Capptain sitio web toomigrate too1.1.1 en primer lugar, aplique Hola procedimiento
 
 ### <a name="nuget-package"></a>Paquete de NuGet
 Reemplace **Capptain.WindowsPhone** por el paquete Nuget **MicrosoftAzure.MobileEngagement**.
 
 ### <a name="applying-mobile-engagement"></a>Aplicar Mobile Engagement
-El SDK usa el término `Engagement`. Debe actualizar el proyecto para que coincida con este cambio.
+Hola SDK utiliza el término de hello `Engagement`. Necesita tooupdate su toomatch proyecto este cambio.
 
-Debe desinstalar el paquete NuGet de Capptain actual. Tenga en cuenta que se van a quitar todos los cambios de la carpeta recursos de Capptain. Si desea conservar los archivos, haga una copia de ellos.
+Debe toouninstall el paquete de nuget Capptain actual. Tenga en cuenta que se van a quitar todos los cambios de la carpeta recursos de Capptain. Si desea que tookeep esos archivos, a continuación, haga una copia de ellos.
 
-Después, instale el nuevo paquete NuGet de Microsoft Azure Mobile Engagement en el proyecto. Puede encontrarlo directamente en [Nuget](http://www.nuget.org/packages/MicrosoftAzure.MobileEngagement). Esta acción reemplaza todos los archivos de recursos que Engagement usa y agrega el nuevo archivo DLL de Engagement a las referencias del proyecto.
+Después de eso, instale el nuevo paquete de nuget de Microsoft Azure Engagement hello en el proyecto. Puede encontrarlo directamente en [Nuget](http://www.nuget.org/packages/MicrosoftAzure.MobileEngagement). Este reemplaza acción todos los archivos de recursos utilizados por la interacción y agrega Hola nueva contratación DLL tooyour referencias del proyecto.
 
-Tendrá que limpiar las referencias del proyecto al eliminar de referencias del archivo DLL de Capptain. Si no lo hace, la versión de Capptain entrará en conflicto y se producirán errores.
+Eliminando las referencias de Capptain DLL tienen tooclean las referencias del proyecto. Si no hace esto, versión de Hola de Capptain entrarán en conflicto y se producirán errores.
 
-Si tiene recursos Capptain personalizados, copie el contenido de los archivos antiguos y péguelos en los nuevos archivos de Engagement. Tenga en cuenta que se deben actualizar tanto los archivos xaml como los archivos cs.
+Si ha personalizado los recursos de Capptain, copie el contenido de los archivos antiguos y péguelos en los nuevos archivos de contratación Hola. Tenga en cuenta que los archivos xaml y cs tienen toobe actualizado.
 
-Una vez completados estos pasos, solo tendrá que reemplazar las referencias de Capptain antiguas por las nuevas referencias de Engagement.
+Una vez completados estos pasos solo tiene tooreplace Capptain las referencias anteriores a por nuevas referencias de contratación Hola.
 
-1. Se deben actualizar todos los espacios de nombres de Capptain.
+1. Todos los espacios de nombres de Capptain tienen toobe actualizado.
    
     Antes de la migración:
    
@@ -108,18 +108,18 @@ Una vez completados estos pasos, solo tendrá que reemplazar las referencias de 
         xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
         ...
         </engagement:EngagementPage>
-4. En el caso de otros recursos, como imágenes Capptain, tenga en cuenta que su nombre también habrá cambiado para usar "Engagement".
+4. Para hello otros recursos como imágenes de Capptain, tenga en cuenta que también han tenido toouse cuyo nombre ha cambiado "Interacción".
 
 ### <a name="application-id--sdk-key"></a>Identificador de aplicación o clave SDK
-Engagement usa una cadena de conexión. No es necesario especificar un identificador de aplicación y una clave SDK con Mobile Engagement, solo tiene que especificar una cadena de conexión. Esta se puede configurar en el archivo EngagementConfiguration.
+Engagement usa una cadena de conexión. Toospecify no tiene un identificador de la aplicación y una clave SDK con Mobile Engagement, solo tendrá toospecify una cadena de conexión. Esta se puede configurar en el archivo EngagementConfiguration.
 
-La configuración de Engagement se puede establecer en el archivo `Resources\EngagementConfiguration.xml` del proyecto.
+configuración de la interacción de Hola se puede establecer el `Resources\EngagementConfiguration.xml` archivo del proyecto.
 
-Edite este archivo para especificar lo siguiente:
+Editar este archivo toospecify:
 
 * La cadena de conexión de la aplicación entre las etiquetas `<connectionString>` and `<\connectionString>`.
 
-Si desea especificarla en tiempo de ejecución, puede llamar al método siguiente antes de la inicialización del agente de Engagement:
+Si desea que toospecify en tiempo de ejecución en su lugar, se puede llamar a siguiente Hola método antes de la inicialización de agente de interacción de hello:
 
         /* Engagement configuration. */
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -128,10 +128,10 @@ Si desea especificarla en tiempo de ejecución, puede llamar al método siguient
         /* Initialize Engagement angent with above configuration. */
         EngagementAgent.Instance.Init(engagementConfiguration);
 
-La cadena de conexión de la aplicación se muestra en el Portal de Azure clásico.
+cadena de conexión de Hello para la aplicación se muestra en hello Portal clásico de Azure.
 
 ### <a name="items-name-change"></a>Cambio de nombre de elementos
-Todos los elementos con el nombre *capptain* han cambiado a *engagement*. De forma similar, *Capptain* cambió a *Engagement*.
+Todos los elementos con el nombre *capptain* han cambiado a *engagement*. De forma similar para *Capptain* demasiado*interacción*.
 
 Ejemplos de elementos Capptain que se usan habitualmente:
 

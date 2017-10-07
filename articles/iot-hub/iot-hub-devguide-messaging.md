@@ -1,5 +1,5 @@
 ---
-title: "Información sobre la mensajería de IoT Hub de Azure | Microsoft Docs"
+title: "mensajería de aaaUnderstand centro de IoT de Azure | Documentos de Microsoft"
 description: "Guía del desarrollador: mensajería de dispositivo a nube y de nube a dispositivo con IoT Hub Incluye información sobre los formatos de mensaje y protocolos de comunicación compatibles."
 services: iot-hub
 documentationcenter: .net
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: f54398d7ac46bf178d2bb603669b399d25370736
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a610741e23e243f392f1c042f9ab4a00d42f734f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>Mensajería de dispositivo a nube y de nube a dispositivo con IoT Hub
 
-Use la mensajería de IoT Hub para comunicarse con los dispositivos de los siguientes modos:
+Usar el centro de IoT mensajería toocommunicate con los dispositivos por:
 
-* Enviando mensajes [de dispositivo a nube][lnk-d2c] desde los dispositivos al back-end de su solución.
-* Enviando mensajes [de nube a dispositivo][lnk-c2d] desde la solución de back-end a sus dispositivos.
+* Enviar [dispositivo a la nube] [ lnk-d2c] mensajes de la solución de tooyour dispositivos back-end.
+* Enviar [en la nube al dispositivo] [ lnk-c2d] mensajes de nuevo la solución Hola finalización tooyour dispositivos.
 
-Las propiedades básicas de la funcionalidad de mensajería del Centro de IoT son la confiabilidad y durabilidad de los mensajes. Estas propiedades permiten la resistencia a la conectividad intermitente en el dispositivo y a los picos de carga del procesamiento de eventos en la nube. El Centro de IoT implementa *al menos una vez* garantías de entrega para la mensajería del dispositivo a la nube y de la nube al dispositivo.
+Propiedades básicas de funcionalidad de mensajería del centro de IoT son Hola fiabilidad y durabilidad de los mensajes. Estas propiedades permiten conectividad toointermittent de resistencia en el lado del dispositivo de Hola y tooload tiene un pico en el lado de la nube de Hola de procesamiento de eventos. El Centro de IoT implementa *al menos una vez* garantías de entrega para la mensajería del dispositivo a la nube y de la nube al dispositivo.
 
-Para obtener una introducción a las funciones de IoT Hub, consulte los artículos [Azure y el Internet de las cosas][lnk-azure-iot] e [Introducción al servicio Azure IoT Hub][lnk-iot-hub-overview].
+Para una introducción toohello las capacidades de centro de IoT, vea los artículos de hello [Azure y Internet de las cosas] [ lnk-azure-iot] y [información general de hello servicio del centro de IoT de Azure] [lnk-iot-hub-overview].
 
-## <a name="when-to-use-iot-hub-messaging"></a>Cuándo se debe usar la mensajería de IoT Hub
+## <a name="when-toouse-iot-hub-messaging"></a>Cuando toouse centro de IoT mensajería
 
-Los mensajes de dispositivo a nube se utilizan para enviar telemetría y alertas de series temporales desde la aplicación para dispositivo y los mensajes de nube a dispositivo, para las notificaciones unidireccionales a su aplicación para dispositivo.
+Usar mensajes de dispositivo a la nube para enviar telemetría de series de tiempo y alertas desde la aplicación de dispositivo y los mensajes en la nube al dispositivo para notificaciones unidireccional tooyour del dispositivo.
 
-* Si duda entre el uso de mensajes de dispositivo a nube, propiedades notificadas o carga de archivos, consulte la [Guía de comunicación de dispositivo a nube][lnk-d2c-guidance].
-* Si duda entre el uso de mensajes de nube a dispositivo, propiedades deseadas o métodos directos, consulte la [Guía de comunicación de nube a dispositivo][lnk-c2d-guidance].
+* Consulte demasiado[Guía de comunicación de dispositivos a la nube] [ lnk-d2c-guidance] si está en duda entre el uso de mensajes del dispositivo a la nube, las propiedades notificados o cargar el archivo.
+* Consulte demasiado[orientación para la comunicación en la nube para dispositivos] [ lnk-c2d-guidance] si está en duda entre el uso de mensajes en la nube al dispositivo, deseados propiedades o métodos directos.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

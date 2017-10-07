@@ -1,7 +1,7 @@
 ---
-title: "Supervisión del rendimiento de muchas bases de datos SQL de Azure en una aplicación SaaS multiinquilino | Microsoft Docs"
-description: "Supervisión y administración de bases de datos y grupos en la aplicación SaaS de Wingtip de Azure SQL Database"
-keywords: tutorial de base de datos sql
+title: "rendimiento de aaaMonitor de muchas bases de datos de SQL Azure en una aplicación de SaaS multiempresa | Documentos de Microsoft"
+description: "Supervisar y administrar el rendimiento de las bases de datos y los grupos de aplicación de SaaS de Wingtip de base de datos de SQL Azure hello"
+keywords: tutorial de SQL Database
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -16,73 +16,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
-ms.openlocfilehash: 42f727aa40e744916b1a8adf634c10d55880bef0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f0d7ba456c485b7de249a56abac3cf4be3857285
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-performance-of-the-wingtip-saas-application"></a>Supervisión del rendimiento de la aplicación SaaS de Wingtip
+# <a name="monitor-performance-of-hello-wingtip-saas-application"></a>Supervisar el rendimiento de hello aplicación Wingtip SaaS
 
-En este tutorial se describen varios escenarios clave de administración de rendimiento que se usan en aplicaciones de SaaS. Mediante un generador de carga para simular la actividad en todas las bases de datos de inquilino, se demuestran las características integradas de supervisión y alertas de SQL Database y los grupos elásticos.
+En este tutorial se describen varios escenarios clave de administración de rendimiento que se usan en aplicaciones de SaaS. Utiliza una actividad de toosimulate del generador de carga entre todas las bases de datos de inquilino, se muestran supervisión integrada de Hola y características de alertas de base de datos SQL y grupos elásticos.
 
-La aplicación SaaS de Wingtip utiliza un modelo de datos de inquilino único, donde cada lugar (inquilino) tiene su propia base de datos. Al igual que en muchas aplicaciones SaaS, el patrón de carga de trabajo de inquilino previsto es imprevisible y esporádico. En otras palabras, las ventas de entradas pueden producirse en cualquier momento. Para aprovechar las ventajas de este patrón de uso típico de base de datos, las bases de datos de inquilinos se implementan en grupos de bases de datos elásticas. Los grupos elásticos optimizan el costo de las soluciones mediante el uso compartido de los recursos entre distintas bases de datos. Con este tipo de patrón, es importante supervisar la base de datos y el uso de los recursos del grupo para asegurarse de que las cargas están razonablemente repartidas entre los grupos. También debe asegurarse de que las bases de datos individuales tienen los recursos suficientes y de que los grupos no están al límite de [unidades de transacción de bases de datos elásticas](sql-database-what-is-a-dtu.md). En este tutorial se exploran métodos para supervisar y administrar las bases de datos y los grupos, y se explica cómo tomar medidas correctivas en respuesta a las variaciones en la carga de trabajo.
+aplicación de SaaS Wingtip Hello usa un modelo de datos único inquilino, donde cada lugar (inquilino) tiene su propia base de datos. Al igual que muchas aplicaciones de SaaS, Hola prevé patrón de carga de trabajo de inquilino es imprevisible y esporádico. En otras palabras, las ventas de entradas pueden producirse en cualquier momento. tootake la ventaja de este patrón de uso típico de la base de datos, las bases de datos se implementan en grupos de bases de datos elásticas de inquilino. Grupos elásticos optimizan el costo de Hola de una solución mediante el uso compartido de recursos entre varias bases de datos. Con este tipo de patrón, es importante toomonitor base de datos y tooensure de uso de recursos de grupo que carga razonablemente se reparten entre grupos. También debe tooensure que las bases de datos individuales tienen los recursos adecuados y que no están alcanzando grupos sus [eDTU](sql-database-what-is-a-dtu.md) límites. Este tutorial explora formas toomonitor y administrar grupos y las bases de datos y cómo tootake acción correctora en toovariations de respuesta de carga de trabajo.
 
 En este tutorial, aprenderá a:
 
 > [!div class="checklist"]
 
-> * Simular el uso de las bases de datos de inquilinos mediante la ejecución de un generador de carga proporcionado
-> * Supervisar las bases de datos de inquilinos a medida que responden al aumento de carga
-> * Escalar verticalmente el grupo elástico en respuesta al aumento de la carga en la base de datos
-> * Aprovisionar un segundo grupo elástico para equilibrar la actividad de la base de datos
+> * Simular el uso en las bases de datos del inquilino de hello mediante la ejecución de un generador de carga proporcionado
+> * Bases de datos de inquilino de hello monitor como responden toohello aumento de carga
+> * Escalar verticalmente Hola grupo elástico en respuesta toohello mayor de la base de datos de carga
+> * Aprovisionar una segunda actividad de base de datos del saldo tooload grupo elástico
 
 
-Para completar este tutorial, asegúrese de cumplir los siguientes requisitos previos:
+toocomplete se ha completado este tutorial, asegúrese de hello seguro después de requisitos previos:
 
-* Se implementa la aplicación SaaS de Wingtip. Para implementarla en menos de cinco minutos, consulte el artículo sobre la [implementación y exploración de la aplicación SaaS de Wingtip](sql-database-saas-tutorial.md).
+* se implementa la aplicación de SaaS Wingtip Hello. vea toodeploy en menos de cinco minutos, [implementar y explorar la aplicación de SaaS Wingtip hello](sql-database-saas-tutorial.md)
 * Azure PowerShell está instalado. Para más información, consulte [Introducción a Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="introduction-to-saas-performance-management-patterns"></a>Introducción a los patrones de administración del rendimiento de SaaS
+## <a name="introduction-toosaas-performance-management-patterns"></a>Patrones de la administración de rendimiento de introducción tooSaaS
 
-La administración del rendimiento de la base de datos consiste en compilar y analizar los datos de rendimiento y, a continuación, reaccionar a estos datos mediante el ajuste de parámetros para mantener un tiempo de respuesta aceptable de la aplicación. Cuando se hospedan a varios inquilinos, los grupos de bases de datos elásticas son una manera rentable de proporcionar y administrar los recursos para un grupo de bases de datos con cargas de trabajo impredecibles. Con ciertos patrones de carga de trabajo, se pueden beneficiar de la administración en grupo un mínimo de dos bases de datos S3.
+Administración del rendimiento de la base de datos consta de compilación y analizar datos de rendimiento y, a continuación, reacción toothis datos mediante el ajuste de parámetros toomaintain un tiempo de respuesta aceptable para su aplicación. Cuando se hospedan a varios inquilinos, grupos elástico de base de datos son un tooprovide de manera rentable y administración los recursos de un grupo de bases de datos con cargas de trabajo impredecibles. Con ciertos patrones de carga de trabajo, se pueden beneficiar de la administración en grupo un mínimo de dos bases de datos S3.
 
 ![medios](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
 
-Se deben supervisar los grupos y las bases de datos de estos para garantizar que permanecen dentro de intervalos de rendimiento aceptables. Ajuste la configuración del grupo para satisfacer las necesidades de la carga de trabajo agregada de todas las bases de datos, garantizando que las eDTU del grupo son adecuadas para la carga de trabajo global. Ajuste los valores mínimo y máximo de unidades de transacción de bases de datos elásticas por base de datos adecuados para los requisitos de su aplicación.
+Grupos y las bases de datos de hello en grupos, deben ser supervisado tooensure pueden permanecer dentro de intervalos aceptables de rendimiento. Optimizar Hola grupo toomeet Hola necesidades especiales de configuración de carga de trabajo agregado Hola de todas las bases de datos, asegurarse de que hello Edtu de grupo adecuado para hello carga de trabajo general. Ajustar Hola por base de datos min y por base de datos máximo de eDTU valores tooappropriate valores para sus requisitos de aplicación específica.
 
 ### <a name="performance-management-strategies"></a>Estrategias de administración del rendimiento
 
-* Para evitar tener que supervisar el rendimiento manualmente, resulta más eficaz **establecer alertas que se activan cuando las bases de datos o los grupos se alejan de los intervalos normales**.
-* Para responder a las fluctuaciones de rendimiento global de un grupo a corto plazo, **se puede escalar o reducir verticalmente el nivel de eDTU del grupo**. Si esta fluctuación es habitual o previsible, **se puede programar el escalado automático del grupo**. Por ejemplo, cuando haya poca carga de trabajo (por la noche o durante el fin de semana), redúzcalo verticalmente.
-* Para responder a las fluctuaciones a largo plazo o a cambios en el número de bases de datos, **las bases de datos se pueden mover a otros grupos**.
-* Para responder a aumentos breves en la carga *individual* de una base de datos, **se puede sacar de un grupo para asignarle un nivel de rendimiento individual**. Una vez reducida la carga, la base de datos se puede devolver al grupo. Cuando se sepa de antemano, las bases de datos se pueden mover con antelación para garantizar que siempre tienen los recursos necesarios y evitar que otras bases de datos del grupo resulten afectadas. Si es predecible, como para un establecimiento, una avalancha de ventas de entradas para un evento popular, este comportamiento de administración puede integrarse en la aplicación.
+* tooavoid tener toomanually supervisar el rendimiento, que resulta más eficaz**establecer alertas que desencadenan cuando las bases de datos o grupos extraviado fuera de los intervalos normales**.
+* Hola toorespond las fluctuaciones de tooshort término en el nivel de rendimiento de agregado de Hola de un grupo, **nivel de eDTU de grupo se puede escalar hacia arriba o hacia abajo**. Si se produce esta fluctuación de forma regular o de predicción, **ajuste de escala en el grupo de hello puede ser toooccur programada automáticamente**. Por ejemplo, cuando haya poca carga de trabajo (por la noche o durante el fin de semana), redúzcalo verticalmente.
+* las fluctuaciones de término toolonger toorespond o cambios en Hola número de bases de datos, **bases de datos individuales se pueden mover a otros grupos**.
+* toorespond tooshort término aumenta en *individuales* carga de base de datos **bases de datos individuales pueden deja fuera de un grupo y asignar un nivel de rendimiento individuales**. Una vez que se reduce la carga de hello, base de datos de hello, a continuación, se pueden devolver toohello grupo. Cuando esto se conoce de antemano, las bases de datos se pueden mover antelación tooensure Hola base de datos siempre tiene recursos Hola necesarios, tooavoid impacto en otras bases de datos en bloque de Hola. Si este requisito es de predicción, como un lugar experimentan un urgente de ventas de vale para un evento popular, este comportamiento de administración puede integrarse en la aplicación hello.
 
-[Azure Portal](https://portal.azure.com) proporciona supervisión y alertas integradas en la mayoría de recursos. Para SQL Database, la supervisión y las alertas están disponibles para las bases de datos y los grupos. La supervisión y las alertas integradas son específicas de los recursos, por lo que es conveniente usarlas con un número reducido de recursos, pero no cuando se trabaja con muchos recursos.
+Hola [portal de Azure](https://portal.azure.com) proporciona supervisión y alertas relacionadas con la mayoría de los recursos integrados. Para SQL Database, la supervisión y las alertas están disponibles para las bases de datos y los grupos. Este integradas de supervisión y alerta es específico del recurso, por lo que es toouse adecuada para pequeñas cantidades de recursos, pero no es muy práctico cuando se trabaja con muchos recursos.
 
-Para escenarios de alto volumen donde se trabaja con muchos recursos, se puede usar [Log Analytics (OMS)](sql-database-saas-tutorial-log-analytics.md). Se trata de un servicio de Azure independiente que proporciona análisis de los registros de diagnóstico emitidos y de telemetría recopilados en un área de trabajo de Log Analytics. Log Analytics puede recopilar la telemetría de muchos servicios y sirve para consultar y establecer alertas.
+Para escenarios de alto volumen donde se trabaja con muchos recursos, se puede usar [Log Analytics (OMS)](sql-database-saas-tutorial-log-analytics.md). Se trata de un servicio de Azure independiente que proporciona análisis de los registros de diagnóstico emitidos y de telemetría recopilados en un área de trabajo de Log Analytics. Análisis de registros pueden recopilar la telemetría de muchos servicios y ser tooquery usado y establecer alertas.
 
-## <a name="get-the-wingtip-application-source-code-and-scripts"></a>Obtener el código fuente y los scripts de la aplicación Wingtip
+## <a name="get-hello-wingtip-application-source-code-and-scripts"></a>Obtener scripts y código fuente hello Wingtip
 
-Los scripts SaaS de Wingtip y el código fuente de la aplicación están disponibles en el repositorio de GitHub [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS). [Pasos para descargar los scripts SaaS de Wingtip](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
+Hello Wingtip SaaS scripts y código fuente de aplicación están disponibles en hello [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) repositorio de github. [Pasos de secuencias de comandos de toodownload Hola Wingtip SaaS](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts).
 
 ## <a name="provision-additional-tenants"></a>Aprovisionamiento de inquilinos adicionales
 
-Aunque los grupos pueden ser rentables con solo dos bases de datos S3, cuantas más bases de datos en el grupo, más rentable será la media. Para una buena comprensión de cómo funciona la administración y la supervisión del rendimiento a escala, para este tutorial se necesitan al menos 20 bases de datos implementadas.
+Mientras grupos pueden ser rentables con solo dos bases de datos de S3, Hola más bases de datos que se encuentran en Hola Hola de grupo más rentable Hola promedio efecto se convierte en. Para una buena comprensión de cómo funciona la administración y la supervisión del rendimiento a escala, para este tutorial se necesitan al menos 20 bases de datos implementadas.
 
-Si ya aprovisionó un lote de inquilinos en un tutorial anterior, vaya directamente a la sección [Simulación de uso en todas las bases de datos de inquilinos](#simulate-usage-on-all-tenant-databases).
+Si ha proporcionado un lote de inquilinos en un tutorial anterior, omitir toohello [simular el uso en todas las bases de datos de inquilino](#simulate-usage-on-all-tenant-databases) sección.
 
-1. Abra …\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1* en *PowerShell ISE*. Mantenga este script abierta, ya que se van a ejecutar varios escenarios en este tutorial.
+1. Abra... \\Módulos de aprendizaje\\administración y supervisión del rendimiento\\*demostración PerformanceMonitoringAndManagement.ps1* en hello *PowerShell ISE*. Mantenga este script abierta, ya que se van a ejecutar varios escenarios en este tutorial.
 1. Establezca **$DemoScenario** = **1**, **Aprovisionamiento de un lote de inquilinos**
-1. Presione **F5** para ejecutar el script.
+1. Presione **F5** secuencia de comandos de toorun Hola.
 
-El script implementará 17 inquilinos en menos de cinco minutos.
+script de Hola implementará a 17 inquilinos en menos de cinco minutos.
 
-El script *New-TenantBatch* usa un conjunto anidado o vinculado de plantillas de [Resource Manager](../azure-resource-manager/index.md) que crean un lote de inquilinos, que, de forma predeterminada, copia la base de datos **basetenantdb** en el servidor de catálogo para crear las bases de datos de inquilinos y las registra en el catálogo; finalmente, las inicializa con el nombre de inquilino y el tipo de lugar. Esto es coherente con la manera en que la aplicación aprovisiona un nuevo inquilino. Los cambios realizados en *basetenantdb* se aplican a los nuevos inquilinos que se aprovisionen a partir de ese momento. Vea el [tutorial de administración de esquemas](sql-database-saas-tutorial-schema-management.md) para ver cómo realizar cambios de esquema en bases de datos de inquilinos *existentes* (incluida la base de datos *basetenantdb*).
+Hola *New-TenantBatch* script utiliza un conjunto anidado o vinculado de [el Administrador de recursos](../azure-resource-manager/index.md) plantillas que crear un lote de inquilinos, que de forma predeterminada, copia la base de datos de hello **basetenantdb** en hello catálogo server toocreate Hola inquilino bases de datos, a continuación, registra estos en el catálogo de Hola y finalmente los inicializa con el tipo de nombre y la ubicación del inquilino de Hola. Esto es coherente con la manera de hello aplicación hello aprovisiona a un nuevo inquilino. Los cambios realizados demasiado*basetenantdb* es tooany aplicado nuevos inquilinos aprovisionados a partir de ahí. Vea hello [tutorial de administración de esquema](sql-database-saas-tutorial-schema-management.md) toosee cómo cambia el esquema de toomake demasiado*existente* bases de datos de inquilinos (incluidos hello *basetenantdb* base de datos).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Simulación de uso en todas las bases de datos de inquilinos
 
-Se proporciona el script *Demo-PerformanceMonitoringAndManagement.ps1* que simula una carga de trabajo que se ejecuta en todas las bases de datos de los inquilinos. La carga se genera mediante uno de los escenarios de carga disponibles:
+Hola *PerformanceMonitoringAndManagement.ps1 demostración* script es siempre que simula una carga de trabajo que se ejecutan en todas las bases de datos de inquilino. la carga de Hola se genera mediante uno de los escenarios de carga disponibles de hello:
 
 | Demostración | Escenario |
 |:--|:--|
@@ -92,140 +92,140 @@ Se proporciona el script *Demo-PerformanceMonitoringAndManagement.ps1* que simul
 | 5 | Generación de una carga normal y una carga elevada en un solo inquilino (aprox. 95 DTU)|
 | 6 | Generación de una carga desequilibrada en varios grupos|
 
-El generador de carga se aplica una carga *sintética* exclusiva de CPU para cada base de datos de inquilinos. El generador de inicia un trabajo para cada base de datos de inquilinos, que llama a un procedimiento almacenado periódicamente que genera la carga. Los niveles de carga (en eDTU), la duración y los intervalos varían en todas las bases de datos, lo cual simula una actividad de inquilinos imprevisible.
+Generador de carga de Hola se aplica un *sintético* base de datos de carga de CPU solo tooevery inquilinos. Generador de Hello inicia un trabajo para cada base de datos de inquilinos, que llama a un procedimiento almacenado periódicamente que genera una carga de Hola. intervalos, la duración y niveles de carga de hello (en Edtu) varían entre todas las bases de datos, simulación de la actividad de inquilinos imprevisible.
 
-1. Abra …\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1* en *PowerShell ISE*. Mantenga este script abierta, ya que se van a ejecutar varios escenarios en este tutorial.
+1. Abra... \\Módulos de aprendizaje\\administración y supervisión del rendimiento\\*demostración PerformanceMonitoringAndManagement.ps1* en hello *PowerShell ISE*. Mantenga este script abierta, ya que se van a ejecutar varios escenarios en este tutorial.
 1. Establezca **$DemoScenario** = **2**, *Generación de una carga de intensidad normal*.
-1. Presione **F5** para aplicar una carga de todas las bases de datos de inquilinos.
+1. Presione **F5** tooapply un tooall de carga de las bases de datos de inquilino.
 
-Wingtip es una aplicación SaaS y, en el mundo real, la carga que tiene una aplicación SaaS normalmente es esporádica e impredecible. Para realizar la simulación, el generador de carga crea una carga aleatoria que distribuye entre todos los inquilinos. El patrón de carga tarda varios minutos en crearse, por lo que se recomienda dejar que el generador de carga se ejecute durante unos 3-5 minutos antes de intentar supervisar la carga en las secciones siguientes.
+Wingtip es una aplicación de SaaS, y carga de Hola mundo real en una aplicación de SaaS normalmente es esporádico e imprevisibles. toosimulate esto, Hola carga generador genera una carga aleatorio se distribuye entre todos los inquilinos. Para tooemerge de patrón de carga hello, por lo que ejecutar el generador de carga de Hola durante 3 a 5 minutos antes de intentar toomonitor Hola carga en las secciones siguientes de Hola se necesitan varios minutos.
 
 > [!IMPORTANT]
-> El generador de carga se ejecuta como una serie de trabajos en la sesión local de PowerShell. Mantenga abierta la pestaña *Demo-PerformanceMonitoringAndManagement.ps1*. Si la cierra o suspende la máquina, el generador de carga se detendrá. El generador de carga permanece en un estado *de invocación de trabajo* en el que genera carga en los nuevos inquilinos que se aprovisionaron después de iniciar el generador. Presione *Ctrl-C* para detener la invocación de nuevos trabajos y salir del script. El generador de carga continuará ejecutándose, pero solo en los inquilinos existentes.
+> Generador de carga de saludo se está ejecutando como una serie de trabajos en la sesión de PowerShell local. Mantener hello *PerformanceMonitoringAndManagement.ps1 demostración* ficha abierta. Si cerrar pestaña de Hola o suspender su equipo, deja de generador de carga de Hola. Generador de carga de Hello permanece en un *invocar trabajo* estado donde genera una carga en los nuevos inquilinos que se aprovisionan después de que se inició el generador de Hola. Use *Ctrl-C* toostop invocar nuevos trabajos y script de Hola de salida. Generador de carga de Hello continuará toorun, pero solo en los inquilinos existentes.
 
-## <a name="monitor-resource-usage-using-the-azure-portal"></a>Supervisión del uso de los recursos mediante Azure Portal
+## <a name="monitor-resource-usage-using-hello-azure-portal"></a>Supervisar el uso de recursos con hello portal de Azure
 
-Para supervisar el uso de los recursos derivado de la carga que se aplica, abra el portal por el grupo que contiene las bases de datos de inquilinos:
+uso de recursos de hello toomonitor que los resultados de Hola de carga que se aplica, abrir el grupo de portal toohello de Hola que contiene las bases de datos del inquilino de hello:
 
-1. Abra [Azure Portal](https://portal.azure.com) y vaya al servidor *tenants1-&lt;USUARIO&gt;*.
-1. Desplácese hacia abajo, busque los grupos elásticos y haga clic en **Pool1**. Este grupo contiene todas las bases de datos de inquilinos creadas hasta ahora.
+1. Abra hello [portal de Azure](https://portal.azure.com) y examinar toohello *tenants1 -&lt;usuario&gt;*  server.
+1. Desplácese hacia abajo, busque los grupos elásticos y haga clic en **Pool1**. Este grupo contiene todas las bases de datos del inquilino de hello creados hasta ahora.
 
-Observe los gráficos **Supervisión de grupo elástico** y **Supervisión de base de datos elástica**.
+Observar hello **grupo elástico supervisión** y **supervisión de bases de datos elásticas** gráficos.
 
-El uso de los recursos del grupo es la suma del uso de todas las bases de datos del grupo. El gráfico de base de datos muestra las cinco bases de datos más recientes:
+Hola utilización de recursos del grupo es uso de la base de datos agregados de Hola para todas las bases de datos en bloque de Hola. gráfico de base de datos de Hello muestra hello cinco bases de datos más recientes:
 
 ![](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
 
-Como hay otras bases de datos en el grupo aparte de las cinco principales, el uso del grupo muestra la actividad que no se refleja en el gráfico de las cinco bases de datos principales. Para ver detalles adicionales, haga clic en **Uso de recursos de base de datos**:
+Porque hay bases de datos adicionales en el grupo de hello más allá de Hola cinco principal, uso del grupo de hello muestra las actividades que no se reflejan en el gráfico de cinco bases de datos principales de Hola. Para ver detalles adicionales, haga clic en **Uso de recursos de base de datos**:
 
 ![](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
 
 
-## <a name="set-performance-alerts-on-the-pool"></a>Establecimiento de alertas de rendimiento en el grupo
+## <a name="set-performance-alerts-on-hello-pool"></a>Establecer alertas de rendimiento en el bloque de Hola
 
-Establezca una alerta en el grupo que se desencadene cuando el uso sea de \>75 % como sigue:
+Establecer una alerta en el grupo de Hola que se desencadena en \>utilización del 75% como sigue:
 
-1. Abra *Pool1* (en el servidor *tenants1-\<user\>*) en [Azure Portal](https://portal.azure.com).
+1. Abra *Pool1* (en hello *tenants1 -\<usuario\>*  server) en hello [portal de Azure](https://portal.azure.com).
 1. Haga clic en **Reglas de alerta** y en **+ Agregar alerta**:
 
    ![agregar alerta](media/sql-database-saas-tutorial-performance-monitoring/add-alert.png)
 
 1. Proporcione un nombre, como **High DTU**,
-1. Establezca los valores siguientes:
+1. Establecer Hola siguientes valores:
    * **Métrica = eDTU percentage**
    * **Condición = greater than**.
    * **Umbral = 75**.
-   * **Período = Over the last 30 minutes**.
-1. Agregue una dirección de correo al cuadro *Correos electrónicos adicionales del administrador* y haga clic en **Aceptar**.
+   * **Período = sobre Hola últimos 30 minutos**.
+1. Agregar una toohello de dirección de correo electrónico *administrador adicional email(s)* y haga clic en **Aceptar**.
 
    ![Establecer alerta](media/sql-database-saas-tutorial-performance-monitoring/alert-rule.png)
 
 
 ## <a name="scale-up-a-busy-pool"></a>Escalado vertical de un grupo ocupado
 
-Si aumenta el nivel de carga global en un grupo hasta el punto de llegar al máximo del grupo y alcanza el 100 % del uso de eDTU, el rendimiento de las bases de datos se verá afectado, lo cual podría ralentizar los tiempos de respuesta de consulta para todas las bases de datos del grupo.
+Si aumenta el nivel de carga global de hello en un punto de toohello de grupo que maxes out grupo hello y alcanza el 100% del uso de eDTU, a continuación, rendimiento de la base de datos individual se ve afectado, potencialmente los tiempos de respuesta de consulta para todas las bases de datos en bloque de Hola.
 
-**A corto plazo**, considere la posibilidad de escalar verticalmente el grupo para proporcionar recursos adicionales o de quitar bases de datos del grupo (muévalas a otros grupos o fuera del grupo a un nivel de servicio independiente).
+**Corto plazo**, considere la posibilidad de escalar verticalmente recursos adicionales de hello grupo tooprovide o quitar las bases de datos del grupo de hello (moverlos tooother grupos, o fuera del nivel de servicio independiente de hello grupo tooa).
 
-**A largo plazo**, considere la posibilidad de optimizar las consultas o el uso de índices para mejorar el rendimiento de las bases de datos. En función de la sensibilidad de la aplicación a los problemas de rendimiento, es un procedimiento recomendado el escalado vertical de un grupo antes de que llegue al 100 % del uso de eDTU. Use una alerta para que le avise con antelación.
+**A largo plazo**, considere la posibilidad de optimizar las consultas o un índice de rendimiento de base de datos de uso tooimprove. Función hello tooperformance de sensibilidad de la aplicación emite a su tooscale de práctica recomendada un grupo de seguridad antes de llegar a 100% del uso de eDTU. Usar una alerta toowarn, de antemano.
 
-Puede simular un grupo ocupado si aumenta la carga que produce el generador. Hacer que las bases de datos generen ráfagas con más frecuencia y más prolongadas aumenta la carga global del grupo sin cambiar los requisitos de las bases de datos individualmente. El escalado vertical del grupo se realiza fácilmente en el portal o desde PowerShell. En este ejercicio se usa el portal.
+Puede simular un grupo de disponibilidad por incrementar la carga de hello producida por el generador de Hola. Causando hello tooburst de bases de datos con más frecuencia y para carga agregado ya lo está, creciente hello en el grupo de hello sin cambiar los requisitos de Hola de bases de datos individuales de Hola. Cómo ampliar el grupo de hello fácilmente se realiza en el portal de Hola o de PowerShell. Este ejercicio usa portal Hola.
 
-1. Establezca *$DemoScenario* = **3**, _Generación de una carga con ráfagas más prolongadas y frecuentes por base de datos_ para aumentar la intensidad de la carga global del grupo sin cambiar la carga máxima necesaria para cada base de datos.
-1. Presione **F5** para aplicar una carga de todas las bases de datos de inquilinos.
+1. Establecer *$DemoScenario* = **3**, _generar carga con ráfagas más y más frecuentes por base de datos_ intensidad de hello tooincrease de carga agregado de hello en grupo de Hello sin cambiar la carga máxima de hello requerida por cada base de datos.
+1. Presione **F5** tooapply un tooall de carga de las bases de datos de inquilino.
 
-1. Vaya a **Pool1** en Azure Portal.
+1. Vaya demasiado**Pool1** Hola portal de Azure.
 
-Supervise el aumento del uso de eDTU del grupo en el gráfico superior. La carga mayor tarda unos minutos en entrar en vigor, pero debería ver cómo rápidamente el grupo empieza a llegar al máximo uso y, según la carga se va estabilizando en el nuevo modelo, sobrecarga rápidamente el grupo.
+Hola Monitor aumenta el uso de eDTU de grupo en el gráfico superior Hola. Tarda unos minutos para nuevos tookick de carga Hola superior, pero rápidamente verá grupo Hola iniciar toohit máxima utilización, y como carga de hello steadies en el nuevo patrón de hello, rápidamente sobrecargas grupo Hola.
 
-1. Para escalar verticalmente el grupo, haga clic en **Configurar grupo** en la parte superior de la página **Pool1**.
-1. Ajuste el valor **eDTU del grupo** a **100**. Cambiar la eDTU del grupo no cambia la configuración por base de datos (que sigue siendo 50 eDTU máx. por base de datos). Puede ver la configuración por base de datos en el lado derecho de la página **Configurar grupo**.
-1. Haga clic en **Guardar** para enviar la solicitud de escala del grupo.
+1. tooscale grupo hello, haga clic en **Configurar grupo** en parte superior de Hola de hello **Pool1** página.
+1. Ajustar hello **eDTU del grupo** configuración demasiado**100**. Cambiar hello eDTU del grupo no cambia las opciones de cada base de datos de hello (que sigue siendo 50 eDTU máx. por base de datos). Puede ver los valores de cada base de datos de hello en hello derecha de hello **Configurar grupo** página.
+1. Haga clic en **guardar** agrupación de toosubmit Hola solicitudes tooscale Hola.
 
-Vuelva a **Pool1** > **Introducción** para ver los gráficos de supervisión. Supervise el efecto de proporcionar más recursos al grupo (aunque con pocas bases de datos y una carga aleatoria no siempre es fácil verlo bien hasta que se ejecuta durante un tiempo). Mientras observe los gráficos, tenga en cuenta que el 100 % del gráfico superior representa ahora 100 eDTU, mientras que en el gráfico inferior, el 100 % sigue siendo 50 eDTU, ya que el máximo por base de datos sigue siendo 50 eDTU.
+Vuelva demasiado**Pool1** > **Introducción** hello tooview gráficos de supervisión. Supervisar el efecto de Hola de proporcionar grupo Hola con más recursos (aunque con algunas bases de datos y una carga aleatoria no resulta siempre fácil toosee forma concluyente hasta que se ejecuta durante algún tiempo). Aunque se trata de hello gráficos tenga en cuenta que el 100% en hello superior gráfico ahora representa 100 Edtu, mientras que en hello inferior gráfico 100% es todavía 50 Edtu como Hola por base de datos máximo sigue siendo 50 Edtu.
 
-Las bases de datos permanecen en línea y están totalmente disponibles durante el proceso. En el último momento, como las bases de datos están preparadas para la habilitación con la nueva eDTU de grupo, todas las conexiones activas se interrumpen. El código de la aplicación debe escribirse para siempre reintente recuperar las conexiones interrumpidas, por lo tanto, se volverá a conectar a la base de datos del grupo escalado verticalmente.
+Bases de datos permanecen en línea y estén totalmente disponibles a lo largo del proceso de Hola. En hello último momento como cada base de datos está listo toobe habilitado con hello eDTU del grupo nuevo, todas las conexiones activas se interrumpen. Código de la aplicación siempre debe escribirse tooretry quitar conexiones por lo que se volverá a conectar la base de datos de toohello en grupo de escalado de Hola.
 
 ## <a name="load-balance-between-pools"></a>Equilibrio de carga entre grupos
 
-Como alternativa al escalado vertical del grupo, cree un segundo grupo y mueva bases de datos a este para equilibrar la carga entre los dos grupos. Para ello, el nuevo grupo debe crearse en el mismo servidor que el primero.
+Como una alternativa tooscaling grupo hello, cree un segundo grupo y mover las bases de datos en él hello toobalance cargar entre Hola dos grupos. toodo se debe crear este nuevo grupo de hello en Hola mismo servidor que hello en primer lugar.
 
-1. En [Azure Portal](https://portal.azure.com), abra el servidor **tenants1-&lt;USUARIO&gt;**.
-1. Haga clic en **+ Grupo nuevo** para crear un grupo en el servidor actual.
-1. En la plantilla **Grupo de bases de datos elásticas**:
+1. Hola [portal de Azure](https://portal.azure.com), abra hello **tenants1 -&lt;usuario&gt;**  server.
+1. Haga clic en **+ nuevo grupo** toocreate un bloque de servidor actual Hola.
+1. En hello **grupo elástico de base de datos** plantilla:
 
-    1. Establezca **Nombre** en *Pool2*.
-    1. Deje el plan de tarifa como **Grupo Estándar**.
+    1. Establecer **nombre** demasiado*Pool2*.
+    1. Deje Hola tarifa como **grupo estándar**.
     1. Haga clic en **Configurar grupo**.
-    1. Establezca **eDTU del grupo** en *50 eDTU*.
-    1. Haga clic en **Agregar bases de datos** para ver una lista de bases de datos en el servidor que se pueden agregar a *Pool2*.
-    1. Seleccione 10 bases de datos cualquiera para moverlas al nuevo grupo y, después, haga clic en **Seleccionar**. Si ha estado ejecutando el generador de carga, el servicio ya sabe que el perfil de rendimiento requiere un grupo mayor que el tamaño predeterminado de 50 eDTU y recomienda empezar con una configuración de 100 eDTU.
+    1. Establecer **eDTU del grupo** demasiado*eDTU 50*.
+    1. Haga clic en **agregar bases de datos** toosee una lista de bases de datos servidor hello que pueden agregarse demasiado*Pool2*.
+    1. Seleccione cualquier toomove 10 bases de datos en estas toohello nuevo grupo y, a continuación, haga clic en **seleccione**. Si ha ha estado ejecutando el generador de carga de hello, servicio Hola ya sabe que el perfil de rendimiento requiere un grupo mayor que 50 eDTU del tamaño predeterminado hello y recomienda a partir de una configuración de eDTU 100.
 
     ![recomendación](media/sql-database-saas-tutorial-performance-monitoring/configure-pool.png)
 
-    1. Para este tutorial, deje el valor predeterminado en 50 eDTU y haga clic en **Seleccionar** de nuevo.
-    1. Haga clic en **Aceptar** para crear el grupo y para mover las bases de datos seleccionadas a este.
+    1. Para este tutorial, deje predeterminado de hello en 50 Edtu y haga clic en **seleccione** nuevo.
+    1. Seleccione **Aceptar** toocreate Hola nuevo grupo y toomove Hola seleccionado bases de datos en él.
 
-Crear el grupo y mover las bases de datos tarda unos minutos. Al mover las bases de datos, permanecen en línea y totalmente accesibles hasta el último momento, cuando se cierran todas las conexiones abiertas. Siempre y cuando tenga alguna lógica de reintento, los clientes se conectarán a la base de datos en el nuevo grupo.
+Crear grupo de Hola y mover las bases de datos de Hola tarda unos minutos. Tal y como se han movido a las bases de datos permanecen en línea y totalmente accesible hasta Hola muy último momento, momento en que se cierran todas las conexiones abiertas. Tiene alguna lógica de reintento, siempre y cuando los clientes conectarán a continuación, toohello base de datos en el nuevo grupo de Hola.
 
-Vaya a **Pool2** (en el servidor *tenants1*) para abrir el grupo y supervisar su rendimiento. Si no lo ve, espere a que finalice el aprovisionamiento del nuevo grupo.
+Examinar demasiado**Pool2** (en hello *tenants1* server) tooopen Hola grupo y supervisar su rendimiento. Si no lo ve, espera para el aprovisionamiento de hello toocomplete de grupo nuevo.
 
 Ahora verá que el uso de los recursos en *Pool1* ha disminuido y que *Pool2* tiene una carga similar.
 
 ## <a name="manage-performance-of-a-single-database"></a>Administrar el rendimiento de una sola base de datos
 
-Si una base de datos de un grupo experimenta una carga elevada durante un tiempo prolongado, según la configuración de grupo, puede tender a dominar los recursos del grupo, lo cual puede afectar a otras bases de datos. Si es probable que la actividad continúe durante un tiempo, la base de datos se puede sacar temporalmente del grupo. Esto permite que la base de datos tenga los recursos adicionales necesarios y la aísla de las otras bases de datos.
+Si una base de datos en un grupo experimenta una carga intensiva prolongada, dependiendo de la configuración del grupo de hello, puede suelen toodominate recursos de hello en el grupo de Hola y afectar a otras bases de datos. Si la actividad de hello es probable que toocontinue durante algún tiempo, base de datos de Hola se puede mover temporalmente fuera del grupo de Hola. Esto permite Hola Hola de toohave de base de datos de recursos adicionales necesarios y que se aísla de hello otras bases de datos.
 
-En este ejercicio se simula el efecto de una carga elevada en Contoso Concert Hall cuando se venden entradas para un concierto popular.
+Este ejercicio simula el efecto de Hola de Contoso un auditorio experimentando una carga elevada al vales vaya a la venta de un concierto popular.
 
-1. Abra el script …\\*Demo-PerformanceMonitoringAndManagement.ps1*.
+1. Abra Hola... \\ *PerformanceMonitoringAndManagement.ps1 demostración* secuencia de comandos.
 1. Establezca **$DemoScenario = 5, Generación de una carga normal y una carga elevada en un solo inquilino (aprox. 95 DTU).**
 1. Establezca **$SingleTenantDatabaseName = contosoconcerthall**
-1. Ejecute el script con **F5**.
+1. Ejecutar script de Hola con **F5**.
 
 
-1. En [Azure Portal](https://portal.azure.com) abra **Pool1**.
-1. Inspeccione el gráfico **Supervisión de grupo elástico** y busque el aumento de uso de eDTU en el grupo. Pasado un minuto o dos, la carga mayor entrará en vigor rápidamente y verá que el grupo alcanza el 100 % de uso.
-1. Observe la pantalla **Supervisión de bases de datos elásticas** que muestra las bases de datos principales de la última hora. La base de datos *contosoconcerthall* pronto debería aparecer como una de las cinco bases de datos principales.
-1. **Haga clic en el gráfico Supervisión de bases de datos elásticas** y se abre la **página** **Uso de recursos de base de datos** donde puede supervisar cualquier base de datos. Esto le permite aislar la presentación de la base de datos *contosoconcerthall*.
-1. En la lista de bases de datos, haga clic en **contosoconcerthall**.
-1. Haga clic en **Plan de tarifa (escalar DTU)** para abrir la página **Configurar rendimiento** donde puede establecer un nivel de rendimiento independiente para la base de datos.
-1. Haga clic en la pestaña **Estándar** para abrir las opciones de escalado del nivel Estándar.
-1. Deslice el **control deslizante de las DTU** a la derecha para seleccionar **100** DTU. Tenga en cuenta que esto se corresponde con el objetivo de servicio, **S3**.
-1. Haga clic en **Aplicar** para sacar la base de datos del grupo y convertirla en una base de datos *S3 Estándar*.
-1. Una vez completado el escalado, supervise el efecto sobre la base de datos contosoconcerthall y Pool1 en las hojas de base de datos y grupos elásticos.
+1. Hola [portal de Azure](https://portal.azure.com) abrir **Pool1**.
+1. Inspeccionar hello **grupo elástico supervisión** del gráfico y busque el uso de eDTU de grupo de hello aumentado. Después de un minuto o dos, una mayor carga de hello debe iniciar tookick en y, rápidamente, debería ver que el grupo de Hola llega a 100% de utilización.
+1. Inspeccionar hello **supervisión de bases de datos elásticas** presentación que se muestra en las bases de datos más recientes de Hola Hola última hora. Hola *contosoconcerthall* base de datos pronto debe aparecer como una de las bases de datos más recientes de hello cinco.
+1. **Haga clic en supervisión de bases de datos elásticas de hello** **gráfico** y lo abre hello **utilización de recursos de base de datos** página donde puede supervisar cualquiera de las bases de datos de Hola. Esto le permite aislar la presentación de Hola de hello *contosoconcerthall* base de datos.
+1. En la lista de Hola de bases de datos, haga clic en **contosoconcerthall**.
+1. Haga clic en **tarifa (escala Dtu)** tooopen hello **configurar rendimiento** página donde puede establecer un nivel de rendimiento independiente para la base de datos de Hola.
+1. Haga clic en hello **estándar** pestaña Opciones de escala de tooopen hello en el nivel estándar Hola.
+1. Deslice hello **control deslizante DTU** tooright tooselect **100** Dtu. Tenga en cuenta esta condición corresponde el objetivo de servicio toohello, **S3**.
+1. Haga clic en **aplicar** toomove Hola base de datos del grupo de Hola y conviértala en un *para estándar S3* base de datos.
+1. Una vez finalizada la escala es una completa, monitor Hola efecto en la base de datos de hello contosoconcerthall y Pool1 en las hojas elásticas de base de datos y de grupo Hola.
 
-Una vez que desaparezca el exceso de carga de la base de datos contosoconcerthall debe devolverla rápidamente al grupo para reducir el coste. Si no es evidente cuándo ocurrirá esto, podría establecer una alerta en la base de datos que se active cuando el uso de DTU descienda por debajo del máximo por base de datos establecido para el grupo. El movimiento de una base de datos a un grupo se describe en el ejercicio 5.
+Una vez que desaparezca de la carga elevada de hello en base de datos de hello contosoconcerthall debe rápidamente vuelve toohello grupo tooreduce su costo. Si no está claro al que se realizará podría establecer una alerta en la base de datos de hello, que se desencadenará cuando el uso de su DTU cae por debajo de Hola por base de datos máximo en el grupo de Hola. El movimiento de una base de datos a un grupo se describe en el ejercicio 5.
 
 ## <a name="other-performance-management-patterns"></a>Otros modelos de administración del rendimiento
 
-**Escalado preventivo** En el ejercicio anterior donde exploramos cómo escalar una base de datos aislada, sabía la base de datos que buscaba. Si la administración de Contoso Concert Hall había informado a Wingtip de la venta inminente de entradas, la base de datos podía haberse sacado del grupo de manera preventiva. De lo contrario, probablemente se hubiera necesitado una alerta en el grupo o la base de datos permite detectar lo que estaba pasando. No le gustaría que le informaran de esto los otros inquilinos del grupo con quejas sobre el rendimiento. Y si el inquilino puede predecir durante cuánto tiempo necesita recursos adicionales, podrá configurar un runbook de Azure Automation para sacar la base de datos del grupo y volverla a meter según un programa determinado.
+**Ajuste de escala preferentes** en donde se explorar cómo tooscale una base de datos aislado, sabía que toolook de base de datos para anterior ejercicio de Hola. Si Administración de Hola de Contoso un auditorio tenía informado Wingtips de venta de vale inminente de hello, base de datos de Hola se hayan movido fuera del grupo de hello antelación. En caso contrario, es probable que habría requería una alerta en el grupo de Hola o toospot de la base de datos de hello lo que estaba sucediendo. Desearía toolearn respecto de hello otros inquilinos de hello grupo quejan de reducción del rendimiento. Y si el inquilino de hello puede predecir cuánto necesitan recursos adicionales, puede configurar una base de datos de automatización de Azure runbook toomove Hola fuera del grupo de hello y, a continuación, realizar la copia en una programación definida.
 
-**Autoservicio de escalado de inquilinos**. Como el escalado es una tarea que se llama fácilmente a través de la API de administración, puede crear fácilmente la capacidad de escalar las bases de datos de inquilinos en la aplicación de inquilino y ofrecerla como característica del servicio SaaS. Por ejemplo, puede permitir que los inquilinos se autoadministren el escalado y la reducción vertical y quizá vincularlo directamente a su facturación.
+**Autoservicio escalado inquilino** porque el ajuste de escala es una tarea que se llaman fácilmente a través de la API de administración de hello, puede fácilmente crear bases de datos de inquilino de tooscale de capacidad de hello en la aplicación de acceso de inquilino y ofrecer como una característica de su servicio de SaaS. Por ejemplo, permitir que los inquilinos self-administer escalado vertical y horizontalmente, quizás directamente vinculada facturación tootheir!
 
-**Escalado y reducción vertical de un grupo según un programa para cumplir patrones de uso**
+**Ajuste de escala en un grupo de arriba y abajo en los patrones de uso de toomatch de una programación**
 
-Cuando el uso global de los inquilinos siga patrones previsibles, puede utilizar Azure Automation para escalar y reducir verticalmente un grupo según un programa. Por ejemplo, puede reducir un grupo verticalmente después de las 6 p.m. y escalarlo de nuevo antes de las 6 a.m. entre semana porque sabe que se necesitan menos recursos.
+Cuando el uso de inquilinos agregado sigue los patrones de uso de predicción, puede usar Automatización de Azure tooscale un grupo de arriba y abajo según una programación. Por ejemplo, puede reducir un grupo verticalmente después de las 6 p.m. y escalarlo de nuevo antes de las 6 a.m. entre semana porque sabe que se necesitan menos recursos.
 
 
 
@@ -234,17 +234,17 @@ Cuando el uso global de los inquilinos siga patrones previsibles, puede utilizar
 En este tutorial, aprenderá a:
 
 > [!div class="checklist"]
-> * Simular el uso de las bases de datos de inquilinos mediante la ejecución de un generador de carga proporcionado
-> * Supervisar las bases de datos de inquilinos a medida que responden al aumento de carga
-> * Escalar verticalmente el grupo elástico en respuesta al aumento de la carga en la base de datos
-> * Aprovisionar un segundo grupo elástico para equilibrar la actividad de la base de datos
+> * Simular el uso en las bases de datos del inquilino de hello mediante la ejecución de un generador de carga proporcionado
+> * Bases de datos de inquilino de hello monitor como responden toohello aumento de carga
+> * Escalar verticalmente Hola grupo elástico en respuesta toohello mayor de la base de datos de carga
+> * Aprovisionar una segunda actividad de base de datos de grupo elástico tooload saldo Hola
 
 [Tutorial sobre la restauración de un único inquilino](sql-database-saas-tutorial-restore-single-tenant.md)
 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* Otros [tutoriales basados en la implementación de la aplicación SaaS de Wingtip](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
+* Adicionales [tutoriales que se basan en la implementación de aplicaciones de SaaS Wingtip Hola](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [Grupos elásticos de SQL](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
 * [Log Analytics](sql-database-saas-tutorial-log-analytics.md): tutorial de configuración y uso de Log Analytics

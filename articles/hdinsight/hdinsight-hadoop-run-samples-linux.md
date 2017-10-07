@@ -1,6 +1,6 @@
 ---
-title: "Ejecución de ejemplos de MapReduce de Hadoop en HDInsight y Azure | Microsoft Docs"
-description: "Introducción al uso de ejemplos de MapReduce en archivos jar incluidos en HDInsight. Use SSH para conectarse al clúster y, a continuación, use el comando de Hadoop para ejecutar trabajos de ejemplo."
+title: ejemplos de Hadoop MapReduce aaaRun en HDInsight - Azure | Documentos de Microsoft
+description: "Introducción al uso de ejemplos de MapReduce en archivos jar incluidos en HDInsight. Utilizar SSH tooconnect toohello clúster y, a continuación, utilice trabajos de ejemplo de Hola Hadoop comando toorun."
 keywords: jar de ejemplo de hadoop, jar de ejemplos de hadoop, ejemplos de mapreduce de hadoop, ejemplos de mapreduce
 services: hdinsight
 documentationcenter: 
@@ -17,120 +17,120 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 447c07f869ff9a2a2a00089248be98e6729d6dc4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7a16bbd51eb17570fcaa3b1e0f5990fa889c106a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Ejecución de los ejemplos de MapReduce incluidos en HDInsight
+# <a name="run-hello-mapreduce-examples-included-in-hdinsight"></a>Ejecutar los ejemplos de hello MapReduce que se incluyen en HDInsight
 
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Aprenda a ejecutar los ejemplos de MapReduce incluidos con Hadoop en HDInsight.
+Obtenga información acerca de cómo se incluyen ejemplos de MapReduce hello toorun con Hadoop en HDInsight.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 * **Un clúster de HDInsight**: consulte [Introducción al uso de Hadoop con Hive en HDInsight en Linux](hdinsight-hadoop-linux-tutorial-get-started.md)
 
     > [!IMPORTANT]
-    > Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Un cliente SSH**: para obtener más información, consulte [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="the-mapreduce-examples"></a>Ejemplos de MapReduce
+## <a name="hello-mapreduce-examples"></a>ejemplos de Hello MapReduce
 
-**Ubicación**: Los ejemplos se encuentran en el clúster de HDInsight en `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
+**Ubicación**: Hola ejemplos se encuentran en hello clúster de HDInsight en `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
 
-**Contenido**: se incluyen los siguientes ejemplos en este archivo:
+**Contenido**: Hola siguiendo los ejemplos incluido en este archivo:
 
-* `aggregatewordcount`: programa mapreduce basado en agregación que cuenta las palabras de los archivos de entrada.
-* `aggregatewordhist`: programa mapreduce basado en agregación que cuenta el histograma de las palabras de los archivos de entrada.
-* `bbp`: programa de mapreduce que usa una fórmula Bailey-Borwein-Plouffe para calcular los dígitos exactos de Pi.
-* `dbcount`: trabajo de ejemplo que cuenta los registros de vistas de página almacenados en una base de datos.
-* `distbbp`: programa de mapreduce que usa una fórmula de tipo BBP para calcular los bits exactos de Pi.
-* `grep`: programa de mapreduce que cuenta las coincidencias de regex en la entrada.
+* `aggregatewordcount`: Un agregado según el programa de mapreduce que recuentos de palabras de hello en los archivos de entrada de Hola.
+* `aggregatewordhist`: Un agregado según el programa de mapreduce que calcula el histograma de Hola de palabras de hello en los archivos de entrada de Hola.
+* `bbp`: Un programa de mapreduce que utiliza Bailey-Borwein-Plouffe toocompute dígitos exactos de Pi.
+* `dbcount`: Un trabajo de ejemplo que cuente los registros de la vista de página de hello almacenados en una base de datos.
+* `distbbp`: Un programa de mapreduce que utiliza un tipo BBP toocompute fórmulas de bits exacto de Pi.
+* `grep`: Un programa de mapreduce que cuente Hola coincide con de una expresión regular en la entrada de Hola.
 * `join`: trabajo que realiza una unión de conjuntos de datos ordenados con particiones equiparables.
 * `multifilewc`: trabajo que cuenta las palabras de varios archivos.
-* `pentomino`: programa de mapreduce para la colocación de mosaicos con el fin de encontrar soluciones a problemas de pentominó.
+* `pentomino`: Un icono de mapreduce diseñar soluciones de programa toofind toopentomino problemas.
 * `pi`: programa de mapreduce que calcula Pi mediante un método cuasi Monte Carlo.
 * `randomtextwriter`: programa de mapreduce que escribe 10 GB de datos de texto aleatorios por nodo.
 * `randomwriter`: programa de mapreduce que escribe 10 GB de datos aleatorios por nodo.
-* `secondarysort`: ejemplo que define una ordenación secundaria para la fase de reducción.
-* `sort`: programa de mapreduce que ordena los datos escritos por el escritor aleatorio.
+* `secondarysort`: Un ejemplo define una toohello de orden secundaria reducir fase.
+* `sort`: Un programa de mapreduce que ordena datos Hola escritos Hola de escritura aleatoria.
 * `sudoku`: solucionador de sudokus.
-* `teragen`: genera datos para la ordenación de terabytes (terasort).
-* `terasort`: ejecuta la ordenación de terabytes (terasort).
+* `teragen`: Generar datos para terasort Hola.
+* `terasort`: Ejecute hello terasort.
 * `teravalidate`: comprueba los resultados de la ordenación de terabytes (terasort).
-* `wordcount`: programa de mapreduce que cuenta las palabras de los archivos de entrada.
-* `wordmean`: programa de mapreduce que cuenta la longitud media de las palabras de los archivos de entrada.
-* `wordmedian`: programa de mapreduce que cuenta la mediana de la longitud de las palabras de los archivos de entrada.
-* `wordstandarddeviation`: programa de mapreduce que cuenta la desviación estándar de la longitud de las palabras de los archivos de entrada.
+* `wordcount`: Un programa de mapreduce que recuentos de palabras de hello en los archivos de entrada de Hola.
+* `wordmean`: Un programa de mapreduce que cuenta la duración media de Hola de palabras de hello en los archivos de entrada de Hola.
+* `wordmedian`: Archivos de entrada un programa de mapreduce que cuenta la longitud de mediana de Hola de palabras de Hola Hola.
+* `wordstandarddeviation`: Archivos de entrada un programa de mapreduce que cuenta la desviación estándar de Hola de longitud de Hola de palabras de Hola Hola.
 
-**Código fuente**: el código fuente de estos ejemplos se incluye en el clúster de HDInsight en `/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+**El código fuente**: código fuente de estos ejemplos se incluye en hello clúster de HDInsight en `/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
 
 > [!NOTE]
-> El `2.2.4.9-1` en la ruta de acceso es la versión de Hortonworks Data Platform para el clúster de HDInsight y puede que sea diferente para su clúster.
+> Hola `2.2.4.9-1` Hola ruta de acceso es la versión de Hola de hello Hortonworks Data Platform para clúster de HDInsight de Hola y pueden ser diferente para el clúster.
 
-## <a name="run-the-wordcount-example"></a>Ejecución del ejemplo de wordcount
+## <a name="run-hello-wordcount-example"></a>Ejecutar el ejemplo de wordcount Hola
 
-1. Conéctese a HDInsight mediante SSH. Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Conectar tooHDInsight mediante SSH. Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. En el símbolo `username@#######:~$` , use el siguiente comando para mostrar los ejemplos:
+2. De hello `username@#######:~$` símbolo del sistema, use Hola siguiendo los ejemplos del comando toolist hello:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
     ```
 
-    Este comando genera la lista de ejemplos de la sección anterior de este documento.
+    Este comando genera lista Hola de ejemplo desde la sección anterior de Hola de este documento.
 
-3. Use el siguiente comando para obtener ayuda sobre un ejemplo concreto. En este caso, el ejemplo **wordcount** :
+3. Hola de uso siguiente comando tooget ayuda de un ejemplo concreto. En este caso, Hola **wordcount** ejemplo:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount
     ```
 
-    Recibirá el siguiente mensaje:
+    Recibirá el siguiente mensaje de Hola:
 
         Usage: wordcount <in> [<in>...] <out>
 
-    Este mensaje indica que puede proporcionar varias rutas de entrada para los documentos de origen. La ruta de acceso final es donde se almacena la salida (la cantidad de palabras en los documentos de origen).
+    Este mensaje indica que puede proporcionar varias rutas de acceso de entrada para los documentos de origen de Hola. ruta de acceso final Hello es donde se almacena el resultado de hello (recuento de palabras en documentos de origen de hello).
 
-4. Use lo siguiente para contar todas las palabras en los cuadernos de Leonardo Da Vinci, que se proporcionan como datos de ejemplo con su clúster:
+4. Usar hello después toocount todas las palabras en hello blocs de notas de Leonardo Da Vinci, que se proporcionan como datos de ejemplo con el clúster:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    La entrada de este trabajo se lee desde `/example/data/gutenberg/davinci.txt`. La salida de este ejemplo se almacena en `/example/data/davinciwordcount`. Ambas rutas de acceso se encuentran en el almacenamiento predeterminado del clúster, no en el sistema de archivos local.
+    La entrada de este trabajo se lee desde `/example/data/gutenberg/davinci.txt`. La salida de este ejemplo se almacena en `/example/data/davinciwordcount`. Ambas rutas de acceso se encuentran en almacenamiento predeterminado para el clúster de hello, no el sistema de archivos local Hola.
 
    > [!NOTE]
-   > Como se indica en la Ayuda del ejemplo wordcount, también puede especificar varios archivos de entrada. Por ejemplo, `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` contaría las palabras de davinci.txt y ulysses.txt.
+   > Como se indicó en la Ayuda de hello para el ejemplo de wordcount hello, también puede especificar varios archivos de entrada. Por ejemplo, `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` contaría las palabras de davinci.txt y ulysses.txt.
 
-5. Una vez completado el trabajo, use el siguiente comando para ver la salida:
+5. Cuando se completa el trabajo de hello, utilice Hola siguiendo la salida del comando tooview hello:
 
     ```bash
     hdfs dfs -cat /example/data/davinciwordcount/*
     ```
 
-    Este comando concatena todos los archivos de salida generados por el trabajo. Muestra la salida en la consola. La salida será similar al siguiente texto:
+    Este comando concatena todos los archivos de salida de hello generados por el trabajo de Hola. Muestra la consola de toohello de salida de hello. Hola de salida es toohello similar siguiente texto:
 
         zum     1
         zur     1
         zwanzig 1
         zweite  1
 
-    Cada línea representa una palabra y el número de veces que aparece en los datos de entrada.
+    Cada línea representa una palabra y cuántas veces se produjo en hello los datos de entrada.
 
-## <a name="the-sudoku-example"></a>Ejemplo de Sudoku
+## <a name="hello-sudoku-example"></a>ejemplo de Hola Sudoku
 
-[Sudoku](https://en.wikipedia.org/wiki/Sudoku) es un rompecabezas lógico compuesto por nueve cuadrículas de 3 × 3. Algunas celdas de la cuadrícula tienen números y otras están en blanco; el objetivo es resolver las celdas en blanco. El vínculo anterior contiene más información sobre el rompecabezas, pero el propósito de este ejemplo consiste en resolver las celdas en blanco. Así que nuestra entrada debe ser un archivo en el formato siguiente:
+[Sudoku](https://en.wikipedia.org/wiki/Sudoku) es un rompecabezas lógico compuesto por nueve cuadrículas de 3 × 3. Algunas celdas de cuadrícula de Hola tienen números, mientras que otros están en blanco y objetivo de hello es toosolve para las celdas en blanco de Hola. el vínculo anterior de Hello tiene más información sobre rompecabezas de hello, pero Hola de este ejemplo sirve toosolve para las celdas en blanco de Hola. Por lo que la entrada debería ser un archivo que se encuentra en hello siguiendo el formato:
 
 * Nueve filas de nueve columnas;
 * Cada columna puede contener un número o `?` (que indica una celda en blanco);
 * Las celdas se separan por un espacio.
 
-Existe una forma determinada de construir rompecabezas sudoku para que no se repita un número en una columna o fila. Hay un ejemplo en el clúster de HDInsight que se ha creado correctamente. Se encuentra en `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` y contiene el texto siguiente:
+Hay un determinado tooconstruct de manera rompecabezas Sudoku; no puede repetirse un número en una columna o fila. Hay un ejemplo en clúster de HDInsight de Hola que se cree correctamente. Se encuentra en `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` y contiene Hola siguiente texto:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -142,13 +142,13 @@ Existe una forma determinada de construir rompecabezas sudoku para que no se rep
     ? ? ? ? ? ? 2 ? ?
     ? ? ? ? 4 5 ? 7 8
 
-Para ejecutar este problema con el ejemplo sudoku, use el comando siguiente:
+Este problema de ejemplo a través de hello ejemplo Sudoku, toorun, utilice Hola comando siguiente:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar sudoku /usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta
 ```
 
-Los resultados deberían asemejarse a este texto:
+resultados de Hello aparecen toohello similar siguiente texto:
 
     8 5 1 3 9 2 6 4 7
     4 3 2 6 7 8 1 9 5
@@ -162,53 +162,53 @@ Los resultados deberían asemejarse a este texto:
 
 ## <a name="pi--example"></a>Ejemplo de PI (π)
 
-El ejemplo pi usa un método estadístico (cuasi Monte Carlo) para calcular el valor de pi. Los puntos se colocan de forma aleatoria en un cuadrado unitario. El cuadrado también contiene un círculo. La probabilidad de que los puntos se encuentren dentro del círculo es igual al área del círculo, pi/4. El valor de pi se puede estimar a partir del valor de 4R. R es la proporción de la cantidad de puntos dentro del círculo con respecto al número total de puntos que se encuentran dentro del cuadrado. Mientras más grande sea la muestra de puntos usada, mejor resulta el valor calculado.
+ejemplo de Hola a pi usa una estadística (tipo de Monte Carlo) valor del método tooestimate Hola de pi. Los puntos se colocan de forma aleatoria en un cuadrado unitario. cuadrado de Hello también contiene un círculo. probabilidad de que los puntos de Hola se sitúan dentro de círculo Hola Hola son toohello igual área no cliente de hello circle, pi/4. valor de Hola de pi se puede estimar de valor de Hola de 4R. R es la relación de hello del número de Hola de puntos que están dentro de círculo hello toohello número total de puntos que están dentro de cuadrado Hola. Hola Hola muestra de mayor tamaño puntos usados, que es mejor estimación de Hola Hola.
 
-Use el siguiente comando para ejecutar este ejemplo. Este comando usa 16 asignaciones con 10 millones de ejemplos cada una para calcular el valor de pi:
+Use este ejemplo de Hola después toorun de comando. Este comando utiliza 16 mapas con el valor de 10.000.000 ejemplos tooestimate Hola de pi:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
 ```
 
-El valor devuelto debería asemejarse a **3,14159155000000000000**. Como referencia, las primeras 10 posiciones decimales de pi son 3,1415926535.
+Hello valor devuelto por este comando es similar demasiado**3.14159155000000000000**. Para las referencias, hello 10 primeros decimales de pi son 3.1415926535.
 
 ## <a name="10-gb-greysort-example"></a>Ejemplo de Greysort de 10 GB
 
-GraySort es una ordenación de pruebas comparativas. La métrica es la velocidad de ordenación (TB/minuto) que se logra después de ordenar enormes volúmenes de datos, normalmente 100 TB, como mínimo.
+GraySort es una ordenación de pruebas comparativas. métrica de Hello es la tasa de ordenación de hello (TB/minuto) que se logra al ordenar grandes cantidades de datos, normalmente un 100 TB mínimo.
 
-Este ejemplo utiliza solo 10 GB de datos, para así poder ejecutarlo relativamente rápido. Usa las aplicaciones de MapReduce desarrolladas por Owen O'Malley y Arun Murthy. Estas aplicaciones ganaron el estándar de comparación anual de ordenación de terabytes de fin general ("daytona") en 2009 con una velocidad de 0,578 TB/min (100 TB en 173 minutos). Para obtener más información sobre este y otros estándares de comparación de ordenación, consulte el sitio [Sortbenchmark](http://sortbenchmark.org/) .
+Este ejemplo utiliza solo 10 GB de datos, para así poder ejecutarlo relativamente rápido. Usa las aplicaciones de MapReduce Hola desarrolladas por Owen O'Malley y Arun Murthy. Estas aplicaciones habían ganado el criterio de referencia de hello anual uso general ("daytona") terabyte ordenación en 2009, con una velocidad de 0.578 TB/min (100 TB en 173 minutos). Para obtener más información sobre este y otros criterios de ordenación de referencia, vea hello [Sortbenchmark](http://sortbenchmark.org/) sitio.
 
 Este ejemplo utiliza tres conjuntos de programas de MapReduce:
 
-* **TeraGen**: programa de MapReduce que genera filas de datos que se van a ordenar.
+* **TeraGen**: MapReduce de un programa que genera filas de datos toosort
 
-* **TeraSort**: toma una muestra de los datos de entrada y usa MapReduce para ordenar los datos de manera absoluta.
+* **TeraSort**: ejemplos de datos de entrada de Hola y utiliza datos de hello toosort MapReduce en un orden total
 
-    TeraSort es una ordenación MapReduce estándar, salvo por el particionador personalizado. El particionador usa una lista ordenada de N-1 claves de muestra que definen el intervalo de claves para cada reducción. En concreto, todas las claves, como esa muestra[i-1] <= clave < muestra[i] se envían a la reducción i. Esta particionador garantiza que las salidas de la reducción i sean todas menores que la salida de la reducción i+1.
+    TeraSort es una ordenación MapReduce estándar, salvo por el particionador personalizado. particionador de Hello usa una lista ordenada de claves de n-1 muestreada que definen el intervalo de claves de Hola para cada reduce. En particular, todas las claves de este tipo que muestra [i-1] < = clave < [i] de ejemplo se envían tooreduce. Este particionador garantiza que las salidas de Hola de reducen i es todos los menores de reducir la salida de hello de i + 1.
 
-* **TeraValidate**: programa de MapReduce que valida que la salida se ordene de manera global.
+* **TeraValidate**: MapReduce de un programa que valida que los resultados del Hola global está ordenada
 
-    Crea una asignación por archivo en el directorio de salida y cada asignación asegura que cada clave es menor o igual que la anterior. La función de asignación genera registros de la primera y última clave de cada archivo. La función de reducción se asegura de que la primera clave del archivo i es mayor que la última clave del archivo i-1. Los problemas se notifican como una salida de la fase de reducción con las claves que no están en orden.
+    Crea una asignación por cada archivo en el directorio de salida de hello, y cada asignación garantiza que cada clave es menor o igual toohello anterior. función de asignación de Hello genera registros de hello primero y último claves de cada archivo. Hola reduce (función) garantiza que Hola primera clave de archivo i es mayor que la clave de la última Hola de i-1 de archivo. Los problemas se notifican como una salida de hello reducir la fase, con claves de Hola que no están ordenadas.
 
-Utilice los siguientes pasos para generar datos, ordenarlos y, a continuación, validar el resultado:
+Use Hola siguientes pasos le indican datos toogenerate, ordenar y, a continuación, validar salida de hello:
 
-1. Genere 10 GB de datos que se almacenen en el almacenamiento predeterminado del clúster de HDInsight en `/example/data/10GB-sort-input`:
+1. Generar 10 GB de datos, que es el almacenamiento de forma predeterminada del clúster de HDInsight de toohello almacenado en `/example/data/10GB-sort-input`:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    `-Dmapred.map.tasks` indica a Hadoop cuántas tareas de asignación se usarán para el trabajo. Los dos parámetros finales indican al trabajo que cree 10 GB de datos y los almacene en `/example/data/10GB-sort-input`.
+    Hola `-Dmapred.map.tasks` indica cuántos toouse de tareas de asignación para este trabajo de Hadoop. parámetros de Hello dos final indicar Hola trabajo toocreate 10 GB de datos y toostore en `/example/data/10GB-sort-input`.
 
-2. Use el siguiente comando para ordenar los datos:
+2. Usar hello comando toosort Hola datos siguientes:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
     ```
 
-    `-Dmapred.reduce.tasks` indica a Hadoop cuántas tareas de reducción se usarán para el trabajo. Los dos parámetros finales son simplemente las ubicaciones de entrada y salida de los datos.
+    Hola `-Dmapred.reduce.tasks` indica Hadoop cuántos reducen toouse de tareas de trabajo de Hola. Hola dos últimos parámetros Hola solo entrada y ubicaciones de los datos de salida.
 
-3. Use lo siguiente para validar los datos generados por la ordenación:
+3. Usar hello toovalidate Hola datos generados por orden de hello siguientes:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
@@ -216,7 +216,7 @@ Utilice los siguientes pasos para generar datos, ordenarlos y, a continuación, 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este artículo, ha obtenido información acerca de cómo ejecutar los ejemplos incluidos en los clústeres de HDInsight basado en Linux. Para obtener acceso a tutoriales sobre cómo usar Pig, Hive y MapReduce con HDInsight, consulte los siguientes temas:
+De este artículo, ha aprendido cómo ejemplos de hello toorun incluyen con hello clústeres de HDInsight basados en Linux. Para ver los tutoriales sobre el uso de Pig, Hive y MapReduce con HDInsight, vea Hola temas siguientes:
 
 * [Uso de Pig con Hadoop en HDInsight][hdinsight-use-pig]
 * [Uso de Hive con Hadoop en HDInsight][hdinsight-use-hive]

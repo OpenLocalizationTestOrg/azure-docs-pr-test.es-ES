@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal: Creación y administración de un grupo elástico de SQL Database | Microsoft Docs"
-description: "Aprenda a usar la inteligencia integrada de Azure Portal y SQL Database para administrar y supervisar un grupo elástico escalable, así como para identificar su tamaño más adecuado, con el objetivo de optimizar el rendimiento de las bases de datos y administrar los costes."
+description: "Obtenga información acerca de cómo toouse Hola portal de Azure y toomanage de inteligencia incorporada de la base de datos de SQL, supervisar y ajustar un grupo elástico escalable toooptimize base de datos de rendimiento y costo de administrar."
 keywords: 
 services: sql-database
 documentationcenter: 
@@ -16,20 +16,20 @@ ms.author: ninarn
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: 4ffd1db31f42967dc7f07aa979898dddbb333641
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e0de952bc0c91177f64c04363630783d72435741
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-manage-an-elastic-pool-with-the-azure-portal"></a>Creación y administración de un grupo elástico con Azure Portal
-En este tema se muestra cómo crear y administrar [grupos elásticos](sql-database-elastic-pool.md) escalables con Azure Portal. También puede crear y administrar un grupo elástico de Azure con [PowerShell](sql-database-elastic-pool-manage-powershell.md), la API de REST o [C#](sql-database-elastic-pool-manage-csharp.md). También puede crear y mover bases de datos dentro y fuera de los grupos elásticos mediante [Transact-SQL](sql-database-elastic-pool-manage-tsql.md).
+# <a name="create-and-manage-an-elastic-pool-with-hello-azure-portal"></a>Crear y administrar un grupo elástico con hello portal de Azure
+Este tema muestra cómo toocreate y administrar escalable [grupos elásticos](sql-database-elastic-pool.md) con hello portal de Azure. También puede crear y administrar un grupo elástico Azure con [PowerShell](sql-database-elastic-pool-manage-powershell.md), API de REST de Hola o [C#](sql-database-elastic-pool-manage-csharp.md). También puede crear y mover bases de datos dentro y fuera de los grupos elásticos mediante [Transact-SQL](sql-database-elastic-pool-manage-tsql.md).
 
 ## <a name="create-an-elastic-pool"></a>Creación de un grupo elástico 
 
-Hay dos maneras de crear un grupo elástico. Puede partir de cero si conoce la configuración deseada del grupo, o comenzar con una recomendación del servicio. Base de datos SQL es una base de datos inteligente que recomienda la configuración de grupo elástico más rentable, en función de los datos de telemetría de uso pasados de las bases de datos.
+Hay dos maneras de crear un grupo elástico. Puede hacerlo desde el principio si sabe Hola grupo el programa de instalación que desee, o inicia con una recomendación de servicio de Hola. Base de datos de SQL tiene inteligencia incorporada que recomienda el programa de instalación de un grupo elástico si es más rentable en función de hello más allá de telemetría de uso para las bases de datos.
 
-Puede crear varios grupos a un servidor, pero no puede agregar bases de datos de servidores diferentes al mismo grupo. 
+Puede crear varios grupos en un servidor, pero no se puede agregar las bases de datos de distintos servidores en hello mismo grupo. 
 
 > [!NOTE]
 > Los grupos elásticos están disponibles con carácter general (GA) en todas las regiones de Azure excepto oeste de la India, donde actualmente se encuentran en versión preliminar.  La disponibilidad general de grupos elásticos en esta región se producirá tan pronto como sea posible.
@@ -37,120 +37,120 @@ Puede crear varios grupos a un servidor, pero no puede agregar bases de datos de
 
 ### <a name="step-1-create-an-elastic-pool"></a>Paso 1: Crear un grupo elástico
 
-Crear un grupo elástico a partir de una hoja de **servidor** que ya existe en el portal es la forma más sencilla de mover bases de datos existentes a un grupo elástico.
+Crear un grupo elástico de existente **server** hoja en el portal de hello es hello más fáciles manera toomove bases de datos existentes en un grupo elástico.
 
 > [!NOTE]
-> También puede crear un grupo elástico si busca **grupo elástico de SQL** en **Marketplace** o hace clic en **+Agregar** en la hoja para examinar **Grupos elásticos de SQL**. Puede especificar un servidor nuevo o existente por medio de este flujo de trabajo de aprovisionamiento de grupo.
+> También puede crear un grupo elástico mediante una búsqueda **grupo elástico de SQL** en hello **Marketplace** o haga clic en **+ agregar** en hello **grupos elásticos SQL**examinar hoja. Es capaz de toospecify un servidor nuevo o existente a través de este flujo de trabajo de aprovisionamiento del bloque.
 >
 >
 
-1. En [Azure Portal](http://portal.azure.com/), haga clic en **Más servicios** **>** **Servidores SQL Server** y, luego, en el servidor que contiene las bases de datos que desea agregar a un grupo elástico.
+1. Hola [portal de Azure](http://portal.azure.com/), haga clic en **más servicios**  **>**  **servidores SQL Server**y, a continuación, haga clic en servidor de Hola que contiene Hola bases de datos desea que el grupo elástico de tooadd tooan.
 2. Haga clic en **Grupo nuevo**.
 
-    ![Adición de un grupo a un servidor](./media/sql-database-elastic-pool-create-portal/new-pool.png)
+    ![Agregar grupo tooa servidor](./media/sql-database-elastic-pool-create-portal/new-pool.png)
 
     **O**
 
-    Quizá vea un mensaje que indica que existen grupos elásticos recomendados para el servidor. Haga clic en el mensaje para ver los grupos recomendados según la telemetría de uso histórica de base de datos y, después, en el nivel para ver más detalles y personalizar el grupo. Consulte [Descripción de las recomendaciones de grupos](#understand-elastic-pool-recommendations) más adelante en este tema para ver cómo se realiza la recomendación.
+    Es posible que vea un mensaje que indica que no existe se recomiendan grupos elásticos para servidor hello. Haga clic en hello toosee Hola mensaje que recomienda pools basándose en la telemetría de uso de la base de datos históricos y, a continuación, haga clic en toosee de nivel de hello más detalles y personalizar el grupo de Hola. Vea [comprender las recomendaciones de grupos](#understand-elastic-pool-recommendations) más adelante en este tema para cómo Hola actuación.
 
     ![grupo recomendado](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
 
-3. Aparece la hoja del **grupo elástico**, que es donde va a especificar la configuración del grupo. Si hizo clic en **Grupo nuevo** en el paso anterior, el plan de tarifa es **Estándar** de forma predeterminada y aún no hay bases de datos seleccionadas. Puede crear un grupo vacío o especificar un conjunto de bases de datos existentes de ese servidor para moverlas al grupo. Si va a crear un grupo recomendado, ya estarán llenos el plan de tarifa recomendado, la configuración de rendimiento y la lista de bases de datos, aunque todavía puede hacer cambios.
+3. Hola **grupo elástico** aparece hoja, que es donde se especifican los valores de hello para el grupo. Si hace clic en **nuevo grupo** en el paso anterior de hello, hello tarifa es **estándar** está seleccionada de forma predeterminada y ninguna base de datos. Puede crear un grupo vacío o especificar un conjunto de bases de datos de ese toomove de servidor en el grupo de Hola. Si va a crear un grupo recomendado, Hola recomienda tarifa, configuración de rendimiento y se completan automáticamente la lista de bases de datos, pero todavía se pueden cambiar.
 
     ![Configuración de grupos elásticos](./media/sql-database-elastic-pool-create-portal/configure-elastic-pool.png)
 
-4. Especifique un nombre para el grupo elástico o deje el valor predeterminado.
+4. Especifique un nombre para el grupo elástico hello, o déjela como valor predeterminado de Hola.
 
 ### <a name="step-2-choose-a-pricing-tier"></a>Paso 2: Elegir un plan de tarifa
 
-El plan de tarifa del grupo determina las características disponibles para las bases de datos elásticas del grupo, además de la cantidad máxima de eDTU (eDTU MÁX.) y el almacenamiento (GB) disponibles para cada base de datos. Para más detalles, consulte Niveles de servicio.
+Hello tarifa del grupo determina Hola características elastics toohello disponibles en el grupo de Hola y Hola número máximo de Edtu (eDTU máx.) y la base de datos de almacenamiento (GB) tooeach disponibles. Para más detalles, consulte Niveles de servicio.
 
-Para cambiar el plan de tarifa del grupo, haga clic en **Plan de tarifa**, en el plan de tarifa que prefiera y en **Seleccionar**.
+nivel de precios toochange hello para el grupo de hello, haga clic en **tarifa**, haga clic en hello tarifa que desee y, a continuación, haga clic en **seleccione**.
 
 > [!IMPORTANT]
-> Después de elegirlo y hacer clic en **Aceptar** en el último paso para confirmar los cambios, no podrá cambiar el plan de tarifa del grupo. Para cambiar el plan de tarifa de un grupo elástico existente, cree un grupo elástico en el plan de tarifa que quiera y migre las bases de datos al nuevo grupo.
+> Después de elegir el nivel de precios de Hola y confirmar los cambios, haga clic en **Aceptar** en último paso hello, no será hello toochange capaz de tarifa del grupo de Hola. toochange Hola a nivel de precios para un grupo elástico existente, crear un grupo elástico en el nivel de precios deseada de Hola y migrar toothis nuevo grupo de bases de datos de Hola.
 >
 
 ![Seleccione un nivel de precios.](./media/sql-database-elastic-pool-create-portal/pricing-tier.png)
 
-### <a name="step-3-configure-the-pool"></a>Paso 3: Configurar el grupo
+### <a name="step-3-configure-hello-pool"></a>Paso 3: Configurar grupo de Hola
 
-Después de establecer el plan de tarifa, haga clic en Configurar grupo donde agregar bases de datos, establezca las eDTU y el almacenamiento (GB del grupo) y el lugar en que se establecen las eDTU mínima y máxima para las bases de datos elásticas del grupo.
+Después de establecer el nivel de precios de hello, haga clic en Configurar grupo que agregar las bases de datos, Edtu de grupo de conjunto y almacenamiento (GB de grupo), y donde establecer hello Edtu min y max para elastics hello en grupo de Hola.
 
 1. Haga clic en **Configurar grupo**
-2. Seleccione las bases de datos que desea agregar al grupo. Este paso es opcional al crear el grupo. Se pueden agregar bases de datos una vez creado el grupo.
-    Para agregar bases de datos, haga clic en **Agregar base de datos**, en las bases de datos que quiera agregar y en el botón **Seleccionar**.
+2. Seleccione las bases de datos de hello desea tooadd toohello grupo. Este paso es opcional al crear el grupo de Hola. Las bases de datos pueden agregarse una vez creado el grupo de Hola.
+    Haga clic en bases de datos de tooadd, **Agregar base de datos**, haga clic en las bases de datos de Hola que desee tooadd y, a continuación, haga clic en hello **seleccione** botón.
 
     ![Agregar bases de datos](./media/sql-database-elastic-pool-create-portal/add-databases.png)
 
-    Si está trabajando con bases de datos que tienen suficiente telemetría de historial de uso, el gráfico **Estimated eDTU and GB usage** (Uso estimado de eDTU y GB) y el gráfico de barras **Actual eDTU usage** (Uso real de eDTU) se actualizan para ayudarle a tomar decisiones de configuración. Además, el servicio puede proporcionar un mensaje de recomendación que le ayuda a ajustar el tamaño correcto del grupo. Consulte [Recomendaciones dinámicas](#understand-elastic-pool-recommendations).
+    Si las bases de datos de Hola que trabaja tienen suficiente telemetría históricas de uso, Hola **estimado de eDTU y GB uso** hello y gráfico **uso de eDTU real** toohelp de actualización de gráfico de barras realizar configuración decisiones. Además, servicio de hello puede proporcionarle un toohelp de mensaje de recomendación, ajustar Hola grupo. Consulte [Recomendaciones dinámicas](#understand-elastic-pool-recommendations).
 
-3. Use los controles de la página **Configurar grupo** para explorar las opciones y configurar el grupo. Consulte los [límites de los grupos elásticos](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools) para ver más información sobre los límites de cada nivel de servicio y las [consideraciones sobre precios y rendimiento para los grupos elásticos](sql-database-elastic-pool.md) para ver instrucciones detalladas sobre el ajuste de tamaño correcto de un grupo elástico. Para más información sobre la configuración del grupo, consulte las [propiedades del grupo elástico](sql-database-elastic-pool.md#database-properties-for-pooled-databases).
+3. Usar controles de hello en hello **Configurar grupo** tooexplore configuración de página y configurar el grupo de servidores. Consulte los [límites de los grupos elásticos](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools) para ver más información sobre los límites de cada nivel de servicio y las [consideraciones sobre precios y rendimiento para los grupos elásticos](sql-database-elastic-pool.md) para ver instrucciones detalladas sobre el ajuste de tamaño correcto de un grupo elástico. Para más información sobre la configuración del grupo, consulte las [propiedades del grupo elástico](sql-database-elastic-pool.md#database-properties-for-pooled-databases).
 
     ![Configuración de grupos elásticos](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
-4. Haga clic en **Seleccionar** in the **Configure Pool** después de cambiar la configuración.
-5. Haga clic en **Aceptar** para crear el grupo.
+4. Haga clic en **seleccione** en hello **Configurar grupo** hoja después de cambiar la configuración.
+5. Haga clic en **Aceptar** grupo de hello toocreate.
 
 ## <a name="understand-elastic-pool-recommendations"></a>Descripción de las recomendaciones de grupos elásticos
 
-El servicio Base de datos SQL evalúa el historial de uso y recomienda uno o varios grupos cuando sea más económico que usar bases de datos únicas. Cada recomendación se configura con un subconjunto único de las bases de datos del servidor que mejor se ajustan al grupo.
+Hola servicio de base de datos SQL se evalúa como el historial de uso y recomienda uno o más grupos cuando resulta más rentable que las bases de datos único. Cada recomendación se configura con un subconjunto de las bases de datos del servidor de Hola que mejor se ajustan grupo Hola único.
 
 ![grupo recomendado](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)  
 
-La recomendación de grupo consta de:
+recomendación de grupo de Hello consta de:
 
-- Un plan de tarifa del grupo (Básico, Estándar, Premium o Premium RS)
+- Un nivel de precios para el grupo de hello (Basic, Standard, Premium o Premium RS)
 - Las **eDTU del grupo** adecuadas (también denominadas eDTU máx. por grupo)
-- Las **eDTU máx.** y **eDTU mín.** por base de datos
-- La lista de bases de datos recomendadas para el grupo
+- Hola **eDTU máxima** y **eDTU mín.** por base de datos
+- lista de Hola de bases de datos recomendados para el grupo de Hola
 
 > [!IMPORTANT]
-> El servicio tiene en cuenta los últimos 30 días de telemetría al recomendar grupos. Para que una base de datos se considere una candidata para un grupo elástico, debe tener una existencia mínima de 7 días. Las bases de datos que ya están en un grupo elástico no se consideran candidatas para las recomendaciones de grupos elásticos.
+> servicio de Hello tiene últimos 30 días de telemetría de hello en cuenta al recomendar grupos. Para toobe de base de datos que se consideran como candidata para un grupo elástico, debe existir para al menos 7 días. Las bases de datos que ya están en un grupo elástico no se consideran candidatas para las recomendaciones de grupos elásticos.
 >
 
-El servicio evalúa las necesidades de recursos y la rentabilidad de mover las bases de datos únicas de cada nivel de servicio a grupos del mismo nivel. Por ejemplo, se evalúan todas las bases de datos Standard en un servidor para que quepan en un bloque de bases de datos elásticas Standard. Esto significa que el servicio no hace recomendaciones entre niveles como, por ejemplo, mover una base de datos Standard a un grupo Premium.
+servicio de Hello evalúa las necesidades de recursos y rentabilidad de hello móvil único bases de datos en cada nivel de servicio en grupos de hello mismo nivel. Por ejemplo, se evalúan todas las bases de datos Standard en un servidor para que quepan en un bloque de bases de datos elásticas Standard. Esto significa servicio hello no hace recomendaciones de nivel entre como mover una base de datos estándar en un grupo de Premium.
 
-Después de agregar las bases de datos al grupo, las recomendaciones se generarán dinámicamente basándose en el historial de uso de las bases de datos que se han seleccionado. Estas recomendaciones se muestran en el gráfico de uso de eDTU y GB, y en un mensaje emergente de recomendación en la parte superior de la hoja **Configurar grupo**. Estas recomendaciones están pensadas para ayudarle a crear un grupo elástico optimizado para sus bases de datos concretas.
+Después de agregar el grupo de servidores de bases de datos toohello, las recomendaciones se generan dinámicamente según el uso históricos Hola de bases de datos de Hola que seleccionó. Estas recomendaciones se muestran en hello eDTU y GB gráfico de uso y de un encabezado de recomendación en parte superior de Hola de hello **Configurar grupo** hoja. Estas recomendaciones son tooassist previsto en la creación de un grupo elástico optimizado para las bases de datos específicos.
 
 ![Recomendaciones dinámicas](./media/sql-database-elastic-pool-create-portal/dynamic-recommendation.png)
 
 ## <a name="manage-and-monitor-an-elastic-pool"></a>Administración y supervisión de un grupo elástico
 
-Puede utilizar Azure Portal para supervisar y administrar un grupo elástico y las bases de datos de este. En el portal, puede supervisar el uso de un grupo elástico y las bases de datos dentro de ese grupo. También puede realizar un conjunto de cambios en el grupo elástico y enviar todos los cambios a la vez. Estos cambios incluyen agregar o quitar bases de datos, cambiar la configuración del grupo elástico o cambiar la configuración de la base de datos.
+Puede usar hello toomonitor de portal de Azure y administrar bases de datos de hello en el grupo de Hola y un grupo elástico. Desde el portal de hello, puede supervisar el uso de Hola de un grupo elástico y bases de datos de hello dentro de ese grupo. También puede realizar un conjunto de cambios grupo elástico tooyour y enviar todos los cambios realizados en hello mismo tiempo. Estos cambios incluyen agregar o quitar bases de datos, cambiar la configuración del grupo elástico o cambiar la configuración de la base de datos.
 
-El siguiente gráfico muestra un grupo elástico de ejemplo. La vista incluye:
+Hola siguiente gráfico muestra un grupo elástico de ejemplo. vista de Hello incluye:
 
-*  Los gráficos para supervisar el uso de recursos del grupo elástico y las bases de datos contenidas en el grupo.
-*  El botón **Configurar grupo** para realizar cambios en el grupo elástico.
-*  El botón **Crear base de datos** que crea una base de datos y la agrega al grupo elástico actual.
+*  Gráficos para supervisar el uso de recursos de grupo elástico de Hola y bases de datos de hello contenidas en el grupo de Hola.
+*  Hola **configurar** grupo botón toomake cambia toohello de grupo elástico.
+*  Hola **crear base de datos** botón que crea una base de datos y lo agrega el grupo elástico de toohello actual.
 *  Los trabajos elásticos que le ayudarán a administran un gran número de bases de datos mediante la ejecución de scripts de Transact SQL en todas las bases de datos de una lista.
 
 ![Vista Grupo][2]
 
-Puede ir a un grupo concreto para ver su utilización de recursos. De forma predeterminada, el grupo está configurado para mostrar el almacenamiento y el uso de eDTU durante la última hora. El gráfico puede configurarse para mostrar métricas diferentes en varias ventanas de tiempo.
+Puede ir tooa determinado grupo toosee su utilización de recursos. De forma predeterminada, el grupo de hello es uso de eDTU y almacenamiento de tooshow configurado para hello última hora. gráfico de Hello puede ser tooshow configurado diferentes métricas sobre varias ventanas de tiempo.
 
-1. Seleccione un grupo elástico con el que trabajar.
-2. En **Supervisión de grupo elástico** hay un gráfico con la etiqueta **Uso de recursos**. Haga clic en el gráfico.
+1. Seleccione un toowork grupo elástico con.
+2. En **Supervisión de grupo elástico** hay un gráfico con la etiqueta **Uso de recursos**. Haga clic en el gráfico de Hola.
 
     ![Supervisión de grupo elástico][3]
 
-    Se abre la hoja **Métrica**, donde se muestra una vista detallada de las métricas especificadas en la ventana de tiempo especificada.   
+    Hola **métrica** abre la hoja, que muestra una vista detallada de Hola especificados métricas en el período de tiempo especificado de Hola.   
 
     ![Cuadro de métricas][9]
 
-### <a name="to-customize-the-chart-display"></a>Personalización de la visualización del gráfico
+### <a name="toocustomize-hello-chart-display"></a>presentación de gráfico de hello toocustomize
 
-Puede editar el gráfico y la hoja de métricas para mostrar otras métricas, como el porcentaje de CPU, el porcentaje de E/S de datos y el porcentaje de E/S de registro usados.
+Puede editar gráfico de Hola y Hola hoja métrica toodisplay otras métricas como porcentaje de CPU, porcentaje de E/S de datos y porcentaje de E/S de registro utilizado.
 
-1. En la hoja de métricas, haga clic en **Editar**.
+1. En la hoja de métricas de hello, haga clic en **editar**.
 
     ![Haga clic en Editar.][6]
 
-2. En la hoja **Editar gráfico**, seleccione un intervalo de tiempo (última hora, hoy o última semana) o haga clic en **personalizado** para seleccionar cualquier intervalo de fechas dentro de las últimas dos semanas. Seleccione el tipo de gráfico (de barras o líneas) y, después, seleccione los recursos que se supervisarán.
+2. Hola **Editar gráfico** hoja, seleccione un intervalo de tiempo (más allá de la hora, en la actualidad, o más allá de la semana), o haga clic en **personalizado** tooselect cualquier intervalo de fechas en hello dos últimas semanas. Seleccionar tipo de gráfico de hello (barra o línea), a continuación, seleccione Hola recursos toomonitor.
 
    > [!Note]
-   > Solo las métricas con la misma unidad de medida se pueden mostrar en el gráfico al mismo tiempo. Por ejemplo, si selecciona el "porcentaje de eDTU", solo podrá seleccionar otras métricas con porcentaje como unidad de medida.
+   > Solo el gráfico de métricas con hello misma unidad de medida se pueden mostrar en hello en hello mismo tiempo. Por ejemplo, si selecciona "porcentaje de eDTU" solo puede seleccionar otras métricas de porcentaje como unidad de medida de Hola.
    >
 
     ![Haga clic en Editar.](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
@@ -161,81 +161,81 @@ Puede editar el gráfico y la hoja de métricas para mostrar otras métricas, co
 
 También se pueden supervisar bases de datos individuales en caso de un problema potencial.
 
-1. En **Supervisión de base de datos elástica**hay un gráfico que muestra las métricas para cinco bases de datos. De forma predeterminada, el gráfico muestra las 5 bases de datos principales en el grupo por uso promedio de eDTU durante la última hora. Haga clic en el gráfico.
+1. En **Supervisión de base de datos elástica**hay un gráfico que muestra las métricas para cinco bases de datos. De forma predeterminada, Hola gráfico muestra hello principales 5 bases de datos en bloque de hello mediante el uso de eDTU promedio en hello última hora. Haga clic en el gráfico de Hola.
 
     ![Supervisión de grupo elástico][4]
 
-2. Aparece la hoja **Database Resource Utilization** (Uso de recursos de bases de datos). Esto proporciona una vista detallada del uso de las bases de datos en el grupo. Mediante la cuadrícula situada en la parte inferior de la hoja, puede seleccionar las bases de datos del grupo para mostrar su uso en el gráfico (hasta cinco bases de datos). También puede personalizar la ventana de tiempo y métricas que se muestra en el gráfico; para ello, haga clic en **Editar gráfico**.
+2. Hola **utilización de recursos de base de datos** aparece hoja. Esto proporciona una vista detallada de uso de la base de datos de hello en bloque de Hola. Con la cuadrícula de hello en parte inferior de Hola de hoja de hello, puede seleccionar las bases de datos en hello grupo toodisplay su uso en el gráfico de hello (seguridad de bases de datos de too5). También puede personalizar la ventana de métricas y la hora de hello muestra en el gráfico de hello haciendo clic en **Editar gráfico**.
 
     ![Hoja de utilización de recursos de base de datos][8]
 
-### <a name="to-customize-the-view"></a>Personalización de la vista
+### <a name="toocustomize-hello-view"></a>vista de hello toocustomize
 
-1. En la hoja **Database Resource Utilization** (Uso de recursos de bases de datos), haga clic en **Editar gráfico**.
+1. Hola **utilización de recursos de la base de datos** hoja, haga clic en **Editar gráfico**.
 
     ![Clic en Editar gráfico](./media/sql-database-elastic-pool-manage-portal/db-utilization-blade.png)
 
-2. En la hoja **Editar gráfico**, seleccione un intervalo de tiempo (última hora o 24 horas) o haga clic en **Personalizado** para seleccionar otro día dentro de las últimas dos semanas que se mostrará.
+2. Hola **editar** hoja de gráfico, seleccione un intervalo de tiempo (más allá de hora o más allá de 24 horas) o haga clic en **personalizado** tooselect día diferente en hello más allá de toodisplay de 2 semanas.
 
     ![Clic en Personalizado](./media/sql-database-elastic-pool-manage-portal/editchart-date-time.png)
 
-3. Haga clic en la lista desplegable **Compare databases by** (Comparar bases de datos por) para seleccionar otra métrica que se usará al comparar bases de datos.
+3. Haga clic en hello **comparar las bases de datos** tooselect un toouse métrica diferentes al comparar las bases de datos de lista desplegable.
 
-    ![Edición del gráfico](./media/sql-database-elastic-pool-manage-portal/edit-comparison-metric.png)
+    ![Editar gráfico de Hola](./media/sql-database-elastic-pool-manage-portal/edit-comparison-metric.png)
 
-### <a name="to-select-databases-to-monitor"></a>Selección de las bases de datos que se supervisarán
+### <a name="tooselect-databases-toomonitor"></a>tooselect toomonitor de bases de datos
 
-En la lista de bases de datos en la hoja **Database Resource Utilization** (Uso de recursos de bases de datos) puede encontrar bases de datos específicas consultando las páginas de la lista o escribiendo el nombre de una base de datos. Utilice la casilla para seleccionar la base de datos.
+En la lista de bases de datos de Hola Hola **utilización de recursos de base de datos** hoja, puede encontrar las bases de datos determinadas consultando a través de páginas de hello en lista de Hola o escribiendo en nombre de Hola de una base de datos. Base de datos de uso Hola casilla tooselect Hola.
 
-![Búsqueda de las bases de datos que se supervisarán][7]
+![Busque toomonitor de bases de datos][7]
 
 
-## <a name="add-an-alert-to-an-elastic-pool-resource"></a>Adición de una alerta a un recurso de grupos elásticos
+## <a name="add-an-alert-tooan-elastic-pool-resource"></a>Agregar un recurso de grupo elástico tooan alerta
 
-Puede agregar reglas a un grupo elástico que envía correos electrónicos a personas o cadenas de alerta a puntos de conexión de URL cuando el grupo elástico alcanza un umbral de uso que establezca.
+Puede agregar el grupo elástico de reglas tooan que envíe correo electrónico de alerta o toopeople cadenas tooURL los puntos de conexión al grupo elástico Hola alcanza un umbral de uso que configuró.
 
-**Para agregar una alerta para cualquier recurso, siga estos pasos:**
+**tooadd un recurso de tooany alerta:**
 
-1. Haga clic en el gráfico **Uso de recursos** para abrir la hoja **Métrica**, haga clic en **Agregar alerta** y rellene la información de la hoja **Agregar una regla de alerta** (el campo **Recurso** se establece automáticamente en el grupo con el que está trabajando).
-2. Escriba un **nombre** y una **descripción** que identifique la alerta de cara a usted y a los destinatarios.
-3. Elija en la lista la **Métrica** para la que quiera que se generen alertas.
+1. Haga clic en hello **utilización de recursos** Hola de gráfico tooopen **métrica** hoja, haga clic en **Agregar alerta**y, a continuación, rellene la información de Hola Hola **agregar una alerta regla** hoja (**recursos** se configura automáticamente de grupo de hello toobe trabaja con).
+2. Escriba un **nombre** y **descripción** que identifica tooyou alerta hello y destinatarios de Hola.
+3. Elija un **métrica** que desea tooalert de lista de Hola.
 
-    El gráfico muestra dinámicamente el uso de recursos relativos a esa métrica a fin de ayudarle a elegir un umbral.
+    gráfico de Hello dinámicamente muestra la utilización de recursos para esa métrica toohelp que elija un umbral.
 
 4. Elija una **condición** (mayor que, menor que, etc.) y un **umbral**.
-5. Elija un **Período** de tiempo que debe cumplir la regla de métrica antes de que se desencadene la alerta.
+5. Elija un **período** de tiempo que Hola métrica regla debe cumplirse antes de desencadenadores de alerta de Hola.
 6. Haga clic en **Aceptar**.
 
 Para más información, consulte cómo [crear alertas de SQL Database en Azure Portal](sql-database-insights-alerts-portal.md).
 
 ## <a name="move-a-database-into-an-elastic-pool"></a>Movimiento de una base de datos a un grupo elástico
 
-Puede agregar o quitar las bases de datos de un grupo existente. Las bases de datos pueden encontrarse en otros grupos. Sin embargo, solo puede agregar bases de datos que estén en el mismo servidor lógico.
+Puede agregar o quitar las bases de datos de un grupo existente. las bases de datos de Hello pueden estar en otros grupos. Sin embargo, solo puede agregar bases de datos que están en Hola mismo servidor lógico.
 
-1. En la hoja del grupo, en la opción **Bases de datos elásticas**, haga clic en **Configurar grupo**.
+1. En la hoja de hello para el grupo de hello, en **bases de datos elásticas** haga clic en **Configurar grupo**.
 
     ![Haga clic en Configurar grupo.][1]
 
-2. En la hoja **Configurar grupo**, haga clic en **Agregar al grupo**.
+2. Hola **Configurar grupo** hoja, haga clic en **agregar toopool**.
 
-    ![Haga clic en Agregar para agregar al grupo.](./media/sql-database-elastic-pool-manage-portal/add-to-pool.png)
+    ![Haga clic en Agregar toopool](./media/sql-database-elastic-pool-manage-portal/add-to-pool.png)
 
 
-3. En la hoja **Agregar bases de datos** , seleccione las bases de datos que agregará al grupo. Después, haga clic en **Seleccionar**.
+3. Hola **agregar bases de datos** hoja, base de datos de hello select o el grupo de servidores de bases de datos tooadd toohello. Después, haga clic en **Seleccionar**.
 
-    ![Seleccione las bases de datos que desea agregar.](./media/sql-database-elastic-pool-manage-portal/add-databases-pool.png)
+    ![Seleccione las bases de datos tooadd](./media/sql-database-elastic-pool-manage-portal/add-databases-pool.png)
 
-    La hoja **Configurar grupo** muestra ahora la base de datos que ha seleccionado para agregarla, con el estado establecido como **Pendiente**.
+    Hola **Configurar grupo** hoja ahora listas Hola base de datos seleccionada toobe agregado, con su estado establecido demasiado**pendiente**.
 
     ![Adiciones de grupo pendientes.](./media/sql-database-elastic-pool-manage-portal/pending-additions.png)
 
-3. En la hoja **Configurar grupo**, haga clic en **Guardar**.
+3. Hola **hoja de grupo configurar**, haga clic en **guardar**.
 
     ![Haga clic en Guardar](./media/sql-database-elastic-pool-manage-portal/click-save.png)
 
 ## <a name="move-a-database-out-of-an-elastic-pool"></a>Movimiento de una base de datos fuera de un grupo elástico
 
-1. En la hoja **Configurar grupo** , seleccione las bases de datos que quitará.
+1. Hola **Configurar grupo** hoja, base de datos seleccione Hola o tooremove de las bases de datos.
 
     ![lista de bases de datos](./media/sql-database-elastic-pool-manage-portal/select-pools-removal.png)
 
@@ -243,41 +243,41 @@ Puede agregar o quitar las bases de datos de un grupo existente. Las bases de da
 
     ![lista de bases de datos](./media/sql-database-elastic-pool-manage-portal/click-remove.png)
 
-    La hoja **Configurar grupo** muestra ahora la base de datos que ha seleccionado para quitarla, con el estado establecido como **Pendiente**.
+    Hola **Configurar grupo** hoja ahora listas Hola base de datos seleccionada toobe quitado junto con su estado establecido demasiado**pendiente**.
 
     ![Adición de base de datos de vista previa y eliminación](./media/sql-database-elastic-pool-manage-portal/pending-removal.png)
 
-3. En la hoja **Configurar grupo**, haga clic en **Guardar**.
+3. Hola **hoja de grupo configurar**, haga clic en **guardar**.
 
     ![Haga clic en Guardar](./media/sql-database-elastic-pool-manage-portal/click-save.png)
 
 ## <a name="change-performance-settings-of-an-elastic-pool"></a>Cambio de la configuración de rendimiento de un grupo elástico
 
-Cuando supervise el uso de recursos de un grupo elástico, es posible que descubra que son necesarios algunos ajustes. Quizás el grupo necesita un cambio en los límites de almacenamiento o rendimiento. Posiblemente desee cambiar la configuración de la base de datos en el grupo. Puede cambiar la configuración del grupo en cualquier momento para obtener el mejor equilibrio entre rendimiento y costo. Consulte [¿Cuándo se debe utilizar un grupo elástico?](sql-database-elastic-pool.md) para más información.
+Al supervisar la utilización de recursos de Hola de un grupo elástico, es posible que descubra que no se necesitan algunos ajustes. Quizá grupo Hola necesita un cambio en los límites de rendimiento o almacenamiento de Hola. Posiblemente desee toochange configuración de base de datos de hello en el grupo de Hola. Puede cambiar el programa de instalación de Hola de grupo de Hola en cualquier momento tooget Hola mejor equilibrio entre rendimiento y costo. Consulte [¿Cuándo se debe utilizar un grupo elástico?](sql-database-elastic-pool.md) para más información.
 
-Para cambiar los límites de almacenamiento o eDTU por grupo y las eDTU por base de datos:
+toochange hello Edtu o almacenamiento limita por grupo y Edtu por base de datos:
 
-1. Abra la hoja **Configurar grupo** .
+1. Abra hello **Configurar grupo** hoja.
 
-    En **Configuración de grupo elástico**, utilice el control deslizante para cambiar la configuración del grupo.
+    En **configuración de grupo elástico**, use cualquier configuración del grupo de control deslizante toochange Hola.
 
     ![Uso de recursos de grupos elásticos](./media/sql-database-elastic-pool-manage-portal/resize-pool.png)
 
-2. Cuando se cambia la configuración, la pantalla muestra el coste estimado mensual del cambio.
+2. Cuando se cambia la configuración de hello, hello muestra hello mensual costo estimado de cambios de Hola.
 
     ![Actualización de un grupo elástico y nuevo coste mensual](./media/sql-database-elastic-pool-manage-portal/pool-change-edtu.png)
 
 ## <a name="latency-of-elastic-pool-operations"></a>Latencia de las operaciones de grupos elásticos
-* El cambio del número mínimo de eDTU por base de datos o del máximo de eDTU por base de datos suele completarse en cinco minutos o menos.
-* El cambio de eDTU por grupo depende de la cantidad total de espacio que usen todas las bases de datos del grupo. Los cambios tienen un duración media de 90 minutos o menos por cada 100 GB. Por ejemplo, si el espacio total que usan todas las bases de datos del grupo es de 200 GB, la latencia esperada para cambiar las eDTU de grupo por grupo es de 3 horas o menos.
+* Cambiar normalmente Hola min Edtu por base de datos o el número máximo de Edtu por base de datos completa en 5 minutos o menos.
+* Cambiar hello Edtu por grupo de depende de la cantidad total de Hola de espacio utilizado por todas las bases de datos de grupo de Hola. Los cambios tienen un duración media de 90 minutos o menos por cada 100 GB. Por ejemplo, si utiliza el espacio total de Hola por todas las bases de datos de grupo de hello es de 200 GB, Hola espera latencia para cambiar hello eDTU del grupo por grupo es de 3 horas o menos.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Para entender qué es un grupo elástico, consulte [Grupo elástico de SQL Database](sql-database-elastic-pool.md).
+- toounderstand qué un grupo elástico, consulte [grupo elástico de base de datos SQL](sql-database-elastic-pool.md).
 - Para una guía sobre cómo usar grupos elásticos, consulte las [consideraciones de precio y rendimiento para grupos elásticos](sql-database-elastic-pool.md).
-- Para usar trabajos elásticos para ejecutar scripts de Transact-SQL con cualquier número de bases de datos en el grupo, consulte [Introducción a los trabajos elásticos](sql-database-elastic-jobs-overview.md).
-- Para consultar en cualquier número de bases de datos del grupo, consulte [Introducción a las consultas elásticas](sql-database-elastic-query-overview.md).
-- Para más información sobre las transacciones de cualquier número de bases de datos del grupo, consulte [Transacciones elásticas](sql-database-elastic-transactions-overview.md).
+- secuencias de comandos de toouse trabajos elástico toorun Transact-SQL frente a cualquier número de bases de datos en el grupo de hello, vea [información general de los trabajos elástico](sql-database-elastic-jobs-overview.md).
+- tooquery a través de cualquier número de bases de datos en el grupo de hello, consulte [información general sobre consultas elástico](sql-database-elastic-query-overview.md).
+- Para las transacciones de cualquier número de bases de datos en el grupo de hello, consulte [transacciones elásticas](sql-database-elastic-transactions-overview.md).
 
 
 <!--Image references-->

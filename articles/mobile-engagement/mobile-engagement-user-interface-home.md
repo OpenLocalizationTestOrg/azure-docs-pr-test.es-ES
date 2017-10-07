@@ -1,6 +1,6 @@
 ---
-title: 'Interfaz de usuario de Azure Mobile Engagement: inicio'
-description: "Obtenga información acerca de cómo administrar sus aplicaciones y proyectos existentes mediante Azure Mobile Engagement"
+title: aaaAzure interfaz de usuario de Mobile Engagement - principal
+description: "Obtenga información acerca de cómo toomanage su aplicación existente y proyectos que usan Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0f15cb975f57f6f5cab12d5118ff50a6fab14388
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 727dad188c5876d09db84634a17e10b280039c49
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-your-existing-application-and-projects"></a>Cómo administrar su aplicación y proyectos existentes
-Este artículo describe la página **Inicio** del portal de **Mobile Engagement**. Utilice el portal **Mobile Engagement** para supervisar y administrar sus aplicaciones móviles. Tenga en cuenta que, para comenzar a usar el portal, debe crear en primer lugar una cuenta de **Azure Mobile Engagement** . 
+# <a name="how-toomanage-your-existing-application-and-projects"></a>¿Cómo toomanage la aplicación existente y proyectos
+Este artículo describe hello **inicio** página de hello **Mobile Engagement** portal. Usar hello **Mobile Engagement** toomonitor portal y administrar aplicaciones móviles. Tenga en cuenta que toostart mediante portal Hola primero debe toocreate una **Azure Mobile Engagement** cuenta. 
 
-Para ir a la página principal, haga clic en **Inicio** en la parte superior izquierda de la página. Contiene la lista de todas las aplicaciones que forman parte de la colección seleccionada. En esta página solo verá una descripción general rápida de las aplicaciones.
+página de inicio de tooget toohello, haga clic en **principal** en hello parte superior izquierda de la página de Hola. Contiene Hola lista de todas las aplicaciones que forman parte del programa Hola elegido de la colección. En esta página solo verá una descripción general rápida de las aplicaciones.
 
-La página principal también contiene todos los proyectos que pueden incluir cualquier aplicación que se encuentran en su cuenta. Tenga en cuenta que cualquier persona puede tener acceso a la página principal de la interfaz de usuario mediante la creación de una cuenta, pero deberá conceder a otros usuarios permisos para que tengan acceso a las aplicaciones personalizadas en **Mis proyectos**.
+página principal de Hello también contiene todos los proyectos que pueden incluir cualquier aplicación que se encuentra en su cuenta. Tenga en cuenta que cualquiera puede tener acceso Hola portada de hello interfaz de usuario mediante la creación de una cuenta, pero necesita que los usuarios de toogrant permiso tooother puedan toohave acceso tooyour personalizado las aplicaciones en **Mis proyectos**.
 
-También puede ver el gráfico de comparación de las aplicaciones seleccionadas. O bien, puede optar por ver el gráfico de comparación de las aplicaciones seleccionadas en un proyecto.
+También puede ver el gráfico de comparación de Hola para aplicaciones de hello seleccionado. O bien, elija el gráfico de comparación de hello tooview para las aplicaciones seleccionadas en un proyecto.
 
 ![Home1][0]
 
 ## <a name="my-applications"></a>Mis aplicaciones
-La información general rápida de las aplicaciones le permite seleccionar qué aplicación desea abrir para ver las opciones detalladas de la cinta de opciones. Puede hacer clic en el nombre de la aplicación para enviar la ubicación de la cinta de opciones visitada más recientemente en la aplicación, o hacer clic en el icono de engranaje para ir directamente a la página "Configuración" de la aplicación. Puede buscar, filtrar u ordenar la información mostrada en las tablas de las aplicaciones. También puede arrastrar y colocar los encabezados de columna para cambiar el orden.
+Hello información general rápida de las aplicaciones, podrá tooselect la aplicación que le gustaría tooopen tooview Hola detallada de las opciones de cinta de opciones. Puede hacer clic nombre Hola de su ubicación de la cinta de opciones de aplicación tooreturn toohello visitada más recientemente en la aplicación, o haga clic en toogo de icono de engranaje de hello directamente toohello página "Configuración" de la aplicación. Puede buscar, filtro u ordenación Hola información aparecerá en las aplicaciones de hello tablas. También puede arrastrar y colocar orden de hello columna encabezados toochange Hola.
 
-Entre otras cosas, la información general de las aplicaciones incluye:
+Entre otras cosas, incluye información general de Hola de las aplicaciones:
 
-* **Nueva tendencia de usuarios**: (evolución de nuevos usuarios durante las últimas dos semanas).
-* **Usuarios activos**: número de usuarios activos durante los últimos 30 días.
-* **Tendencia de los usuarios activos**: evolución de usuarios activos en las últimas dos semanas.
-* **Sesiones**: una sesión consiste en el uso individual de la aplicación por parte de un usuario, desde el momento en que comienza a usarla hasta que se detiene.
-* **Tendencias de sesiones**: evolución de las sesiones en las últimas dos semanas.
+* **Nueva tendencia de los usuarios**: evolución de usuarios nuevos en hello dos últimas semanas.
+* **Usuarios activos**: número de usuarios activos de hello últimos 30 días.
+* **Tendencia de los usuarios activos**: evolución de usuarios activos de hello dos últimas semanas.
+* **Las sesiones**: una sesión se muestra un uso de la aplicación hello realizada por un usuario, desde el momento de hello usuario Hola inicia usarlo, hasta que el usuario Hola se detiene.
+* **Tendencias de sesión**: evolución de sesiones en hello dos últimas semanas.
 
-Una vez que se hace clic en una aplicación, puede comenzar a supervisar y administrar las aplicaciones a través de la interfaz de usuario. Por ejemplo:    
+Cuando hace clic en una aplicación, puede iniciar la supervisión y administración de las aplicaciones a través de la interfaz de usuario de Hola. Por ejemplo:    
 
 * [Supervisión de datos en tiempo real sobre la aplicación](mobile-engagement-user-interface-monitor.md)
 * [Análisis de datos históricos sobre la aplicación](mobile-engagement-user-interface-analytics.md)
-* [Creación y administración de segmentos de usuarios para identificar patrones de uso](mobile-engagement-user-interface-segments.md)
-* [Establecimiento de contacto con los usuarios de la aplicación mediante notificaciones push](mobile-engagement-user-interface-reach.md)
+* [Crear y administrar los segmentos de patrones de uso de los usuarios tooidentify](mobile-engagement-user-interface-segments.md)
+* [Llegar toohello a los usuarios de la aplicación con las notificaciones de inserción](mobile-engagement-user-interface-reach.md)
 
 ## <a name="my-projects"></a>Mis proyectos
-Puede usar proyectos para agrupar sus aplicaciones y conceder permisos a otros usuarios para acceder a sus aplicaciones. Se conceden permisos a otros usuarios proporcionando la dirección de correo electrónico. El botón **Proyecto nuevo** permite crear un nuevo proyecto especificando solo un "nombre" y "descripción" del nuevo proyecto. Una vez creado un proyecto, puede hacer clic en el nombre del proyecto para editar el nombre y la descripción del producto y seleccionar todas las aplicaciones que desea ver en este proyecto.
+Puede utilizar proyectos toogroup sus aplicaciones y asigne permisos tooother usuarios tooaccess sus aplicaciones. Conceder permisos a los usuarios de tooother proporcionando la dirección de correo electrónico. Hola **nuevo proyecto** botón permite toocreate un nuevo proyecto especificando solo un "nombre" y "description" del nuevo proyecto. Una vez creado un proyecto, puede hacer clic en hello proyecto tooedit Hola nombre y una descripción de su producto y tooselect todas las aplicaciones de hello desea toosee en este proyecto.
 
 ![Home6][60]
 
 Entre los roles se incluyen:
 
-* **Visor**: un visor es un usuario que solo puede ver las aplicaciones asociadas a un proyecto. Un visor puede tener acceso a análisis, supervisar datos y examinar los resultados de cobertura. Un visor no puede cambiar la información ni administrar aplicaciones o usuarios. Un visor no puede crear o cambiar el estado de la campaña de cobertura.
+* **Visor de**: un visor es un usuario que puede solo ver Hola aplicaciones asociadas tooa proyecto. Un visor puede tener acceso a análisis, supervisar datos y examinar los resultados de cobertura. Un visor no puede cambiar la información ni administrar aplicaciones o usuarios. Un visor no puede crear o cambiar el estado de la campaña de cobertura.
 * **Desarrollador**: un desarrollador es un usuario que puede hacer todo lo que un visor, así como administrar las aplicaciones. Un desarrollador puede habilitar y deshabilitar aplicaciones, cambiar la información de las aplicaciones (como el paquete y la firma) y crear campañas de cobertura. Un desarrollador no puede administrar los usuarios.
-* **Administrador**: un administrador es un usuario que puede hacer todo lo que un programador, así como administrar usuarios. Un administrador puede invitar a los usuarios a participar en un proyecto, puede cambiar los roles de usuario y puede cambiar la información del proyecto. Los permisos de nivel de aplicación también pueden establecerse en "configuración".
+* **Administrador**: un administrador es un usuario que puede hacer todo lo que un programador, así como administrar usuarios. Un administrador puede invitar a los usuarios toojoin un proyecto, puede cambiar los roles de usuario y puede cambiar la información del proyecto. Los permisos de nivel de aplicación también pueden establecerse en "configuración".
 
-Haga clic en un proyecto para ver todas las aplicaciones que forman parte de este proyecto. En la imagen siguiente se muestra el gráfico de comparación de las aplicaciones seleccionadas.
+Haga clic en un proyecto tooview todas las aplicaciones de Hola que forman parte de este proyecto. Hola siguiente imagen muestra gráfico de comparación de Hola para aplicaciones de hello seleccionado.
 
 ![Home2][3]
 

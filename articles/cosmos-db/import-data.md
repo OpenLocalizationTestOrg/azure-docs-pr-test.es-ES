@@ -1,7 +1,7 @@
 ---
-title: "Herramienta de migración de base de datos para Azure Cosmos DB | Microsoft Docs"
-description: "Obtenga información sobre cómo usar las herramientas de migración de datos de código abierto de Azure Cosmos DB para importar datos a Azure Cosmos DB desde varios orígenes, incluidos archivos MongoDB, SQL Server, Table Storage, Amazon DynamoDB, CSV y JSON. Conversión de CSV a JSON."
-keywords: "csv a json, herramientas de migración de base de datos, convertir csv a json"
+title: "herramienta de migración de aaaDatabase para la base de datos de Azure Cosmos | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse Hola Abrir origen base de datos de Azure Cosmos datos migración herramientas tooimport datos tooAzure DB Cosmos desde diversos orígenes, incluidos los archivos de MongoDB, SQL Server, almacenamiento de tabla, DynamoDB de Amazon, CSV y JSON. Conversión de tooJSON CSV."
+keywords: "CSV toojson, herramientas de migración de base de datos, convertir csv toojson"
 services: cosmos-db
 author: andrewhoh
 manager: jhubbard
@@ -16,34 +16,34 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 23a4a82dbdb611f4da90562af936fca28da9b24d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 997648a31602d854db75bb6ce4e2ecff36fc1069
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-import-data-into-azure-cosmos-db-for-the-documentdb-api"></a>Importación de datos en Azure Cosmos DB para la API de DocumentDB
+# <a name="how-tooimport-data-into-azure-cosmos-db-for-hello-documentdb-api"></a>¿Cómo tooimport datos en la base de datos de Azure Cosmos para Hola API de documentos?
 
-En este tutorial se muestra cómo utilizar la herramienta DocumentDB API Data Migration de Azure Cosmos DB, que puede importar datos desde diversos orígenes, incluidos archivos JSON, archivos CSV, SQL, MongoDB, Azure Table Storage, Amazon DynamoDB y colecciones de la API de DocumentDB de Azure Cosmos DB en colecciones para utilizarlos con Azure Cosmos DB y la API de DocumentDB. También se puede utilizar la herramienta de migración de datos al migrar de una colección de una recolección de una sola partición a una colección de varias particiones de la API de DocumentDB.
+Este tutorial proporciona instrucciones sobre cómo utilizar Hola base de datos de Azure Cosmos: herramienta de migración de datos de API de documentos, que puede importar datos de varios orígenes, incluidos los archivos JSON, CSV, archivos, SQL, MongoDB, almacenamiento de tabla de Azure, DynamoDB de Amazon y documentos de base de datos de Azure Cosmos Colecciones de API en colecciones para usan con hello API de documentos y la base de datos de Azure Cosmos. herramienta de migración de datos de Hello también puede usarse cuando se migra de una colección de varias particiones de una única partición colección tooa para hello API de documentos.
 
-La herramienta de migración de datos solo funciona al importar datos a Azure Cosmos DB para usar con la API de DocumentDB. En este momento, no se admite la importación de datos para su uso con la API de Table o la API Graph. 
+herramienta de migración de datos de Hello solo funciona al importar datos en la base de datos de Azure Cosmos para usar con hello API de documentos. En este momento no se admite la importación de datos para su uso con Hola API de tabla o la API Graph. 
 
-Para importar datos para su uso con la API de MongoDB, vea [Azure Cosmos DB: migración de datos para la API de MongoDB](mongodb-migrate.md).
+tooimport los datos para su uso con hello MongoDB API, consulte [base de datos de Azure Cosmos: cómo toomigrate datos de Hola MongoDB API?](mongodb-migrate.md).
 
-En este tutorial se describen las tareas siguientes:
+Este tutorial trata Hola siguientes tareas:
 
 > [!div class="checklist"]
-> * Instalación de la herramienta de migración de datos
+> * Instalación de la herramienta de migración de datos de Hola
 > * Importación de datos de orígenes de datos diferentes
-> * Exportación desde Azure Cosmos DB a JSON
+> * Exportar desde la base de datos de Azure Cosmos tooJSON
 
 ## <a id="Prerequisites"></a>Requisitos previos
-Antes de seguir las instrucciones del presente artículo, asegúrese de tener instalados los siguientes elementos:
+Antes de seguir las instrucciones de hello en este artículo, asegúrese de que tiene instalado el siguiente hello:
 
 * [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) o superior.
 
-## <a id="Overviewl"></a>Información general sobre la herramienta de migración de datos
-La herramienta de migración de datos es una solución de código abierto que importa los datos a Azure Cosmos DB desde una variedad de orígenes, como:
+## <a id="Overviewl"></a>Información general sobre la herramienta de migración de datos de Hola
+herramienta de migración de datos de Hello es una solución de código abierto que importa datos tooAzure DB Cosmos desde una variedad de orígenes, incluidas:
 
 * Archivos JSON
 * MongoDB
@@ -54,17 +54,17 @@ La herramienta de migración de datos es una solución de código abierto que im
 * HBase
 * Colecciones de Azure Cosmos DB
 
-Aunque la herramienta de importación incluye una interfaz gráfica de usuario (dtui.exe), también se pueden controlar desde la línea de comandos (dt.exe). De hecho, hay una opción para mostrar el comando asociado después de configurar una importación a través de la interfaz de usuario. Se pueden transformar datos tabulares de origen (por ejemplo, archivos de SQL Server o CSV) de tal forma que se pueden crear relaciones jerárquicas (subdocumentos) durante la importación. Siga leyendo para obtener más información acerca de las opciones de origen, las líneas de comandos de muestra para importar desde cada origen, las opciones de destino y la visualización de los resultados de importación.
+Mientras que la herramienta de importación Hola incluye una interfaz gráfica de usuario (dtui.exe), también se puede controlar desde la línea de comandos de hello (dt.exe). De hecho, hay un comando de opción toooutput Hola asociado después de configurar una importación a través de la interfaz de usuario de Hola. Se pueden transformar datos tabulares de origen (por ejemplo, archivos de SQL Server o CSV) de tal forma que se pueden crear relaciones jerárquicas (subdocumentos) durante la importación. Siga leyendo toolearn más información sobre opciones de fuente, tooimport de líneas de comandos de ejemplo de cada origen, importación opciones de destino y ver los resultados.
 
-## <a id="Install"></a>Instalación de la herramienta de migración de datos
-El código fuente de la herramienta de migración está disponible en GitHub en [este repositorio](https://github.com/azure/azure-documentdb-datamigrationtool) y una versión compilada se encuentra disponible en el [Centro de descarga de Microsoft](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d). Puede compilar la solución o simplemente descargar y extraer la versión compilada en un directorio de su elección. A continuación, ejecute:
+## <a id="Install"></a>Instalar la herramienta de migración de datos de Hola
+código de fuente de herramienta de migración de Hello está disponible en GitHub en [este repositorio](https://github.com/azure/azure-documentdb-datamigrationtool) y está disponible en una versión compilada [Microsoft Download Center](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d). Puede compilar la solución de Hola o simplemente descargar y extraer el directorio de tooa Hola versión compilada de su elección. A continuación, ejecute:
 
-* **Dtui.exe**: versión de interfaz gráfica de la herramienta
-* **Dt.exe**: versión de línea de comandos de la herramienta
+* **Dtui.exe**: versión de interfaz gráfica de la herramienta de Hola
+* **DT.exe**: versión de línea de comandos de herramienta de Hola
 
 ## <a name="import-data"></a>Importar datos
 
-Una vez que haya instalado la herramienta, es el momento de importar los datos. ¿Qué tipo de datos desea importar?
+Una vez haya instalado la herramienta de hello, es hora tooimport los datos. ¿Qué tipo de datos ¿desea tooimport?
 
 * [Archivos JSON](#JSON)
 * [MongoDB](#MongoDB)
@@ -80,12 +80,12 @@ Una vez que haya instalado la herramienta, es el momento de importar los datos. 
 * [Importación de registros secuenciales de Azure Cosmos DB](#DocumentDSeqTarget)
 
 
-## <a id="JSON"></a>Para importar archivos JSON
-La opción del importador de origen de archivos JSON permite importar uno o varios archivos JSON de un único documento o archivos JSON que contengan cada uno una matriz de documentos JSON. Cuando se agregan carpetas que contienen archivos JSON que se van a importar, existe la opción de buscar archivos en subcarpetas de forma recursiva.
+## <a id="JSON"></a>archivos JSON tooimport
+opción de importador de origen de archivo JSON de Hello permite tooimport uno o más archivos JSON de único documento o archivos JSON que contienen una matriz de documentos JSON. Al agregar las carpetas que contienen JSON archivos tooimport, tendrá posibilidad de Hola de búsqueda de archivos en subcarpetas de forma recursiva.
 
 ![Captura de pantalla de opciones de origen de archivos JSON: herramientas de migración de base de datos](./media/import-data/jsonsource.png)
 
-Estos son algunos ejemplos de línea de comandos para importar archivos JSON:
+Estos son algunos archivos JSON de tooimport de ejemplos de línea de comandos:
 
     #Import a single JSON file
     dt.exe /s:JsonFile /s.Files:.\Sessions.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Sessions /t.CollectionThroughput:2500
@@ -99,81 +99,81 @@ Estos son algunos ejemplos de línea de comandos para importar archivos JSON:
     #Import a directory (single), directory (recursive), and individual JSON files
     dt.exe /s:JsonFile /s.Files:C:\Tweets\*.*;C:\LargeDocs\**\*.*;C:\TESessions\Session48172.json;C:\TESessions\Session48173.json;C:\TESessions\Session48174.json;C:\TESessions\Session48175.json;C:\TESessions\Session48177.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:subs /t.CollectionThroughput:2500
 
-    #Import a single JSON file and partition the data across 4 collections
+    #Import a single JSON file and partition hello data across 4 collections
     dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 
-## <a id="MongoDB"></a>Para importar desde MongoDB
+## <a id="MongoDB"></a>tooimport de MongoDB
 
 > [!IMPORTANT]
-> Si va a importar a una cuenta de Azure Cosmos DB compatible con MongoDB, siga estas [instrucciones](mongodb-migrate.md).
+> Si va a importar la cuenta de base de datos de Azure Cosmos tooan con soporte para MongoDB, siga estas [instrucciones](mongodb-migrate.md).
 > 
 > 
 
-La opción del importador de origen de MongoDB permite importar desde una colección de MongoDB individual y, opcionalmente, filtrar documentos mediante una consulta o modificar la estructura del documento con una proyección.  
+Hola opción de importador de código fuente de MongoDB permite tooimport de una colección de MongoDB individual y, opcionalmente, filtrar documentos mediante una consulta o modificar la estructura del documento hello mediante una proyección.  
 
 ![Captura de pantalla de las opciones de origen de MongoDB](./media/import-data/mongodbsource.png)
 
-La cadena de conexión tiene el formato estándar de MongoDB:
+cadena de conexión de Hello está en formato de MongoDB estándar de hello:
 
     mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database>
 
 > [!NOTE]
-> Utilice el comando Verify para asegurarse de que se puede tener acceso a la instancia de MongoDB especificada en el campo de la cadena de conexión.
+> Puede tener acceso a la utilice Hola Compruebe comando tooensure que Hola instancia MongoDB especificado en el campo de cadena de conexión de Hola.
 > 
 > 
 
-Escriba el nombre de la colección desde la que se importarán los datos. Opcionalmente, puede especificar o facilitar un archivo para una consulta (por ejemplo, {pop: {$gt:5000}}) o proyección (por ejemplo, {loc:0}) para filtrar los datos que se van a importar y darles forma.
+Escriba el nombre de Hola de colección de Hola desde el que se importarán los datos. Si lo desea, puede especificar o proporcionar un archivo para una consulta (por ejemplo, {pop: {$gt: 5000}}) o proyección (p. ej. {loc:0}) tooboth filtro y la forma Hola datos toobe importado.
 
-Estos son algunos ejemplos de línea de comandos para importar desde MongoDB:
+Estos son algunos tooimport de ejemplos de línea de comandos de MongoDB:
 
     #Import all documents from a MongoDB collection
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZips /t.IdField:_id /t.CollectionThroughput:2500
 
-    #Import documents from a MongoDB collection which match the query and exclude the loc field
+    #Import documents from a MongoDB collection which match hello query and exclude hello loc field
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 
-## <a id="MongoDBExport"></a>Para importar archivos de exportación de MongoDB
+## <a id="MongoDBExport"></a>archivos de exportación de MongoDB tooimport
 
 > [!IMPORTANT]
-> Si va a importar a una cuenta de Azure Cosmos DB compatible con MongoDB, siga estas [instrucciones](mongodb-migrate.md).
+> Si va a importar la cuenta de base de datos de Azure Cosmos tooan con soporte para MongoDB, siga estas [instrucciones](mongodb-migrate.md).
 > 
 > 
 
-La opción del importador de origen de archivos JSON de exportación de MongoDB permite importar uno o más archivos JSON generados a partir de la utilidad mongoexport.  
+Hola opción importador de origen de archivo JSON de MongoDB exportación permite tooimport uno o más archivos JSON procedentes de la utilidad de mongoexport Hola.  
 
 ![Captura de pantalla de las opciones de origen de exportación de MongoDB](./media/import-data/mongodbexportsource.png)
 
-Cuando se agregan carpetas que contienen archivos JSON de exportación de MongoDB para importarlos, tiene la opción de buscar archivos en subcarpetas de forma recursiva:
+Al agregar las carpetas que contienen archivos de JSON de exportación de MongoDB para la importación, se tiene la opción de Hola de búsqueda de archivos en subcarpetas de forma recursiva.
 
-A continuación se muestra un ejemplo de línea de comandos para importar desde archivos JSON de exportación de MongoDB:
+Este es un tooimport de ejemplo de línea de comandos de la exportación de MongoDB archivos JSON:
 
     dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionThroughput:2500
 
-## <a id="SQL"></a>Para importar desde SQL Server
-La opción del importador de origen SQL permite importar desde una base de datos SQL Server individual y, opcionalmente, filtrar los registros que se pueden importar utilizando una consulta. Además, puede modificar la estructura del documento especificando un separador de anidamiento (más en un momento determinado).  
+## <a id="SQL"></a>tooimport de SQL Server
+Hola opción de importador de código fuente SQL permite tooimport desde una base de datos de SQL Server individual y, opcionalmente, filtrar Hola registros toobe importar utilizando una consulta. Además, puede modificar la estructura del documento Hola especificando un separador de anidamiento (más en un momento).  
 
 ![Captura de pantalla de opciones de origen de SQL: herramientas de migración de base de datos](./media/import-data/sqlexportsource.png)
 
-El formato de la cadena de conexión es el formato de la cadena de conexión SQL estándar.
+Hola formato de cadena de conexión de hello es Hola estándar SQL conexión cadena.
 
 > [!NOTE]
-> Utilice el comando Verify para asegurarse de que se puede tener acceso a la instancia de SQL Server especificada en el campo de la cadena de conexión.
+> Puede tener acceso a la utilice Hola Compruebe comando tooensure que Hola la instancia de SQL Server especificada en el campo de cadena de conexión de Hola.
 > 
 > 
 
-La propiedad de separador de anidamiento se utiliza para crear relaciones jerárquicas (documentos secundarios) durante la importación. Considere la siguiente consulta SQL:
+Hola anidar la propiedad separator es toocreate usa las relaciones jerárquicas (documentos secundarios) durante la importación. Considere la posibilidad de hello después de la consulta SQL:
 
 *select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as Address.AddressType, AddressLine1 as Address.AddressLine1, City as Address.Location.City, StateProvinceName as Address.Location.StateProvinceName, PostalCode as Address.PostalCode, CountryRegionName as Address.CountryRegionName from Sales.vStoreWithAddresses WHERE AddressType='Main Office'*
 
-Que devuelve los resultados siguientes (parciales):
+Que devuelve Hola después de resultados (parciales):
 
 ![Screenshot of SQL query results](./media/import-data/sqlqueryresults.png)
 
-Tenga en cuenta los alias como Address.AddressType y Address.Location.StateProvinceName. Al especificar un separador de anidamiento de “.”, la herramienta de importación crea subdocumentos Address y Address.Location durante la importación. Este es un ejemplo de un documento resultante en Azure Cosmos DB:
+Tenga en cuenta los alias de hello como Address.AddressType y Address.Location.StateProvinceName. Mediante la especificación de un separador de anidamiento de '.', la herramienta de importación Hola crea dirección e importación de subdocumentos Address.Location durante Hola. Este es un ejemplo de un documento resultante en Azure Cosmos DB:
 
 *{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
 
-Estos son algunos ejemplos de línea de comandos para importar desde SQL Server:
+Estos son algunos tooimport de ejemplos de línea de comandos de SQL Server:
 
     #Import records from SQL which match a query
     dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, * from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Stores /t.IdField:Id /t.CollectionThroughput:2500
@@ -181,199 +181,199 @@ Estos son algunos ejemplos de línea de comandos para importar desde SQL Server:
     #Import records from sql which match a query and create hierarchical relationships
     dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionThroughput:2500
 
-## <a id="CSV"></a>Para importar archivos CSV y convertirlos a JSON
-La opción del importador de origen de archivos CSV le permite importar uno o varios archivos CSV. Cuando se agregan carpetas que contienen archivos CSV que se van a importar, existe la opción de buscar archivos en subcarpetas de forma recursiva.
+## <a id="CSV"></a>archivos CSV de tooimport y convertir CSV tooJSON
+Hola opción de importador de origen de archivo CSV permite tooimport uno o varios archivos CSV. Al agregar las carpetas que contienen archivos CSV para la importación, se tiene la opción de Hola de búsqueda de archivos en subcarpetas de forma recursiva.
 
-![Captura de pantalla de opciones de origen de CSV](media/import-data/csvsource.png)
+![Opciones de origen de la captura de pantalla de CSV - CSV tooJSON](media/import-data/csvsource.png)
 
-De forma similar a lo que sucede con el origen SQL, la propiedad de separador de anidamiento se utiliza para crear relaciones jerárquicas (documentos secundarios) durante la importación. Tenga en cuenta las siguientes filas de datos y la fila de encabezado CSV:
+Origen SQL de toohello similar, Hola anidar la propiedad separator puede ser toocreate usa las relaciones jerárquicas (documentos secundarios) durante la importación. Considere la posibilidad de hello después de la fila de encabezado CSV y filas de datos:
 
-![Captura de pantalla de registros de ejemplo de CSV: CSV a JSON](./media/import-data/csvsample.png)
+![Registros de captura de pantalla de CSV de ejemplo - CSV tooJSON](./media/import-data/csvsample.png)
 
-Tenga en cuenta los alias como DomainInfo.Domain_Name y RedirectInfo.Redirecting. Al especificar un separador de anidamiento de “.”, la herramienta de importación crea subdocumentos DomainInfo y RedirectInfo durante la importación. Este es un ejemplo de un documento resultante en Azure Cosmos DB:
+Tenga en cuenta los alias de hello como DomainInfo.Domain_Name y RedirectInfo.Redirecting. Mediante la especificación de un separador de anidamiento de '.', la herramienta de importación Hola creará DomainInfo e importación de subdocumentos RedirectInfo durante Hola. Este es un ejemplo de un documento resultante en Azure Cosmos DB:
 
-*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+*{"DomainInfo": {"Nombre_de_dominio": "ACUS.GOV", "Domain_Name_Address": "http://www. ACUS.GOV"},"Agencia Federal":"Conferencia administrativa de Estados Unidos de hello","RedirectInfo": {"Redirigir":"0","Redirect_Destination":" "},"id":"9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
 
-La herramienta de importación intentará inferir la información de tipo de los valores sin comillas de los archivos CSV (los valores entre comillas se tratan siempre como cadenas).  Los tipos se identifican en el siguiente orden: número, fecha y hora, booleano.  
+herramienta de importación de Hello tratará de información de tipo de tooinfer de valores sin comillas en archivos CSV (valores entre comillas siempre se tratan como cadenas).  Los tipos se identifican en hello siguiendo el orden: número, fecha y hora, un valor booleano.  
 
-Hay otras dos cosas que debe saber sobre la importación de archivos CSV:
+Hay dos otro toonote cosas sobre la importación de CSV:
 
-1. De forma predeterminada, los valores sin comillas se recortan siempre en tabuladores y espacios, mientras que los valores entre comillas se mantienen como son. Este comportamiento se puede invalidar con la casilla Recortar valores entre comillas o la opción de línea de comandos /s.TrimQuoted.
-2. De forma predeterminada, un valor null sin comillas se trata como un valor null. Este comportamiento se puede invalidar (es decir, tratar a los valores null sin comillas como si fueran cadenas "null") con la casilla Tratar NULL sin comillas como cadena o la opción de línea de comandos /s.NoUnquotedNulls.
+1. De forma predeterminada, los valores sin comillas se recortan siempre en tabuladores y espacios, mientras que los valores entre comillas se mantienen como son. Este comportamiento puede invalidarse con opción de línea de comandos de /s.TrimQuoted de casilla de verificación o hello valores entre comillas el recorte de hello.
+2. De forma predeterminada, un valor null sin comillas se trata como un valor null. Este comportamiento puede invalidarse (es decir, tratar una opción null sin comillas como una cadena "null") con hello Treat sin comillas NULL como opción de línea de comandos de /s.NoUnquotedNulls de casilla de verificación o hello cadena.
 
 Este es un ejemplo de línea de comandos para la importación CSV:
 
     dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionThroughput:2500
 
-## <a id="AzureTableSource"></a>Para importar desde Azure Table Storage
-La opción del importador de código fuente de almacenamiento de tabla de Azure permite importar desde una tabla de almacenamiento de Azure individual y, opcionalmente, filtrar las entidades de tabla que se van a importar. Tenga en cuenta que no puede usar la herramienta de migración de datos para importar datos de Azure Table Storage a Azure Cosmos DB para su uso con la API de Table. En este momento, se admite solo la importación de Azure Cosmos DB para su uso con la API de DocumentDB.
+## <a id="AzureTableSource"></a>tooimport desde el almacenamiento de tabla de Azure
+Hola opción de importador de origen de almacenamiento de tabla de Azure permite tooimport desde una tabla de almacenamiento de Azure tabla individual y, opcionalmente, filtrar Hola tabla entidades toobe importado. Tenga en cuenta que no puede usar datos de almacenamiento de tabla de Azure de tooimport herramienta de migración de datos de hello en la base de datos de Azure Cosmos para su uso con hello API de tabla. Se admite la importación sólo tooAzure DB Cosmos para su uso con hello API de documentos en este momento.
 
 ![Screenshot of Azure Table storage source options](./media/import-data/azuretablesource.png)
 
-El formato de la cadena de conexión de almacenamiento de tablas de Azure es:
+formato de Hola de hello cadena de conexión de almacenamiento de tabla de Azure es:
 
     DefaultEndpointsProtocol=<protocol>;AccountName=<Account Name>;AccountKey=<Account Key>;
 
 > [!NOTE]
-> Utilice el comando Verify para asegurarse de que se puede tener acceso a la instancia de almacenamiento de tablas de Azure especificada en el campo de la cadena de conexión.
+> Puede tener acceso a la utilice Hola Compruebe comando tooensure que Hola instancia de almacenamiento de tabla de Azure especificada en el campo de cadena de conexión de Hola.
 > 
 > 
 
-Escriba el nombre de la tabla de Azure desde la que se importarán los datos. Opcionalmente, puede especificar un [filtro](https://msdn.microsoft.com/library/azure/ff683669.aspx).
+Escriba el nombre de Hola de hello Azure desde el que se importarán los datos de tabla. Opcionalmente, puede especificar un [filtro](https://msdn.microsoft.com/library/azure/ff683669.aspx).
 
-La opción del importador de origen de almacenamiento de tablas de Azure tiene las siguientes opciones adicionales:
+Hola opción de importador de origen de almacenamiento de tabla de Azure consta de las siguientes opciones adicionales de hello:
 
 1. Incluir campos internos
    1. All: incluir todos los campos internos (PartitionKey, RowKey y Timestamp)
    2. None: excluir todos los campos internos
-   3. RowKey: incluir sólo el campo RowKey
+   3. RowKey - sólo incluyen campos de hello RowKey
 2. Seleccionar columnas
-   1. Los filtros de almacenamiento de tablas de Azure no admiten proyecciones. Si desea importar sólo las propiedades específicas de la entidad de tablas de Azure, agréguelas a la lista Seleccionar columnas. Se omitirán todas las demás propiedades de la entidad.
+   1. Los filtros de almacenamiento de tablas de Azure no admiten proyecciones. Si desea tooonly importar propiedades de entidad de tabla de Azure específicas, agregarlos lista Seleccionar columnas de toohello. Se omitirán todas las demás propiedades de la entidad.
 
-A continuación se muestra un ejemplo de línea de comandos para importar desde el almacenamiento de tablas de Azure:
+Este es un tooimport de ejemplo de línea de comandos desde el almacenamiento de tabla de Azure:
 
     dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<Account Key>" /s.Table:metrics /s.InternalFields:All /s.Filter:"PartitionKey eq 'Partition1' and RowKey gt '00001'" /s.Projection:ObjectCount;ObjectSize  /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:metrics /t.CollectionThroughput:2500
 
-## <a id="DynamoDBSource"></a>Para importar desde Amazon DynamoDB
-La opción de importador de origen Amazon DynamoDB permite importar de una tabla individual de Amazon DynamoDB individual y, opcionalmente, filtrar las entidades que desea importar. Se proporcionan varias plantillas para que configurar una importación resulte lo más fácil posible.
+## <a id="DynamoDBSource"></a>tooimport de DynamoDB de Amazon
+Hola opción de importador de código fuente de Amazon DynamoDB permite tooimport desde una tabla de Amazon DynamoDB individual y, opcionalmente, filtrar Hola entidades toobe importado. Se proporcionan varias plantillas para que configurar una importación resulte lo más fácil posible.
 
 ![Captura de pantalla de opciones de origen de Amazon DynamoD: herramientas de migración de base de datos](./media/import-data/dynamodbsource1.png)
 
 ![Captura de pantalla de opciones de origen de Amazon DynamoD: herramientas de migración de base de datos](./media/import-data/dynamodbsource2.png)
 
-El formato de la cadena de conexión de Amazon DynamoDB es:
+Hola formato de cadena de conexión de Amazon DynamoDB hello es:
 
     ServiceURL=<Service Address>;AccessKey=<Access Key>;SecretKey=<Secret Key>;
 
 > [!NOTE]
-> Use el comando Verify para asegurarse de que se puede tener acceso a la instancia de Amazon DynamoDB especificada en el campo de la cadena de conexión.
+> Puede tener acceso a la utilice Hola Compruebe comando tooensure que Hola instancia Amazon DynamoDB especificado en el campo de cadena de conexión de Hola.
 > 
 > 
 
-A continuación se muestra un ejemplo de línea de comandos para importar desde Amazon DynamoDB:
+Este es un tooimport de ejemplo de línea de comandos de Amazon DynamoDB:
 
     dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<Azure Cosmos DB Endpoint>;AccountKey=<Azure Cosmos DB Key>;Database=<Azure Cosmos DB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 
-## <a id="BlobImport"></a>Para importar archivos desde Azure Blob storage
-El archivo JSON, archivo de exportación de MongoDB y opciones de importador de origen de archivo CSV permiten importar uno o más archivos del almacenamiento de blobs de Azure. Después de especificar una dirección URL de contenedor de blobs y una clave de cuenta, basta con proporcionar una expresión regular para seleccionar los archivos para importar.
+## <a id="BlobImport"></a>archivos de tooimport desde el almacenamiento de blobs de Azure
+Hello archivo JSON, archivo de exportación de MongoDB y las opciones de importador de origen de archivo CSV le permiten tooimport uno o más archivos de almacenamiento de blobs de Azure. Después de especificar una dirección URL del contenedor de Blob y la clave de cuenta, basta con proporcionar un tooimport de los archivos de expresión regular tooselect Hola.
 
 ![Captura de pantalla de opciones de origen de archivos Blob](./media/import-data/blobsource.png)
 
-Este es el ejemplo de línea de comandos para importar archivos JSON del almacenamiento de blobs de Azure:
+Aquí es archivos JSON de tooimport de ejemplo de línea de comandos desde el almacenamiento de blobs de Azure:
 
     dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 
-## <a id="DocumentDBSource"></a>Para importar desde una colección de la API de DocumentDB de Azure Cosmos DB
-La opción del importador de origen de Azure Cosmos DB permite importar datos de una o varias colecciones de Azure Cosmos DB y, opcionalmente, filtrar los documentos mediante una consulta.  
+## <a id="DocumentDBSource"></a>tooimport de una colección de API de documentos de base de datos de Azure Cosmos
+Hola opción de importador de código fuente de base de datos de Azure Cosmos permite tooimport datos de una o varias recopilaciones de base de datos de Azure Cosmos y, opcionalmente, filtrar documentos mediante una consulta.  
 
 ![Captura de pantalla de opciones de origen de Azure Cosmos DB](./media/import-data/documentdbsource.png)
 
-El formato de la cadena de conexión de Azure Cosmos DB es:
+Hola formato de cadena de conexión de base de datos de Azure Cosmos hello es:
 
     AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;
 
-La cadena de conexión de la cuenta de Azure Cosmos DB se puede obtener en la hoja Claves de Azure Portal, como se describe en [Administración de una cuenta de Azure Cosmos DB](manage-account.md); sin embargo, el nombre de la base de datos se debe anexar a la cadena de conexión con el siguiente formato:
+cadena de conexión de cuenta de base de datos de Azure Cosmos Hola puede obtenerse de hoja de claves de Hola de hello portal de Azure, como se describe en [cómo toomanage una cuenta de base de datos de Azure Cosmos](manage-account.md); sin embargo, nombre de Hola de base de datos de hello debe toobe anexa toohello cadena de conexión en hello siguiendo el formato:
 
     Database=<CosmosDB Database>;
 
 > [!NOTE]
-> Use el comando Verify para asegurarse de que se puede tener acceso a la instancia de Azure Cosmos DB especificada en el campo de la cadena de conexión.
+> Puede tener acceso a la utilice Hola Compruebe comando tooensure que Hola instancia de base de datos de Azure Cosmos especificada en el campo de cadena de conexión de Hola.
 > 
 > 
 
-Para realizar la importación desde una sola colección de Azure Cosmos DB, escriba el nombre de la colección de la que se van a importar los datos. Para realizar la importación desde varias colecciones de Azure Cosmos DB, especifique una expresión regular que coincida con uno o varios nombres de colección (por ejemplo, collección01 | collección02 | collección03). Opcionalmente, puede especificar o facilitar un archivo para una consulta para filtrar los datos que se van a importar y darles forma.
+tooimport desde una sola colección de base de datos de Azure Cosmos, escriba nombre de Hola de colección de Hola desde el que se importarán los datos. tooimport de varias colecciones de base de datos de Azure Cosmos, proporcionar una expresión regular toomatch uno o más nombres de colección (por ejemplo, collection01 | collection02 | collection03). Opcionalmente, se pueden especificar, o proporcionar un archivo para un filtro de consulta tooboth y Hola datos toobe importar de forma.
 
 > [!NOTE]
-> Dado que el campo de colecciones acepta expresiones regulares, si la importación se va a realizar de una sola colección cuyo nombre contenga caracteres de expresión regular, dichos caracteres deben incluir una secuencia de escape.
+> Puesto que el campo de la colección de hello acepta expresiones regulares, si va a importar desde una sola colección cuyo nombre contiene caracteres de expresión regular, los caracteres deben convertirse en consecuencia.
 > 
 > 
 
-La opción del importador de origen de Azure Cosmos DB tiene las siguientes opciones avanzadas:
+Hola opción de base de datos de Azure Cosmos origen importador tiene siguientes Hola opciones avanzadas:
 
-1. Incluir campos internos: especifica si se debe o no incluir propiedades del sistema de documentos de Azure Cosmos DB en la exportación (por ejemplo, _rid, _ts).
-2. Número de reintentos en caso de error: especifica el número de veces que se intentará la conexión a Azure Cosmos DB en caso de errores transitorios (por ejemplo, interrupciones de conectividad de red).
-3. Intervalo de reintento: especifica el tiempo de espera entre los reintentos de restablecimiento de conexión a Azure Cosmos DB en caso de errores transitorios (por ejemplo, interrupción de la conectividad de red).
-4. Modo de conexión: especifica el modo de conexión para utilizar con Azure Cosmos DB. Las opciones disponibles son DirectTcp, DirectHttps y puerta de enlace. Los modos de conexión directa son más rápidos, mientras que el modo de puerta de enlace es compatible con el firewall, ya que sólo usa el puerto 443.
+1. Incluir campos internos: Especifica si se permite o no tooinclude las propiedades del sistema de documento de base de datos de Azure Cosmos Hola exportación (por ejemplo, _rid, _ts).
+2. Número de reintentos en caso de error: especifica Hola número de veces tooretry Hola conexión tooAzure Cosmos DB en caso de errores transitorios (por ejemplo, interrupción de conectividad de red).
+3. Intervalo de reintentos: Especifica cuánto tiempo toowait entre los reintentos de conexión tooAzure DB Cosmos de hello en caso de errores transitorios (por ejemplo, interrupción de conectividad de red).
+4. Modo de conexión: Especifica toouse de modo de conexión de hello con base de datos de Azure Cosmos. las opciones disponibles de Hello son DirectTcp, DirectHttps y puerta de enlace. modos de conexión directa de Hello son más rápidos, mientras que el modo de puerta de enlace de hello es firewall más descriptivo como solo usa el puerto 443.
 
 ![Captura de pantalla de opciones avanzadas de origen de Azure Cosmos DB](./media/import-data/documentdbsourceoptions.png)
 
 > [!TIP]
-> El modo de conexión predeterminado de la herramienta de importación es DirectTcp. Si experimenta problemas de firewall, cambie al modo de conexión puerta de enlace, ya que sólo requiere el puerto 443.
+> modo de tooconnection de los valores predeterminados de herramienta DirectTcp de importación de Hola. Si experimenta problemas de firewall, cambie el modo de tooconnection puerta de enlace, ya que solo requiere el puerto 443.
 > 
 > 
 
-Estos son algunos ejemplos de línea de comandos para importar desde Azure Cosmos DB:
+Estos son algunos tooimport de ejemplos de línea de comandos de base de datos de Azure Cosmos:
 
-    #Migrate data from one Azure Cosmos DB collection to another Azure Cosmos DB collections
+    #Migrate data from one Azure Cosmos DB collection tooanother Azure Cosmos DB collections
     dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:TEColl /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:TESessions /t.CollectionThroughput:2500
 
-    #Migrate data from multiple Azure Cosmos DB collections to a single Azure Cosmos DB collection
+    #Migrate data from multiple Azure Cosmos DB collections tooa single Azure Cosmos DB collection
     dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:comp1|comp2|comp3|comp4 /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:singleCollection /t.CollectionThroughput:2500
 
-    #Export an Azure Cosmos DB collection to a JSON file
+    #Export an Azure Cosmos DB collection tooa JSON file
     dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:StoresSub /t:JsonFile /t.File:StoresExport.json /t.Overwrite /t.CollectionThroughput:2500
 
 > [!TIP]
-> La herramienta de importación de datos de Azure Cosmos DB también admite la importación de datos desde el [Emulador de Azure Cosmos DB](local-emulator.md). Al importar datos desde un emulador local, establezca el punto de conexión en `https://localhost:<port>`. 
+> Herramienta de importación de datos de Azure Cosmos DB Hello también admite la importación de datos de hello [emulador de base de datos de Azure Cosmos](local-emulator.md). Al importar datos desde un emulador local, establezca el punto de conexión de hello demasiado`https://localhost:<port>`. 
 > 
 > 
 
-## <a id="HBaseSource"></a>Para importar desde HBase
-La opción del importador de origen de HBase le permite importar datos de una tabla HBase y, opcionalmente, filtrar los datos. Se proporcionan varias plantillas para que configurar una importación resulte lo más fácil posible.
+## <a id="HBaseSource"></a>tooimport de HBase
+Hola opción de importador de código fuente de HBase permite tooimport datos de una tabla HBase y, opcionalmente, filtrar datos de Hola. Se proporcionan varias plantillas para que configurar una importación resulte lo más fácil posible.
 
 ![Captura de pantalla de opciones de origen de HBase](./media/import-data/hbasesource1.png)
 
 ![Captura de pantalla de opciones de origen de HBase](./media/import-data/hbasesource2.png)
 
-El formato de la cadena de conexión de HBase Stargate es:
+Hola formato de cadena de conexión de HBase Stargate hello es:
 
     ServiceURL=<server-address>;Username=<username>;Password=<password>
 
 > [!NOTE]
-> Use el comando Verify para asegurarse de que se puede tener acceso a la instancia de HBase especificada en el campo de la cadena de conexión.
+> Puede tener acceso a la utilice Hola Compruebe comando tooensure que Hola instancia HBase especificado en el campo de cadena de conexión de Hola.
 > 
 > 
 
-A continuación se muestra un ejemplo de línea de comandos para importar desde HBase:
+Este es un tooimport de ejemplo de línea de comandos de HBase:
 
     dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:hbaseimport
 
-## <a id="DocumentDBBulkTarget"></a>Para importar a la API de DocumentDB (importación masiva)
-El importador masivo de Azure Cosmos DB permite importar desde cualquier opción de origen disponible con un procedimiento almacenado de Azure Cosmos DB para que resulte más eficaz. La herramienta admite la importación en una sola colección de Azure Cosmos DB con particiones, así como la importación con particiones por la cual los datos se dividen entre varias colecciones de Azure Cosmos DB con una única partición. Para más información sobre la creación de particiones de datos, consulte [Partición y escalado de datos en Azure Cosmos DB](partition-data.md). La herramienta creará, ejecutará y eliminará el procedimiento almacenado de las colecciones de destino.  
+## <a id="DocumentDBBulkTarget"></a>tooimport toohello DocumentDB API (importación masiva)
+Importador de Hello Azure Cosmos DB masiva permite tooimport desde cualquiera de las opciones de origen disponible hello, utilizando un procedimiento de base de datos de Azure Cosmos almacenados para mejorar la eficacia. herramienta de Hello es compatible con la colección de base de datos de Azure Cosmos particiones único de importación tooone, así como importar particionada mediante el cual los datos se dividen en varias colecciones de base de datos de Azure Cosmos particiones único. Para más información sobre la creación de particiones de datos, consulte [Partición y escalado de datos en Azure Cosmos DB](partition-data.md). herramienta de Hello crear, ejecutar y, a continuación, elimine el procedimiento almacenado de Hola de las colecciones de destino de Hola.  
 
 ![Captura de pantalla de opciones de importación masiva de Azure Cosmos DB](./media/import-data/documentdbbulk.png)
 
-El formato de la cadena de conexión de Azure Cosmos DB es:
+Hola formato de cadena de conexión de base de datos de Azure Cosmos hello es:
 
     AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;
 
-La cadena de conexión de la cuenta de Azure Cosmos DB se puede obtener en la hoja Claves de Azure Portal, como se describe en [Administración de una cuenta de Azure Cosmos DB](manage-account.md); sin embargo, el nombre de la base de datos se debe anexar a la cadena de conexión con el siguiente formato:
+cadena de conexión de cuenta de base de datos de Azure Cosmos Hola puede obtenerse de hoja de claves de Hola de hello portal de Azure, como se describe en [cómo toomanage una cuenta de base de datos de Azure Cosmos](manage-account.md); sin embargo, nombre de Hola de base de datos de hello debe toobe anexa toohello cadena de conexión en hello siguiendo el formato:
 
     Database=<CosmosDB Database>;
 
 > [!NOTE]
-> Use el comando Verify para asegurarse de que se puede tener acceso a la instancia de Azure Cosmos DB especificada en el campo de la cadena de conexión.
+> Puede tener acceso a la utilice Hola Compruebe comando tooensure que Hola instancia de base de datos de Azure Cosmos especificada en el campo de cadena de conexión de Hola.
 > 
 > 
 
-Para realizar la importación en una sola colección, escriba el nombre de la colección en la que se van a importar los datos y haga clic en el botón Agregar. Para importar en varias colecciones, escriba el nombre de cada colección individualmente o use la siguiente sintaxis para especificar varias colecciones: *collection_prefix*[índice inicial - índice final]. Si va a especificar varias colecciones a través de esta sintaxis, tenga en cuenta lo siguiente:
+tooimport tooa única colección, escriba nombre de Hola de hello colección toowhich datos se va a importar y haga clic en el botón de agregar Hola. tooimport toomultiple colecciones, escriba los nombres de colección individualmente o bien Hola siguiendo la sintaxis toospecify varias colecciones: *collection_prefix*[inicio índice - índice final]. Al especificar varias colecciones a través de la sintaxis de hello mencionado anteriormente, tenga en cuenta los siguiente de hello:
 
-1. Solo se admiten patrones de nombre de intervalo entero. Por ejemplo, la especificación de colección [0-3] generará las siguientes colecciones: colección0, colección1, colección2, colección3.
+1. Solo se admiten patrones de nombre de intervalo entero. Por ejemplo, especificar la colección [0-3] generará Hola después de colecciones: collection0, collection1, collection2, collection3.
 2. Puede usar una sintaxis abreviada: colección[3] generará el mismo conjunto de colecciones que el paso 1.
 3. Se pueden proporcionar varias sustituciones. Por ejemplo, colección[0-1] [0-9] 20 nombres de colección con ceros delante (colección01,... 02... 03).
 
-Una vez especificados los nombres de las colecciones, elija la capacidad de proceso deseada de la colección (de 400 RU a 10 000 RU). Para conseguir el mejor rendimiento en la importación, elija una mayor capacidad de proceso. Para más información sobre los niveles de rendimiento, consulte [Niveles de rendimiento en Azure Cosmos DB](performance-levels.md).
+Una vez hello nombres de colección se han especificado, elija rendimiento deseado de Hola de colecciones de hello (too10 de 400 RUs, 000 RUs). Para conseguir el mejor rendimiento en la importación, elija una mayor capacidad de proceso. Para más información sobre los niveles de rendimiento, consulte [Niveles de rendimiento en Azure Cosmos DB](performance-levels.md).
 
 > [!NOTE]
-> La configuración del nivel de rendimiento solo se aplica a la creación de la colección. Si la colección especificada ya existe, no se modificará su capacidad de proceso.
+> configuración de rendimiento de rendimiento de Hello solo aplica la creación de toocollection. Si Hola especifica la colección ya existe, su rendimiento no se modificarán.
 > 
 > 
 
-Cuando se importa a varias colecciones, la herramienta de importación admite el particionamiento basado en hash. En este escenario, especifique la propiedad de documento que desea utilizar como clave de partición (si el valor de Clave de partición se deja en blanco, los documentos se particionarán aleatoriamente entre las colecciones de destino).
+Al importar toomultiple colecciones, herramienta de importación de hello admite el particionamiento de hash basado. En este escenario, especifique la propiedad de documento de hello desea toouse como Hola clave de partición (si la clave de partición se deja en blanco, documentos será particionados aleatoriamente en distintas colecciones de destino de hello).
 
-También puede especificar qué campo del origen de importación debe utilizarse como la propiedad de identificador de documentos Azure Cosmos DB durante la importación (tenga en cuenta que si los documentos no contienen esta propiedad, a continuación, la herramienta de importación generará un GUID como el valor de la propiedad del identificador).
+También puede especificar qué campo de origen que se importarán Hola debe usarse como propiedad de identificador de documento de base de datos de Azure Cosmos Hola durante la importación de hello (tenga en cuenta que si los documentos no contienen esta propiedad, a continuación, herramienta de importación de hello generará un GUID como valor de propiedad de Id. de hello).
 
-Hay una serie de opciones avanzadas disponibles durante la importación. En primer lugar, mientras que la herramienta incluye un procedimiento predeterminado almacenado de importación masiva (BulkInsert.js), puede especificar su propio procedimiento almacenado de importación:
+Hay una serie de opciones avanzadas disponibles durante la importación. En primer lugar, mientras que incluye la herramienta de hello una importación masiva de un valor predeterminado de procedimiento almacenado (BulkInsert.js), puede elegir toospecify su propio procedimiento almacenado de importación:
 
  ![Captura de pantalla de opciones de importación de insert sproc masiva de Azure Cosmos DB](./media/import-data/bulkinsertsp.png)
 
@@ -385,57 +385,57 @@ Además, al importar los tipos de fecha (por ejemplo, desde SQL Server o MongoDB
 * Tiempo: conservar como un valor de número de tiempo
 * Ambos: conservar los valores de cadena y de número  Esta opción creará un subdocumento, por ejemplo "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
-El importador masivo de Azure Cosmos DB tiene las siguientes opciones avanzadas adicionales:
+Importador de Hello Azure Cosmos DB masiva dispone de opciones avanzadas adicionales siguientes de hello:
 
-1. Tamaño del lote: el tamaño de lote predeterminado de la herramienta es 50.  Si los documentos que desea importar son grandes, considere la posibilidad de reducir el tamaño del lote. Si los documentos que desea importar son pequeños, considere la posibilidad de aumentar el tamaño del lote.
-2. Tamaño máximo de script (bytes): el valor predeterminado máximo del script en la herramienta es de 512 KB.
-3. Deshabilitar generación de Id. automática: si cada documento que se va a importar contiene un campo de Id., seleccione esta opción para aumentar el rendimiento. No se importarán los documentos  que no contengan el campo de identificador exclusivo.
-4. Actualización de documentos existentes: la opción predeterminada es no reemplazar los documentos existentes por conflictos de identificador. Si selecciona esta opción, permitirá que se sobrescriban los documentos existentes con identificadores que coinciden entre sí. Esta característica es útil para las migraciones de datos programadas que actualizan los documentos existentes.
-5. Número de reintentos en caso de error: especifica el número de veces que se intentará la conexión a Azure Cosmos DB en caso de errores transitorios (por ejemplo, interrupciones de conectividad de red).
-6. Intervalo de reintento: especifica el tiempo de espera entre los reintentos de restablecimiento de conexión a Azure Cosmos DB en caso de errores transitorios (por ejemplo, interrupción de la conectividad de red).
-7. Modo de conexión: especifica el modo de conexión para utilizar con Azure Cosmos DB. Las opciones disponibles son DirectTcp, DirectHttps y puerta de enlace. Los modos de conexión directa son más rápidos, mientras que el modo de puerta de enlace es compatible con el firewall, ya que sólo usa el puerto 443.
+1. Tamaño de lote: Hola herramienta valores predeterminados tooa tamaño de lote de 50.  Si Hola documentos toobe importado es grande, considere la posibilidad de reducir el tamaño del lote de Hola. Por el contrario, si Hola documentos toobe importado es pequeño, considere la posibilidad de generar el tamaño de lote de Hola.
+2. Tamaño máximo de la secuencia de comandos (bytes): herramienta de hello tiene como valor predeterminado el tamaño máximo de la secuencia de comandos de tooa de 512KB
+3. Deshabilitar la generación automática de Id.: Si cada toobe documento importado contiene un campo id, a continuación, al seleccionar esta opción puede aumentar el rendimiento. No se importarán los documentos  que no contengan el campo de identificador exclusivo.
+4. Documentos de actualización existente: Hola toonot de los valores predeterminados de herramienta reemplazando los documentos existentes con los conflictos de identificador. Si selecciona esta opción, permitirá que se sobrescriban los documentos existentes con identificadores que coinciden entre sí. Esta característica es útil para las migraciones de datos programadas que actualizan los documentos existentes.
+5. Número de reintentos en caso de error: especifica Hola número de veces tooretry Hola conexión tooAzure Cosmos DB en caso de errores transitorios (por ejemplo, interrupción de conectividad de red).
+6. Intervalo de reintentos: Especifica cuánto tiempo toowait entre los reintentos de conexión tooAzure DB Cosmos de hello en caso de errores transitorios (por ejemplo, interrupción de conectividad de red).
+7. Modo de conexión: Especifica toouse de modo de conexión de hello con base de datos de Azure Cosmos. las opciones disponibles de Hello son DirectTcp, DirectHttps y puerta de enlace. modos de conexión directa de Hello son más rápidos, mientras que el modo de puerta de enlace de hello es firewall más descriptivo como solo usa el puerto 443.
 
 ![Captura de pantalla de opciones avanzadas de importación masiva de Azure Cosmos DB](./media/import-data/docdbbulkoptions.png)
 
 > [!TIP]
-> El modo de conexión predeterminado de la herramienta de importación es DirectTcp. Si experimenta problemas de firewall, cambie al modo de conexión puerta de enlace, ya que sólo requiere el puerto 443.
+> modo de tooconnection de los valores predeterminados de herramienta DirectTcp de importación de Hola. Si experimenta problemas de firewall, cambie el modo de tooconnection puerta de enlace, ya que solo requiere el puerto 443.
 > 
 > 
 
-## <a id="DocumentDBSeqTarget"></a>Para importar a la API de DocumentDB (importación de registros secuenciales)
-El importador de registros secuenciales de Azure Cosmos DB permite importar desde cualquiera de las opciones de origen disponibles según cada registro. Puede elegir esta opción si va a importar a una colección existente que ha alcanzado su cuota de procedimientos almacenados. La herramienta admite la importación en una única colección de Azure Cosmos DB (de una o varias particiones), así como la importación con particiones por la cual los datos se dividen entre varias colecciones de Azure Cosmos DB de una o varias particiones. Para más información sobre la creación de particiones de datos, consulte [Partición y escalado de datos en Azure Cosmos DB](partition-data.md).
+## <a id="DocumentDBSeqTarget"></a>tooimport toohello DocumentDB API (secuencial en el registro de importación)
+Importador de registro secuencial de base de datos de Azure Cosmos Hola permite tooimport desde cualquiera de las opciones de origen disponibles de hello en forma de registro por registro. Puede elegir esta opción si va a importar tooan colección existente que ha alcanzado su cuota de procedimientos almacenados. Hola herramienta admite la importación tooa única colección de base de datos de Azure Cosmos (única partición y varias particiones), así como importar particionada mediante el cual los datos se dividen en varias colecciones de base de datos de Azure Cosmos única partición o varias particiones. Para más información sobre la creación de particiones de datos, consulte [Partición y escalado de datos en Azure Cosmos DB](partition-data.md).
 
 ![Captura de pantalla de opciones de importación de registros secuenciales de Azure Cosmos DB](./media/import-data/documentdbsequential.png)
 
-El formato de la cadena de conexión de Azure Cosmos DB es:
+Hola formato de cadena de conexión de base de datos de Azure Cosmos hello es:
 
     AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;
 
-La cadena de conexión de la cuenta de Azure Cosmos DB se puede obtener en la hoja Claves de Azure Portal, como se describe en [Administración de una cuenta de Azure Cosmos DB](manage-account.md); sin embargo, el nombre de la base de datos se debe anexar a la cadena de conexión con el siguiente formato:
+cadena de conexión de cuenta de base de datos de Azure Cosmos Hola puede obtenerse de hoja de claves de Hola de hello portal de Azure, como se describe en [cómo toomanage una cuenta de base de datos de Azure Cosmos](manage-account.md); sin embargo, nombre de Hola de base de datos de hello debe toobe anexa toohello cadena de conexión en hello siguiendo el formato:
 
     Database=<Azure Cosmos DB Database>;
 
 > [!NOTE]
-> Use el comando Verify para asegurarse de que se puede tener acceso a la instancia de Azure Cosmos DB especificada en el campo de la cadena de conexión.
+> Puede tener acceso a la utilice Hola Compruebe comando tooensure que Hola instancia de base de datos de Azure Cosmos especificada en el campo de cadena de conexión de Hola.
 > 
 > 
 
-Para realizar la importación en una sola colección, escriba el nombre de la colección en la que se van a importar los datos y haga clic en el botón Agregar. Para importar en varias colecciones, escriba el nombre de cada colección individualmente o use la siguiente sintaxis para especificar varias colecciones: *collection_prefix*[índice inicial - índice final]. Si va a especificar varias colecciones a través de esta sintaxis, tenga en cuenta lo siguiente:
+tooimport tooa única colección, escriba nombre de Hola de hello colección toowhich datos se va a importar y haga clic en el botón de agregar Hola. tooimport toomultiple colecciones, escriba los nombres de colección individualmente o bien Hola siguiendo la sintaxis toospecify varias colecciones: *collection_prefix*[inicio índice - índice final]. Al especificar varias colecciones a través de la sintaxis de hello mencionado anteriormente, tenga en cuenta los siguiente de hello:
 
-1. Solo se admiten patrones de nombre de intervalo entero. Por ejemplo, la especificación de colección [0-3] generará las siguientes colecciones: colección0, colección1, colección2, colección3.
+1. Solo se admiten patrones de nombre de intervalo entero. Por ejemplo, especificar la colección [0-3] generará Hola después de colecciones: collection0, collection1, collection2, collection3.
 2. Puede usar una sintaxis abreviada: colección[3] generará el mismo conjunto de colecciones que el paso 1.
 3. Se pueden proporcionar varias sustituciones. Por ejemplo, colección[0-1] [0-9] 20 nombres de colección con ceros delante (colección01,... 02... 03).
 
-Una vez especificados los nombres de las colecciones, elija la capacidad de proceso deseada de la colección (de 400 RU a 250 000 RU). Para conseguir el mejor rendimiento en la importación, elija una mayor capacidad de proceso. Para más información sobre los niveles de rendimiento, consulte [Niveles de rendimiento en Azure Cosmos DB](performance-levels.md). Cualquier importación a colecciones con una capacidad de proceso de >10 000 RU requerirá una clave de partición. Si elige tener más de 250 000 RU, debe registrar una solicitud en el portal para que le aumenten su cuenta.
+Una vez hello nombres de colección se han especificado, elija rendimiento deseado de Hola de colecciones de hello (too250 de 400 RUs, 000 RUs). Para conseguir el mejor rendimiento en la importación, elija una mayor capacidad de proceso. Para más información sobre los niveles de rendimiento, consulte [Niveles de rendimiento en Azure Cosmos DB](performance-levels.md). Toda importación toocollections con rendimiento > 10.000 RUs requerirá una clave de partición. Si elige más de 250.000 RUs toohave, deberá toofile una solicitud en toohave portal Hola aumenta su cuenta.
 
 > [!NOTE]
-> La configuración de la capacidad de proceso solo se aplica a la creación de colecciones. Si la colección especificada ya existe, no se modificará su capacidad de proceso.
+> configuración de rendimiento de Hello solo aplica la creación de toocollection. Si Hola especifica la colección ya existe, su rendimiento no se modificarán.
 > 
 > 
 
-Cuando se importa a varias colecciones, la herramienta de importación admite el particionamiento basado en hash. En este escenario, especifique la propiedad de documento que desea utilizar como clave de partición (si el valor de Clave de partición se deja en blanco, los documentos se particionarán aleatoriamente entre las colecciones de destino).
+Al importar toomultiple colecciones, herramienta de importación de hello admite el particionamiento de hash basado. En este escenario, especifique la propiedad de documento de hello desea toouse como Hola clave de partición (si la clave de partición se deja en blanco, documentos será particionados aleatoriamente en distintas colecciones de destino de hello).
 
-También puede especificar qué campo del origen de importación debe utilizarse como la propiedad de identificador de documentos Azure Cosmos DB durante la importación (tenga en cuenta que si los documentos no contienen esta propiedad, a continuación, la herramienta de importación generará un GUID como el valor de la propiedad del identificador).
+También puede especificar qué campo de origen que se importarán Hola debe usarse como propiedad de identificador de documento de base de datos de Azure Cosmos Hola durante la importación de hello (tenga en cuenta que si los documentos no contienen esta propiedad, a continuación, herramienta de importación de hello generará un GUID como valor de propiedad de Id. de hello).
 
 Hay una serie de opciones avanzadas disponibles durante la importación. En primer lugar, al importar los tipos de fecha (por ejemplo, desde SQL Server o MongoDB), puede elegir entre tres opciones de importación:
 
@@ -445,30 +445,30 @@ Hay una serie de opciones avanzadas disponibles durante la importación. En prim
 * Tiempo: conservar como un valor de número de tiempo
 * Ambos: conservar los valores de cadena y de número  Esta opción creará un subdocumento, por ejemplo "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
-El importador de registros secuenciales de Azure Cosmos DB tiene estas opciones avanzadas adicionales:
+Hello Azure Cosmos DB - importador de registro secuencial dispone de opciones avanzadas adicionales siguientes de hello:
 
-1. Número de solicitudes paralelas: la opción predeterminada es 2. Si los documentos que desea importar son pequeños, considere la posibilidad de aumentar el número de solicitudes paralelas. Tenga en cuenta que si este número es demasiado elevado, podrá haber limitaciones en la importación.
-2. Deshabilitar generación de Id. automática: si cada documento que se va a importar contiene un campo de Id., seleccione esta opción para aumentar el rendimiento. No se importarán los documentos  que no contengan el campo de identificador exclusivo.
-3. Actualización de documentos existentes: la opción predeterminada es no reemplazar los documentos existentes por conflictos de identificador. Si selecciona esta opción, permitirá que se sobrescriban los documentos existentes con identificadores que coinciden entre sí. Esta característica es útil para las migraciones de datos programadas que actualizan los documentos existentes.
-4. Número de reintentos en caso de error: especifica el número de veces que se intentará la conexión a Azure Cosmos DB en caso de errores transitorios (por ejemplo, interrupciones de conectividad de red).
-5. Intervalo de reintento: especifica el tiempo de espera entre los reintentos de restablecimiento de conexión a Azure Cosmos DB en caso de errores transitorios (por ejemplo, interrupción de la conectividad de red).
-6. Modo de conexión: especifica el modo de conexión para utilizar con Azure Cosmos DB. Las opciones disponibles son DirectTcp, DirectHttps y puerta de enlace. Los modos de conexión directa son más rápidos, mientras que el modo de puerta de enlace es compatible con el firewall, ya que sólo usa el puerto 443.
+1. Número de solicitudes paralelas: herramienta de hello tiene como valor predeterminado de las solicitudes paralelas de too2. Si Hola documentos toobe importado es pequeño, considere la posibilidad de elevación Hola número de solicitudes paralelas. Tenga en cuenta que si este número se genera demasiado, Hola importación podría experimentar de limitación.
+2. Deshabilitar la generación automática de Id.: Si cada toobe documento importado contiene un campo id, a continuación, al seleccionar esta opción puede aumentar el rendimiento. No se importarán los documentos  que no contengan el campo de identificador exclusivo.
+3. Documentos de actualización existente: Hola toonot de los valores predeterminados de herramienta reemplazando los documentos existentes con los conflictos de identificador. Si selecciona esta opción, permitirá que se sobrescriban los documentos existentes con identificadores que coinciden entre sí. Esta característica es útil para las migraciones de datos programadas que actualizan los documentos existentes.
+4. Número de reintentos en caso de error: especifica Hola número de veces tooretry Hola conexión tooAzure Cosmos DB en caso de errores transitorios (por ejemplo, interrupción de conectividad de red).
+5. Intervalo de reintentos: Especifica cuánto tiempo toowait entre los reintentos de conexión tooAzure DB Cosmos de hello en caso de errores transitorios (por ejemplo, interrupción de conectividad de red).
+6. Modo de conexión: Especifica toouse de modo de conexión de hello con base de datos de Azure Cosmos. las opciones disponibles de Hello son DirectTcp, DirectHttps y puerta de enlace. modos de conexión directa de Hello son más rápidos, mientras que el modo de puerta de enlace de hello es firewall más descriptivo como solo usa el puerto 443.
 
 ![Captura de pantalla de opciones avanzadas de importación de registros secuenciales de Azure Cosmos DB](./media/import-data/documentdbsequentialoptions.png)
 
 > [!TIP]
-> El modo de conexión predeterminado de la herramienta de importación es DirectTcp. Si experimenta problemas de firewall, cambie al modo de conexión puerta de enlace, ya que sólo requiere el puerto 443.
+> modo de tooconnection de los valores predeterminados de herramienta DirectTcp de importación de Hola. Si experimenta problemas de firewall, cambie el modo de tooconnection puerta de enlace, ya que solo requiere el puerto 443.
 > 
 > 
 
 ## <a id="IndexingPolicy"></a>Especificar una directiva de indexación al crear colecciones de Azure Cosmos DB
-Si permite que la herramienta de migración cree colecciones durante la importación, puede especificar la directiva de indización de las colecciones. En la sección de opciones avanzadas de las opciones de Importación masiva de Azure Cosmos DB y Registro secuencial de Azure Cosmos DB, vaya a la sección de la directiva de indexación.
+Cuando se permite la migración de hello colecciones de toocreate herramienta durante la importación, puede especificar la directiva de indexación de Hola de colecciones de Hola. Hola avanzada de la sección de opciones de importación en bloque de base de datos de Azure Cosmos hello y secuencial de base de datos de Azure Cosmos opciones de registro, navegue toohello sección sobre la directiva de indización.
 
 ![Captura de pantalla de opciones avanzadas de política de indexación de Azure Cosmos DB](./media/import-data/indexingpolicy1.png)
 
-Mediante la opción avanzada de Directiva de indización, puede seleccionar un archivo de directiva de indización, especificar manualmente una directiva de indización o seleccionar de un conjunto de plantillas predeterminadas (haciendo clic con el botón derecho en el cuadro de texto de la directiva de indización).
+Con hello opción de directiva de indización avanzada, puede seleccionar un archivo de directiva de indexación, manualmente especificar una directiva de indexación o seleccionar entre un conjunto de plantillas predeterminadas (haciendo clic en hello indización de cuadro de texto de directiva).
 
-La herramienta proporciona las plantillas de directiva siguientes:
+plantillas de directiva de Hola Hola herramienta proporciona son:
 
 * Predeterminada. Esta directiva es mejor cuando se realizan consultas de igualdad en cadenas y se usan consultas ORDER BY, de rango y de igualdad para números. Esta directiva tiene una sobrecarga de almacenamiento de índices menor que la de intervalo.
 * Intervalo. Esta directiva es mejor si está usando consultas de ORDER BY, intervalo e igualdad en números y cadenas. Esta directiva tiene una mayor sobrecarga de almacenamiento de índice que la Predeterminada o Hash.
@@ -476,21 +476,21 @@ La herramienta proporciona las plantillas de directiva siguientes:
 ![Captura de pantalla de opciones avanzadas de política de indexación de Azure Cosmos DB](./media/import-data/indexingpolicy2.png)
 
 > [!NOTE]
-> Si no especifica una directiva de indización, se aplicará la directiva predeterminada. Para más información sobre las directivas de indexación, consulte [Directivas de indexación de Azure Cosmos DB](indexing-policies.md).
+> Si no especifica una directiva de indexación, se aplicará la directiva predeterminada de Hola. Para más información sobre las directivas de indexación, consulte [Directivas de indexación de Azure Cosmos DB](indexing-policies.md).
 > 
 > 
 
-## <a name="export-to-json-file"></a>Exportación a archivos JSON
-El exportador JSON de Azure Cosmos DB permite exportar cualquiera de las opciones de origen disponibles a un archivo JSON que contiene una matriz de documentos JSON. La herramienta controlará la exportación por usted, o puede ver el comando resultante de la migración y ejecutar el comando usted mismo. El archivo JSON resultante puede almacenarse localmente o en el almacenamiento de blobs de Azure.
+## <a name="export-toojson-file"></a>Archivo de exportación tooJSON
+exportador de JSON de base de datos de Azure Cosmos Hola permite tooexport cualquiera de hello origen disponibles opciones tooa archivo JSON que contiene una matriz de documentos JSON. herramienta Hola controlará la exportación de Hola para usted, o puede elegir el comando resultante de migración de tooview hello y ejecutar comando hello usted mismo. archivo JSON resultante de Hello puede almacenarse localmente o en el almacenamiento de blobs de Azure.
 
 ![Captura de pantalla de opción de exportación de archivo local JSON de Azure Cosmos DB](./media/import-data/jsontarget.png)
 
 ![Captura de pantalla de opción de exportación de Azure Blob Storage de JSON de Azure Cosmos DB](./media/import-data/jsontarget2.png)
 
-Opcionalmente, puede optar por adornar el JSON resultante, lo que aumentará el tamaño del documento resultante al mismo tiempo que el contenido será más legibles.
+También puede elegir hello tooprettify resultante JSON, lo que aumentará el tamaño de saludo del documento resultante de hello mientras lo Hola contenido más legibles.
 
     Standard JSON export
-    [{"id":"Sample","Title":"About Paris","Language":{"Name":"English"},"Author":{"Name":"Don","Location":{"City":"Paris","Country":"France"}},"Content":"Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.","PageViews":10000,"Topics":[{"Title":"History of Paris"},{"Title":"Places to see in Paris"}]}]
+    [{"id":"Sample","Title":"About Paris","Language":{"Name":"English"},"Author":{"Name":"Don","Location":{"City":"Paris","Country":"France"}},"Content":"Don's document in Azure Cosmos DB is a valid JSON document as defined by hello JSON spec.","PageViews":10000,"Topics":[{"Title":"History of Paris"},{"Title":"Places toosee in Paris"}]}]
 
     Prettified JSON export
     [
@@ -507,52 +507,52 @@ Opcionalmente, puede optar por adornar el JSON resultante, lo que aumentará el 
         "Country": "France"
       }
     },
-    "Content": "Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.",
+    "Content": "Don's document in Azure Cosmos DB is a valid JSON document as defined by hello JSON spec.",
     "PageViews": 10000,
     "Topics": [
       {
         "Title": "History of Paris"
       },
       {
-        "Title": "Places to see in Paris"
+        "Title": "Places toosee in Paris"
       }
     ]
     }]
 
 ## <a name="advanced-configuration"></a>Configuración avanzada
-En la pantalla Configuración avanzada, especifique la ubicación del archivo de registro en que desee que se escriban los errores. Las siguientes reglas se aplican a esta página:
+En la pantalla de configuración avanzada de bienvenida, especifique la ubicación de Hola de toowhich de archivo de registro de hello que desea que los errores que se escriben. Hola siguiendo las reglas aplica toothis página:
 
-1. Si no se proporciona un nombre de archivo, todos los errores se devolverán a la página de resultados.
-2. Si se proporciona un nombre de archivo sin un directorio, el archivo se creará (o sobrescribirá) en el directorio del entorno actual.
-3. Si selecciona un archivo existente, este se sobrescribirá, ya que no hay opción de anexar.
+1. Si no se proporciona un nombre de archivo, se devolverán todos los errores en la página de resultados de Hola.
+2. Si se proporciona un nombre de archivo sin un directorio, a continuación, archivo hello se crean (o sobrescribe) en el directorio actual de entorno de Hola.
+3. Si selecciona una existente se sobrescribirán los archivos y, a continuación, archivo hello, no hay ninguna opción de anexar.
 
-A continuación, elija si desea registrar todos los mensajes de error, los críticos o ninguno. Por último, decida con qué frecuencia se actualizará el progreso en el mensaje de transferencia en pantalla.
+A continuación, elija si toolog todos los críticos, o ningún mensaje de error. Por último, decidir con qué frecuencia se actualizarán hello en el mensaje de transferencia de pantalla con su progreso.
 
     ![Screenshot of Advanced configuration screen](./media/import-data/AdvancedConfiguration.png)
 
 ## <a name="confirm-import-settings-and-view-command-line"></a>Confirmación de las opciones de importación y visualización de la línea de comandos
-1. Después de especificar la información de origen y destino, y la configuración avanzada, revise el resumen de la migración y, opcionalmente, vea o copie el comando resultante de la migración (copiar el comando es útil para automatizar las operaciones de importación):
+1. Después de especificar información de origen, la información de destino y la configuración avanzada, revise el resumen de la migración de Hola y, opcionalmente, ver o copiar Hola resultante comando migration (copia comando hello es útil tooautomate las operaciones de importación):
    
     ![Screenshot of summary screen](./media/import-data/summary.png)
    
     ![Screenshot of summary screen](./media/import-data/summarycommand.png)
-2. Una vez que esté satisfecho con las opciones de origen y de destino, haga clic en **Importar**. El tiempo transcurrido, el número transferido y la información sobre los errores (si no se ha especificado un nombre de archivo en la configuración avanzada) se actualizarán mientras la importación está curso. Una vez que haya finalizado, puede exportar los resultados (por ejemplo, para tratar los errores de importación).
+2. Una vez que esté satisfecho con las opciones de origen y de destino, haga clic en **Importar**. tiempo transcurrido de Hello, recuento transferido e información del error (si no proporcionó un nombre de archivo de configuración avanzada de Hola) se actualizarán tal y como está en proceso de importación de Hola. Una vez completado, puede exportar resultados de hello (p. ej., toodeal con los errores de importación).
    
     ![Captura de pantalla de opción de exportación de JSON de Azure Cosmos DB](./media/import-data/viewresults.png)
-3. También puede iniciar una nueva importación, conservando la configuración existente (por ejemplo, elección de información de origen y de destino de la cadena de conexión, etc.) o restableciendo todos los valores.
+3. También puede iniciar una nueva importación, conservando la configuración existente de hello (p. ej., elección de información de origen y de destino de la cadena de conexión, etc.) o restablecer todos los valores.
    
     ![Captura de pantalla de opción de exportación de JSON de Azure Cosmos DB](./media/import-data/newimport.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, ha hecho lo siguiente:
+En este tutorial, ha hecho siguiente de hello:
 
 > [!div class="checklist"]
-> * Instalación de la herramienta de migración de datos
+> * Instala la herramienta de migración de datos de Hola
 > * Importación de datos de orígenes de datos diferentes
-> * Exportación desde Azure Cosmos DB a JSON
+> * Exportar desde la base de datos de Azure Cosmos tooJSON
 
-Ahora puede pasar al siguiente tutorial y obtener más información sobre cómo consultar los datos con Azure Cosmos DB. 
+Ahora puede continuar el tutorial siguiente toohello y obtenga información acerca de cómo los datos de tooquery con la base de datos de Azure Cosmos. 
 
 > [!div class="nextstepaction"]
->[Consulta de datos](../cosmos-db/tutorial-query-documentdb.md)
+>[¿Cómo tooquery datos?](../cosmos-db/tutorial-query-documentdb.md)

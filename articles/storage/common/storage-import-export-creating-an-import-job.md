@@ -1,6 +1,6 @@
 ---
-title: "Creación de un trabajo de importación para Azure Import/Export | Microsoft Docs"
-description: "Obtenga información sobre cómo crear un trabajo de importación para el servicio Microsoft Azure Import/Export."
+title: "aaaCreate un trabajo de importación para la importación y exportación de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate una importación para hello servicio de importación y exportación de Microsoft Azure."
 author: muralikk
 manager: syadav
 editor: syadav
@@ -14,96 +14,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: d373d2a0e601f2796719fc5efb8761f276ab24d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: da974c33a3688bb5e2412c8bfcbeca704096c2fc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Creación de un trabajo de importación para el servicio Azure Import/Export
+# <a name="creating-an-import-job-for-hello-azure-importexport-service"></a>Crear un trabajo de importación para hello servicio de importación y exportación de Azure
 
-Para crear un trabajo de importación para el servicio Microsoft Azure Import/Export con la API de REST, debe seguir estos pasos:
+La creación de un trabajo de importación para servicio de importación y exportación de Microsoft Azure de hello mediante API de REST de hello implica Hola pasos:
 
--   Preparar las unidades con la herramienta Azure Import/Export.
+-   Preparar las unidades con hello herramienta de importación y exportación de Azure.
 
--   Obtener la ubicación a la que se va a enviar la unidad.
+-   Obtención Hola ubicación toowhich tooship Hola unidad.
 
--   Crear el trabajo de importación.
+-   Creando un trabajo de importación Hola.
 
--   Enviar sus unidades de disco a Microsoft a través de un servicio de transporte admitido.
+-   Envío Hola unidades tooMicrosoft a través de un servicio de transporte admitido.
 
--   Actualizar el trabajo de importación con la información de envío.
+-   Actualizar el trabajo de importación de hello con hello detalles de envío.
 
- Vea [Uso del servicio Microsoft Azure Import/Export para transferir datos a Blob Storage](storage-import-export-service.md) para leer una introducción al servicio Import/Export y ver un tutorial en el que se demuestra cómo usar [Azure Portal](https://portal.azure.com/) para crear y administrar trabajos de importación y exportación.
+ Vea [con hello importación y exportación de Microsoft Azure service tooTransfer datos tooBlob almacenamiento](storage-import-export-service.md) para obtener información general del servicio de importación y exportación de Hola y un tutorial que demuestra cómo hello toouse [portal de Azure](https://portal.azure.com/) toocreate y administrar la importación y exportación de trabajos.
 
-## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Preparación de las unidades con la herramienta Azure Import/Export
+## <a name="preparing-drives-with-hello-azure-importexport-tool"></a>Preparar las unidades con hello herramienta de importación y exportación de Azure
 
-Los pasos para preparar las unidades para un trabajo de importación son los mismos si crea el trabajo a través del portal o a través de la API de REST.
+Hola pasos tooprepare unidades para un trabajo de importación se Hola mismo si crea Hola jobvia portal de Hola o a través de Hola API de REST.
 
-A continuación se muestra una breve descripción general de cómo preparar la unidad. Vea [Azure Import-ExportTool Reference](storage-import-export-tool-how-to-v1.md) (Referencia de la herramienta Azure Import/Export) para obtener las instrucciones completas. Puede descargar la herramienta Azure Import/Export [aquí](http://go.microsoft.com/fwlink/?LinkID=301900).
+A continuación se muestra una breve descripción general de cómo preparar la unidad. Consulte toohello [referencia ExportTool de importación de Azure](storage-import-export-tool-how-to-v1.md) para obtener instrucciones completas. Puede descargar la herramienta de importación y exportación de Azure de hello [aquí](http://go.microsoft.com/fwlink/?LinkID=301900).
 
 La preparación de la unidad conlleva:
 
--   Identificar los datos que se van a importar.
+-   Identificación toobe Hola de datos importado.
 
--   Identificar los blobs de destino en Microsoft Azure Storage.
+-   Identificar blobs de destino de hello en almacenamiento de Windows Azure.
 
--   Usar la herramienta Azure Import/Export para copiar los datos en una o varias unidades de disco duro.
+-   Uso de hello toocopy de herramienta de importación y exportación de Azure su tooone de datos o más unidades de disco duro.
 
- La herramienta Azure Import/Export también genera un archivo de manifiesto para cada una de las unidades de disco mientras se prepara. Un archivo de manifiesto contiene:
+ Hola, herramienta de importación y exportación de Azure también generará un archivo de manifiesto para cada una de las unidades de hello mientras las prepara. Un archivo de manifiesto contiene:
 
--   Una enumeración de todos los archivos pensados para la carga y las asignaciones de estos archivos en los blobs.
+-   Una enumeración de todos los archivos de hello diseñada para la carga y las asignaciones de Hola de estos tooblobs de archivos.
 
--   Sumas de comprobación de los segmentos de cada archivo.
+-   Sumas de comprobación de los segmentos de Hola de cada archivo.
 
--   Información sobre los metadatos y las propiedades para asociar a cada blob.
+-   Información sobre tooassociate de metadatos y propiedades de Hola a cada blob.
 
--   Una lista de la acción que se realizará si un blob que se va a cargar tiene el mismo nombre que un blob existente en el contenedor. Las opciones posibles son: a) sobrescribir el blob con el archivo, b) conservar el blob existente y omitir la carga del archivo, c) anexar un sufijo al nombre para que no entre en conflicto con otros archivos.
+-   Un listado de hello acción tootake si un blob que se está cargando tiene Hola mismo nombre como un blob existente en el contenedor de Hola. Las opciones posibles son: a) Hola blob se sobrescribe con el archivo hello, b) tenga blob existente de Hola y omite la carga de archivo hello, c) se anexa un nombre de sufijo toohello para que no esté en conflicto con otros archivos.
 
 ## <a name="obtaining-your-shipping-location"></a>Obtención de la ubicación de envío
 
-Antes de crear un trabajo de importación, necesita obtener un nombre de la ubicación de envío y una dirección mediante una llamada a la operación [List Locations](/rest/api/storageimportexport/listlocations). `List Locations` devolverá una lista de ubicaciones y sus direcciones de correo. Puede seleccionar una ubicación de la lista devuelta y enviar las unidades de disco duro a esa dirección. También puede usar la operación `Get Location` para obtener directamente la dirección de envío para una ubicación específica.
+Antes de crear un trabajo de importación, deberá tooobtain un nombre de la ubicación de envío y la dirección por llamada hello [ubicaciones de la lista](/rest/api/storageimportexport/listlocations) operación. `List Locations` devolverá una lista de ubicaciones y sus direcciones de correo. Puede seleccionar una ubicación de hello devuelve la lista y enviar su dirección de toothat de unidades de disco duro. También puede usar hello `Get Location` Hola de tooobtain operación directamente de la dirección de una ubicación específica de envío.
 
- Siga los pasos siguientes para obtener la ubicación de envío:
+ Siga los pasos de Hola por debajo de la ubicación de envío de Hola tooobtain:
 
--   Identifique el nombre de la ubicación de la cuenta de almacenamiento. Este valor puede encontrarse en el campo **Ubicación** del **Panel** de la cuenta de almacenamiento de Azure Portal o puede consultarse mediante el uso de la operación [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) de Service Management API.
+-   Identificar el nombre de Hola de ubicación de saludo de la cuenta de almacenamiento. Este valor puede encontrarse en hello **ubicación** campo de la cuenta de almacenamiento de hello **panel** en hello Azure portal o puede consultarse mediante el uso de la operación de API de administración de servicio de hello [obtener almacenamiento Propiedades de la cuenta](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
 
--   Recupere la ubicación que está disponible para procesar esta cuenta de almacenamiento mediante una llamada a la operación `Get Location`.
+-   Recuperar ubicación hello tooprocess disponible esta cuenta de almacenamiento que realiza la llamada hello `Get Location` operación.
 
--   Si la propiedad `AlternateLocations` de la ubicación contiene la propia ubicación, entonces es apropiado usar esta ubicación. De lo contrario, vuelva a llamar a la operación `Get Location` con una de las ubicaciones alternativas. La ubicación original podría estar cerrada temporalmente para el mantenimiento.
+-   Si hello `AlternateLocations` propiedad de ubicación de hello contiene la ubicación de hello propio, entonces es correcto toouse esta ubicación. De lo contrario, llame a hello `Get Location` operación de nuevo con una de las ubicaciones alternativas de Hola. ubicación original de Hello podría estar cerrado temporalmente para el mantenimiento.
 
-## <a name="creating-the-import-job"></a>Creación del trabajo de importación
-Para crear el trabajo de importación, llame a la operación [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate). Tiene que proporcionar la siguiente información:
+## <a name="creating-hello-import-job"></a>Crear trabajo de importación de Hola
+trabajo de importación de hello toocreate, llamada hello [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operación. Necesitará hello tooprovide siguiente información:
 
--   Un nombre para el trabajo.
+-   Un nombre para el trabajo de Hola.
 
--   El nombre de la cuenta de almacenamiento.
+-   nombre de cuenta de almacenamiento de Hola.
 
--   El nombre de la ubicación envío, obtenido en el paso anterior.
+-   Hola nombre de ubicación, obtenida en el paso anterior de Hola de envío.
 
 -   Un tipo de trabajo (importar).
 
--   El remite al que deben enviarse las unidades de disco después de que se ha completado el trabajo de importación.
+-   dirección de devolución de Hola que deben enviarse las unidades de hello después de que ha completado el trabajo de importación de Hola.
 
--   La lista de unidades del trabajo. Para cada unidad, debe incluir la siguiente información que se obtuvo durante el paso de preparación de la unidad:
+-   lista de Hola de unidades de trabajo de Hola. Para cada unidad, debe incluir Hola siguiendo la información que se obtuvo durante el paso de preparación de unidad de hello:
 
-    -   El Id. de unidad
+    -   Id. de unidad de Hola
 
-    -   La clave de BitLocker
+    -   clave de BitLocker de Hola
 
-    -   La ruta de acceso relativa del archivo de manifiesto de la unidad de disco duro
+    -   Hola archivo de manifiesto ruta de acceso relativa en la unidad de disco duro de Hola
 
-    -   Hash MD5 del archivo de manifiesto codificado en Base16
+    -   archivo de manifiesto algoritmo hash MD5 codificado en Hello Base16
 
 ## <a name="shipping-your-drives"></a>Envío de las unidades de disco
-Debe enviar las unidades de disco a la dirección que ha obtenido en el paso anterior, y debe proporcionar al servicio Import/Export el número de seguimiento del paquete.
+Debes enviar su dirección de toohello de unidades que obtuvo en el paso anterior de Hola y debe proporcionar Hola servicio de importación y exportación con hello seguimiento número de paquetes de saludo.
 
 > [!NOTE]
 >  Debe enviar las unidades de disco a través de un servicio de transporte admitido, que proporcionará un número de seguimiento del paquete.
 
-## <a name="updating-the-import-job-with-your-shipping-information"></a>Actualización del trabajo de importación con la información de envío
-Cuando tenga el número de seguimiento, llame a la operación [Update Job Properties](/api/storageimportexport/jobs#Jobs_Update) para actualizar el nombre del transportista, el número de seguimiento del trabajo y el número de cuenta del transportista para el envío de devolución. También puede especificar el número de unidades y la fecha de envío.
+## <a name="updating-hello-import-job-with-your-shipping-information"></a>Actualizar el trabajo de importación de hello con la información de envío
+Una vez que el número de seguimiento, llame a hello [actualizar propiedades del trabajo](/api/storageimportexport/jobs#Jobs_Update) hello tooupdate de operación de envío nombre del operador, número de seguimiento de hello para el trabajo de Hola y número de cuenta del transportista hello para el trasvase de valor devuelto. Opcionalmente, puede especificar número de Hola de hello también la fecha de envío y las unidades.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Uso de la API de REST del servicio Azure Import/Export](storage-import-export-using-the-rest-api.md)
+* [Usar servicio de importación y exportación de hello API de REST](storage-import-export-using-the-rest-api.md)

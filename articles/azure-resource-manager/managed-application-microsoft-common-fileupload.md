@@ -1,6 +1,6 @@
 ---
-title: "Elemento de interfaz de usuario FileUpload de una aplicación administrada de Azure | Microsoft Docs"
-description: Describe el elemento de la interfaz de usuario Microsoft.Common.FileUpload para aplicaciones administradas de Azure
+title: "elemento de interfaz de usuario de FileUpload de aplicación administrado aaaAzure | Documentos de Microsoft"
+description: Describe Hola elemento de interfaz de usuario de Microsoft.Common.FileUpload para administrar aplicaciones de Azure
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 217e9e63eb7cd198f70cee42b418867df9f1f993
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7af5bec992e3f120afb1bdf56d8b4c19a8e5e834
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Elemento de interfaz de usuario Microsoft.Common.FileUpload
-Control que permite al usuario especificar uno o varios archivos para cargar. Use este elemento al [crear una aplicación administrada de Azure](managed-application-publishing.md).
+Un control que permite a un usuario toospecify uno o más archivos tooupload. Use este elemento al [crear una aplicación administrada de Azure](managed-application-publishing.md).
 
 ## <a name="ui-sample"></a>Ejemplo de interfaz de usuario
 ![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
@@ -47,21 +47,21 @@ Control que permite al usuario especificar uno o varios archivos para cargar. Us
 ```
 
 ## <a name="remarks"></a>Comentarios
-- `constraints.accept` especifica los tipos de archivos que se muestran en el cuadro de diálogo de archivo del explorador. Consulte la [especificación HTML5](http://www.w3.org/TR/html5/forms.html#attr-input-accept) para ver los valores permitidos. El valor predeterminado es **null**.
-- Si `options.multiple` se establece en **true**, el usuario puede seleccionar más de un archivo en el cuadro de diálogo del explorador. El valor predeterminado es **false**.
-- Este elemento permite cargar archivos de dos modos, en función del valor de `options.uploadMode`. Si se especifica **file**, la salida incluye el contenido del archivo como un blob. Si se especifica **url**, el archivo se carga en una ubicación temporal y la salida contiene la dirección URL del blob. Los blobs temporales se eliminan después de 24 horas. El valor predeterminado es **file**.
-- El valor de `options.openMode` determina cómo se lee el archivo. Si se espera que el archivo sea de texto sin formato, especifique **text**; en caso contrario, especifique **binary**. El valor predeterminado es **text**.
-- Si `options.uploadMode` está establecido en **file** y `options.openMode` está establecido en **binary**, la salida estará codificada en base64.
-- `options.encoding` especifica la codificación que se utilizará al leer el archivo. El valor predeterminado es **UTF-8**, y se usa solo cuando `options.openMode` está establecido en **text**.
+- `constraints.accept`Especifica tipos de Hola de archivos que se muestran en el cuadro de diálogo de archivos del explorador de Hola. Vea hello [especificación de HTML5](http://www.w3.org/TR/html5/forms.html#attr-input-accept) para los valores permitidos. es el valor predeterminado de Hello **null**.
+- Si `options.multiple` se establece demasiado**true**, usuario Hola puede tooselect más de un archivo en el cuadro de diálogo de archivos del explorador de Hola. es el valor predeterminado de Hello **false**.
+- Este elemento es compatible con la carga de archivos en dos modos en función de valor de Hola de `options.uploadMode`. Si **archivo** se especifica, el resultado de hello contiene contenido de Hola de archivo hello como un blob. Si **url** se especifica, el archivo hello es ubicación temporal tooa cargados y salida de hello contiene Hola URL de blob de Hola. Los blobs temporales se eliminan después de 24 horas. es el valor predeterminado de Hello **archivo**.
+- Hola valo `options.openMode` determina cómo se lee el archivo hello. Si el archivo hello es texto sin formato de toobe esperado, especifique **texto**; en caso contrario, especifique **binario**. es el valor predeterminado de Hello **texto**.
+- Si `options.uploadMode` se establece demasiado**archivo** y `options.openMode` se establece demasiado**binario**, tiene una salida de hello codificación base64.
+- `options.encoding`Especifica Hola codificación toouse al leer el archivo hello. es el valor predeterminado de Hello **UTF-8**y se usa solo cuando `options.openMode` se establece demasiado**texto**.
 
 ## <a name="sample-output"></a>Salida de ejemplo
-Si options.multiple es false y options.uploadMode es file, la salida incluye el contenido del archivo como una cadena JSON:
+Si options.multiple es false y options.uploadMode es el archivo, el resultado incluye contenido de Hola de archivo hello como una cadena JSON:
 
 ```json
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ```
 
-Si options.multiple es true y options.uploadMode es file, la salida incluye el contenido del archivo como una matriz JSON:
+Si es true options.multiple and'options.uploadMode es archivo, entonces la salida contiene contenido de Hola de los archivos de hello como una matriz JSON:
 
 ```json
 [
@@ -87,10 +87,10 @@ Si options.multiple es true y options.uploadMode es url, la salida incluye una l
 ]
 ```
 
-Cuando se prueba una definición CreateUiDefinition, algunos exploradores (como Google Chrome) truncan las direcciones URL generadas por el elemento Microsoft.Common.FileUpload en la consola del explorador. Puede que tenga que hacer clic en cada vínculo individual para copiar las direcciones URL completas.
+Cuando se prueba un CreateUiDefinition, algunos exploradores (por ejemplo, Google Chrome) truncan las direcciones URL generadas por hello Microsoft.Common.FileUpload elemento en la consola del explorador Hola. Puede que necesite tooright y haga clic en vínculos individuales toocopy hello las direcciones URL completas.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para una introducción a las aplicaciones administradas, consulte la [introducción a las aplicaciones administradas de Azure](managed-application-overview.md).
-* Para ver una introducción sobre la creación de definiciones de interfaz de usuario, consulte [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Para una aplicación de toomanaged introducción, consulte [Introducción a la aplicación administrada de Azure](managed-application-overview.md).
+* Para obtener definiciones una interfaz de usuario de toocreating de introducción, vea [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Para ver una descripción de las propiedades comunes de los elementos de interfaz de usuario, consulte [Elementos CreateUiDefinition](managed-application-createuidefinition-elements.md).

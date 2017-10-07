@@ -1,6 +1,6 @@
 ---
-title: Trabajo con servidores proxy locales existentes y Azure AD | Microsoft Docs
-description: "Se explica cómo trabajar con servidores proxy locales existentes."
+title: aaaWork existente local servidores proxy y Azure AD | Documentos de Microsoft
+description: "Explica cómo toowork existente local servidores proxy."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -13,43 +13,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: kgremban
-ms.openlocfilehash: bdca442755507c4ffe8d43692c5b7f2aa3a746f3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7f8cec4f676f99bead5211bcbcf23056bd7f211f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Trabajo con servidores proxy locales existentes
 
-En este artículo se explica cómo configurar conectores del proxy de aplicación de Azure Active Directory (Azure AD) para que funcionen con servidores proxy de salida. Está destinado a clientes con entornos de red que tienen servidores proxy en la actualidad.
+Este artículo se explica cómo tooconfigure toowork de conectores de Proxy de aplicación de Azure Active Directory (Azure AD) con los servidores proxy de salida. Está destinado a clientes con entornos de red que tienen servidores proxy en la actualidad.
 
 Empezaremos examinando estos escenarios de implementación principales:
-* Configuración de conectores para omitir los proxy de salida locales.
-* Configuración de conectores para usar un proxy de salida para obtener acceso al Proxy de aplicación de Azure AD.
+* Configure conectores toobypass el proxy de salida local.
+* Configure conectores toouse un Proxy de aplicación de Azure AD tooaccess de proxy de salida.
 
 Para más información sobre cómo funcionan los conectores, consulte [Descripción de los conectores del Proxy de aplicación de Azure AD](application-proxy-understand-connectors.md).
 
-## <a name="configure-the-outbound-proxy"></a>Configuración del proxy de salida
+## <a name="configure-hello-outbound-proxy"></a>Configurar el proxy de salida de hello
 
-Si tiene un proxy de salida en su entorno, use una cuenta con permisos adecuados para configurar al proxy de salida. Puesto que el programa de instalación se ejecuta en el contexto del usuario que lleva a cabo la instalación, puede comprobar la configuración mediante Microsoft Edge u otro explorador de Internet.
+Si tiene un proxy de salida en su entorno, use una cuenta con proxy de salida de los permisos adecuados tooconfigure Hola. Como instalador de Hola se ejecuta en el contexto de Hola Hola del usuario de que está realizando la instalación de hello, puede comprobar configuración hello mediante Microsoft Edge u otro explorador de Internet.
 
-Para configurar el proxy en Microsoft Edge:
+configuración de proxy de hello tooconfigure con Microsoft Edge:
 
-1. Vaya a **Configuración** > **Ver configuración avanzada** > **Abrir la configuración de proxy** > **Configuración manual del proxy**.
-2. Establezca **Utilizar un servidor proxy** en **Activado**, active la casilla **No usar el servidor proxy para direcciones locales (intranet)** y cambie la dirección y el puerto para reflejar su servidor proxy local.
-3. Rellene la configuración del proxy necesaria.
+1. Vaya demasiado**configuración** > **configuración de vista avanzada** > **abrir la configuración de Proxy** > **Manual de instalación del Proxy** .
+2. Establecer **utilizar un servidor proxy** demasiado**en**, seleccione hello **no usar servidor proxy de Hola para direcciones locales (intranet)** casilla de verificación y, a continuación, tooreflect de dirección y el puerto de Hola de cambio el servidor proxy local.
+3. Rellene la configuración de proxy necesaria de Hola.
 
    ![Cuadro de diálogo de configuración del proxy](./media/application-proxy-working-with-proxy-servers/proxy-bypass-local-addresses.png)
 
 ## <a name="bypass-outbound-proxies"></a>Omisión de servidores proxy de salida
 
-Los conectores tienen componentes del sistema operativo subyacentes que realizan solicitudes salientes. Estos componentes intentan automáticamente encontrar un servidor proxy en la red. Usan la detección automática de proxy web, si está habilitada en el entorno.
+Los conectores tienen componentes del sistema operativo subyacentes que realizan solicitudes salientes. Estos componentes intentan automáticamente toolocate un servidor proxy de red de Hola. Usan la detección automática de Proxy Web (WPAD), si está habilitado en el entorno de Hola.
 
-Los componentes del sistema operativo intentan localizar un servidor proxy llevando a cabo una búsqueda de DNS para wpad.domainsuffix. Si esto se resuelve en DNS, se realiza una solicitud HTTP para la dirección IP para wpad.dat. Esta solicitud se convierte en el script de configuración de proxy en su entorno. El conector lo usará para seleccionar un servidor proxy de salida. Sin embargo, es posible que el tráfico del conector no pase aún porque se requiera una configuración adicional en el servidor proxy.
+componentes del sistema operativo Hola intenten toolocate un servidor proxy llevando a cabo una búsqueda de DNS para wpad.domainsuffix. Si esto se resuelve en DNS, una solicitud HTTP, a continuación, se realiza toohello IP dirección wpad.dat. Esta solicitud se convierte en el script de configuración de proxy de hello en su entorno. Conector de Hello usa este tooselect script un servidor proxy de salida. Sin embargo, tráfico de conector es posible que todavía no vaya a través, debido a una configuración adicionales necesaria en el proxy de Hola.
 
-Puede configurar el conector para omitir el proxy local a fin de garantizar que utilice conectividad directa a los servicios de Azure. Se recomienda este método (siempre que lo permita la directiva de red), ya que significa que tendrá una configuración menos que mantener.
+Puede configurar Hola conector toobypass su tooensure de proxy local que usa dirigir conectividad toohello Azure servicios. Se recomienda este enfoque (si lo permite la directiva de red para él), ya que significa que tiene una menor toomaintain de configuración.
 
-Para deshabilitar el uso del proxy de salida para el conector, edite el archivo C:\Archivos de programa\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config y agregue la sección *system.net* que se muestra en este ejemplo de código:
+toodisable uso de proxy de salida para conector de hello, Editar archivo C:\Program Files\Microsoft AAD aplicación Proxy Connector\ApplicationProxyConnectorService.exe.config de hello y agregue hello *system.net* sección se muestra en este ejemplo de código :
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -65,25 +65,25 @@ Para deshabilitar el uso del proxy de salida para el conector, edite el archivo 
   </appSettings>
 </configuration>
 ```
-Para asegurarse de que el servicio de actualización de los conectores también omite el proxy, realice un cambio similar en el archivo ApplicationProxyConnectorUpdaterService.exe.config, que se encuentra en C:\Program Files\Microsoft AAD App Proxy Connector Updater.
+tooensure que el servicio de conector actualizador de hello también omite proxy hello, cree un archivo de ApplicationProxyConnectorUpdaterService.exe.config de toohello de cambio similar situado actualizador del conector del Proxy de aplicación C:\Program Files\Microsoft AAD.
 
-Asegúrese de realizar copias de los archivos originales por si fuera necesario revertir a los archivos .config predeterminados.
+Ser seguro toomake copias de archivos originales de hello, por si necesita archivos .config de toorevert toohello de forma predeterminada.
 
-## <a name="use-the-outbound-proxy-server"></a>Uso del servidor proxy saliente
+## <a name="use-hello-outbound-proxy-server"></a>Utilizar un servidor proxy saliente Hola
 
-Algunos entornos requieren que todo el tráfico saliente atraviese sin excepciones un proxy de salida. Por lo tanto, no se contempla la opción de omitir el proxy.
+Algunos entornos requieren que todos los toogo el tráfico saliente a través de un proxy de salida, sin excepción. Como resultado, la omisión de proxy de hello no es una opción.
 
-Puede configurar el tráfico del conector de manera que vaya a través del proxy de salida, tal y como se muestra en el diagrama siguiente:
+Puede configurar Hola conector tráfico toogo a través de proxy de salida de hello, como se muestra en hello siguiente diagrama:
 
- ![Configuración del tráfico del conector para pasar a través de un proxy de salida para acceder al Proxy de aplicación de Azure AD](./media/application-proxy-working-with-proxy-servers/configure-proxy-settings.png)
+ ![Configuración de conector toogo de tráfico a través de un tooAzure de proxy de salida AD Proxy de aplicación](./media/application-proxy-working-with-proxy-servers/configure-proxy-settings.png)
 
-Como solo se tiene tráfico saliente, no es necesario configurar el acceso entrante a través de los firewalls.
+Como resultado de tener solo el tráfico saliente, no hay ninguna necesidad de tooconfigure acceso a través de los firewalls de entrada.
 
-### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Paso 1: Configurar el conector y los servicios relacionados para que vayan a través del proxy de salida
+### <a name="step-1-configure-hello-connector-and-related-services-toogo-through-hello-outbound-proxy"></a>Paso 1: Configurar el conector de Hola y relacionados con servicios toogo a través de proxy de salida de hello
 
-Tal como se explicó anteriormente, si WPAD está habilitado en el entorno y se ha configurado correctamente, el conector detectará automáticamente el servidor del proxy de salida y tratará de usarlo. Sin embargo, puede configurar explícitamente el conector para que vaya a través de un proxy de salida.
+Tal como se explicó anteriormente, si está habilitado en el entorno de Hola y configurada correctamente WPAD, conector Hola detecta automáticamente toouse de servidor y el intento de proxy de salida Hola se. Sin embargo, puede configurar explícitamente Hola conector toogo a través de un proxy de salida.
 
-Para ello, edite el archivo C:\Archivos de programa\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config y agregue la sección *system.net* que se muestra en este ejemplo de código. Cambie *proxyserver:8080* para que refleje el nombre o la dirección IP del servidor proxy local y el puerto en el que está escuchando.
+toodo por lo tanto, edite el C:\Program Files\Microsoft AAD aplicación Proxy Connector\ApplicationProxyConnectorService.exe.config hello y agregue hello *system.net* sección se muestra en este ejemplo de código. Cambio *proxyserver:8080* tooreflect el nombre del servidor proxy local o dirección IP, hello y el puerto que está escuchando en.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -102,124 +102,124 @@ Para ello, edite el archivo C:\Archivos de programa\Microsoft AAD App Proxy Conn
 </configuration>
 ```
 
-A continuación, configure el servicio de actualización de los conectores para que use el proxy; para ello, haga un cambio similar en el archivo que se encuentra en C:\Archivos de programa\Microsoft AAD App Proxy Connector Updater\ApplicationProxyConnectorUpdaterService.exe.config.
+A continuación, configurar a proxy de Hola de hello actualizador del conector servicio toouse mediante la realización de un archivo de toohello cambio similar que se encuentra en C:\Program Files\Microsoft AAD aplicación Proxy conector Updater\ApplicationProxyConnectorUpdaterService.exe.config.
 
-### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Paso 2: Configurar el proxy para permitir que pase el tráfico desde el conector y los servicios relacionados
+### <a name="step-2-configure-hello-proxy-tooallow-traffic-from-hello-connector-and-related-services-tooflow-through"></a>Paso 2: Configurar el tráfico de tooallow de hello proxy del conector de Hola y servicios relacionados tooflow a través de
 
-Hay cuatro aspectos que se deben tener en cuenta en el servidor proxy saliente:
+Hay cuatro tooconsider aspectos en el proxy de salida de hello:
 * Las reglas de salida del proxy
 * La autenticación del proxy
 * Los puertos del proxy
 * La inspección de SSL
 
 #### <a name="proxy-outbound-rules"></a>Las reglas de salida del proxy
-Permita el acceso a los siguientes puntos de conexión para servicio de conector:
+Permitir toohello de acceso después de los puntos de conexión para el acceso del servicio de conector:
 
 * *.msappproxy.net
 * *.servicebus.windows.net
 
-Para el registro inicial, permita el acceso a los siguientes puntos de conexión:
+Para el registro inicial, permitir toohello de acceso después de los puntos de conexión:
 
 * login.windows.net
 * login.microsoftonline.com
 
-Si no puede permitir la conectividad mediante el FQDN y debe especificar intervalos de direcciones IP en su lugar, use estas opciones:
+Si no se permite una conectividad mediante el FQDN y necesita los intervalos IP toospecify en su lugar, utilice estas opciones:
 
-* Permitir el acceso de salida del conector a todos los destinos.
-* Permitir el acceso de salida del conector a los [intervalos IP del centro de datos de Azure](https://www.microsoft.com/en-gb/download/details.aspx?id=41653). El desafío de usar la lista de intervalos IP del centro de datos de Azure es que se actualiza semanalmente. Es necesario colocar un proceso para garantizar que las reglas de acceso se actualizan en consecuencia.
+* Permitir el acceso de salida de conector de hello tooall destinos.
+* Permitir el acceso de salida de conector de hello demasiado[intervalos IP del centro de datos Azure](https://www.microsoft.com/en-gb/download/details.aspx?id=41653). desafío de Hello con el uso de la lista de Hola de intervalos IP de centro de datos de Azure es que se actualiza semanalmente. Deberá tooput un proceso en tooensure lugar que las reglas de acceso se actualizan en consecuencia.
 
 #### <a name="proxy-authentication"></a>La autenticación del proxy
 
-Actualmente no se admite la autenticación del proxy. Nuestra recomendación actual es permitir el acceso anónimo de conector a los destinos de Internet.
+Actualmente no se admite la autenticación del proxy. Nuestra recomendación actual es destinos de Internet toohello de tooallow Hola conector acceso anónimo.
 
 #### <a name="proxy-ports"></a>Los puertos del proxy
 
-El conector realiza las conexiones salientes basadas en SSL con el método CONNECT. Básicamente, este método configura un túnel a través del proxy de salida. Configure el servidor proxy para permitir la tunelización a los puertos no estándar 443 y 80.
+conector Hola hace las conexiones SSL salientes mediante el método CONNECT de Hola. Básicamente, este método establece un túnel a través de proxy de salida de hello. Configurar Hola proxy server tooallow túnel tooports 80 y 443.
 
 >[!NOTE]
->Service Bus, si se ejecuta a través de HTTPS, usa el puerto 443. Sin embargo, de forma predeterminada, Service Bus intenta crear conexiones TCP directas y recurrir a HTTPS solo si se produce un error en la conectividad directa.
+>Service Bus, si se ejecuta a través de HTTPS, usa el puerto 443. Sin embargo, de forma predeterminada, Service Bus intentará establecer conexiones directas de TCP y vuelve tooHTTPS solo si se produce un error en la conexión directa.
 
-Para asegurarse de que el tráfico de Service Bus también se envía a través del servidor proxy de salida, debe asegurarse de que el conector no puede conectar directamente con los servicios de Azure para los puertos 9350, 9352 y 5671.
+tooensure que Hola tráfico también se envía a través de servidor proxy de salida de hello de Bus de servicio, asegúrese de que dicho conector hello no puede conectar directamente toohello servicios de Azure para los puertos 9350, 9352 y 5671.
 
 #### <a name="ssl-inspection"></a>La inspección de SSL
-No utilice la inspección de SSL para el tráfico del conector, ya que le causa problemas.
+No utilice inspección de SSL para el tráfico de conector de hello, ya que causará problemas para el tráfico de conector de Hola.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Solución de problemas del proxy del conector y de conectividad del servicio
-Ahora debería ver todo el tráfico pasando a través del proxy. Si tiene problemas, la siguiente información debería ayudar.
+Ahora debería ver todo el tráfico que fluye a través de proxy de Hola. Si sigue teniendo problemas, debe hacer Hola siguiendo la información para solucionar problemas.
 
-La mejor manera de identificar y solucionar problemas de conectividad del conector es realizar una captura de red en el servicio de conector cuando se inicia. Esta tarea puede resultar desalentadora; así pues, veamos algunas breves sugerencias sobre cómo capturar y filtrar seguimientos de red.
+Hola tooidentify de manera mejor y solucionar problemas de conectividad del conector de problemas es tootake una red de captura en el servicio de conector de hello al iniciar el servicio de conector de Hola. Esta tarea puede resultar desalentadora; así pues, veamos algunas breves sugerencias sobre cómo capturar y filtrar seguimientos de red.
 
-Puede usar la herramienta de supervisión que prefiera. En este artículo, hemos usado la versión 3.4 del Monitor de red de Microsoft. Puede [descargarlo de Microsoft](https://www.microsoft.com/download/details.aspx?id=4865).
+Puede usar Hola herramienta de su elección de supervisión. Para fines de Hola de este artículo, hemos usado el Monitor de red 3.4 de Microsoft. Puede [descargarlo de Microsoft](https://www.microsoft.com/download/details.aspx?id=4865).
 
-Los ejemplos y los filtros que se utilizan en las siguientes secciones son específicos del Monitor de red, pero los principios se pueden aplicar a cualquier herramienta de análisis.
+ejemplos de Hello y los filtros que se usan en las secciones siguientes de hello son específico tooNetwork Monitor, pero principios de hello pueden ser la herramienta de análisis de tooany aplicado.
 
 ### <a name="take-a-capture-by-using-network-monitor"></a>Realización de una captura mediante el Monitor de red
 
-Para iniciar una captura:
+toostart una captura:
 
 1. Abra el Monitor de red y haga clic en **New Capture** (Nueva captura).
-2. Haga clic en el botón **Iniciar**.
+2. Haga clic en hello **iniciar** botón.
 
    ![Ventana Monitor de red](./media/application-proxy-working-with-proxy-servers/network-capture.png)
 
-Después de completar una captura, haga clic en el botón **Stop** (Detener) para finalizarla.
+Después de completar una captura, haga clic en hello **detener** tooend de botón.
 
 ### <a name="take-a-capture-of-connector-traffic"></a>Toma de una captura del tráfico de conector
 
-Para solucionar el problema inicial, realice los pasos siguientes:
+Para solucionar el problema inicial, realizar Hola pasos:
 
-1. Desde services.msc, detenga el servicio de conector del Proxy de aplicación de Azure AD.
-2. Inicie la captura de red.
-3. Inicie el servicio de conector del Proxy de aplicación de Azure AD.
-4. Detenga la captura de red.
+1. Desde services.msc, detenga el servicio de conector del Proxy de aplicación de Azure AD de Hola.
+2. Iniciar la captura de red de Hola.
+3. Iniciar servicio de conector del Proxy de aplicación de Azure AD de Hola.
+4. Detener la captura de red de Hola.
 
    ![Servicio de conector del Proxy de aplicación de Azure AD en services.msc](./media/application-proxy-working-with-proxy-servers/services-local.png)
 
-### <a name="look-at-the-requests-from-the-connector-to-the-proxy-server"></a>Consulta las solicitudes del conector al servidor proxy
+### <a name="look-at-hello-requests-from-hello-connector-toohello-proxy-server"></a>Buscar en las solicitudes de Hola de servidor proxy de hello conector toohello
 
-Ahora que tiene una captura de red, puede filtrarla. La clave para buscar el seguimiento es comprender cómo se filtra la captura.
+Ahora que tienes una captura de red, está listo toofilter lo. Hola toolooking clave en el seguimiento de hello es entender cómo capturar toofilter Hola.
 
-Un filtro como el siguiente (donde 8080 es el puerto del servicio de proxy):
+Un filtro es el siguiente (donde 8080 es el puerto de servicio del proxy de hello):
 
 **(http.Request o http.Response) y tcp.port==8080**
 
-Si escribe este filtro en la ventana **Mostrar filtro** y selecciona **Aplicar**, se filtra el tráfico capturado en función del filtro.
+Si escribe este filtro en hello **Mostrar filtro** ventana y seleccione **aplicar**, filtra el tráfico de hello capturado en función de filtro de Hola.
 
-El filtro anterior solo muestra las solicitudes y respuestas HTTP hacia o desde el puerto proxy. Para un inicio de conector en el que el conector está configurado para utilizar un servidor proxy, habría que utilizar un filtro similar a este:
+Hello filtro anterior muestra solo Hola solicitudes y respuestas HTTP de puerto de proxy de Hola. Para un inicio de conector donde conector hello es toouse configurado un servidor proxy, filtro de hello mostraría algo parecido a esto:
 
  ![Ejemplo de lista de las solicitudes y respuestas HTTP filtradas](./media/application-proxy-working-with-proxy-servers/http-requests.png)
 
-Ahora está buscando específicamente las solicitudes de CONNECT que muestren que la comunicación con el servidor proxy. Si se realiza correctamente, obtiene una respuesta HTTP OK (200).
+Está ahora específicamente buscando Hola que conectar solicita que muestran la comunicación con el servidor de proxy de Hola. Si se realiza correctamente, obtiene una respuesta HTTP OK (200).
 
-Si ve otros códigos de respuesta, como 407 o 502, el proxy requiere autenticación o no permite el tráfico por algún otro motivo. En este momento, póngase en contacto con el equipo de soporte técnico del servidor proxy.
+Si ve otros códigos de respuesta, como 407 o 502, proxy de hello es requerir la autenticación o no permitir el tráfico de Hola por algún otro motivo. En este momento, póngase en contacto con el equipo de soporte técnico del servidor proxy.
 
 ### <a name="identify-failed-tcp-connection-attempts"></a>Identificación de los intentos de conexión de TCP con error
 
-El otro escenario habitual que quizá le interese es cuando el conector está intentando conectarse directamente, pero no lo consigue.
+Hello otro escenario común que puede estar interesado resulta hello conector está tratando de tooconnect directamente, pero que se produzcan errores.
 
-Otro filtro del Monitor de red que le ayuda a identificar este problema fácilmente es:
+Otro filtro de Monitor de red que ayuda a tooeasily identificar este problema es:
 
 **property.TCPSynRetransmit**
 
-Un paquete SYN es el primer paquete enviado para establecer una conexión TCP. Si este paquete no devuelve ninguna respuesta, se intenta de nuevo el envío de SYN. Puede utilizar el filtro anterior para ver las solicitudes de SYN retransmitidas. A continuación, puede comprobar si estas solicitudes SYN corresponden a cualquier tráfico relacionado con el conector.
+Un paquete SYN es envía de hello primer paquete tooestablish una conexión TCP. Si este paquete no devuelve una respuesta, se vuelve a intentar Hola SYN. Puede usar Hola anterior filtro toosee las solicitudes de SYN retransmitidos. A continuación, puede comprobar si estas solicitudes SYN corresponde tooany el tráfico relacionado con el conector.
 
-En el ejemplo siguiente se muestra un intento de conexión con error al puerto de Service Bus 9352:
+Hello en el ejemplo siguiente se muestra un intento de conexión ha fallado puerto del Bus de tooService 9352:
 
  ![Ejemplo de respuesta para un intento de conexión con errores](./media/application-proxy-working-with-proxy-servers/failed-connection-attempt.png)
 
-Si ve algo parecido a la respuesta anterior, el conector está intentando comunicarse directamente con el servicio Azure Service Bus. Si el conector debería estar realizando conexiones directas a los servicios de Azure, esta respuesta es un claro indicio de que tiene un problema de red o firewall.
+Si ve algo parecido a Hola anterior respuesta, conector Hola consiste en intentar toocommunicate directamente con hello service Bus de servicio de Azure. Si creas Hola conector toomake conexiones directas toohello Azure services, esta respuesta es una indicación clara de que haya un problema de red o firewall.
 
 >[!NOTE]
->Si la configuración está establecida para usar un servidor proxy, esta respuesta puede significar que Service Bus está intentando realizar una conexión TCP directa antes de cambiar a intentar conectarse a través de HTTPS.
+>Si está configurado toouse un servidor proxy, esta respuesta podría significar que Service Bus intenta una conexión TCP directa antes de cambiar tooattempting una conexión a través de HTTPS.
 >
 
-El análisis de seguimiento de red no está indicado para todos los usuarios. Sin embargo, puede ser una herramienta valiosa para obtener información rápida sobre lo que ocurre con la red.
+El análisis de seguimiento de red no está indicado para todos los usuarios. Pero puede ser una valiosa herramienta tooget rápido más información sobre lo que ocurre con la red.
 
-Si sigue experimentando problemas de conectividad del conector, cree un vale para nuestro equipo de soporte técnico. El equipo puede ayudarle a solucionar otros problemas.
+Si continúa toostruggle con problemas de conectividad del conector, crear un vale de nuestro equipo de soporte técnico. equipo de Hello le puede ayudar a solucionar el problema más.
 
 Para más información sobre cómo resolver errores del conector del Proxy de aplicación, consulte [Solucionar problemas de Proxy de aplicación](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-troubleshoot).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 [Descripción de los conectores del Proxy de aplicación de Azure AD](application-proxy-understand-connectors.md)<br>
-[Cómo instalar de forma silenciosa el conector de Proxy de aplicación de Azure AD](active-directory-application-proxy-silent-installation.md)
+[¿Cómo toosilently instalar Hola conector del Proxy de aplicación de Azure AD](active-directory-application-proxy-silent-installation.md)

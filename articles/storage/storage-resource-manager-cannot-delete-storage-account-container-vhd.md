@@ -1,5 +1,5 @@
 ---
-title: "Solución de los errores que aparecen al eliminar cuentas de almacenamiento, contenedores o VHD de Azure | Microsoft Docs"
+title: aaaTroubleshoot errores al eliminar las cuentas de almacenamiento de Azure, los contenedores o los discos duros virtuales | Documentos de Microsoft
 description: "Solución de los errores que aparecen al eliminar cuentas de almacenamiento, contenedores o VHD de Azure"
 services: storage
 documentationcenter: 
@@ -15,95 +15,95 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
-ms.openlocfilehash: 318d7146ea53a806baf813ff7de2fe91f18becc8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 77361593e2c924d39aba853e0807dc3188f50e60
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-errors-when-you-delete-azure-storage-accounts-containers-or-vhds"></a>Solución de los errores que aparecen al eliminar cuentas de almacenamiento, contenedores o VHD de Azure
 
-Podrían surgirle errores cuando trate de eliminar una cuenta de almacenamiento, un contenedor o un disco duro virtual (VHD) de Azure en [Azure Portal](https://portal.azure.com). En este artículo se proporciona orientación para ayudarle a resolver problemas en una implementación de Azure Resource Manager.
+Podría recibir errores cuando intente toodelete una cuenta de almacenamiento de Azure, el contenedor o el disco duro virtual (VHD) en hello [portal de Azure](https://portal.azure.com). Este artículo proporciona una solución de problemas de orientación toohelp resolución hello en una implementación de Azure Resource Manager.
 
-Si este artículo no resuelve su problema con Azure, visite los foros de Azure en [MSDN y Stack Overflow](https://azure.microsoft.com/support/forums/). Puede publicar su problema en ellos o @AzureSupport en Twitter. También puede presentar una solicitud de soporte técnico de Azure; para ello seleccione **Obtener soporte técnico** en el sitio de [soporte técnico de Azure](https://azure.microsoft.com/support/options/) .
+Si este artículo no resuelve el problema de Azure, visite Hola foros de Azure en [MSDN y el desbordamiento de la pila](https://azure.microsoft.com/support/forums/). Puede publicar su problema en estos foros o too@AzureSupport en Twitter. Además, puede registrar una solicitud de soporte técnico de Azure seleccionando **obtener asistencia** en hello [soporte técnico de Azure](https://azure.microsoft.com/support/options/) sitio.
 
 ## <a name="symptoms"></a>Síntomas
 ### <a name="scenario-1"></a>Escenario 1.
-Cuando trate de eliminar un VHD en una cuenta de almacenamiento en una implementación de Resource Manager, recibirá el siguiente mensaje de error:
+Cuando intente toodelete un disco duro virtual en una cuenta de almacenamiento en una implementación de administrador de recursos, recibirá Hola mensaje de error siguiente:
 
-**Error al eliminar el blob 'vhds/BlobName.vhd'. Error: Actualmente hay una concesión en el blob y no se especificó ningún identificador de concesión en la solicitud.**
+**No se pudo blob toodelete 'vhds/BlobName.vhd'. Error: Hay una concesión de blob de Hola y se especificó ningún identificador de concesión en la solicitud de saludo.**
 
-Este problema puede producirse debido a que una máquina virtual (VM) tenga una concesión para el VHD que trata de eliminar.
+Este problema puede producirse debido a una máquina virtual (VM) tiene una concesión en hello VHD que se está intentando toodelete.
 
 ### <a name="scenario-2"></a>Escenario 2.
-Cuando trate de eliminar un contenedor en una cuenta de almacenamiento en una implementación de Resource Manager, recibirá el siguiente mensaje de error:
+Cuando intente toodelete un contenedor en una cuenta de almacenamiento en una implementación de administrador de recursos, recibirá Hola mensaje de error siguiente:
 
-**No se pudo eliminar el contenedor de almacenamiento 'vhds'. Error: Actualmente hay una concesión en el contenedor y no se especificó ningún identificador de concesión en la solicitud.**
+**Error de contenedor de almacenamiento de toodelete 'VHD'. Error: Hay una concesión en el contenedor de Hola y se especificó ningún identificador de concesión en la solicitud de saludo.**
 
-Este problema puede producirse porque el contenedor tiene un VHD que está bloqueado en el estado de la concesión.
+Este problema puede producirse como contenedor de hello tiene un disco duro virtual que está bloqueado en estado de concesión de Hola.
 
 ### <a name="scenario-3"></a>Escenario 3.
-Cuando trate de eliminar una cuenta de almacenamiento en una implementación de Resource Manager, recibirá el siguiente mensaje de error:
+Cuando intente toodelete una cuenta de almacenamiento en una implementación de administrador de recursos, recibirá Hola mensaje de error siguiente:
 
-**No se pudo eliminar la cuenta de almacenamiento 'nombreCuentaDeAlmacenamiento'. Error: La cuenta de almacenamiento no se puede eliminar porque sus artefactos están en uso.**
+**Error de cuenta de almacenamiento toodelete 'StorageAccountName'. Error: no se puede eliminar la cuenta de almacenamiento de hello debido artefactos tooits está en uso.**
 
-Este problema puede producirse porque la cuenta de almacenamiento contiene un VHD que se encuentra en el estado de concesión.
+Este problema puede producirse porque la cuenta de almacenamiento de hello contiene un disco duro virtual que se encuentra en estado de concesión de Hola.
 
 ## <a name="solution"></a>Solución 
-Para resolver estos problemas, debe identificar el VHD que está ocasionando el error y la VM asociada. Después, desconecte el VHD de la máquina virtual (para los discos de datos) o elimine la VM que utilice el VHD (para discos de sistema operativo). De este modo, se retirará la concesión del VHD y se podrá eliminar. 
+tooresolve estos problemas, debe identificar el disco duro virtual que está provocando el error de Hola Hola y Hola asociados máquina virtual. A continuación, separar Hola VHD de hello VM (para los discos de datos) o eliminar Hola máquina virtual que está usando Hola VHD (en el caso de discos de sistema operativo). Esto quita concesión Hola Hola VHD y permite toobe eliminado. 
 
-Para ello, use uno de los siguientes métodos:
+toodo, utilice uno de hello siguientes métodos:
 
 ### <a name="method-1---use-azure-storage-explorer"></a>Método 1: Usar el Explorador Azure Storage
 
-### <a name="step-1-identify-the-vhd-that-prevent-deletion-of-the-storage-account"></a>Paso 1: Identificar el disco duro virtual que impide la eliminación de la cuenta de almacenamiento
+### <a name="step-1-identify-hello-vhd-that-prevent-deletion-of-hello-storage-account"></a>Hola de identificación de paso 1 disco duro virtual que impiden la eliminación de la cuenta de almacenamiento de Hola
 
-1. Cuando elimine la cuenta de almacenamiento, verá un cuadro de diálogo como el siguiente: 
+1. Cuando se elimina la cuenta de almacenamiento de hello, aparecerá un cuadro de diálogo de mensaje como siguiente hello: 
 
-    ![mensaje al eliminar la cuenta de almacenamiento](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/delete-storage-error.png) 
+    ![mensaje al eliminar la cuenta de almacenamiento de Hola](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/delete-storage-error.png) 
 
-2. Active **Dirección URL del disco** para identificar la cuenta de almacenamiento y el disco duro virtual que impide que se elimine la cuenta de almacenamiento. En el ejemplo siguiente, la cadena que está delante de ".blob.core.windows.net" es el nombre de la cuenta de almacenamiento y "SCCM2012-2015-08-28.vhd" es el nombre del VHD.  
+2. Comprobar hello **dirección URL de disco** tooidentify cuenta de almacenamiento de Hola y Hola VHD que evita tener que eliminan la cuenta de almacenamiento de Hola. En el siguiente ejemplo de Hola Hola cadena antes de ". blob.core.windows.net" es el nombre de cuenta de almacenamiento de Hola y "SCCM2012-2015-08-28.vhd" es el nombre de disco duro virtual de Hola.  
 
         https://portalvhds73fmhrw5xkp43.blob.core.windows.net/vhds/SCCM2012-2015-08-28.vhd
 
-### <a name="step-2-delete-the-vhd-by-using-azure-storage-explorer"></a>Paso 2 Eliminar el disco duro virtual mediante el Explorador de Azure Storage
+### <a name="step-2-delete-hello-vhd-by-using-azure-storage-explorer"></a>Hola de eliminación del paso 2 VHD mediante el Explorador de almacenamiento de Azure
 
-1. Descargue e instale la versión más reciente del [Explorador de Azure Storage](http://storageexplorer.com/). Esta herramienta es una aplicación independiente de Microsoft que permite trabajar fácilmente con los datos de Azure Storage en Windows, Mac OS y Linux.
-2. Abra el Explorador de Azure Storage, seleccione ![icono de cuenta](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/account.png) en la barra de la izquierda, seleccione el entorno de Azure y, después, inicie sesión.
+1. Descarga e instale Hola versión más reciente de [Azure Storage Explorer](http://storageexplorer.com/). Esta herramienta es una aplicación independiente de Microsoft que le permite trabajar de tooeasily con datos de almacenamiento de Azure en Windows, Mac OS y Linux.
+2. Abra el Explorador de Azure Storage, seleccione ![icono de cuenta](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/account.png) en la barra de la izquierda hello, seleccione el entorno de Azure y, a continuación, inicie sesión en.
 
-3. Seleccione todas las suscripciones o la suscripción que contiene la cuenta de almacenamiento que desea eliminar.
+3. Seleccione todas las suscripciones o suscripción de Hola que contiene la cuenta de almacenamiento de hello que desea toodelete.
 
     ![agregar suscripción](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/addsub.png)
 
-4. Vaya a la cuenta de almacenamiento que se ha obtenido en la dirección URL del disco, seleccione **Contenedores de blob** > **discos duros virtuales** y busque el disco duro virtual que impide que elimine la cuenta de almacenamiento.
-5. Si se encuentra el VHD, seleccione la columna **VM Name** para buscar la máquina virtual que usa este disco duro virtual.
+4. Vaya toohello cuenta de almacenamiento que se obtiene de Hola disco dirección URL anterior, seleccione Hola **contenedores de blobs** > **discos duros virtuales** y busque Hola VHD que evita tener que eliminar la cuenta de almacenamiento de Hola.
+5. Si se encuentra Hola VHD, compruebe hello **nombre de máquina virtual** hello de la columna toofind máquina virtual que está usando este disco duro virtual.
 
     ![Seleccionar máquina virtual](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/check-vm.png)
 
-6. Quite la concesión del disco duro virtual mediante Azure Portal. Para más información, consulte [Eliminación de la concesión del VHD](#remove-the-lease-from-the-vhd). 
+6. Quitar concesión Hola de hello VHD mediante el portal de Azure. Para obtener más información, consulte [Remove concesión Hola Hola VHD](#remove-the-lease-from-the-vhd). 
 
-7. Vaya al Explorador de Azure Storage, haga clic con el botón derecho en el VHD y seleccione Eliminar.
+7. Paso toohello Azure Storage Explorer, haga clic en hello VHD y, a continuación, seleccione Eliminar.
 
-8. Elimina la cuenta de almacenamiento.
+8. Eliminar cuenta de almacenamiento de Hola.
 
 ### <a name="method-2---use-azure-portal"></a>Método 2: Usar Azure Portal 
 
-#### <a name="step-1-identify-the-vhd-that-prevent-deletion-of-the-storage-account"></a>Paso 1: Identificar el disco duro virtual que impide la eliminación de la cuenta de almacenamiento
+#### <a name="step-1-identify-hello-vhd-that-prevent-deletion-of-hello-storage-account"></a>Paso 1: Identificar el disco duro virtual que impiden la eliminación de la cuenta de almacenamiento de Hola Hola
 
-1. Cuando elimine la cuenta de almacenamiento, verá un cuadro de diálogo como el siguiente: 
+1. Cuando se elimina la cuenta de almacenamiento de hello, aparecerá un cuadro de diálogo de mensaje como siguiente hello: 
 
-    ![mensaje al eliminar la cuenta de almacenamiento](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/delete-storage-error.png) 
+    ![mensaje al eliminar la cuenta de almacenamiento de Hola](media/storage-resource-manager-cannot-delete-storage-account-container-vhd/delete-storage-error.png) 
 
-2. Active **Dirección URL del disco** para identificar la cuenta de almacenamiento y el disco duro virtual que impide que se elimine la cuenta de almacenamiento. En el ejemplo siguiente, la cadena que está delante de ".blob.core.windows.net" es el nombre de la cuenta de almacenamiento y "SCCM2012-2015-08-28.vhd" es el nombre del VHD.  
+2. Comprobar hello **dirección URL de disco** tooidentify cuenta de almacenamiento de Hola y Hola VHD que evita tener que eliminan la cuenta de almacenamiento de Hola. En el siguiente ejemplo de Hola Hola cadena antes de ". blob.core.windows.net" es el nombre de cuenta de almacenamiento de Hola y "SCCM2012-2015-08-28.vhd" es el nombre de disco duro virtual de Hola.  
 
         https://portalvhds73fmhrw5xkp43.blob.core.windows.net/vhds/SCCM2012-2015-08-28.vhd
 
-2. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-3. En el menú Concentrador, seleccione **Todos los recursos**. Vaya a la cuenta de almacenamiento y seleccione **Blobs** > **vhds**.
+2. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+3. En el menú del concentrador hello, seleccione **todos los recursos**. Vaya toohello cuenta de almacenamiento y, a continuación, seleccione **Blobs** > **discos duros virtuales**.
 
-    ![Captura de pantalla del portal en la que se han resaltado la cuenta de almacenamiento y el contenedor "vhds".](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/opencontainer.png)
+    ![Captura de pantalla de portal de hello, con la cuenta de almacenamiento de Hola y el contenedor de "VHD" hello resaltado](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/opencontainer.png)
 
-4. Busque el disco duro virtual que se ha obtenido de la dirección URL del disco. Después, determine la VM que esté usando el VHD. Normalmente, para determinar la VM que contiene el VHD, basta con consultar el nombre de este último:
+4. Busque Hola VHD que se obtiene de dirección URL de disco de hello anteriormente. A continuación, determinar qué máquina virtual está usando Hola VHD. Por lo general, puede determinar qué máquina virtual contiene Hola VHD mediante la comprobación de nombre de hello VHD:
 
 Máquina virtual en el modelo de desarrollo mediante Resource Manager
 
@@ -115,38 +115,38 @@ Máquina virtual en modelo de desarrollo clásico
    * Los discos de sistema operativo suelen seguir esta convención de nomenclatura: NombreServicioEnLaNube-NombreVM-AAAA-MM-DD-HHMMSS.vhd
    * Los discos de datos suelen seguir esta convención de nomenclatura: NombreServicioEnLaNube-NombreVM-AAAA-MM-DD-HHMMSS.vhd
 
-#### <a name="step-2-remove-the-lease-from-the-vhd"></a>Paso 2: Eliminación de la concesión del VHD
+#### <a name="step-2-remove-hello-lease-from-hello-vhd"></a>Paso 2: Quitar la concesión de Hola de hello VHD
 
-[Quite la concesión del disco duro virtual](#remove-the-lease-from-the-vhd)y, después, elimine la cuenta de almacenamiento.
+[Quitar la concesión de Hola de hello VHD](#remove-the-lease-from-the-vhd)y, a continuación, eliminar la cuenta de almacenamiento de Hola.
 
 ## <a name="what-is-a-lease"></a>¿Qué es una concesión?
-Una concesión es un bloqueo que puede utilizarse para controlar el acceso a un blob (por ejemplo, un VHD). Cuando un blob está concedido, solo los propietarios de la concesión pueden acceder a él. Una concesión es importante por los motivos siguientes:
+Una concesión es un bloqueo que puede ser usado toocontrol acceso tooa blob (por ejemplo, un disco duro virtual). Cuando se concede un blob, sólo los propietarios de Hola de concesión de hello pueden tener acceso a los blobs de Hola. Una concesión es importante para hello siguientes motivos:
 
-* Se evitan daños en los datos si varios propietarios tratan de escribir en la misma parte del blob a la vez.
-* Impide que el blob se elimine si hay algo que lo esté usando activamente (por ejemplo, una VM).
-* Impide que la cuenta de almacenamiento se elimine si hay algo que la esté usando activamente (por ejemplo, una VM).
+* Se evita que daños en los datos si varios propietarios intente toowrite toohello misma parte del blob de hello en hello mismo tiempo.
+* Se evita que el blob de Hola se elimine si algo lo esté usando activamente (por ejemplo, una máquina virtual).
+* Impide que la cuenta de almacenamiento de Hola eliminando si algo lo esté usando activamente (por ejemplo, una máquina virtual).
 
-### <a name="remove-the-lease-from-the-vhd"></a>Eliminación de la concesión del VHD
-Si el disco duro virtual es un disco de sistema operativo, debe eliminar la máquina virtual para quitar la concesión:
+### <a name="remove-hello-lease-from-hello-vhd"></a>Quitar la concesión de Hola de hello VHD
+Si hello VHD es un disco del sistema operativo, debe eliminar concesión de hello VM tooremove hello:
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. En el menú **Concentrador**, haga clic en **Máquinas virtuales**.
-3. Seleccione la VM que tenga una concesión para el VHD.
-4. Asegúrese de que no haya nada usando activamente la máquina virtual y de que ya no la necesite.
-5. En la parte superior de la hoja **VM details** (Detalles de la VM), seleccione **Eliminar** y, después, haga clic en **Sí** para confirmar.
-6. La máquina virtual se debe eliminar, pero el disco duro virtual se puede conservar. No obstante, el VHD ya no debería tener ninguna concesión. Es posible que la concesión tarde unos minutos en liberarse. Para comprobar que se haya retirado la concesión, vaya a **Todos los recursos** > **Nombre de cuenta de almacenamiento** > **Blobs** > **vhds**. En el panel **Propiedades del blob**, el valor de **Estado de concesión** debe ser **Desbloqueado**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. En hello **concentrador** menú, seleccione **máquinas virtuales**.
+3. Seleccione Hola máquina virtual que contiene una concesión en hello VHD.
+4. Asegúrese de que no esté usando activamente máquina virtual de Hola y que ya no necesita Hola máquina virtual.
+5. En parte superior de Hola de hello **detalles de la máquina virtual** hoja, seleccione **eliminar**y, a continuación, haga clic en **Sí** tooconfirm.
+6. Hola máquina virtual debe eliminarse, pero se puede conservar Hola VHD. Sin embargo, Hola VHD ya no debe tener una concesión en él. Puede tardar unos minutos para hello concesión toobe publicado. tooverify que Hola concesión se libera, vaya demasiado**todos los recursos** > **nombre de la cuenta de almacenamiento** > **Blobs**  >  **discos duros virtuales**. Hola **Blob propiedades** panel, hello **estado de concesión** valor debe ser **desbloqueado**.
 
-Si el disco duro virtual es un disco de datos, desasócielo de la máquina virtual para quitar la concesión:
+Si hello VHD es un disco de datos, separe Hola VHD de concesión de hello VM tooremove hello:
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. En el menú **Concentrador**, haga clic en **Máquinas virtuales**.
-3. Seleccione la VM que tenga una concesión para el VHD.
-4. Seleccione **Discos** en la hoja **VM details** (Detalles de la VM).
-5. Seleccione el disco de datos que tenga una concesión para el VHD. Puede determinar que VHD está conectado al disco consultando la URL del primero.
-6. Asegúrese de que no haya nada utilizando el disco de datos de forma activa.
-7. Haga clic en **Desconectar** en la hoja **Detalles del disco**.
-8. Ahora el disco debe estar desconectado de la VM y el VHD no debe tener ninguna concesión. Es posible que la concesión tarde unos minutos en liberarse. Para comprobar que se haya retirado la concesión, vaya a **Todos los recursos** > **Nombre de cuenta de almacenamiento** > **Blobs** > **vhds**. En el panel **Propiedades del blob**, el valor de **Estado de concesión** debe ser **Desbloqueado**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. En hello **concentrador** menú, seleccione **máquinas virtuales**.
+3. Seleccione Hola máquina virtual que contiene una concesión en hello VHD.
+4. Seleccione **discos** en hello **detalles de la máquina virtual** hoja.
+5. Seleccionar disco de datos de Hola que mantiene una concesión en hello VHD. Puede determinar qué disco duro virtual se adjunta en disco de hello mediante la comprobación de la dirección URL de Hola de hello VHD.
+6. Determinar con exactitud que nada esté usando activamente el disco de datos de Hola.
+7. Haga clic en **separar** en hello **disco detalles** hoja.
+8. Ahora se debe desconectar el disco Hola de hello VM y Hola VHD ya no debe tener una concesión en él. Puede tardar unos minutos para hello concesión toobe publicado. se ha liberado tooverify que Hola concesión, vaya demasiado**todos los recursos** > **nombre de la cuenta de almacenamiento** > **Blobs**  >  **discos duros virtuales**. Hola **Blob propiedades** panel, hello **estado de concesión** valor debe ser **desbloqueado**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Eliminar una cuenta de almacenamiento](storage-create-storage-account.md#delete-a-storage-account)
-* [How to break the locked lease of blob storage in Microsoft Azure (PowerShell) (Cómo interrumpir la concesión bloqueada de Almacenamiento de blobs en Microsoft Azure (PowerShell))](https://gallery.technet.microsoft.com/scriptcenter/How-to-break-the-locked-c2cd6492)
+* [Cómo toobreak Hola bloquea concesión de almacenamiento de blobs de Microsoft Azure (PowerShell)](https://gallery.technet.microsoft.com/scriptcenter/How-to-break-the-locked-c2cd6492)

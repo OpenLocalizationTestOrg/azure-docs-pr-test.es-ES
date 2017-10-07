@@ -1,6 +1,6 @@
 ---
-title: "Creación de varios modelos a partir de un experimento | Microsoft Docs"
-description: "Use PowerShell para crear varios modelos de Aprendizaje automático y puntos de conexión de servicio web con el mismo algoritmo pero con conjuntos de datos de entrenamiento distintos."
+title: aaaCreate varios modelos de un experimento | Documentos de Microsoft
+description: "Usar PowerShell toocreate varios modelos de aprendizaje automático y extremos de servicio con hello web mismo algoritmo, pero los conjuntos de datos de entrenamiento diferentes."
 services: machine-learning
 documentationcenter: 
 author: hning86
@@ -14,74 +14,74 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: garye;haining
-ms.openlocfilehash: 21d8c1ee0877df8d317d5a14131dc574fa5303c4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4a258a8ab26395d4169a058520151c860e16e169
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Creación de varios modelos de aprendizaje automático y puntos de conexión de servicio web a partir de un experimento mediante PowerShell
-Este es un problema común del aprendizaje automático: quiere crear muchos modelos que tienen el mismo flujo de trabajo de entrenamiento y utilizan el mismo algoritmo, pero tienen conjuntos de datos de entrenamiento distintos como entrada. Este artículo muestra cómo hacer esto a escala en Estudio de aprendizaje automático de Azure simplemente con un solo experimento.
+Este es un problema común de aprendizaje de máquina: desea toocreate muchos modelos que tienen Hola mismo flujo de trabajo de aprendizaje y uso Hola mismo algoritmo, pero tienen conjuntos de datos de entrenamiento diferente como entrada. Este artículo muestra cómo toodo esto a escala en estudio de aprendizaje automático de Azure con un experimento de único.
 
-Por ejemplo, digamos que posee una empresa de franquicias de alquiler de bicicletas global. Desea crear un modelo de regresión para predecir la demanda de alquiler basada en datos históricos. Tiene 1000 ubicaciones de alquiler en todo el mundo y ha recopilado un conjunto de datos para cada ubicación que incluye características importantes como fecha, hora, meteorología y tráfico que son específicas de cada ubicación.
+Por ejemplo, digamos que posee una empresa de franquicias de alquiler de bicicletas global. Desea toobuild una petición de alquiler de regresión modelo toopredict Hola basada en datos históricos. Dispone de 1.000 ubicaciones de alquiler a través de Hola a todos y que ha recopilado un conjunto de datos para cada ubicación que incluye características importantes como fecha, hora, el tiempo y el tráfico que son específicos tooeach ubicación.
 
-Puede entrenar el modelo una vez usando una versión combinada de todos los conjuntos de datos en todas las ubicaciones. Pero dado que cada una de las ubicaciones tiene un entorno único, un mejor enfoque sería entrenar el modelo de regresión por separado mediante el conjunto de datos de cada ubicación. De este modo, cada modelo entrenado podría tener en cuenta los diferentes tamaños de tienda, el volumen, la geografía, la población, el entorno de tráfico preparado para bicicletas, *etc*.
+Podría entrenar el modelo una vez usando una versión combinada de todos los conjuntos de datos de hello en todas las ubicaciones. Pero dado que cada una de las ubicaciones tiene un entorno único, un mejor enfoque podría ser tootrain el modelo de regresión por separado con el conjunto de datos de Hola para cada ubicación. De este modo, cada modelo entrenado puede tardar en tamaños de almacén diferente de cuenta hello, volumen, geography, rellenado, entorno de tráfico de bicicleta sencillo, *etc.*.
 
-Ese puede que sea el mejor enfoque, pero no desea crear 1000 experimentos de entrenamiento en Aprendizaje automático de Azure cada uno de los cuales representando una ubicación única. Además de ser una tarea abrumadora, también parece bastante ineficaz, ya que cada experimento tendría exactamente los mismos componentes, excepto el conjunto de datos de entrenamiento.
+Que puede ser recomendable hello, pero no desea toocreate 1.000 experimentos de aprendizaje en aprendizaje automático de Azure con cada uno de ellos que representa una ubicación única. Además de ser una tarea abrumadora, también es parece bastante ineficaz, ya que cada experimento todos deberá Hola los mismos componentes excepto para el conjunto de datos de entrenamiento de Hola.
 
-Por suerte, podemos lograrlo con la [API para volver a entrenar de Aprendizaje automático de Azure](machine-learning-retrain-models-programmatically.md) y automatizando la tarea con [PowerShell de Aprendizaje automático de Azure](machine-learning-powershell-module.md).
-
-> [!NOTE]
-> Para que nuestro ejemplo se ejecute más rápido, reduciremos el número de ubicaciones de 1000 a 10. Pero se aplican los mismos principios y procedimientos a 1000 ubicaciones. La única diferencia es que si desea entrenar con 1000 conjuntos de datos, probablemente piense en ejecutar los siguientes scripts de PowerShell en paralelo. Cómo hacerlo queda fuera del ámbito de este artículo, pero puede encontrar ejemplos de subprocesamiento múltiple de PowerShell en Internet.  
-> 
-> 
-
-## <a name="set-up-the-training-experiment"></a>Configuración del experimento de entrenamiento
-Vamos a usar un [experimento de entrenamiento](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1) de ejemplo que ya hemos creado en la [Galería de Cortana Intelligence](http://gallery.cortanaintelligence.com). Abra este experimento en su área de trabajo [Estudio de aprendizaje automático de Azure](https://studio.azureml.net) .
+Afortunadamente, podemos realizar mediante el uso de hello [aprendizaje automático de Azure reciclaje API](machine-learning-retrain-models-programmatically.md) y automatizar tareas de hello con [Azure Machine Learning PowerShell](machine-learning-powershell-module.md).
 
 > [!NOTE]
-> Para seguir este ejemplo, puede que le interese usar un área de trabajo estándar en lugar de un área de trabajo gratis. Crearemos un punto de conexión para cada cliente (para un total de 10 puntos de conexión) y que requerirá un área de trabajo estándar, ya que un área de trabajo gratis se limitado a 3 puntos de conexión. Si solo tiene un área de trabajo gratis, solo tiene que modificar los scripts siguientes para permitir solo 3 ubicaciones.
+> toomake nuestro ejemplo ejecutarse con mayor rapidez, se reducirá el número de Hola de ubicaciones de 1.000 too10. Pero hello mismos principios y procedimientos se aplican too1, 000 ubicaciones. Hola única diferencia es que si desea tootrain de conjuntos de datos de 1.000, seguramente quieras toothink de hello siguientes secuencias de comandos de PowerShell en paralelo en ejecución. ¿Cómo toodo que está más allá del ámbito de Hola de este artículo, pero puede encontrar ejemplos de PowerShell multithreading en hello Internet.  
 > 
 > 
 
-El experimento usa un módulo **Importar datos** para importar el conjunto de datos de entrenamiento *customer001.csv* desde una cuenta de almacenamiento de Azure. Supongamos que hemos recopilado los conjuntos de datos de entrenamiento de todas las ubicaciones de alquiler de bicicletas y los hemos almacenado en la misma ubicación de Blob Storage con nombres de archivo que van desde *rentalloc001.csv* a *rentalloc10.csv*.
+## <a name="set-up-hello-training-experiment"></a>Configurar el experimento de entrenamiento de Hola
+Vamos a toouse un ejemplo [experimento de entrenamiento](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1) que ya hemos creado en hello [Cortana Intelligence galería](http://gallery.cortanaintelligence.com). Abra este experimento en su área de trabajo [Estudio de aprendizaje automático de Azure](https://studio.azureml.net) .
+
+> [!NOTE]
+> En orden toofollow junto con este ejemplo, puede que desee toouse un área de trabajo estándar en lugar de un área de trabajo disponible. Se creará un punto de conexión para cada cliente - para un total de 10 puntos de conexión - y que requieren un área de trabajo estándar, puesto que un área de trabajo libre es limitado too3 extremos. Si solo tiene un área de trabajo gratuita, simplemente modifique los scripts de hello debajo tooallow para solo 3 ubicaciones.
+> 
+> 
+
+experimento Hello usa un **importar datos** conjunto de datos de entrenamiento de módulo tooimport hello *customer001.csv* desde una cuenta de almacenamiento de Azure. Supongamos que hemos recopilado los conjuntos de datos de entrenamiento de todas las ubicaciones de alquiler de bicicletas y almacenado en hello misma ubicación de almacenamiento de blobs con nombres de archivo que van desde *rentalloc001.csv* demasiado*rentalloc10.csv* .
 
 ![imagen](./media/machine-learning-create-models-and-endpoints-with-powershell/reader-module.png)
 
-Tenga en cuenta que se ha agregado el módulo **Web Service Output** (Resultados de servicio web) al módulo **Train Model** (Entrenar modelo).
-Cuando este experimento se implementa como un servicio web, el punto de conexión asociado a esa salida devolverá el modelo entrenado con el formato de un archivo .ilearner.
+Tenga en cuenta que un **resultado del servicio Web** módulo se ha agregado toohello **entrenar modelo** módulo.
+Cuando este experimento se implementa como un servicio web, extremo de hello asociado a esa salida devolverá entrenado hello en formato de Hola de un archivo .ilearner.
 
-Observe también que configuramos un parámetro de servicio web para la dirección URL que el módulo **Importar datos** utiliza. Esto nos permite utilizar el parámetro para especificar conjuntos de datos de entrenamiento individuales para entrenar el modelo para cada ubicación.
-Podríamos haber hecho esto de otras maneras; por ejemplo, podríamos haber usado una consulta SQL con un parámetro de servicio web para obtener datos de una base de datos SQL Azure o se podría haber usado un módulo **Web Service Input** (Entrada del servicio web) para pasar un conjunto de datos al servicio web.
+Tenga en cuenta también que configuramos un parámetro del servicio web para la dirección URL de Hola que hello **importar datos** utiliza el módulo. Esto nos permite toouse Hola parámetro toospecify individuales conjuntos de datos tootrain Hola modelo de entrenamiento para cada ubicación.
+Hay otras maneras podríamos haber hecho esto, por ejemplo, mediante una consulta SQL con una web servicio parámetro tooget los datos de una base de datos de SQL Azure, o simplemente con una **proporcionados por el servicio Web** toopass de módulo en un conjunto de datos toohello de servicio web.
 
 ![imagen](./media/machine-learning-create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Ahora, vamos a ejecutar este experimento de entrenamiento utilizando el valor predeterminado *rental001.csv* como el conjunto de datos de entrenamiento. Si ve los resultados del módulo **Evaluate** (Evaluar), después de hacer clic en los resultados y seleccionar **Visualize** (Visualizar), verá que obtenemos un rendimiento aceptable de *AUC* = 0,91. En este momento, estamos listos para implementar un servicio web fuera de este experimento de entrenamiento.
+Ahora, vamos a ejecutar este experimento de entrenamiento con el valor predeterminado de hello *rental001.csv* como Hola conjunto de datos de entrenamiento. Si ve la salida de hello de hello **Evaluate** módulo (haga clic en salida de hello y seleccione **visualizar**), puede ver que obtenemos un rendimiento aceptable de *AUC* = 0.91. En este momento, estamos listo toodeploy un servicio web fuera de este experimento de entrenamiento.
 
-## <a name="deploy-the-training-and-scoring-web-services"></a>Implementación del entrenamiento y puntuación de servicios web
-Para implementar el servicio web de entrenamiento, haga clic en el botón **Set Up Web Service** (Configurar servicio web) situado debajo del lienzo del experimento y seleccione **Deploy Web Service** (Implementar servicio web). Llame a este servicio web "Bike Rental Training" (Entrenamiento para alquiler de bicicletas).
+## <a name="deploy-hello-training-and-scoring-web-services"></a>Implementar el entrenamiento de Hola y de puntuación de servicios web
+Hola toodeploy entrenamiento servicio web, haga clic en hello **configurar el servicio de Web** situado por debajo del lienzo del experimento de Hola y seleccione **implementar servicio Web**. Llame a este servicio web "Bike Rental Training" (Entrenamiento para alquiler de bicicletas).
 
-Ahora debemos implementar el servicio web de puntuación.
-Para ello, podemos hacer clic en **Set Up Web Service** (Configurar servicio web) bajo el lienzo y seleccionar **Predictive Web Service** (Servicio web predictivo). Esto crear un experimento de puntuación.
-Necesitamos realizar algunos ajustes menores para que funcione como un servicio web, como puede ser eliminar la columna de etiquetas "cnt" de los datos de entrada y limitar la salida a solo el identificador de instancia y el valor predicho correspondiente.
+Ahora necesitamos servicio toodeploy Hola de puntuación web.
+toodo, podemos hacer clic en **configurar el servicio de Web** por debajo de hello lienzo y seleccione **predictivo servicio Web**. Esto crear un experimento de puntuación.
+Necesitaremos toomake unos toomake ajustes menores funciona como un servicio web, como datos de entrada de quitar la columna de etiqueta de Hola "cnt" de Hola y limitar el Id. de instancia de hello salida tooonly Hola y Hola correspondiente predice el valor.
 
-Para ahorrarse ese trabajo, puede simplemente abrir el [experimento predictivo](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) en la galería que ya se ha preparado.
+toosave usted mismo que el trabajo, podrá abrirlo hello [experimento predictivo](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) Hola galería que ya se ha preparado.
 
-Para implementar el servicio web, ejecute el experimento predictivo y luego haga clic en el botón **Deploy Web Service** (Implementar servicio web) bajo el lienzo. Asigne el nombre "Bike Rental Scoring" (Puntuación de alquiler de bicicletas) al servicio web de puntuación.
+servicio web de toodeploy hello, ejecute hello experimento predictivo, a continuación, haga clic en hello **implementar el servicio de Web** botón a continuación lienzo Hola. Hola de nombre la puntuación del servicio web "Puntuación de alquiler de bicicletas" ".
 
 ## <a name="create-10-identical-web-service-endpoints-with-powershell"></a>Creación de 10 puntos de conexión de servicio web idénticos con PowerShell
-Este servicio web incluye un punto de conexión predeterminado. Pero no estamos más interesados en el punto de conexión predeterminado, ya que no se puede actualizar. Lo que necesitamos hacer es crear 10 puntos de conexión adicionales, uno para cada ubicación. Haremos esto con PowerShell.
+Este servicio web incluye un punto de conexión predeterminado. Pero nos no interesa como punto de conexión de hello predeterminado porque no se puede actualizar. Lo que necesitamos toodo es toocreate 10 extremos adicionales, uno para cada ubicación. Haremos esto con PowerShell.
 
 En primer lugar, configure nuestro entorno de PowerShell:
 
     Import-Module .\AzureMLPS.dll
-    # Assume the default configuration file exists and is properly set to point to the valid Workspace.
+    # Assume hello default configuration file exists and is properly set toopoint toohello valid Workspace.
     $scoringSvc = Get-AmlWebService | where Name -eq 'Bike Rental Scoring'
     $trainingSvc = Get-AmlWebService | where Name -eq 'Bike Rental Training'
 
-Después, ejecute el siguiente comando de PowerShell:
+A continuación, ejecute el siguiente comando de PowerShell de hello:
 
-    # Create 10 endpoints on the scoring web service.
+    # Create 10 endpoints on hello scoring web service.
     For ($i = 1; $i -le 10; $i++){
         $seq = $i.ToString().PadLeft(3, '0');
         $endpointName = 'rentalloc' + $seq;
@@ -89,17 +89,17 @@ Después, ejecute el siguiente comando de PowerShell:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-Ahora hemos creado 10 puntos de conexión y todos ellos contienen el mismo modelo entrenado en *customer001.csv*. Puede verlos en el Portal de administración de Azure.
+Ahora que hemos creado 10 puntos de conexión y contienen Hola mismo modelo entrenado se entrenó en *customer001.csv*. Puede verlos en hello Portal de administración de Azure.
 
 ![imagen](./media/machine-learning-create-models-and-endpoints-with-powershell/created-endpoints.png)
 
-## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Actualización de los puntos de conexión para usar conjuntos de datos de entrenamiento independientes mediante PowerShell
-El siguiente paso consiste en actualizar los puntos de conexión con modelos entrenados excepcionalmente en datos individuales de cada cliente. Pero primero necesitamos generar estos modelos desde el servicio web **Bike Rental Training** (Entrenamiento para alquiler de bicicletas). Volvamos al servicio web **Bike Rental Training** (Entrenamiento para alquiler de bicicletas). Es necesario llamar a su punto de conexión BES 10 veces con 10 conjuntos de datos de entrenamiento distintos para generar 10 modelos diferentes. Vamos a usar el cmdlet de PowerShell **InovkeAmlWebServiceBESEndpoint** para hacerlo.
+## <a name="update-hello-endpoints-toouse-separate-training-datasets-using-powershell"></a>Actualizar Hola extremos toouse entrenamiento independiente conjuntos de datos mediante PowerShell
+Hola siguiente paso es extremos de hello tooupdate con modelos de que forma única se entrenó en datos individuales de cada cliente. Pero primero necesitamos tooproduce estos modelos de hello **entrenamiento de alquiler de bicicletas** servicio web. Volvamos atrás toohello **entrenamiento de alquiler de bicicletas** servicio web. Necesitamos toocall su extremo BES 10 veces con 10 conjuntos de datos de entrenamiento diferentes en modelos diferentes de orden tooproduce 10. Vamos a usar hello **InovkeAmlWebServiceBESEndpoint** toodo de cmdlet de PowerShell esto.
 
-También debe proporcionar credenciales para su cuenta de almacenamiento de blobs en `$configContent`, es decir, los campos `AccountName`, `AccountKey` y `RelativeLocation`. El `AccountName` puede ser uno de los nombres de cuenta, como se muestra en el **Portal de administración de Azure clásico** (pestaña*Almacenamiento* ). Cuando haga clic en una cuenta de almacenamiento, su `AccountKey` puede encontrarse presionando el botón **Administrar claves de acceso** , situado en la parte inferior, y copiando la *clave de acceso principal*. El campo `RelativeLocation` es la ruta de acceso relativa al almacenamiento donde se almacenará un nuevo modelo. Por ejemplo, la ruta de acceso `hai/retrain/bike_rental/` en el script siguiente señala a un contenedor denominado `hai` y `/retrain/bike_rental/` son subcarpetas. Actualmente, no puede crear subcarpetas a través del portal de interfaz de usuario, pero hay [varios exploradores de Almacenamiento de Azure](../storage/common/storage-explorers.md) que le permiten hacerlo. Se recomienda crear un contenedor en el almacenamiento para almacenar los nuevos modelos entrenados (archivos .ilearner) de esta forma: en la página de almacenamiento, haga clic en el botón **Agregar** de la parte inferior y asigne el nombre `retrain` al botón. En resumen, los cambios necesarios para el siguiente script se refieren a `AccountName`, `AccountKey` y `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
+También necesitará tooprovide credenciales para la cuenta de almacenamiento de blobs en `$configContent`, es decir, en los campos de hello `AccountName`, `AccountKey` y `RelativeLocation`. Hola `AccountName` puede ser uno de los nombres de cuenta, como se muestra en hello **Portal de administración de Azure clásico** (*almacenamiento* ficha). Cuando hace clic en una cuenta de almacenamiento, su `AccountKey` encontrará presionando hello **administrar claves de acceso** situado en la parte inferior de Hola y copiar hello *clave de acceso principal*. Hola `RelativeLocation` es el almacenamiento de información de hello ruta de acceso relativa tooyour donde se almacenará un nuevo modelo. Por ejemplo, ruta de acceso de hello `hai/retrain/bike_rental/` en script de Hola puntos tooa contenedor denominado `hai`, y `/retrain/bike_rental/` son subcarpetas. Actualmente, no se puede crear subcarpetas a través de la interfaz de usuario del portal de hello, pero hay [varios exploradores de almacenamiento de Azure](../storage/common/storage-explorers.md) que le permiten toodo así. Se recomienda crear un nuevo contenedor en el saludo de toostore de almacenamiento nuevos modelos entrenados (archivos .ilearner) como sigue: desde la página de almacenamiento, haga clic en hello **agregar** situado en la parte inferior de Hola y asígnele el nombre `retrain`. En resumen, Hola cambios necesarios toohello siguiente secuencia de comandos pertenecen demasiado`AccountName`, `AccountKey` y `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
 
-    # Invoke the retraining API 10 times
-    # This is the default (and the only) endpoint on the training web service
+    # Invoke hello retraining API 10 times
+    # This is hello default (and hello only) endpoint on hello training web service
     $trainingSvcEp = (Get-AmlWebServiceEndpoint -WebServiceId $trainingSvc.Id)[0];
     $submitJobRequestUrl = $trainingSvcEp.ApiLocation + '/jobs?api-version=2.0';
     $apiKey = $trainingSvcEp.PrimaryKey;
@@ -112,15 +112,15 @@ También debe proporcionar credenciales para su cuenta de almacenamiento de blob
     }
 
 > [!NOTE]
-> El punto de conexión BES es el único modo admitido para esta operación. RRS no se puede usar para generar modelos entrenados.
+> Hola extremo BES es Hola solo admite el modo para esta operación. RRS no se puede usar para generar modelos entrenados.
 > 
 > 
 
-Como puede ver anteriormente, en lugar de construir 10 archivos JSON de configuración de trabajos BES diferentes, creamos la cadena de configuración dinámicamente en su lugar y la introducimos en el parámetro *jobConfigString* del cmdlet **InvokeAmlWebServceBESEndpoint** , puesto que no es realmente necesario mantener una copia en disco.
+Como puede ver más arriba, en lugar de construir 10 diferentes BES trabajo json archivos de configuración, creamos dinámicamente cadena_configuración hello en su lugar y fuente toohello *jobConfigString* parámetro de hello  **InvokeAmlWebServceBESEndpoint** cmdlet, puesto que no hay realmente ningún tookeep necesidad de una copia en el disco.
 
-Si todo va bien, después de un tiempo verá 10 archivos .ilearner (de *model001.ilearner* a *model010.ilearner*) en la cuenta de Azure Storage. Ahora ya estamos listos para actualizar nuestros 10 puntos de conexión del servicio web de puntuación con estos modelos mediante el cmdlet de PowerShell **Patch AmlWebServiceEndpoint** . Recuerde una vez más que solo podemos revisar los puntos de conexión no predeterminados mediante programación creados anteriormente.
+Si todo va bien, después de un tiempo, debe ver 10 archivos .ilearner, de *model001.ilearner* demasiado*model010.ilearner*, en su cuenta de almacenamiento de Azure. Ahora estamos listo tooupdate nuestro 10 puntuación web los extremos del servicio con estos modelos mediante hello **AmlWebServiceEndpoint revisión** cmdlet de PowerShell. Nuevo, recuerde que sólo le podemos patch puntos de conexión de hello no predeterminada que se crea mediante programación anteriormente.
 
-    # Patch the 10 endpoints with respective .ilearner models
+    # Patch hello 10 endpoints with respective .ilearner models
     $baseLoc = 'http://bostonmtc.blob.core.windows.net/'
     $sasToken = '<my_blob_sas_token>'
     For ($i = 1; $i -le 10; $i++){
@@ -131,17 +131,17 @@ Si todo va bien, después de un tiempo verá 10 archivos .ilearner (de *model001
         Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
     }
 
-Esto se debe ejecutar bastante rápido. Cuando la ejecución finalice, habremos creado correctamente 10 puntos de conexión de servicio web predictivos, de manera que cada uno de ellos contendrá un modelo entrenado excepcionalmente en el conjunto de datos específico a una ubicación de alquiler, todo ello a partir de un solo experimento de entrenamiento. Para comprobarlo, intente llamar a estos puntos de conexión mediante el cmdlet **InvokeAmlWebServiceRRSEndpoint** , ofreciéndoles los mismos datos de entrada; debe ver diferentes resultados de predicción, ya que los modelos se entrenan con conjuntos de entrenamiento distintos.
+Esto se debe ejecutar bastante rápido. Cuando concluya la ejecución de hello, se habrá creado correctamente 10 puntos de conexión de servicio de web de predicción, cada uno con un modelo entrenado entrenado forma única en la ubicación de alquiler de tooa específico de hello conjunto de datos, todo ello desde un experimento de entrenamiento único. tooverify esto, puede intentar llamar a estos extremos con hello **InvokeAmlWebServiceRRSEndpoint** cmdlet, enviarles con hello los mismos datos de entrada, y debe esperar resultados de predicción diferentes toosee puesto que son modelos de Hola entrenado con conjuntos de entrenamiento diferentes.
 
 ## <a name="full-powershell-script"></a>Script de PowerShell completo
-Este es el listado del código fuente completo:
+Este es el anuncio de Hola de código fuente completo de Hola:
 
     Import-Module .\AzureMLPS.dll
-    # Assume the default configuration file exists and properly set to point to the valid workspace.
+    # Assume hello default configuration file exists and properly set toopoint toohello valid workspace.
     $scoringSvc = Get-AmlWebService | where Name -eq 'Bike Rental Scoring'
     $trainingSvc = Get-AmlWebService | where Name -eq 'Bike Rental Training'
 
-    # Create 10 endpoints on the scoring web service
+    # Create 10 endpoints on hello scoring web service
     For ($i = 1; $i -le 10; $i++){
         $seq = $i.ToString().PadLeft(3, '0');
         $endpointName = 'rentalloc' + $seq;
@@ -149,7 +149,7 @@ Este es el listado del código fuente completo:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-    # Invoke the retraining API 10 times to produce 10 regression models in .ilearner format
+    # Invoke hello retraining API 10 times tooproduce 10 regression models in .ilearner format
     $trainingSvcEp = (Get-AmlWebServiceEndpoint -WebServiceId $trainingSvc.Id)[0];
     $submitJobRequestUrl = $trainingSvcEp.ApiLocation + '/jobs?api-version=2.0';
     $apiKey = $trainingSvcEp.PrimaryKey;
@@ -161,7 +161,7 @@ Este es el listado del código fuente completo:
         Invoke-AmlWebServiceBESEndpoint -JobConfigString $configContent -SubmitJobRequestUrl $submitJobRequestUrl -ApiKey $apiKey
     }
 
-    # Patch the 10 endpoints with respective .ilearner models
+    # Patch hello 10 endpoints with respective .ilearner models
     $baseLoc = 'http://bostonmtc.blob.core.windows.net/'
     $sasToken = '?test'
     For ($i = 1; $i -le 10; $i++){

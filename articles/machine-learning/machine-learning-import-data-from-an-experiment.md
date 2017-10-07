@@ -1,6 +1,6 @@
 ---
-title: "Importación de datos en Machine Learning Studio desde otro experimento | Microsoft Docs"
-description: "Cómo guardar los datos de aprendizaje en Estudio de aprendizaje automático de Azure y usarlo en otro experimento."
+title: "datos de aaaImport en estudio de aprendizaje automático de experimento otro | Documentos de Microsoft"
+description: "¿Cómo toosave datos de entrenamiento en estudio de aprendizaje automático de Azure y usarlo en otro experimento."
 keywords: "importar datos, datos, orígenes de datos, datos de entrenamiento"
 services: machine-learning
 documentationcenter: 
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;bradsev
-ms.openlocfilehash: ecfa2110d0d51511ceb5bd07b730732ecfa2e9e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ca085149ed23c219a791ce09ac48dafeb807cb88
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>Importación de datos en Estudio de aprendizaje automático de Azure desde otro experimento
 [!INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
-Habrá ocasiones en las que querrá tomar un resultado intermedio de un experimento y usarlo como parte de otro experimento. Para ello, guarde el módulo como un conjunto de datos:
+Habrá veces cuando le desea tootake un resultado intermedio de un experimento y usarlo como parte de otro experimento. toodo, guardar el módulo de Hola como un conjunto de datos:
 
-1. Haga clic en la salida del módulo que desea guardar como conjunto de datos.
+1. Haga clic en salida de hello de módulo de Hola que desea toosave como un conjunto de datos.
 2. Haga clic en **Guardar como conjunto de datos**.
-3. Cuando se le solicite, escriba un nombre y una descripción que le permitan identificar fácilmente el conjunto de datos.
-4. Haga clic en la marca de verificación **Aceptar** .
+3. Cuando se le solicite, escriba un nombre y una descripción que permitiría dataset hello tooidentify fácilmente.
+4. Haga clic en hello **Aceptar** marca de verificación.
 
-Cuando termine de guardar, el conjunto de datos estará disponible para usarlo dentro de cualquier experimento de su área de trabajo. Puede encontrarlo en la lista **Conjuntos de datos guardados** de la paleta de módulos.
+Cuando Hola guardar finalice, el conjunto de datos de hello estará disponible para su uso en cualquier experimento en el área de trabajo. Puede encontrarla en hello **conjuntos de datos guardados** lista en la paleta de módulo de Hola.
 

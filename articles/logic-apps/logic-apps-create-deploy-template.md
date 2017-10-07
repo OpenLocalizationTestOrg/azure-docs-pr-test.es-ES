@@ -1,5 +1,5 @@
 ---
-title: "Creación de plantillas de implementación para Azure Logic Apps | Microsoft Docs"
+title: "plantillas de implementación de aaaCreate para las aplicaciones lógicas de Azure | Documentos de Microsoft"
 description: "Creación de plantillas de Azure Resource Manager para administrar la implementación y liberación de aplicaciones lógicas"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -15,96 +15,96 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 9cfbb294010d48deaf4b4c78c6a6bcd59a387d87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2f09445f10a376a745d6acbba94ca29d5f79fc09
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-templates-for-logic-apps-deployment-and-release-management"></a>Creación de plantillas para administrar la implementación y liberación de aplicaciones lógicas
 
-Una vez creada una aplicación lógica, quizá desee crearla como una plantilla de Azure Resource Manager.
-De este modo, podrá implementar fácilmente la aplicación lógica en cualquier entorno o grupo de recursos en los que pueda necesitarla.
+Después de que se ha creado una aplicación de lógica, podría interesarle toocreate como una plantilla de Azure Resource Manager.
+De esta manera, puede implementar fácilmente entorno de tooany de aplicaciones de lógica de Hola o grupo de recursos en los que tal vez necesite.
 Para obtener más información sobre las plantillas de Resource Manager, consulte [Creación de plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) e [Implementación de recursos con plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="logic-app-deployment-template"></a>Plantilla de implementación de aplicación lógica
 
 Una aplicación lógica consta de tres componentes básicos:
 
-* **Recurso de la aplicación lógica**: contiene información acerca de cuestiones como el plan de precios, la ubicación y la definición del flujo de trabajo.
-* **Definición del flujo de trabajo**: describe los pasos del flujo de trabajo de la aplicación lógica y el modo en que el motor de Logic Apps debe ejecutar el flujo de trabajo.
+* **Recursos de aplicación lógica**: contiene información acerca de aspectos como definición de flujo de trabajo de hello, la ubicación y el plan de precios.
+* **Definición de flujo de trabajo**: describe los pasos de flujo de trabajo de la aplicación lógica y cómo motor de Logic Apps Hola debe ejecutar el flujo de trabajo de Hola.
 Puede ver esta definición en la ventana **Vista código** de su aplicación lógica.
-En el recurso de la aplicación lógica, puede encontrar esta definición en la propiedad `definition`.
-* **Conexiones**: consulta recursos independientes que almacenan los metadatos de manera segura sobre las conexiones del conector, como una cadena de conexión y un token de acceso.
-En el recurso de la aplicación lógica, su aplicación lógica consulta estos recursos en la sección `parameters`.
+En el recurso de aplicación lógica de hello, puede encontrar esta definición en hello `definition` propiedad.
+* **Las conexiones**: hace referencia a los recursos de tooseparate que almacenan metadatos acerca de las conexiones de conector, como una cadena de conexión y un token de acceso de forma segura.
+En el recurso de aplicación lógica de hello, la aplicación lógica hace referencia a estos recursos en hello `parameters` sección.
 
 Puede ver todas estas piezas de las aplicaciones lógicas existentes mediante herramientas como el [Explorador de recursos de Azure](http://resources.azure.com).
 
-Para crear una plantilla para una aplicación lógica que pueda utilizar con implementaciones de grupos de recursos, es preciso definir los recursos y parametrizarlos según sea necesario.
-Por ejemplo, si va a implementar en un entorno de desarrollo, prueba y producción, probablemente deseará usar cadenas de conexión diferentes para una base de datos SQL en cada entorno.
-O bien, puede que desee realizar la implementación en diferentes suscripciones o grupos de recursos.  
+toomake una plantilla para una aplicación de lógica toouse con implementaciones de grupos de recursos, debe definir recursos de Hola y parametrizar según sea necesario.
+Por ejemplo, si va a implementar tooa desarrollo, prueba y entorno de producción, probablemente desee toouse otra conexión cadenas tooa base de datos SQL en cada entorno.
+O bien, puede querer toodeploy en distintas suscripciones o grupos de recursos.  
 
 ## <a name="create-a-logic-app-deployment-template"></a>Creación de una plantilla de implementación de aplicación lógica
 
-La manera más fácil tener una plantilla de implementación de aplicación lógica válida es usar el [Visual Studio Tools para Logic Apps](logic-apps-deploy-from-vs.md).
-Las herramientas de Visual Studio generan una plantilla de implementación válida que puede utilizarse en cualquier suscripción o ubicación.
+toohave de manera más fácil de Hello una plantilla de implementación de aplicación lógica válida es toouse el [Visual Studio Tools para aplicaciones lógicas](logic-apps-deploy-from-vs.md).
+herramientas de Visual Studio de Hello generar una plantilla de implementación válido que puede utilizarse en cualquier suscripción o la ubicación.
 
 Algunas herramientas pueden ayudarle a crear una plantilla de implementación de aplicación lógica.
-Puede crearla manualmente; es decir, mediante el uso de los recursos ya mencionados aquí para crear parámetros según sea necesario.
-Otra opción es usar un módulo de PowerShell [Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator) . Este módulo de código abierto evalúa primero la aplicación lógica y las conexiones que utiliza y luego genera los recursos de la plantilla con los parámetros necesarios para la implementación.
-Por ejemplo, si tiene una aplicación lógica que recibe un mensaje de una cola de Azure Service Bus y agrega datos a una base de datos SQL de Azure, la herramienta conservará toda la lógica de orquestación y parametrizará las cadenas de conexión de SQL y Service Bus con el fin de que se puedan establecer en la implementación.
+Puede crear manualmente, es decir, mediante el uso de hello recursos ya tratan aquí toocreate parámetros según sea necesario.
+Otra opción es toouse una [creador de plantillas de aplicación lógica](https://github.com/jeffhollan/LogicAppTemplateCreator) módulo de PowerShell. Este módulo de código abierto evalúa primero la aplicación de la lógica de hello y que las conexiones que está usando y, a continuación, genera los recursos de plantilla con los parámetros necesarios para la implementación de Hola.
+Por ejemplo, si tiene una aplicación de lógica que recibe un mensaje de una cola de Service Bus de Azure y agrega la base de datos de SQL Azure de datos tooan, herramienta de hello conserva toda lógica de orquestación de Hola y parametriza Hola SQL y cadenas de conexión de Bus de servicio para que se pueden establecer en la implementación.
 
 > [!NOTE]
-> Las conexiones deben estar dentro del mismo grupo de recursos que la aplicación lógica.
+> Las conexiones deben ser dentro de hello mismo grupo de recursos como aplicación de lógica de hello.
 >
 >
 
-### <a name="install-the-logic-app-template-powershell-module"></a>Instalación del módulo de PowerShell de plantilla de aplicación lógica
-La forma más fácil de instalar el módulo es a través de la [Galería de PowerShell](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1) con el comando `Install-Module -Name LogicAppTemplate`.  
+### <a name="install-hello-logic-app-template-powershell-module"></a>Instalar el módulo de PowerShell de plantilla de aplicación de lógica de Hola
+módulo de Hola de manera más fácil de Hello tooinstall es a través de hello [Galería de PowerShell](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1), mediante el comando de hello `Install-Module -Name LogicAppTemplate`.  
 
-También puede instalar el módulo de PowerShell manualmente:
+También puede instalar módulo de PowerShell de hello manualmente:
 
-1. Descargue la versión más reciente de [Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator/releases).  
-2. Extraiga la carpeta en su carpeta del módulo de PowerShell (normalmente `%UserProfile%\Documents\WindowsPowerShell\Modules`).
+1. Descargar la versión más reciente de Hola de hello [creador de plantillas de aplicación lógica](https://github.com/jeffhollan/LogicAppTemplateCreator/releases).  
+2. Extraer la carpeta de hello en la carpeta del módulo de PowerShell (normalmente `%UserProfile%\Documents\WindowsPowerShell\Modules`).
 
-Para que el módulo funcione con cualquier token de acceso de inquilino y suscripción, se recomienda utilizarlo con la herramienta de línea de comandos [ARMClient](https://github.com/projectkudu/ARMClient).  Esta [entrada de blog ](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) describe ARMClient con más detalle.
+Para hello módulo toowork con cualquier acceso inquilino y suscripción símbolo (token), se recomienda utilizarlo con hello [ARMClient](https://github.com/projectkudu/ARMClient) herramienta de línea de comandos.  Esta [entrada de blog ](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) describe ARMClient con más detalle.
 
 ### <a name="generate-a-logic-app-template-by-using-powershell"></a>Generación de una plantilla de aplicación lógica mediante PowerShell
-Después de instalar PowerShell, puede generar una plantilla mediante el comando siguiente:
+Después de instala PowerShell, puede generar una plantilla mediante Hola siguiente comando:
 
 `armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp MyApp -ResourceGroup MyRG -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json`
 
-`$SubscriptionId` es el identificador de la suscripción de Azure. Esta línea primero obtiene acceso al token mediante ARMClient, luego lo canaliza hacia el script de PowerShell y finalmente crea la plantilla en un archivo JSON.
+`$SubscriptionId`es el Id. de suscripción de Azure Hola. Esta línea recibe primero un acceso token a través de ARMClient, a continuación, canaliza a través de toohello secuencia de comandos de PowerShell y, a continuación, crea la plantilla de hello en un archivo JSON.
 
-## <a name="add-parameters-to-a-logic-app-template"></a>Adición de parámetros a una plantilla de aplicación lógica
-Después de crear la plantilla de aplicación lógica, podrá seguir agregando o modificando los parámetros que necesite. Por ejemplo, si la definición incluye un identificador de recurso a una función o un flujo de trabajo anidado de Azure en el que planea implementar una sola implementación, puede agregar más recursos a la plantilla y parametrizar los identificadores según sea necesario. Lo mismo sucede con las referencias a las API personalizadas o a los puntos de conexión de Swagger que espera implementar con cada grupo de recursos.
+## <a name="add-parameters-tooa-logic-app-template"></a>Agregar plantilla de aplicación lógica de parámetros tooa
+Después de crear la plantilla de aplicación lógica, puede continuar tooadd o modificar los parámetros que necesite. Por ejemplo, si la definición incluye un Id. de recurso tooan función Azure o flujo de trabajo anidado tiene previsto toodeploy en una sola implementación, puede agregar más recursos tooyour plantilla y parametrizar identificadores según sea necesario. Hello Esto mismo aplica tooany referencias toocustom API Swagger extremos o esperar toodeploy de cada grupo de recursos.
 
 ## <a name="deploy-a-logic-app-template"></a>Implementación de una plantilla de aplicación lógica
 
-Puede implementar su plantilla mediante cualquier herramienta, entre las que se incluyen PowerShell, API de REST, [Visual Studio Team Services Release Management](#team-services) o la implementación de plantillas de Azure Portal.
-Además, para almacenar los valores de parámetros, se recomienda crear un [archivo de parámetros](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
-Aprenda cómo [implementar recursos con las plantillas de Azure Resource Manager y PowerShell](../azure-resource-manager/resource-group-template-deploy.md) o cómo [implementar recursos con las plantillas de Azure Resource Manager y Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
+Puede implementar la plantilla mediante cualquier herramienta como PowerShell, API de REST, [Visual Studio Team Services Release Management](#team-services)y la implementación de plantilla a través de hello portal de Azure.
+Además, valores de hello toostore para los parámetros, le recomendamos que cree una [archivo de parámetros](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
+Obtenga información acerca de cómo demasiado[implementar los recursos con plantillas del Administrador de recursos de Azure y PowerShell](../azure-resource-manager/resource-group-template-deploy.md) o [implementar los recursos con plantillas del Administrador de recursos de Azure y Hola portal de Azure](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 ### <a name="authorize-oauth-connections"></a>Autorización de conexiones de OAuth
 
-Después de la implementación, la aplicación lógica funciona de un extremo a otro con parámetros válidos.
-Sin embargo, sigue siendo necesario autorizar las conexiones de OAuth para generar un token de acceso válido.
-Para autorizar las conexiones de OAuth, abra la aplicación lógica en Diseñador de aplicaciones lógicas y autorice estas conexiones. Para automatizar las implementaciones, puede usar un script para dar el consentimiento a cada conexión de OAuth.
+Después de la implementación, aplicación de lógica de hello funciona to-end con parámetros válidos.
+Sin embargo, todavía debe autorizar conexiones de OAuth toogenerate un token de acceso válido.
+tooauthorize OAuth conexiones, abra la aplicación de lógica de Hola Hola Diseñador de aplicaciones de la lógica y autorizar estas conexiones. O bien, para la implementación automatizada, puede usar un tooeach de tooconsent OAuth conexión de script.
 Hay un script de ejemplo en GitHub, en el proyecto [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) .
 
 <a name="team-services"></a>
 ## <a name="visual-studio-team-services-release-management"></a>Administración de versiones de Visual Studio Team Services
 
-Un escenario común para implementar y administrar un entorno es usar una herramienta como Release Management en Visual Studio Team Services con una plantilla de implementación de aplicaciones lógicas. Visual Studio Team Services incluye la tarea [Implementación de un grupo de recursos de Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) , que se puede agregar a cualquier canalización de la compilación o versión. Es preciso tener una [entidad de servicio](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) para implementar la autorización y, a continuación, generar la definición de la versión.
+Un escenario común para implementar y administrar un entorno es toouse una herramienta como la administración de versiones en Visual Studio Team Services, con una plantilla de implementación de aplicación lógica. Visual Studio Team Services incluye un [implementar un grupo de recursos de Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) tareas que puede agregar tooany compilación o la versión de canalización. Necesita toohave una [entidad de servicio](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) para la autorización toodeploy y, a continuación, puede generar definición de la versión de Hola.
 
 1. En Release Management, seleccione **Vacío** para crear una definición vacía.
 
     ![Creación de una definición vacía][1]
 
-2. Elija los recursos que necesite para esto, que probablemente incluirán la plantilla de aplicación lógica que se genera manualmente o como parte del proceso de compilación.
+2. Elija el proceso de compilación de todos los recursos que necesita para esta, probablemente incluido Hola lógica plantilla de aplicación que se genera manualmente o como parte del programa Hola.
 3. Agregue una tarea de **Implementación de un grupo de recursos de Azure** .
-4. Configure una [entidad de servicio](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)y haga referencia a los archivos de plantilla y de parámetros de la plantilla.
-5. Siga compilando los pasos del proceso de lanzamiento de otros entornos, pruebas automatizadas o aprobadores según sea necesario.
+4. Configurar con un [entidad de servicio](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)y hacer referencia a los archivos de plantilla y parámetros de plantilla de Hola.
+5. Continuar toobuild pasos en el proceso de lanzamiento de Hola para cualquier otro entorno, pruebas automatizadas o aprobadores según sea necesario.
 
 <!-- Image References -->
 [1]: ./media/logic-apps-create-deploy-template/emptyreleasedefinition.png

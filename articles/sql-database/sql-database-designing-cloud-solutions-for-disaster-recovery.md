@@ -1,5 +1,5 @@
 ---
-title: "Diseño de un servicio de alta disponibilidad con Azure SQL Database | Microsoft Docs"
+title: servicio de alta disponibilidad aaaDesign con la base de datos de SQL de Azure | Documentos de Microsoft
 description: "Obtenga información sobre el diseño de aplicaciones para servicios de alta disponibilidad con Azure SQL Database."
 keywords: "recuperación ante desastres en la nube, soluciones de recuperación ante desastres, copia de seguridad de datos de aplicación, planificación de continuidad del negocio"
 services: sql-database
@@ -16,138 +16,138 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 04/21/2017
 ms.author: sashan
-ms.openlocfilehash: 40fe0ae04eb94322356ed19773512e3bc383639c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 815f754ba7014cd8a1108a2d84c2a8f71d7030a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Diseño de servicios de alta disponibilidad con Azure SQL Database
 
-Al compilar e implementar servicios de alta disponibilidad en Azure SQL Database, use los [grupos de conmutación por error y la replicación geográfica activa](sql-database-geo-replication-overview.md) para proporcionar resistencia frente a errores regionales e interrupciones graves, así como para habilitar la recuperación rápida en las bases de datos secundarias. Este artículo se centra en los patrones comunes de aplicaciones y trata las ventajas e inconvenientes de cada opción en función de los requisitos de implementación de las aplicaciones, el Acuerdo de Nivel de Servicio objetivo, la latencia de tráfico y los costos. Para saber cómo utilizar la replicación geográfica activa con los grupos elásticos, consulte [Estrategias de recuperación ante desastres para aplicaciones que usan el grupo elástico de Base de datos SQL](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Al compilar e implementar servicios de alta disponibilidad en la base de datos de SQL Azure, use [conmutación por error de grupos y la replicación geográfica activa](sql-database-geo-replication-overview.md) tooregional errores de tooprovide resistencia e interrupciones graves y habilitar recuperación rápida toohello bases de datos secundarias. En este artículo se centra en los patrones de aplicación comunes y se describen las ventajas de Hola y ventajas y desventajas de cada opción según los requisitos de la implementación de la aplicación hello, los acuerdo de nivel de servicio de hello tiene como destino, la latencia de tráfico y los costos. Para saber cómo utilizar la replicación geográfica activa con los grupos elásticos, consulte [Estrategias de recuperación ante desastres para aplicaciones que usan el grupo elástico de Base de datos SQL](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 ## <a name="design-pattern-1-active-passive-deployment-for-cloud-disaster-recovery-with-a-co-located-database"></a>Patrón de diseño 1: implementación activa-pasiva para la recuperación ante desastres en la nube con una base de datos colocada
-Esta opción es mejor para las aplicaciones con las siguientes características:
+Esta opción es ideal para las aplicaciones con hello siguientes características:
 
 * Instancia activa de una única región de Azure.
-* Fuerte dependencia de acceso de lectura y escritura (RW) a los datos.
-* La conectividad entre regiones entre la aplicación web y la base de datos no es aceptable debido al costo del tráfico y la latencia.    
+* Dependencia fuerte en toodata de acceso de lectura y escritura (RW)
+* No es aceptable debido costo toolatency y el tráfico entre regiones conectividad entre la aplicación web de Hola y de base de datos de Hola    
 
-En este caso, la topología de implementación de la aplicación está optimizada para el tratamiento de desastres regionales cuando se ven afectados todos los componentes de aplicación y es necesario conmutar por error como una unidad. En el caso de la redundancia geográfica, la lógica de aplicación y la base de datos se replican en otra región, pero no se usan para la carga de trabajo de la aplicación en las condiciones normales. La aplicación en la región secundaria debe configurarse para usar una cadena de conexión SQL a la base de datos secundaria. El Administrador de tráfico se configura para usar [el método de enrutamiento de conmutación por error](../traffic-manager/traffic-manager-configure-failover-routing-method.md).  
+En este caso, la topología de implementación de aplicación Hola está optimizada para administrar desastres regionales cuando todos los componentes de la aplicación están teniendo problemas y necesitan toofailover como una unidad. Para la redundancia geográfica, base de datos de Hola y lógica de la aplicación hello son tooanother replicada región pero no se usan para la carga de trabajo de aplicación de hello en condiciones normales de Hola. aplicación de Hello en la región secundaria Hola debería ser toouse configurado SQL conexión cadena toohello base de datos secundaria. El Administrador de tráfico está configurado toouse [método de enrutamiento de conmutación por error](../traffic-manager/traffic-manager-configure-failover-routing-method.md).  
 
 > [!NOTE]
 > [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) se usa en este artículo únicamente con fines ilustrativos. Puede usar cualquier solución de equilibrio de carga que admita el método de enrutamiento de conmutación por error.    
 >
 
-El diagrama siguiente muestra esta configuración antes de una interrupción.
+Hola siguiente diagrama ilustra esta configuración antes de una interrupción.
 
 ![Configuración de replicación geográfica de SQL Database. Recuperación ante desastres en la nube.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-1.png)
 
-Después de una interrupción en la región primaria, el servicio SQL Database detectará que no se puede acceder a la base de datos principal y desencadenará una conmutación por error a la base de datos secundaria en función de los parámetros de la directiva de conmutación por error automática. Dependiendo de su Acuerdo de Nivel de Servicio de aplicación, puede optar por configurar un período de gracia entre la detección de la interrupción y la propia conmutación por error. Al configurar un período de gracia se reduce el riesgo de pérdida de datos a los casos donde la interrupción es grave y la disponibilidad en la región no se puede restaurar rápidamente. Si el administrador de tráfico inicia la conmutación por error del punto de conexión antes de que el grupo de conmutación por error active la conmutación por error de la base de datos, la aplicación web no podrá volverse a conectarse a la base de datos. El intento de la aplicación para volverse a conectar se realiza de forma correcta automáticamente en cuanto la conmutación por error de la base de datos se complete. 
+Después de una interrupción en la región principal de hello, servicio de base de datos SQL de hello detecta esa base de datos principal de hello no es accesible y desencadenar una conmutación por error toohello base de datos secundaria según los parámetros de Hola de directiva de conmutación por error automática de Hola. Dependiendo de su SLA de la aplicación, puede decidir tooconfigure un período de gracia entre la detección de Hola de interrupción de Hola y conmutación por error de hello propio. Configuración de un período de gracia reduce el riesgo de Hola de casos de toohello de pérdida de datos donde interrupción hello es grave y disponibilidad en la región de hello no se puede restaurar rápidamente. Si conmutación por error de punto de conexión de Hola se inicia mediante el Administrador de tráfico Hola antes de desencadenadores de grupo de conmutación por error de Hola Hola conmutación por error de base de datos de hello, aplicación web de hello no es base de datos pueda tooreconnect toohello. tooreconnect de intento de la aplicación Hello supera automáticamente tan pronto como finaliza la conmutación por error de base de datos de Hola. 
 
 > [!NOTE]
-> Para lograr una conmutación por error de la aplicación y las bases de datos totalmente coordinada, debe diseñar su propio método de supervisión y usar la conmutación por error manual de los puntos de conexión de la aplicación web y las bases de datos.
+> tooachieve totalmente había coordinada conmutación por error de la aplicación hello y bases de datos de hello, debe diseñar su propio método de supervisión y usar la conmutación por error manual de los extremos de la aplicación hello web y bases de datos de Hola.
 >
 
-Una vez completada la conmutación por error de la base de datos y los puntos de conexión de la aplicación, esta reiniciará el procesamiento de las solicitudes de usuario en la región B y permanecerá colocada con la base de datos porque la base de datos principal está ahora en la región de B. Este escenario se ilustra en el diagrama siguiente. En todos los diagramas, las líneas continuas indican conexiones activas, las líneas de puntos indican conexiones suspendidas y las señales de detención indican desencadenadores de acción.
+Una vez completada la conmutación por error de saludo de la aplicación hello extremos y base de datos de hello, aplicación hello iniciará volver a procesar las solicitudes de usuario de hello en la región de hello B y permanecerá coexisten con base de datos de hello porque la base de datos principal de hello ahora está en región de B. Este escenario se muestra en hello siguiente diagrama. En todos los diagramas, las líneas continuas indican conexiones activas, las líneas de puntos indican conexiones suspendidas y las señales de detención indican desencadenadores de acción.
 
-![Replicación geográfica: conmutación por error a la base de datos secundaria. Copia de seguridad de datos de la aplicación.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-2.png)
+![Replicación geográfica: Base de datos conmutación por error toosecondary. Copia de seguridad de datos de la aplicación.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-2.png)
 
-Si se produce una interrupción en la región secundaria, se suspende el vínculo de replicación entre la base de datos principal y la secundaria pero la conmutación por error no se desencadena porque la base de datos principal no se ve afectada. En este caso, la disponibilidad de la aplicación no cambia, pero la aplicación funciona expuesta y, por tanto, con un riesgo más alto en caso de que ambas regiones tengan un error en cadena.
+Si se produce una interrupción en la región secundaria de hello, se suspende Hola vínculo de replicación entre Hola principal y la base de datos secundaria de hello pero Hola conmutación por error no se desencadena porque no se ve afectada la base de datos principal de Hola. no se cambia en este caso, la disponibilidad de la aplicación Hello pero aplicación hello funciona expuesto y, por tanto, en un riesgo más alto en el caso de ambas regiones producirá un error en sucesión.
 
 > [!NOTE]
-> Para recuperación ante desastres, se recomienda la configuración con la implementación de aplicaciones limitada a dos regiones. Esto es porque la mayoría de las ubicaciones geográficas de Azure tienen solo dos regiones. Esta configuración no protegerá la aplicación de un error grave simultáneo de ambas regiones.  En el caso poco probable de que este error se produjese, podría recuperar sus bases de datos en una tercera región mediante una [operación de restauración geográfica](sql-database-disaster-recovery.md#recover-using-geo-restore).
+> Recuperación ante desastres se recomienda la configuración de hello con regiones de tootwo limitado de implementación de aplicación. Se trata porque la mayoría de hello regiones geográficas de Azure tienen solo dos regiones. Esta configuración no protegerá la aplicación de un error grave simultáneo de ambas regiones.  En el caso poco probable de que este error se produjese, podría recuperar sus bases de datos en una tercera región mediante una [operación de restauración geográfica](sql-database-disaster-recovery.md#recover-using-geo-restore).
 >
 
-Una vez que se reduce la interrupción, la base de datos secundaria se volverá a sincronizar automáticamente con la principal. Durante la sincronización, el rendimiento de la principal podría verse afectado ligeramente dependiendo de la cantidad de datos que haya que sincronizar. El siguiente diagrama ilustra una interrupción en la región secundaria.
+Una vez que se mitiga interrupción hello, base de datos secundaria de hello volver a sincronizará automáticamente con hello principal. Durante la sincronización, rendimiento de hello principal podría verse afectada ligeramente según cantidad Hola de datos que necesita toobe sincronizado. Hello diagrama siguiente ilustra una interrupción en la región secundaria Hola.
 
 ![Base de datos secundaria sincronizada con la primaria. Recuperación ante desastres en la nube.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern1-3.png)
 
-Las **ventajas** clave de este patrón de diseño son:
+clave de Hello **ventajas** de este patrón de diseño son:
 
-* La misma aplicación web se implementa en ambas regiones sin ninguna configuración específica de la región y sin lógica adicional para reaccionar ante la conmutación por error. 
-* El rendimiento de la aplicación no se ve afectado por la conmutación por error, ya que la aplicación web y la base de datos siempre están colocadas.
+* Hola misma aplicación web es regiones tooboth implementado sin ninguna configuración específica de la región y sin conmutación por error de lógica adicional tooreact toohello. 
+* rendimiento de la aplicación Hello no se ve afectado por la conmutación por error como aplicación web de Hola y base de datos de hello siempre se ubican conjuntamente.
 
-El principal **inconveniente** es que la instancia de aplicación redundante en la región secundaria solo se usa para la recuperación ante desastres.
+Hola principal **contrapartida** es que aplicación de redundancia de hello instancia en la región secundaria Hola solo se utiliza para la recuperación ante desastres.
 
 ## <a name="design-pattern-2-active-active-deployment-for-application-load-balancing"></a>Patrón de diseño 2: implementación activa-activa para el equilibrio de carga de aplicación
-Esta opción de recuperación ante desastres en la nube es mejor para las aplicaciones con las siguientes características:
+Esta opción de recuperación ante desastres en la nube es ideal en las aplicaciones con hello siguientes características:
 
-* Una proporción alta de lecturas en relación a las escrituras en la base de datos.
-* La latencia de lectura de la base de datos es más importante para la experiencia del usuario final que la latencia de escritura. 
+* Proporción alta de base de datos lee toowrites
+* Base de datos de latencia de lectura es más importante para la experiencia del usuario final de Hola que la latencia de escritura Hola 
 * La lógica de solo lectura se puede separar de la lógica de lectura y escritura mediante el uso de una cadena de conexión distinta.
-* La lógica de solo lectura no depende de que los datos estén totalmente sincronizados con las actualizaciones más recientes.  
+* Lógica de solo lectura no dependen de datos completa que se sincronizan con las últimas actualizaciones de Hola  
 
-Si sus aplicaciones tienen estas características, equilibrar la carga de las conexiones de usuario final entre varias instancias de la aplicación en diferentes regiones puede mejorar considerablemente la experiencia global del usuario final. Dos de las regiones deben seleccionarse como el par de recuperación ante desastres y el grupo de conmutación por error debe incluir las bases de datos de estas regiones. Para implementar el equilibrio de carga, cada región debe tener una instancia activa de la aplicación con la lógica de lectura y escritura (RW) conectada al punto de conexión del agente de escucha de lectura y escritura del grupo de conmutación por error. Esto garantizará que la conmutación por error se iniciará automáticamente si la base de datos principal se ve afectada por una interrupción del servicio. La lógica de solo lectura (RO) en la aplicación web debe conectarse directamente a la base de datos de dicha región. El administrador de tráfico debe configurarse para usar [enrutamiento del rendimiento](../traffic-manager/traffic-manager-configure-performance-routing-method.md) con la [supervisión de punto de conexión](../traffic-manager/traffic-manager-monitoring.md) habilitada para cada instancia de la aplicación.
+Si las aplicaciones tienen estas características, puede mejorar sustancialmente el equilibrio de carga las conexiones de usuario final de hello entre varias instancias de aplicación en diferentes regiones Hola general experiencia del usuario final. Dos de las regiones de hello deben seleccionarse como Hola par de recuperación ante desastres y grupo de conmutación por error de hello debe incluir las bases de datos de hello en estas regiones. tooimplement equilibrio de carga, cada región debe tener una instancia activa de la aplicación hello con hello lectura y escritura (RW) lógica conectada toohello agente de escucha de lectura y escritura punto de conexión del grupo de conmutación por error de Hola. Se garantizará que Hola de conmutación por error se iniciará automáticamente si la base de datos principal de Hola se ve afectado por una interrupción del servicio. Hola de solo lectura lógica (RO) en la aplicación web de hello debe conectarse directamente toohello base de datos en dicha región. El Administrador de tráfico se debe configurar toouse [rendimiento enrutamiento](../traffic-manager/traffic-manager-configure-performance-routing-method.md) con [supervisión de extremo](../traffic-manager/traffic-manager-monitoring.md) habilitado para cada instancia de la aplicación.
 
-Como en el patrón nº 1, debe considerar la posibilidad de implementar una aplicación de supervisión similar. Pero a diferencia del patrón n.º 1, la aplicación de supervisión no será la responsable de desencadenar la conmutación por error del extremo.
+Como en el patrón nº 1, debe considerar la posibilidad de implementar una aplicación de supervisión similar. Pero a diferencia de patrón #1, Hola supervisión de la aplicación no será responsable de activar la conmutación por error de hello extremo.
 
 > [!NOTE]
-> Mientras que este patrón usa más de una base de datos secundaria, solo se usará la base de datos secundaria de la región B para la conmutación por error y debe formar parte del grupo de conmutación por error.
+> Aunque este patrón utiliza más de una base de datos secundaria, solo Hola secundaria en la región B se utilizarían para conmutación por error y debe formar parte del grupo de conmutación por error de Hola.
 >
 
-El Administrador de tráfico tiene que configurarse para el enrutamiento de rendimiento para dirigir las conexiones de usuario a la instancia de aplicación que esté más cerca de la ubicación geográfica del usuario. El siguiente diagrama muestra esta configuración antes de una interrupción.
+El Administrador de tráfico debe configurarse para la ubicación geográfica del rendimiento enrutamiento toodirect Hola usuario conexiones toohello instancia más cercano toohello de usuarios de aplicación. Hola siguiente diagrama ilustra esta configuración antes de una interrupción.
 
-![Sin interrupción: enrutamiento de rendimiento a la aplicación más cercana. Replicación geográfica.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-1.png)
+![Ninguna interrupción: aplicación de toonearest enrutamiento de rendimiento. Replicación geográfica.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-1.png)
 
-Si se detecta una interrupción de la base de datos de la región A, el grupo de conmutación por error iniciará automáticamente la conmutación por error de la base de datos principal de la región A a la base de datos secundaria de la región de B. También se actualizará automáticamente el punto de conexión del agente de escucha de lectura y escritura a la región B para que las conexiones de lectura y escritura de la aplicación web no se vean afectadas. El administrador de tráfico excluirá el punto sin conexión de la tabla de enrutamiento, pero continuará enrutando el tráfico de usuario final a las instancias en línea restantes. Las cadenas de conexión de SQL de solo lectura no se verán afectadas, ya que siempre señalan a la base de datos en la misma región. 
+Si se detecta una interrupción de la base de datos en una región de hello, grupo de conmutación por error de hello iniciará automáticamente conmutación por error de base de datos principal de hello en la región A toohello secundaria en la región de B. Se actualizará automáticamente también tooregion de punto de conexión de agente de escucha de lectura y escritura de hello B para que las conexiones de lectura y escritura en la aplicación web de hello no se verá afectadas. Administrador de tráfico de Hello, excluirá el extremo sin conexión Hola de tabla de enrutamiento de hello pero seguirá enrutamiento hello para el usuario final tráfico toohello restantes instancias en línea. Hello las cadenas de conexión de SQL de solo lectura no se verán afectadas como señalan siempre la base de datos de toohello Hola misma región. 
 
-El siguiente diagrama ilustra la nueva configuración después de la conmutación por error.
+Hola siguiente diagrama muestra la configuración nuevo de hello después Hola conmutación por error.
 
 ![Configuración después de la conmutación por error. Recuperación ante desastres en la nube.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-2.png)
 
-En el caso de una interrupción en una de las regiones secundarias, el administrador de tráfico quitará automáticamente el punto sin conexión de esa región de la tabla de enrutamiento. El canal de replicación se suspenderá para la base de datos secundaria en dicha región. Dado que el resto de las regiones reciben tráfico de usuario adicional en este escenario, el rendimiento de la aplicación resultará afectado durante la interrupción. Una vez que se reduce la interrupción, la base de datos secundaria de la región afectada se sincronizará automáticamente con la principal. Durante la sincronización, el rendimiento de la principal podría verse afectado ligeramente dependiendo de la cantidad de datos que haya que sincronizar. El siguiente diagrama ilustra una interrupción en la región B.
+En caso de una interrupción en una de las regiones secundaria Hola, Administrador de tráfico de Hola quitará automáticamente extremo sin conexión de hello en dicha región de tabla de enrutamiento de Hola. se suspenderá Hola replicación canal toohello base de datos secundaria en dicha región. Porque regiones restantes Hola obtener tráfico de usuario adicionales en este escenario, se verá afectado el rendimiento de la aplicación hello durante la interrupción de Hola. Una vez que se mitiga interrupción hello, hello base de datos secundaria en la región afectada Hola inmediatamente sincronizarán con hello principal. Durante el saludo rendimiento de la sincronización de hello principal podría verse afectada ligeramente según cantidad Hola de datos que necesita toobe sincronizado. Hola siguiente diagrama ilustra una interrupción en la región de B.
 
 ![Interrupción en la región secundaria. Recuperación ante desastres en la nube: replicación geográfica.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern2-3.png)
 
-La principal **ventaja** de este patrón de diseño es que la carga de trabajo de la aplicación se puede escalar a través de varios elementos secundarios para lograr el rendimiento óptimo del usuario final. Los **inconvenientes** de esta opción son:
+clave de Hello **ventaja** de diseño de este patrón es que puede escalar la carga de trabajo de aplicación Hola a través de rendimiento de varios elementos secundarios tooachieve Hola óptimo para el usuario final. Hola **compensaciones** de esta opción son:
 
-* las conexiones de lectura y escritura entre las instancias de la aplicación y la base de datos varían en latencia y costo.
-* El rendimiento de la aplicación se ve afectado durante la interrupción.
+* Conexiones de lectura / escritura entre instancias de la aplicación hello y base de datos tienen distintos latencia y costo
+* Rendimiento de la aplicación se ve afectado durante la interrupción de Hola
 
 > [!NOTE]
-> Un enfoque similar puede usarse para descargar las cargas de trabajo especializadas, como trabajos de elaboración de informes, herramientas de inteligencia empresarial o copias de seguridad. Normalmente estas cargas de trabajo consumen una cantidad de recursos importante de la base de datos. Por tanto, se recomienda designar una de las bases de datos secundarias para ellas que tenga un nivel de rendimiento que coincida con la carga de trabajo anticipada.
+> Puede usar un enfoque similar toooffload especializado las cargas de trabajo como los informes de trabajos, herramientas de inteligencia empresarial o las copias de seguridad. Normalmente, estas cargas de trabajo consumen recursos significativos de la base de datos, por tanto, se recomienda designar uno de Hola bases de datos secundarias para ellos con carga de trabajo prevista de hello rendimiento nivel toohello coincidente.
 >
 
 ## <a name="design-pattern-3-active-passive-deployment-for-data-preservation"></a>Patrón de diseño 3: implementación activa-pasiva para la conservación de datos
-Esta opción es mejor para las aplicaciones con las siguientes características:
+Esta opción es ideal para las aplicaciones con hello siguientes características:
 
-* Cualquier pérdida de datos supone un alto riesgo para la empresa. La conmutación por error de la base de datos solo puede usarse como último recurso si la interrupción es grave.
-* La aplicación admite los modos de solo lectura y lectura y escritura de operaciones y puede funcionar en "modo de solo lectura" durante un período de tiempo.
+* Cualquier pérdida de datos supone un alto riesgo para la empresa. conmutación por error de base de datos de Hello solo puede usarse como último recurso si interrupción hello es grave.
+* aplicación Hello admite los modos de solo lectura y lectura / escritura de operaciones y puede funcionar en "modo de solo lectura" durante un período de tiempo.
 
-En este modelo, la aplicación cambia al modo de solo lectura cuando las conexiones de lectura y escritura empiezan a tener errores de tiempo de espera agotado. La aplicación web se implementa en ambas regiones e incluyen una conexión con el punto de conexión del agente de escucha de lectura y escritura y otra conexión con el punto de conexión del agente de escucha de solo lectura. El administrador de tráfico debe configurarse para usar el [enrutamiento de conmutación por error](../traffic-manager/traffic-manager-configure-failover-routing-method.md) con la [supervisión de punto de conexión](../traffic-manager/traffic-manager-monitoring.md) habilitada para el punto de conexión de aplicación en cada región.
+En este modelo, aplicación hello cambia el modo de sólo tooread cuando las conexiones de lectura / escritura de hello empiece a obtener errores de tiempo de espera. Hola aplicación Web está implementada tooboth regiones e incluyen un punto de conexión de agente de escucha de lectura y escritura de toohello de conexión y el punto de conexión de una conexión distinta toohello del agente de escucha de solo lectura. el Administrador de tráfico Hola se debe configurar toouse [enrutamiento de conmutación por error](../traffic-manager/traffic-manager-configure-failover-routing-method.md) con [supervisión de extremo](../traffic-manager/traffic-manager-monitoring.md) habilitada para el extremo de la aplicación hello en cada región.
 
-El siguiente diagrama muestra esta configuración antes de una interrupción.
+Hola siguiente diagrama ilustra esta configuración antes de una interrupción.
 
 ![Implementación activa-pasiva antes de la conmutación por error. Recuperación ante desastres en la nube.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-1.png)
 
-Cuando el administrador de tráfico detecta un error de conectividad con la región A, cambia automáticamente el tráfico de usuario a la instancia de aplicación de la región B. Con este modelo, es importante establecer el período de gracia con pérdida de datos en un valor suficientemente alto, por ejemplo, 24 horas. Esto asegurará que se evita la pérdida de datos si la interrupción se mitiga durante ese período. Cuando la aplicación web de la región B se active, las operaciones de lectura y escritura comenzarán a generar errores. En ese momento, debe cambiar al modo de solo lectura. En este modo, las solicitudes se enrutarán automáticamente a la base de datos secundaria. En el caso de que se produzca un error grave, la interrupción no se mitigará dentro del período de gracia y el grupo de conmutación por error activará la conmutación por error. Después de eso, el agente de escucha de lectura y escritura pasará a estar disponible y las llamadas a él dejarán de dar error. Esto se ilustra en el diagrama siguiente
+Cuando el Administrador de tráfico Hola detecta un tooregion de error de conectividad A, cambia automáticamente la instancia de aplicación de usuario tráfico toohello en la región de B. Con este modelo, es importante establecer período de gracia de hello con valor suficientemente alto de datos pérdida tooa, por ejemplo, 24 horas. Se asegurará de que se evita la pérdida de datos si se mitiga la interrupción de Hola durante este periodo. Cuando se activa hello las aplicaciones Web de región de hello B las operaciones de lectura y escritura de hello empiezan a generar errores. En ese momento, debe cambiar el modo de solo lectura de toohello. En este Hola modo solicitudes será toohello enrutado automáticamente la base de datos secundaria. En caso de hello del programa Hola a un error catastrófico interrupción no se pueden mitigar dentro del período de gracia de Hola y grupo de conmutación por error de hello desencadenará Hola conmutación por error. Después de ese Hola estará disponible el agente de escucha de lectura y escritura y Hola llamadas tooit se detendrá por error. Hola siguiente diagrama se ilustra.
 
 ![Interrupción: aplicación en modo de sólo lectura. Recuperación ante desastres en la nube.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-2.png)
 
-Si la interrupción de la región primaria se soluciona dentro del período de gracia, el administrador de tráfico detecta la restauración de la conectividad en la región principal y cambia el tráfico de usuario de nuevo a la instancia de aplicación de la región A. Esa instancia de aplicación se reanuda y funciona en modo de lectura y escritura utilizando la base de datos principal de la región A.
+Si se mitiga una interrupción de hello en la región principal de hello en período de gracia de hello, traffic manager detecta restauración Hola de conectividad en la región principal de Hola y activa la instancia de aplicación de usuario tráfico toohello atrás en la región A. Esa instancia de la aplicación se reanuda y funciona en modo de lectura y escritura en base de datos principal de hello región A.
 
-En caso de una interrupción en la región B, el administrador de tráfico detecta el error del punto de conexión de la aplicación en la región B y grupo de conmutación por error cambia el agente de escucha de solo lectura a la región A. Esta interrupción no afecta a la experiencia del usuario final, pero la base de datos principal quedará expuesta durante la interrupción. Esto se ilustra en el diagrama siguiente
+En el caso de una interrupción en la región de hello B, Administrador de tráfico de hello detecta el error de hello del extremo de aplicación hello en la región B y el grupo de conmutación por error Hola conmutadores Hola del agente de escucha de solo lectura tooregion A. Esta interrupción no afecta a la experiencia del usuario final de hello pero se expondrá la base de datos principal de Hola durante la interrupción de Hola. Hola siguiente diagrama se ilustra.
 
 ![Interrupción: base de datos secundaria. Recuperación ante desastres en la nube.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/pattern3-3.png)
 
-Una vez mitigada la interrupción, la base de datos secundaria se sincroniza inmediatamente con la principal y el agente de escucha de solo lectura se vuelve a cambiar a la base de datos secundaria de la región B. Durante la sincronización, el rendimiento de la principal podría verse ligeramente afectado dependiendo de la cantidad de datos que se necesite sincronizarse.
+Una vez que se mitiga interrupción hello, hello base de datos secundaria se sincronice inmediatamente con hello principal y agente de escucha de solo lectura de hello es conmutada toohello back-base de datos secundaria en la región de B. Durante la sincronización de rendimiento de hello principal podría verse afectada ligeramente según cantidad Hola de datos que necesita toobe sincronizado.
 
 Este patrón de diseño tiene varias **ventajas**:
 
-* Evita la pérdida de datos durante las interrupciones temporales.
-* El tiempo de inactividad depende solo de la rapidez del Administrador de tráfico para detectar el error de conectividad, que se puede configurar.
+* Evita la pérdida de datos durante las interrupciones temporales de Hola.
+* Tiempo de inactividad depende solo de la velocidad de traffic manager detecta errores de conectividad de hello, lo que es configurable.
 
-La **contrapartida** es:
+Hola **contrapartida** es:
 
-* La aplicación tiene que poder operar en modo de solo lectura.
+* Aplicación debe ser capaz de toooperate en modo de solo lectura.
 
 > [!NOTE]
-> En el caso de una interrupción del servicio permanente en la región, tiene que activar manualmente la conmutación por error de base de datos y aceptar la pérdida de datos. La aplicación será funcional en la región secundaria con acceso de lectura y escritura a la base de datos.
+> En el caso de una interrupción del servicio permanente en la región de hello, manualmente activar la conmutación por error de base de datos y Aceptar Hola pérdida de datos. aplicación Hello será funcional en la región secundaria de hello con base de datos de toohello de acceso de lectura y escritura.
 >
 
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Planificación de continuidad del negocio: elección del diseño de una aplicación para la recuperación ante desastres en la nube
-Su estrategia de recuperación ante desastres en la nube puede combinar o ampliar estos patrones para satisfacer mejor las necesidades de su aplicación.  Como se mencionó anteriormente, la estrategia que elija se basa en el acuerdo de nivel de servicio que desee ofrecer a sus clientes y en la topología de implementación de la aplicación. Para guiarle en su decisión, la siguiente tabla compara las opciones en función de la pérdida de datos estimada u objetivo de punto de recuperación (RPO) y el tiempo de recuperación calculado (ERT).
+La estrategia de recuperación ante desastres de nube específica puede combinar o ampliar estos patrones de diseño necesidades de hello cumple toobest de la aplicación.  Como se mencionó anteriormente, estrategia de Hola que elija se basa en hello SLA desee a toooffer tooyour clientes y Hola topología de implementación de aplicación. toohelp guiar la decisión, hello en la tabla siguiente compara las opciones de hello basándose en datos estimada de hello pérdida o recuperación objetivos de punto (RPO) y el tiempo de recuperación estimado (ERT).
 
 | Patrón | RPO | ERT |
 |:--- |:--- |:--- |
@@ -158,9 +158,9 @@ Su estrategia de recuperación ante desastres en la nube puede combinar o amplia
 |||
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para saber en qué consisten las copias de seguridad automatizadas de Base de datos SQL de Azure, consulte [Información general: copias de seguridad automatizadas de Base de datos SQL](sql-database-automated-backups.md)
+* toolearn acerca de las copias de seguridad de base de datos de SQL de Azure automatizada, vea [copias de seguridad automáticas de base de datos SQL](sql-database-automated-backups.md)
 * Para obtener una descripción general y los escenarios de la continuidad empresarial, consulte [Continuidad empresarial con Base de datos SQL de Azure](sql-database-business-continuity.md)
-* Si quiere saber cómo utilizar las copias de seguridad automatizadas para procesos de recuperación, consulte [Restore a database from the service-initiated backups](sql-database-recovery-using-backups.md)
-* Para conocer las opciones de recuperación más rápidas, consulte [Replicación geográfica activa](sql-database-geo-replication-overview.md)  
-* Si quiere aprender a utilizar las copias de seguridad automatizadas para procesos de archivado, consulte [Copiar una base de datos SQL de Azure](sql-database-copy.md)
+* toolearn sobre el uso de copias de seguridad automatizadas para la recuperación, vea [restaurar una base de datos de copias de seguridad de hello iniciadas por el servicio](sql-database-recovery-using-backups.md)
+* toolearn acerca de las opciones de recuperación más rápidos, consulte [replicación geográfica activa](sql-database-geo-replication-overview.md)  
+* toolearn sobre el uso de copias de seguridad automatizadas para el archivado, vea [copiar base de datos](sql-database-copy.md)
 * Para saber cómo utilizar la replicación geográfica activa con los grupos elásticos, consulte [Estrategias de recuperación ante desastres para aplicaciones que usan el grupo elástico de Base de datos SQL](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

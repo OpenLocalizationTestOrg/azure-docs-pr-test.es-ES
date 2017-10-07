@@ -1,6 +1,6 @@
 ---
-title: "Asignación de columnas de conjunto de datos de Azure Data Factory | Microsoft Docs"
-description: "Obtenga información acerca de cómo asignar columnas de origen a columnas de destino."
+title: columnas de conjunto de datos de aaaMapping de Data Factory de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toomap columnas toodestination columnas de origen."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,31 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.openlocfilehash: a50661b377cfbbff3f1f762342cb275d5da82cea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f78d4af675bec0a70e5f6e83ec1ffb511408b5a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Asignación de columnas de conjunto de datos de origen a columnas del conjunto de datos de destino
-La asignación de columnas puede usarse para especificar cómo se asignan las columnas especificadas en "structure" de la tabla de origen a las columnas especificadas en "structure" de la tabla receptora. La propiedad **columnMapping** está disponible en la sección **typeProperties** de la actividad de copia.
+# <a name="map-source-dataset-columns-toodestination-dataset-columns"></a>Asignar columnas de conjunto de toodestination de columnas de conjunto de datos de origen
+Asignación de columnas puede ser usado toospecify cómo especifican las columnas especificadas en hello "estructura" de toocolumns de asignación de tabla de origen de estructura"hello" de la tabla de receptor. Hola **columnMapping** propiedad está disponible en hello **typeProperties** sección de hello actividad de copia.
 
-La asignación de columnas admite los siguientes escenarios:
+Asignación de columnas admite Hola los escenarios siguientes:
 
-* Todas las columnas del conjunto de datos "structure" están asignadas a todas las columnas del conjunto de datos receptor "structure".
-* Un subconjunto de columnas del conjunto de datos de origen "structure" está asignado a todas las columnas del conjunto de datos receptor "structure".
+* Todas las columnas de estructura de conjunto de datos de origen de hello son columnas de tooall asignada en la estructura de conjunto de datos del receptor de Hola.
+* Un subconjunto de columnas de hello en la estructura del conjunto de datos de origen de hello es asignada tooall columnas de estructura de conjunto de datos del receptor de Hola.
 
-Las siguientes son las condiciones de error que tienen como resultado una excepción:
+siguiente Hola es condiciones de error que se producen una excepción:
 
-* O bien menos columnas o más columnas en "structure" de la tabla receptora de las que se especifican en la asignación.
+* Columnas menos o más columnas en hello "estructura" de receptor tabla que especifica en asignación de Hola.
 * Asignación duplicada.
-* El resultado de la consulta SQL no tiene un nombre de columna que esté especificado en la asignación.
+* Resultado de la consulta SQL no tiene un nombre de columna que se especifica en la asignación de Hola.
 
 > [!NOTE]
-> Los ejemplos siguientes son para Azure SQL y Azure Blob, pero resultan aplicables a cualquier almacén de datos que admita conjuntos de datos rectangulares. Ajuste el conjunto de datos y las definiciones de servicios vinculados en los ejemplos para que apunten a datos del origen de datos pertinente.
+> Hello en los ejemplos siguientes son para SQL Azure y Azure Blob pero tooany aplicables almacén de datos que admite conjuntos de datos rectangular. Ajustar el conjunto de datos y las definiciones de servicio vinculado en ejemplos toopoint toodata en origen de datos correspondiente de Hola.
 
-## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>Ejemplo 1: asignación de columnas de SQL Server a un blob de Azure
-En este ejemplo la tabla de entrada tiene una estructura y apunta a una tabla SQL en una base de datos de SQL de Azure.
+## <a name="sample-1--column-mapping-from-azure-sql-tooazure-blob"></a>Ejemplo 1: asignación de blob de Azure SQL tooAzure de columna
+En este ejemplo, tabla de entrada de hello tiene una estructura y señala tooa table de SQL en una base de datos de SQL Azure.
 
 ```json
 {
@@ -70,7 +70,7 @@ En este ejemplo la tabla de entrada tiene una estructura y apunta a una tabla SQ
 }
 ```
 
-En este ejemplo, la tabla de salida tiene una estructura y apunta a un blob en un almacenamiento de blobs de Azure.
+En este ejemplo, tabla de salida de hello tiene una estructura y señala tooa blob en el almacenamiento de blobs de Azure.
 
 ```json
 {
@@ -103,7 +103,7 @@ En este ejemplo, la tabla de salida tiene una estructura y apunta a un blob en u
 }
 ```
 
-El siguiente fragmento JSON define una actividad de copia en una canalización. Las columnas del origen se asignan a columnas del receptor (**columnMappings**) usando la propiedad **Translator**.
+Hola después JSON define una actividad de copia de una canalización. las columnas de Hola de origen asignan toocolumns en el receptor (**columnMappings**) mediante el uso de hello **traductor** propiedad.
 
 ```json
 {
@@ -137,8 +137,8 @@ El siguiente fragmento JSON define una actividad de copia en una canalización. 
 
 ![Flujo de asignación de columnas](./media/data-factory-map-columns/column-mapping-flow.png)
 
-## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Ejemplo 2: asignación de columnas con una consulta SQL de SQL de Azure a un blob de Azure
-En este ejemplo, se usa una consulta SQL para extraer datos de SQL de Azure en lugar de especificar simplemente el nombre de tabla y los nombres de columna en la sección "structure". 
+## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-tooazure-blob"></a>Ejemplo 2: columna asignación con la consulta SQL desde blob tooAzure de SQL Azure
+En este ejemplo, una consulta SQL es tooextract usa datos de SQL Azure en lugar de especificar simplemente el nombre de la tabla de Hola y nombres de columna de hello en la sección "estructura". 
 
 ```json
 {
@@ -170,13 +170,13 @@ En este ejemplo, se usa una consulta SQL para extraer datos de SQL de Azure en l
         }
 }
 ```
-En este caso, los resultados de consulta se asignan primero a las columnas especificadas en "structure" del origen. A continuación, las columnas dev"structure" de origen se asignan a columnas "structure" de receptor con las reglas especificadas en columnMappings.  Supongamos que la consulta devuelve cinco columnas, dos columnas más que las especificas en el elemento "structure" de origen.
+En este caso, resultados de la consulta de hello son primera toocolumns asignada especificada en "estructura" de origen. A continuación, las columnas de Hola de origen "estructura" son toocolumns asignada en el receptor "estructura" con las reglas especificadas en columnMappings.  Supongamos que la consulta de hello devuelve 5 columnas, dos columnas más de las especificadas en hello "estructura" de origen.
 
 **Flujo de asignación de columnas**
 
 ![Flujo de asignación de columnas 2](./media/data-factory-map-columns/column-mapping-flow-2.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-Vea el artículo para acceder a un tutorial sobre el uso de la actividad de copia: 
+Vea el artículo de Hola para obtener un tutorial sobre el uso de la actividad de copia: 
 
-- [Copia de datos de Blob Storage en SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Copiar los datos de almacenamiento de blobs tooSQL base de datos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)

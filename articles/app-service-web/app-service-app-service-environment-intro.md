@@ -1,6 +1,6 @@
 ---
-title: "Introducción a App Service Environment v1"
-description: "Aprenda sobre la característica App Service Environment v1 que proporciona unidades de escala dedicadas, seguras y en redes virtuales para ejecutar todas las aplicaciones."
+title: aaaIntroduction tooApp v1 de entorno del servicio
+description: "Obtenga información acerca de la característica de hello v1 de entorno del servicio de aplicaciones que proporciona unidades de escalado seguro, unirse a la red virtual dedicado para ejecutar todas las aplicaciones."
 services: app-service
 documentationcenter: 
 author: stefsch
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 38cb79eb32bd61cdbfb6da91d50e6713d71a2b0d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6e3cd1909b241887b5ec19412b9f7884d870cc3d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-app-service-environment-v1"></a>Introducción a App Service Environment v1
+# <a name="introduction-tooapp-service-environment-v1"></a>Introducción tooApp v1 de entorno del servicio
 
 > [!NOTE]
-> Este artículo trata sobre App Service Environment v1.  Hay una versión más reciente de App Service Environment que resulta más fácil de usar y se ejecuta en una infraestructura más eficaz. Para aprender más sobre la nueva versión, consulte [Introducción a App Service Environment](../app-service/app-service-environment/intro.md).
+> Este artículo trata sobre Hola v1 de entorno del servicio de aplicaciones.  Hay una versión más reciente de hello entorno del servicio de aplicación que es más fácil toouse y se ejecuta en una infraestructura más eficaz. toolearn más información acerca de la nueva versión de hello iniciar con hello [toohello Introducción entono](../app-service/app-service-environment/intro.md).
 > 
 
 ## <a name="overview"></a>Información general
@@ -36,56 +36,56 @@ Los entornos del Servicio de aplicaciones son ideales para cargas de trabajo de 
 
 Los clientes pueden crear varios entornos del Servicio de aplicaciones en una o varias regiones de Azure.  Esto hace que sean perfectos para los niveles de aplicación sin estado de escalado horizontal en el respaldo de cargas de trabajo RPS elevadas.
 
-Los entornos del Servicios de aplicaciones están aislados para ejecutar únicamente las aplicaciones de un solo cliente, y siempre se implementan en una red virtual.  Los clientes tienen un mayor control sobre el tráfico de red entrante y saliente de las aplicaciones, y las aplicaciones pueden establecer conexiones seguras de alta velocidad a los recursos corporativos locales a través de redes virtuales.
+Los entornos del servicio de aplicación son toorunning aislado sólo las aplicaciones de un único cliente y siempre se implementan en una red virtual.  Los clientes tienen control más preciso sobre el tráfico de red de aplicación entrantes y salientes, y las aplicaciones pueden establecer conexiones seguras a alta velocidad sobre los recursos corporativos de redes virtuales tooon local.
 
-Todos los artículos y procedimientos acerca de los entornos del Servicio de aplicaciones están disponibles en el archivo [Léame para entornos del Servicio de aplicaciones](../app-service/app-service-app-service-environments-readme.md).
+Todos los artículos y cómo-para sobre entornos del servicio de aplicación están disponibles en hello [archivo Léame para entornos de aplicaciones de servicio](../app-service/app-service-app-service-environments-readme.md).
 
-Para obtener información general del modo en que los entornos de App Service permiten el acceso de red a alta escala y seguro, consulte el [vídeo Deep Dive de AzureCon][AzureConDeepDive] sobre los entornos de App Service.
+Para obtener información general del proceso de habilitar a gran escala y proteger entornos del servicio de aplicación, acceso a la red, consulte hello [AzureCon profundización] [ AzureConDeepDive] en entornos del servicio de aplicación.
 
-Para profundizar en el escalado horizontal con varios entornos de App Service, consulte el artículo sobre cómo configurar una [superficie de aplicaciones con distribución geográfica][GeodistributedAppFootprint].
+Para un análisis más profundo de ajuste de escala horizontal con varios entornos de servicio de aplicación consulte el artículo de hello acerca de cómo toosetup una [consumo de aplicaciones distribuidas geográficamente][GeodistributedAppFootprint].
 
-Para ver cómo se ha configurado la arquitectura de seguridad mostrada en la inmersión en AzureCon, consulte el artículo sobre la implementación de una [arquitectura de seguridad en capas](app-service-app-service-environment-layered-security.md) con entornos del Servicio de aplicaciones.
+toosee cómo se configuró la arquitectura de seguridad de Hola se muestra en hello AzureCon exhaustiva, consulte el artículo de hello en la implementación de un [en capas de arquitectura de seguridad](app-service-app-service-environment-layered-security.md) con entornos del servicio de aplicación.
 
-Las aplicaciones que se ejecutan en entornos de aplicación de servicio pueden tener su acceso validado por dispositivos de subida como firewalls de aplicación web (WAF).  En el artículo sobre la [configuración de un WAF para entornos de aplicación de servicio](app-service-app-service-environment-web-application-firewall.md) se trata este escenario. 
+Las aplicaciones que se ejecutan en entornos de aplicación de servicio pueden tener su acceso validado por dispositivos de subida como firewalls de aplicación web (WAF).  artículo de Hello en [configurar un WAFS para entornos del servicio de aplicación](app-service-app-service-environment-web-application-firewall.md) cubre este escenario. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="dedicated-compute-resources"></a>Recursos de proceso dedicados
-Todos los recursos de proceso de un entorno del Servicio de aplicaciones están dedicados exclusivamente a una sola suscripción, y se puede configurar un entorno del Servicio de aplicaciones con hasta cincuenta recursos de proceso (50) para uso exclusivo de una única aplicación.
+Todo proceso Hola recursos en un entorno de servicio de aplicaciones están dedicados exclusivamente tooa sola suscripción, y se puede configurar un entorno de servicio de aplicaciones con los recursos de proceso toofifty (50) para su uso exclusivo por una sola aplicación.
 
-Un entorno de este tipo se compone de un grupo de recursos de proceso front-end y de entre uno a tres grupos de recursos de proceso de trabajo. 
+Un entorno de servicio de aplicaciones se compone de un grupo de recursos de proceso de front-end, así como grupos de recursos de proceso de trabajo de uno toothree. 
 
-El grupo de servidores front-end contiene los recursos de proceso responsables de la terminación SSL y del equilibrio de carga automático de las solicitudes de aplicación dentro de un entorno del Servicio de aplicaciones. 
+grupo de servidores front-end de Hello contiene recursos de proceso responsable de la terminación SSL como Equilibrio de carga también automática de las solicitudes de aplicación dentro de un entorno de servicio de aplicación. 
 
-Cada grupo de trabajo contiene recursos de proceso asignados a [Planes de App Service][AppServicePlan] que, a su vez, contienen una o más aplicaciones de Azure App Service.  Como en un entorno del Servicio de aplicaciones puede haber hasta tres grupos de trabajo distintos, tiene la flexibilidad de elegir diferentes recursos de proceso para cada grupo de trabajo.  
+Cada grupo de trabajo contiene recursos de proceso que se asigna demasiado[planes de servicio de aplicación][AppServicePlan], que a su vez contienen una o más aplicaciones de servicio de aplicaciones de Azure.  Dado que puede haber los grupos de trabajo diferentes de toothree en un entorno de servicio de aplicaciones, tendrá Hola flexibilidad toochoose diferentes los recursos de proceso para cada grupo de trabajo.  
 
-Esto permite, por ejemplo, crear un grupo de trabajo con recursos de proceso de menor eficacia para los planes del Servicio de aplicaciones destinados a aplicaciones de prueba o desarrollo.  Un segundo (o incluso tercer) grupo de trabajo podría usar recursos de proceso más eficaces en los planes del Servicio de aplicaciones que ejecuten aplicaciones de producción.
+Por ejemplo, esto permite toocreate grupo de un trabajo con los recursos de proceso menos eficaces para planes de servicio de aplicación diseñada para las aplicaciones de desarrollo o de prueba.  Un segundo (o incluso tercer) grupo de trabajo podría usar recursos de proceso más eficaces en los planes del Servicio de aplicaciones que ejecuten aplicaciones de producción.
 
-Para obtener más detalles sobre la cantidad de recursos de proceso disponibles para los grupos de servidores front-end y los grupos de trabajo, consulte el artículo de [configuración de un entorno de App Service][HowToConfigureanAppServiceEnvironment].  
+Para obtener más detalles sobre la cantidad de Hola de front-end de toohello disponible de recursos de proceso y los grupos de trabajo, consulte [cómo tooConfigure un entorno de servicio de aplicaciones][HowToConfigureanAppServiceEnvironment].  
 
-Para obtener más detalles sobre los tamaños de los recursos de proceso disponibles admitidos en un entorno de App Service, consulte la página de [precios de App Service][AppServicePricing] y revise las opciones disponibles para este tipo de entornos en el plan de tarifa Premium.
+Para obtener más información sobre Hola disponible calcula tamaños de recursos admitidos en un entorno de servicio de aplicaciones, consulte hello [precios del servicio de aplicación] [ AppServicePricing] página y revise Hola opciones disponibles para los entornos del servicio de aplicación en el nivel de precios de hello Premium.
 
 ## <a name="virtual-network-support"></a>Compatibilidad con redes virtuales
-Puede crearse un entorno de App Service **en** una red virtual de Azure Resource Manager **o** en una del modelo de implementación clásica ([obtenga más información sobre las redes virtuales][MoreInfoOnVirtualNetworks]).  Puesto que los entornos de este tipo residen siempre en una red virtual y, más concretamente, en una subred de una red virtual, puede aprovechar las características de seguridad de las redes virtuales para controlar las comunicaciones de red entrantes y salientes.  
+Puede crearse un entorno de App Service **en** una red virtual de Azure Resource Manager **o** en una del modelo de implementación clásica ([obtenga más información sobre las redes virtuales][MoreInfoOnVirtualNetworks]).  Puesto que siempre existe un entorno de servicio de aplicación en una red virtual y más concretamente dentro de una subred de una red virtual, puede aprovechar las características de seguridad de redes virtuales toocontrol hello las comunicaciones de red entrantes y salientes.  
 
 Una instancia de App Service Environment puede tener conexión a Internet con una dirección IP pública, o tener una conexión interna solo con la dirección de un equilibrador de carga interno (ILB) de Azure.
 
-Puede usar [grupos de seguridad de red][NetworkSecurityGroups] para restringir las comunicaciones de red entrantes a la subred donde reside el entorno de App Service.  Esto le permite ejecutar aplicaciones tras dispositivos y servicios ascendentes, como firewalls de aplicaciones web y proveedores de SaaS de red.
+Puede usar [grupos de seguridad de red] [ NetworkSecurityGroups] toorestrict entrada comunicaciones toohello subred donde reside un entorno de servicio de aplicaciones.  Esto le permite aplicaciones toorun detrás de servicios como firewalls de aplicación web y los proveedores de SaaS de red y dispositivos de nivel superior.
 
-Las aplicaciones, además, suelen requerir acceso a recursos corporativos, como bases de datos internas y servicios web.  Un enfoque común consiste en poner estos extremos a disposición únicamente del flujo de tráfico de red interno de una red virtual de Azure.  Una vez que un entorno de App Service se une a la misma red virtual que los servicios internos, las aplicaciones que se ejecutan en el entorno pueden tener acceso a ellos, incluidos los puntos de conexión accesibles mediante conexiones [De sitio a sitio][SiteToSite] y [Azure ExpressRoute][ExpressRoute].
+Las aplicaciones también a menudo necesitan tooaccess los recursos corporativos, como servicios web y bases de datos internas.  Un enfoque común es toomake estos extremos toointernal solo disponible el tráfico de red que fluyen en una red virtual de Azure.  Una vez que un entorno de servicio de aplicaciones se toohello combinada misma red virtual que los servicios internos hello, aplicaciones que se ejecutan en el entorno de hello puede tener acceso a ellos, incluidos los extremos accesibles a través de [sitio a sitio] [ SiteToSite]y [ExpressRoute de Azure] [ ExpressRoute] las conexiones.
 
-Para obtener más detalles sobre cómo funcionan los entornos de App Service con redes virtuales y locales, consulte los siguientes artículos sobre [información general sobre la arquitectura de red de los entornos de App Service][NetworkArchitectureOverview], de [cómo controlar el tráfico de entrada a un entorno de App Service][ControllingInboundTraffic] y sobre [conexión segura a los recursos de back-end desde un entorno de App Service][SecurelyConnectingToBackends]. 
+Para obtener más detalles sobre cómo funcionan los entornos del servicio de aplicación con redes virtuales y redes locales Consulte Hola siguientes artículos [arquitectura de red][NetworkArchitectureOverview], [controlar la entrada Tráfico][ControllingInboundTraffic], y [conectarse de forma segura tooBackends][SecurelyConnectingToBackends]. 
 
 ## <a name="getting-started"></a>Introducción
-Para empezar a trabajar con los entornos de App Service, consulte el artículo sobre [creación de un entorno de App Service][HowToCreateAnAppServiceEnvironment].
+tooget iniciado con el entorno de servicio de aplicación, vea [cómo tooCreate un entorno de servicio de aplicaciones][HowToCreateAnAppServiceEnvironment]
 
-Todos los artículos y procedimientos para los entornos del Servicio de aplicaciones están disponibles en el archivo [Léame para entornos del Servicio de aplicaciones](../app-service/app-service-app-service-environments-readme.md).
+Todos los artículos y cómo-para para entornos del servicio de aplicación están disponibles en hello [archivo Léame para entornos de aplicaciones de servicio](../app-service/app-service-app-service-environments-readme.md).
 
-Para obtener más información sobre la plataforma Azure App Service, consulte [Azure App Service][AzureAppService].
+Para obtener más información acerca de la plataforma de servicio de aplicaciones de Azure de hello, consulte [servicio de aplicaciones de Azure][AzureAppService].
 
-Para obtener información general sobre la arquitectura de red del entorno de App Service, consulte el artículo de [información general sobre la arquitectura de red de los entornos de App Service][NetworkArchitectureOverview].
+Para obtener información general de arquitectura de red del entorno de servicio de aplicaciones de hello, vea hello [información general de la arquitectura de red] [ NetworkArchitectureOverview] artículo.
 
-Para obtener información detallada sobre el uso de un entorno de App Service con ExpressRoute, consulte el siguiente artículo sobre [detalles de configuración de red para entornos de App Service con ExpressRoute][NetworkConfigDetailsForExpressRoute].
+Para obtener más información sobre el uso de un entorno de servicio de aplicaciones con ExpressRoute, consulte Hola artículo siguiente [Express Route y entornos del servicio de aplicación][NetworkConfigDetailsForExpressRoute].
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

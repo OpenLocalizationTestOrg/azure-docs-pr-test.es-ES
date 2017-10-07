@@ -1,5 +1,5 @@
 ---
-title: Uso del servicio Azure Batch Rendering para representar en la nube | Microsoft Docs
+title: "aaaUse Hola representación de lote de Azure servicio toorender en la nube de hello | Documentos de Microsoft"
 description: "Represente trabajos en máquinas virtuales de Azure directamente desde Maya y según la modalidad de pago por uso."
 services: batch
 author: tamram
@@ -8,19 +8,19 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 07/31/2017
 ms.author: tamram
-ms.openlocfilehash: 4d22f92cafdbceee5213361d6d2b2f38904d12c6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3fb78d883311bbc3ab62743b7d1b111ffad177cd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-batch-rendering-service"></a>Introducción al servicio Batch Rendering
+# <a name="get-started-with-hello-batch-rendering-service"></a>Empezar a trabajar con hello servicio de procesamiento por lotes
 
-El servicio Azure Batch Rendering ofrece funcionalidades de representación para la nube según una modalidad de pago por uso. Este servicio controla la programación y la puesta en cola de los trabajos, la administración de errores y reintentos y el escalado automático del trabajo de representación. El servicio Batch Rendering admite Autodesk Maya, 3ds Max y Arnold, y próximamente se admitirán también otras aplicaciones. El complemento de Batch para Maya 2017 facilita el inicio de un trabajo de representación en Azure justo desde el escritorio. 
+Hola servicio de procesamiento por lotes de Azure ofrece capacidades de representación de la escala de nube en forma de pago por uso. Hola servicio de procesamiento por lotes controla la programación de trabajos y puesta en cola, administrar errores y reintentos y la escala automática para el trabajo de procesamiento. Hola servicio por lotes de representación admite Autodesk Maya, 3ds Max y Arnold, con compatibilidad con otras aplicaciones que estarán disponibles próximamente. Hola lote complemento para Maya 2017 resulta fácil toostart un trabajo de representación en Azure directamente desde el escritorio. 
 
 ## <a name="supported-applications"></a>Aplicaciones admitidas
 
-El servicio Batch Rendering admite actualmente las siguientes aplicaciones:
+Hola servicio por lotes de representación admite actualmente Hola derivados de la solicitud:
 
 - Autodesk Maya
 - Autodesk 3ds Max
@@ -28,94 +28,94 @@ El servicio Batch Rendering admite actualmente las siguientes aplicaciones:
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para usar el servicio Batch Rendering, necesita:
+servicio de procesamiento por lotes de Hola de toouse, necesita:
 
 - Una [cuenta de Azure](https://azure.microsoft.com/free/). 
-- **Una cuenta de Azure Batch** Para obtener instrucciones sobre cómo crear una cuenta de Batch en Azure Portal, consulte [Creación de una cuenta de Batch con Azure Portal](batch-account-create-portal.md).
-- **Una cuenta de Azure Storage.** Los recursos usados para el trabajo de representación se almacenan en Azure Storage. Puede crear una cuenta de almacenamiento automáticamente al configurar su cuenta de Batch. También puede usar una cuenta de almacenamiento existente. Para aprender más sobre las cuentas de Storage, consulte [Creación, administración o eliminación de una cuenta de almacenamiento en Azure Portal](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
+- **Una cuenta de Azure Batch** Para obtener instrucciones sobre cómo crear una cuenta de lote en hello portal de Azure, consulte [crear una cuenta de lote con hello portal de Azure](batch-account-create-portal.md).
+- **Una cuenta de Azure Storage.** activos de Hola que se utilizan para el trabajo de representación se almacenan en el almacenamiento de Azure. Puede crear una cuenta de almacenamiento automáticamente al configurar su cuenta de Batch. También puede usar una cuenta de almacenamiento existente. toolearn más información acerca de las cuentas de almacenamiento, consulte [cómo toocreate, administrar o eliminar una cuenta de almacenamiento en el portal de Azure hello](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
 
-Para usar el complemento de Batch para Maya, necesita:
+Hola toouse lote complemento para Maya, necesita:
 
 - **Maya 2017**
 - **Arnold para Maya**
 
-También puede usar [Azure Portal](https://portal.azure.com) para crear grupos de máquinas virtuales preconfiguradas con Maya, 3ds Max y Arnold. Puede usar el portal para supervisar los trabajos y diagnosticar las tareas con error; para ello, descargue los registros de aplicación y conéctese de forma remota a máquinas virtuales individuales mediante RDP o SSH.
+También puede usar hello [portal de Azure](https://portal.azure.com) toocreate grupos de máquinas virtuales que están preconfiguradas con Maya, 3ds Max y Arnold. Puede usar los trabajos de portal toomonitor hello y diagnosticar errores de las tareas mediante la descarga de registros de la aplicación y conectar de forma remota máquinas virtuales de tooindividual con RDP o SSH.
 
 ## <a name="basic-batch-concepts"></a>Conceptos básicos sobre Batch
 
-Antes de empezar a usar el servicio Batch Rendering, resulta útil familiarizarse con algunos conceptos sobre Batch, como los nodos de proceso, los grupos y los trabajos. Para aprender más sobre Azure Batch en general, consulte [Ejecución de cargas de trabajo paralelas intrínsecamente con Batch](batch-technical-overview.md).
+Antes de empezar a usar el servicio de procesamiento por lotes de hello, resulta útil toobe familiarizado con algunos conceptos de lote, como nodos de proceso, los grupos y los trabajos. toolearn más información sobre el lote de Azure en general, vea [ejecutar cargas de trabajo paralelos intrínsecamente con lote](batch-technical-overview.md).
 
 ### <a name="pools"></a>Grupos
 
 Batch es un servicio de plataforma para la ejecución de trabajos de proceso intensivo, como la representación de un **grupo** de **nodos de proceso**. Cada nodo de proceso de un grupo es una máquina virtual (VM) de Azure que ejecuta Linux o Windows. 
 
-Para más información sobre los grupos de Batch y los nodos de proceso, consulte las secciones [Grupo](batch-api-basics.md#pool) y [Nodo de proceso](batch-api-basics.md#compute-node) de [Desarrollo de soluciones de procesos paralelos a gran escala con Batch](batch-api-basics.md).
+Para obtener más información sobre los grupos de proceso por lotes y nodos de proceso, vea hello [grupo](batch-api-basics.md#pool) y [de nodos de proceso](batch-api-basics.md#compute-node) secciones en [paralelas a gran escala de desarrollar soluciones con el lote de proceso](batch-api-basics.md).
 
 ### <a name="jobs"></a>Trabajos
 
-Un **trabajo** de Batch es una colección de tareas que se ejecutan en los nodos de proceso de un grupo. Cuando se envía un trabajo de representación, Batch lo divide en tareas y las distribuye a los nodos de proceso del grupo para ejecutarlas.
+Un lote **trabajo** es una colección de tareas que se ejecutan en hello nodos de cálculo en un grupo. Cuando se envía un trabajo de representación, lote divide el trabajo de hello en tareas y distribuye los nodos de proceso de hello tareas toohello en hello grupo toorun.
 
-Para más información sobre los trabajos de Batch, consulte la sección [Trabajo](batch-api-basics.md#job) de [Desarrollo de soluciones de procesos paralelos a gran escala con Batch](batch-api-basics.md).
+Para obtener más información acerca de los trabajos por lotes, vea hello [trabajo](batch-api-basics.md#job) sección [paralelas a gran escala de desarrollar soluciones con el lote de proceso](batch-api-basics.md).
 
-## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Uso del complemento de Batch para Maya para enviar un trabajo de representación
+## <a name="use-hello-batch-plug-in-for-maya-toosubmit-a-render-job"></a>Hola complemento para Maya toosubmit un trabajo de procesamiento del lote de uso
 
-Con el complemento de Batch para Maya, puede enviar un trabajo al servicio Batch Rendering directamente desde Maya. En las secciones siguientes se describe cómo configurar el trabajo desde el complemento y luego enviarlo. 
+Con hello lote complemento para Maya, puede enviar un servicio de procesamiento por lotes directamente desde Maya toohello de trabajo. Hola las secciones siguientes describe cómo tooconfigure Hola trabajo de hello complemento y, a continuación, enviarla. 
 
-### <a name="load-the-batch-plug-in-in-maya"></a>Carga del complemento de Batch en Maya
+### <a name="load-hello-batch-plug-in-in-maya"></a>Hola de carga por lotes complemento en Maya
 
-El complemento de Batch está disponible en [GitHub](https://github.com/Azure/azure-batch-maya/releases). Descomprima el archivo en un directorio de su elección. Puede cargar el complemento directamente desde el directorio *azure_batch_maya*.
+Hola lote complemento está disponible en [GitHub](https://github.com/Azure/azure-batch-maya/releases). Descomprima el directorio de archivo tooa y Hola de su elección. Puede cargar Hola complemento directamente desde hello *azure_batch_maya* directory.
 
-Para cargar el complemento en Maya:
+Hola de tooload complemento en Maya:
 
 1. Ejecute Maya.
 2. Abra **Window (Ventana)** > **Settings/Preferences (Configuración/Preferencias)** > **Plug-in Manager (Administrador de complementos)**.
 3. Haga clic en **Examinar**.
-4. Desplácese hasta *azure_batch_maya/plug-in/AzureBatch.py* y selecciónelo.
+4. Navegue seleccione tooand *azure_batch_maya/plug-in/AzureBatch.py*.
 
-### <a name="authenticate-access-to-your-batch-and-storage-accounts"></a>Autenticación del acceso a sus cuentas de Batch y Storage
+### <a name="authenticate-access-tooyour-batch-and-storage-accounts"></a>Autenticar cuentas de lote y el almacenamiento de tooyour de acceso
 
-Para usar el complemento, debe autenticarse mediante las claves de cuenta de Azure Batch y Azure Storage. Para recuperar las claves de cuenta:
+Hola toouse complemento debe tooauthenticate usando su lote de Azure y claves de la cuenta de almacenamiento de Azure. tooretrieve las claves de cuenta:
 
-1. Muestre el complemento en Maya y seleccione la pestaña **Config** (Configuración).
-2. Acceda a [Azure Portal](https://portal.azure.com).
-3. Seleccione **Cuentas de Batch** en el menú de la izquierda. Si es necesario, haga clic en **Más servicios** y filtre por _Batch_.
-4. Busque la cuenta de Batch deseada en la lista.
-5. Seleccione el elemento de menú **Claves** para mostrar el nombre de la cuenta, la dirección URL de la cuenta y las claves de acceso:
-    - Pegue la dirección URL de la cuenta de Batch en el campo **Servicio** del complemento de Batch.
-    - Pegue el nombre de la cuenta en el campo **Cuenta de Batch**.
-    - Pegue la clave de cuenta principal en el campo **Clave de Batch**.
-7. Seleccione Cuentas de Storage en el menú de la izquierda. Si es necesario, haga clic en **Más servicios** y filtre por _Storage_.
-8. Busque la cuenta de Storage deseada en la lista.
-9. Seleccione el elemento de menú **Claves de acceso** para mostrar los nombres y las claves de la cuenta de almacenamiento.
-    - Pegue el nombre de cuenta de Storage en el campo **Cuenta de Storage** del complemento de Batch.
-    - Pegue la clave de cuenta principal en el campo **Clave de Storage**.
-10. Haga clic en **Autenticar** para asegurarse de que el complemento puede acceder a ambas cuentas.
+1. Hola mostrar complemento en Maya y seleccione hello **Config** ficha.
+2. Navegue toohello [portal de Azure](https://portal.azure.com).
+3. Seleccione **las cuentas de lote** del menú izquierdo Hola. Si es necesario, haga clic en **Más servicios** y filtre por _Batch_.
+4. Busque la cuenta de lote de hello deseado en lista de Hola.
+5. Seleccione hello **claves** toodisplay de elemento de menú su nombre de cuenta, URL de la cuenta y las teclas de acceso:
+    - Pegue la URL hello de la cuenta de lote en hello **servicio** campo Hola lote complemento.
+    - Pegar el nombre de cuenta de hello en hello **cuenta de lote** campo.
+    - Clave de cuenta principal de pegar hello en hello **clave lote** campo.
+7. Seleccione las cuentas de almacenamiento desde el menú izquierdo Hola. Si es necesario, haga clic en **Más servicios** y filtre por _Storage_.
+8. Ubicar la cuenta de almacenamiento de hello deseado en la lista de Hola.
+9. Seleccione hello **teclas de acceso** nombre de cuenta de almacenamiento de hello toodisplay de elemento de menú y las claves.
+    - Nombre de cuenta de almacenamiento de pegar hello en hello **cuenta de almacenamiento** campo Hola lote complemento.
+    - Clave de cuenta principal de pegar hello en hello **clave de almacenamiento** campo.
+10. Haga clic en **Authenticate** tooensure que Hola complemento puede tener acceso a ambas cuentas.
 
-Cuando se ha autenticado correctamente, el complemento establece el campo de estado en **Autenticado**: 
+Una vez que se haya autenticado correctamente, conjuntos de complemento de Hola Hola campo estado demasiado**autenticado**: 
 
 ![Autenticación de las cuentas de Batch y Storage](./media/batch-rendering-service/authentication.png)
 
 ### <a name="configure-a-pool-for-a-render-job"></a>Configuración de un grupo para un trabajo de representación
 
-Cuando se hayan autenticado las cuentas de Batch y Storage, configure un grupo para el trabajo de representación. El complemento guarda las selecciones entre sesiones. Cuando haya realizado su configuración preferida, no tendrá que modificarla a menos que la cambie.
+Cuando se hayan autenticado las cuentas de Batch y Storage, configure un grupo para el trabajo de representación. Hola complemento guarda las selecciones entre sesiones. Una vez haya configurado su configuración preferida, no necesitará toomodify, a menos que lo cambie.
 
-Las secciones siguientes le guían por las opciones disponibles en la pestaña **Submit** (Enviar):
+Hello secciones siguientes le guían a través de opciones disponibles de hello, disponibles en hello **enviar** ficha:
 
 #### <a name="specify-a-new-or-existing-pool"></a>Especificación de un grupo nuevo o existente
 
-Para especificar un grupo en el que ejecutar el trabajo de representación, seleccione la pestaña **Submit** (Enviar). Esta pestaña proporciona opciones para la creación de un grupo o la selección de un grupo existente:
+toospecify un grupo en qué trabajo de procesamiento de hello toorun, seleccione hello **enviar** ficha. Esta pestaña proporciona opciones para la creación de un grupo o la selección de un grupo existente:
 
-- También puede **aprovisionar automáticamente un grupo en este trabajo** (opción predeterminada). Cuando elige esta opción, Batch crea un grupo exclusivamente para el trabajo actual y lo elimina automáticamente cuando el trabajo de representación finaliza. Esta opción es más adecuada si tiene que realizar un único trabajo de representación.
-- También puede **reutilizar un grupo persistente existente**. Si tiene un grupo existente que está inactivo, puede especificar ese grupo para ejecutar el trabajo de representación; para ello, selecciónelo en la lista desplegable. La reutilización de un grupo persistente existente ahorra el tiempo necesario para aprovisionar el grupo.  
-- También puede **crear un nuevo grupo persistente**. Si elige esta opción, se crea un nuevo grupo para ejecutar el trabajo. El grupo no se elimina cuando el trabajo finaliza, así que puede reutilizarlo en trabajos futuros. Seleccione esta opción cuando tenga una necesidad continua de ejecutar trabajos de representación. En los trabajos posteriores, puede seleccionar **reutilizar un grupo persistente existente** para usar el grupo persistente que creó para el primer trabajo.
+- También puede **automáticamente aprovisionar un grupo para este trabajo** (Hola la opción predeterminada). Cuando elige esta opción, por lotes crea el grupo de hello exclusivamente para el trabajo actual de Hola y automáticamente el grupo de Hola de eliminaciones cuando Hola representar el trabajo se completa. Esta opción es mejor cuando tenga un toocomplete de trabajo de procesamiento único.
+- También puede **reutilizar un grupo persistente existente**. Si tiene un grupo existente que está inactivo, puede especificar ese grupo de trabajo en ejecución Hola render, selecciónelo en la lista desplegable de Hola. Reutilizar un grupo existente persistente ahorra Hola tiempo necesario tooprovision Hola grupo.  
+- También puede **crear un nuevo grupo persistente**. Si elige esta opción, crea un nuevo grupo para ejecutar el trabajo de Hola. No elimina el grupo de hello cuando se complete, el trabajo de Hola para que se puede reutilizar para futuros trabajos. Seleccione esta opción cuando tenga un toorun continua necesario procesar trabajos. En los trabajos posteriores, puede seleccionar **volver a usar un grupo existente persistente** toouse Hola grupo persistente que ha creado para el primer trabajo de Hola.
 
 ![Especificación del grupo, la imagen del SO, el tamaño de máquina virtual y la licencia](./media/batch-rendering-service/submit.png)
 
-Para más información sobre cómo se acumulan los cargos para las máquinas virtuales de Azure, consulte las [P+F sobre los precios de Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#faq) y las [P+F sobre los precios de Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/#faq).
+Para obtener más información sobre cómo cargas se incrementan con máquinas virtuales de Azure, vea hello [P+F de precios de Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#faq) y [P+F de precios de Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/#faq).
 
-#### <a name="specify-the-os-image-to-provision"></a>Especificación de la imagen del SO para aprovisionar
+#### <a name="specify-hello-os-image-tooprovision"></a>Especificar Hola SO imagen tooprovision
 
-Puede especificar el tipo de imagen del SO que se usará para aprovisionar los nodos de proceso en el grupo en la pestaña **Env** (Environment) (Ent [Entorno]). Batch admite actualmente las siguientes opciones de imagen para trabajos de representación:
+Puede especificar tipo de Hola de nodos de proceso de tooprovision de toouse de imagen de sistema operativo en grupo de Hola de hello **Env** ficha (entorno). Lote admite actualmente Hola opciones de imagen para presentar los trabajos siguientes:
 
 |Sistema operativo  |Imagen  |
 |---------|---------|
@@ -124,84 +124,84 @@ Puede especificar el tipo de imagen del SO que se usará para aprovisionar los n
 
 #### <a name="choose-a-vm-size"></a>Selección del tamaño de la máquina virtual
 
-Puede especificar el tamaño de la máquina virtual en la pestaña **Env** (Ent). Para más información sobre los tamaños de máquina virtual disponibles, consulte [Tamaños de las máquinas virtuales Linux en Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) y [Tamaños de las máquinas virtuales Windows en Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes). 
+Puede especificar el tamaño de máquina virtual de hello en hello **Env** ficha. Para más información sobre los tamaños de máquina virtual disponibles, consulte [Tamaños de las máquinas virtuales Linux en Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) y [Tamaños de las máquinas virtuales Windows en Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes). 
 
-![Especificación de la imagen del SO y el tamaño de máquina virtual en la pestaña Env (Ent)](./media/batch-rendering-service/environment.png)
+![Especificar imagen de sistema operativo de la máquina virtual de Hola y el tamaño en la ficha de Env Hola](./media/batch-rendering-service/environment.png)
 
 #### <a name="specify-licensing-options"></a>Especificación de las opciones de licencia
 
-Puede especificar las licencias que quiere usar en la pestaña **Env** (Ent). Las opciones incluyen:
+Puede especificar licencias Hola desea toouse en hello **Env** ficha. Las opciones incluyen:
 
 - **Maya**, que está habilitado de forma predeterminada.
-- **Arnold**, que está habilitado si se detecta Arnold como el motor de representación activo de Maya.
+- **Arnold**, que está habilitada si se detecta Arnold como motor de representación active hello en Maya.
 
- Si quiere realizar representaciones con su propia licencia, puede configurar el punto de conexión de la licencia, para ello, agregue las variables de entorno adecuadas a la tabla. Si lo hace, asegúrese de anular la selección de las opciones de licencia predeterminadas.
+ Si desea que toorender mediante su propia licencia, puede configurar el punto final de licencia mediante la adición de la tabla de toohello de variables de entorno adecuadas de Hola. Ser seguro toodeselect opciones de licencia de hello predeterminada si lo hace.
 
 > [!IMPORTANT]
-> Se le factura por el uso de las licencias mientras las máquinas virtuales estén en ejecución en el grupo, aunque estas no se usen actualmente para la representación. Para evitar recargos, vaya a la pestaña **Pools** (Grupos) y cambie el tamaño del grupo a 0 nodos hasta que esté listo para ejecutar otro trabajo de representación. 
+> Se le facturará para el uso de licencias de hello mientras se ejecutan las máquinas virtuales en el grupo de hello, incluso si hello las máquinas virtuales no se usan actualmente para la representación. tooavoid recargos, navegue toohello **grupos** ficha y cambiar el tamaño de la too0 nodos de hello grupo hasta que esté listo toorun otro trabajo de procesamiento. 
 >
 >
 
 #### <a name="manage-persistent-pools"></a>Administración de grupos persistentes
 
-Puede administrar un grupo persistente existente en la pestaña **Pools** (Grupos). Al seleccionar un grupo de la lista se muestra el estado actual del grupo.
+Puede administrar un grupo existente persistente en hello **grupos** ficha. Al seleccionar un grupo de lista de hello muestra el estado actual de hello del grupo de Hola de.
 
-En la pestaña **Pools** (Grupos), también puede eliminar el grupo y cambiar de tamaño el número de máquinas virtuales del grupo. Puede cambiar el tamaño de un grupo a 0 nodos para evitar incurrir en costos entre cargas de trabajo.
+De hello **grupos** pestaña, también puede eliminar el grupo de Hola y cambiar el tamaño de número de Hola de máquinas virtuales en el grupo de Hola. Puede cambiar el tamaño de una tooavoid de nodos de grupo too0 incurrir en costos entre las cargas de trabajo.
 
 ![Visualización, cambio de tamaño y eliminación de grupos](./media/batch-rendering-service/pools.png)
 
 ### <a name="configure-a-render-job-for-submission"></a>Configuración de un trabajo de representación para su envío
 
-Cuando haya especificado los parámetros del grupo que ejecutará el trabajo de representación, configure el trabajo propiamente dicho. 
+Una vez que ha especificado parámetros de Hola para grupo de Hola que se ejecutará el trabajo de procesamiento de hello, configure el propio trabajo Hola. 
 
 #### <a name="specify-scene-parameters"></a>Especificación de los parámetros de escena
 
-El complemento de Batch detecta el motor de representación que usa actualmente en Maya y muestra la configuración de representación adecuada en la pestaña **Submit** (Enviar). Esta configuración incluye el fotograma de inicio, el fotograma de finalización, el prefijo de salida y el paso de fotograma. Puede invalidar la configuración de presentación del archivo de escena especificando valores diferentes en el complemento. Los cambios realizados en la configuración del complemento no se conservan en la configuración de representación del archivo de escena, así que puede realizar cambios de un trabajo a otro sin necesidad de recargar el archivo de escena.
+Hola lote complemento detecta qué motor de representación que está usando actualmente en Maya y muestra hello adecuado representar valores en hello **enviar** ficha. Estas opciones incluyen el marco de inicio de hello, fotograma final, prefijo de salida y el paso de marco. Puede invalidar configuración de procesamiento de archivos de escena Hola especificando valores diferentes en hello complemento. Los cambios que realice toohello configuración del complemento no son persistentes toohello back-configuración de representación de archivo de escena, por lo que puede realizar cambios en una base de trabajos por trabajo sin necesidad de archivo de escena hello tooreupload.
 
-El complemento le advierte si el motor de representación que seleccionó en Maya no se admite.
+Hola complemento advierte si Hola representar motor que seleccionó en Maya no se admite.
 
-Si carga una nueva escena mientras el complemento está abierto, haga clic en el botón **Refresh** (Actualizar) para asegurarse de que la configuración está actualizada.
+Si carga una nueva escena mientras Hola complemento está abierto, haga clic en hello **actualizar** botón toomake seguro Hola valores se actualicen.
 
 #### <a name="resolve-asset-paths"></a>Resolución de las rutas de acceso a los recursos
 
-Cuando se carga el complemento, examina el archivo de escena en busca de referencias a archivos externos. Estas referencias se muestran en la pestaña **Assets** (Recursos). Si no se puede resolver una ruta a la que se hace referencia, el complemento intenta encontrar el archivo en unas cuantas ubicaciones predeterminadas, como:
+Cuando se carga el complemento hello, examina el archivo de escena hello para las referencias a archivos externos. Estas referencias se muestran en hello **activos** ficha. Si no se puede resolver una ruta de acceso que se hace referencia, Hola complemento intentos de archivo de hello toolocate en algunas ubicaciones predeterminadas, incluidos:
 
-- La ubicación del archivo de escena 
-- El directorio _sourceimages_ del proyecto actual
-- El directorio de trabajo actual. 
+- ubicación de Hello del archivo de escena hello 
+- Hola actual del proyecto _sourceimages_ directory
+- directorio de trabajo actual de Hola. 
 
-Si aun así, el recurso no se encuentra, se muestra con un icono de advertencia:
+Si activo Hola todavía no se encuentra, se muestra con un icono de advertencia:
 
 ![Los recursos que faltan se muestran con un icono de advertencia.](./media/batch-rendering-service/missing_assets.png)
 
-Si conoce la ubicación de una referencia de archivo sin resolver, puede hacer clic en el icono de advertencia para que se le pida que agregue una ruta de acceso de búsqueda. El complemento usa entonces esta ruta de acceso de búsqueda para intentar resolver los recursos que faltan. Puede agregar cualquier número de rutas de acceso de búsqueda adicionales.
+Si conoce la ubicación Hola de una referencia de archivo sin resolver, puede hacer clic en hello advertencia toobe de icono se le pida tooadd una ruta de acceso de búsqueda. Hola, a continuación, complemento usa esta tooresolve tooattempt de ruta de acceso de búsqueda los activos que faltan. Puede agregar cualquier número de rutas de acceso de búsqueda adicionales.
 
 Cuando se resuelve una referencia, se muestra con un icono de luz verde:
 
 ![Recursos resueltos con un icono de luz verde](./media/batch-rendering-service/found_assets.png)
 
-Si la escena requiere otros archivos que el complemento no ha detectado, puede agregar archivos o directorios adicionales. Use los botones **Add Files** (Agregar archivos) y **Add Directory** (Agregar directorio). Si carga una nueva escena mientras el complemento está abierto, asegúrese de hacer clic en **Refresh** (Actualizar) para actualizar las referencias de la escena.
+Si la escena requiere otros archivos no ha detectado ese complemento hello, puede agregar archivos o directorios adicionales. Hola de uso **agregar archivos** y **Agregar directorio** botones. Si carga una nueva escena mientras Hola complemento está abierto, ser seguro tooclick **actualizar** referencias de la escena de Hola de tooupdate.
 
-#### <a name="upload-assets-to-an-asset-project"></a>Carga de recursos en un proyecto de recursos
+#### <a name="upload-assets-tooan-asset-project"></a>Cargar proyecto activo de activos tooan
 
-Cuando se envía un trabajo de representación, los archivos a los que se hace referencia que se muestran en la pestaña **Assets** (Recursos) se cargan automáticamente en Azure Storage como un proyecto de recursos. También puede cargar los archivos de recurso con independencia de un trabajo de representación, mediante el botón **Upload** (Cargar) de la pestaña **Assets** (Recursos). El nombre del proyecto de recursos se especifica en el campo **Project** (Proyecto) y se designa de forma predeterminada después del proyecto actual de Maya. Cuando se cargan los archivos de recurso, se conserva la estructura de archivos local. 
+Cuando se envía un trabajo de procesamiento, hello hace referencia a los archivos que se muestran en hello **activos** ficha están cargado automáticamente tooAzure almacenamiento como un proyecto activo. También puede cargar archivos de recursos de hello independientemente de un trabajo de procesamiento, con hello **cargar** botón en hello **activos** nombre de proyecto de pestaña. Hola activo se especifica en hello **proyecto**campo y se denomina después del proyecto Maya actual de Hola de forma predeterminada. Cuando se cargan archivos de recursos, se conserva la estructura de archivos local de Hola. 
 
-Una vez cargados, cualquier número de trabajos de representación puede hacer referencia a ellos. Todos los recursos cargados están disponibles para cualquier trabajo que haga referencia al proyecto de recursos, con independencia de que estén incluidos en la escena. Para cambiar el proyecto de recursos al que hace referencia el siguiente trabajo, cambie el nombre en el campo **Project** (Proyecto) de la pestaña **Assets** (Recursos). Si hay archivos a los que se hace referencia que quiera excluir de la carga, anule la selección de ellos con el botón verde que hay junto a la lista.
+Una vez cargados, cualquier número de trabajos de representación puede hacer referencia a ellos. Todos los activos cargados son trabajo tooany disponibles que hace referencia el proyecto activo de hello, si no se incluyen en escena Hola. proyecto de activos de hello toochange al que hace referencia el siguiente trabajo, cambiar el nombre de Hola Hola **proyecto** campo hello **activos** ficha. Si hay archivos que se hace referencia que desee tooexclude de carga, anule la selección de ellas con botón Hola verde situada junto a la lista de Hola.
 
-#### <a name="submit-and-monitor-the-render-job"></a>Envío y supervisión del trabajo de representación
+#### <a name="submit-and-monitor-hello-render-job"></a>Enviar y Hola monitor representar trabajo
 
-Después de haber configurado el trabajo de representación en el complemento, haga clic en el botón **Submit Job** (Enviar trabajo) de la pestaña **Submit** (Enviar) para enviar el trabajo a Batch:
+Después de haber configurado el trabajo de procesamiento de Hola Hola complemento, haga clic en hello **enviar trabajo** botón en hello **enviar** ficha toosubmit Hola trabajo tooBatch:
 
-![Envío del trabajo de representación](./media/batch-rendering-service/submit_job.png)
+![Enviar el trabajo de procesamiento de Hola](./media/batch-rendering-service/submit_job.png)
 
-Puede supervisar un trabajo que está en curso en la pestaña **Jobs** (Trabajos) del complemento. Seleccione un trabajo de la lista para mostrar su estado actual. También puede usar esta pestaña para cancelar y eliminar trabajos, así como para descargar las salidas y los registros de representación. 
+Puede supervisar un trabajo que está en curso de hello **trabajos** ficha en hello complemento. Seleccione un trabajo de hello lista toodisplay Hola estado actual del trabajo de Hola. También puede utilizar esta pestaña toocancel y eliminar trabajos, así como toodownload Hola salidas y los registros de representación. 
 
-Para descargar las salidas, modifique el campo **Outputs** (Salidas) para establecer el directorio de destino deseado. Haga clic en el icono de engranaje para iniciar un proceso en segundo plano que supervisa el trabajo y descarga las salidas a medida que avanza: 
+salidas de toodownload, modificar hello **genera** directorio de destino deseado de campo tooset Hola. Haga clic en icono toostart un proceso en segundo plano que supervisa el trabajo de Hola y descarga salidas cuando progrese de hello engranaje: 
 
 ![Visualización del estado del trabajo y descarga de las salidas](./media/batch-rendering-service/jobs.png)
 
-Puede cerrar Maya sin interrumpir el proceso de descarga.
+Puede cerrar Maya sin interrumpir el proceso de descarga de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre Batch, consulte [Ejecución de cargas de trabajo paralelas intrínsecamente con Batch](batch-technical-overview.md).
+toolearn más información acerca de lote, consulte [ejecutar cargas de trabajo paralelos intrínsecamente con lote](batch-technical-overview.md).

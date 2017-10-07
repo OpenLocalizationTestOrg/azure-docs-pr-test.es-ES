@@ -1,6 +1,6 @@
 ---
-title: "Ejecución de la herramienta de planeamiento de capacidad de Hyper-V para Site Recovery | Microsoft Docs"
-description: "En este artículo se describe cómo ejecutar esta herramienta de planeamiento de capacidad de Hyper-V para Azure Site Recovery."
+title: "herramienta de planificador de capacidad aaaRun Hola Hyper-V para la recuperación del sitio | Documentos de Microsoft"
+description: "Este artículo describe cómo toorun Hola herramienta de planificación de capacidad de Hyper-V para Azure Site Recovery"
 services: site-recovery
 documentationcenter: na
 author: rayne-wiselman
@@ -14,122 +14,122 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.openlocfilehash: 272b5abb5e6451164ca7900dda399b6aac65f986
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b853598e5cd290c48b59794ba48eefc72ac8ded6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-the-hyper-v-capacity-planner-tool-for-site-recovery"></a>Ejecución de la herramienta de planeación de capacidad de Hyper-V para Site Recovery
+# <a name="run-hello-hyper-v-capacity-planner-tool-for-site-recovery"></a>Ejecutar la herramienta de planificación de capacidad de Hyper-V de hello para la recuperación de sitio
 
-Como parte de la implementación de Azure Site Recovery, debe averiguar los requisitos de ancho de banda y replicación. La herramienta de planeamiento de capacidad de Hyper-V para Site Recovery lo ayuda a esto para replicar máquinas virtuales de Hyper-V.
+Como parte de la implementación de Azure Site Recovery, deberá toofigure la replicación y los requisitos de ancho de banda. Planificador de capacidad de Hello Hyper-V para la recuperación del sitio ayuda a toodo, para la replicación de máquina virtual de Hyper-V.
 
-En este artículo se describe cómo ejecutar esta herramienta. Esta herramienta debe utilizarse junto con la información que se describe en [Planeación de la capacidad para la protección de la máquina virtual y del servidor físico en Azure Site Recovery](site-recovery-capacity-planner.md).
+Este artículo describe cómo toorun Hola herramienta de planificación de capacidad de Hyper-V. Esta herramienta debe utilizarse junto con la información de hello en [planear la capacidad de recuperación del sitio](site-recovery-capacity-planner.md).
 
 ## <a name="before-you-start"></a>Antes de comenzar
-Ejecute la herramienta en un servidor de Hyper-V o el nodo de un clúster en su sitio principal. Para ejecutar la herramienta, los servidores host de Hyper-V necesitan:
+Se ejecuta la herramienta de hello en un nodo de servidor o clúster de Hyper-V en el sitio primario. servidores de host de Hyper-V de toorun Hola herramienta Hola necesita:
 
 * Sistema operativo: Windows Server 2012 o 2012 R2
 * Memoria: 20 MB (mínimo)
 * CPU: sobrecarga del 5 por ciento (mínimo)
 * Espacio en disco: 5 MB (mínimo)
 
-Antes de ejecutar la herramienta, debe preparar el sitio principal. Si va a replicar entre dos sitios locales y desea comprobar el ancho de banda, debe preparar también un servidor de réplica.
+Antes de ejecutar la herramienta de hello, deberá sitio primario de tooprepare Hola. Si replica entre dos sitios locales y desea que el ancho de banda de toocheck, necesita tooprepare también un servidor de réplica.
 
-## <a name="step-1-prepare-the-primary-site"></a>Paso 1: Preparar el sitio primario
+## <a name="step-1-prepare-hello-primary-site"></a>Paso 1: Preparar el sitio primario de Hola
 
-1. En el sitio principal, confeccione una lista de todas las máquinas virtuales de Hyper-V que desee replicar y los hosts de Hyper-V o clústeres donde estén ubicadas. Se puede ejecutar la herramienta para varios hosts independientes o para un único clúster, pero no ambos juntos. Además, se debe ejecutar por separado para cada sistema operativo, por lo que debe agrupar la información de los servidores de Hyper-V de la forma siguiente:
+1. En el sitio principal de hello, realice una lista de todos Hola máquinas virtuales de Hyper-V que desee tooreplicate y Hola clústeres Hyper-V hosts/en el que se encuentren. herramienta de Hello puede ejecutar para varios hosts independientes, o para un único clúster, pero no ambos juntos. También necesita toorun por separado para cada sistema operativo, por lo que debe reunir información sobre los servidores de Hyper-V como se indica a continuación:
 
    * Servidores independientes de Windows Server 2012
    * Clústeres de Windows Server 2012
    * Servidores independientes de Windows Server 2012 R2
    * Clústeres de Windows Server 2012 R2
-2. Habilite el acceso remoto a WMI en todos los hosts de Hyper-V y los clústeres. Ejecute este comando en cada servidor o clúster para asegurarse de que las reglas de firewall y los permisos de usuario estén establecidos:
+2. Habilitar acceso remoto tooWMI en todos los hosts de Hyper-V de Hola y clústeres. Ejecute este comando en cada clúster de servidores, se establecen las reglas de firewall seguro toomake y permisos de usuario:
 
         netsh firewall set service RemoteAdmin enable
 3. Habilite la supervisión del rendimiento en servidores y clústeres, de la siguiente forma:
 
-   * Abra el complemento Firewall de Windows con **seguridad avanzada** y después habilite las siguientes reglas de entrada: **Acceso a red COM+ (DCOM de entrada)** y todas las reglas en el **grupo Administración remota de registro de eventos**.
+   * Hola abrir Firewall de Windows con hello **seguridad avanzada** complemento, y, a continuación, siguiente de hello habilitar reglas de entrada: **acceso de red COM + (DCOM-IN)** y todas las reglas en hello **remota de registro de eventos Grupo de administración**.
 
-## <a name="step-2-prepare-a-replica-server-on-premises-to-on-premises-replication"></a>Paso 2: Preparar un servidor de réplica (replicación entre dos sitios locales)
-No es necesario hacer esto si va a replicar en Azure.
+## <a name="step-2-prepare-a-replica-server-on-premises-tooon-premises-replication"></a>Paso 2: Preparar un servidor de réplica (replicación de local tooon local)
+Esto no es necesario toodo si replica tooAzure.
 
-Se recomienda que configure un único host de Hyper-V como servidor de recuperación para que se pueda replicar una máquina virtual ficticia y así comprobar el ancho de banda.  Puede pasar por alto esta acción, pero no podrá medir el ancho de banda a menos que la complete.
+Se recomienda configurar un único host de Hyper-V como un servidor de recuperación, para que una máquina virtual ficticia pueda ancho de banda de toocheck tooit replicada.  Omita este paso, pero no será capaz de toomeasure ancho de banda a menos que lo haga.
 
-1. Si desea usar un nodo de clúster como réplica, configure el agente de réplicas de Hyper-V:
+1. Si desea que toouse un nodo de clúster como réplica Hola configurar agente de réplicas de Hyper-V de:
 
    * En **Administrador del servidor**, abra **Administrador de clúster de conmutación por error**.
-   * Conéctese al clúster, resalte el nombre del clúster y haga clic en **Acciones** > **Configurar rol** para abrir el Asistente para alta disponibilidad.
-   * En **Seleccionar rol**, haga clic en **Agente de réplicas de Hyper-V**. En el asistente, proporcione la información de **Nombre de NetBIOS** y **Dirección IP** que se usará como punto de conexión con el clúster (denominado punto de acceso cliente). Se configurará el **Agente de réplicas de Hyper-V** , lo que proporciona un nombre de punto de acceso cliente que debe anotar.
-   * Compruebe que el rol del agente de Réplica de Hyper-V se conecte correctamente y puede conmutar por error entre todos los nodos del clúster. Para ello, haga clic con el botón derecho en el rol, seleccione **Mover**, y, a continuación, haga clic en **Seleccionar nodo**. Seleccione un nodo > **Aceptar**.
-   * Si usa la autenticación basada en certificados, asegúrese de que todos los nodos del clúster y el punto de acceso cliente tengan instalado el certificado.
+   * Conecta el clúster de toohello, resalte el nombre del clúster de Hola y haga clic en **acciones** > **configurar rol** Asistente para alta disponibilidad de hello tooopen.
+   * En **Seleccionar rol**, haga clic en **Agente de réplicas de Hyper-V**. En el Asistente de hello escribe un **nombre NetBIOS** hello y **dirección IP** toobe utilizado como clúster de toohello de punto de conexión de hello (llamado un punto de acceso de cliente). Hola **agente de réplica de Hyper-V** se configurarán, lo que da lugar a un nombre de punto de acceso de cliente que debe tener en cuenta.
+   * Compruebe que ese rol de agente de réplica de Hyper-V Hola se conecte correctamente y puede conmutar por error entre todos los nodos del clúster de Hola. toodo esto, haga clic con el rol de hello, seleccione demasiado**mover**y, a continuación, haga clic en **Seleccionar nodo**. Seleccione un nodo > **Aceptar**.
+   * Si utiliza la autenticación basada en certificados, asegúrese de que cada nodo del clúster y punto de acceso de cliente de hello todos tienen instalado el certificado de Hola.
 2. Habilite un servidor de réplica:
 
-   * Para un clúster, abra el Administrador de clústeres de conmutación por error, conéctese al clúster y haga clic en **Roles** > seleccione el rol > **Configuración de la replicación** > **Habilitar este equipo como servidor de réplicas**. Si usa un clúster como réplica, el rol de Agente de réplicas de Hyper-V debe estar presente también en el clúster del sitio principal.
-   * Para un servidor independiente, abra el Administrador de Hyper-V. En el panel **Acciones**, haga clic en **Configuración de Hyper-V** para el servidor que desea habilitar y, en **Configuración de replicación**, haga clic en **Habilitar este equipo como servidor de réplicas**.
+   * Para un clúster, abra Administrador de clústeres de error, conéctese toohello clúster y haga clic en **Roles** > Seleccionar rol > **configuración de replicación** > **habilitar este clúster como una réplica servidor**. Si utiliza un clúster como réplica hello, deberá rol de agente de réplica de Hyper-V de hello toohave presente en el clúster de hello en el sitio principal de Hola.
+   * Para un servidor independiente, abra el Administrador de Hyper-V. Hola **acciones** panel, haga clic en **configuración de Hyper-V** para el servidor de hello desea tooenable y en **configuración de replicación** haga clic en **habilitarlo equipo como un servidor de réplica**.
 3. Configure la autenticación:
 
-   * En **Autenticación y puertos** , seleccione cómo autenticar el servidor principal y los puertos de autenticación. Si usa certificados, haga clic en **Seleccionar certificado** para seleccionar uno. Use Kerberos si el host de Hyper-V principal y el de recuperación se encuentran en el mismo dominio o en dominios de confianza. Use certificados si los dominios son diferentes o si la implementación es para un grupo de trabajo.
-   * En la sección **Autorización y almacenamiento**, especifique si se permite que **cualquier** servidor autenticado (principal) envíe datos de replicación a este servidor de réplica.
+   * En **autenticación y puertos**, seleccione cómo tooauthenticate Hola servidor principal y los puertos de autenticación de Hola. Si usa un certificado, haga clic en **Seleccionar certificado** tooselect uno. Usar Kerberos si hay hosts de Hyper-V principal y de recuperación de Hola Hola mismo dominio o en dominios de confianza. Use certificados si los dominios son diferentes o si la implementación es para un grupo de trabajo.
+   * En **autorización y almacenamiento**, permitir **cualquier** autentica el servidor de réplica de servidor (principal) toosend replicación datos toothis.
 
      ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
-   * Ejecute **netsh http show servicestate** para comprobar que el agente de escucha se esté ejecutando para el puerto y el protocolo especificados:  
-4. Configure los firewalls. Durante la instalación de Hyper-V, se crean reglas de firewall para permitir el tráfico en los puertos predeterminados (HTTPS en 443, Kerberos en 80). Habilite estas reglas como se indica:
+   * Ejecutar **netsh http show servicestate**, toocheck se está ejecutando ese agente de escucha de Hola para hello Protocolo/puerto que especificó:  
+4. Configure los firewalls. Durante la instalación de Hyper-V, las reglas de firewall se crean tooallow tráfico en puertos predeterminados que hello (HTTPS en 443, Kerberos en 80). Habilite estas reglas como se indica:
   - Autenticación de certificados en clústeres (443): ``Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}``
   - Autenticación Kerberos en clústeres (80): ``Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"}}``
   - Autenticación de certificados en un servidor independiente: ``Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"``
   - Autenticación Kerberos en un servidor independiente:``Enable-Netfirewallrule -displayname "Hyper-V Replica HTTP Listener (TCP-In)"``
 
-## <a name="step-3-run-the-capacity-planner-tool"></a>Paso 3: Ejecutar la herramienta de programación de capacidad
-Después de preparar el sitio principal y configurar un servidor de recuperación, puede ejecutar la herramienta.
+## <a name="step-3-run-hello-capacity-planner-tool"></a>Paso 3: Ejecutar la herramienta de planificación de capacidad de Hola
+Una vez que ha preparado su sitio primario y configurar un servidor de recuperación, puede ejecutar la herramienta de Hola.
 
-1. [Descargue](https://www.microsoft.com/download/details.aspx?id=39057) la herramienta del Centro de descarga de Microsoft.
-2. Ejecute la herramienta desde uno de los servidores principales (o uno de los nodos del clúster principal). Haga clic con el botón derecho del ratón en el archivo .exe y, a continuación, elija **Ejecutar como administrador**.
-3. En **Before you begin** (Antes de comenzar), especifique durante cuánto tiempo desea recopilar datos. Se recomienda que ejecute la herramienta durante las horas de producción para asegurarse de que los datos sean representativos. Si solo desea validar la conectividad de red, puede recopilarlos solo durante un minuto.
+1. [Descargar](https://www.microsoft.com/download/details.aspx?id=39057) herramienta Hola Hola Microsoft Download Center.
+2. Ejecutar la herramienta de Hola desde uno de los servidores principales de hello (o uno de los nodos de Hola de clúster principal hello). Haga clic en el archivo .exe de hello y, a continuación, elija **ejecutar como administrador**.
+3. En **antes de comenzar**, especificar durante cuánto tiempo desea toocollect datos. Se recomienda que ejecutar la herramienta de Hola durante la producción tooensure de horas que los datos sean representativo. Si solo está tratando de conectividad de red toovalidate, se pueden recopilar para solo un minuto.
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image2.png)
-4. En **Primary Site Details** (Detalles del sitio principal), especifique el nombre del servidor o el FQDN de un host independiente o, para un clúster, especifique el FQDN del punto de acceso cliente, el nombre de clúster o cualquier nodo del clúster y después haga clic en **Next** (Siguiente). La herramienta detecta automáticamente el nombre del servidor donde se ejecuta. La herramienta detecta las máquinas virtuales que se pueden supervisar para los servidores especificados.
+4. En **detalles del sitio primario**, especifique el nombre del servidor de Hola o FQDN para un host independiente, o para un clúster de especificarlo Hola FQDN de cliente hello acepte punto, el nombre del clúster o cualquier nodo de clúster de hello y, a continuación, haga clic en **siguiente**. herramienta Hola detecta automáticamente el nombre de hello del servidor de saludo en que se está ejecutando. Hola herramienta recoge las máquinas virtuales que se pueden supervisar Hola servidores especificados.
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image3.png)
-5. En **Replica Site Details** (Detalles del sitio de réplica), si va a replicar en Azure o en un centro de datos secundario y aún no ha configurado un servidor de réplica, seleccione **Skip tests involving replica site** (Omitir pruebas con el sitio de réplica). Si va a replicar en un centro de datos secundario y ha configurado una réplica, escriba el FQDN del servidor independiente o el punto de acceso cliente para el clúster en **Server name (or) Hyper-V Replica Broker CAP**(Nombre de servidor o punto de acceso cliente del Agente de réplicas de Hyper-V).
+5. En **detalles del sitio de réplica**si está replicando tooAzure, o si está replicando tooa centro de datos secundario y no ha configurado un servidor de réplica, seleccione **omitir pruebas de sitio de réplica**. Si desea replicar tooa centro de datos secundario y haya configurado por un tipo de réplica, introduzca FQDN del servidor independiente de Hola o punto de acceso de cliente de Hola de clúster de hello, en **servidor nombre (o) CAP de agente de réplica de Hyper-V**.
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image4.png)
-6. En **Extended Replica Details** (Detalles de réplica extendida), habilite **Skip the tests involving Extended Replica site** (Omitir pruebas con el sitio de réplica extendida). Estas pruebas son compatibles con Site Recovery.
-7. En **Choose VMs to Replicate** (Elegir máquinas virtuales para replicar), la herramienta se conecta al servidor o clúster y muestra las máquinas virtuales y los discos que se ejecutan en el servidor principal, según la configuración especificada en la página **Primary Site Details** (Detalles del sitio principal). Tenga en cuenta que no se mostrarán las máquinas virtuales que ya estén habilitadas para la replicación o que no se estén ejecutando. Seleccione las máquinas virtuales para las que desea recopilar métricas. Si selecciona los discos duros virtuales, se recopilan también los datos de las máquinas virtuales automáticamente.
-8. Si ha configurado un servidor de réplica o un clúster, en **Network information** (Información de red), especifique el ancho de banda de WAN aproximado que cree que se usará entre el sitio principal y el de réplica, y seleccione los certificados si ha configurado la autenticación basada en certificados.
+6. En **detalles de réplica extendido**, habilitar **Hola Skip comprueba que implican sitio de réplica extendido**. Estas pruebas son compatibles con Site Recovery.
+7. En **tooReplicate de máquinas virtuales elija**, herramientas de hello conecta toohello servidor o clúster y muestra las máquinas virtuales y discos que se ejecuten en el servidor principal de hello, según la configuración de hello ha especificado en hello **detalles del sitio principal**  página. Tenga en cuenta que no se mostrarán las máquinas virtuales que ya estén habilitadas para la replicación o que no se estén ejecutando. Seleccione las máquinas virtuales de hello para el que desea que las métricas de toocollect. Seleccionar Hola discos duros virtuales automáticamente recopila los datos para las máquinas virtuales de hello demasiado.
+8. Si ha configurado un servidor de réplica o un clúster, en **información de la red**, especificar si ha configurado, se utilizará entre los sitios principal y réplica de Hola y Hola seleccione certificados Hola aproximado ancho de banda WAN piensa autenticación de certificado.
 
     ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image5.png)
-9. En **Summary** (Resumen), compruebe la configuración y haga clic en **Next** (Siguiente) para empezar a recopilar métricas. El progreso de la herramienta y el estado se muestran en la página **Calculate Capacity** (Calcular capacidad). Cuando se termine de ejecutar la herramienta, haga clic en **View Report** (Ver informe) para ver los resultados. De forma predeterminada, los informes y los registros se almacenan en **%systemdrive%\Users\Public\Documents\Capacity Planner**.
+9. En **resumen**, compruebe la configuración de Hola y haga clic en **siguiente** toobegin recopilar métricas. Progreso de la herramienta y el estado se muestra en hello **calcular la capacidad** página. Cuando la herramienta de hello finaliza su ejecución, haga clic en **Ver informe** salida de hello tooview. De forma predeterminada, los informes y los registros se almacenan en **%systemdrive%\Users\Public\Documents\Capacity Planner**.
 
    ![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image6.png)
 
-## <a name="step-4-interpret-the-results"></a>Paso 4: Interpretar los resultados
+## <a name="step-4-interpret-hello-results"></a>Paso 4: Interpretar los resultados de Hola
 
-Estas son las métricas importantes. Puede pasar por alto las que no aparezcan aquí, porque no son relevantes para Site Recovery.
+Estas son las métricas importantes de Hola. Puede pasar por alto las que no aparezcan aquí, porque no son relevantes para Site Recovery.
 
-### <a name="on-premises-to-on-premises-replication"></a>Replicación entre dos sitios locales
+### <a name="on-premises-tooon-premises-replication"></a>La replicación local tooon local
 
-* Impacto de la replicación en el proceso del host principal, memoria
-* Impacto de la replicación en el servidor principal, espacio de almacenamiento de hosts de recuperación, IOPS
+* Impacto de la replicación en el proceso del host principal de hello, memoria
+* Impacto de la replicación en hello principal, espacio en disco de almacenamiento de hosts de recuperación IOPS
 * Ancho de banda total necesario para la replicación delta (Mbps)
-* Ancho de banda de red observado entre el host primario y el host de recuperación (Mbps)
-* Sugerencia para el número ideal de transferencias paralelas activas entre dos hosts/clústeres
+* Ancho de banda de red observado entre host principal de Hola y Hola recuperación (Mbps)
+* Sugerencia para el número ideal de Hola de transferencias paralelo activas entre dos hosts y clústeres de Hola
 
-### <a name="on-premises-to-azure-replication"></a>Replicación desde un sitio local en Azure
+### <a name="on-premises-tooazure-replication"></a>Replicación de tooAzure local
 
-* Impacto de la replicación en el proceso del host principal, memoria
-* Impacto de la replicación en espacio de almacenamiento del host principal, IOPS
+* Impacto de la replicación en el proceso del host principal de hello, memoria
+* Impacto de la replicación en el espacio de disco de almacenamiento del host principal de Hola, IOPS
 * Ancho de banda total necesario para la replicación delta (Mbps)
 
 ## <a name="more-resources"></a>Más recursos
-* Para ver información detallada sobre la herramienta, lea el documento que acompaña a la descarga de la herramienta.
-* Vea un tutorial de la herramienta en el [blog de TechNet](http://blogs.technet.com/b/keithmayer/archive/2014/02/27/guided-hands-on-lab-capacity-planner-for-windows-server-2012-hyper-v-replica.aspx)de Keith Mayer.
-* [Obtenga los resultados](site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md) de nuestra prueba de rendimiento para la replicación de Hyper-V entre sitios locales.
+* Para obtener información detallada acerca de la herramienta de hello, lea el documento de Hola que acompaña a la descarga de la herramienta de Hola.
+* Ver un tutorial de herramienta de hello en Keith Mayer [blog de TechNet](http://blogs.technet.com/b/keithmayer/archive/2014/02/27/guided-hands-on-lab-capacity-planner-for-windows-server-2012-hyper-v-replica.aspx).
+* [Obtener resultados de hello](site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md) nuestra pruebas de rendimiento para la replicación de Hyper-V de locales tooon local
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 Cuando haya terminado de planear la capacidad, puede comenzar a implementar Site Recovery:
 
-* [Replicación de máquinas virtuales de Hyper-V de nubes VMM en Azure](site-recovery-vmm-to-azure.md)
-* [Replicación de máquinas virtuales de Hyper-V (sin VMM) en Azure](site-recovery-hyper-v-site-to-azure.md)
+* [Replicar máquinas virtuales de Hyper-V en tooAzure de nubes VMM](site-recovery-vmm-to-azure.md)
+* [Replicar máquinas virtuales de Hyper-V (sin WMM) tooAzure](site-recovery-hyper-v-site-to-azure.md)
 * [Replicación de máquinas virtuales de Hyper-V entre sitios VMM](site-recovery-vmm-to-vmm.md)

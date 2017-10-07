@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de conexión comunes relacionados con la base de datos SQL de Azure"
-description: "Pasos para identificar y resolver errores de conexión comunes para la base de datos SQL de Azure."
+title: "tooAzure de problemas de conexión comunes de aaaTroubleshoot base de datos SQL"
+description: "Pasos tooidentify y resolver comunes errores de conexión de base de datos de SQL Azure."
 services: sql-database
 documentationcenter: 
 author: dalechen
@@ -15,42 +15,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: daleche
-ms.openlocfilehash: b8abf1285318e491d51aadf90f921103d84ce1a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eb5f2d7b123a76942c7e4a84a7f475344fbcb144
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Solución de problemas de conexión de Base de datos SQL de Azure
-Cuando la conexión a Base de datos SQL de Azure no se logra establecer, se reciben [mensajes de error](sql-database-develop-error-messages.md). Este artículo es un tema centralizado que ayuda a la solución de problemas de conectividad de Base de datos SQL de Azure. Se presentan [las causas habituales](#cause) de los problemas de conexión, se recomienda [una herramienta de solución de problemas](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) que lo ayuda a identificar el problema y se proporcionan pasos de solución de problemas para resolver [errores transitorios](#troubleshoot-transient-errors) y [errores persistentes o no transitorios](#troubleshoot-persistent-errors). 
+# <a name="troubleshoot-connection-issues-tooazure-sql-database"></a>Solucionar problemas de conexión tooAzure base de datos SQL
+Cuando se produce un error en la conexión de hello tooAzure base de datos de SQL, recibirá [mensajes de error](sql-database-develop-error-messages.md). Este artículo es un tema centralizado que ayuda a la solución de problemas de conectividad de Base de datos SQL de Azure. Introduce [Hola causas comunes](#cause) de problemas de conexión, se recomienda [una herramienta de solución de problemas](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) que le ayuda a un problema de Hola de identidad y proporciona la solución de problemas de pasos toosolve [ los errores transitorios](#troubleshoot-transient-errors) y [persistentes o no transitorio errores](#troubleshoot-persistent-errors). 
 
-Si encuentra problemas de conexión, pruebe los pasos de solución de problemas que se describen en este artículo.
+Si encuentra problemas de conexión de hello, intente Hola solucionar problemas de los pasos que se describen en este artículo.
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="cause"></a>Causa
-Los problemas de conexión pueden tener alguna de las siguientes causas:
+Problemas de conexión pueden deberse a alguna de hello siguientes:
 
-* Error al aplicar los procedimientos recomendados y las directrices de diseño durante el proceso de diseño de aplicaciones.  Para comenzar, consulte [Información general de desarrollo de Base de datos SQL](sql-database-develop-overview.md) .
+* Error tooapply mejores prácticas y directrices de diseño durante el proceso de diseño de aplicación Hola.  Vea [información general sobre el desarrollo de base de datos de SQL](sql-database-develop-overview.md) tooget iniciado.
 * Reconfiguración de la Base de datos SQL de Azure
 * Configuración de firewall
 * Tiempo de espera de conexión agotado
 * Información de inicio de sesión incorrecta
 * Límite máximo alcanzado en algunos recursos de Base de datos SQL de Azure
 
-Por lo general, los problemas de conexión de Base de datos SQL de Azure se pueden clasificar en los siguientes:
+Por lo general, tooAzure de problemas de conexión base de datos SQL se puede clasificar como sigue:
 
 * [Errores transitorios (corta duración o intermitentes)](#troubleshoot-transient-errors)
 * [Errores persistentes o no transitorios (errores que se repiten con frecuencia)](#troubleshoot-persistent-errors)
 
-## <a name="try-the-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Pruebe el solucionador de problemas para los problemas de conectividad de Base de datos SQL de Azure
+## <a name="try-hello-troubleshooter-for-azure-sql-database-connectivity-issues"></a>Pruebe Hola Solucionador de problemas para los problemas de conectividad de base de datos de SQL Azure
 Si se produce un error de conexión específico, pruebe [esta herramienta](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database), que le ayudará a identificar y resolver el problema.
 
 ## <a name="troubleshoot-transient-errors"></a>Solución de problemas de errores transitorios
 
-Cuando una aplicación se conecte a una base de datos SQL de Azure, recibirá el mensaje de error siguiente:
+Cuando una aplicación conecta a base de datos de SQL Azure tooan, recibirá Hola mensaje de error siguiente:
 
 ```
-Error code 40613: "Database <x> on server <y> is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of <z>"
+Error code 40613: "Database <x> on server <y> is not currently available. Please retry hello connection later. If hello problem persists, contact customer support, and provide them hello session tracing ID of <z>"
 ```
 
 > [!NOTE]
@@ -58,32 +58,32 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 > 
 > 
 
-Este error se produce cuando la base de datos de Azure se está moviendo (o reconfigurando) y la aplicación pierde la conexión con la base de datos SQL. Los eventos de reconfiguración de la base de datos SQL se producen debido a un evento planeado (por ejemplo, una actualización de software) o a un evento no planeado (por ejemplo, el bloqueo de un proceso o un equilibrio de carga). La mayoría de los eventos de reconfiguración son generalmente de corta duración y se completarán en menos de 60 segundos. Sin embargo, ocasionalmente estos eventos pueden tardar más tiempo de finalizar, por ejemplo, cuando una transacción grande produce una recuperación de larga duración.
+Este error se produce cuando hello Azure base de datos se va a mover (o volver a configurar) y la aplicación pierde su base de datos SQL de toohello de conexión. Los eventos de reconfiguración de la base de datos SQL se producen debido a un evento planeado (por ejemplo, una actualización de software) o a un evento no planeado (por ejemplo, el bloqueo de un proceso o un equilibrio de carga). La mayoría de los eventos de reconfiguración son generalmente de corta duración y se completarán en menos de 60 segundos. Sin embargo, estos eventos en ocasiones pueden tardar más tiempo toofinish, por ejemplo, cuando una transacción de grande provoca una recuperación de larga duración.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Pasos para resolver los problemas de conectividad transitorios
+### <a name="steps-tooresolve-transient-connectivity-issues"></a>Problemas de conectividad temporal tooresolve de pasos
 
-1. Compruebe el [panel de Estado de Microsoft Azure](https://azure.microsoft.com/status) para comprobar si hay interrupciones conocidas que se hayan producido durante el tiempo en el que la aplicación informó de los errores.
-2. Para las aplicaciones que se conectan a un servicio en la nube, como la base de datos SQL de Azure, se deben prever eventos periódicos de reconfiguración e implementación de la lógica de reintento para gestionar estos errores en lugar de mostrarlos como errores de la aplicación. Consulte la sección [Errores transitorios](sql-database-connectivity-issues.md), así como los procedimientos recomendados e instrucciones de diseño en [Información general de desarrollo de SQL Database](sql-database-develop-overview.md), donde encontrará más información e instrucciones para las estrategias generales de reintento. Después, para información específica, consulte ejemplos de código en [Bibliotecas de conexiones para Base de datos SQL y SQL Server](sql-database-libraries.md) .
-3. Conforme una base de datos se acerca a sus límites de recursos, puede parecer un problema de conectividad transitorio. Vea [Solucionar problemas de rendimiento](sql-database-troubleshoot-performance.md).
-4. Si los problemas de conectividad continúan, si el tiempo de detección del error por parte de la aplicación supera los 60 segundos o si el error se repite varias veces en un día determinado, realice una solicitud de soporte técnico a Azure; para ello, seleccione **Obtener soporte** en el sitio [Soporte técnico de Azure](https://azure.microsoft.com/support/options) .
+1. Comprobar hello [panel de servicios de Microsoft Azure](https://azure.microsoft.com/status) para los que las interrupciones conocidas que se produjeron durante el tiempo de Hola durante qué Hola haya notificado errores aplicación hello.
+2. Las aplicaciones que se conectan tooa servicio en la nube como base de datos de SQL Azure debe esperar eventos periódicos volver a configurar e implementar Reintentar lógica toohandle estos errores en lugar de así como la exposición como toousers de errores de aplicación. Hola de revisión [errores transitorios](sql-database-connectivity-issues.md) hello y sección prácticas recomendadas y directrices en de diseño [información general sobre el desarrollo de base de datos de SQL](sql-database-develop-overview.md) para obtener más información y general de las estrategias de reintento. Después, para información específica, consulte ejemplos de código en [Bibliotecas de conexiones para Base de datos SQL y SQL Server](sql-database-libraries.md) .
+3. Como una base de datos acerca a su límite de recursos, que puede parecer toobe un problema de conectividad temporal. Vea [Solucionar problemas de rendimiento](sql-database-troubleshoot-performance.md).
+4. Si continúan los problemas de conectividad o si hello duración para la que la aplicación encuentra errores de hello supera los 60 segundos o si observa varias repeticiones del error de hello en un día determinado, una solicitud de soporte técnico de Azure de archivos seleccionando **obtener admite** en hello [soporte técnico de Azure](https://azure.microsoft.com/support/options) sitio.
 
 ## <a name="troubleshoot-persistent-errors"></a>Solución de problemas de los errores persistentes
-Si la aplicación no se puede conectar a la Base de datos SQL de Azure de forma persistente, normalmente indica un problema con uno de los siguientes elementos:
+Si aplicación hello no persistente tooconnect tooAzure base de datos SQL, suele indicar un problema con uno de hello siguientes:
 
-* Configuración del firewall. La base de datos SQL de Azure o el firewall del cliente están bloqueando las conexiones de la base de datos SQL de Azure.
-* Reconfiguración de la red en el lado cliente: por ejemplo, un nuevo servidor de proxy o dirección IP.
-* Error de usuario: por ejemplo, escribió incorrectamente los parámetros de conexión, como el nombre del servidor en la cadena de conexión.
+* Configuración del firewall. firewall de base de datos o de cliente de SQL Azure Hola está bloqueando las conexiones tooAzure base de datos SQL.
+* Volver a configurar en el lado del cliente de Hola de red: por ejemplo, una nueva dirección IP o un servidor proxy.
+* Error de usuario: por ejemplo, esté escrita incorrectamente los parámetros de conexión, como nombre del servidor hello en la cadena de conexión de Hola.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Pasos para resolver los problemas de conectividad persistentes
-1. Configure las [reglas de firewall](sql-database-configure-firewall-settings.md) para permitir la dirección IP del cliente. Con fines de prueba temporales, configure una regla de firewall mediante 0.0.0.0 como intervalo de direcciones IP inicial y 255.255.255.255 como intervalo de dirección IP final. Se abrirá el servidor a todas las direcciones IP. Si se resuelve el problema de conectividad, quite esta regla y cree una regla de firewall para una dirección IP o intervalo de direcciones apropiadamente limitados. 
-2. En todos los firewalls entre el cliente e Internet, asegúrese de que el puerto 1433 está abierto para las conexiones salientes. Consulte [Configure the Windows Firewall to Allow SQL Server Access](https://msdn.microsoft.com/library/cc646023.aspx) (Configuración del Firewall de Windows para permitir el acceso de SQL Server) y [Puertos y protocolos requeridos para la identidad híbrida](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) para obtener información sobre punteros relacionados con los puertos adicionales que necesite abrir para la autenticación de Azure Active Directory.
-3. Compruebe la cadena de conexión y otras opciones de conexión. Vea la sección Cadena de conexión en el [tema de los problemas de conectividad](sql-database-connectivity-issues.md#connections-to-azure-sql-database).
-4. Compruebe el estado del servicio en el panel. Si piensa que hay un interrupción regional, vea [Recuperación tras una interrupción](sql-database-disaster-recovery.md) para los pasos para recuperarse para una región nueva.
+### <a name="steps-tooresolve-persistent-connectivity-issues"></a>Problemas de conectividad persistente de tooresolve de pasos
+1. Configurar [las reglas de firewall](sql-database-configure-firewall-settings.md) dirección IP del cliente de tooallow Hola. Para temporal con fines de prueba, configure una regla de firewall mediante 0.0.0.0 como Hola a partir de intervalo de direcciones IP y 255.255.255.255 como Hola final del intervalo de direcciones IP. Se abrirá hello tooall direcciones IP. Si se resuelve el problema de conectividad, quite esta regla y cree una regla de firewall para una dirección IP o intervalo de direcciones apropiadamente limitados. 
+2. En todos los firewalls entre el cliente de Hola y Hola Internet, asegúrese de que el puerto 1433 está abierto para las conexiones salientes. Revisión [configurar Firewall de Windows de hello tooAllow acceso a SQL Server](https://msdn.microsoft.com/library/cc646023.aspx) y [híbrida identidad requiere puertos y protocolos](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports) para punteros adicionales relacionados con tooadditional puertos que necesita tooopen para Autenticación de Azure Active Directory.
+3. Compruebe la cadena de conexión y otras opciones de conexión. Consulte la sección de la cadena de conexión en Hola Hola [tema de problemas de conectividad](sql-database-connectivity-issues.md#connections-to-azure-sql-database).
+4. Compruebe el estado del servicio en el panel de Hola. Si cree que existe una interrupción regional, consulte [recuperarse de una interrupción](sql-database-disaster-recovery.md) de toorecover tooa nueva área de pasos.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Evaluación y mejora del rendimiento de la base de datos con la Base de datos SQL de Azure](sql-database-troubleshoot-performance.md)
-* [Buscar en la documentación de Microsoft Azure](http://azure.microsoft.com/search/documentation/)
-* [Ver las últimas actualizaciones del servicio Base de datos SQL](http://azure.microsoft.com/updates/?service=sql-database)
+* [Documentación de Hola de búsqueda en Microsoft Azure](http://azure.microsoft.com/search/documentation/)
+* [Hola vista actualizaciones más recientes toohello servicio de base de datos de SQL Azure](http://azure.microsoft.com/updates/?service=sql-database)
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Información general de desarrollo de Base de datos SQL](sql-database-develop-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: "Configuración de un modo de distribución de Load Balancer | Microsoft Docs"
-description: "Cómo configurar el modo de distribución del equilibrador de carga de Azure para admitir la afinidad de IP de origen"
+title: "modo de distribución del equilibrador de carga de aaaConfigure | Documentos de Microsoft"
+description: "Cómo tooconfigure Azure afinidad de IP de origen de toosupport modo de distribución de equilibrador de carga"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-ms.openlocfilehash: 4cb000c8ee1bb2e267dc0813dab23a77a46080ce
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e745240b733ffc07928d8ed0ae097785ad4f412e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-the-distribution-mode-for-load-balancer"></a>Configuración del modo de distribución en el equilibrador de carga
+# <a name="configure-hello-distribution-mode-for-load-balancer"></a>Configurar el modo de distribución de hello para el equilibrador de carga
 
 ## <a name="hash-based-distribution-mode"></a>Distribución basada en hash
 
-El algoritmo de distribución predeterminado para asignar el tráfico a los servidores disponibles es un hash de 5-tupla (IP de origen, puerto de origen, IP de destino, puerto de destino, tipo de protocolo). Dicho algoritmo solo proporciona adherencia dentro de una sesión de transporte. Los paquetes de la misma sesión se dirigirán a la misma instancia de IP del centro de datos (DIP) tras el punto de conexión con equilibrio de carga. Cuando el cliente inicia una nueva sesión desde la misma IP de origen, el puerto de origen cambia y provoca que el tráfico vaya hacia otro punto de conexión DIP.
+algoritmo de distribución de Hello predeterminado es una tupla de 5 (del origen de IP, puerto de origen, dirección IP de destino, puerto de destino, el tipo de protocolo) servidores de toomap tráfico tooavailable de hash. Dicho algoritmo solo proporciona adherencia dentro de una sesión de transporte. Los paquetes de saludo será la misma sesión dirigen toohello instancia del mismo centro de datos IP (DIP) detrás de extremo con equilibrio de carga de Hola. Cuando se inicia el cliente de hello una nueva sesión de Hola misma IP de origen, puerto de origen de hello cambia y hace Hola tráfico toogo tooa DIP puntos de conexión diferentes.
 
 ![equilibrador de carga basado en hash](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
@@ -31,37 +31,37 @@ Figura 1 - Distribución de 5-tupla
 
 ## <a name="source-ip-affinity-mode"></a>Modo de afinidad de IP de origen
 
-Tenemos un nuevo modo de distribución llamado Afinidad de IP de origen (también conocido como afinidad de cliente o afinidad de IP de cliente). Para asignar el tráfico a los servidores disponibles, se puede configurar Azure Load Balancer para usar una 2-tupla (IP de origen, IP de destino) o una 3-tupla (IP de origen, IP de destino, protocolo). Al usar la afinidad de IP de origen, las conexiones iniciadas desde el mismo equipo cliente van al mismo extremo DIP.
+Tenemos un nuevo modo de distribución llamado Afinidad de IP de origen (también conocido como afinidad de cliente o afinidad de IP de cliente). Equilibrador de carga de Azure puede ser toouse configurado una tupla de 2 (dirección IP de origen, dirección IP de destino) o toomap de tupla de 3 (protocolo IP de origen, dirección IP de destino,) el tráfico toohello de servidores disponibles. Mediante el uso de afinidad de IP de origen, las conexiones inician desde Hola mismo equipo cliente deja de toohello mismo punto de conexión DIP.
 
-En el siguiente diagrama, se ilustra una configuración de 2-tupla. Observe cómo la 2-tupla se ejecuta a través del equilibrador de carga en la máquina virtual 1 (VM1) de la que luego VM2 y VM3 realizan una copia de seguridad.
+Hola siguiente diagrama ilustra una configuración de la tupla de 2. Tenga en cuenta cómo se ejecuta Hola tupla de 2 a través de hello carga equilibrador toovirtual máquina 1 (VM1) que es, a continuación, realizar copias de seguridad VM2 y VM3.
 
 ![afinidad de la sesión](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
 Figura 2 - Distribución de 2-tupla
 
-La afinidad de IP de origen resuelve una incompatibilidad entre Azure Load Balancer y la Puerta de enlace de Escritorio remoto (RD). Ahora, puede crear una granja de servidores de puerta de enlace de Escritorio remoto en un solo servicio en la nube.
+Afinidad IP de origen resuelve una incompatibilidad entre Hola equilibrador de carga de Azure y puerta de enlace de escritorio remoto (RD). Ahora, puede crear una granja de servidores de puerta de enlace de Escritorio remoto en un solo servicio en la nube.
 
-Otro caso de uso es la carga de contenido multimedia donde la carga de los datos tiene lugar a través de UDP pero el plano de control se consigue mediante TCP:
+Otro escenario de caso de uso es la carga de medios donde la carga de datos de Hola se efectúa a través de UDP pero plano de control de Hola se logra a través de TCP:
 
-* Un cliente inicia primero una sesión TCP en la dirección pública con equilibrio de carga y se le dirige a una DIP específica; este canal se deja activo para supervisar el estado de conexión.
-* Una nueva sesión UDP se inicia desde el mismo equipo cliente en el mismo extremo público con equilibrio de carga. Lo que se espera aquí, es que esta conexión también se dirija al mismo extremo DIP que la conexión TCP anterior, de modo que la carga de contenido multimedia se pueda ejecutar con un elevado rendimiento, al mismo tiempo que se mantiene también un canal de control a través de TCP.
+* Un cliente inicia una sesión TCP dirección pública de equilibrio de carga de toohello en primer lugar, obtiene tooa dirigido DIP específica, este canal está en estado de conexión de hello toomonitor active izquierdo
+* Una nueva sesión UDP de hello es el mismo equipo cliente inicia toohello extremo público con equilibrio de carga mismo, la expectativa de hello aquí es que esta conexión también está dirigido toohello mismo extremo DIP como conexión de TCP de hello anterior para que media carga puede ser se ejecuta en un alto rendimiento al tiempo que mantiene un canal de control a través de TCP.
 
 > [!NOTE]
-> Cuando el conjunto con equilibrio de carga cambia (al quitar o agregar una máquina virtual), la distribución de las solicitudes de cliente se vuelve a calcular. No puede depender de nuevas conexiones desde clientes existentes que terminan en el mismo servidor. Además, el uso del modo de distribución de afinidad de IP de origen puede ocasionar una distribución desigual del tráfico. Los clientes que se ejecutan detrás de servidores proxy pueden considerarse como una sola aplicación cliente.
+> Cuando cambia de un conjunto de carga equilibrada (quitar o agregar una máquina virtual), se vuelve a calcular la distribución de Hola de solicitudes de cliente. No puede depender de las nuevas conexiones de los clientes existentes que terminan en hello mismo servidor. Además, el uso del modo de distribución de afinidad de IP de origen puede ocasionar una distribución desigual del tráfico. Los clientes que se ejecutan detrás de servidores proxy pueden considerarse como una sola aplicación cliente.
 
 ## <a name="configuring-source-ip-affinity-settings-for-load-balancer"></a>Configuración de la afinidad de IP de origen para el equilibrador de carga
 
-En las máquinas virtuales, puede usar PowerShell para cambiar la configuración de tiempo de espera:
+Para máquinas virtuales, puede utilizar opciones de tiempo de espera de toochange de PowerShell:
 
-Agregar un extremo de Azure a una máquina virtual y establecer el modo de distribución del equilibrador de carga
+Agregar una máquina Virtual tooa de extremo de Azure y establecer el modo de distribución del equilibrador de carga
 
 ```powershell
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-LoadBalancerDistribution puede establecerse en sourceIP para equilibrio de carga de 2-tupla (dirección IP de origen, dirección IP de destino), en sourceIPProtocol para equilibrio de carga de 3-tupla (dirección IP de origen, IP de destino, protocolo) o en ninguno si desea el comportamiento predeterminado de equilibrio de carga de 5-tupla.
+Se puede establecer LoadBalancerDistribution toosourceIP de tupla de 2 (dirección IP de origen, dirección IP de destino) de equilibrio de carga, sourceIPProtocol para equilibrio de carga de tupla de 3 (protocolo IP de origen, dirección IP de destino,) o ninguno si desea que el comportamiento predeterminado de Hola de equilibrio de carga de tupla de 5.
 
-Utilice lo siguiente para recuperar una configuración de modo de distribución del equilibrador de carga de punto de conexión:
+Usar hello después tooretrieve una configuración de modo de distribución del equilibrador de carga de punto de conexión:
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
@@ -83,19 +83,19 @@ Utilice lo siguiente para recuperar una configuración de modo de distribución 
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-Si el elemento LoadBalancerDistribution no está presente, el Equilibrador de carga de Azure usa el algoritmo predeterminado de 5-tupla.
+Si hello LoadBalancerDistribution elemento no está presente equilibrador de carga de Azure de hello usa algoritmo de tupla de 5 Hola predeterminado.
 
-### <a name="set-the-distribution-mode-on-a-load-balanced-endpoint-set"></a>Establecer el modo de distribución en un conjunto de extremo de carga equilibrada
+### <a name="set-hello-distribution-mode-on-a-load-balanced-endpoint-set"></a>Establecer el modo de distribución de hello en un conjunto de extremos con equilibrio de carga
 
-Si los extremos forman parte de un conjunto de extremos con equilibrio de carga, el modo de distribución debe establecerse en el conjunto de extremos con equilibrio de carga:
+Si los puntos de conexión forman parte de un conjunto de extremos con equilibrio de carga, modo de distribución de hello debe establecerse en el conjunto de extremos con equilibrio de carga de hello:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
-### <a name="cloud-service-configuration-to-change-distribution-mode"></a>Configuración de servicios en la nube para cambiar el modo de distribución
+### <a name="cloud-service-configuration-toochange-distribution-mode"></a>Modo de distribución de toochange de configuración de servicio de nube
 
-Puede aprovechar el SDK de Azure para .NET 2.5 (que se publicará en noviembre) para actualizar el servicio en la nube. La configuración de extremo para los servicios en la nube se realiza en el archivo .csdef. Para actualizar el modo de distribución del equilibrador de carga para una implementación de servicios en la nube, se requiere una actualización de la implementación.
+Puede aprovechar hello Azure SDK para .NET 2.5 (toobe publicado en noviembre) tooupdate su servicio en la nube. Configuración de punto de conexión de servicios en la nube se realiza en .csdef Hola. En orden tooupdate Hola carga equilibrador modo de distribución para una implementación de servicios en la nube, se requiere una actualización de la implementación.
 Este es un ejemplo de los cambios de .csdef para la configuración de extremo:
 
 ```xml
@@ -118,9 +118,9 @@ Este es un ejemplo de los cambios de .csdef para la configuración de extremo:
 
 ## <a name="api-example"></a>Ejemplo de API
 
-Puede configurar la distribución del equilibrador de carga con Service Management API. Asegúrese de agregar el encabezado `x-ms-version` y que esté establecido en la versión `2014-09-01` o posterior.
+Puede configurar la distribución de equilibrador de carga de hello mediante la API de administración de servicios de Hola. Realizar seguro hello tooadd `x-ms-version` encabezado se establece tooversion `2014-09-01` o superior.
 
-### <a name="update-the-configuration-of-the-specified-load-balanced-set-in-a-deployment"></a>Actualizar la configuración del conjunto de carga equilibrada especificado en una implementación
+### <a name="update-hello-configuration-of-hello-specified-load-balanced-set-in-a-deployment"></a>Actualizar el conjunto de configuración de hello especificado con equilibrio de carga de hello en una implementación
 
 #### <a name="request-example"></a>Ejemplo de solicitud
 
@@ -145,7 +145,7 @@ Puede configurar la distribución del equilibrador de carga con Service Manageme
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-El valor de LoadBalancerDistribution puede ser sourceIP para la afinidad de 2-tupla, sourceIPProtocol para la afinidad de 3-tupla o ninguno (sin afinidad, es decir, 5-tupla).
+valor de Hola de LoadBalancerDistribution puede ser sourceIP para afinidad de tupla de 2, sourceIPProtocol para la afinidad de la tupla de 3 o ninguno (para sin afinidad. es decir, 5-tupla).
 
 #### <a name="response"></a>Response
 

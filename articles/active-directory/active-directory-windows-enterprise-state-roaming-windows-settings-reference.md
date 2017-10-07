@@ -1,6 +1,6 @@
 ---
-title: "Referencia de la configuración de itinerancia de Windows 10 | Microsoft Docs"
-description: Una lista completa de todas las opciones que se movilizan o de las que se realiza una copia de seguridad en Windows 10.
+title: "referencia de configuración móvil aaaWindows 10 | Documentos de Microsoft"
+description: Una lista completa de todas las configuraciones de Hola que movido o una copia de seguridad de Windows 10.
 services: active-directory
 keywords: enterprise state roaming, nube de windows
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 5082ed8d2f41e72fa979b978e2ac0b0840fdcdac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 381e2220b698bb0e477c207984ff96c03ed132ca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referencia de la configuración de movilidad de Windows 10
-Lo siguiente es una lista completa de todas las opciones que se movilizan o de las que se realiza una copia de seguridad en Windows 10. 
+Hola aquí te mostramos una lista completa de todas las configuraciones de Hola que movido o una copia de seguridad de Windows 10. 
 
 ## <a name="devices-and-endpoints"></a>Interfaces y puntos de conexión
-Consulte la tabla siguiente para ver un resumen de los dispositivos y tipos de cuenta compatibles con el marco de sincronización, copia de seguridad y restauración en Windows 10.
+Vea Hola para obtener un resumen de los dispositivos de Hola y tipos de cuenta que son compatibles con la sincronización de hello, copia de seguridad, en la tabla siguiente y restaurar el marco de trabajo en Windows 10.
 
 | Tipo de cuenta y operación | Escritorio | Móvil |
 | --- | --- | --- |
@@ -35,10 +35,10 @@ Consulte la tabla siguiente para ver un resumen de los dispositivos y tipos de c
 | Cuenta de Microsoft: copia de seguridad/restauración |No |Sí |
 
 ## <a name="what-is-backup"></a>¿Qué es una copia de seguridad?
-La configuración de Windows se sincroniza normalmente de forma predeterminada pero de algunas configuraciones solo se realiza una copia de seguridad, como la lista de aplicaciones instaladas en un dispositivo. La característica Backup está destinada solo para dispositivos móviles y no está disponible actualmente para los usuarios de Enterprise State Roaming. Backup utiliza una cuenta Microsoft y almacena la configuración y los datos de aplicación en OneDrive. Si un usuario deshabilita la sincronización en el dispositivo mediante la aplicación Configuración, los datos de la aplicación que se suelen sincronizar se convierten en datos de copia de seguridad solamente. Solo se puede tener acceso a los datos de copia de seguridad mediante la operación de restauración durante la primera experiencia de ejecución de un nuevo dispositivo. Las copias de seguridad se pueden deshabilitar mediante la configuración del dispositivo, y se pueden administrar y eliminar mediante la cuenta OneDrive del usuario.
+Configuración de Windows de sincronización normalmente de forma predeterminada, pero algunas configuraciones solo se copian de seguridad, como lista de Hola de las aplicaciones instaladas en un dispositivo. La característica Backup está destinada solo para dispositivos móviles y no está disponible actualmente para los usuarios de Enterprise State Roaming. Copia de seguridad usa una cuenta de Microsoft y almacena los datos de aplicación y la configuración de hello en OneDrive. Si un usuario deshabilita la sincronización en dispositivo hello mediante la aplicación de configuración de hello, datos de la aplicación que normalmente se sincroniza se convierte en copia de seguridad solo. Datos de copia de seguridad solo pueden obtenerse a través de la operación de restauración de Hola durante la primera ejecución de un nuevo dispositivo de Hola. Las copias de seguridad se puede deshabilitar mediante la configuración de dispositivos de hello y se pueden administrar y eliminar a través de la cuenta de OneDrive del usuario de Hola.
 
 ## <a name="windows-settings-overview"></a>Introducción a la configuración de Windows
-Los grupos de configuración siguientes están disponibles para que los usuarios finales puedan habilitar o deshabilitar en ellos la sincronización de configuración en dispositivos de Windows 10.
+Hello grupos de configuración siguientes están disponibles para la sincronización de configuración de los usuarios finales tooenable o deshabilitar en dispositivos Windows 10.
 
 * Tema: fondo de escritorio, icono de usuario, posición de la barra de tareas, etc. 
 * Configuración de Internet Explorer: historial de exploración, direcciones URL escritas, favoritos, etc. 
@@ -54,10 +54,10 @@ Es posible habilitar o deshabilitar la sincronización de un grupo de configurac
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-sync-content.png)
 
 ## <a name="windows-settings-details"></a>Detalles de configuración de Windows
-En la tabla siguiente, las entradas Otros en la columna Grupo de la configuración se refieren a configuraciones que se pueden deshabilitar en Configuración > Cuentas > Sincronizar la configuración > Otras configuraciones de Windows. 
+En hello en la tabla siguiente, las demás entradas en la columna de grupo de configuración de hello hace referencia toosettings que puede deshabilitarse yendo tooSettings > cuentas > sincronizar la configuración > configuración de otras ventanas. 
 
-Las entradas Interno de la columna Grupo de la configuración hacen referencia a la configuración y las aplicaciones que solo se pueden deshabilitar de la sincronización dentro de la propia aplicación o al deshabilitar la sincronización para todo el dispositivo mediante la administración de dispositivos móviles (MDM) o la configuración de directivas de grupo.
-Las configuraciones que no se movilizan o sincronizan no pertenecerán a ningún grupo.
+Entradas internas en la columna de grupo de configuración de Hola refieren toosettings y aplicaciones que solo se puede deshabilitar de la sincronización dentro de la propia aplicación Hola o al deshabilitar la sincronización de dispositivo completo Hola con administración de dispositivos móviles (MDM) o la configuración de directiva de grupo de.
+Valores de configuración que no se transmiten o sincronización no pertenecerá tooa grupo.
 
 | Settings | Escritorio | Móvil | Grupo |
 | --- | --- | --- | --- |
@@ -85,16 +85,16 @@ Las configuraciones que no se movilizan o sincronizan no pertenecerán a ningún
 | **Personalización del escritorio**: papel tapiz de presentación |sync |X |Tema |
 | **Personalización del escritorio**: configuración de la barra de tareas (posición, ocultar automáticamente, etc.) |sync |X |Tema |
 | **Personalización del escritorio**: diseño de pantalla de inicio |X |backup | |
-| **Dispositivos**: impresoras compartidas a las que se conecta |X |X |Otros |
+| **Dispositivos**: se ha conectado demasiado de impresoras compartidas|X |X |Otros |
 | **Explorador de Edge**: lista de lectura |sync |sync |interno |
 | **Explorador Edge**: favoritos |sync |sync |interno |
 | **Explorador Edge**: sitios principales <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
 | **Explorador Edge**: direcciones URL escritas <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
 | **Explorador Edge**: configuración de la barra de favoritos <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
-| **Explorador Edge**: mostrar el botón inicio <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
+| **Explorador Edge**: Mostrar botón Inicio hello <sup> [[1]](#footnote-1)</sup> |sync |sync |interno |
 | **Explorador Edge**: bloquear elementos emergentes <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
-| **Explorador Edge**: preguntarme qué hacer en cada descarga <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
-| **Explorador Edge**: ofrecer guardar contraseñas <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
+| **Explorador Edge**: Preguntarme qué toodo con cada descarga <sup> [[1]](#footnote-1)</sup> |sync |sync |interno |
+| **Explorador Edge**: ofrecer las contraseñas de toosave <sup> [[1]](#footnote-1)</sup> |sync |sync |interno |
 | **Explorador Edge**: enviar solicitudes de no seguimiento <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
 | **Explorador Edge**: guardar entradas de formularios <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
 | **Explorador Edge**: mostrar sugerencias de búsqueda y de sitios web al escribir <sup>[[1]](#footnote-1)</sup> |sync |sync |interno |
@@ -127,7 +127,7 @@ Las configuraciones que no se movilizan o sincronizan no pertenecerán a ningún
 | **Idioma**: QWERTY chino simplificado - tecla de modificador C/E, MAYÚS |sync |X |language |
 | **Idioma**: QWERTY chino simplificado - tecla de modificador C/E, Ctrl |sync |X |language |
 | **Idioma**: chino simplificado WUBI - modo de entrada de carácter único |sync |X |language |
-| **Idioma**: WUBI chino simplificado - mostrar la codificación restante del candidato |sync |X |language |
+| **Idioma**: CHS WUBI - mostrar hello restante de codificación de candidato Hola |sync |X |language |
 | **Idioma**: WUBI chino simplificado - pitido cuando la codificación 4 no sea válida |sync |X |Idioma |
 | **Idioma**: Bopomofo chino simplificado, incluir CJK Ext-A |sync |X |language |
 | **Idioma**: IME japonés - escritura predictiva y palabras personalizadas |sync |sync |language |
@@ -139,11 +139,11 @@ Las configuraciones que no se movilizan o sincronizan no pertenecerán a ningún
 | **Pantalla de bloqueo**: toda la configuración de pantalla de bloqueo |X |X | |
 | **Lupa**: activar o desactivar (alternancia de maestro) |X |X |Facilidad de acceso |
 | **Lupa**: activar o desactivar inversión del color (desactivado de forma predeterminada) |sync |X |Facilidad de acceso |
-| **Lupa**: seguimiento - seguimiento del foco del teclado |sync |X |Facilidad de acceso |
-| **Lupa**: seguimiento - seguimiento del cursor del mouse |sync |X |Facilidad de acceso |
+| **Ampliador**: seguimiento - foco de teclado de Hola de seguimiento |sync |X |Facilidad de acceso |
+| **Ampliador**: seguimiento - cursor del mouse de Hola de seguimiento |sync |X |Facilidad de acceso |
 | **Lupa**: iniciar cuando los usuarios inicien sesión (desactivado de forma predeterminada) |sync |X |Facilidad de acceso |
-| **Mouse**: cambiar el tamaño del cursor del mouse |sync |X |Otros |
-| **Mouse**: cambiar el color del cursor del mouse |sync |X |Otros |
+| **Mouse**: cambiar el tamaño de Hola de cursor del mouse |sync |X |otros |
+| **Mouse**: cambiar color Hola de cursor del mouse |sync |X |Otros |
 | **Mouse**: todas las demás configuraciones |X |X | |
 | **Narrador**: inicio rápido |sync |X |Facilidad de acceso |
 | **Narrador**: los usuarios pueden cambiar el tono de voz del narrador |sync |X |Facilidad de acceso |
@@ -153,8 +153,8 @@ Las configuraciones que no se movilizan o sincronizan no pertenecerán a ningún
 | **Narrador**: insertar cursor a continuación del narrador (activado de forma predeterminada) |sync |X |Facilidad de acceso |
 | **Narrador**: habilitar resaltado visual del cursor del narrador (activado de forma predeterminada) |sync |X |Facilidad de acceso |
 | **Narrador**: reproducir indicaciones de sonido (activado de forma predeterminada) |sync |X |Facilidad de acceso |
-| **Narrador**: activar teclas del teclado táctil al levantar el dedo (desactivado de forma predeterminada) |sync |X |Facilidad de acceso |
-| **Facilidad de acceso**: establecer el grosor del cursor intermitente |sync |X |Facilidad de acceso |
+| **Narrador**: activar las claves en la pantalla táctil hello cuando levante el dedo (desactivado de forma predeterminada) |sync |X |Facilidad de acceso |
+| **Facilidad de acceso**: establecer Hola grosor del cursor parpadeante Hola |sync |X |Facilidad de acceso |
 | **Facilidad de acceso**: quitar imágenes de fondo (desactivado de forma predeterminada) |sync |X |Facilidad de acceso |
 | **Encendido y suspensión**: todas las configuraciones |X |X | |
 | **Personalización de la pantalla de inicio**: color de acento (solo teléfono). |X |sync |Tema |
@@ -163,8 +163,8 @@ Las configuraciones que no se movilizan o sincronizan no pertenecerán a ningún
 | **Escritura**: resaltar palabras incorrectas |sync |backup |language |
 | **Escritura**: mostrar sugerencias de texto al escribir |sync |backup |language |
 | **Escritura**: agregar un espacio después de seleccionar una sugerencia de texto |sync |backup |language |
-| **Escritura**: agregar un punto al pulsar dos veces la barra espaciadora |sync |backup |language |
-| **Escritura**: en mayúsculas la primera letra de cada frase |sync |backup |language |
+| **Escriba**: agregue un punto después de que doble punteo Hola ESPACIADORA |sync |backup |language |
+| **Escriba**: poner en mayúscula la primera letra de cada frase de Hola |sync |backup |language |
 | **Escritura**: escribir todo en mayúsculas al pulsar dos veces la tecla MAYÚS |sync |backup |language |
 | **Escritura**: reproducir sonidos de teclas al escribir |sync |backup |language |
 | **Escritura**: datos de personalización para teclado táctil |sync |backup |language |

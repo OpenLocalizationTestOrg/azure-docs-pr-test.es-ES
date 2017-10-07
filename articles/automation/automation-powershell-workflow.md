@@ -1,6 +1,6 @@
 ---
-title: Aprendizaje del flujo de trabajo de Windows PowerShell para Azure Automation | Microsoft Docs
-description: "Este artículo está destinado como una lección rápida para que los autores familiarizados con PowerShell comprendan las diferencias específicas entre Powershell y el flujo de trabajo de PowerShell y los conceptos aplicables a los runbooks de Automation."
+title: "aaaLearning flujo de trabajo de PowerShell para la automatización de Azure | Documentos de Microsoft"
+description: "Este artículo está pensado como una lección rápida para los autores familiarizados con PowerShell toounderstand hello las diferencias específicas entre PowerShell y flujo de trabajo de PowerShell y runbooks de conceptos tooAutomation aplicables."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 4de812c7f863e42a6ed10c2312d61b8377e06431
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 362c504eb96d31b99a826b128e6a591beecaa084
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Aprendizaje de los conceptos básicos del flujo de trabajo de Windows PowerShell para los runbooks de Automation 
-Los runbooks de Azure Automation se implementan como flujos de trabajo de Windows PowerShell.  Un flujo de trabajo de Windows PowerShell es similar a un script de Windows PowerShell, pero presenta algunas diferencias importantes que pueden resultar confusas para un usuario nuevo.  Aunque este artículo está pensado para ayudarle a escribir runbooks con el flujo de trabajo de PowerShell, se recomienda que escribir runbooks con PowerShell, a menos que necesite puntos de control.  Hay varias diferencias de sintaxis al crear runbooks de flujo de trabajo de PowerShell y estas diferencias requieren algo más de trabajo para escribir flujos de trabajo eficaces.  
+Los runbooks de Azure Automation se implementan como flujos de trabajo de Windows PowerShell.  Un flujo de trabajo de Windows PowerShell es el script de Windows PowerShell tooa similar pero presenta algunas diferencias importantes que pueden ser confusos tooa nuevo usuario.  Aunque este artículo está previsto toohelp escribir runbooks mediante el flujo de trabajo de PowerShell, se recomienda que escribir runbooks con PowerShell, a menos que tenga puntos de control.  Hay varias diferencias de sintaxis al crear runbooks de flujo de trabajo de PowerShell y estas diferencias requieren un poco más trabajo toowrite efectivo los flujos de trabajo.  
 
-Un flujo de trabajo es una secuencia de pasos programados y conectados que realizan tareas de larga duración o requieren la coordinación de varios pasos en varios dispositivos o nodos administrados. Las ventajas de un flujo de trabajo en un script normal incluyen la capacidad de realizar una acción en varios dispositivos simultáneamente y la capacidad de recuperarse automáticamente de los errores. Un flujo de trabajo de Windows PowerShell es un script de Windows PowerShell que usa Windows Workflow Foundation. Aunque el flujo de trabajo está escrito con sintaxis de Windows PowerShell y se inicia mediante Windows PowerShell, se procesa mediante Windows Workflow Foundation.
+Un flujo de trabajo es una secuencia de pasos conectados y programados que realizan tareas de larga duración o requieren la coordinación de Hola de varios pasos en varios dispositivos o nodos administrados. ventajas de un flujo de trabajo en un script normal Hello incluyen capacidad de hello toosimultaneously realizar una acción en varios dispositivos y Hola capacidad tooautomatically recuperarse de errores. Un flujo de trabajo de Windows PowerShell es un script de Windows PowerShell que usa Windows Workflow Foundation. Mientras el flujo de trabajo de Hola se escribe con sintaxis de Windows PowerShell y se inicia mediante Windows PowerShell, se procesa mediante Windows Workflow Foundation.
 
-Para obtener información detallada sobre los temas de este artículo, vea [Introducción al flujo de trabajo de Windows PowerShell](http://technet.microsoft.com/library/jj134242.aspx).
+Para obtener información detallada sobre los temas de hello en este artículo, consulte [Introducción a Workflow de Windows PowerShell](http://technet.microsoft.com/library/jj134242.aspx).
 
 ## <a name="basic-structure-of-a-workflow"></a>Estructura básica de un flujo de trabajo
-El primer paso para convertir un script de PowerShell en un flujo de trabajo de PowerShell es delimitarlo con la palabra clave **Workflow** .  Un flujo de trabajo comienza con la palabra clave **Workflow** , seguida del cuerpo del script entre llaves. El nombre del flujo de trabajo sigue a la palabra clave **Workflow**, tal como se muestra en la sintaxis siguiente:
+Hello primer paso tooconverting un flujo de trabajo de PowerShell de PowerShell script tooa incluye con hello **flujo de trabajo** palabra clave.  Inicia un flujo de trabajo con hello **flujo de trabajo** palabra clave seguida de cuerpo de Hola de script de Hola encerrado entre llaves. nombre de Hola de flujo de trabajo de hello sigue hello **flujo de trabajo** palabra clave tal y como se muestra en hello según la sintaxis:
 
     Workflow Test-Workflow
     {
        <Commands>
     }
 
-El nombre del flujo de trabajo debe coincidir con el nombre del runbook de Automation. Si se va a importar el runbook, el nombre de archivo debe coincidir con el nombre del flujo de trabajo y debe terminar en *.ps1*.
+Hola nombre de flujo de trabajo de hello debe coincidir con hello de runbook de automatización de Hola. Si se va a importar runbook hello, Hola filename debe coincidir con el nombre de flujo de trabajo de Hola y debe terminar en *. ps1*.
 
-Para agregar parámetros al flujo de trabajo, use la palabra clave **Param** palabra clave igual que lo haría para un script.
+flujo de trabajo de tooadd parámetros toohello, use hello **Param** palabra clave como lo haría con script tooa.
 
 ## <a name="code-changes"></a>Cambios de código
-El código de flujo de trabajo de PowerShell es casi idéntico al código de script de PowerShell salvo por algunos cambios importantes.  En las secciones siguientes se describen los cambios que debe realizar en un script de PowerShell para que se ejecute en un flujo de trabajo.
+Código de flujo de trabajo de PowerShell examina el código de script de tooPowerShell casi idéntico salvo algunos cambios importantes.  Hola siguientes secciones describe los cambios que necesite toomake tooa PowerShell script para toorun en un flujo de trabajo.
 
 ### <a name="activities"></a>Actividades
-Una actividad es una tarea específica de un flujo de trabajo. Al igual que un script se compone de uno o varios comandos, un flujo de trabajo se compone de una o varias actividades que se realizan en secuencia. El flujo de trabajo de Windows PowerShell convierte automáticamente muchos de los cmdlets de Windows PowerShell en actividades cuando se ejecuta un flujo de trabajo. Cuando se especifica uno de estos cmdlets en el runbook, Windows Workflow Foundation ejecuta la actividad correspondiente. Para los cmdlets sin actividad correspondiente, el flujo de trabajo de Windows PowerShell ejecuta automáticamente el cmdlet dentro de una actividad [InlineScript](#inlinescript) . Hay un conjunto de cmdlets que están excluidos y no se pueden usar en un flujo de trabajo a menos que incluya explícitamente en un bloque de InlineScript. Para obtener más información sobre estos conceptos, consulte [Uso de actividades en los flujos de trabajo de scripts](http://technet.microsoft.com/library/jj574194.aspx).
+Una actividad es una tarea específica de un flujo de trabajo. Al igual que un script se compone de uno o varios comandos, un flujo de trabajo se compone de una o varias actividades que se realizan en secuencia. Flujo de trabajo de Windows PowerShell convierte automáticamente muchos de hello tooactivities de cmdlets de Windows PowerShell cuando se ejecuta un flujo de trabajo. Cuando se especifica uno de estos cmdlets en su runbook, actividad de hello correspondiente se ejecuta mediante Windows Workflow Foundation. Para los cmdlets sin una actividad correspondiente, el flujo de trabajo de Windows PowerShell ejecuta automáticamente Hola cmdlet dentro de un [InlineScript](#inlinescript) actividad. Hay un conjunto de cmdlets que están excluidos y no se pueden usar en un flujo de trabajo a menos que incluya explícitamente en un bloque de InlineScript. Para obtener más información sobre estos conceptos, consulte [Uso de actividades en los flujos de trabajo de scripts](http://technet.microsoft.com/library/jj574194.aspx).
 
-Las actividades de flujo de trabajo comparten un conjunto de parámetros comunes para configurar su funcionamiento. Para más información sobre los parámetros comunes del flujo de trabajo, vea [about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx).
+Las actividades de flujo de trabajo comparten un conjunto de tooconfigure de parámetros comunes su funcionamiento. Para obtener más información acerca de los parámetros comunes de flujo de trabajo de hello, consulte [about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="positional-parameters"></a>Parámetros posicionales
 No puede usar parámetros posicionales con actividades y cmdlets en un flujo de trabajo.  Todo esto significa que debe usar nombres de parámetros.
 
-Por ejemplo, considere el siguiente código que obtiene todos los servicios en ejecución.
+Por ejemplo, considere la posibilidad de hello después el código que obtiene todos los servicios en ejecución.
 
      Get-Service | Where-Object {$_.Status -eq "Running"}
 
-Si intenta ejecutar este mismo código en un flujo de trabajo, obtiene un mensaje parecido a "El conjunto de parámetros no se puede resolver mediante los parámetros con nombre especificados".  Para corregir este problema, proporcione el nombre del parámetro de la forma siguiente.
+Si intentas toorun este mismo código en un flujo de trabajo, recibirá un mensaje como "Parámetro de conjunto no se puede resolver con hello especificado denominado parámetros".  toocorrect, proporcionar nombre del parámetro hello como en el siguiente Hola.
 
     Workflow Get-RunningServices
     {
@@ -62,14 +62,14 @@ Si intenta ejecutar este mismo código en un flujo de trabajo, obtiene un mensaj
     }
 
 ### <a name="deserialized-objects"></a>Objetos deserializados
-Los objetos de los flujos de trabajo están deserializados.  Esto significa que sus propiedades siguen estando disponibles, pero no sus métodos.  Por ejemplo, considere el siguiente código de PowerShell que detiene un servicio mediante el método Stop del objeto Service.
+Los objetos de los flujos de trabajo están deserializados.  Esto significa que sus propiedades siguen estando disponibles, pero no sus métodos.  Por ejemplo, considere la posibilidad de hello siguiente código de PowerShell que se detiene un servicio mediante el método de Stop Hola Hola de objeto de servicio.
 
     $Service = Get-Service -Name MyService
     $Service.Stop()
 
-Si intenta ejecutar esto en un flujo de trabajo, obtiene un error que indica "La invocación del método no se admite en un flujo de trabajo de Windows PowerShell".  
+Si intentas toorun esto en un flujo de trabajo, recibirá un error que indica que "no es posible invocar métodos en un flujo de trabajo de Windows PowerShell."  
 
-Una opción es ajustar estas dos líneas de código en un bloque [InlineScript](#inlinescript), en cuyo caso $Service sería un objeto de servicio dentro del bloque.
+Una opción es toowrap estas dos líneas de código en un [InlineScript](#inlinescript) bloquear en cuyo caso $Service sería un objeto de servicio dentro de bloques de Hola.
 
     Workflow Stop-Service
     {
@@ -79,7 +79,7 @@ Una opción es ajustar estas dos líneas de código en un bloque [InlineScript](
         }
     }
 
-Otra opción es usar otro cmdlet que realiza la misma funcionalidad que el método, si hay uno disponible.  En nuestro ejemplo, el cmdlet Stop-Service proporciona la misma funcionalidad que el método Stop, y podría usar lo siguiente para un flujo de trabajo.
+Otra opción es toouse Hola a otro cmdlet que realiza la misma funcionalidad que el método de hello, si está disponible.  En nuestro ejemplo, el cmdlet de hello Stop-Service proporciona Hola misma funcionalidad que el método de detención de hello y podría utilizar siguiente Hola para un flujo de trabajo.
 
     Workflow Stop-MyService
     {
@@ -89,16 +89,16 @@ Otra opción es usar otro cmdlet que realiza la misma funcionalidad que el méto
 
 
 ## <a name="inlinescript"></a>InlineScript
-La actividad **InlineScript** es útil cuando necesita ejecutar uno o más comandos tradicional como script tradicional de PowerShell en lugar de como flujo de trabajo de PowerShell.  Mientras que los comandos de un flujo de trabajo se envían a Windows Workflow Foundation para su procesamiento, los comandos de un bloque de InlineScript se procesan mediante Windows PowerShell.
+Hola **InlineScript** actividad es útil cuando necesita uno o más comandos de toorun como tradicional script de PowerShell en lugar de flujo de trabajo de PowerShell.  Mientras que los comandos en un flujo de trabajo se envían tooWindows Workflow Foundation para su procesamiento, comandos de un bloque de InlineScript se procesan mediante Windows PowerShell.
 
-InlineScript usa la sintaxis que se muestra a continuación.
+InlineScript usa Hola sintaxis que se muestra a continuación.
 
     InlineScript
     {
       <Script Block>
     } <Common Parameters>
 
-Puede devolver resultados de InlineScript asignando el resultado a una variable. El siguiente ejemplo detiene un servicio y, a continuación, envía el nombre de servicio.
+Puede devolver resultados desde un InlineScript mediante la asignación de variable de tooa de salida de hello. Hello en el ejemplo siguiente se detiene un servicio y, a continuación, genera el nombre del servicio de Hola.
 
     Workflow Stop-MyService
     {
@@ -112,7 +112,7 @@ Puede devolver resultados de InlineScript asignando el resultado a una variable.
     }
 
 
-Puede pasar valores en un bloque de InlineScript, pero debe usar el modificador de ámbito **$Using** .  El ejemplo siguiente es idéntico al ejemplo anterior salvo que se proporciona el nombre de servicio mediante una variable.
+Puede pasar valores en un bloque de InlineScript, pero debe usar el modificador de ámbito **$Using** .  Hello en el ejemplo siguiente se es idéntico toohello ejemplo anterior salvo que hello nombre de servicio proporciona una variable.
 
     Workflow Stop-MyService
     {
@@ -128,18 +128,18 @@ Puede pasar valores en un bloque de InlineScript, pero debe usar el modificador 
     }
 
 
-Aunque las actividades InlineScript pueden ser críticas en algunos flujos de trabajo, no son compatibles con las construcciones de flujo de trabajo y solo se deben usar cuando sea necesario por las razones siguientes:
+Aunque las actividades de InlineScript pueden resultar fundamental en ciertos flujos de trabajo, no se son compatibles con construcciones de flujo de trabajo y sólo debe utilizarse cuando sea necesario para hello siguientes motivos:
 
-* No puede usar [puntos de comprobación](#checkpoints) dentro de un bloque de InlineScript. Si se produce un error dentro del bloque, se debe reanudar desde el principio del bloque.
+* No puede usar [puntos de comprobación](#checkpoints) dentro de un bloque de InlineScript. Si se produce un error en el bloque de hello, se debe reanudar desde principio Hola del bloque de Hola.
 * No puede usar la [ejecución en paralelo](#parallel-processing) dentro de un bloque de InlineScript.
-* InlineScript afecta a la escalabilidad del flujo de trabajo, ya que retiene la sesión de Windows PowerShell durante todo el bloque de InlineScript.
+* InlineScript afecta a la escalabilidad de flujo de trabajo de hello ya que retiene la sesión de Windows PowerShell de hello hasta alcanzar la longitud completa Hola del bloque de InlineScript Hola.
 
 Para más información sobre el uso de InlineScript, vea [Ejecutar comandos de Windows PowerShell en un flujo de trabajo](http://technet.microsoft.com/library/jj574197.aspx) y [about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx).
 
 ## <a name="parallel-processing"></a>Procesamiento en paralelo
-Una ventaja de los flujos de trabajo de Windows PowerShell es la capacidad para realizar un conjunto de comandos en paralelo en lugar de hacerlo secuencialmente como con un script típico.
+Una ventaja de flujos de trabajo de Windows PowerShell es Hola capacidad tooperform un conjunto de comandos en paralelo en lugar de secuencialmente como con un script típico.
 
-Puede usar la palabra clave **Parallel** para crear un bloque de scripts con varios comandos que se ejecuten simultáneamente. Esto usa la siguiente sintaxis que se muestra a continuación. En este caso, Activity1 y Activity2 se inician al mismo tiempo. Activity3 se inicia después de que se hayan completado Activity1 y Activity2.
+Puede usar hello **paralelo** palabra clave toocreate un bloque de script con varios comandos que se ejecutan simultáneamente. Esto utiliza Hola sintaxis que se muestra a continuación. En este caso, Activity1 y Activity2 se inicia en hello mismo tiempo. Activity3 se inicia después de que se hayan completado Activity1 y Activity2.
 
     Parallel
     {
@@ -149,13 +149,13 @@ Puede usar la palabra clave **Parallel** para crear un bloque de scripts con var
     <Activity3>
 
 
-Por ejemplo, considere los siguientes comandos de PowerShell que copian varios archivos a un destino de red.  Estos comandos se ejecutan secuencialmente de modo que un archivo debe terminar de copiarse antes de que comience el siguiente.     
+Por ejemplo, considere la posibilidad de hello siga los comandos de PowerShell que varios archivos tooa red destino de la copia.  Estos comandos se ejecutan secuencialmente para que un archivo debe finalizar copia antes de Hola a continuación se inicia.     
 
     Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
     Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
     Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
 
-El flujo de trabajo siguiente ejecuta estos mismos comandos en paralelo para que todos ellos empiezan a copiarse al mismo tiempo.  Una vez que todos se han copiado, se muestra el mensaje de finalización.
+Hello siguiente flujo de trabajo ejecuta estos mismos comandos en paralelo para que todos ellos comenzarán a copiar Hola mismo tiempo.  Solo después de que todos estén copiados se mensaje de bienvenida de finalización muestra.
 
     Workflow Copy-Files
     {
@@ -170,7 +170,7 @@ El flujo de trabajo siguiente ejecuta estos mismos comandos en paralelo para que
     }
 
 
-Puede utilizar la construcción **ForEach-Parallel** para procesar comandos para cada elemento de una colección simultáneamente. Los elementos de la colección se procesan en paralelo mientras que los comandos del bloque de scripts se ejecutan secuencialmente. Esto usa la siguiente sintaxis que se muestra a continuación. En este caso, Activity1 se inicia al mismo tiempo para todos los elementos de la colección. Para cada elemento, Activity2 se inicia una vez completado Activity1. Activity3 se inicia únicamente después de que se hayan completado Activity1 y Activity2 para todos los elementos.
+Puede usar hello **ForEach-Parallel** construir comandos tooprocess para cada elemento de una colección simultáneamente. elementos de Hola de colección de Hola se procesan en paralelo mientras comandos Hola Hola bloque de script se ejecutan secuencialmente. Esto utiliza Hola sintaxis que se muestra a continuación. En este caso, Activity1 se inicia en hello la misma hora para todos los elementos de la colección de Hola. Para cada elemento, Activity2 se inicia una vez completado Activity1. Activity3 se inicia únicamente después de que se hayan completado Activity1 y Activity2 para todos los elementos.
 
     ForEach -Parallel ($<item> in $<collection>)
     {
@@ -179,7 +179,7 @@ Puede utilizar la construcción **ForEach-Parallel** para procesar comandos para
     }
     <Activity3>
 
-El ejemplo siguiente es similar al ejemplo anterior, en el que se copian archivos en paralelo.  En este caso, se muestra un mensaje para cada archivo después de copiarse.  Solo después de que todos se hayan copiado completamente, aparecerá el mensaje de finalización.
+Hola siguiente ejemplo es similar toohello de ejemplo anterior copiar archivos en paralelo.  En este caso, se muestra un mensaje para cada archivo después de copiarse.  Solo después de que todos estén completamente copiados se mensajes de bienvenida del final de conclusión muestra.
 
     Workflow Copy-Files
     {
@@ -195,13 +195,13 @@ El ejemplo siguiente es similar al ejemplo anterior, en el que se copian archivo
     }
 
 > [!NOTE]
-> No se recomienda ejecutar runbooks secundarios en paralelo, ya que se ha demostrado que no tiene unos resultados confiables.  A veces el resultado del runbook secundario no se muestra, y la configuración de un runbook secundario puede afectar a los demás runbooks secundarios paralelos.
+> No se recomienda ejecutando runbooks secundarios en paralelo, ya que esto ha demostrado toogive de resultados no confiables.  Hello salida del runbook a veces de hello secundario no se muestra, y puede afectar la configuración en un elemento secundario runbook Hola otros runbooks secundarios paralelas
 >
 
-## <a name="checkpoints"></a>puntos de comprobación
-Un *punto de control* es una instantánea del estado actual del flujo de trabajo que incluye el valor actual de las variables y cualquier salida generada en ese punto. Si un flujo de trabajo termina en error o se suspende, la próxima vez que se ejecute comenzará desde su último punto de comprobación, en lugar de desde el inicio del flujo de trabajo.  Puede establecer un punto de control en un flujo de trabajo con la actividad **Checkpoint-Workflow** .
+## <a name="checkpoints"></a>Puntos de control
+A *punto de comprobación* es una instantánea del estado actual de Hola de flujo de trabajo de Hola que incluye el valor actual de Hola para las variables y los resultados se punto toothat generado. Si un flujo de trabajo termina en error o está suspendido, Hola próxima vez que se ejecute se iniciará desde su último punto de comprobación en lugar de inicio de Hola de flujo de trabajo de Hola.  Puede establecer un punto de control en un flujo de trabajo con hello **Checkpoint-Workflow** actividad.
 
-En el código de ejemplo siguiente, se produce una excepción después de Activity2 que provoca la finalización del flujo de trabajo. Cuando se vuelve a ejecutar el flujo de trabajo, se inicia ejecutando Activity2, ya que estaba justo después del último punto de comprobación establecido.
+En el siguiente código de ejemplo de Hola, se produce una excepción después de Activity2 que produce Hola tooend de flujo de trabajo. Cuando se vuelve a ejecutar el flujo de trabajo de hello, se inicia ejecutando Activity2, ya que se encontraba justo detrás de hello último punto de control establecido.
 
     <Activity1>
     Checkpoint-Workflow
@@ -209,9 +209,9 @@ En el código de ejemplo siguiente, se produce una excepción después de Activi
     <Exception>
     <Activity3>
 
-Debe establecer los puntos de comprobación en un flujo de trabajo después de las actividades que puedan ser propensas a la excepción y que no deben repetirse si se reanuda el flujo de trabajo. Por ejemplo, el flujo de trabajo puede crear una máquina virtual. Puede establecer un punto de control antes y después de los comandos para crear la máquina virtual. Si se produce un error en la creación,  los comandos se repetirían si el flujo de trabajo se vuelve a iniciar. Si el flujo de trabajo produce un error después de que la creación se haya realizado correctamente, la máquina virtual no se volverá a crear cuando se reanude el flujo de trabajo.
+Debe establecer los puntos de comprobación en un flujo de trabajo después de que las actividades que pueden ser propensas a tooexception y no deben repiten si se reanuda el flujo de trabajo de Hola. Por ejemplo, el flujo de trabajo puede crear una máquina virtual. Puede establecer un punto de control antes y después de la máquina virtual de hello comandos toocreate Hola. Si se produce un error en la creación de hello, se repetiría comandos Hola si se inicia el flujo de trabajo de Hola de nuevo. Si se produce un error en el flujo de trabajo de hello después Hola se crea correctamente, a continuación, máquina virtual de hello no se creará nuevo cuando se reanuda el flujo de trabajo de Hola.
 
-El siguiente ejemplo copia varios archivos en una ubicación de red y establece un punto de comprobación después de cada archivo.  Si la ubicación de red se pierde, el flujo de trabajo finaliza con error.  Cuando se vuelva a iniciar, se reanudará en el último punto de comprobación, lo que significa que solo se omiten los archivos que ya se han copiado.
+Hola siguiente ejemplo copia la ubicación de red de varios archivos tooa y establece un punto de control después de cada archivo.  Si se pierde la ubicación de red de hello, flujo de trabajo de hello termina en error.  Cuando se inicia de nuevo, se reanudará en hello último punto de comprobación lo que significa que sólo los archivos de Hola que ya se han copiado se omiten.
 
     Workflow Copy-Files
     {
@@ -227,9 +227,9 @@ El siguiente ejemplo copia varios archivos en una ubicación de red y establece 
         Write-Output "All files copied."
     }
 
-Como las credenciales de nombre de usuario no se conservan después de llamar a la actividad [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) o del último punto de control, necesita establecer las credenciales en NULL y, después, recuperarlas de nuevo desde el almacén de recursos tras llamar a **Suspend-Workflow** o al punto de control.  De lo contrario, puede que reciba el siguiente mensaje de error: *No puede reanudarse el trabajo de flujo de trabajo dado que no se pudieron guardar los datos de persistencia completamente o dichos datos estaban dañados. Debe reiniciar el flujo de trabajo.*
+Puesto que las credenciales de nombre de usuario no se conservan después de llamar a hello [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) actividad o después de hello último punto de comprobación, necesita tooset Hola credenciales toonull y, a continuación, recuperarlos nuevo desde el almacén de activos de hello después  **Flujo de trabajo suspender** o se denomina punto de comprobación.  En caso contrario, recibirá Hola siguiente mensaje de error: *no se puede reanudar el flujo de trabajo de hello, ya sea porque los datos de persistencia no se pudieron guardar por completo, o guardar datos de persistencia se ha dañado. Debe reiniciar el flujo de trabajo de Hola.*
 
-El mismo código de abajo muestra cómo controlar esta operación en los Runbooks del flujo de trabajo de PowerShell.
+Hola siguiendo el mismo código se muestra cómo toohandle esto en sus runbooks de flujo de trabajo de PowerShell.
 
     workflow CreateTestVms
     {
@@ -240,9 +240,9 @@ El mismo código de abajo muestra cómo controlar esta operación en los Runbook
 
        foreach ($VmName in $VmsToCreate)
          {
-          # Do work first to create the VM (code not shown)
+          # Do work first toocreate hello VM (code not shown)
 
-          # Now add the VM
+          # Now add hello VM
           New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
 
           # Checkpoint so that VM creation is not repeated if workflow suspends
@@ -256,7 +256,7 @@ El mismo código de abajo muestra cómo controlar esta operación en los Runbook
 
 Este paso no es necesario si se autentica utilizando una cuenta de ejecución configurada con una entidad de servicio.  
 
-Para obtener más información acerca de los puntos de control, consulte [Adición de puntos de control a un flujo de trabajo de scripts](http://technet.microsoft.com/library/jj574114.aspx).
+Para obtener más información acerca de los puntos de control, vea [tooa de puntos de control Agregar flujo de trabajo de Script](http://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para empezar a trabajar con Runbooks de flujo de trabajo de PowerShell, consulte [Mi primer runbook de flujo de trabajo de PowerShell](automation-first-runbook-textual.md)
+* tooget a trabajar con runbooks de flujo de trabajo de PowerShell, consulte [mi primer runbook de flujo de trabajo de PowerShell](automation-first-runbook-textual.md)

@@ -1,6 +1,6 @@
 ---
 title: "Autenticación de usuario final: Data Lake Store con Azure Active Directory | Microsoft Docs"
-description: "Aprenda a lograr la autenticación del usuario final con Data Lake Store mediante Azure Active Directory"
+description: "Obtenga información acerca de cómo tooachieve la autenticación del usuario final con el almacén de Data Lake con Azure Active Directory"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/21/2017
 ms.author: nitinme
-ms.openlocfilehash: c20f5c39b00992d801909c8e5de292f3c2f12673
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fd58f4f2d8fc915b8bc51d9e5b040d2cee34047e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Autenticación de usuario final con Data Lake Store mediante Azure Active Directory
 > [!div class="op_single_selector"]
@@ -27,47 +27,47 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Azure Data Lake Store usa Azure Active Directory para la autenticación. Antes de crear una aplicación que funcione con Azure Data Lake Store o Azure Data Lake Analytics, debe determinar cómo desea autenticar la aplicación con Azure Active Directory (Azure AD). Las dos principales opciones disponibles son:
+Azure Data Lake Store usa Azure Active Directory para la autenticación. Antes de crear una aplicación que funcione con el almacén de Azure Data Lake o análisis de Data Lake de Azure, primero debe decidir cómo desea que tooauthenticate su aplicación con Azure Active Directory (Azure AD). Hola dos opciones principales disponibles son:
 
 * Autenticación de usuario final (este artículo)
 * Autenticación entre servicios
 
-Con ambas opciones, la aplicación recibe un token de OAuth 2.0 que se adjunta a cada solicitud realizada a Azure Data Lake Store o Azure Data Lake Analytics.
+Ambas opciones como resultado de la aplicación que se proporciona con un token de OAuth 2.0, que obtiene tooeach adjunto solicitud realizada tooAzure almacén de Data Lake o análisis de Data Lake de Azure.
 
 En este artículo se habla de cómo crear una **aplicación nativa de Azure AD para la autenticación de usuario final**. Para obtener instrucciones sobre la configuración de la aplicación de Azure AD para la autenticación entre servicios, vea [Service-to-service authentication with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md) (Autenticación entre servicios con Data Lake Store mediante Azure Active Directory).
 
 ## <a name="prerequisites"></a>Requisitos previos
 * Una suscripción de Azure. Consulte [How to get Azure Free trial for testing Hadoop in HDInsight (Obtención de una versión de prueba gratuita de Azure para probar Hadoop en HDInsight)](https://azure.microsoft.com/pricing/free-trial/).
 
-* El identificador de suscripción. Puede recuperarlo en Azure Portal. Por ejemplo, está disponible en la hoja de la cuenta de Data Lake Store.
+* El identificador de suscripción. Puede recuperarlo desde Hola Portal de Azure. Por ejemplo, está disponible desde la hoja de cuenta de almacén de Data Lake Hola.
   
     ![Obtener id. de suscripción](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* El nombre de dominio de Azure AD. Para recuperarlo, mantenga el puntero del mouse en la esquina superior derecha de Azure Portal. En la siguiente captura de pantalla, el nombre de dominio es **contoso.onmicrosoft.com** y el GUID entre paréntesis es el identificador del inquilino. 
+* El nombre de dominio de Azure AD. Puede recuperarlo mediante el desplazamiento del mouse de hello en la esquina superior derecha de Hola de hello Portal de Azure. En la captura de pantalla de Hola a continuación, nombre de dominio de hello es **contoso.onmicrosoft.com**, y Hola GUID entre corchetes es el identificador del inquilino Hola. 
   
     ![Obtener dominio de AAD](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
 ## <a name="end-user-authentication"></a>Autenticación de usuario final
-Es el enfoque recomendado si desea que un usuario final inicie sesión en la aplicación a través de Azure AD. La aplicación podrá tener acceso a los recursos de Azure con el mismo nivel de acceso que tiene el usuario final que inició sesión. El usuario final deberá proporcionar sus credenciales de manera periódica para que la aplicación conserve el acceso.
+Se trata de hello enfoque recomendado si desea que un toolog por el usuario final en la aplicación de tooyour a través de Azure AD. La aplicación será capaz de tooaccess recursos de Azure con hello mismo nivel de acceso como usuario final de Hola que ha iniciado sesión. El usuario final deberá tooprovide sus credenciales periódicamente en orden para el acceso a la aplicación toomaintain.
 
-El inicio de sesión del usuario final genera que su aplicación reciba un token de acceso y un token de actualización. El token de acceso se adjunta a cada solicitud hecha a Data Lake Store o Data Lake Analytics y es válido, de manera predeterminada, durante 1 hora. El token de actualización se puede usar para obtener un nuevo token de acceso y es válido, de manera predeterminada, hasta por dos semanas, si se usa de manera habitual. Puede usar dos enfoques distintos para el inicio de sesión del usuario final.
+resultado de Hello de la existencia del usuario final de hello sesión es que la aplicación recibe un token de acceso y un token de actualización. token de acceso de Hello obtiene solicitud tooeach adjunto realizado tooData Lake almacén o análisis de Data Lake y tiene una validez de una hora de forma predeterminada. token de actualización de Hello puede ser usado tooobtain un nuevo token de acceso y es válido para semanas tootwo de forma predeterminada, si se utiliza con regularidad. Puede usar dos enfoques distintos para el inicio de sesión del usuario final.
 
-### <a name="using-the-oauth-20-pop-up"></a>Uso de la ventana emergente de OAuth 2.0
-La aplicación puede desencadenar una ventana emergente de autorización de OAuth 2.0 en la que el usuario final puede escribir sus credenciales. Esta ventana emergente también funciona con el proceso de autenticación en dos pasos (2FA) de Azure AD, si es necesario. 
+### <a name="using-hello-oauth-20-pop-up"></a>Utilizando la ventana emergente de hello OAuth 2.0
+La aplicación puede desencadenar un menú emergente de autorización OAuth 2.0, en qué hello para el usuario final puede escribir sus credenciales. Este elemento emergente también funciona con el proceso de autenticación en dos fases de Azure AD (2FA) de hello, si es necesario. 
 
 > [!NOTE]
-> Este método todavía no es compatible con la Biblioteca de autenticación de Active Directory (ADAL) para Python o Java.
+> Este método no se admite todavía en hello biblioteca de autenticación de Azure AD (AAL) para Python o Java.
 > 
 > 
 
 ### <a name="directly-passing-in-user-credentials"></a>Transmisión directa de credenciales de usuario
-Su aplicación puede proporcionar directamente las credenciales de usuario a Azure AD. Este método solo funciona con cuentas de usuario con identificador de organización; no es compatible con cuentas de usuario personales de tipo "Live ID", incluidas las que terminan en @outlook.com o @live.com. Además, este método no es compatible con las cuentas de usuario que requieren la autenticación en dos pasos (2FA) de Azure AD.
+La aplicación puede proporcionar directamente tooAzure de credenciales de usuario AD. Este método solo funciona con cuentas de usuario con identificador de organización; no es compatible con cuentas de usuario personales de tipo "Live ID", incluidas las que terminan en @outlook.com o @live.com. Además, este método no es compatible con las cuentas de usuario que requieren la autenticación en dos pasos (2FA) de Azure AD.
 
-### <a name="what-do-i-need-to-use-this-approach"></a>¿Qué se necesita para usar este enfoque?
-* El nombre de dominio de Azure AD. Este ya aparece en los requisitos previos de este artículo.
+### <a name="what-do-i-need-toouse-this-approach"></a>¿Qué necesito toouse este enfoque?
+* El nombre de dominio de Azure AD. Esto ya aparece en el requisito previo de Hola de este artículo.
 * **Aplicación nativa** de Azure AD
-* Identificador de la aplicación nativa de Azure AD
-* URI de redirección de la aplicación nativa de Azure AD
+* Identificador de la aplicación para aplicación nativa de hello Azure AD
+* URI de redirección de hello aplicación nativa de Azure AD
 * Establecimiento de permisos delegados
 
 
@@ -75,47 +75,47 @@ Su aplicación puede proporcionar directamente las credenciales de usuario a Azu
 
 Cree y configure una aplicación nativa de Azure AD para la autenticación de usuario final con Azure Data Lake Store mediante Azure Active Directory. Para obtener instrucciones, vea cómo [crear una aplicación de Azure AD](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
-Al seguir las instrucciones que aparecen en el vínculo anterior, asegúrese de seleccionar **Nativa** para el tipo de aplicación, como se muestra en la captura de pantalla siguiente.
+Al seguir las instrucciones de hello en hello por encima del vínculo, asegúrese de seleccionar **nativo** para el tipo de aplicación, como se muestra en la siguiente captura de pantalla de Hola.
 
 ![Crear aplicación de web](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Crear aplicación nativa")
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Paso 2: Obtener el identificador de aplicación y el URI de redirección
 
-Vea [Get the application ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) (Obtener el identificador de la aplicación) para recuperar el identificador de aplicación (también llamado identificador de cliente en el Portal de Azure clásico) de la aplicación nativa de Azure AD.
+Vea [obtener identificador de la aplicación hello](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) tooretrieve Hola Id. de aplicación (también denominado identificador de cliente de hello en hello portal de Azure clásico) de la aplicación nativa de hello Azure AD.
 
-Para recuperar el URI de redireccionamiento, siga estos pasos.
+Hola tooretrieve URI de redireccionamiento, siga estos pasos Hola.
 
-1. En Azure Portal, seleccione **Azure Active Directory**, haga clic en **Registros de aplicaciones**y después busque y haga clic en la aplicación nativa de Azure AD que acaba de crear.
+1. En hello Portal de Azure, seleccione **Azure Active Directory**, haga clic en **registros de aplicación**y, a continuación, busque y haga clic en la aplicación nativa de hello Azure AD que acaba de crear.
 
-2. En la hoja **Configuración** de la aplicación, haga clic en **URI de redirección**.
+2. De hello **configuración** hoja para la aplicación hello, haga clic en **URI de redireccionamiento**.
 
     ![Obtener URI de redirección](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-redirect-uri.png)
 
-3. Copie el valor mostrado.
+3. Copiar valor de hello mostrado.
 
 
 ## <a name="step-3-set-permissions"></a>Paso 3: Establecer permisos
 
-1. En Azure Portal, seleccione **Azure Active Directory**, haga clic en **Registros de aplicaciones**y después busque y haga clic en la aplicación nativa de Azure AD que acaba de crear.
+1. En hello Portal de Azure, seleccione **Azure Active Directory**, haga clic en **registros de aplicación**y, a continuación, busque y haga clic en la aplicación nativa de hello Azure AD que acaba de crear.
 
-2. En la hoja **Configuración** de la aplicación, haga clic en **Permisos necesarios** y después en **Agregar**.
+2. De hello **configuración** hoja para la aplicación hello, haga clic en **los permisos necesarios**y, a continuación, haga clic en **agregar**.
 
     ![ID. DE CLIENTE](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
-3. En la hoja **Agregar acceso de API**, haga clic en **Seleccionar una API**, después en **Azure Data Lake** y, por último, en **Seleccionar**.
+3. Hola **agregar acceso de API** hoja, haga clic en **seleccionar una API**, haga clic en **Azure Data Lake**y, a continuación, haga clic en **seleccione**.
 
     ![ID. DE CLIENTE](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
  
-4.  En la hoja **Agregar acceso de API**, haga clic en **Seleccionar permisos**, active la casilla de verificación para conceder **acceso total a Data Lake Store** y después haga clic en **Seleccionar**.
+4.  Hola **agregar acceso de API** hoja, haga clic en **seleccione permisos**, seleccione Hola casilla toogive **acceso total tooData Lake almacén**y, a continuación, haga clic en **seleccionar** .
 
     ![ID. DE CLIENTE](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
-    Haga clic en **Done**.
+    Haga clic en **Done**(Listo).
 
-5. Repita los dos últimos pasos para conceder permisos también para **Service Management API de Windows Azure**.
+5. Hola repetición últimos dos pasos permisos toogrant para **API de administración de servicios de Windows Azure** así.
    
 ## <a name="next-steps"></a>Pasos siguientes
-En este artículo se ha creado una aplicación nativa de Azure AD y se ha recopilado la información que necesita en las aplicaciones cliente que cree mediante el SDK de .NET, el SDK de Java, la API de REST, etc. Ahora puede continuar en los artículos siguientes, que hablan de cómo usar la aplicación web de Azure AD para autenticarse primero en Data Lake Store y luego realizar otras operaciones en el almacén.
+En este artículo se crea una aplicación nativa de Azure AD y recopila información de Hola que necesita en las aplicaciones cliente que creas mediante .NET SDK, SDK de Java, API de REST, etcetera. Ahora puede continuar toohello siguientes artículos que hable acerca de cómo se autentican con almacén de Data Lake toofirst de aplicación web de toouse hello Azure AD y, a continuación, realizan otras operaciones en el almacén de Hola.
 
 * [Introducción al Almacén de Azure Data Lake mediante SDK de .NET](data-lake-store-get-started-net-sdk.md)
 * [Introducción a Azure Data Lake Store con el SDK de Java](data-lake-store-get-started-java-sdk.md)

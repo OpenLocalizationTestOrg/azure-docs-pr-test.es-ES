@@ -1,6 +1,6 @@
 ---
-title: "Suscripción a Azure con la cuenta de Office 365 | Microsoft Docs"
-description: "Obtenga información acerca de cómo crear una suscripción de Azure mediante una cuenta de Office 365"
+title: aaaSign en Azure con la cuenta de Office 365 | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate una suscripción de Azure mediante una cuenta de Office 365"
 services: 
 documentationcenter: 
 author: JiangChen79
@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: cjiang
-ms.openlocfilehash: 923b3ca8a2e2b1d7f44cd77946a02e1d30839f14
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: cc331bf7222b5b03e740cb40a214bc13ef585f54
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Registrarse para obtener una suscripción de Azure con su cuenta de Office 365
-Si tiene una suscripción de Office 365, puede usar su cuenta de Office 365 para crear una suscripción de Azure. Inicie sesión en [Azure Portal](https://portal.azure.com/) con su nombre de usuario y contraseña de Office 365. Si desea configurar máquinas virtuales o usar otros servicios de Azure, debe suscribirse a una suscripción de Azure. Puede compartir su suscripción de Azure con otras personas y [usar el control de acceso basado en roles para administrar el acceso a su suscripción de Azure y a sus recursos](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
+Si tiene una suscripción de Office 365, puede usar su toocreate de cuenta de Office 365 una suscripción de Azure. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/) con su nombre de usuario de Office 365 y la contraseña. Si desea tooset las máquinas virtuales o usar otros servicios de Azure, debe registrarse para una suscripción de Azure. Puede compartir su suscripción de Azure con otras personas y [use tooyour de acceso de Control de acceso basado en roles toomanage suscripción de Azure y recursos](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
 
-Si ya tiene una cuenta de Office 365 y una suscripción de Azure, consulte [Asociación de un inquilino de Office 365 a una suscripción de Azure](billing-add-office-365-tenant-to-azure-subscription.md).
+Si ya tiene una cuenta de Office 365 y una suscripción de Azure, consulte [asociar un tooan del inquilino de Office 365 suscripción de Azure](billing-add-office-365-tenant-to-azure-subscription.md).
 
 ## <a name="get-an-azure-subscription-using-your-office-365-account"></a>Obtención de una suscripción de Azure con su cuenta de Office 365
 
 Ahorre tiempo y evite la proliferación de cuentas al suscribirse a Azure con el nombre de usuario y la contraseña de Office 365. 
 
 1. Suscríbase en [Azure.com](https://account.azure.com/signup?offer=MS-AZR-0044p&appId=docs). 
-2. Inicie sesión con su nombre de usuario y contraseña de Office 365. La cuenta que use no necesita tener permisos de administrador. Si tiene más de una cuenta de Office 365, asegúrese de utilizar las credenciales de la cuenta de Office 365 que desea asociar a su suscripción de Azure. 
+2. Inicie sesión con su nombre de usuario y contraseña de Office 365. cuenta de Hello que usa no tiene permisos de administrador de toohave. Si tiene más de una cuenta de Office 365, asegúrese de que usa credenciales de hello para la cuenta de hello Office 365 que desee tooassociate con su suscripción de Azure. 
 
-   ![Captura de pantalla que muestra la página de registro.](./media/billing-use-existing-office-365-account-azure-subscription/billing-sign-in-with-office-365-account.png)
+   ![Captura de pantalla que muestra la página de inicio de sesión de Hola.](./media/billing-use-existing-office-365-account-azure-subscription/billing-sign-in-with-office-365-account.png)
 
-3. Escriba la información necesaria para completar el proceso de suscripción. Puede que alguna información no sea necesaria si ya tiene una cuenta de Office 365.
+3. Escriba información de hello necesario y el proceso de registro de hello completa. Puede que alguna información no sea necesaria si ya tiene una cuenta de Office 365.
 
-    ![Captura de pantalla que muestra el formulario de registro.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
+    ![Captura de pantalla que muestra el formulario de registro de hello.](./media/billing-use-existing-office-365-account-azure-subscription/billing-azure-sign-up-fill-information.png)
 
-- Si necesita agregar otras personas de su organización a la suscripción de Azure, consulte [Introducción a la administración de acceso en Azure Portal](../active-directory/role-based-access-control-what-is.md). 
+- Si necesita tooadd otras personas en su suscripción de Azure de toohello de organización, consulte [comenzar con la administración de acceso de hello portal de Azure](../active-directory/role-based-access-control-what-is.md). 
 
 ## <a id="more-about-subs">Más información acerca de las suscripciones de Azure y Office 365</a>
-Office 365 y Azure usan el servicio Azure Active Directory para administrar usuarios y suscripciones. El directorio de Azure es como un contenedor en el que puede agrupar usuarios y suscripciones. Para poder usar las mismas cuentas de usuario con sus suscripciones de Azure y Office 365, asegúrese de que las suscripciones de Azure se hayan creado en el mismo directorio que las de Office 365. Tenga en cuenta los siguientes puntos:
+Office 365 y Azure usan suscripciones y usuarios de toomanage de servicio de Azure AD de Hola. Hola directorio de Azure es similar a un contenedor en el que puede agrupar a los usuarios y las suscripciones. toouse Hola mismas cuentas de usuario para las suscripciones Azure y Office 365, debe toomake seguro de que hello Azure las suscripciones se crean en hello mismo directorio como las suscripciones de hello Office 365. Tenga en Hola de cuenta siguientes puntos:
 
 * Una suscripción se crea en un directorio
-* Los usuarios pertenecen a directorios
-* Una suscripción se incluye en el directorio del usuario que la crea. Por lo que la suscripción a Office 365 está asociada a la misma cuenta que la suscripción de Azure.
-* Las suscripciones de Azure son propiedad de usuarios individuales del directorio
-* Las suscripciones de Office 365 pertenecen al propio directorio. Los usuarios con los permisos adecuados en el directorio pueden administrar estas suscripciones.
+* Los usuarios pertenecen toodirectories
+* Llega a una suscripción de directorio de Hola de usuario de Hola que crea la suscripción de Hola. Por lo que la suscripción a Office 365 es toohello ligada misma cuenta de su suscripción de Azure.
+* Las suscripciones de Azure pertenecen a usuarios individuales en el directorio de Hola
+* El propio directorio Hola posee las suscripciones de Office 365. Los usuarios con permisos adecuados de hello en el directorio de hello pueden administrar estas suscripciones.
 
-![Captura de pantalla que muestra la relación entre el directorio, los usuarios y las suscripciones.](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
+![Captura de pantalla que muestra la relación de hello del directorio de hello, los usuarios y las suscripciones.](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
 
 Para más información, consulte [Asociación de las suscripciones de Azure con Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="need-help-contact-support"></a>¿Necesita ayuda? Póngase en contacto con el servicio de soporte técnico.
-Si sigue necesitando ayuda, [póngase en contacto con el servicio de soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para resolver el problema rápidamente. 
+Si aún necesita ayuda, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rápidamente para solucionar el problema. 

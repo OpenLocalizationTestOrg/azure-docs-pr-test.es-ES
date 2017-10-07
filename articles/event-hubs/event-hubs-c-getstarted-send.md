@@ -1,6 +1,6 @@
 ---
-title: "Envío de eventos a Azure Event Hubs mediante C | Microsoft Docs"
-description: "Envío de eventos a Azure Event Hubs mediante C"
+title: aaaSend eventos tooAzure centros de eventos mediante C | Documentos de Microsoft
+description: Enviar eventos tooAzure centros de eventos mediante C
 services: event-hubs
 documentationcenter: 
 author: sethmanheim
@@ -14,37 +14,37 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: a615ee39b6c3731cc7df366e9fabeed5219a71b4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bb53300c070debb4a3658a38df9d3966f08e81ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-events-to-azure-event-hubs-using-c"></a>Envío de eventos a Azure Event Hubs mediante C
+# <a name="send-events-tooazure-event-hubs-using-c"></a>Enviar eventos tooAzure centros de eventos mediante C
 
 ## <a name="introduction"></a>Introducción
-Event Hubs es un sistema de recopilación de alta escalabilidad que puede recibir millones de eventos por segundo, habilitando una aplicación para procesar y analizar las grandes cantidades de datos generados por las aplicaciones y los dispositivos conectados. Una vez recopilados en un centro de eventos, puede transformar y almacenar los datos usando cualquier proveedor de análisis en tiempo real o clúster de almacenamiento.
+Los concentradores de eventos es un sistema de recopilación altamente escalable que puede introducir millones de eventos por segundo, lo que permite una tooprocess de aplicación y analizar grandes cantidades de datos generados por los dispositivos conectados y las aplicaciones de Hola. Una vez recopilados en un centro de eventos, puede transformar y almacenar los datos usando cualquier proveedor de análisis en tiempo real o clúster de almacenamiento.
 
-Para más información, consulte [Información general de Event Hubs][Información general de Event Hubs].
+Para obtener más información, vea Hola [Introducción a centros de eventos] [Introducción a centros de eventos].
 
-En este tutorial, aprenderá a enviar eventos a un centro de eventos mediante una aplicación de consola en C. Para recibir eventos, haga clic en el idioma de recepción adecuado en la tabla de contenido izquierda.
+En este tutorial, aprenderá cómo concentrador de eventos de tooan toosend eventos en una aplicación de consola tooreceive C. eventos, haga clic en el idioma apropiado de recepción hello en tabla izquierda de Hola de contenido.
 
-Para completar este tutorial, necesitará lo siguiente:
+toocomplete este tutorial, necesitará Hola siguientes:
 
-* Un entorno de desarrollo de C. Para este tutorial, consideraremos la pila de gcc en una VM Linux de Azure con Ubuntu 14.04.
+* Un entorno de desarrollo de C. Para este tutorial, asumiremos pila de gcc hello en una máquina virtual Linux de Azure con Ubuntu 14.04.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
 * Una cuenta de Azure activa. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="send-messages-to-event-hubs"></a>Envío de mensajes a Centros de eventos
-En esta sección se escribirá una aplicación en C para enviar eventos al centro de eventos. El código usa la biblioteca Proton AMQP del [proyecto Apache Qpid](http://qpid.apache.org/). Esto es parecido a usar temas y colas de Bus de servicio con AMQP a través de C como se muestra [aquí](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Para más información, vea la [documentación de Qpid Proton](http://qpid.apache.org/proton/index.html).
+## <a name="send-messages-tooevent-hubs"></a>Enviar mensajes tooEvent centros
+En esta sección se pueden escribir un concentrador de eventos C aplicación toosend eventos tooyour. código de Hello utiliza la biblioteca de AMQP de Proton de Hola de hello [proyecto Apache Qpid](http://qpid.apache.org/). Esto es análogo toousing colas de Service Bus y temas con AMQP de C tal como se muestra [aquí](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Para más información, vea la [documentación de Qpid Proton](http://qpid.apache.org/proton/index.html).
 
-1. En la página [Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html), siga las instrucciones para instalar Qpid Proton según su entorno.
-2. Para compilar la biblioteca Proton, instale los paquetes siguientes:
+1. De hello [página Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html), siga Hola instrucciones tooinstall Qpid Proton, dependiendo de su entorno.
+2. toocompile Hola biblioteca Proton, instalar los siguientes paquetes de saludo:
    
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. Descargue la [biblioteca de Qpid Proton](http://qpid.apache.org/proton/index.html) y extráigala; por ejemplo:
+3. Descargar hello [biblioteca Qpid Proton](http://qpid.apache.org/proton/index.html)y extraerlo, p. ej.:
    
     ```shell
     wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
@@ -59,7 +59,7 @@ En esta sección se escribirá una aplicación en C para enviar eventos al centr
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. En su directorio de trabajo, cree un nuevo archivo denominado **sender.c** con el siguiente código. No olvide sustituir el valor para el nombre del centro de eventos y el espacio de nombres. También debe sustituir una versión con codificación URL de la clave para la regla **SendRule** creada anteriormente. Puede codificar con URL [aquí](http://www.w3schools.com/tags/ref_urlencode.asp).
+5. En el directorio de trabajo, cree un nuevo archivo denominado **sender.c** con el siguiente código de hello. Recuerde toosubstitute valor de hello para el nombre del concentrador de eventos y el espacio de nombres. También debe sustituir una versión con codificación URL de clave de Hola para hello **SendRule** creado anteriormente. Puede codificar con URL [aquí](http://www.w3schools.com/tags/ref_urlencode.asp).
    
     ```c
     #include "proton/message.h"
@@ -121,7 +121,7 @@ En esta sección se escribirá una aplicación en C para enviar eventos al centr
     }
    
     int main(int argc, char** argv) {
-        printf("Press Ctrl-C to stop the sender process\n");
+        printf("Press Ctrl-C toostop hello sender process\n");
    
         pn_messenger_t *messenger = pn_messenger(NULL);
         pn_messenger_set_outgoing_window(messenger, 1);
@@ -140,18 +140,18 @@ En esta sección se escribirá una aplicación en C para enviar eventos al centr
         return 0;
     }
     ```
-6. Compile el archivo, suponiendo que **gcc**:
+6. Compile el archivo hello, suponiendo que **gcc**:
    
     ```
     gcc sender.c -o sender -lqpid-proton
     ```
 
     > [!NOTE]
-    > En este código, usamos una ventana de salida de 1 para forzar que los mensajes salgan tan pronto como sea posible. En general, la aplicación debe probar con los mensajes por lotes para aumentar el rendimiento. Consulte la [página Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html) para más información sobre cómo usar la biblioteca de Qpid Proton en este y otros entornos y desde las plataformas para las que se proporcionan enlaces (actualmente, Perl, PHP, Python y Ruby).
+    > En este código, se utiliza una ventana de salida de mensajes de saludo tooforce 1 fuera tan pronto como sea posible. En general, la aplicación debe intentar toobatch el rendimiento de tooincrease de mensajes. Vea hello [página Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html) para obtener información acerca de cómo toouse Hola biblioteca de Qpid Proton en este y otros entornos y desde las plataformas para el que se proporcionan enlaces (actualmente Perl, PHP, Python y Ruby).
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información acerca de Event Hubs, visite los vínculos siguientes:
+Para obtener más información acerca de los centros de eventos información visitando Hola siguientes vínculos:
 
 * [Información general de Event Hubs](event-hubs-what-is-event-hubs.md
 )

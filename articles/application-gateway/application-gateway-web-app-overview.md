@@ -1,6 +1,6 @@
 ---
-title: "Introducción a los servidores back-end multiinquilino con Azure Application Gateway | Microsoft Docs"
-description: "En esta página se proporciona una introducción a la compatibilidad de Application Gateway con los servidores back-end multiinquilino."
+title: aaaOverview de las copias de varios inquilinos termina con la puerta de enlace de aplicaciones de Azure | Documentos de Microsoft
+description: "Esta página proporciona una visión general de soporte técnico de puerta de enlace de aplicación Hola para varios inquilinos back-ends."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: gwallace
-ms.openlocfilehash: d944904db5b0bf176b214249ad59611e2b794ae0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b7da8c9c68e34bd83ad2b828fab62c00caea354a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Compatibilidad de Application Gateway con servidores back-end multiinquilino
 
-Azure Application Gateway admite conjuntos de escalado de máquinas virtuales, interfaces de red, IP públicas/privadas o nombres de dominio completos (FQDN) como parte de sus grupos de servidores back-end. De forma predeterminada, la puerta de enlace de aplicaciones no cambia el encabezado del host HTTP de entrada del cliente y lo envía sin alterar al back-end. Hay muchos servicios, como [Azure Web Apps](../app-service-web/app-service-web-overview.md) y [API Management](../api-management/api-management-key-concepts.md) que son multiinquilino por naturaleza y dependen de un encabezado de host específico o de una extensión SNI para resolver el punto de conexión correcto. Application Gateway admite ahora la posibilidad de que los usuarios sobrescriban el encabezado del host HTTP de entrada en función de la configuración de HTTP del back-end. Esta funcionalidad permite la compatibilidad con servidores back-end multiinquilino, Azure Web Apps y API Management. Esta funcionalidad está disponible para las SWU estándar y WAF. La compatibilidad con servidores back-end multiinquilino también funciona con escenarios de terminación de SSL y de SSL de extremo a extremo.
+Azure Application Gateway admite conjuntos de escalado de máquinas virtuales, interfaces de red, IP públicas/privadas o nombres de dominio completos (FQDN) como parte de sus grupos de servidores back-end. De forma predeterminada, puerta de enlace de aplicaciones no cambia el encabezado de host HTTP entrante de Hola desde el cliente de Hola y envía Hola encabezado inalterados toohello back-end. Hay muchos servicios como [aplicaciones Web de Azure](../app-service-web/app-service-web-overview.md) y [administración de API](../api-management/api-management-key-concepts.md) que forman una naturaleza multiempresa y se basan en un encabezado de host específico o SNI extensión tooresolve toohello punto de conexión correcto. Puerta de enlace de aplicaciones ahora admite la capacidad de Hola para usuarios toooverwrite Hola entrantes HTTP encabezado de host en función de la configuración de back-end HTTP de Hola. Esta funcionalidad permite la compatibilidad con servidores back-end multiinquilino, Azure Web Apps y API Management. Esta funcionalidad está disponible para saludo estándar y WAFS SKU. Multiempresa back end compatibilidad también funciona con escenarios SSL de tooend de final y la terminación SSL.
 
 ![escenario de aplicación web](./media/application-gateway-web-app-overview/scenario.png)
 
-La posibilidad de especificar una invalidación del host se define en la configuración de HTTP y se puede aplicar a cualquier grupo de servidores back-end durante la creación de reglas. Los servidores back-end multiinquilino admiten las dos formas siguientes de invalidar el encabezado de host y la extensión SNI.
+Hola de Hello capacidad toospecify una invalidación de host está definida en configuración de HTTP, y puede se aplicado tooany volver terminar grupo durante la creación de reglas. Varios inquilinos volver finaliza Hola de soporte técnico de invalidación de encabezado de host y la extensión SNI maneras siguientes.
 
-1. La posibilidad de establecer el nombre de host en un valor fijo en la configuración de HTTP. Esta funcionalidad garantiza que el encabezado de host se invalida con este valor para todo el tráfico que va al grupo de servidores back-end donde se aplica la configuración de HTTP. Al usar SSL de extremo a extremo, este nombre de host invalidado se usa en la extensión SNI. Esta funcionalidad permite escenarios donde un grupo de servidores back-end espera un encabezado de host que es diferente del encabezado de host del cliente de entrada.
+1. tooa de nombre de host de Hello capacidad tooset Hola había corregido valor Hola opciones de configuración de HTTP. Esta funcionalidad garantiza que se invalida ese encabezado de host de hello toothis valor para todos los bloques de back-end de toohello tráfico donde se aplica la configuración de hello HTTP. Al usar final tooend SSL, se usa este nombre de host invalidado en hello extensión SNI. Esta función permite escenarios donde una granja de servidores del grupo back-end espera un encabezado de host que es diferente de encabezado de host de Hola entrantes del cliente.
 
-2. La posibilidad de obtener el nombre de host de la dirección IP o FQDN de los miembros del grupo de servidores back-end. La configuración de HTTP también proporciona una opción para seleccionar el nombre de host del FQDN de un miembro del grupo de servidores back-end si está configurado con esta opción. Al usar SSL de extremo a extremo, este nombre de host se obtiene del FQDN y se usa en la extensión SNI. Esta funcionalidad permite escenarios donde un grupo de servidores back-end puede tener dos o más servicios PaaS multiinquilino, como Azure Web Apps y el encabezado de host de la solicitud para que cada miembro contenga el nombre de host obtenido de su FQDN.
+2. nombre de host de Hola Hola capacidad tooderive de hello IP o FQDN de los miembros del grupo back-end Hola. Configuración de HTTP también proporciona un nombre de host de opción toopick Hola de nombre de dominio completo de un miembro del grupo back-end si ha configurado con el nombre de host de hello opción tooderive de un miembro del grupo back-end individuales. Cuando se usa final tooend SSL, este nombre de host se deriva de hello FQDN y se utiliza en hello extensión SNI. Esta función permite escenarios donde un grupo back-end puede tener dos o más servicios de PaaS de varios inquilinos como aplicaciones web de Azure y miembro de tooeach de encabezado de host de la solicitud de hello contiene el nombre de host de hello derivada su FQDN.
 
 > [!NOTE]
-> En los dos casos anteriores, la configuración solo afecta al comportamiento del tráfico dinámico y no al del sondeo de estado. Los sondeos personalizados ya admiten la posibilidad de especificar un encabezado de host en la configuración de sondeo. También admiten ahora la posibilidad de obtener el comportamiento del encabezado de host de la configuración de HTTP actualmente configurada. Esta configuración puede especificarse mediante el parámetro `PickHostNameFromback endAddress` en la configuración de sondeo. Para que la funcionalidad de extremo a extremo funcione, el sondeo y la configuración de HTTP se deben modificar para reflejar la configuración correcta.
+> En ambos Hola anteriores casos Hola configuración sólo afecta a comportamiento de tráfico en vivo de hello y no el comportamiento de sondeo del estado de Hola. Las comprobaciones de personalizado ya toospecify de capacidad de Hola de compatibilidad con un encabezado de host en la configuración de sondeo de Hola. Sondeos personalizados también admiten ahora comportamiento del encabezado de host de hello capacidad tooderive Hola de configuración de HTTP de hello configurado actualmente. Esta configuración puede especificarse mediante hello `PickHostNameFromback endAddress` parámetro de configuración de sondeo de Hola. Para final tooend funcionalidad toowork, sondeo de Hola y la configuración de HTTP de hello deben configuración correcta de hello tooreflect modificado.
 
-Con esta funcionalidad, los clientes especifican las opciones en la configuración de HTTP y los sondeos personalizados para la configuración adecuada. Esta configuración se asocia luego a un agente de escucha y un grupo de servidores back-end mediante una regla.
+Con esta capacidad, los clientes especificar opciones de hello en la configuración de HTTP de Hola y personalizados comprobaciones de la configuración adecuada de toohello. Esta configuración, a continuación, se vincula una copia de seguridad y la escucha de tooa finalizan grupo mediante una regla.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para aprender a configurar una puerta de enlace de aplicaciones con una aplicación web como miembro del grupo de servidores back-end, visite [Configuración de App Service Web Apps con Application Gateway](application-gateway-web-app-powershell.md).
+Obtenga información acerca de cómo tooset de una puerta de enlace de la aplicación con una aplicación web como un back end miembro del grupo visitando: [configurar el servicio de aplicación web aplicaciones con puerta de enlace de aplicaciones](application-gateway-web-app-powershell.md)

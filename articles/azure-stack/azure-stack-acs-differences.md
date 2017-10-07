@@ -1,6 +1,6 @@
 ---
 title: 'Azure Stack Storage: Diferencias y consideraciones'
-description: "Comprender las diferencias entre Azure Stack Storage y Azure Storage, junto con las consideraciones de implementación de Azure Stack."
+description: "Entender Hola diferencias entre el almacenamiento de la pila de Azure y almacenamiento de Azure, junto con las consideraciones de implementación de pila de Azure."
 services: azure-stack
 documentationcenter: 
 author: xiaofmao
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2017
 ms.author: xiaofmao
-ms.openlocfilehash: beb2d26afb8ddc5e85b1828c71de5cbd9e678fe1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a1f8e2180b046b835c89fd658e2dbaff004b8786
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack Storage: Diferencias y consideraciones
-Azure Stack Storage es el conjunto de servicios de almacenamiento en la nube de Microsoft Azure Stack. Azure Stack Storage proporciona blob, tabla, cola y funcionalidad de administración de cuenta con una semántica coherente de Azure.
+Almacenamiento de Azure pila es conjunto de hello de servicios de almacenamiento en la nube en la pila de Microsoft Azure. Azure Stack Storage proporciona blob, tabla, cola y funcionalidad de administración de cuenta con una semántica coherente de Azure.
 
-En este artículo se resumen las diferencias entre Azure Stack Storage y Azure Storage. También se resumen otras consideraciones a tener en cuenta al implementar la Azure Stack. Para obtener información acerca de las diferencias de alto nivel entre Azure y Azure Stack, consulte el tema [Consideraciones clave](azure-stack-considerations.md).
+En este artículo se resume Hola conocida las diferencias de almacenamiento de la pila de Azure desde el almacenamiento de Azure. También resume otro tookeep consideraciones en cuenta cuando se implementa la pila de Azure. toolearn acerca de alto nivel diferencias entre la pila de Azure y Azure, vea hello [clave consideraciones](azure-stack-considerations.md) tema.
 
 ## <a name="cheat-sheet-storage-differences"></a>Hoja de referencia rápida: Diferencias de almacenamiento
 
@@ -44,11 +44,11 @@ En este artículo se resumen las diferencias entre Azure Stack Storage y Azure S
 
 ### <a name="metrics"></a>Métricas
 También hay algunas diferencias con las métricas de almacenamiento:
-* Los datos de transacción de las métricas de almacenamiento no distinguirán el ancho de banda de red interna o externa.
-* Los datos de transacción de las métricas de almacenamiento no incluyen el acceso de la máquina virtual a los discos montados.
+* datos de transacción de Hello en las métricas de almacenamiento no distinguirán el ancho de banda de red interna o externa.
+* datos de transacción de Hello en las métricas de almacenamiento no incluyen discos de máquina virtual acceso toohello montado.
 
 ## <a name="api-version"></a>Versión de API
-Solo las siguientes versiones son compatibles con Azure Stack Storage:
+Hola después versiones es compatibles con la pila de almacenamiento de Azure:
 
 * Servicios de datos de Azure Storage: [Versión de API de REST de 05-04-2015](https://docs.microsoft.com/en-us/rest/api/storageservices/Version-2015-04-05?redirectedfrom=MSDN)
 * Servicios de administración de Azure Storage: [ Versión preliminar de 01-05-2015, 15-06-2015 y 01-01-2016](https://docs.microsoft.com/en-us/rest/api/storagerp/?redirectedfrom=MSDN) 
@@ -56,5 +56,5 @@ Solo las siguientes versiones son compatibles con Azure Stack Storage:
 ## <a name="next-steps"></a>Pasos siguientes
 
 * [Empezar a trabajar con herramientas de desarrollo de Azure Stack Storage](azure-stack-storage-dev.md)
-* [Introducción a Azure Stack Storage](azure-stack-storage-overview.md)
+* [Introducción tooAzure pila de almacenamiento](azure-stack-storage-overview.md)
 

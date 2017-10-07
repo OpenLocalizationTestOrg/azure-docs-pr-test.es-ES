@@ -1,6 +1,6 @@
 ---
-title: "Creación de una base de datos de grafos de Azure Cosmos DB con Java | Microsoft Docs"
-description: "Se presenta un ejemplo de código de Java que puede usar para conectarse y consultar datos de grafos de Azure Cosmos DB con Gremlin."
+title: "una base de datos del gráfico de base de datos de Azure Cosmos con Java aaaCreate | Documentos de Microsoft"
+description: "Presenta una Java código de ejemplo que puede usar datos de gráfico de consultas de tooconnect tooand en la base de datos de Azure Cosmos con Gremlin."
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -15,72 +15,72 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/24/2017
 ms.author: denlee
-ms.openlocfilehash: 0273072c7c10e219ab8d6c85eb252badafc17147
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 595c0fb108f3dbe8c83674f0c9c4b0cdd3ab4c95
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: creación una base de datos de grafos mediante Java y Azure Portal
+# <a name="azure-cosmos-db-create-a-graph-database-using-java-and-hello-azure-portal"></a>Azure Cosmos DB: Crear una base de datos de gráfico con Java y Hola portal de Azure
 
-Azure Cosmos DB es un servicio de base de datos con varios modelos y de distribución global de Microsoft. Puede crear rápidamente bases de datos de documentos, clave-valor y grafos, y realizar consultas en ellas. Todas las bases de datos se beneficiarán de las funcionalidades de distribución global y escala horizontal en Azure Cosmos DB. 
+Azure Cosmos DB es un servicio de base de datos con varios modelos y de distribución global de Microsoft. Puede crear y consultar documentos, clave/valor y bases de datos de gráfico, todos ellos se benefician de la distribución global de Hola y capacidades de escala horizontal en el núcleo de hello de la base de datos de Azure Cosmos rápidamente. 
 
-Este tutorial rápido crea una base de datos de grafos mediante las herramientas de Azure Portal para Azure Cosmos DB. Este tutorial rápido también muestra cómo crear rápidamente una aplicación de consola Java usando una base de datos de grafos mediante el controlador [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) de OSS. Las instrucciones que se indican en este tutorial rápido se pueden seguir en cualquier sistema operativo que sea capaz de ejecutar Java. Con esta guía de inicio rápido se familiarizará con la creación y modificación de los recursos de grafos en la interfaz de usuario o mediante programación, lo que prefiera. 
+Este tutorial crea un gráfico de base de datos mediante Hola herramientas del portal Azure para la base de datos de Azure Cosmos. Este tutorial rápido muestra también cómo tooquickly crear una aplicación de consola de Java con una base de datos de gráfico con sistemas operativos de hello [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) controlador. instrucciones de Hello en este tutorial rápido se pueden aplicar en cualquier sistema operativo que sea capaz de ejecutar Java. Este inicio rápido le ayudará a familiarizarse con la creación y modificación de los recursos de gráfico en hello interfaz de usuario o mediante programación, lo que sea su preferencia. 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 * [Kit de desarrollo de Java (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-    * En Ubuntu, ejecute `apt-get install default-jdk` para instalar el JDK.
-    * Asegúrese de establecer la variable de entorno JAVA_HOME para que apunte a la carpeta donde está instalado el JDK.
+    * En Ubuntu, ejecute `apt-get install default-jdk` tooinstall Hola JDK.
+    * Ser seguro tooset Hola JAVA_HOME entorno variable toopoint toohello carpeta donde está instalado Hola JDK.
 * [Descargar](http://maven.apache.org/download.cgi) e [instalar](http://maven.apache.org/install.html) un archivo binario de [Maven](http://maven.apache.org/)
-    * En Ubuntu, puede ejecutar `apt-get install maven` para instalar Maven.
+    * En Ubuntu, se pueden ejecutar `apt-get install maven` tooinstall Maven.
 * [Git](https://www.git-scm.com/)
-    * En Ubuntu, puede ejecutar `sudo apt-get install git` para instalar Git.
+    * En Ubuntu, se pueden ejecutar `sudo apt-get install git` tooinstall Git.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-database-account"></a>Creación de una cuenta de base de datos
 
-Para poder crear una base de datos de grafos, debe crear una cuenta de base de datos de Gremlin (Graph) con Azure Cosmos DB.
+Antes de poder crear una base de datos del gráfico, debe toocreate una cuenta de base de datos Gremlin (gráfico) con la base de datos de Azure Cosmos.
 
 [!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
 ## <a name="add-a-graph"></a>Agregar un grafo
 
-Ahora puede usar la herramienta Explorador de datos en Azure Portal para crear una base de datos de grafos. 
+Ahora puede usar la herramienta de exploración de datos de Hola Hola toocreate portal Azure una base de datos del gráfico. 
 
-1. En Azure Portal, en el menú de navegación izquierdo, haga clic en **Explorador de datos (versión preliminar)**. 
-2. En la hoja **Explorador de datos (versión preliminar)**, haga clic en **New Graph** (Nuevo grafo) y rellene la página con la información siguiente:
+1. Hola portal de Azure, en el menú de navegación izquierdo de hello, haga clic en **Explorador de datos (vista previa)**. 
+2. Hola **Explorador de datos (vista previa)** hoja, haga clic en **nuevo gráfico**, a continuación, rellene la página de hello mediante Hola siguiente información:
 
-    ![Explorador de datos en Azure Portal](./media/create-graph-java/azure-cosmosdb-data-explorer.png)
+    ![Explorador de datos en hello portal de Azure](./media/create-graph-java/azure-cosmosdb-data-explorer.png)
 
     Configuración|Valor sugerido|Descripción
     ---|---|---
-    Identificador de base de datos|sample-database|Identificador de la nueva base de datos. Los nombres de bases de datos deben tener entre 1 y 255 caracteres y no pueden contener `/ \ # ?` o un espacio al final.
-    Identificador de grafo|sample-graph|Identificador del nuevo grafo. Los nombres de grafo tienen los mismos requisitos de caracteres que los identificadores de base de datos.
-    Capacidad de almacenamiento| 10 GB|Deje el valor predeterminado. Se trata de la capacidad de almacenamiento de la base de datos.
-    Rendimiento|400 RU|Deje el valor predeterminado. Se puede escalar el rendimiento más adelante si quiere reducir la latencia.
-    Clave de partición|Déjelo en blanco|Para este tutorial rápido, deje en blanco la clave de partición.
+    Identificador de base de datos|sample-database|Id. de Hello para la nueva base de datos. Los nombres de bases de datos deben tener entre 1 y 255 caracteres y no pueden contener `/ \ # ?` o un espacio al final.
+    Identificador de grafo|sample-graph|Id. de Hello para el nuevo gráfico. Los nombres de gráfico tienen Hola mismo carácter requisitos como identificadores de base de datos.
+    Capacidad de almacenamiento| 10 GB|Deje el valor predeterminado de Hola. Se trata de capacidad de almacenamiento de Hola de base de datos de Hola.
+    Rendimiento|400 RU|Deje el valor predeterminado de Hola. Se puede escalar el rendimiento de hello más tarde si desea que la latencia tooreduce.
+    Clave de partición|Déjelo en blanco|A fin de Hola de este tutorial rápido, deje en blanco clave de partición de Hola.
 
-3. Una vez que haya rellenado el formulario, haga clic en **Aceptar**.
+3. Una vez que se rellena el formulario de hello, haga clic en **Aceptar**.
 
-## <a name="clone-the-sample-application"></a>Clonación de la aplicación de ejemplo
+## <a name="clone-hello-sample-application"></a>Clonar aplicación de ejemplo de Hola
 
-Ahora vamos a clonar una aplicación de grafos desde GitHub, establecer la cadena de conexión y ejecutarla. Verá lo fácil que es trabajar con datos mediante programación. 
+Ahora vamos a clonar una aplicación de gráfico de github, establezca la cadena de conexión de Hola y ejecútelo. Vea lo fácil que es toowork con datos mediante programación. 
 
-1. Abra una ventana de terminal de Git, como Git Bash, y `cd` en un directorio de trabajo.  
+1. Abra una ventana de terminal de git, como git bash, y `cd` tooa directorio de trabajo.  
 
-2. Ejecute el comando siguiente para clonar el repositorio de ejemplo. 
+2. Ejecute hello después de repositorio de ejemplo de comando tooclone Hola. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-java-getting-started.git
     ```
 
-## <a name="review-the-code"></a>Revisar el código
+## <a name="review-hello-code"></a>Revise el código de hello
 
-Vamos a revisar rápidamente lo que sucede en la aplicación. Abra el archivo `Program.java` en la carpeta \src\GetStarted y busque estas líneas de código. 
+Vamos a hacer una revisión rápida de lo que sucede en la aplicación hello. Abra hello `Program.java` archivo de hello \src\GetStarted carpeta y busque las siguientes líneas de código. 
 
-* El elemento `Client` de Gremlin se a partir de la configuración de `src/remote.yaml`.
+* Hola Gremlin `Client` se inicializa desde la configuración de hello en `src/remote.yaml`.
 
     ```java
     cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -88,7 +88,7 @@ Vamos a revisar rápidamente lo que sucede en la aplicación. Abra el archivo `P
     client = cluster.connect();
     ```
 
-* Se ejecuta una serie de pasos de Gremlin mediante el método `client.submit`.
+* Una serie de pasos de Gremlin se ejecutan utilizando hello `client.submit` método.
 
     ```java
     ResultSet results = client.submit(gremlin);
@@ -101,105 +101,105 @@ Vamos a revisar rápidamente lo que sucede en la aplicación. Abra el archivo `P
     }
     ```
 
-## <a name="update-your-connection-string"></a>Actualización de la cadena de conexión
+## <a name="update-your-connection-string"></a>Actualizar la cadena de conexión
 
-1. Abra el archivo src/remote.yaml. 
+1. Archivo de src/remote.yaml de hello abierto. 
 
-3. Rellene los valores de *hosts*, *nombre de usuario* y *contraseña* en el archivo src/remote.yaml. El resto de los valores no tienen que cambiarse.
+3. Rellene la *hosts*, *nombre de usuario*, y *contraseña* valores en el archivo de hello src/remote.yaml. resto de Hola de configuración de hello no es necesario toobe cambiado.
 
     Configuración|Valor sugerido|Descripción
     ---|---|---
-    Hosts|[***.graphs.azure.com]|Consulte la captura de pantalla que sigue a esta tabla. Este es el valor del identificador URI de Gremlin en la página Información general de Azure Portal, entre corchetes, sin la terminación :443/.<br><br>Este valor también se puede obtener desde la pestaña Claves; para ello, use el valor del identificador URI, quite https://, sustituya documents por graphs y elimine la terminación :443 /.
-    Nombre de usuario|/dbs/sample-database/colls/sample-graph|El recurso con la forma `/dbs/<db>/colls/<coll>` donde `<db>` es el nombre de la base de datos actual y `<coll>` es el nombre de la colección actual.
-    Password|*Su clave maestra principal*|Vea la segunda captura de pantalla que sigue a esta tabla. Este valor es la clave principal, que puede obtener en la página Claves de Azure Portal, en el cuadro de texto Clave principal. Copie el valor con el botón Copiar a la derecha del cuadro.
+    Hosts|[***.graphs.azure.com]|Consulte la captura de pantalla de hello sigue a esta tabla. Este valor es el valor de URI Gremlin de hello en la página de información general de Hola de hello portal de Azure, entre corchetes, con hello finales: 443 / quitado.<br><br>Este valor también puede obtenerse de la pestaña de claves de hello, utilizando el valor URI de hello quitar https://, cambiar toographs de documentos y quitando finales Hola: 443 /.
+    Nombre de usuario|/dbs/sample-database/colls/sample-graph|Hola recursos de formulario de hello `/dbs/<db>/colls/<coll>` donde `<db>` es el nombre de base de datos existente y `<coll>` es el nombre de la colección existente.
+    Password|*Su clave maestra principal*|Vea Hola segunda captura de pantalla sigue a esta tabla. Este valor es la clave principal, que puede recuperar de la página de claves de Hola de portal de Azure, en el cuadro de la clave principal de Hola Hola. Copiar valor de hello usando Hola copia botón Hola derecha del cuadro de Hola.
 
-    Para obtener el valor de Hosts, copie el valor de **URI de Gremlin** de la página **Introducción**. Si está vacía, consulte las instrucciones en la fila Hosts en la tabla anterior acerca de cómo crear el URI de Gremlin desde la hoja de claves.
-![Copie del valor del URI de Gremlin en la página Introducción en Azure Portal ](./media/create-graph-java/gremlin-uri.png)
+    Para el valor de Hosts de hello, copie hello **Gremlin URI** valor de hello **Introducción** página. Si está vacía, consulte las instrucciones de Hola de fila de Hosts de Hola Hola tabla sobre la creación de hello Gremlin URI de la hoja de claves de hello anterior.
+![Visualizar y copiar valor de URI Gremlin de hello en la página de información general de Hola Hola portal de Azure](./media/create-graph-java/gremlin-uri.png)
 
-    Para obtener el valor de la contraseña, copie la **Clave principal** de la página **Claves**: ![Copie la clave principal en la página Claves de Azure Portal](./media/create-graph-java/keys.png)
+    Para el valor de la contraseña de hello, copie hello **clave principal** de hello **claves** hoja: ![visualizar y copiar las claves de la clave principal en hello portal de Azure, página](./media/create-graph-java/keys.png)
 
-## <a name="run-the-console-app"></a>Ejecutar la aplicación de consola
+## <a name="run-hello-console-app"></a>Ejecutar la aplicación de consola de hello
 
-1. En la ventana del terminal de git, use `cd` para cambiar a la carpeta azure-cosmos-db-graph-java-getting-started.
+1. En la ventana de terminal de git hello, `cd` toohello azure-cosmos-db-graph-java-getting-started carpeta.
 
-2. En la ventana del terminal de git, escriba `mvn package` para instalar los paquetes Java necesarios.
+2. En la ventana de terminal de git hello, escriba `mvn package` tooinstall Hola necesario paquetes de Java.
 
-3. En la ventana del terminal de git, ejecute `mvn exec:java -D exec.mainClass=GetStarted.Program` para iniciar la aplicación de Java.
+3. En la ventana de terminal de git hello, ejecute `mvn exec:java -D exec.mainClass=GetStarted.Program` en Hola ventana de terminal toostart la aplicación de Java.
 
-En la ventana del terminal se muestran los vértices y los bordes que se agregan al grafo. Una vez que el programa finalice, vuelva a cambiar a Azure Portal en el Explorador de Internet. 
+ventana de terminal de Hello muestra vértices Hola añadidos toohello gráfico. Una vez que finalice el programa de hello, cambiar atrás toohello portal de Azure en el Explorador de internet. 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Revise y agregue datos de ejemplo
 
-Ahora puede volver al Explorador de datos y ver los vértices que se agregan al grafo, y agregar puntos de datos adicionales.
+Ahora puede volver atrás tooData explorador y vea vértices Hola agregan toohello gráfico y agregar puntos de datos adicionales.
 
-1. En el Explorador de datos, expanda el **grafo de ejemplo** de la **base de datos de ejemplo**/, haga clic en **Grafo** y, a continuación, haga clic en **Aplicar filtro**. 
+1. En el Explorador de datos, expanda hello **base de datos de ejemplo**/**gráfico de ejemplo**, haga clic en **gráfico**y, a continuación, haga clic en **aplicar filtro**. 
 
-   ![Creación de documentos en el Explorador de datos en Azure Portal](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
+   ![Crear nuevos documentos en el Explorador de datos en hello portal de Azure](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
-2. En la lista **Resultados**, observe los nuevos usuarios agregados al grafo. Seleccione **ben** y observe que se ha conectado a robin. Puede mover los vértices en el explorador de grafos, acercar y alejar el grafo, y ampliar el tamaño de la superficie del explorador de grafos. 
+2. Hola **resultados** lista, tenga en cuenta los nuevos usuarios de hello agregan toohello gráfico. Seleccione **ben** y observe que ha conectado toorobin. Puede moverse vértices hello en el Explorador de gráficos de hello, acercar y alejar y expandir el tamaño de la superficie del explorador de gráfico de Hola Hola. 
 
-   ![Nuevos vértices en el grafo del Explorador de datos de Azure Portal](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
+   ![Nueva vértices en gráfico hello en el Explorador de datos Hola portal de Azure](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
-3. Vamos a agregar algunos usuarios nuevos al grafo mediante el Explorador de datos. Haga clic en el botón **Nuevo vértice** para agregar datos al grafo.
+3. Vamos a agregar unos nuevo gráfico toohello de los usuarios mediante Hola Explorador de datos. Haga clic en hello **nuevo vértice** gráfico de botón tooadd datos tooyour.
 
-   ![Creación de documentos en el Explorador de datos en Azure Portal](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
+   ![Crear nuevos documentos en el Explorador de datos en hello portal de Azure](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
-4. Escriba una etiqueta de *persona* y, a continuación, escriba las claves y los valores siguientes para crear el primer vértice en el grafo. Tenga en cuenta que puede crear propiedades únicas para cada persona en el grafo. Solo se requiere la clave de identificador.
+4. Escriba una etiqueta de *persona* , a continuación, escriba Hola siguiente claves y valores toocreate Hola primer vértice gráfico Hola. Tenga en cuenta que puede crear propiedades únicas para cada persona en el grafo. Solo Hola identificador clave es obligatoria.
 
     key|value|Notas
     ----|----|----
-    id|ashley|Identificador único del vértice. Si no se especifica un identificador, se genera uno automáticamente.
+    id|ashley|Identificador único de Hola de vértice Hola. Si no se especifica un identificador, se genera uno automáticamente.
     gender|mujer| 
     técnico | Java | 
 
     > [!NOTE]
-    > En este tutorial rápido se crea una colección sin particiones. Sin embargo, si crea una colección con particiones especificando una clave de partición durante la creación de la colección, debe incluir la clave de partición como una clave en cada nuevo vértice. 
+    > En este tutorial rápido se crea una colección sin particiones. Sin embargo, si crea una colección con particiones mediante la especificación de una clave de partición durante la creación de la colección de hello, necesita clave de partición de hello tooinclude como una clave en cada nuevo vértice. 
 
-5. Haga clic en **Aceptar**. Puede que tenga que expandir la pantalla para ver **Aceptar** en la parte inferior de la pantalla.
+5. Haga clic en **Aceptar**. Puede que necesite tooexpand su toosee pantalla **Aceptar** en la parte inferior de Hola de pantalla de bienvenida.
 
-6. Haga clic en **Nuevo vértice** de nuevo y agregue otro usuario. Escriba una etiqueta de *persona* y, a continuación, escriba las claves y los valores siguientes:
+6. Haga clic en **Nuevo vértice** de nuevo y agregue otro usuario. Escriba una etiqueta de *persona* escriba Hola siguiente claves y valores:
 
     key|value|Notas
     ----|----|----
-    id|rakesh|Identificador único del vértice. Si no se especifica un identificador, se genera uno automáticamente.
+    id|rakesh|Identificador único de Hola de vértice Hola. Si no se especifica un identificador, se genera uno automáticamente.
     gender|hombre| 
     centro educativo|MIT| 
 
 7. Haga clic en **Aceptar**. 
 
-8. Haga clic en **Aplicar filtro** con el filtro `g.V()` predeterminado. Todos los usuarios se muestran ahora en la lista **Resultados**. Si agrega más datos, puede usar filtros para limitar los resultados. De forma predeterminada, el Explorador de datos usa `g.V()` para recuperar todos los vértices de un grafo, pero puede cambiarlo a una [consulta de grafo](tutorial-query-graph.md), como `g.V().count()`, para devolver un recuento de todos los vértices del grafo en formato JSON.
+8. Haga clic en **aplicar filtro** no tiene valor predeterminado de hello `g.V()` filtro. Todos los usuarios de hello muestran ahora en hello **resultados** lista. Si agrega más datos, puede usar filtros toolimit los resultados. De forma predeterminada, usa el Explorador de datos `g.V()` tooretrieve todos los vértices en un gráfico, pero pueden cambiar ese tooa diferentes [consulta graph](tutorial-query-graph.md), como `g.V().count()`, tooreturn un recuento de todos los vértices de hello en el gráfico de hello en formato JSON.
 
-9. Ahora podemos conectar a rakesh y ashley. Asegúrese de que **ashley** está seleccionado en la lista **Resultados** y, a continuación, haga clic en el botón para editar junto a **Destinos** en la parte inferior derecha. Puede que tenga que ampliar la ventana para ver el área **Propiedades**.
+9. Ahora podemos conectar a rakesh y ashley. Asegúrese de **Ana** en seleccionado en hello **resultados** lista, a continuación, haga clic en botón de edición de hello siguiente demasiado**destinos** en la parte inferior derecha. Puede que necesite toowiden su Hola de ventana toosee **propiedades** área.
 
-   ![Cambio del destino de un vértice en un grafo](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+   ![Cambiar el destino de Hola de un vértice en un gráfico](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-10. En el cuadro **Destino**, escriba *rakesh*, en el cuadro **Edge label** (Etiqueta de borde), escriba *sabe* y, a continuación, haga clic en la casilla.
+10. Hola **destino** cuadro, escriba *rakesh*y en hello **etiqueta de borde** cuadro, escriba *sabe*y, a continuación, haga clic en la casilla de verificación de Hola.
 
    ![Adicion de una conexión entre ashley y rakesh en el Explorador de datos](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
-11. Ahora seleccione **rakesh** en la lista de resultados y compruebe que ashley y rakesh están conectados. 
+11. Ahora seleccione **rakesh** desde la lista de resultados de Hola y vea que Ana y rakesh están conectados. 
 
    ![Dos vértices conectados en el Explorador de datos](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-    También puede usar el Explorador de datos para crear procedimientos almacenados, UDF y desencadenadores para realizar la lógica de negocios del servidor, así como escalar el rendimiento. El Explorador de datos expone todo el acceso a datos mediante programación integrado que está disponible en las API, pero permite un acceso fácil a los datos de Azure Portal.
+    También puede usar procedimientos de explorador de datos toocreate almacenado, UDF y lógica de negocios de servidor de tooperform de desencadenadores, así como el rendimiento de escala. Explorador de datos expone todo acceso a los datos de mediante programación integrada Hola disponible en las API de hello, pero proporciona un acceso sencillo tooyour datos Hola portal de Azure.
 
 
 
-## <a name="review-slas-in-the-azure-portal"></a>Revisar los SLA en Azure Portal
+## <a name="review-slas-in-hello-azure-portal"></a>Revise los SLA de hello portal de Azure
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Limpieza de recursos
 
-Si no va a seguir usando esta aplicación, siga estos pasos para eliminar todos los recursos creados en esta guía de inicio rápido en Azure Portal: 
+Si no va toocontinue toouse esta aplicación, eliminar todos los recursos creados por este tutorial rápido de hello portal de Azure con hello pasos: 
 
-1. En el menú de la izquierda de Azure Portal, haga clic en **Grupos de recursos** y en el nombre del recurso que creó. 
-2. En la página del grupo de recursos, haga clic en **Eliminar**, escriba en el cuadro de texto el nombre del recurso que quiere eliminar y haga clic en **Eliminar**.
+1. En el menú de la izquierda de Hola Hola portal de Azure, haga clic en **grupos de recursos** y, a continuación, haga clic en nombre de hello del recurso de Hola que creó. 
+2. En la página del grupo de recursos, haga clic en **eliminar**, escriba el nombre de Hola de hello recursos toodelete en el cuadro de texto hello y, a continuación, haga clic en **eliminar**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En esta guía de inicio rápido, ha obtenido información sobre cómo crear una cuenta de Azure Cosmos DB, crear un grafo mediante el Explorador de datos y ejecutar una aplicación. Ahora puede crear consultas más complejas e implementar con Gremlin una lógica eficaz de recorrido del grafo. 
+En este tutorial, ha aprendido cómo crear un gráfico utilizando Hola Explorador de datos toocreate una cuenta de base de datos de Azure Cosmos y ejecutar una aplicación. Ahora puede crear consultas más complejas e implementar con Gremlin una lógica eficaz de recorrido del grafo. 
 
 > [!div class="nextstepaction"]
 > [Consulta mediante Gremlin](tutorial-query-graph.md)

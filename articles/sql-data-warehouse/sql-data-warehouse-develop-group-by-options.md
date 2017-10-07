@@ -1,5 +1,5 @@
 ---
-title: Opciones de Group by en SQL Data Warehouse | Microsoft Docs
+title: "aaaGroup en Opciones en el almacén de datos de SQL | Documentos de Microsoft"
 description: Sugerencias para implementar opciones de Group by en Almacenamiento de datos SQL de Azure para el desarrollo de soluciones.
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: da71cb834c13da5d0f5690f471efc6c696163f30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cc443c2af4e3ef2babd74d78aa6fb57bb3c1c7ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>Opciones de Group by en Almacenamiento de datos SQL
-La cláusula [GROUP BY][GROUP BY] se usa para agregar datos a un conjunto de filas de resumen. También cuenta con algunas opciones que amplían su funcionalidad y que es necesario solucionar ya que no son directamente compatibles con Almacenamiento de datos SQL de Azure.
+Hola [GROUP BY] [ GROUP BY] se utiliza la cláusula tooaggregate tooa resumen conjunto de filas. También tiene algunas opciones que extienden la funcionalidad del ese toobe necesidad solucionado no son compatibles directamente con almacenamiento de datos de SQL Azure.
 
 Estas opciones son:
 
@@ -31,9 +31,9 @@ Estas opciones son:
 * GROUP BY con CUBE
 
 ## <a name="rollup-and-grouping-sets-options"></a>Opciones Rollup y Grouping sets
-Aquí, la opción más sencilla consiste en usar `UNION ALL` en su lugar para realizar la acumulación en lugar de depender de la sintaxis explícita. El resultado es exactamente el mismo
+Hola aquí la opción más sencilla es toouse `UNION ALL` en su lugar tooperform Hola rollup en lugar de depender de Hola sintaxis explícita. resultado de Hello es exactamente Hola mismo
 
-A continuación se muestra un ejemplo de una instrucción Group by mediante el uso de la opción `ROLLUP` :
+A continuación se muestra un ejemplo de un grupo por instrucción que usa hello `ROLLUP` opción:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -48,13 +48,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-Mediante el uso de ROLLUP hemos solicitado las agregaciones siguientes:
+Mediante el consolidado hemos solicitado Hola siguiendo las agregaciones:
 
 * País y región
 * País
 * Total general
 
-Para reemplazar esta operación, deberá usar `UNION ALL`y especificar las agregaciones necesarias explícitamente para devolver los mismos resultados:
+tooreplace esto debe toouse `UNION ALL`; especificando las agregaciones de hello necesarias explícitamente tooreturn Hola los mismos resultados:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -81,14 +81,14 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-Para GROUPING SETS, todo lo que tenemos que hacer es adoptar la misma entidad de seguridad pero solo crear secciones UNION ALL para los niveles de agregación que queramos ver.
+Para GROUPING SETS todo lo que necesitamos toodo es adoptar Hola mismo principal pero sólo puede crear secciones UNION ALL para hello niveles de agregación que deseamos toosee
 
 ## <a name="cube-options"></a>Opciones de Cube
-Es posible crear una cláusula GROUP BY WITH CUBE con el método UNION ALL. El problema es que el código puede volverse rápidamente complicado y difícil de manejar. Para mitigar esta situación, puede usar este enfoque más avanzado.
+Es posible toocreate un GROUP BY WITH CUBE con el enfoque de UNION ALL de Hola. problema de Hello es que el código de hello puede volverse rápidamente complejo y difícil de manejar. toomitigate esto ya puede utilizarla más avanzadas de enfoque.
 
-Vamos a usar el ejemplo anterior.
+Vamos a usar el ejemplo de Hola anterior.
 
-El primer paso es definir el 'cubo' que define todos los niveles de agregación que se van a crear. Es importante tomar nota de la cláusula CROSS JOIN de las dos tablas derivadas. De esta forma se nos generan todos los niveles. El resto del código está realmente ahí para dar formato.
+Hola primer paso es toodefine hello 'cube' que define todos los niveles de Hola de agregación que deseamos toocreate. Es importante tootake nota de hello CROSS JOIN de las dos tablas derivadas de Hola. Esto genera todos los niveles de Hola para nosotros. resto de Hola de código de hello es realmente no existe para dar formato.
 
 ```sql
 CREATE TABLE #Cube
@@ -119,11 +119,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Los resultados de CTAS pueden verse a continuación:
+resultados de Hola de hello CTAS puede verse a continuación:
 
 ![][1]
 
-El segundo paso es especificar una tabla de destino para almacenar los resultados temporales:
+Hola segundo paso es toospecify da como resultado una versión preliminar toostore la tabla de destino:
 
 ```sql
 DECLARE
@@ -146,7 +146,7 @@ WITH
 ;
 ```
 
-El tercer paso es recorrer el cubo de columnas al realizar la agregación. La consulta se ejecuta una vez para cada fila de la tabla temporal #Cube y almacena los resultados en la tabla temporal #Results
+Hola tercer paso es tooloop sobre el cubo de columnas ejecutar Hola agregación. consulta de Hola se ejecuta una vez para cada fila de tabla temporal de hello #Cube y almacenar resultados de hello en la tabla temporal de hello #Results
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -170,7 +170,7 @@ BEGIN
 END
 ```
 
-Por último, podemos devolver los resultados simplemente leyendo en la tabla temporal #Results
+Por último, podemos devolvemos resultados Hola simplemente leyendo de tabla temporal de hello #Results
 
 ```sql
 SELECT *
@@ -179,7 +179,7 @@ ORDER BY 1,2,3
 ;
 ```
 
-Al dividir el código en secciones y generar una construcción de bucle, el código resulta más fácil de administrar y mantener.
+Interrumpa el código de hello en secciones y generando un bucle Hola de construcción código pasa a ser más fáciles de administrar y mantener.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para más sugerencias sobre desarrollo, consulte la [información general sobre desarrollo][development overview].

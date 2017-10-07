@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre API Apps en Azure App Service: tutoriales | Microsoft Docs"
-description: "Aprenda a usar API Apps en Azure App Service para desarrollar, alojar y consumir API en la nube y de forma local. Tutoriales, vídeos y otra documentación."
+title: "Tutoriales de servicio de aplicaciones - documentación de aplicaciones de API - aaaAzure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo alojar aplicaciones de API de toouse en toodevelop de servicio de aplicaciones de Azure y utilizar las API en la nube de Hola y local. Tutoriales, vídeos y otra documentación."
 services: app-service\api
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: b1a568d7a8f856c7d17aa7ebd14148452c1d29db
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 67334a0e0eb79c34aab60b4222977bc3a27611a2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="app-service---api-apps-documentation"></a>App Service: documentación de API Apps
 
-Aprenda a usar API Apps en Azure App Service para desarrollar, alojar y consumir API en la nube y de forma local. Los tutoriales, los vídeos y otra documentación muestran cómo crear e implementar aplicaciones de API.
+Obtenga información acerca de cómo alojar aplicaciones de API de toouse en toodevelop de servicio de aplicaciones de Azure y utilizar las API en la nube de Hola y local. Los tutoriales, los vídeos y otra documentación muestran cómo crear e implementar aplicaciones de API.
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -1,6 +1,6 @@
 ---
-title: "Introducción al desarrollo de aplicaciones de base de datos de Azure Database for MySQL | Microsoft Docs"
-description: "Se presentan las consideraciones de diseño que un desarrollador debe seguir al escribir código de aplicación para conectarse a Azure Database for MySQL."
+title: "información general sobre el desarrollo de aplicaciones de aaaDatabase de base de datos de Azure para MySQL | Documentos de Microsoft"
+description: "Presenta consideraciones de diseño que debería seguir un programador al escribir aplicaciones código tooconnect tooAzure base de datos de MySQL"
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
@@ -9,26 +9,26 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/10/2017
-ms.openlocfilehash: 350dd775e172120d806d1193877a34d94f4d3f6a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f08df605eba21b4ba4b43565c0a7ded95779a171
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Introducción al desarrollo de aplicaciones para Azure Database for MySQL 
-En este artículo se describe las consideraciones de diseño que debería seguir un desarrollador al escribir código de aplicación para conectarse a Azure Database for MySQL. 
+En este artículo se describe las consideraciones de diseño que debería seguir un programador al escribir aplicaciones código tooconnect tooAzure base de datos de MySQL 
 
 > [!TIP]
-> Para obtener un tutorial que muestre cómo crear un servidor, crear un firewall basado en servidor, ver propiedades de servidor, crear base de datos, conectarse y consultar mediante Workbench y mysql.exe, consulte [Design your first Azure MySQL database](tutorial-design-database-using-portal.md) (Diseño de la primera base de datos MySQL de Azure).
+> Encontrará un tutorial que se muestra cómo toocreate un servidor, se crea un firewall basado en servidor, ver propiedades del servidor, crea base de datos, conectarse y consulta mediante el área de trabajo y mysql.exe, [diseñar la primera base de datos de MySQL de Azure](tutorial-design-database-using-portal.md)
 
 ## <a name="language-and-platform"></a>Plataforma y lenguaje
-Existen ejemplos de código para diferentes lenguajes de programación y plataformas. Puede encontrar vínculos a los ejemplos de código en: [Bibliotecas de conexiones usadas para conectarse a Azure Database for MySQL](concepts-connection-libraries.md).
+Existen ejemplos de código para diferentes lenguajes de programación y plataformas. Puede encontrar vínculos toohello ejemplos de código en: [bibliotecas de conectividad usan tooconnect tooAzure base de datos de MySQL](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>Herramientas
-Azure Database for MySQL usa la versión de la comunidad de MySQL, compatible con herramientas de administración comunes de MySQL, como Workbench, o utilidades de MySQL como mysql.exe, [phpMyAdmin ](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql) y otras. También puede usar el portal de Azure, la CLI de Azure y la API de REST para interactuar con el servicio de base de datos.
+Base de datos de Azure para MySQL usa la versión de comunidad de MySQL hello, compatible con MySQL de herramientas de administración habituales, tales como las utilidades de Workbench o MySQL como mysql.exe, [phpMyAdmin](https://www.phpmyadmin.net/), [Navicat](https://www.navicat.com/products/navicat-for-mysql)y otros. También puede usar Hola portal de Azure, CLI de Azure y las API de REST toointeract con el servicio de base de datos de Hola.
 
 ## <a name="resource-limitations"></a>Limitaciones de recursos
-La base de datos MySQL de Azure administra los recursos disponibles para un servidor mediante dos mecanismos diferentes: 
+La base de datos de MySQL Azure administra Hola recursos disponibles tooa server mediante dos mecanismos diferentes: 
 - Gobierno de recursos 
 - Aplicación de límites
 
@@ -39,12 +39,12 @@ La base de datos MySQL de Azure proporciona recursos para limitar el acceso, pro
 La base de datos MySQL de Azure admite la autenticación de servidor de usuarios e inicios de sesión.
 
 ## <a name="resiliency"></a>Resistencia
-Cuando se produce un error transitorio durante la conexión a la base de datos MySQL, el código debe reintentar la llamada. Recomendamos que en la lógica de reintento se haga uso de la lógica de interrupción; de este modo no se sobrecargará SQL Database con los reintentos de varios clientes a la vez.
+Cuando se produce un error transitorio al conectar tooMySQL base de datos, el código debe reintentar la llamada de Hola. Te recomendamos que uses Hola Reintentar lógica de interrupción lógica, por lo que no desborda Hola base de datos de SQL con varios clientes reintentando simultáneamente.
 
-- Ejemplos de código: para ver ejemplos de código que ilustran la lógica de reintento, consulte los del idioma de su elección en: [Bibliotecas de conexiones usadas para conectarse a Azure Database for MySQL](concepts-connection-libraries.md).
+- Ejemplos de código: para los ejemplos de código que muestran la lógica de reintento, vea los ejemplos para el idioma de Hola de su elección en: [bibliotecas de conectividad usan tooconnect tooAzure base de datos de MySQL](concepts-connection-libraries.md)
 
 ## <a name="managing-connections"></a>Administración de conexiones
-Las conexiones de base de datos son un recurso limitado, por lo que recomendamos un uso razonable de conexiones al acceder a la base de datos MySQL con el fin de lograr un mejor rendimiento.
-- Acceda a la base de datos mediante la agrupación de conexiones o conexiones persistentes.
-- Acceda a la base de datos usando la duración de conexión corta. 
-- Use la lógica de reintento en su aplicación en el momento del intento de conexión, para detectar errores debidos a conexiones simultáneas que hayan alcanzado el número máximo permitido. En la lógica de reintento, establezca un retraso breve y, a continuación, espere un tiempo aleatorio antes de los intentos de conexiones adicionales.
+Las conexiones de base de datos son un recurso limitado, por lo que te recomendamos que uses significativo de conexiones al obtener acceso a la base de datos de MySQL tooachieve un mejor rendimiento.
+- Base de datos Access hello mediante la agrupación de conexiones o conexiones persistentes.
+- Base de datos de Hola de Access mediante el uso de la duración de derivación. 
+- Lógica de reintento de uso en la aplicación en el momento de Hola de intento de conexión de hello, toocatch errores debido a las conexiones tooconcurrent ha alcanzado el máximo de hello permitido. Hola lógica de reintento, establezca un breve retraso y, a continuación, espere durante un tiempo aleatorio antes de intentos de conexión adicionales de Hola.

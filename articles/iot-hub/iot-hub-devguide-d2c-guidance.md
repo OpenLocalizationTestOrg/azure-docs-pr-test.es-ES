@@ -1,6 +1,6 @@
 ---
-title: Opciones de dispositivo a la nube de IoT Hub de Azure | Microsoft Docs
-description: "Guía del desarrollador: una guía sobre cuándo usar mensajes de dispositivo a nube, propiedades notificadas o carga de archivos para comunicaciones de nube a dispositivo."
+title: Opciones de aaaAzure centro de IoT dispositivo a la nube | Documentos de Microsoft
+description: "Guía del desarrollador - instrucciones sobre al cargar mensajes del dispositivo a la nube de toouse, las propiedades notificados o archivo para las comunicaciones de nube al dispositivo."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: elioda
-ms.openlocfilehash: a36283053939ccd53856a394cd9efb66285271ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2caefc4f59e16ad28b0d8cf4b3bb627b4cba803b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Guía de comunicación de dispositivo a nube
-Al enviar información desde la aplicación del dispositivo al back-end de solución, IoT Hub presenta tres opciones:
+Al enviar información de hello dispositivo aplicación toohello solución back-end, el centro de IoT expone tres opciones:
 
 * [Mensajes de dispositivo a nube][lnk-d2c], para telemetría y alertas de series temporales.
-* [Propiedades notificadas][lnk-twins], para notificar información de estado del dispositivo, como funcionalidades disponibles, condiciones o estado de los flujos de trabajo de ejecución prolongada. Por ejemplo, configuración y actualizaciones de software.
-* [Cargas de archivos][lnk-fileupload], para archivos multimedia y grandes lotes de telemetría cargados por dispositivos conectados de manera intermitente o comprimidos para ahorrar ancho de banda.
+* [Notifica propiedades] [ lnk-twins] para proporcionar información de estado de dispositivo como capacidades disponibles, las condiciones o estado de Hola de flujos de trabajo de ejecución prolongada. Por ejemplo, configuración y actualizaciones de software.
+* [Cargas de archivos] [ lnk-fileupload] en medios lotes de telemetría grandes y archivos cargados por los dispositivos conectados de forma intermitente o comprimidos toosave ancho de banda.
 
-Esta es una comparación detallada de las distintas opciones de comunicación de dispositivo a nube.
+Aquí es una comparación detallada de hello diversas opciones de comunicación de dispositivos a la nube.
 
 |  | Mensajes de dispositivo a nube | Propiedades notificadas | Cargas de archivos |
 | ---- | ------- | ---------- | ---- |
-| Escenario | Serie temporal de telemetría y alertas. Por ejemplo, lotes de datos del sensor de 256 KB enviados cada cinco minutos. | Funcionalidades disponibles y condiciones. Por ejemplo, el modo actual de conectividad del dispositivo, como móvil o WiFi. Sincronización de flujos de trabajo de ejecución prolongada, como configuración y actualizaciones de software. | Archivos multimedia. Lotes de telemetría (generalmente comprimidos) de gran tamaño. |
-| Almacenamiento y recuperación | Almacenados temporalmente por IoT Hub, hasta 7 días. Solo lectura secuencial. | Almacenados por IoT Hub en el dispositivo gemelo. Recuperables mediante el [lenguaje de consulta de IoT Hub][lnk-query]. | Almacenadas en la cuenta de Azure Storage proporcionada por el usuario. |
-| Tamaño | Mensajes de hasta 256 KB. | El tamaño máximo de las propiedades notificadas es 8 KB. | Tamaño máximo de archivo admitido por Azure Blob Storage. |
+| Escenario | Serie temporal de telemetría y alertas. Por ejemplo, lotes de datos del sensor de 256 KB enviados cada cinco minutos. | Funcionalidades disponibles y condiciones. Por ejemplo, hello actual dispositivo modo de conectividad como red de telefonía móvil o Wi-Fi. Sincronización de flujos de trabajo de ejecución prolongada, como configuración y actualizaciones de software. | Archivos multimedia. Lotes de telemetría (generalmente comprimidos) de gran tamaño. |
+| Almacenamiento y recuperación | Almacena temporalmente IoT hub, los días de too7. Solo lectura secuencial. | Almacena IoT hub en gemelas de dispositivo de Hola. Puede recuperar con hello [lenguaje de consultas del centro de IoT][lnk-query]. | Almacenadas en la cuenta de Azure Storage proporcionada por el usuario. |
+| Tamaño | Los mensajes de too256 KB. | El tamaño máximo de las propiedades notificadas es 8 KB. | Tamaño máximo de archivo admitido por Azure Blob Storage. |
 | Frecuencia | Alta. Para más información, consulte los [Límites de IoT Hub][lnk-quotas]. | Mediana. Para más información, consulte los [Límites de IoT Hub][lnk-quotas]. | Baja. Para más información, consulte los [Límites de IoT Hub][lnk-quotas]. |
-| Protocol | Disponible en todos los protocolos. | Actualmente solo está disponible cuando se usa MQTT. | Disponible cuando se usa cualquier protocolo, pero hace falta HTTP en el dispositivo. |
+| Protocol | Disponible en todos los protocolos. | Actualmente solo está disponible cuando se usa MQTT. | Disponible cuando se utiliza cualquier protocolo, pero requiere HTTP en el dispositivo de Hola. |
 
-Es posible que una aplicación deba enviar información como alertas o series temporales de telemetría y también permitir que esté disponible en el dispositivo gemelo. En este escenario, puede elegir una de las siguientes opciones:
+Es posible que una aplicación requiere información de envío de tooboth como una serie temporal de telemetría o alerta y también toomake estén disponibles en gemelas de dispositivo de Hola. En este escenario, puede elegir uno de hello siguientes opciones:
 
-* La aplicación para dispositivo envía un mensaje de dispositivo a nube y notifica un cambio de propiedad.
-* El back-end de la solución puede almacenar la información en las etiquetas del dispositivo gemelo cuando recibe el mensaje.
+* aplicación de dispositivo de Hello envía un mensaje de dispositivo para la nube y notifica un cambio de propiedad.
+* Hola solución back-end puede almacenar información de hello en las etiquetas del doble del dispositivo de hello cuando recibe mensajes de bienvenida.
 
-Dado que los mensajes de dispositivo a nube permiten una capacidad de proceso mucho mayor que las actualizaciones de dispositivos gemelos, a veces es aconsejable evitar actualizar el dispositivo gemelo con cada mensaje de dispositivo a nube.
+Puesto que los mensajes del dispositivo a la nube permiten un rendimiento mucho mayor que las actualizaciones de dispositivo gemelas, a veces es deseable tooavoid actualización gemelas de dispositivo de Hola para cada mensaje de dispositivo a la nube.
 
 
 [lnk-twins]: iot-hub-devguide-device-twins.md

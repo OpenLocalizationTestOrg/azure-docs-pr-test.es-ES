@@ -1,6 +1,6 @@
 ---
-title: "Planeamiento de la capacidad y el escalado para la replicación del servidor físico en Azure con Azure Site Recovery | Microsoft Docs"
-description: "Use este artículo para planear la capacidad y el escalado al replicar servidores de Windows/Linux físicos en Azure con Azure Site Recovery."
+title: "aaaPlan capacidad y escalabilidad para el servidor físico replicación tooAzure con Azure Site Recovery | Documentos de Microsoft"
+description: "Use este artículo tooplan capacidad y el escalado al replicar tooAzure de servidores físicos de Windows/Linux con Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: rayne
-ms.openlocfilehash: 971ad6dd39f94aa7944f6ed3b31bc3acc605d9a7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 209980963c07d13e15802a5da44769ac559217d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="step-3-plan-capacity-and-scaling-for-physical-server-to-azure-replication"></a>Paso 3: Planeamiento de la capacidad y el escalado del servidor físico para la replicación en Azure
+# <a name="step-3-plan-capacity-and-scaling-for-physical-server-tooazure-replication"></a>Paso 3: Planear la capacidad y ajuste de escala para la replicación de tooAzure de servidor físico
 
-Use este artículo para averiguar la capacidad y el escalado al replicar servidores de Windows/Linux físicos locales en Azure con [Azure Site Recovery](site-recovery-overview.md).
+Utilice este toofigure artículo out capacidad y ajuste de escala, cuando se está replicando local tooAzure de servidores físicos de Windows/Linux con [Azure Site Recovery](site-recovery-overview.md).
 
-Publique cualquier comentario o pregunta en la parte inferior de este artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Envíe los comentarios y preguntas en parte inferior de este artículo, o en Hola de hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="plan-deployment-capacity"></a>Planeamiento de la capacidad de implementación
 
-1. Lea este [artículo](site-recovery-plan-capacity-vmware.md) para aprender a calcular los requisitos de replicación y ver una guía para ajustar el tamaño de los componentes de Site Recovery.
-2. Lea las consideraciones siguientes para aprender a escalar servidores de componentes y controlar el ancho de banda de la máquina replicada.
+1. Lea esta [artículo](site-recovery-plan-capacity-vmware.md) toolearn sobre cómo calcular los requisitos de replicación y orientación para ajustar el tamaño de los componentes de Site Recovery.
+2. Lea las consideraciones de hello debajo toolearn sobre el ajuste de escala en servidores de componentes y el control de ancho de banda del equipo replicado.
 
-## <a name="replication-considerations"></a>Consideraciones de la replicación
+## <a name="replication-considerations"></a>Consideraciones sobre la replicación
 
-Use estas consideraciones para averiguar los requisitos del servidor replicado.
+Use estos toofigure consideraciones sobre los requisitos de servidor replicado.
 
 **Componente** | **Detalles** 
 --- | --- 
-**Replicación** | **Tasa máxima de cambios diaria**: una máquina protegida solo puede usar un servidor de procesos, y un servidor de procesos puede gestionar una tasa de cambios diaria de hasta 2 TB. Por lo tanto, la tasa máxima de cambios diaria que admite una máquina protegida es de 2 TB.<br/><br/> **Rendimiento máximo**: una máquina replicada puede pertenecer a una cuenta de almacenamiento en Azure. Una cuenta de almacenamiento estándar puede controlar un máximo de 20 000 solicitudes por segundo y se recomienda mantener la cantidad de operaciones de entrada/salida por segundo (IOPS) en una máquina de origen en 20 000. Por ejemplo, si tiene una máquina de origen con 5 discos y cada disco genera 120 E/S por segundo (8 K de tamaño) en la máquina de origen, se encontrará dentro del límite de 500 de Azure por E/S por segundo por disco. (El número de cuentas de almacenamiento necesario es igual al IOPS de máquina de origen total dividido por 20 000).
+**Replicación** | **Tasa de cambio diario máximo:** una máquina protegida sólo puede utilizar un servidor de procesos, y puede administrar un servidor de proceso único una tasa de cambio diaria hasta too2 TB. Por lo tanto 2 TB es tasa con la que se admite para una máquina protegida de cambio de datos diario máximo Hola.<br/><br/> **Rendimiento máximo:** un equipo replicado puede pertenecer tooone cuenta de almacenamiento de Azure. Una cuenta de almacenamiento estándar puede contener un máximo de 20.000 solicitudes por segundo, y se recomienda mantener Hola número de operaciones de entrada/salida por segundo (IOPS) a través de un too20 de la máquina de origen, 000. Por ejemplo, si tiene una máquina de origen con 5 discos y cada disco genera 120 IOPS (tamaño de 8 KB) en la máquina de origen de hello, resultará en hello Azure por límite de IOPS de disco de 500. (número de Hola de cuentas de almacenamiento necesaria es la máquina de origen total igual toohello IOPS, dividida por 20.000).
 
 ## <a name="configuration-server-capacity"></a>Capacidad del servidor de configuración
 
-El servidor de configuración debe poder controlar la capacidad de tasa de cambios diaria en todas las cargas de trabajo que se ejecutan en máquinas protegidas, y necesita el ancho de banda suficiente para realizar una replicación continua de los datos en el Azure Storage.
+servidor de configuración de Hello debería ser capacidad de tasa de cambio diaria de toohandle capaz de hello en todas las cargas de trabajo que ejecutan en equipos protegidos y necesita toocontinuously de ancho de banda suficiente replicar tooAzure almacenamiento de datos.
 
-Como procedimiento recomendado, localice el servidor de configuración en la misma red y mismo segmento de LAN que las máquinas que desea proteger. De todos modos, puede estar en una red distinta, pero las máquinas que desea proteger deben contar con la visibilidad de red de nivel L3 en ella.
+Como práctica recomendada, busque el servidor de configuración de hello en hello misma red y el segmento de LAN como Hola máquinas que desee tooprotect. Se puede encontrarse en una red diferente, pero las máquinas que desee tooprotect debe tener tooit de visibilidad de capa 3 red.
 
 ## <a name="sizing-recommendations"></a>Recomendaciones de tamaño
 
-En la tabla se resumen las recomendaciones de ajuste de tamaño en función de la CPU.
+tabla de Hola resumen las recomendaciones de ajuste de tamaño en función de la CPU.
 
 **CPU** | **Memoria** | **Tamaño del disco de caché** | **Frecuencia de cambio de datos** | **Máquinas protegidas**
 --- | --- | --- | --- | ---
 8 vCPU (2 sockets * 4 núcleos @ 2,5 gigahercios [GHz]) | 16 GB | < 300 GB | 500 GB o menos | Replicar menos de 100 máquinas.
-12 vCPUs (2 sockets * 6 núcleos @ 2,5 GHz) | 18 GB | 600 GB | 500 GB a 1 TB | Replicar entre 100 y 150 máquinas.
-16 vCPUs (2 sockets * 8 núcleos @ 2,5 GHz) | 32 GB | 1 TB | 1 TB a 2 TB | Replicar entre 150 y 200 máquinas.
-Implementar otro servidor de procesos | | | 2 TB | Implemente servidores de procesos adicionales si replica más de 200 máquinas o si la tasa de cambios de datos diaria supera los 2 TB.
+12 vCPUs (2 sockets * 6 núcleos @ 2,5 GHz) | 18 GB | 600 GB | 500 GB too1 TB | Replicar entre 100 y 150 máquinas.
+16 vCPUs (2 sockets * 8 núcleos @ 2,5 GHz) | 32 GB | 1 TB | 1 TB too2 TB | Replicar entre 150 y 200 máquinas.
+Implementar otro servidor de procesos | | | 2 TB | Implementar servidores de procesos adicionales si se están replicando más de 200 máquinas o si cambian los datos diario de hello tasa mayor que 2 TB.
 
 Donde:
 
@@ -65,67 +65,67 @@ Donde:
 ## <a name="process-server-capacity"></a>Capacidad del servidor de procesos
 
 
-El servidor de procesos recibe datos de replicación provenientes de las máquinas protegidas y los optimiza con almacenamiento en caché, compresión y cifrado. A continuación, envía los datos a Azure.
+servidor de procesos de Hello recibe datos de replicación de máquinas protegidas y optimiza con almacenamiento en caché, la compresión y cifrado. A continuación, envía hello tooAzure de datos.
 
-- La máquina del servidor de procesos debe tener los recursos suficientes para realizar estas tareas.
-- El primer servidor de procesos está instalado en el servidor de configuración de forma predeterminada. Puede implementar servidores de procesos adicionales para escalar el entorno.
-- El servidor de procesos utiliza una caché basada en disco. Utilice un disco de caché independiente con 600 GB o más de capacidad para controlar los cambios en los datos almacenados ante la eventualidad de una interrupción o un cuello de botella en la red.
-- Si necesita proteger más de 200 máquinas, o si la tasa de cambios diaria es mayor que 2 TB, puede agregar servidores de procesos para controlar la carga de replicación. Para escalar horizontalmente, puede:
-    - Aumentar el número de servidores de configuración. Por ejemplo, puede proteger hasta 400 máquinas con dos servidores de configuración.
-    - Agregar más servidores de procesos y utilizarlos para controlar el tráfico en lugar (o además) del servidor de configuración.
+- equipo del servidor de proceso de Hello debe tener suficientes tooperform recursos estas tareas.
+- primer servidor de proceso Hola se instala de forma predeterminada en el servidor de configuración de Hola. Puede implementar tooscale de servidores de proceso adicionales en su entorno.
+- servidor de procesos de Hello usa una caché basada en disco. Use un disco independiente de memoria caché de 600 GB o más cambios de datos de toohandle almacenados en caso de hello de un cuello de botella de red o una interrupción.
+- Si necesita tooprotect más de 200 máquinas o tasa de cambio diaria de hello es mayor que 2 TB, puede agregar proceso servidores toohandle Hola replicación carga. tooscale out, puede:
+    - Aumentar el número de Hola de servidores de configuración. Por ejemplo, puede proteger las máquinas de too400 con dos servidores de configuración.
+    - Agregar más servidores de procesos y utilizar dichos servidores de configuración toohandle Hola de tráfico en lugar de (o además de).
 
 
 ### <a name="example-process-server-scaling"></a>Ejemplo de escalado de los servidores de procesos
 
-La tabla siguiente describe un escenario en el cual:
+Hello en la tabla siguiente describe un escenario en el que:
 
-* No pretende utilizar el servidor de configuración como un servidor de procesos.
+* No tiene previsto servidor de configuración de hello toouse como un servidor de procesos.
 * Ha configurado un servidor de procesos adicional.
-* Ha configurado máquinas virtuales protegidas para utilizar el servidor de procesos adicional.
+* Ha configurado el servidor de proceso adicional de máquinas virtuales protegidas toouse Hola.
 * Cada máquina de origen protegida está configurada con tres discos de 100 GB cada uno.
 
 **Servidor de configuración** | **Servidores de procesos adicionales** | **Tamaño del disco de caché** | **Frecuencia de cambio de datos** | **Máquinas protegidas**
 --- | --- | --- | --- | ---
 8 vCPU (2 sockets * 4 núcleos a 2,5 GHz), 16 GB de memoria | 4 vCPU (2 sockets * 2 núcleos a 2,5 GHz), 8 GB de memoria | < 300 GB | 250 GB o menos | Replicar 85 máquinas o menos.
-8 vCPU (2 sockets * 4 núcleos a 2,5 GHz), 16 GB de memoria | 8 vCPU (2 sockets * 4 núcleos a 2,5 GHz), 12 GB de memoria | 600 GB | 250 GB a 1 TB | Replicar entre 85 y 150 máquinas.
-12 vCPU (2 sockets * 6 núcleos a 2,5 GHz), 18 GB de memoria | 12 vCPU (2 sockets * 6 núcleos a 2,5 GHz), 24 GB de memoria | 1 TB | 1 TB a 2 TB | Replicar entre 150 y 225 máquinas.
+8 vCPU (2 sockets * 4 núcleos a 2,5 GHz), 16 GB de memoria | 8 vCPU (2 sockets * 4 núcleos a 2,5 GHz), 12 GB de memoria | 600 GB | 250 GB too1 TB | Replicar entre 85 y 150 máquinas.
+12 vCPU (2 sockets * 6 núcleos a 2,5 GHz), 18 GB de memoria | 12 vCPU (2 sockets * 6 núcleos a 2,5 GHz), 24 GB de memoria | 1 TB | 1 TB too2 TB | Replicar entre 150 y 225 máquinas.
 
-La manera en la que escalará los servidores depende de su preferencia con respecto a un modelo de escalado vertical u horizontal.  Puede escalar verticalmente con la implementación de algunos servidores de procesos y de configuración de alto nivel, mientras que, para escalar horizontalmente, debe implementar más servidores con menos recursos. Por ejemplo, si necesita proteger 220 máquinas, podría elegir una de las siguientes opciones:
+forma de Hello en el que escalar los servidores depende de sus preferencias para un modelo de escalado vertical y escalado horizontal.  Puede escalar verticalmente con la implementación de algunos servidores de procesos y de configuración de alto nivel, mientras que, para escalar horizontalmente, debe implementar más servidores con menos recursos. Por ejemplo, si necesita tooprotect 220 máquinas, puede realizar una de los siguientes hello:
 
-* Configurar el servidor de configuración con 12 vCPU, 18 GB de memoria y un servidor de procesos adicional con 12 vCPU, 24 GB de memoria. Configurar máquinas protegidas para que utilicen solo el servidor de procesos adicional.
-* Configurar dos servidores de configuración (2 x 8 vCPU, 16 GB de RAM) y dos servidores de procesos adicionales (1 x 8 vCPU y 4 vCPU x 1 para controlar 135 + 85 [220] máquinas). Configurar máquinas protegidas para que utilicen solo servidores de procesos adicionales.
+* Configurar el servidor de configuración de hello con 12 vCPU, 18 GB de memoria y un servidor de proceso adicionales con 12 vCPU, 24 GB de memoria. Configurar servidor de proceso adicionales solo de las máquinas protegidas toouse Hola.
+* Configurar dos servidores de configuración (vCPU, 16 GB de RAM de 2 x 8) y dos servidores de proceso adicionales (vCPU de 1 x 8 y 4 vCPU 1 toohandle 135 + 85 [220] máquinas). Configure los servidores de proceso adicionales solo de las máquinas protegidas toouse Hola.
 
 ## <a name="deploy-additional-process-servers"></a>Implementar servidores de procesos adicionales
 
-1. Siga [estas instrucciones](site-recovery-vmware-setup-azure-ps-resource-manager.md) para configurar otro servidor de procesos.
-2. Si no tiene frase de contraseña, ejecute **[SiteRecoveryInstallationFolder]\home\sysystems\bin\genpassphrase.exe –n** en el servidor de configuración para obtener una.
-3. Después de configurar el servidor de procesos, debe migrar las máquinas de origen para que lo utilicen.
+1. Siga [estas instrucciones](site-recovery-vmware-setup-azure-ps-resource-manager.md) tooset de un servidor de proceso adicionales.
+2. Si no tiene la frase de contraseña de hello, ejecute **[SiteRecoveryInstallationFolder]\home\sysystems\bin\genpassphrase.exe – n** en tooget de servidor de configuración de Hola.
+3. Después de configurar el servidor de procesos de hello, migrar toouse de máquinas de origen se.
 
-    1. En **Configuración** > **Site Recovery servers** (Servidores de Site Recovery), haga clic en el servidor de configuración > **Servidores de procesos**.
-    2. Haga clic con el botón derecho en el servidor de procesos que se utiliza actualmente y haga clic en > **Cambiar**.
-    3. En **Select target process server** (Seleccionar servidor de procesos de destino), elija el servidor de procesos que desee usar y las máquinas virtuales que controlará el servidor.
-    4. Haga clic en el icono de información. El espacio promedio que se necesita para replicar cada máquina virtual seleccionada en el nuevo servidor de procesos aparecerá para ayudarle a tomar decisiones relacionadas con la carga.
-    5. Haga clic en la marca de verificación para comenzar a replicar en el nuevo servidor de procesos.
+    1. En **configuración** > **servidores de Site Recovery**, haga clic en el servidor de configuración de hello > **servidores de procesos**.
+    2. Servidor de procesos de hello contextual actualmente en uso > **conmutador**.
+    3. En **servidor de procesos de destino Select**, seleccione servidor de procesos de Hola que desee toouse y seleccione las máquinas virtuales de hello ese servidor hello controlará.
+    4. Haga clic en el icono de información de Hola. toohelp realizar decisiones de carga, Hola espacio medio requerido tooreplicate se muestra cada VM toohello nuevo servidor de procesos seleccionado.
+    5. Haga clic en hello marca de verificación toostart replicación toohello nuevo servidor de procesos.
 
 ## <a name="control-network-bandwidth"></a>Ancho de banda de red de control
 
-Después de ejecutar la [herramienta Deployment Planner](site-recovery-deployment-planner.md) para calcular el ancho de banda necesario para la replicación (la replicación inicial y la diferencial), puede controlar la cantidad de ancho de banda utilizado para la replicación mediante un par de opciones:
+Después de ejecutar [herramienta de planeación de implementación de hello](site-recovery-deployment-planner.md) ancho de banda de hello toocalculate que necesita para la replicación (replicación inicial de hello y, a continuación, delta), puede controlar la cantidad de Hola de ancho de banda utilizado para la replicación con un par de opciones:
 
-* **Limitar ancho de banda**: el tráfico de VMware que se replica en Azure pasa a través de un servidor de procesos específico. También puede limitar el ancho de banda en las máquinas que se ejecutan como servidores de procesos.
-* **Influir en el ancho de banda**: puede influir en el ancho de banda utilizado para la replicación mediante un par de claves del Registro:
-  * El valor del Registro **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\UploadThreadsPerVM** especifica el número de subprocesos que se utilizan para la transferencia de datos (replicación inicial o diferencial) de un disco. Un valor mayor aumenta el ancho de banda de red utilizado para la replicación.
-  * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DownloadThreadsPerVM** especifica el número de subprocesos usados para la transferencia de datos durante la conmutación por recuperación.
+* **Limitar ancho de banda**: tráfico de VMware que se replica tooAzure pasa a través de un servidor de proceso específico. También puede limitar el ancho de banda en máquinas de Hola que se ejecutan como servidores de procesos.
+* **Influir en el ancho de banda**: puede influir en el ancho de banda de hello usada para la replicación mediante el uso de un par de claves del registro:
+  * Hola **Backup\UploadThreadsPerVM de Azure HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows** valor del registro especifica el número de Hola de subprocesos que se usan para la transferencia de datos (la replicación inicial o delta) de un disco. Un valor mayor aumenta el ancho de banda de red de hello usada para la replicación.
+  * Hola **Backup\DownloadThreadsPerVM de Azure HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows** especifica Hola número de subprocesos usados para la transferencia de datos durante la conmutación por recuperación.
 
-### <a name="throttle-bandwidth"></a>Limitar ancho de banda
+### <a name="throttle-bandwidth"></a>Limitar el ancho de banda
 
-1. Abra el complemento MMC de Azure Backup en la máquina que actúa como el servidor de procesos. De manera predeterminada, hay disponible un acceso directo para Backup en el escritorio o en la siguiente carpeta: C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
-2. En el complemento, haga clic en **Cambiar propiedades**.
-3. En la pestaña **Limitación**, seleccione la opción **Habilitar el límite de uso del ancho de banda de Internet para operaciones de copia de seguridad**.
-4. Establezca los límites para las horas laborables y no laborables. Los intervalos válidos van de 512 Kbps a 102 Mbps por segundo.
+1. Abra hello en el complemento MMC de copias de seguridad de Azure en actúa de máquina de hello como servidor de procesos de Hola. De forma predeterminada, está disponible en el escritorio de Hola u Hola después la carpeta un acceso directo para copia de seguridad: Agent\bin\wabadmin de servicios de recuperación de C:\Program Files\Microsoft Azure.
+2. En el complemento de hello, haga clic en **cambiar las propiedades de**.
+3. En hello **limitación** ficha, seleccione **Habilitar límite para las operaciones de copia de seguridad de uso de ancho de banda de internet**.
+4. Establecer límites de hello para el trabajo y no laborables horas. Intervalo válido es de 512 Kbps too102 Mbps por segundo.
 
     ![Limitación](./media/physical-walkthrough-capacity/throttle2.png)
 
-También puede utilizar el cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) para establecer la limitación. Aquí tiene un ejemplo:
+También puede usar hello [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) cmdlet tooset limitación. Aquí tiene un ejemplo:
 
     $mon = [System.DayOfWeek]::Monday
     $tue = [System.DayOfWeek]::Tuesday
@@ -135,14 +135,14 @@ También puede utilizar el cmdlet [Set-OBMachineSetting](https://technet.microso
 
 ### <a name="influence-network-bandwidth-for-a-vm"></a>Control del uso de ancho de banda de red para una VM
 
-1. En el Registro de la máquina virtual, vaya a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
-   * Para influir en el tráfico de ancho de banda en un disco de replicación, modifique el valor de **UploadThreadsPerVM** o cree la clave en caso de que no exista.
-   * Para influir en el ancho de banda para el tráfico de conmutación por recuperación de Azure, modifique el valor de **DownloadThreadsPerVM**.
-2. El valor predeterminado es 4. En una red sobreaprovisionada, se deben cambiar los valores de estas claves del Registro. El valor máximo es 32. Supervise el tráfico para optimizar el valor.
+1. En el registro del programa Hola a máquina virtual, vaya demasiado**Backup\Replication de Azure HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows**.
+   * tráfico de ancho de banda de hello tooinfluence en un disco de la replicación, modifique el valor de Hola de **UploadThreadsPerVM**, también puede crear la clave de hello si no existe.
+   * ancho de banda de tooinfluence hello para el tráfico de la conmutación por recuperación de Azure, modifique el valor de Hola de **DownloadThreadsPerVM**.
+2. valor predeterminado de Hello es 4. En una red sobreaprovisionada, se deben cambiar los valores de estas claves del Registro. Hola máximo es 32. Supervisar el tráfico toooptimize Hola valor.
 
 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Vaya a [Paso 4: Planeamiento de las redes](physical-walkthrough-network.md).
+Vaya demasiado[paso 4: planear las redes](physical-walkthrough-network.md).

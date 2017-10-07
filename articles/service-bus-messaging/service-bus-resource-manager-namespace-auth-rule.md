@@ -1,5 +1,5 @@
 ---
-title: "Creación de reglas de autorización de Service Bus con plantillas de Azure Resource Manager | Microsoft Docs"
+title: "regla de autorización de Bus de servicio aaaCreate con plantilla del Administrador de recursos de Azure | Documentos de Microsoft"
 description: "Creación de una regla de autorización de Bus de servicio para un espacio de nombres y una cola mediante una plantilla de Azure Resource Manager"
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: fbd2372829a1aefa2c080c0a8a72b9ff4375b16f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 48df97849281d3b47e9d722d4e821c874644be59
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Creación de una regla de autorización de Bus de servicio para un espacio de nombres y una cola mediante una plantilla de Azure Resource Manager
 
-En este artículo se muestra cómo utilizar una plantilla de Azure Resource Manager que crea una [regla de autorización](service-bus-authentication-and-authorization.md#shared-access-signature-authentication) para una cola y un espacio de nombres de Service Bus. Aprenderá a definir los recursos que se implementan y los parámetros que se especifican cuando se ejecuta la implementación. Puede usar esta plantilla para sus propias implementaciones o personalizarla para satisfacer sus necesidades.
+Este artículo se muestra cómo toouse una plantilla de administrador de recursos de Azure que crea un [regla de autorización](service-bus-authentication-and-authorization.md#shared-access-signature-authentication) para un espacio de nombres de Bus de servicio y una cola. Obtendrá información sobre cómo toodefine qué recursos se implementan y cómo toodefine parámetros que especifican cuando se ejecuta la implementación de Hola. Puede usar esta plantilla para sus propias implementaciones o personalizarlo toomeet sus requisitos.
 
 Para más información sobre la creación de plantillas, consulte [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Creación de plantillas de Azure Resource Manager).
 
-Para ver la plantilla completa, consulte la [plantilla de regla de autorización de Service Bus][Service Bus auth rule template] en GitHub.
+Para la plantilla completa de hello, vea hello [plantilla de regla de autorización de Bus de servicio] [ Service Bus auth rule template] en GitHub.
 
 > [!NOTE]
-> Las siguientes plantillas de Azure Resource Manager están disponibles para su descarga e implementación.
+> Hola siguiendo las plantillas del Administrador de recursos de Azure está disponible para su descarga e implementación.
 > 
 > * [Creación de un espacio de nombres de bus de servicio](service-bus-resource-manager-namespace.md)
 > * [Creación de un espacio de nombres de Bus de servicio con cola](service-bus-resource-manager-namespace-queue.md)
 > * [Creación de un espacio de nombres de Bus de servicio con un tema y una suscripción](service-bus-resource-manager-namespace-topic.md)
-> * [Creación de un espacio de nombres de Service Bus con un tema, una suscripción y una regla](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Create a Service Bus namespace with topic, subscription, and rule](service-bus-resource-manager-namespace-topic-with-rule.md) (Creación de un espacio de nombres de Service Bus con tema, suscripción y regla)
 > 
-> Para buscar las últimas plantillas, visite la galería [Plantillas de inicio rápido de Azure][Azure Quickstart Templates] y busque "Service Bus".
+> toocheck para las plantillas de hello más recientes, visite hello [plantillas de inicio rápido de Azure] [ Azure Quickstart Templates] galería y busque "Bus de servicio".
 > 
 > 
 
 ## <a name="what-will-you-deploy"></a>¿Qué va a implementar?
 Con esta plantilla, implementará una regla de autorización de Bus de servicio para una entidad de mensajería y espacio de nombres (una cola en este caso).
 
-Esta plantilla usa la [firma de acceso compartido (SAS)](service-bus-sas.md) para la autenticación. SAS permite a las aplicaciones autenticarse en el Bus de servicio mediante una clave de acceso configurada en el espacio de nombres o en la entidad de mensajería (cola o tema) al que se asocian derechos específicos. A continuación, puede usar esta clave para generar un token SAS que a su vez, los clientes pueden usar para autenticarse en el Bus de servicio.
+Esta plantilla usa la [firma de acceso compartido (SAS)](service-bus-sas.md) para la autenticación. SAS permite que las aplicaciones tooauthenticate tooService Bus mediante una clave de acceso configurada en el espacio de nombres de Hola o en hello entidad (cola o tema) de mensajería con qué derechos específicos que están asociados. A continuación, puede usar esta clave toogenerate un token SAS que los clientes pueden usar a su vez tooauthenticate tooService Bus.
 
-Para ejecutar automáticamente la implementación, haga clic en el botón siguiente:
+toorun Hola implementación automáticamente, haga clic en hello después de botón:
 
-[![Implementación en Azure](./media/service-bus-resource-manager-namespace-auth-rule/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F301-servicebus-create-authrule-namespace-and-queue%2Fazuredeploy.json)
+[![Implementar tooAzure](./media/service-bus-resource-manager-namespace-auth-rule/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F301-servicebus-create-authrule-namespace-and-queue%2Fazuredeploy.json)
 
-## <a name="parameters"></a>Parámetros
+## <a name="parameters"></a>parameters
 
-Con el Administrador de recursos de Azure, se definen los parámetros de los valores que desea especificar al implementar la plantilla. La plantilla incluye una sección denominada `Parameters` que contiene todos los valores de los parámetros. Debe definir un parámetro para los valores que variarán según el proyecto que vaya a implementar o según el entorno en el que vaya a realizar la implementación. No defina parámetros para valores que vayan a permanecer igual. Cada valor de parámetro se usa en la plantilla para definir los recursos que se implementan.
+Con el Administrador de recursos de Azure, se definen parámetros para los valores que desee toospecify cuando se implementa Hola plantilla. plantilla de Hello incluye una sección denominada `Parameters` que contiene todos los valores de parámetro de Hola. Debe definir un parámetro para aquellos valores que varían en función de que va a implementar el proyecto de Hola o según va a implementar en el entorno de Hola. No se define parámetros para valores que siempre permanecerá Hola igual. Cada valor de parámetro se usa en hello plantilla toodefine Hola los recursos que se implementan.
 
-La plantilla define los parámetros siguientes.
+plantilla de Hello define Hola parámetros siguientes.
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-El nombre del espacio de nombres de Bus de servicio que crear.
+nombre de Hola de toocreate de espacio de nombres de Bus de servicio de Hola.
 
 ```json
 "serviceBusNamespaceName": {
@@ -65,7 +65,7 @@ El nombre del espacio de nombres de Bus de servicio que crear.
 ```
 
 ### <a name="namespaceauthorizationrulename"></a>namespaceAuthorizationRuleName
-El nombre de la regla de autorización para el espacio de nombres.
+nombre de Hola de regla de autorización de hello para el espacio de nombres de Hola.
 
 ```json
 "namespaceAuthorizationRuleName ": {
@@ -74,7 +74,7 @@ El nombre de la regla de autorización para el espacio de nombres.
 ```
 
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
-El nombre de la cola en el espacio de nombres de Bus de servicio.
+nombre de Hola de cola de hello en el espacio de nombres de Bus de servicio de Hola.
 
 ```json
 "serviceBusQueueName": {
@@ -83,7 +83,7 @@ El nombre de la cola en el espacio de nombres de Bus de servicio.
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-La versión de la API de Bus de servicio de la plantilla.
+versión de API de Service Bus de Hola de plantilla de Hola.
 
 ```json
 "serviceBusApiVersion": {
@@ -91,7 +91,7 @@ La versión de la API de Bus de servicio de la plantilla.
 }
 ```
 
-## <a name="resources-to-deploy"></a>Recursos para implementar
+## <a name="resources-toodeploy"></a>Toodeploy de recursos
 Crea un espacio de nombres de Bus de servicio estándar de tipo **Mensajería**y una regla de autorización de Bus de servicio para el espacio de nombres y la entidad.
 
 ```json
@@ -145,7 +145,7 @@ Crea un espacio de nombres de Bus de servicio estándar de tipo **Mensajería**y
     ]
 ```
 
-## <a name="commands-to-run-deployment"></a>Comandos para ejecutar la implementación
+## <a name="commands-toorun-deployment"></a>Implementación de toorun de comandos
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
@@ -161,14 +161,14 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha creado e implementado recursos con Azure Resource Manager, estos artículos le enseñarán como administrarlos:
+Ahora que ha creado e implementado recursos con el Administrador de recursos de Azure, obtenga información acerca de cómo toomanage estos recursos mediante la visualización de estos artículos:
 
 * [Administración de Service Bus con PowerShell](service-bus-powershell-how-to-provision.md)
-* [Administración de recursos de Bus de servicio con el Explorador de Bus de servicio](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Administrar recursos de Service Bus con hello Explorador de Bus de servicio](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 * [Autenticación y autorización de Bus de servicio](service-bus-authentication-and-authorization.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
-[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
+[Using hello Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Service Bus auth rule template]: https://github.com/Azure/azure-quickstart-templates/blob/master/301-servicebus-create-authrule-namespace-and-queue/

@@ -1,6 +1,6 @@
 ---
-title: "Solución Administración de actualizaciones de OMS | Microsoft Docs"
-description: "Este artículo está pensado para ayudarle a entender cómo utilizar esta solución para administrar las actualizaciones de los equipos Windows y Linux."
+title: "solución de administración de OMS aaaUpdate | Documentos de Microsoft"
+description: "Este artículo está previsto toohelp comprender cómo toouse esta toomanage solución actualizaciones para los equipos de Windows y Linux."
 services: operations-management-suite
 documentationcenter: 
 author: MGoedtel
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/27/2017
 ms.author: magoedte
-ms.openlocfilehash: e463102a4b21253e28b01d6d149aba55bab18674
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2dd321913bf049ab1996fd60a2f74b8417084dcf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="update-management-solution-in-oms"></a>Solución Administración de actualizaciones de OMS
 
 ![Símbolo de Administración de actualizaciones](./media/oms-solution-update-management/update-management-symbol.png)
 
-La solución Update Management de OMS permite administrar las actualizaciones de seguridad del sistema operativo de los equipos de Windows y Linux implementados en Azure, en entornos locales o en otros proveedores en la nube.  Puede evaluar rápidamente el estado de las actualizaciones disponibles en todos los equipos agente y administrar el proceso de instalación de las actualizaciones necesarias para los servidores.
+Hola solución de administración de actualizaciones en OMS permite toomanage actualizaciones de seguridad del sistema operativo para los equipos de Windows y Linux implementados en Azure, local entornos u otros proveedores de nube.  Puede evaluar el estado de Hola de actualizaciones disponibles en todos los equipos de agente y administrar el proceso de instalar las actualizaciones necesarias para los servidores de hello rápidamente.
 
 
 ## <a name="solution-overview"></a>Información general de la solución
-Los equipos administrados por OMS usan lo siguiente para evaluar e implementar actualizaciones:
+Equipos administrados por OMS utilizan siguiente de Hola para llevar a cabo las implementaciones de evaluación y actualización:
 
 * Agente de OMS para Windows o Linux
 * Extensión DSC (configuración de estado deseado) de PowerShell para Linux
 * Hybrid Runbook Worker de Automation
 * Microsoft Update o Windows Server Update Services para equipos Windows
 
-Los siguientes diagramas muestran una vista conceptual del comportamiento y un flujo de datos con el modo en que la solución evalúa y aplica las actualizaciones de seguridad a todos los equipos Windows Server y Linux conectados en un área de trabajo.    
+Hola después de diagramas muestra una vista conceptual del flujo de datos y comportamiento de hello con la solución de hello evalúa y aplica tooall de actualizaciones de seguridad conectado Windows Server y los equipos Linux en un área de trabajo.    
 
 #### <a name="windows-server"></a>Windows Server
 ![Flujo del proceso de administración de actualizaciones en Windows Server](media/oms-solution-update-management/update-mgmt-windows-updateworkflow.png)
@@ -43,246 +43,246 @@ Los siguientes diagramas muestran una vista conceptual del comportamiento y un f
 #### <a name="linux"></a>Linux
 ![Flujo del proceso de administración de actualizaciones en Linux](media/oms-solution-update-management/update-mgmt-linux-updateworkflow.png)
 
-Después de que el equipo realiza un examen de cumplimiento de las actualizaciones, el agente de OMS reenvía la información de forma masiva a OMS. En un equipo Windows, el examen de cumplimiento se realiza cada 12 horas de forma predeterminada.  Además del examen programado, se inicia el examen de cumplimiento de las actualizaciones a los 15 minutos si se reinicia Microsoft Monitoring Agent (MMA), antes y después de la instalación de actualizaciones.  En un equipo Linux, el examen de cumplimiento se realiza cada 3 horas de forma predeterminada y se inicia un examen de cumplimiento en 15 minutos si se reinicia el agente MMA.  
+Después de que el equipo de hello realiza un examen de cumplimiento de las actualizaciones, agente de OMS Hola envía información de hello en tooOMS de forma masiva. En un equipo de la ventana, examen de cumplimiento de Hola se realiza cada 12 horas de forma predeterminada.  Además se inicia la programación de exámenes toohello, examen de hello para el cumplimiento de las actualizaciones dentro de 15 minutos si Hola Microsoft Monitoring Agent (MMA) es instalación tooupdate reiniciado, antes y después de la instalación de actualización.  Con un equipo Linux, examen de cumplimiento de Hola se realiza cada tres horas de forma predeterminada y se inicia un examen de cumplimiento en 15 minutos si se reinicia el agente MMA Hola.  
 
-Después, la información de cumplimiento se procesa y se resume en los paneles incluidos en la solución, o bien se puede buscar mediante consultas definidas por el usuario o predefinidas.  La solución informa del grado de actualización del equipo en función del origen configurado para la sincronización.  Si el equipo Windows está configurado para informar a WSUS, dependiendo de cuándo WSUS sincronizó por última vez con Microsoft Update, los resultados pueden diferir de lo que se muestra en Microsoft Updates.  Lo mismo ocurre en los equipos Linux que se configuran para informar a un repositorio local en lugar de a uno público.   
+Hello información de compatibilidad, a continuación, procesa y resumen en paneles de hello incluidos en soluciones de Hola o usar búsqueda definida por el usuario o pre-definida consultas.  Hello solución informa de cómo actualizada Hola equipo se basa en el origen está configurado toosynchronize con.  Si el equipo de Windows hello es tooWSUS tooreport configurado, dependiendo de cuándo WSUS sincronizó por última vez con Microsoft Update, los resultados de hello pueden diferir de lo que se muestra en Microsoft Updates.  Hello mismo para equipos Linux que están configurados tooreport tooa local repositorio frente a un repositorio público.   
 
-Puede implementar e instalar las actualizaciones de software en equipos que requieren las actualizaciones mediante la creación de una implementación programada.  Las actualizaciones clasificadas como *Opcional* no se incluyen en el ámbito de implementación para equipos Windows, solo las actualizaciones necesarias.  La implementación programada define qué equipos de destino recibirán las actualizaciones aplicables, ya sea explícitamente especificando equipos o seleccionando un [grupo de equipos](../log-analytics/log-analytics-computer-groups.md) que se basa en las búsquedas en registros de un conjunto determinado de equipos.  También se especifica una programación para aprobar y designar un período de tiempo dentro del cual se autoriza la instalación de las actualizaciones.  Los Runbooks instalan las actualizaciones en Azure Automation.  No puede ver estos runbooks, que no requieren ninguna configuración.  Cuando se crea una implementación de actualizaciones, esta crea una programación que inicia un runbook de actualización maestro a la hora especificada para los equipos incluidos.  Este runbook maestro inicia un runbook secundario en cada agente que realiza la instalación de las actualizaciones necesarias.       
+Puede implementar e instalar las actualizaciones de software en equipos que requieren actualizaciones de hello mediante la creación de una implementación programada.  Las actualizaciones se clasifican como *opcional* no se incluyen en el ámbito de la implementación de Hola para equipos Windows, solo las actualizaciones necesarias.  Hello implementación programada define qué equipos de destino recibirá actualizaciones aplicables hello, ya sea explícitamente especificando equipos o seleccionar una [grupo de equipos](../log-analytics/log-analytics-computer-groups.md) que se basa en las búsquedas de registros de un conjunto determinado de equipos.  También especifica un tooapprove de programación y designar un período de tiempo cuando se permiten las actualizaciones toobe instalado en.  Los Runbooks instalan las actualizaciones en Azure Automation.  No puede ver estos runbooks, que no requieren ninguna configuración.  Cuando se crea una implementación de actualización, crea una programación que inicia un runbook de actualización maestro en hello especificado hora de los equipos de hello incluido.  Este runbook maestro inicia un runbook secundario en cada agente que realiza la instalación de las actualizaciones necesarias.       
 
-En la fecha y hora especificadas en la implementación de actualizaciones, los equipos de destino ejecutan la implementación en paralelo.  En primer lugar, se realiza un examen para comprobar si las actualizaciones siguen siendo necesarias y las instala.  Para los equipos cliente WSUS, es importante tener en cuenta que, si no se aprueban las actualizaciones en WSUS, se producirá un error en la implementación de actualizaciones.  Los resultados de las actualizaciones aplicadas se reenvían a OMS para que se procesen y se resuman en los paneles o para la búsqueda de eventos.     
+En la fecha de Hola y la hora especificadas en la implementación de actualizaciones de hello, equipos de destino de hello ejecuta la implementación de hello en paralelo.  Un examen es primera tooverify realizada Hola actualizaciones siguen siendo necesarias y los instala.  Es importante toonote para equipos cliente WSUS, si no se aprueban las actualizaciones de hello en WSUS, parche Hola se producirá un error.  resultados de Hola de actualizaciones de hello aplicado se reenvían tooOMS toobe procesados y resumidos en paneles de Hola u Hola buscar eventos de Hola.     
 
 ## <a name="prerequisites"></a>Requisitos previos
-* La solución permite realizar evaluaciones de las actualizaciones en Windows Server 2008 y versiones posteriores, e implementaciones de actualizaciones en Windows Server 2008 R2 SP1 y versiones posteriores.  No se admiten las opciones de instalación de Server Core y Nano Server.
+* solución de Hello admite realizar evaluaciones de actualización en Windows Server 2008 y versiones posteriores y actualice las implementaciones en Windows Server 2008 R2 SP1 y versiones posteriores.  No se admiten las opciones de instalación de Server Core y Nano Server.
 
     > [!NOTE]
-    > Para poder implementar las actualizaciones en Windows Server 2008 R2 SP1 se necesita .NET Framework 4.5 y WMF 5.0 o versiones posteriores.
+    > Compatibilidad para la implementación de actualizaciones tooWindows Server 2008 R2 SP1 requiere que .NET Framework 4.5 y WMF 5.0 o posterior.
     >  
 * No se admiten los sistemas operativos cliente Windows.  
-* Los agentes de Windows deben estar configurados para comunicarse con un servidor de Windows Server Update Services (WSUS) o tener acceso a Microsoft Update.  
+* Agentes de Windows deben ser toocommunicate configurado con un servidor de Windows Server Update Services (WSUS) o tener acceso tooMicrosoft Update.  
 
     > [!NOTE]
-    > System Center Configuration Manager no puede administrar simultáneamente el agente de Windows.  
+    > el agente de Windows Hello no puede administrar simultáneamente mediante System Center Configuration Manager.  
     >
 * CentOS 6 (x86/x64) y 7 (x64)  
 * Red Hat Enterprise (x86/x64) 6 y 7 (x64)  
 * SUSE Linux Enterprise Server 11 (x86/x64) y 12 (x64)  
 * Ubuntu 12.04 LTS y versiones más recientes (x86/x64)   
     > [!NOTE]  
-    > Para evitar que las actualizaciones se apliquen fuera de una ventana de mantenimiento en Ubuntu, vuelva a configurar el paquete de actualizaciones desatendidas para deshabilitar las actualizaciones automáticas. Para más información sobre cómo configurarlo, consulte el [tema sobre actualizaciones automáticas en la Guía de Ubuntu Server](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+    > las actualizaciones de tooavoid se aplica fuera de una ventana de mantenimiento en Ubuntu, vuelva a configurar actualizaciones automáticas de toodisable de paquete de actualización desatendida. Para obtener información acerca de cómo tooconfigure, vea [tema de las actualizaciones automáticas en hello Ubuntu Server guía](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-* Los agentes de Linux deben tener acceso a un repositorio de actualización.  
+* Agentes de Linux deben tener el repositorio de actualización de tooan de acceso.  
 
     > [!NOTE]
-    > La solución no admite un agente de OMS para Linux configurado para informar a varias áreas de trabajo OMS.  
+    > Un agente de OMS para Linux están configuradas áreas de trabajo OMS tooreport toomultiple no es compatible con esta solución.  
     >
 
-Para más información acerca de cómo instalar el agente de OMS para Linux y descargar la versión más reciente, consulte [Agente de Operations Management Suite para Linux](https://github.com/microsoft/oms-agent-for-linux).  Para más información sobre cómo instalar el agente de OMS para Windows, consulte [Agente de Operations Management Suite para Windows](../log-analytics/log-analytics-windows-agents.md).  
+Para obtener información adicional acerca de cómo tooinstall Hola agente de OMS para Linux y descargar la versión más reciente de hello, consulte demasiado[agente de Operations Management Suite para Linux](https://github.com/microsoft/oms-agent-for-linux).  Para obtener información sobre cómo tooinstall Hola agente de OMS para Windows, revise [Operations Management Suite agente para Windows](../log-analytics/log-analytics-windows-agents.md).  
 
 ### <a name="permissions"></a>Permisos
-Para crear implementaciones de actualizaciones, debe tener asignado el rol de colaborador en su cuenta Automation y el área de trabajo Log Analytics.  
+En orden toocreate implementaciones de actualizaciones, deberá toobe concede el rol de colaborador de hello en su cuenta de automatización y el área de trabajo de análisis de registros.  
 
 ## <a name="solution-components"></a>Componentes de soluciones
-Esta solución consta de los siguientes recursos que se agregan a la cuenta de Automation y a los agentes directamente conectados o al grupo de administración conectado a Operations Manager.
+Esta solución consta de hello después de recursos que se agregan tooyour cuenta de automatización y agentes directamente conectados o el grupo de administración conectados de Operations Manager.
 
 ### <a name="management-packs"></a>Módulos de administración
-Si el grupo de administración de System Center Operations Manager está conectado al área de trabajo de OMS, se instalarán los siguientes módulos de administración en Operations Manager.  Estos módulos de administración también se instalan en equipos Windows directamente conectados después de agregar esta solución. No hay nada para configurar o administrar en estos módulos de administración.
+Si el grupo de administración de System Center Operations Manager está conectado tooan área de trabajo OMS, Hola después de módulos de administración se instala en Operations Manager.  Estos módulos de administración también se instalan en equipos Windows directamente conectados después de agregar esta solución. No hay nada tooconfigure o administrará con estos módulos de administración.
 
 * Intelligence Pack Update Assessment de Microsoft System Center Advisor (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Módulo de administración de Update Deployment
 
-Para obtener más información sobre cómo se actualizan los módulos de administración de soluciones, consulte [Conexión de Operations Manager con Log Analytics](../log-analytics/log-analytics-om-agents.md).
+Para obtener más información sobre cómo se actualizan los módulos de administración de soluciones, consulte [tooLog de conexión de Operations Manager análisis](../log-analytics/log-analytics-om-agents.md).
 
 ### <a name="hybrid-worker-groups"></a>Grupos de Hybrid Worker
-Si habilita esta solución, los equipos Windows conectados directamente al área de trabajo de OMS se configurarán automáticamente como Hybrid Runbook Worker para admitir los runbooks que se incluyen en esta solución.  Cada equipo Windows administrado por la solución se enumerará en la hoja de grupos de Hybrid Runbook Worker de la cuenta de Automation, siguiendo la convención de nomenclatura *Nombre de host FQDN_GUID*.  Estos grupos no pueden ser grupos de destino de runbooks de su cuenta, porque se producirá un error. Estos grupos están diseñados únicamente para admitir la solución de administración.   
+Después de habilitar esta solución, cualquier equipo con Windows conectadas directamente tooyour área de trabajo OMS se configura automáticamente como un runbooks de hello Hybrid Runbook Worker toosupport incluido en esta solución.  Para cada equipo con Windows administrado por solución hello, se enumerará en la hoja de grupos de trabajo de Runbook híbrido Hola de cuenta de automatización de hello sigue la convención de nomenclatura de hello *Hostname FQDN_GUID*.  Estos grupos no pueden ser grupos de destino de runbooks de su cuenta, porque se producirá un error. Estos grupos son solo previsto toosupport solución de administración de Hola.   
 
-Sin embargo, puede agregar equipos Windows a un grupo de Hybrid Runbook Worker en la cuenta de Automation para admitir runbooks de Automation siempre que la cuenta para la solución y la pertenencia a grupos de Hybrid Runbook Worker sean las mismas.  Esta funcionalidad se agregó a la versión 7.2.12024.0 de Hybrid Runbook Worker.  
+Obstante, puede agregar el grupo Hybrid Runbook Worker tooa equipos de Windows hello en su toosupport de cuenta de automatización los runbooks de automatización mientras está utilizando la misma cuenta para la solución de Hola y pertenencia al grupo de Hybrid Runbook Worker de Hola.  Esta funcionalidad se ha agregado tooversion 7.2.12024.0 de hello Hybrid Runbook Worker.  
 
 ## <a name="configuration"></a>Configuración
-Realice los pasos siguientes para agregar la solución de administración de actualizaciones al área de trabajo de OMS y confirmar los agentes a los que se informa. Los agentes de Windows ya conectados al área de trabajo se agregan automáticamente sin ninguna configuración adicional.
+Realizar Hola siguiendo los pasos tooadd Hola administración de actualizaciones solución tooyour área de trabajo OMS y confirme están informando de agentes. El área de trabajo de Windows agentes tooyour ya estaba conectado se agregan automáticamente sin ninguna configuración adicional.
 
-Puede implementar la solución utilizando los métodos siguientes:
+Puede implementar solución de hello mediante Hola siguientes métodos:
 
-* Desde Azure Marketplace en Azure Portal, seleccionando la oferta Automation & Control o la solución Administración de actualizaciones
-* Desde la Galería de soluciones de OMS en su área de trabajo de OMS
+* De Azure Marketplace en hello portal de Azure mediante la selección de la oferta de automatización y Control de Hola o solución de administración de actualizaciones
+* Desde la Galería de soluciones de OMS en el área de trabajo OMS Hola
 
-Si ya tiene una cuenta de Automation vinculada a un área de trabajo de OMS en el mismo grupo de recursos y región, al seleccionar Automation & Control se comprobará la configuración y se instalará y configurará la solución en ambos servicios.  Si selecciona la solución de administración de actualizaciones de Azure Marketplace, se produce el mismo comportamiento.  Si no tiene ambos servicios implementados en su suscripción, siga los pasos descritos en la hoja **Crear nueva solución** y confirme que desea instalar las otras soluciones preseleccionadas recomendadas.  También puede agregar la solución de administración de actualizaciones al área de trabajo de OMS mediante los pasos descritos en [Agregar soluciones de OMS](../log-analytics/log-analytics-add-solutions.md) desde la galería de soluciones.  
+Si ya tiene una cuenta de automatización y el área de trabajo OMS vinculado en hello mismo grupo de recursos y la región, seleccionar el Control y la automatización se comprobar la configuración y solo instalar soluciones de Hola y configúrelo en ambos servicios.  Selección de solución de administración de actualizaciones de Hola de Azure Marketplace ofrece Hola mismo comportamiento.  Si no tiene ambos servicios implementados en su suscripción, siga los pasos de Hola Hola **crear nueva solución** hoja y confirme que desea tooinstall Hola otros seleccionado previamente soluciones recomendadas.  Si lo desea, puede agregar tooyour de solución de administración de actualizaciones de hello siguiendo los pasos de Hola de área de trabajo OMS se describe en [soluciones de OMS agregar](../log-analytics/log-analytics-add-solutions.md) de hello Galería de soluciones.  
 
-### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>Confirmar que los agentes de OMS y el grupo de administración de Operations Manager conectan a OMS
+### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-toooms"></a>Confirme que los agentes OMS y tooOMS de conectados del grupo de administración de Operations Manager
 
-Para confirmar que los agentes de OMS para Linux y Windows conectados directamente se comunican con OMS, después de unos minutos, puede ejecutar la siguiente búsqueda en el registro:
+tooconfirm conectados directamente el agente de OMS para Linux y Windows se comuniquen con OMS, después de unos minutos, puede ejecutar Hola después de la búsqueda de registros:
 
 * Linux: `Type=Heartbeat OSType=Linux | top 500000 | dedup SourceComputerId | Sort Computer | display Table`.  
 
 * Windows: `Type=Heartbeat OSType=Windows | top 500000 | dedup SourceComputerId | Sort Computer | display Table`
 
-En un equipo Windows, revise lo siguiente para comprobar la conectividad del agente con OMS:
+En un equipo Windows, puede revisar Hola después tooverify conectividad del agente con OMS:
 
-1.  Abra Microsoft Monitoring Agent en el panel de control y, en la pestaña **Azure Log Analytics (OMS)**, el agente muestra un mensaje que indica: **Microsoft Monitoring Agent se conectó correctamente al servicio Microsoft Operations Management Suite**.   
-2.  Abra el registro de eventos de Windows, vaya a **Registro de aplicaciones y servicios\Operations Manager** y busque los eventos con el identificador 3000 y 5002 del conector de servicio de origen.  Estos eventos indican que el equipo se ha registrado en el área de trabajo de OMS y está recibiendo la configuración.  
+1.  Abra Microsoft Monitoring Agent en el Panel de Control y, en hello **Azure Log Analytics (OMS)** ficha, hello agente muestra un mensaje que indica: **Hola Microsoft Monitoring Agent se ha conectado correctamente toohello Microsoft Servicio de Operations Management Suite**.   
+2.  Abrir el registro de eventos de Windows hello, navegue demasiado**aplicación y el Administrador de servicios Logs\Operations** y busque 3000 de Id. de evento y 5002 de conector de servicio de origen.  Estos eventos indican equipo Hola se ha registrado con el área de trabajo OMS de Hola y está recibiendo la configuración.  
 
-Si el agente no es capaz de comunicarse con el servicio OMS y está configurado para comunicarse con Internet a través de un servidor proxy o firewall, confirme que el firewall o el servidor proxy están configurados correctamente; para ello, consulte las secciones sobre [configuración de red para el agente de Windows](../log-analytics/log-analytics-windows-agents.md#network) o [configuración de red para el agente de Linux](../log-analytics/log-analytics-agent-linux.md#network).
+Si agente hello no es capaz de toocommunicate con hello servicio de OMS y toocommunicate configurado con hello internet a través de un servidor proxy o firewall, confirme Hola firewall o servidor proxy está configurado correctamente revisando [red configuración para el agente de Windows](../log-analytics/log-analytics-windows-agents.md#network) o [configuración de red para el agente Linux](../log-analytics/log-analytics-agent-linux.md#network).
 
 > [!NOTE]
-> Si los sistemas de Linux están configurados para comunicarse con un servidor proxy o puerta de enlace de OMS y está incorporando esta solución, actualice los permisos de *proxy.conf* para conceder al grupo omiuser permiso de lectura sobre este archivo realizando los siguientes comandos:  
+> Si los sistemas Linux toocommunicate configurado con un servidor proxy o puerta de enlace de OMS e incorporación esta solución, actualice hello *proxy.conf* grupo de permisos toogrant hello omiuser permiso de lectura en archivo Hola realizar Hola siguientes comandos:  
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`  
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
 
-Los agentes de Linux recién agregados mostrarán el estado **Actualizado** después de haber realizado una evaluación.  Este proceso puede tardar hasta 6 horas.
+Los agentes de Linux recién agregados mostrarán el estado **Actualizado** después de haber realizado una evaluación.  Este proceso puede tardar horas too6.
 
-Para confirmar que un grupo de administración de Operations Manager se comunica con OMS, consulte [Validación de la integración de Operations Manager con OMS](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms).
+grupo de administración se comunica con OMS, consulte Operations Manager tooconfirm [validar la integración de Operations Manager con OMS](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms).
 
 ## <a name="data-collection"></a>Colección de datos
 ### <a name="supported-agents"></a>Agentes admitidos
-En la tabla siguiente se describen los orígenes conectados que son compatibles con esta solución.
+Hello en la tabla siguiente describe los orígenes de hello conectado que son compatibles con esta solución.
 
 | Origen conectado | Compatible | Description |
 | --- | --- | --- |
-| Agentes de Windows |Sí |La solución recopila información acerca de las actualizaciones del sistema de los agentes de Windows e inicia la instalación de las actualizaciones necesarias. |
-| Agentes de Linux |Sí |La solución recopila información acerca de las actualizaciones del sistema de los agentes de Linux e inicia la instalación de las actualizaciones necesarias en las distribuciones admitidas. |
-| Grupo de administración de Operations Manager |Sí |La solución recopila información acerca de las actualizaciones del sistema de agentes en un grupo de administración conectado.<br>No se requiere ninguna conexión directa entre el agente de Operations Manager y Log Analytics. Los datos se reenvían del grupo de administración al repositorio de OMS. |
+| Agentes de Windows |Sí |solución de Hello recopila información acerca de las actualizaciones del sistema de Windows para agentes e inicia la instalación de las actualizaciones necesarias. |
+| Agentes de Linux |Sí |solución de Hello recopila información acerca de las actualizaciones del sistema de agentes de Linux e inicia la instalación de las actualizaciones necesarias en distribuciones admitidas. |
+| Grupo de administración de Operations Manager |Sí |solución de Hola recopila información acerca de las actualizaciones del sistema de agentes en un grupo de administración conectados.<br>Una conexión directa de tooLog de agente de Operations Manager Hola análisis no es necesario. Datos se reenvían desde el repositorio de OMS de toohello del grupo de administración de Hola. |
 | Cuenta de almacenamiento de Azure |No |Azure Storage no incluye información acerca de las actualizaciones del sistema. |
 
 ### <a name="collection-frequency"></a>Frecuencia de recopilación
-Para cada equipo Windows administrado, se realiza un examen dos veces al día. Cada 15 minutos, se llama a la API de Windows para consultar la hora de la última actualización y determinar si ha cambiado el estado y, de ser así, se inicia un examen de cumplimiento.  Para cada equipo Linux administrado, se realiza un examen cada tres horas.
+Para cada equipo Windows administrado, se realiza un examen dos veces al día. Hola de cada 15 minutos API de Windows se llama tooquery para hello última actualización tiempo toodetermine si estado ha cambiado y, caso en ese se inicia un examen de cumplimiento de normas.  Para cada equipo Linux administrado, se realiza un examen cada tres horas.
 
-Puede tardar entre 30 minutos y 6 horas mostrar en el panel los datos actualizados de los equipos administrados.   
+Puede tardar entre 30 minutos horas too6 para toodisplay actualizar datos del panel de Hola de equipos administrados.   
 
-## <a name="using-the-solution"></a>Uso de la solución
-Al agregar la solución Administración de actualizaciones al área de trabajo de OMS, se agrega el icono de **Administración de actualizaciones al panel de OMS**. Este icono muestra un recuento y una representación gráfica del número de equipos en el entorno y del cumplimiento de las actualizaciones.<br><br>
+## <a name="using-hello-solution"></a>Uso de solución de Hola
+Cuando se agrega el área de trabajo OMS de tooyour de solución de hello administración de actualizaciones, Hola **administración de actualizaciones** mosaico se agregarán tooyour panel de OMS. Este icono muestra un recuento y una representación gráfica del número de Hola de equipos en su entorno y su cumplimiento de las actualizaciones.<br><br>
 ![Icono Update Management Summary](media/oms-solution-update-management/update-management-summary-tile.png) (Resumen de administración de actualizaciones)  
 
 
 ## <a name="viewing-update-assessments"></a>Visualización de evaluaciones de la actualización
-Haga clic en el icono de **Administración de actualizaciones** para abrir el panel **Administración de actualizaciones**.<br><br> ![Panel Update Management Summary](./media/oms-solution-update-management/update-management-dashboard.png) (Resumen de administración de actualizaciones)<br>
+Haga clic en hello **administración de actualizaciones** icono tooopen hello **administración de actualizaciones** panel.<br><br> ![Panel Update Management Summary](./media/oms-solution-update-management/update-management-dashboard.png) (Resumen de administración de actualizaciones)<br>
 
-Este panel proporciona un análisis detallado del estado de las actualizaciones clasificadas por tipo de sistema operativo y clasificación de la actualización: crítica, seguridad u otros (por ejemplo, una actualización de definiciones). Los resultados de cada icono de este panel reflejan solo las actualizaciones que están aprobadas para la implementación, que se basa en el origen de sincronización de los equipos.   Al seleccionar el icono **Implementaciones de actualizaciones**, le redirige a la página Implementaciones de actualizaciones donde puede ver las programaciones, las implementaciones que se está ejecutando actualmente o las implementaciones completadas, o puede programar una nueva implementación.  
+Este panel proporciona un análisis detallado del estado de las actualizaciones clasificadas por tipo de sistema operativo y clasificación de la actualización: crítica, seguridad u otros (por ejemplo, una actualización de definiciones). resultados de Hello en cada icono en este panel reflejan sólo las actualizaciones aprobadas para implementación, que se basa en función de origen de sincronización de equipos de Hola.   Hola **las implementaciones de actualizaciones** icono cuando se selecciona, redirige la página de las implementaciones de actualizaciones de toohello donde puede ver las programaciones, las implementaciones que se está ejecutando actualmente, las implementaciones de completado, o programar una nueva implementación.  
 
-Para ejecutar una búsqueda en el registro que devuelva todos los registros, haga clic en el icono específico o, para ejecutar una consulta de una categoría determinada y criterios predefinidos, seleccione una de las disponibles en la lista de la columna **Consultas de actualización comunes**.    
+Puede ejecutar una búsqueda de registros que devuelve todos los registros haciendo clic en icono concreto de Hola o toorun una consulta de una categoría determinada y criterios predefinidos, seleccione uno de hello lista disponible en hello **consultas comunes de actualización** columna.    
 
 ## <a name="installing-updates"></a>Instalación de actualizaciones
-Una vez se han evaluado las actualizaciones para todos los equipos Linux y Windows de su área de trabajo, puede instalar las actualizaciones necesarias mediante la creación de una *implementación de actualizaciones*.  Una implementación de actualizaciones es una instalación programada de las actualizaciones necesarias en uno o más equipos.  Especifique la fecha y hora para la implementación, además de un equipo o grupo de equipos que deben incluirse en el ámbito de una implementación.  Para más información sobre grupos de equipos, consulte [Grupos de equipos de Log Analytics](../log-analytics/log-analytics-computer-groups.md).  Al incluir grupos de equipos en la implementación de la actualización, la pertenencia al grupo se evalúa solo en el momento de la creación de la programación.  No se reflejan los cambios posteriores en un grupo.  Para resolver este problema, elimine la implementación de actualización programada y vuelva a crearla.
+Una vez que las actualizaciones se han evaluado para todos Hola Linux y equipos de Windows en el área de trabajo, puede haber requiere actualizaciones instaladas mediante la creación de un *parche*.  Una implementación de actualizaciones es una instalación programada de las actualizaciones necesarias en uno o más equipos.  Que especifica la fecha de Hola y la hora para la implementación de hello además tooa equipo o un grupo de equipos que deben incluirse en el ámbito de Hola de una implementación.  toolearn más información acerca de los grupos de equipos, consulte [grupos de equipos de análisis de registros](../log-analytics/log-analytics-computer-groups.md).  Al incluir grupos de equipos en su implementación de actualización, memnbership de grupo se evalúa solo una vez en tiempo de Hola de programar la creación.  No se reflejarán los cambios subsiguientes tooa grupo.  toowork evitar este problema, eliminar la implementación de actualización de hello programado y vuelva a crearlo.
 
 > [!NOTE]
-> Las máquinas virtuales Windows implementadas desde Azure Marketplace se establecen de forma predeterminada para recibir actualizaciones automáticas del servicio de Windows Update.  Este comportamiento no cambia después de agregar esta solución o máquinas virtuales Windows al área de trabajo.  Si no ha administrado activamente las actualizaciones con la solución, se aplicará el comportamiento predeterminado (aplicar automáticamente las actualizaciones).  
+> Máquinas virtuales de Windows que se implementan a partir de hello Azure Marketplace de forma predeterminada se establecen las actualizaciones automáticas de tooreceive de servicio de actualización de Windows.  Este comportamiento no cambia después de agregar esta solución o el área de trabajo de máquinas virtuales de Windows tooyour.  Si lo hace, las actualizaciones no activamente administradas con esta solución, Hola comportamiento predeterminado (aplicar automáticamente las actualizaciones) se aplicará.  
 
-En el caso de las máquinas virtuales creadas a partir de las imágenes a petición de Red Hat Enterprise Linux (RHEL) en Azure Marketplace se registran para acceder a la instancia de [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) implementada en Azure.  Cualquier otra distribución de Linux se debe actualizar desde el repositorio de archivos en línea de distribuciones según los métodos admitidos de cada una de ellas.  
+Para las máquinas virtuales creadas desde Hola petición Red Hat Enterprise Linux (RHEL) imágenes disponibles en Azure Marketplace, están registrados tooaccess hello [infraestructura de actualización de Red Hat (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) implementado en Azure.  Cualquier otra distribución de Linux debe actualizarse del repositorio de archivos en línea de distribuciones de hello siguiendo sus métodos admitidos.  
 
 ### <a name="viewing-update-deployments"></a>Visualización de implementaciones de actualizaciones
-Haga clic en el icono **Implementación de actualizaciones** para ver la lista de implementaciones de actualizaciones existentes.  Se agrupan por estado: **Programado**, **En ejecución** y **Completado**.<br><br> ![Página de programación de las implementaciones de actualizaciones](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
+Haga clic en hello **parche** icono tooview Hola lista de implementaciones de actualizaciones existentes.  Se agrupan por estado: **Programado**, **En ejecución** y **Completado**.<br><br> ![Página de programación de las implementaciones de actualizaciones](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
 
-Las propiedades mostradas para cada implementación de actualizaciones se describen en la tabla siguiente.
+propiedades de Hello mostradas para cada implementación de actualización se describen en hello en la tabla siguiente.
 
 | Propiedad | Descripción |
 | --- | --- |
-| Nombre |Nombre de la implementación de actualizaciones. |
+| Nombre |Nombre del programa Hola parche. |
 | Schedule |Tipo de programación.  Las opciones disponibles son *Una vez*, *Periodicidad semanal* o *Periodicidad mensual*. |
-| Hora de inicio |Fecha y hora programada para iniciar la implementación de actualizaciones. |
-| Duración |Número de minutos que la implementación de actualizaciones puede ejecutarse.  Si todas las actualizaciones no se instalan en este tiempo, el resto de las actualizaciones debe esperar hasta la siguiente implementación de actualizaciones. |
-| Servidores |Número de equipos afectados por la implementación de actualizaciones.  |
-| Estado |Estado actual de la implementación de actualizaciones.<br><br>Los valores posibles son:<br>- No iniciado<br>- En ejecución<br>- Finalizado |
+| Hora de inicio |Fecha y hora en que Hola parche es toostart programada. |
+| Duration |Número de minutos Hola parche se permite toorun.  Si no están instaladas todas las actualizaciones dentro de esta duración, a continuación, Hola actualizaciones restantes debe esperar hasta que Hola parche siguiente. |
+| Servidores |Número de equipos afectados por hello parche.  |
+| Estado |Estado actual de hello parche.<br><br>Los valores posibles son:<br>- No iniciado<br>- En ejecución<br>- Finalizado |
 
-Seleccione una implementación de actualizaciones completada para ver su pantalla de detalles, que incluye las columnas de la tabla siguiente.  Estas columnas no estarán rellenas si aún no ha comenzado la implementación de actualizaciones.<br><br> ![Información general de los resultados de la implementación de actualizaciones](./media/oms-solution-update-management/update-management-deploymentresults-dashboard.png)
+Seleccione completado parche tooview Hola pantalla de detalles que incluye columnas de hello en hello en la tabla siguiente.  Estas columnas se todavía no se rellena si Hola parche no se han iniciado.<br><br> ![Información general de los resultados de la implementación de actualizaciones](./media/oms-solution-update-management/update-management-deploymentresults-dashboard.png)
 
 | Columna | Descripción |
 | --- | --- |
 | **Vista de equipos** | |
-| Equipos Windows |Enumera el número de equipos Windows de la implementación de actualizaciones por estado.  Haga clic en un estado para ejecutar una búsqueda de registros que devuelva todos los registros de actualización con ese estado para la implementación de actualizaciones. |
-| Equipos Linux |Enumera el número de equipos Linux de la implementación de actualizaciones por estado.  Haga clic en un estado para ejecutar una búsqueda de registros que devuelva todos los registros de actualización con ese estado para la implementación de actualizaciones. |
-| Estado de la instalación del equipo |Enumera los equipos implicados en la implementación de actualizaciones y el porcentaje de las actualizaciones que se instalaron correctamente. Haga clic en una de las entradas para ejecutar una búsqueda de registros que devuelva todas las actualizaciones pendientes y críticas. |
+| Equipos Windows |Muestra el número de Hola de equipos de Windows en hello parche por estado.  Haga clic en un estado toorun una búsqueda de registros devuelve que todos los registros de actualizaciones con ese estado de implementación de actualización de Hola. |
+| Equipos Linux |Muestra el número de Hola de equipos Linux en hello parche por estado.  Haga clic en un estado toorun una búsqueda de registros devuelve que todos los registros de actualizaciones con ese estado de implementación de actualización de Hola. |
+| Estado de la instalación del equipo |Indica equipos Hola implicados en hello parche y el porcentaje de Hola de actualizaciones que han instalado correctamente. Haga clic en uno de hello entradas toorun una búsqueda de registros devuelve todas las actualizaciones que faltan y críticas. |
 | **Vista de actualizaciones** | |
-| Actualizaciones de Windows |Enumera las actualizaciones de Windows incluidas en la implementación de actualizaciones y su estado de instalación por cada actualización.  Seleccione una actualización para ejecutar una búsqueda en el registro que devuelva todos los registros de una actualización específica o haga clic en el estado para ejecutar una búsqueda en el registro que devuelva todos los registros de la implementación. |
-| Actualizaciones de Linux |Enumera las actualizaciones de Linux que se incluyen en la implementación de actualizaciones y su estado de instalación por cada actualización.  Seleccione una actualización para ejecutar una búsqueda en el registro que devuelva todos los registros de una actualización específica o haga clic en el estado para ejecutar una búsqueda en el registro que devuelva todos los registros de la implementación. |
+| Actualizaciones de Windows |Enumera las actualizaciones de Windows incluidas en hello implementación de actualización y su estado de instalación por cada actualización.  Seleccione un toorun de actualización de una búsqueda de registros devolver todas actualizan registros para la actualización específica o haga clic en hello estado toorun una búsqueda de registros devuelve que todos los registros para la implementación de Hola de actualizaciones. |
+| Actualizaciones de Linux |Enumera las actualizaciones de Linux incluidas en la implementación de actualización de Hola y de su estado de instalación por cada actualización.  Seleccione un toorun de actualización de una búsqueda de registros devolver todas actualizan registros para la actualización específica o haga clic en hello estado toorun una búsqueda de registros devuelve que todos los registros para la implementación de Hola de actualizaciones. |
 
 ### <a name="creating-an-update-deployment"></a>Creación de una implementación de actualizaciones
-Para crear una implementación de actualizaciones, haga clic en el botón **Agregar**, situado en la parte superior de la pantalla para abrir la página **New Update Deployment** (Nueva implementación de actualizaciones).  Debe proporcionar valores para las propiedades en la tabla siguiente.
+Cree una nueva implementación de actualización, haga clic en hello **agregar** situado en la parte superior de Hola de Hola Hola de tooopen de pantalla **nueva implementación de actualización** página.  Debe proporcionar valores para las propiedades de hello en hello en la tabla siguiente.
 
 | Propiedad | Descripción |
 | --- | --- |
-| Nombre |Nombre único para identificar la implementación de actualizaciones. |
-| Zona horaria |Zona horaria que se utilizará para la hora de inicio. |
+| Nombre |Implementación de actualización de nombre único tooidentify Hola. |
+| Zona horaria |Toouse de zona horaria para la hora de inicio de Hola. |
 | Tipo de programación | Tipo de programación.  Las opciones disponibles son *Una vez*, *Periodicidad semanal* o *Periodicidad mensual*.  
-| Hora de inicio |Fecha y hora para iniciar la implementación de actualizaciones. **Nota:** El tiempo mínimo de ejecución de una implementación es de 30 minutos desde la hora actual si necesita implementar de inmediato. |
-| Duración |Número de minutos que la implementación de actualizaciones puede ejecutarse.  Si todas las actualizaciones no se instalan en este tiempo, el resto de las actualizaciones debe esperar hasta la siguiente implementación de actualizaciones. |
-| Equipos |Nombres de equipos o grupos de equipos de destino a incluir en la implementación de actualizaciones.  Seleccione una o más entradas de la lista desplegable. |
+| Hora de inicio |Fecha y hora toostart Hola parche. **Nota:** hello en primer lugar se puede ejecutar una implementación es de 30 minutos de la hora actual si necesita toodeploy inmediatamente. |
+| Duration |Número de minutos Hola parche se permite toorun.  Si no están instaladas todas las actualizaciones dentro de esta duración, a continuación, Hola actualizaciones restantes debe esperar hasta que Hola parche siguiente. |
+| Equipos |Nombres de equipos o tooinclude de grupos de equipo y de destino en hello parche.  Seleccione una o más entradas de lista desplegable Hola. |
 
 <br><br> ![Página New Update Deployment (Nueva implementación de actualizaciones)](./media/oms-solution-update-management/update-newupdaterun-page.png)
 
 ### <a name="time-range"></a>Intervalo de tiempo
-De forma predeterminada, el ámbito de los datos analizados en la solución Administración de actualizaciones es desde todos los grupos de administración conectados generados en el último día.
+De forma predeterminada, ámbito de Hola de datos de hello analizados en hello solución de administración de actualizaciones es de todos los grupos de administración conectados generados dentro de hello último día.
 
-Para cambiar el intervalo de tiempo de los datos, seleccione **Datos basados en** en la parte superior del panel. Puede seleccionar registros creados o actualizados en los últimos 7 días, 1 día o 6 horas. O puede seleccionar **Personalizado** y especificar un intervalo de fechas personalizado.
+Seleccione el intervalo de tiempo de hello toochange de datos de hello, **datos en función de** en parte superior de hello del panel de Hola. Puede seleccionar registros de creado o actualizado en hello últimos 7 días, 1 día o 6 horas. O puede seleccionar **Personalizado** y especificar un intervalo de fechas personalizado.
 
 ## <a name="log-analytics-records"></a>Registros de Log Analytics
-La solución Administración de actualizaciones crea dos tipos de registros en el repositorio de OMS.
+Hola solución de administración de actualizaciones crea dos tipos de registros en el repositorio OMS Hola.
 
 ### <a name="update-records"></a>Registros de actualización
-Se crea un registro con el tipo **Actualizar** para cada actualización que está instalada o es necesaria en cada equipo. Los registros de actualización tienen las propiedades de la tabla siguiente.
+Se crea un registro con el tipo **Actualizar** para cada actualización que está instalada o es necesaria en cada equipo. Actualizar los registros tienen propiedades de hello en hello en la tabla siguiente.
 
 | Propiedad | Descripción |
 | --- | --- |
 | Tipo |*Actualizar* |
-| SourceSystem |El origen que ha aprobado la instalación de la actualización.<br>Los valores posibles son:<br>- Microsoft Update<br>- Windows Update<br>- SCCM<br>- Servidores Linux (recuperado de los administradores de paquetes) |
-| Aprobado |Especifica si se ha aprobado la actualización para la instalación.<br> Para los servidores Linux, actualmente es opcional, ya que la aplicación de revisiones no está administrada por OMS. |
-| Clasificación para Windows |Clasificación de la actualización.<br>Los valores posibles son:<br>- Aplicaciones<br>- Actualizaciones críticas<br>- Actualizaciones de definiciones<br>- Feature Packs<br>- Actualizaciones de seguridad<br>- Service Packs<br>- Paquetes acumulativos de actualizaciones<br>- Actualizaciones |
-| Clasificación para Linux |Clasificación de la actualización.<br>Los valores posibles son:<br>- Actualizaciones críticas<br>- Actualizaciones de seguridad<br>- Otras actualizaciones |
-| Equipo |Nombre del equipo. |
-| InstallTimeAvailable |Especifica si la hora de instalación está disponible de otros agentes que instalaron la misma actualización. |
-| InstallTimePredictionSeconds |Tiempo de instalación estimado en segundos basado en otros agentes que instalaron la misma actualización. |
-| KBID |Identificador del artículo de la KB que describe la actualización. |
-| ManagementGroupName |Nombre del grupo de administración de agentes SCOM.  En el caso de los otros agentes, es AOI-<workspace ID>. |
-| MSRCBulletinID |Identificador del boletín de seguridad de Microsoft que describe la actualización. |
-| MSRCSeverity |Gravedad del boletín de seguridad de Microsoft.<br>Los valores posibles son:<br>- Crítico<br>- Importante<br>- Moderado |
-| Opcional |Especifica si la actualización es opcional. |
-| Producto |Nombre del producto al que corresponde la actualización.  Haga clic en **Ver** para abrir el artículo en un explorador. |
-| PackageSeverity |La gravedad de la vulnerabilidad corregida en esta actualización, notificada por los proveedores de distribución de Linux. |
-| PublishDate |Fecha y hora en que se instaló la actualización. |
-| RebootBehavior |Especifica si la actualización fuerza un reinicio.<br>Los valores posibles son:<br>- canrequestreboot<br>- neverreboots |
-| RevisionNumber |Número de revisión de la actualización. |
-| SourceComputerId |GUID para identificar de forma única el equipo. |
-| TimeGenerated |Fecha y hora en que se actualizó por última vez el registro. |
-| Título |Título de la actualización. |
-| UpdateID |GUID para identificar de forma única la actualización. |
-| UpdateState |Especifica si la actualización está instalada en este equipo.<br>Los valores posibles son:<br>- Instalada: la actualización está instalada en este equipo.<br>- Necesaria: la actualización no está instalada y es necesaria en este equipo. |
+| SourceSystem |origen de Hola que aprobar la instalación de actualización de Hola.<br>Los valores posibles son:<br>- Microsoft Update<br>- Windows Update<br>- SCCM<br>- Servidores Linux (recuperado de los administradores de paquetes) |
+| Aprobado |Especifica si se ha aprobado la actualización de hello para la instalación.<br> Para los servidores Linux, actualmente es opcional, ya que la aplicación de revisiones no está administrada por OMS. |
+| Clasificación para Windows |Clasificación de actualización de Hola.<br>Los valores posibles son:<br>- Aplicaciones<br>- Actualizaciones críticas<br>- Actualizaciones de definiciones<br>- Feature Packs<br>- Actualizaciones de seguridad<br>- Service Packs<br>- Paquetes acumulativos de actualizaciones<br>- Actualizaciones |
+| Clasificación para Linux |Cassification de actualización de Hola.<br>Los valores posibles son:<br>- Actualizaciones críticas<br>- Actualizaciones de seguridad<br>- Otras actualizaciones |
+| Equipo |Nombre del equipo de Hola. |
+| InstallTimeAvailable |Especifica si está disponible desde otra hora de instalación de hello agentes instalados Hola mismo actualizar. |
+| InstallTimePredictionSeconds |Calcula el tiempo de instalación en segundos en función de otros agentes que instalaron Hola misma actualización. |
+| KBID |Id. de artículo Hola KB que describe la actualización de Hola. |
+| ManagementGroupName |Nombre del grupo de administración de Hola para agentes de SCOM.  En el caso de los otros agentes, es AOI-<workspace ID>. |
+| MSRCBulletinID |Id. de boletín de seguridad de Microsoft de Hola que describe la actualización de Hola. |
+| MSRCSeverity |Gravedad del boletín de seguridad de Microsoft de Hola.<br>Los valores posibles son:<br>- Crítico<br>- Importante<br>- Moderado |
+| Opcional |Especifica si la actualización de hello es opcional. |
+| Producto |Nombre de la actualización de Hola de producto de hello es.  Haga clic en **vista** tooopen artículo de hello en un explorador. |
+| PackageSeverity |gravedad de Hola de vulnerabilidades de hello corregidos en esta actualización, notificado por los proveedores de distribución de Linux Hola. |
+| PublishDate |Fecha y hora en que Hola actualización se instaló. |
+| RebootBehavior |Especifica si la actualización de hello fuerza un reinicio.<br>Los valores posibles son:<br>- canrequestreboot<br>- neverreboots |
+| RevisionNumber |Número de revisión de actualización de Hola. |
+| SourceComputerId |GUID toouniquely identificar equipo Hola. |
+| TimeGenerated |Fecha y hora en que Hola registro se actualizó por última vez. |
+| Título |Título de actualización de Hola. |
+| UpdateID |GUID toouniquely identificar actualización Hola. |
+| UpdateState |Especifica si la actualización de hello está instalada en este equipo.<br>Los valores posibles son:<br>-Instalado - actualización de hello está instalada en este equipo.<br>-Necesita - actualización de hello no está instalado y es necesario en este equipo. |
 
-Cuando se realiza una búsqueda de registros que devuelve los registros con un tipo **Actualizar**, puede seleccionar la vista **Actualizaciones**, que muestra un conjunto de iconos que resumen las actualizaciones devueltas por la búsqueda. Puede hacer clic en las entradas de los iconos **Actualizaciones que faltan y aplicadas** y **Actualizaciones obligatorias y opcionales** para centrar el ámbito de la vista en ese conjunto de actualizaciones. Seleccione la vista **Lista** o **Tabla** para devolver los registros individuales.<br>
+Cuando se realiza cualquier búsqueda de registros que devuelve los registros con un tipo de **actualización** puede seleccionar hello **actualizaciones** vista que muestra un conjunto de iconos resumir las actualizaciones de hello devueltas por la búsqueda de Hola. Puede hacer clic en las entradas de Hola Hola **ausente y aplica las actualizaciones** y **actualizaciones obligatorias y opcionales** iconos de conjunto de toothat tooscope Hola vista de actualizaciones. Seleccione hello **lista** o **tabla** ver registros individuales de tooreturn Hola.<br>
 
 ![Vista de actualización de búsqueda de registros con actualización de tipo de registro](./media/oms-solution-update-management/update-la-view-updates.png)  
 
-En la vista **Tabla**, puede hacer clic en **KBID** para cualquier registro con el fin de abrir un explorador con el artículo de la KB. Esto le permite leer rápidamente sobre los detalles de esa actualización específica.<br>
+Hola **tabla** vista, puede hacer clic en hello **KBID** para cualquier registro tooopen un explorador con el artículo KB Hola. Esto permite tooquickly que conozca detalles de Hola de actualización concreto de Hola.<br>
 
 ![Vista de tabla de búsqueda de registros con iconos de actualizaciones de tipo de registro](./media/oms-solution-update-management/update-la-view-table.png)
 
-En la vista **Lista**, haga clic en el vínculo **Ver** situado junto al KBID para abrir el artículo de la KB.<br>
+Hola **lista** vista, haga clic en hello **vista** artículo de vínculo siguiente toohello KBID tooopen Hola KB.<br>
 
 ![Vista de lista de búsqueda de registros con iconos de actualizaciones de tipo de registro](./media/oms-solution-update-management/update-la-view-list.png)
 
 ### <a name="updatesummary-records"></a>Registros de UpdateSummary
-Se crea un registro con un tipo de **UpdateSummary** para cada equipo del agente de Windows. Este registro se actualiza cada vez que se buscan actualizaciones en el equipo. Los registros **UpdateSummary** tienen las propiedades en la tabla siguiente.
+Se crea un registro con un tipo de **UpdateSummary** para cada equipo del agente de Windows. Este registro se actualiza cada vez que se examina el equipo de Hola para las actualizaciones. **UpdateSummary** registros tienen propiedades de hello en hello en la tabla siguiente.
 
 | Propiedad | Descripción |
 | --- | --- |
 | Tipo |UpdateSummary |
 | SourceSystem |OpsManager |
-| Equipo |Nombre del equipo. |
-| CriticalUpdatesMissing |Número de actualizaciones críticas pendientes en el equipo. |
-| ManagementGroupName |Nombre del grupo de administración de agentes SCOM. En el caso de los otros agentes, es AOI-<workspace ID>. |
-| NETRuntimeVersion |Versión del entorno de ejecución de .NET instalado en el equipo. |
-| OldestMissingSecurityUpdateBucket |Depósito para categorizar el tiempo desde que se publicó la actualización de seguridad más antigua pendiente en este equipo.<br>Los valores posibles son:<br>- Anterior<br>- Hace 180 días<br>- Hace 150 días<br>- Hace 120 días<br>- Hace 90 días<br>- Hace 60 días<br>- Hace 30 días<br>- Reciente |
-| OldestMissingSecurityUpdateInDays |Número de días desde que se publicó la actualización de seguridad más antigua pendiente en este equipo. |
-| OsVersion |Versión del sistema operativo instalado en el equipo. |
-| OtherUpdatesMissing |Número de otras actualizaciones pendientes en el equipo. |
-| SecurityUpdatesMissing |Número de actualizaciones de seguridad pendientes en el equipo. |
-| SourceComputerId |GUID para identificar de forma única el equipo. |
-| TimeGenerated |Fecha y hora en que se actualizó por última vez el registro. |
-| TotalUpdatesMissing |Número total de actualizaciones pendientes en el equipo. |
-| WindowsUpdateAgentVersion |Número de versión del agente de Windows Update en el equipo. |
-| WindowsUpdateSetting |Configuración de cómo el equipo instalará las actualizaciones importantes.<br>Los valores posibles son:<br>- Deshabilitado<br>- Notificar antes de la instalación<br>- Instalación programada |
-| WSUSServer |Dirección URL del servidor WSUS si el equipo está configurado para usar uno. |
+| Equipo |Nombre del equipo de Hola. |
+| CriticalUpdatesMissing |Número de actualizaciones críticas que faltan en el equipo de Hola. |
+| ManagementGroupName |Nombre del grupo de administración de Hola para agentes de SCOM. En el caso de los otros agentes, es AOI-<workspace ID>. |
+| NETRuntimeVersion |Versión de runtime de .NET de hello instalado en el equipo de Hola. |
+| OldestMissingSecurityUpdateBucket |Depósito toocategorize la hora de Hola desde que se publicó más antigua actualización de seguridad Hola que faltan en este equipo.<br>Los valores posibles son:<br>- Anterior<br>- Hace 180 días<br>- Hace 150 días<br>- Hace 120 días<br>- Hace 90 días<br>- Hace 60 días<br>- Hace 30 días<br>- Reciente |
+| OldestMissingSecurityUpdateInDays |Número de días desde que se publicó más antigua actualización de seguridad Hola que faltan en este equipo. |
+| OsVersion |Versión del sistema operativo de hello instalado en el equipo de Hola. |
+| OtherUpdatesMissing |Número de otras actualizaciones que faltan en el equipo de Hola. |
+| SecurityUpdatesMissing |Número de actualizaciones de seguridad que faltan en el equipo de Hola. |
+| SourceComputerId |GUID toouniquely identificar equipo Hola. |
+| TimeGenerated |Fecha y hora en que Hola registro se actualizó por última vez. |
+| TotalUpdatesMissing |Número total de actualizaciones que faltan en el equipo de Hola. |
+| WindowsUpdateAgentVersion |Número de versión del agente de Windows Update de hello en el equipo de Hola. |
+| WindowsUpdateSetting |Configuración para el equipo de hello instalará las actualizaciones importantes.<br>Los valores posibles son:<br>- Deshabilitado<br>- Notificar antes de la instalación<br>- Instalación programada |
+| WSUSServer |Servidor de dirección URL de WSUS si Hola equipo está configurado toouse uno. |
 
 ## <a name="sample-log-searches"></a>Búsquedas de registros de ejemplo
-En la tabla siguiente se proporcionan ejemplos de búsquedas de registros para los registros de actualización recopilados por esta solución.
+Hello en la tabla siguiente proporciona búsquedas de registros de ejemplo para actualizar los registros recopilados por esta solución.
 
 | Consultar | Descripción |
 | --- | --- |
@@ -300,35 +300,35 @@ En la tabla siguiente se proporcionan ejemplos de búsquedas de registros para l
 | Type=UpdateSummary &#124; measure count() by WSUSServer |Pertenencia a un equipo WSUS | 
 | Type=UpdateSummary &#124; measure count() by WindowsUpdateSetting |Configuración de actualizaciones automáticas | 
 | Type=UpdateSummary WindowsUpdateSetting=Manual |Equipos con la actualización automática deshabilitada | 
-| Type=Update and OSType=Linux and UpdateState!="Not needed" &#124; measure count() by Computer |Lista de todas las máquinas Linux que tienen un paquete de actualización disponible | 
-| Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") &#124; measure count() by Computer |Lista de todas las máquinas Linux que tienen un paquete de actualización disponible que soluciona una vulnerabilidad de seguridad o crítica | 
+| Type=Update and OSType=Linux and UpdateState!="Not needed" &#124; measure count() by Computer |Lista de todas las máquinas de Linux de Hola que hay un paquete de actualización disponible | 
+| Type=Update and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") &#124; measure count() by Computer |Lista de todas las máquinas de Linux de Hola que hay un paquete de actualización disponible que corrige una vulnerabilidad de seguridad o crítico | 
 | Type=Update and OSType=Linux and UpdateState!="Not needed" |Lista de todos los paquetes que tienen una actualización disponible | 
 | Type=Update  and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") |Lista de todos los paquetes que tienen una actualización disponible que soluciona una vulnerabilidad de seguridad o crítica | 
 | Type:UpdateRunProgress &#124; measure Count() by UpdateRunName |Lista de las implementaciones de actualizaciones que han modificado equipos | 
 | Type:UpdateRunProgress UpdateRunName="DeploymentName" &#124; measure Count() by Computer |Equipos que se actualizaron en esta ejecución de la actualización (reemplace el valor por el nombre de la implementación de actualizaciones) | 
-| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |Lista de todas las máquinas "Ubuntu" con cualquier actualización disponible | 
+| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |Lista de todas las máquinas de "Ubuntu" hello con cualquier actualización disponible | 
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
-En esta sección se proporciona información para resolver problemas con la solución de administración de actualizaciones.  
+Esta sección proporciona información toohelp solucionar problemas con hello solución de administración de actualizaciones.  
 
 ### <a name="how-do-i-troubleshoot-onboarding-issues"></a>¿Cómo se pueden solucionar los problemas de incorporación?
-Si se producen problemas al intentar incorporar la solución o una máquina virtual, compruebe en los registros de eventos **Registros de aplicaciones y servicios y Operations Manager** los eventos con el identificador 4502 y el mensaje de evento que contenga **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**.  La tabla siguiente destaca los mensajes de error específicos y una posible solución para cada uno.  
+Si se producen problemas al intentar tooonboard solución de Hola o una máquina virtual, compruebe hello **aplicación y el Administrador de servicios Logs\Operations** registro de eventos para eventos con el mensaje de Id. de 4502 y evento de eventos que contiene **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**.  Hello en la tabla siguiente destaca los mensajes de error específicos y una posible solución para cada uno.  
 
 | Message | Motivo | Solución |   
 |----------|----------|----------|  
-| No se pudo registrar la máquina para la administración de revisiones,<br>error en el registro con la excepción<br>System.InvalidOperationException: {"Message":"La máquina ya<br>está registrada en una cuenta diferente. "} | La máquina ya está incorporada a otra área de trabajo para Update Management | Realice una limpieza de los artefactos antiguos [eliminando el grupo de hybrid runbook](../automation/automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|  
-| No se pudo registrar la máquina para la administración de revisiones,<br>error en el registro con la excepción<br>System.Net.Http.HttpRequestException: error al enviar la solicitud. ---><br>System.Net.WebException: la conexión subyacente<br>se cerró: error inesperado<br>en una operación de recepción. ---> System.ComponentModel.Win32Exception:<br>el cliente y el servidor no pueden comunicarse,<br>dado que no poseen un algoritmo común | El proxy, la puerta de enlace o el firewall están bloqueando la comunicación | [Revise los requisitos de red](../automation/automation-offering-get-started.md#network-planning)|  
-| No se pudo registrar la máquina para la administración de revisiones,<br>error en el registro con la excepción<br>Newtonsoft.Json.JsonReaderException: error al analizar el valor de infinito positivo. | El proxy, la puerta de enlace o el firewall están bloqueando la comunicación | [Revise los requisitos de red](../automation/automation-offering-get-started.md#network-planning)| 
-| El certificado presentado por el servicio <wsid>.oms.opinsights.azure.com<br>no fue emitido por una entidad de certificación<br>utilizada para los servicios de Microsoft. Póngase en contacto con<br>el administrador de red para comprobar si están ejecutando un proxy que intercepte<br>la comunicación TLS/SSL. |El proxy, la puerta de enlace o el firewall están bloqueando la comunicación | [Revise los requisitos de red](../automation/automation-offering-get-started.md#network-planning)|  
-| No se pudo registrar la máquina para la administración de revisiones,<br>error en el registro con la excepción<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>error al crear un certificado autofirmado. ---><br>System.UnauthorizedAccessException: se denegó el acceso. | Error al generar un certificado autofirmado | Compruebe que la cuenta del sistema tiene<br>acceso de lectura a la carpeta:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
+| No se puede tooRegister máquina para la administración de revisiones,<br>error en el registro con la excepción<br>System.InvalidOperationException: {"Message":"La máquina ya<br>registrar tooa otra cuenta. "} | Máquina ya está incorporado tooanother área de trabajo de administración de actualizaciones | Realizar una limpieza de artefactos antiguos por [Eliminando grupo de hello hybrid runbook](../automation/automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)|  
+| No se puede registrar demasiado máquina para la administración de revisiones,<br>error en el registro con la excepción<br>System.Net.Http.HttpRequestException: Se produjo un error al enviar la solicitud de saludo. ---><br>System.Net.WebException: conexión subyacente hello<br>se cerró: error inesperado<br>en una operación de recepción. ---> System.ComponentModel.Win32Exception:<br>no se pueden comunicar Hola cliente y servidor,<br>dado que no poseen un algoritmo común | El proxy, la puerta de enlace o el firewall están bloqueando la comunicación | [Revise los requisitos de red](../automation/automation-offering-get-started.md#network-planning)|  
+| No se puede tooRegister máquina para la administración de revisiones,<br>error en el registro con la excepción<br>Newtonsoft.Json.JsonReaderException: error al analizar el valor de infinito positivo. | El proxy, la puerta de enlace o el firewall están bloqueando la comunicación | [Revise los requisitos de red](../automation/automation-offering-get-started.md#network-planning)| 
+| certificado de Hello presentado por el servicio de hello <wsid>. ODS.opinsights.Azure.com<br>no fue emitido por una entidad de certificación<br>utilizada para los servicios de Microsoft. Póngase en contacto con<br>su toosee de administrador de red si se está ejecutando a un proxy que intercepta<br>la comunicación TLS/SSL. |El proxy, la puerta de enlace o el firewall están bloqueando la comunicación | [Revise los requisitos de red](../automation/automation-offering-get-started.md#network-planning)|  
+| No se puede tooRegister máquina para la administración de revisiones,<br>error en el registro con la excepción<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>No se pudo toocreate un certificado autofirmado. ---><br>System.UnauthorizedAccessException: se denegó el acceso. | Error al generar un certificado autofirmado | Compruebe que la cuenta del sistema tiene<br>toofolder de acceso de lectura:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
 
 ### <a name="how-do-i-troubleshoot-update-deployments"></a>¿Cómo puedo solucionar problemas con las implementaciones de actualizaciones?
-Puede ver los resultados del runbook responsable de implementar las actualizaciones incluidas en la implementación de actualizaciones programada en la hoja Trabajos de su cuenta de Automation vinculada con el área de trabajo de OMS que admite esta solución.  El runbook **Patch-MicrosoftOMSComputer** es un runbook secundario que tiene como destino un equipo administrado específico y, al revisar el flujo detallado, presentará información detallada de la implementación.  La salida muestra qué actualizaciones necesarias son aplicables, el estado de descarga, el estado de instalación y detalles adicionales.<br><br> ![Estado del trabajo de implementación de actualizaciones](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>
+Puede ver los resultados de Hola de hello runbook responsable de implementar actualizaciones de hello incluidas en el parche de hello programada de hoja de trabajos de Hola de su cuenta de automatización que se vincula con el área de trabajo OMS de hello admiten esta solución.  Hola runbook **MicrosoftOMSComputer revisión** es un runbook secundario que tiene como destino un equipo administrado específico y revisar el flujo detallado de hello presentará información detallada para que la implementación.  salida de Hello van a mostrar que requiere que las actualizaciones son aplicables, descargar estado, estado de la instalación y detalles adicionales.<br><br> ![Estado del trabajo de implementación de actualizaciones](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>
 
 Para más información, consulte [Mensajes y salidas del runbook de Automation](../automation/automation-runbook-output-and-messages.md).   
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Usar Búsquedas de registros en [Log Analytics](../log-analytics/log-analytics-log-searches.md) para ver datos detallados sobre la actualización.
+* Usar búsquedas de registros en [análisis de registros](../log-analytics/log-analytics-log-searches.md) tooview obtener datos actualizados.
 * [Crear sus propios paneles](../log-analytics/log-analytics-dashboards.md) que muestren el cumplimiento de las actualizaciones de los equipos administrados.
 * [Crear alertas](../log-analytics/log-analytics-alerts.md) cuando se detectan actualizaciones críticas pendientes en equipos, o bien cuando un equipo tiene las actualizaciones automáticas deshabilitadas.  

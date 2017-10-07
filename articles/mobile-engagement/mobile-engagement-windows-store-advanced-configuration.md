@@ -1,5 +1,5 @@
 ---
-title: "Configuración avanzada del SDK de Engagement para aplicaciones universales de Windows"
+title: "Configuración de Windows Universal aplicaciones Engagement SDK aaaAdvanced"
 description: "Opciones de configuración para Azure Mobile Engagement con aplicaciones universales de Windows"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: cb9454212c94cf65093219c3d24c71277ede7877
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 23bd05012bc25d438d8d4985a112280bed0292b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="advanced-configuration-for-windows-universal-apps-engagement-sdk"></a>Configuración avanzada del SDK de Engagement para aplicaciones universales de Windows
 > [!div class="op_single_selector"]
@@ -29,27 +29,27 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Este procedimiento describe cómo configurar diversas opciones de configuración de aplicaciones de Android para Azure Mobile Engagement.
+Este procedimiento describe cómo tooconfigure distintas opciones de configuración para las aplicaciones de Azure Mobile Engagement Android.
 
 ## <a name="prerequisites"></a>Requisitos previos
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
 
 ## <a name="advanced-configuration"></a>Configuración avanzada
 ### <a name="disable-automatic-crash-reporting"></a>Deshabilitar los informes automáticos de bloqueo
-Puede deshabilitar la característica de informes automáticos de bloqueo de Engagement. Cuando se produzca una excepción no controlada, Engagement no hará nada.
+Puede deshabilitar Hola automática de informes de errores característica de contratación. Cuando se produzca una excepción no controlada, Engagement no hará nada.
 
 > [!WARNING]
-> Si deshabilita esta característica, tenga en cuenta que cuando se produzca un error no controlado en la aplicación, Engagement no enviará la información del bloqueo, **NI** tampoco cerrará la sesión ni los trabajos.
+> Si deshabilita esta característica, cuando se produce un bloqueo no controlado en la aplicación, interacción no envía el bloqueo de hello **AND** no cierra la sesión de Hola y trabajos.
 > 
 > 
 
-Para deshabilitar los informes automáticos de bloqueo, personalice la configuración según la manera en que la declaró:
+bloqueo automático toodisable reporting, personalizar la configuración según la forma de Hola se declaró:
 
 #### <a name="from-engagementconfigurationxml-file"></a>Desde el archivo `EngagementConfiguration.xml`
-Establezca el informe de bloqueo en `false` entre las etiquetas `<reportCrash>` y `</reportCrash>`.
+Establecer un informe de bloqueo demasiado`false` entre `<reportCrash>` y `</reportCrash>` etiquetas.
 
 #### <a name="from-engagementconfiguration-object-at-run-time"></a>Desde el objeto `EngagementConfiguration` en tiempo de ejecución
-Establezca el informe de bloqueo mediante el objeto EngagementConfiguration.
+Establecer toofalse de bloqueo de informe mediante el objeto EngagementConfiguration.
 
         /* Engagement configuration. */
         EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -59,18 +59,18 @@ Establezca el informe de bloqueo mediante el objeto EngagementConfiguration.
         engagementConfiguration.Agent.ReportCrash = false;
 
 ### <a name="disable-real-time-reporting"></a>Deshabilitar los informes en tiempo real
-De forma predeterminada, el servicio de Engagement informa los registros en tiempo real. Si su aplicación notifica registros con mucha frecuencia, es mejor almacenar en búfer los registros y notificarlos todos a la vez de manera periódica. Esto se denomina "modo de ráfaga".
+De forma predeterminada, los registros de informes del servicio de contratación de hello en tiempo real. Si la aplicación informa de los registros con frecuencia, es mejor toobuffer Hola registros y tooreport usarlas todos a la vez en una base de tiempo regulares. Esto se denomina "modo de ráfaga".
 
-Para ello, llame al método siguiente:
+toodo por lo tanto, llame al método hello:
 
         EngagementAgent.Instance.SetBurstThreshold(int everyMs);
 
-El argumento es un valor en **milisegundos**. Cuando desee volver a activar el registro en tiempo real, llame al método sin ningún parámetro o con el valor 0.
+Hola argumento es un valor en **milisegundos**. Siempre que lo desee registro en tiempo real de tooreactivate hello, llamar a método de hello sin ningún parámetro, o con el valor de hello 0.
 
-El modo de ráfaga aumenta ligeramente la duración de la batería, pero afecta al monitor de Engagement: la duración de todas las sesiones y trabajos se redondeará al umbral de ráfaga (por lo tanto, es posible que las sesiones y los trabajos más cortos que el umbral de ráfaga no sean visibles). Se recomienda usar un umbral de ráfaga inferior a 30 000 (30 segundos). Los registros guardados se limitan a 300 elementos. Si el envío es demasiado largo, puede perder algunos registros.
+El modo de ráfaga ligeramente aumenta la duración de la batería de hello pero tiene un impacto en el Monitor de interacción de hello: duración de las sesiones y los trabajos de todos los son toohello redondeado ráfaga umbral (por lo tanto, las sesiones y trabajos más cortos que el umbral de ráfaga de hello puede no estar visible). Se recomienda usar un umbral de ráfaga inferior a 30 000 (30 segundos). Registros guardados son elementos de too300 limitado. Si el envío es demasiado largo, puede perder algunos registros.
 
 > [!WARNING]
-> El umbral de ráfaga no puede configurarse en un periodo inferior a un segundo. Si intenta hacerlo, el SDK mostrará un seguimiento con el error y se restablecerá automáticamente en el valor predeterminado, es decir, cero segundos. Esto hará que el SDK informe de los registros en tiempo real.
+> umbral de ráfaga de Hello no puede ser configurado tooa período menor que uno en segundo lugar. Si lo hace, Hola SDK muestra un seguimiento con error de Hola y restablece automáticamente el valor predeterminado de toohello, cero segundos. Este desencadenadores Hola SDK tooreport Hola registra en tiempo real.
 > 
 > 
 

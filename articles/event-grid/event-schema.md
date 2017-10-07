@@ -1,6 +1,6 @@
 ---
-title: Esquema de eventos de Azure Event Grid
-description: Describe las propiedades que se proporcionan para los eventos con Azure Event Grid.
+title: "esquema de eventos de cuadrícula de eventos de aaaAzure"
+description: "Se describen las propiedades de Hola que se proporcionan para eventos con la cuadrícula de eventos de Azure."
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,34 +8,34 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: babanisa
-ms.openlocfilehash: 9e3c7b31ef23b29827d7184dc033227685ed92f8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 37178a5650b93fd9072d9cff3333aae14b2a2ba7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-grid-event-schema"></a>Esquema de eventos de Event Grid
 
-En este artículo se proporcionan las propiedades y los esquemas de los eventos. Los eventos constan de un conjunto de cinco propiedades de cadena y un objeto de **datos** obligatorios. Las propiedades son comunes a todos los eventos de cualquier anunciante. El objeto de **datos** contiene propiedades específicas de cada anunciante. Para los temas de sistema, estas propiedades son específicas del proveedor de recursos, como Storage o Event Hubs.
+Este artículo proporciona propiedades de Hola y el esquema de eventos. Los eventos constan de un conjunto de cinco propiedades de cadena y un objeto de **datos** obligatorios. propiedades de Hello son eventos tooall comunes de los publicadores. Hola **datos** objeto contiene propiedades que son específicas tooeach publisher. Para consultar temas de sistema, estas propiedades son de proveedor de recursos toohello específicos, como almacenamiento o concentradores de eventos.
 
-Los eventos se envían a Azure Event Grid en una matriz que puede contener varios objetos de evento. Si hay un solo evento, la matriz tiene una longitud de 1. 
+Se envían eventos tooAzure cuadrícula de eventos en una matriz, que puede contener varios objetos de evento. Si hay solo un único evento, la matriz de hello tiene una longitud de 1. 
  
 ## <a name="event-properties"></a>Propiedades de evento
 
-Todos los eventos contendrán los siguientes datos de nivel superior iguales.
+Todos los eventos contendrán Hola mismo después de datos de nivel superior.
 
 | Propiedad | Escriba | Descripción |
 | -------- | ---- | ----------- |
-| topic | cadena | Ruta de acceso completa a los recursos del origen del evento. En este campo no se puede escribir. |
-| subject | cadena | Ruta al asunto del evento definida por el anunciante. |
-| eventType | cadena | Uno de los tipos de eventos registrados para este origen de eventos. |
-| eventTime | cadena | La hora de generación del evento en función de la hora UTC del proveedor. |
-| id | cadena | Identificador único para el evento |
-| data | objeto | Los datos del evento específicos del proveedor de recursos. |
+| topic | cadena | Origen de eventos de toohello de ruta de acceso completa a recursos. En este campo no se puede escribir. |
+| subject | cadena | Asunto de eventos de toohello de ruta de acceso definida de publicador. |
+| eventType | cadena | Uno de hello registra tipos de eventos para este origen de eventos. |
+| eventTime | cadena | evento de Hola Hola tiempo se genera en función del tiempo de UTC del proveedor de Hola. |
+| id | cadena | Identificador único para el evento de Hola. |
+| data | objeto | Proveedor de recursos de toohello específico de datos de evento. |
 
 ## <a name="available-event-sources"></a>Orígenes de eventos disponibles
 
-Los siguientes orígenes de eventos publican eventos para el consumo a través de Event Grid:
+Hola siguientes orígenes de eventos publica eventos para su uso a través de la cuadrícula de eventos:
 
 * Grupos de recursos (operaciones de administración)
 * Suscripciones de Azure (operaciones de administración)
@@ -126,7 +126,7 @@ Los grupos de recursos ahora pueden emitir eventos de administración de Azure R
 
 ## <a name="event-hubs"></a>Centros de eventos
 
-A día de hoy, los eventos de Event Hubs solo se generan cuando se envía automáticamente un archivo al almacenamiento mediante la característica Captura.
+Eventos de los centros de eventos están actualmente solo se genera cuando un archivo se envía automáticamente toostorage mediante la característica de captura de Hola.
 
 ### <a name="available-event-types"></a>Tipos de eventos disponibles
 
@@ -134,7 +134,7 @@ A día de hoy, los eventos de Event Hubs solo se generan cuando se envía autom�
 
 ### <a name="example-event"></a>Evento de ejemplo
 
-Este evento de ejemplo muestra el esquema de un evento de Event Hubs que se genera cuando Captura almacena un archivo. 
+Este evento de ejemplo muestra el esquema Hola de un evento de los centros de eventos que se produce cuando se captura almacena un archivo. 
 
 ```json
 [
@@ -173,7 +173,7 @@ Azure Blob Storage en versión preliminar privada con inicio de sesión para la 
 
 ### <a name="example-event"></a>Evento de ejemplo
 
-Este evento de ejemplo muestra el esquema de un evento de almacenamiento que se genera cuando se crea un blob. 
+Este evento de ejemplo muestra el esquema de Hola de un evento de almacenamiento que se desencadena cuando se crea un blob. 
 
 ```json
 [
@@ -206,11 +206,11 @@ Este evento de ejemplo muestra el esquema de un evento de almacenamiento que se 
 
 ## <a name="custom-topics"></a>Temas personalizados
 
-La carga de datos de los eventos personalizados la define el usuario y puede ser cualquier formato JSON correcto. Los datos de nivel superior deben contener los mismos campos que los eventos estándar definidos por los recursos. Al publicar eventos de temas personalizados debe considerar modelar el asunto de los eventos como ayuda para el enrutamiento y el filtrado.
+carga de datos de Hola de sus eventos personalizados definido por el usuario y puede ser cualquier también un formato JSON. datos de nivel superior de Hello deben contener Hola mismo campos como eventos de recursos estándar definidos. Al publicar temas de eventos toocustom considere la posibilidad de modelado asunto Hola de su tooaid de eventos en el enrutamiento y el filtrado.
 
 ### <a name="example-event"></a>Evento de ejemplo
 
-En el ejemplo siguiente se muestra un evento de tema personalizado:
+Hola de ejemplo siguiente muestra un evento para un tema personalizado:
 ````json
 [
   {
@@ -230,5 +230,5 @@ En el ejemplo siguiente se muestra un evento de tema personalizado:
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para ver una introducción a Event Grid, consulte el artículo acerca de [qué es Event Grid](overview.md).
-* Para información acerca de la creación de una suscripción de Event Grid, consulte [Event Grid subscription schema](subscription-creation-schema.md) (Esquema de suscripción de Event Grid).
+* Para una cuadrícula de introducción tooEvent, consulte [¿qué es la cuadrícula de eventos?](overview.md)
+* toolearn acerca de cómo crear una suscripción de la cuadrícula de eventos, vea [esquema de suscripción de cuadrícula de eventos](subscription-creation-schema.md).

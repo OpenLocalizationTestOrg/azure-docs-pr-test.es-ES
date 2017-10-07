@@ -1,6 +1,6 @@
 ---
-title: "Importación y exportación de identidades de dispositivo de IoT Hub de Azure | Microsoft Docs"
-description: "Describe cómo usar el SDK de servicio IoT de Azure para realizar operaciones masivas en el registro de identidad con el fin de importar y exportar identidades de dispositivo. Las operaciones de importación permiten crear, actualizar y eliminar las identidades de dispositivo de forma masiva."
+title: "exportación de aaaImport de identidades de dispositivos del centro de IoT de Azure | Documentos de Microsoft"
+description: "¿Cómo toouse hello Azure IoT servicio SDK tooperform operaciones contra Hola identidad del registro tooimport masiva y exportar identidades de dispositivos. Las operaciones de importación permiten toocreate, update y delete de identidades de dispositivos de forma masiva."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: ad2c6d585eef5450f7f0912ffa4753fe80d86b37
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b67777d381e03de05d9c007b5ce6bdaf15bbb8f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Administración de las identidades de dispositivo de IoT Hub de forma masiva
 
-Cada Centro de IoT tiene un registro de identidad que se puede usar para crear recursos por dispositivo en el servicio. El registro de identidad también permite controlar el acceso a los puntos de conexión accesibles desde los dispositivos. En este artículo se describe cómo importar y exportar identidades de dispositivo de forma masiva hacia y desde un Registro de identidad.
+Cada centro de IoT tiene un registro de la identidad puede usar recursos de toocreate por dispositivo de servicio de Hola. registro de la identidad de Hello también permite los puntos de conexión de dispositivo de toocontrol acceso toohello. Este artículo describe cómo tooimport y exportar identidades de dispositivos de forma masiva tooand desde un registro de la identidad.
 
-Las operaciones de importación y exportación tienen lugar en el contexto de *Trabajos* que permiten ejecutar operaciones de servicio de forma masiva en un IoT Hub.
+Las operaciones de importación y exportación tienen lugar en el contexto de Hola de *trabajos* que le permiten operaciones de servicio de forma masiva tooexecute en un centro de IoT.
 
-La clase **RegistryManager** incluye los métodos **ExportDevicesAsync** y **ImportDevicesAsync**, que usan el marco **Trabajo**. Estos métodos le permiten exportar, importar y sincronizar la totalidad de un Registro de identidad de IoT Hub.
+Hola **RegistryManager** clase incluye hello **ExportDevicesAsync** y **ImportDevicesAsync** métodos que usan hello **trabajo** marco de trabajo. Estos métodos permiten tooexport, importación y sincronización la totalidad de Hola de un registro de identidad IoT hub.
 
 ## <a name="what-are-jobs"></a>¿Qué son los trabajos?
 
-Las operaciones de Registro de identidad usan el sistema de **trabajo** cuando la operación:
+Las operaciones del registro de identidad usan hello **trabajo** sistema Hola cuando la operación:
 
-* Tiene un tiempo de ejecución potencialmente largo en comparación con las operaciones en tiempo de ejecución estándar.
-* Devuelve una gran cantidad de datos al usuario.
+* Se potencialmente mucho tiempo de ejecución comparado toostandard operaciones en tiempo de ejecución.
+* Devuelve una gran cantidad de usuario de toohello de datos.
 
-En estos casos, en lugar de una única API en espera o que bloquea el resultado de la operación, esta crea de forma asincrónica un **Trabajo** para ese Centro de IoT. La operación después devuelve inmediatamente un objeto **JobProperties**.
+En lugar de una sola llamada de API en espera o bloqueos en el resultado de hello de operación de hello, operación Hola crea de forma asincrónica un **trabajo** para ese centro de IoT. operación de Hello, a continuación, inmediatamente devuelve un **JobProperties** objeto.
 
-El siguiente fragmento de código de C# muestra cómo crear un trabajo de exportación:
+Hola después de C# código fragmento de código se muestra cómo toocreate un trabajo de exportación:
 
 ```csharp
-// Call an export job on the IoT Hub to retrieve all devices
+// Call an export job on hello IoT Hub tooretrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
 
 > [!NOTE]
-> Para usar la clase **RegistryManager** en el código de C#, agregue el paquete de NuGet **Microsoft.Azure.Devices** al proyecto. La clase **RegistryManager** está en el espacio de nombres **Microsoft.Azure.Devices**.
+> Hola toouse **RegistryManager** clase en el código de C#, agregue hello **Microsoft.Azure.Devices** proyecto de tooyour de paquete de NuGet. Hola **RegistryManager** clase está en hello **Microsoft.Azure.Devices** espacio de nombres.
 
-Puede usar la clase **RegistryManager** para consultar el estado de **Trabajo** con los metadatos de **JobProperties** devueltos.
+Puede usar hello **RegistryManager** clase tooquery estado de Hola de hello **trabajo** con hello devuelve **JobProperties** metadatos.
 
-El siguiente fragmento de código de C# muestra cómo sondear cada cinco segundos para ver si el trabajo ha terminado de ejecutarse:
+Hello siguiente fragmento de código de C# muestra cómo toopoll cada cinco segundos toosee si hello trabajo ha terminado de ejecutar:
 
 ```csharp
 // Wait until job is finished
@@ -70,24 +70,24 @@ while(true)
 
 ## <a name="export-devices"></a>Exportación de dispositivos
 
-Use el método **ExportDevicesAsync** para exportar la totalidad de un Registro de identidad de IoT Hub a un contenedor de blobs de [Azure Storage](../storage/index.md) mediante una [firma de acceso compartido](../storage/common/storage-security-guide.md#data-plane-security).
+Hola de uso **ExportDevicesAsync** totalidad de hello tooexport de método de un tooan de registro de identidad de IoT hub [el almacenamiento de Azure](../storage/index.md) contenedor de blob mediante un [firma de acceso compartido](../storage/common/storage-security-guide.md#data-plane-security).
 
-Este método le permite crear copias de seguridad confiables de la información del dispositivo en un contenedor de blobs que usted controle.
+Este método permite toocreate copias de seguridad confiable de la información del dispositivo en un contenedor de blob que usted controla.
 
-El método **ExportDevicesAsync** requiere dos parámetros:
+Hola **ExportDevicesAsync** método requiere dos parámetros:
 
-* Una *cadena* que contiene un identificador URI de un contenedor de blobs. Este identificador URI debe contener un token SAS que conceda acceso de escritura al contenedor. El trabajo crea un blob en bloques en este contenedor para almacenar los datos serializados de exportación del dispositivo. El token de SAS debe incluir estos permisos:
+* Una *cadena* que contiene un identificador URI de un contenedor de blobs. Este identificador URI debe contener un token SAS que concede acceso de escritura toohello contenedor. trabajo de Hello crea un blob en bloques en estos datos de dispositivo de exportación de contenedor toostore Hola serializado. token de SAS de Hello debe incluir estos permisos:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
 
-* Un valor *booleano* que indica si desea excluir las claves de autenticación de los datos de exportación. Si es **false**, las claves de autenticación se incluyen en la exportación. De lo contrario, las claves se exportan como **null**.
+* A *booleano* que indica si desea que las claves de autenticación de tooexclude de los datos de exportación. Si es **false**, las claves de autenticación se incluyen en la exportación. De lo contrario, las claves se exportan como **null**.
 
-El siguiente fragmento de código de C# muestra cómo iniciar un trabajo de exportación que incluye las claves de autenticación de dispositivo en los datos de exportación y luego sondea la finalización:
+Hello siguiente fragmento de código de C# muestra cómo tooinitiate un trabajo de exportación que incluye las claves de autenticación de dispositivo en hello exportar los datos y, a continuación, el sondeo de finalización:
 
 ```csharp
-// Call an export job on the IoT Hub to retrieve all devices
+// Call an export job on hello IoT Hub tooretrieve all devices
 JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
 
 // Wait until job is finished
@@ -106,9 +106,9 @@ while(true)
 }
 ```
 
-El trabajo almacena su salida en el contenedor de blobs proporcionado como un blob en bloques con el nombre **devices.txt**. Los datos de salida se componen de datos de dispositivos serializados de JSON, con un dispositivo por línea.
+Hello trabajo almacena su salida en el contenedor de blobs de hello proporcionado como un blob en bloques con nombre hello **devices.txt**. datos de salida de Hello constan de JSON que serializa datos del dispositivo, con un dispositivo por línea.
 
-En el siguiente ejemplo se muestran los datos de salida:
+Hello en el ejemplo siguiente se muestra datos de salida de hello:
 
 ```json
 {"id":"Device1","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
@@ -118,7 +118,7 @@ En el siguiente ejemplo se muestran los datos de salida:
 {"id":"Device5","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 ```
 
-Si un dispositivo tiene datos gemelos, estos también se exportan junto con los datos del dispositivo. En el siguiente ejemplo se muestra este formato. Todos los datos desde la línea "twinETag" hasta el final son datos gemelos.
+Si un dispositivo tiene datos gemelas, datos de hello gemelas también se exportan junto con los datos del dispositivo Hola. Hello en el ejemplo siguiente se muestra este formato. Todos los datos de línea de "twinETag" hello hasta el final de hello son datos gemelas.
 
 ```json
 {
@@ -165,7 +165,7 @@ Si un dispositivo tiene datos gemelos, estos también se exportan junto con los 
 }
 ```
 
-Si necesita acceso a los datos en el código, puede deserializar fácilmente estos datos mediante la clase **ExportImportDevice** . El siguiente fragmento de código de C# muestra cómo leer la información de dispositivo que se ha exportado previamente a un blob en bloques:
+Si necesita obtener acceso a datos de toothis en el código, puede deserializar fácilmente estos datos con hello **ExportImportDevice** clase. Hello siguiente fragmento de código de C# muestra cómo la información de dispositivo de tooread que exportó anteriormente tooa blob en bloques:
 
 ```csharp
 var exportedDevices = new List<ExportImportDevice>();
@@ -182,44 +182,44 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 ```
 
 > [!NOTE]
-> También puede utilizar el método **GetDevicesAsync** de la clase **RegistryManager** para obtener una lista de dispositivos. Sin embargo, este enfoque tiene un límite máximo de 1000 en cuanto al número de objetos de dispositivo que se devuelven. El caso de uso esperado para el método **GetDevicesAsync** es para facilitar la depuración en escenarios de desarrollo, y no se recomienda para las cargas de trabajo de producción.
+> También puede usar hello **GetDevicesAsync** método de hello **RegistryManager** clase toofetch una lista de los dispositivos. Sin embargo, este enfoque tiene un límite máximo de 1000 en número de Hola de objetos de dispositivo que se devuelven. Hola espera caso de uso de hello **GetDevicesAsync** método es para la depuración de tooaid de escenarios de desarrollo y no se recomienda para las cargas de trabajo de producción.
 
 ## <a name="import-devices"></a>Importación de dispositivos
 
-El método **ImportDevicesAsync** de la clase **RegistryManager** le permite realizar operaciones de sincronización e importación masiva en un Registro de identidad de IoT Hub. Al igual que el método **ExportDevicesAsync**, el método **ImportDevicesAsync** usa el marco **Trabajo**.
+Hola **ImportDevicesAsync** método Hola **RegistryManager** clase permite operaciones de importación y sincronización de masiva de tooperform en un registro de identidad IoT hub. Al igual que hello **ExportDevicesAsync** /método siguiente, hello **ImportDevicesAsync** método usa Hola **trabajo** framework.
 
-Tenga cuidado con el método **ImportDevicesAsync** porque además del aprovisionamiento de nuevos dispositivos en el Registro de identidad, también puede actualizar y eliminar dispositivos existentes.
+Tenga cuidado utilizando hello **ImportDevicesAsync** método porque en suma tooprovisioning nuevos dispositivos en el registro de identidad, también puede actualizar y eliminar los dispositivos existentes.
 
 > [!WARNING]
-> Una operación de importación no se puede deshacer. Realice siempre una copia de seguridad de los datos existentes mediante el método **ExportDevicesAsync** en otro contenedor de blobs antes de realizar cambios masivos en el Registro de identidad.
+> Una operación de importación no se puede deshacer. Realizar la copia de seguridad de los datos existentes con hello siempre **ExportDevicesAsync** contenedor de blobs de método tooanother antes de realizar cargas masivas cambios del registro de identidad tooyour.
 
-El método **ImportDevicesAsync** requiere dos parámetros:
+Hola **ImportDevicesAsync** método toma dos parámetros:
 
-* Una *cadena* que contiene un identificador URI de un contenedor de blobs de [Azure Storage](../storage/index.md) para usar como *entrada* para el trabajo. Este identificador URI debe contener un token SAS que conceda acceso de lectura al contenedor. Este contenedor debe incluir un blob con el nombre **devices.txt** que contenga los datos de dispositivo serializados para importar en el Registro de identidad. Los datos de importación deben contener la información del dispositivo en el mismo formato JSON que usa el trabajo **ExportImportDevice** cuando crea un blob **devices.txt**. El token de SAS debe incluir estos permisos:
+* A *cadena* que contiene un identificador URI de un [el almacenamiento de Azure](../storage/index.md) blob toouse contenedor como *entrada* toohello trabajo. Este identificador URI debe contener un token SAS que concede acceso de lectura toohello contenedor. Este contenedor debe contener un blob con nombre hello **devices.txt** tooimport de datos del dispositivo de hello serializado que contiene en su registro de identidad. Hello datos de importación deben contener información del dispositivo en hello JSON mismo formato que hello **ExportImportDevice** trabajo que se usa cuando crea un **devices.txt** blob. token de SAS de Hello debe incluir estos permisos:
 
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
-* Una *cadena* que contenga un identificador URI de un contenedor de blobs de [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) para usar como *salida* del trabajo. El trabajo crea un blob en bloques en este contenedor para almacenar cualquier información de error del **Trabajo**de importación finalizado. El token de SAS debe incluir estos permisos:
+* A *cadena* que contiene un identificador URI de un [el almacenamiento de Azure](https://azure.microsoft.com/documentation/services/storage/) blob toouse contenedor como *salida* de trabajo de Hola. Hello trabajo crea un blob en bloques en este contenedor toostore cualquier información de error de importación de hello completado **trabajo**. token de SAS de Hello debe incluir estos permisos:
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
    ```
 
 > [!NOTE]
-> Los dos parámetros pueden apuntar al mismo contenedor de blobs. Los parámetros independientes simplemente habilitan más control sobre sus datos, ya que el contenedor de salida requiere permisos adicionales.
+> parámetros de Hello dos pueden apuntar toohello mismo contenedor de blob. parámetros separados Hola simplemente permiten un mayor control sobre los datos tal y como contenedor de salida de hello requiere permisos adicionales.
 
-El siguiente fragmento de código de C# muestra cómo iniciar un trabajo de importación:
+Hola después de C# código fragmento de código se muestra cómo tooinitiate un trabajo de importación:
 
 ```csharp
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
-Este método también se puede usar para importar los datos para el dispositivo gemelo. El formato de la entrada de datos es el mismo que se muestra en la sección **ExportDevicesAsync**. De esta manera, se pueden volver a importar los datos exportados. El valor de **$metadata** es opcional.
+Este método también puede ser datos de Hola de tooimport usado para gemelas de dispositivo de Hola. formato de Hello para la entrada de datos de Hola Hola igual como formato de Hola se muestra en hello **ExportDevicesAsync** sección. De esta manera, puede volver a importar Hola exportan datos. Hola **$metadata** es opcional.
 
 ## <a name="import-behavior"></a>Comportamiento de la importación
 
-Puede usar el método **ImportDevicesAsync** para realizar las siguientes operaciones de forma masiva en el Registro de identidad:
+Puede usar hello **ImportDevicesAsync** método tooperform Hola a continuación de forma masiva las operaciones en el registro de identidad:
 
 * Registro masivo de nuevos dispositivos
 * Eliminación masiva de dispositivos existentes
@@ -228,32 +228,32 @@ Puede usar el método **ImportDevicesAsync** para realizar las siguientes operac
 * Regeneración automática masiva de claves de autenticación de dispositivos
 * Actualización masiva de datos gemelos
 
-Puede realizar cualquier combinación de las operaciones precedentes en una única llamada **ImportDevicesAsync**. Por ejemplo, puede registrar nuevos dispositivos y eliminar o actualizar los dispositivos existentes al mismo tiempo. Cuando se utiliza junto con el método **ExportDevicesAsync** , puede migrar completamente todos los dispositivos de un Centro de IoT a otro.
+Puede realizar cualquier combinación de hello anteriores operaciones dentro de una única **ImportDevicesAsync** llamar. Por ejemplo, puede registrar nuevos dispositivos y eliminar o actualizar los dispositivos existentes en hello mismo tiempo. Cuando se usa junto con hello **ExportDevicesAsync** método, puede migrar completamente todos los dispositivos desde una tooanother de centro de IoT.
 
-Si el archivo de importación especifica metadatos gemelos, estos sobrescriben los existentes. Si el archivo de importación no incluye metadatos gemelos, solo se actualizan los metadatos de `lastUpdateTime` que usan la hora actual.
+Si el archivo de importación de hello incluye metadatos gemelas, estos metadatos sobrescriben Hola existente gemelas metadatos. Si el archivo de importación de hello no incluye metadatos gemelas, a continuación, solo Hola `lastUpdateTime` se actualizan los metadatos utilizando Hola hora actual.
 
-Use la propiedad opcional **importMode** en los datos de serialización de importación para cada dispositivo para controlar el proceso de importación por dispositivo. La propiedad **importMode** tiene las siguientes opciones:
+Hola de uso opcional **importMode** propiedad en los datos de serialización de importación de Hola para cada dispositivo toocontrol Hola importación proceso por dispositivo. Hola **importMode** propiedad tiene Hola siguientes opciones:
 
 | importMode | Descripción |
 | --- | --- |
-| **createOrUpdate** |Si no existe un dispositivo con el **id.**especificado, este se registra por primera vez. <br/>Si el dispositivo ya existe, la información existente se sobrescribe con los datos de entrada proporcionados con independencia del valor **ETag** . <br> El usuario puede especificar opcionalmente datos gemelos junto con los datos del dispositivo. El valor etag del gemelo, si se especifica, se procesa por separado del etag del dispositivo. Si no coincide con el etag del gemelo existente, se escribe un error en el archivo de registro. |
-| **create** |Si no existe un dispositivo con el **id.**especificado, este se registra por primera vez. <br/>Si el dispositivo ya existe, se escribe un error en el archivo de registro. <br> El usuario puede especificar opcionalmente datos gemelos junto con los datos del dispositivo. El valor etag del gemelo, si se especifica, se procesa por separado del etag del dispositivo. Si no coincide con el etag del gemelo existente, se escribe un error en el archivo de registro. |
-| **update** |Si ya existe un dispositivo con el **identificador** especificado, la información existente se sobrescribe con los datos de entrada proporcionados con independencia del valor **ETag**. <br/>Si el dispositivo no existe, se escribe un error en el archivo de registro. |
-| **updateIfMatchETag** |Si ya existe un dispositivo con el **identificador** especificado, la información existente se sobrescribe con los datos de entrada proporcionados solo si hay una coincidencia con **ETag**. <br/>Si el dispositivo no existe, se escribe un error en el archivo de registro. <br/>Si no existe la coincidencia con **ETag** , se escribe un error en el archivo de registro. |
-| **createOrUpdateIfMatchETag** |Si no existe un dispositivo con el **id.**especificado, este se registra por primera vez. <br/>Si el dispositivo ya existe, la información existente se sobrescribe con los datos de entrada proporcionados solo si hay una coincidencia con **ETag** . <br/>Si no existe la coincidencia con **ETag** , se escribe un error en el archivo de registro. <br> El usuario puede especificar opcionalmente datos gemelos junto con los datos del dispositivo. El valor etag del gemelo, si se especifica, se procesa por separado del etag del dispositivo. Si no coincide con el etag del gemelo existente, se escribe un error en el archivo de registro. |
-| **delete** |Si ya existe un dispositivo con el **identificador** especificado, este se elimina con independencia del valor **ETag**. <br/>Si el dispositivo no existe, se escribe un error en el archivo de registro. |
-| **deleteIfMatchETag** |Si ya existe un dispositivo con el **identificador** especificado, este se elimina solo si hay una coincidencia con **ETag**. Si el dispositivo no existe, se escribe un error en el archivo de registro. <br/>Si no existe una coincidencia con ETag, se escribe un error en el archivo de registro. |
+| **createOrUpdate** |Si no existe un dispositivo con hello especificado **identificador**, está registrado recientemente. <br/>Si el dispositivo de hello ya existe, se sobrescribe la información existente con hello proporcionada datos de entrada sin tener en cuenta toohello **ETag** valor. <br> usuario de Hello, opcionalmente, puede especificar datos gemelas junto con los datos del dispositivo Hola. valor etag del gemelas Hello, si se especifica, se procesa por separado de etag del dispositivo de Hola. Si hay una falta de coincidencia con el etag del gemelas existente de hello, se escribe un error en el archivo de registro de toohello. |
+| **crear** |Si no existe un dispositivo con hello especificado **identificador**, está registrado recientemente. <br/>Si ya existe un dispositivo de hello, se escribe un error en el archivo de registro de toohello. <br> usuario de Hello, opcionalmente, puede especificar datos gemelas junto con los datos del dispositivo Hola. valor etag del gemelas Hello, si se especifica, se procesa por separado de etag del dispositivo de Hola. Si hay una falta de coincidencia con el etag del gemelas existente de hello, se escribe un error en el archivo de registro de toohello. |
+| **update** |Si ya existe un dispositivo con hello especificado **identificador**, se sobrescribe la información existente con hello proporcionada datos de entrada sin tener en cuenta toohello **ETag** valor. <br/>Si el dispositivo de hello no existe, se escribe un error toohello archivo de registro. |
+| **updateIfMatchETag** |Si ya existe un dispositivo con hello especificado **identificador**, se sobrescribe la información existente con hello proporcionada datos de entrada sólo si hay un **ETag** coincide con. <br/>Si el dispositivo de hello no existe, se escribe un error toohello archivo de registro. <br/>Si no hay un **ETag** falta de coincidencia, se escribe el archivo de registro de toohello un error. |
+| **createOrUpdateIfMatchETag** |Si no existe un dispositivo con hello especificado **identificador**, está registrado recientemente. <br/>Si ya existe un dispositivo de hello, se sobrescribe la información existente con hello proporcionada datos de entrada sólo si hay un **ETag** coincide con. <br/>Si no hay un **ETag** falta de coincidencia, se escribe el archivo de registro de toohello un error. <br> usuario de Hello, opcionalmente, puede especificar datos gemelas junto con los datos del dispositivo Hola. valor etag del gemelas Hello, si se especifica, se procesa por separado de etag del dispositivo de Hola. Si hay una falta de coincidencia con el etag del gemelas existente de hello, se escribe un error en el archivo de registro de toohello. |
+| **delete** |Si ya existe un dispositivo con hello especificado **identificador**, se elimina sin tener en cuenta toohello **ETag** valor. <br/>Si el dispositivo de hello no existe, se escribe un error toohello archivo de registro. |
+| **deleteIfMatchETag** |Si ya existe un dispositivo con hello especificado **identificador**, se elimina solo si hay un **ETag** coincide con. Si el dispositivo de hello no existe, se escribe un error toohello archivo de registro. <br/>Si se produce un error de coincidencia de ETag, se escribe un error en el archivo de registro de toohello. |
 
 > [!NOTE]
-> Si los datos de serialización no definen explícitamente una marca **importMode** para un dispositivo, se establece de manera predeterminada en **createOrUpdate** durante la operación de importación.
+> Si no definen explícitamente los datos de serialización de hello un **importMode** marca para un dispositivo, el valor predeterminado es demasiado**createOrUpdate** Hola durante la operación de importación.
 
 ## <a name="import-devices-example--bulk-device-provisioning"></a>Ejemplo de importación de dispositivos: aprovisionamiento masivo de dispositivos
 
-El siguiente ejemplo de código de C# muestra cómo generar varias identidades de dispositivo que:
+Hello siguiente ejemplo de código de C# se muestra cómo toogenerate varias identidades de dispositivos que:
 
 * Incluyen claves de autenticación.
-* Escriben la información del dispositivo en un blob en bloques.
-* Importan los dispositivos en el Registro de identidad.
+* Escribir ese blob en bloques dispositivo información tooa.
+* Importar dispositivos Hola del registro de identidad de Hola.
 
 ```csharp
 // Provision 1,000 more devices
@@ -262,7 +262,7 @@ var serializedDevices = new List<string>();
 for (var i = 0; i < 1000; i++)
 {
   // Create a new ExportImportDevice
-  // CryptoKeyGenerator is in the Microsoft.Azure.Devices.Common namespace
+  // CryptoKeyGenerator is in hello Microsoft.Azure.Devices.Common namespace
   var deviceToAdd = new ExportImportDevice()
   {
     Id = Guid.NewGuid().ToString(),
@@ -278,11 +278,11 @@ for (var i = 0; i < 1000; i++)
     ImportMode = ImportMode.Create
   };
 
-  // Add device to the list
+  // Add device toohello list
   serializedDevices.Add(JsonConvert.SerializeObject(deviceToAdd));
 }
 
-// Write the list to the blob
+// Write hello list toohello blob
 var sb = new StringBuilder();
 serializedDevices.ForEach(serializedDevice => sb.AppendLine(serializedDevice));
 await blob.DeleteIfExistsAsync();
@@ -297,8 +297,8 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
   }
 }
 
-// Call import using the blob to add new devices
-// Log information related to the job is written to the same container
+// Call import using hello blob tooadd new devices
+// Log information related toohello job is written toohello same container
 // This normally takes 1 minute per 100 devices
 JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
@@ -320,14 +320,14 @@ while(true)
 
 ## <a name="import-devices-example--bulk-deletion"></a>Ejemplo de importación de dispositivos: eliminación masiva
 
-El ejemplo de código siguiente muestra cómo eliminar los dispositivos que ha agregado con el ejemplo de código anterior:
+Hello ejemplo de código siguiente muestra cómo los dispositivos de hello toodelete mediante que agregó Hola ejemplo de código anterior:
 
 ```csharp
-// Step 1: Update each device's ImportMode to be Delete
+// Step 1: Update each device's ImportMode toobe Delete
 sb = new StringBuilder();
 serializedDevices.ForEach(serializedDevice =>
 {
-  // Deserialize back to an ExportImportDevice
+  // Deserialize back tooan ExportImportDevice
   var device = JsonConvert.DeserializeObject<ExportImportDevice>(serializedDevice);
 
   // Update property
@@ -337,7 +337,7 @@ serializedDevices.ForEach(serializedDevice =>
   sb.AppendLine(JsonConvert.SerializeObject(device));
 });
 
-// Step 2: Write the new import data back to the block blob
+// Step 2: Write hello new import data back toohello block blob
 await blob.DeleteIfExistsAsync();
 using (CloudBlobStream stream = await blob.OpenWriteAsync())
 {
@@ -349,7 +349,7 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
   }
 }
 
-// Step 3: Call import using the same blob to delete all devices
+// Step 3: Call import using hello same blob toodelete all devices
 importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
 // Wait until job is finished
@@ -368,14 +368,14 @@ while(true)
 }
 ```
 
-## <a name="get-the-container-sas-uri"></a>Obtención del identificador URI de SAS del contenedor
+## <a name="get-hello-container-sas-uri"></a>Obtener el contenedor de hello URI de SAS
 
-El ejemplo de código siguiente muestra cómo generar un [identificador URI de SAS](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) con permisos de lectura, escritura y eliminación para un contenedor de blobs:
+Hello ejemplo de código siguiente muestra cómo toogenerate una [URI de SAS](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md) con lectura, escritura y eliminación de permisos para un contenedor de blobs:
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
 {
-  // Set the expiry time and permissions for the container.
+  // Set hello expiry time and permissions for hello container.
   // In this case no start time is specified, so the
   // shared access signature becomes valid immediately.
   var sasConstraints = new SharedAccessBlobPolicy();
@@ -385,24 +385,24 @@ static string GetContainerSasUri(CloudBlobContainer container)
     SharedAccessBlobPermissions.Read | 
     SharedAccessBlobPermissions.Delete;
 
-  // Generate the shared access signature on the container,
-  // setting the constraints directly on the signature.
+  // Generate hello shared access signature on hello container,
+  // setting hello constraints directly on hello signature.
   string sasContainerToken = container.GetSharedAccessSignature(sasConstraints);
 
-  // Return the URI string for the container,
-  // including the SAS token.
+  // Return hello URI string for hello container,
+  // including hello SAS token.
   return container.Uri + sasContainerToken;
 }
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este artículo, aprendió a realizar operaciones de forma masiva en el Registro de identidad en un centro de IoT. Siga estos vínculos para más información sobre la administración del Centro de IoT de Azure:
+En este artículo, ha aprendido cómo tooperform de forma masiva las operaciones en el registro de la identidad de hello en un centro de IoT. Siga estos toolearn de vínculos más acerca de cómo administrar el centro de IoT de Azure:
 
 * [Métricas de IoT Hub][lnk-metrics]
 * [Supervisión de operaciones][lnk-monitor]
 
-Para explorar aún más las funcionalidades de IoT Hub, consulte:
+toofurther explorar las capacidades de Hola de centro de IoT, vea:
 
 * [Guía para desarrolladores de IoT Hub][lnk-devguide]
 * [Simular un dispositivo con IoT Edge][lnk-iotedge]

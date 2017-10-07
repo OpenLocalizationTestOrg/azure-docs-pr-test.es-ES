@@ -1,5 +1,5 @@
 ---
-title: "Pausa, reanudación y escalado con REST en Azure SQL Data Warehouse | Microsoft Docs"
+title: "aaaPause, reanudar, escalar con REST en el almacén de datos de SQL de Azure | Documentos de Microsoft"
 description: Administre la potencia de proceso en SQL Data Warehouse mediante REST, T-SQL y PowerShell.
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 07/25/2017
 ms.author: elbutter
-ms.openlocfilehash: 24e43205c0c562fca9b1c2c0e5eed4da54e17ed7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fc867febb118fb5c86c2637a41b232076021b95d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-rest"></a>Administración de la potencia de proceso en Almacenamiento de datos SQL de Azure (REST)
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/03/2017
 ## <a name="scale-compute-power"></a>Escalado de la potencia de proceso
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-Para cambiar las DWU, utilice la API de REST [Create or Update Database][Create or Update Database]. En el ejemplo siguiente se establece el objetivo de nivel de servicio en DW1000 para la base de datos MySQLDW que se hospeda en el servidor MyServer. El servidor está en un grupo de recursos de Azure denominado ResourceGroup1.
+Hola toochange a Dwu, usar hello [crear o actualizar base de datos] [ Create or Update Database] API de REST. Hello en el ejemplo siguiente se establece tooDW1000 objetivo de hello servicio nivel de base de datos de hello MySQLDW que se hospeda en el servidor MyServer. servidor Hello está en un grupo de recursos de Azure denominado ResourceGroup1.
 
 ```
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -55,7 +55,7 @@ Content-Type: application/json; charset=UTF-8
 ## <a name="pause-compute"></a>Pausa del proceso
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-Para pausar una base de datos, utilice la API de REST [Pause Database][Pause Database]. El siguiente ejemplo pausa una base de datos denominada Database02 que está hospedada en un servidor llamado Server01. El servidor está en un grupo de recursos de Azure denominado ResourceGroup1.
+toopause una base de datos, usar hello [base de datos de pausa] [ Pause Database] API de REST. Hello en el ejemplo siguiente se pausa una base de datos denominada Database02 hospedado en un servidor denominado Server01. servidor Hello está en un grupo de recursos de Azure denominado ResourceGroup1.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -66,7 +66,7 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 ## <a name="resume-compute"></a>Reanudación del proceso
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-Para iniciar una base de datos, utilice la API de REST [Resume Database][Resume Database]. El siguiente ejemplo inicia una base de datos denominada Database02 que está hospedada en un servidor llamado Server01. El servidor está en un grupo de recursos de Azure denominado ResourceGroup1. 
+toostart una base de datos, usar hello [base de datos de reanudación] [ Resume Database] API de REST. Hello en el ejemplo siguiente se inicia una base de datos denominada Database02 hospedado en un servidor denominado Server01. servidor Hello está en un grupo de recursos de Azure denominado ResourceGroup1. 
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1

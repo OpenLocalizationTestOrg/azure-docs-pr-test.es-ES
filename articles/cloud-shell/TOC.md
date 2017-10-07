@@ -8,7 +8,7 @@
 
 # Procedimiento
 ## [Almacenamiento de persistencia](persisting-shell-storage.md)
-## [Uso de la ventana](using-the-shell-window.md)
+## [Usar ventana hello](using-the-shell-window.md)
 
 # [Precios](pricing.md)
 

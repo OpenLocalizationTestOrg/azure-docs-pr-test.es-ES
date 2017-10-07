@@ -1,6 +1,6 @@
 ---
-title: "Inicio rápido de Azure Service Fabric con API Management | Microsoft Docs"
-description: "En esta guía se muestra cómo empezar a usar rápidamente Azure API Management y Service Fabric."
+title: "aaaAzure Service Fabric con inicio rápido de administración de API | Documentos de Microsoft"
+description: "Esta guía le mostrará cómo tooquickly comenzar con la administración de API de Azure y el tejido de servicio."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e9f44d8a43d274768f43261fea68f0da9c681ae1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f76f3f39a92f89892d6a02ecaab1ec3d343fe2a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-with-azure-api-management-quick-start"></a>Inicio rápido de Service Fabric con Azure API Management
 
-Esta guía muestra cómo configurar Azure API Management con Service Fabric y la primera operación de API para enviar tráfico a los servicios de back-end de Service Fabric. Para más información sobre escenarios de Azure API Management con Service Fabric, consulte el artículo de [introducción](service-fabric-api-management-overview.md). 
+Esta guía le mostrará cómo tooset una copia de seguridad administración de API de Azure con Service Fabric y configurar los primeros servicios de API operación toosend tráfico tooback-end de Service Fabric. toolearn más información acerca de los escenarios de administración de API de Azure con Service Fabric, vea hello [Introducción](service-fabric-api-management-overview.md) artículo. 
 
-## <a name="deploy-api-management-and-service-fabric-to-azure"></a>Implementación de API Management y Service Fabric en Azure
+## <a name="deploy-api-management-and-service-fabric-tooazure"></a>Implementar la administración de API y el tejido de servicio tooAzure
 
-El primer paso es implementar API Management y un clúster de Service Fabric en Azure, en una red virtual compartida. Esto permite a API Management comunicarse directamente con Service Fabric para que realice la detección de servicios, la resolución de la partición de servicio y que reenvíe el tráfico directamente a cualquier servicio de back-end de Service Fabric.
+Hola primer paso es toodeploy administración de API y un tooAzure de clúster de Service Fabric en una red Virtual compartida. Esto permite toocommunicate de administración de API directamente con el tejido de servicio para que pueda realizar la detección de servicios, resolución de la partición de servicio y reenvíe el tráfico directamente tooany back-end del servicio de Service Fabric.
 
 ### <a name="topology"></a>Topología
 
-Esta guía distribuye en Azure la topología siguiente, donde API Management y Service Fabric se encuentran en subredes de la misma red virtual:
+Esta guía implementa siguiente hello tooAzure topología en la que administración de API y el tejido de servicio están en subredes de Hola misma red Virtual:
 
  ![Leyenda de la imagen][sf-apim-topology-overview]
 
-Para empezar a trabajar rápidamente, se proporcionan plantillas de Resource Manager para cada paso de la implementación:
+tooget a trabajar rápidamente, plantillas de administrador de recursos se proporcionan para cada paso de implementación:
 
  - Topología de red:
     - [network.json][network-arm]
@@ -46,11 +46,11 @@ Para empezar a trabajar rápidamente, se proporcionan plantillas de Resource Man
     - [apim.json][apim-arm]
     - [apim.parameters.json][apim-parameters-arm]
 
-### <a name="sign-in-to-azure-and-select-your-subscription"></a>Inicio de sesión en Azure y selección de la suscripción
+### <a name="sign-in-tooazure-and-select-your-subscription"></a>Inicie sesión en tooAzure y seleccione su suscripción
 
-En esta guía se usa [Azure PowerShell][azure-powershell]. Al iniciar una nueva sesión de PowerShell, inicie sesión en su cuenta de Azure y seleccione su suscripción antes de ejecutar comandos de Azure.
+En esta guía se usa [Azure PowerShell][azure-powershell]. Cuando se inicia una nueva sesión de PowerShell, inicie sesión en tooyour cuenta de Azure y seleccione su suscripción antes de ejecutar comandos de Azure.
  
-Inicio de sesión en la cuenta de Azure
+Inicie sesión en tooyour cuenta de Azure:
 
 ```powershell
 PS > Login-AzureRmAccount
@@ -71,42 +71,42 @@ Cree un grupo de recursos para la implementación. Asígnele un nombre y una ubi
 PS > New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
 ```
 
-### <a name="deploy-the-network-topology"></a>Implementación de la topología de red
+### <a name="deploy-hello-network-topology"></a>Implementar la topología de red de Hola
 
-El primer paso es configurar la topología de la red de implementación de API Management y el clúster de Service Fabric. La plantilla de Resource Manager [network.json][network-arm] está configurada para crear una red Virtual (VNET) con dos subredes y dos grupos de seguridad de red (NSG). 
+Hola primer paso es tooset una toowhich de topología de red de hello administración de API y clúster de Service Fabric Hola se va a implementar. Hola [network.json] [ network-arm] plantilla de administrador de recursos es toocreate configurado una red Virtual (VNET) con dos subredes y dos grupos de seguridad de red (NSG). 
 
-El archivo de parámetros [network.parameters.json][network-parameters-arm] contiene los nombres de las subredes y los grupos de seguridad de red donde se implementarán API Management y Service Fabric. En esta guía, los valores de los parámetros no deben cambiarse. Las plantillas de Resource Manager para API Management y Service Fabric usan estos valores, por lo que, si los modifica aquí, debe modificarlos también en las demás plantillas de Resource Manager. 
+Hola [network.parameters.json] [ network-parameters-arm] archivo de parámetros contiene nombres de Hola de subredes de Hola y NSG que se implementará en administración de API y el tejido de servicio. En esta guía, los valores de parámetro hello no es necesario toobe cambiado. plantillas de administración de API y el servicio Administrador de recursos del tejido de Hello utilizan estos valores, por lo que si se modifican aquí, debe modificar otras plantillas de administrador de recursos en hello en consecuencia. 
 
- 1. Descargue la plantilla de Resource Manager y el archivo de parámetros siguientes:
+ 1. Descargar Hola siguiente archivo de plantilla y los parámetros del Administrador de recursos:
 
     - [network.json][network-arm]
     - [network.parameters.json][network-parameters-arm]
 
- 2. Use el siguiente comando de PowerShell para implementar la plantilla de Resource Manager y los archivos de parámetros para la configuración de la red:
+ 2. Usar hello siguiendo PowerShell toodeploy Hola Administrador de recursos plantilla y parámetros archivos de comandos para el programa de instalación de red de hello:
 
     ```powershell
     PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\network.json -TemplateParameterFile .\network.parameters.json -Verbose
     ```
 
-### <a name="deploy-the-service-fabric-cluster"></a>Implementación del clúster de Service Fabric
+### <a name="deploy-hello-service-fabric-cluster"></a>Implementar el clúster de Service Fabric Hola
 
-Una vez implementados los recursos de red, el siguiente paso es implementar un clúster de Service Fabric a la red virtual, en la subred y el grupo de seguridad de red designados para el clúster de Service Fabric. Para este tutorial, la plantilla de Resource Manager para Service Fabric está preconfigurada para los nombres de la red virtual, la subred y el grupo de seguridad de red que configuró en el paso anterior. 
+Una vez que han terminado de recursos de red de hello implementar, Hola siguiente paso es toodeploy toohello de clúster de Service Fabric red virtual en la subred de Hola y NSG designado para el clúster de Service Fabric Hola. Para este tutorial, plantilla de servicio Administrador de recursos de tejido de hello es toouse preconfigurada Hola nombres de hello red virtual, subred y NSG que configuró en el paso anterior de Hola. 
 
-La plantilla de Resource Manager para el clúster de Service Fabric está configurada para crear un clúster con certificado seguro. El certificado se utiliza para proteger la comunicación de nodo a nodo del clúster y para administrar el acceso de los usuarios al clúster de Service Fabric. API Management usa este certificado para acceder al servicio de nomenclatura de Service Fabric para detectar servicios.
+plantilla de administrador de recursos de clúster de Service Fabric Hello es toocreate configurado un clúster segura con seguridad de certificado. certificado de Hello es comunicación de nodo a nodo toosecure usado para el clúster y toomanage usuario acceso tooyour Service Fabric. Administración de API usa este Hola de tooaccess servicio de nomenclatura de tejido de servicio de certificado para la detección de servicios.
 
 Este paso requiere un certificado en Key Vault para la seguridad del clúster. Para más información sobre cómo configurar un clúster seguro en Key Vault, consulte [esta guía sobre la creación de un clúster de Azure con Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
 > [!NOTE]
-> Puede agregar la autenticación de Azure Active Directory además del certificado de acceso al clúster. Azure Active Directory es la manera recomendada para administrar el acceso de usuario al clúster de Service Fabric, pero esto no es necesario para completar el tutorial. En cualquier caso, se necesita un certificado para la seguridad de nodo a nodo del clúster y para la autenticación de Azure API Management, que actualmente no admite la autenticación con Azure Active Directory para el back-end de Service Fabric.
+> Autenticación de Azure Active Directory se puede agregar en suma toohello certificado utilizado para el acceso al clúster. Azure Active Directory es hello recomendada clúster Service Fabric de tooyour de acceso de usuario de manera toomanage, pero es toocomplete no es necesario en este tutorial. En cualquier caso, se necesita un certificado para la seguridad de nodo a nodo del clúster y para la autenticación de Azure API Management, que actualmente no admite la autenticación con Azure Active Directory para el back-end de Service Fabric.
 
- 1. Descargue la plantilla de Resource Manager y el archivo de parámetros siguientes:
+ 1. Descargar Hola siguiente archivo de plantilla y los parámetros del Administrador de recursos:
  
     - [cluster.json][cluster-arm]
     - [cluster.parameters.json][cluster-parameters-arm]
 
- 2. Rellene los parámetros vacíos del archivo `cluster.parameters.json` para la implementación, incluida la [información del almacén de claves](service-fabric-cluster-creation-via-arm.md#set-up-a-key-vault) para el certificado del clúster.
+ 2. Rellenar parámetros vacía de hello en hello `cluster.parameters.json` archivo para la implementación, incluyendo hello [información del almacén de claves](service-fabric-cluster-creation-via-arm.md#set-up-a-key-vault) para el certificado de clúster.
 
- 3. Use el siguiente comando de PowerShell para implementar la plantilla de Resource Manager y los archivos de parámetros para crear el clúster de Service Fabric:
+ 3. Usar hello después PowerShell comando toodeploy Hola Administrador de recursos plantilla y parámetros archivos toocreate Hola clúster de Service Fabric:
 
     ```powershell
     PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\cluster.json -TemplateParameterFile .\cluster.parameters.json -Verbose
@@ -114,18 +114,18 @@ Este paso requiere un certificado en Key Vault para la seguridad del clúster. P
 
 ### <a name="deploy-api-management"></a>Implementación de API Management
 
-Por último, implemente API Management en la red virtual, en la subred y el grupo de seguridad de red designados para API Management. No es necesario esperar a que finalice la implementación del clúster de Service Fabric para implementar API Management. 
+Por último, implementar la administración de API toohello red virtual en la subred de Hola y NSG designado para la administración de API. No es necesario toowait para toofinish de implementación de clúster de Service Fabric Hola antes de implementar la administración de API. 
 
-Para este tutorial, la plantilla de Resource Manager para API Management está preconfigurada para los nombres de la red virtual, la subred y el grupo de seguridad de red que configuró en el paso anterior. 
+Para este tutorial, plantilla de administrador de recursos de administración de API de hello es toouse preconfigurada Hola nombres de hello red virtual, subred y NSG que configuró en el paso anterior de Hola. 
 
- 1. Descargue la plantilla de Resource Manager y el archivo de parámetros siguientes:
+ 1. Descargar Hola siguiente archivo de plantilla y los parámetros del Administrador de recursos:
  
     - [apim.json][apim-arm]
     - [apim.parameters.json][apim-parameters-arm]
 
- 2. Rellene los parámetros vacíos en el archivo `apim.parameters.json` para la implementación.
+ 2. Rellenar parámetros vacía de hello en hello `apim.parameters.json` para su implementación.
 
- 3. Use el siguiente comando de PowerShell para implementar la plantilla de Resource Manager y los archivos de parámetros para API Management:
+ 3. Usar hello siguientes PowerShell comando toodeploy Hola Administrador de recursos plantilla y parámetros archivos para la administración de API:
 
     ```powershell
     PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\apim.json -TemplateParameterFile .\apim.parameters.json -Verbose
@@ -133,43 +133,43 @@ Para este tutorial, la plantilla de Resource Manager para API Management está p
 
 ## <a name="configure-api-management"></a>Configuración de API Management
 
-Una vez implementados API Management y el clúster de Service Fabric, puede configurar un back-end de Service Fabric en API Management. De este modo, podrá crear una directiva de servicio de back-end que envíe tráfico al clúster de Service Fabric.
+Una vez implementados API Management y el clúster de Service Fabric, puede configurar un back-end de Service Fabric en API Management. Esto le permite toocreate una directiva de servicio de back-end que envía el clúster de Service Fabric tooyour de tráfico.
 
 ### <a name="api-management-security"></a>Seguridad de API Management
 
-Para configurar el back-end de Service Fabric, primero debe realizar la configuración de seguridad de API Management. Para configurar las opciones de seguridad, vaya a su servicio de API Management en Azure Portal.
+tooconfigure Hola Service Fabric back-end, primero debe tooconfigure configuración de seguridad de administración de API. configuración de seguridad de tooconfigure, vaya a servicio de administración de API tooyour de hello portal de Azure.
 
-#### <a name="enable-the-api-management-rest-api"></a>Habilitación de la API de REST de API Management
+#### <a name="enable-hello-api-management-rest-api"></a>Habilitar Hola API de REST de administración
 
-La API de REST de API Management actualmente es la única manera de configurar un servicio back-end. El primer paso es habilitar la API de REST de API Management y protegerla.
+Hola API de REST de administración está actualmente tooconfigure de forma única un servicio back-end de Hola. primer paso de Hello es tooenable hello API de REST de administración y protegerla.
 
- 1. En **Seguridad** del servicio API Management, seleccione **API Management (versión preliminar)**.
- 2. Marque la casilla **Habilitar API de REST de API Management**.
- 3. Anote la URL de API Management, se usará más adelante para configurar el back-end de Service Fabric.
- 4. Genere un **token de acceso**; para ello, seleccione una fecha de expiración y una clave, y haga clic en el botón **Generar** situado hacia la parte inferior de la página.
- 5. Copie el **token de acceso** y guárdelo, lo usaremos en los pasos siguientes. Tenga en cuenta que es distinto de las claves principal y secundaria.
+ 1. En el servicio de administración de API de hello, seleccione **API de administración - versión preliminar** en **seguridad**.
+ 2. Comprobar hello **habilitar API de REST de administración de API** casilla de verificación.
+ 3. Tenga en cuenta Hola URL de la API de administración; éste es dirección URL de hello usaremos tooset posterior de back-end de hello Service Fabric
+ 4. Generar un **Token de acceso** al seleccionar una fecha de expiración y una clave, a continuación, haga clic en hello **generar** botón hacia la parte inferior de Hola de página de Hola.
+ 5. Hola copia **token de acceso** y guárdelo: vamos a usar en hello pasos. Tenga en cuenta que esto es diferente de la clave principal de Hola y la clave secundaria.
 
 #### <a name="upload-a-service-fabric-client-certificate"></a>Carga de un certificado de cliente de Service Fabric
 
-API Management debe autenticarse con el clúster de Service Fabric para la detección de servicios mediante un certificado de cliente con acceso al clúster. Para facilitar las cosas, en este tutorial se usa el mismo certificado que se especificó al crear el clúster de Service Fabric, que, de forma predeterminada, se puede usar para acceder al clúster.
+Administración de API debe autenticarse con el clúster de Service Fabric para la detección de servicio utilizando un certificado de cliente que tiene acceso tooyour clúster. Por simplicidad, este tutorial se utiliza Hola mismo certificado que se especificó al crear el clúster de Service Fabric hello, que puede ser tooaccess usados de forma predeterminada el clúster.
 
- 1. En **Seguridad** del servicio API Management, seleccione **Certificados de cliente (versión preliminar)**.
- 2. Haga clic en el botón **+ Agregar**.
- 2. Seleccione el archivo de clave privada (.pfx) del certificado de clúster que especificó al crear el clúster de Service Fabric, asígnele un nombre y escriba la contraseña de clave privada.
-
-> [!NOTE]
-> En este tutorial se usa el mismo certificado para la autenticación de cliente y la seguridad de nodo a nodo del clúster. Puede utilizar otro certificado de cliente si tiene uno configurado para acceder al clúster de Service Fabric.
-
-### <a name="configure-the-backend"></a>Configuración del back-end
-
-Ahora que se ha configurado la seguridad de API Management, puede configurar el back-end de Service Fabric. Para Service Fabric, su clúster sirve de back-end, en lugar de usar un servicio de Service Fabric específico. Esto permite que una única directiva enrute a más de un servicio del clúster.
-
-Este paso requiere el token de acceso que se generó anteriormente y la huella digital para el certificado de clúster que se cargó en API Management en el paso anterior.
+ 1. En el servicio de administración de API de hello, seleccione **certificados de cliente - vista previa** en **seguridad**.
+ 2. Haga clic en hello **+ agregar** botón
+ 2. Hola Seleccione archivo de clave privada (.pfx) del certificado de clúster de Hola que especificó al crear el clúster de Service Fabric, asígnele un nombre y proporcionar la contraseña de clave privada de Hola.
 
 > [!NOTE]
-> Si usó un certificado de cliente independiente en el paso anterior para API Management, para este paso necesita la huella digital del certificado de cliente además de la huella digital de certificado de clúster.
+> Este tutorial usa Hola mismo certificado para la seguridad de cliente autenticación y clúster de nodo a nodo. Puede utilizar un certificado de cliente independiente si tienes un tooaccess configurado el clúster de Service Fabric.
 
-Envíe la solicitud de PUT de HTTP siguiente a la URL de la API de API Management que anotó anteriormente al habilitar la API de REST de API Management para configurar el servicio de back-end de Service Fabric. Verá una respuesta `HTTP 201 Created` al ejecutarse el comando correctamente. Para más información sobre cada campo, consulte la [documentación de referencia de la API de back-end](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend) de API Management.
+### <a name="configure-hello-backend"></a>Configurar Hola back-end
+
+Ahora que se configura la seguridad de administración de API, puede configurar el back-end de hello Service Fabric. Para servidores backend de Service Fabric, clúster de Service Fabric hello es Hola back-end, en lugar de un servicio de Service Fabric específico. Esto permite un toomore de tooroute de directiva único que un servicio en clúster de Hola.
+
+Este paso requiere Hola token de acceso que ha generado anteriormente y Hola huella digital para el certificado de clúster que se cargó tooAPI administración en el paso anterior de Hola.
+
+> [!NOTE]
+> Si utiliza un certificado de cliente independiente en el paso anterior de hello para la administración de API, deberá huella digital de hello certificado de cliente de hello en suma toohello clúster huella digital del certificado en este paso.
+
+Enviar Hola después toohello de solicitud HTTP PUT URL de la API de administración de API que anotó anteriormente al habilitar el servicio de back-end de hello API de REST de administración tooconfigure Hola Service Fabric. Debería ver un `HTTP 201 Created` en la respuesta al comando Hola se ejecuta correctamente. Para obtener más información sobre cada campo, consulte Administración de API de hello [documentación de referencia de API de back-end](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend).
 
 Comando HTTP y dirección URL:
 ```http
@@ -200,9 +200,9 @@ Cuerpo de la solicitud:
 }
 ```
 
-Este parámetro **url** es el nombre de acceso completo del servicio en el clúster al que se enrutan todas las solicitudes de forma predeterminada si no se especifica ningún nombre de servicio en una directiva de back-end. Puede usar un nombre de servicio falso, como "fabric:/fake/service" si no desea un servicio de reserva.
+Hola **url** parámetro aquí es un nombre de servicio de acceso completa de un servicio en el clúster que todas las solicitudes enruta tooby predeterminado si se especifica ningún nombre de servicio en una directiva de back-end. Puede usar un nombre de servicio falsa, como "fabric: / falsa/servicio" Si no piensa toohave un servicio de reserva.
 
-Para más información sobre cada campo, consulte la [documentación de referencia de la API de back-end](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend) de API Management.
+Consulte administración de API de toohello [documentación de referencia de API de back-end](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend) para obtener más detalles sobre cada campo.
 
 #### <a name="example"></a>Ejemplo
 
@@ -229,11 +229,11 @@ Content-Type: application/json
 
 ## <a name="deploy-a-service-fabric-back-end-service"></a>Implementación de un servicio de back-end de Service Fabric
 
-Ahora que tiene Service Fabric configurado como back-end para API Management, puede crear directivas de back-end para las API que envían tráfico a los servicios de Service Fabric. Pero primero necesita que un servicio que se ejecute en Service Fabric acepte las solicitudes.
+Ahora que tiene Hola que Service Fabric configurado como un tooAPI de back-end administración, puede crear directivas de back-end para las API que envían tráfico tooyour servicios de Service Fabric. Pero primero necesita un servicio que se ejecuta en las solicitudes de tooaccept de Service Fabric.
 
 ### <a name="create-a-service-fabric-service-with-an-http-endpoint"></a>Creación de un servicio de Service Fabric con un punto de conexión HTTP
 
-Para este tutorial, vamos a crear un servicio básico confiable de ASP.NET Core sin estado con la plantilla de proyecto de API web predeterminada. Así se crea un punto de conexión HTTP para el servicio que se expondrá en Azure API Management:
+Para este tutorial, vamos a crear un básica sin estado ASP.NET confiable servicio principal con plantilla de proyecto de API Web de hello predeterminada. Así se crea un punto de conexión HTTP para el servicio que se expondrá en Azure API Management:
 
 ```
 /api/values
@@ -244,10 +244,10 @@ Empiece por [configurar el entorno de desarrollo para ASP.NET Core](service-fabr
 Una vez configurado el entorno de desarrollo, inicie Visual Studio como administrador y cree un servicio ASP.NET Core:
 
  1. En Visual Studio, seleccione Archivo -> Nuevo proyecto.
- 2. En Nube, seleccione la plantilla de aplicación de Service Fabric y asígnele el nombre **"ApiApplication"**.
- 3. Seleccione la plantilla de servicio de ASP.NET Core y denomine el proyecto **"WebApiService"**.
- 4. Seleccione la plantilla de proyecto de ASP.NET Core 1.1 de API web.
- 5. Una vez creado el proyecto, abra `PackageRoot\ServiceManifest.xml` y quite los atributos `Port` de la configuración del recurso de punto de conexión:
+ 2. Seleccione la plantilla de aplicación de servicio Fabric hello en la nube y asígnele el nombre **"ApiApplication"**.
+ 3. Seleccione Hola plantilla de servicio de ASP.NET Core y proyecto de hello name **"WebApiService"**.
+ 4. Seleccione la plantilla de proyecto de hello Web API de ASP.NET Core 1.1.
+ 5. Una vez creado el proyecto de hello, abra `PackageRoot\ServiceManifest.xml` y quitar hello `Port` atributo de configuración de recurso del extremo de hello:
  
     ```xml
     <Resources>
@@ -257,54 +257,54 @@ Una vez configurado el entorno de desarrollo, inicie Visual Studio como administ
     </Resources>
     ```
 
-    Así, Service Fabric puede especificar un puerto dinámicamente desde el intervalo de puertos de la aplicación, que habremos abierto a través del grupo de seguridad de red en la plantilla del clúster de Resource Manager para que el tráfico fluya a él desde API Management.
+    Esto permite que un puerto de forma dinámica a partir de intervalo de puertos de aplicación hello, que se abría mediante Hola grupo de seguridad de red en la plantilla de administrador de recursos de clúster de hello, lo que permite el tráfico tooflow tooit de la API de administración de Service Fabric toospecify.
  
- 6. Presione F5 en Visual Studio para comprobar que la API web está disponible de manera local. 
+ 6. Presione F5 en web de Visual Studio tooverify Hola API está disponible localmente. 
 
-    Abra Service Fabric Explorer y vaya a una instancia específica del servicio ASP.NET Core para ver la dirección base donde escucha el servicio. Agregue `/api/values` a la dirección base y ábrala en un explorador. Esta acción invoca el método Get en la clase ValuesController de la plantilla de API web y devuelve la respuesta predeterminada de la plantilla, una matriz JSON con dos cadenas:
+    Abra el Explorador de Service Fabric y explorar en profundidad tooa instancia concreta de hello ASP.NET Core toosee Hola dirección base Hola servicio está escuchando en. Agregar `/api/values` toohello dirección base y ábralo en un explorador. Esto invoca el método Get en hello ValuesController en la plantilla de la API Web de Hola Hola. Devuelve respuesta predeterminada de hello proporcionada por la plantilla de hello, una matriz JSON que contiene dos cadenas:
 
     ```json
     ["value1", "value2"]`
     ```
 
-    Este es el punto de conexión que deberá exponer a través de API Management en Azure.
+    Se trata de punto de conexión de Hola que quedará expuesto a través de la API de administración de Azure.
 
- 7. Por último, implemente la aplicación en el clúster en Azure. **Con Visual Studio**, haga clic con el botón derecho en el proyecto de la aplicación y seleccione [Publicar](service-fabric-publish-app-remote-cluster.md#to-publish-an-application-using-the-publish-service-fabric-application-dialog-box). Proporcione el punto de conexión del clúster (por ejemplo, `mycluster.westus.cloudapp.azure.com:19000`) para implementar la aplicación en el clúster de Service Fabric en Azure.
+ 7. Por último, implementar clústeres de tooyour de aplicación hello en Azure. [Con Visual Studio](service-fabric-publish-app-remote-cluster.md#to-publish-an-application-using-the-publish-service-fabric-application-dialog-box), haga clic en proyecto de aplicación de Hola y seleccione **publicar**. Proporciona el punto de conexión de clúster (por ejemplo, `mycluster.westus.cloudapp.azure.com:19000`) toodeploy Hola aplicación tooyour tejido de servicio de clúster en Azure.
 
 En el clúster de Service Fabric en Azure ahora se ejecutará un servicio sin estado ASP.NET Core denominado `fabric:/ApiApplication/WebApiService`.
 
 ## <a name="create-an-api-operation"></a>Creación de una operación de API
 
-Ahora estamos listos crear una operación en API Management que los clientes externos usarán para comunicarse con el servicio sin estado ASP.NET Core que se ejecuta en el clúster de Service Fabric.
+Ahora estamos listo toocreate una operación de administración de API que toocommunicate de uso de los clientes externos con Hola servicio sin estado ASP.NET Core se ejecuta en el clúster de Service Fabric Hola.
 
- 1. Inicie sesión en Azure Portal y vaya a la implementación del servicio API Management.
- 2. En la hoja del servicio API Management, seleccione **API - VERSIÓN PRELIMINAR**.
- 3. Haga clic en el cuadro **Blank API** (API en blanco) y rellene el cuadro de diálogo para agregar una API nueva:
+ 1. Inicie sesión en toohello portal de Azure y navegar por la implementación del servicio de administración de API de tooyour.
+ 2. En la hoja de servicio de administración de API de hello, seleccione **API - vista previa**
+ 3. Agregar una nueva API haciendo clic en hello **API en blanco** cuadro y rellenar el cuadro de diálogo de hello:
 
      - **URL de servicio Web**: para los back-end de Service Fabric, no se utiliza. Puede escribir aquí cualquier valor. Para este tutorial usaremos `http://servicefabric`.
      - **Nombre**: proporcione cualquier nombre para la API. Para este tutorial usaremos `Service Fabric App`.
      - **Esquema URL**: seleccione HTTP, HTTPS o ambos. Para este tutorial usaremos `both`.
      - **API URL Suffix** (Sufijo de URL para API): proporcione un sufijo para la API. Para este tutorial usaremos `myapp`.
  
- 4. Una vez creada la API, haga clic en **+ Add operation** (+ Agregar operación) para agregar una operación de API de front-end. Rellene los valores:
+ 4. Una vez que se crea Hola API, haga clic en **+ Agregar operación** operación tooadd una API de front-end. Rellene los valores de hello:
     
-     - **URL**: seleccione `GET` y proporcione una ruta de acceso URL para la API. Para este tutorial usaremos `/api/values`.
+     - **Dirección URL**: seleccione `GET` y proporcione una ruta de acceso de dirección URL para hello API. Para este tutorial usaremos `/api/values`.
      
-       De forma predeterminada, la ruta de acceso URL que se especifica aquí se envía al servicio de back-end de Service Fabric. Si utiliza aquí la misma ruta de acceso URL que usa el servicio, en este caso, `/api/values`, la operación funciona sin más modificaciones. También puede especificar aquí una ruta de acceso URL distinta de la que usa el servicio de back-end de Service Fabric, en cuyo caso también deberá especificar después una ruta de acceso de reescritura en la directiva de la operación.
-     - **Nombre para mostrar**: proporcione cualquier nombre para la API. Para este tutorial usaremos `Values`.
+       De forma predeterminada, la ruta de acceso de dirección URL de hello especificado aquí se ruta de acceso de dirección URL de hello envía el servicio de Service Fabric toohello back-end. Si usas Hola misma dirección URL aquí que utiliza el servicio, en este caso `/api/values`, a continuación, la operación de hello funciona sin modificaciones adicionales. También puede especificar una ruta de acceso URL aquí que es diferente de la ruta de acceso de dirección URL de hello utilizado por el servicio de Service Fabric, de back-end en cuyo caso tendrá que también toospecify necesidad de volver a escribir una ruta de acceso en la directiva de la operación más tarde.
+     - **Nombre para mostrar**: proporcionar un nombre para hello API. Para este tutorial usaremos `Values`.
 
 ## <a name="configure-a-backend-policy"></a>Configuración de una directiva de back-end
 
-La directiva de back-end une todos los elementos. Es donde se configura el servicio de back-end de Service Fabric al que se enrutan las solicitudes. Puede aplicar esta directiva a cualquier operación de API. La [configuración de back-end de Service Fabric](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService) proporciona los controles de enrutamiento de solicitudes siguientes: 
- - Selección de instancias de servicio mediante la especificación de un nombre de instancia de servicio de Service Fabric, ya sea codificado de forma rígida (por ejemplo, `"fabric:/myapp/myservice"`) o generado a partir de la solicitud HTTP (por ejemplo, `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`).
+Directiva de back-end de Hello agrupa todos los componentes. Esto es donde se configura Hola back-end se enrutan las solicitudes de servicio toowhich de Service Fabric. Puede aplicar esta operación de API de tooany de directiva. Hola [configuración de back-end de Service Fabric](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService) proporciona controles de enrutamientos de solicitud de siguiente de hello: 
+ - Selección de instancia de servicio mediante la especificación de un nombre de instancia de servicio de Service Fabric, ya sea codificado de forma rígida (por ejemplo, `"fabric:/myapp/myservice"`) o generarse a partir de la solicitud de hello HTTP (por ejemplo, `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`).
  - Resolución de la partición mediante la generación de una clave de partición a partir de cualquier esquema de partición de Service Fabric.
  - Selección de réplicas para los servicios con estado.
- - Condiciones de reintento de resolución que permiten especificar las condiciones para volver a resolver una ubicación de servicio y volver a enviar una solicitud.
+ - Resolución vuelva a intentar las condiciones que permiten las condiciones de hello toospecify para volver a resolver una ubicación de servicio y volver a enviar una solicitud.
 
-Para este tutorial, cree una directiva de back-end que enrute las solicitudes directamente al servicio sin estado ASP.NET Core implementado anteriormente:
+Para este tutorial, cree una directiva de back-end que las rutas de las solicitudes directamente toohello servicio sin estado ASP.NET Core implementó anteriormente:
 
- 1. Seleccione y edite las **directivas de entrada** para la operación `Values`; para ello, haga clic en el icono de edición y seleccione **Vista Código**.
- 2. En el editor de código de directivas, agregue una directiva `set-backend-service` en las directivas de entrada tal y como se muestra aquí y haga clic en el botón **Guardar**:
+ 1. Seleccionar y editar hello **entrada directivas** para hello `Values` operación haciendo clic en el icono de edición de hello y, a continuación, seleccione **en la vista código**.
+ 2. En el editor de código de directiva de hello, agregue un `set-backend-service` directiva en las directivas de entrada tal y como se muestra a continuación y haga clic en hello **guardar** botón:
     
     ```xml
     <policies>
@@ -324,33 +324,33 @@ Para este tutorial, cree una directiva de back-end que enrute las solicitudes di
     </policies>
     ```
 
-Para obtener un conjunto completo de los atributos de directiva de back-end de Service Fabric, consulte la [documentación de back-end de API Management](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService).
+Para obtener un conjunto completo de atributos de directiva de back-end de Service Fabric, consulte toohello [documentación de back-end de administración de API](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService)
 
-### <a name="add-the-api-to-a-product"></a>Incorporación de la API a un producto 
+### <a name="add-hello-api-tooa-product"></a>Agregar Hola API tooa producto. 
 
-Antes de que se pueda llamar a la API, debe agregarse a un producto para conceder acceso a los usuarios. 
+Antes de poder llamar a las API de hello, deben agregarse como producto tooa donde puede conceder acceso toousers. 
 
- 1. En el servicio API Management, seleccione **Productos - VERSIÓN PRELIMINAR**.
- 2. De forma predeterminada, API Management ofrece dos productos: Starter y Unlimited. Seleccione el producto Unlimited.
+ 1. En el servicio de administración de API de hello, seleccione **productos - vista previa**.
+ 2. De forma predeterminada, API Management ofrece dos productos: Starter y Unlimited. Seleccione el producto de un número ilimitado de Hola.
  3. Seleccione las API.
- 4. Haga clic en el botón **+ Agregar**.
- 5. Seleccione la API `Service Fabric App` que creó en los pasos anteriores y haga clic en el botón **Seleccionar**.
+ 4. Haga clic en hello **+ agregar** botón.
+ 5. Seleccione hello `Service Fabric App` API que creó en los pasos anteriores de Hola y haga clic en hello **seleccione** botón.
 
 ### <a name="test-it"></a>Pruébelo.
 
-Ahora puede intentar enviar una solicitud al servicio back-end de Service Fabric a través de API Management directamente desde Azure Portal.
+Ahora puede intentar enviar un servicio de back-end de solicitud tooyour en Service Fabric a través de la API de administración directamente desde el portal de Azure Hola.
 
- 1. En el servicio API Management, seleccione **API - PREVIEW** (API [versión preliminar]).
- 2. En la API `Service Fabric App` que creó en los pasos anteriores, seleccione la pestaña **Prueba**.
- 3. Haga clic en el botón **Enviar** para enviar una solicitud de prueba al servicio de back-end.
+ 1. En el servicio de administración de API de hello, seleccione **API - vista previa**.
+ 2. Hola `Service Fabric App` API que creó en los pasos anteriores de hello, seleccione hello **prueba** ficha.
+ 3. Haga clic en hello **enviar** botón toosend un servicio de back-end de toohello de solicitud de prueba.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 Llegados a este punto, debe tener una configuración básica de Service Fabric y API Management.
 
-Para una rápida configuración, en este tutorial se utiliza la autenticación de usuario básica basada en certificados para el clúster de Service Fabric, aunque para el clúster de Service Fabric es preferible una autenticación de usuarios más avanzada con [autenticación de Azure Active Directory](service-fabric-cluster-creation-via-arm.md#set-up-azure-active-directory-for-client-authentication). 
+Este tutorial utiliza la autenticación de usuario básica basada en certificados para su tooget de clúster de Service Fabric que preparar rápidamente. aunque para el clúster de Service Fabric es preferible una autenticación de usuarios más avanzada con [autenticación de Azure Active Directory](service-fabric-cluster-creation-via-arm.md#set-up-azure-active-directory-for-client-authentication). 
 
-A continuación, [cree y configure las opciones de producto avanzadas en Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-product-with-rules) para preparar la aplicación para el tráfico del mundo real.
+Después, [crear y configurar opciones de producto avanzadas en la administración de API de Azure](https://docs.microsoft.com/azure/api-management/api-management-howto-product-with-rules) tooprepare la aplicación para el tráfico del mundo real.
 
 <!-- links -->
 [azure-powershell]:https://azure.microsoft.com/documentation/articles/powershell-install-configure/

@@ -1,5 +1,5 @@
 ---
-title: Tutorial de REST de Service Bus mediante Azure Relay | Microsoft Docs
+title: "tutorial de REST de Bus de aaaService mediante retransmisión de Azure | Documentos de Microsoft"
 description: "Cree una sencilla aplicación host de Azure Service Bus Relay que expone una interfaz basada en REST."
 services: service-bus-relay
 documentationcenter: na
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2017
 ms.author: sethm
-ms.openlocfilehash: 0db9dbd2d2743907e3f0b259228201d4f5d0c3c2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b68650993a0390e7cef891ccb4236095cd86d4c1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Tutorial de REST de Azure WCF Relay
 
-En este tutorial se describe cómo compilar una sencilla aplicación host de Azure Relay que expone una interfaz basada en REST. REST permite a un cliente web, como un explorador web, tener acceso a la API de Bus de servicio a través de solicitudes HTTP.
+Este tutorial describe cómo toobuild una retransmisión de Azure simple hospedar la aplicación que expone una interfaz basada en REST. REST permite que un cliente web, como un explorador web, hello tooaccess solicitudes de API de Bus de servicio a través de HTTP.
 
-En este tutorial se usa el modelo de programación REST de Windows Communication Foundation (WCF) para construir un servicio REST de Service Bus. Para obtener más información, vea [Modelo de programación REST de WCF](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) y [Diseño e implementación de servicios](/dotnet/framework/wcf/designing-and-implementing-services) en la documentación de WCF.
+tutorial de Hello usa tooconstruct modelo programación Hola REST de Windows Communication Foundation (WCF) un servicio REST en el Bus de servicio. Para obtener más información, consulte [el modelo de programación de REST de WCF](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) y [diseñar e implementar servicios](/dotnet/framework/wcf/designing-and-implementing-services) Hola documentación de WCF.
 
 ## <a name="step-1-create-a-namespace"></a>Paso 1: Crear un espacio de nombres
 
-Para comenzar a usar las características de Relay en Azure, primero debe crear un espacio de nombres de servicio. Un espacio de nombres proporciona un contenedor con un ámbito para el desvío de recursos de Azure en la aplicación. Siga [estas instrucciones](relay-create-namespace-portal.md) para crear un espacio de nombres de Relay.
+usar toobegin Hola características de retransmisión en Azure, primero debe crear un espacio de nombres de servicio. Un espacio de nombres proporciona un contenedor con un ámbito para el desvío de recursos de Azure en la aplicación. Siga hello [instrucciones a continuación](relay-create-namespace-portal.md) toocreate un espacio de nombres de retransmisión.
 
-## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Paso 2: Definir un contrato de servicio de WCF basado en REST para utilizar con Azure Relay
+## <a name="step-2-define-a-rest-based-wcf-service-contract-toouse-with-azure-relay"></a>Paso 2: Definir una toouse de contrato de servicio WCF basado en REST con retransmisión de Azure
 
-Cuando se crea un servicio WCF de tipo REST, debe definir el contrato. El contrato especifica qué operaciones admite el host. Una operación de servicio puede considerarse como un método de servicio web. Los contratos se crean mediante la definición de una interfaz de C++, C# o Visual Basic. Cada método de la interfaz corresponde a una operación de servicio específica. El atributo [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) se debe aplicar a cada interfaz, y el atributo [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) se debe aplicar a cada operación. Si un método en una interfaz que tiene [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) no tiene [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx), ese método no se expone. El código utilizado para estas tareas se muestra en el ejemplo que sigue al procedimiento.
+Cuando se crea un servicio basado en REST WCF, debe definir el contrato de Hola. contrato de Hello especifica qué operaciones Hola admite el host. Una operación de servicio puede considerarse como un método de servicio web. Los contratos se crean mediante la definición de una interfaz de C++, C# o Visual Basic. Cada método de interfaz de hello corresponde tooa operación del servicio concreta. Hola [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) atributo debe ser interfaz tooeach aplicados y Hola [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) atributo debe ser una operación tooeach aplicada. Si un método en una interfaz que tiene hello [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) no tiene hello [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx), que no se expone el método. código de Hello utilizado para estas tareas se muestra en el ejemplo de Hola Hola procedimiento.
 
-La diferencia principal entre un contrato de WCF y un contrato de estilo REST es la adición de una propiedad a [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx): [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx). Esta propiedad permite asignar un método de la interfaz a un método en el otro lado de la interfaz. En este caso, usaremos [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) para vincular un método a HTTP GET. Esto permite al Bus de servicio recuperar e interpretar con precisión los comandos enviados a la interfaz.
+Hello diferencia principal entre un contrato de WCF y un contrato basado en REST es adición de Hola de una propiedad toohello [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx): [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx). Esta propiedad permite toomap un método en el método de interfaz tooa en hello otro lado de la interfaz de Hola. En este caso, usaremos [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) toolink un tooHTTP método GET. Esto permite que el Bus de servicio tooaccurately recuperar e interpretar comandos enviados toohello interfaz.
 
-### <a name="to-create-a-contract-with-an-interface"></a>Para crear un contrato con una interfaz
+### <a name="toocreate-a-contract-with-an-interface"></a>toocreate un contrato con una interfaz
 
-1. Abra Visual Studio como administrador: haga clic con el botón derecho en el programa en el menú **Inicio** y después haga clic en **Ejecutar como administrador**.
-2. Cree un nuevo proyecto de aplicación de consola. Haga clic en el menú **Archivo**, seleccione **Nuevo** y después **Proyecto**. En el cuadro de diálogo **Nuevo proyecto**, haga clic en **Visual C#**, seleccione la plantilla **Aplicación de consola** y asígnele el nombre **ImageListener**. Use la **Ubicación** predeterminada. Haga clic en **Aceptar** para crear el proyecto.
-3. Para un proyecto de C#, Visual Studio crea un archivo `Program.cs`. Esta clase contiene un método `Main()` vacío, necesario para que un proyecto de aplicación de consola se compile correctamente.
-4. Agregue referencias a Service Bus y **System.ServiceModel.dll** al proyecto instalando el paquete NuGet de Service Bus. Este paquete agrega automáticamente referencias a las bibliotecas de Service Bus, así como a **System.ServiceModel** de WCF. En el Explorador de soluciones, haga clic con el botón derecho en el proyecto **ImageListener** y haga clic en **Administrar paquetes NuGet**. Haga clic en la pestaña **Examinar** y luego busque `Microsoft Azure Service Bus`. Haga clic en **Instalar**y acepte las condiciones de uso.
-5. Debe agregar explícitamente una referencia a **System.ServiceModel.Web.dll** en el proyecto:
+1. Abra Visual Studio como administrador: programa Hola de menú contextual en hello **iniciar** menú y, a continuación, haga clic en **ejecutar como administrador**.
+2. Cree un nuevo proyecto de aplicación de consola. Haga clic en hello **archivo** menú y seleccione **New**, a continuación, seleccione **proyecto**. Hola **nuevo proyecto** cuadro de diálogo, haga clic en **Visual C#**, seleccione hello **aplicación de consola** plantilla y asígnele el nombre **ImageListener**. Usar valor predeterminado de hello **ubicación**. Haga clic en **Aceptar** proyecto de hello toocreate.
+3. Para un proyecto de C#, Visual Studio crea un archivo `Program.cs`. Esta clase contiene vacío `Main()` método, necesario para un toobuild de proyecto de aplicación de consola correctamente.
+4. Agregar referencias tooService Bus y **System.ServiceModel.dll** toohello proyecto mediante la instalación de paquetes de NuGet de Bus de servicio de Hola. Este paquete agrega automáticamente referencias toohello Service Bus bibliotecas, así como Hola WCF **System.ServiceModel**. En el Explorador de soluciones, haga clic en hello **ImageListener** del proyecto y, a continuación, haga clic en **administrar paquetes de NuGet**. Haga clic en hello **examinar** y, después, busque `Microsoft Azure Service Bus`. Haga clic en **instalar**y acepte los términos de Hola de uso.
+5. Debe agregar explícitamente una referencia**System.ServiceModel.Web.dll** toohello proyecto:
    
-    a. En el Explorador de soluciones, haga clic en la carpeta **Referencias** bajo la carpeta del proyecto y después haga clic en **Agregar referencia**.
+    a. En el Explorador de soluciones, haga clic en hello **referencias** carpeta bajo la carpeta del proyecto de hello y, a continuación, haga clic en **Agregar referencia**.
    
-    b. En el cuadro de diálogo **Agregar referencia**, haga clic en la pestaña **Marco** a la izquierda y, en el cuadro **Buscar**, escriba **System.ServiceModel.Web**. Active la casilla **System.ServiceModel.Web** y haga clic en **Aceptar**.
-6. Agregue las siguientes instrucciones `using` al principio del archivo Program.cs.
+    b. Hola **Agregar referencia** diálogo cuadro, haga clic en hello **Framework** pestaña en el lado izquierdo de Hola y Hola **búsqueda** , escriba **System.ServiceModel.Web** . Seleccione hello **System.ServiceModel.Web** casilla de verificación, a continuación, haga clic en **Aceptar**.
+6. Agregue los siguiente hello `using` las instrucciones en la parte superior de hello del archivo Program.cs de Hola.
    
     ```csharp
     using System.ServiceModel;
@@ -56,15 +56,15 @@ La diferencia principal entre un contrato de WCF y un contrato de estilo REST es
     using System.IO;
     ```
    
-    [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) es el espacio de nombres que permite el acceso mediante programación a las características básicas de WCF. WCF Relay utiliza muchos de los objetos y atributos de WCF para definir contratos de servicio. Usará este espacio de nombres en la mayoría de las aplicaciones de Relay. De forma similar, [System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) ayuda a definir el canal, que es el objeto a través del cual se comunica con Azure Relay y el explorador web del cliente. Por último, [System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) contiene los tipos que permiten crear aplicaciones basadas en web.
-7. Cambie el nombre del espacio de nombres `ImageListener` a **Microsoft.ServiceBus.Samples**.
+    [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) es el espacio de nombres de Hola que habilita el acceso mediante programación toobasic características de WCF. Retransmisión de WCF usa muchos de los objetos de Hola y atributos de contratos de servicio WCF toodefine. Usará este espacio de nombres en la mayoría de las aplicaciones de Relay. De forma similar, [System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) ayuda a define canal hello, que es objeto de Hola a través del cual se comunica con el explorador web del cliente hello y retransmisión de Azure. Por último, [System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) contiene tipos de Hola que le permiten aplicaciones basadas en web de toocreate.
+7. Cambiar el nombre de hello `ImageListener` espacio de nombres demasiado**Microsoft.ServiceBus.Samples**.
    
     ```csharp
     namespace Microsoft.ServiceBus.Samples
     {
         ...
     ```
-8. Inmediatamente después de la llave de apertura de la declaración del espacio de nombres, defina una nueva interfaz denominada **IImageContract** y aplique el atributo **ServiceContractAttribute** a la interfaz con un valor de `http://samples.microsoft.com/ServiceModel/Relay/`. El valor del espacio de nombres difiere del espacio de nombres que utiliza en todo el ámbito de su código. El valor del espacio de nombres se utiliza como identificador único para este contrato, y debe tener información de la versión. Para obtener más información, vea [Control de versiones del servicio](http://go.microsoft.com/fwlink/?LinkID=180498). La especificación del espacio de nombres impide explícitamente que el valor del espacio de nombres predeterminado se agregue al nombre del contrato.
+8. Directamente después de hello Abrir llave de apertura de la declaración de espacio de nombres de hello, defina una nueva interfaz denominada **IImageContract** y aplicar hello **ServiceContractAttribute** interfaz toohello de atributo con un valor de `http://samples.microsoft.com/ServiceModel/Relay/`. valor de espacio de nombres de Hello difiere del espacio de nombres de Hola que utilizas en ámbito de hello del código. valor de espacio de nombres de Hola se utiliza como un identificador único para este contrato y debe tener información de versión. Para obtener más información, vea [Control de versiones del servicio](http://go.microsoft.com/fwlink/?LinkID=180498). Especificar explícitamente el espacio de nombres de hello, impide que valor de espacio de nombres predeterminado de Hola se agreguen toohello el nombre del contrato.
    
     ```csharp
     [ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
@@ -72,7 +72,7 @@ La diferencia principal entre un contrato de WCF y un contrato de estilo REST es
     {
     }
     ```
-9. Dentro de la interfaz `IImageContract`, declare un método para la operación sencilla que el contrato `IImageContract` expone en la interfaz y aplique el atributo `OperationContractAttribute` al método que desea exponer como parte del contrato público del Bus de servicio.
+9. Dentro de hello `IImageContract` de la interfaz, declare un método para Hola Hola de operación único `IImageContract` contrato expone Hola interfaz y aplique hello `OperationContractAttribute` atributo método toohello que desea tooexpose como parte de hello público Service Bus contrato.
    
     ```csharp
     public interface IImageContract
@@ -81,7 +81,7 @@ La diferencia principal entre un contrato de WCF y un contrato de estilo REST es
         Stream GetImage();
     }
     ```
-10. En el atributo **OperationContract**, agregue el valor **WebGet**.
+10. Hola **OperationContract** atributo, agregue hello **WebGet** valor.
     
     ```csharp
     public interface IImageContract
@@ -91,18 +91,18 @@ La diferencia principal entre un contrato de WCF y un contrato de estilo REST es
     }
     ```
     
-    Al hacerlo, permite que el servicio Relay enrute las solicitudes HTTP GET a `GetImage` y convierta los valores devueltos de `GetImage` en una respuesta HTTP GETRESPONSE. Más adelante en el tutorial, utilizará un explorador web para tener acceso a este método y mostrar la imagen en el explorador.
-11. Inmediatamente después de la definición `IImageContract`, declare un canal que herede de las interfaces `IImageContract` y `IClientChannel`.
+    Si lo hace, habilita Hola tooroute de servicio de retransmisión HTTP GET solicita demasiado`GetImage`, hello tootranslate devolver valores de y `GetImage` en una respuesta GETRESPONSE de HTTP. Más adelante en el tutorial de hello, utilizará un tooaccess de explorador web este método y la imagen de toodisplay hello en el Explorador de Hola.
+11. Directamente después de hello `IImageContract` definición, declare un canal que herede de ambos hello `IImageContract` y `IClientChannel` interfaces.
     
     ```csharp
     public interface IImageChannel : IImageContract, IClientChannel { }
     ```
     
-    Un canal es el objeto de WCF a través del cual el servicio y el cliente se pasan información entre sí. Más adelante, creará el canal en su aplicación host. Azure Relay usa después este canal para pasar las solicitudes HTTP GET del explorador a su implementación **GetImage**. El servicio Relay también usa el canal para tomar el valor devuelto de **GetImage** y convertirlo en HTTP GETRESPONSE para el explorador del cliente.
-12. En el menú **Compilar**, haga clic en **Compilar solución** para confirmar la precisión del trabajo realizado hasta ahora.
+    Un canal es objeto WCF de Hola a través del cual cliente y servicio de hello pasan información tooeach otras. Más adelante, creará el canal de hello en la aplicación host. Retransmisión de Azure, a continuación, utiliza este canal toopass hello las solicitudes HTTP GET desde Hola explorador tooyour **GetImage** implementación. retransmisión de Hello también utiliza Hola Hola de tootake canal **GetImage** valor devuelto y lo traduce a un GETRESPONSE de HTTP para el explorador del cliente de Hola.
+12. De hello **generar** menú, haga clic en **generar solución** precisión de hello tooconfirm de su trabajo hasta ahora.
 
 ### <a name="example"></a>Ejemplo
-En el ejemplo de código siguiente se muestra una interfaz básica que define un contrato de WCF Relay.
+Hola siguiente código muestra una interfaz básica que define un contrato de retransmisión de WCF.
 
 ```csharp
 using System;
@@ -135,21 +135,21 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="step-3-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>Paso 3: Implementar un contrato de servicio de WCF basado en REST para usar el Bus de servicio
-La creación de un servicio WCF Relay de estilo REST requiere que se cree primero el contrato, que se define mediante una interfaz. El siguiente paso es implementar la interfaz. Esto implica la creación de una clase denominada **ImageService** que implementa la interfaz **IImageContract** definida por el usuario. Después de implementar el contrato, a continuación se configura la interfaz usando un archivo App.config. El archivo de configuración contiene la información necesaria para la aplicación, como el nombre del servicio, el nombre del contrato y el tipo de protocolo que se utiliza para comunicarse con el servicio Relay. El código utilizado para estas tareas se proporciona en el ejemplo que sigue al procedimiento.
+## <a name="step-3-implement-a-rest-based-wcf-service-contract-toouse-service-bus"></a>Paso 3: Implementar un contrato de servicio WCF basado en REST toouse Bus de servicio
+Crear un servicio de retransmisión de WCF basado en REST requiere crear primero el contrato de hello, que se define mediante una interfaz. Hola siguiente paso es interfaz de hello tooimplement. Esto implica la creación de una clase denominada **ImageService** que implementa Hola definido por el usuario **IImageContract** interfaz. Después de implementar el contrato de hello, a continuación, configurar interfaz hello mediante un archivo App.config. archivo de configuración de Hello contiene información necesaria para la aplicación hello, como nombre de hello del servicio de hello, nombre de hello del contrato de Hola y tipo de Hola de protocolo que está toocommunicate usado con el servicio de retransmisión de Hola. código de Hello utilizado para estas tareas se proporciona en el ejemplo de Hola Hola procedimiento.
 
-Al igual que con los pasos anteriores, hay muy pocas diferencias entre implementar un contrato de estilo REST y un contrato de WCF Relay.
+Como con los pasos anteriores de hello, hay muy pocas diferencias entre implementar un contrato basado en REST y un contrato de retransmisión de WCF.
 
-### <a name="to-implement-a-rest-style-service-bus-contract"></a>Para implementar un contrato de Bus de servicio de estilo REST
-1. Cree una nueva clase denominada **ImageService** directamente después de la definición de la interfaz **IImageContract**. La clase **ImageService** implementa la interfaz **IImageContract**.
+### <a name="tooimplement-a-rest-style-service-bus-contract"></a>contrato de Bus de servicio de tooimplement un estilo de REST
+1. Crear una nueva clase denominada **ImageService** directamente después de la definición de Hola de hello **IImageContract** interfaz. Hola **ImageService** clase implementa hello **IImageContract** interfaz.
    
     ```csharp
     class ImageService : IImageContract
     {
     }
     ```
-    Al igual que otras implementaciones de interfaz, puede implementar la definición en un archivo diferente. Sin embargo, para este tutorial, la implementación aparece en el mismo archivo que la definición de interfaz y el método `Main()`.
-2. Aplique el atributo [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) a la clase **IImageService** para indicar que la clase es una implementación de un contrato de WCF.
+    Implementaciones de interfaz tooother similar, puede implementar definición hello en un archivo diferente. Sin embargo, para este tutorial, la implementación de hello aparece en hello mismo archivo como definición de interfaz de Hola y `Main()` método.
+2. Aplicar hello [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) atributo toohello **IImageService** tooindicate de clase que Hola clase es una implementación de un contrato de WCF.
    
     ```csharp
     [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -158,14 +158,14 @@ Al igual que con los pasos anteriores, hay muy pocas diferencias entre implement
     }
     ```
    
-    Como se mencionó anteriormente, este espacio de nombres no es un espacio de nombres tradicional. Más bien, forma parte de la arquitectura de WCF que identifica el contrato. Para más información, vea el tema [Nombres de contratos de datos](https://msdn.microsoft.com/library/ms731045.aspx) en la documentación de WCF.
-3. Agregue una imagen .jpg al proyecto.  
+    Como se mencionó anteriormente, este espacio de nombres no es un espacio de nombres tradicional. En su lugar, es parte de la arquitectura WCF que identifica el contrato de Hola Hola. Para obtener más información, vea hello [nombres de contrato de datos](https://msdn.microsoft.com/library/ms731045.aspx) tema Hola documentación de WCF.
+3. Agregue un proyecto de tooyour de imagen JPG.  
    
-    Se trata de una imagen que el servicio muestra en el explorador de recepción. Haga clic con el botón derecho en el proyecto y, después, haga clic en **Agregar**. A continuación, haga clic en **Elemento existente**. Utilice el cuadro de diálogo **Agregar elemento existente** para buscar un .jpg adecuado y después haga clic en **Agregar**.
+    Se trata de una imagen que muestra los servicios de hello en Hola recibir explorador. Haga clic con el botón derecho en el proyecto y, después, haga clic en **Agregar**. A continuación, haga clic en **Elemento existente**. Hola de uso **Agregar elemento existente** tooan de toobrowse del cuadro de diálogo procede .jpg y, a continuación, haga clic en **agregar**.
    
-    Al agregar el archivo, asegúrese de que está seleccionada la opción **Todos los archivos** en la lista desplegable situada junto al campo **Nombre de archivo:**. En el resto de este tutorial se supone que el nombre de la imagen es "image.jpg". Si tiene un archivo diferente, debe cambiar el nombre de la imagen o cambiar su código para compensar.
-4. Para asegurarse de que el servicio en ejecución pueda encontrar el archivo de imagen, en el **Explorador de soluciones**, haga clic con el botón derecho en dicho archivo y luego en **Propiedades**. En el panel **Propiedades**, establezca **Copiar en el directorio de salida** en **Copiar si es posterior**.
-5. Agregue una referencia al ensamblado **System.Drawing.dll** al proyecto, además de las siguientes instrucciones `using` asociadas.  
+    Al agregar el archivo hello, asegúrese de que **todos los archivos** está seleccionado en hello lista desplegable siguiente toohello **nombre de archivo:** campo. resto de Hola de este tutorial se da por supuesto que Hola nombre de imagen de hello es "image.jpg". Si tiene un archivo diferente, se dispone de toorename Hola imagen o cambiar su toocompensate de código.
+4. seguro que Hola ejecutando el servicio puede encontrar el archivo de imagen de hello, en toomake **el Explorador de soluciones** haga clic en archivo de imagen de hello, a continuación, haga clic en **propiedades**. Hola **propiedades** panel, establezca **copiar tooOutput directorio** demasiado**copiar si es posterior**.
+5. Agregar una referencia toohello **System.Drawing.dll** toohello ensamblado del proyecto y agregue siguiente Hola asociados `using` instrucciones.  
    
     ```csharp
     using System.Drawing;
@@ -173,7 +173,7 @@ Al igual que con los pasos anteriores, hay muy pocas diferencias entre implement
     using Microsoft.ServiceBus;
     using Microsoft.ServiceBus.Web;
     ```
-6. En la clase **ImageService**, agregue el siguiente constructor que carga el mapa de bits y se prepara para enviarlo al explorador del cliente.
+6. Hola **ImageService** clase, agregue Hola después de constructor que carga Hola mapa de bits y prepara toosend se toohello explorador del cliente.
    
     ```csharp
     class ImageService : IImageContract
@@ -188,7 +188,7 @@ Al igual que con los pasos anteriores, hay muy pocas diferencias entre implement
         }
     }
     ```
-7. Directamente después del código anterior, agregue el siguiente método **GetImage** en la clase **ImageService** para devolver un mensaje HTTP que contiene la imagen.
+7. Directamente después de código anterior, hello, agregue Hola siguiente **GetImage** método Hola **ImageService** mensaje tooreturn HTTP de clase que contiene la imagen de Hola.
    
     ```csharp
     public Stream GetImage()
@@ -203,14 +203,14 @@ Al igual que con los pasos anteriores, hay muy pocas diferencias entre implement
     }
     ```
    
-    Esta implementación usa **MemoryStream** para recuperar la imagen y prepararla para el streaming al explorador. Este inicia la posición de la secuencia en cero, declara el contenido de la secuencia como jpeg y transmite la información.
-8. En el menú **Compilar**, haga clic en **Compilar solución**.
+    Esta implementación usa **MemoryStream** tooretrieve Hola imagen y prepararlo para la transmisión por secuencias toohello explorador. Inicia la posición de la secuencia de hello en la posición cero, declara el contenido de la transmisión de hello como jpeg y transmite la información de Hola.
+8. De hello **generar** menú, haga clic en **generar solución**.
 
-### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>Para definir la configuración para ejecutar el servicio web en el Bus de servicio
-1. En el **Explorador de soluciones**, haga doble clic en **App.config** para abrirlo en el editor de Visual Studio.
+### <a name="toodefine-hello-configuration-for-running-hello-web-service-on-service-bus"></a>configuración de hello toodefine para ejecutar el servicio web de hello en el Bus de servicio
+1. En **el Explorador de soluciones**, haga doble clic en **App.config** tooopen en el editor de Visual Studio Hola.
    
-    El archivo **App.config** incluye el nombre del servicio, el punto de conexión (es decir, la ubicación que Azure Relay expone para que clientes y hosts se comuniquen entre sí) y el enlace (el tipo de protocolo que se usa para la comunicación). La principal diferencia aquí es que el punto de conexión de servicio configurado hace referencia a un enlace [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding).
-2. El elemento XML `<system.serviceModel>` es un elemento de WCF que define uno o varios servicios. En este caso, se utiliza para definir el nombre del servicio y el extremo. En la parte inferior del elemento `<system.serviceModel>` (pero aún dentro de `<system.serviceModel>`), agregue un elemento `<bindings>` con el siguiente contenido. Esto define los enlaces utilizados en la aplicación. Puede definir varios enlaces, pero para este tutorial está definiendo solo uno.
+    Hola **App.config** archivo incluye el nombre del servicio hello, extremo (es decir, la ubicación de hello Azure retransmisión expone para que los clientes y hosts toocommunicate entre sí) y (Hola el tipo de protocolo que se usa toocommunicate) de enlace. Hello principal diferencia reside en ese punto de conexión de servicio de hello configurado hace referencia tooa [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) enlace.
+2. Hola `<system.serviceModel>` XML es un elemento WCF que define uno o varios servicios. En este caso, es punto de conexión y el nombre de servicio de hello toodefine usado. Final Hola de hello `<system.serviceModel>` elemento (pero aún dentro `<system.serviceModel>`), agregue un `<bindings>` elemento que tiene Hola siguen contenido. Esto define los enlaces de hello utilizados en la aplicación hello. Puede definir varios enlaces, pero para este tutorial está definiendo solo uno.
    
     ```xml
     <bindings>
@@ -223,8 +223,8 @@ Al igual que con los pasos anteriores, hay muy pocas diferencias entre implement
     </bindings>
     ```
    
-    Este código anterior define un enlace [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) de WCF Relay con **relayClientAuthenticationType** establecido en **Ninguno**. Este valor indica que un extremo que usa este enlace no requiere una credencial de cliente.
-3. Después del elemento `<bindings>`, agregue un elemento `<services>`. Al igual que los enlaces, puede definir varios servicios en un solo archivo de configuración. Sin embargo, para este tutorial, solo se define uno.
+    código de Hello anterior define una retransmisión de WCF [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) enlace con **relayClientAuthenticationType** establecido demasiado**ninguno**. Este valor indica que un extremo que usa este enlace no requiere una credencial de cliente.
+3. Después de hello `<bindings>` elemento, agregue un `<services>` elemento. Enlaces toohello similares, puede definir varios servicios en un único archivo de configuración. Sin embargo, para este tutorial, solo se define uno.
    
     ```xml
     <services>
@@ -241,8 +241,8 @@ Al igual que con los pasos anteriores, hay muy pocas diferencias entre implement
     </services>
     ```
    
-    Este paso configura un servicio que utiliza el valor predeterminado definido anteriormente **webHttpRelayBinding**. También usa el valor predeterminado **sbTokenProvider**, que se define en el paso siguiente.
-4. Después del elemento `<services>`, cree un elemento `<behaviors>` con el contenido siguiente, pero reemplace "SAS_KEY" por la clave de *firma de acceso compartido* (SAS) que obtuvo antes en [Azure Portal][Azure portal].
+    Este paso configura un servicio que utiliza predeterminado Hola definido anteriormente **webHttpRelayBinding**. También se utiliza de forma predeterminada hello **sbTokenProvider**, que se define en el paso siguiente de saludo.
+4. Después de hello `<services>` elemento, crear una `<behaviors>` elemento con hello siguen contenido, reemplazando "SAS_KEY" con hello *firma de acceso compartido* clave (SAS) que ha obtenido anteriormente de hello [portal de Azure ][Azure portal].
    
     ```xml
     <behaviors>
@@ -262,7 +262,7 @@ Al igual que con los pasos anteriores, hay muy pocas diferencias entre implement
             </serviceBehaviors>
     </behaviors>
     ```
-5. Aún en App.config, en el elemento `<appSettings>`, reemplace todo el valor de la cadena de conexión por la cadena de conexión que obtuvo antes en el portal. 
+5. Aún en un archivo App.config, Hola `<appSettings>` elemento, reemplace el valor de cadena de conexión completa de hello con cadena de conexión de hello obtenido previamente desde el portal de Hola. 
    
     ```xml
     <appSettings>
@@ -271,10 +271,10 @@ Al igual que con los pasos anteriores, hay muy pocas diferencias entre implement
            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SAS_KEY"/>
     </appSettings>
     ```
-6. Desde el menú **Compilar**, haga clic en **Compilar solución** para compilar la solución completa.
+6. De hello **generar** menú, haga clic en **generar solución** toobuild Hola toda la solución.
 
 ### <a name="example"></a>Ejemplo
-El código siguiente muestra la implementación de contrato y servicio para un servicio basado en REST que se ejecuta en Service Bus con el enlace **WebHttpRelayBinding**.
+Hello código siguiente muestra hello contrato e implementación del servicio para un servicio basado en REST que se ejecuta en el Bus de servicio con hello **WebHttpRelayBinding** enlace.
 
 ```csharp
 using System;
@@ -336,7 +336,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-En el ejemplo siguiente se muestra el archivo App.config asociado con el servicio.
+Hello en el ejemplo siguiente se muestra archivo App.config de hello asociado con el servicio de Hola.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -346,7 +346,7 @@ En el ejemplo siguiente se muestra el archivo App.config asociado con el servici
     </startup>
     <system.serviceModel>
         <extensions>
-            <!-- In this extension section we are introducing all known service bus extensions. User can remove the ones they don't need. -->
+            <!-- In this extension section we are introducing all known service bus extensions. User can remove hello ones they don't need. -->
             <behaviorExtensions>
                 <add name="connectionStatusBehavior"
                     type="Microsoft.ServiceBus.Configuration.ConnectionStatusElement, Microsoft.ServiceBus, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
@@ -429,54 +429,54 @@ En el ejemplo siguiente se muestra el archivo App.config asociado con el servici
 </configuration>
 ```
 
-## <a name="step-4-host-the-rest-based-wcf-service-to-use-azure-relay"></a>Paso 4: Hospedar el servicio de WCF basado en REST para usar Azure Relay
-Este paso describe cómo ejecutar un servicio web mediante una aplicación de consola con WCF Relay. En el ejemplo que sigue al procedimiento se proporciona una lista completa del código escrito en este paso.
+## <a name="step-4-host-hello-rest-based-wcf-service-toouse-azure-relay"></a>Paso 4: Host Hola WCF basado en REST servicio toouse retransmisión de Azure
+Este paso describe cómo toorun una web service con una aplicación de consola con la retransmisión de WCF. Obtener una lista completa del código de hello escrito en este paso se proporciona en el ejemplo de Hola Hola procedimiento.
 
-### <a name="to-create-a-base-address-for-the-service"></a>Para crear una dirección base para el servicio
-1. En la declaración de la función `Main()`, cree una variable para almacenar el espacio de nombres de su proyecto. Asegúrese de reemplazar `yourNamespace` por el nombre del espacio de nombres de Relay que creó antes.
+### <a name="toocreate-a-base-address-for-hello-service"></a>una dirección base para el servicio de hello toocreate
+1. Hola `Main()` declaración de función, cree un espacio de nombres de variable toostore Hola del proyecto. Asegúrese de que tooreplace `yourNamespace` con nombre hello del espacio de nombres de retransmisión de Hola que creó anteriormente.
    
     ```csharp
     string serviceNamespace = "yourNamespace";
     ```
-    El Bus de servicio utiliza el nombre del espacio de nombres para crear un URI único.
-2. Cree una instancia `Uri` para la dirección base del servicio que se basa en el espacio de nombres.
+    Bus de servicio usa nombre Hola de su toocreate de espacio de nombres un URI único.
+2. Crear un `Uri` instancia para la dirección base Hola del servicio de Hola que se basa en el espacio de nombres de Hola.
    
     ```csharp
     Uri address = ServiceBusEnvironment.CreateServiceUri("https", serviceNamespace, "Image");
     ```
 
-### <a name="to-create-and-configure-the-web-service-host"></a>Para crear y configurar el host del servicio web
-* Cree el host del servicio web, utilizando la dirección URI creada anteriormente en esta sección.
+### <a name="toocreate-and-configure-hello-web-service-host"></a>toocreate y configurar el host del servicio web Hola
+* Crear el host del servicio web hello, con la dirección URI de hello creada anteriormente en esta sección.
   
     ```csharp
     WebServiceHost host = new WebServiceHost(typeof(ImageService), address);
     ```
-    El host de servicio es el objeto de WCF que crea una instancia de la aplicación host. En este ejemplo se pasa el tipo de host que desea crear (un **ImageService**) y también la dirección en la que desea exponer la aplicación host.
+    host de servicio de Hello es objeto WCF de Hola que crea una instancia de la aplicación de host de Hola. En este ejemplo se pasa el tipo de saludo del host que desea toocreate (un **ImageService**), y también Hola dirección a la que desea que aplicación de host de tooexpose Hola.
 
-### <a name="to-run-the-web-service-host"></a>Para ejecutar el host del servicio web
-1. Abra el servicio.
+### <a name="toorun-hello-web-service-host"></a>host de servicio web de toorun Hola
+1. Abra el servicio de Hola.
    
     ```csharp
     host.Open();
     ```
-    El servicio está ahora en ejecución.
-2. Muestre un mensaje que indica que el servicio se está ejecutando y cómo detenerlo.
+    Ahora se está ejecutando el servicio de Hola.
+2. Muestra un mensaje que indica que está ejecutando el servicio de Hola y cómo toostop Hola servicio.
    
     ```csharp
-    Console.WriteLine("Copy the following address into a browser to see the image: ");
+    Console.WriteLine("Copy hello following address into a browser toosee hello image: ");
     Console.WriteLine(address + "GetImage");
     Console.WriteLine();
-    Console.WriteLine("Press [Enter] to exit");
+    Console.WriteLine("Press [Enter] tooexit");
     Console.ReadLine();
     ```
-3. Cuando termine, cierre el host del servicio.
+3. Cuando termine, cierre el host de servicio de Hola.
    
     ```csharp
     host.Close();
     ```
 
 ## <a name="example"></a>Ejemplo
-En el ejemplo siguiente se incluye el contrato de servicio y la implementación de los pasos anteriores en el tutorial y se hospeda el servicio en una aplicación de consola. Compile el código siguiente en un archivo ejecutable denominado ImageListener.exe.
+Hola siguiente ejemplo incluye contrato de servicio de Hola y la implementación de los pasos anteriores en el servicio de Hola de hello tutorial y hospeda en una aplicación de consola. Compile Hola siguiente código en un archivo ejecutable denominado ImageListener.exe.
 
 ```csharp
 using System;
@@ -538,10 +538,10 @@ namespace Microsoft.ServiceBus.Samples
             WebServiceHost host = new WebServiceHost(typeof(ImageService), address);
             host.Open();
 
-            Console.WriteLine("Copy the following address into a browser to see the image: ");
+            Console.WriteLine("Copy hello following address into a browser toosee hello image: ");
             Console.WriteLine(address + "GetImage");
             Console.WriteLine();
-            Console.WriteLine("Press [Enter] to exit");
+            Console.WriteLine("Press [Enter] tooexit");
             Console.ReadLine();
 
             host.Close();
@@ -550,18 +550,18 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-### <a name="compiling-the-code"></a>Compilación del código
-Después de compilar la solución, haga lo siguiente para ejecutar la aplicación:
+### <a name="compiling-hello-code"></a>Compilar código de hello
+Después de compilar la solución de hello, Hola después de la aplicación de hello toorun:
 
-1. Presione **F5** o busque la ubicación del archivo ejecutable (ImageListener\bin\Debug\ImageListener.exe) para ejecutar el servicio. Mantenga la aplicación en ejecución, ya que se necesita para realizar el paso siguiente.
-2. Copie y pegue la dirección desde el símbolo del sistema en un explorador para ver la imagen.
-3. Cuando haya terminado, presione **ENTRAR** en la ventana del símbolo del sistema para cerrar la aplicación.
+1. Presione **F5**, o busque la ubicación del archivo ejecutable toohello (ImageListener\bin\Debug\ImageListener.exe), servicio de hello toorun. Mantener Hola ejecutando la aplicación, tal y como se requería paso siguiente de tooperform Hola.
+2. Copie y pegue la dirección de Hola Hola desde línea de comandos en una imagen de hello toosee de explorador.
+3. Cuando haya terminado, presione **ENTRAR** en aplicación Hola de hello símbolo ventana tooclose.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha creado una aplicación que utiliza el servicio Service Bus Relay, consulte los artículos siguientes para obtener más información sobre Azure Relay:
+Ahora que ha creado una aplicación que utiliza el servicio de retransmisión de Bus de servicio de hello, vea Hola siguiendo artículos toolearn más acerca de la retransmisión de Azure:
 
 * [Información general sobre la arquitectura de Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 * [Introducción a Azure Relay](relay-what-is-it.md)
-* [Uso de WCF Relay de Service Bus con .NET](relay-wcf-dotnet-get-started.md)
+* [Cómo el servicio con .NET de la retransmisión de hello toouse WCF](relay-wcf-dotnet-get-started.md)
 
 [Azure portal]: https://portal.azure.com

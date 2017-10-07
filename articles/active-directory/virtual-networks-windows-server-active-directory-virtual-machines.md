@@ -1,5 +1,5 @@
 ---
-title: "Windows Server Active Directory en máquinas virtuales de Azure | Microsoft Docs"
+title: "aaaWindows Server Active Directory en máquinas virtuales de Azure | Documentos de Microsoft"
 description: "Puede ejecutar Servicios de dominio de Windows Server Active Directory o Servicios de federación de Active Directory en máquinas virtuales de Azure."
 services: active-directory
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2017
 ms.author: joflore
-ms.openlocfilehash: 928de285e126a7f62ee075d1c02688bf8f388cb7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 0a8f408b6b772caa2322c2533a57217ddb67b568
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-server-active-directory-on-azure-vms"></a>Windows Server Active Directory en máquinas virtuales de Azure
-Este tema de navegación contiene vínculos a otros temas acerca de cómo implementar Servicios de dominio de Windows Server Active Directory o Servicios de federación de Active Directory en una máquina virtual de Azure.
+En este tema de navegación contiene vínculos a temas acerca de cómo tooother toodeploy Windows Server Active Directory dominio Services (AD DS) o servicios de federación de Active Directory (AD FS) en una máquina virtual (VM) de Azure.
 
 ## <a name="conceptual-guidelines"></a>Directrices conceptuales
 * [Directrices para implementar Windows Server Active Directory en máquinas virtuales de Microsoft Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 
 ## <a name="video"></a>Vídeo
-* [Instalación de un bosque nuevo de Active Directory en una red virtual de Azure](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
+* [¿Cómo tooinstall un nuevo servicio Active Directory del bosque en una red virtual de Azure](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
 
-## <a name="how-to-articles"></a>Artículos de procedimientos
+## <a name="how-tooarticles"></a>Cómo tooarticles
 * [Instalación de un bosque nuevo de Active Directory en una red virtual de Azure](active-directory-new-forest-virtual-machine.md)
 * [Instalación de una réplica del Controlador de dominio de Active Directory en Redes virtuales de Azure](active-directory-install-replica-active-directory-domain-controller.md)
 

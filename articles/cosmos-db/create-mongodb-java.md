@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: Compilar una aplicación de consola con Java y la API MongoDB | Microsoft Docs"
-description: "En este tema se presenta un ejemplo de código de Java que se puede usar para conectarse a la API MongoDB de Azure Cosmos DB y realizar consultas."
+title: "Azure Cosmos DB: Compilar una aplicación de consola con Java y Hola MongoDB API | Documentos de Microsoft"
+description: "Presenta un ejemplo de código de Java se puede usar tooconnect tooand consulta hello Azure Cosmos DB MongoDB API"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,21 +15,21 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: f84294d7d324f094d173f7a2ec89759266a74210
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fbe416f6b20ed2bb83a1d41eb70ffc6e3cee2b61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB: Compilar una aplicación de consola de la API MongoDB con Java y Azure Portal
+# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-hello-azure-portal"></a>Azure Cosmos DB: Compilar una aplicación de consola de API de MongoDB con Java y Hola portal de Azure
 
-Azure Cosmos DB es un servicio de base de datos con varios modelos y de distribución global de Microsoft. Puede crear rápidamente bases de datos de documentos, clave-valor y grafos, y realizar consultas en ellas. Todas las bases de datos se beneficiarán de las funcionalidades de distribución global y escalado horizontal en Azure Cosmos DB. 
+Azure Cosmos DB es un servicio de base de datos con varios modelos y de distribución global de Microsoft. Puede crear y consultar documentos, clave/valor y bases de datos de gráfico, todos ellos se benefician de la distribución global de Hola y capacidades de escala horizontal en el núcleo de hello de la base de datos de Azure Cosmos rápidamente. 
 
-En esta guía de inicio rápido se muestra cómo crear una cuenta, una base de datos de documentos y una colección de Azure Cosmos DB mediante Azure Portal. Después, compilará e implementará una aplicación de consola compilada en el [controlador Java de MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/). 
+Este inicio rápido muestra cómo toocreate una cuenta de base de datos de Azure Cosmos, la base de datos de documento y la colección mediante Hola portal de Azure. A continuación, podrá compilar e implementar una aplicación de consola compilada en hello [controlador MongoDB Java](https://docs.mongodb.com/ecosystem/drivers/java/). 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* Antes de ejecutar este ejemplo, debe cumplir los siguientes requisitos previos:
+* Para poder ejecutar este ejemplo, debe tener Hola siguiendo los requisitos previos:
    * JDK 1.7+ (ejecute `apt-get install default-jdk` si no tiene JDK)
    * Maven (ejecute `apt-get install maven` si no tiene Maven)
 
@@ -45,25 +45,25 @@ Asígnele un nombre a la base de datos nueva (**db**) y a la nueva colección (*
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
-## <a name="clone-the-sample-application"></a>Clonación de la aplicación de ejemplo
+## <a name="clone-hello-sample-application"></a>Clonar aplicación de ejemplo de Hola
 
-Ahora vamos a clonar una aplicación de API MongoDB desde GitHub, establecer la cadena de conexión y ejecutarla. Verá lo fácil que es trabajar con datos mediante programación. 
+Ahora vamos a clonar una API de MongoDB aplicación de github, establezca la cadena de conexión de Hola y ejecútelo. Podrá ver lo fácil que es toowork con datos mediante programación. 
 
-1. Abra una ventana de terminal de Git, como Git Bash, y `cd` en un directorio de trabajo.  
+1. Abra una ventana de terminal de git, como git bash, y `cd` tooa directorio de trabajo.  
 
-2. Ejecute el comando siguiente para clonar el repositorio de ejemplo. 
+2. Ejecute hello después de repositorio de ejemplo de comando tooclone Hola. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-getting-started.git
     ```
 
-3. Después, abra el archivo de solución en Visual Studio. 
+3. A continuación, abra el archivo de solución de hello en Visual Studio. 
 
-## <a name="review-the-code"></a>Revisión del código
+## <a name="review-hello-code"></a>Revise el código de hello
 
-Vamos a revisar rápidamente lo que sucede en la aplicación. Abra el archivo `Program.cs` y observe que estas líneas de código crean los recursos de Azure Cosmos DB. 
+Vamos a hacer una revisión rápida de lo que sucede en la aplicación hello. Abra hello `Program.cs` archivo y encontrará que estas líneas de código crean Hola recursos de base de datos de Azure Cosmos. 
 
-* Se inicializa DocumentClient.
+* Hola DocumentClient se inicializa.
 
     ```java
     MongoClientURI uri = new MongoClientURI("FILLME");`
@@ -95,36 +95,36 @@ Vamos a revisar rápidamente lo que sucede en la aplicación. Abra el archivo `P
 
 ## <a name="update-your-connection-string"></a>Actualizar la cadena de conexión
 
-Ahora vuelva a Azure Portal para obtener la información de la cadena de conexión y cópiela en la aplicación.
+Ahora vuelva atrás toohello tooget portal Azure la información de la cadena de conexión y se copia en la aplicación hello.
 
-1. En la cuenta, seleccione **Inicio rápido**, elija Java y copie la cadena de conexión en el Portapapeles.
+1. En la cuenta de hello, seleccione **inicio rápido**, seleccione Java y luego copiar Portapapeles de tooyour de cadena de conexión de Hola
 
-2. Abra el archivo `Program.java` y reemplace el argumento del constructor MongoClientURI por la cadena de conexión. Ya ha actualizado la aplicación con toda la información que necesita para comunicarse con Azure Cosmos DB. 
+2. Abra hello `Program.java` archivo, reemplace el constructor de hello argumento toohello MongoClientURI con la cadena de conexión de Hola. Ahora ha actualizado la aplicación con toda la información de hello debe toocommunicate con base de datos de Azure Cosmos. 
     
-## <a name="run-the-console-app"></a>Ejecutar la aplicación de consola
+## <a name="run-hello-console-app"></a>Ejecutar la aplicación de consola de hello
 
-1. Ejecute `mvn package` en un terminal para instalar los módulos npm necesarios.
+1. Ejecutar `mvn package` en un terminal tooinstall necesario módulos npm
 
-2. Ejecute `mvn exec:java -D exec.mainClass=GetStarted.Program` en un terminal para iniciar la aplicación de Java.
+2. Ejecutar `mvn exec:java -D exec.mainClass=GetStarted.Program` en un terminal toostart la aplicación de Java.
 
-Ahora puede usar [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) para consultar, modificar y trabajar con estos nuevos datos.
+Ahora puede usar [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md) tooquery, modificar y trabajar con nuevos datos.
 
-## <a name="review-slas-in-the-azure-portal"></a>Revisar los SLA en Azure Portal
+## <a name="review-slas-in-hello-azure-portal"></a>Revise los SLA de hello portal de Azure
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Limpieza de recursos
 
-Si no va a seguir usando esta aplicación, siga estos pasos para eliminar todos los recursos creados en esta guía de inicio rápido en Azure Portal:
+Si no va toocontinue toouse esta aplicación, eliminar todos los recursos creados por este tutorial rápido de hello portal de Azure con hello pasos:
 
-1. En el menú de la izquierda de Azure Portal, haga clic en **Grupos de recursos** y en el nombre del recurso que creó. 
-2. En la página del grupo de recursos, haga clic en **Eliminar**, escriba en el cuadro de texto el nombre del recurso que quiere eliminar y haga clic en **Eliminar**.
+1. En el menú de la izquierda de Hola Hola portal de Azure, haga clic en **grupos de recursos** y, a continuación, haga clic en nombre de hello del recurso de Hola que creó. 
+2. En la página del grupo de recursos, haga clic en **eliminar**, escriba el nombre de Hola de hello recursos toodelete en el cuadro de texto hello y, a continuación, haga clic en **eliminar**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En esta guía de inicio rápido, ha aprendido a crear una cuenta de Azure Cosmos DB, crear una colección mediante el Explorador de datos y ejecutar una aplicación de consola. Ahora puede importar datos adicionales en la cuenta de Cosmos DB. 
+En este tutorial, ha aprendido cómo crear una colección mediante Hola Explorador de datos toocreate una cuenta de base de datos de Azure Cosmos y ejecutar una aplicación de consola. Ahora puede importar la cuenta de base de datos de Cosmos tooyour datos adicionales. 
 
 > [!div class="nextstepaction"]
-> [Importar datos de MongoDB en Azure Cosmos DB](mongodb-migrate.md)
+> [Importación de datos de MongoDB a Azure Cosmos DB](mongodb-migrate.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Creación de canalizaciones de datos predictivas con Azure Data Factory | Microsoft Docs"
-description: "Describe cómo crear canalizaciones predictivas con Factoría de datos de Azure y Aprendizaje automático de Azure"
+title: las canalizaciones de datos predictivos aaaCreate con Data Factory de Azure | Documentos de Microsoft
+description: "Describe cómo toocreate crear canalizaciones predictivas con factoría de datos de Azure y aprendizaje automático de Azure"
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: d8e2c9583fc909e4e015e2d40473d2754529d8ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 943210c28b1696e299ff9b7cc96369b95f182354
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Creación de canalizaciones predictivas con Azure Machine Learning y Azure Data Factory
 
@@ -37,51 +37,51 @@ ms.lasthandoff: 07/11/2017
 ## <a name="introduction"></a>Introducción
 
 ### <a name="azure-machine-learning"></a>Aprendizaje automático de Azure
-[Aprendizaje automático de Azure](https://azure.microsoft.com/documentation/services/machine-learning/) permite compilar, probar e implementar soluciones de análisis predictivo. Desde una perspectiva general, esto se realiza en tres pasos:
+[Aprendizaje automático de Azure](https://azure.microsoft.com/documentation/services/machine-learning/) permite toobuild, probar e implementar soluciones de análisis predictivo. Desde una perspectiva general, esto se realiza en tres pasos:
 
-1. **Crear un experimento de entrenamiento**. Este paso se lleva a cabo mediante Azure Machine Learning Studio. ML Studio es un entorno de desarrollo visual de colaboración que se emplea para entrenar y probar un modelo de análisis predictivo con datos de entrenamiento.
-2. **Convertirlo en un experimento predictivo**. Una vez que el modelo se ha entrenado con datos existentes y está listo para usarlo para puntuar nuevos datos, debe preparar y simplificar el experimento para la puntuación.
-3. **Implementarlo como un servicio web**. Puede publicar el experimento de puntuación como un servicio web de Azure. Los usuarios pueden enviar datos al modelo a través de este punto de conexión de servicio web y recibir las predicciones de resultado para el modelo.  
+1. **Crear un experimento de entrenamiento**. Realice este paso mediante el uso de hello estudio de aprendizaje automático. estudio de aprendizaje automático de Hello es un entorno de desarrollo visual de colaboración que use tootrain y probar un modelo de análisis predictivos utilizando los datos de entrenamiento.
+2. **Convertir experimento predictivo tooa**. Una vez que el modelo se ha entrenado con datos existentes y está listo toouse se tooscore nuevos datos, preparar y simplificar el experimento de puntuación.
+3. **Implementarlo como un servicio web**. Puede publicar el experimento de puntuación como un servicio web de Azure. Puede enviar tooyour modelo de datos a través de este extremo de servicio web y recibir predicciones de resultado para el modelo de Hola.  
 
-### <a name="azure-data-factory"></a>Factoría de datos de Azure
-Data Factory es un servicio de integración de datos basado en la nube que organiza y automatiza el **movimiento** y la **transformación** de los datos. Con Azure Data Factory se pueden crear soluciones de integración de datos que pueden ingerir datos de distintos almacenes de datos, transformarlos y procesarlos, y publicar los datos resultantes en los almacenes de datos.
+### <a name="azure-data-factory"></a>Azure Data Factory
+Factoría de datos es un servicio de integración de datos en la nube que organiza y automatiza hello **movimiento** y **transformación** de datos. Puede crear soluciones de integración de datos mediante Data Factory de Azure que pueden recopilar datos de varios almacenes de datos, transformar y procesar los datos de Hola y publicación de almacenes de datos de toohello de datos de resultado de hello.
 
-El servicio Data Factory permite crear canalizaciones de datos que mueven y transforman datos y, después, ejecutar los procesos según una programación especificada (cada hora, diariamente, semanalmente, etc.). También proporciona excelentes visualizaciones para mostrar el linaje y las dependencias entre las canalizaciones de datos y para poder supervisar todas las canalizaciones de datos desde una única vista unificada, con el fin de facilitar la identificación de los problemas y la configuración de alertas de supervisión.
+Servicio de factoría de datos permite toocreate las canalizaciones de datos que moverán y transforman datos y, a continuación, ejecuta canalizaciones de hello según una programación especificada (cada hora, diariamente, semanalmente, etcetera). También proporciona las dependencias entre sus canalizaciones de datos y el linaje de Hola de visualizaciones enriquecidas toodisplay y supervisar todos sus canalizaciones de datos desde una única vista unificada tooeasily identificar con exactitud los problemas y las alertas de supervisión de la instalación.
 
-Consulte los artículos [Introducción a Azure Data Factory](data-factory-introduction.md) y [Creación de la primera canalización de datos](data-factory-build-your-first-pipeline.md) para empezar a trabajar rápidamente con el servicio Azure Data Factory.
+Vea [tooAzure Introducción factoría de datos](data-factory-introduction.md) y [crear su primera canalización](data-factory-build-your-first-pipeline.md) tooquickly artículos empezar a trabajar con hello servicio Data Factory de Azure.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory y Machine Learning juntos
-Azure Data Factory permite crear fácilmente canalizaciones que utilizan un servicio web de [Azure Machine Learning][azure-machine-learning] publicado para realizar análisis predictivos. Mediante la **actividad de ejecución de lotes** en una canalización de Factoría de datos de Azure, puede invocar un servicio web de Aprendizaje automático de Azure para realizar predicciones sobre los datos en el lote. Consulte la sección [Invocación de un servicio web de Aprendizaje automático de Azure mediante la actividad de ejecución de lotes](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity) para obtener detalles.
+Azure habilita la factoría de datos se tooeasily crear canalizaciones que usan un informe publicado [aprendizaje automático de Azure] [ azure-machine-learning] web service para realizar análisis predictivos. Con hello **actividad de ejecución de lotes** en una canalización del generador de datos de Azure, puede invocar un predicciones de toomake de servicio de web de aprendizaje automático de Azure en los datos de hello en lote. Vea [invocar un aprendizaje automático de Azure servicio web usando Hola actividad de ejecución de lotes](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity) sección para obtener más información.
 
-Pasado algún tiempo, los modelos predictivos en los experimentos de puntuación de Aprendizaje automático de Azure tienen que volver a entrenarse con nuevos conjuntos de datos de entrada. Puede volver a entrenar un modelo de Aprendizaje automático de Azure de una canalización de Factoría de datos realizando los pasos siguientes:
+Con el tiempo, los modelos de predicción de hello en experimentos de puntuación de aprendizaje automático de Azure de hello necesitan toobe volver a entrenar con los nuevos conjuntos de datos de entrada. Puede volver a entrenar un modelo de aprendizaje automático de Azure desde una canalización de factoría de datos realizando Hola pasos:
 
-1. Publicar el experimento de entrenamiento (experimento no predictivo) como un servicio web. Tiene que llevar a cabo este paso en Azure Machine Learning Studio, tal como hizo para exponer el experimento predictivo como un servicio web en el escenario anterior.
-2. Usar la actividad de ejecución de lotes de Aprendizaje automático de Azure para invocar el servicio web para el experimento de entrenamiento. Básicamente, puede emplear la actividad de ejecución de lotes de Aprendizaje automático de Azure para invocar el servicio web de aprendizaje y el servicio web de puntuación.
+1. Publicar el experimento de entrenamiento de hello (experimento no predicción) como un servicio web. Realice este paso en estudio de aprendizaje automático de hello como lo hizo tooexpose predictivo experimento como un servicio web en el escenario anterior Hola.
+2. Usar Hola el servicio web de actividad de ejecución de lotes de aprendizaje automático de Azure tooinvoke Hola para experimento de entrenamiento de Hola. Básicamente, puede usar tooinvoke de actividad de ejecución de lotes de aprendizaje automático de Azure Hola el servicio web de entrenamiento y la puntuación del servicio web.
 
-Cuando haya terminado el reciclaje, actualice el servicio web de puntuación (experimento predictivo expuesto como servicio web) con el modelo recién entrenado mediante la **actividad de recursos de actualización de Azure Machine Learning**. Para obtener más información, consulte el artículo [Updating models using Update Resource Activity](data-factory-azure-ml-update-resource-activity.md) (Actualización de modelos mediante la actividad de recursos de actualización).
+Cuando termine con reciclaje, actualizar Hola la puntuación del servicio web (se expone como un servicio web predictivo experimento) con hello recién entrenado usando hello **actualizar recursos actividad de aprendizaje automático de Azure**. Para obtener más información, consulte el artículo [Updating models using Update Resource Activity](data-factory-azure-ml-update-resource-activity.md) (Actualización de modelos mediante la actividad de recursos de actualización).
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>Invocación de un servicio web mediante la actividad de ejecución de lotes
-Factoría de datos de Azure se usa para coordinar el procesamiento y el movimiento de datos y, posteriormente, realizar la ejecución por lotes mediante Aprendizaje automático de Azure. Estos son los pasos de nivel superior:
+Usar procesamiento y movimiento de datos de Data Factory de Azure tooorchestrate y, a continuación, realizar la ejecución por lotes mediante el aprendizaje automático de Azure. Estos son los pasos de nivel superior de hello:
 
-1. Cree un servicio vinculado de Aprendizaje automático de Azure. Necesita los siguientes valores:
+1. Cree un servicio vinculado de Aprendizaje automático de Azure. Necesita Hola siguientes valores:
 
-   1. **URI de solicitud** para la API Ejecución de lotes. Para encontrar el URI de solicitud, haga clic en el vínculo **EJECUCIÓN DE LOTES** en la página de servicios web.
-   2. **Clave de API** para el servicio web de Aprendizaje automático de Azure publicado. Para encontrar la clave de API, haga clic en el servicio web que ha publicado.
-   3. Use la actividad **AzureMLBatchExecution** .
+   1. **URI de solicitud** para hello API de ejecución por lotes. Puede encontrar Hola URI de solicitud, haga clic en hello **ejecución por lotes** vínculo en la página de servicios web de Hola.
+   2. **Clave de API** para hello publica el servicio web de aprendizaje automático de Azure. Puede encontrar la clave de API de hello haciendo clic en el servicio web de Hola que haya publicado.
+   3. Hola de uso **AzureMLBatchExecution** actividad.
 
       ![Panel de aprendizaje automático](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
 
       ![URI del lote](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
-### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Escenario: Experimentos mediante entradas y salidas de servicios web que hacen referencia a datos de Almacenamiento de blobs de Azure
-En este escenario, el servicio web de Aprendizaje automático de Azure realiza predicciones mediante datos de un archivo de un almacenamiento de blobs de Azure y almacena los resultados de predicción en el almacenamiento de blobs. El siguiente JSON define una canalización de Data Factory con una actividad AzureMLBatchExecution. La actividad tiene el conjunto de datos **DecisionTreeInputBlob** como entrada y **DecisionTreeResultBlob** como salida. **DecisionTreeInputBlob** se pasa como entrada al servicio web mediante la propiedad JSON **webServiceInput**. **DecisionTreeResultBlob** se pasa como salida al servicio web mediante la propiedad JSON **webServiceOutputs**.  
+### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-toodata-in-azure-blob-storage"></a>Escenario: Experimentos con Web service entradas/salidas que hacen referencia toodata en almacenamiento de blobs de Azure
+En este escenario, Hola servicio Web de aprendizaje de máquina de Azure lleva a cabo predicciones mediante datos de un archivo en el almacenamiento de blobs de Azure y almacena los resultados de predicción de hello en el almacenamiento de blobs de Hola. Hello JSON siguiente define una canalización de factoría de datos con una actividad AzureMLBatchExecution. actividad Hello tiene el conjunto de datos de hello **DecisionTreeInputBlob** como entrada y **DecisionTreeResultBlob** como salida de hello. Hola **DecisionTreeInputBlob** se pasa como un servicio web de entrada toohello por mediante hello **webServiceInput** propiedad JSON. Hola **DecisionTreeResultBlob** se pasa como un servicio de Web de salida toohello por mediante hello **webServiceOutputs** propiedad JSON.  
 
 > [!IMPORTANT]
-> Si el servicio web toma varias entradas, use la propiedad **webServiceInputs** en lugar de usar **webServiceInput**. Consulte la sección [El servicio web requiere varias entradas](#web-service-requires-multiple-inputs) para ver un ejemplo de cómo usar la propiedad webServiceInputs.
+> Si el servicio web de hello toma varias entradas, usar hello **webServiceInputs** propiedad en lugar de usar **webServiceInput**. Vea hello [servicio Web requiere varias entradas](#web-service-requires-multiple-inputs) sección para obtener un ejemplo del uso de hello webServiceInputs propiedad.
 >
-> Los conjuntos de datos a los que hacen referencia las propiedades **webServiceInput**/**webServiceInputs** y **webServiceOutputs** (en **typeProperties**) también se deben incluir en las **entradas** y las **salidas** de la actividad.
+> Conjuntos de datos que se hace referencia mediante hello **webServiceInput**/**webServiceInputs** y **webServiceOutputs** propiedades (en  **typeProperties**) también deben incluirse en hello actividad **entradas** y **genera**.
 >
-> En el experimento de Azure ML, la entrada del servicio web y los puertos de salida y parámetros globales tienen nombres predeterminados (input1 e input2) que se pueden personalizar. Los nombres que se utilizan para la configuración de globalParameters, webServiceOutputs y webServiceInputs deben coincidir exactamente con los de los experimentos. Puede ver la carga útil de la solicitud de ejemplo en la página de ayuda de ejecución de lotes del punto de conexión de Azure ML para comprobar la asignación esperada.
+> En el experimento de Azure ML, la entrada del servicio web y los puertos de salida y parámetros globales tienen nombres predeterminados (input1 e input2) que se pueden personalizar. nombres de Hola que utilizar para webServiceInputs, webServiceOutputs y la configuración de globalParameters deben coincidir exactamente con nombres de hello en experimentos de Hola. Puede ver carga de solicitud de ejemplo de Hola en la página de Ayuda de ejecución de lotes de Hola para su asignación de aprendizaje automático de Azure extremo tooverify Hola esperado.
 >
 >
 
@@ -127,16 +127,16 @@ En este escenario, el servicio web de Aprendizaje automático de Azure realiza p
 }
 ```
 > [!NOTE]
-> Solo las entradas y salidas de la actividad AzureMLBatchExecution pueden pasarse como parámetros al servicio web. Por ejemplo, en el fragmento JSON anterior, DecisionTreeInputBlob es una entrada a la actividad AzureMLBatchExecution, que se pasa como entrada al servicio web mediante el parámetro webServiceInput.   
+> Solo entradas y salidas de hello AzureMLBatchExecution actividad pueden pasarse como parámetros toohello servicio Web. Por ejemplo, en hello por encima del fragmento de JSON, DecisionTreeInputBlob es una entrada toohello AzureMLBatchExecution actividad, que se pasa como un servicio Web de entrada toohello a través del parámetro webServiceInput.   
 >
 >
 
 ### <a name="example"></a>Ejemplo
-Este ejemplo utiliza Almacenamiento de Azure para almacenar los datos de entrada y salida.
+Esta toohold de almacenamiento de Azure de ejemplo utiliza ambas Hola datos de entrada y salida.
 
-Se recomienda que siga el tutorial [Compilación de la primera canalización con Data Factory][adf-build-1st-pipeline] antes de llevar a cabo este ejemplo. Utilice el editor de Data Factory para crear artefactos de Data Factory (servicios vinculados, conjuntos de datos, canalización) en este ejemplo.   
+Se recomienda que atraviesan hello [crear su primera canalización con factoría de datos] [ adf-build-1st-pipeline] tutorial antes de pasar a través de este ejemplo. En este ejemplo, use artefactos de factoría de datos de toocreate de hello Editor de generador de datos (servicios vinculados, conjuntos de datos, canalización).   
 
-1. Cree un **servicio vinculado** para su instancia de **Azure Storage**. Si los archivos de entrada y salida están en diferentes cuentas de almacenamiento, necesita dos servicios vinculados. Este es un ejemplo de JSON:
+1. Cree un **servicio vinculado** para su instancia de **Azure Storage**. Si hello archivos de entrada y salida están en diferentes cuentas de almacenamiento, necesita dos servicios vinculados. Este es un ejemplo de JSON:
 
     ```JSON
     {
@@ -149,7 +149,7 @@ Se recomienda que siga el tutorial [Compilación de la primera canalización con
       }
     }
     ```
-2. Cree el **conjunto de datos** de **entrada** de Azure Data Factory. A diferencia de otros conjuntos de datos de Data Factory, estos deben contener tanto los valores de **folderPath** como de **fileName**. Puede utilizar la creación de particiones para hacer que cada ejecución de lotes (cada segmento de datos) se procese o produzca archivos de entrada y salida únicos. Probablemente necesitará incluir alguna actividad ascendente para transformar la entrada en el formato de archivo CSV y colocarlo en la cuenta de almacenamiento para cada segmento. En ese caso, no incluiría la configuración de **external** y **externalData** que se muestra en el ejemplo siguiente, y su valor de DecisionTreeInputBlob sería el conjunto de datos de salida de una actividad diferente.
+2. Crear hello **entrada** Data Factory de Azure **conjunto de datos**. A diferencia de otros conjuntos de datos de Data Factory, estos deben contener tanto los valores de **folderPath** como de **fileName**. Puede usar particiones toocause cada tooprocess de ejecución (cada segmento de datos) de proceso por lotes o generar entrada único y archivos de salida. Puede que necesite tooinclude algunos hello tootransform de actividad de nivel superior de entrada en formato de archivo CSV de Hola y lo coloca en la cuenta de almacenamiento de Hola para cada sector. En ese caso, no incluiría hello **externo** y **externalData** configuración se muestra en hello después de ejemplo y su DecisionTreeInputBlob sería el conjunto de datos de salida de hello de una actividad diferente.
 
     ```JSON
     {
@@ -181,7 +181,7 @@ Se recomienda que siga el tutorial [Compilación de la primera canalización con
     }
     ```
 
-    Su archivo CSV de entrada debe tener la fila de encabezado de columna. Si está usando la **actividad de copia** para crear o mover el archivo CSV a Blob Storage, debe establecer la propiedad **blobWriterAddHeader** del receptor en **true**. Por ejemplo:
+    El archivo de entrada csv debe tener una fila de encabezado de columna de Hola. Si usas hello **actividad de copia** toocreate o mover Hola csv en almacenamiento de blobs de hello, debe establecer propiedad de receptor de hello **blobWriterAddHeader** demasiado**true**. Por ejemplo:
 
     ```JSON
     sink:
@@ -191,8 +191,8 @@ Se recomienda que siga el tutorial [Compilación de la primera canalización con
     }
     ```
 
-    Si el archivo CSV no tiene la fila de encabezado, es posible que vea el siguiente error: **Error en actividad: error de lectura de la cadena. Token inesperado: StartObject. Path '', line 1, position 1**.
-3. Cree el **conjunto de datos** de **salida** de Azure Data Factory. En este ejemplo se usa la creación de particiones para crear una ruta de acceso de salida única para cada ejecución de segmento. Sin la creación de particiones, la actividad sobrescribiría el archivo.
+    Si el archivo csv de hello no tiene fila de encabezado de hello, puede ver Hola siguiente error: **produjo Error en actividad: Error al leer la cadena. Token inesperado: StartObject. Path '', line 1, position 1**.
+3. Crear hello **salida** Data Factory de Azure **conjunto de datos**. Este ejemplo utiliza particiones toocreate una ruta de acceso de salida único para cada ejecución del segmento. Sin particiones hello, actividad hello reemplazaría archivo hello.
 
     ```JSON
     {
@@ -233,7 +233,7 @@ Se recomienda que siga el tutorial [Compilación de la primera canalización con
       }
     }
     ```
-4. Cree un **servicio vinculado** de tipo **AzureMLLinkedService**; para ello, proporcione la clave de API y la URL de ejecución de lotes.
+4. Crear un **servicio vinculado** de tipo: **AzureMLLinkedService**, que proporciona la clave de API de Hola y URL de ejecución por lotes del modelo.
 
     ```JSON
     {
@@ -247,11 +247,11 @@ Se recomienda que siga el tutorial [Compilación de la primera canalización con
       }
     }
     ```
-5. Por último, cree una canalización que contenga una actividad **AzureMLBatchExecution** . En tiempo de ejecución, la canalización lleva a cabo los pasos siguientes:
+5. Por último, cree una canalización que contenga una actividad **AzureMLBatchExecution** . En tiempo de ejecución, canalización lleva a cabo Hola pasos:
 
-   1. Obtiene la ubicación del archivo de entrada de los conjuntos de datos de entrada.
-   2. Invoca a la API de ejecución de lotes de Azure Machine Learning.
-   3. Copia el resultado de la ejecución por lotes en el blob proporcionado en el conjunto de datos de salida.
+   1. Obtiene la ubicación de Hola Hola del archivo de entrada de los conjuntos de datos de entrada.
+   2. Invoca la ejecución por lotes de aprendizaje automático de Azure Hola API
+   3. Copias Hola blob de toohello de salida por lotes ejecución determinado del conjunto de datos de salida.
 
       > [!NOTE]
       > La actividad AzureMLBatchExecution puede tener cero o más entradas y una o más salidas.
@@ -300,24 +300,24 @@ Se recomienda que siga el tutorial [Compilación de la primera canalización con
     }
     ```
 
-      Las fechas y horas de inicio (**start**) y de finalización (**end**) deben estar en [formato ISO](http://en.wikipedia.org/wiki/ISO_8601). Por ejemplo: 2014-10-14T16:32:41Z. La hora de la propiedad **end** es opcional. Si no especifica ningún valor para la propiedad **end**, se calcula como "**start + 48 horas**". Para ejecutar la canalización indefinidamente, especifique **9999-09-09** como valor de propiedad **end**. Para obtener más información sobre las propiedades JSON, vea [Referencia de scripting JSON](https://msdn.microsoft.com/library/dn835050.aspx) .
+      Las fechas y horas de inicio (**start**) y de finalización (**end**) deben estar en [formato ISO](http://en.wikipedia.org/wiki/ISO_8601). Por ejemplo: 2014-10-14T16:32:41Z. Hola **final** tiempo es opcional. Si no especifica el valor de hello **final** propiedad, se calcula como "**inicio + 48 horas.**" canalización de hello toorun indefinidamente, especifique **9999-09-09** como valor de Hola de hello **final** propiedad. Para obtener más información sobre las propiedades JSON, vea [Referencia de scripting JSON](https://msdn.microsoft.com/library/dn835050.aspx) .
 
       > [!NOTE]
-      > La especificación de la entrada para la actividad AzureMLBatchExecution es opcional.
+      > Especificar la entrada para la actividad de hello AzureMLBatchExecution es opcional.
       >
       >
 
-### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Escenario: Experimentos mediante módulos Lector y Escritor para hacer referencia a datos de varios almacenamientos
-Otro escenario común al crear experimentos de Aprendizaje automático de Azure es usar módulos Lector y Escritor. El módulo lector se usa para cargar datos en un experimento y el módulo escritor para guardar los datos de los experimentos. Para obtener información sobre los módulos lector y escritor, consulte los temas [Lector](https://msdn.microsoft.com/library/azure/dn905997.aspx) y [Escritor](https://msdn.microsoft.com/library/azure/dn905984.aspx) en MSDN Library.     
+### <a name="scenario-experiments-using-readerwriter-modules-toorefer-toodata-in-various-storages"></a>Escenario: Experimentos con módulos de lector/escritor toorefer toodata en varios almacenamientos
+Otro escenario común al crear experimentos de aprendizaje automático de Azure es toouse módulos de lectura y escritura. módulo de lector de Hello es datos tooload usado en un experimento y módulo de escritor de hello es toosave datos de experimentos. Para obtener información sobre los módulos lector y escritor, consulte los temas [Lector](https://msdn.microsoft.com/library/azure/dn905997.aspx) y [Escritor](https://msdn.microsoft.com/library/azure/dn905984.aspx) en MSDN Library.     
 
-Al usar los módulos lector y escritor, es recomendable emplear un parámetro de servicio web para cada propiedad de estos módulos. Estos parámetros web permiten configurar los valores en tiempo de ejecución. Por ejemplo, podría crear un experimento con un módulo lector que usa una base de datos SQL de Azure: XXX.database.windows.net. Una vez implementado el servicio web, quiere habilitar los consumidores del servicio web con el fin de especificar otro servidor Azure SQL Server denominado YYY.database.windows.net. Puede usar un parámetro de servicio web para permitir que se configure este valor.
+Al utilizar los módulos de lector y escritor de hello, es recomendable toouse un parámetro del servicio Web para cada propiedad de estos módulos de lectura/escritura. Estos parámetros web le permiten valores de hello tooconfigure en tiempo de ejecución. Por ejemplo, podría crear un experimento con un módulo lector que usa una base de datos SQL de Azure: XXX.database.windows.net. Una vez implementado el servicio web de hello, desea que los consumidores de hello tooenable de hello web servicio toospecify otro servidor de SQL Azure denominada YYY.database.windows.net. Puede usar un tooallow de parámetro del servicio Web este toobe valor configurado.
 
 > [!NOTE]
-> Las entradas y salidas de servicio web son diferentes de los parámetros de servicio web. En el primer escenario, ha visto cómo pueden especificarse una entrada y una salida para un servicio web de Aprendizaje automático de Azure. En este escenario, se pasan parámetros para un servicio web que corresponden a las propiedades de los módulos lector y escritor.
+> Las entradas y salidas de servicio web son diferentes de los parámetros de servicio web. En el primer escenario hello, ha visto cómo se pueden especificar una entrada y salida para un servicio Web de aprendizaje automático de Azure. En este escenario, pasar parámetros para un servicio Web que se corresponden tooproperties de módulos de lectura/escritura.
 >
 >
 
-Echemos un vistazo a un escenario de uso de parámetros de servicio web. Tiene un servicio web implementado de Azure Machine Learning que usa un módulo lector para leer datos de uno de los orígenes de datos admitidos por Azure Machine Learning (por ejemplo: Azure SQL Database). Después de realizar la ejecución de lotes, los resultados se escriben con un módulo escritor (Base de datos SQL de Azure).  No hay entradas ni salidas de servicio web definidas en los experimentos. En este caso, se recomienda que configure los parámetros de servicio web pertinentes para los módulos lector y escritor. De esta forma, se podrán configurar los módulos lector y escritor cuando se use la actividad AzureMLBatchExecution. Los parámetros de servicio web se especifican en la sección **globalParameters** de la actividad JSON como se indica a continuación.
+Echemos un vistazo a un escenario de uso de parámetros de servicio web. Tiene un servicio web de aprendizaje automático de Azure implementado que usa un tooread datos del módulo de lector de uno de los orígenes de datos de hello admitidos por el aprendizaje automático de Azure (por ejemplo: base de datos de SQL Azure). Una vez realizada la ejecución por lotes hello, se escriben los resultados de hello mediante un módulo de escritor (base de datos de SQL Azure).  No tiene entradas de servicio web y las salidas se definen en los experimentos de Hola. En este caso, se recomienda que configurar parámetros del servicio web relevantes para los módulos de lector y escritor de Hola. Esta configuración permite a Hola lector/escritor toobe módulos configurada cuando se usa la actividad de hello AzureMLBatchExecution. Especificar parámetros de servicio Web en hello **globalParameters** sección actividad hello JSON como se indica a continuación.
 
 ```JSON
 "typeProperties": {
@@ -328,7 +328,7 @@ Echemos un vistazo a un escenario de uso de parámetros de servicio web. Tiene u
 }
 ```
 
-También puede usar [Funciones de Factoría de datos](data-factory-functions-variables.md) para pasar valores para los parámetros de servicio web como se muestra en el siguiente ejemplo:
+También puede usar [funciones de factoría de datos](data-factory-functions-variables.md) para pasar valores de hello parámetros del servicio Web como se muestra en el siguiente ejemplo de Hola:
 
 ```JSON
 "typeProperties": {
@@ -339,14 +339,14 @@ También puede usar [Funciones de Factoría de datos](data-factory-functions-var
 ```
 
 > [!NOTE]
-> Los parámetros de servicio web distinguen entre mayúsculas y minúsculas para garantizar que los nombres que especifica en JSON de actividad coinciden con los que muestra el servicio web.
+> parámetros de servicio Web de Hello distinguen mayúsculas de minúsculas, por lo que garantizar que los nombres de Hola que especifique en la actividad de Hola JSON coinciden con hello las expuestas por hello servicio Web.
 >
 >
 
-### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Uso de un módulo lector para leer datos de varios archivos de blob de Azure
-La canalización de macrodatos con actividades como Pig y Hive puede generar uno o varios archivos de salida sin extensiones. Por ejemplo, cuando se especifica una tabla externa de Hive, los datos de dicha tabla se pueden almacenar en el almacenamiento de blobs de Azure con el siguiente nombre 000000_0. Puede usar el módulo lector en un experimento para leer varios archivos y usarlos para realizar predicciones.
+### <a name="using-a-reader-module-tooread-data-from-multiple-files-in-azure-blob"></a>Utiliza una tooread de módulo de lector datos de varios archivos en blobs de Azure
+La canalización de macrodatos con actividades como Pig y Hive puede generar uno o varios archivos de salida sin extensiones. Por ejemplo, cuando se especifica una tabla de Hive externa, datos de hello para la tabla de Hive externo Hola pueden almacenarse en el almacenamiento de blobs de Azure con hello después 000000_0 de nombre. También puede usar varios archivos de módulo de lector de hello en un experimento tooread y usarlos para las predicciones.
 
-Al usar el módulo lector en un experimento de Aprendizaje automático de Azure, puede especificar Blob de Azure como entrada. Los archivos en Blob Storage de Azure pueden ser los archivos de salida (por ejemplo, 000000_0) que se generan mediante un script de Pig y Hive en HDInsight. El módulo de lector permite leer archivos (sin extensiones) mediante la configuración de la propiedad **Path to container, directory/blob**(Ruta de acceso al contenedor, directorio o blob). La **ruta de acceso al contenedor** apunta al contenedor y el **directorio o blob** apunta a la carpeta que contiene los archivos, tal y como se muestra en la siguiente imagen. Tenga en cuenta que el asterisco (\*) **especifica que todos los archivos de la carpeta o contenedor (es decir, data/aggregateddata/year=2014/month-6/\*)** se leen como parte del experimento.
+Cuando se usa el módulo de lector de hello en un experimento de aprendizaje automático de Azure, puede especificar el Blob de Azure como entrada. archivos de Hola Hola almacenamiento de blobs de Azure pueden ser archivos de salida de hello (ejemplo: 000000_0) que se hayan producido por un script de Pig y Hive con HDInsight. Hello módulo de lector permite tooread archivos (con ninguna extensión) mediante la configuración de hello **toocontainer de ruta de acceso, directorio o blob**. Hola **toocontainer de ruta de acceso** puntos toohello contenedor y **directorio/blob** señala toofolder que contiene archivos de hello como se muestra en hello después de la imagen. Hola asterisco es decir, \*) **especifica que todos los archivos en la carpeta de contenedor de Hola Hola (es decir, datos/aggregateddata/año = mes/2014-6 /\*)** se lee como parte del experimento de Hola.
 
 ![Propiedades de Blob de Azure](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -401,16 +401,16 @@ Al usar el módulo lector en un experimento de Aprendizaje automático de Azure,
 }
 ```
 
-En el ejemplo JSON anterior:
+Hola ejemplo JSON anterior:
 
-* El servicio web implementado de Aprendizaje automático de Azure usa un módulo lector y otro escritor para leer y escribir datos desde y hacia una base de datos SQL de Azure. Este servicio web expone los cuatro parámetros siguientes: nombre de servidor de base de datos, nombre de base de datos, nombre de cuenta de usuario de servidor y contraseña de cuenta de usuario de servidor.  
-* Las fechas y horas de inicio (**start**) y de finalización (**end**) deben estar en [formato ISO](http://en.wikipedia.org/wiki/ISO_8601). Por ejemplo: 2014-10-14T16:32:41Z. La hora de la propiedad **end** es opcional. Si no especifica ningún valor para la propiedad **end**, se calcula como "**start + 48 horas**". Para ejecutar la canalización indefinidamente, especifique **9999-09-09** como valor de propiedad **end**. Para obtener más información sobre las propiedades JSON, vea [Referencia de scripting JSON](https://msdn.microsoft.com/library/dn835050.aspx) .
+* Hola implementado Azure Machine Learning servicio Web utiliza un lector y un sistema de escritura módulo tooread/escribir datos de / tooan base de datos de SQL Azure. Este servicio Web expone Hola cuatro parámetros siguientes: nombre del servidor, nombre de base de datos, nombre de cuenta de usuario de servidor y contraseña de cuenta de usuario de servidor de base de datos.  
+* Las fechas y horas de inicio (**start**) y de finalización (**end**) deben estar en [formato ISO](http://en.wikipedia.org/wiki/ISO_8601). Por ejemplo: 2014-10-14T16:32:41Z. Hola **final** tiempo es opcional. Si no especifica el valor de hello **final** propiedad, se calcula como "**inicio + 48 horas.**" canalización de hello toorun indefinidamente, especifique **9999-09-09** como valor de Hola de hello **final** propiedad. Para obtener más información sobre las propiedades JSON, vea [Referencia de scripting JSON](https://msdn.microsoft.com/library/dn835050.aspx) .
 
 ### <a name="other-scenarios"></a>Otros escenarios
 #### <a name="web-service-requires-multiple-inputs"></a>El servicio web requiere varias entradas
-Si el servicio web toma varias entradas, use la propiedad **webServiceInputs** en lugar de usar **webServiceInput**. Los conjuntos de datos a los que hace referencia **webServiceInputs** también deben incluirse en las **entradas** de la actividad.
+Si el servicio web de hello toma varias entradas, usar hello **webServiceInputs** propiedad en lugar de usar **webServiceInput**. Conjuntos de datos que se hace referencia mediante hello **webServiceInputs** también debe incluirse en hello actividad **entradas**.
 
-En el experimento de Azure ML, la entrada del servicio web y los puertos de salida y parámetros globales tienen nombres predeterminados (input1 e input2) que se pueden personalizar. Los nombres que se utilizan para la configuración de globalParameters, webServiceOutputs y webServiceInputs deben coincidir exactamente con los de los experimentos. Puede ver la carga útil de la solicitud de ejemplo en la página de ayuda de ejecución de lotes del punto de conexión de Azure ML para comprobar la asignación esperada.
+En el experimento de Azure ML, la entrada del servicio web y los puertos de salida y parámetros globales tienen nombres predeterminados (input1 e input2) que se pueden personalizar. nombres de Hola que utilizar para webServiceInputs, webServiceOutputs y la configuración de globalParameters deben coincidir exactamente con nombres de hello en experimentos de Hola. Puede ver carga de solicitud de ejemplo de Hola en la página de Ayuda de ejecución de lotes de Hola para su asignación de aprendizaje automático de Azure extremo tooverify Hola esperado.
 
 ```JSON
 {
@@ -453,7 +453,7 @@ En el experimento de Azure ML, la entrada del servicio web y los puertos de sali
 ```
 
 #### <a name="web-service-does-not-require-an-input"></a>Servicio web no requiere una entrada
-Los servicios web de ejecución de lotes de Aprendizaje automático de Azure se pueden usar para ejecutar cualquier flujo de trabajo, por ejemplo, scripts R o Python, que puedan no requerir entradas. O bien, el experimento se podría configurar con un módulo Lector que no expone ningún GlobalParameters. En ese caso, la actividad AzureMLBatchExecution se configuraría de la siguiente manera:
+Servicios de Azure ML lote ejecución web puede ser toorun usado en los flujos de trabajo, por ejemplo, R o scripts de Python, que no requieran ninguna entrada. O bien, experimento Hola puede configurarse con un módulo de lector que no expone ningún GlobalParameters. En ese caso, hello AzureMLBatchExecution actividad se puede configurar como se indica a continuación:
 
 ```JSON
 {
@@ -480,7 +480,7 @@ Los servicios web de ejecución de lotes de Aprendizaje automático de Azure se 
 ```
 
 #### <a name="web-service-does-not-require-an-inputoutput"></a>Servicio web no requiere entrada/salida
-El servicio web de ejecución de lotes de Aprendizaje automático de Azure podría no tener configurada ninguna salida de servicio web. En este ejemplo, no hay ninguna entrada o salida de servicio web ni tampoco hay configurado ningún GlobalParameters. Todavía hay una salida configurada en la propia actividad, pero que no se presenta como webServiceOutput.
+servicio web de aprendizaje automático de Azure batch ejecución Hola podría no tener ningún resultado del servicio Web configurado. En este ejemplo, no hay ninguna entrada o salida de servicio web ni tampoco hay configurado ningún GlobalParameters. Sigue siendo una salida configurada en la propia actividad de hello, pero no se proporciona como un webServiceOutput.
 
 ```JSON
 {
@@ -503,8 +503,8 @@ El servicio web de ejecución de lotes de Aprendizaje automático de Azure podr�
 },
 ```
 
-#### <a name="web-service-uses-readers-and-writers-and-the-activity-runs-only-when-other-activities-have-succeeded"></a>Servicio web usa lectores y escritores y la actividad solo se ejecuta cuando otras actividades se realizaron correctamente
-Los módulos lector y escritor del servicio web de Aprendizaje automático de Azure se podrían configurar para ejecutarse con o sin GlobalParameters. Sin embargo, quizá quiera insertar llamadas de servicio en una canalización que use dependencias del conjunto de datos para invocar al servicio solo cuando se haya completado un procesamiento ascendente. También puede desencadenar otra acción una vez completada la ejecución por lotes con este enfoque. En ese caso, puede expresar las dependencias mediante entradas y salidas de la actividad, sin denominar a ninguna de ellas como entradas o salidas del servicio web.
+#### <a name="web-service-uses-readers-and-writers-and-hello-activity-runs-only-when-other-activities-have-succeeded"></a>Ejecuciones de actividad de hello solo cuando otras actividades han sido correctos y escritores y lectores de usos de servicio Web
+Hello Azure ML web lector y escritor de módulos de servicio podrían ser toorun configurado con o sin ningún GlobalParameters. Sin embargo, puede que desee tooembed servicio llama en una canalización que utiliza el servicio de Hola de tooinvoke de dependencias de conjunto de datos solo cuando se ha completado un procesamiento de nivel superior. También puede desencadenar otra acción una vez completada la ejecución por lotes Hola con este enfoque. En ese caso, puede expresar las dependencias de hello mediante actividad entradas y salidas, sin asignar un nombre cualquiera de ellos como servicio Web entradas ni salidas.
 
 ```JSON
 {
@@ -535,33 +535,33 @@ Los módulos lector y escritor del servicio web de Aprendizaje automático de Az
 },
 ```
 
-Las principales **ideas** obtenidas son:
+Hola **impresiones** son:
 
-* Si el punto de conexión del experimento usa una propiedad webServiceInput: se representa con un conjunto de datos de blobs y se incluye en las entradas de la actividad y en la propiedad webServiceInput. De lo contrario, se omite la propiedad webServiceInput.
-* Si el punto de conexión del experimento utiliza webServiceOutput(s): se representan con conjuntos de datos de blobs y se incluyen en la salidas de la actividad y en la propiedad webServiceOutputs. Las salidas de la actividad y webServiceOutputs se asignan por el nombre de cada salida en el experimento. De lo contrario, se omite la propiedad webServiceOutputs.
-* Si el punto de conexión del experimento expone una o más propiedades globalParameters, se proporcionan en la propiedad globalParameters como pares clave-valor. De lo contrario, se omite la propiedad globalParameters. Las claves distinguen mayúsculas de minúsculas. [Las funciones de Factoría de datos de Azure](data-factory-functions-variables.md) se pueden usar en los valores.
-* Es posible incluir conjuntos de datos adicionales en las propiedades de entradas y salidas de la actividad, sin que typeProperties de la actividad haga referencia a ellos. Estos conjunto de datos rigen la ejecución mediante el uso de las dependencias de segmento; de no ser así, la actividad AzureMLBatchExecution los omitirá.
+* Si el punto de conexión de experimento usa un webServiceInput: se representa mediante un conjunto de datos de blob y se incluye en entradas de actividad de Hola y propiedad de webServiceInput Hola. En caso contrario, se omite la propiedad de webServiceInput Hola.
+* Si el punto de conexión de experimento usa webServiceOutput(s): se incluyen en salidas de la actividad de Hola y en la propiedad webServiceOutputs de Hola y se representan mediante conjuntos de datos de blob. actividad Hello genera e webServiceOutputs se asignan por nombre de Hola de cada salida en el experimento de Hola. En caso contrario, se omite la propiedad webServiceOutputs de Hola.
+* Si el punto de conexión de experimento expone globalParameter(s), se facilita en la propiedad globalParameters de hello actividad como pares de clave, valor. En caso contrario, se omite la propiedad globalParameters de Hola. las claves de Hello distinguen mayúsculas de minúsculas. [Las funciones de factoría de datos Azure](data-factory-functions-variables.md) se puede utilizar en valores de hello.
+* Conjuntos de datos adicionales pueden incluirse en las propiedades de entradas y salidas de actividad de hello, sin que se hace referencia en hello actividad typeProperties. Estos conjuntos de datos controlan la ejecución con las dependencias de segmento pero en caso contrario, se omiten por hello AzureMLBatchExecution actividad.
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>Actualización de modelos mediante la actividad de recursos de actualización
-Cuando haya terminado el reciclaje, actualice el servicio web de puntuación (experimento predictivo expuesto como servicio web) con el modelo recién entrenado mediante la **actividad de recursos de actualización de Azure Machine Learning**. Para obtener más información, consulte el artículo [Updating models using Update Resource Activity](data-factory-azure-ml-update-resource-activity.md) (Actualización de modelos mediante la actividad de recursos de actualización).
+Cuando termine con reciclaje, actualizar Hola la puntuación del servicio web (se expone como un servicio web predictivo experimento) con hello recién entrenado usando hello **actualizar recursos actividad de aprendizaje automático de Azure**. Para obtener más información, consulte el artículo [Updating models using Update Resource Activity](data-factory-azure-ml-update-resource-activity.md) (Actualización de modelos mediante la actividad de recursos de actualización).
 
 ### <a name="reader-and-writer-modules"></a>Módulos Lector y Escritor
-Un escenario común para el uso de parámetros de servicio web es el uso de Lectores y escritores SQL de Azure. El módulo Lector se usa para cargar datos en un experimento desde los servicios de administración de datos fuera de Azure Machine Learning Studio. El módulo Escritor sirve para guardar datos desde los experimentos en servicios de administración de datos fuera de Azure Machine Learning Studio.  
+Un escenario común para utilizar parámetros de servicio Web es usar Hola de Azure SQL lectores y escritores. módulo de lector de Hello es datos tooload usado en un experimento desde los servicios de administración de datos fuera de estudio de aprendizaje automático de Azure. módulo de escritor de Hello es toosave datos de experimentos en servicios de administración de datos fuera de estudio de aprendizaje automático de Azure.  
 
-Para obtener información acerca del lector o escritor de SQL/blob de Azure, consulte los temas [Lector ](https://msdn.microsoft.com/library/azure/dn905997.aspx)y [Escritor](https://msdn.microsoft.com/library/azure/dn905984.aspx) en MSDN Library. El ejemplo de la sección anterior utilizó el lector de Blob de Azure y el lector de Blob de Azure. En esta sección se trata el uso del lector SQL Azure y el escritor SQL Azure.
+Para obtener información acerca del lector o escritor de SQL/blob de Azure, consulte los temas [Lector ](https://msdn.microsoft.com/library/azure/dn905997.aspx)y [Escritor](https://msdn.microsoft.com/library/azure/dn905984.aspx) en MSDN Library. ejemplo de Hola en la sección anterior de hello usa hello Azure Blob lector y el escritor de Blob de Azure. En esta sección se trata el uso del lector SQL Azure y el escritor SQL Azure.
 
 ## <a name="frequently-asked-questions"></a>Preguntas más frecuentes
-**P:** Tengo varios archivos generados por medio de mis canalizaciones de macrodatos. ¿Puedo usar la actividad AzureMLBatchExecution para trabajar en todos los archivos?
+**P:** Tengo varios archivos generados por medio de mis canalizaciones de macrodatos. ¿Puedo usar hello AzureMLBatchExecution actividad toowork en todos los archivos de hello?
 
-**R:** Sí. Consulte **Uso de un módulo lector para leer datos de varios archivos de blob de Azure** para obtener más información.
+**R:** Sí. Vea hello **utiliza una tooread de módulo de lector datos de varios archivos en blobs de Azure** sección para obtener más información.
 
 ## <a name="azure-ml-batch-scoring-activity"></a>Actividad de puntuación de lotes de Aprendizaje automático de Azure
-Si va a usar la actividad **AzureMLBatchScoring** para la integración con Azure Machine Learning, se recomienda usar la actividad **AzureMLBatchExecution** más reciente.
+Si usas hello **AzureMLBatchScoring** toointegrate de actividad con aprendizaje automático de Azure, se recomienda que realice hello más reciente **AzureMLBatchExecution** actividad.
 
-La actividad AzureMLBatchExecution se introdujo en la versión de agosto de 2015 del SDK de Azure y Azure PowerShell.
+Hola AzureMLBatchExecution actividad se introdujo en hello lanzamiento de agosto de 2015 de SDK de Azure y Azure PowerShell.
 
-Si desea continuar utilizando la actividad AzureMLBatchScoring, siga leyendo esta sección.  
+Si desea que toocontinue mediante la actividad de AzureMLBatchScoring hello, seguir leyendo a través de esta sección.  
 
 ### <a name="azure-ml-batch-scoring-activity-using-azure-storage-for-inputoutput"></a>Actividad de puntuación de lotes de Aprendizaje automático de Azure con Almacenamiento de Azure para entrada/salida
 
@@ -601,7 +601,7 @@ Si desea continuar utilizando la actividad AzureMLBatchScoring, siga leyendo est
 ```
 
 ### <a name="web-service-parameters"></a>Parámetros de servicio web
-Para especificar los valores de los parámetros de un servicio web, agregue una sección **typeProperties** a la sección **AzureMLBatchScoringActivty** en el JSON de canalización, tal y como se muestra en el siguiente ejemplo:
+toospecify valores para los parámetros de servicio Web, agregue un **typeProperties** sección toohello **AzureMLBatchScoringActivty** sección en JSON como se muestra en el siguiente ejemplo de Hola de la canalización de hello:
 
 ```JSON
 "typeProperties": {
@@ -611,7 +611,7 @@ Para especificar los valores de los parámetros de un servicio web, agregue una 
     }
 }
 ```
-También puede usar [Funciones de Factoría de datos](data-factory-functions-variables.md) para pasar valores para los parámetros de servicio web como se muestra en el siguiente ejemplo:
+También puede usar [funciones de factoría de datos](data-factory-functions-variables.md) para pasar valores de hello parámetros del servicio Web como se muestra en el siguiente ejemplo de Hola:
 
 ```JSON
 "typeProperties": {
@@ -622,7 +622,7 @@ También puede usar [Funciones de Factoría de datos](data-factory-functions-var
 ```
 
 > [!NOTE]
-> Los parámetros de servicio web distinguen entre mayúsculas y minúsculas para garantizar que los nombres que especifica en JSON de actividad coinciden con los que muestra el servicio web.
+> parámetros de servicio Web de Hello distinguen mayúsculas de minúsculas, por lo que garantizar que los nombres de Hola que especifique en la actividad de Hola JSON coinciden con hello las expuestas por hello servicio Web.
 >
 >
 

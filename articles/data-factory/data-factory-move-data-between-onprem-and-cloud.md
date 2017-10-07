@@ -1,6 +1,6 @@
 ---
-title: 'Movimiento de datos: Data Management Gateway | Microsoft Docs'
-description: "Configuración de una puerta de enlace para mover datos entre una infraestructura local y la nube. Uso de Data Management Gateway en Azure Data Factory para mover los datos."
+title: datos de aaaMove - Data Management Gateway | Documentos de Microsoft
+description: Configurar una puerta de enlace de datos toomove datos entre hello y local en la nube. Utilice Data Management Gateway en toomove Data Factory de Azure los datos.
 keywords: "puerta de enlace de datos, integración de datos, mover datos, credenciales de puerta de enlace"
 services: data-factory
 documentationcenter: 
@@ -15,180 +15,180 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
-ms.openlocfilehash: 565091e24a8c0009793e2e2365fb95013cad5028
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 314341c142d5260c785b7e82081774f044450e81
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Movimiento de datos entre orígenes locales y la nube con Data Management Gateway
-Este artículo proporciona información general sobre la integración de los almacenes de datos locales y los almacenes de datos en la nube mediante Data Factory. Este artículo se basa en el artículo [Actividades de movimiento de datos](data-factory-data-movement-activities.md) y otros artículos de conceptos básicos de Data Factory: [conjuntos de datos](data-factory-create-datasets.md) y [canalizaciones](data-factory-create-pipelines.md).
+# <a name="move-data-between-on-premises-sources-and-hello-cloud-with-data-management-gateway"></a>Mover datos entre orígenes locales y en la nube Hola con Data Management Gateway
+Este artículo proporciona información general sobre la integración de los almacenes de datos locales y los almacenes de datos en la nube mediante Data Factory. Se basa en hello [las actividades de movimiento de datos](data-factory-data-movement-activities.md) artículo y otros artículos de conceptos de núcleo de generador de datos: [conjuntos de datos](data-factory-create-datasets.md) y [canalizaciones](data-factory-create-pipelines.md).
 
 ## <a name="data-management-gateway"></a>Data Management Gateway
-Debe instalar Data Management Gateway en su equipo local para habilitar el movimiento de datos a o desde un almacén de datos local. La puerta de enlace puede instalarse en el mismo equipo que el almacén de datos o en un equipo diferente, siempre que la puerta de enlace pueda conectarse al almacén de datos.
+Debe instalar Data Management Gateway en su tooenable de máquina local mover datos desde un almacén de datos local. puerta de enlace de Hello puede instalarse en hello que mismo equipo como almacén de datos de Hola o en un equipo diferente como puerta de enlace de hello puede conectar el almacén de datos de toohello.
 
 > [!IMPORTANT]
 > Consulte el artículo [Data Management Gateway](data-factory-data-management-gateway.md) para más detalles sobre Data Management Gateway. 
 
-El siguiente tutorial muestra cómo crear una factoría de datos con una canalización que mueve los datos de una base de datos de **SQL Server** local a Azure Blob Storage. Como parte del tutorial, instalará y configurará la puerta de enlace de administración de datos en su máquina.
+Hello en el tutorial siguiente muestra cómo una factoría de datos con una canalización que mueve los datos de una implementación local de toocreate **SQL Server** tooan almacenamiento de blobs de Azure de la base de datos. Como parte del tutorial de hello, instalar y configurar Hola Data Management Gateway en su equipo.
 
-## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>Tutorial: copiar datos locales a la nube
-En este tutorial realizará los siguientes pasos: 
+## <a name="walkthrough-copy-on-premises-data-toocloud"></a>Tutorial: copiar toocloud de datos local
+En este tutorial Hola lo siguiente: 
 
 1. Creación de una factoría de datos.
 2. Creación de una instancia de Data Management Gateway. 
 3. Creación de servicios vinculados para los almacenes de datos de origen y receptor.
-4. Creación de conjuntos de datos que representen los datos de entrada y salida.
-5. Creación de una canalización con una actividad de copia para mover los datos.
+4. Creación de conjuntos de datos toorepresent entrada y salida de datos.
+5. Crear una canalización con una copia actividad toomove Hola de datos.
 
-## <a name="prerequisites-for-the-tutorial"></a>Requisitos previos para el tutorial
-Antes de comenzar este tutorial, debe cumplir los siguientes requisitos previos:
+## <a name="prerequisites-for-hello-tutorial"></a>Requisitos previos para el tutorial de Hola
+Antes de comenzar este tutorial, debe tener Hola siguiendo los requisitos previos:
 
-* **Suscripción de Azure**.  Si no tiene una suscripción, puede crear una cuenta de prueba gratuita en tan solo un par de minutos. Consulte el artículo [Evaluación gratuita](http://azure.microsoft.com/pricing/free-trial/) para obtener información.
-* **Cuenta de almacenamiento de Azure**. Blob Storage se usará como un almacén de datos de **destino o receptor** en este tutorial. Si no tiene una cuenta de almacenamiento de Azure, consulte la sección [Crear una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account) para ver los pasos para su creación.
+* **Suscripción de Azure**.  Si no tiene una suscripción, puede crear una cuenta de prueba gratuita en tan solo un par de minutos. Vea hello [gratuita](http://azure.microsoft.com/pricing/free-trial/) artículo para obtener más información.
+* **Cuenta de almacenamiento de Azure**. Usar el almacenamiento de blobs de Hola como un **destino/receptor** almacén de datos en este tutorial. Si no tiene una cuenta de almacenamiento de Azure, vea hello [crear una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account) artículo para toocreate pasos uno.
 * **SQL Server**. Use una base de datos de SQL Server local como almacén de datos de **origen** en este tutorial. 
 
 ## <a name="create-data-factory"></a>Creación de Data Factory
-En este paso, use Azure Portal para crear una instancia de Azure Data Factory denominada **ADFTutorialOnPremDF**.
+En este paso, utilice hello Azure toocreate portal una instancia de la factoría de datos de Azure denominada **ADFTutorialOnPremDF**.
 
-1. Inicie sesión en [Azure Portal](https://portal.azure.com).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 2. Haga clic en **+ NUEVO**, en **Inteligencia y análisis** y en **Data Factory**.
 
    ![New->DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
-3. En la página **Nueva factoría de datos**, escriba el nombre **ADFTutorialOnPremDF**.
+3. Hola **factoría de datos** escriba **ADFTutorialOnPremDF** para hello nombre.
 
-    ![Agregar al Panel de inicio](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
-
-   > [!IMPORTANT]
-   > El nombre de la factoría de datos de Azure debe ser único global. Si recibe el error: **El nombre de la factoría de datos "ADFTutorialOnPremDF" no está disponible**, cambie el nombre de la factoría de datos (por ejemplo, yournameADFTutorialDataFactory) e intente crearla de nuevo. Use este nombre en lugar de ADFTutorialFactory al realizar los restantes pasos de este tutorial.
-   >
-   > El nombre de la factoría de datos se puede registrar como un nombre **DNS** en el futuro y, por consiguiente, hacerse públicamente visible.
-   >
-   >
-4. Seleccione la **suscripción de Azure** donde desea crear la factoría de datos.
-5. Seleccione un **grupo de recursos** existente o cree uno nuevo. Para este tutorial, cree un grupo de recursos llamado: **ADFTutorialResourceGroup**.
-6. Haga clic en **Crear** en la página **Nueva factoría de datos**.
+    ![Agregar tooStartboard](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Para crear instancias de Data Factory, es preciso ser miembro del rol [Colaborador de Data Factory](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) en el nivel de grupo de recursos o suscripción.
+   > nombre de Hola Hola Azure factoría de datos debe ser único globalmente. Si recibe el error hello: **nombre de generador de datos "ADFTutorialOnPremDF" no está disponible**, cambiar nombre de Hola Hola factoría de datos (por ejemplo, yournameADFTutorialOnPremDF) y pruebe a crear de nuevo. Use este nombre en lugar de ADFTutorialFactory al realizar los restantes pasos de este tutorial.
+   >
+   > nombre de Hola Hola factoría de datos se puede registrar como un **DNS** asigne un nombre en el futuro de hello y, por tanto, se convierten en visible públicamente.
    >
    >
-7. Una vez completada la creación, puede ver la página **Factoría de datos** que se muestra en la siguiente imagen:
+4. Seleccione hello **suscripción de Azure** donde desea Hola datos generador toobe creado.
+5. Seleccione un **grupo de recursos** existente o cree uno nuevo. Para ver tutorial Hola, cree un grupo de recursos denominado: **ADFTutorialResourceGroup**.
+6. Haga clic en **crear** en hello **factoría de datos** página.
+
+   > [!IMPORTANT]
+   > instancias de la factoría de datos de toocreate, debe ser miembro del programa Hola a [colaborador de la factoría de datos](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) rol en el nivel de grupo de recursos/suscripción Hola.
+   >
+   >
+7. Una vez completada la creación, vea hello **factoría de datos** página como se muestra en hello después de imagen:
 
    ![Página principal de Factoría de datos](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDataFactoryHomePage.png)
 
 ## <a name="create-gateway"></a>Crear puerta de enlace
-1. En la página **Factoría de datos**, haga clic en el icono **Crear e implementar** para iniciar el **Editor** de la factoría de datos.
+1. Hola **factoría de datos** página, haga clic en **autor e implementar** icono toolaunch hello **Editor** de factoría de datos de Hola.
 
     ![Mosaico Crear e implementar](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
-2. En Data Factory Editor, haga clic en **... Más** en la barra de herramientas y, a continuación, haga clic en **Nueva puerta de enlace de datos**. O bien, haga clic con el botón derecho **Puertas de enlace de datos** en la vista de árbol y elija **Nueva puerta de enlace de datos**.
+2. Hola Editor de generador de datos, haga clic en **... Más** Hola barra de herramientas y, a continuación, haga clic en **nueva puerta de enlace de datos**. Como alternativa, puede hacer clic **puertas de enlace de datos** en Hola vista de árbol y haga clic en **nueva puerta de enlace de datos**.
 
    ![Nueva puerta de enlace de datos en la barra de herramientas](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
-3. En la página **Crear**, escriba **adftutorialgateway** para el **nombre** y haga clic en **Aceptar**.     
+3. Hola **crear** escriba **adftutorialgateway** para hello **nombre**y haga clic en **Aceptar**.     
 
     ![Página Crear puerta de enlace](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
     > [!NOTE]
-    > En este tutorial, creará la puerta de enlace lógica con un único nodo (la máquina de Windows local). Puede escalar horizontalmente una puerta de enlace de administración de datos mediante la asociación de varias máquinas locales con la puerta de enlace. Puede escalar verticalmente aumentando el número de trabajos de movimiento de datos que pueden ejecutarse simultáneamente en un nodo. Esta característica también está disponible para una puerta de enlace lógica con un único nodo. Consulte el artículo [Escalado en Data Management Gateway en Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) para más información.  
-4. En la página **Configurar**, haga clic en **Instalar directamente en este equipo**. Esta acción descarga el paquete de instalación de la puerta de enlace, instala, configura y registra la puerta de enlace en el equipo.  
+    > En este tutorial, creará puerta de enlace lógica de hello con un único nodo (máquina de Windows local). Puede escalar horizontalmente una puerta de enlace de administración de datos mediante la asociación de varios máquinas locales con puerta de enlace de Hola. Puede escalar verticalmente aumentando el número de trabajos de movimiento de datos que pueden ejecutarse simultáneamente en un nodo. Esta característica también está disponible para una puerta de enlace lógica con un único nodo. Consulte el artículo [Escalado en Data Management Gateway en Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) para más información.  
+4. Hola **configurar** página, haga clic en **instalar directamente en este equipo**. Esta acción descarga el paquete de instalación de Hola de puerta de enlace de hello, instala, configura y registra la puerta de enlace de hello en el equipo de Hola.  
 
    > [!NOTE]
    > Utilice Internet Explorer o un explorador web compatible con Microsoft ClickOnce.
    >
-   > Si usa Chrome, vaya a [Chrome Web Store](https://chrome.google.com/webstore/), busque la palabra clave "ClickOnce", elija una de las extensiones de ClickOnce e instálela.
+   > Si usas Chrome, vaya toohello [almacén web de Chrome](https://chrome.google.com/webstore/), buscar con la palabra clave "ClickOnce", elija una de las extensiones de ClickOnce hello e instalarlo.
    >
-   > Debe hacer lo mismo para Firefox (instale un complemento). Haga clic en el botón **Abrir menú** de la barra de herramientas (**tres líneas horizontales** en la esquina superior derecha), haga clic en **Complementos**, busque la palabra clave "ClickOnce", elija una de las extensiones de ClickOnce e instálela.    
+   > Hola mismo para Firefox (complemento de instalación). Haga clic en **menú Abrir** botón de barra de herramientas de hello (**tres líneas horizontales** en la esquina superior derecha de hello), haga clic en **complementos**, buscar con la palabra clave "ClickOnce", elija uno de Hola Extensiones de ClickOnce e instalarlo.    
    >
    >
 
     ![Puerta de enlace: página Configurar](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    Esta es la forma más sencilla (un clic) para descargar, instalar, configurar y registrar la puerta de enlace en un solo paso. Puede ver que la aplicación **Administrador de configuración de Microsoft Data Management Gateway** está instalada en el equipo. También puede encontrar el archivo ejecutable **ConfigManager.exe** en la carpeta: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**.
+    De este modo es toodownload (un solo clic) de la manera más fácil de hello, instalar, configurar y registrar la puerta de enlace de hello en un solo paso. Puede ver hello **Administrador de configuración de Microsoft Data Management Gateway** aplicación está instalada en el equipo. También puede encontrar Hola ejecutable **ConfigManager.exe** en la carpeta de hello: **C:\Program Files\Microsoft datos administración Gateway\2.0\Shared**.
 
-    También puede descargar e instalar la puerta de enlace manualmente con los vínculos de esta página y registrarla usando la clave que se muestra en el cuadro de texto **Nueva clave**.
+    También puede descargar e instalar puerta de enlace de manualmente mediante el uso de vínculos de hello en esta página y registrarla mediante la clave de Hola que aparece en hello **nueva clave** cuadro de texto.
 
-    Vea el artículo [Data Management Gateway](data-factory-data-management-gateway.md) para obtener todos los detalles sobre la puerta de enlace.
+    Vea [Data Management Gateway](data-factory-data-management-gateway.md) artículo para todos los detalles acerca de la puerta de enlace de Hola de Hola.
 
    > [!NOTE]
-   > Debe ser administrador del equipo local para instalar y configurar correctamente Data Management Gateway. Puede agregar más usuarios al grupo local de Windows **Usuarios de Data Management Gateway** . Los miembros de este grupo pueden usar la herramienta Administrador de configuración de Data Management Gateway para configurar la puerta de enlace.
+   > Debe ser un administrador en hello tooinstall de equipo local y configurar correctamente Hola Data Management Gateway. Puede agregar usuarios adicionales toohello **Data Management Gateway Users** grupo local de Windows. los miembros de Hola de este grupo pueden utilizar la puerta de enlace de hello Administrador de configuración de Data Management Gateway herramienta tooconfigure Hola.
    >
    >
-5. Espere unos minutos o espere hasta que vea el siguiente mensaje de notificación:
+5. Espere unos minutos o espere hasta que vea Hola después el mensaje de notificación:
 
     ![Instalación correcta de la puerta de enlace](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. Inicie la aplicación **Administrador de configuración de Data Management Gateway** en el equipo. En la ventana **Búsqueda**, escriba **Data Management Gateway** para tener acceso a esta utilidad. También puede encontrar el archivo ejecutable **ConfigManager.exe** en la carpeta: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**.
+6. Inicie la aplicación **Administrador de configuración de Data Management Gateway** en el equipo. Hola **búsqueda** ventana, escriba **Data Management Gateway** tooaccess este utilidad. También puede encontrar Hola ejecutable **ConfigManager.exe** en la carpeta de hello: **C:\Program Files\Microsoft datos administración Gateway\2.0\Shared**
 
     ![Administrador de configuración de puertas de enlace](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
-7. Confirme que ve el mensaje `adftutorialgateway is connected to the cloud service`. La barra de estado de la parte inferior muestra **Conectado al servicio en la nube** junto con una **marca de verificación verde**.
+7. Confirme que ve el mensaje `adftutorialgateway is connected toohello cloud service`. Hola Hola inferior muestra la barra de estado **toohello servicio de nube conectado** junto con un **marca de verificación verde**.
 
-    En la pestaña **Inicio**, también puede realizar las siguientes operaciones:
+    En hello **inicio** pestaña, también puede hacer Hola realizar las siguientes operaciones:
 
-   * **Registrar** una puerta de enlace con una clave en Azure Portal mediante el botón Registrar.
-   * **Detener** el servicio host de Data Management Gateway que se ejecuta en la máquina de puerta de enlace.
-   * **Programar las actualizaciones** que se instalarán en un momento específico del día.
-   * Ver cuándo se ha **actualizado por última vez** la puerta de enlace.
-   * Especificar la hora a la que se puede instalar una actualización de la puerta de enlace.
-8. Cambie a la pestaña **Configuración** . El certificado que se ha especificado en la sección **Certificado** se usa para cifrar o descifrar las credenciales para el almacén de datos local que especifique en el portal. Haga clic en **Cambiar** para usar su propio certificado en su lugar. De forma predeterminada, la puerta de enlace usa el certificado generado automáticamente por el servicio Data Factory.
+   * **Registrar** una puerta de enlace con una clave de hello portal de Azure con botón de registro de hello.
+   * **Detener** Hola servicio de Host de Data Management Gateway ejecutando en el equipo de puerta de enlace.
+   * **Programar actualizaciones** toobe instalado en un momento determinado del día de Hola.
+   * Ver si se realizó la puerta de enlace de hello **actualizó por última vez**.
+   * Especifique la hora a la que se puede instalar una puerta de enlace de toohello de actualización.
+8. Cambiar toohello **configuración** certificado de Hola de ficha especificado en hello **certificado** sección es usado tooencrypt o descifrar credenciales para almacén de datos local de Hola que especifique en el portal de Hola. (opcional) Haga clic en **cambio** toouse su propio certificado en su lugar. De forma predeterminada, puerta de enlace de hello utiliza certificado Hola Hola servicio factoría de datos genera automáticamente.
 
     ![Configuración del certificado de puerta de enlace](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 
-    También puede realizar las siguientes acciones en la pestaña **Configuración**:
+    También puede hacer Hola siguientes acciones en hello **configuración** ficha:
 
-   * Consultar o exportar el certificado que usa la puerta de enlace.
-   * Cambiar el punto de conexión HTTPS que usa la puerta de enlace.    
-   * Establecer un proxy HTTP que usará la puerta de enlace.     
-9. (Opcional) Cambie a la pestaña **Diagnósticos**, active la opción **Habilitar el registro detallado** si quiere habilitar el registro detallado que puede usar para solucionar los problemas de la puerta de enlace. La información de registro se encuentra en el **Visor de sucesos**, en el nodo **Registros de aplicaciones y servicios** -> **Data Management Gateway**.
+   * Ver o exportar el certificado de Hola que se usa la puerta de enlace de Hola.
+   * Cambiar el punto de conexión HTTPS de hello usa Hola puerta de enlace.    
+   * Establecer un toobe del proxy HTTP utilizado por la puerta de enlace de Hola.     
+9. (opcional) Cambiar toohello **diagnósticos** ficha, compruebe hello **habilitar el registro detallado** opción si desea que tooenable el registro que puede usar cualquier problema tootroubleshoot con puerta de enlace de hello detallado. Hello información de registro puede encontrarse en **Visor de eventos** en **registros de aplicaciones y servicios** -> **Data Management Gateway** nodo.
 
     ![Ficha Diagnóstico](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
-    También puede realizar las siguientes acciones en la pestaña **Diagnósticos** :
+    También puede realizar Hola siguientes acciones en hello **diagnósticos** ficha:
 
-   * Utilice la sección **Probar conexión** para probar la conexión con un origen de datos local mediante la puerta de enlace.
-   * Haga clic en **Ver registros** para ver el registro de Data Management Gateway en una ventana del Visor de eventos.
-   * Haga clic en **Enviar registros** para cargar un archivo zip con los registros de los últimos siete días en Microsoft y facilitar así la solución de sus problemas.
-10. En la pestaña **Diagnóstico**, en la sección **Probar conexión**, seleccione **SqlServer** para el tipo de almacén de datos; escriba el nombre del servidor de base de datos, el nombre de la base de datos, especifique el tipo de autenticación, escriba el nombre de usuario y la contraseña, y haga clic en **Probar** para comprobar si la puerta de enlace puede conectarse a la base de datos.
-11. Cambie al explorador web y, en **Azure Portal**, haga clic en **Aceptar** en la página **Configurar** y, después, en la página **Nueva puerta de enlace de datos**.
-12. Debería ver **adftutorialgateway** en **Puertas de enlace de datos** en la vista de árbol de la izquierda.  Si hace clic en ella, debería ver el JSON asociado.
+   * Use **Probar conexión** origen de datos local de la sección tooan con puerta de enlace de Hola.
+   * Haga clic en **ver registros** toosee Hola Data Management Gateway inicie sesión en una ventana del Visor de eventos.
+   * Haga clic en **enviar registros** tooupload un archivo zip con registros de los últimos siete días tooMicrosoft toofacilitate solución de problemas de los problemas.
+10. En hello **diagnósticos** ficha Hola **Probar conexión** sección, seleccione **SqlServer** para el tipo de saludo de datos de hello, almacenar, escriba Hola nombre del servidor de base de datos de Hola, nombre del Hola de base de datos, especificar el tipo de autenticación, escriba el nombre de usuario y contraseña y haga clic en **prueba** tootest si la puerta de enlace de hello puede conectarse toohello base de datos.
+11. Explorador de web toohello de conmutador y en hello **portal de Azure**, haga clic en **Aceptar** en hello **configurar** página y, a continuación, en hello **nueva puerta de enlace de datos** página.
+12. Debería ver **adftutorialgateway** en **puertas de enlace de datos** en vista de árbol de Hola Hola izquierda.  Si hace clic en él, debería ver Hola asociados JSON.
 
 ## <a name="create-linked-services"></a>Crear servicios vinculados
-En este paso, creará dos servicios vinculados: **AzureStorageLinkedService** y **SqlServerLinkedService**. **SqlServerLinkedService** vincula una base de datos de SQL Server local, mientras que **AzureStorageLinkedService** vincula un almacén de blobs de Azure a la factoría de datos. Más adelante en este tutorial creará una canalización que copia datos de la base de datos de SQL Server local al almacén de blobs de Azure.
+En este paso, creará dos servicios vinculados: **AzureStorageLinkedService** y **SqlServerLinkedService**. Hola **SqlServerLinkedService** vincula una base de datos de SQL Server local y hello **AzureStorageLinkedService** servicio vinculado vincula una factoría de datos de toohello de almacén de blobs de Azure. Crear una canalización más adelante en este tutorial que copia datos de almacén de blobs de Azure de hello local SQL Server base de datos toohello.
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>Adición de un servicio vinculado a una base de datos de SQL Server local
-1. En el **Editor de Data Factory**, haga clic en **Nuevo almacén de datos** en la barra de herramientas y seleccione **SQL Server**.
+#### <a name="add-a-linked-service-tooan-on-premises-sql-server-database"></a>Agregar una base de datos de SQL Server de servicio vinculado tooan local
+1. Hola **Editor de generador de datos**, haga clic en **nuevo almacén de datos** en la barra de herramientas de Hola y seleccione **SQL Server**.
 
    ![Nuevo servicio vinculado de SQL Server](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
-2. En el **Editor de JSON** a la derecha, realice los siguientes pasos:
+2. Hola **editor JSON** en Hola derecho Hola lo siguiente:
 
-   1. Para **gatewayName**, especifique **adftutorialgateway**.    
-   2. En **connectionString**, realice los siguientes pasos:    
+   1. Para hello **gatewayName**, especifique **adftutorialgateway**.    
+   2. Hola **connectionString**, Hola lo siguiente:    
 
-      1. En **servername**, escriba el nombre del servidor que hospeda la base de datos de SQL Server.
-      2. En **databasename**, escriba el nombre de la base de datos.
-      3. Haga clic en el botón **Cifrar** de la barra de herramientas. Verá la aplicación Administrador de credenciales.
+      1. Para **servername**, escriba Hola nombre de hello servidor que hospeda la base de datos de SQL Server de Hola.
+      2. Para **databasename**, escriba Hola nombre de base de datos de Hola.
+      3. Haga clic en **Encrypt** botón de barra de herramientas de Hola. Consulte aplicación de administrador de credenciales de hello.
 
          ![Aplicación Administrador de credenciales](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
-      4. En el cuadro de diálogo **Establecer credenciales**, escriba el tipo de autenticación, el nombre de usuario y la contraseña, y haga clic en **Aceptar**. Si la conexión es correcta, se almacenan las credenciales cifradas en el código JSON y se cierra el cuadro de diálogo.
-      5. Si no se cierra automáticamente, cierre la pestaña de explorador vacía que inició el cuadro de diálogo y regrese a la pestaña de Azure Portal.
+      4. Hola **establecer credenciales** cuadro de diálogo, especifique el tipo de autenticación, nombre de usuario y contraseña y haga clic en **Aceptar**. Si Hola conexión es correcta, credenciales de hello cifrado se almacenan en hello JSON y cierra el cuadro de diálogo de Hola.
+      5. Cerrar la pestaña de explorador vacía de Hola que inicia el cuadro de diálogo de hello si no se cierra automáticamente y regresar pestaña toohello con hello portal de Azure.
 
-         En la máquina de la puerta de enlace, las credenciales se **cifrarán** mediante un certificado que es propiedad del servicio Data Factory. Si prefiere usar el certificado asociado a la puerta de enlace de administración de datos, consulte [Configuración de credenciales y seguridad](#set-credentials-and-security).    
-   3. Haga clic en **Implementar** en la barra de comandos para implementar el servicio vinculado de SQL Server. Verá el servicio vinculado en la vista de árbol.
+         En la máquina de puerta de enlace de hello, estas credenciales son **cifrados** mediante un certificado que Hola factoría de datos posee el servicio. Si desea toouse Hola certificado asociado con hello Data Management Gateway en su lugar, consulte [establecer las credenciales de forma segura](#set-credentials-and-security).    
+   3. Haga clic en **implementar** en toodeploy Hola servicio vinculado de SQL Server de la barra de comandos de Hola. Debería ver Hola vinculado servicio en la vista de árbol de Hola.
 
-      ![Servicio vinculado a SQL Server en la vista de árbol](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
+      ![Servicio de SQL Server vinculado en la vista de árbol de Hola](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Adición de un servicio vinculado para una cuenta de almacenamiento de Azure
-1. En el **Editor de Data Factory**, haga clic en **Nuevo almacén de datos** en la barra de comandos y haga clic en **Azure Storage**.
-2. Escriba el nombre de la cuenta de almacenamiento de Azure en **Nombre de cuenta**.
-3. Escriba la clave de su cuenta de almacenamiento de Azure en **Clave de cuenta**.
-4. Haga clic en **Implementar** para implementar **AzureStorageLinkedService**.
+1. Hola **Editor de generador de datos**, haga clic en **nuevo almacén de datos** Hola barra de comandos y haga clic en **almacenamiento de Azure**.
+2. Escriba Hola nombre de la cuenta de almacenamiento de Azure para hello **nombre de la cuenta**.
+3. Escriba la clave de Hola de su cuenta de almacenamiento de Azure para hello **clave de cuenta**.
+4. Haga clic en **implementar** toodeploy hello **AzureStorageLinkedService**.
 
 ## <a name="create-datasets"></a>Creación de conjuntos de datos
-En este paso, creará conjuntos de datos de entrada y de salida que representan datos de entrada y de salida para la operación de copia (base de datos de SQL Server local => Azure Blob Storage). Antes de crear los conjuntos de datos, realice estos pasos (los pasos detallados se indican después de la lista):
+En este paso, creará entrada y salida conjuntos de datos que representan los datos de entrada y salidas para la operación de copia de hello (base de datos de SQL Server en local = > almacenamiento de blobs de Azure). Antes de crear conjuntos de datos, Hola pasos (los pasos detallados a continuación de lista de hello):
 
-* Cree una tabla con el nombre **emp** en la base de datos de SQL Server que agregó como servicio vinculado a la factoría de datos e inserte un par de entradas de ejemplo en la tabla.
-* Cree un contenedor de blobs llamado **adftutorial** en la cuenta de Azure Blob Storage que agregó como un servicio vinculado a la factoría de datos.
+* Crear una tabla denominada **emp** en Hola base de datos de SQL Server agrega como una factoría de datos de servicio vinculado toohello e inserte un par de entradas de ejemplo en la tabla de Hola.
+* Crear un contenedor de blobs denominado **adftutorial** en hello Azure blob agrega como una factoría de datos de servicio vinculado toohello de cuenta de almacenamiento.
 
-### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Preparación de la instancia local de SQL Server para el tutorial
-1. En la base de datos que especificó para el servicio vinculado de SQL Server local (**SqlServerLinkedService**), use el siguiente script de SQL para crear la tabla **emp** en la base de datos.
+### <a name="prepare-on-premises-sql-server-for-hello-tutorial"></a>Preparar SQL Server en local para el tutorial de Hola
+1. En base de datos de hello especificada para hello SQL Server local servicio vinculado (**SqlServerLinkedService**), usar hello después Hola de toocreate de secuencia de comandos SQL **emp** tabla de base de datos de Hola.
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -200,7 +200,7 @@ En este paso, creará conjuntos de datos de entrada y de salida que representan 
     )
     GO
     ```
-2. Inserte algún ejemplo en la tabla:
+2. Insertar algunos ejemplos en la tabla de hello:
 
     ```SQL
     INSERT INTO emp VALUES ('John', 'Doe')
@@ -209,8 +209,8 @@ En este paso, creará conjuntos de datos de entrada y de salida que representan 
 
 ### <a name="create-input-dataset"></a>Creación de un conjunto de datos de entrada
 
-1. En **Data Factory Editor**, haga clic en **... Más**, haga clic en **Nuevo conjunto de datos** en la barra de comandos y seleccione **Tabla de SQL Server**.
-2. Reemplace el script JSON del panel derecho por el texto siguiente:
+1. Hola **Editor de generador de datos**, haga clic en **... Más**, haga clic en **nuevo conjunto de datos** Hola barra de comandos y haga clic en **tabla de SQL Server**.
+2. Reemplace Hola JSON en el panel derecho de hello con hello siguiente texto:
 
     ```JSON   
     {        
@@ -236,20 +236,20 @@ En este paso, creará conjuntos de datos de entrada y de salida que representan 
         }
     }     
     ```     
-   Tenga en cuenta los siguientes puntos:
+   Tenga en cuenta Hola siguientes puntos:
 
-   * **type** está establecido en **SqlServerTable**.
-   * **tablename** está establecido en **emp**.
-   * **linkedServiceName** está establecido en **SqlServerLinkedService** (creó este servicio vinculado en anteriormente en este tutorial).
-   * Para un conjunto de datos de entrada no generado por otra canalización en Azure Data Factory, tiene que establecer la propiedad **external** en **true**. Indica que los datos de entrada se han producido fuera del servicio Azure Data Factory. Opcionalmente, puede especificar las directivas de datos externos mediante el elemento **externalData** en la sección **Policy**.    
+   * **tipo de** se establece demasiado**SqlServerTable**.
+   * **tableName** se establece demasiado**emp**.
+   * **linkedServiceName** se establece demasiado**SqlServerLinkedService** (este servicio vinculado había creado anteriormente en este tutorial.).
+   * Para un conjunto de datos entrada que no se hayan generado por otra canalización de factoría de datos de Azure, debe establecer **externo** demasiado**true**. Indica los datos de entrada de hello están toohello externo producido servicio Data Factory de Azure. Opcionalmente, puede especificar las directivas de datos externos utilizando hello **externalData** elemento Hola **directiva** sección.    
 
    Para más información acerca de las propiedades de JSON, consulte [Movimiento de datos hacia y desde SQL Server](data-factory-sqlserver-connector.md).
-3. Haga clic en **Implementar** en la barra de comandos para implementar el conjunto de datos.  
+3. Haga clic en **implementar** en el conjunto de datos de toodeploy Hola la barra de comandos de Hola.  
 
 ### <a name="create-output-dataset"></a>Creación del conjunto de datos de salida
 
-1. En el **Editor de Data Factory**, haga clic en **Nuevo conjunto de datos** en la barra de comandos y seleccione **Azure Blob Storage**.
-2. Reemplace el script JSON del panel derecho por el texto siguiente:
+1. Hola **Editor de generador de datos**, haga clic en **nuevo conjunto de datos** Hola barra de comandos y haga clic en **almacenamiento de blobs de Azure**.
+2. Reemplace Hola JSON en el panel derecho de hello con hello siguiente texto:
 
     ```JSON   
     {
@@ -271,16 +271,16 @@ En este paso, creará conjuntos de datos de entrada y de salida que representan 
         }
      }
     ```   
-   Tenga en cuenta los siguientes puntos:
+   Tenga en cuenta Hola siguientes puntos:
 
-   * **type** está establecido en **AzureBlob**.
-   * **linkedServiceName** está establecido en **AzureStorageLinkedService** (este servicio vinculado se creó en el paso 2).
-   * **folderPath** está establecido en **adftutorial/outfromonpremdf**, donde outfromonpremdf es la carpeta del contenedor adftutorial. Cree el contenedor **adftutorial** si este todavía no existe.
-   * **availability** está establecido en **hourly** (**frequency** está establecido en **hour** e **interval** está establecido en **1**).  El servicio Data Factory generará un segmento de datos de salida cada hora en la tabla **emp** de Azure SQL Database.
+   * **tipo de** se establece demasiado**AzureBlob**.
+   * **linkedServiceName** se establece demasiado**AzureStorageLinkedService** (había creado este servicio vinculado en el paso 2).
+   * **folderPath** se establece demasiado**adftutorial/outfromonpremdf** donde outfromonpremdf es la carpeta hello en el contenedor de adftutorial Hola. Crear hello **adftutorial** contenedor si aún no existe.
+   * Hola **disponibilidad** se establece demasiado**cada hora** (**frecuencia** establecido demasiado**hora** y **intervalo** establecido demasiado **1**).  Hola servicio factoría de datos genera un segmento de datos de salida cada hora en hello **emp** tabla Hola base de datos de SQL Azure.
 
-   Si no especifica un valor de **fileName** para una **tabla de salida**, los archivos generados en **folderPath** se nombran con el siguiente formato: Data<Guid>.txt (por ejemplo: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
+   Si no se especifica un **fileName** para un **tabla de salida**, archivos de hello generado en hello **folderPath** se denominan en hello siguiendo el formato: datos.<Guid>. txt (por ejemplo:: Data.0a405f8a 93ff 4c6f b3be f69616f1df7a.txt.).
 
-   Para establecer **folderPath** y **fileName** de forma dinámica según la hora de **SliceStart**, use la propiedad partitionedBy. En el ejemplo siguiente, folderPath usa Year, Month y Day de SliceStart (hora de inicio del segmento que se está procesando) y fileName usa Hour de SliceStart. Por ejemplo, si se está produciendo una división de 2014-10-20T08:00:00, el nombre de carpeta se establece en wikidatagateway/wikisampledataout/2014/10/20 y el nombre de archivo se establece en 08.csv.
+   tooset **folderPath** y **fileName** dinámicamente en función de hello **SliceStart** tiempo, use la propiedad de partitionedBy Hola. En el siguiente ejemplo de Hola folderPath usa año, mes y día de hello SliceStart (hora de inicio del segmento de hello procesando) y nombre de archivo usa hora de hello SliceStart. Por ejemplo, si se está produciendo un segmento para 2014-10-20T08:00:00, Hola nombreDeCarpeta se establece toowikidatagateway/wikisampledataout/2014/10/20 y fileName hello too08.csv.
 
     ```JSON
     "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -296,23 +296,23 @@ En este paso, creará conjuntos de datos de entrada y de salida que representan 
     ```
 
     Para más información acerca de las propiedades de JSON, consulte [Movimiento de datos hacia y desde Azure Blob Storage](data-factory-azure-blob-connector.md).
-3. Haga clic en **Implementar** en la barra de comandos para implementar el conjunto de datos. Confirme que ve ambos conjuntos de datos en la vista de árbol.  
+3. Haga clic en **implementar** en el conjunto de datos de toodeploy Hola la barra de comandos de Hola. Confirme que ve los dos conjuntos de datos de hello en la vista de árbol de Hola.  
 
 ## <a name="create-pipeline"></a>Creación de una canalización
 En este paso, va a crear una **canalización** con una **actividad de copia** que usa **EmpOnPremSQLTable** como entrada y **OutputBlobTable** como salida.
 
 1. En Data Factory Editor, haga clic en **... Más** y, luego, en **Nueva canalización**.
-2. Reemplace el script JSON del panel derecho por el texto siguiente:    
+2. Reemplace Hola JSON en el panel derecho de hello con hello siguiente texto:    
 
     ```JSON   
      {
          "name": "ADFTutorialPipelineOnPrem",
          "properties": {
-         "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
+         "description": "This pipeline has one Copy activity that copies data from an on-prem SQL tooAzure blob",
          "activities": [
            {
              "name": "CopyFromSQLtoBlob",
-             "description": "Copy data from on-prem SQL server to blob",
+             "description": "Copy data from on-prem SQL server tooblob",
              "type": "Copy",
              "inputs": [
                {
@@ -349,66 +349,66 @@ En este paso, va a crear una **canalización** con una **actividad de copia** qu
      }
     ```   
    > [!IMPORTANT]
-   > Reemplace el valor de la propiedad **start** por el día actual y el valor **end** por el próximo día.
+   > Reemplazar el valor de Hola de hello **iniciar** propiedad con hello día actual y **final** valor con hello día siguiente.
    >
    >
 
-   Tenga en cuenta los siguientes puntos:
+   Tenga en cuenta Hola siguientes puntos:
 
-   * En la sección de actividades, solo hay una actividad cuyo **type** está establecido en **Copy**.
-   * La **entrada** de la actividad está establecida en **EmpOnPremSQLTable** y la **salida** de la actividad está establecida en **OutputBlobTable**.
-   * En la sección **typeProperties**, **SqlSource** se especifica como el **tipo de origen** y **BlobSink** como el **tipo de receptor**.
-   * La consulta SQL `select * from emp` está especificada para la propiedad **sqlReaderQuery** de **SqlSource**.
+   * En la sección de actividades de hello, hay sólo una actividad cuyo **tipo** se establece demasiado**copia**.
+   * **Entrada** de actividad hello se establece demasiado**EmpOnPremSQLTable** y **salida** de actividad hello se establece demasiado**OutputBlobTable**.
+   * Hola **typeProperties** sección, **SqlSource** se especifica como hello **tipo de origen de** y ** BlobSink ** se especifica como hello **receptor tipo**.
+   * Consulta SQL `select * from emp` se especifica para hello **sqlReaderQuery** propiedad de **SqlSource**.
 
-   Las fechas y horas de inicio y de finalización deben estar en [formato ISO](http://en.wikipedia.org/wiki/ISO_8601). Por ejemplo: 2014-10-14T16:32:41Z. La hora de finalización ( **end** ) es opcional, pero se utilizará en este tutorial.
+   Las fechas y horas de inicio y de finalización deben estar en [formato ISO](http://en.wikipedia.org/wiki/ISO_8601). Por ejemplo: 2014-10-14T16:32:41Z. Hola **final** tiempo es opcional, pero se usa en este tutorial.
 
-   Si no especifica ningún valor para la propiedad **end**, se calcula como "**start + 48 horas**". Para ejecutar la canalización indefinidamente, especifique **9/9/9999** como valor de la propiedad **end**.
+   Si no especifica el valor de hello **final** propiedad, se calcula como "**inicio + 48 horas**". canalización de hello toorun indefinidamente, especifique **9/9/9999** como valor de Hola de hello **final** propiedad.
 
-   Está definiendo la duración del procesamiento de los segmentos de datos según las propiedades de **disponibilidad** que se definieron para cada conjunto de datos de Azure Data Factory.
+   Se está definiendo Hola duración en qué Hola se procesan los segmentos de datos en función de hello **disponibilidad** propiedades que se han definido para cada conjunto de datos de Data Factory de Azure.
 
-   En el ejemplo, hay 24 segmentos de datos, ya que se produce un segmento de datos a la hora.        
-3. Haga clic en **Implementar** en la barra de comandos para implementar el conjunto de datos (la tabla es un conjunto de datos rectangular). Confirme que la canalización se muestra en la vista de árbol en el nodo **Canalizaciones**.  
-4. Ahora, haga clic en **X** dos veces para cerrar la página y volver a la página **Factoría de datos** de **ADFTutorialOnPremDF**.
+   En el ejemplo de Hola, hay 24 segmentos de datos tal y como se produce cada segmento de datos cada hora.        
+3. Haga clic en **implementar** en el conjunto de datos de toodeploy Hola la barra de comandos de hello (tabla es un conjunto de datos rectangular). Confirmar esa canalización Hola se muestra en la vista de árbol de hello en **canalizaciones** nodo.  
+4. Ahora, haga clic en **X** dos veces tooclose Hola página tooget back-toohello **factoría de datos** página de hello **ADFTutorialOnPremDF**.
 
-**¡Enhorabuena!** Ha creado correctamente una factoría de datos de Azure, servicios vinculados, conjuntos de datos y una canalización, y ha programado la canalización.
+**¡Enhorabuena!** Ha creado correctamente una factoría de datos de Azure, servicios vinculados, conjuntos de datos y una canalización y canalización Hola programada.
 
-#### <a name="view-the-data-factory-in-a-diagram-view"></a>Visualización de la factoría de datos en una vista de diagrama
-1. En **Azure Portal**, haga clic en el icono **Diagrama** en la página principal de la factoría de datos **ADFTutorialOnPremDF**. :
+#### <a name="view-hello-data-factory-in-a-diagram-view"></a>Factoría de datos de vista hello en una vista de diagrama
+1. Hola **portal de Azure**, haga clic en **diagrama** de mosaico en la página de inicio de Hola de hello **ADFTutorialOnPremDF** factoría de datos. :
 
     ![Vínculo de diagrama](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
-2. Debería ver un diagrama similar a la siguiente imagen:
+2. Debería ver Hola diagrama similar toohello después de imagen:
 
     ![Vista de diagrama](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramView.png)
 
-    Puede acercar, alejar, acercar al 100 %, ampliar para ajustar, colocar automáticamente canalizaciones y conjuntos de datos, y mostrar información sobre el linaje (resalta elementos ascendentes y descendentes de los elementos seleccionados).  Puede hacer doble clic en un objeto (conjunto de datos o canalización de entrada o salida) para ver sus propiedades.
+    Puede acercar, alejar, zoom too100%, toofit de zoom, automáticamente las canalizaciones de posición y conjuntos de datos y mostrar la información de linaje (resalta los elementos que preceden y siguen en la cadena de los elementos seleccionados).  Hacer doble clic en un toosee las propiedades de objeto (conjunto de datos de entrada/salida o canalización) para ella.
 
 ## <a name="monitor-pipeline"></a>Supervisión de la canalización
-En este paso, usará Azure Portal para supervisar lo que está ocurriendo en una factoría de datos de Azure. También puede usar los cmdlets de PowerShell para supervisar los conjuntos de datos y las canalizaciones. Para obtener más información sobre la supervisión, consulte [Supervisión y administración de canalizaciones](data-factory-monitor-manage-pipelines.md).
+En este paso, utilizará hello toomonitor portal Azure que está sucediendo en una factoría de datos de Azure. También puede utilizar las canalizaciones y conjuntos de datos de toomonitor de cmdlets de PowerShell. Para obtener más información sobre la supervisión, consulte [Supervisión y administración de canalizaciones](data-factory-monitor-manage-pipelines.md).
 
-1. En el diagrama, haga doble clic en **EmpOnPremSQLTable**.  
+1. En el diagrama de hello, haga doble clic en **EmpOnPremSQLTable**.  
 
     ![Segmentos EmpOnPremSQLTable](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
-2. Observe que el estado de todos los segmentos de datos es **Listo** porque la duración de la canalización (hora de inicio a hora de finalización) está en el pasado. Esto ocurre también porque ha insertado los datos en la base de datos de SQL Server y están ahí todo el tiempo. Confirme que no aparecen segmentos en la sección de **segmentos problemáticos** de la parte inferior. Para ver todos los segmentos, haga clic en **Ver más** en la parte inferior de la lista de segmentos.
-3. A continuación, en la página **Conjuntos de datos**, haga clic en **OutputBlobTable**.
+2. Tenga en cuenta que todos los datos de hello divide los están en **listo** estado porque Hola canalización tiempo (hora de tooend de tiempo de inicio) en hello anterior. También es porque ha insertado datos hello en la base de datos de SQL Server de Hola y encuentra todo el tiempo Hola. Confirme que no hay ningún segmento se mostrarán en hello **sectores problema** sección final Hola. tooview todos los sectores de hello, haga clic en ejecutar **vea más** final Hola de lista de Hola de segmentos.
+3. Ahora, en hello **conjuntos de datos** página, haga clic en **OutputBlobTable**.
 
     ![Segmentos OputputBlobTable](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
-4. Haga clic en cualquier segmento de datos de la lista y debería ver la página **Segmento de datos**. Verá las ejecuciones de actividad para ese segmento. Normalmente solo se ve una ejecución de actividad.  
+4. Haga clic en cualquier segmento de datos de lista de Hola y debería ver Hola **el segmento de datos** página. Vea la actividad se ejecuta durante el intervalo de Hola. Normalmente solo se ve una ejecución de actividad.  
 
     ![Hoja Segmento de datos](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)
 
-    Si el segmento no está en el estado **Listo**, puede ver los segmentos ascendentes que no están en estado Listo y bloquean la ejecución del segmento actual en la lista **Segmentos ascendentes que no están listos**.
-5. Haga clic en la **ejecución de la actividad** de la lista en la parte inferior para ver los **detalles de la ejecución de la actividad**.
+    Si el segmento de hello no está en hello **listo** estado, puede ver segmentos ascendentes de Hola que no están listos y están bloqueando el intervalo actual de Hola de ejecutarse en hello **segmentos ascendentes que no están listos** lista.
+5. Haga clic en hello **actividad ejecutar** de lista de hello en hello inferior toosee **detalles de ejecución de la actividad**.
 
    ![Página Detalles de ejecución de actividad](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
 
-   Verá información como el rendimiento, la duración y la puerta de enlace que se usa para transferir los datos.
-6. Haga clic en **X** para cerrar todas las páginas hasta que
-7. regrese a la página principal de **ADFTutorialOnPremDF**.
+   Verá información, como el rendimiento, la duración y la puerta de enlace de hello usan datos de hello tootransfer.
+6. Haga clic en **X** tooclose todos Hola páginas hasta que
+7. regresar toohello portada hello **ADFTutorialOnPremDF**.
 8. (Opcional) Haga clic en **Canalizaciones**, elija **ADFTutorialOnPremDF** y obtenga detalles de los conjuntos de datos de entrada (**Consumido**) o los conjuntos de datos de salida (**Producido**).
-9. Use herramientas como el [Explorador de Microsoft Storage](http://storageexplorer.com/) para comprobar que se crea un blob o archivo cada hora.
+9. Usar herramientas como [Explorador de almacenamiento de Microsoft](http://storageexplorer.com/) tooverify que se crea un archivo de blob para cada hora.
 
    ![Explorador de Azure Storage](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Vea el artículo [Data Management Gateway](data-factory-data-management-gateway.md) para obtener todos los detalles sobre Data Management Gateway.
-* Consulte [Copia de datos de Azure Blob en Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) si necesita más información sobre el uso de la actividad de copia para mover datos desde un almacén de datos de origen a un almacén de datos receptor.
+* Vea [Data Management Gateway](data-factory-data-management-gateway.md) artículo para todos los detalles acerca de hello Data Management Gateway de Hola.
+* Vea [copiar los datos de Blob de Azure tooAzure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) toolearn acerca de cómo tooa almacén de datos de receptor de almacén de datos de toomove de actividad de copia de toouse desde un origen de datos.

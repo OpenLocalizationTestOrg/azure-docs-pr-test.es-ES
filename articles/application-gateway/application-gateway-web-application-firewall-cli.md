@@ -1,6 +1,6 @@
 ---
-title: "Configuración del firewall de aplicaciones web en una instancia de Azure Application Gateway | Microsoft Docs"
-description: "En este artículo se proporcionan instrucciones sobre cómo comenzar a usar el firewall de aplicaciones web en una puerta de enlace de aplicaciones nueva o existente."
+title: "firewall de aplicación web de aaaConfigure: puerta de enlace de aplicaciones de Azure | Documentos de Microsoft"
+description: "Este artículo proporciona instrucciones sobre cómo usar toostart web servidor de aplicaciones en una puerta de enlace de aplicación nueva o existente."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: gwallace
-ms.openlocfilehash: ac6c629ceaf1a8036643f593ce3d7ef9ea096ef8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d5354984760ceab12ed49efa9e18836e9f1d3c96
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>Configuración del firewall de aplicaciones web en una puerta de enlace de aplicaciones nueva o existente con la CLI de Azure
 
@@ -27,32 +27,32 @@ ms.lasthandoff: 08/18/2017
 > * [PowerShell](application-gateway-web-application-firewall-powershell.md)
 > * [CLI de Azure](application-gateway-web-application-firewall-cli.md)
 
-Aprenda a crear una puerta de enlace de aplicaciones habilitada para un firewall de aplicaciones web o a agregar un firewall de aplicaciones web a una puerta de enlace de aplicaciones existente.
+Obtenga información acerca de cómo toocreate un servidor de seguridad de la aplicación web habilita la puerta de enlace de aplicaciones o agregar web aplicación firewall tooan aplicación puerta de enlace existente.
 
-El firewall de aplicaciones web (WAF) de Azure Application Gateway protege las aplicaciones web de ataques web comunes, como inyección de código SQL, ataques de scripts entre sitios y secuestros de sesiones.
+servidor de aplicaciones web Hello (WAFS) en la puerta de enlace de aplicaciones de Azure protege las aplicaciones web de ataques basados en web comunes como la inyección de código SQL, ataques XSS y apropiaciones de sesión.
 
-Azure Application Gateway es un equilibrador de carga de nivel 7. Proporciona conmutación por error, solicitudes HTTP de enrutamiento de rendimiento entre distintos servidores, independientemente de que se encuentren en la nube o en una implementación local. Application Gateway proporciona numerosas características del controlador de entrega de aplicaciones (ADC), entre las que se incluyen el equilibrio de carga HTTP, la afinidad de sesiones basada en cookies, la descarga SSL (Capa de sockets seguros), los sondeos personalizados sobre el estado, la compatibilidad con multisitio, y muchas más. Para obtener una lista completa de las características admitidas, consulte la [información general sobre Application Gateway](application-gateway-introduction.md).
+Azure Application Gateway es un equilibrador de carga de nivel 7. Proporciona conmutación por error, enrutamiento de rendimiento de las solicitudes HTTP entre diferentes servidores, independientemente de si están en la nube de Hola o de forma local. Application Gateway proporciona numerosas características del controlador de entrega de aplicaciones (ADC), entre las que se incluyen el equilibrio de carga HTTP, la afinidad de sesiones basada en cookies, la descarga SSL (Capa de sockets seguros), los sondeos personalizados sobre el estado, la compatibilidad con multisitio, y muchas más. toofind una lista completa de las características admitidas, visite: [información general de Application Gateway](application-gateway-introduction.md).
 
-En el artículo siguiente se muestra cómo [agregar el firewall de aplicaciones web a una puerta de enlace de aplicaciones existente](#add-web-application-firewall-to-an-existing-application-gateway) y [crear una puerta de enlace de aplicaciones que usa el firewall de aplicaciones web](#create-an-application-gateway-with-web-application-firewall).
+Hello siguiente artículo se muestra cómo demasiado[Agregar aplicación firewall tooan existente aplicación puerta de enlace web](#add-web-application-firewall-to-an-existing-application-gateway) y [crear una puerta de enlace de la aplicación que utiliza el servidor de aplicaciones web](#create-an-application-gateway-with-web-application-firewall).
 
 ![imagen de escenario][scenario]
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>Requisito previo: instalar la CLI de Azure 2.0
+## <a name="prerequisite-install-hello-azure-cli-20"></a>Requisito previo: Instalar Hola 2.0 de CLI de Azure
 
-Para seguir los pasos de este artículo, es preciso [instalar la interfaz de la línea de comandos de Azure para Mac, Linux y Windows (CLI de Azure)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
+Hola tooperform los pasos de este artículo, deberá demasiado[instalar Hola interfaz de línea de comandos de Azure para Mac, Linux y Windows (CLI de Azure)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
 
 ## <a name="waf-configuration-differences"></a>Diferencias de configuración de WAF
 
-Si ha leído [Creación de una puerta de enlace de aplicaciones con la CLI de Azure](application-gateway-create-gateway-cli.md), comprenderá los valores de SKU que se deben configurar al crear una puerta de enlace de aplicaciones. WAF proporciona una configuración adicional que se puede definir al configurar la SKU en una puerta de enlace de aplicaciones. No hay ningún otro cambio que deba realizar en la puerta de enlace de aplicaciones propiamente dicha.
+Si ha leído [crear una puerta de enlace de aplicaciones con Azure CLI](application-gateway-create-gateway-cli.md), comprender Hola SKU configuración tooconfigure al crear una puerta de enlace de la aplicación. WAFS proporciona toodefine de opciones de configuración adicionales al configurar Hola SKU en una puerta de enlace de la aplicación. No hay ningún otro cambio que realice en la puerta de enlace de aplicaciones de hello propio.
 
 | **Configuración** | **Detalles**
 |---|---|
-|**SKU** |Una puerta de enlace de aplicaciones normal sin WAF admite los tamaños **Standard\_Small**, **Standard\_Medium** y **Standard\_Large**. Con la introducción de WAF, hay dos SKU adicionales, **WAF\_Medium** y **WAF\_Large**. No se admite WAF en puertas de enlace de aplicaciones de pequeño tamaño.|
-|**Modo** | Esta configuración es el modo de WAF. Los valores permitidos son **Detección** y **Prevención**. Cuando WAF está configurado en modo de detección, todas las amenazas se almacenan en un archivo de registro. En modo de prevención, los eventos se siguen registrando pero el atacante recibe una respuesta 403 no autorizado de la puerta de enlace de aplicaciones.|
+|**SKU** |Una puerta de enlace de aplicaciones normal sin WAF admite los tamaños **Standard\_Small**, **Standard\_Medium** y **Standard\_Large**. Con la introducción de Hola de WAFS, hay dos SKU adicionales, **WAFS\_medio** y **WAFS\_grande**. No se admite WAF en puertas de enlace de aplicaciones de pequeño tamaño.|
+|**Modo** | Esta opción es modo de saludo de WAFS. Los valores permitidos son **Detección** y **Prevención**. Cuando WAF está configurado en modo de detección, todas las amenazas se almacenan en un archivo de registro. En el modo de prevención, todavía se registran eventos pero atacante Hola recibe una respuesta no autorizado 403 puerta de enlace de aplicaciones de Hola.|
 
-## <a name="add-web-application-firewall-to-an-existing-application-gateway"></a>Adición del firewall de aplicaciones web a una puerta de enlace de aplicaciones existente
+## <a name="add-web-application-firewall-tooan-existing-application-gateway"></a>Agregar aplicación firewall tooan existente aplicación puerta de enlace web
 
-El siguiente comando cambia la puerta de enlace de aplicaciones estándar existente a una puerta de enlace de aplicaciones con WAF habilitado.
+Hola seguir los cambios de comando estándar de la aplicación puerta de enlace tooa WAFS aplicación habilitada puerta de enlace existente.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -64,11 +64,11 @@ az network application-gateway waf-config set \
   --resource-group "AdatumAppGatewayRG"
 ```
 
-Este comando actualiza la puerta de enlace de aplicaciones con el firewall de aplicaciones web. Consulte [Diagnósticos de Application Gateway](application-gateway-diagnostics.md) para entender cómo ver los registros de la puerta de enlace de aplicaciones. Debido a la naturaleza de la seguridad de WAF, los registros se deben revisar periódicamente para entender la postura de seguridad de las aplicaciones web.
+Este comando actualiza la puerta de enlace de aplicaciones de hello con servidor de aplicaciones web. Visite [puerta de enlace de Application Diagnostics](application-gateway-diagnostics.md) toounderstand cómo tooview registros para la puerta de enlace de la aplicación. Debido a toohello la naturaleza de seguridad de WAFS, registros necesidad toobe revisarse periódicamente postura de seguridad de hello toounderstand de las aplicaciones web.
 
 ## <a name="create-an-application-gateway-with-web-application-firewall"></a>Creación de una puerta de enlace de aplicaciones con el firewall de aplicaciones web
 
-El comando siguiente permite crear una instancia de Application Gateway con firewall de aplicaciones web.
+Hola siguiente comando crea una puerta de enlace de la aplicación con el servidor de aplicaciones web.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -95,11 +95,11 @@ az network application-gateway create \
 ```
 
 > [!NOTE]
-> Las puertas de enlace de la aplicación creadas con la configuración de firewall de aplicación web básica se configuran con CRS 3.0 para protección.
+> Las puertas de enlace de aplicaciones creadas con la configuración del firewall de aplicación de hello web básico se configuran con CRS 3.0 para protección.
 
 ## <a name="get-application-gateway-dns-name"></a>Obtención del nombre DNS de una puerta de enlace de aplicaciones
 
-Una vez creada la puerta de enlace, el siguiente paso es configurar el front-end para la comunicación. Cuando se utiliza una dirección IP pública, la puerta de enlace de aplicaciones requiere un nombre DNS asignado dinámicamente, que no es descriptivo. Para asegurarse de que los usuarios finales puedan llegar a la Application Gateway, se puede utilizar un registro CNAME para que apunte al punto de conexión público de la Application Gateway. [Configuración de un nombre de dominio personalizado en Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). Para configurar un registro CNAME, recupere los detalles de la puerta de enlace de aplicaciones y su nombre DNS o IP asociados mediante el elemento PublicIPAddress asociado a Application Gateway. El nombre DNS de la puerta de enlace de aplicaciones se debe utilizar para crear un registro CNAME, que apunta las dos aplicaciones web a este nombre DNS. No se recomienda el uso de registros A, ya que la VIP puede cambiar al reiniciarse la puerta de enlace de aplicaciones.
+Una vez creada la puerta de enlace de hello, Hola siguiente paso es front-end de Hola de tooconfigure para la comunicación. Cuando se utiliza una dirección IP pública, la puerta de enlace de aplicaciones requiere un nombre DNS asignado dinámicamente, que no es descriptivo. los usuarios finales de tooensure puede llegar a puerta de enlace de aplicaciones de hello, un registro CNAME puede ser usado toopoint toohello extremo público de puerta de enlace de aplicación Hola. [Configuración de un nombre de dominio personalizado en Azure](../cloud-services/cloud-services-custom-domain-name-portal.md). tooconfigure un registro CNAME, recuperar los detalles de puerta de enlace de aplicaciones de Hola y su nombre IP/DNS asociado con puerta de enlace de hello PublicIPAddress elemento adjunto toohello aplicación. nombre DNS de Hello aplicación la puerta de enlace debe ser toocreate usa un registro CNAME, qué nombre DNS puntos Hola dos web aplicaciones toothis. no se recomienda el uso de Hola de registros de un puesto que puede cambiar Hola VIP en el reinicio de puerta de enlace de aplicaciones.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -147,6 +147,6 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a personalizar reglas de WAF visitando: [Customize web application firewall rules through the Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md) (Personalización de reglas de firewall de aplicaciones web a través de la CLI de Azure 2.0).
+Obtenga información acerca de cómo las reglas de toocustomize WAFS visitando: [Personalizar reglas de firewall de aplicación web a través de hello Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md).
 
 [scenario]: ./media/application-gateway-web-application-firewall-cli/scenario.png

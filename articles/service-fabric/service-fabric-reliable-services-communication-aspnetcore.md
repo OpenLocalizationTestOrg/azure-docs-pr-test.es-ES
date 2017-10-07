@@ -1,6 +1,6 @@
 ---
-title: "Comunicación de servicio con ASP.NET Core | Microsoft Docs"
-description: Aprenda a usar ASP.NET Core en Reliable Services con y sin estado.
+title: "comunicación aaaService con hello ASP.NET Core | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse ASP.NET principales en servicios de confianza y sin estado."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,100 +14,100 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 05/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 8ac4d409f7363e8b4ae98be659a627ac8db8d787
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6e6a83ab04390150292f63de5d9b51d290284e50
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core en Reliable Services de Service Fabric
 
 ASP.NET Core es un nuevo marco de código abierto multiplataforma para crear aplicaciones conectadas a Internet modernas y basadas en la nube, como aplicaciones web, aplicaciones de IoT y back-ends móviles. 
 
-Este artículo es una guía en profundidad sobre cómo hospedar servicios de ASP.NET Core en Reliable Services de Service Fabric mediante el conjunto de paquetes NuGet **Microsoft.ServiceFabric.AspNetCore.***.
+Este artículo es una toohosting guía detallada de los servicios básicos de ASP.NET en los servicios de confianza de tejido de servicio por hello **Microsoft.ServiceFabric.AspNetCore.** * el conjunto de paquetes de NuGet.
 
 Para ver un tutorial introductorio sobre ASP.NET Core en Service Fabric e instrucciones para configurar el entorno de desarrollo, consulte [Creación de un front-end de servicio web para una aplicación mediante ASP.NET Core](service-fabric-add-a-web-frontend.md).
 
-En el resto de este artículo se da por supuesto que ya conoce ASP.NET Core. Si no es así, se recomienda leer los [fundamentos de ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/index).
+resto de Hola de este artículo se da por supuesto que ya está familiarizados con ASP.NET Core. Si no es así, se recomienda leer hello [Fundamentos de ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/index).
 
-## <a name="aspnet-core-in-the-service-fabric-environment"></a>ASP.NET Core en el entorno de Service Fabric
+## <a name="aspnet-core-in-hello-service-fabric-environment"></a>ASP.NET Core en entorno de Service Fabric Hola
 
-Aunque las aplicaciones de ASP.NET Core se pueden ejecutar en .NET Core o en la versión completa de .NET Framework, actualmente los servicios de Service Fabric solo se pueden ejecutar en esta última. Esto significa que, cuando se crea un servicio de Service Fabric de ASP.NET Core, todavía debe tener como destino la versión completa de .NET Framework.
+Si bien pueden ejecutar aplicaciones de ASP.NET Core en .NET Core o en hello en que completa de .NET Framework, servicios de Service Fabric actualmente solo puede ejecutarse Hola completa de .NET Framework. Esto significa que cuando se crea un servicio ASP.NET Core Service Fabric, todavía debe dirigir Hola completa de .NET Framework.
 
 ASP.NET Core se puede utilizar de dos maneras diferentes en Service Fabric:
- - **Implementado como archivo ejecutable invitado**. Se usa principalmente para ejecutar aplicaciones ASP.NET Core existentes en Service Fabric sin realizar ningún cambio en el código.
- - **Ejecutado dentro de una instancia de Reliable Services**. Permite una mejor integración con el entorno de ejecución de Service Fabric y permite servicios ASP.NET Core con estado.
+ - **Implementado como archivo ejecutable invitado**. Esto es principalmente toorun usa ASP.NET Core aplicaciones existentes en el tejido de servicio sin realizar ningún cambio en el código.
+ - **Ejecutado dentro de una instancia de Reliable Services**. Esto permite una mejor integración con el tiempo de ejecución de hello Service Fabric y permite a los servicios con estado ASP.NET Core.
 
-En el resto de este artículo se explica cómo usar ASP.NET Core dentro de una instancia de Reliable Services mediante los componentes de integración de ASP.NET Core que se incluyen con el SDK de Service Fabric. 
+resto de Hola de este artículo explica cómo Hola toouse ASP.NET Core dentro de un servicio confiable mediante los componentes de integración de ASP.NET Core que se incluyen con hello SDK del servicio de Fabric. 
 
 ## <a name="service-fabric-service-hosting"></a>Hospedaje de servicios de Service Fabric
 
-En Service Fabric, una o varias instancias o réplicas del servicio se ejecutan en un *proceso de host de servicio* (un archivo ejecutable que ejecuta el código del servicio). Aunque, como autor del servicio, usted es el propietario del proceso de host de servicio, Service Fabric lo activa y supervisa automáticamente.
+En Service Fabric, una o varias instancias o réplicas del servicio se ejecutan en un *proceso de host de servicio* (un archivo ejecutable que ejecuta el código del servicio). Es, como autor del servicio, el propietario el proceso de host del servicio de Hola y Service Fabric activa y supervisa automáticamente.
 
-Tradicionalmente, ASP.NET (hasta MVC 5) ha estado estrechamente unido a IIS a través de System.Web.dll. ASP.NET Core proporciona una separación entre el servidor web y la aplicación web. Esto permite que las aplicaciones web sean portátiles entre diferentes servidores web y también que los servidores web se *hospeden a sí mismos*, lo que significa que puede iniciar un servidor web en su propio proceso, al contrario que un proceso que pertenece a software de servidor web dedicado, como IIS. 
+ASP.NET tradicional (arriba tooMVC 5) es tooIIS estrechamente acopladas a través de System.Web.dll. ASP.NET Core proporciona una separación entre el servidor web de Hola y de la aplicación web. Esto permite toobe de aplicaciones web portables entre diferentes servidores web y también permite toobe de servidores web *hospeda a sí mismo*, lo cual significa que puede iniciar un servidor web en su propio proceso, como proceso tooa lugar que pertenece a web dedicado software de servidor como IIS. 
 
-Para combinar un servicio de Service Fabric y ASP.NET, ya sea como ejecutable invitado o en una instancia de Reliable Services, debe ser capaz de iniciar ASP.NET dentro de su proceso de host de servicio. El autohospedaje de ASP.NET Core lo permite.
+En orden toocombine un servicio de Service Fabric y ASP.NET, ya sea como un ejecutable de invitado o en un servicio confiable, debe ser capaz de toostart ASP.NET dentro de su proceso de host de servicio. Núcleo de ASP.NET que se hospeda a sí mismo permite toodo esto.
 
 ## <a name="hosting-aspnet-core-in-a-reliable-service"></a>Hospedaje de ASP.NET Core en una instancia de Reliable Services
-Por lo general, las aplicaciones ASP.NET Core autohospedadas crean un elemento WebHost en el punto de entrada de una aplicación, como el método `static void Main()` en `Program.cs`. En este caso, el ciclo de vida de WebHost está ligado al del proceso.
+Normalmente, las aplicaciones de ASP.NET Core hospedadas por sí mismo crean un WebHost en el punto de entrada de una aplicación, como Hola `static void Main()` método `Program.cs`. En este caso, el ciclo de vida de Hola de hello WebHost es enlazado toohello ciclo de vida del proceso de Hola.
 
 ![Hospedaje de ASP.NET Core en un proceso][0]
 
-Sin embargo, el punto de entrada de la aplicación no es el lugar adecuado para crear un elemento WebHost en una instancia de Reliable Services, porque el punto de entrada de la aplicación solo se usa para registrar un tipo de servicio con el sistema en tiempo de ejecución de Service Fabric, para que pueda crear instancias de ese tipo de servicio. El elemento WebHost debe crearse en una instancia de Reliable Services. Dentro del proceso de host de servicio, las instancias o réplicas de servicio pueden pasar por varios ciclos de vida. 
+Sin embargo, punto de entrada de aplicación Hola no es Hola lugar correcto toocreate un WebHost en un servicio confiable, porque sólo se utiliza el punto de entrada de aplicación Hola tooregister un servicio escriba con tiempo de ejecución de Service Fabric hello, de modo que pueden crear instancias de ese servicio tipo. Hola WebHost debe crearse en un servicio confiable propio. En el proceso de host de servicio de hello, instancias de servicio o réplicas pueden atravesar varios ciclos de vida. 
 
-Una instancia de Reliable Services se representa mediante la clase de servicio derivada de `StatelessService` o `StatefulService`. La pila de comunicación de un servicio se encuentra en una implementación `ICommunicationListener` en la clase de servicio. Los paquetes NuGet `Microsoft.ServiceFabric.Services.AspNetCore.*` contienen implementaciones de `ICommunicationListener` que inician y administran el elemento WebHost de ASP.NET Core para Kestrel o WebListener en una instancia de Reliable Services.
+Una instancia de Reliable Services se representa mediante la clase de servicio derivada de `StatelessService` o `StatefulService`. pila de comunicación de Hola para un servicio se encuentra en un `ICommunicationListener` implementación en la clase de servicio. Hola `Microsoft.ServiceFabric.Services.AspNetCore.*` paquetes de NuGet contengan implementaciones de `ICommunicationListener` que iniciar y administrar Hola ASP.NET Core WebHost para Kestrel o WebListener en un servicio confiable.
 
 ![Hospedaje de ASP.NET Core en una instancia de Reliable Services][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ICommunicationListeners en ASP.NET Core
-Las implementaciones de `ICommunicationListener` para Kestrel y WebListener en los paquetes NuGet `Microsoft.ServiceFabric.Services.AspNetCore.*` tienen patrones de uso parecidos pero realizan acciones ligeramente diferentes, específicas de cada servidor web. 
+Hola `ICommunicationListener` implementaciones de Kestrel y WebListener en hello `Microsoft.ServiceFabric.Services.AspNetCore.*` paquetes de NuGet tienen patrones de uso similar pero realizar el servidor web de tooeach específico de acciones ligeramente diferente. 
 
-Ambos agentes de escucha de comunicación proporcionan un constructor que acepta los argumentos siguientes:
- - **`ServiceContext serviceContext`**: el objeto `ServiceContext` que contiene información sobre el servicio en ejecución.
- - **`string endpointName`**: el nombre de una configuración `Endpoint` en ServiceManifest.xml. Es en este aspecto en lo que se diferencian principalmente ambos agentes de escucha de comunicación: WebListener **requiere** una configuración `Endpoint`, pero Kestrel no.
- - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: expresión lambda que se implementa para crear y devolver `IWebHost`. Esto permite configurar `IWebHost` tal como lo haría normalmente en una aplicación de ASP.NET Core. La lambda proporciona una dirección URL que se genera automáticamente en función de las opciones de integración de Service Fabric que use y la configuración `Endpoint` que proporcione. Esa dirección URL se puede modificar o utilizar tal cual para iniciar el servidor web.
+Ambos agentes de escucha de comunicación proporcionan un constructor que toma Hola argumentos siguientes:
+ - **`ServiceContext serviceContext`**: Hola `ServiceContext` objeto que contiene información acerca de hello ejecutando el servicio.
+ - **`string endpointName`**: nombre de Hola de un `Endpoint` configuración en ServiceManifest.xml. Esto es principalmente en qué se diferencian los agentes de escucha de comunicación de hello dos: WebListener **requiere** un `Endpoint` configuración, mientras que Kestrel no.
+ - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: expresión lambda que se implementa para crear y devolver `IWebHost`. Esto le permite tooconfigure `IWebHost` Hola modo habitual en una aplicación de ASP.NET Core. lambda Hello proporciona una dirección URL que se genera para dependiendo de la integración de Service Fabric Hola opciones hello y use `Endpoint` configuración que proporcione. Que dirección URL, a continuación, se pueden modificar o utilizar como-es el servidor web de toostart Hola.
 
 ## <a name="service-fabric-integration-middleware"></a>Middleware de integración de Service Fabric
-El paquete NuGet `Microsoft.ServiceFabric.Services.AspNetCore` incluye el método de extensión `UseServiceFabricIntegration` en `IWebHostBuilder` que agrega middleware compatible con Service Fabric. Este middleware configura la implementación `ICommunicationListener` de Kestrel o WebListener para que registre una dirección URL de servicio única con el servicio de nomenclatura de Service Fabric y después valida las solicitudes de cliente para asegurarse de que los clientes se conecten al servicio adecuado. Esto es necesario en un entorno de host compartido como Service Fabric, donde varias aplicaciones web se pueden ejecutar en la misma máquina física o virtual pero no utilizan nombres de host únicos, para evitar que los clientes se conecten por error al servicio incorrecto. Este escenario se describe con más detalle en la sección siguiente.
+Hola `Microsoft.ServiceFabric.Services.AspNetCore` paquete de NuGet incluye hello `UseServiceFabricIntegration` método de extensión `IWebHostBuilder` que agrega middleware para Service Fabric. Este middleware configura Hola Kestrel o WebListener `ICommunicationListener` tooregister una dirección URL de servicio exclusiva con Hola servicio de nomenclatura de tejido de servicio y, a continuación, valida los clientes tooensure de solicitudes de cliente conectan toohello de servicio adecuado. Esto es necesario en un entorno de host compartido como Service Fabric, donde varias aplicaciones web pueden ejecutar en hello misma físico o máquina virtual pero no utilizan nombres de host único, tooprevent clientes conecten erróneamente toohello de servicio incorrecta. Este escenario se describe con más detalle en la sección siguiente Hola.
 
 ### <a name="a-case-of-mistaken-identity"></a>Un caso de identidad equivocada
-Las réplicas de servicio, con independencia del protocolo, escuchan en una combinación IP:puerto única. Una vez que una réplica de servicio ha comenzado a escuchar en un punto de conexión IP:puerto, notifica esa dirección de punto de conexión al servicio de nomenclatura de Service Fabric, donde los clientes u otros servicios pueden detectarla. Si los servicios utilizan puertos de aplicación asignados de forma dinámica, una réplica de servicio podría casualmente utilizar el mismo punto de conexión IP:puerto que otro servicio que se encontraba antes en la misma máquina física o virtual. Esto puede hacer que un cliente se conecte por error al servicio incorrecto. Esto puede ocurrir si se produce la siguiente secuencia de eventos:
+Las réplicas de servicio, con independencia del protocolo, escuchan en una combinación IP:puerto única. Una vez que una réplica de servicio ha comenzado a escuchar en un punto de conexión de IP: Port, informa de que toohello de dirección de extremo tejido nomenclatura servicio donde se pueden detectar los clientes u otros servicios. Si los servicios utilizan puertos de la aplicación asigna dinámicamente, una réplica de servicio pueden utilizar casualmente Hola mismo punto de conexión de IP: Port de otro servicio que se encontraban previamente en Hola misma físico o máquina virtual. Esto puede hacer que un cliente toomistakely conectar toohello de servicio incorrecta. Esto puede ocurrir si se produce Hola sigue la secuencia de eventos:
 
  1. Un servicio A escucha en 10.0.0.1:30000 a través de HTTP. 
  2. El cliente resuelve el servicio A y obtiene la dirección 10.0.0.1:30000.
- 3. El servicio A se mueve a otro nodo.
- 4. El servicio B se coloca en 10.0.0.1 y casualmente usa el mismo puerto 30000.
- 5. El cliente intenta conectarse al servicio A con la dirección 10.0.0.1:30000 en caché.
- 6. Ahora el cliente está conectado al servicio B sin darse cuenta de que es el servicio incorrecto.
+ 3. Se desplaza tooa otro nodo del servicio.
+ 4. Servicio B se coloca en 10.0.0.1 y casualmente usa Hola mismo puerto 30000.
+ 5. Cliente intentará establecer tooconnect tooservice A con 10.0.0.1:30000 de direcciones almacenadas en caché.
+ 6. Cliente es ahora está conectado correctamente conectado tooservice B no que se dé cuenta toohello de servicio incorrecta.
 
-Esto puede causar errores aleatoriamente que son difíciles de diagnosticar. 
+Esto puede provocar errores en los momentos aleatorios que pueden ser difícil toodiagnose. 
 
 ### <a name="using-unique-service-urls"></a>Uso de direcciones URL de servicio únicas
-Para evitar esto, los servicios pueden exponer un punto de conexión ante el servicio de nomenclatura con un identificador único y después validar este último durante las solicitudes de cliente. Se trata de una acción cooperativa entre servicios en un entorno de confianza sin inquilinos hostiles. No proporciona autenticación de servicio segura en un entorno con inquilinos hostiles.
+Servicios de tooprevent, puede publicar un servicio de nombres con un identificador único de punto de conexión toohello y, a continuación, validar ese identificador único durante las solicitudes de cliente. Se trata de una acción cooperativa entre servicios en un entorno de confianza sin inquilinos hostiles. No proporciona autenticación de servicio segura en un entorno con inquilinos hostiles.
 
-En un entorno de confianza, el middleware que se agrega mediante el método `UseServiceFabricIntegration` anexa automáticamente un identificador único a la dirección que se expone ante el servicio de nomenclatura y valida ese identificador con cada solicitud. Si el identificador no coincide, el middleware devuelve inmediatamente una respuesta HTTP 410 Ya no existe.
+En un entorno de confianza, Hola middleware que se agrega de forma hello `UseServiceFabricIntegration` método anexa automáticamente una dirección de toohello de identificador único que se registra toohello servicio de nomenclatura y valida ese identificador en cada solicitud. Si no coincide con el identificador de hello, Hola middleware devuelve inmediatamente una respuesta HTTP 410 ya no existe.
 
 Los servicios que utilizan un puerto asignado de forma dinámica deberían usar este middleware.
 
-Los servicios que utilizan un puerto fijo único no tienen este problema en un entorno cooperativo. Un puerto fijo único se utiliza normalmente para servicios orientados hacia el exterior que necesitan usar un puerto conocido al que las aplicaciones cliente puedan conectarse. Por ejemplo, la mayoría de las aplicaciones web accesibles desde Internet usarán el puerto 80 o 443 para las conexiones del explorador web. En este caso, el identificador único no se debe habilitar.
+Los servicios que utilizan un puerto fijo único no tienen este problema en un entorno cooperativo. Un único puerto fijo se utiliza normalmente para servicios externo que necesitan un puerto bien conocido para tooconnect de las aplicaciones de cliente para. Por ejemplo, la mayoría de las aplicaciones web accesibles desde Internet usarán el puerto 80 o 443 para las conexiones del explorador web. En este caso, identificador único de hello no debe estar habilitada.
 
-En el siguiente diagrama se muestra el flujo de la solicitud con el middleware habilitado:
+Hello siguiente diagrama muestra flujo de solicitud de hello con middleware de hello habilitado:
 
 ![Integración de ASP.NET Core de Service Fabric][2]
 
-Tanto las implementaciones `ICommunicationListener` de Kestrel como las de WebListener utilizan este mecanismo exactamente de la misma manera. Aunque WebListener puede diferenciar internamente las solicitudes basadas en rutas de acceso de dirección URL únicas mediante la característica subyacente para compartir puertos *http.sys*, esa funcionalidad *no* se usa en la implementación `ICommunicationListener` de WebListener, ya que se producirían códigos de estado de error HTTP 503 y HTTP 404 en el escenario descrito antes. A su vez, esto hace muy difícil que los clientes determinen la intención del error, ya que HTTP 503 y HTTP 404 ya se usan habitualmente para indicar otros errores. Por lo tanto, las implementaciones `ICommunicationListener` de Kestrel y WebListener se normalizan en el middleware proporcionado por el método de extensión `UseServiceFabricIntegration` para que los clientes solo necesiten repetir la acción de resolución del punto de conexión de servicio con las respuestas HTTP 410.
+Kestrel y WebListener `ICommunicationListener` implementaciones utilizan este mecanismo Hola exactamente igual. Aunque WebListener internamente puede diferenciar las solicitudes basadas en rutas de acceso de dirección URL únicas subyacente hello *http.sys* característica, que es la funcionalidad de uso compartido de puerto *no* utilizado por hello WebListener `ICommunicationListener` implementación ya que se produciría en códigos de estado de error HTTP 503 y 404 de HTTP en el escenario de Hola se ha descrito anteriormente. A su vez hace muy difícil intención de hello toodetermine de los clientes de error de hello, como HTTP 503 y 404 de HTTP ya están tooindicate utilizada otros errores. Por lo tanto, Kestrel y WebListener `ICommunicationListener` implementaciones estandaricen middleware Hola proporcionada por hello `UseServiceFabricIntegration` método de extensión para que los clientes sólo necesitan tooperform un extremo de servicio vuelve a resolver acción en las respuestas HTTP 410.
 
 ## <a name="weblistener-in-reliable-services"></a>WebListener en Reliable Services
-WebListener puede utilizarse en una instancia de Reliable Services si se importa el paquete NuGet **Microsoft.ServiceFabric.AspNetCore.WebListener**. Este paquete contiene `WebListenerCommunicationListener`, una implementación de `ICommunicationListener`, que le permite crear un elemento WebHost de ASP.NET Core dentro de una instancia de Reliable Services con WebListener como servidor web.
+WebListener puede utilizarse en un servicio confiable mediante la importación de hello **Microsoft.ServiceFabric.AspNetCore.WebListener** paquete NuGet. Este paquete contiene `WebListenerCommunicationListener`, una implementación de `ICommunicationListener`, que le permita toocreate un WebHost de núcleo de ASP.NET dentro de un servicio confiable con WebListener como servidor web de Hola.
 
-WebListener se basa en la [API de servidor HTTP de Windows](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Utiliza el controlador de kernel *http.sys* que IIS usa para procesar solicitudes HTTP y enrutarlas a procesos que ejecutan aplicaciones web. Esto permite que varios procesos en la misma máquina física o virtual hospeden aplicaciones web en el mismo puerto, eliminando la ambigüedad con un nombre de host o una ruta de acceso de dirección URL únicos. Estas características son útiles en Service Fabric para hospedar varios sitios web en el mismo clúster.
+WebListener se basa en hello [Windows HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx). Esto utiliza hello *http.sys* controlador de kernel usado por IIS tooprocess HTTP solicita y enrutar tooprocesses ellas las aplicaciones web en ejecución. Esto permite que varios procesos en hello misma máquina física o virtual toohost las aplicaciones web de hello mismo puerto, eliminar la ambigüedad por una ruta de acceso de dirección URL única o un nombre de host. Estas características son útiles en Service Fabric para hospedar varios sitios Web en hello mismo clúster.
 
-En el siguiente diagrama se muestra cómo WebListener usa el controlador de kernel *http.sys* en Windows para compartir puertos:
+Hello siguiente diagrama ilustra cómo WebListener usa hello *http.sys* controladores de kernel de Windows para uso compartido de puertos:
 
 ![http.sys][3]
 
 ### <a name="weblistener-in-a-stateless-service"></a>WebListener en un servicio sin estado
-Para usar `WebListener` en un servicio sin estado, invalide el método `CreateServiceInstanceListeners` y devuelva una instancia de `WebListenerCommunicationListener`:
+toouse `WebListener` en un servicio sin estado, reemplace el método hello `CreateServiceInstanceListeners` método y devuelven un `WebListenerCommunicationListener` instancia:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -132,13 +132,13 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="weblistener-in-a-stateful-service"></a>WebListener en un servicio con estado
 
-Actualmente, `WebListenerCommunicationListener` no está diseñado para usarse en servicios con estado a causa de las complicaciones con la característica subyacente para compartir puertos *http.sys*. Para más información, consulte la sección siguiente sobre la asignación dinámica de puertos con WebListener. Para los servicios con estado, Kestrel es el servidor web recomendado.
+`WebListenerCommunicationListener`actualmente no está diseñado para su uso en servicios con estado vencimiento toocomplications con hello subyacente *http.sys* característica de uso compartido de puerto. Para obtener más información, vea Hola pasos de la sección de asignación de puerto dinámico con WebListener. Para los servicios con estado, Kestrel es hello recomendada servidor web.
 
 ### <a name="endpoint-configuration"></a>Configuración del punto de conexión
 
-Se necesita una configuración `Endpoint` para los servidores web que usen la API de servidor HTTP de Windows, lo que incluye WebListener. Los servidores web que usan la API de servidor HTTP de Windows deben reservar en primer lugar su dirección URL con *http.sys* (normalmente con la herramienta [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx)). Esta acción requiere privilegios elevados de los que sus servicios carecen de forma predeterminada. Las opciones "http" o "https" para la propiedad `Protocol` de la configuración `Endpoint` en *ServiceManifest.xml* se utilizan específicamente para indicar al entorno de ejecución de Service Fabric que registre una dirección URL con *http.sys* en su nombre mediante un prefijo de URL con [*comodín seguro*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx).
+Un `Endpoint` configuración es necesaria para los servidores web que utilizan la API de servidor HTTP de Windows, incluidos los WebListener Hola. Servidores Web que utilizan la API de servidor HTTP de Windows hello en primer lugar deben reservar su dirección URL con *http.sys* (Esto se consigue normalmente con hello [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) herramienta). Esta acción requiere privilegios elevados de los que sus servicios carecen de forma predeterminada. Hola "http" o "https" opciones de hello `Protocol` propiedad de hello `Endpoint` configuración de *ServiceManifest.xml* se utilizan específicamente tooinstruct Hola Service Fabric en tiempo de ejecución tooregister una dirección URL con *http.sys* en su nombre mediante hello [ *carácter comodín fuerte* ](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) prefijo de dirección URL.
 
-Por ejemplo, si se quiere reservar `http://+:80` para un servicio, debe usarse la siguiente configuración en ServiceManifest.xml:
+Por ejemplo, tooreserve `http://+:80` para un servicio, hello configuración siguiente debe usarse en ServiceManifest.xml:
 
 ```xml
 <ServiceManifest ... >
@@ -152,7 +152,7 @@ Por ejemplo, si se quiere reservar `http://+:80` para un servicio, debe usarse l
 </ServiceManifest>
 ```
 
-Y se debe pasar el nombre del punto de conexión al constructor `WebListenerCommunicationListener`:
+Y se debe pasar el nombre del extremo de hello toohello `WebListenerCommunicationListener` constructor:
 
 ```csharp
  new WebListenerCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -166,7 +166,7 @@ Y se debe pasar el nombre del punto de conexión al constructor `WebListenerComm
 ```
 
 #### <a name="use-weblistener-with-a-static-port"></a>Uso de WebListener con un puerto estático
-Para usar un puerto estático con WebListener, proporcione el número de puerto en la configuración `Endpoint`:
+toouse un puerto estático con WebListener, especifique el número de puerto de Hola Hola `Endpoint` configuración:
 
 ```xml
   <Resources>
@@ -177,7 +177,7 @@ Para usar un puerto estático con WebListener, proporcione el número de puerto 
 ```
 
 #### <a name="use-weblistener-with-a-dynamic-port"></a>Uso de WebListener con un puerto dinámico
-Para usar un puerto asignado de forma dinámica con WebListener, omita la propiedad `Port` en la configuración `Endpoint`:
+toouse un puerto asignado dinámicamente con WebListener, omitir hello `Port` propiedad Hola `Endpoint` configuración:
 
 ```xml
   <Resources>
@@ -187,17 +187,17 @@ Para usar un puerto asignado de forma dinámica con WebListener, omita la propie
   </Resources>
 ```
 
-Tenga en cuenta que un puerto dinámico asignado por una configuración `Endpoint` proporciona solo un puerto *por cada proceso de host*. El modelo de hospedaje actual de Service Fabric permite que varias instancias o réplicas de servicio se hospeden en el mismo proceso, lo que significa que cada una compartirá el mismo puerto cuando se asigne por medio de la configuración `Endpoint`. Varias instancias de WebListener pueden compartir un puerto mediante la característica subyacente para compartir puertos *http.sys*, pero eso no es compatible con `WebListenerCommunicationListener` debido a las complicaciones que presenta para las solicitudes de cliente. Para el uso de puertos dinámicos, Kestrel es el servidor web recomendado.
+Tenga en cuenta que un puerto dinámico asignado por una configuración `Endpoint` proporciona solo un puerto *por cada proceso de host*. Hello actual Service Fabric modelo de hospedaje permite varios toobe de instancias o réplicas de servicio hospedado en hello mismo proceso, lo que significa que cada uno de ellos compartirán Hola mismo número de puerto cuando se asignan a través de hello `Endpoint` configuración. Varias instancias de WebListener pueden compartir un puerto mediante subyacente hello *http.sys* puertos de característica, pero que no es compatible con `WebListenerCommunicationListener` debido a las complicaciones de toohello incluye las solicitudes de cliente. Para el uso de puertos dinámicos, Kestrel es hello recomendada servidor web.
 
 ## <a name="kestrel-in-reliable-services"></a>Kestrel en Reliable Services
-Kestrel puede utilizarse en una instancia de Reliable Services si se importa el paquete NuGet **Microsoft.ServiceFabric.AspNetCore.Kestrel**. Este paquete contiene `KestrelCommunicationListener`, una implementación de `ICommunicationListener`, que le permite crear un elemento WebHost de ASP.NET Core dentro de una instancia de Reliable Services con Kestrel como servidor web.
+Kestrel puede utilizarse en un servicio confiable mediante la importación de hello **Microsoft.ServiceFabric.AspNetCore.Kestrel** paquete NuGet. Este paquete contiene `KestrelCommunicationListener`, una implementación de `ICommunicationListener`, que le permita toocreate un WebHost de núcleo de ASP.NET dentro de un servicio confiable con Kestrel como servidor web de Hola.
 
 Kestrel es un servidor web multiplataforma para ASP.NET Core basado en libuv, una biblioteca de E/S asincrónica multiplataforma. A diferencia de WebListener, Kestrel no utiliza un administrador centralizado de puntos de conexión como *http.sys*. Y, a diferencia de WebListener, Kestrel no es compatible con el uso compartido de puertos entre varios procesos. Cada instancia de Kestrel debe usar un puerto único.
 
 ![kestrel][4]
 
 ### <a name="kestrel-in-a-stateless-service"></a>Kestrel en un servicio sin estado
-Para usar `Kestrel` en un servicio sin estado, invalide el método `CreateServiceInstanceListeners` y devuelva una instancia de `KestrelCommunicationListener`:
+toouse `Kestrel` en un servicio sin estado, reemplace el método hello `CreateServiceInstanceListeners` método y devuelven un `KestrelCommunicationListener` instancia:
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -222,7 +222,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 ### <a name="kestrel-in-a-stateful-service"></a>Kestrel en un servicio con estado
-Para usar `Kestrel` en un servicio con estado, invalide el método `CreateServiceReplicaListeners` y devuelva una instancia de `KestrelCommunicationListener`:
+toouse `Kestrel` en un servicio con estado, reemplace el método hello `CreateServiceReplicaListeners` método y devuelven un `KestrelCommunicationListener` instancia:
 
 ```csharp
 protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -247,19 +247,19 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 }
 ```
 
-En este ejemplo, se proporciona una instancia singleton de `IReliableStateManager` en el contenedor de inyección de dependencias de WebHost. Esto no es estrictamente necesario, pero sí permite usar `IReliableStateManager` y Reliable Collections en los métodos de acción de controlador MVC.
+En este ejemplo, una instancia de singleton de `IReliableStateManager` se proporciona el contenedor de inyección de dependencia de toohello WebHost. Esto no es estrictamente necesaria, pero le permite toouse `IReliableStateManager` y colecciones confiable en los métodos de acción de controlador MVC.
 
-Tenga en cuenta que **no** se proporciona un nombre de configuración `Endpoint` a `KestrelCommunicationListener` en un servicio con estado. Esto se explica con más detalle en la sección siguiente.
+Tenga en cuenta que un `Endpoint` nombre de configuración es **no** proporciona demasiado`KestrelCommunicationListener` en un servicio con estado. Esto se explica con más detalle en los pasos de la sección de Hola.
 
 ### <a name="endpoint-configuration"></a>Configuración del punto de conexión
-No se requiere una configuración `Endpoint` para usar Kestrel. 
+Un `Endpoint` configuración no es necesario toouse Kestrel. 
 
-Kestrel es un servidor web independiente simple; a diferencia de WebListener (o HttpListener), no necesita una configuración `Endpoint` en *ServiceManifest.xml* porque no requiere el registro de direcciones URL antes de comenzar. 
+Kestrel es un servidor web independiente simple; a diferencia de WebListener (o HttpListener), no es necesario un `Endpoint` configuración de *ServiceManifest.xml* ya no requiere toostarting anterior del registro de dirección URL. 
 
 #### <a name="use-kestrel-with-a-static-port"></a>Uso de Kestrel con un puerto estático
-Se puede configurar un puerto estático en la configuración `Endpoint` de ServiceManifest.xml para usarlo con Kestrel. Aunque esto no es estrictamente necesario, ofrece dos ventajas potenciales:
- 1. Si el puerto no se encuentra en el intervalo de puertos de la aplicación, Service Fabric lo abre a través del firewall del sistema operativo.
- 2. La dirección URL proporcionada a través de `KestrelCommunicationListener` usará este puerto.
+Se puede configurar un puerto estático en hello `Endpoint` configuración de ServiceManifest.xml para su uso con Kestrel. Aunque esto no es estrictamente necesario, ofrece dos ventajas potenciales:
+ 1. Si el puerto de hello no se encuentra en el intervalo de puertos de aplicación Hola, se abre a través de firewall de sistema operativo de Hola por Service Fabric.
+ 2. Hola tooyou dirección URL proporcionada a través de `KestrelCommunicationListener` usará este puerto.
 
 ```xml
   <Resources>
@@ -269,53 +269,53 @@ Se puede configurar un puerto estático en la configuración `Endpoint` de Servi
   </Resources>
 ```
 
-Si se configura una instancia de `Endpoint`, se debe pasar su nombre al constructor `KestrelCommunicationListener`: 
+Si un `Endpoint` está configurado, se debe pasar su nombre a hello `KestrelCommunicationListener` constructor: 
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) => ...
 ```
 
-Si no se usa una configuración `Endpoint`, se omite el nombre en el constructor `KestrelCommunicationListener`. En este caso, se utilizará un puerto dinámico. Consulte la siguiente sección para más información.
+Si un `Endpoint` no se utiliza la configuración, se omite el nombre de Hola Hola `KestrelCommunicationListener` constructor. En este caso, se utilizará un puerto dinámico. Vea la siguiente sección de Hola para obtener más información.
 
 #### <a name="use-kestrel-with-a-dynamic-port"></a>Uso de Kestrel con un puerto dinámico
-Kestrel no puede usar la asignación automática de puertos de la configuración `Endpoint` en ServiceManifest.xml, porque la asignación automática de puertos de una configuración `Endpoint` asigna un puerto único por *cada proceso de host*, y un único proceso de host puede contener varias instancias de Kestrel. Puesto que Kestrel no admite el uso compartido de puertos, esto no funciona porque cada instancia de Kestrel debe abrirse en un puerto único.
+Kestrel no se puede usar la asignación de puerto automática de Hola de hello `Endpoint` configuración en ServiceManifest.xml, porque la asignación automática de puerto de un `Endpoint` configuración asigna un puerto único por *el proceso de host* , y un proceso de host solo puede contener varias instancias de Kestrel. Puesto que Kestrel no admite el uso compartido de puertos, esto no funciona porque cada instancia de Kestrel debe abrirse en un puerto único.
 
-Para usar la asignación dinámica de puertos con Kestrel, basta con que omita la configuración `Endpoint` en ServiceManifest.xml por completo y no pase un nombre de punto de conexión al constructor `KestrelCommunicationListener`:
+asignación de puertos dinámicos de toouse con Kestrel, simplemente omite hello `Endpoint` configuración en ServiceManifest.xml por completo y no pasan un toohello de nombre de punto de conexión `KestrelCommunicationListener` constructor:
 
 ```csharp
 new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
-En esta configuración, `KestrelCommunicationListener` seleccionará automáticamente un puerto no utilizado en el intervalo de puertos de la aplicación.
+En esta configuración, `KestrelCommunicationListener` seleccionará automáticamente un puerto no utilizado de intervalo de puertos de aplicación Hola.
 
 ## <a name="scenarios-and-configurations"></a>Escenarios y configuraciones
-En esta sección se describen los siguientes escenarios y se proporciona la combinación recomendada de servidor web, configuración de puerto, opciones de integración de Service Fabric y diversas configuraciones para lograr un servicio que funcione correctamente:
+En esta sección Hola los escenarios siguientes se describe y proporciona Hola recomienda combinación de servidor web, configuración de puerto, opciones de integración de Service Fabric y diversas configuraciones tooachieve un servicio que funciona correctamente:
  - Servicio sin estado de ASP.NET Core expuesto al exterior
  - Servicio sin estado de ASP.NET Core solo interno
  - Servicio con estado de ASP.NET Core solo interno
 
-Un servicio **expuesto al exterior** es aquel que expone un punto de conexión accesible desde fuera del clúster, por lo general mediante un equilibrador de carga.
+Un **expone externamente** servicio es aquel que expone un extremo accesible desde fuera de clúster de hello, normalmente a través de un equilibrador de carga.
 
-Un servicio **solo interno** es aquel cuyo punto de conexión solo es accesible desde dentro del clúster.
+Un **solo para uso interno** servicio es aquella cuyo extremo solo es accesible desde dentro de clúster de Hola.
 
 > [!NOTE]
-> Los puntos de conexión de servicio con estado generalmente no se deberían exponer a Internet. Los clústeres que se encuentran tras equilibradores de carga que desconocen la resolución del servicio de Service Fabric, como Azure Load Balancer, no podrán exponer servicios con estado porque el equilibrador de carga no podrá localizar ni enrutar el tráfico hacia la réplica de servicio con estado adecuada. 
+> Servicio con estado extremos por lo general no se debe expone toohello Internet. Clústeres que se encuentran detrás de los equilibradores de carga que no son conscientes de la resolución del servicio de Service Fabric, como Hola equilibrador de carga de Azure, se pueden servicios con estado no se puede tooexpose porque equilibrador de carga de hello no ser capaz de toolocate y enrutar el tráfico toohello réplica de servicio con estado adecuado. 
 
 ### <a name="externally-exposed-aspnet-core-stateless-services"></a>Servicios sin estado de ASP.NET Core expuestos al exterior
-WebListener es el servidor web recomendado para los servicios de front-end que exponen puntos de conexión HTTP externos orientados a Internet en Windows. Proporciona mejor protección frente a ataques y admite características incompatibles con Kestrel, como la autenticación de Windows y el uso compartido de puertos. 
+WebListener es hello recomendada servidor web para los servicios front-end que exponen los extremos HTTP externos, orientado a Internet en Windows. Proporciona mejor protección frente a ataques y admite características incompatibles con Kestrel, como la autenticación de Windows y el uso compartido de puertos. 
 
-Kestrel no se admite como servidor perimetral (orientado a Internet) en este momento. Se debe usar un servidor proxy inverso, como IIS o Nginx, para administrar el tráfico procedente de la Internet pública.
+Kestrel no se admite como servidor perimetral (orientado a Internet) en este momento. Se debe usar un servidor proxy inverso, como IIS o Nginx Hola a toohandle el tráfico de red pública de Internet.
  
-Cuando se expone a Internet, un servicio sin estado debe usar un punto de conexión conocido y estable que sea accesible a través de un equilibrador de carga. Se trata de la dirección URL que va a proporcionar a los usuarios de la aplicación. Se recomienda la siguiente configuración:
+Cuando toohello expuesto Internet, un servicio sin estado debe usar un punto de conexión conocido y estable que sea accesible a través de un equilibrador de carga. Se trata de dirección URL de hello proporcionará toousers de la aplicación. se recomienda Hola siguiente configuración:
 
 |  |  | **Notas** |
 | --- | --- | --- |
-| Servidor web | WebListener | Si el servicio solo se expone a una red de confianza, como una intranet, se puede usar Kestrel. De lo contrario, WebListener es la opción preferida. |
-| Configuración de puerto | estática | Se debe configurar un puerto estático conocido en la configuración `Endpoints` de ServiceManifest.xml, como 80 para HTTP o 443 para HTTPS. |
-| ServiceFabricIntegrationOptions | None | La opción `ServiceFabricIntegrationOptions.None` se debe usar al configurar el middleware de integración de Service Fabric para que el servicio no intente validar solicitudes entrantes para un identificador único. Los usuarios externos de la aplicación no conocerán la información de identificación única utilizada por el middleware. |
-| Recuento de instancias | -1 | En casos de uso habituales, la configuración de recuento de instancias debe establecerse en "-1" para que una instancia esté disponible en todos los nodos que reciban tráfico de un equilibrador de carga. |
+| Servidor web | WebListener | Si el servicio de hello es sólo tooa expuesto red de confianza, este tipo de una intranet, se puede usar Kestrel. En caso contrario, WebListener es opción Hola preferido. |
+| Configuración de puerto | estática | Un puerto estático conocido debe configurarse en hello `Endpoints` configuración de ServiceManifest.xml, como 80 para HTTP o 443 para HTTPS. |
+| ServiceFabricIntegrationOptions | None | Hola `ServiceFabricIntegrationOptions.None` opción se debe usar al configurar el middleware de integración de Service Fabric para que el servicio de hello no intenta toovalidate las solicitudes entrantes de un identificador único. Los usuarios externos de la aplicación no podrá saber información de identificación única hello usa Hola middleware. |
+| Recuento de instancias | -1 | En casos de uso habitual, recuento de instancias de hello configuración debe establecerse demasiado "-1" para que una instancia está disponible en todos los nodos que reciben tráfico de un equilibrador de carga. |
 
-Si varios servicios expuestos al exterior comparten el mismo conjunto de nodos, se debe usar una ruta de acceso de dirección URL única pero estable. Para lograr esto, se puede modificar la dirección URL proporcionada al configurar IWebHost. Tenga en cuenta que esto solo se aplica a WebListener.
+Si varios servicios externamente expuestos compartan Hola al mismo conjunto de nodos, se debe usar una ruta de acceso de dirección URL único pero estable. Esto puede realizarse mediante la modificación de la dirección URL de hello proporcionada al configurar IWebHost. Tenga en cuenta que esto se aplica solo tooWebListener.
 
  ```csharp
  new WebListenerCommunicationListener(serviceContext, "ServiceEndpoint", (url, listener) =>
@@ -331,23 +331,23 @@ Si varios servicios expuestos al exterior comparten el mismo conjunto de nodos, 
  ```
 
 ### <a name="internal-only-stateless-aspnet-core-service"></a>Servicio sin estado de ASP.NET Core solo interno
-Los servicios sin estado a los que solo se llama desde dentro del clúster deben utilizar direcciones URL únicas y puertos asignados de forma dinámica para garantizar la cooperación entre varios servicios. Se recomienda la siguiente configuración:
+Los servicios sin estado que solo se llaman desde dentro de clúster de hello deberían utilizar direcciones URL únicas y asignan dinámicamente puertos tooensure cooperación entre varios servicios. se recomienda Hola siguiente configuración:
 
 |  |  | **Notas** |
 | --- | --- | --- |
-| Servidor web | Kestrel | Aunque WebListener puede utilizarse para servicios sin estado internos, Kestrel es el servidor recomendado para permitir que varias instancias de servicio compartan un host.  |
+| Servidor web | Kestrel | Aunque WebListener puede utilizarse para los servicios sin estado internos, Kestrel es Hola recomienda server tooallow varios tooshare de instancias de servicio un host.  |
 | Configuración de puerto | asignado de forma dinámica | Varias réplicas de un servicio con estado pueden compartir un proceso de host o un sistema operativo host y, por tanto, necesitarán puertos únicos. |
-| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Con la asignación dinámica de puertos, esta configuración evita el problema de identidad equivocada descrito antes. |
-| InstanceCount | cualquiera | La configuración de recuento de instancias se puede establecer en cualquier valor necesario para hacer funcionar el servicio. |
+| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Con la asignación de puertos dinámicos, esta configuración impide problema Hola equivocado de la identidad que se ha descrito anteriormente. |
+| InstanceCount | cualquiera | configuración del número de instancia Hola puede establecerse servicio Hola de tooany valor toooperate necesarios. |
 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Servicio con estado de ASP.NET Core solo interno
-Los servicios con estado a los que solo se llama desde dentro del clúster deben utilizar puertos asignados de forma dinámica para garantizar la cooperación entre varios servicios. Se recomienda la siguiente configuración:
+Los servicios con estado que se llaman solo desde dentro de clúster de hello deben usar puertos asignados dinámicamente tooensure cooperación entre varios servicios. se recomienda Hola siguiente configuración:
 
 |  |  | **Notas** |
 | --- | --- | --- |
-| Servidor web | Kestrel | `WebListenerCommunicationListener` no está diseñado para usarse en servicios con estado en los que las réplicas comparten un proceso de host. |
+| Servidor web | Kestrel | Hola `WebListenerCommunicationListener` no está diseñado para su uso por los servicios con estado en el que las réplicas comparten un proceso de host. |
 | Configuración de puerto | asignado de forma dinámica | Varias réplicas de un servicio con estado pueden compartir un proceso de host o un sistema operativo host y, por tanto, necesitarán puertos únicos. |
-| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Con la asignación dinámica de puertos, esta configuración evita el problema de identidad equivocada descrito antes. |
+| ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Con la asignación de puertos dinámicos, esta configuración impide problema Hola equivocado de la identidad que se ha descrito anteriormente. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Depurar la aplicación de Service Fabric con Visual Studio](service-fabric-debugging-your-application.md)

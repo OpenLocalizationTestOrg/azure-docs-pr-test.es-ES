@@ -1,6 +1,6 @@
 ---
-title: "Migración de las redes virtuales asociadas de ExpressRoute del modelo clásico a Azure Resource Manager: PowerShell | Microsoft Docs"
-description: "En esta página se describe cómo migrar las redes virtuales asociadas a Resource Manager después de mover el circuito."
+title: "Migrar las redes virtuales asociado de ExpressRoute de tooResource clásico Manager: Azure: PowerShell | Documentos de Microsoft"
+description: "Esta página describe cómo toomigrate había asociado redes virtuales tooResource Manager después de mover el circuito."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,77 +15,77 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/06/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 964ea38569062a7127f60dd6309b328db263bf6f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e64506c6909296f98c5dd23b1437bc0b81f31c75
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migración de las redes virtuales asociadas de ExpressRoute del portal clásico a Resource Manager
+# <a name="migrate-expressroute-associated-virtual-networks-from-classic-tooresource-manager"></a>Migrar las redes virtuales asociado de ExpressRoute de tooResource clásico Manager
 
-En este artículo se explica cómo migrar las redes virtuales asociadas de Azure ExpressRoute desde el modelo de implementación clásica al modelo de implementación de Azure Resource Manager después de mover el circuito de ExpressRoute. 
+Este artículo explica cómo toomigrate ExpressRoute de Azure había asociado redes virtuales de modelo de implementación de Azure Resource Manager de toohello modelo de implementación clásica de hello después de mover el circuito de ExpressRoute. 
 
 
 ## <a name="before-you-begin"></a>Antes de empezar
-* Compruebe que dispone de la versión más reciente de los módulos de Azure PowerShell. Para más información, vea [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
-* Asegúrese de haber revisado los [requisitos previos](expressroute-prerequisites.md), los [requisitos de enrutamiento](expressroute-routing.md) y los [flujos de trabajo](expressroute-workflows.md) antes de comenzar la configuración.
-* Revise la información que se proporciona en [Transición de un circuito ExpressRoute desde la implementación clásica a la implementación de Resource Manager](expressroute-move.md). Asegúrese de que comprende perfectamente los límites y restricciones.
-* Compruebe que el circuito está totalmente operativo en el modelo de implementación clásica.
-* Asegúrese de tener un grupo de recursos creado en el modelo de implementación de Resource Manager.
-* Revise la siguiente documentación de migración de recursos:
+* Compruebe que dispone de versión más reciente de Hola de módulos de PowerShell de Azure de Hola. Para obtener más información, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
+* Asegúrese de que ha revisado hello [requisitos previos](expressroute-prerequisites.md), [requisitos de enrutamiento](expressroute-routing.md), y [flujos de trabajo](expressroute-workflows.md) antes de comenzar la configuración.
+* Revise la información de Hola que se proporciona en [mover un circuito de ExpressRoute de tooResource clásico Manager](expressroute-move.md). Asegúrese de que entiende totalmente Hola límites y limitaciones.
+* Compruebe que el circuito de hello es totalmente operativo en el modelo de implementación clásica de Hola.
+* Asegúrese de que tiene un grupo de recursos que se creó en el modelo de implementación del Administrador de recursos de Hola.
+* Revisar Hola siguiendo documentación de migración del recurso:
 
-    * [Migración compatible con la plataforma de recursos de IaaS del modelo clásico al de Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-    * [Profundización técnica en la migración compatible con la plataforma de la implementación clásica a la de Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-    * [FAQs: Platform-supported migration of IaaS resources from classic to Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md) (Preguntas frecuentes: Migración compatible con la plataforma de recursos de IaaS desde el modelo de implementación clásica a Azure Resource Manager)
+    * [Migración admitida por la plataforma de recursos de IaaS de tooAzure clásico Administrador de recursos](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [Técnica de fondo admitida por la plataforma de migración de clásico tooAzure el Administrador de recursos](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+    * [Preguntas más frecuentes: Admitida por la plataforma de migración de los recursos de IaaS de tooAzure clásico Administrador de recursos](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [Revisión de los errores y mitigaciones más comunes en la migración](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>Escenarios admitidos y no admitidos
 
-* Un circuito ExpressRoute se puede mover desde el modelo de implementación clásica al entorno de Resource Manager sin tiempo de inactividad. Puede mover un circuito ExpressRoute del entorno clásico al entorno de Resource Manager sin tiempo de inactividad. Siga las instrucciones sobre [cómo mover circuitos ExpressRoute del modelo de implementación clásica a Resource Manager mediante PowerShell](expressroute-howto-move-arm.md). Este es un requisito previo para mover recursos conectados a la red virtual.
-* Las redes virtuales, las puertas de enlace y las implementaciones asociadas dentro de la red virtual que están conectadas a un circuito ExpressRoute de la misma suscripción se pueden migrar al entorno de Resource Manager sin tiempo de inactividad. Puede seguir los pasos descritos más adelante para migrar recursos, como redes virtuales, puertas de enlace y máquinas virtuales implementadas dentro de la red virtual. Debe asegurarse de que las redes virtuales estén configuradas correctamente antes de la migración. 
-* Las redes virtuales, las puertas de enlace y las implementaciones asociadas dentro de la red virtual que no estén en la misma suscripción que el circuito ExpressRoute requerirán algún tiempo de inactividad para completar la migración. En la última sección del documento se describen los pasos que se deben seguir para migrar los recursos.
+* Un circuito ExpressRoute puede mover desde el entorno de administrador de recursos de hello toohello clásico sin tiempo de inactividad. Puede mover cualquier circuito de ExpressRoute de hello clásico toohello entorno de administrador de recursos sin tiempo de inactividad. Siga las instrucciones de hello en [mover circuitos ExpressRoute de modelo de implementación de administrador de recursos hello toohello clásico mediante PowerShell](expressroute-howto-move-arm.md). Se trata de una red virtual de requisitos previos toomove recursos toohello conectado.
+* Redes virtuales, puertas de enlace y las implementaciones asociadas dentro de la red virtual de Hola que están conectado tooan circuito de ExpressRoute en hello puede ser la misma suscripción migran toohello entorno de administrador de recursos sin tiempo de inactividad. Puede seguir Hola pasos se describe más adelante toomigrate recursos tales como redes virtuales, las puertas de enlace y máquinas virtuales implementadas dentro de la red virtual de Hola. Debe asegurarse de que las redes virtuales Hola estén configuradas correctamente antes de su migración. 
+* Redes virtuales, las puertas de enlace e implementaciones asociadas dentro de la red virtual de Hola que no están en Hola misma suscripción como Hola circuito ExpressRoute requieren algunos migración de hello toocomplete de tiempo de inactividad. Hola última sección de hello documento describe Hola pasos toobe seguido toomigrate recursos.
 * No se puede migrar una red virtual con la puerta de enlace de ExpressRoute y VPN Gateway.
 
-## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>Movimiento de un circuito ExpressRoute del modelo clásico a Resource Manager
-Deberá mover un circuito ExpressRoute del entorno clásico a Resource Manager antes de intentar migrar los recursos que están conectados al circuito ExpressRoute. Para realizar esta tarea, consulte los siguientes artículos:
+## <a name="move-an-expressroute-circuit-from-classic-tooresource-manager"></a>Mover un circuito de ExpressRoute de tooResource clásico Manager
+Debe mover un circuito de ExpressRoute de hello clásico toohello entorno de administrador de recursos antes de intentar toomigrate recursos que están conectados toohello circuito de ExpressRoute. tooaccomplish esta tarea, vea Hola siguientes artículos:
 
-* Revise la información que se proporciona en [Transición de un circuito ExpressRoute desde la implementación clásica a la implementación de Resource Manager](expressroute-move.md).
-* [Transición de los circuitos ExpressRoute desde el modelo de implementación clásica al modelo de implementación de Resource Manager mediante Azure PowerShell](expressroute-howto-move-arm.md).
-* Use el portal de Azure Service Management. Puede seguir el flujo de trabajo para [crear un nuevo circuito ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) y seleccionar la opción de importación. 
+* Revise la información de Hola que se proporciona en [mover un circuito de ExpressRoute de tooResource clásico Manager](expressroute-move.md).
+* [Mover un circuito de tooResource clásico administrador mediante Azure PowerShell](expressroute-howto-move-arm.md).
+* Usar el portal de administración de servicios de Azure de Hola. Puede seguir el flujo de trabajo de hello demasiado[crear un nuevo circuito de ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) y seleccione la opción de importación de Hola. 
 
-Esta operación no requiere tiempo de inactividad. Puede continuar transfiriendo datos entre el entorno local y Microsoft mientras la migración está en curso.
+Esta operación no requiere tiempo de inactividad. Puede continuar tootransfer datos entre las instalaciones locales y Microsoft mientras la migración de hello está en curso.
 
 ## <a name="migrate-virtual-networks-gateways-and-associated-deployments"></a>Migración de redes virtuales, puertas de enlace e implementaciones asociadas
 
-Los pasos que siga para migrar dependen de si los recursos están en la misma suscripción, en distintas suscripciones o en ambos casos.
+Hello pasos que seguir toomigrate dependen de si los recursos están en hello misma suscripción, distintas suscripciones o ambos.
 
-### <a name="migrate-virtual-networks-gateways-and-associated-deployments-in-the-same-subscription-as-the-expressroute-circuit"></a>Migración de redes virtuales, puertas de enlace e implementaciones asociadas en la misma suscripción que el circuito ExpressRoute
-En esta sección se describen los pasos que se deben seguir para migrar una red virtual, una puerta de enlace y las implementaciones asociadas en la misma suscripción que el circuito ExpressRoute. No hay tiempo de inactividad asociado a esta migración. Puede seguir usando todos los recursos a través del proceso de migración. El plano de administración se bloquea mientras la migración está en curso. 
+### <a name="migrate-virtual-networks-gateways-and-associated-deployments-in-hello-same-subscription-as-hello-expressroute-circuit"></a>Migrar las redes virtuales, las puertas de enlace, y las implementaciones asociadas en Hola misma suscripción como Hola circuito de ExpressRoute
+Esta sección describen Hola pasos toobe seguido toomigrate una red virtual, puerta de enlace y las implementaciones asociadas en Hola misma suscripción como Hola circuito de ExpressRoute. No hay tiempo de inactividad asociado a esta migración. Puede continuar toouse todos los recursos a través del proceso de migración de Hola. plano de administración de Hola se bloquea mientras la migración de hello está en curso. 
 
-1. Asegúrese de que el circuito ExpressRoute se ha movido del entorno clásico al entorno de Resource Manager.
-2. Asegúrese de que la red virtual se ha preparado correctamente para la migración.
-3. Registre la suscripción para la migración de recursos. Para registrar la suscripción para la migración de recursos, use el siguiente fragmento de código de PowerShell:
+1. Asegúrese de que se ha movido el circuito de ExpressRoute de hello del entorno de administrador de recursos de hello toohello clásico.
+2. Asegúrese de que red virtual Hola se preparó correctamente para la migración de Hola.
+3. Registre la suscripción para la migración de recursos. tooregister su suscripción para la migración de recursos, Hola de uso siguiente fragmento de código de PowerShell:
 
   ```powershell 
   Select-AzureRmSubscription -SubscriptionName <Your Subscription Name>
   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
   Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
   ```
-4. Valide, prepare y migre. Para mover la red virtual, use el siguiente fragmento de código de PowerShell:
+4. Valide, prepare y migre. toomove Hola red virtual, Hola de uso siguiente fragmento de código de PowerShell:
 
   ```powershell
   Move-AzureVirtualNetwork -Prepare $vnetName  
   Move-AzureVirtualNetwork -Commit $vnetName
   ```
 
-  También puede cancelar la migración mediante la ejecución del siguiente cmdlet de PowerShell:
+  También puede anular la migración mediante la ejecución de hello siguiente cmdlet de PowerShell:
 
   ```powershell
   Move-AzureVirtualNetwork -Abort $vnetName
   ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Migración compatible con la plataforma de recursos de IaaS del modelo clásico al de Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-* [Profundización técnica en la migración compatible con la plataforma de la implementación clásica a la de Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-* [FAQs: Platform-supported migration of IaaS resources from classic to Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md) (Preguntas frecuentes: Migración compatible con la plataforma de recursos de IaaS desde el modelo de implementación clásica a Azure Resource Manager)
+* [Migración admitida por la plataforma de recursos de IaaS de tooAzure clásico Administrador de recursos](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [Técnica de fondo admitida por la plataforma de migración de clásico tooAzure el Administrador de recursos](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+* [Preguntas más frecuentes: Admitida por la plataforma de migración de los recursos de IaaS de tooAzure clásico Administrador de recursos](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Revisión de los errores y mitigaciones más comunes en la migración](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de la comprobación en dos pasos | Microsoft Docs"
-description: "Este documento ofrecerá a los usuarios información sobre qué hacer si se encuentran con un problema con Azure Multi-Factor Authentication"
+title: aaaTroubleshoot verificacion | Documentos de Microsoft
+description: "Este documento proporcionará a los usuarios información sobre qué toodo si se ejecutan en un problema con la autenticación multifactor Azure."
 services: multi-factor-authentication
 keywords: "cliente de multi-factor authentication, problema de autenticación, identificador de correlación"
 documentationcenter: 
@@ -16,81 +16,81 @@ ms.date: 07/06/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: end-user
-ms.openlocfilehash: e4b59efd12a64f58634b66590cf6999cc9e68eb6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f5c980d104de684b052c0f7a13394f00e9828abf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-help-with-two-step-verification"></a>Obtener ayuda con la verificación en dos pasos
-Este artículo responde a las preguntas más comunes que tienen las personas sobre la verificación en dos pasos. 
+Este artículo se proporcionan respuestas hello más comunes preguntas sobre la verificación en dos pasos. 
 
-## <a name="why-do-i-have-to-perform-two-step-verification-can-i-turn-it-off"></a>¿Por qué es necesario realizar la verificación en dos pasos? ¿Puedo desactivarla?
+## <a name="why-do-i-have-tooperform-two-step-verification-can-i-turn-it-off"></a>¿Por qué tengo verificacion de tooperform? ¿Puedo desactivarla?
 
-La verificación en dos pasos es una característica de seguridad que la organización decidió usar para proteger las cuentas del usuario. Es más segura que solo una contraseña, porque se basa en dos formas de autenticación: algo que usted sabe y algo que usted tiene. Lo que sabe es la contraseña. Lo que tiene con usted es un teléfono o un dispositivo del que suele disponer. Cuando la cuenta está protegida con la verificación en dos pasos, significa que un hacker malintencionado no puede iniciar sesión aunque consiguiera la contraseña de algún modo porque no tiene acceso a su teléfono, que también lo necesita. 
+Verificación en dos pasos es una característica de seguridad que su organización eligió toouse tooprotect sus cuentas. Es más segura que solo una contraseña, porque se basa en dos formas de autenticación: algo que usted sabe y algo que usted tiene. Hola algo que sabe que es su contraseña. Hola algo que tiene con usted es un teléfono o un dispositivo que tiene normalmente con usted. Si su cuenta está protegida con la verificación en dos pasos, que significa que un hacker malintencionado no puede iniciar sesión como si obtienen la contraseña de algún modo porque no tienen teléfono tooyour de acceso, demasiado. 
 
-Microsoft ofrece la verificación en dos pasos, pero su organización decide usar la característica. No puede desentenderse si el departamento de TI se lo requiere, de la misma manera que no puede dejar de usar una contraseña para proteger su cuenta. 
+Microsoft ofrece verificación en dos pasos, pero la característica de hello toouse elija de su organización. Que no se puede dejar de participar si el departamento de TI lo requiere de, al igual que no se puede rechazar utilizando una contraseña tooprotect tu cuenta. 
 
-Si tiene la verificación en dos pasos activada para su cuenta de Microsoft personal y desea cambiar la configuración, lea [Acerca de la verificación en dos pasos](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). 
+Si tiene verificacion activado para su cuenta personal de Microsoft y desea toochange su configuración, leer [sobre la verificación en dos pasos](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) en su lugar. 
 
 ## <a name="i-dont-have-my-phone-with-me-today"></a>No tengo mi teléfono conmigo hoy
 
-Algunos días deja el teléfono en casa, pero todavía necesita iniciar sesión en el trabajo. Lo primero que debe intentar es iniciar sesión con un método de verificación diferente. Al registrarse para la verificación en dos pasos, ¿configuró más de un número de teléfono? Para intentar iniciar sesión con un método diferente, siga estos pasos:
+Hace unos días dejar el teléfono en casa, pero que todavía necesitan toosign en el trabajo. Hola primera cosa que debe intentar es iniciar sesión con un método de verificación diferente. Al registrarse para la verificación en dos pasos, ¿se configura más de un número de teléfono? tootry inicio de sesión con un método diferente, siga estos pasos:
 
 1. Inicie sesión como lo haría normalmente.
-2. Cuando se abre la página de verificación en dos pasos, elija **Usar otra opción de comprobación**.
+2. Cuando se abre la página de comprobación de hello en dos pasos, elija **usar otra opción de comprobación**.
 
    ![Comprobación distinta](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
 
-3. Seleccione la opción de verificación que desea utilizar.
+3. Seleccione la opción de comprobación de Hola que desee toouse.
 4. Continúe con la verificación en dos pasos.
 
-Si no ve el vínculo **Usar otra opción de comprobación**, significa que no configuró métodos alternativos la primera vez que realizó el registro para la verificación en dos pasos. Póngase en contacto con el departamento de TI para obtener ayuda para iniciar sesión en su cuenta. Una vez que ha iniciado sesión, asegúrese de [administrar la configuración](multi-factor-authentication-end-user-manage-settings.md) para agregar métodos de comprobación adicionales para la próxima vez. 
+Si no ve hello **usar otra opción de comprobación** vincular, a continuación, que significa que no ha configurado métodos alternativos cuando registraron por primera vez para la verificación en dos pasos. Póngase en contacto con la Ayuda de tooget del departamento de TI tooyour cuenta de inicio de sesión. Una vez que ha iniciado sesión, asegúrese de que demasiado[administrar la configuración de](multi-factor-authentication-end-user-manage-settings.md) tooadd métodos de comprobación adicional para la próxima vez. 
 
-Si ve el vínculo **Usar otra opción de comprobación** pero no tiene acceso a los métodos alternativos, póngase en contacto con el departamento de TI para obtener ayuda para iniciar sesión en su cuenta. 
+Si ve hello **usar otra opción de comprobación** vínculo, pero no dispone de métodos alternativos de acceso tooyour bien, póngase en contacto con la Ayuda de tooget del departamento de TI tooyour cuenta de inicio de sesión. 
 
 ## <a name="i-lost-my-phone-or-got-a-new-number"></a>Perdí mi teléfono o cambié de número
-Hay dos formas de volver a tener acceso a su cuenta. La primera consiste en iniciar sesión con su número de teléfono de autenticación alternativo, en caso de tener uno configurado. La segunda consiste en pedir al departamento de TI que borre la configuración.
+Hay dos tooget maneras en tooyour cuenta. Hola en primer lugar es toosign sesión con su número de teléfono de autenticación alternativo, si ha configurado uno. Hola en segundo lugar es tooask su tooclear del departamento de TI la configuración.
 
 Si perdió el teléfono o se lo robaron, también le recomendamos que se lo diga al departamento de TI para que restablezca las contraseñas de aplicación y borre todos los dispositivos recordados. 
 
 ### <a name="use-an-alternate-phone-number"></a>Usar un número de teléfono alternativo
-Si ha configurado varias opciones de comprobación, incluidos un número de teléfono secundario o una aplicación autenticadora de un dispositivo diferente, puede usar una de ellas para iniciar sesión.
+Si ha configurado varias opciones de comprobación, incluido un número de teléfono secundario o una aplicación de autenticador en un dispositivo distinto, puede usar uno de ellos toosign en.
 
-Para iniciar sesión con el número de teléfono alternativo, siga estos pasos:
+toosign sesión con el número de teléfono alternativo de hello, siga estos pasos:
 
 1. Inicie sesión como lo haría normalmente.
-2. Cuando se le pida que compruebe su cuenta una vez más, elija **Usar otra opción de comprobación**.
+2. Cuando toofurther solicitada comprobar tu cuenta, elija **usar otra opción de comprobación**.
    
    ![Comprobación distinta](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
 
-3. Seleccione el número de teléfono o el dispositivo al que tiene acceso.
-4. Una vez de vuelta en su cuenta, [administre su configuración](multi-factor-authentication-end-user-manage-settings.md) para cambiar el número de teléfono de autenticación.
+3. Seleccione el número de teléfono de Hola o dispositivo que tenga acceso a.
+4. Una vez que haya en su cuenta, [administrar la configuración de](multi-factor-authentication-end-user-manage-settings.md) toochange número de teléfono de la autenticación.
 
 ### <a name="clear-your-settings"></a>Borrar su configuración
-Si no ha configurado un número de teléfono de autenticación secundario, debe ponerse en contacto con el departamento de TI para que le ayude. Pídale que borre su configuración. De este modo, la próxima vez que inicie sesión, se le pedirá de nuevo que se [registre para la verificación en dos pasos](multi-factor-authentication-end-user-first-time.md).
+Si no ha configurado un número de teléfono de autenticación secundaria, deberá toocontact el departamento de TI para obtener ayuda. Ha ellos borrar la configuración de modo que Hola la próxima vez inicie sesión, se le pedirá demasiado[registrar para la verificación en dos pasos](multi-factor-authentication-end-user-first-time.md) nuevo.
 
 ## <a name="i-am-not-receiving-a-text-or-call-on-my-phone"></a>No recibo ningún mensaje o llamada en el teléfono
-Hay varios motivos por los que es posible que intente iniciar sesión y no reciba el mensaje o llamada de teléfono. Si ha recibido mensajes o llamadas en su teléfono anteriormente, es probable que se trate de un problema con el proveedor del teléfono y no de un problema con la cuenta. Asegúrese de que la señal es buena y, si está intentando recibir un mensaje de texto, asegúrese de que puede recibir mensajes de texto. Pida a un amigo que le llame o envíese a sí mismo un mensaje de texto como prueba. 
+Hay varios motivos por qué puede intente toosign en, pero no recibe la llamada de teléfono o el texto hello. Si ha recibido correctamente textos o llamadas de teléfono tooyour teléfono Hola anteriores, a continuación, probablemente es un problema con el proveedor de servicio telefónico hello, no su cuenta. Asegúrese de que tiene celda buena señal y si está tratando de tooreceive un mensaje de texto Asegúrese de que es capaz de toorecieve los mensajes de texto. Solicitar un toocall friend se o texto como una prueba. 
 
-Si ha esperado varios minutos la recepción de un mensaje o llamada, la forma más rápida de tener acceso a su cuenta es probar una opción diferente.
+Si ha esperado varios minutos para una llamada o el texto, hello tooget de manera más rápida en su cuenta es tootry una opción diferente.
 
-1. Seleccione **Usar otra opción de comprobación** en la página que está a la espera de su comprobación.
+1. Seleccione **usar otra opción de comprobación** en las páginas de Hola que está esperando que la comprobación.
    
     ![Comprobación distinta](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
-2. Seleccione el número de teléfono o el método de entrega que desea usar.
+2. Seleccione el método de entrega o número de la teléfono de Hola que desee toouse.
    
-    Si recibió varios códigos de comprobación, use el más reciente.
+    Si recibe varios códigos de comprobación, utilice hello más reciente.
 
-Si no tiene otro método configurado, póngase en contacto con el departamento de TI y pídale que borre su configuración. La próxima vez que inicie sesión, se le pedirá de nuevo que [configure la autenticación multifactor](multi-factor-authentication-end-user-first-time.md).
+Si no tienes otro método configurado, póngase en contacto con el departamento de TI y pídale que tooclear su configuración. Hello próxima vez que inicie sesión, se le pedirá demasiado[configurar la autenticación multifactor](multi-factor-authentication-end-user-first-time.md) nuevo.
 
-Si suele tener retrasos debido a una mala calidad de la señal, recomendamos que use la [aplicación Microsoft Authenticator](microsoft-authenticator-app-how-to.md) en su smartphone. La aplicación puede generar códigos de seguridad aleatorios que usa para iniciar sesión, los cuales no requieren señal telefónica ni conexión a Internet.
+Si tiene a menudo retrasos debido toobad señal de celda, se recomienda usar hello [aplicación Microsoft Authenticator](microsoft-authenticator-app-how-to.md) en tu smartphone. aplicación Hello puede generar los códigos de seguridad aleatorio que usan toosign en, y estos códigos no requieren ninguna celda señal o conexión a internet.
 
 ## <a name="app-passwords-are-not-working"></a>Las contraseñas de la aplicación no funcionan
-En primer lugar, asegúrese de haber escrito correctamente la contraseña de la aplicación. La contraseña de aplicación generada reemplaza a la contraseña normal, pero solo para aplicaciones de escritorio más antiguas que no admiten la verificación en dos pasos. Si sigue sin funcionar, intente iniciar sesión y [cree una nueva contraseña de aplicación](multi-factor-authentication-end-user-app-passwords.md).  Si aún no funciona, póngase en contacto con el departamento de TI, pídale que [elimine sus contraseñas de aplicación existentes](../multi-factor-authentication-manage-users-and-devices.md) y luego puede crear otra.
+En primer lugar, asegúrese de que ha escrito correctamente contraseña de aplicación Hola. contraseña de aplicación Hola genera reemplaza la contraseña normal, pero solo para aplicaciones de escritorio más antiguos que no son compatibles con la verificación en dos pasos. Si sigue sin funcionar, intente iniciar sesión y [cree una nueva contraseña de aplicación](multi-factor-authentication-end-user-app-passwords.md).  Si aún no funciona, póngase en contacto con el departamento de TI, pídale que [elimine sus contraseñas de aplicación existentes](../multi-factor-authentication-manage-users-and-devices.md) y luego puede crear otra.
 
-## <a name="i-didnt-find-an-answer-to-my-problem"></a>No encuentro una respuesta a mi problema.
-Si probó estos pasos para solucionar los problemas pero estos no desaparecen, póngase en contacto con el departamento de TI. Deberían poder ayudarle.
+## <a name="i-didnt-find-an-answer-toomy-problem"></a>No se encontró un problema de toomy de respuesta.
+Si probó estos pasos para solucionar los problemas pero estos no desaparecen, póngase en contacto con el departamento de TI. Deben ser capaz de tooassist.
 
 ## <a name="related-topics"></a>Temas relacionados
 * [Administración de la configuración de la comprobación en dos pasos](multi-factor-authentication-end-user-manage-settings.md)  

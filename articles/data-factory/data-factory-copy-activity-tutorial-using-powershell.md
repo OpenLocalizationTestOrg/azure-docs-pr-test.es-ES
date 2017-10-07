@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Creación de una canalización con la actividad de copia para mover datos con Azure PowerShell | Microsoft Docs"
+title: "Tutorial: Crear una canalización de datos de toomove mediante el uso de PowerShell de Azure | Documentos de Microsoft"
 description: "En este tutorial, creará una canalización de Azure Data Factory con una actividad de copia mediante Azure PowerShell."
 services: data-factory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 81efe7c6af29af778686e1f6bcf62fedc9711052
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 21406d7dfaa0c555b2538fbb52839d761c140fc5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Tutorial: Creación de una canalización de Data Factory para mover datos mediante Azure PowerShell
 > [!div class="op_single_selector"]
@@ -33,119 +33,119 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-En este artículo, aprenderá a usar PowerShell para crear una factoría de datos con una canalización que copia datos desde un almacén de Azure Blob Storage en una base de datos SQL de Azure. Si no está familiarizado con Azure Data Factory, lea el artículo [Introducción a Azure Data Factory](data-factory-introduction.md) antes de realizar este tutorial.   
+En este artículo, aprenderá cómo toouse PowerShell toocreate una factoría de datos con una canalización que copia datos de una base de datos de SQL Azure del tooan de almacenamiento blob de Azure. Si es nuevo tooAzure factoría de datos, lea hello [tooAzure Introducción factoría de datos](data-factory-introduction.md) artículo antes de realizar este tutorial.   
 
-En este tutorial, creará una canalización con una actividad en ella: la actividad de copia. La actividad de copia realiza la copia de los datos de un almacén de datos admitido en un almacén de datos receptor. Para obtener una lista de almacenes de datos que se admiten como orígenes y receptores, consulte los [almacenes de datos admitidos](data-factory-data-movement-activities.md#supported-data-stores-and-formats). La actividad funciona con un servicio disponible de forma global que puede copiar datos entre varios almacenes de datos de forma segura, confiable y escalable. Para más información acerca de la actividad de copia, consulte las [actividades de movimiento de datos](data-factory-data-movement-activities.md).
+En este tutorial, creará una canalización con una actividad en ella: la actividad de copia. actividad de copia de Hello copia datos de un almacén de datos de datos admitidos almacén tooa receptor admitidos. Para obtener una lista de almacenes de datos que se admiten como orígenes y receptores, consulte los [almacenes de datos admitidos](data-factory-data-movement-activities.md#supported-data-stores-and-formats). actividad Hello funciona con un servicio disponible globalmente que puede copiar datos entre varios almacenes de datos de forma segura, confiable y escalable. Para obtener más información acerca de la actividad de copia de hello, consulte [las actividades de movimiento de datos](data-factory-data-movement-activities.md).
 
-pero se puede tener más de una actividad en una canalización. También puede encadenar dos actividades (ejecutar una después de otra) haciendo que el conjunto de datos de salida de una actividad sea el conjunto de datos de entrada de la otra actividad. Para más información, consulte [Varias actividades en una canalización](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
+pero cualquier canalización puede tener más de una actividad. Y se pueden encadenar dos actividades (ejecutar actividades de una tras otra) estableciendo el conjunto de datos de salida de hello de una actividad Hola de entrada de conjunto de datos del programa Hola a otra actividad. Para más información, consulte [Varias actividades en una canalización](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 > [!NOTE]
-> Este artículo no abarca todos los cmdlets de Factoría de datos. Vea [Referencia de cmdlets de Data Factory](/powershell/module/azurerm.datafactories) para obtener la documentación completa sobre estos cmdlets.
+> Este artículo no cubre todos los cmdlets de factoría de datos de Hola. Vea [Referencia de cmdlets de Data Factory](/powershell/module/azurerm.datafactories) para obtener la documentación completa sobre estos cmdlets.
 > 
-> La canalización de datos de este tutorial copia datos de un almacén de datos de origen a un almacén de datos de destino. Para ver un tutorial acerca de cómo transformar datos mediante Azure Data Factory, consulte [Tutorial: Compilación de la primera canalización para procesar datos mediante el clúster de Hadoop](data-factory-build-your-first-pipeline.md).
+> canalización de datos de Hello en este tutorial copia datos de un almacén de datos de destino de origen datos almacén tooa. Para obtener un tutorial sobre cómo tootransform los datos mediante Data Factory de Azure, consulte [Tutorial: generar una canalización de datos tootransform con clúster de Hadoop](data-factory-build-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-- Complete los [requisitos previos del tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-- Instale **Azure PowerShell**. Siga las instrucciones de [Instalación y configuración de Azure PowerShell](../powershell-install-configure.md).
+- Complete los requisitos previos descritos en hello [requisitos previos tutoriales](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) artículo.
+- Instale **Azure PowerShell**. Siga las instrucciones de hello en [cómo tooinstall y configurar Azure PowerShell](../powershell-install-configure.md).
 
 ## <a name="steps"></a>Pasos
-Estos son los pasos que se realizan en este tutorial:
+Estos son los pasos de hello que realizar como parte de este tutorial:
 
 1. Cree una **factoría de datos** de Azure. En este paso, creará una factoría de datos llamada ADFTutorialDataFactoryPSH. 
-2. Cree **servicios vinculados** en la factoría de datos. En este paso, se crean dos servicios vinculados del tipo Azure Storage y Azure SQL Database. 
+2. Crear **servicios vinculados** de factoría de datos de Hola. En este paso, se crean dos servicios vinculados del tipo Azure Storage y Azure SQL Database. 
     
-    AzureStorageLinkedService vincula una cuenta de Azure Storage a la factoría de datos. Como parte de los [requisitos previos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md), se creó un contenedor y se cargaron datos en esta cuenta de almacenamiento.   
+    Hola AzureStorageLinkedService vincula su factoría de datos de toohello de cuenta de almacenamiento de Azure. Crea un contenedor y cargar la cuenta de almacenamiento de datos toothis como parte de [requisitos previos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
-    AzureSqlLinkedService vincula la base de datos SQL de Azure con la factoría de datos. Los datos que se copian desde Blob Storage se almacenan en esta base de datos. Como parte de los [requisitos previos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md), se creó una tabla SQL en esta base de datos.   
-3. Cree **conjuntos de datos** de entrada y salida en la factoría de datos.  
+    AzureSqlLinkedService vincula su factoría de datos de toohello de base de datos de SQL Azure. datos de Hola que se copian desde el almacenamiento de blobs de Hola se almacenan en esta base de datos. Como parte de los [requisitos previos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md), se creó una tabla SQL en esta base de datos.   
+3. Crear la entrada y salida **conjuntos de datos** de factoría de datos de Hola.  
     
-    El servicio vinculado Azure Storage especifica la cadena de conexión que el servicio Data Factory utiliza en tiempo de ejecución para conectarse a su cuenta de Azure Storage. Además, el conjunto de datos de blobs de entrada especifica el contenedor y la carpeta que contiene los datos de entrada.  
+    servicio de almacenamiento de Azure vinculado de Hello especifica la cadena de conexión de Hola que usa el servicio de factoría de datos en tiempo de ejecución tooconnect tooyour cuenta de almacenamiento de Azure. Y el conjunto de datos de hello blob de entrada especifica el contenedor de Hola y la carpeta de Hola que contiene los datos de entrada de Hola.  
 
-    De forma similar, el servicio vinculado Azure SQL Database especifica la cadena de conexión que el servicio Data Factory utiliza en tiempo de ejecución para conectarse a Azure SQL Database. Además, el conjunto de datos de la tabla SQL de salida especifica la tabla de la base de datos en la que se copian los datos de Blob Storage.
-4. Cree una **canalización** en la factoría de datos. En este paso, se crea una canalización con una actividad de copia.   
+    De forma similar, Hola servicio de base de datos de Azure SQL vinculado especifica cadena de conexión de Hola que usa el servicio de factoría de datos en la base de datos de tiempo de ejecución tooconnect tooyour SQL Azure. Y conjunto de datos de tabla SQL de Hola salida especifica se copia la tabla de hello en bases de datos Hola Hola toowhich Hola del almacenamiento de blobs.
+4. Crear un **canalización** de factoría de datos de Hola. En este paso, se crea una canalización con una actividad de copia.   
     
-    Esta actividad copia los datos desde un blob de Azure Blob Storage a una tabla de la base de datos SQL de Azure. Puede utilizar una actividad de copia en una canalización para copiar datos desde cualquier origen admitido a cualquier destino admitido. Para ver una lista de los almacenes de datos admitidos, consulte el artículo [Actividades de movimiento de datos](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
-5. Supervise la canalización. En este paso, **supervisará** los segmentos de los conjuntos de datos de entrada y salida con PowerShell.
+    actividad de copia de Hello copia datos de un blob en la tabla de tooa de almacenamiento de blobs de Azure de hello en la base de datos de SQL Azure Hola. Puede usar una actividad de copia en datos toocopy canalización desde cualquier origen compatibles tooany admitida el destino. Para ver una lista de los almacenes de datos admitidos, consulte el artículo [Actividades de movimiento de datos](data-factory-data-movement-activities.md#supported-data-stores-and-formats). 
+5. Canalización de Hola de monitor. En este paso, se **monitor** Hola sectores de conjuntos de datos de entrada y salida mediante el uso de PowerShell.
 
 ## <a name="create-a-data-factory"></a>Crear una factoría de datos
 > [!IMPORTANT]
-> Complete los [requisitos previos del tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) si aún no lo ha hecho.   
+> Completa [requisitos previos para el tutorial de hello](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) si aún no lo ha hecho.   
 
-Una factoría de datos puede tener una o más canalizaciones. Una canalización puede tener una o más actividades. Por ejemplo, una actividad de copia para copiar datos desde un origen a un almacén de datos de destino o una actividad de Hive de HDInsight para ejecutar un script de Hive que transforme los datos de entrada para generar datos de salida. Comencemos con la creación de la factoría de datos en este paso.
+Una factoría de datos puede tener una o más canalizaciones. Una canalización puede tener una o más actividades. Por ejemplo, una toocopy de datos de actividad de copia de un almacén de datos de origen tooa destino y un toorun de actividad de Hive de HDInsight un tootransform de script de Hive datos de salida de tooproduct de datos de entrada. Puede empezar con la creación de factoría de datos de hello en este paso.
 
-1. Inicie **PowerShell**. Mantenga Azure PowerShell abierto hasta el final de este tutorial. Si lo cierra y vuelve a abrirlo, deberá ejecutar los comandos de nuevo.
+1. Inicie **PowerShell**. Mantenga Azure PowerShell abierta hasta final de Hola de este tutorial. Si cerrar y volver a abrir, se necesitan toorun comandos de Hola de nuevo.
 
-    Ejecute el siguiente comando y escriba el nombre de usuario y la contraseña que utiliza para iniciar sesión en Azure Portal:
+    Ejecute el siguiente comando de Hola y escriba el nombre de usuario de Hola y la contraseña que usa toosign en toohello portal de Azure:
 
     ```PowerShell
     Login-AzureRmAccount
     ```   
    
-    Ejecute el siguiente comando para ver todas las suscripciones de esta cuenta:
+    Ejecute hello después comando tooview todas las suscripciones de Hola para esta cuenta:
 
     ```PowerShell
     Get-AzureRmSubscription
     ```
 
-    Ejecute el comando siguiente para seleccionar la suscripción con la que desea trabajar. Reemplace **&lt;NameOfAzureSubscription**&gt; por el nombre de su suscripción de Azure:
+    Ejecute hello después de suscripción de hello tooselect de comando que desee toowork con. Reemplace  **&lt;NameOfAzureSubscription** &gt; con el nombre de Hola de su suscripción de Azure:
 
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
-2. Cree un grupo de recursos de Azure con el nombre: **ADFTutorialResourceGroup** mediante la ejecución del siguiente comando:
+2. Crear un grupo de recursos de Azure denominado **ADFTutorialResourceGroup** ejecutando Hola siguiente comando:
 
     ```PowerShell
     New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     
-    En algunos de los pasos de este tutorial se supone que se usa el grupo de recursos denominado **ADFTutorialResourceGroup**. Si usa un otro grupo de recursos, deberá usarlo en lugar de ADFTutorialResourceGroup en este tutorial.
-3. Ejecute el cmdlet **New-AzureRmDataFactory** para crear una instancia de Data Factory denominada **ADFTutorialDataFactoryPSH**:  
+    Algunos de los pasos de hello en este tutorial se supone que usa grupo de recursos de hello llamado **ADFTutorialResourceGroup**. Si utiliza un grupo de recursos diferente, deberá toouse, en lugar de ADFTutorialResourceGroup en este tutorial.
+3. Ejecute hello **New-AzureRmDataFactory** una factoría de datos con el nombre del cmdlet toocreate **ADFTutorialDataFactoryPSH**:  
 
     ```PowerShell
     $df=New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
     ```
-    Puede que ya se esté usando este nombre. Para que el nombre de la factoría de datos sea único, agregue un prefijo o un sufijo (por ejemplo: ADFTutorialDataFactoryPSH05152017) y vuelva a ejecutar el comando.  
+    Puede que ya se esté usando este nombre. Por lo tanto, asegúrese de nombre Hola Hola factoría de datos único mediante la adición de un prefijo o sufijo (por ejemplo: ADFTutorialDataFactoryPSH05152017) y vuelva a ejecutar el comando Hola.  
 
-Tenga en cuenta los siguientes puntos:
+Tenga en cuenta Hola siguientes puntos:
 
-* El nombre del generador de datos de Azure debe ser único global. Si recibe el siguiente error, cambie el nombre (por ejemplo, yournameADFTutorialDataFactoryPSH). Use este nombre en lugar de ADFTutorialFactoryPSH mientras lleva a cabo los pasos de este tutorial. Consulte [Data Factory: reglas de nomenclatura](data-factory-naming-rules.md) para las reglas de nomenclatura para los artefactos de Data Factory.
+* nombre de Hola Hola Azure factoría de datos debe ser único globalmente. Si recibes Hola tras error, cambie el nombre de hello (por ejemplo, yournameADFTutorialDataFactoryPSH). Use este nombre en lugar de ADFTutorialFactoryPSH mientras lleva a cabo los pasos de este tutorial. Consulte [Data Factory: reglas de nomenclatura](data-factory-naming-rules.md) para las reglas de nomenclatura para los artefactos de Data Factory.
 
     ```
     Data factory name “ADFTutorialDataFactoryPSH” is not available
     ```
-* Para crear instancias de Data Factory, debe ser administrador o colaborador en la suscripción de Azure.
-* El nombre de la factoría de datos se puede registrar como un nombre DNS en el futuro y, por lo tanto, que sea visible públicamente.
-* Es posible que reciba el siguiente error: "**La suscripción no está registrada para usar el espacio de nombres Microsoft.DataFactory**". Realice una de las siguientes acciones e intente publicar de nuevo:
+* instancias de la factoría de datos de toocreate, debe ser un colaborador o administrador de hello suscripción de Azure.
+* nombre Hola Hola factoría de datos puede registrado como un nombre DNS en hello futuras y por lo tanto, están visible públicamente.
+* Es posible que reciba Hola siguiente error: "**esta suscripción no tiene espacio de nombres registrado toouse Microsoft.DataFactory.**" Siga uno de los procedimientos de Hola e intente publicar de nuevo:
 
-  * En Azure PowerShell, ejecute el siguiente comando para registrar el proveedor de Data Factory:
+  * En Azure PowerShell, ejecute hello después de proveedor del comando tooregister Hola factoría de datos:
 
     ```PowerShell
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
-    Ejecute el comando siguiente para confirmar que se ha registrado el proveedor de Data Factory:
+    Ejecute hello después comando tooconfirm ese Hola factoría de datos de proveedor está registrado:
 
     ```PowerShell
     Get-AzureRmResourceProvider
     ```
-  * Inicie sesión en [Azure Portal](https://portal.azure.com) mediante la suscripción de Azure. Vaya a una hoja de Data Factory o cree una instancia de Data Factory en Azure Portal. Esta acción registra automáticamente el proveedor.
+  * Inicio de sesión mediante el uso de Hola toohello de suscripción de Azure [portal de Azure](https://portal.azure.com). Visite tooa hoja de factoría de datos o crear una factoría de datos en hello portal de Azure. Esta acción registra automáticamente proveedor Hola para usted.
 
 ## <a name="create-linked-services"></a>Crear servicios vinculados
-Los servicios vinculados se crean en una factoría de datos para vincular los almacenes de datos y los servicios de proceso con la factoría de datos. En este tutorial, no se usa ningún servicio de proceso, como Azure HDInsight o Azure Data Lake Analytics. Se usan dos almacenes de datos del tipo Azure Storage (origen) y Azure SQL Database (destino). 
+Crear servicios vinculados en un toolink de factoría de datos almacenan sus datos y se factoría de datos de toohello de servicios de proceso. En este tutorial, no se usa ningún servicio de proceso, como Azure HDInsight o Azure Data Lake Analytics. Se usan dos almacenes de datos del tipo Azure Storage (origen) y Azure SQL Database (destino). 
 
 Por lo tanto, se crean dos servicios vinculados llamados AzureStorageLinkedService y AzureSqlLinkedService del tipo AzureStorage y AzureSqlDatabase.  
 
-AzureStorageLinkedService vincula una cuenta de Azure Storage a la factoría de datos. Esta cuenta de almacenamiento es la que se usó para crear un contenedor y con la que se cargaron los datos como parte de los [requisitos previos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
+Hola AzureStorageLinkedService vincula su factoría de datos de toohello de cuenta de almacenamiento de Azure. Esta cuenta de almacenamiento es hello uno en el que se creó un contenedor y cargar datos de hello como parte de [requisitos previos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
-AzureSqlLinkedService vincula la base de datos SQL de Azure con la factoría de datos. Los datos que se copian desde Blob Storage se almacenan en esta base de datos. Como parte de los [requisitos previos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md), se creó la tabla emp en esta base de datos. 
+AzureSqlLinkedService vincula su factoría de datos de toohello de base de datos de SQL Azure. datos de Hola que se copian desde el almacenamiento de blobs de Hola se almacenan en esta base de datos. Crear tabla emp de hello en esta base de datos como parte de [requisitos previos](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ### <a name="create-a-linked-service-for-an-azure-storage-account"></a>Creación de un servicio vinculado para una cuenta de almacenamiento de Azure
-En este paso, vinculará su cuenta de Azure Storage con su factoría de datos.
+En este paso, vincule la factoría de datos de tooyour de cuenta de almacenamiento de Azure.
 
-1. Cree un archivo JSON llamado **AzureStorageLinkedService.json** en la carpeta **C:\ADFGetStartedPSH** con el siguiente contenido: (cree la carpeta ADFGetStartedPSH si aún no existe).
+1. Cree un archivo JSON denominado **AzureStorageLinkedService.json** en **C:\ADFGetStartedPSH** carpeta con hello siguen contenido: (crear Hola carpeta ADFGetStartedPSH si aún no existe.)
 
     > [!IMPORTANT]
-    > Reemplace &lt;accountname&gt; y &lt;accountkey&gt; por el nombre y la clave de su cuenta de Azure Storage antes de guardar el archivo. 
+    > Reemplace &lt;accountname&gt; y &lt;accountkey&gt; con nombre y clave de la cuenta de almacenamiento de Azure antes de guardar el archivo hello. 
 
     ```json
     {
@@ -158,13 +158,13 @@ En este paso, vinculará su cuenta de Azure Storage con su factoría de datos.
         }
      }
     ``` 
-2. En **Azure PowerShell**, cambie a la carpeta **ADFGetStartedPSH**.
-4. Ejecute el cmdlet **New-AzureRmDataFactoryLinkedService** para crear el servicio vinculado: **AzureStorageLinkedService**. Tanto el cmdlet como otros cmdlets de Data Factory que se usan en este tutorial requieren que se pasen los valores de los parámetros **ResourceGroupName** y **DataFactoryName**. Como alternativa, puede pasar el objeto DataFactory devuelto por el cmdlet New-AzureRmDataFactory sin escribir ResourceGroupName y DataFactoryName cada vez que ejecute un cmdlet. 
+2. En **Azure PowerShell**, cambiar toohello **ADFGetStartedPSH** carpeta.
+4. Ejecute hello **New-AzureRmDataFactoryLinkedService** cmdlet toocreate Hola servicio vinculado: **AzureStorageLinkedService**. Este cmdlet y otros cmdlets de factoría de datos que se usa en este tutorial requiere que los valores de toopass para hello **ResourceGroupName** y **DataFactoryName** parámetros. Como alternativa, puede pasar Hola DataFactory devueltas mediante el cmdlet New-AzureRmDataFactory Hola sin escribir ResourceGroupName y DataFactoryName cada vez que se ejecuta un cmdlet. 
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
     ```
-    Este es la salida de ejemplo:
+    Este es el resultado de ejemplo de Hola:
 
     ```
     LinkedServiceName : AzureStorageLinkedService
@@ -174,16 +174,16 @@ En este paso, vinculará su cuenta de Azure Storage con su factoría de datos.
     ProvisioningState : Succeeded
     ``` 
 
-    Otra manera de crear este servicio vinculado es especificar el nombre del grupo de recursos y el nombre de la factoría de datos en lugar de especificar el objeto DataFactory.  
+    Otra manera de crear este servicio vinculado es toospecify nombre de grupo de recursos y el nombre de generador de datos en lugar de especificar el objeto de hello DataFactory.  
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName <Name of your data factory> -File .\AzureStorageLinkedService.json
     ```
 
 ### <a name="create-a-linked-service-for-an-azure-sql-database"></a>Creación de un servicio vinculado para una instancia de Azure SQL Database
-En este paso, vinculará su cuenta de Base de datos SQL de Azure con su factoría de datos.
+En este paso, vincule la factoría de datos de tooyour de base de datos de SQL Azure.
 
-1. Cree un archivo JSON con el nombre AzureSqlLinkedService.json en la carpeta C:\ADFGetStartedPSH con el siguiente contenido:
+1. Cree un archivo JSON denominado AzureSqlLinkedService.json en la carpeta C:\ADFGetStartedPSH con hello siguiente contenido:
 
     > [!IMPORTANT]
     > Reemplace &lt;servername&gt;, &lt;databasename&gt;, &lt;username@servername&gt; y &lt;password&gt; por los nombres del servidor SQL Azure, de la base de datos, de la cuenta de usuario y de la contraseña.
@@ -199,13 +199,13 @@ En este paso, vinculará su cuenta de Base de datos SQL de Azure con su factorí
         }
      }
     ```
-2. Ejecute el siguiente comando para crear un servicio vinculado:
+2. Ejecute hello después comando toocreate un servicio vinculado:
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
     
-    Este es la salida de ejemplo:
+    Este es el resultado de ejemplo de Hola:
 
     ```
     LinkedServiceName : AzureSqlLinkedService
@@ -215,26 +215,26 @@ En este paso, vinculará su cuenta de Base de datos SQL de Azure con su factorí
     ProvisioningState : Succeeded
     ```
 
-   Confirme que la opción **Permitir el acceso a los servicios de Azure** esté activada para el servidor de bases de datos SQL. Para comprobarla y activarla, siga estos pasos:
+   Confirme que **permitir acceso a servicios de tooAzure** esté activada para el servidor de base de datos SQL. tooverify y activarla, Hola lo siguiente:
 
-    1. Inicie sesión en el [Azure Portal](https://portal.azure.com)
-    2. Haga clic en **Más servicios >** a la izquierda, y haga clic en **Servidores SQL** en la categoría **BASES DE DATOS**.
-    3. Seleccione el servidor en la lista de servidores SQL Server.
-    4. En la hoja SQL Server, haga clic en el vínculo **Mostrar configuración del firewall**.
-    5. En la hoja **Configuración de firewall**, haga clic en **ACTIVADA** para **Permitir el acceso a los servicios de Azure**.
-    6. Haga clic en **Guardar** en la barra de herramientas. 
+    1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com)
+    2. Haga clic en **más servicios >** Hola izquierda y haga clic en **servidores SQL Server** en hello **bases de datos** categoría.
+    3. Seleccione el servidor en la lista de Hola de servidores SQL Server.
+    4. En la hoja de hello SQL server, haga clic en **mostrar configuraciones de firewall** vínculo.
+    5. Hola **configuración del Firewall** hoja, haga clic en **ON** para **permitir acceso a servicios de tooAzure**.
+    6. Haga clic en **guardar** en la barra de herramientas de Hola. 
 
 ## <a name="create-datasets"></a>Creación de conjuntos de datos
-En el paso anterior, creó servicios vinculados para vincular una cuenta de Azure Storage y una base de datos SQL de Azure con la factoría de datos. En este paso, defina dos conjuntos de datos llamados InputDataset y OutputDataset, que representan los datos de entrada y salida que se almacenan en los almacenes de datos a los que hacen referencia AzureStorageLinkedService y AzureSqlLinkedService, respectivamente.
+En el paso anterior de hello, crear servicios vinculados toolink su cuenta de almacenamiento de Azure y la factoría de datos de tooyour de base de datos de SQL Azure. En este paso, definirá dos conjuntos de datos con el nombre InputDataset y OutputDataset que representan la entrada y los datos de salida que se almacenan en almacenes de datos de Hola que hace referencia AzureStorageLinkedService y AzureSqlLinkedService respectivamente.
 
-El servicio vinculado Azure Storage especifica la cadena de conexión que el servicio Data Factory utiliza en tiempo de ejecución para conectarse a su cuenta de Azure Storage. Además, el conjunto de datos de blobs de entrada (InputDataset) especifica el contenedor y la carpeta que contiene los datos de entrada.  
+servicio de almacenamiento de Azure vinculado de Hello especifica la cadena de conexión de Hola que usa el servicio de factoría de datos en tiempo de ejecución tooconnect tooyour cuenta de almacenamiento de Azure. Y conjunto de datos de blob de entrada de hello (InputDataset) especifica contenedor de Hola y la carpeta de Hola que contiene los datos de entrada de Hola.  
 
-De forma similar, el servicio vinculado Azure SQL Database especifica la cadena de conexión que el servicio Data Factory utiliza en tiempo de ejecución para conectarse a Azure SQL Database. Además, el conjunto de datos de la tabla SQL de salida (OutputDataset) especifica la tabla de la base de datos en la que se copian los datos de Blob Storage. 
+De forma similar, Hola servicio de base de datos de Azure SQL vinculado especifica cadena de conexión de Hola que usa el servicio de factoría de datos en la base de datos de tiempo de ejecución tooconnect tooyour SQL Azure. Y conjunto de datos de tabla SQL (OututDataset) especifica la tabla de Hola Hola Hola de toowhich de base de datos se copian datos desde almacenamiento de blobs de Hola de salida de hello. 
 
 ### <a name="create-an-input-dataset"></a>Creación de un conjunto de datos de entrada
-En este paso, se crea un conjunto de datos llamado InputDataset, que apunta a un archivo de blobs (emp.txt) en la carpeta raíz de un contenedor de blobs (adftutorial), en la instancia de Azure Storage representada por el servicio vinculado AzureStorageLinkedService. Si no especifica un valor para fileName (o puede omitirlo), los datos de todos los blobs en la carpeta de entrada se copian en el destino. En este tutorial, especifique un valor para fileName.  
+En este paso, creará un conjunto de datos denominado InputDataset que apunta a un archivo blob tooa (emp.txt) en la carpeta raíz de Hola de un contenedor de blobs (adftutorial) en hello representado por hello AzureStorageLinkedService vinculado servicio de almacenamiento de Azure. Si no especifica un valor para el nombre de archivo de hello (o puede omitirla), datos de todos los blobs en la carpeta de entrada de hello son destino toohello copiada. En este tutorial, especifique un valor para el nombre de archivo de Hola.  
 
-1. Cree un archivo JSON llamado **InputDataset.json** en la carpeta **C:\ADFGetStartedPSH** con el siguiente contenido:
+1. Cree un archivo JSON denominado **InputDataset.json** en hello **C:\ADFGetStartedPSH** carpeta, con hello siguen contenido:
 
     ```json
     {
@@ -269,26 +269,26 @@ En este paso, se crea un conjunto de datos llamado InputDataset, que apunta a un
      }
     ```
 
-    En la siguiente tabla se ofrecen descripciones de las propiedades JSON que se usan en el fragmento de código:
+    Hello siguiente tabla proporciona descripciones de las propiedades JSON de hello utilizados en el fragmento de código de hello:
 
     | Propiedad | Descripción |
     |:--- |:--- |
-    | type | La propiedad type se establece en **AzureBlob** porque los datos residen en una instancia de Azure Blob Storage. |
-    | linkedServiceName | Hace referencia al servicio **AzureStorageLinkedService** que creó anteriormente. |
-    | folderPath | Especifica el **contenedor** de blobs y la **carpeta** que contiene los blobs de entrada. En este tutorial, adftutorial es el contenedor de blobs y folder es la carpeta raíz. | 
-    | fileName | Esta propiedad es opcional. Si omite esta propiedad, se seleccionan todos los archivos de folderPath. En este tutorial, se especifica **emp.txt** en fileName, por lo que solo se selecciona ese archivo para su procesamiento. |
-    | formato -> tipo |El archivo de entrada tiene formato de texto, por lo que usamos **TextFormat**. |
-    | columnDelimiter | Las columnas del archivo de entrada están delimitadas por **coma (`,`)**. |
-    | frecuencia/intervalo | La frecuencia está establecida en **Hour** y el intervalo es **1**, lo que significa que los segmentos de entrada estarán disponibles **cada hora**. En otras palabras, el servicio Data Factory busca los datos de entrada cada hora en la carpeta raíz del contenedor de blobs (**adftutorial**) que se ha especificado. Busca los datos entre las horas de inicio y finalización de la canalización, no antes ni después de esas horas.  |
-    | external | Esta propiedad se establece en **true** si esta canalización no ha generado los datos. Los datos de entrada de este tutorial están en el archivo emp.txt, que no lo generó esta canalización, por lo que establecemos esta propiedad en true. |
+    | type | propiedad de tipo Hello se establece demasiado**AzureBlob** porque los datos residen en un almacenamiento de blobs de Azure. |
+    | linkedServiceName | Hace referencia a toohello **AzureStorageLinkedService** que creó anteriormente. |
+    | folderPath | Especifica el blob de hello **contenedor** hello y **carpeta** que contiene la entrada de blobs. En este tutorial, adftutorial es el contenedor de blob de Hola y carpeta es la carpeta raíz de Hola. | 
+    | fileName | Esta propiedad es opcional. Si se omite esta propiedad, se seleccionan todos los archivos de hello folderPath. En este tutorial, **emp.txt** se especificó para hello nombre de archivo, por lo que sólo ese archivo se recoge para su procesamiento. |
+    | formato -> tipo |archivo de entrada de Hello es hello en formato de texto, por lo que usamos **TextFormat**. |
+    | columnDelimiter | columnas de Hello en el archivo de entrada de Hola se delimitan mediante **carácter de coma (`,`)**. |
+    | frecuencia/intervalo | frecuencia de Hola se establece demasiado**hora** e intervalo está establecido demasiado**1**, lo que significa que Hola entrada sectores están disponibles **cada hora**. En otras palabras, Hola servicio Data Factory busca datos de entrada cada hora en carpeta de raíz de hello del contenedor de blobs (**adftutorial**) que especificó. Busca datos Hola Hola canalización inicio y finalización horas, no antes o después de esas horas.  |
+    | external | Esta propiedad se establece demasiado**true** si no se generan datos de hello esta canalización. datos de entrada de Hello en este tutorial están en el archivo emp.txt de hello, que no se genera esta canalización, por lo que se establece esta propiedad tootrue. |
 
-    Para más información acerca de estas propiedades JSON, consulte el artículo sobre el [conector de Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
-2. Ejecute el comando siguiente para crear el conjunto de datos de Factoría de datos.
+    Para más información acerca de estas propiedades JSON, consulte el [artículo sobre el conector de blob de Azure](data-factory-azure-blob-connector.md#dataset-properties).
+2. Ejecute hello siguiendo el conjunto de datos de comando toocreate Hola factoría de datos.
 
     ```PowerShell  
     New-AzureRmDataFactoryDataset $df -File .\InputDataset.json
     ```
-    Este es la salida de ejemplo:
+    Este es el resultado de ejemplo de Hola:
 
     ```
     DatasetName       : InputDataset
@@ -303,9 +303,9 @@ En este paso, se crea un conjunto de datos llamado InputDataset, que apunta a un
     ```
 
 ### <a name="create-an-output-dataset"></a>Crear un conjunto de datos de salida
-En esta parte del paso se crea un conjunto de datos de salida denominado **OutputDataset**. Este conjunto de datos apunta a una tabla SQL de Azure SQL Database representada por **AzureSqlLinkedService**. 
+En esta parte del paso de hello, se crea un conjunto de datos de salida denominado **OutputDataset**. Este conjunto de datos señala tooa table de SQL de base de datos de SQL Azure de hello representado por **AzureSqlLinkedService**. 
 
-1. Cree un archivo JSON llamado **OutputDataset.json** en la carpeta **C:\ADFGetStartedPSH** con el siguiente contenido:
+1. Cree un archivo JSON denominado **OutputDataset.json** en hello **C:\ADFGetStartedPSH** carpeta con hello siguen contenido:
 
     ```json
     {
@@ -334,25 +334,25 @@ En esta parte del paso se crea un conjunto de datos de salida denominado **Outpu
     }
     ```
 
-    En la siguiente tabla se ofrecen descripciones de las propiedades JSON que se usan en el fragmento de código:
+    Hello siguiente tabla proporciona descripciones de las propiedades JSON de hello utilizados en el fragmento de código de hello:
 
     | Propiedad | Descripción |
     |:--- |:--- |
-    | type | La propiedad type se establece en **AzureSqlTable** porque los datos se copian en una tabla de una base de datos de Azure SQL Database. |
-    | linkedServiceName | Hace referencia al servicio **AzureSqlLinkedService** que creó anteriormente. |
-    | tableName | Especifica la **tabla** en la que se copian los datos. | 
-    | frecuencia/intervalo | La frecuencia se establece en **Hour** y el intervalo es **1**, lo que significa que los sectores de salida se producen **cada hora** entre las horas de inicio y finalización de la canalización, no antes ni después de esas horas.  |
+    | type | propiedad de tipo Hello se establece demasiado**AzureSqlTable** porque datos están la tabla de tooa copiado en una base de datos de SQL Azure. |
+    | linkedServiceName | Hace referencia a toohello **AzureSqlLinkedService** que creó anteriormente. |
+    | tableName | Hola especificado **tabla** toowhich Hola datos se copian. | 
+    | frecuencia/intervalo | Hello frecuencia se establece demasiado**hora** y el intervalo es **1**, lo que significa que se producen los sectores de salida de hello **cada hora** entre el inicio de la canalización de Hola y de finalización veces, no antes o Después de esas horas.  |
 
-    En la tabla emp de la base de datos hay tres columnas: **ID**, **FirstName** y **LastName**. ID es una columna de identidad, por lo que deberá especificar solo **FirstName** y **LastName** aquí.
+    Hay tres columnas: **identificador**, **FirstName**, y **LastName** : en la tabla emp de hello en la base de datos de Hola. Id. es una columna de identidad, por lo que necesita solo toospecify **FirstName** y **LastName** aquí.
 
     Para más información acerca de estas propiedades JSON, consulte el artículo sobre el [conector de Azure SQL Database](data-factory-azure-sql-connector.md#dataset-properties).
-2. Ejecute el comando siguiente para crear el conjunto de datos de factoría de datos.
+2. Ejecute hello siguiendo el conjunto de datos de la factoría de datos de comando toocreate Hola.
 
     ```PowerShell   
     New-AzureRmDataFactoryDataset $df -File .\OutputDataset.json
     ```
 
-    Este es la salida de ejemplo:
+    Este es el resultado de ejemplo de Hola:
 
     ```
     DatasetName       : OutputDataset
@@ -369,16 +369,16 @@ En esta parte del paso se crea un conjunto de datos de salida denominado **Outpu
 ## <a name="create-a-pipeline"></a>Crear una canalización
 En este paso, creará una canalización con una **actividad de copia** que utiliza **InputDataset** como entrada y **OutputDataset** como salida.
 
-Actualmente, el conjunto de datos de salida es lo que impulsa la programación. En este tutorial, el conjunto de datos de salida está configurado para generar un segmento una vez cada hora. La canalización tiene una hora de inicio y una hora de finalización con un día de diferencia, es decir, 24 horas. Por lo tanto, la canalización produce 24 segmentos del conjunto de datos de salida. 
+Actualmente, el conjunto de datos de salida es qué unidades Hola programación. En este tutorial, el conjunto de datos de salida es tooproduce configurado un segmento una vez cada hora. canalización de Hello tiene una hora de inicio y la hora de finalización que son un día separado, lo que es de 24 horas. Por lo tanto, 24 segmentos del conjunto de datos de salida generados por la canalización de Hola. 
 
 
-1. Cree un archivo JSON llamado **ADFTutorialPipeline.json** en la carpeta **C:\ADFGetStartedPSH** con el siguiente contenido:
+1. Cree un archivo JSON denominado **ADFTutorialPipeline.json** en hello **C:\ADFGetStartedPSH** carpeta, con hello siguen contenido:
 
     ```json   
     {
       "name": "ADFTutorialPipeline",
       "properties": {
-        "description": "Copy data from a blob to Azure SQL table",
+        "description": "Copy data from a blob tooAzure SQL table",
         "activities": [
           {
             "name": "CopyFromBlobToSQL",
@@ -416,28 +416,28 @@ Actualmente, el conjunto de datos de salida es lo que impulsa la programación. 
       }
     } 
     ```
-    Tenga en cuenta los siguientes puntos:
+    Tenga en cuenta Hola siguientes puntos:
    
-    - En la sección de actividades, solo hay una actividad con **type** establecido en **Copy**. Para más información acerca de la actividad de copia, consulte las [actividades de movimiento de datos](data-factory-data-movement-activities.md). En las soluciones de Data Factory, también puede usar [actividades de transformación de datos](data-factory-data-transformation-activities.md).
-    - La entrada de la actividad está establecida en **InputDataset**, mientras que la salida está establecida en **OutputDataset**. 
-    - En la sección **typeProperties**, **BlobSource** se especifica como el tipo de origen y **SqlSink** como el tipo de receptor. Consulte la lista de [almacenes de datos que se admiten](data-factory-data-movement-activities.md#supported-data-stores-and-formats) como orígenes y receptores de la actividad de copia. Para más información sobre cómo usar un almacén de datos admitido específico como receptor de origen, haga clic en el vínculo en la tabla.  
+    - En la sección de actividades de hello, hay sólo una actividad cuyo **tipo** se establece demasiado**copia**. Para obtener más información acerca de la actividad de copia de hello, consulte [las actividades de movimiento de datos](data-factory-data-movement-activities.md). En las soluciones de Data Factory, también puede usar [actividades de transformación de datos](data-factory-data-transformation-activities.md).
+    - Entrada de actividad hello se establece demasiado**InputDataset** y salida de actividad hello se establece demasiado**OutputDataset**. 
+    - Hola **typeProperties** sección, **BlobSource** se especifica como tipo de origen de Hola y **SqlSink** se especifica como el tipo de receptor de Hola. Para obtener una lista completa de los almacenes de datos compatibles con la actividad de copia de hello como orígenes y receptores, vea [admite almacenes de datos](data-factory-data-movement-activities.md#supported-data-stores-and-formats). toolearn cómo almacenar toouse datos compatibles especificados como un origen/receptor, haga clic en el vínculo hello en la tabla de Hola.  
      
-    Reemplace el valor de la propiedad **start** por el día actual y el valor **end** por el próximo día. Puede especificar solo la parte de fecha y omitir la parte de hora de la fecha y hora. Por ejemplo, "03-02-2016", que es equivalente a "03-02-2016T00:00:00Z"
+    Reemplazar el valor de Hola de hello **iniciar** propiedad con hello día actual y **final** valor con hello día siguiente. Puede especificar sólo parte de fecha de Hola y omitir la parte de hora de Hola de hello fecha y hora. Por ejemplo, "2016-02-03", que es equivalente demasiado "2016-02-03T00:00:00Z"
      
-    Las fechas y horas de inicio y de finalización deben estar en [formato ISO](http://en.wikipedia.org/wiki/ISO_8601). Por ejemplo: 2016-10-14T16:32:41Z. La hora de finalización ( **end** ) es opcional, pero se utilizará en este tutorial. 
+    Las fechas y horas de inicio y de finalización deben estar en [formato ISO](http://en.wikipedia.org/wiki/ISO_8601). Por ejemplo: 2016-10-14T16:32:41Z. Hola **final** tiempo es opcional, pero se usa en este tutorial. 
      
-    Si no especifica ningún valor para la propiedad **end**, se calcula como "**start + 48 horas**". Para ejecutar la canalización indefinidamente, especifique **9999-09-09** como valor de propiedad **end**.
+    Si no especifica el valor de hello **final** propiedad, se calcula como "**inicio + 48 horas**". canalización de hello toorun indefinidamente, especifique **9999-09-09** como valor de Hola de hello **final** propiedad.
      
-    En el ejemplo anterior hay 24 segmentos de datos, ya que cada segmento de datos se produce cada hora.
+    En el anterior ejemplo de Hola, hay 24 segmentos de datos tal y como se produce cada segmento de datos cada hora.
 
     Para obtener descripciones de las propiedades JSON en una definición de canalización, consulte cómo [crear canalizaciones](data-factory-create-pipelines.md). Para obtener descripciones de las propiedades JSON en una definición de actividad de copia, consulte las [actividades de movimiento de datos](data-factory-data-movement-activities.md). Para ver las descripciones de las propiedades JSON admitidas por BlobSource, consulte el artículo sobre el [conector de Azure Blob](data-factory-azure-blob-connector.md). Para ver las descripciones de las propiedades JSON admitidas por SqlSink, consulte el artículo sobre el [conector de Azure SQL Database](data-factory-azure-sql-connector.md).
-2. Ejecute el comando siguiente para crear la tabla de factoría de datos.
+2. Ejecute hello después de la tabla de factoría de datos de comando toocreate Hola.
 
     ```PowerShell   
     New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
     ```
 
-    Este es la salida de ejemplo: 
+    Este es el resultado de ejemplo de Hola: 
 
     ```
     PipelineName      : ADFTutorialPipeline
@@ -447,12 +447,12 @@ Actualmente, el conjunto de datos de salida es lo que impulsa la programación. 
     ProvisioningState : Succeeded
     ```
 
-**¡Enhorabuena!** Ha creado correctamente una factoría de datos de Azure, con una canalización para copiar datos desde Azure Blob Storage a Azure SQL Database. 
+**¡Enhorabuena!** Ha creado correctamente una factoría de datos de Azure con datos toocopy canalización desde una base de datos de SQL Azure del tooan de almacenamiento blob de Azure. 
 
-## <a name="monitor-the-pipeline"></a>Supervisar la canalización
-En este paso, se usa Azure PowerShell para supervisar lo que ocurre en una Data Factory de Azure.
+## <a name="monitor-hello-pipeline"></a>Canalización de Hola de Monitor
+En este paso, utilice toomonitor de PowerShell de Azure que está sucediendo en una factoría de datos de Azure.
 
-1. Reemplace &lt;DataFactoryName&gt; por el nombre de la factoría de datos, ejecute **Get-AzureRmDataFactory**, y asigne el resultado a una variable $df.
+1. Reemplace &lt;DataFactoryName&gt; con el nombre de saludo de la factoría de datos y ejecute **AzureRmDataFactory Get**y asignar Hola salida tooa $df variable.
 
     ```PowerShell  
     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
@@ -463,7 +463,7 @@ En este paso, se usa Azure PowerShell para supervisar lo que ocurre en una Data 
     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
     
-    Después, imprima el contenido de $df para ver el siguiente resultado: 
+    A continuación, ejecute impresión Hola contenido $df toosee Hola después de salida: 
     
     ```
     PS C:\ADFGetStartedPSH> $df
@@ -476,15 +476,15 @@ En este paso, se usa Azure PowerShell para supervisar lo que ocurre en una Data 
     Properties        : Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties
     ProvisioningState : Succeeded
     ```
-2. Ejecute **Get-AzureRmDataFactorySlice** para obtener la información sobre todos los segmentos de **OutputDataset**, que es el conjunto de datos de salida de la canalización.  
+2. Ejecutar **Get AzureRmDataFactorySlice** tooget obtener más información acerca de todos los sectores de hello **OutputDataset**, que es el conjunto de datos de salida de hello de canalización de Hola.  
 
     ```PowerShell   
     Get-AzureRmDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
     ```
 
-   Esta configuración debe coincidir con el valor de **Inicio** del JSON de canalización. Debe ver 24 segmentos, uno para cada hora de 12 A.M. del día actual hasta las 12 A.M. del día siguiente.
+   Esta configuración debe coincidir con hello **iniciar** valor en JSON de la canalización de Hola. Debería ver 24 sectores, uno para cada hora de 12 AM de Hola día actual too12 ESTOY de hello día siguiente.
 
-   Estos son tres segmentos de ejemplo de la salida: 
+   A continuación, presentamos tres intervalos de ejemplo de salida de hello: 
 
     ``` 
     ResourceGroupName : ADFTutorialResourceGroup
@@ -520,13 +520,13 @@ En este paso, se usa Azure PowerShell para supervisar lo que ocurre en una Data 
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. Ejecute **Get-AzureRmDataFactoryRun** para obtener la información de la actividad que se ejecuta para un segmento **específico**. Copie el valor de fecha y hora de la salida del comando anterior para especificar el valor del parámetro StartDateTime. 
+3. Ejecutar **Get AzureRmDataFactoryRun** tooget Hola detalles de actividad se ejecuta durante un **específico** segmento. Copiar valor de fecha y hora de Hola de salida de hello de hello comando toospecify Hola valor anterior para el parámetro de StartDateTime Hola. 
 
     ```PowerShell  
     Get-AzureRmDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
     ```
 
-   Este es la salida de ejemplo: 
+   Este es el resultado de ejemplo de Hola: 
 
     ```
     Id                  : c0ddbd75-d0c7-4816-a775-704bbd7c7eab_636301332000000000_636301368000000000_OutputDataset
@@ -551,20 +551,20 @@ En este paso, se usa Azure PowerShell para supervisar lo que ocurre en una Data 
 Consulte [Referencia de cmdlets de Data Factory](/powershell/module/azurerm.datafactories) para obtener la documentación completa sobre los cmdlets de Data Factory.
 
 ## <a name="summary"></a>Resumen
-En este tutorial, ha creado una factoría de datos de Azure para copiar datos de un blob de Azure en una base de datos SQL de Azure. Ha usado PowerShell para crear la factoría de datos, los servicios vinculados, los conjuntos de datos y una canalización. Estos son los pasos de alto nivel que realizó en este tutorial:  
+En este tutorial, ha creado un datos toocopy de factoría de datos de Azure desde una base de datos de SQL Azure de tooan de blobs de Azure. Ha utilizado la factoría de datos de PowerShell toocreate hello, servicios vinculados, conjuntos de datos y una canalización. Estos son los pasos de alto nivel de hello realizadas en este tutorial:  
 
 1. Ha creado una **factoría de datos**de Azure.
 2. Ha creado **servicios vinculados**.
 
-   a. Un servicio vinculado **Azure Storage** para vincular la cuenta de almacenamiento de Azure que contiene datos de entrada.     
-   b. Un servicio vinculado **Azure SQL** para vincular la base de datos SQL que contiene los datos de salida.
+   a. Un **el almacenamiento de Azure** vinculado toolink de servicio de su cuenta de almacenamiento de Azure que contiene datos de entrada.     
+   b. Un **SQL Azure** vinculado toolink de servicio en la base de datos SQL que contiene los datos de salida de hello.
 3. Ha creado **conjuntos de datos** que describen los datos de entrada y salida de las canalizaciones.
-4. Ha creado una **canalización** con una **actividad de copia** con un origen **BlobSource** y un receptor **SqlSink**.
+4. Crea un **canalización** con **actividad de copia**, con **BlobSource** como origen de Hola y **SqlSink** como receptor de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial, ha usado Azure Blob Storage como almacén de datos de origen y una base de datos SQL de Azure como almacén de datos de destino en una operación de copia. En la tabla siguiente se proporciona una lista de almacenes de datos que se admiten como orígenes y destinos de la actividad de copia: 
+En este tutorial, ha usado Azure Blob Storage como almacén de datos de origen y una base de datos SQL de Azure como almacén de datos de destino en una operación de copia. Hello tabla siguiente proporciona una lista de almacenes de datos que se admiten como orígenes y destinos por actividad de copia de hello: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-Para aprender a copiar datos hacia y desde un almacén de datos, haga clic en el vínculo del almacén de datos en la tabla. 
+toolearn acerca de cómo almacenan datos toocopy de datos, haga clic en vínculo Hola Hola de almacén de datos en la tabla de Hola. 
 

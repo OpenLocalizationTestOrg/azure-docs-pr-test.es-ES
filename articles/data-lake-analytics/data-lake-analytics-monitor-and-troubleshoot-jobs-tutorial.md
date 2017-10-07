@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de trabajos de Azure Data Lake Analytics mediante Azure Portal | Microsoft Docs"
-description: "Aprenda a usar el Portal de Azure para solucionar problemas de trabajos de Análisis de Data Lake. "
+title: "trabajos de análisis de Azure Data Lake aaaTroubleshoot mediante el Portal de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse Hola trabajos de análisis de Data Lake tootroubleshoot de Portal de Azure. "
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e810d56bab8f1a8254721ec9906bb6a4508dc22a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Solución de problemas de trabajos de Análisis de Azure Data Lake mediante el Portal de Azure
-Aprenda a usar el Portal de Azure para solucionar problemas de trabajos de Análisis de Data Lake.
+Obtenga información acerca de cómo toouse Hola trabajos de análisis de Data Lake tootroubleshoot de Portal de Azure.
 
-En este tutorial, configurará un problema con un archivo de origen que falta y usará el Portal de Azure para solucionar el problema.
+En este tutorial, se la instalación de un problema de archivo de origen que faltan y utilizar hello Azure Portal tootroubleshoot Hola problema.
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Envío de un trabajo de Análisis de Data Lake
 
-Envíe el siguiente trabajo de U-SQL:
+Enviar Hola después de trabajo U-SQL:
 
 ```
 @searchlog =
@@ -42,38 +42,38 @@ Envíe el siguiente trabajo de U-SQL:
    USING Extractors.Tsv();
 
 OUTPUT @searchlog   
-   TO "/output/SearchLog-from-adls.csv"
+   too"/output/SearchLog-from-adls.csv"
    USING Outputters.Csv();
 ```
     
-El archivo de origen definido en el script es **/Samples/Data/SearchLog.tsv1**, pero debería ser **/Samples/Data/SearchLog.tsv**.
+Hola definido en el script de Hola de archivo de origen es **/Samples/Data/SearchLog.tsv1**, donde debería ser **/Samples/Data/SearchLog.tsv**.
 
 
-## <a name="troubleshoot-the-job"></a>Solución de problemas del trabajo
+## <a name="troubleshoot-hello-job"></a>Solucionar problemas de trabajo de Hola
 
-**Para ver todos los trabajos**
+**toosee Hola a todos los trabajos**
 
-1. En el Portal de Azure, haga clic en **Microsoft Azure** en la esquina superior izquierda.
-2. Haga clic en el icono con el nombre de la cuenta de Análisis de Data Lake.  Se muestra el resumen del trabajo en el icono **Administración de trabajos** .
+1. En el portal de Azure hello, haga clic en **Microsoft Azure** en la esquina superior izquierda de Hola.
+2. Haga clic en el icono de hello con su nombre de cuenta de análisis de Data Lake.  Resumen de trabajos de Hola se muestra en hello **administración del trabajo** icono.
 
     ![Administración de trabajos de Análisis de Azure Data Lake](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
-    La administración de trabajos ofrece información general del estado del trabajo. Observe que hay un trabajo con error.
-3. Haga clic en el icono **Administración de trabajo** para ver los trabajos. Los trabajos se organizan por las categorías **En ejecución**, **En cola** y **Terminado**. Verá el trabajo con error en el **Terminado** . Deberá ser el primero de la lista. Si tiene una gran cantidad de trabajos, haga clic en **Filtro** para ayudarle a localizar los trabajos.
+    trabajo de Hello administración le ofrece una vista de estado del trabajo de Hola. Observe que hay un trabajo con error.
+3. Haga clic en hello **administración del trabajo** icono trabajos de hello toosee. trabajos de Hola se clasifican en **ejecutando**, **en cola**, y **finalizado**. Verá que el trabajo con errores en hello **finalizado** sección. Deberá ser primera de ellas en la lista de Hola. Cuando tiene una gran cantidad de trabajos, haga clic en **filtro** toohelp se toolocate trabajos.
 
     ![Trabajos de filtro de Análisis de Azure Data Lake](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
-4. Haga clic en el trabajo con error en la lista para abrir los detalles de dicho trabajo en una nueva hoja:
+4. Haga clic en trabajo con error Hola de detalles del trabajo de Hola Hola lista tooopen en una nueva hoja:
 
     ![Trabajos con error de Análisis de Azure Data Lake](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
-    Observe el **Reenviar** botón. Después de corregir el problema, puede volver a enviar el trabajo.
-5. Haga clic en la parte resaltada de la captura de pantalla anterior para abrir los detalles del error.  Verá algo parecido a lo siguiente:
+    Hola aviso **reenviar** botón. Después de corregir el problema de hello, puede volver a enviar el trabajo de Hola.
+5. Haga clic en la parte resaltada de detalles de hello anterior captura de pantalla tooopen Hola error.  Verá algo parecido a lo siguiente:
 
     ![Detalles de trabajos con error de Análisis de Azure Data Lake](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
 
-    Indica que no se encuentra la carpeta de origen.
+    Indica que no se encuentra la carpeta de origen de Hola.
 6. Haga clic en **Duplicar script**.
-7. Actualización de la ruta de acceso **DESDE** a lo siguiente:
+7. Hola de actualización **FROM** siguiente toohello de ruta de acceso:
 
     "/ Samples/Data/SearchLog.tsv"
 8. Haga clic en **Enviar trabajo**.

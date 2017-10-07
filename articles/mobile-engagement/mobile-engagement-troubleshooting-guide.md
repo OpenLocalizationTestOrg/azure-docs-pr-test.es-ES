@@ -1,5 +1,5 @@
 ---
-title: "Azure Mobile Engagement: Guía de solución de problemas"
+title: "aaaAzure guías de solución de problemas de interacción móvil"
 description: "Guía de solución de problemas de Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
@@ -14,99 +14,99 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 93b5e3f4892f974bf9df28955956136528470e03
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dd69bfd7019907c3e1da8df590db3b5f61606173
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-mobile-engagement---troubleshooting-guide"></a>Azure Mobile Engagement: guía de solución de problemas
 ## <a name="introduction"></a>Introducción
-La siguiente guía de solución de problemas le ayudará a comprender las causas de algunos problemas habituales y le permitirá solucionarlos por sí mismo. 
+Hola, siga a la Guía de solución de problemas le ayudará a comprender las causas raíz de algunos problemas habituales y se le permiten tootroubleshoot por su cuenta. 
 
 ## <a name="general"></a>General
-En general, siempre debe asegurarse de lo siguiente:
+En general, siempre debe asegurarse siguiente hello:
 
-1. Realizó todos los pasos necesarios para la integración, tal como se describe en nuestros [tutoriales de introducción](mobile-engagement-windows-store-dotnet-get-started.md)
-2. Usa la versión más reciente de los SDK de la plataforma. 
-3. Realiza pruebas tanto en un dispositivo real como en un emulador, porque algunos problemas son específicos solo del emulador. 
+1. Asegúrese de que ha realizado todos los pasos de hello requeridas para la integración, como se describe en nuestro [tutoriales de introducción](mobile-engagement-windows-store-dotnet-get-started.md)
+2. Está utilizando la versión más reciente de Hola de SDK de plataforma de Hola. 
+3. Pruebe en un dispositivo real y un emulador porque algunos problemas son solo tooemulator específico. 
 4. No supera los límites de Mobile Engagement que se indican [aquí](../azure-subscription-service-limits.md)
-5. Si no se puede conectar con el back-end del servicio Mobile Engagement o si ve que los datos no se cargan de forma continuada, asegúrese de que no hay incidentes de servicio activos comprobándolo [aquí](https://azure.microsoft.com/status/)
+5. Si no se pueden tooconnect toohello Mobile Engagement servicio back-end o ver datos que no se cargan de forma continua, a continuación, asegúrese de que no hay ningún incidentes de servicio en curso activando [aquí](https://azure.microsoft.com/status/)
 
 ## <a name="monitor-issues"></a>Problemas de 'Supervisar'
-### <a name="i-am-not-seeing-my-device-showing-up-on-the-monitor-tab"></a>No veo mi dispositivo en la pestaña Supervisar
-La pestaña Supervisar muestra los dispositivos conectados a la plataforma Mobile Engagement en tiempo real. Si depura en un emulador y un dispositivo, debe ver aquí al menos una sesión. Si la aplicación se distribuyó, verá que el medidor Sesiones activas refleja los dispositivos conectados a la plataforma en tiempo real. 
+### <a name="i-am-not-seeing-my-device-showing-up-on-hello-monitor-tab"></a>No veo mi dispositivo aparecen en la pestaña Monitor Hola
+Ficha Monitor muestra la plataforma de Mobile Engagement de hello dispositivos conectados tooyour en tiempo real. Si depura en un emulador y un dispositivo, debe ver aquí al menos una sesión. Si se distribuye la aplicación hello, verá Hola sesiones activas medidor reflejar dispositivos Hola que son de la plataforma toohello conectado en tiempo real. 
 
-Si no ve el dispositivo en la pestaña Supervisar, es probable que se trate de un problema de integración del SDK. A continuación se indican algunos pasos habituales para solucionarlo:
+Si no ve el dispositivo en la pestaña Monitor de hello, a continuación, probablemente es un problema de integración del SDK. Algunos tootroubleshoot tootake de pasos comunes son los siguientes:
 
-1. Asegúrese de que usa la cadena de conexión correcta en la aplicación móvil y que procede de la sección de claves del SDK y no de la sección de claves de la API. La cadena de conexión conecta la aplicación móvil a la sesión de la aplicación Mobile Engagement en cuya pestaña Supervisar verá el dispositivo. 
-2. Para la plataforma Windows: si la página invalida el método `OnNavigatedTo`, asegúrese de llamar a `base.OnNavigatedTo(e)`.
-3. Si integra Mobile Engagement en una aplicación móvil existente, también puede asegurarse de que no falta ningún paso examinando los pasos de integración avanzada [aquí](mobile-engagement-windows-store-integrate-engagement.md)
-4. Asegúrese de que envía al menos una pantalla o actividad sustituyendo la página con EngagementActivity en función de la plataforma con la que está trabajando, tal como se describe en los [tutoriales de introducción](mobile-engagement-windows-store-dotnet-get-started.md).
+1. Asegúrese de que utilizas cadena de conexión correcta de hello en aplicaciones móviles de Hola y está en la sección de claves SDK de Hola y sección Hola API claves no. cadena de conexión de Hola conecta a la instancia de toohello de aplicación móvil de la aplicación de interacción móvil de hello en el que podrá ver su dispositivo en la pestaña Monitor de Hola. 
+2. Para la plataforma Windows - si la página invalida hello `OnNavigatedTo` /método siguiente, asegúrese de que toocall `base.OnNavigatedTo(e)`.
+3. Si va a integrar Mobile Engagement en una aplicación móvil existente, también puede asegurarse de que no faltan todos los pasos examinando Hola avanzada pasos de integración [aquí](mobile-engagement-windows-store-integrate-engagement.md)
+4. Asegúrese de que está enviando al menos una pantalla/actividad mediante la invalidación de la página de hello con EngagementActivity según la plataforma Hola trabaja tal y como se describe en hello [tutoriales de introducción a](mobile-engagement-windows-store-dotnet-get-started.md).
 
-### <a name="i-am-seeing-the-monitor-tab-showing-a-session-even-when-i-have-disconnected-or-closed-my-app-emulator"></a>Veo que la pestaña Supervisar muestra una sesión aunque he desconectado o cerrado mi aplicación o emulador.
-Si no hay nadie más conectado a la plataforma en este momento y usa un emulador para abrir la aplicación, es probable que se deba a una peculiaridad del emulador. En general, debe asegurarse de que vuelve a la pantalla de inicio del emulador para que la sesión de la aplicación se desconecte correctamente. Además, en la plataforma Windows, durante la depuración con Visual Studio, puede que necesite asegurarse de que la sesión se cierra realmente; para ello, vaya a la barra de menús **Eventos del ciclo de vida** y haga clic en **Suspender**. Consulte el [tutorial de Windows](mobile-engagement-windows-store-dotnet-get-started.md) para obtener más información. 
+### <a name="i-am-seeing-hello-monitor-tab-showing-a-session-even-when-i-have-disconnected-or-closed-my-app-emulator"></a>Obtengo ficha del Monitor de Hola que muestra una sesión incluso cuando he desconectado o cerrado mi aplicación / emulador.
+Si es una plataforma de toohello conectado hello en este momento y que usa una aplicación de hello emulador tooopen esto es probable debido tooemulator interpretación. En general, debe tooensure que se vuelven a estar toohello portada en el emulador de Hola para toodisconnect de sesión de aplicación Hola correctamente. Además, en la plataforma Windows, durante la depuración con Visual Studio, puede que necesite tooensure que en Visual Studio, vaya toohello **eventos de ciclo de vida de** barra de menús y haga clic en **Suspend** tooreally cerrar sesión de Hola. Consulte el [tutorial de Windows](mobile-engagement-windows-store-dotnet-get-started.md) para obtener más información. 
 
 ## <a name="analytics-issues"></a>Problemas de 'Análisis'
 ### <a name="i-am-not-seeing-any-data-refreshed-data-on-analytics-tab"></a>No veo ningún dato o datos actualizados en la pestaña Análisis
 Los datos de análisis se recalculan periódicamente, pero la actualización puede tardar hasta 24 horas. No son datos en tiempo real y aparecerán actualizados en este margen de 24 horas.
-Asegúrese, sin embargo, de que envía al menos una pantalla o actividad al back-end de la plataforma, ya sea mediante la sustitución al menos de una página con `EngagementActivity` o mediante la llamada explícita a `SendActivity`. 
+Asegúrese de no obstante que va a enviar al menos una pantalla o actividad toohello plataforma back-end cualquier reemplazo al menos una página con `EngagementActivity` o llamando a `SendActivity` forma explícita. 
 
-### <a name="i-am-seeing-incorrectly-captured-datetime-for-a-device-on-the-analytics-tab"></a>Veo datos de fecha/hora incorrectos capturados para un dispositivo en la pestaña Análisis
-El período de tiempo de Análisis se basa en la fecha de la configuración del dispositivo de los usuarios. Asegúrese por tanto de que el dispositivo tiene establecida la fecha correcta. 
+### <a name="i-am-seeing-incorrectly-captured-datetime-for-a-device-on-hello-analytics-tab"></a>Veo fecha/hora capturada de manera incorrecta para un dispositivo en la pestaña de análisis de Hola
+Hello período de tiempo para el análisis se basa fecha hello de la configuración de dispositivo de los usuarios de Hola. Por tanto, asegúrese de que Hola dispositivo tiene fecha Hola ha configurado correctamente. 
 
 ## <a name="segment-issues"></a>Problemas de 'Segmento'
 ### <a name="i-created-a-segment-and-it-is-showing-up-as-greyed-out-or-not-showing-any-data"></a>Creé un segmento y se muestra atenuado o no muestra ningún dato
-La creación del segmento no se realiza en tiempo real por el momento. Se calcula al mismo tiempo que se agregan los datos de análisis, por lo que puede tardar hasta 24 horas. Debe comprobarlo de nuevo más tarde, pero mientras tanto también debe asegurarse de que las aplicaciones móviles realmente envían los datos a partir de los cuales se forman los segmentos. Por ejemplo, Por ejemplo, si ningún dispositivo móvil está enviando un evento "test", no habrá datos para que se cree un segmento con EventName = test como criterio. También debe comprobar la integración de SDK para garantizar que la aplicación móvil está enviando los datos correctamente. 
+Creación de segmento no es en tiempo real en el momento de Hola. Se calcula en hello que mismo tiempo que se agregan los datos de análisis de Hola y por lo que podría tardar hasta 24 horas. Debe comprobar volver más tarde, pero mientras tanto también debe asegurarse de que las aplicaciones móviles realmente envían datos Hola según Hola de los cuales son que forman los segmentos de Hola. Por ejemplo, Si un evento diga "foo" no está enviando a cualquier dispositivo móvil, a continuación, no tendría que haber ningún dato de segmento para un segmento creado con EventName = foo como criterio de Hola. También debe comprobar su tooensure de integración del SDK su aplicación móvil está enviando datos Hola correctamente. 
 
 ## <a name="reach-or-push-notifications-issues"></a>Problemas de 'Alcance' o de notificaciones push
 ### <a name="my-push-messages-are-not-being-delivered"></a>Los mensajes de inserción no se entregan
-1. Intente enviar notificaciones a un dispositivo de prueba en primer lugar para asegurarse de que todos los componentes: aplicación móvil, SDK y el servicio, están conectados correctamente y pueden entregar notificaciones push. 
-2. Envíe siempre la 'notificación fuera de aplicación' más sencilla antes a través de una campaña que no esté programada ni tenga criterios de audiencia especificados. De nuevo, esto se realiza para comprobar que la conectividad de notificación funciona correctamente. 
-3. Si tiene problemas para entregar notificaciones en aplicación, también es buena idea intentar enviar antes una notificación fuera de aplicación. 
-4. Asegúrese de que la 'Inserción nativa' está configurada correctamente para la aplicación móvil. En función de la plataforma implicará claves (Android, Windows) o certificados (iOS). Consulte [Interfaz de usuario: configuración](mobile-engagement-user-interface-settings.md)
-5. El usuario también podría haber bloqueado las notificaciones fuera de aplicación mediante el sistema operativo móvil, por lo que debe asegurarse de que no es este el caso. 
-6. Asegúrese de que no ha establecido la opción *Ignorar audiencia, la inserción se enviará a los usuarios a través de la API* en la sección **Campaña** de una campaña de Alcance, ya que esto haría que las notificaciones push solo se pudiesen enviar a través de API. 
-7. Asegúrese de que prueba la campaña de inserción con un dispositivo conectado a través de WiFi y con una red de operador de telefonía para eliminar la conexión de red como posible fuente de problemas.
-8. Asegúrese de que la fecha y hora del sistema en el dispositivo y el emulador es correcta porque cualquier dispositivo que no esté sincronizado también interferirá con la capacidad del Servicio de notificaciones de inserción para entregar notificaciones. 
+1. Vuelva a enviar las notificaciones tooa prueba dispositivo primera tooensure que todos los componentes de hello - aplicación móvil, servicio de SDK y Hola están conectados correctamente y pueda toodeliver notificaciones de inserción. 
+2. Siempre enviar más sencillo Hola 'notificación de fuera de la aplicación' primero a través de una campaña que no está programada y ni tiene ningún criterio de audiencia especificado. Esto vuelve a tooprove que funciona correctamente la conectividad de notificación. 
+3. Si experimenta problemas en la entrega de notificaciones de la aplicación también es un buen primer paso tootry enviar una notificación de fuera de la aplicación en primer lugar. 
+4. Asegúrese de que hello 'Push' Native' está configurado correctamente para su aplicación móvil. Dependiendo de la plataforma de Hola o implicará claves (Android, Windows) o certificados (iOS). Consulte [Interfaz de usuario: configuración](mobile-engagement-user-interface-settings.md)
+5. Fuera de la aplicación las notificaciones también pudieron estar bloqueadas por hello usuario a través de hello que SO móvil garantizar por lo que esto no sucede Hola. 
+6. Asegúrese de que no va a establecer hello *omitir audiencia, dejarán de enviarse toousers a través de la API de hello* opción Hola **campaña** sección de un alcance de campaña porque así asegurará de que inserción notificaciones solo se envían a través de las API. 
+7. Asegúrese de que se está probando la campaña de inserción con ambos un dispositivo conectado a través de Wi-Fi y phone operador tooeliminate Hola red conexión de red como un posible origen de problemas.
+8. Asegurarse de que Hola sistema fecha y hora en el emulador de dispositivos es correcta porque cualquier dispositivo no está sincronizado también va a interferir con las notificaciones de hello servicio de notificaciones Push capacidad toodeliver. 
 
 A continuación se incluyen instrucciones adicionales de solución de problemas específicas de plataforma:
 
 1. **iOS** 
    
-   * Asegúrese de que los certificados son válidos y de que no han expirado para las notificaciones push de iOS. 
+   * Asegúrese de que los certificados de hello son válidas y vigentes para iOS notificaciones de inserción. 
    * Asegúrese de que configura correctamente un certificado de *Producción* en la aplicación Mobile Engagement. 
-   * Asegúrese de que se está probando en un *dispositivo físico real*. El simulador de iOS no puede procesar mensajes de inserción.
-   * Asegúrese de que el identificador de paquete está configurado correctamente en la aplicación móvil. Vea las instrucciones [aquí](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
-   * Al probar, use la distribución "Ad Hoc" en el perfil de aprovisionamiento móvil. No podrá recibir una notificación si la aplicación se compila con "Debug"
+   * Asegúrese de que se está probando en un *dispositivo físico real*. simulador de iOS de Hello no puede procesar mensajes de inserción.
+   * Asegúrese de que Hola que identificador de paquete está configurado correctamente en la aplicación móvil de Hola. Consulte las instrucciones de hello [aquí](https://developer.apple.com/library/prerelease/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
+   * Al probar, use la distribución "Ad Hoc" en el perfil de aprovisionamiento móvil. No será capaz de tooreceive notificación si la aplicación se compila utilizando "Debug"
 2. **Android**
    
-   * Asegúrese de que ha especificado el número de proyecto correcto en el archivo AndroidManifest.xml de la aplicación móvil seguido del carácter \n. 
+   * Asegúrese de que ha especificado el número correcto de proyecto de hello en el archivo AndroidManifest.xml la aplicación móvil que va seguido de caracteres \n. 
      
            <meta-data android:name="engagement:gcm:sender" android:value="************\n" />
-   * Asegúrese de que no falta ningún permiso o de que no está configurado incorrectamente en el archivo de manifiesto de Android. 
-   * Asegúrese de que el número de proyecto que se va a agregar a la aplicación cliente procede de la misma cuenta en la que obtuvo la clave del servidor de GCM. Si los dos no coinciden, las inserciones no saldrán. 
-   * Si recibe notificaciones del sistema, pero no de aplicación, revise la [sección Especificación de un icono para las notificaciones](mobile-engagement-android-get-started.md) , ya que es probable que no esté especificando el icono correcto en el archivo de manifiesto de Android. 
-   * Si envía una notificación de BigPicture y tiene servidores de imágenes externos, asegúrese de que son compatibles con "GET" y "HEAD" de HTTP.
+   * Asegúrese de que no faltan o mal configurado ningún permiso en el archivo de manifiesto de Android hello 
+   * Asegúrese de que número de proyecto de hello va a agregar la aplicación de cliente de tooyour es de hello misma cuenta donde obtuvo Hola GCM clave del servidor. Si hay alguna incoherencia entre Hola dos impedirá que su inserciones saliendo. 
+   * Si recibe sistema notificaciones, pero no en la aplicación, a continuación, revise hello [especifica un icono para la sección notificaciones](mobile-engagement-android-get-started.md) como probablemente no está especificando el icono correcto de hello en el archivo de manifiesto de Android de Hola. 
+   * Si va a enviar una notificación de BigPicture, garantizar que, si tiene servidores de imagen externos, a continuación, deben toobe capaz de toosupport HTTP "GET" y "HEAD".
 3. **Windows**
    
-   * Asegúrese de que asoció la aplicación con una aplicación válida de la Tienda Windows. En Visual Studio, tendrá que hacer clic con el botón derecho en el proyecto, seleccionar la opción "Asociar aplicación con la Tienda" y seleccionar la aplicación que creó en la Tienda Windows. Esta aplicación de la Tienda Windows debe ser la misma desde la que obtuvo las credenciales de inserción nativa para la configuración en el portal de Mobile Engagement.
-   * Si recibe notificaciones push fuera de aplicación pero no de aplicación con integración `EngagementOverlay` , asegúrese de que la página incluye un elemento de cuadrícula raíz en la página. EngagementOverlay usa el primer elemento “Grid” que encuentra en el archivo xaml para agregar dos vistas web en la página. Si desea localizar dónde se establecerán las vistas web, puede definir una cuadrícula denominada "EngagementGrid" de este modo; sin embargo, deberá asegurarse de que hay suficiente alto y ancho para las dos vistas web posteriores que mostrarán la notificación y el anuncio siguiente como notificación de aplicación:
+   * Asegúrese de que se ha asociado la aplicación hello con una aplicación de tienda de Windows válida. En Visual Studio - tendrá tooright haga clic en proyecto de Hola y seleccione opción "Asociar aplicación con Store" y aplicación de hello select que creó en la tienda Windows hello. Esta aplicación de la tienda de Windows debe ser Hola uno mismo desde donde obtuvo tooconfigure de credenciales de inserción nativa de hello en el portal de interacción móvil Hola.
+   * Si recibe notificaciones push fuera de aplicación pero no de aplicación con integración `EngagementOverlay` , asegúrese de que la página incluye un elemento de cuadrícula raíz en la página. EngagementOverlay utiliza el primer elemento de "Cuadrícula" Hola que busca en las vistas de web dos de tooadd de archivo de xaml en la página. Si desea toolocate donde se establecerá vistas web, puede definir una cuadrícula denominada "EngagementGrid" similar al siguiente, sin embargo, tendrá tooensure hay suficiente alto y ancho para hello dos posteriores web vistas que se muestran la notificación de Hola y Hola después anuncio como notificación en la aplicación:
      
            <Grid x:Name="EngagementGrid"></Grid>
 
-### <a name="i-created-a-push-notificationannouncement-campaign-and-even-after-it-sent-me-the-notification-it-is-showing-as-active-what-does-it-mean"></a>Creé una notificación push/un anuncio/una campaña e incluso después de recibir la notificación sigue apareciendo como 'Activo'. ¿Qué significa?
-La **campaña** que creó en Mobile Engagement se denomina de este modo porque es una notificación push de larga ejecución; a medida que nuevos dispositivos se conectan a la plataforma de interacción móvil, se les envía automáticamente la notificación configurada aquí, siempre que cumplan el criterio establecido en la campaña. No se trata de una configuración de notificación de un solo uso. Debe hacer clic manualmente en el botón **Finalizar** para terminar la campaña y que no envíe más notificaciones. 
+### <a name="i-created-a-push-notificationannouncement-campaign-and-even-after-it-sent-me-hello-notification-it-is-showing-as-active-what-does-it-mean"></a>He creado un notificación de inserción/anuncio/campaña e incluso después de que me envíe notificaciones de hello, se muestra como 'Active'. ¿Qué significa?
+Hola **campaña** que creó en Mobile Engagement se denomina modo porque es un ejecución prolongada significado de notificación de inserción como plataforma de interacción móvil tooyour conectarán los dispositivos nuevos, se enviará automáticamente notificaciones de Hola en este caso, configure siempre y cuando se cumplen criterio Hola que se establecen en la campaña de Hola. No se trata de una configuración de notificación de un solo uso. Tendrá que toomanually haga clic en hello **finalizar** botón campaña de hello tooterminate para que no enviar más notificaciones. 
 
-### <a name="i-created-a-push-campaign-and-i-am-receiving-notifications-successfully-however-whenever-i-open-up-the-app-i-get-the-same-notification-even-when-i-had-actioned-it-before"></a>Creé una campaña de inserción y recibo notificaciones correctamente; sin embargo, cuando abro la aplicación, recibo la misma notificación a pesar de que ya la he respondido antes. ¿A qué se debe?
-Probablemente, esto sucede durante las pruebas y si usa emuladores o algún marco de prueba como TestFlight. Lo que sucede es que cada sesión de ejecución de la aplicación adquiere un nuevo DeviceID y lo envía a nuestro back-end, lo que provoca que la plataforma de Mobile Engagement lo considere como un nuevo dispositivo y envíe la notificación. 
+### <a name="i-created-a-push-campaign-and-i-am-receiving-notifications-successfully-however-whenever-i-open-up-hello-app-i-get-hello-same-notification-even-when-i-had-actioned-it-before"></a>¿He creado una campaña de inserción y estoy recibiendo notificaciones correctamente sin embargo cada vez que se abre la aplicación hello, obtengo Hola misma notificación incluso cuando tuve ejecutados con anterioridad?
+Es probable que toohappen durante las pruebas y si usas emuladores o algún marco de trabajo de prueba como TestFlight. ¿Qué sucede aquí es que en todas las aplicaciones de instancia de ejecución, es adquirir un nuevo Id. de dispositivo y enviarlo tooour back-end, que está causando tootreat de plataforma de Mobile Engagement Hola como un nuevo dispositivo y enviar notificaciones de Hola. 
 
 ## <a name="getting-support"></a>Obtención de soporte técnico
-Si no puede resolver el problema por sí mismo, puede realizar lo siguiente:
+Si son problema de hello tooresolve no se puede, a continuación, hacer lo siguiente:
 
-1. Buscar el problema en hilos existentes del foro de StackOverflow y el [foro de MSDN](https://social.msdn.microsoft.com/Forums/windows/en-US/home?forum=azuremobileengagement) ; si no lo encuentra, puede plantear una pregunta en ellos. 
-2. Si considera que falta una funcionalidad, agregue una solicitud o vote por ella en nuestro [foro de UserVoice](https://feedback.azure.com/forums/285737-mobile-engagement/)
-3. Si dispone de Servicio de soporte técnico de Microsoft, abra un incidente de soporte técnico con los siguientes detalles: 
+1. Busque su problema en los subprocesos existentes en el foro de StackOverflow hello y [foro de MSDN](https://social.msdn.microsoft.com/Forums/windows/en-US/home?forum=azuremobileengagement) y si no, a continuación, hacer una pregunta no existe. 
+2. Si encuentra una característica que faltan, a continuación, agregar y vote por solicitud hello en nuestro [foro de UserVoice](https://feedback.azure.com/forums/285737-mobile-engagement/)
+3. Si tiene Microsoft admite abierto un incidente de soporte técnico proporcionando Hola detalles siguientes: 
    * Identificador de suscripción de Azure
    * Plataforma (por ejemplo, iOS, Android, etc.)
    * Id. de aplicación

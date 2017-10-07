@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure IoT Hub: tutoriales y referencia de API | Microsoft Docs"
-description: "Aprenda a usar IoT Hub para conectar, supervisar y controlar millones de recursos de Internet de las cosas. Tutoriales, referencias de API, vídeos y otra documentación."
+title: "aaaAzure documentación del centro de IoT - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse tooconnect centro de IoT, supervisar y controlar miles de millones de activos de Internet de las cosas. Tutoriales, referencias de API, vídeos y otra documentación."
 services: iot-hub
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: d42045b1c354b7bd5f9299181aefd6d98fda382b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b4d9e66dad55417cff6b9252379cf7265fb542fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="iot-hub-documentation"></a>Documentación de IoT Hub 
 
-Aprenda a usar IoT Hub para conectar, supervisar y controlar millones de recursos de Internet de las cosas. Tutoriales, referencias de API, vídeos y otra documentación le ayudan a implementar una comunicación confiable y bidireccional entre los dispositivos de IoT y una solución de back-end. 
+Obtenga información acerca de cómo toouse tooconnect centro de IoT, supervisar y controlar miles de millones de activos de Internet de las cosas. Tutoriales, referencias de API, vídeos y otra documentación le ayudan a implementar una comunicación confiable y bidireccional entre los dispositivos de IoT y una solución de back-end. 
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -106,7 +106,7 @@ Aprenda a usar IoT Hub para conectar, supervisar y controlar millones de recurso
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Guía del desarrollador</h3>
+                        <h3>Leer la guía para desarrolladores de Hola</h3>
                     </div>
                 </div>
             </div>

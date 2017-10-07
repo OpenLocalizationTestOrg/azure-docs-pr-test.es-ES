@@ -1,5 +1,5 @@
 ---
-title: (obsoleto) Clasificador binario - Azure | Microsoft Docs
+title: aaa(deprecated) clasificador binario - Azure | Documentos de Microsoft
 description: (obsoleto) Clasificador binario
 services: machine-learning
 documentationcenter: 
@@ -16,42 +16,42 @@ ms.date: 01/06/2017
 ms.author: jaymathe
 ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-redirect_document_id: TRUE
-ms.openlocfilehash: 1a83392f90bb5a9fb183334c03ccec20dd3f3520
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 0496fcec9952ca243270caf67f55fe191b2dc9f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deprecated-binary-classifier"></a>(obsoleto) Clasificador binario
 
 > [!NOTE]
-> Microsoft DataMarket está en proceso de retirada y esta API está en desuso. 
+> Hola Microsoft DataMarket se ha retirado y esta API está en desuso. 
 > 
-> Puede encontrar muchos experimentos y API de ejemplo útiles en la [Galería de Cortana Intelligence](http://gallery.cortanaintelligence.com). Para más información sobre la Galería, consulte [Uso compartido y descubrimiento de soluciones en la Galería de Cortana Intelligence](machine-learning-gallery-how-to-use-contribute-publish.md).
+> Puede encontrar muchas API y los experimentos de ejemplo muy útil en hello [Cortana Intelligence galería](http://gallery.cortanaintelligence.com). Para obtener más información acerca de la Galería de hello, consulte [compartir y detectar los recursos Hola Galería de inteligencia de Cortana](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-Suponga que tiene un conjunto de datos y desea predecir una variable dependiente binaria en función de las variables independientes. La "regresión logística" es una técnica estadística popular utilizada para tales predicciones. En este caso, la variable dependiente es binaria o dicotómica, y p es la probabilidad de la presencia de la característica de interés. 
+Suponga que tiene un conjunto de datos y desea que una variable dependiente binaria en función de las variables independientes de hello toopredict. La "regresión logística" es una técnica estadística popular utilizada para tales predicciones. Aquí Hola dependiente de la variable es binario o dicotómicas y p es la probabilidad de Hola de presencia de la característica de Hola de interés. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Un escenario sencillo podría ser aquel en el que un investigador trata de predecir la probabilidad de que un posible estudiante acepte una oferta de admisión a una universidad en función de información determinada (nota media en educación superior, ingresos familiares, residencia y sexo). El resultado de la predicción es la probabilidad de que el posible estudiante acepte la oferta de admisión. Este [servicio web](https://datamarket.azure.com/dataset/aml_labs/log_regression) ajusta el modelo de regresión logística a los datos y calcula el valor de probabilidad (y) para cada una de las observaciones de los datos.  
+Podría ser un escenario simple donde un investigadores está tratando de toopredict si un estudiante potencial es probable que tooaccept una universidad de tooa de oferta de admisión en función de información (GPA en el Instituto, ingresos familiares, state residente, género). resultado previsto de Hello es la probabilidad de Hola de estudiante posibles Hola Aceptar oferta de admisión de Hola. Esto [servicio web](https://datamarket.azure.com/dataset/aml_labs/log_regression) encajan Hola datos de toohello del modelo de regresión logística y salidas Hola valores de probabilidad (y) para cada una de las observaciones de hello en los datos de Hola.  
 
-> Este servicio web puede ser consumido por los usuarios; posiblemente a través de una aplicación móvil, a través de un sitio web o incluso en un equipo local, por ejemplo. Pero el objetivo del servicio web también es actuar como un ejemplo de cómo se puede usar Aprendizaje automático de Azure para crear servicios web encima del código R. Con tan solo unas líneas de código R y algunos clics en un botón en Estudio de aprendizaje automático de Microsoft Azure, puede crear un experimento con código R y publicarlo como servicio web. A continuación, el servicio web se puede publicar en Azure Marketplace para que lo puedan usar usuarios y dispositivos en todo el mundo sin necesidad de que el autor del servicio web configure la infraestructura.  
+> Este servicio web puede ser consumido por los usuarios; posiblemente a través de una aplicación móvil, a través de un sitio web o incluso en un equipo local, por ejemplo. Pero Hola de servicio web de hello sirve también tooserve como un ejemplo de cómo se aprendizaje automático de Azure pueden toocreate usa los servicios web sobre el código de R. Con tan solo unas líneas de código R y algunos clics en un botón en Estudio de aprendizaje automático de Microsoft Azure, puede crear un experimento con código R y publicarlo como servicio web. servicio web de Hola, a continuación, puede ser publicado toohello Azure Marketplace y utilizado por los usuarios y dispositivos a través de Hola a todos con ninguna instalación de infraestructura, el autor del servicio web de Hola Hola.  
 > 
 > 
 
 ## <a name="consumption-of-web-service"></a>Uso del servicio web
-Este servicio web proporciona los valores de predicción de la variable dependiente según las variables independientes para todas las observaciones. El servicio web espera que el usuario final escriba sus datos como una cadena, donde las filas están separadas por coma (,) y las columnas se separan mediante punto y coma (;). El servicio web espera 1 fila a la vez y que la primera columna sea la variable dependiente. Un conjunto de datos de ejemplo podría tener este aspecto:
+Este Hola de web service proporciona predecir valores de variable dependiente de hello basadas en las variables independientes de Hola para todas las observaciones de Hola. servicio web de Hola espera datos de tooinput de usuario final de saludo como una cadena donde filas están separadas por coma (,) y las columnas se separan mediante punto y coma (;). servicio web de Hello espera 1 fila a la vez y espera Hola primera columna toobe Hola dependiente de la variable. Un conjunto de datos de ejemplo podría tener este aspecto:
 
 ![Datos de ejemplo][1]
 
-Las observaciones sin una variable dependiente deben especificarse como "NA" para Y. Los datos de entrada para el conjunto de datos anterior serían los siguientes: “1;5;2,1;1;6,0;5.3;2.1,0;5;5,0;3;4,1;2;1,NA;3;4”. El resultado es el valor de predicción para cada una de las filas en función de las variables independientes. 
+Las observaciones sin una variable dependiente deben especificarse como "NA" para Y. Hello datos de entrada para hello por encima del conjunto de datos podría Hola después de cadena: "1; 5; 2,1; 1; 6,0; 5.3; 2.1,0; 5; 5,0; 3; 4,1; 2; 1, NA; 3; 4". Hola de salida es hello valor de predicción para cada una de las filas de hello en función de hello independiente variables. 
 
-> Este servicio cuando está hospedado en Azure Marketplace es un servicio de OData, al que se puede llamar mediante los métodos POST o GET. 
+> Este servicio, cuando está hospedado en hello Azure Marketplace, es un servicio de OData; estos se pueden llamar a través de los métodos POST o GET. 
 > 
 > 
 
-Hay varias maneras de consumir el servicio de forma automática ( [aquí](http://microsoftazuremachinelearning.azurewebsites.net/BinaryClassifier.aspx)se puede ver una aplicación de ejemplo).
+Hay varias maneras de consumo de servicio de Hola de forma automática (una aplicación de ejemplo es [aquí](http://microsoftazuremachinelearning.azurewebsites.net/BinaryClassifier.aspx)).
 
 ### <a name="starting-c-code-for-web-service-consumption"></a>Inicio del código C# para el uso del servicio web:
     public class Input
@@ -82,11 +82,11 @@ Hay varias maneras de consumir el servicio de forma automática ( [aquí](http:/
 
 
 ## <a name="creation-of-web-service"></a>Creación del servicio web
-> Este servicio web se ha creado con el Aprendizaje automático de Azure. Para obtener acceso a una evaluación gratuita y a vídeos introductorios sobre la creación de experimentos y la [publicación de servicios web](machine-learning-publish-a-machine-learning-web-service.md), consulte [azure.com/ml](http://azure.com/ml). A continuación se muestra una captura de pantalla del experimento que creó el código de ejemplo y el servicio web para cada uno de los módulos dentro del experimento.
+> Este servicio web se ha creado con el Aprendizaje automático de Azure. Para obtener acceso a una evaluación gratuita y a vídeos introductorios sobre la creación de experimentos y la [publicación de servicios web](machine-learning-publish-a-machine-learning-web-service.md), consulte [azure.com/ml](http://azure.com/ml). A continuación se muestra una captura de pantalla del experimento de Hola que creó el código de ejemplo y el servicio web Hola para cada uno de los módulos de hello en el experimento de Hola.
 > 
 > 
 
-En Machine Learning de Azure se creó un nuevo experimento en blanco y se extrajeron dos módulos [Ejecutar scripts R][execute-r-script] en el área de trabajo. Este servicio web ejecuta un experimento de Aprendizaje automático de Azure con un script de R subyacente. Hay dos partes para este experimento: definición de esquema y modelo de aprendizaje + puntuación. El primer módulo define la estructura esperada del conjunto de datos de entrada, donde la primera variable es la variable dependiente y las demás variables son independientes. El segundo módulo ajusta un modelo de regresión logística genérico para los datos de entrada.    
+Desde dentro del aprendizaje automático de Azure, un experimento en blanco nueva se crea y dos [ejecutar Script de R] [ execute-r-script] módulos extraen en el área de trabajo de Hola. Este servicio web ejecuta un experimento de Aprendizaje automático de Azure con un script de R subyacente. Hay 2 partes toothis experimentar: definición de esquema y el modelo de entrenamiento + la puntuación. primer módulo de Hello define la estructura de hello esperado de hello entrada conjunto de datos, donde hello primera variable es variable dependiente de Hola y Hola restantes variables son independientes. segundo módulo de Hello ajusta un modelo de regresión logística genérico para los datos de entrada de Hola.    
 
 ![Flujo de experimento][2]
 
@@ -120,10 +120,10 @@ En Machine Learning de Azure se creó un nuevo experimento en blanco y se extraj
 
 
 ## <a name="limitations"></a>Limitaciones
-Se trata de un ejemplo muy sencillo de un servicio web de clasificación binaria. Como puede observarse en el código de ejemplo anterior, no se implementa ninguna detección de errores y el servicio asume que todo es una variable binaria o continua (ninguna característica categórica permitida), ya que el servicio solo recibe valores numéricos en el momento de la creación de este servicio web. Además, el servicio actualmente controla el tamaño de datos limitado, debido a la naturaleza de solicitud y respuesta de la llamada al servicio web y el hecho de que el modelo se ajusta cada vez que se llama al servicio web. 
+Se trata de un ejemplo muy sencillo de un servicio web de clasificación binaria. Como se puede ver desde el código de ejemplo de Hola anterior, no se implementa la ningún error que detecte y Hola servicio supone que todo lo que es una variable continua/binario (no hay categorías características permitidas), como Hola servicio solo entradas valores numéricos en tiempo de Hola de creación de hello de este servicio Web. Además, servicio Hola actualmente controla el tamaño de datos limitado, debido toohello naturaleza de solicitud/respuesta del servicio web de hello es que se va a ajustar hello y llamada de hechos que Hola modelo cada vez que se llama servicio de hello web. 
 
 ## <a name="faq"></a>P+F
-Para ver las preguntas más frecuentes sobre el uso del servicio web o la publicación en Azure Marketplace, haga clic [aquí](machine-learning-marketplace-faq.md).
+Para las preguntas más frecuentes en el consumo del servicio web de Hola o publicación toohello Azure Marketplace, vea [aquí](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-binary-classifier/binary1.png
 [2]: ./media/machine-learning-r-csharp-binary-classifier/binary2.png

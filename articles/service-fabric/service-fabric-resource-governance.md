@@ -1,6 +1,6 @@
 ---
-title: "Regulación de recursos de Azure Service Fabric para contenedores y servicios | Microsoft Docs"
-description: "Azure Service Fabric permite especificar los límites de recursos de servicios que se ejecutan dentro o fuera de contenedores."
+title: Regulador de recursos de tejido de servicio para los contenedores y los servicios de aaaAzure | Documentos de Microsoft
+description: "Azure Service Fabric permite toospecify límites de recursos para servicios que se ejecutan dentro o fuera contenedores."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 88d44953ad83f9e7401fd087a39842e4a3790124
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 34e368211d98ff6b5b294c9c8b3af5ca30eeb20c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="resource-governance"></a>Regulador de recursos 
 
-Cuando se ejecutan varios servicios en el mismo clúster o nodo, es posible que un servicio pueda consumir más recursos y privar así a otros servicios. A este problema se le conoce como el problema del entorno ruidoso. Service Fabric permite al desarrollador establecer reservas y límites por servicio, a fin de garantizar la disponibilidad de recursos y, además, limita el uso de recursos. 
+Cuando se ejecutan varios servicios en hello mismo nodo o el clúster, es posible que un servicio puede consumir más recursos privar a otros servicios. Este problema es tooas que se hace referencia hello-vecino. Service Fabric permite las reservas toospecify de desarrollador de Hola y límites por los recursos del servicio tooguarantee y limitar su uso de recursos. 
 
 ## <a name="resource-governance-metrics"></a>Métricas de regulación de recursos 
 
-Service Fabric admite la regulación de recursos en función del [paquete de servicio](service-fabric-application-model.md). Los recursos asignados al paquete de servicio pueden dividirse además entre paquetes de código. Los límites de recursos especificados también suponen la reserva de los recursos. Service Fabric admite la determinación de CPU y memoria por cada paquete de servicio mediante la utilización de dos [métricas](service-fabric-cluster-resource-manager-metrics.md) integradas:
+Service Fabric admite la regulación de recursos en función del [paquete de servicio](service-fabric-application-model.md). recursos de Hello asignados tooService paquete pueden dividirse aún más entre los paquetes de código. límites de recursos de Hello especificados también significan una reserva Hola de recursos de Hola. Service Fabric admite la determinación de CPU y memoria por cada paquete de servicio mediante la utilización de dos [métricas](service-fabric-cluster-resource-manager-metrics.md) integradas:
 
-* CPU (nombre de métrica `ServiceFabric:/_CpuCores`): un núcleo es un núcleo lógico que se encuentra disponible en el equipo host, y todos los núcleos de todos los nodos se ponderan de la misma forma.
-* Memoria (nombre de métrica `ServiceFabric:/_MemoryInMB`): la memoria se expresa en megabytes y se asigna a la memoria física que está disponible en el equipo.
+* CPU (nombre de la métrica `ServiceFabric:/_CpuCores`): un núcleo es un núcleo lógico que está disponible en el equipo de host de Hola y todos los núcleos en todos los nodos se ponderan Hola igual.
+* Memoria (nombre de la métrica `ServiceFabric:/_MemoryInMB`): memoria se expresa en megabytes y se asigna memoria toophysical que está disponible en la máquina de Hola.
 
-Solo se ofrecen garantías de reserva flexible; el runtime rechaza la apertura de los nuevos paquetes de servicio en los que se superan los recursos disponibles. Sin embargo, si se coloca otro archivo ejecutable o contenedor en el nodo, se pueden infringir las garantías de reserva originales.
+Solo las garantías de reserva de software son siempre - en tiempo de ejecución de hello rechaza la apertura del nuevo servicio se superan los recursos disponibles de paquetes. Sin embargo, si otro archivo ejecutable o contenedor se coloca en el nodo de hello, que pueden infringir las garantías de reserva original Hola.
 
-Para estas dos métricas, el [Administrador de recursos de clúster](service-fabric-cluster-resource-manager-cluster-description.md) realiza un seguimiento de la capacidad total del clúster, la carga de cada nodo del clúster y los recursos restantes del clúster. Estas dos métricas son equivalentes a cualquier otra métrica de usuario o personalizada, por lo que todas las características existentes se pueden usar con ellas:
-* El clúster puede [equilibrarse](service-fabric-cluster-resource-manager-balancing.md) en función de estas dos métricas (comportamiento predeterminado).
-* El clúster puede [desfragmentarse](service-fabric-cluster-resource-manager-defragmentation-metrics.md) en función de estas dos métricas.
+Para estos dos métricas Hola [Administrador de recursos del clúster](service-fabric-cluster-resource-manager-cluster-description.md) realiza un seguimiento de la capacidad total en el clúster, carga de hello en cada nodo de clúster de hello, y, quedan recursos en clúster de Hola. Estos dos métricas es equivalente tooany otro usuario o una métrica personalizada y todas las características existentes pueden usarse con ellos:
+* Puede ser clúster [equilibrada](service-fabric-cluster-resource-manager-balancing.md) según las métricas de toothese dos (comportamiento predeterminado).
+* Puede ser clúster [desfragmentados](service-fabric-cluster-resource-manager-defragmentation-metrics.md) según las métricas de toothese dos.
 * Para [describir un clúster](service-fabric-cluster-resource-manager-cluster-description.md), se puede establecer la capacidad de almacenamiento en búfer para estas dos métricas.
 
 El [informe de carga dinámica](service-fabric-cluster-resource-manager-metrics.md) no es compatible con estas métricas, y las cargas para estas métricas se definen en el momento de la creación.
 
 ## <a name="cluster-set-up-for-enabling-resource-governance"></a>Configuración del clúster para habilitar la regulación de recursos
 
-La capacidad debe definirse manualmente en cada tipo de nodo del clúster como se indica a continuación:
+Capacidad debe definirse manualmente en cada tipo de nodo de clúster de hello como sigue:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -53,7 +53,7 @@ La capacidad debe definirse manualmente en cada tipo de nodo del clúster como s
     </NodeType>
 ```
  
-La regulación de recursos solo se admite en servicios de usuario y no en todos los servicios de sistema. Al especificar la capacidad, algunos núcleos y la memoria deben dejarse desasignados para los servicios de sistema. Para obtener un rendimiento óptimo, también es necesario activar la siguiente configuración en el manifiesto de clúster: 
+La regulación de recursos solo se admite en servicios de usuario y no en todos los servicios de sistema. Al especificar la capacidad, algunos núcleos y la memoria deben dejarse desasignados para los servicios de sistema. Para obtener un rendimiento óptimo, Hola después de la configuración debe también activarse en el manifiesto de clúster de hello: 
 
 ```xml
 <Section Name="PlacementAndLoadBalancing">
@@ -65,7 +65,7 @@ La regulación de recursos solo se admite en servicios de usuario y no en todos 
 
 ## <a name="specifying-resource-governance"></a>Definición de la regulación de recursos 
 
-Los límites de la regulación de recursos se especifican en el manifiesto de aplicación (sección ServiceManifestImport) como se muestra en el ejemplo siguiente:
+Límites de regulación de recursos se especifican en el manifiesto de aplicación Hola (sección ServiceManifestImport) como se muestra en el siguiente ejemplo de Hola:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -73,9 +73,9 @@ Los límites de la regulación de recursos se especifican en el manifiesto de ap
   <Parameters>
   </Parameters>
   <!--
-  ServicePackageA has the number of CPU cores defined, but doesn't have the MemoryInMB defined.
-  In this case, Service Fabric will sum the limits on code packages and uses the sum as 
-  the overall ServicePackage limit.
+  ServicePackageA has hello number of CPU cores defined, but doesn't have hello MemoryInMB defined.
+  In this case, Service Fabric will sum hello limits on code packages and uses hello sum as 
+  hello overall ServicePackage limit.
   -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName='ServicePackageA' ServiceManifestVersion='v1'/>
@@ -87,11 +87,11 @@ Los límites de la regulación de recursos se especifican en el manifiesto de ap
   </ServiceManifestImport>
 ```
   
-En este ejemplo, el paquete de servicio ServicePackageA obtiene un núcleo de los nodos en que se encuentra. Este paquete de servicio contiene dos paquetes de código (CodeA1 y CodeA2), y ambos especifican el parámetro `CpuShares`. La proporción de CpuShares 512:256 divide el núcleo entre los dos paquetes de código. Por lo tanto, en este ejemplo, CodeA1 obtiene dos tercios de un núcleo y CodeA2 obtiene una tercera parte de un núcleo (y una reserva de garantía flexible del mismo). En caso de que no se especifiquen las proporciones de CpuShares para los paquetes de código, Service Fabric divide los núcleos equitativamente entre ellos.
+En este ejemplo, el paquete de servicio ServicePackageA Obtiene un núcleo en nodos de Hola donde se coloca. Este paquete de servicio contiene dos paquetes de código (CodeA1 y CodeA2), y ambos especifican hello `CpuShares` parámetro. proporción de Hola de CpuShares 512:256 divide core Hola a todos los paquetes de código de hello dos. Por lo tanto, en este ejemplo, CodeA1 obtiene dos tercios de un núcleo y CodeA2 Obtiene una tercera parte de un núcleo (y Hola una reserva de garantía de software del mismo). En caso de que cuando CpuShares no se especifican para los paquetes de código, Service Fabric divide núcleos Hola equitativamente entre ellos.
 
-Los límites de memoria son absolutos, por lo que ambos paquetes de código están limitados a 1024 MB de memoria (con una reserva de garantía flexible de dicha capacidad). Los paquetes de código (contenedores o procesos) no pueden asignar más memoria de la que establece este límite; si se intenta, el resultado es una excepción de memoria insuficiente. Para que la aplicación del límite de recursos funcione, es necesario haber definido límites de memoria en todos los paquetes de código de un paquete de servicio.
+Límites de memoria están absolutos, por lo que ambos paquetes de código too1024 limitado MB de memoria (y una reserva de garantía de software del mismo Hola). Paquetes de código (contenedores o procesos) no son tooallocate capaz de más memoria que este límite e intentar toodo que se producirá una excepción de memoria insuficiente. Para toowork de cumplimiento del límite de recursos, todos los paquetes de código dentro de un paquete de servicio deben tener límites de memoria especificados.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para más información sobre el Administrador de recursos de clúster, lea este [artículo](service-fabric-cluster-resource-manager-introduction.md).
-* Para más información sobre el modelo de aplicación, los paquetes de servicio, los paquetes de código y cómo se les asignan las réplicas, lea este [artículo](service-fabric-application-model.md).
+* toolearn más sobre recursos Administrador de clústeres, lea esta [artículo](service-fabric-cluster-resource-manager-introduction.md).
+* toolearn más información sobre el modelo de aplicación, paquetes de servicio, paquetes de código y cómo asignan las réplicas toothem lea esta [artículo](service-fabric-application-model.md).

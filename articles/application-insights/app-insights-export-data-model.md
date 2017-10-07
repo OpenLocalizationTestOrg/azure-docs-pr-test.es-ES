@@ -1,5 +1,5 @@
 ---
-title: Modelo de datos de Azure Application Insights | Microsoft Docs
+title: "aaaAzure modelo de datos de aplicación visión | Documentos de Microsoft"
 description: "Describe las propiedades exportadas con la exportación continua de JSON y usadas como filtros."
 services: application-insights
 documentationcenter: 
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: bwren
-ms.openlocfilehash: a485ddd555f65473d81896effc4a3562bda71410
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5ff3ce7953b91cc69b5d96c0ea9b6d58a6016e61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-insights-export-data-model"></a>Modelo de exportación de datos de Application Insights
-En esta tabla se enumeran las propiedades de telemetría enviadas desde los SDK de [Application Insights](app-insights-overview.md) al portal.
+Esta tabla enumeran las propiedades de Hola de telemetría enviados desde hello [Application Insights](app-insights-overview.md) SDK toohello portal.
 Verá estas propiedades en el resultado de datos de [Exportación continua](app-insights-export-telemetry.md).
 También aparecen en los filtros de propiedad de [Explorador de métricas](app-insights-metrics-explorer.md) y [Búsqueda de diagnóstico](app-insights-diagnostic-search.md).
 
-Puntos a tener en cuenta:
+Toonote puntos:
 
-* `[0]` en estas tablas denota un punto en la ruta de acceso donde se debe insertar un índice; pero no siempre es 0.
+* `[0]`en estas tablas denota un punto en la ruta de acceso de Hola donde haya tooinsert un índice; pero no siempre es 0.
 * Los períodos de tiempo se indican en décimas de microsegundo, así que 10000000 = 1 segundo.
-* Las fechas y horas son UTC y se proporcionan en el formato ISO `yyyy-MM-DDThh:mm:ss.sssZ`
+* Las fechas y horas son del tipo UTC y se proporcionan en formato ISO de Hola`yyyy-MM-DDThh:mm:ss.sssZ`
 
 
 ## <a name="example"></a>Ejemplo
@@ -41,15 +41,15 @@ Puntos a tener en cuenta:
           "base": "/",
           "hashTag": ""
         },
-        "responseCode": 200, // Sent to client
+        "responseCode": 200, // Sent tooclient
         "success": true, // Default == responseCode<400
-        // Request id becomes the operation id of child events
+        // Request id becomes hello operation id of child events
         "id": "fCOhCdCnZ9I=",  
         "name": "GET Home/Index",
         "count": 1, // 100% / sampling rate
         "durationMetric": {
           "value": 1046804.0, // 10000000 == 1 second
-          // Currently the following fields are redundant:
+          // Currently hello following fields are redundant:
           "count": 1.0,
           "min": 1046804.0,
           "max": 1046804.0,
@@ -75,14 +75,14 @@ Puntos a tener en cuenta:
       "location": { // derived from client ip
         "continent": "North America",
         "country": "United States",
-        // last octagon is anonymized to 0 at portal:
+        // last octagon is anonymized too0 at portal:
         "clientip": "168.62.177.0",
         "province": "",
         "city": ""
       },
       "data": {
         "isSynthetic": true, // we identified source as a bot
-        // percentage of generated data sent to portal:
+        // percentage of generated data sent tooportal:
         "samplingRate": 100.0,
         "eventTime": "2016-03-21T10:05:45.7334717Z" // UTC
       },
@@ -116,11 +116,11 @@ Una sección de contexto acompaña a todos los tipos de telemetría. No todos es
 
 | Ruta de acceso | Tipo | Notas |
 | --- | --- | --- |
-| context.custom.dimensions [0] |objeto [ ] |Pares de cadenas de clave-valor establecidos por el parámetro de propiedades personalizadas. Longitud máxima de clave: 100, longitud máxima de valores: 1024. Más de 100 valores únicos, se pueden realizar búsquedas en la propiedad, pero no se puede usar para la segmentación. Máximo de 200 claves por ikey. |
+| context.custom.dimensions [0] |objeto [ ] |Pares de cadenas de clave-valor establecidos por el parámetro de propiedades personalizadas. Longitud máxima de clave: 100, longitud máxima de valores: 1024. Más de 100 valores únicos, propiedad Hola se pueden buscar, pero no se puede usar para la segmentación. Máximo de 200 claves por ikey. |
 | context.custom.metrics [0] |objeto [ ] |Los pares de clave-valor se establecen mediante el parámetro de medidas personalizado y mediante TrackMetrics. Longitud máxima de clave: 100, los valores pueden ser numéricos. |
 | context.data.eventTime |cadena |UTC |
-| context.data.isSynthetic |boolean |La solicitud parece proceder de un bot o una prueba web. |
-| context.data.samplingRate |número |Porcentaje de telemetría generado por el SDK que se envía al portal. Intervalo 0,0 a 100,0. |
+| context.data.isSynthetic |boolean |Solicitud aparece toocome de una prueba web o bot. |
+| context.data.samplingRate |número |Porcentaje de telemetría generado por hello SDK que se envía tooportal. Intervalo 0,0 a 100,0. |
 | context.device |objeto |Dispositivo de cliente |
 | context.device.browser |cadena |IE, Chrome,… |
 | context.device.browserVersion |cadena |Chrome 48.0,… |
@@ -136,14 +136,14 @@ Una sección de contexto acompaña a todos los tipos de telemetría. No todos es
 | context.device.type |cadena |PC, explorador,… |
 | context.location |objeto |Derivado de clientip. |
 | context.location.city |cadena |Derivado de clientip, si se conoce. |
-| context.location.clientip |cadena |El último octágono se hace anónimo en 0. |
+| context.location.clientip |cadena |Último octágono es too0 anonimizados. |
 | context.location.continent |cadena | |
 | context.location.country |cadena | |
 | context.location.province |cadena |Estado o provincia |
-| context.operation.id |cadena |Los elementos que tienen el mismo identificador de operación se muestran como elementos relacionados en el portal. Normalmente, el identificador de solicitud. |
+| context.operation.id |cadena |Elementos que tienen el mismo Id. de operación se muestran como elementos relacionados en el portal de Hola de Hola. Normalmente Hola Id. de solicitud. |
 | context.operation.name |cadena |Nombre de solicitud o dirección URL |
 | context.operation.parentId |cadena |Permite elementos relacionados anidados. |
-| context.session.id |cadena |Identificador de un grupo de operaciones del mismo origen. Un período de 30 minutos sin una operación señala el final de una sesión. |
+| context.session.id |cadena |Identificador de un grupo de operaciones de hello mismo origen. Un período de 30 minutos sin un final de Hola de señales de operación de una sesión. |
 | context.session.isFirst |boolean | |
 | context.user.accountAcquisitionDate |cadena | |
 | context.user.anonAcquisitionDate |cadena | |
@@ -165,7 +165,7 @@ Eventos personalizados generados por [TrackEvent()](app-insights-api-custom-even
 | event [0] urlData.host |cadena | |
 
 ## <a name="exceptions"></a>Excepciones
-Notifica sobre [excepciones](app-insights-asp-net-exceptions.md) en el servidor y en el explorador.
+Informes [excepciones](app-insights-asp-net-exceptions.md) en servidor hello y en el Explorador de Hola.
 
 | Ruta de acceso | Tipo | Notas |
 | --- | --- | --- |
@@ -194,17 +194,17 @@ Notifica sobre [excepciones](app-insights-asp-net-exceptions.md) en el servidor 
 | basicException [0] typeName |cadena | |
 
 ## <a name="trace-messages"></a>Mensajes de seguimiento
-Enviados por [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace) y por los [adaptadores de registro](app-insights-asp-net-trace-logs.md).
+Enviado por [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace)y por hello [registro adaptadores](app-insights-asp-net-trace-logs.md).
 
-| path | Tipo | Notas |
+| Ruta de acceso | Tipo | Notas |
 | --- | --- | --- |
 | message [0] loggerName |cadena | |
 | message [0] parameters |cadena | |
-| message [0] raw |cadena |El mensaje de registro, longitud máxima: 10 000. |
+| message [0] raw |cadena |mensaje de registro de Hello, longitud máxima de 10k. |
 | message [0] severityLevel |cadena | |
 
 ## <a name="remote-dependency"></a>Dependencia remota
-Enviado por TrackDependency. Se usa para notificar el rendimiento y el uso de las [llamadas a dependencias](app-insights-asp-net-dependencies.md) en el servidor y de las llamadas AJAX en el explorador.
+Enviado por TrackDependency. Usar tooreport rendimiento y el uso de [llama toodependencies](app-insights-asp-net-dependencies.md) en servidor hello y llamadas de AJAX en el Explorador de Hola.
 
 | Ruta de acceso | Tipo | Notas |
 | --- | --- | --- |
@@ -213,7 +213,7 @@ Enviado por TrackDependency. Se usa para notificar el rendimiento y el uso de la
 | remoteDependency [0] commandName |cadena |Por ejemplo, "home/index". |
 | remoteDependency [0] count |integer |100/(frecuencia de[muestreo](app-insights-sampling.md) ). Por ejemplo, 4 =&gt; 25 %. |
 | remoteDependency [0] dependencyTypeName |cadena |HTTP, SQL... |
-| remoteDependency [0] durationMetric.value |número |Tiempo desde la llamada hasta la finalización de respuesta de la dependencia |
+| remoteDependency [0] durationMetric.value |número |Tiempo de toocompletion de llamada de respuesta de dependencia |
 | remoteDependency [0] id |cadena | |
 | remoteDependency [0] name |string |URL Longitud máxima: 250. |
 | remoteDependency [0] resultCode |cadena |de la dependencia de HTTP |
@@ -225,15 +225,15 @@ Enviado por TrackDependency. Se usa para notificar el rendimiento y el uso de la
 | remoteDependency [0] urlData.host |cadena |Longitud máxima: 200 |
 
 ## <a name="requests"></a>Solicitudes
-Enviado por [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Los módulos estándar usan esto para informar sobre el tiempo de respuesta del servidor, medido en el propio servidor.
+Enviado por [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). módulos estándar de Hello usan este tiempo de respuesta del servidor tooreports, medido en el servidor de Hola.
 
 | Ruta de acceso | Tipo | Notas |
 | --- | --- | --- |
 | request [0] count |integer |100/(frecuencia de[muestreo](app-insights-sampling.md) ). Por ejemplo: 4 =&gt; 25 %. |
-| request [0] durationMetric.value |número |Tiempo desde que llega la solicitud hasta la respuesta. 1e7 = 1 s |
+| request [0] durationMetric.value |número |Tiempo de solicitud que llegan tarde tooresponse. 1e7 = 1 s |
 | request [0] id |cadena |Identificador de operación |
 | request [0] name |cadena |GET y POST + dirección url base.  Longitud máxima: 250 |
-| request [0] responseCode |integer |Respuesta HTTP enviada al cliente |
+| request [0] responseCode |integer |Tooclient de respuesta enviado de HTTP |
 | request [0] success |boolean |Predeterminado == (responseCode &lt; 400) |
 | request [0] url |cadena |No incluye el host |
 | request [0] urlData.base |cadena | |
@@ -241,18 +241,18 @@ Enviado por [TrackRequest](app-insights-api-custom-events-metrics.md#trackreques
 | request [0] urlData.host |cadena | |
 
 ## <a name="page-view-performance"></a>Rendimiento de la vista de página
-Enviado por el explorador. Mide el tiempo que se tarda en procesar una página desde que el usuario inicia la solicitud hasta que aparece por completo (excluidas las llamadas AJAX asincrónicas).
+Explorador de hello envía. Medidas Hola tiempo tooprocess una página, de usuario iniciador Hola solicitud toodisplay completa (se excluyen las llamadas de AJAX asincrónicas).
 
 Los valores de contexto muestran el sistema operativo del cliente y la versión del explorador.
 
 | Ruta de acceso | Tipo | Notas |
 | --- | --- | --- |
-| clientPerformance [0] clientProcess.value |integer |Tiempo transcurrido desde el fin de la recepción del código HTML hasta que se muestra la página. |
+| clientPerformance [0] clientProcess.value |integer |Tiempo desde el final de la recepción de toodisplaying de la página de Hola Hola HTML. |
 | clientPerformance [0] name |cadena | |
-| clientPerformance [0] networkConnection.value |integer |Tiempo necesario para establecer una conexión de red. |
-| clientPerformance [0] receiveRequest.value |integer |Tiempo transcurrido desde la finalización del envío de la solicitud hasta la recepción del código HTML en la respuesta. |
-| clientPerformance [0] sendRequest.value |integer |Tiempo empleado en enviar la solicitud HTTP. |
-| clientPerformance [0] total.value |integer |Tiempo transcurrido desde que se empieza a enviar la solicitud hasta que se muestra la página. |
+| clientPerformance [0] networkConnection.value |integer |Tooestablish de tiempo que tarda una conexión de red. |
+| clientPerformance [0] receiveRequest.value |integer |Hora de fin de enviar hello tooreceiving de solicitud Hola HTML en la respuesta. |
+| clientPerformance [0] sendRequest.value |integer |Tiempo de solicitud de hello HTTP toosend tomada. |
+| clientPerformance [0] total.value |integer |Hora de toosend Hola solicitud toodisplaying Hola página de inicio. |
 | clientPerformance [0] url |cadena |Dirección URL de esta solicitud |
 | clientPerformance [0] urlData.base |cadena | |
 | clientPerformance [0] urlData.hashTag |cadena | |
@@ -265,7 +265,7 @@ Enviado por trackPageView() o [stopTrackPage](app-insights-api-custom-events-met
 | Ruta de acceso | Tipo | Notas |
 | --- | --- | --- |
 | view [0] count |integer |100/(frecuencia de[muestreo](app-insights-sampling.md) ). Por ejemplo, 4 =&gt; 25 %. |
-| view [0] durationMetric.value |integer |Valor establecido opcionalmente en trackPageView() o mediante startTrackPage() - stopTrackPage(). No es igual que los valores de clientPerformance. |
+| view [0] durationMetric.value |integer |Valor establecido opcionalmente en trackPageView() o mediante startTrackPage() - stopTrackPage(). No igual Hola como valores de clientPerformance. |
 | view [0] name |cadena |Título de la página.  Longitud máxima: 250 |
 | view [0] url |cadena | |
 | view [0] urlData.base |cadena | |
@@ -294,7 +294,7 @@ Notifica sobre [pruebas web de disponibilidad](app-insights-monitor-web-app-avai
 ## <a name="metrics"></a>Métricas
 Generado por TrackMetric().
 
-El valor de la métrica se encuentra en context.custom.metrics[0].
+valor de métrica de Hola se encuentra en context.custom.metrics[0]
 
 Por ejemplo:
 
@@ -335,13 +335,13 @@ Los valores de métrica, tanto en los informes de métrica como en otros lugares
         "sampledValue": 468.71603053650279
       }
 
-Aunque esto puede cambiar en el futuro, en la actualidad, en todos los valores notificados desde los módulos SDK estándar, `count==1` y solo los campos `name` y `value` son útiles. El único caso donde podrían ser diferentes es si escribe sus propias llamadas de TrackMetric, en cuyo caso establecerá los demás parámetros.
+Actualmente - aunque esto podría variar en hello futura - en todos los valores notificados de módulos SDK estándar hello, `count==1` y solo Hola `name` y `value` los campos son útiles. Hello único caso donde podría ser diferentes sería si escribir sus propias llamadas TrackMetric en que se establecen los Hola otros parámetros.
 
-El propósito de los demás campos es permitir que las métricas se agreguen en el SDK, para reducir el tráfico hacia el portal. Por ejemplo, podría hacer el promedio de varias lecturas sucesivas antes de enviar cada informe métrica. A continuación, podría calcular el mínimo, el máximo, la desviación estándar y un valor agregado (suma o promedio) y establecer el recuento en el número de lecturas representado por el informe.
+Hola propósito de hello otros campos es tooallow métricas toobe agregan Hola SDK, portal de tooreduce tráfico toohello. Por ejemplo, podría hacer el promedio de varias lecturas sucesivas antes de enviar cada informe métrica. A continuación, calcular Hola min, max, desviación estándar y un valor agregado (suma o promedio) y establecer toohello número de lecturas representado por informe de Hola.
 
-En las tablas anteriores, hemos omitido los campos usados con poca frecuencia como count, min, max, stdDev y sampledValue.
+En tablas de hello anteriores, omitimos Hola rara vez utilizadas campos count, min, max, stdDev y sampledValue.
 
-En lugar de la agregación previa de las métricas, puede usar el [muestreo](app-insights-sampling.md) si necesita reducir el volumen de datos de telemetría.
+En lugar de las métricas de la agregación previa, puede usar [muestreo](app-insights-sampling.md) si necesita el volumen de hello tooreduce de telemetría.
 
 ### <a name="durations"></a>Duraciones
 Excepto donde se indique lo contrario, las duraciones se representan en décimas de microsegundo, por lo que 10000000,0 equivalen a 1 segundo.

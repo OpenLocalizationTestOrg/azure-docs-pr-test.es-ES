@@ -1,6 +1,6 @@
 ---
-title: 'Interfaz de usuario de Azure Mobile Engagement: cobertura'
-description: "Obtenga información acerca de cómo llegar a los usuarios de su aplicación mediante notificaciones de inserción usando Azure Mobile Engagement"
+title: Interfaz de usuario de Mobile Engagement - alcance aaaAzure
+description: "Obtenga información acerca de cómo tooreach toohello usuarios de la aplicación con las notificaciones de inserción con Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ce30456e41ff1a2f4824bcb64246ee115fdd1ef7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 40d5162ddeccec82c2c9f5b0d72b4cb10c9ddc38
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-reach-out-to-the-users-of-your-application-with-push-notifications"></a>Cómo llegar a los usuarios de su aplicación mediante notificaciones de inserción
-En este artículo se describe la pestaña **ALCANCE** del portal de **Mobile Engagement**. Utilice el portal **Mobile Engagement** para supervisar y administrar sus aplicaciones móviles. Tenga en cuenta que, para comenzar a usar el portal, debe crear en primer lugar una cuenta de **Azure Mobile Engagement** . Para obtener más información, consulte [Crear una cuenta de Azure Mobile Engagement](mobile-engagement-create.md).
+# <a name="how-tooreach-out-toohello-users-of-your-application-with-push-notifications"></a>Cómo tooreach toohello usuarios de la aplicación con las notificaciones de inserción
+Este artículo describe hello **ALCANZAR** ficha de hello **Mobile Engagement** portal. Usar hello **Mobile Engagement** toomonitor portal y administrar aplicaciones móviles. Tenga en cuenta que toostart mediante portal Hola primero debe toocreate una **Azure Mobile Engagement** cuenta. Para obtener más información, consulte [Crear una cuenta de Azure Mobile Engagement](mobile-engagement-create.md).
 
-La sección de cobertura de la interfaz de usuario es la herramienta de administración de campaña de inserción en la que puede crear/editar/activar/finalizar/supervisar y obtener estadísticas de las campañas de notificaciones de inserción y funciones a las que también se puede acceder a través de la API de cobertura (y algunos elementos de la API de inserción de bajo nivel). Recuerde que tanto si está utilizando las API o la interfaz de usuario, deberá integrar Azure Mobile Engagement y la cobertura en la aplicación para cada plataforma con el SDK para poder utilizar campañas de cobertura.
+Hola llegar a sección de hello es la interfaz de usuario de herramienta de administración de campaña Hola inserción siempre que sea posible crear/editar/activar/finalizar/monitor y obtener estadísticas sobre las campañas de notificación de inserción y otras características que también son accesibles a través de API de cobertura de hello (y algunos elementos del programa Hola baja nivel de API de inserción). Recuerde que si utiliza las API de Hola o hello interfaz de usuario, necesitará toointegrate Azure Mobile Engagement y alcance en la aplicación para cada plataforma con hello SDK para poder utilizar alcanzan las campañas.
 
 > [!NOTE]
-> Muchas de las secciones de la interfaz de usuario del portal de **Mobile Engagement** contienen el botón **MOSTRAR AYUDA**. Pulse este botón para obtener más información contextual sobre una sección.
+> Muchas de las secciones de hello **Mobile Engagement** portal de interfaz de usuario contienen hello **ayuda para mostrar** botón. Presione este botón tooget más información contextual sobre una sección.
 > 
 > 
 
 ## <a name="four-types-of-push-notifications"></a>Cuatro tipos de notificaciones de inserción
-1. Anuncios: le permiten enviar mensajes de publicidad a los usuarios que los redireccionan a otra ubicación dentro de la aplicación o enviarlos a una página web o tienda fuera de la aplicación. 
-2. Sondeos: le permiten reunir información de los usuarios finales formulándoles preguntas.
-3. Inserciones de datos: le permiten enviar un archivo de datos binario o base64. La información contenida en una inserción de datos se envía a la aplicación para modificar la actual experiencia del usuario en la aplicación. La aplicación debe ser capaz de procesar los datos de una inserción de datos.
+1. Anuncios - permitir toosend publicidad mensajes toousers que redirigirá tooanother ubicación dentro de su aplicación o toosend su página Web tooa o almacenar fuera de la aplicación. 
+2. Sondeos - permitir toogather información a los usuarios finales cuando les pregunta preguntas.
+3. Inserciones de datos - permitir toosend un archivo de datos binarios o de base64. información de Hello contenida en una inserción de datos es enviado tooyour aplicación toomodify experiencia actual de los usuarios de la aplicación. La aplicación necesita datos de hello toobe tooprocess pueda en una inserción de datos.
 
 ## <a name="campaign-details"></a>Detalles de la campaña
-Puede editar, clonar, eliminar o activar las campañas que no se han activado todavía pasando el mouse sobre sus nombres o puede hacer clic para abrirlas. Se pueden clonar las campañas que ya se han activado pasando el mouse sobre sus nombres o puede hacer clic para abrirlas. Sin embargo, no puede cambiar una campaña una vez activada.
+Puede editar, clonar, eliminar o activar las campañas que todavía no ha activado todavía desplazando el puntero sobre sus nombres o puede hacer clic en tooopen ellos. Puede clonar las campañas que ya se han activado desplazando el puntero sobre sus nombres o puede hacer clic en tooopen ellos. Sin embargo, no puede cambiar una campaña una vez activada.
 
 ![Reach1][18]
 
 ## <a name="reach-feedback"></a>Comentarios sobre la cobertura
-Haga clic en **Estadísticas** para ver los detalles de una campaña de cobertura. La vista **sencilla** proporciona una representación visual en forma de un gráfico de barras de columnas de lo que ha ocurrido después de que se activara una campaña. La vista **avanzada** proporciona detalles más específicos sorbe la campaña de inserción. Estos detalles no estarán disponibles si va a enviar una campaña de prueba, es decir, se envía una inserción a un dispositivo de prueba. A continuación le mostramos cómo interpretar estos detalles:
+Haga clic en **estadísticas** detalles de hello toosee de una campaña de cobertura. Hola **Simple** vista proporciona una representación visual en forma de Hola de un gráfico de barras de columna sobre lo que sucedieron después de que se activó una campaña. Hola **avanzadas** vista proporciona detalles más granulares acerca de la campaña de inserción de Hola. Estos detalles no estará disponibles si va a enviar una campaña de prueba, es decir, un dispositivo de prueba de tooa enviado de inserción. A continuación le mostramos cómo interpretar estos detalles:
 
-1. **Insertados** : especifica el número de mensajes insertados en los dispositivos. Este número dependerá de la audiencia de destino que especificara al crear la campaña de inserción. Si no especifica ninguna audiencia de destino, se enviará esta inserción a todos los dispositivos registrados. Al igual que sucede con todos los demás servicios de inserción, no inserte las notificaciones directamente en el dispositivo, insértelas en los servicios de notificaciones de inserción específicos de la plataforma respectiva (PNS: APNs/GCM/WNS) para que puedan entregar las notificaciones a los dispositivos. 
-2. **Entregados** : especifica el número de mensajes que el PNS entrega correctamente al dispositivo y que el SDK de Mobile Engagement confirma como recibidos. 
+1. **Insertar** -especifica Hola número de mensajes insertados toohello dispositivos. Este número dependerá de la audiencia de destino de hello que especifica al crear una campaña de inserción de Hola. Si no especifica ninguna audiencia de destino, se enviará este inserción out tooall Hola registrado dispositivos. Al igual que todos los demás servicios de inserción, se no hello las notificaciones de inserción directamente toohello dispositivos pero en su lugar insertarlas toohello respectivos plataforma servicios específicos de notificaciones de inserción (PNS - APN/GCM/WNS) para que pueden entregar notificaciones de hello toohello dispositivos. 
+2. **Entregar** -especifica Hola número de mensajes entregados por dispositivo de toohello PNS de Hola y confirmado correctamente como recibido por el SDK de Mobile Engagement. 
    
    *Razones de que el número de entregados sea inferior al número de insertados:*
    
-   1. Si el usuario ha desinstalado la aplicación del dispositivo pero el PNS no lo sabe cuando le enviamos la inserción, el mensaje se eliminará.
-   2. Si el dispositivo tiene la aplicación, pero ha estado desconectado durante largos períodos de tiempo, el PNS no podrá entregar el mensaje al dispositivo. 
-   3. Si el mensaje se entrega al dispositivo, pero el SDK de Mobile Engagement en la aplicación no reconoce su contenido, entonces se elimina ese mensaje. Esto podría ocurrir si la personalización de la notificación en la aplicación genera una excepción que capturamos en el SDK y eliminamos el mensaje. Esto también puede ocurrir si la aplicación en el dispositivo utiliza una versión del SDK de Mobile Engagement que no es capaz de entender la versión más reciente del mensaje de inserción enviado desde la plataforma. Pero esto solo sucede, si la aplicación se ha actualizado después de que la notificación se distribuyera desde la plataforma de servicio. La pestaña **Opciones avanzadas** indicará cuántos mensajes se han eliminado. 
-   4. En dispositivos iOS, los mensajes a veces no se entregan si el dispositivo tiene poca batería o si la aplicación consume demasiada energía al procesar las notificaciones remotas. Se trata de una limitación de los dispositivos iOS.   
-3. **Mostrados** : especifica el número de mensajes que se muestran correctamente al usuario de la aplicación en el dispositivo en forma de una notificación push del sistema o de fuera de aplicación en el centro de notificaciones, o en forma de una notificación en aplicación dentro de la aplicación móvil.  La pestaña **Avanzadas** le indicará cuántas eran notificaciones del sistema y cuántas notificaciones en aplicación. 
+   1. Si usuario de hello ha desinstalado la aplicación hello de dispositivo de hello pero no sabe hello PNS sobre él en tiempo de hello que enviamos Hola inserción toohello PNS se eliminarán los mensajes de bienvenida.
+   2. Si dispositivo hello tiene aplicación hello pero propios dispositivos Hola estaban sin conexión durante largos períodos de tiempo, a continuación, hello PNS producirá dispositivo toohello de toodeliver Hola mensajes. 
+   3. Si mensaje Hola se entrega toohello dispositivo pero Hola SDK de Mobile Engagement en la aplicación hello no reconoce el contenido de hello del mensaje de bienvenida, coloca ese mensaje. Esto podría suceder si personalización Hola de notificación de hello en la aplicación hello genera una excepción que se captura en mensaje de saludo SDK y drop Hola. Esto también puede ocurrir si la aplicación hello en dispositivo Hola está usando una versión de SDK de Mobile Engagement que no es capaz de toounderstand Hola versión posterior de mensaje de inserción de Hola Hola enviados desde la plataforma de Hola pero se trata solo cuando la aplicación hello se actualizó después de la notificación de Hola se distribuyó de plataforma del servicio Hola. Hola **avanzadas** ficha indicará cuántos mensajes se han quitado. 
+   4. En dispositivos iOS, mensajes a veces no se entrega si cualquiera de estos dispositivos Hola de batería baja o si aplicación hello consume gran cantidad de energía al procesar notificaciones remotas. Se trata de una limitación de los dispositivos de iOS de Hola.   
+3. **Muestra** -especifica Hola número de mensajes que se correctamente muestran toohello usuario de aplicación en dispositivos de hello en forma de Hola de una notificación de inserción/out-de-app del sistema en el centro de notificaciones de Hola o una notificación en la aplicación dentro de hello móviles aplicación.  Hola **avanzadas** ficha le indicará cuántos estaban notificaciones del sistema y cuántas notificaciones en la aplicación. 
    
-   *Razones para que el recuento mostrado sea menor que el recuento entregado (esperando a que se muestre)*
+   *Razones para mostradas recuento es menor que el recuento de entregado (toobe de espera muestra)*
    
-   1. Si la campaña de notificación tenía una fecha de finalización, es posible que la notificación se entregara, pero en el momento de abrirla y mostrarla al usuario de la aplicación ya había expirado, por lo que nunca se mostró.   
-   2. Si la notificación es una notificación en aplicación, se muestra solo cuando el usuario abre la aplicación. Si el usuario no ha abierto la aplicación, el SDK informará de que la notificación se entregó pero no se mostrará hasta que la aplicación se abra. 
-   3. Si la notificación es una notificación en aplicación y está configurada para mostrarse en una pantalla o actividad específica, también se notificará como entregada, pero no se entregará hasta que el usuario abra la aplicación en una pantalla específica. 
-4. **Interacciones de usuario** : especifica el número de mensajes con los que ha interactuado el usuario de la aplicación e incluye los mensajes que están accionados o cerrados. 
+   1. Si campaña de notificación de hello tenía una fecha de finalización en el es posible que se entregó notificación Hola pero al tiempo de hello suministrada tooopen y mostrar toohello usuario de aplicación, ya había expirado para que nunca se visualizó.   
+   2. Si la notificación de hello es una notificación en la aplicación, a continuación, notificación de hello solo se muestra al usuario de aplicación Hola abre la aplicación hello. En casos donde usuario de aplicación hello no ha abierto la aplicación hello, Hola SDK notificará que notificación Hola se entrega pero aún no aparece hasta que se abra la aplicación hello. 
+   3. Si la notificación de hello es una notificación en la aplicación y configura toobe que se muestra en una pantalla/actividad específica, a continuación, también se notificará notificación Hola tal como se entrega pero todavía no se han entregado hasta que el usuario de hello abre la aplicación hello en una pantalla específica. 
+4. **Las interacciones del usuario** -especifica Hola número de mensajes que usuario de la aplicación hello ha interactuado con e incluirá los mensajes de Hola que son accionado o cerrado. 
    
-   * *El usuario de la aplicación puede accionar una notificación de las siguientes formas:*
+   * *usuario de aplicación Hola puede accionar una notificación en la vista de hello siguientes maneras:*
      
-     1. Si la notificación es una notificación del sistema o de fuera de aplicación o una notificación en aplicación enviada solo como notificación, el usuario de la aplicación hace clic en la notificación.
-     2. Si la notificación es una notificación en aplicación con una vista de texto o web o sondeos, el usuario de la aplicación hace clic entonces en el botón de acción en la notificación.
-     3. Si la notificación es una notificación en aplicación con una vista web, el usuario de la aplicación hace clic en una dirección URL en la vista web [solo para Android]
-   * *El usuario de la aplicación puede cerrar una notificación de las siguientes formas:*
+     1. Si hello notificación es una notificación de sistema/out-de-app o envía una notificación de aplicación como de solo notificación, a continuación, haga clic en usuario de aplicación hello en la notificación de Hola.
+     2. Si la notificación de hello es una notificación en la aplicación con un texto o una vista web o sondeos Hola, a continuación, el usuario de la aplicación hace clic en hello botón de acción de notificación de Hola.
+     3. Si la notificación de hello es una notificación en la aplicación, a continuación, con una vista web Hola aplicación clics del usuario en una dirección URL en hello web solo en la vista [Android]
+   * *usuario de aplicación Hola puede cerrar una notificación en la vista de hello siguientes maneras:*
      
-     1. Haciendo clic directamente en el botón Cerrar en la notificación. 
-     2. Con el gesto de deslizarla hacia afuera o eliminándola. 
-     3. Las notificaciones en aplicación con contenido de texto o web y sondeos normalmente se muestran al usuario de la aplicación en un proceso de dos pasos. Primero ven una notificación y, cuando hacen clic en ella, ven el contenido de texto, web o sondeo subsiguiente. El usuario de la aplicación puede cerrar una notificación en cualquiera de estos pasos y los detalles de la vista avanzada capturan esta acción. 
-5. **Accionados** : especifica el número de mensajes que el usuario de la aplicación accionó explícitamente. Es el número más interesante ya que le indica cuántos usuarios de la aplicación estuvieron interesados en el mensaje que se expulsó en la notificación. 
+     1. Haga clic en botón de cierre de hello en la notificación de hello directamente. 
+     2. Eliminar notificación Hola o Deslizar rápidamente inmediatamente. 
+     3. Las notificaciones de aplicación con sondeos y contenido web y de texto son normalmente muestran toohello usuario de aplicación en un proceso de dos pasos. Verán una notificación en primer lugar y cuando haga clic en él, podrán ver contenido de texto/web/sondeo subsiguiente de Hola. usuario de aplicación Hola puede salir de una notificación en cualquiera de estos pasos y captura los detalles de hello en vista avanzada de hello esto. 
+5. **Accionado** -especifica Hola número de mensajes que hayan sido accionados explícitamente por el usuario de aplicación Hola. Éste es el número de más interesante de hello como esto indica cuántos usuarios de aplicación se está interesados mensaje Hola que sobresale en la notificación de Hola. 
 
 > [!NOTE]
-> En las plataformas iOS y Windows, si el usuario tiene abierta la aplicación y la campaña era de tipo "Cualquier hora", es posible que tanto las notificaciones en aplicación como fuera de aplicación se muestren al mismo tiempo. Como consecuencia, el número de mensajes mostrados podría ser superior al de los entregados. Si el usuario interactúa con la notificación o la resuelve, incluso el número de interacciones de usuario o de mensajes resueltos podría ser superior al de los entregados. 
+> En iOS y plataformas de Windows, si usuario hello tiene aplicación Hola abierta y campaña Hola era una campaña "En cualquier momento" es posible que ambos fuera de la aplicación y en la aplicación de notificaciones se muestran en hello mismo tiempo. Esto puede provocar un recuento de mostradas superior Hola entregado. Si Hola usuario interactúa o notificación de Hola de acciones, hello, a continuación, incluso el recuento de las interacciones de usuario/Actioned podría ser mayor que entregado. 
 > 
 > 
 

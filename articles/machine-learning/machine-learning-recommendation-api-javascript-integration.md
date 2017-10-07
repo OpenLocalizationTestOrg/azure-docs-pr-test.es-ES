@@ -16,81 +16,81 @@ ms.date: 03/31/2017
 ms.author: luisca
 ROBOTS: NOINDEX
 redirect_url: machine-learning-datamarket-deprecation
-redirect_document_id: TRUE
-ms.openlocfilehash: 8f27962d097bffc2a03de80244ae41d6573a4bf3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 4c5f0eee4aa04ce823321d52985374c52850f0d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-machine-learning-recommendations---javascript-integration"></a>Recomendaciones de Aprendizaje automático de Azure: Integración con JavaScript
 > [!NOTE]
-> Debe empezar a utilizar el servicio Cognitive Services de la API de Recomendaciones en lugar de esta versión. El servicio Cognitive Services de Recomendaciones va a sustituir a este servicio y todas las características nuevas se desarrollarán en esta nueva versión. Tiene nuevas funcionalidades como compatibilidad con procesamientos por lotes, un explorador de API más eficaz, una interfaz de API más limpia, una experiencia de facturación y suscripción más coherente, etc.
-> Obtenga más información sobre cómo [migrar al nuevo servicio Cognitive Services](http://aka.ms/recomigrate)
+> Debería empezar a usar Hola recomendaciones API cognitivos servicio en lugar de esta versión. Hola recomendaciones cognitivos servicio va a sustituir este servicio y todas las características nuevas de Hola se van a desarrollar no existe. Tiene nuevas funcionalidades como compatibilidad con procesamientos por lotes, un explorador de API más eficaz, una interfaz de API más limpia, una experiencia de facturación y suscripción más coherente, etc.
+> Obtenga más información sobre [migrar toohello nuevo servicio cognitivos](http://aka.ms/recomigrate)
 > 
 > 
 
-Este documento describe cómo integrar su sitio mediante JavaScript. El código JavaScript le permite enviar eventos de adquisición de datos y consumir recomendaciones una vez que se crea un modelo de recomendación. Todas las operaciones que se realizan a través de JS se pueden realizar también desde el servidor.
+Este documento describir cómo toointegrate su sitio mediante JavaScript. Hola JavaScript permite toosend eventos de adquisición de datos y las recomendaciones de tooconsume una vez que se genera un modelo de recomendación. Todas las operaciones que se realizan a través de JS se pueden realizar también desde el servidor.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="1-general-overview"></a>1. Información general
 La integración de su sitio con recomendaciones de Aprendizaje automático de Azure consta de 2 fases:
 
-1. Enviar eventos a las recomendaciones de Aprendizaje automático de Azure. Esto le permitirá crear un modelo de recomendación.
-2. Use las recomendaciones. Una vez generado el modelo, puede utilizar las recomendaciones. (Este documento no explica cómo crear un modelo; lea la Guía de inicio rápido para obtener más información acerca de cómo).
+1. Enviar eventos a las recomendaciones de Aprendizaje automático de Azure. Esto le permitirá toobuild un modelo de recomendación.
+2. Utilizar las recomendaciones de Hola. Después de que se crea el modelo de hello pueden consumir las recomendaciones de Hola. (Este documento no explica cómo toobuild un modelo, leer Hola tooget de guía de inicio rápido para obtener más información acerca de cómo).
 
 <ins>Fase I</ins>
 
-En la primera fase, insertará en sus páginas html una pequeña biblioteca de JavaScript que permita a la página enviar eventos a medida que se producen en la página html en servidores de recomendaciones de Aprendizaje automático de Azure (a través del mercado de datos):
+Hola primera fase que se inserta en las páginas html de una pequeña biblioteca de JavaScript que permite Hola eventos toosend de página cuando se producen en la página html hello en servidores de recomendaciones de aprendizaje automático de Azure (a través del mercado de datos):
 
 ![Dibujo1][1]
 
 <ins>Fase II</ins>
 
-En la segunda fase, si desea mostrar las recomendaciones en la página, seleccione una de las siguientes opciones:
+Hola segunda fase cuando desee tooshow recomendaciones de hello en página Hola selecciona una de hello siguientes opciones:
 
-1. Su servidor (en la fase de representación de la página) llama al servidor de recomendaciones de Aprendizaje automático de Azure (a través de mercado de datos) para obtener recomendaciones. Los resultados incluyen una lista de id. de elementos. El servidor necesita enriquecer los resultados con los elementos de metadatos (por ejemplo, imágenes, descripción) y enviar la página creada al explorador.
+1. el servidor (en la fase de hello de la representación de página) llama a las recomendaciones de tooget de servidor de recomendaciones de aprendizaje automático de Azure (a través de mercado de datos). resultados de Hello incluyen una lista de Id. de elementos. El servidor necesita resultados de hello tooenrich con hello los elementos de metadatos (por ejemplo, imágenes, descripción) y enviar Hola creado página toohello explorador.
 
 ![Dibujo2][2]
 
-2. La otra opción es utilizar el archivo de JavaScript pequeño de la fase uno para obtener una lista de elementos recomendados. Los datos recibidos son más simples que los que aparecen en la primera opción.
+2. hello otra opción es archivo JavaScript toouse Hola pequeño de fase uno tooget una simple lista de elementos recomendados. datos de Hello recibidos aquí están más simple de hello en la primera opción de Hola.
 
 ![Dibujo3][3]
 
 ## <a name="2-prerequisites"></a>2. Requisitos previos
-1. Cree un modelo nuevo mediante las API. Vea la Guía de inicio rápido para saber cómo hacerlo.
-2. Codifique &lt;dataMarketUser&gt;:&lt;dataMarketKey&gt; mediante base64. (Esto se utilizará para la autenticación básica para permitir que el código JS llame a las API).
+1. Crear un modelo nuevo mediante las API de Hola. Consulte la Guía de inicio rápido de hello acerca de cómo toodo lo.
+2. Codifique &lt;dataMarketUser&gt;:&lt;dataMarketKey&gt; mediante base64. (Esto se usará para hello autenticación básica tooenable Hola JS código toocall Hola API).
 
 ## <a name="3-send-data-acquisition-events-using-javascript"></a>3. Envíe eventos de adquisición de datos con JavaScript.
-Los siguientes pasos permiten enviar eventos:
+Hola pasos facilitar enviar eventos:
 
-1. Incluya la biblioteca de JQuery en su código. Puede descargarlo desde nuget en la siguiente dirección URL.
+1. Incluya la biblioteca de JQuery en su código. Puede descargarlo de nuget en hello después de la dirección URL.
    
      http://www.nuget.org/packages/jQuery/1.8.2
-2. Incluya la biblioteca de recomendaciones de Java Script que encontrará en la siguiente dirección URL: http://aka.ms/RecoJSLib1.
-3. Inicialice la biblioteca de recomendaciones de Aprendizaje automático de Azure con los parámetros adecuados.
+2. Incluir Hola biblioteca de secuencia de comandos de Java de recomendaciones de hello después de la dirección URL: http://aka.ms/RecoJSLib1
+3. Inicializar la biblioteca de recomendaciones de aprendizaje automático de Azure con los parámetros adecuados de Hola.
    
-     <script> AzureMLRecommendationsStart("<base64encoding of username:key>", "<model_id>"); </script>
-4. Envíe el evento adecuado. Consulte la sección detallada a continuación respecto a todos los tipos de eventos (ejemplo de evento de clic)  <script> if (typeof AzureMLRecommendationsEvent=="undefined") {         
+     <script>AzureMLRecommendationsStart ("<base64encoding of username:key>", "< model_id >"); </script> 
+4. Eventos de envío Hola apropiado. Consulte la sección detallada a continuación respecto a todos los tipos de eventos (ejemplo de evento de clic)  <script> if (typeof AzureMLRecommendationsEvent=="undefined") {         
                      AzureMLRecommendationsEvent = []; } AzureMLRecommendationsEvent.push({ event: "click", item: "18321116" }); </script>
 
 ### <a name="31----limitations-and-browser-support"></a>3.1.    Limitaciones y compatibilidad con exploradores
 Esta es una implementación de referencia y se proporciona tal cual. Debe admitir todos los exploradores principales.
 
 ### <a name="32----type-of-events"></a>3.2.    Tipos de eventos
-Hay cinco tipos de eventos que admite la biblioteca: hacer clic, clic de recomendación, agregar al carro de la compra , quitar del carro de la compra y comprar. Hay un evento adicional que se utiliza para establecer el contexto de usuario denominado Inicio de sesión.
+Hay 5 tipos de eventos que admite la biblioteca de Hola: haga clic en, haga clic en la recomendación, agregar tooShop carro, quitar de carro de la tienda y compra. Hay un evento adicional que es el contexto de usuario de Hola tooset utilizados llamado inicio de sesión.
 
 #### <a name="321-click-event"></a>3.2.1. Evento de clic
-Este evento se debe utilizar cada vez que un usuario hace clic en un elemento. Normalmente, cuando el usuario hace clic en un elemento, se abre una nueva página con los detalles de dicho elemento; en esta página, debería activarse este evento.
+Este evento se debe utilizar cada vez que un usuario hace clic en un elemento. Normalmente cuando el usuario hace clic en un elemento se abre una nueva página en los detalles de artículo de hello; en esta página debe activarse este evento.
 
 Parámetros:
 
 * event (cadena, obligatorio) - “click”
-* item (cadena, obligatorio) - Identificador único del elemento
-* itemName (cadena, opcional) - El nombre del elemento
-* itemDescription (cadena, opcional) - Descripción del elemento
-* itemCategory (cadena, opcional) - La categoría del elemento
+* elemento (string, obligatorio): identificador único del elemento de Hola
+* itemName (cadena, opcional) nombre de Hola de elemento de Hola
+* Descripción de producto (string, opcional): descripción de Hola de elemento de Hola
+* itemCategory (cadena, opcional) categoría de Hola de elemento de Hola
   
         <script>
             if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
@@ -106,17 +106,17 @@ O con datos opcionales:
 
 
 #### <a name="322-recommendation-click-event"></a>3.2.2. Ejemplo de Recommendation Click:
-Este evento se debe utilizar cada vez que un usuario hace clic en un elemento que se recibió de las recomendaciones de Aprendizaje automático de Azure como un elemento recomendado. Normalmente, cuando el usuario hace clic en un elemento, se abre una nueva página con los detalles de dicho elemento; en esta página, debería activarse este evento.
+Este evento se debe utilizar cada vez que un usuario hace clic en un elemento que se recibió de las recomendaciones de Aprendizaje automático de Azure como un elemento recomendado. Normalmente cuando el usuario hace clic en un elemento se abre una nueva página en los detalles de artículo de hello; en esta página debe activarse este evento.
 
 Parámetros:
 
 * event (cadena, obligatorio) - “recommendationclick”
-* item (cadena, obligatorio) - Identificador único del elemento
-* itemName (cadena, opcional) - El nombre del elemento
-* itemDescription (cadena, opcional) - Descripción del elemento
-* itemCategory (cadena, opcional) - La categoría del elemento
-* seeds (matriz de cadena, opcional) - Los valores de inicialización que generaron la consulta de recomendación.
-* recoList (matriz de cadena, opcional) - El resultado de la solicitud de recomendación que generó el elemento en el que se hizo clic.
+* elemento (string, obligatorio): identificador único del elemento de Hola
+* itemName (cadena, opcional) nombre de Hola de elemento de Hola
+* Descripción de producto (string, opcional): descripción de Hola de elemento de Hola
+* itemCategory (cadena, opcional) categoría de Hola de elemento de Hola
+* valores de inicialización (matriz de cadenas, opcional) - Hola inicializaciones que genera la consulta de la recomendación de Hola.
+* recoList (matriz de cadenas, opcional) - Hola resultado de solicitud de recomendación de Hola que generó el elemento de Hola que se hizo clic.
   
         <script>
             if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
@@ -132,14 +132,14 @@ O con datos opcionales:
 
 
 #### <a name="323-add-shopping-cart-event"></a>3.2.3. Agregar eventos de carro de la compra
-Este evento se debe usar cuando el usuario agrega un elemento al carro de la compra.
+Este evento debe usarse cuando el usuario de hello agrega un toohello elemento carro de la compra.
 Parámetros:
 
 * event (cadena, obligatorio) - "addshopcart"
-* item (cadena, obligatorio) - Identificador único del elemento
-* itemName (cadena, opcional) - El nombre del elemento
-* itemDescription (cadena, opcional) - Descripción del elemento
-* itemCategory (cadena, opcional) - La categoría del elemento
+* elemento (string, obligatorio): identificador único del elemento de Hola
+* itemName (cadena, opcional) nombre de Hola de elemento de Hola
+* Descripción de producto (string, opcional): descripción de Hola de elemento de Hola
+* itemCategory (cadena, opcional) categoría de Hola de elemento de Hola
   
         <script>
             if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
@@ -147,15 +147,15 @@ Parámetros:
         </script>
 
 #### <a name="324-remove-shopping-cart-event"></a>3.2.4. Quitar eventos de carro de la compra
-Este evento se debe usar cuando el usuario quita un elemento del carro de la compra.
+Este evento debe usarse cuando el usuario de hello quita un carro de la compra toohello elemento.
 
 Parámetros:
 
 * event (cadena, obligatorio) - "removeshopcart"
-* item (cadena, obligatorio) - Identificador único del elemento
-* itemName (cadena, opcional) - El nombre del elemento
-* itemDescription (cadena, opcional) - Descripción del elemento
-* itemCategory (cadena, opcional) - La categoría del elemento
+* elemento (string, obligatorio): identificador único del elemento de Hola
+* itemName (cadena, opcional) nombre de Hola de elemento de Hola
+* Descripción de producto (string, opcional): descripción de Hola de elemento de Hola
+* itemCategory (cadena, opcional) categoría de Hola de elemento de Hola
   
         <script>
             if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
@@ -163,18 +163,18 @@ Parámetros:
         </script>
 
 #### <a name="325-purchase-event"></a>3.2.5. Evento de compra
-Este evento se debe usar cuando el usuario ha comprado su carro de la compra.
+Este evento debe usarse cuando el usuario de hello adquirió su carro de la compra.
 
 Parámetros:
 
 * event (cadena) - "purchase"
 * items ( Purchased[] ) - Matriz con una entrada por cada elemento comprado.<br><br>
   Formato de elemento comprado:
-  * item (cadena) - Identificador único del elemento
+  * elemento (cadena): identificador único del elemento de Hola.
   * count (entero o cadena) - Número de elementos que se compraron.
-  * price (flotante o cadena) - Campo opcional; precio del elemento.
+  * precio (float o cadena) - field opcional: Hola precio del elemento de Hola.
 
-El ejemplo siguiente muestra la compra de 3 elementos (33, 34, 35), dos con todos los campos (elemento, cantidad, precio) y uno (elemento 34) sin precio.
+ejemplo de Hola siguiente muestra la compra de 3 elementos (33, 34, 35), dos con todos los campos rellena (elemento, recuento, precio) y otra (elemento 34) sin un precio.
 
         <script>
             if ( typeof AzureMLRecommendationsEvent == "undefined"){ AzureMLRecommendationsEvent = []; }
@@ -182,14 +182,14 @@ El ejemplo siguiente muestra la compra de 3 elementos (33, 34, 35), dos con todo
         </script>
 
 #### <a name="326-user-login-event"></a>3.2.6. Evento de inicio de sesión de usuario
-La biblioteca de eventos de recomendaciones de Aprendizaje automático de Azure crea y utiliza una cookie para identificar los eventos que provienen del mismo explorador. Para mejorar los resultados del modelo, las recomendaciones de Aprendizaje automático de Azure permiten establecer una identificación única de usuario que omitirá el uso de cookies.
+Azure evento de recomendaciones de aprendizaje automático biblioteca crea y utiliza una cookie en los eventos de tooidentify de orden que proviene de Hola mismo explorador. Modelo de orden tooimprove Hola recomendaciones de aprendizaje automático de Azure de resultados permite tooset una identificación única de usuario que reemplazará el uso de cookies de Hola.
 
-Este evento se debe utilizar después del inicio de sesión de usuario en su sitio.
+Este evento se debe utilizar después el sitio de tooyour de inicio de sesión de usuario de Hola.
 
 Parámetros:
 
 * event (cadena) - "userlogin"
-* user (cadena) - Identificación único del usuario.
+* usuario (cadena) de identificación único del usuario de Hola.
   
         <script>
             if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
@@ -197,25 +197,25 @@ Parámetros:
         </script>
 
 ## <a name="4-consume-recommendations-via-javascript"></a>4. Consumir recomendaciones a través de JavaScript
-El código que consume la recomendación se activa por algunos eventos de JavaScript en la página web del cliente. La respuesta de recomendación incluye los identificadores de elementos recomendados, sus nombres y sus clasificaciones. Es preferible utilizar esta opción solo para una visualización de la lista de los elementos recomendados: debe realizarse un control más complejo (por ejemplo, para agregar los metadatos del elemento) en la integración del lado servidor.
+página Web del cliente de hello desencadenan código de Hello que consume la recomendación de Hola por algunos eventos de JavaScript. respuesta de la recomendación de Hello incluye Hola recomendadas identificadores de elementos, sus nombres y sus clasificaciones. Es mejor toouse esta opción solo para una visualización de la lista de hello recomendada elementos - más complejos de control (por ejemplo, para agregar metadatos de elemento de Hola) se debe realizar en la integración del lado servidor de Hola.
 
 ### <a name="41-consume-recommendations"></a>4.1 Recomendaciones de uso
-Para consumir recomendaciones, deberá incluir las bibliotecas JavaScript requeridas en la página y llamar a AzureMLRecommendationsStart. Consulte la sección 2.
+recomendaciones de tooconsume que necesita tooinclude Hola requiere bibliotecas de JavaScript en la página y toocall AzureMLRecommendationsStart. Consulte la sección 2.
 
-Para consumir recomendaciones para uno o varios elementos, debe llamar a un método denominado: AzureMLRecommendationsGetI2IRecommendation.
+recomendaciones de tooconsume para uno o más elementos necesita toocall llama a un método: AzureMLRecommendationsGetI2IRecommendation.
 
 Parámetros:
 
-* items (matriz de cadenas) - Uno o varios elementos para los que obtener recomendaciones. Si consume una compilación Fbt, aquí solo puede establecer un elemento.
+* Una o más elementos tooget recomendaciones para los elementos (matriz de cadenas). Si consume una compilación Fbt, aquí solo puede establecer un elemento.
 * numberOfResults (entero) - Número de resultados requeridos.
-* includeMetadata (booleano, opcional) - Si se establece en ‘true’ indica que el campo de metadatos se debe rellenar en el resultado.
-* Función de procesamiento - Una función que controlará las recomendaciones devueltas. Los datos se devuelven como una matriz de:
+* includeMetadata (un valor booleano, opcional) - si establece too'true' indica que se debe rellenar ese campo de metadatos de hello en el resultado de hello.
+* Devuelve la función: una función que controlará las recomendaciones de Hola de procesamiento. Hola datos se devuelven como una matriz de:
   * item - Identificador único del elemento
   * name - Nombre del elemento (si existe en el catálogo)
   * rating - Clasificación de recomendación
-  * metadata - Una cadena que representa los metadatos del elemento
+  * metadatos: una cadena que representa los metadatos de Hola de elemento de Hola
 
-Ejemplo: El siguiente código solicita 8 recomendaciones para el elemento "64f6eb0d-947a-4c18-a16c-888da9e228ba" (y al no especificar includeMetadata, se indica implícitamente que no se requieren metadatos), y luego concatena los resultados en un búfer.
+Ejemplo: Hola después el código solicita 8 recomendaciones para el elemento "64f6eb0d-947a-4c18-a16c-888da9e228ba" (y especificando no includeMetadata - implícitamente dice que no hay metadatos están necesario),, a continuación, concatenar los resultados de hello en un búfer.
 
         <script>
              var reco = AzureMLRecommendationsGetI2IRecommendation(["64f6eb0d-947a-4c18-a16c-888da9e228ba"], 8, false, function (reco) {

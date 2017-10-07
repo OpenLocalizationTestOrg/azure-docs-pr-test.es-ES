@@ -1,6 +1,6 @@
 ---
-title: Enlaces de Cosmos DB en Azure Functions | Microsoft Docs
-description: "Descubra cómo utilizar enlaces de Cosmos DB en Azure Functions."
+title: enlaces de funciones Cosmos DB aaaAzure | Documentos de Microsoft
+description: "Comprender cómo los enlaces de base de datos de Azure Cosmos toouse de funciones de Azure."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,48 +16,48 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/18/2016
 ms.author: glenga
-ms.openlocfilehash: de95b0591eb95e76dbb7ba2382e9e14e1f66cda1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 76b89e8296db1dd28dff9528903b1f6a28f55232
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-cosmos-db-bindings"></a>Enlaces de Cosmos DB en Azure Functions
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-En este artículo se explica cómo configurar y programar enlaces de Azure Cosmos DB en Azure Functions. Azure Functions admite enlaces de entrada y salida para Cosmos DB.
+Este artículo se explica cómo enlaces de base de datos de Azure Cosmos tooconfigure y código en las funciones de Azure. Azure Functions admite enlaces de entrada y salida para Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Para más información sobre Cosmos DB, consulte [Introducción a Cosmos DB](../documentdb/documentdb-introduction.md) y [Compilación de una aplicación de consola de Cosmos DB](../documentdb/documentdb-get-started.md).
+Para obtener más información sobre la base de datos de Cosmos, consulte [Introducción tooCosmos DB](../documentdb/documentdb-introduction.md) y [compilar una aplicación de consola de base de datos de Cosmos](../documentdb/documentdb-get-started.md).
 
 <a id="docdbinput"></a>
 
 ## <a name="documentdb-api-input-binding"></a>Enlace de entrada de API de DocumentDB
-El enlace de entrada de API de DocumentDB recupera un documento de Cosmos DB y lo pasa al parámetro de entrada con nombre de la función. Se puede determinar el identificador de documento según el desencadenador que invoca la función. 
+Recupera un documento de la base de datos de Cosmos Hola enlace de entrada de API de documentos y la pasa toohello con el nombre de parámetro de entrada de función hello. se puede determinar el identificador de documento de Hello basado en desencadenador de Hola que invoca la función hello. 
 
-El enlace de entrada de API de DocumentDB tiene las siguientes propiedades en *function.json*:
+Hola enlace de entrada de API de documentos tiene Hola propiedades en siguientes *function.json*:
 
-- `name`: nombre del identificador que se usa en el código de la función para el documento
-- `type`: se debe establecer en "documentdb"
-- `databaseName`: base de datos que contiene el documento
-- `collectionName`: colección que contiene el documento
-- `id` : el identificador del documento que se debe recuperar. Esta propiedad admite parámetros de enlaces; vea [Bind to custom input properties in a binding expression](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) (Enlace a propiedades de entrada personalizadas en una expresión de enlace) en el artículo [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md) (Conceptos básicos sobre los enlaces y desencadenadores de Azure Functions).
-- `sqlQuery`: consulta SQL de Cosmos DB que se usa para recuperar varios documentos. La consulta admite enlaces en tiempo de ejecución. Por ejemplo: `SELECT * FROM c where c.departmentId = {departmentId}`
-- `connection`: nombre de la configuración de aplicación que contiene la cadena de conexión de Cosmos DB
-- `direction`: se debe establecer en `"in"`.
+- `name`: Nombre identificador utilizado en el código de función para el documento de Hola
+- `type`: se debe establecer demasiado "documentos"
+- `databaseName`: base de datos de Hola que contiene el documento de Hola
+- `collectionName`: colección de Hola que contiene el documento de Hola
+- `id`: Hola Id. de hello documento tooretrieve. Esta propiedad es compatible con parámetros de enlaces; vea [enlazar las propiedades de entrada toocustom en una expresión de enlace](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) en el artículo hello [desencadenadores de las funciones de Azure y conceptos de enlaces](functions-triggers-bindings.md).
+- `sqlQuery`: consulta SQL de Cosmos DB que se usa para recuperar varios documentos. consulta de Hello admite enlaces en tiempo de ejecución. Por ejemplo: `SELECT * FROM c where c.departmentId = {departmentId}`
+- `connection`: nombre de Hola de configuración de la aplicación hello que contiene la cadena de conexión de base de datos de Cosmos
+- `direction`: se debe establecer demasiado`"in"`.
 
-No se pueden establecer las propiedades `id` y `sqlQuery` al mismo tiempo. Si no están establecidas `id` ni `sqlQuery`, se recupera toda la colección.
+Hola propiedades `id` y `sqlQuery` no pueden especificarse simultáneamente. Si no `id` ni `sqlQuery` está establecida, hello todo se recupera la colección.
 
 ## <a name="using-a-documentdb-api-input-binding"></a>Uso de un enlace de entrada de API de DocumentDB
 
-* En las funciones de C# y F#, cuando se sale de la función correctamente, los cambios realizados en el documento de entrada mediante parámetros de entrada con nombre se guardan automáticamente. 
-* En las funciones de JavaScript, las actualizaciones no se realizan automáticamente al cerrar la función. Por el contrario, use `context.bindings.<documentName>In` y `context.bindings.<documentName>Out` para realizar las actualizaciones. Vea el [ejemplo de JavaScript](#injavascript).
+* En C# y F # funciones, cuando finaliza correctamente, la función de Hola se conserva automáticamente cualquier cambio realizado toohello documento de entrada a través de los parámetros de entrada con nombre. 
+* En las funciones de JavaScript, las actualizaciones no se realizan automáticamente al cerrar la función. En su lugar, use `context.bindings.<documentName>In` y `context.bindings.<documentName>Out` toomake actualizaciones. Vea hello [ejemplo JavaScript](#injavascript).
 
 <a name="inputsample"></a>
 
 ## <a name="input-sample-for-single-document"></a>Ejemplo de entrada de documento único
-Suponga que tiene el siguiente enlace de entrada de API de DocumentDB en la matriz `bindings` de function.json:
+Imagine que tiene Hola siguientes API de documentos de entrada enlace Hola `bindings` matriz de function.json:
 
 ```json
 {
@@ -71,7 +71,7 @@ Suponga que tiene el siguiente enlace de entrada de API de DocumentDB en la matr
 }
 ```
 
-Vea el ejemplo específico del idioma que utiliza este enlace de entrada para actualizar el valor de texto del documento.
+Vea ejemplo de Hola a específicos del idioma que utiliza el valor de texto de enlace de entrada tooupdate Hola de este documento.
 
 * [C#](#incsharp)
 * [F#](#infsharp)
@@ -98,7 +98,7 @@ let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
 ```
 
-Este ejemplo necesita un archivo `project.json` que especifique las dependencias de NuGet `FSharp.Interop.Dynamic` y `Dynamitey`:
+Este ejemplo requiere un `project.json` archivo que especifica hello `FSharp.Interop.Dynamic` y `Dynamitey` las dependencias de NuGet:
 
 ```json
 {
@@ -113,7 +113,7 @@ Este ejemplo necesita un archivo `project.json` que especifique las dependencias
 }
 ```
 
-Para agregar un archivo `project.json`, consulte la [administración de paquetes de F #](functions-reference-fsharp.md#package).
+tooadd una `project.json` de archivos, consulte [administración de paquetes de F #](functions-reference-fsharp.md#package).
 
 <a name="injavascript"></a>
 
@@ -130,9 +130,9 @@ module.exports = function (context) {
 
 ## <a name="input-sample-with-multiple-documents"></a>Ejemplo de entrada con varios documentos
 
-Imagine que quiere recuperar varios documentos especificados por una consulta SQL con un desencadenador de cola para personalizar los parámetros de la consulta. 
+Suponga que desea tooretrieve varios documentos especificados por una consulta SQL, utilizando un parámetros de consulta de cola desencadenador toocustomize Hola. 
 
-En este ejemplo, el desencadenador de cola proporciona un parámetro `departmentId`. Un mensaje de cola de `{ "departmentId" : "Finance" }` devolvería todos los registros del departamento de finanzas. Use lo siguiente en *function.json*:
+En este ejemplo, el desencadenador de la cola de hello proporciona un parámetro `departmentId`. Un mensaje de la cola de `{ "departmentId" : "Finance" }` devolverá todos los registros para el departamento de finanzas Hola. Utilizar siguiente hello en *function.json*:
 
 ```
 {
@@ -177,30 +177,30 @@ module.exports = function (context, input) {
 ```
 
 ## <a id="docdboutput"></a>Enlace de salida de API de DocumentDB
-El enlace de salida de API de DocumentDB permite escribir un nuevo documento en una base de datos de Azure Cosmos DB. Tiene las siguientes propiedades en *function.json*:
+Hola API de documentos de salida enlace le permite escribir una base de datos de base de datos de Azure Cosmos de tooan documento nuevo. Tiene Hola propiedades en siguientes *function.json*:
 
-- `name`: identificador que se usa en el código de la función para el nuevo documento
-- `type`: se debe establecer en `"documentdb"`
-- `databaseName` : la base de datos que contiene la colección en la que se creará el nuevo documento.
-- `collectionName` : la colección en la que se creará el nuevo documento.
-- `createIfNotExists`: valor booleano que indica si la colección se creará si no existe. El valor predeterminado es *false*. Esto se debe a que se crean nuevas colecciones con rendimiento reservado, lo cual tiene implicaciones de precios. Para obtener más información, visite la [página de precios](https://azure.microsoft.com/pricing/details/documentdb/).
-- `connection`: nombre de la configuración de aplicación que contiene la cadena de conexión de Cosmos DB
-- `direction`: se debe establecer en `"out"`
+- `name`: Identificador utilizado en el código de función para el nuevo documento de Hola
+- `type`: se debe establecer demasiado`"documentdb"`
+- `databaseName`: base de datos de Hola que contiene la colección de Hola donde se creará el nuevo documento de Hola.
+- `collectionName`: Hola colección donde se creará el nuevo documento de Hola.
+- `createIfNotExists`: Un valor booleano tooindicate si la colección de Hola se creará si no existe. valor predeterminado de Hello es *false*. Hola razón para esto es una novedad colecciones se crean con un rendimiento reservado, lo que tiene implicaciones de precios. Para obtener más detalles, visite hello [página de precios](https://azure.microsoft.com/pricing/details/documentdb/).
+- `connection`: nombre de Hola de configuración de la aplicación hello que contiene la cadena de conexión de base de datos de Cosmos
+- `direction`: se debe establecer demasiado`"out"`
 
 ## <a name="using-a-documentdb-api-output-binding"></a>Uso de un enlace de salida de API de DocumentDB
-En esta sección se muestra cómo utilizar el enlace de salida de API de DocumentDB en el código de función.
+Esta sección muestra cómo toouse su API de documentos de salida en el código de función de enlace.
 
-Cuando se escribe en el parámetro de salida en la función, de forma predeterminada se genera un nuevo documento en la base de datos, con un GUID generado automáticamente como el identificador de documento. Puede especificar el identificador de documento del documento de salida mediante la especificación de la propiedad JSON `id` en el parámetro de salida. 
+Cuando se escribe toohello parámetro de salida en la función, que se genera un nuevo documento en la base de datos de forma predeterminada, con un GUID generado automáticamente como Hola documentar identificador. Puede especificar Hola Id. de documento del documento de salida mediante la especificación de hello `id` parámetro de salida de la propiedad JSON en Hola. 
 
 >[!Note]  
->Cuando especifica el identificador de un documento existente, se sobrescribe con el nuevo documento de salida. 
+>Cuando se especifica el Id. de Hola de un documento existente, se sobrescribe por documento de salida nuevo de Hola. 
 
-Para generar varios documentos, también puede enlazar a `ICollector<T>` o `IAsyncCollector<T>`, donde `T` es uno de los tipos admitidos.
+toooutput varios documentos, también puede enlazar demasiado`ICollector<T>` o `IAsyncCollector<T>` donde `T` es uno de los tipos de hello compatible.
 
 <a name="outputsample"></a>
 
 ## <a name="documentdb-api-output-binding-sample"></a>Ejemplo de enlace de salida de API de DocumentDB
-Suponga que tiene el siguiente enlace de salida de API de DocumentDB en la matriz `bindings` de function.json:
+Imagine que tiene Hola siguientes API de documentos de salida enlace Hola `bindings` matriz de function.json:
 
 ```json
 {
@@ -214,7 +214,7 @@ Suponga que tiene el siguiente enlace de salida de API de DocumentDB en la matri
 }
 ```
 
-Y tienen un enlace de entrada de cola para una cola que recibe JSON en el formato siguiente:
+Y tienen un enlace de entrada de cola a una cola que recibe de JSON en hello siguiendo el formato:
 
 ```json
 {
@@ -224,7 +224,7 @@ Y tienen un enlace de entrada de cola para una cola que recibe JSON en el format
 }
 ```
 
-Y desea crear documentos de Cosmos DB en el formato siguiente para cada registro:
+Y desea que los documentos de base de datos de Cosmos toocreate Hola siguiendo el formato para cada registro:
 
 ```json
 {
@@ -235,7 +235,7 @@ Y desea crear documentos de Cosmos DB en el formato siguiente para cada registro
 }
 ```
 
-Vea el ejemplo específico del idioma que utiliza este enlace de salida para agregar documentos a la base de datos.
+Vea ejemplo de Hola a específicos del idioma que utiliza esta salida enlace tooadd documentos tooyour base de datos.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -292,7 +292,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
       address = employee?address }
 ```
 
-Este ejemplo necesita un archivo `project.json` que especifique las dependencias de NuGet `FSharp.Interop.Dynamic` y `Dynamitey`:
+Este ejemplo requiere un `project.json` archivo que especifica hello `FSharp.Interop.Dynamic` y `Dynamitey` las dependencias de NuGet:
 
 ```json
 {
@@ -307,7 +307,7 @@ Este ejemplo necesita un archivo `project.json` que especifique las dependencias
 }
 ```
 
-Para agregar un archivo `project.json`, consulte la [administración de paquetes de F #](functions-reference-fsharp.md#package).
+tooadd una `project.json` de archivos, consulte [administración de paquetes de F #](functions-reference-fsharp.md#package).
 
 <a name="outjavascript"></a>
 

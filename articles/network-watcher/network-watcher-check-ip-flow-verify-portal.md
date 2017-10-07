@@ -1,6 +1,6 @@
 ---
-title: "Verificación del tráfico con la Comprobación del flujo de IP en Azure Network Watcher (Azure Portal) | Microsoft Docs"
-description: "En este artículo se describe cómo comprobar si se permite o se deniega el tráfico hacia o desde una máquina virtual."
+title: "comprobar de tráfico de aaaVerify con flujo de IP de Monitor de red de Azure: portal de Azure | Documentos de Microsoft"
+description: "Este artículo se describe cómo toocheck si se permite o deniega el tráfico tooor desde una máquina virtual"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,52 +14,52 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 7db29c186cf6e6f3b40a680ab76f1d2763f806ba
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: abf639f36d32f3416dd927e66b635267b746e62f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Compruebe si se permite o se deniega el tráfico hacia o desde una máquina virtual con la Comprobación del flujo de IP, un componente de Azure Network Watcher.
+# <a name="check-if-traffic-is-allowed-or-denied-tooor-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Compruebe si el tráfico se permitirá o denegará tooor de una máquina virtual con IP flujo comprobar un componente de Monitor de red de Azure
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
+> - [Portal de Azure](network-watcher-check-ip-flow-verify-portal.md)
 > - [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 > - [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-check-ip-flow-verify-cli.md)
 > - [API de REST de Azure](network-watcher-check-ip-flow-verify-rest.md)
 
 
-La Comprobación del flujo de IP es una característica de Network Watcher que permite comprobar si se permite el tráfico hacia o desde una máquina virtual. Se puede ejecutar la validación para el tráfico entrante o saliente. Este escenario es útil para averiguar si una máquina virtual puede comunicarse con un recurso externo o con otro recurso. La Comprobación del flujo de IP se puede usar para comprobar si las reglas de grupos de seguridad de red (NSG) se han configurado correctamente y solucionar los problemas de flujos que las reglas de NSG bloquean. Otra razón para usar la Comprobación del flujo de IP es asegurarse de que el NSG está bloqueando correctamente el tráfico que quiere bloquear.
+Flujo IP comprobar es una característica de Monitor de red que le permite tooverify si se permite el tráfico tooor desde una máquina virtual. validación de Hola se puede ejecutar para el tráfico entrante o saliente. Este escenario es útil tooget un estado actual del si una máquina virtual puede comunicarse un recurso externo tooan o algún otro recurso. Flujo IP comprobar puede ser usado tooverify si las reglas del grupo de seguridad de red (NSG) se han configurado correctamente y solucionar los problemas flujos que se bloquean las reglas de NSG. Otra razón para usar IP flujo Compruebe es que quiera bloquear el tráfico de tooensure está bloqueando correctamente hello NSG.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Create a Network Watcher](network-watcher-create.md) (Creación de una instancia de Network Watcher) o que ya tiene una instancia de Network Watcher. En este escenario también se da por hecho que existe un grupo de recursos con una máquina virtual válida.
+Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red o tiene una instancia existente de Monitor de red. escenario de Hello también supone que un grupo de recursos con una máquina virtual válida existe toobe usa.
 
 ## <a name="scenario"></a>Escenario
 
-Este escenario utiliza la Comprobación del flujo de IP para verificar si una máquina virtual puede comunicarse con otra a través del puerto 443. Si se deniega el tráfico, devuelve la regla de seguridad que está denegando ese tráfico. Para más información sobre la Comprobación del flujo de IP, vea la [introducción a la Comprobación del flujo de IP](network-watcher-ip-flow-verify-overview.md).
+Este escenario utiliza tooverify IP flujo comprobar si una máquina virtual puede comunicarse tooanother máquina a través del puerto 443. Si se deniega el tráfico de hello, devuelve la regla de seguridad de Hola que deniega ese tráfico. toolearn más información acerca de IP flujo comprobar, visite [Introducción comprobar flujo de IP](network-watcher-ip-flow-verify-overview.md)
 
 ### <a name="run-ip-flow-verify"></a>Ejecución de la Comprobación del flujo de IP
 
-Vaya a Network Watcher y haga clic en **Comprobación del flujo de IP**. Seleccione la máquina virtual y la interfaz de red de las que quiere verificar el tráfico. Escriba cualquier información adicional de filtrado y haga clic en **Comprobar**.
+Navegue tooyour Monitor de red y haga clic en **comprobar flujo IP**. Seleccionar máquina virtual de Hola y la interfaz de red que desee tooverify tráfico desde. Escriba cualquier información adicional de filtrado y haga clic en **Comprobar**.
 
-Después de hacer clic en **Comprobar**, se comprueba el flujo en función de los criterios establecidos. El resultado es **Acceso permitido** o **Acceso denegado**. Si se deniega el acceso, se proporciona las reglas de grupo de seguridad de red (NSG) y de seguridad que bloquean el tráfico. Si la denegación del tráfico es el comportamiento esperado, la regla es correcta.
+Una vez que pulses **comprobar**, se comprueba el flujo de hello en función de criterios de hello proporcionada. resultado de Hello sea **acceso permitido** o **acceso denegado**. Si se deniega el acceso, Hola grupo de seguridad de red (NSG) y se proporciona la regla de seguridad que bloquee el tráfico. Si la denegación de Hola de tráfico es el comportamiento esperado, regla de hello fue correcta.
 
 > [!NOTE]
-> La Comprobación del flujo de IP requiere que el recurso de máquina virtual esté asignado.
+> Flujo IP comprobar requiere que se asigna el recurso de máquina virtual de Hola.
 
-Como puede ver en la siguiente imagen, se permite el tráfico HTTPS saliente.
+Como puede ver de hello después de la imagen, se permite el tráfico HTTPS saliente Hola.
 
 ![Información general sobre la comprobación del flujo de IP][1]
 
-Como se muestra en la imagen siguiente, el tráfico cambia a entrante y el puerto de entrada cambia a 123. Ahora se deniega el tráfico y aparece el mensaje "Acceso denegado" junto con las reglas del grupo de seguridad de red y de seguridad que deniegan el tráfico.
+Tal como se muestra en hello después de la imagen, se cambia el tráfico hello y tooinbound too123 de cambiar el puerto de entrada. Ahora se deniega el tráfico, mensaje de bienvenida de "Acceso denegado" se proporciona junto con hello seguridad y el grupo de regla de seguridad que deniegan el tráfico de Hola.
 
 ![resultados de flujo de ip][2]
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si se está bloqueando el tráfico y no debería ser así, vea [Administración de grupos de seguridad de red](../virtual-network/virtual-network-manage-nsg-arm-portal.md) para realizar un seguimiento de las reglas del grupo de seguridad de red y de seguridad definidas.
+Si se está bloqueando el tráfico y no debe ser, consulte [administrar grupos de seguridad de red](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack hacia abajo Hola red seguridad y el grupo de reglas de seguridad que se definen.
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

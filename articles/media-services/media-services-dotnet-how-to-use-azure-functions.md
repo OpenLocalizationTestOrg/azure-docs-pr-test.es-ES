@@ -1,6 +1,6 @@
 ---
-title: Desarrollo de Azure Functions con Media Services
-description: "En este tema se muestra cómo empezar a desarrollar Azure Functions con Media Services mediante Azure Portal."
+title: aaaDevelop funciones de Azure con servicios multimedia
+description: "Este tema muestra cómo desarrollar las funciones de Azure con el uso de servicios multimedia de toostart Hola portal de Azure."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,47 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: juliako
-ms.openlocfilehash: 35d539855572fef6c00de614a4e57738a8abd075
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3b2c2fb498fea399c862dfbdb63033d06cabf6d0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="develop-azure-functions-with-media-services"></a>Desarrollo de Azure Functions con Media Services
 
-En este tema se muestra cómo empezar a crear instancias de Azure Functions que usan Media Services. La función de Azure definida en este tema supervisa un contenedor de la cuenta de almacenamiento llamado **input** para los nuevos archivos MP4. Una vez que un archivo se coloca en el contenedor de almacenamiento, el desencadenador de blobs ejecutará la función.
+Este tema muestra cómo tooget se inicia con la creación de funciones de Azure que usan los servicios multimedia. Hola definido en este tema de función de Azure supervisa un contenedor de la cuenta de almacenamiento denominado **entrada** para los nuevos archivos MP4. Una vez que un archivo se coloca en el contenedor de almacenamiento de hello, desencadenador de blob de Hola ejecutará la función hello.
 
-Si desea explorar e implementar instancias de Azure Functions existentes que usan Azure Media Services, visite [Azure Functions de Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Este repositorio incluye ejemplos que usan Azure Media Services para mostrar flujos de trabajo relacionados con la ingesta directa de contenido desde Blob Storage, la codificación y la escritura de contenido de nuevo en Blob Storage. También incluye ejemplos de cómo supervisar las notificaciones de trabajo por medio de webhooks y colas de Azure. También puede desarrollar sus funciones a partir de los ejemplos del repositorio [Azure Functions de Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Para implementar las funciones, presione el botón **Implementar en Azure**.
+Si desea tooexplore e implementa las funciones de Azure existentes que usan los servicios multimedia de Azure, visite [funciones de Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Este repositorio incluye ejemplos que utilizan los servicios multimedia tooshow flujos de trabajo relacionado tooingesting contenido directamente desde el almacenamiento de blobs, codificación y escribir el contenido nuevo tooblob almacenamiento. También incluye ejemplos de cómo toomonitor trabajo notificaciones a través de las colas de Azure y Webhook. También puede desarrollar sus funciones basadas en los ejemplos de hello en hello [funciones de Azure Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) repositorio. funciones de hello toodeploy, presione hello **implementar tooAzure** botón.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Para poder crear la primera función, es necesario tener una cuenta de Azure activa. Si aún no tiene una cuenta de Azure, [tiene a su disposición la creación de una cuenta gratis](https://azure.microsoft.com/free/).
-- Si va a crear instancias de Azure Functions que llevan a cabo acciones en su cuenta de Azure Media Services (AMS) o escuchan eventos enviados por Media Services, debe crear una cuenta de AMS, tal como se describe [aquí](media-services-portal-create-account.md).
-- Información sobre [cómo usar las funciones de Azure](../azure-functions/functions-overview.md). Además, revise lo siguiente:
+- Antes de crear la primera función, deberá toohave una cuenta activa de Azure. Si aún no tiene una cuenta de Azure, [tiene a su disposición la creación de una cuenta gratis](https://azure.microsoft.com/free/).
+- Si va toocreate Azure funciones que realizan acciones en su cuenta de servicios de multimedia de Azure (AMS) o escuchar tooevents enviados por los servicios multimedia, debe crear una cuenta de AMS, tal como se describe [aquí](media-services-portal-create-account.md).
+- Descripción de [cómo toouse Azure funciones](../azure-functions/functions-overview.md). Además, revise lo siguiente:
     - [Enlaces HTTP y webhook en Azure Functions](../azure-functions/functions-triggers-bindings.md)
-    - [Configuración de Azure Function App](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
+    - [¿Cómo tooconfigure configuración de la aplicación de Azure (función)](../azure-functions/functions-how-to-use-azure-function-app-settings.md)
     
 ## <a name="considerations"></a>Consideraciones
 
--  La instancia de Azure Functions que se ejecuta en el marco del plan de consumo tiene un tiempo de espera límite de 5 minutos.
+-  Las funciones de Azure ejecutando bajo el plan de consumo de hello tengan tiempo de espera de 5 minutos limitar.
 
 ## <a name="create-a-function-app"></a>Creación de una aplicación de función
 
-1. Vaya a [Azure Portal](http://portal.azure.com) e inicie sesión con su cuenta de Azure.
+1. Vaya toohello [portal de Azure](http://portal.azure.com) e inicie sesión con su cuenta de Azure.
 2. Cree una aplicación de función como se describe [aquí](../azure-functions/functions-create-function-app-portal.md).
 
 >[!NOTE]
-> Una cuenta de almacenamiento especificada en la variable de entorno **StorageConnection** (vea el paso siguiente) debe estar en la misma región que su aplicación.
+> Una cuenta de almacenamiento que especifique en hello **StorageConnection** (vea el paso siguiente de hello) debe ser la variable de entorno en hello misma región que la aplicación.
 
 ## <a name="configure-function-app-settings"></a>Configuración de la aplicación de función
 
-Cuando desarrolle funciones de Media Services, es útil agregar variables de entorno que se usarán en todas sus funciones. Para definir la configuración de la aplicación, haga clic en el vínculo Configurar las opciones de la aplicación. Para obtener más información, consulte [Configuración de Azure Function App](../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
+Cuando desarrolle las funciones de servicios multimedia, resulta práctica tooadd variables de entorno que se utilizará a lo largo de las funciones. tooconfigure configuración de la aplicación, haga clic en el vínculo de configuración de aplicación Hola. Para obtener más información, consulte [la configuración de la aplicación Azure función tooconfigure](../azure-functions/functions-how-to-use-azure-function-app-settings.md). 
 
 Por ejemplo:
 
-![Configuración](./media/media-services-azure-functions/media-services-azure-functions001.png)
+![Settings](./media/media-services-azure-functions/media-services-azure-functions001.png)
 
-La función, definida en este artículo, da por hecho que tiene las siguientes variables de entorno en la configuración de la aplicación:
+función Hello, definida en este artículo, se supone que tiene Hola después de las variables de entorno en la configuración de aplicación:
 
 **AMSAccount**: *nombre de la cuenta de AMS* (p. ej., testams)
 
@@ -71,12 +71,12 @@ La función, definida en este artículo, da por hecho que tiene las siguientes v
 Una vez implementada su instancia de Function App, puede encontrarla entre Azure Functions de **App Services**.
 
 1. Seleccione la aplicación de función y haga clic en **Nueva función**.
-2. Elija el lenguaje **C#** y el escenario **Procesamiento de datos**.
-3. Elija la plantilla **BlobTrigger**. Esta función se desencadenará si se carga un blob en el contenedor **input**. El nombre **input** se especifica en **Path** (Ruta de acceso), en el paso siguiente.
+2. Elija hello **C#** lenguaje y **procesamiento de datos** escenario.
+3. Elija la plantilla **BlobTrigger**. Esta función se desencadenará cada vez que se carga un blob en hello **entrada** contenedor. Hola **entrada** nombre se especifica en hello **ruta de acceso**, en el paso siguiente de saludo.
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
-4. Una vez que seleccione **BlobTrigger**, aparecerán algunos controles más en la página.
+4. Una vez que seleccione **BlobTrigger**, algunos controles más aparecerá en la página de Hola.
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
@@ -85,16 +85,16 @@ Una vez implementada su instancia de Function App, puede encontrarla entre Azure
 
 ## <a name="files"></a>Archivos
 
-La función de Azure está asociada a archivos de código y otros archivos que se describen en esta sección. De forma predeterminada, una función está asociada con los archivos **function.json** y **run.csx** (C#). Debe agregar un archivo **project.json**. El resto de esta sección muestra las definiciones de estos archivos.
+La función de Azure está asociada a archivos de código y otros archivos que se describen en esta sección. De forma predeterminada, una función está asociada con los archivos **function.json** y **run.csx** (C#). Deberá tooadd un **project.json** archivo. resto de Hola de esta sección muestra las definiciones de Hola para estos archivos.
 
 ![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-El archivo function.json define los enlaces de función y otras opciones de configuración. Este archivo se usa en tiempo de ejecución para determinar los eventos que se supervisarán y cómo pasar datos y devolverlos al ejecutarse una función. Para obtener más información, consulte [Enlaces HTTP y webhook en Azure Functions](../azure-functions/functions-reference.md#function-code).
+archivo de Hello function.json define los enlaces de función hello y otras opciones de configuración. Hola en tiempo de ejecución utiliza este toomonitor de eventos de archivo toodetermine hello y toopass y devolución de datos de funcionamiento de ejecución. Para obtener más información, consulte [Enlaces HTTP y webhook en Azure Functions](../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
->Establezca la propiedad **disabled** en **true** para impedir que se ejecute la función. 
+>Conjunto hello **deshabilitado** propiedad demasiado**true** función de hello tooprevent desde que se está ejecutando. 
 
 
 Este es un ejemplo de archivo **function.json**.
@@ -114,7 +114,7 @@ Este es un ejemplo de archivo **function.json**.
 
 ### <a name="projectjson"></a>project.json
 
-El archivo project.json contiene dependencias. Este es un ejemplo de archivo **project.json** que incluye los paquetes de Azure Media Services de .NET de NuGet. Tenga en cuenta que los números de versión cambiarán con las últimas actualizaciones a los paquetes, por lo que debe confirmar las versiones más recientes. 
+archivo project.json de Hello contiene dependencias. Este es un ejemplo de **project.json** archivo que incluye servicios de multimedia de Azure de hello requerido .NET paquetes de Nuget. Tenga en cuenta que los números de versión de Hola cambiará con las últimas actualizaciones toohello paquetes, por lo que debe confirmar versiones más recientes de Hola. 
 
     {
       "frameworks": {
@@ -129,14 +129,14 @@ El archivo project.json contiene dependencias. Este es un ejemplo de archivo **p
     
 ### <a name="runcsx"></a>run.csx
 
-Este es el código C# para la función.  La función definida a continuación supervisa un contenedor de la cuenta de almacenamiento llamado **input** (que es lo que se especificó en la ruta de acceso) para los nuevos archivos MP4. Una vez que un archivo se coloca en el contenedor de almacenamiento, el desencadenador de blobs ejecutará la función.
+Se trata de código C# hello para la función.  función Hello define a continuación de monitores de un contenedor de la cuenta de almacenamiento denominado **entrada** (que es lo que se especificó en la ruta de acceso de hello) para los nuevos archivos MP4. Una vez que un archivo se coloca en el contenedor de almacenamiento de hello, desencadenador de blob de Hola ejecutará la función hello.
     
-En el ejemplo definido en esta sección se muestra 
+ejemplo de Hola definido en esta sección se muestra 
 
-1. cómo incluir un recurso en una cuenta de Media Services (copiando un blob en un recurso de AMS) y 
-2. cómo enviar un trabajo de codificación que usa "Streaming adaptable" preestablecido de Media Encoder Standard.
+1. la cuenta de tooingest un activo en los servicios multimedia (a copiar un blob en un recurso de AMS) y 
+2. ¿Cómo toosubmit un trabajo de codificación que usa "Transmisión por secuencias adaptativa" Media Encoder estándar preestablecido.
 
-En un escenario real, lo más probable es que quisiera realizar un seguimiento del progreso del trabajo y, a continuación, publicar el recurso codificado. Para obtener más información, consulte [Uso de Azure WebHooks para supervisar las notificaciones de trabajo de Media Services](media-services-dotnet-check-job-progress-with-webhooks.md). Para obtener más ejemplos, consulte [Azure Functions de Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
+En el escenario de uso real de hello, lo más probable es que desee tootrack progreso del trabajo y, a continuación, publica el activo codificado. Para obtener más información, consulte [notificaciones de trabajo de servicios multimedia de uso Azure WebHooks toomonitor](media-services-dotnet-check-job-progress-with-webhooks.md). Para obtener más ejemplos, consulte [Azure Functions de Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
 Una vez que haya terminado de definir la función, haga clic en **Guardar y ejecutar**.
 
@@ -171,12 +171,12 @@ Una vez que haya terminado de definir la función, haga clic en **Guardar y ejec
 
     public static void Run(CloudBlockBlob myBlob, string fileName, TraceWriter log)
     {
-        // NOTE that the variables {fileName} here come from the path setting in function.json
-        // and are passed into the  Run method signature above. We can use this to make decisions on what type of file
-        // was dropped into the input container for the function. 
+        // NOTE that hello variables {fileName} here come from hello path setting in function.json
+        // and are passed into hello  Run method signature above. We can use this toomake decisions on what type of file
+        // was dropped into hello input container for hello function. 
 
-        // No need to do any Retry strategy in this function, By default, the SDK calls a function up to 5 times for a 
-        // given blob. If the fifth try fails, the SDK adds a message to a queue named webjobs-blobtrigger-poison.
+        // No need toodo any Retry strategy in this function, By default, hello SDK calls a function up too5 times for a 
+        // given blob. If hello fifth try fails, hello SDK adds a message tooa queue named webjobs-blobtrigger-poison.
 
         log.Info($"C# Blob trigger function processed: {fileName}.mp4");
         log.Info($"Using Azure Media Services account : {_mediaServicesAccountName}");
@@ -184,16 +184,16 @@ Una vez que haya terminado de definir la función, haga clic en **Guardar y ejec
 
         try
         {
-        // Create and cache the Media Services credentials in a static class variable.
+        // Create and cache hello Media Services credentials in a static class variable.
         _cachedCredentials = new MediaServicesCredentials(
                 _mediaServicesAccountName,
                 _mediaServicesAccountKey);
 
-        // Used the chached credentials to create CloudMediaContext.
+        // Used hello chached credentials toocreate CloudMediaContext.
         _context = new CloudMediaContext(_cachedCredentials);
 
-        // Step 1:  Copy the Blob into a new Input Asset for the Job
-        // ***NOTE: Ideally we would have a method to ingest a Blob directly here somehow. 
+        // Step 1:  Copy hello Blob into a new Input Asset for hello Job
+        // ***NOTE: Ideally we would have a method tooingest a Blob directly here somehow. 
         // using code from this sample - https://azure.microsoft.com/en-us/documentation/articles/media-services-copying-existing-blob/
 
         StorageCredentials mediaServicesStorageCredentials =
@@ -203,25 +203,25 @@ Una vez que haya terminado de definir la función, haga clic en **Guardar y ejec
 
         // Step 2: Create an Encoding Job
 
-        // Declare a new encoding job with the Standard encoder
+        // Declare a new encoding job with hello Standard encoder
         IJob job = _context.Jobs.Create("Azure Function - MES Job");
 
-        // Get a media processor reference, and pass to it the name of the 
-        // processor to use for the specific task.
+        // Get a media processor reference, and pass tooit hello name of hello 
+        // processor toouse for hello specific task.
         IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-        // Create a task with the encoding details, using a custom preset
+        // Create a task with hello encoding details, using a custom preset
         ITask task = job.Tasks.AddNew("Encode with Adaptive Streaming",
             processor,
             "Adaptive Streaming",
             TaskOptions.None); 
 
-        // Specify the input asset to be encoded.
+        // Specify hello input asset toobe encoded.
         task.InputAssets.Add(newAsset);
 
-        // Add an output asset to contain the results of the job. 
+        // Add an output asset toocontain hello results of hello job. 
         // This output is specified as AssetCreationOptions.None, which 
-        // means the output asset is not encrypted. 
+        // means hello output asset is not encrypted. 
         task.OutputAssets.AddNew(fileName, AssetCreationOptions.None);
 
         job.Submit();
@@ -266,13 +266,13 @@ Una vez que haya terminado de definir la función, haga clic en **Guardar y ejec
     }
 
     /// <summary>
-    /// Creates a new asset and copies blobs from the specifed storage account.
+    /// Creates a new asset and copies blobs from hello specifed storage account.
     /// </summary>
-    /// <param name="blob">The specified blob.</param>
-    /// <returns>The new asset.</returns>
+    /// <param name="blob">hello specified blob.</param>
+    /// <returns>hello new asset.</returns>
     public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, string assetName, TraceWriter log)
     {
-         //Get a reference to the storage account that is associated with the Media Services account. 
+         //Get a reference toohello storage account that is associated with hello Media Services account. 
         StorageCredentials mediaServicesStorageCredentials =
         new StorageCredentials(_storageAccountName, _storageAccountKey);
         _destinationStorageAccount = new CloudStorageAccount(mediaServicesStorageCredentials, false);
@@ -286,7 +286,7 @@ Una vez que haya terminado de definir la función, haga clic en **Guardar y ejec
         ILocator destinationLocator = _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
         CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
 
-        // Get the destination asset container reference
+        // Get hello destination asset container reference
         string destinationContainerName = (new Uri(destinationLocator.Path)).Segments[1];
         CloudBlobContainer assetContainer = destBlobStorage.GetContainerReference(destinationContainerName);
 
@@ -300,7 +300,7 @@ Una vez que haya terminado de definir la función, haga clic en **Guardar y ejec
 
         log.Info("Created asset.");
 
-        // Get hold of the destination blob
+        // Get hold of hello destination blob
         CloudBlockBlob destinationBlob = assetContainer.GetBlockBlobReference(blob.Name);
 
         // Copy Blob
@@ -334,15 +334,15 @@ Una vez que haya terminado de definir la función, haga clic en **Guardar y ejec
     }
 ##<a name="test-your-function"></a>Probar la función
 
-Para probar la función, debe cargar un archivo MP4 en el contenedor **input** de la cuenta de almacenamiento que especificó en la cadena de conexión.  
+tootest la función, deberá tooupload un archivo MP4 en hello **entrada** contenedor de cuenta de almacenamiento de Hola que especificó en la cadena de conexión de Hola.  
 
 ## <a name="next-step"></a>Paso siguiente
 
-En este punto, está listo para iniciar el desarrollo de una aplicación de Servicios multimedia. 
+En este punto, está listo toostart desarrollar una aplicación de servicios multimedia. 
  
-Para obtener más detalles y completar ejemplos y soluciones de uso de Azure Functions y Logic Apps con Azure Media Services para crear flujos de trabajo de creación de contenido personalizado, consulte el [ejemplo de integración de Functions de .NET de Media Services en GitHub](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
+Para obtener más detalles y ejemplos/soluciones completas del uso de funciones de Azure y las aplicaciones lógicas con flujos de trabajo de creación de contenido personalizado de toocreate de servicios multimedia de Azure, vea hello [ejemplo de integración de Media Services .NET funciones en GitHub](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)
 
-Además, consulte [Uso de Azure WebHooks para supervisar las notificaciones de trabajo de Media Services con .NET](media-services-dotnet-check-job-progress-with-webhooks.md). 
+Consulte también [notificaciones con .NET de trabajo de servicios multimedia de uso Azure WebHooks toomonitor](media-services-dotnet-check-job-progress-with-webhooks.md). 
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Servicios multimedia
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

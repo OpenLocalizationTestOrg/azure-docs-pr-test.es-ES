@@ -1,6 +1,6 @@
 ---
-title: Hospedaje de varios sitios con Azure Application Gateway | Microsoft Docs
-description: "En esta página se proporcionan instrucciones para configurar una puerta de enlace de aplicaciones de Azure para hospedar varias aplicaciones web en la misma puerta de enlace con Azure Portal."
+title: aaaHost varios sitios con la puerta de enlace de aplicaciones de Azure | Documentos de Microsoft
+description: "Esta página proporciona instrucciones tooconfigure una puerta de enlace de la aplicación de Azure existente para hospedar varias aplicaciones web en hello misma puerta de enlace con hello portal de Azure."
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: 84bd62ae17b7f7ba4cd815ef1f9880679607ebce
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2172aa2c80720f6f1ab7dd91745b44654bcaee00
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-an-existing-application-gateway-for-hosting-multiple-web-applications"></a>Configuración de una puerta de enlace de aplicaciones existente para hospedar varias aplicaciones web
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-multisite-portal.md)
-> * [PowerShell de Azure Resource Manager](application-gateway-create-multisite-azureresourcemanager-powershell.md)
+> * [Portal de Azure](application-gateway-create-multisite-portal.md)
+> * [PowerShell del Administrador de recursos de Azure](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 > 
 > 
 
-El hospedaje de varios sitios permite implementar más de una aplicación web en la misma puerta de enlace de aplicaciones. Se basa en la presencia de un encabezado host en la solicitud HTTP entrante para determinar el agente de escucha que recibe el tráfico. Luego, dicho agente dirige el tráfico al grupo de back-end adecuado, el configurado en la definición de las reglas de la puerta de enlace. En las aplicaciones web con SSL habilitado, la puerta de enlace de aplicaciones depende de la extensión de la indicación de nombre de servidor (SNI) para elegir el agente de escucha correcto para el tráfico web.En las aplicaciones web con SSL habilitado, Application Gateway depende de la extensión de la indicación de nombre de servidor (SNI) para elegir el agente de escucha correcto para el tráfico web. Un uso común del hospedaje de varios sitios es el equilibrio de carga de las solicitudes de diferentes dominios web entre diferentes grupos de servidores de back-end. De forma similar, varios subdominios del mismo dominio raíz también se pueden hospedar en la misma puerta de enlace de aplicaciones.
+Alojamiento de varios sitios permite toodeploy más de una aplicación web en hello misma puerta de enlace de la aplicación. Se basa en la presencia del encabezado de host en la solicitud HTTP entrante hello, toodetermine qué agente de escucha reciba tráfico. agente de escucha de Hello, a continuación, dirige el grupo de back-end de tráfico tooappropriate como está configurado en la definición de las reglas de Hola de puerta de enlace de Hola. En las aplicaciones web se ha habilitado SSL, puerta de enlace de aplicaciones se basa en hello indicación de nombre de servidor (SNI) extensión toochoose Hola correcto agente de escucha para el tráfico de web Hola. Un uso común de alojamiento de varios sitios es tooload equilibrar las solicitudes para grupos de servidor back-end de toodifferent de dominios de web diferente. De igual forma varios subdominios de hello también se puede hospedar el dominio raíz del mismo en Hola misma puerta de enlace de la aplicación.
 
 ## <a name="scenario"></a>Escenario
 
-En el siguiente ejemplo, la puerta de enlace de aplicaciones sirve el tráfico a contoso.com y a fabrikam.com con dos grupos de servidores back-end: el grupo de servidores de contoso y el grupo de servidores de fabrikam. Se puede usar una configuración similar para hospedar subdominios como app.contoso.com y blog.contoso.com.
+En el siguiente ejemplo de Hola, puerta de enlace de aplicaciones está atendiendo a tráfico para contoso.com y fabrikam.com con dos grupos de servidor back-end: contoso grupo de servidores y el grupo de servidores de fabrikam. El programa de instalación similar podría ser subdominios toohost usado como app.contoso.com y blog.contoso.com.
 
 ![escenario multisitio][multisite]
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-Este escenario agrega compatibilidad multisitio a una puerta de enlace de aplicaciones existente. Para completar este escenario debe estar disponible para su configuración una puerta de enlace de aplicaciones. Visite [Creación de una puerta de enlace de aplicaciones mediante el portal](application-gateway-create-gateway-portal.md) para aprender a crear una puerta de enlace de aplicaciones básica en el portal.
+Este escenario agrega la puerta de enlace de aplicaciones existentes de compatibilidad con varios sitios tooan. toocomplete toobe disponibles tooconfigure es necesario este escenario, una puerta de enlace de la aplicación existente. Visite [crear una puerta de enlace de la aplicación mediante el portal de hello](application-gateway-create-gateway-portal.md) toolearn cómo toocreate una puerta de enlace de aplicaciones básica en el portal de Hola.
 
-A continuación se muestran los pasos necesarios para actualizar una puerta de enlace de aplicaciones:
+siguiente Hola es pasos de hello necesarios puerta de enlace de aplicaciones de tooupdate hello:
 
-1. Cree grupos de back-end para cada sitio.
+1. Crear grupos de back-end toouse para cada sitio.
 2. Cree un agente de escucha para cada puerta de enlace de aplicaciones del sitio que lo admitirá.
-3. Cree reglas para asignar cada agente de escucha al back-end apropiado.
+3. Crear reglas toomap cada agente de escucha con hello adecuado back-end.
 
 ## <a name="requirements"></a>Requisitos
 
-* **Grupo de servidores back-end** : lista de direcciones IP de los servidores back-end. Las direcciones IP que se enumeran deben pertenecer a la subred de la red virtual o ser una IP/VIP pública. También puede utilizarse el FQDN.
-* **Configuración del grupo de servidores back-end:** cada grupo tiene una configuración en la que se incluye el puerto, el protocolo y la afinidad basada en cookies. Estos valores están vinculados a un grupo y se aplican a todos los servidores del grupo.
-* **Puerto front-end:** este puerto es el puerto público que se abre en la puerta de enlace de aplicaciones. El tráfico llega a este puerto y después se redirige a uno de los servidores back-end.
-* **Agente de escucha** : tiene un puerto front-end, un protocolo (Http o Https, estos valores distinguen mayúsculas de minúsculas) y el nombre del certificado SSL (si se configura la descarga de SSL). En el caso de las puertas de enlace de aplicaciones con sitios múltiples habilitados, también se agregan el nombre de host y los indicadores de SNI.
-* **Regla:** enlaza el agente de escucha y el grupo de servidores back-end, y define a qué grupo de servidores back-end se debe redireccionar el tráfico que llegue a un agente de escucha concreto. Las reglas se procesan en el orden en que aparecen y el tráfico se dirige a través de la primera regla que coincida independientemente de la especificidad. Por ejemplo, si tiene una regla que usa un agente de escucha básico y una regla que usa un agente de escucha multisitio en el mismo puerto, la regla con el agente de escucha multisitio debe aparecer antes que la regla con el agente de escucha básico para que la regla multisitio funcione según lo previsto. 
-* **Certificados:** cada agente de escucha requiere un certificado único, en este ejemplo se crean dos agentes de escucha para varios sitios. Deben crearse dos certificados .pfx y las contraseñas para ellos.
+* **Grupo de servidores de back-end:** Hola lista de direcciones IP de servidores de back-end de Hola. direcciones IP en Hello lista deben pertenecer o subred de red virtual toohello o deben ser una dirección IP pública/VIP. También puede utilizarse el FQDN.
+* **Configuración del grupo de servidores back-end:** cada grupo tiene una configuración en la que se incluye el puerto, el protocolo y la afinidad basada en cookies. Esta configuración está ligada tooa grupo y son servidores de tooall aplicados en el grupo de Hola.
+* **Puerto front-end:** este puerto es Hola pública que se abre en la puerta de enlace de aplicaciones de Hola. Tráfico llega a este puerto y, a continuación, obtiene redirigido tooone de servidores de back-end de Hola.
+* **Agente de escucha:** agente de escucha de hello tiene un puerto front-end, un protocolo (Http o Https, estos valores distinguen mayúsculas de minúsculas) y el nombre del certificado SSL hello (si se descarga la configuración de SSL). En el caso de las puertas de enlace de aplicaciones con sitios múltiples habilitados, también se agregan el nombre de host y los indicadores de SNI.
+* **Regla:** regla Hola enlaza el agente de escucha de hello, grupo de servidores de back-end de Hola y define qué tráfico de Hola de grupo de servidor back-end debe ser dirigido toowhen llega a un agente de escucha determinado. Las reglas se procesan en orden de hello aparecen y se dirigirá el tráfico a través de la regla primera Hola que coincida con independientemente de especificidad. Por ejemplo, si tiene una regla mediante un agente de escucha básico y una regla mediante una escucha de varios sitio ambos en hello misma regla de puerto, Hola con el agente de escucha de hello multisitio debe aparecer antes de la regla de hello con un agente de escucha básico de hello en orden para hello toofunction de regla de multisitio como se esperaba. 
+* **Certificados:** cada agente de escucha requiere un certificado único, en este ejemplo se crean dos agentes de escucha para varios sitios. Dos certificados .pfx y las contraseñas de Hola para ellos deben toobe creado.
 
 ## <a name="create-back-end-pools-for-each-site"></a>Creación de grupos de back-end para cada sitio
 
@@ -61,72 +61,72 @@ Se necesita un grupo de back-end para cada sitio que va a admitir esa puerta de 
 
 ### <a name="step-1"></a>Paso 1
 
-Vaya a una puerta de enlace de aplicaciones existente en Azure Portal (https://portal.azure.com). Seleccione **Grupos de back-end** y haga clic en **Agregar**.
+Navegue tooan la puerta de enlace de aplicación existente en hello portal de Azure (https://portal.azure.com). Seleccione **Grupos de back-end** y haga clic en **Agregar**.
 
 ![adición de grupos de back-end][7]
 
 ### <a name="step-2"></a>Paso 2
 
-Rellene la información para el grupo de back-end **grupo1**, agregue las direcciones IP o nombres completos para los servidores back-end y haga clic en **Aceptar**
+Rellene la información de hello para el grupo de back-end de hello **pool1**, agregar direcciones ip de Hola o FQDN para servidores de back-end de Hola y haga clic en **Aceptar**
 
 ![configuración del grupo de back-end grupo1][8]
 
 ### <a name="step-3"></a>Paso 3
 
-En la hoja de grupos de back-end, haga clic en **Agregar** para agregar el grupo de back-end adicional **pool2**, agregando la direcciones IP o nombres completos para los servidores back-end y haga clic en **Aceptar**.
+En la hoja de grupos de back-end de hello haga clic en **agregar** tooadd un grupo back-end adicional **pool2**, agregar direcciones ip de Hola o FQDN para servidores de back-end de Hola y haga clic en **Aceptar**
 
 ![configuración del grupo de back-end grupo2][9]
 
 ## <a name="create-listeners-for-each-back-end"></a>Creación de agentes de escucha para cada back-end
 
-Application Gateway se basa en los encabezados de host HTTP 1.1 para hospedar más de un sitio web en la misma dirección IP pública y en el mismo puerto. El agente de escucha básico creado en el portal no contiene esta propiedad.
+Puerta de enlace de aplicaciones se basa en HTTP 1.1 toohost de encabezados de host, más de un sitio Web en Hola la misma dirección IP pública y el puerto. escucha básica Hello creada en portal de hello no contiene esta propiedad.
 
 ### <a name="step-1"></a>Paso 1
 
-Haga clic en **Agentes de escucha** en la puerta de enlace de aplicaciones y haga clic en **Multisitio** para agregar el primer agente de escucha.
+Haga clic en **los agentes de escucha** Hola puerta de enlace de aplicación existente y haga clic en **multisitio** primer agente de escucha de tooadd Hola.
 
 ![hoja de información general de los agentes de escucha][1]
 
 ### <a name="step-2"></a>Paso 2
 
-Rellene la información del agente de escucha. En este ejemplo se configura la terminación SSL y se crea un nuevo puerto de front-end. Cargue el certificado .pfx que se usará para la terminación SSL. La única diferencia de esta hoja en comparación con la hoja del agente de escucha básica estándar es el nombre de host.
+Rellene la información de hello para el agente de escucha de Hola. En este ejemplo se configura la terminación SSL y se crea un nuevo puerto de front-end. Cargar toobe de certificado .pfx Hola utilizado para la terminación SSL. Hola única diferencia en esta hoja de agente de escucha básico estándar toohello hoja en comparación con es el nombre de host de Hola.
 
 ![hoja de propiedades del agente de escucha][2]
 
 ### <a name="step-3"></a>Paso 3
 
-Haga clic en **Multisitio** y cree otro agente de escucha, tal como se describe en el paso anterior para el segundo sitio. Asegúrese de utilizar un certificado diferente para el segundo agente de escucha. La única diferencia de esta hoja en comparación con la hoja del agente de escucha básica estándar es el nombre de host. Rellene la información del agente de escucha y haga clic en **Aceptar**.
+Haga clic en **multisitio** y crear otro agente de escucha tal como se describe en el paso anterior de Hola para otro sitio de Hola. Asegúrese de toouse seguro de un certificado diferente para el agente de escucha de segundo de Hola. Hola única diferencia en esta hoja de agente de escucha básico estándar toohello hoja en comparación con es el nombre de host de Hola. Rellene la información de hello para el agente de escucha de Hola y haga clic en **Aceptar**.
 
 ![hoja de propiedades del agente de escucha][3]
 
 > [!NOTE]
-> La creación de agentes de escucha en Azure Portal para la puerta de enlace de aplicaciones es una tarea de larga duración; puede tardar algún tiempo en crear los dos agentes de escucha en este escenario. Cuando finalice, los agentes de escucha se muestran en el portal, tal como se muestra en la siguiente imagen:
+> La creación de agentes de escucha de hello portal de Azure para puerta de enlace de aplicaciones es una tarea de ejecución prolongada, podría tardar algunos Hola de toocreate tiempo dos agentes de escucha en este escenario. Cuando los agentes de escucha de hello completa se muestran en el portal de hello tal como se muestra en hello después de imagen:
 
 ![información general del agente de escucha][4]
 
-## <a name="create-rules-to-map-listeners-to-backend-pools"></a>Creación de reglas para asignar agentes de escucha a grupos de back-end
+## <a name="create-rules-toomap-listeners-toobackend-pools"></a>Crear reglas de grupos de toobackend de agentes de escucha de toomap
 
 ### <a name="step-1"></a>Paso 1
 
-Vaya a una puerta de enlace de aplicaciones existente en Azure Portal (https://portal.azure.com). Seleccione **Reglas** y elija la regla predeterminada existente **Regla1** y haga clic en **Editar**.
+Navegue tooan la puerta de enlace de aplicación existente en hello portal de Azure (https://portal.azure.com). Seleccione **reglas** y elija la regla predeterminada existente de hello **rule1** y haga clic en **editar**.
 
 ### <a name="step-2"></a>Paso 2
 
-Rellene la hoja de reglas, tal como se muestra en la imagen siguiente. Elija el primer agente de escucha y el primer grupo y haga clic en **Guardar** cuando haya terminado.
+Rellene la hoja de reglas de Hola tal como se muestra en hello después de la imagen. Elegir el primer agente de escucha de Hola y el primer grupo y haga clic en **guardar** cuando haya terminado.
 
 ![edición de una regla existente][6]
 
 ### <a name="step-3"></a>Paso 3
 
-Haga clic en **Regla básica** para crear la segunda regla. Rellene el formulario con el segundo agente de escucha y el segundo grupo de back-end, y haga clic en **Aceptar** para guardarlo.
+Haga clic en **reglas básicas** segunda regla de toocreate Hola. Rellene el formulario de hello con hello segundo agente de escucha y el segundo grupo back-end y haga clic en **Aceptar** toosave.
 
 ![adición de una hoja de reglas básicas][10]
 
-Este escenario completa la configuración de una puerta de enlace de aplicaciones existentes con compatibilidad multisitio a través de Azure Portal.
+Este escenario completa la configuración de una puerta de enlace de aplicaciones existentes con soporte para varios sitio a través de hello portal de Azure.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Aprenda a proteger sitios web con [Firewall de aplicaciones web de Application Gateway (versión preliminar)](application-gateway-webapplicationfirewall-overview.md)
+Obtenga información acerca de cómo tooprotect sus sitios Web con [puerta de enlace de aplicaciones - servidor de aplicaciones Web](application-gateway-webapplicationfirewall-overview.md)
 
 <!--Image references-->
 [1]: ./media/application-gateway-create-multisite-portal/figure1.png

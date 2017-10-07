@@ -1,5 +1,5 @@
 ---
-title: Referencia de cmdlets de PowerShell de Programador
+title: aaaScheduler referencia de Cmdlets de PowerShell
 description: Referencia de cmdlets de PowerShell de Programador
 services: scheduler
 documentationcenter: .NET
@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 141919ab4506b3de4c4a69670dcf54c60ee6409c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2b23bcd3e4493ffba1dbf21fbb87818be7c01e5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scheduler-powershell-cmdlets-reference"></a>Referencia de cmdlets de PowerShell de Programador
-En la tabla siguiente aparece una descripción y vínculos a la página de referencia de cada uno de los cmdlets importantes de Programador de Azure.
+Hello en la tabla siguiente se describe y vincula toohello página de referencia de cada uno de los cmdlets principales de hello en el programador de Azure.
 
-Para instalar Azure PowerShell y asociarlo con una suscripción de Azure, consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview). 
+tooinstall PowerShell de Azure y asociarlo con su suscripción de Azure, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview). 
 
 Para más información sobre los [cmdlets de Azure PowerShell](/powershell/azure/overview), consulte [Uso de Azure PowerShell con Azure Resource Manager](../powershell-azure-resource-manager.md).
 
@@ -47,7 +47,7 @@ Para más información sobre los [cmdlets de Azure PowerShell](/powershell/azure
 | [Set-AzureRmSchedulerServiceBusTopicJob](/powershell/module/azurerm.scheduler/set-azurermschedulerservicebustopicjob) |Modifica un trabajo de tema de Service Bus. |
 | [Set-AzureRmSchedulerStorageQueueJob](/powershell/module/azurerm.scheduler/set-azurermschedulerstoragequeuejob) |Modifica un trabajo de cola de almacenamiento. |
 
-Para obtener información más detallada, puede ejecutar cualquiera de los siguientes cmdlets: 
+Para obtener información más detallada, puede ejecutar cualquiera de hello siguientes cmdlets: 
 
 ```
 Get-Help <cmdlet name> -Detailed
@@ -64,7 +64,7 @@ Get-Help <cmdlet name> -Full
 
  [Conceptos, terminología y jerarquía de entidades de Programador de Azure](scheduler-concepts-terms.md)
 
- [Introducción al Programador de Azure en el Portal de Azure](scheduler-get-started-portal.md)
+ [Empezar a usar a Scheduler en hello portal de Azure](scheduler-get-started-portal.md)
 
  [Planes y facturación en Programador de Azure](scheduler-plans-billing.md)
 

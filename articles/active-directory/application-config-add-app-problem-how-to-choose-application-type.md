@@ -1,6 +1,6 @@
 ---
-title: "Cómo elegir el tipo de aplicación que se debe usar al agregar una aplicación | Microsoft Docs"
-description: "Describir los tipos admitidos de aplicaciones que se pueden integrar con Azure AD y sus opciones de configuración relacionadas"
+title: "toochoose aaaHow qué aplicación escriba toouse al agregar una aplicación | Documentos de Microsoft"
+description: "Entender Hola admitida tipos de aplicaciones se puede integrar con Azure AD y sus opciones de configuración relacionados"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,92 +13,92 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: e0d41d1933531c2c633613bcbc1bbcbf075d6a69
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 46e3672e7f5048b0fa54171f0fc169362c9d5ac6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Cómo elegir el tipo de aplicación que se debe usar al agregar una aplicación
+# <a name="how-toochoose-which-application-type-toouse-when-adding-an-application"></a>¿Cómo toochoose qué aplicación escriba toouse al agregar una aplicación
 
-Este artículo le ayuda a comprender los cuatro tipos principales de aplicaciones que se pueden integrar con Azure AD:
+Este artículo le ayudará toounderstand Hola cuatro tipos principales de las aplicaciones que se puede integrar con Azure AD:
 
 * Qué es compatible en cada una de ellas
 * Por qué elegir una determinada aplicación
-* Cómo configurar las propiedades básicas de esas aplicaciones, por ejemplo, cómo se **aprovisionan** los usuarios o qué tecnología de **inicio de sesión único** usar.
+* ¿Cómo tooconfigure propiedades básicas de los de la aplicación, que cómo los usuarios son **aprovisionado**, o lo **inicio de sesión único** toouse de tecnología.
 
 ## <a name="supported-application-types-in-azure-ad"></a>Tipos de aplicaciones compatibles en Azure AD
 
-Azure AD admite cuatro tipos de aplicaciones principales que puede agregar mediante la característica **Agregar** que se encuentra en **Aplicaciones empresariales**. Entre ellos se incluyen los siguientes:
+Hola de Azure AD admite cuatro principales tipos de aplicaciones que se pueden agregar mediante **agregar** característica se encuentra en **aplicaciones empresariales**. Entre ellos se incluyen los siguientes:
 
 -   **Aplicaciones de la Galería de Azure AD**: una aplicación que se ha integrado previamente para el inicio de sesión único con Azure AD.
 
--   **Aplicaciones de proxy de aplicación**: una aplicación que se ejecuta en su entorno local en la que quiere que se proporcione inicio de sesión seguro externamente.
+-   **Las aplicaciones de Proxy de aplicación** : una aplicación que se ejecuta en su entorno local que desea que tooprovide segura inicio de sesión único en tooexternally.
 
--   **Aplicaciones personalizadas**: una aplicación que su organización desea desarrollar en la plataforma de desarrollo de aplicaciones de Azure AD, pero que no existe aún.
+-   **Aplicaciones personalizadas** : una aplicación que su organización desea toodevelop en Hola plataforma de desarrollo de aplicaciones de Windows Azure AD, pero que no exista todavía.
 
--   **Aplicaciones que no son de la Galería**: ¡traiga sus propias aplicaciones! Cualquier vínculo web, o cualquier aplicación que represente un campo de nombre de usuario y contraseña, admita los protocolos SAML u OpenID Connect, o admita SCIM, que quiera integrar para el inicio de sesión único con Azure AD.
+-   **Aplicaciones que no son de la Galería**: ¡traiga sus propias aplicaciones! Cualquier vínculo web que desee, cualquier aplicación que representa un campo de nombre de usuario y contraseña, admite los protocolos de SAML u OpenID Connect o admite SCIM que desea toointegrate para el inicio de sesión único con Azure AD.
 
-## <a name="features-and-capabilities-supported-by-all-the-above-application-types"></a>Características y funcionalidades admitidas por todos los tipos de aplicaciones anteriores
+## <a name="features-and-capabilities-supported-by-all-hello-above-application-types"></a>Características y funcionalidades compatibles con todos los Hola por encima de los tipos de aplicación
 
-Las siguientes características se admiten en cualquiera de los 4 tipos de aplicaciones anteriores en Azure AD:
+Hello siguientes características son compatibles con cualquiera de Hola por encima de los 4 tipos de aplicación en Azure AD:
 
 -   **Inicio rápido**: comience a trabajar con una aplicación rápidamente siguiendo [sencillos pasos de implementación](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started).
 
--   **Administración de propiedades generales**: obtenga un [vínculo profundo directo](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users) a una aplicación, [personalice la marca](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) de una aplicación o [deshabilite la aplicación](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) para todos los usuarios.
+-   **Administración de las propiedades generales** : obtener un [vínculo profundo directa](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users) aplicación tooan, [personalizar la personalización de marca de hello](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) de una aplicación, o [deshabilitar aplicación hello](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) para todos los usuarios.
 
--   **Administración de grupos y usuarios**: [asigne](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) o [quite](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) usuarios y grupos en una aplicación y, opcionalmente, asigne los roles de aplicación específicos a los que estos usuarios y grupos tienen acceso.
+-   **Administración de grupos y usuarios** : [asignar](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) o [quitar](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) aplicación tooan usuarios y grupos y, opcionalmente, asignar Hola determinados roles de aplicación estos usuarios y grupos tienen acceso a
 
--   **Acceso de autoservicio a las aplicaciones**: permita que los usuarios soliciten [acceso de autoservicio a las aplicaciones](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) para una aplicación desde sus paneles de acceso de aplicaciones, bien agregando una aplicación directamente o [mediante la unión a un grupo habilitado para autoservicio](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management). Opcionalmente, es posible que durante el proceso se exija aprobación empresarial.
+-   **Acceso a la aplicación de autoservicio** : habilitar su toorequest usuarios [acceso a la aplicación de autoservicio](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) tooan aplicación desde su acceso a la aplicación paneles mediante la adición de una aplicación directamente o [ unirse a un grupo habilitado autoservicio](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management), puede requerir la aprobación de negocio a lo largo de hello forma
 
--   **Registros de inicio de sesión**: consulte [todos los inicios de sesión en una aplicación](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins) o en todas las aplicaciones.
+-   **Registros de inicio de sesión** : vea [todos Hola aplicación de inicios de sesión tooan](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins), o todas las aplicaciones
 
--   **Registros de auditoría**: consulte [registros de auditoría detallados sobre las modificaciones realizadas en una aplicación](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs) o en todas las aplicaciones.
+-   **Registros de auditoría** : vea [detallada de los registros de auditoría sobre la aplicación de modificaciones tooan](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs), o tooall las aplicaciones
 
--   **Acceso condicional y basado en riesgo**: establezca [reglas de acceso basado en condiciones](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) que sean eficaces, que se exijan cuando los usuarios intenten iniciar sesión en una ubicación específica.
+-   **Acceso condicional basado en riesgo y** : establezca eficaz [reglas de acceso basada en condiciones](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) que se aplican cuando los usuarios intentan toosign en tooa de aplicación específica
 
--   **Vista de permisos**: vea cualquiera de los [permisos de OAuth2](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent) a los que una aplicación tiene acceso desde un único lugar.
+-   **Vista permisos** – ver ninguno de hello [OAuth2 permisos](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent) una aplicación tiene acceso tooin su directorio desde un solo lugar
 
 ## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Modos de inicio de sesión único y de aprovisionamiento admitidos por tipos de aplicaciones específicas
 
-En la tabla siguiente se describen los diferentes modos de inicio de sesión único y aprovisionamiento admitidos por cada uno de los tipos de aplicaciones anteriores. Puede usar esta tabla para ayudarle a comprender qué aplicación debe agregar para admitir un objetivo específico.
+Hola tabla siguiente describen Hola otro inicio de sesión único y el aprovisionamiento de modos admitidos por cada uno de Hola por encima de los tipos de aplicación. Puede usar esta tabla toohelp toounderstand qué aplicación debe tooadd toosupport un objetivo específico.
 
   ![Tabla de tipos de aplicaciones](./media/application-tables/table1.png)
 
-## <a name="how-to-choose-a-single-sign-on-mode"></a>Cómo elegir un modo de inicio de sesión único
+## <a name="how-toochoose-a-single-sign-on-mode"></a>¿Cómo toochoose un modo de inicio de sesión único
 
-Los modos de **inicio de sesión único** admitidos para aplicaciones de Azure AD se enumeran a continuación.
+Hola admitida **inicio de sesión único** modos para aplicaciones de Azure AD se enumeran a continuación.
 
--   **Se desactivó el inicio de sesión único de Azure AD.**: elija el **modo de inicio de sesión único** Se desactivó el inicio de sesión único de Azure AD, si aún no está preparado para integrar esta aplicación con el inicio de sesión único de Azure AD, o simplemente la está probando.
+-   **Azure AD inicio de sesión único deshabilitado** : elija Azure AD inicio de sesión único deshabilitado **modo de inicio de sesión único** si aún no está listo toointegrate esta aplicación con el inicio de sesión único con Azure AD, o simplemente está probando horizontal
 
--   **Inicio de sesión vinculado**: elija el **modo de inicio de sesión** [Inicio de sesión vinculado](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) si tiene una aplicación que ya está conectada con una solución de inicio de sesión único existente, o si solo desea publicar un simple vínculo para sus usuarios en su [Panel de acceso a las aplicaciones](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) o en su [selector de aplicaciones de Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none).
+-   **Vinculados de inicio de sesión** : elija hello [en el inicio de sesión vinculado](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **modo de inicio de sesión único** si tiene una aplicación que ya está conectada con una única inicio de sesión solución existente, o si su intención es toopublish una sencilla de vínculos para los usuarios en sus [Panel de acceso de la aplicación](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) o [iniciador de la aplicación de Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
--   **Inicio de sesión basado en contraseña**: elija el **modo de inicio de sesión único** [Inicio de sesión con contraseña](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) si su aplicación representa un campo de nombre de usuario y contraseña HTML y quiere almacenar ese nombre de usuario y contraseña de forma segura para reproducirlos en la aplicación más adelante.
+-   **Sesión basado en contraseña** : elija hello [sesión basado en contraseña](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **modo de inicio de sesión único** si la aplicación representa un campo de nombre de usuario y contraseña HTML y desea que toostore que nombre de usuario y una contraseña segura toobe reproducir toohello aplicación más tarde
 
--   **Inicio de sesión basado en SAML**: elija el modo de inicio de sesión único [Inicio de sesión basado en SAML](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) si su aplicación admite los protocolos SAML o OpenID Connect, o si desea poder asignar usuarios a roles de aplicación específicos en función de reglas definidas en sus notificaciones SAML*.
-
-   >[!NOTE]
-   >Esta opción no está disponible cuando se configura el proxy de aplicación para una aplicación.
-   >
-   >
-
--   **Inicio de sesión basado en el encabezado**: elija el modo de inicio de sesión único [Inicio de sesión basado en el encabezado](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) si tiene una aplicación que usa PingAccess que admite la autenticación basada en encabezados HTTP y en la que quiere realizar el inicio de sesión único. 
+-   **Sesión basado en SAML** : elija hello [sesión basado en SAML](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) toospecific las funciones de aplicación en función de inicio de sesión único en modo si la aplicación es compatible con los protocolos SAML u OpenID Connect de Hola o desea que los usuarios pueden toomap de toobe en reglas que se definan en su SAML notificaciones *
 
    >[!NOTE]
-   >Esta opción solo está disponible cuando se configuran el proxy de aplicación y PingAccess para una aplicación.
+   >Esta opción no está disponible cuando se configura el proxy de aplicación Hola para una aplicación.
    >
    >
 
--   **Autenticación de Windows integrada**: elija el modo de inicio de sesión único [Autenticación de Windows integrada](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) al exponer una aplicación WIA local en la que quiere realizar el inicio de sesión único. 
+-   **Basado en el encabezado de inicio de sesión** : elija esta opción [sesión basada en encabezado](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) inicio de sesión en modo de inicio único si tiene una aplicación que use PingAccess que admite el encabezado HTTP en función de autenticación que desee tooperform-inicio de sesión único en demasiado
 
    >[!NOTE]
-   >Esta opción solo está disponible cuando se configura el proxy de aplicación para una aplicación.
+   >Esta opción solo está disponible cuando se configura el proxy de aplicación de Hola y PingAccess para una aplicación.
+   >
+   >
+
+-   **Autenticación de Windows integrada** : elija hello [autenticación integrada de Windows](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) el inicio de sesión único en modo al exponer una aplicación de WIA local que desee tooperform-inicio de sesión único en demasiado
+
+   >[!NOTE]
+   >Esta opción solo está disponible cuando se configura el proxy de aplicación Hola para una aplicación.
    >
    >
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Modos de inicio de sesión únicos para aplicaciones personalizadas
 
-Las aplicaciones que ha desarrollado de forma personalizada mediante la experiencia de [aplicación de desarrollo personalizado](#_Custom-Developed_Applications) también admiten modos de inicio de sesión único adicionales que no se indican en la lista anterior. Entre ellos se incluyen los siguientes:
+Las aplicaciones que ha personalizado desarrollado mediante hello [aplicación desarrollados de forma personalizada](#_Custom-Developed_Applications) experiencia también admiten únicos inicio de sesión modos adicionales no enumeradas anteriormente. Entre ellos se incluyen los siguientes:
 
 -   Inicio de sesión basado en [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)
 
@@ -108,67 +108,67 @@ Las aplicaciones que ha desarrollado de forma personalizada mediante la experien
 
 -   Inicio de sesión basado en [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)
 
-Lea la [guía del desarrollador de Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) para aprender a crear una aplicación de desarrollo personalizado que admite estos modos de inicio de sesión único.
+Hola de lectura [Guía del desarrollador de Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) toolearn más información acerca de cómo la aplicación toocreate desarrollados personalizada que admite estos único modos de inicio de sesión.
 
-## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Cómo establecer el modo de inicio de sesión único de una aplicación
+## <a name="how-tooset-an-applications-single-sign-on-mode"></a>¿Cómo tooset una aplicación del único modo de inicio de sesión
 
-Para establecer el modo de **inicio de sesión único** de una aplicación, siga las instrucciones siguientes:
+tooset una aplicación **inicio de sesión único** modo, siga las instrucciones de Hola a continuación:
 
-1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global** o **coadministrador**.
+1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
 
-2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
+2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
 
-3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
+3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
 
-4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
+4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
 
-5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
+5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
+  * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
 
-6.  Seleccione la aplicación para la que desea configurar el inicio de sesión único.
+6.  Seleccione la aplicación hello para el que desea tooconfigure inicio de sesión único.
 
-7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
+7.  Una vez que se carga la aplicación hello, haga clic en **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
 
-## <a name="how-to-choose-a-provisioning-mode"></a>Cómo elegir un modo de aprovisionamiento
+## <a name="how-toochoose-a-provisioning-mode"></a>¿Cómo toochoose un modo de aprovisionamiento
 
--   **Aprovisionamiento manual**: elija el modo de aprovisionamiento [Manual](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) si dispone de cuentas existentes o desea administrar cuentas para esta aplicación fuera de Azure AD.
+-   **Aprovisionamiento manual** : elija hello [Manual](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) modo de aprovisionamiento si dispone de las cuentas existentes o desea toomanage cuentas para esta aplicación fuera de Azure AD.
 
--   **Aprovisionamiento automático**: elija el **modo de aprovisionamiento** [Automático](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) si quiere habilitar el aprovisionamiento automático basado en API o el desaprovisionamiento de las cuentas de usuario para esta aplicación. 
+-   **Aprovisionamiento automático** : elija hello [automática](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **modo de aprovisionamiento** si desea tooenable basadas en la API el aprovisionamiento automático o la cancelación del aprovisionamiento de cuentas de usuario toothis aplicación 
 
    >[!NOTE]
-   >Esta opción solo está disponible para aplicaciones dentro de la categoría **destacada** de la [Galería de aplicaciones de Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery).
+   >Esta opción solo está disponible para las aplicaciones dentro de hello **tasky** categoría de hello [Galería de aplicaciones de Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery).
    >
    >
 
--   **Aprovisionamiento automático basado en SCIM**: use [Aprovisionamiento automático basado en SCIM](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) si su aplicación admite el protocolo SCIM para detectar los cambios en usuarios y grupos. Los cambios realizados en cualquier aplicación integrada con Azure AD se emiten automáticamente. 
+-   **El aprovisionamiento automático basado en SCIM** : usar [el aprovisionamiento automático basado en SCIM](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) si la aplicación es compatible con protocolo de hello SCIM para detectar cambios toousers y los grupos, que se genera automáticamente para los cambios aplicación de tooany integrada con Azure AD 
 
    >[!NOTE]
    >Esta opción no aparece como un modo de aprovisionamiento específico, pero está habilitada de forma predeterminada para todas las aplicaciones que se integran con Azure AD.
    >
    >
 
-## <a name="how-to-set-an-applications-provisioning-mode"></a>Cómo configurar un modo de aprovisionamiento de la aplicación
+## <a name="how-tooset-an-applications-provisioning-mode"></a>¿Cómo tooset una aplicación del modo de aprovisionamiento
 
-Para establecer el modo de **aprovisionamiento** de una aplicación, siga las instrucciones siguientes:
+tooset una aplicación **aprovisionamiento** modo, siga las instrucciones de Hola a continuación:
 
-Para establecer el modo de **inicio de sesión único** de una aplicación, siga las instrucciones siguientes:
+tooset una aplicación **inicio de sesión único** modo, siga las instrucciones de Hola a continuación:
 
-1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global** o **coadministrador**.
+1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
 
-2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
+2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
 
-3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
+3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
 
-4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
+4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
 
-5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
+5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
+  * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
 
-6.  Seleccione la aplicación para la que desea configurar el aprovisionamiento.
+6.  Seleccionar aplicación hello para el que desea tooconfigure de aprovisionamiento.
 
-7.  Cuando se cargue la aplicación, haga clic en **Aprovisionamiento** desde el menú de navegación izquierdo de la aplicación.
+7.  Una vez que se carga la aplicación hello, haga clic en **Provisioning** del menú de navegación izquierdo de la aplicación hello.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Administración de aplicaciones con Azure Active Directory](active-directory-enable-sso-scenario.md)

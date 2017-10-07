@@ -1,6 +1,6 @@
 ---
-title: "Preparación del modelo de implementación en Azure Machine Learning Studio | Microsoft Docs"
-description: "Se describe cómo preparar el modelo entrenado de implementación como un servicio web mediante la conversión del experimento de entrenamiento de Machine Learning Studio en un experimento de predicción."
+title: "aaaHow tooprepare el modelo para la implementación en estudio de aprendizaje automático de Azure | Documentos de Microsoft"
+description: "Cómo tooprepare el modelo entrenado para la implementación como un servidor web service mediante la conversión de la formación de estudio de aprendizaje automático experimentar tooa predictivo experimento."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,88 +14,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: garye
-ms.openlocfilehash: 716a9a9b723df7ff6eb111fa40f2b5941d57d67a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d25bc68be63679a803bfc24a9e29e009a9263f5f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Preparación del modelo de implementación en Azure Machine Learning Studio
+# <a name="how-tooprepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Cómo tooprepare el modelo para la implementación en estudio de aprendizaje automático de Azure
 
-Azure Machine Learning Studio ofrece las herramientas necesarias para desarrollar un modelo de análisis predictivo y después hacerlo operativo mediante la implementación como un servicio web de Azure.
+Azure deja de estudio de aprendizaje automático que Hola herramientas que necesita toodevelop un modelo de análisis predictivo y, a continuación, hacer operativa mediante la implementación como un servicio web de Azure.
 
-Para ello, utilice Studio para crear un experimento, denominado *experimento de entrenamiento*, donde puede entrenar, puntuar y editar el modelo. Cuando esté satisfecho, el modelo estará listo para implementarlo mediante la conversión del experimento de entrenamiento en un *experimento predictivo* que está configurado para puntuar los datos de usuario.
+toodo esto, utilice Studio toocreate un experimento - llama un *experimento de entrenamiento* : donde entrenar, puntuación y editar el modelo. Cuando esté satisfecho, obtener su toodeploy listo del modelo mediante la conversión de su tooa de experimento de entrenamiento *experimento predictivo* que configuró tooscore datos de usuario.
 
 Puede ver un ejemplo de este proceso en [Tutorial: Desarrollo de una solución de análisis predictivo para la evaluación del riesgo de crédito en Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md).
 
-En este artículo se profundiza en los detalles de cómo un experimento de entrenamiento se convierte en un experimento predictivo y de cómo se implementa ese experimento predictivo. Al comprender estos detalles, puede obtener información sobre cómo configurar el modelo implementado para que sea más eficaz.
+Este artículo le profundización en los detalles de Hola de cómo un experimento de entrenamiento se convierte en un experimento de predicción y cómo se implementa ese experimento de predicción. Al comprender estos detalles, puede obtener información sobre cómo tooconfigure su toomake modelo implementado lo más eficaz.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="overview"></a>Información general 
 
-El proceso de convertir un experimento de entrenamiento en un experimento predictivo implica tres pasos:
+proceso de Hola de convertir un experimento de entrenamiento experimento tooa predictivo implica tres pasos:
 
-1. Reemplace los módulos de algoritmo de aprendizaje automático con el modelo entrenado.
-2. Recortar el experimento solo a los módulos que se necesitan para efectuar la puntuación. Un experimento de entrenamiento incluye una serie de módulos que son necesarios para el entrenamiento, pero que no son necesarios una vez que el modelo está entrenado.
-3. Defina cómo el modelo aceptará los datos del usuario de servicio web y qué datos se devolverán.
+1. Reemplace máquina Hola módulos algoritmo con el modelo entrenado de aprendizaje.
+2. Recortar Hola experimento tooonly los módulos que se necesitan para puntuar. Un experimento de entrenamiento incluye un número de módulos que son necesarios para el entrenamiento, pero no son necesarios cuando se entrena el modelo de Hola.
+3. Definir cómo va a aceptar su modelo de datos de usuario del servicio web hello y qué datos se devolverán.
 
 > [!TIP]
-> En el experimento de entrenamiento, se ha interesado por el entrenamiento y la puntuación del modelo con la utilización de datos propios. Pero una vez implementado, los usuarios enviarán datos nuevos al modelo y este devolverá resultados de predicción. Por lo tanto, al convertir el experimento de entrenamiento en un experimento predictivo para preparar la implementación, tenga en cuenta cómo otros usuarios usarán el modelo.
+> En el experimento de entrenamiento, se ha interesado por el entrenamiento y la puntuación del modelo con la utilización de datos propios. Pero una vez implementado, los usuarios enviarán nuevo modelo de datos tooyour y devolverá los resultados de predicción. Por lo tanto, como para convertir su tooget de experimento predictivo tooa de experimento de entrenamiento está listo para la implementación, tenga en cuenta cómo se utilizarán modelo Hola por otros usuarios.
 > 
 > 
 
 ## <a name="set-up-web-service-button"></a>Botón Configurar servicio web
-Después de ejecutar el experimento, tras hacer clic en **Ejecutar** en la parte inferior del lienzo de experimento, haga clic en el botón **Configurar servicio web**, para lo que debe seleccionar la opción **Servicio web predictivo**. **Configurar servicio web** realiza automáticamente los tres pasos de conversión del experimento de entrenamiento en un experimento predictivo:
+Después de ejecutar el experimento (haga clic en **ejecutar** final Hola del lienzo del experimento de hello), haga clic en hello **configurar el servicio de Web** botón (seleccione hello **predictivo servicio Web** opción). **Configurar el servicio de Web** lleva a cabo para Hola tres pasos de convertir el experimento de entrenamiento experimento tooa predicción:
 
-1. Guarda el modelo entrenado en la sección **Modelos entrenados** de la paleta de módulo (a la izquierda del lienzo de experimento). Después reemplaza el algoritmo de aprendizaje automático y los módulos [Entrenar modelo][train-model] con el modelo entrenado guardado.
+1. Guarda el modelo entrenado en hello **modelos entrenados** sección de la paleta de módulo de hello (toohello a la izquierda del lienzo del experimento de hello). A continuación, reemplaza el algoritmo de aprendizaje de máquina de Hola y [entrenar modelo] [ train-model] módulos con hello guarda entrenados modelo.
 2. Analiza el experimento y quita los módulos que ya se han usado solo para entrenamiento y que ya no son necesarios.
 3. Inserta los módulos de _Entrada de servicio web_ y _Salida de servicio web_ en las ubicaciones predeterminadas del experimento (estos módulos aceptan y devuelven datos de usuario).
 
-Por ejemplo, en el siguiente experimento se entrena un modelo de árbol de decisión aumentada de dos clases con los datos del censo de muestra:
+Por ejemplo, siguiente Hola experimentar trenes de un modelo de árbol de decisión impulsado de dos clases con datos del censo de ejemplo:
 
 ![experimento de entrenamiento][figure1]
 
-Los módulos de este experimento realizan básicamente cuatro funciones diferentes:
+módulos de Hello en este experimento llevan a cabo básicamente cuatro funciones diferentes:
 
 ![Funciones del módulo][figure2]
 
-Al convertir este experimento de entrenamiento en un experimento predictivo, algunos de estos módulos ya no se necesitan o ahora tienen un objetivo diferente:
+Al convertir este experimento de entrenamiento experimento tooa predictivo, algunos de estos módulos ya no son necesarios o ahora un propósito diferente:
 
-* **Datos** : los datos de este conjunto de datos de ejemplo no se usan durante la puntuación (el usuario del servicio web proporcionará los datos que se van a puntuar). Sin embargo, los metadatos de este conjunto de datos, como los tipos de datos, son utilizados por el modelo formado. Por ello, necesita mantener el conjunto de datos en el experimento predictivo para que pueda ofrecer estos metadatos.
+* **Datos** -datos de hello en este conjunto de datos de ejemplo no se usa durante la puntuación: usuario Hola del servicio web de hello proporcionará hello toobe de datos con puntuación. Sin embargo, los metadatos de Hola desde este conjunto de datos, tales como tipos de datos, se usan por modelo entrenado Hola. Por ello, debe tookeep Hola conjunto de datos en el experimento de predicción de Hola para que pueda ofrecer estos metadatos.
 
-* **Preparación**: en función de los datos de usuario que se vayan a enviar para puntuar, estos módulos pueden ser necesarios, o no, para procesar los datos entrantes. El botón **Configurar servicio web** no les afecta; debe decidir cómo administrarlos.
+* **Preparar el** , según los datos de usuario de Hola que se van a enviar para puntuar, estos módulos pueden o no ser necesario tooprocess los datos entrantes Hola. Hola **configurar el servicio de Web** botón no toque a estos: necesita toodecide cómo desea toohandle ellos.
   
-    En este ejemplo, en el conjunto de datos de muestra pueden faltar valores, por lo que se ha incluido un módulo [Limpiar datos que faltan][clean-missing-data] para administrarlos. Además, el conjunto de datos de muestra incluye columnas que no son necesarias para entrenar el modelo. Por tanto, se ha incluido el módulo [Seleccionar columnas de conjunto de datos][select-columns] para excluir esas columnas adicionales del flujo de datos. Si sabe que a los datos que se van a enviar para puntuar a través del servicio web no les van a faltar valores, puede quitar el módulo [Limpiar datos que faltan][clean-missing-data]. Sin embargo, dado que el módulo [Seleccionar columnas de conjunto de datos][select-columns] ayuda a definir las columnas de datos que el modelo entrenado espera, es necesario mantener ese módulo.
+    Por ejemplo, en este ejemplo de conjunto de datos de ejemplo de Hola puede tener valores que faltan, por lo que un [limpiar datos que faltan] [ clean-missing-data] módulo estaba incluido toodeal con ellos. Además, conjunto de datos de ejemplo de Hola incluye columnas que no son necesarios tootrain modelo de Hola. Por lo tanto un [seleccionar columnas de conjunto de datos] [ select-columns] módulo fue tooexclude incluye las columnas adicionales de Hola flujo de datos. Si sabe que se van a enviar para puntuar datos Hola a través de hello, servicio web no tendrán valores que faltan, puede quitar hello [limpiar datos que faltan] [ clean-missing-data] módulo. Sin embargo, puesto que de Hola [seleccionar columnas de conjunto de datos] [ select-columns] módulo le ayuda a definir Hola columnas de datos espera que entrenado hello, ese módulo debe tooremain.
 
-* **Entrenar**: estos módulos se usan para entrenar el modelo. Cuando hace clic en **Configurar servicio web**, estos módulos se reemplazan por un único módulo que contiene el modelo entrenado. Este módulo nuevo se guarda en la sección **Modelos entrenados** de la paleta de módulos.
+* **Entrenar** -estos módulos son modelos de hello tootrain usado. Al hacer clic en **configurar el servicio de Web**, estos módulos se reemplazan con un solo módulo que contiene el modelo de hello realizar el entrenamiento. Este nuevo módulo se guarda en hello **modelos entrenados** sección de la paleta de módulo de Hola.
 
-* **Puntuación**: en este ejemplo, el módulo [Dividir datos][split] se usa para dividir el flujo de datos en datos de prueba y datos de entrenamiento. En el experimento predictivo, ya no se entrena, por lo que [Dividir datos][split] se puede eliminar. De forma similar, el segundo módulo [Puntuar modelo][score-model] y el módulo [Evaluar modelo][evaluate-model] se usan para comparar los resultados de los datos de prueba, por lo que estos módulos no son necesarios en el experimento predictivo. No obstante, el módulo [Puntuar modelo][score-model] restante es necesario para devolver un resultado de puntuación a través del servicio web.
+* **Puntuación** : en este ejemplo, hello [dividir datos] [ split] módulo es flujo de datos de uso toodivide hello en los datos de prueba y datos de entrenamiento. En el experimento de predicción de hello, nos estamos no entrenamiento, ya lo [dividir datos] [ split] se puede quitar. De forma similar, en segundo lugar Hola [puntuar modelo] [ score-model] hello y módulo [evaluar modelo] [ evaluate-model] módulo toocompare usado de resultados de prueba de Hola datos, por lo que estos módulos no son necesitan en hello predictivo experimentar. Hola restantes [puntuar modelo] [ score-model] módulo, sin embargo, es necesario tooreturn un resultado de puntuación a través del servicio web Hola.
 
 Este es el aspecto de nuestro ejemplo después de hacer clic en **Configurar servicio web**:
 
 ![Experimento predictivo convertido][figure3]
 
-El trabajo realizado por **Configurar servicio web** puede ser suficiente para preparar el experimento a fin de implementarlo como servicio web. Sin embargo, es aconsejable realizar algún trabajo adicional específico en su experimento.
+Hola trabajo realizado por **configurar el servicio de Web** puede ser suficiente tooprepare su toobe experimento implementado como un servicio web. Sin embargo, puede que desee toodo algunos experimento tooyour específico de un trabajo adicional.
 
 ### <a name="adjust-input-and-output-modules"></a>Ajustar los módulos de entrada y salida
-En el experimento de formación, utilizó un conjunto de datos de entrenamiento y, a continuación, realizó algún procesamiento para obtener los datos en un formato necesitado por el algoritmo de aprendizaje automático. Si los datos que espera recibir a través del servicio web no necesitan este procesamiento, puede omitirlo: conecte la salida del **módulo Entrada de servicio web** a un módulo diferente del experimento. Los datos de usuario ahora no alcanzarán el modelo en esta ubicación.
+En el experimento de entrenamiento, usa un conjunto de datos de entrenamiento y, a continuación, ha Hola algunos tooget de procesamiento de datos en un formulario que Hola algoritmo de aprendizaje de máquina necesarios. Si los datos de hello esperados tooreceive a través del servicio web hello no necesitará este procesamiento, puede omitirlo: conectar la salida de hello de hello **el módulo de entrada de servicio Web** tooa módulo diferente en el experimento. datos del usuario de Hello ahora llegarán en el modelo de hello en esta ubicación.
 
-Por ejemplo, de forma predeterminada **Configurar servicio web** coloca el módulo **Entrada de servicio web** en la parte superior del flujo de datos, como se muestra en la ilustración anterior. No obstante, puede colocar manualmente la **Entrada de servicio web** después de los módulos de procesamiento de datos:
+Por ejemplo, de forma predeterminada **configurar el servicio de Web** coloca hello **Web proporcionados por el servicio** módulo en la parte superior de Hola de su flujo de datos, como se muestra en figura Hola anterior. Pero podemos posicionar manualmente hello **Web proporcionados por el servicio** más allá de los módulos de procesamiento de datos de hello:
 
-![Mover la entrada del servicio web][figure4]
+![Entrada de servicio de web Hola móvil][figure4]
 
-Los datos de entrada que se proporciona a través del servicio web pasarán ahora directamente al módulo del modelo de puntuación sin ningún procesamiento previo.
+Hola datos de entrada proporcionado a través de hello web servicio ahora pasará directamente en el módulo de modelo de puntuación de hello sin ningún procesamiento previo.
 
-De igual forma, **Configurar servicio web** coloca de manera predeterminada el módulo de salida de servicio web en la parte inferior del flujo de datos. En este ejemplo, el servicio web devolverá al usuario la salida del módulo [Puntuar modelo][score-model], que incluye el vector de los datos de entrada completo, además de los resultados de puntuación.
-Sin embargo, si prefiere que devuelva otra cosa, puede agregar módulos adicionales antes del módulo de **salida del servicio web**. 
+De forma similar, de forma predeterminada **configurar el servicio de Web** coloca Hola módulo de salida de servicio Web final Hola de su flujo de datos. En este ejemplo, el servicio web de hello devolverá toohello salida de hello de usuario del programa Hola a [puntuar modelo] [ score-model] módulo, que incluye vector de datos de entrada completa de Hola y Hola resultados de puntuación.
+Sin embargo, si prefiere tooreturn algo diferente, a continuación, puede agregar módulos adicionales antes de hello **Web resultado del servicio** módulo. 
 
-Por ejemplo, para que se devuelvan los resultados de puntuación y no el vector completo de los datos de entrada, agregue un módulo [Seleccionar columnas de conjunto de datos][select-columns] para excluir todas las columnas, excepto los resultados de puntuación. A continuación, mueva el módulo **Salida de servicio web** a la salida del módulo [Seleccionar columnas de conjunto de datos][select-columns]. El experimento tiene el siguiente aspecto:
+Por ejemplo, tooreturn solo Hola los resultados de puntuación y no Hola todo vector de datos de entrada, agregar un [seleccionar columnas de conjunto de datos] [ select-columns] tooexclude módulo todas las columnas excepto Hola resultados de puntuación. A continuación, mueva hello **Web resultado del servicio** toohello salida del módulo de hello [seleccionar columnas de conjunto de datos] [ select-columns] módulo. el experimento de Hello tiene el siguiente aspecto:
 
-![Mover la salida del servicio web][figure5]
+![Mover el resultado del servicio web Hola][figure5]
 
 ### <a name="add-or-remove-additional-data-processing-modules"></a>Agregar o quitar módulos de procesamiento de datos adicionales
-Si hay más módulos en el experimento de los que sabe que se necesitarán durante la puntuación, se pueden eliminar. Por ejemplo, al haber movido el módulo **Entrada de servicio web** a un punto posterior a los módulos de procesamiento de datos, se puede eliminar el módulo [Limpiar datos que faltan][clean-missing-data] del experimento predictivo.
+Si hay más módulos en el experimento de los que sabe que se necesitarán durante la puntuación, se pueden eliminar. Por ejemplo, debido a que se mueve hello **Web proporcionados por el servicio** tooa módulo señalar después hello módulos de procesamiento de datos, se puede eliminar hello [limpiar datos que faltan] [ clean-missing-data] módulo desde la experimento de predicción de Hola.
 
 Nuestro experimento predictivo tiene ahora el siguiente aspecto:
 
@@ -103,21 +103,21 @@ Nuestro experimento predictivo tiene ahora el siguiente aspecto:
 
 
 ### <a name="add-optional-web-service-parameters"></a>Agregar parámetros de servicio web opcionales
-En algunos casos, puede permitir al usuario del servicio web cambiar el comportamiento de los módulos cuando se accede al servicio. *parámetros del servicio web* le permiten hacer esto.
+En algunos casos, puede que desee tooallow usuario de Hola de su comportamiento de hello web toochange de servicio de los módulos cuando se tiene acceso al servicio de Hola. *Parámetros de servicio Web* le permiten toodo esto.
 
-Un ejemplo común es la configuración de un módulo [Importar datos][import-data] para que el usuario del servicio web implementado pueda especificar un origen de datos diferente al acceder al servicio web. También puede configurar el módulo [Exportar datos][export-data] para que se pueda especificar un destino diferente.
+Un ejemplo común es configurar un [importar datos] [ import-data] módulo por lo que usuario Hola de hello implementa el servicio web puede especificar un origen de datos diferente cuando se accede al servicio web de Hola. También puede configurar el módulo [Exportar datos][export-data] para que se pueda especificar un destino diferente.
 
-Puede definir parámetros de servicio web y asociarlos con uno o más parámetros de módulo, y puede especificar si son obligatorios u opcionales. El usuario del servicio web proporciona valores para estos parámetros cuando se tiene acceso al servicio y las acciones del módulo se modifican en consecuencia.
+Puede definir parámetros de servicio web y asociarlos con uno o más parámetros de módulo, y puede especificar si son obligatorios u opcionales. usuario de Hello del servicio web de hello proporciona valores para estos parámetros cuando se tiene acceso al servicio de Hola y acciones de módulo de Hola se modifican en consecuencia.
 
-Para más información sobre los parámetros del servicio web y cómo usarlos, vea [Usar parámetros de servicio web Azure Machine Learning][webserviceparameters].
+Para obtener más información acerca de los parámetros de servicio Web y cómo toouse, vea [utilizando parámetros de servicio de Web de Azure Machine Learning][webserviceparameters].
 
 [webserviceparameters]: machine-learning-web-service-parameters.md
 
 
-## <a name="deploy-the-predictive-experiment-as-a-web-service"></a>Implementar el experimento predictivo como servicio web
-Ahora que ha preparado el experimento predictivo suficientemente, puede implementarlo como servicio web de Azure. Mediante el servicio web, los usuarios pueden enviar datos a su modelo y el modelo devolverá las predicciones.
+## <a name="deploy-hello-predictive-experiment-as-a-web-service"></a>Implementar experimento predictivo Hola como un servicio web
+Ahora que se ha preparado suficientemente experimento predictivo hello, puede implementarlo como un servicio web de Azure. Con el servicio web de hello, los usuarios pueden enviar tooyour modelo de datos y modelo de hello devolverá las predicciones.
 
-Para más información sobre el proceso de implementación completo, consulte [Implementar un servicio web Azure Machine Learning][deploy]
+Para obtener más información sobre el proceso de implementación completa de hello, consulte [implementar un servicio web de aprendizaje automático de Azure][deploy]
 
 [deploy]: machine-learning-publish-a-machine-learning-web-service.md
 

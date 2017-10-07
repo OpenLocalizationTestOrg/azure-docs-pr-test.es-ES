@@ -1,6 +1,6 @@
 ---
-title: "Edición de runbooks de texto en Automatización de Azure"
-description: "En este artículo, se proporcionan diferentes procedimientos para trabajar con runbooks de PowerShell y de flujo de trabajo de PowerShell en Automatización de Azure mediante el editor de texto."
+title: "aaaEditing textual runbooks en automatización de Azure"
+description: "Este artículo proporciona diferentes procedimientos para trabajar con runbooks de flujo de trabajo de PowerShell y PowerShell en automatización de Azure mediante el editor de texto hello."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,94 +14,94 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: 21f30e1266a444a2258973f8acad3692077f535b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3fd87d457838f300ca6c94bc345e82c679a0e011
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Edición de runbooks de texto en Automatización de Azure
-El editor de texto de Azure Automation sirve para editar [runbooks de PowerShell](automation-runbook-types.md#powershell-runbooks) y [runbooks del flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks). Además, incluye las características típicas de otros editores de código, como IntelliSense y codificación en colores, junto con otras características especiales que le ayudarán a acceder a recursos habituales de runbooks.  En este artículo, se proporcionan pasos detallados para realizar diferentes funciones con este editor.
+Hello editor de texto de automatización de Azure puede ser usado tooedit [runbooks PowerShell](automation-runbook-types.md#powershell-runbooks) y [runbooks de flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks). Esto tiene las características típicas de otros editores de código, como intellisense y codificación de colores con características especiales adicionales tooassist también en obtener acceso a recursos comunes toorunbooks Hola.  En este artículo, se proporcionan pasos detallados para realizar diferentes funciones con este editor.
 
-El editor de texto incluye una característica para insertar código para las actividades, los recursos y los runbooks secundarios en un runbook. En lugar de escribir en el código personalmente, puede seleccionar entre una lista de recursos disponibles para que se inserte el código adecuado en el runbook.
+editor de texto Hello incluye un código de tooinsert de característica para actividades, activos y runbooks secundarios en un runbook. En lugar de escribir código de hello, puede seleccionar de una lista de recursos disponibles y tienen Hola inserte código adecuado en hello runbook.
 
-Cada runbook de Automatización de Azure tiene dos versiones: una de borrador y otra publicada. Edite la versión de borrador del runbook y después publíquela para que pueda ejecutarse. No se puede editar la versión publicada. Consulte el artículo sobre la [publicación de un runbook](automation-creating-importing-runbook.md#publishing-a-runbook) para obtener más información.
+Cada runbook de Automatización de Azure tiene dos versiones: una de borrador y otra publicada. Editar Hola versión de borrador de runbook de hello y, a continuación, publicarlo para que se pueda ejecutar. no se puede editar la versión publicada de Hola. Consulte el artículo sobre la [publicación de un runbook](automation-creating-importing-runbook.md#publishing-a-runbook) para obtener más información.
 
-Para trabajar con [runbooks gráficos](automation-runbook-types.md#graphical-runbooks), consulte [Creación gráfica en Azure Automation](automation-graphical-authoring-intro.md).
+toowork con [Runbooks gráficos](automation-runbook-types.md#graphical-runbooks), consulte [edición gráfica en automatización de Azure](automation-graphical-authoring-intro.md).
 
-## <a name="to-edit-a-runbook-with-the-azure-portal"></a>Para editar un runbook con el Portal de Azure
-Use el siguiente procedimiento para abrir un runbook para su edición en el editor de texto.
+## <a name="tooedit-a-runbook-with-hello-azure-portal"></a>tooedit un runbook con hello portal de Azure
+Usar hello siguiendo el procedimiento tooopen un runbook para modificarlo en el editor de texto hello.
 
-1. En el Portal de Azure, seleccione su cuenta de automatización.
-2. Haga clic en el icono **Runbooks** para abrir la lista de runbooks.
-3. Haga clic en el nombre del runbook que desea editar y después en el botón **Editar** .
-4. Realice las modificaciones necesarias.
+1. Hola portal de Azure, seleccione su cuenta de automatización.
+2. Haga clic en hello **Runbooks** icono tooopen Hola lista de runbooks.
+3. Haga clic en el nombre de Hola de hello runbook que desee tooedit y, a continuación, haga clic en hello **editar** botón.
+4. Realizar Hola necesario editar.
 5. Haga clic en **Guardar** cuando termine las modificaciones.
-6. Haga clic en **Publicar** si desea que la última versión de borrador del runbook se publique.
+6. Haga clic en **publicar** si desea Hola última versión de borrador Hola runbook toobe publicado.
 
-### <a name="to-insert-a-cmdlet-into-a-runbook"></a>Para insertar un cmdlet en un runbook
-1. En el lienzo del editor de texto, coloque el cursor donde desee colocar el cmdlet.
-2. Expanda el nodo **Cmdlets** en el control Biblioteca.
-3. Expanda el módulo que contiene el cmdlet que desea usar.
-4. Haga clic con el botón derecho en el cmdlet para insertarlo y seleccione **Agregar a lienzo**.  Si el cmdlet tiene más de un conjunto de parámetros, se agregará el conjunto predeterminado.  También puede expandir el cmdlet para seleccionar un conjunto de parámetros diferente.
-5. Se inserta el código para el cmdlet con toda su lista de parámetros.
-6. Proporcione un valor adecuado en lugar del tipo de datos entre corchetes, <>, para los parámetros necesarios.  Elimine cualquier parámetro que no sea necesario.
+### <a name="tooinsert-a-cmdlet-into-a-runbook"></a>tooinsert un cmdlet en un runbook
+1. Hola lienzo del editor de texto hello, coloque cursor Hola donde desea tooplace Hola cmdlet.
+2. Expanda hello **Cmdlets** nodo Hola control de la biblioteca.
+3. Expanda módulo Hola que contiene cmdlet Hola desea toouse.
+4. Haga clic en hello cmdlet tooinsert y seleccione **agregar toocanvas**.  Si el cmdlet de hello tiene más de un parámetro establecido, se agregará conjunto predeterminado de Hola.  También puede expandir Hola cmdlet tooselect otro parámetro de conjunto.
+5. código de Hello para el cmdlet de Hola se inserta con toda su lista de parámetros.
+6. Proporcione un valor adecuado en lugar del tipo de datos de hello entre llaves <> para los parámetros necesarios.  Elimine cualquier parámetro que no sea necesario.
 
-### <a name="to-insert-code-for-a-child-runbook-into-a-runbook"></a>Para insertar código de runbook secundario en un runbook
-1. En el lienzo del editor de texto, coloque el cursor donde desee colocar el código para el [runbook secundario](automation-child-runbooks.md).
-2. Expanda el nodo **Runbooks** en el control Biblioteca.
-3. Haga clic con el botón derecho en el runbook para insertarlo y seleccione **Agregar a lienzo**.
-4. Se inserta el código para el runbook secundario con los marcadores de posición de los parámetros de runbook.
-5. Reemplace los marcadores de posición por valores adecuados para cada parámetro.
+### <a name="tooinsert-code-for-a-child-runbook-into-a-runbook"></a>código de tooinsert para un runbook secundario en un runbook
+1. Hola lienzo del editor de texto hello, sitúe cursor Hola donde desee que código de hello tooplace para hello [runbook secundario](automation-child-runbooks.md).
+2. Expanda hello **Runbooks** nodo Hola control de la biblioteca.
+3. Haga clic en hello runbook tooinsert y seleccione **agregar toocanvas**.
+4. código de Hello runbook secundario se Hola se inserta con los marcadores de posición para los parámetros de runbook.
+5. Reemplace los marcadores de posición de hello con los valores adecuados para cada parámetro.
 
-### <a name="to-insert-an-asset-into-a-runbook"></a>Para insertar un recurso en un runbook
-1. En el lienzo del editor de texto, coloque el cursor donde desee colocar el código para el runbook secundario.
-2. Expanda el nodo **Recursos** en el control Biblioteca.
-3. Expanda el nodo para el tipo de recurso que desee.
-4. Haga clic con el botón derecho en el recurso para insertarlo y seleccione **Agregar a lienzo**.  Para [recursos variables](automation-variables.md), seleccione **Agregar "Obtener variable" a lienzo** o **Agregar "Establecer variable" a lienzo** en función de si desea obtener o establecer la variable.
-5. El código para el recurso se inserta en el runbook.
+### <a name="tooinsert-an-asset-into-a-runbook"></a>tooinsert un recurso en un runbook
+1. En el lienzo del editor de texto de Hola Hola, sitúe cursor Hola donde desee que código de hello tooplace runbook secundario se Hola.
+2. Expanda hello **activos** nodo Hola control de la biblioteca.
+3. Expanda el nodo de hello para el tipo de saludo del recurso que desee.
+4. Haga clic en hello asset tooinsert y seleccione **agregar toocanvas**.  Para [activos variable](automation-variables.md), seleccione **agregar "Obtener Variable" toocanvas** o **agregar "Set Variable" toocanvas** dependiendo de si desea tooget o establecer variable de saludo.
+5. se inserta código de Hello para el activo de hello en hello runbook.
 
-## <a name="to-edit-a-runbook-with-the-azure-portal"></a>Para editar un runbook con el Portal de Azure
-Use el siguiente procedimiento para abrir un runbook para su edición en el editor de texto.
+## <a name="tooedit-a-runbook-with-hello-azure-portal"></a>tooedit un runbook con hello portal de Azure
+Usar hello siguiendo el procedimiento tooopen un runbook para modificarlo en el editor de texto hello.
 
-1. En el Portal de Azure, seleccione **Automatización** y, a continuación, haga clic en el nombre de una cuenta de Automatización.
-2. Seleccione la pestaña **Runbooks** .
-3. Haga clic en el nombre del runbook que desea editar y después seleccione la pestaña **Autor** .
-4. Haga clic en el botón **Editar** en la parte inferior de la pantalla.
-5. Realice las modificaciones necesarias.
+1. Hola portal de Azure, seleccione **automatización** y, a continuación, haga clic en nombre de Hola de una cuenta de automatización.
+2. Seleccione hello **Runbooks** ficha.
+3. Haga clic en el nombre de Hola de hello runbook que desee tooedit y, a continuación, seleccione hello **autor** ficha.
+4. Haga clic en hello **editar** situado en la parte inferior de Hola de pantalla de bienvenida.
+5. Realizar Hola necesario editar.
 6. Haga clic en **Guardar** cuando termine las modificaciones.
-7. Haga clic en **Publicar** si desea que la última versión de borrador del runbook se publique.
+7. Haga clic en **publicar** si desea Hola última versión de borrador Hola runbook toobe publicado.
 
-### <a name="to-insert-an-activity-into-a-runbook"></a>Para insertar una actividad en un runbook
-1. En el lienzo del editor de texto, coloque el cursor donde desee colocar la actividad.
-2. En la parte inferior de la pantalla, haga clic en **Insertar** y después en **Actividad**.
-3. En la columna **Módulo de integración** , seleccione el módulo que contiene la actividad.
-4. En el panel **Actividad** , seleccione una actividad.
-5. En la columna **Descripción** , observe la descripción de la actividad. Si lo desea, puede hacer clic en Ver ayuda detallada para iniciar la ayuda sobre la actividad en el explorador.
-6. Haga clic en la flecha derecha.  Si la actividad tiene parámetros, se mostrarán como referencia.
-7. A continuación, haga clic en el botón Comprobar.  El código para ejecutar la actividad se insertará en el runbook.
-8. Si la actividad requiere parámetros, proporcione un valor adecuado en lugar del tipo de datos entre corchetes, <>.
+### <a name="tooinsert-an-activity-into-a-runbook"></a>tooinsert una actividad en un Runbook
+1. Hola lienzo del editor de texto hello, coloque cursor Hola donde desea tooplace Hola actividad.
+2. En la parte inferior de Hola de pantalla de bienvenida, haga clic en **insertar** y, a continuación, **actividad**.
+3. Hola **módulo de integración** columna, el módulo de hello select que contiene la actividad hello.
+4. Hola **actividad** panel, seleccione una actividad.
+5. Hola **descripción** columna, descripción de Hola de nota de actividad de Hola. Si lo desea, puede hacer clic en vista detallada de la Ayuda toolaunch ayuda para la actividad de hello en el Explorador de Hola.
+6. Haga clic en la flecha derecha Hola.  Si la actividad hello tiene parámetros, se enumerarán para su información.
+7. Haga clic en el botón de comprobación de Hola.  Actividad de hello toorun de código se insertará en hello runbook.
+8. Si la actividad de hello requiere parámetros, proporcione un valor adecuado en lugar del tipo de datos de hello entre llaves <>.
 
-### <a name="to-insert-code-for-a-child-runbook-into-a-runbook"></a>Para insertar código de runbook secundario en un runbook
-1. En el lienzo del editor de texto, coloque el cursor donde desee colocar el [runbook secundario](automation-child-runbooks.md).
-2. En la parte inferior de la pantalla, haga clic en **Insertar** y después en **Runbook**.
-3. Seleccione en la columna central el runbook que desee insertar y haga clic en la flecha derecha.
-4. Si la runbook tiene parámetros, se mostrarán como referencia.
-5. A continuación, haga clic en el botón Comprobar.  El código para ejecutar el runbook seleccionado se insertará en el runbook actual.
-6. Si el runbook requiere parámetros, proporcione un valor adecuado en lugar del tipo de datos entre corchetes, <>.
+### <a name="tooinsert-code-for-a-child-runbook-into-a-runbook"></a>código de tooinsert para un runbook secundario en un runbook
+1. Hola lienzo del editor de texto hello, coloque cursor Hola donde desee hello tooplace [runbook secundario](automation-child-runbooks.md).
+2. En la parte inferior de Hola de pantalla de bienvenida, haga clic en **insertar** y, a continuación, **Runbook**.
+3. Seleccione Hola runbook tooinsert de la columna central de Hola y haga clic en la flecha derecha de Hola.
+4. Si Hola runbook tiene parámetros, se enumerarán para su información.
+5. Haga clic en el botón de comprobación de Hola.  Código toorun Hola seleccionado runbook se insertará en el runbook actual Hola.
+6. Si Hola runbook requiere parámetros, proporcione un valor adecuado en lugar del tipo de datos de hello entre llaves <>.
 
-### <a name="to-insert-an-asset-into-a-runbook"></a>Para insertar un recurso en un runbook
-1. En el lienzo del editor de texto, coloque el cursor donde desee colocar la actividad para recuperar el recurso.
-2. En la parte inferior de la pantalla, haga clic en **Insertar** y después en **Configuración**.
-3. En la columna **Acción de configuración** , seleccione la acción que desee.
-4. Seleccione entre los recursos disponibles en la columna central.
-5. A continuación, haga clic en el botón Comprobar.  El código para obtener o establecer el recurso se insertará en el runbook.
+### <a name="tooinsert-an-asset-into-a-runbook"></a>tooinsert un recurso en un runbook
+1. Hola lienzo del editor de texto hello, colocar cursor Hola donde desea activos de tooplace Hola actividad tooretrieve Hola.
+2. En la parte inferior de Hola de pantalla de bienvenida, haga clic en **insertar** y, a continuación, **configuración**.
+3. Hola **acción de configuración** columna, acción seleccione Hola que desee.
+4. Seleccione entre Hola activos disponibles en la columna central de Hola.
+5. Haga clic en el botón de comprobación de Hola.  Código tooget o conjunto Hola activos se insertará en hello runbook.
 
-## <a name="to-edit-an-azure-automation-runbook-using-windows-powershell"></a>Para editar un runbook de Automatización de Azure mediante Windows PowerShell
-Para editar un runbook con Windows PowerShell, use el editor de su elección y guárdelo en un archivo. ps1. Puede usar el cmdlet [Get-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/getazurerunbookdefinition) para recuperar el contenido del runbook y después el cmdlet [Set-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/setazurerunbookdefinition) para reemplazar el borrador del runbook existente por el modificado.
+## <a name="tooedit-an-azure-automation-runbook-using-windows-powershell"></a>tooedit un runbook de automatización de Azure con Windows PowerShell
+tooedit un runbook con Windows PowerShell, utiliza el editor Hola de su elección y guardar archivo. ps1 de tooa. Puede usar hello [Get-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/getazurerunbookdefinition) contenido de hello tooretrieve de cmdlet de runbook de hello y, a continuación, [Set-AzureAutomationRunbookDefinition](http://aka.ms/runbookauthor/cmdlet/setazurerunbookdefinition) cmdlet tooreplace Hola existente runbook de borrador con hello había modificado uno.
 
-### <a name="to-retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Para recuperar el contenido de un runbook mediante Windows PowerShell
-En los siguientes comandos de ejemplo, se muestra cómo se recupera el script para un runbook y se guarda en un archivo de script. En este ejemplo, se recupera la versión de borrador. También es posible recuperar la versión publicada del runbook, aunque esta no se puede cambiar.
+### <a name="tooretrieve-hello-contents-of-a-runbook-using-windows-powershell"></a>tooRetrieve Hola contenido de un Runbook mediante Windows PowerShell
+Hola después de comandos de ejemplo muestra cómo tooretrieve Hola script para un runbook y guardar archivo de script de tooa. En este ejemplo, se recupera la versión de borrador de Hola. También es posible tooretrieve Hola publicada versión de Hola runbook aunque no se puede cambiar esta versión.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"
@@ -112,8 +112,8 @@ En los siguientes comandos de ejemplo, se muestra cómo se recupera el script pa
 
     Out-File -InputObject $runbookContent -FilePath $scriptPath
 
-### <a name="to-change-the-contents-of-a-runbook-using-windows-powershell"></a>Para cambiar el contenido de un runbook mediante Windows PowerShell
-En los siguientes comandos de ejemplo, se muestra cómo reemplazar el contenido existente de un runbook por el de un archivo de script. Tenga en cuenta que es el mismo procedimiento de ejemplo que en el artículo sobre cómo [importar un runbook desde un archivo de script con Windows PowerShell](automation-creating-importing-runbook.md).
+### <a name="toochange-hello-contents-of-a-runbook-using-windows-powershell"></a>tooChange Hola contenido de un Runbook mediante Windows PowerShell
+Hello comandos de ejemplo siguientes muestran cómo tooreplace Hola contenido existente de un runbook con contenido de Hola de un archivo de script. Tenga en cuenta que esto es Hola mismo ejemplo del procedimiento como en [tooimport un runbook desde un archivo de script con Windows PowerShell](automation-creating-importing-runbook.md).
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"

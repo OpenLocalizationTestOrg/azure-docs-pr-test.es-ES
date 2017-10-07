@@ -1,6 +1,6 @@
 ---
-title: Escalado de un servicio en la nube de Azure en Windows PowerShell | Microsoft Docs
-description: "(modelo clásico) Aprenda a usar PowerShell para escalar o reducir horizontalmente un rol web o de trabajo en Azure."
+title: aaaScale un servicio de nube de Azure en Windows PowerShell | Documentos de Microsoft
+description: "(clásico) Obtenga información acerca de cómo toouse PowerShell tooscale un rol web o el rol de trabajo o alejar en Azure."
 services: cloud-services
 documentationcenter: 
 author: mmccrory
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: mmccrory
-ms.openlocfilehash: a7ae8ff202d403dff19b8c9a6a09492235db27ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cfac6660e84f8ae24e4e9bdd5bf2016fb9cd7045
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Escalado de un servicio en la nube en PowerShell
+# <a name="how-tooscale-a-cloud-service-in-powershell"></a>¿Cómo tooscale una nube de servicio en PowerShell
 
-Puede usar Windows PowerShell para escalar o reducir horizontalmente un rol web o de trabajo mediante la adición o eliminación de instancias.  
+Puede usar Windows PowerShell tooscale un rol web o el rol de trabajo o agregando o quitando instancias.  
 
-## <a name="log-in-to-azure"></a>Inicie sesión en Azure.
+## <a name="log-in-tooazure"></a>Inicie sesión en tooAzure
 
 Para poder realizar cualquier operación en su suscripción a través de PowerShell, debe iniciar sesión:
 
@@ -32,50 +32,50 @@ Para poder realizar cualquier operación en su suscripción a través de PowerSh
 Add-AzureAccount
 ```
 
-Si tiene varias suscripciones asociadas a su cuenta, puede que deba cambiar la suscripción actual (según donde resida el servicio en la nube). Para comprobar la suscripción actual, ejecute:
+Si tiene varias suscripciones asociadas a su cuenta, deberá suscripción actual de hello toochange según donde reside el servicio de nube. toocheck Hola suscripción actual, ejecute:
 
 ```powershell
 Get-AzureSubscription -Current
 ```
 
-Si necesita cambiar la suscripción actual, ejecute:
+Si necesita la suscripción actual de hello toochange, ejecute:
 
 ```powershell
 Set-AzureSubscription -SubscriptionId <subscription_id>
 ```
 
-## <a name="check-the-current-instance-count-for-your-role"></a>Comprobación del número actual de instancias para el rol
+## <a name="check-hello-current-instance-count-for-your-role"></a>Compruebe el número de instancias actual de hello para el rol
 
-Para comprobar el estado actual de su rol, ejecute:
+estado actual de hello toocheck de su rol, ejecute:
 
 ```powershell
 Get-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>'
 ```
 
-Obtendrá información sobre el rol, como su versión actual de SO y el número de instancias. En este caso, el rol tiene una sola instancia.
+Obtendrá información sobre el rol de hello, incluidos su número de versión e instancia de SO actual. En este caso, el rol de hello tiene una sola instancia.
 
-![Información sobre el rol](./media/cloud-services-how-to-scale-powershell/get-azure-role.png)
+![Obtener información sobre el rol de Hola](./media/cloud-services-how-to-scale-powershell/get-azure-role.png)
 
-## <a name="scale-out-the-role-by-adding-more-instances"></a>Escalado horizontal del rol mediante la adición de más instancias
+## <a name="scale-out-hello-role-by-adding-more-instances"></a>Escalar horizontalmente el rol de hello mediante la adición de más instancias
 
-Para escalar horizontalmente su rol, pase el número deseado de instancias como el parámetro **Count** al cmdlet **Set-AzureRole**:
+tooscale horizontal de su rol, pase Hola número deseado de instancias como hello **recuento** parámetro toohello **Set-AzureRole** cmdlet:
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
 ```
 
-El cmdlet se bloquea momentáneamente mientras las nuevas instancias se aprovisionan e inician. Durante este tiempo, si abre una nueva ventana de PowerShell y llama a **Get-AzureRole** como se mostró anteriormente, verá el nuevo recuento de instancias de destino. Y si examina el estado del rol en el portal, verá que se inicia la nueva instancia:
+bloques de cmdlet Hola momentáneamente al nuevas instancias de Hola se aprovisionan y se inicia. Durante este tiempo, si abre una nueva ventana de PowerShell y llamada **Get-AzureRole** tal y como se muestra anteriormente, verá recuento de instancias de destino nuevo Hola. Y si examina el estado del rol de hello en el portal de hello, debería ver instancia nueva de hello iniciar:
 
 ![Instancia de máquina virtual iniciándose en el portal](./media/cloud-services-how-to-scale-powershell/role-instance-starting.png)
 
-Cuando se hayan iniciado las nuevas instancias, el cmdlet devolverá resultados correctamente:
+Una vez que se hayan iniciado las instancias nuevas de hello, Hola cmdlet devolverá correctamente:
 
 ![Éxito del aumento de instancias de rol](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
 
-## <a name="scale-in-the-role-by-removing-instances"></a>Reducción horizontal del rol mediante la eliminación de instancias
+## <a name="scale-in-hello-role-by-removing-instances"></a>Escalar en función de hello mediante la eliminación de instancias
 
-Puede reducir un rol horizontalmente quitando instancias de la misma manera. Establezca el parámetro **Count** de **Set-AzureRole** en el número de instancias que quiere tener después de que finalice la operación de reducción horizontal.
+Puede escalar en un rol mediante la eliminación de instancias en hello igual. Conjunto hello **recuento** parámetro en **Set-AzureRole** toohello número de instancias que desee toohave una vez completada la escala de hello en la operación.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-No es posible configurar el escalado automático para los servicios en la nube de PowerShell. Para ello, consulte [Cómo escalar automáticamente un servicio en la nube](cloud-services-how-to-scale-portal.md).
+No es posible tooconfigure Autoescala para servicios en la nube de PowerShell. toodo que vea [cómo tooauto escalar un servicio de nube](cloud-services-how-to-scale-portal.md).

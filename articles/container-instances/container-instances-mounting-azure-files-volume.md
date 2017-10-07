@@ -1,6 +1,6 @@
 ---
-title: Montaje de un volumen de Azure Files en Azure Container Instances
-description: "Obtenga información sobre cómo montar un volumen de Azure Files para conservar el estado con Azure Container Instances"
+title: aaaMounting un volumen de archivos de Azure en instancias de contenedor de Azure
+description: "Obtenga información acerca de cómo toomount un Azure los archivos de estado de toopersist de volumen con instancias de contenedor de Azure"
 services: container-instances
 documentationcenter: 
 author: seanmck
@@ -17,19 +17,19 @@ ms.workload: na
 ms.date: 08/01/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 4248a3769ba8a0fb067b3904d55d487fe67e5778
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d87215e06d5e5af40bfebcad17768ee45ccabbb2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="mounting-an-azure-file-share-with-azure-container-instances"></a>Montaje de un recurso compartido de archivos de Azure en Azure Container Instances
 
-De forma predeterminada, Azure Container Instances no tiene estado. Si el contenedor se bloquea o se detiene, se pierde todo su estado. Para conservar el estado más allá de la duración del contenedor, debe montar un volumen desde un almacén externo. Este artículo muestra cómo montar un recurso compartido de archivos de Azure para su uso con Azure Container Instances.
+De forma predeterminada, Azure Container Instances no tiene estado. Si el contenedor de Hola se bloquea o se detiene, se pierde todo su estado. toopersist estado más allá de duración de Hola Hola del contenedor de, debe montar un volumen desde un almacén externo. En este artículo se muestra cómo toomount compartir de un archivo de Azure para su uso con instancias de contenedor de Azure.
 
 ## <a name="create-an-azure-file-share"></a>Creación de un recurso compartido de archivos de Azure
 
-Antes de utilizar un recurso compartido de archivos de Azure en Azure Container Instances, debe crearlo. Ejecute el script siguiente para crear una cuenta de almacenamiento para hospedar el recurso compartido de archivos y el propio recurso compartido. Tenga en cuenta que el nombre de la cuenta de almacenamiento debe ser globalmente único, por lo que el script agrega un valor aleatorio en la cadena base.
+Antes de utilizar un recurso compartido de archivos de Azure en Azure Container Instances, debe crearlo. Ejecute hello después de la secuencia de comandos toocreate un recurso compartido de archivos de almacenamiento cuenta toohost Hola y Hola compartan propio. Tenga en cuenta que ese nombre de cuenta de almacenamiento de hello debe ser único globalmente, por lo que el script de Hola agrega una cadena en base toohello valor aleatorio.
 
 ```azurecli-interactive
 # Change these four parameters
@@ -38,28 +38,28 @@ ACI_PERS_RESOURCE_GROUP=myResourceGroup
 ACI_PERS_LOCATION=eastus
 ACI_PERS_SHARE_NAME=acishare
 
-# Create the storage account with the parameters
+# Create hello storage account with hello parameters
 az storage account create -n $ACI_PERS_STORAGE_ACCOUNT_NAME -g $ACI_PERS_RESOURCE_GROUP -l $ACI_PERS_LOCATION --sku Standard_LRS
 
-# Export the connection string as an environment variable, this is used when creating the Azure file share
+# Export hello connection string as an environment variable, this is used when creating hello Azure file share
 export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $ACI_PERS_STORAGE_ACCOUNT_NAME -g $ACI_PERS_RESOURCE_GROUP -o tsv`
 
-# Create the share
+# Create hello share
 az storage share create -n $ACI_PERS_SHARE_NAME
 ```
 
 ## <a name="acquire-storage-account-access-details"></a>Adquisición de detalles de acceso de la cuenta de almacenamiento
 
-Para montar un recurso compartido de archivos de Azure como un volumen en Azure Container Instances, necesita tres valores: el nombre de la cuenta de almacenamiento, el nombre del recurso compartido y la clave de acceso de almacenamiento. 
+toomount compartir un archivo de Azure como un volumen en instancias de contenedor de Azure, necesita tres valores: Hola nombre de la cuenta de almacenamiento, el nombre del recurso compartido de Hola y clave de acceso de almacenamiento de Hola. 
 
-Si ha usado el script anterior, el nombre de la cuenta de almacenamiento se creó con un valor aleatorio al final. Para consultar la cadena final (incluida la parte aleatoria), use los siguientes comandos:
+Si ha usado el script de Hola anterior, nombre de cuenta de almacenamiento de Hola se creó con un valor aleatorio final Hola. tooquery Hola final cadena (incluidos Hola aleatorio parte), utilice hello siguientes comandos:
 
 ```azurecli-interactive
 STORAGE_ACCOUNT=$(az storage account list --resource-group myResourceGroup --query "[?contains(name,'mystorageaccount')].[name]" -o tsv)
 echo $STORAGE_ACCOUNT
 ```
 
-El nombre del recurso compartido ya se conoce (es *acishare* en el script anterior), por lo que todo lo que queda es la clave de cuenta de almacenamiento, que puede encontrarse con el siguiente comando:
+Hello nombre de recurso compartido ya lo conoce (es *acishare* en script de Hola anterior), por lo que todo lo que queda es la clave de cuenta de almacenamiento de hello, que puede encontrarse con Hola el siguiente comando:
 
 ```azurecli-interactive
 $STORAGE_KEY=$(az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
@@ -68,29 +68,29 @@ echo $STORAGE_KEY
 
 ## <a name="store-storage-account-access-details-with-azure-key-vault"></a>Almacenamiento de los detalles de acceso de la cuenta de almacenamiento con un almacén de claves de Azure
 
-Las claves de cuenta de almacenamiento protegen el acceso a los datos, por lo que recomendamos almacenarlas en un almacén de claves de Azure. 
+Claves de la cuenta de almacenamiento protegen los datos de tooyour de acceso, por lo que recomendamos almacenarlas en un almacén de claves de Azure. 
 
-Cree un almacén de claves con la CLI de Azure:
+Crear un almacén de claves con hello CLI de Azure:
 
 ```azurecli-interactive
 KEYVAULT_NAME=aci-keyvault
 az keyvault create -n $KEYVAULT_NAME --enabled-for-template-deployment -g myResourceGroup
 ```
 
-El conmutador `enabled-for-template-deployment` permite a Azure Resource Manager extraer secretos del almacén de claves durante la implementación.
+Hola `enabled-for-template-deployment` conmutador permite toopull de administrador de recursos de Azure secretos desde el almacén de claves durante la implementación.
 
-Almacene la clave de cuenta de almacenamiento como un secreto nuevo en el almacén de claves:
+Almacenar la clave de cuenta de almacenamiento de Hola como un secreto nuevo en el almacén de claves de hello:
 
 ```azurecli-interactive
 KEYVAULT_SECRET_NAME=azurefilesstoragekey
 az keyvault secret set --vault-name $KEYVAULT_NAME --name $KEYVAULT_SECRET_NAME --value $STORAGE_KEY
 ```
 
-## <a name="mount-the-volume"></a>Monte el volumen
+## <a name="mount-hello-volume"></a>Monte el volumen de Hola
 
-El montaje de un recurso compartido de archivos de Azure como un volumen en un contenedor es un proceso que consta de dos pasos. En primer lugar, proporcione los detalles del recurso compartido como parte de la definición del grupo de contenedores; luego, especifique cómo desea que el volumen se monte dentro de uno o varios de los contenedores del grupo.
+El montaje de un recurso compartido de archivos de Azure como un volumen en un contenedor es un proceso que consta de dos pasos. En primer lugar, se proporcionan detalles de Hola de recurso compartido de hello como parte de la definición de grupo del contenedor de hello, a continuación, especificar cómo desea que el volumen de hello montado en uno o varios contenedores de hello en el grupo de Hola.
 
-Para definir los volúmenes que desea que estén disponibles para el montaje, agregue una matriz `volumes` a la definición del grupo de contenedores en la plantilla de Azure Resource Manager; luego, haga referencia a ellos en la definición de los contenedores individuales.
+volúmenes de hello toodefine desea toomake disponible para el montaje, agregue un `volumes` toohello definición de grupo de contenedor de plantilla de Azure Resource Manager Hola de matriz, a continuación, hacer referencia a ellos en la definición de Hola de contenedores individuales Hola.
 
 ```json
 {
@@ -150,7 +150,7 @@ Para definir los volúmenes que desea que estén disponibles para el montaje, ag
 }
 ```
 
-La plantilla incluye el nombre y la clave de la cuenta de almacenamiento como parámetros, que se pueden proporcionar en un archivo de parámetros independiente. Para rellenar el archivo de parámetros, necesitará tres valores: el nombre de la cuenta de almacenamiento, el identificador de recursos del almacén de claves de Azure y el nombre de secreto del almacén de claves que utilizó para almacenar la clave de almacenamiento. Si ha seguido los pasos anteriores, puede obtener estos valores con el siguiente script:
+plantilla de Hello incluye nombre de cuenta de almacenamiento de Hola y clave como parámetros, que se pueden proporcionar en un archivo de parámetros separados. archivo de parámetros de hello toopopulate, necesitará tres valores: Hola nombre de la cuenta de almacenamiento, Hola Id. de recurso de su almacén de claves de Azure y Hola nombre secreto del almacén de claves que usa la clave de almacenamiento de hello toostore. Si ha seguido los pasos anteriores, puede obtener estos valores con hello siguiente secuencia de comandos:
 
 ```azurecli-interactive
 echo $STORAGE_ACCOUNT
@@ -158,7 +158,7 @@ echo $KEYVAULT_SECRET_NAME
 az keyvault show --name $KEYVAULT_NAME --query [id] -o tsv
 ```
 
-Inserte los valores en el archivo de parámetros:
+Insertar valores de hello en el archivo de parámetros de hello:
 
 ```json
 {
@@ -180,26 +180,26 @@ Inserte los valores en el archivo de parámetros:
 }
 ```
 
-## <a name="deploy-the-container-and-manage-files"></a>Implementación del contenedor y administración de archivos
+## <a name="deploy-hello-container-and-manage-files"></a>Contenedor de Hola de implementar y administrar archivos
 
-Con la plantilla definida, puede crear el contenedor y montar el volumen de este mediante la CLI de Azure. Suponiendo que el archivo de plantilla y el archivo de parámetros se denominan *azuredeploy.json* y *azuredeploy.parameters.json*, respectivamente, la línea de comandos es:
+Con definida por la plantilla de hello, puede crear el contenedor de Hola y montar el volumen mediante Hola CLI de Azure. Suponiendo que hello archivo de plantilla se denomina *azuredeploy.json* y ese archivo de parámetros de Hola se denomina *azuredeploy.parameters.json*, línea de comandos de hello es:
 
 ```azurecli-interactive
 az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group myResourceGroup
 ```
 
-Una vez que se inicie el contenedor, puede usar la aplicación web simple que se implementó mediante la imagen **seanmckenna/aci-hellofiles** en los archivos de administración en el recurso compartido de archivos de Azure en la ruta de montaje que especificó. Obtenga la dirección IP de la aplicación web mediante lo siguiente:
+Una vez que se inicia el contenedor de hello, puede usar la aplicación web simple de hello implementado a través de Hola **seanmckenna/aci-hellofiles** toohello de imagen, administrar archivos en el recurso compartido de archivos de Azure de hello en la ruta de acceso de montaje de Hola que especificó. Obtener dirección ip de hello para la aplicación web de Hola a través de la siguiente hello:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name hellofiles -o table
 ```
 
-Puede usar una herramienta como el [Explorador de Microsoft Azure Storage](http://storageexplorer.com) para recuperar e inspeccionar el archivo escrito en el recurso compartido de archivos.
+Puede usar una herramienta como hello [Microsoft Azure Storage Explorer](http://storageexplorer.com) tooretrieve e inspeccionar el recurso compartido de archivos de hello archivo escritos toohello.
 
 >[!NOTE]
-> Para más información sobre el uso de plantillas de Azure Resource Manager, archivos de parámetros y la implementación con la CLI de Azure, consulte [Implementación de recursos con plantillas de Resource Manager y la CLI de Azure](../azure-resource-manager/resource-group-template-deploy-cli.md).
+> toolearn más información acerca de utilizar plantillas del Administrador de recursos de Azure, archivos de parámetros e implementar con hello CLI de Azure, consulte [implementar los recursos con plantillas de administrador de recursos y la CLI de Azure](../azure-resource-manager/resource-group-template-deploy-cli.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Implementación para el primer contenedor utilizando el [inicio rápido](container-instances-quickstart.md) de Azure Container Instances
-- Obtener información sobre la [relación entre Azure Container Instances y orquestadores de contenedor](container-instances-orchestrator-relationship.md)
+- Implementar para el primer contenedor mediante instancias de contenedor de Azure de hello [inicio rápido](container-instances-quickstart.md)
+- Obtenga información acerca de hello [relación entre las instancias de contenedor de Azure y orchestrators de contenedor](container-instances-orchestrator-relationship.md)

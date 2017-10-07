@@ -1,6 +1,6 @@
 ---
-title: "Creación de alertas en Log Analytics (OMS) | Microsoft Docs"
-description: "Las alertas de Log Analytics identifican información importante en el repositorio de OMS y pueden avisarle proactivamente de problemas o invocar acciones para intentar corregirlos.  En este artículo se describe cómo crear una regla de alerta y los detalles de las distintas acciones que pueden realizar."
+title: "alertas de aaaCreating en análisis de registros de OMS | Documentos de Microsoft"
+description: "Alertas de análisis de registros identificar información importante en el repositorio OMS y se pueden proactivamente avisarle de problemas o invocar acciones tooattempt toocorrect ellos.  Este artículo describe cómo toocreate una regla de alerta y las diferentes acciones de Hola de detalles que pueden tomar."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,144 +14,144 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2017
 ms.author: bwren
-ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3d035b2426dda9645b19e6c993dc26a2d95a2a78
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="working-with-alert-rules-in-log-analytics"></a>Uso de reglas de alertas en Log Analytics
-Las alertas se crean mediante reglas de alerta que ejecutan automáticamente búsquedas de registros a intervalos regulares.  Crean un registro de alertas si los resultados coinciden con criterios concretos.  Luego, la regla puede ejecutar automáticamente una o varias acciones para avisarle proactivamente de la alerta o invocar otro proceso.   
+Las alertas se crean mediante reglas de alerta que ejecutan automáticamente búsquedas de registros a intervalos regulares.  Crean un registro de alertas si los resultados de hello coincide con determinados criterios.  regla de Hello, a continuación, ejecutar de forma automática una o más de las acciones tooproactively recibir una notificación de alerta de Hola o invocar otro proceso.   
 
-En este artículo se describen los procesos para crear y editar reglas de alerta mediante el portal OMS.  Para más información sobre las distintas configuraciones y cómo implementar la lógica necesaria, consulte [Descripción de las alertas de Log Analytics](log-analytics-alerts.md).
+Este artículo describe Hola procesos toocreate y editar reglas de alerta mediante el portal de OMS Hola.  Para obtener más información acerca de hello distintas configuraciones y cómo tooimplement requiere lógica, consulte [conceptos básicos sobre alertas en el análisis de registros](log-analytics-alerts.md).
 
 >[!NOTE]
-> Actualmente no se puede crear ni modificar ninguna regla de alerta mediante Azure Portal. 
+> Actualmente no se puede crear o modificar una regla de alerta con hello portal de Azure. 
 
 ## <a name="create-an-alert-rule"></a>Crear una regla de alerta
 
-Para crear una regla de alerta mediante el portal OMS, primero debe crear una búsqueda de registros para los registros que deben invocar la alerta.  El botón **Alerta** estará entonces disponible para que pueda crear y configurar la regla de alerta.
+toocreate una regla de alerta mediante el portal de OMS hello, primero debe crear una búsqueda de registros de registros de Hola que se debe invocar alerta Hola.  Hola **alerta** botón, a continuación, estará disponible para que pueda crear y configurar la regla de alerta de Hola.
 
 >[!NOTE]
 > Actualmente se puede crear un máximo de 250 reglas de alertas en un área de trabajo de OMS. 
 
-1. En la página de información general de OMS, haga clic en **Búsqueda de registros**.
+1. En la página de información general de OMS de hello, haga clic en **búsqueda de registros**.
 2. Cree una nueva consulta de búsqueda de registros o seleccione una búsqueda de registros guardada. 
-3. Haga clic en **Alerta** en la parte superior de la página para abrir la pantalla **Agregar regla de alerta**.
-4. Configure la regla de alerta mediante la información de la sección [Detalles sobre las reglas de alerta](#details-of-alert-rules) que aparece más abajo.
-6. Haga clic en **Guardar** para completar la regla de alerta.  Se iniciará la ejecución de inmediato.
+3. Haga clic en **alerta** en parte superior de Hola Hola de hello página tooopen **Agregar regla de alerta** pantalla.
+4. Configurar regla de alerta de hello con información de [detalles de reglas de alerta](#details-of-alert-rules) a continuación.
+6. Haga clic en **guardar** regla de alerta de toocomplete Hola.  Se iniciará la ejecución de inmediato.
 
 
 ## <a name="edit-an-alert-rule"></a>Edición de una regla de alerta
-Puede obtener una lista de todas las reglas de alerta en el menú **Alertas** de la **configuración** de Log Analytics.  
+Puede obtener una lista de todas las reglas de alerta en hello **alertas** menú análisis de registros **configuración**.  
 
 ![Administrar alertas](./media/log-analytics-alerts/configure.png)
 
-1. En la consola de OMS, seleccione el icono **Configuración** .
+1. Hola Hola select de consola OMS **configuración** icono.
 2. Seleccione **Alertas**.
 
 Puede realizar varias acciones desde esta vista.
 
-* Deshabilite una regla seleccionando el icono **Desactivada** que aparece a su lado.
-* Edite una regla de alerta haciendo clic en el icono de lápiz junto a ella.
-* Quite una regla de alerta haciendo clic en el icono **X** que está a su lado. 
+* Deshabilitar una regla seleccionando **desactivar** tooit siguiente.
+* Editar una regla de alerta, haga clic en el icono de lápiz hello tooit siguiente.
+* Quitar una regla de alerta, haga clic en hello **X** tooit siguiente de icono. 
 
 ## <a name="details-of-alert-rules"></a>Detalles sobre las reglas de alerta
-Cuando cree o edite una regla de alerta en el portal de OMS, trabajará con las páginas **Agregar regla de alerta** o **Editar regla de alerta** página.  Las tablas siguientes describen los campos de esta pantalla.
+Al crear o editar una regla de alerta en el portal de OMS hello, trabajará con hello **Agregar regla de alerta** o **Editar regla de alerta** página.  Hola las tablas siguientes describe los campos de hello en esta pantalla.
 
 ![Regla de alerta](media/log-analytics-alerts/add-alert-rule.png)
 
 ### <a name="alert-information"></a>Información de alertas
-Estas son las configuraciones básicas de la regla de alerta y las alertas que crea.
+Se trata de la configuración básica de la regla de alerta de Hola y alertas de Hola que crea.
 
 | Propiedad | Descripción |
 |:--- |:---|
-| Nombre | Nombre único para identificar la regla de alerta. Este nombre se incluirá en cualquier alerta creada por la regla.  |
-| Descripción | Descripción opcional de la regla de alerta. |
+| Nombre | Único nombre tooidentify Hola regla de alerta. Este nombre se incluye en las alertas creadas por regla Hola.  |
+| Descripción | Descripción opcional de la regla de alerta de Hola. |
 | Severity |Gravedad de las alertas creadas por esta regla. |
 
 ### <a name="search-query-and-time-window"></a>Ventana de consulta y ventana de tiempo
-La ventana de consulta y la ventana de tiempo que devuelven los registros que se evalúan para determinar si se debe crear alguna alerta.
+ventana de consulta y tiempo de búsqueda de Hello que devuelve registros de Hola que son evaluada toodetermine si se crean las alertas.
 
 | Propiedad | Descripción |
 |:--- |:---|
-| Consulta de búsqueda | Esta es la consulta que se va a ejecutar.  Los registros devueltos por esta consulta se utilizarán para determinar si se crea una alerta.<br><br>Seleccione **Use current search query** (Usar consulta de búsqueda actual) para utilizar la consulta actual o seleccionar una búsqueda guardada de la lista.  La sintaxis de la consulta se proporciona en el cuadro de texto, desde donde puede modificarla si fuera necesario. |
-| Período de tiempo |Especifica el intervalo de tiempo para la consulta.  La consulta devuelve solo los registros que se crearon dentro de este intervalo de tiempo actual.  Puede ser cualquier valor entre 5 minutos y 24 horas.  Debe ser mayor que la frecuencia de alertas o igual a este valor.  <br><br> Por ejemplo, si el período de tiempo se establece en 60 minutos, y la consulta se ejecuta a las 13:15, se devolverán solo los registros que se crearon entre las 12:15 y las 13:15. |
+| Consulta de búsqueda | Se trata de una consulta de Hola que se va a ejecutar.  registros de Hello devueltos por esta consulta será toodetermine usado si se crea una alerta.<br><br>Seleccione **usar consulta de búsqueda actual** toouse Hola consulta actual o seleccione una búsqueda guardada de la lista de hello existente.  sintaxis de consulta de Hola se proporcionan en el cuadro de texto de Hola donde puede modificar si es necesario. |
+| Período de tiempo |Especifica el intervalo de tiempo de Hola para consulta de Hola.  Hola consulta devuelve solo los registros que se crearon dentro de este intervalo de hello hora actual.  Puede ser cualquier valor entre 5 minutos y 24 horas.  Debe ser igual o mayor que toohello frecuencia de alerta.  <br><br> Por ejemplo, si hello vez ventana se establece too60 minutos y consulta de Hola que se ejecuta a la 1:15 P.M., se devolverá únicamente los registros que se han creado entre 12:15 P.M. y la 1:15 PM. |
 
-Al facilitar el período de tiempo para la regla de alerta, se mostrará el número de registros existentes que cumplen los criterios de búsqueda para ese período de tiempo.  Esto puede ayudarle a determinar la frecuencia con que proporcionará el número de resultados esperados.
+Al proporcionar el período de tiempo de hello para la regla de alerta de hello, se mostrará el número de Hola de los registros existentes que coincidan con los criterios de búsqueda de Hola para ese período de tiempo.  Esto puede ayudarle a determinar la frecuencia de Hola que le indicará Hola número de resultados esperados.
 
 ### <a name="schedule"></a>Schedule
-Define la frecuencia con la que se ejecuta la consulta de búsqueda.
+Define la frecuencia con hello consulta de búsqueda se ejecuta.
 
 | Propiedad | Descripción |
 |:--- |:---|
-| Frecuencia de alertas | Especifica con qué frecuencia se debe ejecutar la consulta. Puede ser cualquier valor entre 5 minutos y 24 horas. Debe ser igual que el período de tiempo o inferior a este valor.  Si el valor es mayor que la ventana de tiempo, se arriesga a que se pierdan registros.<br><br>Por ejemplo, considere la posibilidad de una ventana de tiempo de 30 minutos y una frecuencia de 60 minutos.  Si la consulta se ejecuta a la 1:00, devolverá registros entre las 12:30 y la 1:00 p. m.  La próxima vez que se ejecute la consulta será a las 2:00 y devolverá los registros comprendidos entre la 1:30 y las 2:00.  Nunca se evaluarán los registros creados entre la 1:00 y la 1:30. |
+| Frecuencia de alertas | Especifica la frecuencia con hello se debe ejecutar consulta. Puede ser cualquier valor entre 5 minutos y 24 horas. Debe ser igual tooor menor que el período de tiempo de Hola.  Si el valor de hello es mayor que el período de tiempo de hello, a continuación, se arriesga a registros que falta.<br><br>Por ejemplo, considere la posibilidad de una ventana de tiempo de 30 minutos y una frecuencia de 60 minutos.  Si se ejecuta la consulta de Hola a las 1:00, devuelve registros entre la 1:00 P.M. y de 12:30.  Hola próxima vez que se ejecutaría consulta hello es 2:00 cuando devolvería registros entre la 1:30 y las 2:00.  Nunca se evaluarán los registros creados entre la 1:00 y la 1:30. |
 
 
 ### <a name="generate-alert-based-on"></a>Generación de alerta según
-Define los criterios que se evaluarán con respecto a los resultados de la consulta de búsqueda para determinar si se debería crear una alerta.  Estos detalles variarán en función del tipo de regla de alertas que seleccione.  Para obtener información sobre los distintos tipos de reglas de alertas, consulte [Respuesta a los problemas de Log Analytics mediante el uso de alertas](log-analytics-alerts.md).
+Define Hola se deben crear criterios que se va a evaluar en resultados de Hola de toodetermine de consulta de búsqueda de hello si una alerta.  Estos detalles será diferentes en función de tipo hello de regla de alerta que seleccione.  Puede obtener detalles de hello tipos diferentes de regla de alerta de [conceptos básicos sobre alertas en el análisis de registros](log-analytics-alerts.md).
 
 | Propiedad | Descripción |
 |:--- |:---|
-| Suprimir alertas | Al activar la supresión de la regla de alerta, las acciones de la regla se deshabilitan durante un período de tiempo definido después de crear una nueva alerta. La regla se seguirá ejecutando y creará registros de alerta si se cumplen los criterios. Esto se hace así para que tenga tiempo para corregir el problema sin ejecutar acciones duplicadas. |
+| Suprimir alertas | Al activar la supresión de regla de alerta de hello, acciones de regla de Hola se deshabilitan durante un período definido de tiempo después de crear una nueva alerta. regla de Hello todavía se está ejecutando y crea registros de alerta si se cumplen los criterios de Hola. Se trata de tooallow tiempo problema de hello toocorrect sin ejecutar acciones duplicadas. |
 
-#### <a name="number-of-results-alert-rules"></a>Reglas de alertas para números de resultados
+#### <a name="number-of-results-alert-rules"></a>Reglas de alerta para número de resultados
 
 | Propiedad | Descripción |
 |:--- |:---|
-| Número de resultados |Se crea una alerta si el número de registros devueltos por la consulta es **mayor que** o **menor que** el valor que proporcione.  |
+| Número de resultados |Se crea una alerta si el número de Hola de registros devueltos por la consulta de hello es cualquiera **mayor** o **menor** Hola valor que proporcione.  |
 
 #### <a name="metric-measurement-alert-rules"></a>Reglas de alertas para medición de métricas
 
 | Propiedad | Descripción |
 |:--- |:---|
-| Valor agregado | Valor umbral que cada valor agregado de los resultados debe superar para que se considere una infracción. |
-| Activación de alerta según | El número de infracciones para que se cree una alerta.  Puede especificar **Infracciones totales** para cualquier combinación de infracciones en el conjunto de resultados o **Infracciones consecutivas** para que las infracciones deban tener lugar en muestras consecutivas. |
+| Valor agregado | Valor de umbral que cada valor de agregado en los resultados de hello debe superar toobe considera una infracción. |
+| Activación de alerta según | número de Hola de infracciones de una alerta toobe creado.  Puede especificar **Total de infracciones** para cualquier combinación de infracciones en los resultados de hello establecido o **infracciones consecutivas** toorequire que Hola infracciones se debe producir en muestras consecutivas. |
 
 ### <a name="actions"></a>Acciones
-Las reglas de alerta siempre crean un [registro de alerta](#alert-records) cuando se alcanza el umbral.  También puede definir la ejecución de una o varias respuestas, como enviar un mensaje de correo electrónico o iniciar un runbook.
+Las reglas de alerta, siempre se creará una [alerta registro](#alert-records) cuando se cumpla el umbral de Hola.  También puede definir uno o más de las respuestas toobe ejecutar como enviar un correo electrónico o iniciar un runbook.
 
 
 
 #### <a name="email-actions"></a>Acciones de correo electrónico
-Las acciones de correo electrónico envían un correo electrónico con los detalles de la alerta a uno o varios destinatarios.
+Acciones de correo electrónico envíen un correo electrónico con los detalles de Hola de tooone alerta Hola o más destinatarios.
 
 | Propiedad | Descripción |
 |:--- |:---|
-| Notificación por correo electrónico |Especifique **Sí** si desea que se le envíe un correo electrónico cuando se active la alerta. |
-| Asunto |El asunto del correo electrónico.  No se puede modificar el cuerpo del mensaje de correo. |
-| Recipients |Direcciones de todos los destinatarios de correo electrónico.  Si especifica más de una dirección, separe las direcciones con un punto y coma (;). |
+| Notificación por correo electrónico |Especifique **Sí** si desea que un toobe de correo electrónico que se enviará cuando se desencadene la alerta de Hola. |
+| Asunto |Asunto de correo electrónico de Hola.  No se puede modificar el cuerpo de saludo del mensaje de Hola. |
+| Recipients |Direcciones de todos los destinatarios de correo electrónico.  Si especifica más de una dirección y, a continuación, direcciones de hello independiente con un punto y coma (;). |
 
 #### <a name="webhook-actions"></a>Acciones de webhook
-Las acciones de Webhook permiten invocar un proceso externo a través de una sola solicitud HTTP POST.
+Las acciones de Webhook permiten tooinvoke un proceso externo a través de una única solicitud HTTP POST.
 
 | Propiedad | Descripción |
 |:--- |:---|
-| webhook |Especifique **Sí** si desea llamar a un webhook cuando se desencadene la alerta. |
-| Dirección URL de Webhook |La dirección URL del webhook. |
-| Incluir la carga personalizada de JSON |Seleccione esta opción si desea reemplazar la carga predeterminada por una carga personalizada. |
-| Especificar la carga JSON personalizada |La carga personalizada para el webhook.  Consulte la sección anterior para obtener más información. |
+| webhook |Especifique **Sí** si desea toocall un webhook cuando se desencadene la alerta de Hola. |
+| Dirección URL de Webhook |dirección URL de Hola de hello webhook. |
+| Incluir la carga personalizada de JSON |Seleccione esta opción si desea que la carga de tooreplace Hola predeterminado con una carga personalizada. |
+| Especificar la carga JSON personalizada |carga personalizada de Hola Hola webhook.  Consulte la sección anterior para obtener más información. |
 
 #### <a name="runbook-actions"></a>Acciones de runbook
 Las acciones de runbook inician un runbook en Automatización de Azure. 
 
 >[!NOTE]
-> Debe tener instalada la solución Automation en el área de trabajo para que se habilite esta acción. 
+> Debe tener instalada en el área de trabajo para este toobe de acción habilitada la solución de automatización de Hola. 
 
 
 | Propiedad | Descripción |
 |:--- |:---|
-| Runbook | Especifique **Sí** si desea iniciar un runbook de Automatización de Azure cuando se desencadene la alerta.  |
-| Cuenta de Automation | Especifica la cuenta de Automation de la que se seleccionan los runbooks.  Se trata de la cuenta de acción que está vinculada al área de trabajo. |
-| Seleccionar un runbook | Seleccione el runbook que desea iniciar cuando se crea una alerta. |
-| Ejecutar en | Seleccione **Azure** para ejecutar el runbook en la nube.  Seleccione **Hybrid Worker** para ejecutar el runbook en un agente con [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md ) instalado.  |
+| Runbook | Especifique **Sí** si desea toostart un runbook de automatización de Azure cuando se desencadene la alerta de Hola.  |
+| Cuenta de Automation | Especifica la cuenta de automatización que están seleccionados los runbooks de Hola.  Se trata de una cuenta de acción de Hola que se vinculó el área de trabajo de toohello. |
+| Seleccionar un runbook | Seleccione runbook Hola desea toostart cuando se crea una alerta. |
+| Ejecutar en | Seleccione **Azure** toorun Hola runbook en la nube de Hola.  Seleccione **Hybrid worker** toorun Hola runbook en un agente con [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md ) instalado.  |
 
 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Instale la [solución de Administración de alertas](log-analytics-solution-alert-management.md) para analizar las alertas creadas en Log Analytics junto con las alertas recopiladas desde System Center Operations Manager (SCOM).
+* Instalar hello [solución de administración de alertas](log-analytics-solution-alert-management.md) recopilan de alertas de tooanalyze creado en el análisis de registros junto con las alertas de System Center Operations Manager (SCOM).
 * Obtenga más información sobre las [búsquedas de registros](log-analytics-log-searches.md) que pueden generar alertas.
 * Complete un tutorial para [configurar un webhook](log-analytics-alerts-webhooks.md) con una regla de alerta.  
-* Aprenda a escribir [runbooks en Automatización de Azure](https://azure.microsoft.com/documentation/services/automation) para solucionar los problemas identificados por las alertas.
+* Obtenga información acerca de cómo toowrite [runbooks en automatización de Azure](https://azure.microsoft.com/documentation/services/automation) problemas tooremediate identificados por las alertas.
 
