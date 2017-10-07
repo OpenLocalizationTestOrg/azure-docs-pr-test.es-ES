@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Kindling | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Kindling."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Kindling."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,205 +13,205 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 131c2c3f46c60193d512b1779e917c8322732fbc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 32ad6116c2690aea2060a2dd56e052f233ad7ae3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kindling"></a><span data-ttu-id="675af-103">Tutorial: Integración de Azure Active Directory con Kindling</span><span class="sxs-lookup"><span data-stu-id="675af-103">Tutorial: Azure Active Directory integration with Kindling</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-kindling"></a><span data-ttu-id="bb077-103">Tutorial: Integración de Azure Active Directory con Kindling</span><span class="sxs-lookup"><span data-stu-id="bb077-103">Tutorial: Azure Active Directory integration with Kindling</span></span>
 
-<span data-ttu-id="675af-104">En este tutorial, obtendrá información sobre cómo integrar Kindling con Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="675af-104">In this tutorial, you learn how to integrate Kindling with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="bb077-104">En este tutorial, aprenderá cómo toointegrate Kindling con Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="bb077-104">In this tutorial, you learn how toointegrate Kindling with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="675af-105">La integración de Kindling con Azure AD le proporciona las siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="675af-105">Integrating Kindling with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="bb077-105">Integración Kindling con Azure AD proporciona Hola siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="bb077-105">Integrating Kindling with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="675af-106">Puede controlar en Azure AD quién tiene acceso a Kindling.</span><span class="sxs-lookup"><span data-stu-id="675af-106">You can control in Azure AD who has access to Kindling</span></span>
-- <span data-ttu-id="675af-107">Puede permitir que los usuarios inicien sesión automáticamente en Kindling (inicio de sesión único) con sus cuentas de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="675af-107">You can enable your users to automatically get signed-on to Kindling (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="675af-108">Puede administrar las cuentas en una sola ubicación central: Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="675af-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="bb077-106">Puede controlar en Azure AD que tenga acceso tooKindling</span><span class="sxs-lookup"><span data-stu-id="bb077-106">You can control in Azure AD who has access tooKindling</span></span>
+- <span data-ttu-id="bb077-107">Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooKindling (Single Sign-On) con sus cuentas de Azure AD</span><span class="sxs-lookup"><span data-stu-id="bb077-107">You can enable your users tooautomatically get signed-on tooKindling (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="bb077-108">Puede administrar las cuentas en una ubicación central: Hola portal de Azure</span><span class="sxs-lookup"><span data-stu-id="bb077-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="675af-109">Si quiere conocer más detalles sobre la integración de aplicaciones SaaS con Azure AD, vea:</span><span class="sxs-lookup"><span data-stu-id="675af-109">If you want to know more details about SaaS app integration with Azure AD, see.</span></span> <span data-ttu-id="675af-110">[¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)</span><span class="sxs-lookup"><span data-stu-id="675af-110">[what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="bb077-109">Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte.</span><span class="sxs-lookup"><span data-stu-id="bb077-109">If you want tooknow more details about SaaS app integration with Azure AD, see.</span></span> <span data-ttu-id="bb077-110">[¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)</span><span class="sxs-lookup"><span data-stu-id="bb077-110">[what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="675af-111">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="675af-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="bb077-111">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="bb077-111">Prerequisites</span></span>
 
-<span data-ttu-id="675af-112">Para configurar la integración de Azure AD con Kindling, necesita los siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="675af-112">To configure Azure AD integration with Kindling, you need the following items:</span></span>
+<span data-ttu-id="bb077-112">integración de Azure AD tooconfigure con Kindling, necesita Hola siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="bb077-112">tooconfigure Azure AD integration with Kindling, you need hello following items:</span></span>
 
-- <span data-ttu-id="675af-113">Una suscripción de Azure AD</span><span class="sxs-lookup"><span data-stu-id="675af-113">An Azure AD subscription</span></span>
-- <span data-ttu-id="675af-114">Una suscripción habilitada para el inicio de sesión único en Kindling</span><span class="sxs-lookup"><span data-stu-id="675af-114">A Kindling single sign-on enabled subscription</span></span>
+- <span data-ttu-id="bb077-113">Una suscripción de Azure AD</span><span class="sxs-lookup"><span data-stu-id="bb077-113">An Azure AD subscription</span></span>
+- <span data-ttu-id="bb077-114">Una suscripción habilitada para el inicio de sesión único en Kindling</span><span class="sxs-lookup"><span data-stu-id="bb077-114">A Kindling single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="675af-115">Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.</span><span class="sxs-lookup"><span data-stu-id="675af-115">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="bb077-115">Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.</span><span class="sxs-lookup"><span data-stu-id="bb077-115">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="675af-116">Para probar los pasos de este tutorial, debe seguir estas recomendaciones:</span><span class="sxs-lookup"><span data-stu-id="675af-116">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="bb077-116">pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:</span><span class="sxs-lookup"><span data-stu-id="bb077-116">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="675af-117">No use el entorno de producción, salvo que sea necesario.</span><span class="sxs-lookup"><span data-stu-id="675af-117">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="675af-118">Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="675af-118">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="bb077-117">No use el entorno de producción, salvo que sea necesario.</span><span class="sxs-lookup"><span data-stu-id="bb077-117">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="bb077-118">Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="bb077-118">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="675af-119">Descripción del escenario</span><span class="sxs-lookup"><span data-stu-id="675af-119">Scenario description</span></span>
-<span data-ttu-id="675af-120">En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba.</span><span class="sxs-lookup"><span data-stu-id="675af-120">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="675af-121">La situación descrita en este tutorial consta de dos bloques de creación principales:</span><span class="sxs-lookup"><span data-stu-id="675af-121">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="bb077-119">Descripción del escenario</span><span class="sxs-lookup"><span data-stu-id="bb077-119">Scenario description</span></span>
+<span data-ttu-id="bb077-120">En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba.</span><span class="sxs-lookup"><span data-stu-id="bb077-120">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="bb077-121">escenario de Hello descrito en este tutorial consta de dos bloques principales:</span><span class="sxs-lookup"><span data-stu-id="bb077-121">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="675af-122">Incorporación de Kindling desde la galería</span><span class="sxs-lookup"><span data-stu-id="675af-122">Adding Kindling from the gallery</span></span>
-2. <span data-ttu-id="675af-123">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="675af-123">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="bb077-122">Agregar Kindling desde la Galería de Hola</span><span class="sxs-lookup"><span data-stu-id="bb077-122">Adding Kindling from hello gallery</span></span>
+2. <span data-ttu-id="bb077-123">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="bb077-123">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-kindling-from-the-gallery"></a><span data-ttu-id="675af-124">Incorporación de Kindling desde la galería</span><span class="sxs-lookup"><span data-stu-id="675af-124">Adding Kindling from the gallery</span></span>
-<span data-ttu-id="675af-125">Para configurar la integración de Kindling en Azure AD, deberá agregar Kindling desde la galería a la lista de aplicaciones SaaS administradas.</span><span class="sxs-lookup"><span data-stu-id="675af-125">To configure the integration of Kindling into Azure AD, you need to add Kindling from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-kindling-from-hello-gallery"></a><span data-ttu-id="bb077-124">Agregar Kindling desde la Galería de Hola</span><span class="sxs-lookup"><span data-stu-id="bb077-124">Adding Kindling from hello gallery</span></span>
+<span data-ttu-id="bb077-125">integración de hello tooconfigure de Kindling en Azure AD, necesita tooadd Kindling de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.</span><span class="sxs-lookup"><span data-stu-id="bb077-125">tooconfigure hello integration of Kindling into Azure AD, you need tooadd Kindling from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="675af-126">**Para agregar Kindling desde la galería, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="675af-126">**To add Kindling from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="bb077-126">**tooadd Kindling de galería de hello, realizar Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="bb077-126">**tooadd Kindling from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="675af-127">En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="675af-127">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="bb077-127">Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono.</span><span class="sxs-lookup"><span data-stu-id="bb077-127">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="675af-129">Vaya a **Aplicaciones empresariales**.</span><span class="sxs-lookup"><span data-stu-id="675af-129">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="675af-130">A continuación, vaya a **Todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="675af-130">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="bb077-129">Navegue demasiado**aplicaciones empresariales**.</span><span class="sxs-lookup"><span data-stu-id="bb077-129">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="bb077-130">A continuación, vaya demasiado**todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="bb077-130">Then go too**All applications**.</span></span>
 
     ![Aplicaciones][2]
     
-3. <span data-ttu-id="675af-132">Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="675af-132">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="bb077-132">tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="bb077-132">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplicaciones][3]
 
-4. <span data-ttu-id="675af-134">En el cuadro de búsqueda, escriba **Kindling**.</span><span class="sxs-lookup"><span data-stu-id="675af-134">In the search box, type **Kindling**.</span></span>
+4. <span data-ttu-id="bb077-134">En el cuadro de búsqueda de hello, escriba **Kindling**.</span><span class="sxs-lookup"><span data-stu-id="bb077-134">In hello search box, type **Kindling**.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_search.png)
 
-5. <span data-ttu-id="675af-136">En el panel de resultados, seleccione **Kindling** y luego haga clic en el botón **Agregar** para agregar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="675af-136">In the results panel, select **Kindling**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="bb077-136">En el panel de resultados de hello, seleccione **Kindling**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.</span><span class="sxs-lookup"><span data-stu-id="bb077-136">In hello results panel, select **Kindling**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="675af-138">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="675af-138">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="675af-139">En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Kindling con un usuario de prueba llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="675af-139">In this section, you configure and test Azure AD single sign-on with Kindling based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="bb077-138">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="bb077-138">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="bb077-139">En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Kindling con un usuario de prueba llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="bb077-139">In this section, you configure and test Azure AD single sign-on with Kindling based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="675af-140">Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Kindling para un usuario de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="675af-140">For single sign-on to work, Azure AD needs to know what the counterpart user in Kindling is to a user in Azure AD.</span></span> <span data-ttu-id="675af-141">Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Kindling.</span><span class="sxs-lookup"><span data-stu-id="675af-141">In other words, a link relationship between an Azure AD user and the related user in Kindling needs to be established.</span></span>
+<span data-ttu-id="bb077-140">Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Kindling es tooa usuario en Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bb077-140">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Kindling is tooa user in Azure AD.</span></span> <span data-ttu-id="bb077-141">En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Kindling necesidades toobe establecido.</span><span class="sxs-lookup"><span data-stu-id="bb077-141">In other words, a link relationship between an Azure AD user and hello related user in Kindling needs toobe established.</span></span>
 
-<span data-ttu-id="675af-142">Esta relación de vínculo se establece mediante la asignación del valor del **nombre de usuario** en Azure AD como el valor de **Username** en Kindling.</span><span class="sxs-lookup"><span data-stu-id="675af-142">This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Kindling.</span></span>
+<span data-ttu-id="bb077-142">Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en Kindling.</span><span class="sxs-lookup"><span data-stu-id="bb077-142">This link relationship is established by assigning hello value of hello **user name** in Azure AD as hello value of hello **Username** in Kindling.</span></span>
 
-<span data-ttu-id="675af-143">Para configurar y probar el inicio de sesión único de Azure AD con Kindling, es preciso completar los siguientes bloques de creación:</span><span class="sxs-lookup"><span data-stu-id="675af-143">To configure and test Azure AD single sign-on with Kindling, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="bb077-143">tooconfigure y prueba de inicio de sesión único en Azure AD con Kindling, deberá hello toocomplete después de bloques de creación:</span><span class="sxs-lookup"><span data-stu-id="bb077-143">tooconfigure and test Azure AD single sign-on with Kindling, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="675af-144">**[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.</span><span class="sxs-lookup"><span data-stu-id="675af-144">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="675af-145">**[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="675af-145">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="675af-146">**[Creación de un usuario de prueba de Kindling](#creating-a-kindling-test-user)**: para tener un homólogo de Britta Simon en Kindling que esté vinculado a la representación de ella en Azure AD.</span><span class="sxs-lookup"><span data-stu-id="675af-146">**[Creating a Kindling test user](#creating-a-kindling-test-user)** - to have a counterpart of Britta Simon in Kindling that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="675af-147">**[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="675af-147">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="675af-148">**[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.</span><span class="sxs-lookup"><span data-stu-id="675af-148">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="bb077-144">**[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.</span><span class="sxs-lookup"><span data-stu-id="bb077-144">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="bb077-145">**[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="bb077-145">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="bb077-146">**[Crear un usuario de prueba Kindling](#creating-a-kindling-test-user)**  -toohave un equivalente de Britta Simon en Kindling decir vinculado representación toohello Azure AD del usuario.</span><span class="sxs-lookup"><span data-stu-id="bb077-146">**[Creating a Kindling test user](#creating-a-kindling-test-user)** - toohave a counterpart of Britta Simon in Kindling that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="bb077-147">**[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="bb077-147">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="bb077-148">**[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.</span><span class="sxs-lookup"><span data-stu-id="bb077-148">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="675af-149">Configuración del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="675af-149">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="bb077-149">Configuración del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="bb077-149">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="675af-150">En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación Kindling.</span><span class="sxs-lookup"><span data-stu-id="675af-150">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Kindling application.</span></span>
+<span data-ttu-id="bb077-150">En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación Kindling.</span><span class="sxs-lookup"><span data-stu-id="bb077-150">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Kindling application.</span></span>
 
-<span data-ttu-id="675af-151">**Para configurar el inicio de sesión único de Azure AD con Kindling, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="675af-151">**To configure Azure AD single sign-on with Kindling, perform the following steps:**</span></span>
+<span data-ttu-id="bb077-151">**tooconfigure inicio de sesión único en Azure AD con Kindling, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="bb077-151">**tooconfigure Azure AD single sign-on with Kindling, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="675af-152">En Azure Portal, en la página de integración de la aplicación **Kindling**, haga clic en **Inicio de sesión único**.</span><span class="sxs-lookup"><span data-stu-id="675af-152">In the Azure portal, on the **Kindling** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="bb077-152">En el portal de Azure, en Hola Hola **Kindling** página de integración de aplicaciones, haga clic en **inicio de sesión único**.</span><span class="sxs-lookup"><span data-stu-id="bb077-152">In hello Azure portal, on hello **Kindling** application integration page, click **Single sign-on**.</span></span>
 
     ![Configurar inicio de sesión único][4]
 
-2. <span data-ttu-id="675af-154">En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="675af-154">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="bb077-154">En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="bb077-154">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_samlbase.png)
 
-3. <span data-ttu-id="675af-156">En la sección **Dominio y direcciones URL de Kindling**, lleve a cabo los pasos siguientes:</span><span class="sxs-lookup"><span data-stu-id="675af-156">On the **Kindling Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="bb077-156">En hello **Kindling dominio y las direcciones URL** sección, lleve a cabo Hola pasos:</span><span class="sxs-lookup"><span data-stu-id="bb077-156">On hello **Kindling Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_url.png)
 
-    <span data-ttu-id="675af-158">a.</span><span class="sxs-lookup"><span data-stu-id="675af-158">a.</span></span> <span data-ttu-id="675af-159">En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.kindlingapp.com`.</span><span class="sxs-lookup"><span data-stu-id="675af-159">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<companyname>.kindlingapp.com`</span></span>
+    <span data-ttu-id="bb077-158">a.</span><span class="sxs-lookup"><span data-stu-id="bb077-158">a.</span></span> <span data-ttu-id="bb077-159">Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.kindlingapp.com`</span><span class="sxs-lookup"><span data-stu-id="bb077-159">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<companyname>.kindlingapp.com`</span></span>
 
-    <span data-ttu-id="675af-160">b.</span><span class="sxs-lookup"><span data-stu-id="675af-160">b.</span></span>  <span data-ttu-id="675af-161">En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.kindlingapp.com/saml/module.php/saml/sp/metadata.php/clientIDP`</span><span class="sxs-lookup"><span data-stu-id="675af-161">In the **Identifier** textbox, type a URL using the following pattern: `https://<companyname>.kindlingapp.com/saml/module.php/saml/sp/metadata.php/clientIDP`</span></span>
+    <span data-ttu-id="bb077-160">b.</span><span class="sxs-lookup"><span data-stu-id="bb077-160">b.</span></span>  <span data-ttu-id="bb077-161">Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.kindlingapp.com/saml/module.php/saml/sp/metadata.php/clientIDP`</span><span class="sxs-lookup"><span data-stu-id="bb077-161">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<companyname>.kindlingapp.com/saml/module.php/saml/sp/metadata.php/clientIDP`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="675af-162">Estos valores no son reales.</span><span class="sxs-lookup"><span data-stu-id="675af-162">These values are not the real.</span></span> <span data-ttu-id="675af-163">Debe actualizarlos con la dirección URL y el identificador reales de inicio de sesión.</span><span class="sxs-lookup"><span data-stu-id="675af-163">Update these values with the actual Sign-on URL and Identifier.</span></span> <span data-ttu-id="675af-164">Póngase en contacto con el [equipo de soporte técnico de Kindling](mailto:support@kindlingapp.com) para obtener estos valores.</span><span class="sxs-lookup"><span data-stu-id="675af-164">Contact [Kindling support team](mailto:support@kindlingapp.com) to get these values.</span></span>
+    > <span data-ttu-id="bb077-162">Estos valores no son Hola real.</span><span class="sxs-lookup"><span data-stu-id="bb077-162">These values are not hello real.</span></span> <span data-ttu-id="bb077-163">Actualizar estos valores con URL de inicio de sesión real de Hola y el identificador.</span><span class="sxs-lookup"><span data-stu-id="bb077-163">Update these values with hello actual Sign-on URL and Identifier.</span></span> <span data-ttu-id="bb077-164">Póngase en contacto con [equipo de soporte técnico de Kindling](mailto:support@kindlingapp.com) tooget estos valores.</span><span class="sxs-lookup"><span data-stu-id="bb077-164">Contact [Kindling support team](mailto:support@kindlingapp.com) tooget these values.</span></span>
  
-4. <span data-ttu-id="675af-165">En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.</span><span class="sxs-lookup"><span data-stu-id="675af-165">On the **SAML Signing Certificate** section, click **Certificate (Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="bb077-165">En hello **el certificado de firma de SAML** sección, haga clic en **certificado (Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.</span><span class="sxs-lookup"><span data-stu-id="bb077-165">On hello **SAML Signing Certificate** section, click **Certificate (Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_certificate.png) 
 
-5. <span data-ttu-id="675af-167">Haga clic en el botón **Guardar** .</span><span class="sxs-lookup"><span data-stu-id="675af-167">Click **Save** button.</span></span>
+5. <span data-ttu-id="bb077-167">Haga clic en el botón **Guardar** .</span><span class="sxs-lookup"><span data-stu-id="bb077-167">Click **Save** button.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kindling-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="675af-169">En la sección **Configuración de Kindling**, haga clic en **Configurar Kindling** para abrir la ventana **Configurar inicio de sesión**.</span><span class="sxs-lookup"><span data-stu-id="675af-169">On the **Kindling Configuration** section, click **Configure Kindling** to open **Configure sign-on** window.</span></span> <span data-ttu-id="675af-170">Copie la **URL del servicio de inicio de sesión único de SAML, el identificador de entidad de SAML y la dirección URL de cierre de sesión** de la sección **Referencia rápida**.</span><span class="sxs-lookup"><span data-stu-id="675af-170">Copy the **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="bb077-169">En hello **Kindling configuración** sección, haga clic en **configurar Kindling** tooopen **configurar inicio de sesión** ventana.</span><span class="sxs-lookup"><span data-stu-id="bb077-169">On hello **Kindling Configuration** section, click **Configure Kindling** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="bb077-170">Hola copia **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**</span><span class="sxs-lookup"><span data-stu-id="bb077-170">Copy hello **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_configure.png) 
 
-7. <span data-ttu-id="675af-172">Para configurar el inicio de sesión único en **Kindling**, es preciso enviar el **Certificado (Base64)** descargado, la **dirección URL de cierre de sesión, el identificador de identidad de SAML y la dirección URL del servicio de inicio de sesión único de SAML** al [equipo de soporte técnico de Kindling](mailto:support@kindlingapp.com).</span><span class="sxs-lookup"><span data-stu-id="675af-172">To configure single sign-on on **Kindling** side, you need to send the downloaded **Certificate (Base64)**, **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** to [Kindling support team](mailto:support@kindlingapp.com).</span></span>
+7. <span data-ttu-id="bb077-172">tooconfigure inicio de sesión único en **Kindling** lado, necesita hello toosend descargado **certificado (Base64)**, **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio**demasiado[equipo de soporte técnico de Kindling](mailto:support@kindlingapp.com).</span><span class="sxs-lookup"><span data-stu-id="bb077-172">tooconfigure single sign-on on **Kindling** side, you need toosend hello downloaded **Certificate (Base64)**, **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** too[Kindling support team](mailto:support@kindlingapp.com).</span></span>
 
 > [!TIP]
-> <span data-ttu-id="675af-173">Ahora puede leer una versión concisa de estas instrucciones en [Azure Portal](https://portal.azure.com) mientras configura la aplicación.</span><span class="sxs-lookup"><span data-stu-id="675af-173">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="675af-174">Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior.</span><span class="sxs-lookup"><span data-stu-id="675af-174">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="675af-175">Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="675af-175">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="bb077-173">Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!</span><span class="sxs-lookup"><span data-stu-id="bb077-173">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="bb077-174">Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola.</span><span class="sxs-lookup"><span data-stu-id="bb077-174">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="bb077-175">Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="bb077-175">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="675af-176">Creación de un usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="675af-176">Creating an Azure AD test user</span></span>
-<span data-ttu-id="675af-177">El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="675af-177">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="bb077-176">Creación de un usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="bb077-176">Creating an Azure AD test user</span></span>
+<span data-ttu-id="bb077-177">objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.</span><span class="sxs-lookup"><span data-stu-id="bb077-177">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Creación de un usuario de Azure AD][100]
 
-<span data-ttu-id="675af-179">**Siga estos pasos para crear un usuario de prueba en Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="675af-179">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="bb077-179">**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="bb077-179">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="675af-180">En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="675af-180">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="bb077-180">Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.</span><span class="sxs-lookup"><span data-stu-id="bb077-180">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kindling-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="675af-182">Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.</span><span class="sxs-lookup"><span data-stu-id="675af-182">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="bb077-182">lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.</span><span class="sxs-lookup"><span data-stu-id="bb077-182">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kindling-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="675af-184">Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="675af-184">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="bb077-184">Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.</span><span class="sxs-lookup"><span data-stu-id="bb077-184">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kindling-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="675af-186">En la página de diálogo **Usuario**, realice los siguientes pasos:</span><span class="sxs-lookup"><span data-stu-id="675af-186">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="bb077-186">En hello **usuario** cuadro de diálogo, siga los pasos de hello:</span><span class="sxs-lookup"><span data-stu-id="bb077-186">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-kindling-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="675af-188">a.</span><span class="sxs-lookup"><span data-stu-id="675af-188">a.</span></span> <span data-ttu-id="675af-189">En el cuadro de texto **Nombre**, escriba **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="675af-189">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="bb077-188">a.</span><span class="sxs-lookup"><span data-stu-id="bb077-188">a.</span></span> <span data-ttu-id="bb077-189">Hola **nombre** cuadro de texto, tipo **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="bb077-189">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="675af-190">b.</span><span class="sxs-lookup"><span data-stu-id="675af-190">b.</span></span> <span data-ttu-id="675af-191">En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="675af-191">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="bb077-190">b.</span><span class="sxs-lookup"><span data-stu-id="bb077-190">b.</span></span> <span data-ttu-id="bb077-191">Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="bb077-191">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="675af-192">c.</span><span class="sxs-lookup"><span data-stu-id="675af-192">c.</span></span> <span data-ttu-id="675af-193">Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.</span><span class="sxs-lookup"><span data-stu-id="675af-193">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="bb077-192">c.</span><span class="sxs-lookup"><span data-stu-id="bb077-192">c.</span></span> <span data-ttu-id="bb077-193">Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.</span><span class="sxs-lookup"><span data-stu-id="bb077-193">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="675af-194">d.</span><span class="sxs-lookup"><span data-stu-id="675af-194">d.</span></span> <span data-ttu-id="675af-195">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="675af-195">Click **Create**.</span></span>
+    <span data-ttu-id="bb077-194">d.</span><span class="sxs-lookup"><span data-stu-id="bb077-194">d.</span></span> <span data-ttu-id="bb077-195">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="bb077-195">Click **Create**.</span></span>
  
-### <a name="creating-a-kindling-test-user"></a><span data-ttu-id="675af-196">Creación de un usuario de prueba de Kindling</span><span class="sxs-lookup"><span data-stu-id="675af-196">Creating a Kindling test user</span></span>
+### <a name="creating-a-kindling-test-user"></a><span data-ttu-id="bb077-196">Creación de un usuario de prueba de Kindling</span><span class="sxs-lookup"><span data-stu-id="bb077-196">Creating a Kindling test user</span></span>
 
-<span data-ttu-id="675af-197">El objetivo de esta sección es crear un usuario llamado Britta Simon en Kindling.</span><span class="sxs-lookup"><span data-stu-id="675af-197">The objective of this section is to create a user called Britta Simon in Kindling.</span></span> <span data-ttu-id="675af-198">Kindling admite el aprovisionamiento Just-In-Time.</span><span class="sxs-lookup"><span data-stu-id="675af-198">Kindling supports just-in-time provisioning.</span></span> <span data-ttu-id="675af-199">Ya lo ha habilitado en [Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on).</span><span class="sxs-lookup"><span data-stu-id="675af-199">You have already enabled it in [Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on).</span></span>
+<span data-ttu-id="bb077-197">objetivo de Hola de esta sección es un usuario llamado a Britta Simon en Kindling toocreate.</span><span class="sxs-lookup"><span data-stu-id="bb077-197">hello objective of this section is toocreate a user called Britta Simon in Kindling.</span></span> <span data-ttu-id="bb077-198">Kindling admite el aprovisionamiento Just-In-Time.</span><span class="sxs-lookup"><span data-stu-id="bb077-198">Kindling supports just-in-time provisioning.</span></span> <span data-ttu-id="bb077-199">Ya lo ha habilitado en [Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on).</span><span class="sxs-lookup"><span data-stu-id="bb077-199">You have already enabled it in [Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on).</span></span>
 
-<span data-ttu-id="675af-200">No hay ningún elemento de acción para usted en esta sección.</span><span class="sxs-lookup"><span data-stu-id="675af-200">There is no action item for you in this section.</span></span>
+<span data-ttu-id="bb077-200">No hay ningún elemento de acción para usted en esta sección.</span><span class="sxs-lookup"><span data-stu-id="bb077-200">There is no action item for you in this section.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="675af-201">Asignación del usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="675af-201">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="bb077-201">Asignación de usuario de prueba de hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="bb077-201">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="675af-202">En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Kindling.</span><span class="sxs-lookup"><span data-stu-id="675af-202">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Kindling.</span></span>
+<span data-ttu-id="bb077-202">En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooKindling.</span><span class="sxs-lookup"><span data-stu-id="bb077-202">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooKindling.</span></span>
 
 ![Asignar usuario][200] 
 
-<span data-ttu-id="675af-204">**Para asignar a Britta Simon a Kindling, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="675af-204">**To assign Britta Simon to Kindling, perform the following steps:**</span></span>
+<span data-ttu-id="bb077-204">**tooassign Britta Simon tooKindling, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="bb077-204">**tooassign Britta Simon tooKindling, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="675af-205">En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="675af-205">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="bb077-205">Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="bb077-205">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Asignar usuario][201] 
 
-2. <span data-ttu-id="675af-207">En la lista de aplicaciones, seleccione **Kindling**.</span><span class="sxs-lookup"><span data-stu-id="675af-207">In the applications list, select **Kindling**.</span></span>
+2. <span data-ttu-id="bb077-207">En la lista de aplicaciones de hello, seleccione **Kindling**.</span><span class="sxs-lookup"><span data-stu-id="bb077-207">In hello applications list, select **Kindling**.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_app.png) 
 
-3. <span data-ttu-id="675af-209">En el menú de la izquierda, haga clic en **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="675af-209">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="bb077-209">En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="bb077-209">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Asignar usuario][202] 
 
-4. <span data-ttu-id="675af-211">Haga clic en el botón **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="675af-211">Click **Add** button.</span></span> <span data-ttu-id="675af-212">Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="675af-212">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="bb077-211">Haga clic en el botón **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="bb077-211">Click **Add** button.</span></span> <span data-ttu-id="bb077-212">Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="bb077-212">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Asignar usuario][203]
 
-5. <span data-ttu-id="675af-214">En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.</span><span class="sxs-lookup"><span data-stu-id="675af-214">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="bb077-214">En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.</span><span class="sxs-lookup"><span data-stu-id="bb077-214">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="675af-215">Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="675af-215">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="bb077-215">Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="bb077-215">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="675af-216">Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="675af-216">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="bb077-216">Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="bb077-216">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="675af-217">Prueba del inicio de sesión único </span><span class="sxs-lookup"><span data-stu-id="675af-217">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="bb077-217">Prueba del inicio de sesión único </span><span class="sxs-lookup"><span data-stu-id="bb077-217">Testing single sign-on</span></span>
 
-<span data-ttu-id="675af-218">En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.</span><span class="sxs-lookup"><span data-stu-id="675af-218">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="bb077-218">En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.</span><span class="sxs-lookup"><span data-stu-id="bb077-218">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="675af-219">Al hacer clic en el icono de Kindling en el panel de acceso, debería iniciar sesión automáticamente en su aplicación Kindling.</span><span class="sxs-lookup"><span data-stu-id="675af-219">When you click the Kindling tile in the Access Panel, you should get automatically signed-on to your Kindling application.</span></span> 
+<span data-ttu-id="bb077-219">Al hacer clic en icono de Kindling Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour Kindling aplicación.</span><span class="sxs-lookup"><span data-stu-id="bb077-219">When you click hello Kindling tile in hello Access Panel, you should get automatically signed-on tooyour Kindling application.</span></span> 
 
-## <a name="additional-resources"></a><span data-ttu-id="675af-220">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="675af-220">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="bb077-220">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="bb077-220">Additional resources</span></span>
 
-* [<span data-ttu-id="675af-221">Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="675af-221">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="675af-222">¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="675af-222">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="bb077-221">Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="bb077-221">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="bb077-222">¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="bb077-222">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

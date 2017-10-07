@@ -1,6 +1,6 @@
 ---
-title: "¿Qué le ha ocurrido a mi proyecto ASP.NET 5 (servicios conectados a Visual Studio)? | Microsoft Docs"
-description: "Describe lo que sucede después de conectarse a una cuenta de almacenamiento de Azure en un proyecto de ASP.NET 5 de Visual Studio mediante los servicios conectados de Visual Studio"
+title: aaaWhat produjo proyecto toomy ASP.NET 5 (servicios de Visual Studio conectados) | Documentos de Microsoft
+description: "Describe lo que sucede después de conexión de cuenta de almacenamiento de Azure tooan en un proyecto de Visual Studio ASP.NET 5 mediante Visual Studio servicios conectados"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 2a25c24fd7625374d269622a805f386fcd52bb5f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 75ce3bfb59e085bf08d98d9b0cd9442722d7566b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a><span data-ttu-id="b7547-103">¿Qué le ha ocurrido a mi proyecto ASP.NET 5 (servicios conectados a Almacenamiento de Azure de Visual Studio)?</span><span class="sxs-lookup"><span data-stu-id="b7547-103">What happened to my ASP.NET 5 project (Visual Studio Azure Storage connected services)?</span></span>
-## <a name="references-added"></a><span data-ttu-id="b7547-104">Se han agregado referencias</span><span class="sxs-lookup"><span data-stu-id="b7547-104">References added</span></span>
-<span data-ttu-id="b7547-105">El paquete NuGet de Almacenamiento de Azure se agregó al proyecto de Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="b7547-105">The Azure Storage NuGet package was added to your Visual Studio project.</span></span>  
-<span data-ttu-id="b7547-106">Este paquete agrega las siguientes referencias. NET:</span><span class="sxs-lookup"><span data-stu-id="b7547-106">This package adds the following .NET references:</span></span>
+# <a name="what-happened-toomy-aspnet-5-project-visual-studio-azure-storage-connected-services"></a><span data-ttu-id="53298-103">¿Qué proyecto toomy problema ASP.NET 5 (servicios de almacenamiento de Azure de Visual Studio conectados)?</span><span class="sxs-lookup"><span data-stu-id="53298-103">What happened toomy ASP.NET 5 project (Visual Studio Azure Storage connected services)?</span></span>
+## <a name="references-added"></a><span data-ttu-id="53298-104">Se han agregado referencias</span><span class="sxs-lookup"><span data-stu-id="53298-104">References added</span></span>
+<span data-ttu-id="53298-105">paquete de NuGet de almacenamiento de Azure de Hola se agregó el proyecto de Visual Studio tooyour.</span><span class="sxs-lookup"><span data-stu-id="53298-105">hello Azure Storage NuGet package was added tooyour Visual Studio project.</span></span>  
+<span data-ttu-id="53298-106">Este paquete agrega Hola siguientes referencias de. NET:</span><span class="sxs-lookup"><span data-stu-id="53298-106">This package adds hello following .NET references:</span></span>
 
-* <span data-ttu-id="b7547-107">**Microsoft.Data.Edm**</span><span class="sxs-lookup"><span data-stu-id="b7547-107">**Microsoft.Data.Edm**</span></span>
-* <span data-ttu-id="b7547-108">**Microsoft.Data.OData**</span><span class="sxs-lookup"><span data-stu-id="b7547-108">**Microsoft.Data.OData**</span></span>
-* <span data-ttu-id="b7547-109">**Microsoft.Data.Services.Client**</span><span class="sxs-lookup"><span data-stu-id="b7547-109">**Microsoft.Data.Services.Client**</span></span>
-* <span data-ttu-id="b7547-110">**Microsoft.WindowsAzure.Configuration**</span><span class="sxs-lookup"><span data-stu-id="b7547-110">**Microsoft.WindowsAzure.Configuration**</span></span>
-* <span data-ttu-id="b7547-111">**Microsoft.WindowsAzure.Storage**</span><span class="sxs-lookup"><span data-stu-id="b7547-111">**Microsoft.WindowsAzure.Storage**</span></span>
-* <span data-ttu-id="b7547-112">**Newtonsoft.Json**</span><span class="sxs-lookup"><span data-stu-id="b7547-112">**Newtonsoft.Json**</span></span>
-* <span data-ttu-id="b7547-113">**System.Data**</span><span class="sxs-lookup"><span data-stu-id="b7547-113">**System.Data**</span></span>
-* <span data-ttu-id="b7547-114">**System.Spatial**</span><span class="sxs-lookup"><span data-stu-id="b7547-114">**System.Spatial**</span></span>
+* <span data-ttu-id="53298-107">**Microsoft.Data.Edm**</span><span class="sxs-lookup"><span data-stu-id="53298-107">**Microsoft.Data.Edm**</span></span>
+* <span data-ttu-id="53298-108">**Microsoft.Data.OData**</span><span class="sxs-lookup"><span data-stu-id="53298-108">**Microsoft.Data.OData**</span></span>
+* <span data-ttu-id="53298-109">**Microsoft.Data.Services.Client**</span><span class="sxs-lookup"><span data-stu-id="53298-109">**Microsoft.Data.Services.Client**</span></span>
+* <span data-ttu-id="53298-110">**Microsoft.WindowsAzure.Configuration**</span><span class="sxs-lookup"><span data-stu-id="53298-110">**Microsoft.WindowsAzure.Configuration**</span></span>
+* <span data-ttu-id="53298-111">**Microsoft.WindowsAzure.Storage**</span><span class="sxs-lookup"><span data-stu-id="53298-111">**Microsoft.WindowsAzure.Storage**</span></span>
+* <span data-ttu-id="53298-112">**Newtonsoft.Json**</span><span class="sxs-lookup"><span data-stu-id="53298-112">**Newtonsoft.Json**</span></span>
+* <span data-ttu-id="53298-113">**System.Data**</span><span class="sxs-lookup"><span data-stu-id="53298-113">**System.Data**</span></span>
+* <span data-ttu-id="53298-114">**System.Spatial**</span><span class="sxs-lookup"><span data-stu-id="53298-114">**System.Spatial**</span></span>
 
-<span data-ttu-id="b7547-115">Además, se agregó el paquete NuGet **Microsoft.Framework.Configuration.Json** .</span><span class="sxs-lookup"><span data-stu-id="b7547-115">Also, the NuGet package **Microsoft.Framework.Configuration.Json** was added.</span></span>
+<span data-ttu-id="53298-115">Además, el paquete de NuGet hello **Microsoft.Framework.Configuration.Json** se ha agregado.</span><span class="sxs-lookup"><span data-stu-id="53298-115">Also, hello NuGet package **Microsoft.Framework.Configuration.Json** was added.</span></span>
 
-## <a name="connection-string-for-azure-storage-added"></a><span data-ttu-id="b7547-116">Se ha agregado la cadena de conexión para Almacenamiento de Azure.</span><span class="sxs-lookup"><span data-stu-id="b7547-116">Connection string for Azure Storage added</span></span>
-<span data-ttu-id="b7547-117">En el archivo config.json de su proyecto, se ha creado un elemento con la cadena y la clave de conexión de la cuenta de almacenamiento seleccionada.</span><span class="sxs-lookup"><span data-stu-id="b7547-117">In the config.json file of your project, an element was created with the selected storage account's connection string and key.</span></span>
+## <a name="connection-string-for-azure-storage-added"></a><span data-ttu-id="53298-116">Se ha agregado la cadena de conexión para Almacenamiento de Azure.</span><span class="sxs-lookup"><span data-stu-id="53298-116">Connection string for Azure Storage added</span></span>
+<span data-ttu-id="53298-117">En archivo de hello config.json del proyecto, se crea un elemento con la cadena de conexión y la clave de la cuenta de almacenamiento de hello seleccionado.</span><span class="sxs-lookup"><span data-stu-id="53298-117">In hello config.json file of your project, an element was created with hello selected storage account's connection string and key.</span></span>
 
-<span data-ttu-id="b7547-118">Para más información, vea [ASP.NET 5](http://www.asp.net/vnext).</span><span class="sxs-lookup"><span data-stu-id="b7547-118">For more information, see [ASP.NET 5](http://www.asp.net/vnext).</span></span>
+<span data-ttu-id="53298-118">Para más información, vea [ASP.NET 5](http://www.asp.net/vnext).</span><span class="sxs-lookup"><span data-stu-id="53298-118">For more information, see [ASP.NET 5](http://www.asp.net/vnext).</span></span>
 
