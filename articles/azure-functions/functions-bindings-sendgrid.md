@@ -1,5 +1,5 @@
 ---
-title: Enlaces de SendGrid de Azure Functions | Microsoft Docs
+title: enlaces de funciones SendGrid aaaAzure | Documentos de Microsoft
 description: Referencia de enlaces de SendGrid de Azure Functions
 services: functions
 documentationcenter: na
@@ -12,35 +12,35 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/16/2017
 ms.author: rachelap
-ms.openlocfilehash: 445a40a884e648cdb2a57f8ef43bed4f8a3efcf2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 10a3837875eb6ae18e6c789bcf64cc401cf5f26a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Enlaces de SendGrid de Azure Functions
 
-En este artículo se explica cómo configurar y trabajar con enlaces de SendGrid en Azure Functions. Con SendGrid, puede usar Azure Functions para enviar correo electrónico personalizado mediante programación.
+Este artículo se explica cómo tooconfigure y trabajar con enlaces de SendGrid en las funciones de Azure. Con SendGrid, puede utilizar correo electrónico de las funciones de Azure toosend personalizado mediante programación.
 
-Este artículo sirve como información de referencia para los desarrolladores de Azure Functions. Si está familiarizado con Funciones de Azure, comience con los siguientes recursos:
+Este artículo sirve como información de referencia para los desarrolladores de Azure Functions. Si está nuevas funciones de tooAzure, empiece con hello recursos siguientes:
 
 [Cree la primera Azure Function](functions-create-first-azure-function.md). 
 Referencias para desarrolladores de [C#](functions-reference-csharp.md), [F#](functions-reference-fsharp.md) o [nodo](functions-reference-node.md).
 
 ## <a name="functionjson-for-sendgrid-bindings"></a>function.json para enlaces de SendGrid
 
-Azure Functions proporciona un enlace de salida para SendGrid. El enlace de salida de SendGrid le permite crear y enviar correo electrónico mediante programación. 
+Azure Functions proporciona un enlace de salida para SendGrid. Hola SendGrid salida enlace permite toocreate y enviar correo electrónico mediante programación. 
 
-El enlace de SendGrid admite las siguientes propiedades:
+enlace de SendGrid Hola admite Hola propiedades siguientes:
 
-- `name` (requerido): el nombre de variable que se usa en el código de función para la solicitud o el cuerpo de la solicitud. Este valor es ```$return``` cuando hay solo un valor de devuelto. 
-- `type` (requerido): se debe establecer en "sendGrid".
-- `direction` (requerido): se debe establecer en "out".
-- `apiKey` (requerido): se debe establecer en el nombre de la clave de API almacenada en la configuración de aplicación de Function App.
-- `to`: dirección de correo electrónico del destinatario.
-- `from`: dirección de correo electrónico del remitente.
-- `subject` : el asunto del correo electrónico.
-- `text` : el contenido del correo electrónico.
+- `name`: Es obligatorio - Nombre de variable de saludo utilizado en código de la función para la solicitud de Hola o cuerpo de la solicitud. Este valor es ```$return``` cuando hay solo un valor de devuelto. 
+- `type`: Es obligatorio - debe estar configurado demasiado "sendGrid".
+- `direction`: Requerida: debe ser establecido demasiado "out".
+- `apiKey`: Requerida: debe ser el nombre de la clave de API que se almacena en la configuración de la aplicación de la aplicación de la función de hello toohello del conjunto de.
+- `to`: Hola dirección de correo electrónico del destinatario.
+- `from`: Hola dirección de correo electrónico del remitente.
+- `subject`: asunto Hola de correo electrónico de Hola.
+- `text`: Hola contenido de correo electrónico.
 
 Ejemplo de **function.json**:
 
@@ -65,7 +65,7 @@ Ejemplo de **function.json**:
 >
 >
 
-## <a name="c-example-of-the-sendgrid-output-binding"></a>Ejemplo de C# del enlace de salida de SendGrid
+## <a name="c-example-of-hello-sendgrid-output-binding"></a>Enlace de salida de ejemplo de C# de hello SendGrid
 
 ```csharp
 #r "SendGrid"
@@ -92,7 +92,7 @@ public static Mail Run(TraceWriter log, string input, out Mail message)
 }
 ```
 
-## <a name="node-example-of-the-sendgrid-output-binding"></a>Ejemplo de nodo del enlace de salida de SendGrid
+## <a name="node-example-of-hello-sendgrid-output-binding"></a>Nodo de hello SendGrid salida de ejemplo para enlazar
 
 ```javascript
 module.exports = function (context, input) {    
@@ -115,6 +115,6 @@ module.exports = function (context, input) {
 Para información sobre otros enlaces y desencadenadores de Azure Functions, consulte: 
 - [Referencia para desarrolladores de desencadenadores y enlaces de Azure Functions](functions-triggers-bindings.md)
 
-- [Procedimientos recomendados de Azure Functions](functions-best-practices.md): se enumeran algunos procedimientos recomendados para crear Azure Functions.
+- [Procedimientos recomendados para las funciones de Azure](functions-best-practices.md) enumera algunos toouse de prácticas recomendada al crear funciones de Azure.
 
 - [Guía para desarrolladores de Azure Functions](functions-reference.md): contiene las referencias del programador para codificar las funciones y definir los desencadenadores y los enlaces.

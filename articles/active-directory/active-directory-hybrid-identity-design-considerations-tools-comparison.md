@@ -1,6 +1,6 @@
 ---
 title: "Identidades híbridas: comparación de las herramientas para la integración de directorios | Microsoft Docs"
-description: "Esta página proporciona una tabla completa con la comparación de las distintas herramientas que se pueden usar para la integración de directorios."
+description: "Esta es la página proporciona una tabla completa que compara Hola diversas herramientas de integración de directorio que pueden usarse para la integración de directorio."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: f87b5837c7a786c8b309a6a52e69b53c0ad4c9d8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 18ac0a0f58726eceb85510df516e8db71429b313
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Identidades híbridas: comparación de las herramientas para la integración de directorios de identidades híbridas
-A lo largo de los años, las herramientas para la integración de directorios han crecido y evolucionado.  En este documento, se proporciona una vista consolidada de estas herramientas, además de una comparación de las características disponibles en cada una de ellas.
+Durante años de hello herramientas de integración de directorio de hello tienen crecido y evolucionado.  Este documento es toohelp proporcionan una vista consolidada de estas herramientas y una comparación de características de Hola que están disponibles en cada uno de ellos.
 
-<!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
+<!-- hello hardcoded link is a workaround for campaign ids not working in acom links-->
 
 > [!NOTE]
-> Azure AD Connect incorpora los componentes y la funcionalidad publicados previamente como Dirsync y Sincronización de AAD. Estas herramientas ya no se publican de manera individual, y todas las futuras mejoras se incluirán en actualizaciones de Azure AD Connect; así, siempre sabrá dónde obtener la funcionalidad más actualizada.
+> Azure AD Connect incorpora componentes de Hola y la funcionalidad que anteriormente se publicó como Dirsync y AAD Sync. Estas herramientas ya no se lanzan individualmente y se incluirán todas las futuras mejoras en actualizaciones tooAzure AD conectarse, para que siempre sepa dónde tooget Hola funcionalidad más reciente.
 > 
 > DirSync y Sincronización de Azure AD están en desuso. Puede encontrar más información [aquí](active-directory-aadconnect-dirsync-deprecated.md).
 > 
 > 
 
-Utilice la clave siguiente para cada una de las tablas.
+Usar hello sigue clave para cada una de las tablas de Hola.
 
 ●  = Ya disponible  
 FR = versión futura  
 PP = En versión preliminar pública  
 
-## <a name="on-premises-to-cloud-synchronization"></a>Sincronización de local a la nube
+## <a name="on-premises-toocloud-synchronization"></a>TooCloud sincronización local
 | Característica | Azure Active Directory Connect | Servicios de sincronización de Azure Active Directory (Sincronización de AAD) | Herramienta de sincronización de Azure Active Directory (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
-| Conexión a un bosque de AD local |● |● |● |● |● |
-| Conexión a varios bosques de AD locales |● |● | |● |● |
-| Conexión a varias organizaciones de Exchange locales |● | | | | |
-| Conexión a un directorio LDAP local |VF | | |● |● |
-| Conexión a varios directorios LDAP locales |VF | | |● |● |
-| Conexión a directorios AD y LDAP locales |VF | | |● |● |
-| Conexión a sistemas personalizados (es decir, SQL, Oracle, MySQL, etc.) |VF | | |● |● |
+| Conectar toosingle bosque de AD local |● |● |● |● |● |
+| Conectar toomultiple bosques de AD locales |● |● | |● |● |
+| Conectar toomultiple organizaciones de Exchange local |● | | | | |
+| Conectar el directorio LDAP de toosingle local |VF | | |● |● |
+| Conectar directorios LDAP de toomultiple locales |VF | | |● |● |
+| Conectar tooon local AD y directorios LDAP locales |VF | | |● |● |
+| Conectar sistemas de toocustom (es decir, SQL, Oracle, MySQL, etcetera) |VF | | |● |● |
 | Sincronización de atributos definidos por el cliente (extensiones de directorio) |● | | | | |
-| Conexión a sistemas de recursos humanos locales (es decir, SAP, Oracle eBusiness, PeopleSoft) |VF | | |● |● |
-| Admite reglas de sincronización y conectores de FIM para el aprovisionamiento de sistemas locales. | | | |● |● |
+| Conectar tooon local HR (es decir, SAP, Oracle eBusiness, PeopleSoft) |VF | | |● |● |
+| Es compatible con las reglas de sincronización de FIM y los conectores para el aprovisionamiento de sistemas locales de tooon. | | | |● |● |
 
-## <a name="cloud-to-on-premises-synchronization"></a>Sincronización de la nube a local
+## <a name="cloud-tooon-premises-synchronization"></a>Sincronización de tooOn local en la nube
 | Característica | Azure Active Directory Connect | Servicios de sincronización de Azure Active Directory | Herramienta de sincronización de Azure Active Directory (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Escritura diferida de dispositivos |● | |● | | |
@@ -74,8 +74,8 @@ PP = En versión preliminar pública
 | Admite la instalación de un controlador de dominio |● |● |● | |
 | Admite la instalación con SQL Express |● |● |● | |
 | Actualización sencilla desde DirSync |● | | | |
-| Localización de la experiencia de usuario de administración a los idiomas de Windows Server |● |● |● | |
-| Localización de la experiencia de usuario de usuario final a los idiomas de Windows Server | | | |● |
+| Localización de administración UX tooWindows idiomas de servidor |● |● |● | |
+| Localización del usuario final UX tooWindows idiomas de servidor | | | |● |
 | Compatibilidad con Windows Server 2008 y Windows Server 2008 R2 |● para sincronización, no para federación |● |● |● |
 | Compatibilidad con Windows Server 2012 y Windows Server 2012 R2 |● |● |● |● |
 
@@ -84,9 +84,9 @@ PP = En versión preliminar pública
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Filtrar según dominios y unidades organizativas |● |● |● |● |● |
 | Filtrar según valores de atributo de los objetos |● |● |● |● |● |
-| Permitir sincronización de un conjunto mínimo de atributos (MinSync) |● |● | | | |
-| Permitir aplicar distintas plantillas de servicio para flujos de atributo |● |● | | | |
-| Permitir quitar atributos del flujo de AD a Azure AD |● |● | | | |
+| Permitir que el conjunto mínimo de toobe de atributos sincronizado (MinSync) |● |● | | | |
+| Permitir toobe de plantillas de servicio diferente aplicada para flujos de atributos |● |● | | | |
+| Permitir la eliminación de atributos del flujo de AD tooAzure AD |● |● | | | |
 | Permitir personalización avanzada para flujos de atributo |● |● | |● |● |
 
 ## <a name="next-steps"></a>Pasos siguientes

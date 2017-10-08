@@ -1,6 +1,6 @@
 ---
-title: "Introducción a la concesión de licencias en Azure Active Directory | Microsoft Docs"
-description: "Cómo funciona la concesión de licencias en Azure Active Directory y cómo empezar a trabajar con los procedimientos recomendados"
+title: aaaGet a trabajar con licencias en Azure Active Directory | Documentos de Microsoft
+description: "Cómo Azure Active Directory licencias funciona, cómo tooget iniciado con los procedimientos recomendados"
 services: active-directory
 keywords: Licencias de Azure AD
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.date: 07/26/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 6fa7cbbc452861870136482aa320d268e78fe3d9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 268dab806b8b959790341d630a0355c6a43871d0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="license-yourself-and-your-users-in-azure-active-directory"></a>Obtención de una licencia para usted y sus usuarios en Azure Active Directory
 
@@ -41,71 +41,71 @@ Azure Active Directory (Azure AD) es una solución y plataforma de identidad com
   - Azure AD Basic
   - Azure Multi-Factor Authentication
 
-Al igual que muchos de los servicios en línea de Microsoft, la mayoría de las versiones de pago de Azure AD se proporcionan a través de derechos por usuario, como ocurre en Office 365, Microsoft Intune y Azure AD. En estos casos, la compra de servicios se representa con una o varias suscripciones, y cada suscripción incluye algunas licencias compradas previamente en el inquilino. Los derechos por usuario se obtienen mediante:
+Al igual que muchos de los servicios en línea de Microsoft, la mayoría de las versiones de pago de Azure AD se proporcionan a través de derechos por usuario, como ocurre en Office 365, Microsoft Intune y Azure AD. En estos casos, adquisición de servicios de Hola se representa mediante una o varias suscripciones y, cada suscripción incluye algunas licencias prepurchased de su inquilino. Los derechos por usuario se obtienen mediante:
 
 * La asignación de una licencia. 
-* La creación de un vínculo entre el usuario y el producto.
-* La habilitación de los componentes del servicio para el usuario.
-* El consumo de una de las licencias de prepago.
+* Crear un vínculo entre el usuario de Hola y el producto de Hola.
+* Habilitar componentes del servicio de hello para el usuario de Hola.
+* Consumir una Hola prepago licencias.
 
 [Probar Azure AD Premium ahora.](https://portal.office.com/Signup/Signup.aspx?OfferId=01824d11-5ad8-447f-8523-666b0848b381&ali=1#0)
 
 Para más información sobre las funcionalidades de servicio de Azure AD, consulte [¿Qué es Azure AD?](active-directory-whatis.md). Para más información, consulte la [página de Acuerdos de Nivel de Servicio](https://azure.microsoft.com/support/legal/sla/active-directory/v1_0/).
 
 > [!NOTE]
-> Las suscripciones de pago por uso de Azure permiten la creación de recursos de Azure y su posterior asignación a un método de pago. En este caso, no hay recuentos de licencias asociados a la suscripción. Cuando se concede un permiso de usuario para usar los recursos de Azure asignados a la suscripción, estos se asocian a la suscripción y puede administrarlos.
+> Las suscripciones de pago por uso de Azure habilitar la creación de recursos de Azure y, a continuación, asignan tooyour el método de pago. No hay ningún recuentos de licencia asociados a la suscripción de Hola. Cuando concede que un toooperate de permiso de usuario en recursos de Azure asigna toohello suscripción, que están asociados a la suscripción de Hola y pueden administrar recursos de la suscripción.
 
 ## <a name="how-does-azure-active-directory-licensing-work"></a>¿Cómo funciona la concesión de licencias en Azure Active Directory?
 
-Los servicios de Azure AD basados en licencia funcionan mediante la activación de una suscripción en el inquilino del servicio de Azure AD. Una vez activa la suscripción, los administradores de Azure AD pueden administrar las funcionalidades del servicio y los usuarios con licencia pueden usarlas.
+Los servicios de Azure AD basados en licencia funcionan mediante la activación de una suscripción en el inquilino del servicio de Azure AD. Después de hello suscripción esté activa, capacidades de servicio de hello son administradas por administradores de Azure AD y utilizadas por los usuarios con licencia.
 
 ### <a name="manage-subscription-information"></a>Información sobre la administración de suscripciones
 
-Cuando compra Enterprise Mobility + Security, Azure AD Premium o Azure AD Basic, el inquilino se actualiza con la suscripción, lo que incluye su período de validez y las licencias de prepago. La información de suscripción, incluido el número de licencias asignadas o disponibles, se encuentra en Azure Portal: en **Azure Active Directory**, abra el icono de **Licencias** para el directorio específico. La hoja **Licencias** es también el mejor lugar para administrar las asignaciones de licencias.
+Al comprar Enterprise Mobility + Security, Azure AD Premium o Azure AD Basic, el inquilino se actualiza con la suscripción de hello, incluida su período de validez y licencias de prepago. La información de su suscripción, incluido el número de Hola de licencias asignadas o disponibles, está disponible a través de hello portal de Azure: en **Azure Active Directory**, abra hello **licencias** icono Hola directorio específico. Hola **licencias** hoja también se Hola mejor toomanage lugar las asignaciones de licencia.
 
-Cada suscripción está formada por uno o varios planes de servicio Azure AD, Multi-Factor Authentication, Intune, Exchange Online o SharePoint Online.  La administración de licencias de Azure AD *no* requiere administración a nivel del plan de servicio. Esto es diferente en Office 365, que se basa en este modo de configuración avanzada para administrar el acceso a los servicios incluidos. Azure AD se basa en la configuración del servicio para habilitar las características y administrar los permisos individuales.
+Cada suscripción está formada por uno o varios planes de servicio Azure AD, Multi-Factor Authentication, Intune, Exchange Online o SharePoint Online.  La administración de licencias de Azure AD *no* requiere administración a nivel del plan de servicio. Office 365 es diferente porque se basa en este modo de configuración avanzada toomanage acceso tooincluded services. Azure AD se basa en características de configuración en circulación tooenable y administrar los permisos individuales.
 
 > [!IMPORTANT]
-> Las suscripciones a Azure AD Premium, Azure AD Basic y Enterprise Mobility + Security se limitan a su inquilino o directorio aprovisionado. Las suscripciones no se pueden dividir entre directorios ni usarse para autorizar a los usuarios en otros directorios. Es posible mover una suscripción entre directorios, pero requiere el envío de una incidencia de soporte técnico o la cancelación y compra de nuevo en caso de compras directas.
+> Azure AD Premium, Azure AD Basic y Enterprise Mobility + suscripciones de seguridad son reducidos tootheir aprovisionado/inquilino de directorio. Las suscripciones no se puede dividir entre directorios o los usuarios de tooentitle utilizado en otros directorios. Es posible mover una suscripción entre directorios, pero requiere el envío de una incidencia de soporte técnico o la cancelación y compra de nuevo en caso de compras directas.
 >
-> Cuando se compra Azure AD o Enterprise Mobility + Security mediante una suscripción de licencias por volumen y cuando el acuerdo incluye otros servicios de Microsoft Online (por ejemplo, Office 365), la activación tiene lugar automáticamente. 
+> Cuando Azure AD o Enterprise Mobility + Security adquirida a través de una suscripción de licencias por volumen, y cuando el acuerdo de hello incluye otros servicios de Microsoft Online (por ejemplo, Office 365), la activación se realiza automáticamente. 
 
 ### <a name="assign-licenses"></a>Asignación de licencias
 
-Aunque para configurar las funcionalidades de pago todo lo que necesita es una suscripción, debe distribuir licencias a los usuarios para las características de pago de Azure AD. Se debe asignar una licencia a los usuarios que deban disponer de acceso o que puedan administrarse a través de una característica de pago de Azure AD. Una asignación de licencia es una asignación entre un usuario y un servicio comprado, como Azure AD Premium, Basic o Enterprise Mobility + Security.
+Aunque la obtención de una suscripción es todo lo que necesita tooconfigure capacidades de pago, todavía debe distribuir licencias para Azure AD toousers características de pago. Cualquier usuario que debe tener acceso tooor que se administra a través de una característica de pago de Azure AD debe tener una licencia asignada. Una asignación de licencia es una asignación entre un usuario y un servicio comprado, como Azure AD Premium, Basic o Enterprise Mobility + Security.
 
 
 La administración de qué usuarios de su directorio deben tener una licencia se puede realizar de la forma siguiente: 
 
-* Mediante la asignación de licencias a grupos en [Azure Portal](active-directory-licensing-whatis-azure-portal.md).
-* Mediante la asignación directa de licencias por medio de portal, PowerShell o las API. 
+* Asignar licencias toogroups Hola [portal de Azure](active-directory-licensing-whatis-azure-portal.md).
+* Asignar licencias directamente toousers por medio del portal de hello, PowerShell o API. 
 
-Al asignar licencias a un grupo, todos los miembros del grupo reciben una licencia. Si se agregan usuarios al grupo o se quitan de él, la licencia correspondiente se asigna o se quita. La asignación de grupo puede usar cualquier administración de grupo disponible para usted y que sea coherente con la asignación a las aplicaciones basada en grupo.
+Cuando se reasigna el grupo de licencias tooa, todos los miembros del grupo se asignan una licencia. Si los usuarios se agregan o se quitan del grupo de hello, licencia apropiada de hello es asignado o quitado. Asignación de grupo puede utilizar cualquier tooyou disponibles de administración de grupo, y es coherente con la asignación basada en el grupo tooapplications.
 
-Puede usar [asignación de licencias basada en grupo](active-directory-licensing-whatis-azure-portal.md) para configurar reglas como las siguientes:
+Puede usar [asignación de licencias basadas en grupos](active-directory-licensing-whatis-azure-portal.md) tooset reglas como siguiente hello:
 * Todos los usuarios del directorio reciben automáticamente una licencia
-* Todos los usuarios con el puesto adecuado reciben una licencia
-* Puede delegar la decisión en otros administradores de la organización (mediante [grupos de autoservicio](active-directory-accessmanagement-self-service-group-management.md)).
+* Todos los usuarios con el título de trabajo pertinente de hello obtengan una licencia
+* Puede delegar administradores de hello decisión tooother de organización de hello (mediante el uso de [grupos de autoservicio](active-directory-accessmanagement-self-service-group-management.md))
 
-Para ver una explicación detallada sobre la asignación de licencias a grupos, incluidos escenarios avanzados y escenarios de concesión de licencias de Office 365, consulte [Asignación de licencias a usuarios según su pertenencia a un grupo en Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md).
+Para obtener una explicación detallada de toogroups de asignación de licencias, incluidas las avanzadas escenarios y Office 365 licencias escenarios, consulte [asignar licencias toousers por su pertenencia a grupo en Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md).
 
 ## <a name="get-started-with-azure-ad-licensing"></a>Introducción a la concesión de licencias en Azure AD
 
 Empezar a trabajar con Azure AD es fácil. Siempre puede crear su directorio como parte del registro para una [evaluación gratuita de Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
 
-Los siguientes procedimientos recomendados pueden ayudar a garantizar que el inquilino está en consonancia con otros servicios de Microsoft que podría estar consumiendo y con los objetivos del servicio:
+Hello siguientes prácticas recomendadas pueden ayudar a asegurarse de que el inquilino se alinea con otros servicios de Microsoft que podría estar consumiendo y con los objetivos de servicio de hello:
 
-- Si ya usa cualquiera de los servicios organizativos de Microsoft, ya dispone de un inquilino de Azure AD. Ya que resulta de utilidad usar el mismo inquilino para otros servicios, se puede usar la administración básica de identidades, lo que incluye el aprovisionamiento y el inicio de sesión único (SSO) híbrido, en todos los servicios. Con el inicio de sesión único, los usuarios se benefician de las completas funcionalidades presentes en todos los servicios. Por lo tanto, si decide comprar un servicio de pago de Azure AD para sus recursos, se recomienda usar de nuevo el mismo inquilino.
+- Si ya usas cualquiera de hello organizativa servicios de Microsoft, ya tiene un inquilino de Azure AD. Es hello toouse útil que igual de inquilinos para otros servicios para que la administración de identidad principal, incluido el aprovisionamiento y híbrida inicio de sesión único (SSO), se pueden usar en servicios de Hola. Con el inicio de sesión único, los usuarios se beneficiarán de capacidades enriquecidas de hello en servicios de Hola. Por lo tanto, si decide que un servicio de pago de Azure AD para los trabajadores toobuy, recomendamos que utilice Hola mismo inquilino de nuevo.
 
-- Es recomendable que use un nuevo inquilino en Azure Portal, si tiene pensado:
+- Se recomienda que realice a un nuevo inquilino Hola portal de Azure si planea:
   - Usar Azure AD para un conjunto diferente de usuarios (por ejemplo, asociados o clientes).
   - Evaluar los servicios de Azure AD de forma aislada de su servicio de producción.
   - Configurar un entorno aislado para sus servicios.
 
-  El nuevo directorio se crea con su cuenta como un usuario externo con permisos de administrador global. Cuando inicie sesión en Azure Portal con esta cuenta, podrá ver este inquilino y acceder a todas las tareas de administración.
+  nuevo directorio de Hola se crea con la cuenta como un usuario externo con permisos de administrador global. Cuando inicias sesión en toohello portal de Azure con esta cuenta, puede ver a este inquilino y tener acceso a todas las tareas de administración.
 
 > [!NOTE]
-> Azure AD admite "usuarios invitados", que son cuentas de usuario de un inquilino de Azure AD que se crearon con una cuenta Microsoft o una identidad de Azure AD de otro inquilino. El Portal de administración de Office 365 no admite actualmente estos usuarios. Los usuarios invitados con cuentas Microsoft no podrán acceder al Portal de administración de Office 365, mientras que los usuarios invitados de otros inquilinos de Azure AD se ignorarán. En el segundo caso, la cuenta local del usuario, del inquilino de Azure AD u Office 365 donde se creó originalmente el usuario, será la única accesible.
+> Azure AD admite "usuarios invitados", que son cuentas de usuario de un inquilino de Azure AD que se crearon con una cuenta Microsoft o una identidad de Azure AD de otro inquilino. portal de administración de Office 365 Hello no admite actualmente estos usuarios. Usuarios invitados con cuentas de Microsoft no son tooaccess capaz de portal de administración de Office 365 hello en absoluto, mientras que los usuarios invitados desde otros inquilinos de Azure AD se omiten. En este último caso hello, solo Hola cuenta local del usuario, en hello Azure AD o inquilino de Office 365 donde se creó originalmente el usuario de hello, es accesible.
 
 ### <a name="select-one-or-more-license-trials"></a>Seleccione una o más versiones de prueba de licencia
 
@@ -113,38 +113,38 @@ Puede activar una suscripción de prueba de Azure AD Premium o Enterprise Mobili
 
 ![Selección de licencia de prueba](media/active-directory-licensing-get-started-azure-portal/select-a-license-trial.png)
 
-Las licencias de prueba están disponibles en la hoja **Licencias**.
+Licencias de prueba están disponibles en hello **licencias** hoja.
 
-### <a name="assign-licenses-to-users-and-groups"></a>Asignación de licencias a usuarios y grupos
+### <a name="assign-licenses-toousers-and-groups"></a>Asignar grupos y toousers de licencias
 
-Una vez que la suscripción está activa, debe asignarse a sí mismo una licencia. A continuación, actualice el explorador para asegurarse de que está viendo todas las características. El siguiente paso es asignar licencias a los usuarios que necesitarán acceso a las características de pago de Azure AD. Como se describe en [Asignación de licencias](#assign-licenses), una manera fácil de asignar licencias es identificar el grupo que representa el público deseado y asignarles la licencia. De esta manera, a los usuarios que se agregan o quitan del grupo durante su ciclo de vida, se les asigna una licencia o se les cancela la asignación de la licencia, respectivamente.
+Después de hello suscripción esté activa, debe asignar una licencia tooyourself. A continuación, actualice hello tooensure de explorador que está viendo todas las características de Hola. Hola siguiente paso es tooassign licencias toohello quienes necesitan tener acceso a características de Azure AD toopaid. Como se describe en [asignar licencias](#assign-licenses), una forma fácil de licencias de tooassign es grupo de Hola de tooidentify que representa Hola deseado audiencia y asignar Hola licencia tooit. De esta manera, los usuarios que se agregan o quitan del grupo de Hola durante su ciclo de vida se asigna o se elimina de licencia de hello, respectivamente.
 
 > [!NOTE]
-> Algunos servicios de Microsoft no están disponibles en todas las ubicaciones. Para poder asignar una licencia a un usuario, el administrador tiene que especificar la propiedad **Ubicación de uso** para el usuario. Esta propiedad se puede establecer en **Usuario** &gt; **Perfil** &gt; **Configuración** en Azure Portal. Cuando se usa la asignación de licencias de grupo, los usuarios cuya ubicación de uso no se especifique heredan la ubicación del directorio.
+> Algunos servicios de Microsoft no están disponibles en todas las ubicaciones. Antes de poder asignar una licencia de usuario de tooa, Administrador de hello debe especificar hello **ubicación de uso** propiedad para el usuario de Hola. Puede establecer esta propiedad en **usuario** &gt; **perfil** &gt; **configuración** Hola portal de Azure. Cuando se usa la asignación del grupo de licencias, cualquier usuario cuya ubicación de uso no se especifica hereda ubicación hello del directorio de Hola.
 
-Para asignar una licencia, en **Azure Active Directory** &gt; **Licencias** &gt; **Todos los productos**, seleccione uno o varios productos y luego seleccione **Asignar** en la barra de comandos.
+tooassign una licencia, en **Azure Active Directory** &gt; **licencias** &gt; **todos los productos**, seleccione uno o varios productos y, a continuación, seleccione **Asignar** en la barra de comandos de Hola.
 
-![Selección de una licencia para asignar](media/active-directory-licensing-get-started-azure-portal/select-license-to-assign.png)
+![Seleccione un tooassign de licencia](media/active-directory-licensing-get-started-azure-portal/select-license-to-assign.png)
 
-Puede usar la hoja **Usuarios y grupos** para elegir varios usuarios o grupos o para deshabilitar planes de servicio en el producto. Use el cuadro de búsqueda de la parte superior para buscar nombres de usuarios y grupos.
+Puede usar hello **usuarios y grupos** toochoose hoja planes de varios usuarios o grupos o servicio toodisable de producto de Hola. Utilice el cuadro de búsqueda de hello en toosearch superior para los nombres de usuario y de grupo.
 
 ![Selección de un usuario o grupo para la asignación de licencias](media/active-directory-licensing-get-started-azure-portal/select-user-for-license-assignment.png)
 
-Al asignar una licencia a un grupo, puede pasar algún tiempo antes de que todos los usuarios hereden la licencia, en función del número de usuarios en el grupo. El estado de procesamiento se puede comprobar en la hoja **Grupo**, en el icono de **Licencias**.
+Cuando asigne un grupo de tooa de licencias, puede tardar algún tiempo antes de que todos los usuarios heredan licencia hello, función número Hola de los usuarios del grupo de Hola. Puede comprobar el estado de procesamiento de hello en hello **grupo** hoja en hello **licencias** icono.
 
 ![Estado de asignación de licencias](media/active-directory-licensing-get-started-azure-portal/license-assignment-status.png)
 
 Se pueden producir errores de asignación durante la asignación de licencias de Azure AD, pero son relativamente poco frecuentes al administrar productos de Azure AD y Enterprise Mobility + Security. Los posibles errores de asignación se limitan a los siguientes:
-- Conflicto de asignación: cuando se asignó previamente a un usuario una licencia incompatible con la actual. En este caso, para asignar la nueva licencia será necesario quitar la anterior.
-- Número excesivo de licencias disponibles: cuando el número de usuarios en los grupos asignados supera las licencias disponibles, el estado de la asignación de los usuarios reflejará un error de asignación debido a que faltan licencias.
+- Conflicto de asignación: cuando un usuario se asigna previamente una licencia que no es compatible con la licencia actual de Hola. En este caso, asignando Hola nueva licencia precisa que se quiten Hola actual.
+- Superado licencias disponibles: cuando el número de Hola de usuarios en grupos asignados supera licencias disponibles hello, estado de la asignación de un usuario refleja un tooassign de error debido a toomissing licencias.
 
 #### <a name="azure-ad-b2b-collaboration-licensing"></a>Concesión de licencias de colaboración B2B de Azure AD
 
-La colaboración B2B permite invitar a usuarios invitados a su inquilino de Azure AD para proporcionarles acceso a los servicios de Azure AD y a los recursos de Azure que estén disponibles.  
+La colaboración B2B permite a los usuarios de tooinvite invitado en los servicios de Azure AD inquilino tooprovide acceso tooAzure AD y los recursos de Azure pone a disposición.  
 
-No se aplica ningún cargo por invitar a los usuarios de B2B ni por asignarlos a una aplicación en Azure AD. Hasta 10 aplicaciones por usuario invitado y 3 informes básicos también son gratuitos para los usuarios de colaboración B2B. Si un usuario invitado tiene las licencias pertinentes asignadas en el inquilino de Azure AD del asociado, también las tendrá en el suyo.
+No hay ningún cargo para invitar a los usuarios de B2B y asignándoles tooan aplicación en Azure AD. Seguridad de aplicaciones de too10 por invitado usuario y 3 informes básicos también son gratuito para usuarios de la colaboración B2B. Si el usuario invitado tiene adecuadas licencias asignadas en el inquilino de Azure AD del socio de hello, podrá licencias también en el suyo.
 
-Aunque no es necesario, si quiere proporcionar acceso a características de pago de Azure AD, a esos usuarios invitados de B2B se les deben proporcionar las licencias de Azure AD adecuadas. Un inquilino que invita con una licencia de pago de Azure AD puede asignar derechos de usuario de colaboración de B2B a cinco usuarios invitados adicionales al inquilino. Para ver escenarios e información, consulte [Guía de concesión de licencias de colaboración B2B](active-directory-b2b-licensing.md).
+No es necesario, pero si desea características de tooprovide acceso toopaid Azure AD, deben tener una licencia de esos usuarios invitados de B2B con las licencias de Azure AD correspondientes. Un inquilino invitar a con una licencia de pago de Azure AD puede asignar derechos de usuario de la colaboración B2B tooan adicional cinco usuarios de invitado invitados toohello inquilino. Para ver escenarios e información, consulte [Guía de concesión de licencias de colaboración B2B](active-directory-b2b-licensing.md).
 
 ### <a name="view-assigned-licenses"></a>Visualización de licencias asignadas
 
@@ -152,31 +152,31 @@ En **Azure Active Directory** &gt; **Licencias** &gt; **Todos los productos** se
 
 ![Visualización del resumen de licencias](media/active-directory-licensing-get-started-azure-portal/view-license-summary.png)
 
-Al seleccionar un producto específico aparece una lista detallada de los usuarios y grupos asignados. En la lista **Usuarios con licencia** se muestran todos los usuarios actualmente con licencia, tanto si la licencia se asignó directamente al usuario como si se heredó de un grupo.
+Al seleccionar un producto específico aparece una lista detallada de los usuarios y grupos asignados. Hola **usuarios con licencia** lista muestra todos los usuarios actualmente que consuman una licencia y si se ha asignado licencias Hola directamente toohello usuario o si se ha heredado de un grupo.
 
 ![Visualización de los detalles de licencia](media/active-directory-licensing-get-started-azure-portal/view-license-detail.png)
 
-De forma similar, en la lista **Grupos con licencias** se muestran todos los grupos con licencia asignada. Seleccione un usuario o grupo para abrir la hoja **Licencias**, que muestra todas las licencias asignadas a ese objeto.
+De forma similar, Hola **autoriza el uso de grupos** lista muestra todos los grupos de licencias de toowhich se han asignado. Seleccione un hello tooopen usuario o grupo **licencias** hoja, que muestra todas las licencias asignado toothat objeto.
 
 ### <a name="remove-a-license"></a>Eliminación de una licencia
 
-Para quitar una licencia, vaya al usuario o grupo y abra el icono de **Licencias**. Seleccione la licencia y haga clic en **Quitar**.
+tooremove una licencia, vaya toohello usuario o grupo y abra hello **licencias** icono. Seleccione la licencia de Hola y haga clic en **quitar**.
 
 ![Eliminación de una licencia](media/active-directory-licensing-get-started-azure-portal/remove-license.png)
 
-Las licencias heredadas por el usuario de un grupo no se pueden quitar directamente. En su lugar, quite el usuario del grupo desde el que haya heredado la licencia.
+Heredado por usuario de Hola desde un grupo de licencias no se puede quitar directamente. En su lugar, quitar usuario Hola de grupo de Hola desde el que está heredando licencia Hola.
 
 ### <a name="extend-trials"></a>Ampliación de pruebas
 
-Las extensiones de prueba para los clientes están disponibles como registro de autoservicio mediante el Portal de Office 365. Un administrador de clientes puede ir al Portal de Office (el acceso depende de los permisos para el Portal de Office) y seleccionar la prueba de Azure AD Premium. Al hacer clic en el vínculo **Extend trial** (Ampliar prueba) se inicia el proceso de extensión. Se necesita una tarjeta de crédito, pero no se realizarán cargos.
+Las extensiones de prueba para los clientes que están disponibles como registro a través del portal de Office 365 Hola de autoservicio. El Administrador de un cliente puede ir toohello portal de Office (acceso depende de los permisos para el portal de Office de hello) y seleccione la versión de prueba de hello Azure AD Premium. Si hace clic en hello **ampliar prueba** vínculo inicia el proceso de extensión de Hola. Se necesita una tarjeta de crédito, pero no se realizarán cargos.
 
-![Ampliación de una prueba en Azure Portal](media/active-directory-licensing-get-started-azure-portal/extend-trial-beginning.png)
+![Ampliar una prueba en hello portal de Azure](media/active-directory-licensing-get-started-azure-portal/extend-trial-beginning.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre escenarios avanzados de administración de licencias mediante grupos, consulte el artículo [Asignación de licencias a un grupo](active-directory-licensing-group-assignment-azure-portal.md).
+Obtenga más información sobre toolearn avanzada escenarios de administración de licencias a través de grupos, lea el artículo de hello [tooa grupo de asignar licencias](active-directory-licensing-group-assignment-azure-portal.md).
 
-Aquí encontrará información sobre cómo configurar y usar otras características de pago de Azure AD:
+Esta es información acerca de cómo tooconfigure y usar otra características de pago de Azure AD:
 
 * [Restablecimiento de la contraseña de autoservicio](active-directory-manage-passwords.md)
 * [Administración de grupos de autoservicio](active-directory-accessmanagement-self-service-group-management.md)

@@ -1,6 +1,6 @@
 ---
-title: Plantillas de perfil de usuario en Azure API Management | Microsoft Docs
-description: "Aprenda a personalizar el contenido de las páginas de perfil de usuario del portal para desarrolladores en Azure API Management."
+title: "aaa \"plantillas de perfil de usuario en la administración de API de Azure | Documentos de Microsoft\""
+description: "Obtenga información acerca de cómo las páginas toocustomize contenido de Hola de hello perfil de usuario en el portal para desarrolladores de hello en la administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9a11bd5800068a5725ab2f099043993bff0b28d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c8f153b310221164809acf58e4af236928ceb41d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Plantillas de perfil de usuario en Azure API Management
-Azure API Management le ofrece la posibilidad de personalizar el contenido de las páginas del portal para desarrolladores mediante un conjunto de plantillas que configuran su contenido. Por medio de la sintaxis [DotLiquid](http://dotliquidmarkup.org/) y el editor que prefiera, como [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) (DotLiquid para diseñadores), y un conjunto proporcionado de [recursos de cadena](api-management-template-resources.md#strings), [recursos de glifo](api-management-template-resources.md#glyphs) y [controles de página](api-management-page-controls.md) localizados, puede disponer de una gran flexibilidad para configurar el contenido de las páginas como considere oportuno mediante estas plantillas.  
+Administración de API de Azure proporciona que Hola contenido de hello toocustomize de capacidad de páginas del portal para desarrolladores con un conjunto de plantillas que configure su contenido. Usar [DotLiquid](http://dotliquidmarkup.org/) editor hello y sintaxis de su elección, como [DotLiquid a los diseñadores](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), o cambie de tamaño un conjunto proporcionado de [los recursos de cadena](api-management-template-resources.md#strings), [ Recursos de glifo](api-management-template-resources.md#glyphs), y [página controles](api-management-page-controls.md), tienen contenido de gran flexibilidad tooconfigure Hola de páginas de Hola como considere oportuno mediante estas plantillas.  
   
- Las plantillas de esta sección le permiten personalizar el contenido de las páginas de perfil de usuario en el portal para desarrolladores.  
+ las plantillas de Hello en esta sección permiten contenido de hello toocustomize de páginas de perfil de usuario de hello en el portal para desarrolladores de Hola.  
   
 -   [Perfil](#Profile)  
   
@@ -34,10 +34,10 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 -   [Update account info](#UpdateAccountInfo)  
   
 > [!NOTE]
->  En la siguiente documentación se incluyen plantillas predeterminadas de ejemplo; sin embargo, están sujetas a cambios debido a mejoras continuas. Puede ver las plantillas predeterminadas en vivo en el portal para desarrolladores; para ello, vaya hasta a las plantillas individuales que desee. Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Plantillas predeterminadas de ejemplo se incluyen en hello siguiendo documentación, pero están toochange asunto debido toocontinuous mejoras. Puede ver plantillas de hello predeterminado en vivo en el portal para desarrolladores de hello desplazándose plantillas individuales toohello deseado. Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="Profile"></a> Perfil  
- La plantilla de **perfil** le permite personalizar la sección de perfil de usuario de la página de perfil de usuario en el portal para desarrolladores.  
+ Hola **perfil** plantilla permite sección de perfil de usuario de toocustomize Hola de página de perfil de usuario de hello en el portal para desarrolladores de Hola.  
   
  ![Página de perfil de usuario](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "Página de perfil de usuario de APIM")  
   
@@ -99,21 +99,21 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ### <a name="data-model"></a>Modelo de datos  
   
 > [!NOTE]
->  Las plantillas de [perfil](#Profile), [aplicaciones](#Applications), y [suscripciones](#Subscriptions) comparten el mismo modelo de datos y reciben los mismos datos de plantilla.  
+>  Hola [perfil](#Profile), [aplicaciones](#Applications), y [suscripciones](#Subscriptions) plantillas compartan Hola mismos datos de modelo y reciban Hola datos de la misma plantilla.  
   
 |Propiedad|Escriba|Descripción|  
 |--------------|----------|-----------------|  
-|firstName|string|Nombre del usuario actual.|  
-|lastName|string|Apellido del usuario actual.|  
-|companyName|string|El nombre de la empresa del usuario actual.|  
-|addresserEmail|string|Dirección de correo electrónico del usuario actual.|  
-|developersUsageStatisticsLinkk|string|Dirección URL relativa para ver el análisis para el usuario actual.|  
-|subscriptions|Colección de entidades de [suscripción](api-management-template-data-model-reference.md#Subscription).|Las suscripciones para el usuario actual.|  
-|aplicaciones de escala de web|Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).|Las aplicaciones del usuario actual.|  
-|changePasswordUrl|string|La dirección URL relativa para cambiar la contraseña del usuario actual.|  
-|changeNameOrEmailUrl|string|La dirección URL relativa para cambiar el nombre y el correo electrónico para el usuario actual.|  
-|canChangePassword|boolean|Si el usuario actual puede cambiar su contraseña.|  
-|isSystemUser|boolean|Si el usuario actual es miembro de uno de los [grupos](api-management-key-concepts.md#groups) integrados.|  
+|firstName|cadena|Nombre del usuario actual de Hola.|  
+|lastName|cadena|Apellido del usuario actual de Hola.|  
+|companyName|cadena|nombre de la compañía de saludo del usuario actual de Hola.|  
+|addresserEmail|cadena|Dirección de correo electrónico del usuario actual de Hola.|  
+|developersUsageStatisticsLinkk|cadena|Análisis de tooview dirección URL relativa para el usuario actual de Hola.|  
+|subscriptions|Colección de entidades de [suscripción](api-management-template-data-model-reference.md#Subscription).|suscripciones de Hello para el usuario actual de Hola.|  
+|aplicaciones de escala de web|Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).|aplicaciones de saludo del usuario actual de Hola.|  
+|changePasswordUrl|cadena|Hola relativa URL toochange Hola contraseña del usuario actual.|  
+|changeNameOrEmailUrl|cadena|Hola relativa toochange Hola nombre y la URL correo electrónico para el usuario actual de Hola.|  
+|canChangePassword|boolean|Si el usuario actual de hello puede cambiar su contraseña.|  
+|isSystemUser|boolean|Si el usuario actual de hello es miembro de uno de hello integrados [grupos](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ejemplo de datos de plantilla  
   
@@ -130,7 +130,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -153,7 +153,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -182,7 +182,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ##  <a name="Subscriptions"></a> Suscripciones  
- La plantilla de **suscripciones** le permite personalizar la sección de suscripciones de la página de perfil de usuario en el portal para desarrolladores.  
+ Hola **suscripciones** plantilla permite sección de suscripciones de hello toocustomize de página de perfil de usuario de hello en el portal para desarrolladores de Hola.  
   
  ![Página de suscripción de usuario](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "Página de suscripción de usuario de APIM")  
   
@@ -313,28 +313,28 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ### <a name="controls"></a>Controles  
- Esta plantilla puede utilizar los siguientes [controles de página](api-management-page-controls.md).  
+ Esta plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).  
   
 -   [subscription-cancel](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Modelo de datos  
   
 > [!NOTE]
->  Las plantillas de [perfil](#Profile), [aplicaciones](#Applications), y [suscripciones](#Subscriptions) comparten el mismo modelo de datos y reciben los mismos datos de plantilla.  
+>  Hola [perfil](#Profile), [aplicaciones](#Applications), y [suscripciones](#Subscriptions) plantillas compartan Hola mismos datos de modelo y reciban Hola datos de la misma plantilla.  
   
 |Propiedad|Escriba|Descripción|  
 |--------------|----------|-----------------|  
-|firstName|string|Nombre del usuario actual.|  
-|lastName|string|Apellido del usuario actual.|  
-|companyName|string|El nombre de la empresa del usuario actual.|  
-|addresserEmail|string|Dirección de correo electrónico del usuario actual.|  
-|developersUsageStatisticsLinkk|string|Dirección URL relativa para ver el análisis para el usuario actual.|  
-|subscriptions|Colección de entidades de [suscripción](api-management-template-data-model-reference.md#Subscription).|Las suscripciones para el usuario actual.|  
-|aplicaciones de escala de web|Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).|Las aplicaciones del usuario actual.|  
-|changePasswordUrl|string|La dirección URL relativa para cambiar la contraseña del usuario actual.|  
-|changeNameOrEmailUrl|string|La dirección URL relativa para cambiar el nombre y el correo electrónico para el usuario actual.|  
-|canChangePassword|boolean|Si el usuario actual puede cambiar su contraseña.|  
-|isSystemUser|boolean|Si el usuario actual es miembro de uno de los [grupos](api-management-key-concepts.md#groups) integrados.|  
+|firstName|cadena|Nombre del usuario actual de Hola.|  
+|lastName|cadena|Apellido del usuario actual de Hola.|  
+|companyName|cadena|nombre de la compañía de saludo del usuario actual de Hola.|  
+|addresserEmail|cadena|Dirección de correo electrónico del usuario actual de Hola.|  
+|developersUsageStatisticsLinkk|cadena|Análisis de tooview dirección URL relativa para el usuario actual de Hola.|  
+|subscriptions|Colección de entidades de [suscripción](api-management-template-data-model-reference.md#Subscription).|suscripciones de Hello para el usuario actual de Hola.|  
+|aplicaciones de escala de web|Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).|aplicaciones de saludo del usuario actual de Hola.|  
+|changePasswordUrl|cadena|Hola relativa URL toochange Hola contraseña del usuario actual.|  
+|changeNameOrEmailUrl|cadena|Hola relativa toochange Hola nombre y la URL correo electrónico para el usuario actual de Hola.|  
+|canChangePassword|boolean|Si el usuario actual de hello puede cambiar su contraseña.|  
+|isSystemUser|boolean|Si el usuario actual de hello es miembro de uno de hello integrados [grupos](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ejemplo de datos de plantilla  
   
@@ -351,7 +351,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -374,7 +374,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -403,7 +403,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ##  <a name="Applications"></a> Aplicaciones  
- La plantilla de **aplicaciones** le permite personalizar la sección de suscripciones de la página de perfil de usuario en el portal para desarrolladores.  
+ Hola **aplicaciones** plantilla permite sección de suscripciones de hello toocustomize de página de perfil de usuario de hello en el portal para desarrolladores de Hola.  
   
  ![Página de aplicaciones de cuenta de usuario](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "Página de aplicaciones de cuenta de usuario de APIM")  
   
@@ -476,28 +476,28 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ### <a name="controls"></a>Controles  
- Esta plantilla puede utilizar los siguientes [controles de página](api-management-page-controls.md).  
+ Esta plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).  
   
 -   [app-actions](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Modelo de datos  
   
 > [!NOTE]
->  Las plantillas de [perfil](#Profile), [aplicaciones](#Applications), y [suscripciones](#Subscriptions) comparten el mismo modelo de datos y reciben los mismos datos de plantilla.  
+>  Hola [perfil](#Profile), [aplicaciones](#Applications), y [suscripciones](#Subscriptions) plantillas compartan Hola mismos datos de modelo y reciban Hola datos de la misma plantilla.  
   
 |Propiedad|Escriba|Descripción|  
 |--------------|----------|-----------------|  
-|firstName|string|Nombre del usuario actual.|  
-|lastName|string|Apellido del usuario actual.|  
-|companyName|string|El nombre de la empresa del usuario actual.|  
-|addresserEmail|string|Dirección de correo electrónico del usuario actual.|  
-|developersUsageStatisticsLinkk|string|Dirección URL relativa para ver el análisis para el usuario actual.|  
-|subscriptions|Colección de entidades de [suscripción](api-management-template-data-model-reference.md#Subscription).|Las suscripciones para el usuario actual.|  
-|aplicaciones de escala de web|Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).|Las aplicaciones del usuario actual.|  
-|changePasswordUrl|string|La dirección URL relativa para cambiar la contraseña del usuario actual.|  
-|changeNameOrEmailUrl|string|La dirección URL relativa para cambiar el nombre y el correo electrónico para el usuario actual.|  
-|canChangePassword|boolean|Si el usuario actual puede cambiar su contraseña.|  
-|isSystemUser|boolean|Si el usuario actual es miembro de uno de los [grupos](api-management-key-concepts.md#groups) integrados.|  
+|firstName|cadena|Nombre del usuario actual de Hola.|  
+|lastName|cadena|Apellido del usuario actual de Hola.|  
+|companyName|cadena|nombre de la compañía de saludo del usuario actual de Hola.|  
+|addresserEmail|cadena|Dirección de correo electrónico del usuario actual de Hola.|  
+|developersUsageStatisticsLinkk|cadena|Análisis de tooview dirección URL relativa para el usuario actual de Hola.|  
+|subscriptions|Colección de entidades de [suscripción](api-management-template-data-model-reference.md#Subscription).|suscripciones de Hello para el usuario actual de Hola.|  
+|aplicaciones de escala de web|Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).|aplicaciones de saludo del usuario actual de Hola.|  
+|changePasswordUrl|cadena|Hola relativa URL toochange Hola contraseña del usuario actual.|  
+|changeNameOrEmailUrl|cadena|Hola relativa toochange Hola nombre y la URL correo electrónico para el usuario actual de Hola.|  
+|canChangePassword|boolean|Si el usuario actual de hello puede cambiar su contraseña.|  
+|isSystemUser|boolean|Si el usuario actual de hello es miembro de uno de hello integrados [grupos](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Ejemplo de datos de plantilla  
   
@@ -514,7 +514,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -537,7 +537,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -566,7 +566,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ##  <a name="UpdateAccountInfo"></a> Update account info  
- La plantilla para **actualizar información de cuenta** le permite personalizar la página **Actualizar información de cuenta** en el portal para desarrolladores.  
+ Hola **información de la cuenta de Uodate** plantilla permite hello toocustomize **actualizar información de cuenta** página de portal para desarrolladores de Hola.  
   
  ![Plantillas del portal para desarrolladores de la página de información de cuenta de usuario](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de información de cuenta de usuario de APIM")  
   
@@ -623,4 +623,4 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](api-management-developer-portal-templates.md).
+Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](api-management-developer-portal-templates.md).

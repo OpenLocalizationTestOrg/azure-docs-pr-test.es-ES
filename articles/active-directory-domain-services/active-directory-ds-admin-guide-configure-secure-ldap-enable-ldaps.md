@@ -1,5 +1,5 @@
 ---
-title: "Configuración de LDAP seguro (LDAPS) en Azure AD Domain Services | Microsoft Docs"
+title: aaaConfigure seguro (LDAPS) de LDAP en servicios de dominio de AD de Azure | Documentos de Microsoft
 description: "Configuración de LDAP seguro (LDAPS) para un dominio administrado con Servicios de dominio de Azure AD"
 services: active-directory-ds
 documentationcenter: 
@@ -14,99 +14,99 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: maheshu
-ms.openlocfilehash: 3b19f078b0d6dc3e02d951014056406fd1b099a8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8781285cd02d690788056b985b017efd7e4d6b3f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Configuración de LDAP seguro (LDAPS) para un dominio administrado con Azure AD Domain Services
 
 ## <a name="before-you-begin"></a>Antes de empezar
-Asegúrese de que ha completado la [Tarea 2: Exportación del certificado LDAP seguro a un archivo .PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
+Asegúrese de que ha completado [tarea 2: exportar Hola segura LDAP certificado tooa. Archivo PFX](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
 
-Elija si usar la experiencia de Azure Portal (versión preliminar) o el portal de Azure clásico para completar esta tarea.
+Elegir entre toouse hello Azure experiencia del portal de vista previa o hello Azure toocomplete portal clásico esta tarea.
 > [!div class="op_single_selector"]
-> * **Azure Portal (versión preliminar)**: [habilite LDAP seguro con Azure Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-> * **Portal de Azure clásico**: [habilite LDAP seguro con el Portal de Azure clásico](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
+> * **Portal de Azure (vista previa)**: [Enable secure LDAP mediante Hola portal de Azure](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+> * **Portal de Azure clásico**: [Enable secure LDAP mediante el portal de Azure clásico Hola](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
 >
 >
 
 
-## <a name="task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview"></a>Tarea 3: Habilitación de LDAP seguro para el dominio administrado mediante Azure Portal (versión preliminar)
-Realice los siguientes pasos de configuración para habilitar LDAP seguro:
+## <a name="task-3---enable-secure-ldap-for-hello-managed-domain-using-hello-azure-portal-preview"></a>Tarea 3: habilitar LDAP seguro de dominio administrados de hello mediante Hola portal de Azure (vista previa)
+tooenable LDAP seguro, realizar Hola siguiendo los pasos de configuración:
 
-1. Vaya a **[Azure Portal](https://portal.azure.com)**.
+1. Navegue toohello  **[portal de Azure](https://portal.azure.com)**.
 
-2. Busque 'servicios de dominio de' en el cuadro de búsqueda **Buscar recursos**. En el resultado de la búsqueda, seleccione **Azure AD Domain Services**. La hoja **Azure AD Domain Services** mostrará el dominio administrado.
+2. Busque "servicios de dominio' en hello **buscar recursos** cuadro de búsqueda. Seleccione **servicios de dominio de AD de Azure** Hola resultados de búsqueda. Hola **servicios de dominio de AD de Azure** hoja muestra el dominio administrado.
 
-    ![Búsqueda del dominio administrado aprovisionado](./media/getting-started/domain-services-provisioning-state-find-resource.png)
+    ![Búsqueda del dominio administrado que se va aprovisionar](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
-2. Haga clic en el nombre del dominio administrado (por ejemplo, "contoso100.com") para ver más detalles sobre el dominio.
+2. Haga clic en Hola Hola administrado toosee de dominio (por ejemplo, ' contoso100.com') para obtener más detalles sobre el dominio de Hola.
 
     ![Domain Services: estado de aprovisionamiento](./media/getting-started/domain-services-provisioning-state.png)
 
-3. Haga clic en **LDAP seguro** en el panel de navegación.
+3. Haga clic en **LDAP seguro** en el panel de navegación de Hola.
 
     ![Hoja Servicios de dominio: LDAP seguro](./media/active-directory-domain-services-admin-guide/secure-ldap-blade.png)
 
-4. De forma predeterminada, se deshabilita el acceso de LDAP seguro a su dominio administrado. Cambie **LDAP seguro** a **Habilitar**.
+4. De forma predeterminada, LDAP acceso tooyour administrado dominio seguro está deshabilitado. Alternar **LDAP seguro** demasiado**habilitar**.
 
     ![Habilitación de LDAP seguro](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. De forma predeterminada, el acceso de LDAP seguro al dominio administrado sobre Internet está deshabilitado. Cambie **Permitir el acceso mediante LDAP seguro a través de Internet** a **Habilitar**, si lo desea. 
+5. De forma predeterminada, tooyour de acceso LDAP seguro administra dominio a través de hello que Internet está deshabilitada. Alternar **Hola a permitir acceso LDAP seguro a través de internet** demasiado**habilitar**, si lo desea. 
 
-6. Haga clic en el icono de la carpeta que sigue al archivo **.PFX con el certificado LDAP seguro**. Especifique la ruta de acceso al archivo PFX con el certificado para el acceso de LDAP seguro al dominio administrado.
+6. Haga clic en siguiente de icono de carpeta de hello **. Archivo PFX con certificado LDAP seguro**. Especifique archivo PFX de hello ruta de acceso toohello con certificado de Hola para LDAP acceso toohello administrado dominio seguro.
 
-7. Especifique la **contraseña para descifrar el archivo .PFX**. Proporcione la misma contraseña que usó al exportar el certificado al archivo PFX.
+7. Especificar hello **toodecrypt de contraseña. Archivo PFX**. Proporcionar Hola contraseña que se usa al exportar el archivo PFX de hello certificado toohello.
 
-8. Cuando haya terminado, haga clic en el botón **Guardar**.
+8. Cuando haya terminado, haga clic en hello **guardar** botón.
 
-9. Verá una notificación que le informará de que el LDAP seguro se ha configurado para el dominio administrado. Hasta que se complete la operación, no podrá modificar otras configuraciones para el dominio.
+9. Verá una notificación que le informa de que LDAP seguro se configura de dominio administrados Hola. Hasta que se complete esta operación, no se puede modificar otras configuraciones de dominio de Hola.
 
-    ![Configuración del LDAP seguro para el dominio administrado](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configuring.png)
+    ![Configuración de LDAP seguro para el dominio administrado Hola](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configuring.png)
 
 > [!NOTE]
-> Se tardará entre unos 10 y 15 minutos en habilitar LDAP seguro para el dominio administrado. Si el certificado LDAP seguro proporcionado no coincide con los criterios necesarios, no se habilitará LDAP seguro para el directorio y aparecerá un mensaje de error. Por ejemplo, se indicará que el nombre de dominio es incorrecto, que el certificado ha expirado o que lo hará pronto. En este caso, vuelva a intentarlo con un certificado válido.
+> Se tarda unos 10 minutos de too15 tooenable LDAP seguro para el dominio administrado. Si Hola proporcionado no coincide con el certificado LDAP seguro Hola necesario criterios, LDAP seguro no está habilitada para el directorio y verá un error. Por ejemplo, nombre de dominio de hello es incorrecto, el certificado de Hola ya ha expirado o va a expirar pronto. En este caso, vuelva a intentarlo con un certificado válido.
 >
 >
 
 <br>
 
-## <a name="task-4---configure-dns-to-access-the-managed-domain-from-the-internet"></a>Tarea 4: Configuración de DNS para acceder al dominio administrado desde Internet
+## <a name="task-4---configure-dns-tooaccess-hello-managed-domain-from-hello-internet"></a>Tarea 4: configurar DNS tooaccess Hola dominio administrado de hello internet
 > [!NOTE]
-> **Tarea opcional** : omita esta tarea de configuración si no piensa acceder al dominio administrado con LDAPS a través de Internet.
+> **Tareas opcionales** : si no tiene previsto tooaccess Hola dominio administrado usa LDAPS más Hola a internet, omita esta tarea de configuración.
 >
 >
 
-Antes de comenzar esta tarea, asegúrese de haber completado los pasos que se describen en la [tarea 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
+Antes de comenzar esta tarea, asegúrese de haber completado los pasos de Hola que se describen en [tarea 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
 
-Una vez habilitado el acceso LDAP seguro a través de Internet para el dominio administrado, debe actualizar el DNS para que los equipos cliente puedan encontrar este dominio administrado. Al final de la tarea 3, aparece una dirección IP externa en la hoja **Configurar**, en **DIRECCIÓN IP EXTERNA PARA EL ACCESO LDAPS**.
+Después de habilitar el acceso LDAP seguro a través de internet de hello para el dominio administrado, deberá tooupdate DNS para que los equipos cliente puedan encontrar este dominio administrado. Al final de Hola de tarea 3, se muestra una dirección IP externa en hello **propiedades** hoja en **dirección de IP externas para acceso de LDAPS**.
 
-Configure el proveedor de DNS externo para que el nombre DNS del dominio administrado (p. ej., ldaps.contoso100.com) señale a esta dirección IP externa. En este ejemplo, es necesario crear la entrada DNS siguiente:
+Configurar el proveedor de DNS externo para que ese nombre DNS de Hola de hello administrados direcciones IP externas de dominio (por ejemplo, ' ldaps.contoso100.com') toothis puntos. En nuestro ejemplo, necesitamos hello toocreate siguiente entrada DNS:
 
     ldaps.contoso100.com  -> 52.165.38.113
 
-Eso es todo: ya está listo para conectarse al dominio administrado mediante LDAP seguro a través de Internet.
+¡Eso es todo: ya estás toohello tooconnect listo administrado Hola de dominio mediante LDAP seguro en internet.
 
 > [!WARNING]
-> Recuerde que los equipos cliente deben confiar en el emisor del certificado LDAPS para poder conectarse correctamente al dominio administrado mediante LDAPS. Si usa una entidad de certificación de confianza pública, no tendrá que realizar ninguna acción, ya que los equipos cliente confiarán en los emisores de certificados. Si utiliza un certificado autofirmado, instale la parte pública del certificado autofirmado en el almacén de certificados de confianza del equipo cliente.
+> Recuerde que los equipos cliente deben confiar emisor Hola de hello LDAPS certificado toobe pueda tooconnect correctamente toohello administrado dominio usa LDAPS. Si utilizas una entidad de certificación de confianza pública, que no necesite toodo nada ya que estos emisores de certificados de confianza de los equipos cliente. Si está utilizando un certificado autofirmado, instale parte pública de Hola de certificado autofirmado de hello en el almacén de certificados de confianza de hello en el equipo cliente de Hola.
 >
 >
 
 
-## <a name="task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet"></a>Tarea 5: Bloqueo del acceso LDAPS del dominio administrado a través de Internet
+## <a name="task-5---lock-down-ldaps-access-tooyour-managed-domain-over-hello-internet"></a>Tarea 5: bloquear LDAPS acceso tooyour administrado Hola de dominio a través de internet
 > [!NOTE]
-> **Tarea opcional**: si no ha habilitado el acceso LDAPS en el dominio administrado a través de Internet, omita esta tarea de configuración.
+> **Tareas opcionales** : si no se ha habilitado LDAPS dominio administrado de acceso toohello en Hola internet, omita esta tarea de configuración.
 >
 >
 
-Antes de comenzar esta tarea, asegúrese de haber completado los pasos que se describen en la [tarea 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
+Antes de comenzar esta tarea, asegúrese de haber completado los pasos de Hola que se describen en [tarea 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
 
-La exposición del dominio administrado para el acceso LDAPS a través de Internet representa una amenaza de seguridad. Se puede alcanzar el dominio administrado desde Internet en el puerto usado para LDAP seguro (es decir, el puerto 636). Por lo tanto, puede elegir restringir el acceso al dominio administrado a direcciones IP conocidas específicas. Para mejorar la seguridad, cree un grupo de seguridad de red (NSG) y asócielo a la subred en la que habilitó Azure AD Domain Services.
+Exposición de su dominio administrado para el acceso LDAPS sobre Hola internet representa una amenaza para la seguridad. Hello dominio administrado sea accesible desde Hola internet en el puerto de hello usado para LDAP seguro (es decir, el puerto 636). Por lo tanto, puede elegir toorestrict acceso toohello administrado dominio toospecific conocida direcciones IP. Para mejorar la seguridad, cree un grupo de seguridad de red (NSG) y asociarla a la subred de Hola donde ha habilitado los servicios de dominio de AD de Azure.
 
-En la siguiente tabla se muestra un NSG de ejemplo que puede configurar para bloquear el acceso LDAP seguro a través de Internet. NSG contiene un conjunto de reglas que permiten el acceso LDAPS de entrada a través del puerto TCP 636 solo desde un conjunto especificado de direcciones IP. La regla predeterminada 'DenyAll' se aplica a todo el tráfico de entrada de Internet. La regla NSG para permitir el acceso LDAPS a través de Internet desde direcciones IP especificadas tiene una prioridad mayor que la regla NSG DenyAll.
+Hello siguiente tabla muestra un ejemplo de NSG puede configurar, toolock hacia abajo el acceso LDAP seguro a través de hello internet. Hola NSG contiene un conjunto de reglas que permitan el acceso de entrada LDAPS a través del puerto TCP 636 solo de un conjunto especificado de direcciones IP. Hello 'DenyAll' reglas predeterminadas aplican tooall otro tráfico entrante de hello internet. regla de acceso LDAPS NSG tooallow sobre Hola Hola internet desde direcciones IP especificadas tiene una prioridad más alta que Hola regla DenyAll NSG.
 
-![NSG de muestra para el acceso LDAPS seguro a través de Internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
+![Acceso de ejemplo NSG toosecure LDAPS sobre Hola internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
 **Más información** - [Grupos de seguridad de red](../virtual-network/virtual-networks-nsg.md).
 

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con TOPdesk - Public | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y TOPdesk - Public."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Active Directory de Azure y TOPdesk - Public."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,124 +14,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: f21fe0b363776974108ff460060e4c15a51a58a3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ef0dd06157ecc3b33814590039f5cbae64e8c916
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Tutorial: Integración de Azure Active Directory con TOPdesk - Public
 
-En este tutorial, obtendrá información sobre cómo integrar TOPdesk - Public con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate TOPdesk - Public con Azure Active Directory (Azure AD).
 
-La integración de TOPdesk - Public con Azure AD proporciona las siguientes ventajas:
+Integración de TOPdesk - Public con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a TOPdesk - Public.
-- Puede permitir que los usuarios inicien sesión automáticamente en TOPdesk - Public (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooTOPdesk - público.
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooTOPdesk - Public (Single Sign-On) con sus cuentas de Azure AD.
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure.
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con TOPdesk - Public, necesita los siguientes elementos:
+tooconfigure integración de Azure AD con TOPdesk - Public, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en TOPdesk - Public
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede [obtener una versión de prueba durante un mes](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Agregar TOPdesk - Public desde la galería
+1. Agregar TOPdesk - Public de galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-topdesk---public-from-the-gallery"></a>Agregar TOPdesk - Public desde la galería
-Para configurar la integración de TOPdesk - Public en Azure AD, deberá agregar TOPdesk - Public desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-topdesk---public-from-hello-gallery"></a>Agregar TOPdesk - Public de galería de Hola
+integración de hello tooconfigure de TOPdesk - Public en Azure AD, deberá tooadd TOPdesk - Public de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar TOPdesk - Public desde la galería, realice los pasos siguientes:**
+**tooadd TOPdesk - Public de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
-    ![Botón Azure Active Directory][1]
+    ![botón de Hello Azure Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
-    ![Hoja Aplicaciones empresariales][2]
+    ![hoja de aplicaciones de empresa de Hola][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
-    ![Botón Nueva aplicación][3]
+    ![botón de nueva aplicación Hola][3]
 
-4. En el cuadro de búsqueda, escriba **TOPdesk - Public**, seleccione **TOPdesk - Public** en el panel de resultados y, luego, haga clic en el botón **Agregar** para agregar la aplicación.
+4. En el cuadro de búsqueda de hello, escriba **TOPdesk - Public**, seleccione **TOPdesk - Public** desde el panel de resultados, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
-    ![TOPdesk - Public en la lista de resultados](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_addfromgallery.png)
+    ![Lista de resultados de TOPdesk - Public Hola](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configuración y prueba del inicio de sesión único en Azure AD
 
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con TOPdesk - Public con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de TOPdesk - Public para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de TOPdesk - Public.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en TOPdesk - Public es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en TOPdesk - Public debe toobe establecido.
 
-Para establecer la relación de vínculo, en TOPdesk - Public asigne el valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario**.
+En TOPdesk - Public, asignar Hola valo hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con TOPdesk - Public, es preciso completar los siguientes bloques de creación:
+tooconfigure y probar el inicio de sesión único en Azure AD con TOPdesk - Public, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configure-azure-ad-single-sign-on)**: para permitir que los usuarios utilicen esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#create-an-azure-ad-test-user)**: para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de TOPdesk - Public](#create-a-topdesk---public-test-user)**: para tener un homólogo de Britta Simon en TOPdesk - Public que esté vinculado a su representación en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assign-the-azure-ad-test-user)**: para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Prueba del inicio de sesión único](#test-single-sign-on)**: para comprobar si la configuración funciona.
+1. **[Configurar Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#create-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba pública de TOPdesk -](#create-a-topdesk---public-test-user)**  - toohave un equivalente de Britta Simon en TOPdesk - Public que es la representación toohello vinculado Azure AD del usuario.
+4. **[Asignar el usuario de prueba de hello Azure AD](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Probar el inicio de sesión único](#test-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación TOPdesk - Public.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación TOPdesk - Public.
 
-**Para configurar el inicio de sesión único de Azure AD con TOPdesk - Public, realice los pasos siguientes:**
+**tooconfigure inicio de sesión único en Azure AD con TOPdesk - Public, realizar Hola pasos:**
 
-1. En la página de integración de la aplicación **TOPdesk - Public** de Azure Portal, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **TOPdesk - Public** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Vínculo Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Cuadro de diálogo Inicio de sesión único](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de TOPdesk - Public**, lleve a cabo los pasos siguientes:
+3. En hello **TOPdesk - dominio público y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Información de dominio y direcciones URL de inicio de sesión único de TOPdesk - Public](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_url.png)
 
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.topdesk.net`.
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.topdesk.net`
     
-    b. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.topdesk.net/tas/public/login/verify`
+    b. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.topdesk.net/tas/public/login/verify`
 
-    c. En el cuadro de texto **URL de respuesta**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.topdesk.net/tas/public/login/saml`.
+    c. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.topdesk.net/tas/public/login/saml`
      
     > [!NOTE] 
-    > Estos valores no son reales. Actualice estos valores con los valores reales de Identificador, URL de respuesta y URL de inicio de sesión. La dirección URL de respuesta se explica más adelante en el tutorial. Póngase en contacto con el [equipo de soporte técnico de TOPdesk - Public](https://help.topdesk.com/saas/enterprise/user/) para obtener estos valores.  
+    > Estos valores no son reales. Actualizar estos valores con hello real identificador, dirección URL de respuesta y dirección URL de inicio de sesión. La dirección URL de respuesta se explica más adelante en el tutorial. Póngase en contacto con [TOPdesk - equipo de soporte técnico de cliente público](https://help.topdesk.com/saas/enterprise/user/) tooget estos valores.  
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo de metadatos en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo de metadatos de hello en el equipo.
 
-    ![Vínculo de descarga del certificado](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_certificate.png) 
+    ![vínculo de descarga del certificado de Hola](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_certificate.png) 
 
 5. Haga clic en el botón **Guardar** .
 
     ![Botón Guardar de Configuración de inicio de sesión único](./media/active-directory-saas-topdesk-public-tutorial/tutorial_general_400.png)
     
-6. En la sección **TOPdesk - Public Configuration** (Configuración de TOPdesk - Public), haga clic en **Configure TOPdesk - Public** (Configurar TOPdesk - Public) para abrir la ventana **Configurar inicio de sesión**. Copie la **URL del servicio de inicio de sesión único de SAML, el identificador de entidad de SAML y la dirección URL de cierre de sesión** de la sección **Referencia rápida**.
+6. En hello **TOPdesk - Public Configuration** sección, haga clic en **configurar TOPdesk - Public** tooopen **configurar inicio de sesión** ventana. Hola copia **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
 
     ![Configuración de TOPdesk - Public](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_configure.png) 
 
-7. Inicie sesión en el sitio de la compañía de **TOPdesk - Public** como administrador.
+7. Inicio de sesión tooyour **TOPdesk - Public** sitio de la empresa como administrador.
 
-8. En el menú **TOPdesk**, haga clic en **Configuración**.
+8. Hola **TOPdesk** menú, haga clic en **configuración**.
    
     ![Configuración](./media/active-directory-saas-topdesk-public-tutorial/ic790598.png "Configuración")
 
@@ -139,141 +139,141 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
    
     ![Configuración de inicio de sesión](./media/active-directory-saas-topdesk-public-tutorial/ic790599.png "Configuración de inicio de sesión")
 
-10. Expanda el menú **Login Settings** (Configuración de inicio de sesión) y luego haga clic en **General**.
+10. Expanda hello **configuración de inicio de sesión** menú y, a continuación, haga clic en **General**.
    
     ![General](./media/active-directory-saas-topdesk-public-tutorial/ic790600.png "General")
 
-11. En la sección **Público** de la sección de configuración **Inicio de sesión SAML**, siga estos pasos:
+11. Hola **público** sección de hello **inicio de sesión SAML** configuración sección, lleve a cabo Hola pasos:
    
     ![Configuración técnica](./media/active-directory-saas-topdesk-public-tutorial/ic790601.png "Configuración técnica")
    
-    a. Haga clic en **Download** (Descargar) para descargar el archivo de metadatos público y luego guárdelo localmente en el equipo.
+    a. Haga clic en **descargar** toodownload Hola archivo de metadatos públicos y, a continuación, guardarlo localmente en el equipo.
    
-    b. Abra el archivo de metadatos descargado y luego busque el nodo **AssertionConsumerService**.
+    b. Abrir archivo de metadatos de hello descargado y, a continuación, busque hello **AssertionConsumerService** nodo.
 
     ![AssertionConsumerService](./media/active-directory-saas-topdesk-public-tutorial/ic790619.png "AssertionConsumerService")
    
-    c. Copia el valor de **AssertionConsumerService**, péguelo en el cuadro de texto **Dirección URL de respuesta** de la sección **Dominio y direcciones URL de TOPdesk - Public**.      
+    c. Hola copia **AssertionConsumerService** valor, pegue este valor en hello **dirección URL de respuesta** en el cuadro de texto **TOPdesk - dominio público y las direcciones URL** sección.      
    
-12. Lleve a cabo los siguientes pasos para crear un archivo de certificado:
+12. toocreate un archivo de certificado, lleve a cabo Hola pasos:
     
     ![Certificado](./media/active-directory-saas-topdesk-public-tutorial/ic790606.png "Certificado")
     
-    a. Abra el archivo de metadatos descargado de Azure Portal.
+    a. Abra Hola descarga archivo de metadatos desde el portal de Azure.
     
-    b. Expanda el nodo **RoleDescriptor** cuyo **xsi:type** es **fed:ApplicationServiceType**.
+    b. Expanda hello **RoleDescriptor** nodo que tenga un **xsi: Type** de **fed: ApplicationServiceType**.
     
-    c. Copie el valor del nodo **X509Certificate** .
+    c. Copiar valor de Hola de hello **X509Certificate** nodo.
     
-    d. Guarde el valor de **X509Certificate** copiado localmente en el equipo en un archivo.
+    d. Hola Guardar copia **X509Certificate** valor localmente en el equipo en un archivo.
 
-13. En la sección **Public** (Público), haga clic en **Add** (Agregar).
+13. Hola **público** sección, haga clic en **agregar**.
     
     ![Inicio de sesión SAML](./media/active-directory-saas-topdesk-public-tutorial/ic790625.png "Inicio de sesión SAML")
 
-14. En la página de diálogo del **SAML configuration assistant** (Asistente de configuración de SAML), realice los siguientes pasos:
+14. En hello **Asistente de configuración de SAML** cuadro de diálogo, siga los pasos de hello:
     
     ![Asistente para configuración de SAML](./media/active-directory-saas-topdesk-public-tutorial/ic790608.png "Asistente de configuración de SAML")
     
-    a. Para cargar el archivo de metadatos descargado de Azure Portal, en **Federation Metadata** (Metadatos de federación) haga clic en **Browse** (Examinar).
+    a. tooupload los metadatos descargados de archivos desde el portal de Azure, en **metadatos de federación**, haga clic en **examinar**.
 
-    b. Para cargar el archivo del certificado, en **Certificate (RSA)** (Certificado [RSA]), haga clic en **Browse** (Examinar).
+    b. tooupload archivo su certificado, en **certificado (RSA)**, haga clic en **examinar**.
 
-    c. Para cargar el archivo de logotipo que obtuvo del equipo de soporte técnico de TOPdesk, en **Logo icon** (Icono de logotipo), haga clic en **Browse** (Examinar).
+    c. que se obtuvo al equipo de soporte técnico de TOPdesk hello, en el archivo de logotipo de hello tooupload **icono del logotipo de**, haga clic en **examinar**.
 
-    d. En el cuadro de texto **User name attribute** (Atributo de nombre de usuario), escriba `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. Hola **atributo de nombre de usuario** cuadro de texto, tipo `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    e. En el cuadro de texto **Display name** (Nombre para mostrar), escriba un nombre para su configuración.
+    e. Hola **nombre para mostrar** cuadro de texto, escriba un nombre para la configuración.
 
     f. Haga clic en **Guardar**.
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
 
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
    ![Creación de un usuario de prueba de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel izquierdo de Azure Portal, haga clic en el botón **Azure Active Directory**.
+1. Hola portal de Azure, en el panel izquierdo de hello, haga clic en hello **Azure Active Directory** botón.
 
-    ![Botón Azure Active Directory](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_01.png)
+    ![botón de Hello Azure Active Directory](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_01.png)
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y, luego, haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos**y, a continuación, haga clic en **todos los usuarios**.
 
-    ![Vínculos "Usuarios y grupos" y "Todos los usuarios"](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_02.png)
+    ![Hola "Usuarios y grupos" y "Todos los usuarios" vínculos](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_02.png)
 
-3. En la parte superior del cuadro de diálogo **Todos los usuarios**, haga clic en **Agregar** para abrir el cuadro de diálogo **Agregar**.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en parte superior de Hola de hello **todos los usuarios** cuadro de diálogo.
 
-    ![Botón Agregar](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_03.png)
+    ![botón de agregar Hola](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_03.png)
 
-4. En el cuadro de diálogo **Usuario** , realice los pasos siguientes:
+4. Hola **usuario** diálogo cuadro, lleve a cabo Hola pasos:
 
-    ![Cuadro de diálogo Usuario](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_04.png)
+    ![cuadro de diálogo de usuario de Hola](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_04.png)
 
-    a. En el cuadro **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** , escriba **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la dirección de correo electrónico del usuario Britta Simon.
+    b. Hola **nombre de usuario** cuadro de dirección de correo electrónico de tipo hello del usuario Britta Simon.
 
-    c. Active la casilla **Mostrar contraseña** y, después, anote el valor que se muestra en el cuadro **Contraseña**.
+    c. Seleccione hello **Mostrar contraseña** casilla de verificación y, a continuación, anote el valor de Hola que se muestra en hello **contraseña** cuadro.
 
     d. Haga clic en **Crear**.
  
 ### <a name="create-a-topdesk---public-test-user"></a>Creación de un usuario de prueba de TOPdesk - Public
 
-Para permitir que los usuarios de Azure AD inicien sesión en TOPdesk - Public, deben aprovisionarse en TOPdesk - Public.  
-En el caso de TOPdesk - Public, el aprovisionamiento es una tarea manual.
+En orden tooenable Azure AD a los usuarios toolog en TOPdesk - Public, se les deben aprovisionar en TOPdesk - Public.  
+En caso de hello de TOPdesk - Public, el aprovisionamiento es una tarea manual.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Siga estos pasos para configurar el aprovisionamiento de usuario:
-1. Inicie sesión en su sitio de la compañía de **TOPdesk - Public** como administrador.
+### <a name="tooconfigure-user-provisioning-perform-hello-following-steps"></a>tooconfigure aprovisionamiento de usuario, realizar Hola pasos:
+1. Inicio de sesión tooyour **TOPdesk - Public** como administrador.
 
-2. En el menú de la parte superior, haga clic en **TOPdesk \> New \> Support Files \> Person** (TOPdesk > Nuevo > Archivos de soporte > Persona).
+2. En el menú de hello en la parte superior de hello, haga clic en **TOPdesk \> New \> archivos auxiliares \> persona**.
    
     ![Persona](./media/active-directory-saas-topdesk-public-tutorial/ic790628.png "Persona")
 
-3. En el cuadro de diálogo Nueva persona, realice los pasos siguientes:
+3. En el cuadro de diálogo de hello nueva persona, realice Hola pasos:
    
     ![Nueva persona](./media/active-directory-saas-topdesk-public-tutorial/ic790629.png "Nueva persona")
    
-    a. Haga clic en la pestaña General.
+    a. Haga clic en la ficha General de Hola.
 
-    b. En el cuadro de texto **Apellidos**, escriba los apellidos del usuario, en este caso, Simon.
+    b. Hola **apellido** cuadro de texto, escriba el apellido del usuario de hello como Simon
  
-    c. Seleccione un **sitio** para la cuenta.
+    c. Seleccione un **sitio** de cuenta de hello.
  
     d. Haga clic en **Guardar**.
 
 > [!NOTE]
-> Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de TOPdesk - Public ofrecida por TOPdesk - Public para aprovisionar cuentas de usuario de Azure AD.
+> Puede usar cualquier otra TOPdesk - herramienta de creación de cuentas de usuario público o las API proporcionadas por TOPdesk - cuentas de usuario de tooprovision pública de Azure AD.
 
-### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a TOPdesk - Public.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooTOPdesk - público.
 
-![Asignación del rol de usuario][200] 
+![Asigne el rol de usuario de Hola][200] 
 
-**Para asignar Britta Simon a TOPdesk - Public, lleve a cabo los siguientes pasos:**
+**tooassign Britta Simon tooTOPdesk - Public, realizar Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **TOPdesk - Public**.
+2. En la lista de aplicaciones de hello, seleccione **TOPdesk - Public**.
 
-    ![Vínculo a TOPdesk - Public en la lista de aplicaciones](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_app.png)  
+    ![Hello TOPdesk - Public vínculo en la lista de aplicaciones de Hola](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_app.png)  
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
-    ![Vínculo "Usuarios y grupos"][202]
+    ![vínculo de "Usuarios y grupos" Hello][202]
 
 4. Haga clic en el botón **Agregar**. Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.
 
-    ![Panel Agregar asignación][203]
+    ![panel de agregar asignación de Hola][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -281,14 +281,14 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="test-single-sign-on"></a>Prueba de inicio de sesión único
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de TOPdesk - Public en el panel de acceso, debería iniciar sesión automáticamente en la aplicación TOPdesk - Public.
-Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md). 
+Al hacer clic en hello TOPdesk - Public disponer en mosaico en hello Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour TOPdesk - Public aplicación.
+Para obtener más información sobre el Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

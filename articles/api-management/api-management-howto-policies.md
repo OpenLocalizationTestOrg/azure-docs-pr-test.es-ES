@@ -1,6 +1,6 @@
 ---
-title: Directivas de Azure API Management | Microsoft Docs
-description: "Obtenga información acerca de cómo crear, editar y configurar directivas en Administración de API."
+title: "aaaPolicies en administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo editar toocreate y configurar las directivas de administración de API."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7c1f235343074ec11c635097f2b094a10f3fe781
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9ab0f884a655004cb10c05085034df1795f512e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="policies-in-azure-api-management"></a>Directivas de Administración de API de Azure
-En Administración de API de Azure, las directivas constituyen una eficaz funcionalidad del sistema que permite al editor cambiar el comportamiento de la API a través de la configuración. Las directivas son una colección de declaraciones que se ejecutan secuencialmente en la solicitud o respuesta de una API. Entre las declaraciones más usadas se encuentran la conversión de formato de XML a JSON y la limitación de tasa de llamadas para restringir la cantidad de llamadas entrantes de un desarrollador. Hay muchas más directivas disponibles y listas para usar.
+En la administración de API de Azure, las directivas son una capacidad eficaz del sistema de Hola que permiten a publicador hello toochange comportamiento de Hola de hello API a través de la configuración. Las directivas son una colección de instrucciones que se ejecutan secuencialmente en la solicitud de Hola o respuesta de una API. Las instrucciones más usadas incluyen la conversión de formato de XML tooJSON y llamar a la cantidad de hello toorestrict de llamadas entrantes de un desarrollador de limitación de velocidad. Existen muchas más directivas desde el principio de Hola.
 
-Consulte la [referencia de directivas][Policy Reference] para obtener una lista de declaraciones de directiva con su configuración.
+Vea hello [referencia de directiva] [ Policy Reference] para obtener una lista completa de las instrucciones de directiva y su configuración.
 
-Las directivas se aplican en la puerta de enlace que se encuentra entre el consumidor de la API y la API administrada. La puerta de enlace recibe todas las solicitudes y normalmente las reenvía sin modificar a la API subyacente. Sin embargo, una directiva puede aplicar cambios a la solicitud de entrada y a la respuesta de salida.
+Las directivas se aplican dentro de la puerta de enlace de Hola que se encuentra entre consumidor de la API de Hola y Hola managed API. recibe todas las solicitudes Hello puerta de enlace y normalmente reenvía sin modificaciones toohello subyacente API. Sin embargo puede aplicar una directiva de solicitud entrante de cambios tooboth hello y respuesta saliente.
 
-Las expresiones de directiva pueden utilizarse como valores de atributos o valores de texto en cualquiera de las directivas de Administración de API, a menos que la directiva especifique lo contrario. Algunas directivas como [Flujo de control][Control flow] y [Establecer variable][Set variable] se basan en expresiones de directiva. Para obtener más información, consulte [Directivas avanzadas][Advanced policies] y [Expresiones de directiva][Policy expressions].
+Las expresiones de directiva se pueden usar como valores de atributo o valores de texto en cualquiera de las directivas de administración de API de hello, a menos que la directiva de Hola se especifique lo contrario. Algunas directivas como hello [flujo de Control] [ Control flow] y [Set variable] [ Set variable] directivas basadas en expresiones de directiva. Para obtener más información, consulte [Directivas avanzadas][Advanced policies] y [Expresiones de directiva][Policy expressions].
 
-## <a name="scopes"> </a>Configuración de directivas
-Las directivas se pueden configurar globalmente o en el ámbito de un [producto][Product], una [API][API] o una [operación][Operation]. Para configurar una directiva, vaya al editor de directivas del portal de publicadores.
+## <a name="scopes"></a>Cómo tooconfigure directivas
+Las directivas se pueden configurar globalmente o en el ámbito de Hola de un [producto][Product], [API] [ API] o [operación] [Operation]. tooconfigure una directiva, navegue toohello editor de directivas en el portal para desarrolladores de Hola.
 
 ![Policies menu][policies-menu]
 
-El editor de directivas consta de tres secciones principales: el ámbito de la directiva (superior), la definición de la directiva donde se editan las directivas (izquierda) y la lista de instrucciones (derecha):
+el editor de directivas de Hello consta de tres secciones principales: Hola ámbito (superior), Hola directiva definición de directiva donde las directivas se editan (izquierda) y las instrucciones de hello lista (derecha):
 
 ![Policies editor][policies-editor]
 
-Para comenzar a configurar una directiva, se debe seleccionar en primer lugar el ámbito en el que se debe aplicar. En la captura de pantalla siguiente, se selecciona el producto **Starter** . Tenga en cuenta que el símbolo de recuadro junto al nombre de la directiva indica que ya se aplica una directiva en este nivel.
+toobegin configurar una directiva que primero debe seleccionar ámbito de hello en qué Hola debe aplicarse la directiva. En la captura de pantalla de hello siguiente hello **Starter** producto se selecciona. Tenga en cuenta que este nombre de directiva Hola símbolo cuadrado siguiente toohello indica que ya se aplica una directiva en este nivel.
 
 ![Scope][policies-scope]
 
-Puesto que ya se ha aplicado una directiva, la configuración se muestra en la vista de definición.
+Puesto que ya se ha aplicado una directiva, configuración de Hola se muestra en la vista de definición de Hola.
 
 ![Configuración][policies-configure]
 
-La directiva aparece como de solo lectura al principio. Para editar la definición, haga clic en la acción **Configurar directiva** .
+Hola directiva se muestra como de solo lectura en un primer momento. En orden tooedit definición hello, haga clic en hello **Configurar directiva** acción.
 
 ![Edit][policies-edit]
 
-La definición de la directiva es un documento XML simple que describe una secuencia de declaraciones de entrada y de salida. El XML se puede editar directamente en la ventana de definición. Se ofrece una lista de instrucciones a la derecha y las instrucciones aplicables al ámbito actual están habilitadas y resaltadas; como demuestra la instrucción **Límite de tasa de llamadas** de la captura de pantalla anterior.
+definición de la directiva de Hello es un documento XML sencillo que describe una secuencia de instrucciones entrantes y salientes. Hola XML puede modificarse directamente en la ventana de definición de hello. Una lista de instrucciones es siempre toohello derecha y el ámbito actual de instrucciones toohello aplicables están habilitados y resaltados; como se muestra en hello **límite de velocidad de llamar a** instrucción de captura de pantalla de hello anterior.
 
-Al hacer clic en una declaración habilitada se agregará el XML correspondiente en la ubicación del cursor en la vista de definición. 
+Al hacer clic en una instrucción habilitada agregará Hola código XML adecuado en la ubicación de Hola de cursor de hello en la vista de definición de Hola. 
 
 > [!NOTE]
-> Si la directiva que desea agregar no está habilitada, asegúrese de que se encuentra en el ámbito correcto para esa directiva. Cada instrucción de la directiva está diseñada para su uso en determinados ámbitos y secciones de la directiva. Para revisar las secciones y los ámbitos de una directiva, compruebe la sección de **uso** de esa directiva en la [referencia de directivas][Policy Reference].
+> Si no está habilitada la directiva de Hola que desea tooadd, asegúrese de que está en el ámbito correcto de saludo de la directiva. Cada instrucción de la directiva está diseñada para su uso en determinados ámbitos y secciones de la directiva. secciones de la directiva de tooreview hello y ámbitos para una directiva, compruebe hello **uso** sección de la directiva en hello [referencia de directiva][Policy Reference].
 > 
 > 
 
-Hay una lista completa de instrucciones de directivas y su configuración disponible en la [referencia de directivas][Policy Reference].
+Una lista completa de las instrucciones de directiva y sus valores están disponibles en hello [referencia de directiva][Policy Reference].
 
-Por ejemplo, para agregar una nueva instrucción a fin de restringir las solicitudes de entrada a las direcciones IP especificadas, sitúe el cursor exactamente dentro del contenido del elemento XLM `inbound` y haga clic en la instrucción **Restringir las IP del autor de llamada** .
+Por ejemplo, tooadd un nuevo toorestrict de instrucción entrante solicita toospecified las direcciones IP, coloque Hola cursor solo en el contenido de Hola de hello `inbound` Hola de elemento y haga clic en XML **llamador restringir IP** instrucción.
 
 ![Restriction policies][policies-restrict]
 
-Así, se agregará un fragmento de código XML al elemento `inbound` que ofrece orientación sobre cómo configurar la instrucción.
+Esto agregará una toohello de fragmento de código XML `inbound` elemento que se proporciona instrucciones sobre cómo tooconfigure Hola instrucción.
 
 ```xml
 <ip-filter action="allow | forbid">
@@ -74,7 +74,7 @@ Así, se agregará un fragmento de código XML al elemento `inbound` que ofrece 
 </ip-filter>
 ```
 
-Para limitar las solicitudes de entrada y aceptar solo las procedentes de una dirección IP de 1.2.3.4, modifique el XML de la manera siguiente:
+toolimit las solicitudes de entrada y Aceptar sólo aquellos desde una dirección IP de 1.2.3.4 modificar Hola XML como se indica a continuación:
 
 ```xml
 <ip-filter action="allow">
@@ -82,45 +82,45 @@ Para limitar las solicitudes de entrada y aceptar solo las procedentes de una di
 </ip-filter>
 ```
 
-![Guardar][policies-save]
+![Save][policies-save]
 
-Cuando complete la configuración de las instrucciones de la directiva, haga clic en **Guardar** ; los cambios se propagarán inmediatamente a la puerta de enlace de Administración de API.
+Cuando se complete configuración instrucciones Hola de directiva de hello, haga clic en **guardar** y cambios de hello será puerta de enlace de administración de API toohello propagado inmediatamente.
 
-## <a name="sections"> </a>Descripción de la configuración de directivas
-Una directiva es una serie de declaraciones que se ejecutan en orden para una solicitud y una respuesta. La configuración se divide adecuadamente en las secciones `inbound`, `backend`, `outbound` y `on-error`, como se muestra en la siguiente configuración.
+## <a name="sections"></a>Descripción de la configuración de directivas
+Una directiva es una serie de declaraciones que se ejecutan en orden para una solicitud y una respuesta. configuración de Hola se divide adecuadamente en `inbound`, `backend`, `outbound`, y `on-error` secciones tal y como se muestra en la siguiente configuración de Hola.
 
 ```xml
 <policies>
   <inbound>
-    <!-- statements to be applied to the request go here -->
+    <!-- statements toobe applied toohello request go here -->
   </inbound>
   <backend>
-    <!-- statements to be applied before the request is forwarded to 
-         the backend service go here -->
+    <!-- statements toobe applied before hello request is forwarded too
+         hello backend service go here -->
   </backend>
   <outbound>
-    <!-- statements to be applied to the response go here -->
+    <!-- statements toobe applied toohello response go here -->
   </outbound>
   <on-error>
-    <!-- statements to be applied if there is an error condition go here -->
+    <!-- statements toobe applied if there is an error condition go here -->
   </on-error>
 </policies> 
 ```
 
-Si se produce un error durante el procesamiento de una solicitud, los pasos restantes de las secciones `inbound`, `backend` o `outbound` se omiten y la ejecución salta a las instrucciones de la sección `on-error`. Mediante la colocación de instrucciones de directiva en la sección `on-error` puede revisar el error con la propiedad `context.LastError`, inspeccionar y personalizar la respuesta de error con la directiva `set-body` y configurar lo que ocurre si se produce un error. Existen códigos de error para pasos integrados y errores que pueden producirse durante el procesamiento de las instrucciones de directiva. Para más información, consulte [Control de errores en las directivas de administración de API](https://msdn.microsoft.com/library/azure/mt629506.aspx).
+Si se produce un error durante el procesamiento de Hola de una solicitud, los pasos restantes hello `inbound`, `backend`, o `outbound` secciones se omiten y ejecución saltará instrucciones toohello Hola `on-error` sección. Mediante la colocación de las instrucciones de directiva en hello `on-error` sección podrá revisar error hello mediante hello `context.LastError` propiedad, inspeccionar y personalizar la respuesta de error de hello mediante hello `set-body` directiva y configurar lo que ocurre si se produce un error. Hay códigos de error para conocer los pasos integrados y los errores que pueden producirse durante el procesamiento de Hola de las instrucciones de directiva. Para más información, consulte [Control de errores en las directivas de administración de API](https://msdn.microsoft.com/library/azure/mt629506.aspx).
 
-Como las directivas se pueden especificar en distintos niveles (global, de producto, de API y de operación), la configuración ofrece una manera de que se especifique el orden en el que se ejecutan las instrucciones de la definición de la directiva con respecto a la directiva principal. 
+Puesto que las directivas se pueden especificar en diferentes niveles (global, producto, api y operación) configuración Hola proporciona una manera para usted toospecify orden de hello en la que se ejecutan las instrucciones de definición de la directiva de hello con la directiva de respeto toohello primario. 
 
-Los ámbitos de la directiva se evalúan en el orden siguiente.
+Ámbitos de la directiva se evalúan en hello siguiendo el orden.
 
 1. Ámbito global
 2. Ámbito del producto
 3. Ámbito de la API
 4. Ámbito de la operación
 
-Las instrucciones dentro de ellos se evalúan según la ubicación del elemento `base` , si existe. Una directiva global no tiene una directiva principal y el uso del elemento `<base>` en ella no surte efecto.
+Hello dentro de ellos se evalúen las instrucciones según la selección de ubicación de toohello de hello `base` elemento, si está presente. Directiva global tiene ninguna directiva de elemento primario y el uso de hello `<base>` elemento en el no tiene ningún efecto.
 
-Por ejemplo, si tiene una directiva de nivel global y una directiva configurada para una API, cuando se use esa directiva en concreto, se aplicarán ambas directivas. Administración de API tiene en cuenta el orden determinista de declaraciones de directiva combinadas mediante el elemento base. 
+Por ejemplo, si tiene una directiva en el nivel global de hello y una directiva configurada para una API, a continuación, cada vez que se utiliza esa API determinada las dos directivas se aplicará. Administración de API permite orden determinista de las instrucciones de directiva combinada a través del elemento base Hola. 
 
 ```xml
 <policies>
@@ -132,9 +132,9 @@ Por ejemplo, si tiene una directiva de nivel global y una directiva configurada 
 </policies>
 ```
 
-En la definición de directiva del ejemplo anterior, la instrucción `cross-domain` se ejecutaría antes de las directivas superiores que, a su vez, irían seguidas de la directiva `find-and-replace`. 
+En hello ejemplo definición de directiva anterior, Hola `cross-domain` ejecutaría instrucción antes de que las directivas de mayor que tomaría a su vez, ir seguido de hello `find-and-replace` directiva. 
 
-Para ver las directivas en el ámbito actual en el editor de directivas, haga clic en **Recalcular la directiva en vigor del ámbito seleccionado**.
+directivas de hello toosee en el ámbito actual de hello en el editor de directiva de hello, haga clic en **recalcular directiva en vigor para el ámbito seleccionado**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Visualice el siguiente vídeo acerca de expresiones de directivas.

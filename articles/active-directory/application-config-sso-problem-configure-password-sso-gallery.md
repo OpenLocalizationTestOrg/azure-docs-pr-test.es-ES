@@ -1,6 +1,6 @@
 ---
-title: "Problemas en la configuración del inicio de sesión único con contraseña para una aplicación de la galería de Azure AD | Microsoft Docs"
-description: "Comprender los problemas más comunes a los que se enfrentan los usuarios al configurar un inicio de sesión único con contraseña para las aplicaciones que ya se muestran en la galería de aplicaciones de Azure AD"
+title: "configuración del inicio de sesión único en contraseña para una aplicación de la Galería de Azure AD de aaaProblem | Documentos de Microsoft"
+description: "Comprender la cara de personas de problemas comunes de hello al configurar un inicio de sesión único de contraseña para las aplicaciones que ya se muestran en hello Galería de aplicaciones de Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,98 +13,98 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 58d29996a922fac6d295e753ba5d66d32e745a57
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 78c37c52453c375bf7ccbca6df5c9008be4ce642
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Problemas en la configuración del inicio de sesión único con contraseña para una aplicación de la galería de Azure AD
 
-Este artículo le ayuda a conocer los problemas habituales a los que se enfrentan los usuarios al configurar un **inicio de sesión único con contraseña** con una aplicación de la galería de Azure AD.
+En este artículo le ayudará toounderstand Hola comunes problemas se enfrentan los usuarios al configurar **contraseña Single Sign-on** con una aplicación de la Galería de Azure AD.
 
-## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Se rellenan las credenciales, pero la extensión no las envía
+## <a name="credentials-are-filled-in-but-hello-extension-does-not-submit-them"></a>Las credenciales se rellenan pero extensión hello no enviarlos
 
-Esto sucede generalmente si el proveedor de la aplicación ha cambiado recientemente la página de inicio de sesión para agregar un campo, cambiar un identificador subyacente que se utiliza para detectar los campos nombre de usuario y contraseña, o modificar cómo funciona la experiencia de inicio de sesión para su aplicación. Afortunadamente, en muchos casos, Microsoft puede trabajar con los proveedores de aplicaciones para resolver rápidamente estos problemas.
+Esto suele suceder si el proveedor de la aplicación hello ha cambiado su inicio de sesión recientemente página tooadd un campo, cambiar un identificador subyacente se utilizan campos de nombre de usuario y contraseña de hello toodetect o modificar cómo inicio de sesión de hello en experiencia funciona para su aplicación. Afortunadamente, en muchos casos, Microsoft puede trabajar con aplicaciones proveedores toorapidly resolver estos problemas.
 
-Aunque Microsoft tiene tecnologías para detectar automáticamente cuándo se interrumpen estas integraciones, a veces no es posible encontrar estos problemas de forma inmediata o se tardar algún tiempo en corregirlos. En el caso de que una de estas integraciones no funcione correctamente, le agradeceríamos que abriera un caso de soporte técnico para que podamos solucionar el problema lo más rápido posible.
+Mientras que Microsoft tiene tecnologías tooautomatically detectar cuándo interrumpir estas integraciones, pero a veces no es capaz de toofind estos problemas derecho ausente o llevar a cabo algunas temporal toofix. En caso de hello cuando una de estas integraciones no funcione correctamente, le agradeceríamos si abre un caso de soporte técnico para que podamos solucionar lo más rápido posible.
 
-Además, **si está en contacto con el proveedor de la aplicación,** **pídale que cuente con nosotros** para que podamos trabajar juntos con el fin de integrar de forma nativa su aplicación con Azure Active Directory. Para empezar puede enviar al proveedor a [Anuncio de la aplicación en la galería de aplicaciones de Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+En suma toothis, **si estás en contacto con el proveedor de la aplicación,** **enviarlas nuestro modo** por lo que podemos trabajar con ellos toonatively integrar su aplicación con Azure Active Directory. Puede enviar Hola proveedor toohello [enumerar la aplicación en la Galería de aplicaciones de Azure Active Directory hello](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) tooget ellos iniciados.
 
-## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Las credenciales se rellenan y se envían, pero la página indica que son incorrectas
+## <a name="credentials-are-filled-in-and-submitted-but-hello-page-indicates-hello-credentials-are-incorrect"></a>Se rellena y se envían las credenciales, pero página Hola indica Hola credenciales son incorrectas
 
-Para resolver este problema, en primer lugar, compruebe lo siguiente:
+tooresolve este problema, primer siguiente Hola de comprobación:
 
--   Pídale al usuario que intente primero **iniciar sesión en el sitio web de la aplicación directamente** con las credenciales almacenadas para dicho sitio.
+-   Tener usuario hello en primer lugar intente demasiado**iniciar sesión en el sitio Web de aplicación toohello directamente** con credenciales de hello almacenadas para ellos.
 
-  * Si eso funciona, a continuación, indíquele al usuario que haga clic en el botón **Actualizar credenciales** situado en el **icono de la aplicación** en la sección de **aplicaciones** del [panel de acceso a las aplicaciones](https://myapps.microsoft.com/) para actualizarlas con el nombre de usuario y la contraseña más recientes.
+  * Si eso funciona, a continuación, tener Hola usuario haga clic en hello **Actualizar credenciales** botón en hello **ventana de aplicación** en hello **aplicaciones** sección de hello [aplicación Obtener acceso al Panel](https://myapps.microsoft.com/) tooupdate les toohello más reciente conocida trabajar username y password.
 
-   * Si usted u otro administrador ha asignado las credenciales para este usuario, busque la asignación de aplicación del usuario o del grupo yendo a la pestaña **Usuarios y grupos** de la aplicación, seleccione la asignación y haga clic en el botón **Actualizar credenciales**.
+   * Si encuentra u otro credenciales de hello administrador asignado para este usuario, desplazándose toohello usuario Hola o asignación de aplicación del grupo **usuarios y grupos** pestaña de aplicación hello, seleccione asignación de Hola y al hacer clic en hello **las credenciales de actualización** botón.
 
--   Si el usuario se asignó sus propias credenciales, pídale al usuario **que compruebe si su contraseña ha expirado en la aplicación** y si es así, **que actualice su contraseña expirada** iniciando sesión directamente en la aplicación.
+-   Si el usuario de hello asigna sus propias credenciales, tienen usuario hello **comprobar toobe seguro de que no ha expirado su contraseña en la aplicación hello** y si es así, **actualice su contraseña expirada** debe iniciar sesión en toohello aplicación directamente.
 
-   * Después de actualizar la contraseña en la aplicación, indíquele al usuario que haga clic en el botón **Actualizar credenciales** situado en el **icono de la aplicación** en la sección de **aplicaciones** del [panel de acceso a las aplicaciones](https://myapps.microsoft.com/) para actualizarlas con el nombre de usuario y la contraseña más recientes.
+   * Después de que se ha actualizado la contraseña de hello en aplicación hello, solicitar Hola de hello usuario tooclick **Actualizar credenciales** botón en hello **ventana de aplicación** Hola **aplicaciones** sección de hello [Panel de acceso de la aplicación](https://myapps.microsoft.com/) tooupdate les toohello más reciente conocida trabajar username y password.
 
-   * Si usted u otro administrador ha asignado las credenciales para este usuario, busque la asignación de aplicación del usuario o del grupo yendo a la pestaña **Usuarios y grupos** de la aplicación, seleccione la asignación y haga clic en el botón **Actualizar credenciales**.
+   * Si encuentra u otro credenciales de hello administrador asignado para este usuario, desplazándose toohello usuario Hola o asignación de aplicación del grupo **usuarios y grupos** pestaña de aplicación hello, seleccione asignación de Hola y al hacer clic en hello **las credenciales de actualización** botón.
 
--   Dígale al usuario que actualice la extensión de explorador del Panel de acceso siguiendo los pasos que aparecen más adelante en la sección [Cómo instalar la extensión de explorador del Panel de acceso](#how-to-install-the-access-panel-browser-extension).
+-   Tiene la extensión de explorador del panel de acceso de hello usuario actualización Hola siguiendo los pasos de hello debajo de hello [cómo tooinstall Hola extensión de explorador del Panel de acceso](#how-to-install-the-access-panel-browser-extension) sección.
 
--   Compruebe que la extensión de explorador del Panel de acceso está habilitada y se está ejecutando en el explorador del usuario.
+-   Asegúrese de que la extensión de explorador del panel de acceso de hello está ejecutando y habilitado en el explorador del usuario.
 
--   Asegúrese de que los usuarios no intentan iniciar sesión en la aplicación desde el Panel de acceso en **los modos incógnito, inPrivate o privado**. La extensión del Panel de acceso no es compatible con estos modos.
+-   Asegúrese de que los usuarios no están tratando de toosign en toohello aplicación desde el panel de acceso de hello en **incognito, inPrivate o Private modo**. no se admite la extensión del panel de acceso de Hello en estos modos.
 
-Si esto no funciona, podría ser que se haya producido un cambio en el lado de la aplicación que ha interrumpido provisionalmente la integración de la aplicación con Azure AD. Por ejemplo, esto puede ocurrir cuando el proveedor de la aplicación introduce un script en su página que tiene un comportamiento diferentes con las entradas manuales y con las automatizadas, lo que hace que una integración automatizada, como la nuestra, se interrumpa. Afortunadamente, en muchos casos, Microsoft puede trabajar con los proveedores de aplicaciones para resolver rápidamente estos problemas.
+En caso de que esto no funciona, podría deberse a los casos de Hola que se ha producido un cambio en el lado de la aplicación hello que temporalmente dañó la integración de la aplicación hello con Azure AD. Por ejemplo, esto puede ocurrir cuando el proveedor de la aplicación hello presenta una secuencia de comandos en su página que se comporta de forma diferente para el recálculo manual y automatizada de entrada, lo que hace que habían automatizada integración, como nuestro propio, toobreak. Afortunadamente, en muchos casos, Microsoft puede trabajar con aplicaciones proveedores toorapidly resolver estos problemas.
 
-Aunque Microsoft tiene tecnologías para detectar automáticamente cuándo se interrumpen estas integraciones, a veces no es posible encontrar estos problemas de forma inmediata o se tardar algún tiempo en corregirlos. En el caso de que una de estas integraciones no funcione correctamente, le agradeceríamos que abriera un caso de soporte técnico para que podamos solucionar el problema lo más rápido posible.
+Mientras que Microsoft tiene tecnologías tooautomatically detectar cuándo interrumpir estas integraciones, pero a veces no es capaz de toofind estos problemas derecho ausente o llevar a cabo algunas temporal toofix. En caso de hello cuando una de estas integraciones no funcione correctamente, le agradeceríamos si abre un caso de soporte técnico para que podamos solucionar lo más rápido posible.
 
-Además, **si está en contacto con el proveedor de la aplicación,** **pídale que cuente con nosotros** para que podamos trabajar juntos con el fin de integrar de forma nativa su aplicación con Azure Active Directory. Para empezar puede enviar al proveedor a [Anuncio de la aplicación en la galería de aplicaciones de Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+En suma toothis, **si estás en contacto con el proveedor de la aplicación,** **enviarlas nuestro modo** por lo que podemos trabajar con ellos toonatively integrar su aplicación con Azure Active Directory. Puede enviar Hola proveedor toohello [enumerar la aplicación en la Galería de aplicaciones de Azure Active Directory hello](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) tooget ellos iniciados.
 
-## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>La extensión funciona en Chrome y Firefox, pero no en Internet Explorer
+## <a name="hello-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>extensión de Hello funciona en Chrome y Firefox, pero no en Internet Explorer
 
-Hay dos principales causas de este problema:
+Hay dos causas probables toothis problema:
 
--   Dependiendo de la configuración de seguridad habilitada en Internet Explorer, si el sitio web no es parte de una **Zona de confianza**, a veces se impide que nuestro script ejecute la aplicación.
+-   Dependiendo de configuración de seguridad de hello habilitada en Internet Explorer, si el sitio Web de hello no es parte de un **zona de confianza**, a veces nuestro script se impide la ejecución de la aplicación hello.
 
-  *  Para resolver este problema, pida al usuario que **agregue el sitio web de la aplicación** a la lista de **Sitios de confianza** en la **configuración de seguridad de Internet Explorer**. Puede enviar a los usuarios al artículo sobre [cómo agregar un sitio a la lista de sitios de confianza](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) para obtener instrucciones detalladas.
+  *  tooresolve, indicar al usuario Hola demasiado**agregar sitio Web de la aplicación hello** toohello **sitios de confianza** lista dentro de su **configuración de seguridad de Internet Explorer**. Puede enviar su toohello usuarios [cómo tooadd un toomy de sitio de confianza sitios lista](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) artículo para obtener instrucciones detalladas.
 
--   En circunstancias excepcionales, la validación de seguridad de Internet Explorer puede ocasionar a veces que la página se cargue más lentamente que la ejecución del script.
+-   En circunstancias excepcionales, validación de seguridad de Internet Explorer en ocasiones puede causar tooload de página de hello más lenta que la ejecución de nuestro script de Hola.
 
-   * Desgraciadamente esta situación puede variar dependiendo de la versión del explorador, la velocidad del equipo o el sitio visitado. En este caso, se recomienda ponerse en contacto con soporte técnico para que podamos solucionar la integración para esta aplicación específica.
+   * Por desgracia, esta situación puede variar dependiendo de la versión del explorador hello, velocidad del equipo o sitio visitado. En este caso, se recomienda ponerse en contacto con soporte técnico para que podamos solucionar la integración de Hola para esta aplicación específica.
 
-Además, **si está en contacto con el proveedor de la aplicación,** **pídale que cuente con nosotros** para que podamos trabajar juntos con el fin de integrar de forma nativa su aplicación con Azure Active Directory. Para empezar puede enviar al proveedor a [Anuncio de la aplicación en la galería de aplicaciones de Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+En suma toothis, **si estás en contacto con el proveedor de la aplicación,** **enviarlas nuestro modo** por lo que podemos trabajar con ellos toonatively integrar su aplicación con Azure Active Directory. Puede enviar Hola proveedor toohello [enumerar la aplicación en la Galería de aplicaciones de Azure Active Directory hello](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) tooget ellos iniciados.
 
-## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Compruebe si la página de inicio de sesión de la aplicación ha cambiado recientemente, o si requiere un campo adicional
+## <a name="check-if-hello-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Compruebe si hello página de inicio de sesión de la aplicación ha cambiado recientemente, o requiere un campo adicional
 
-Si la página de inicio de sesión de la aplicación ha cambiado de forma considerable, esto hace que a veces nuestras integraciones se interrumpan. Un ejemplo de esto es cuando un proveedor de aplicación agrega un campo de inicio de sesión, un captcha o una autenticación multifactor a sus experiencias. Afortunadamente, en muchos casos, Microsoft puede trabajar con los proveedores de aplicaciones para resolver rápidamente estos problemas.
+Si la página de inicio de sesión de la aplicación hello ha cambiado considerablemente, a veces, esto hace que nuestro toobreak integraciones. Un ejemplo de esto es cuando un proveedor de la aplicación agrega un inicio de sesión en el campo, un captcha, o la autenticación multifactor tootheir experiencias. Afortunadamente, en muchos casos, Microsoft puede trabajar con aplicaciones proveedores toorapidly resolver estos problemas.
 
-Aunque Microsoft tiene tecnologías para detectar automáticamente cuándo se interrumpen estas integraciones, a veces no es posible encontrar estos problemas de forma inmediata. En otros casos se tardar algún tiempo en corregirlos. En el caso de que una de estas integraciones no funcionen correctamente, le agradeceríamos que abriera un caso de soporte técnico para que podamos solucionar el problema lo más rápido posible.
+Mientras que Microsoft tiene tecnologías tooautomatically detectar cuándo interrumpir estas integraciones, pero a veces no es capaz de toofind estos problemas inmediatamente. En caso contrario, toman algunos toofix de tiempo. En caso de hello cuando una de estas integraciones no funcione correctamente, le agradeceríamos abrir un caso de soporte técnico para que podamos solucionar lo más rápido posible.
 
-Además, **si está en contacto con el proveedor de la aplicación,** **pídale que cuente con nosotros** para que podamos trabajar juntos con el fin de integrar de forma nativa su aplicación con Azure Active Directory. Para empezar puede enviar al proveedor a [Anuncio de la aplicación en la galería de aplicaciones de Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+En suma toothis, **si estás en contacto con el proveedor de la aplicación,** **enviarlas nuestro modo** por lo que podemos trabajar con ellos toonatively integrar su aplicación con Azure Active Directory. Puede enviar Hola proveedor toohello [enumerar la aplicación en la Galería de aplicaciones de Azure Active Directory hello](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) tooget ellos iniciados.
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Cómo instalar la extensión de explorador del Panel de acceso
+## <a name="how-tooinstall-hello-access-panel-browser-extension"></a>¿Cómo tooinstall Hola extensión de explorador del Panel de acceso
 
-Para instalar la extensión de explorador del Panel de acceso, siga estos pasos:
+Hola tooinstall extensión de explorador del Panel de acceso, siga Hola pasos:
 
-1.  Abra el [Panel de acceso](https://myapps.microsoft.com) en uno de los exploradores admitidos e inicie sesión como **usuario** en su instancia de Azure AD.
+1.  Abra hello [Panel de acceso](https://myapps.microsoft.com) en uno de los exploradores compatibles de Hola y de inicio de sesión como un **usuario** en Azure AD.
 
-2.  Haga clic en una **aplicación de SSO con contraseña** en el Panel de acceso.
+2.  Haga clic en un **aplicación SSO de contraseña** Hola Panel de acceso.
 
-3.  En el mensaje que le pregunta si desea instalar el software, seleccione **Instalar ahora**.
+3.  En hello símbolo del sistema que se pregunta tooinstall Hola software, seleccione **instalar ahora**.
 
-4.  Se le dirigirá al vínculo de descarga en función del explorador. **Agregue** la extensión al explorador.
+4.  Basado en el explorador es que el vínculo de descarga de toohello dirigida. **Agregar** tooyour Explorador de hello extensión.
 
-5.  Si el explorador lo solicita, seleccione **Habilitar** o **Permitir** la extensión.
+5.  Si el explorador solicita, seleccione tooeither **habilitar** o **permitir** Hola extensión.
 
 6.  Una vez instalada, **reinicie** la sesión del explorador.
 
-7.  Inicie sesión en el Panel de acceso y vea si puede **iniciar** las aplicaciones de SSO con contraseña
+7.  Inicie sesión en el Panel de acceso de Hola y vea si puede **iniciar** las aplicaciones de SSO de contraseña
 
-También puede descargar la extensión para Chrome y Firefox desde los siguientes vínculos directos:
+También puede descargar extensión Hola para Chrome y Firefox de vínculos directos de Hola a continuación:
 
 -   [Extensión del Panel de acceso para Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 -   [Extensión del Panel de acceso para Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Proporcionar un inicio de sesión único a las aplicaciones con el proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
+[Proporcionan aplicaciones de tooyour de inicio de sesión único con el Proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
 

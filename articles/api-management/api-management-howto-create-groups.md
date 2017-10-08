@@ -1,6 +1,6 @@
 ---
-title: "Administración de cuentas de desarrollador mediante grupos en Azure API Management | Microsoft Docs"
-description: "Obtenga información acerca de cómo administrar cuentas de desarrollador mediante los grupos en Administración de API de Azure."
+title: "las cuentas de desarrollador aaaManage usar los grupos de administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toomanage developer cuentas con grupos de administración de API de Azure"
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,85 +14,85 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: b4d71cdfbab535b02542fbb26c7555265e5f9c37
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c46e010e41d9705ae161dcd60d734a76d19c9e93
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Creación y uso de grupos para administrar cuentas de desarrollador en Administración de API de Azure
-En Administración de API, los grupos se usan para administrar la visibilidad de productos para los desarrolladores. Los productos son visibles en primer lugar para los grupos y luego los desarrolladores de dichos grupos pueden ver y suscribirse a los productos asociados a los grupos. 
+# <a name="how-toocreate-and-use-groups-toomanage-developer-accounts-in-azure-api-management"></a>Cómo para desarrolladores de toomanage grupos toocreate y usar las cuentas de administración de API de Azure
+Administración de API, los grupos son utilizados toomanage Hola visibilidad de toodevelopers de productos. Productos son la primera toogroups visible realizadas y, a continuación, pueden ver y suscribirse toohello productos que están asociados a grupos de Hola a los desarrolladores de esos grupos. 
 
-Administración de API tiene los siguientes grupos invariables del sistema.
+Administración de API tiene Hola los grupos de sistema inmutables siguientes.
 
-* **Administradores** : los administradores de la suscripción de Azure son miembros de este grupo. Los administradores controlan las instancias del servicio Administración de API y crean las API, las operaciones y los productos que usan los desarrolladores.
-* **Desarrolladores** : los usuarios del portal para desarrolladores autenticados se incluyen en este grupo. Los desarrolladores son los clientes que compilan aplicaciones con sus API. Los desarrolladores, después de que se les concede acceso al portal para desarrolladores, crean aplicaciones que llaman a las operaciones de una API.
-* **Invitados** : a este grupo pertenecen los usuarios del portal para desarrolladores no autenticados como, por ejemplo, clientes potenciales que visitan el portal para desarrolladores de una instancia de Administración de API. Se les concede determinado acceso de solo lectura, como por ejemplo la posibilidad de ver API pero no llamarlas.
+* **Administradores** : los administradores de la suscripción de Azure son miembros de este grupo. Los administradores administran las instancias de servicio de administración de API, crear Hola API, operaciones y productos que se usan los programadores.
+* **Desarrolladores** : los usuarios del portal para desarrolladores autenticados se incluyen en este grupo. Los desarrolladores son clientes de Hola que compilan aplicaciones mediante las API. Los programadores se conceden portal para desarrolladores de acceso toohello y creación aplicaciones que llaman a operaciones de Hola de una API.
+* **Los invitados** -sin autenticar usuarios del portal para desarrolladores, como clientes potenciales visitar el portal para desarrolladores de Hola de una caída de la instancia de administración de API en este grupo. Se pueden conceder cierto acceso de solo lectura, como la capacidad de hello tooview API, pero no llamarlos.
 
-Además de estos grupos del sistema, los administradores pueden crear grupos personalizados o [aprovechar los grupos externos en inquilinos de Azure Active Directory asociados][leverage external groups in associated Azure Active Directory tenants]. Los grupos personalizados y externos pueden usarse junto con grupos del sistema en la concesión a los desarrolladores de visibilidad y acceso a productos de la API. Por ejemplo, podría crear un grupo personalizado para los desarrolladores afiliados a una organización asociada específica y permitirles el acceso a las API a partir de un producto que contenga solo las API relevantes. Un usuario puede ser miembro de más de un grupo.
+En grupos de sistema de toothese de suma, los administradores pueden crear grupos personalizados o [aprovechar grupos externos en inquilinos de Azure Active Directory asociados][leverage external groups in associated Azure Active Directory tenants]. Grupos personalizados y externos pueden usarse junto con grupos del sistema para conceder a los desarrolladores visibilidad y tener acceso a los productos tooAPI. Por ejemplo, podría crear un grupo personalizado para desarrolladores afiliados a una determinada organización de socios y permitan tener acceso toohello las API de un producto que contiene solo las API relevantes. Un usuario puede ser miembro de más de un grupo.
 
 En esta guía se muestra cómo los administradores de una instancia de Administración de API pueden agregar nuevos grupos y asociarlos a productos y desarrolladores.
 
 > [!NOTE]
-> Además de crear y administrar grupos en el portal del editor, puede crear y administrar sus grupos mediante la entidad de [grupo](https://msdn.microsoft.com/library/azure/dn776329.aspx) de la API de REST de administración.
+> Además toocreating y administrar grupos en el portal para desarrolladores de hello, puede crear y administrar grupos mediante la API de REST de administración de hello [grupo](https://msdn.microsoft.com/library/azure/dn776329.aspx) entidad.
 > 
 > 
 
-## <a name="create-group"> </a>Creación de un grupo
-Para crear un nuevo grupo, haga clic en **Publisher portal** (Portal del publicador) en Azure Portal para su servicio de API Management. De este modo, se abre el portal del publicador de Administración de API.
+## <a name="create-group"></a>Creación de un grupo
+toocreate un nuevo grupo, haga clic en **portal para desarrolladores de** Hola Portal de Azure para el servicio de administración de API. Esto le llevará toohello portal para desarrolladores de administración de API.
 
 ![Portal del publicador][api-management-management-console]
 
-> Si aún no ha creado ninguna instancia del servicio de API Management, consulte [Creación de una instancia del servicio API Management][Create an API Management service instance] en el tutorial [Introducción a Azure API Management][Get started with Azure API Management].
+> Si aún no ha creado una instancia de servicio de administración de API, consulte [crear una instancia de servicio de administración de API] [ Create an API Management service instance] en hello [Introducción a administración de API de Azure] [ Get started with Azure API Management] tutorial.
 > 
 > 
 
-Haga clic en **Grupos** en el menú **API Management** de la izquierda y haga clic en **Agregar grupo**.
+Haga clic en **grupos** de hello **administración de API** menú Hola izquierda y, a continuación, haga clic en **Agregar grupo**.
 
 ![Add new group][api-management-add-group]
 
-Especifique un nombre único para el grupo y una descripción opcional y haga clic en **Guardar**.
+Escriba un nombre único para el grupo de hello y una descripción opcional y haga clic en **guardar**.
 
 ![Add new group][api-management-add-group-window]
 
-El nuevo grupo se muestra en la pestaña Grupos. Para editar el **Nombre** o la **Descripción** del grupo, haga clic en el nombre del grupo en la lista. Para eliminar el grupo, haga clic en **Eliminar**.
+Hola nuevo grupo se mostrará en Hola de hello grupos ficha tooedit **nombre** o **descripción** del grupo de hello, haga clic en nombre de hello del grupo de hello en lista de Hola. grupo de hello toodelete, haga clic en **eliminar**.
 
 ![Group added][api-management-new-group]
 
-Ahora que se ha creado el grupo, se puede asociar a productos y desarrolladores.
+Hello grupo una vez creada, se puede asociar con los productos y los desarrolladores.
 
-## <a name="associate-group-product"> </a>Asociación de un grupo a un producto
-Para asociar un grupo a un producto, haga clic en **Productos** en el menú **API Management** de la izquierda y haga clic en el nombre del producto que desee.
+## <a name="associate-group-product"></a>Asociación de un grupo a un producto
+tooassociate un grupo con un producto, haga clic en **productos** de hello **administración de API** menú Hola izquierda y, a continuación, haga clic en nombre de Hola de producto de su preferencia Hola.
 
 ![Set visibility][api-management-add-group-to-product]
 
-Seleccione la pestaña **Visibilidad** para agregar y quitar grupos, así como para ver los grupos actuales para el producto. Para agregar o quitar grupos, active o desactive las casillas correspondientes a los grupos que desee y haga clic en **Guardar**.
+Seleccione hello **visibilidad** ficha tooadd y quitar grupos y tooview Hola actual para el producto de Hola. tooadd o quitar grupos, active o desactive las casillas de verificación de Hola para hello deseado grupos y haga clic en **guardar**.
 
 ![Set visibility][api-management-add-group-to-product-visibility]
 
 > [!NOTE]
-> Para agregar grupos de Azure Active Directory, consulte [Autorización de las cuentas de desarrollador con Azure Active Directory en Administración de API de Azure](api-management-howto-aad.md).
+> los grupos de Azure Active Directory tooadd, consulte [cómo tooauthorize developer cuentas con Azure Active Directory en la administración de API de Azure](api-management-howto-aad.md).
 > 
-> Para configurar grupos en la pestaña **Visibilidad** para un producto, haga clic en **Administrar grupos**.
+> grupos de tooconfigure de hello **visibilidad** para un producto, haga clic en **administrar grupos**.
 > 
 > 
 
-Una vez asociado un producto a un grupo, los desarrolladores del grupo pueden ver el producto y suscribirse a él.
+Una vez que un producto está asociado a un grupo, los desarrolladores de ese grupo pueden ver y suscribirse toohello producto.
 
-## <a name="associate-group-developer"> </a>Asociación de grupos a desarrolladores
-Para asociar grupos a desarrolladores, haga clic en **Usuarios** en el menú **API Management** de la izquierda y active la casilla situada junto a los desarrolladores que desee asociar a un grupo.
+## <a name="associate-group-developer"></a>Asociación de grupos a desarrolladores
+grupos tooassociate con desarrolladores, haga clic en **usuarios** de hello **administración de API** menú Hola izquierda y, a continuación Hola casilla situada junto a los desarrolladores de hello desea tooassociate con un grupo.
 
-![Add developer to group][api-management-add-group-to-developer]
+![Agregar toogroup de desarrollador][api-management-add-group-to-developer]
 
-Una vez seleccionados los desarrolladores que desee, haga clic en el grupo que desee en la lista desplegable **Agregar a grupo** . Los desarrolladores se pueden quitar de los grupos con la lista desplegable **Quitar de grupo** . 
+Una vez Hola deseado se comprueban los desarrolladores, haga clic en grupo que quiera hello en hello **agregar tooGroup** lista desplegable. Los desarrolladores se pueden quitar de grupos mediante el uso de hello **quitar del grupo** lista desplegable. 
 
 ![Desarrolladores][api-management-add-group-to-developer-saved]
 
-Una vez agregada, la asociación entre el desarrollador y el grupo se puede ver en la pestaña **Usuarios** .
+Una vez agregado asociación Hola entre para desarrolladores de Hola y el grupo de hello, puede verlo en hello **usuarios** ficha.
 
-## <a name="next-steps"> </a>Pasos siguientes
-* Una vez agregado a un grupo, un desarrollador puede ver los productos asociados al grupo y suscribirse a ellos. Para obtener más información, consulte [Creación y publicación de un producto en Azure API Management][How create and publish a product in Azure API Management].
-* Además de crear y administrar grupos en el portal del editor, puede crear y administrar sus grupos mediante la entidad de [grupo](https://msdn.microsoft.com/library/azure/dn776329.aspx) de la API de REST de administración.
+## <a name="next-steps"></a>Pasos siguientes
+* Una vez que un programador se agrega grupo tooa, pueden ver y suscribirse productos toohello asociados a dicho grupo. Para obtener más información, consulte [Creación y publicación de un producto en Azure API Management][How create and publish a product in Azure API Management].
+* Además toocreating y administrar grupos en el portal para desarrolladores de hello, puede crear y administrar grupos mediante la API de REST de administración de hello [grupo](https://msdn.microsoft.com/library/azure/dn776329.aspx) entidad.
 
 [api-management-management-console]: ./media/api-management-howto-create-groups/api-management-management-console.png
 [api-management-add-group]: ./media/api-management-howto-create-groups/api-management-add-group.png

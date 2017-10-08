@@ -1,6 +1,6 @@
 ---
-title: "Preguntas más frecuentes sobre Azure Application Gateway | Microsoft Docs"
-description: "Esta página proporciona respuestas a las preguntas más frecuentes acerca de Azure Application Gateway"
+title: aaaFrequently pregunta para puerta de enlace de aplicaciones de Azure | Documentos de Microsoft
+description: "Esta página proporciona respuestas toofrequently preguntas más frecuentes sobre la puerta de enlace de aplicaciones de Azure"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 4e6244d92f41e0aa5c8a70db0db2881036984247
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b2df3a82a71a3264d3d34d317d08e4b4f72c6e3e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Preguntas más frecuentes sobre Application Gateway
 
@@ -30,9 +30,9 @@ Azure Application Gateway es un controlador de entrega de aplicaciones (ADC) com
 
 **P. ¿Qué características admite Application Gateway?**
 
-Application Gateway admite la descarga de SSL y SSL de un extremo a otro, Firewall de aplicaciones web, afinidad de sesión basada en cookies, enrutamiento basado en ruta de dirección URL, alojamiento de varios sitios y muchas otras más. Para obtener una lista completa de las características admitidas, visite [Introducción a Application Gateway](application-gateway-introduction.md).
+Puerta de enlace de aplicaciones admite SSL tooend final y la descarga de SSL, servidor de aplicaciones Web, afinidad de sesión basado en cookies, dirección url basada en la ruta de acceso enrutamiento, alojamiento de varios sitios y otros. Para obtener una lista completa de las características admitidas, visite [Introducción tooApplication puerta de enlace](application-gateway-introduction.md)
 
-**P. ¿Cuál es la diferencia entre Application Gateway y Azure Load Balancer?**
+**P. ¿Cuál es la diferencia de hello entre la puerta de enlace de aplicaciones y el equilibrador de carga de Azure?**
 
 Application Gateway es un equilibrador de carga de nivel 7, lo que significa que funciona solo tráfico web (HTTP/HTTPS/WebSocket). Admite funcionalidades como la terminación SSL, la afinidad de sesión basada en cookies y la distribución round robin para el tráfico de equilibrio de carga. Load Balancer equilibra la carga de tráfico en el nivel 4 (TCP/UDP).
 
@@ -42,9 +42,9 @@ Application Gateway admite HTTP, HTTPS y WebSocket.
 
 **P. ¿Qué recursos son compatibles actualmente como parte del grupo de back-end?**
 
-Los grupos de back-end pueden constar de NIC, conjuntos de escalado de máquinas virtuales, direcciones IP públicas e internas, nombres de dominio completos (FQDN) y servidores back-end multiinquilino como Azure Web Apps. Los miembros del grupo de back-end de Application Gateway no están asociados a un conjunto de disponibilidad. Los miembros de grupos de back-end pueden estar repartidos entre clústeres, centros de datos o fuera de Azure siempre y cuando dispongan de conectividad IP.
+Los grupos de back-end pueden constar de NIC, conjuntos de escalado de máquinas virtuales, direcciones IP públicas e internas, nombres de dominio completos (FQDN) y servidores back-end multiinquilino como Azure Web Apps. Puerta de enlace de aplicaciones los miembros del grupo back-end no están unidos tooan conjunto de disponibilidad. Los miembros de grupos de back-end pueden estar repartidos entre clústeres, centros de datos o fuera de Azure siempre y cuando dispongan de conectividad IP.
 
-**P. ¿En qué regiones está disponible el servicio?**
+**P. ¿Qué regiones es servicio de hello disponibles en?**
 
 Application Gateway está disponible en todas las regiones de Azure global. También está disponible en [Azure China](https://www.azure.cn/) y [Azure Government](https://azure.microsoft.com/en-us/overview/clouds/government/)
 
@@ -54,35 +54,35 @@ Application Gateway es una implementación dedicada en su red virtual.
 
 **P. ¿Se admite la redirección HTTP->HTTPS?**
 
-Se admite el redireccionamiento. Visite [Introducción al redireccionamiento de Application Gateway](application-gateway-redirect-overview.md) para obtener más información.
+Se admite el redireccionamiento. Visite [introducción de redirección de puerta de enlace de aplicaciones](application-gateway-redirect-overview.md) toolearn más.
 
 **P. ¿En qué orden se procesan los agentes de escucha?**
 
-Los agentes de escucha se procesan en el orden en que aparecen. Por este motivo, si un agente de escucha coincide con una solicitud entrante, se procesa primero.  Los agentes de escucha de varios sitios deben configurarse antes de un agente de escucha básico para asegurarse de que el tráfico se enrute al back-end correcto.
+Los agentes de escucha se procesan en orden de Hola se muestran. Por este motivo, si un agente de escucha coincide con una solicitud entrante, se procesa primero.  Los agentes de escucha de varios sitios deben configurarse antes de que el tráfico de tooensure de un agente de escucha básico es toohello enrutado correcto back-end.
 
 **P. ¿Dónde se encuentra la dirección IP y el DNS de Application Gateway?**
 
-Cuando se usa una dirección IP pública como punto de conexión, esta información se puede encontrar en el recurso de la dirección IP pública o en la página de información general de Application Gateway en el portal. En el caso de direcciones IP internas, esta se puede encontrar en la página de información general.
+Cuando se usa una dirección IP pública como un punto de conexión, puede encontrar esta información en recurso de dirección IP público de Hola o en la página de información general de Hola para hello puerta de enlace de aplicaciones en portal de Hola. Para las direcciones IP internas, se puede encontrar en la página de información general de Hola.
 
-**P. ¿Cambia la dirección IP o el DNS durante la vigencia de Application Gateway?**
+**P. ¿Hello IP o DNS cambia largo de duración de Hola de hello puerta de enlace de aplicaciones?**
 
-La dirección IP virtual puede cambiar si la puerta de enlace se detiene y la inicia otro cliente. El DNS asociado con Application Gateway no cambia durante el ciclo de vida de la puerta de enlace. Por este motivo, se recomienda utilizar un alias CNAME y hacer que señale a la dirección DNS de Application Gateway.
+Hola VIP puede cambiar si se detiene e inicia por el cliente de hello puerta de enlace de Hola. Hola DNS asociado con la puerta de enlace de aplicación no cambia con el ciclo de vida de Hola de puerta de enlace de Hola. Por esta razón, es recomendable toouse un alias CNAME y haga que señale toohello dirección DNS de hello Application Gateway.
 
 **P. ¿Admite Application Gateway direcciones IP estáticas?**
 
 No, Application Gateway no admite direcciones IP públicas estáticas, pero admite direcciones IP internas estáticas.
 
-**P. ¿Admite Application Gateway varias direcciones IP públicas en la puerta de enlace?**
+**P. ¿Puerta de enlace de aplicaciones admite varias direcciones IP públicas en puerta de enlace de hello?**
 
 Solo se admite una dirección IP pública en una instancia de Application Gateway.
 
 **P. ¿Admite Application Gateway encabezados x-forwarded-for?**
 
-Sí, Application Gateway inserta encabezados x-forwarded-for, x-forwarded-proto y x-forwarded-port en la solicitud que se reenvía al back-end. El formato del encabezado x-forwarded-for es una lista separada por comas de IP:Port. Los valores válidos para x-forwarded-proto son http o https. X-forwarded-port especifica el puerto al que llegó la solicitud en Application Gateway.
+Sí, puerta de enlace de aplicación inserta x reenvían para, proto reenviados x, y puerto x reenviados encabezados de solicitud de hello reenvían toohello back-end. formato de Hello para el encabezado x-reenviados-para es una lista separada por comas de IP: Port. valores válidos de Hola para proto reenviados x son http o https. Puerto reenviados X especifica puerto hello en qué solicitud Hola alcanzada en hello Application Gateway.
 
-**P. ¿Cuánto tiempo se tarda en implementar Application Gateway? ¿Sigue funcionando Application Gateway mientras se actualiza?**
+**P. ¿Durante cuánto tiempo tarda toodeploy una puerta de enlace de la aplicación? ¿Sigue funcionando Application Gateway mientras se actualiza?**
 
-Las nuevas implementaciones de Application Gateway pueden tardar hasta 20 minutos en aprovisionarse. Los cambios de tamaño y recuento de instancias no provocan interrupciones, y la puerta de enlace permanece activa durante este tiempo.
+Nuevas implementaciones de puerta de enlace de aplicaciones pueden tardar hasta too20 minutos tooprovision. Cambios tooinstance tamaño/recuento no son perjudiciales, y puerta de enlace de hello permanece activo durante este tiempo.
 
 ## <a name="configuration"></a>Configuración
 
@@ -90,27 +90,27 @@ Las nuevas implementaciones de Application Gateway pueden tardar hasta 20 minuto
 
 Sí, Application Gateway se implementa siempre en una red virtual. Esta subred solo puede contener instancias de Application Gateway.
 
-**P. ¿Puede Application Gateway hablar con instancias fuera de su red virtual?**
+**P. ¿Puede comunicarse Application Gateway tooinstances fuera de su red virtual?**
 
-Application Gateway puede comunicarse con instancias fuera de la red virtual en la que se encuentra siempre que haya conectividad IP. Si planea usar direcciones IP internas como miembros del grupo de back-end, necesitará [emparejamiento de VNET](../virtual-network/virtual-network-peering-overview.md) o [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Puerta de enlace de aplicaciones puede comunicarse tooinstances fuera de la red virtual de Hola que resulta siempre que hay conectividad IP. Si tiene previsto toouse direcciones IP internas como miembros del grupo back-end, entonces se requiere [emparejamiento de VNET](../virtual-network/virtual-network-peering-overview.md) o [puerta de enlace VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-**P. ¿Puedo implementar algo más en la subred en la que está Application Gateway?**
+**P. ¿Puedo implementar algo más en la subred de puerta de enlace de aplicación Hola?**
 
-No, pero se pueden implementar otras puertas de enlace de aplicación en la subred.
+No, pero se pueden implementar otras puertas de enlace de aplicaciones en la subred de Hola.
 
-**P. ¿Se admiten grupos de seguridad de red en la subred en la que está Application Gateway?**
+**P. ¿Se admiten grupos de seguridad de red en la subred de puerta de enlace de aplicación Hola?**
 
-Se admiten grupos de seguridad de red en la subred de Application Gateway con las restricciones siguientes:
+Grupos de seguridad de red son compatibles en la subred de puerta de enlace de aplicación Hola con hello siguientes restricciones:
 
-* Se deben colocar excepciones para el tráfico entrante en los puertos 65503-65534 para que el estado del back-end funcione correctamente.
+* Las excepciones deben situarse el tráfico entrante en los puertos 65503-65534 para toowork de mantenimiento de back-end correctamente.
 
 * No puede bloquearse la conectividad saliente de Internet.
 
-* Se debe permitir el tráfico de la etiqueta AzureLoadBalancer.
+* Se debe permitir el tráfico de hello etiqueta AzureLoadBalancer.
 
-**P. ¿Cuáles son los límites de Application Gateway? ¿Puedo aumentar estos límites?**
+**P. ¿Cuáles son los límites de hello en puerta de enlace de aplicaciones? ¿Puedo aumentar estos límites?**
 
-Visite [Límites de Application Gateway](../azure-subscription-service-limits.md#application-gateway-limits) para ver los límites.
+Visite [límites de puerta de enlace de aplicaciones](../azure-subscription-service-limits.md#application-gateway-limits) tooview Hola límites.
 
 **P. ¿Puedo usar Application Gateway para tráfico externo e interno al mismo tiempo?**
 
@@ -120,13 +120,13 @@ Sí, Application Gateway admite una dirección IP interna y una dirección IP ex
 
 Sí, se admite el emparejamiento de VNet y, además, es beneficioso para el tráfico de equilibrio de carga en otras redes virtuales.
 
-**P. ¿Se puede comunicar con servidores locales cuando están conectados mediante ExpressRoute o túneles VPN?**
+**P. ¿Se puede hablar servidores tooon locales cuando están conectados a través de túneles VPN o de ExpressRoute?**
 
 Sí, siempre que se permita el tráfico.
 
 **P. ¿Se puede tener un grupo de back-end que preste servicio a muchas aplicaciones en puertos diferentes?**
 
-Se admite la arquitectura de microservicios. Necesitaría varias opciones de configuración de http configuradas para realizar sondeos en puertos diferentes.
+Se admite la arquitectura de microservicios. Debe generar varios tooprobe de configuración de http en puertos diferentes.
 
 **P. ¿Admiten los sondeos personalizados caracteres comodín o regex en los datos de respuesta?**
 
@@ -134,51 +134,51 @@ Los sondeos personalizados no admiten caracteres comodín o regex en los datos d
 
 **P. ¿Cómo se procesan las reglas?**
 
-Las reglas se procesan en el orden en que están configuradas. Se recomienda que las reglas de varios sitios se configuren antes de las reglas básicas para reducir la posibilidad de que el tráfico se enrute al back-end inadecuado, ya que la regla básica coincidiría con el tráfico basado en el puerto antes de que se evalúe la regla de varios sitios.
+Las reglas se procesan en orden de hello que están configurados. Se recomienda que las reglas de varios sitios estén configuradas antes improbable de hello tooreduce de reglas básicas que tráfico enrutarse toohello inapropiados backend reglas básicas de hello coincidiría con tráfico basado en la regla de varios sitios de toohello anteriores de puerto que se va a evaluar.
 
 **P. ¿Cómo se procesan las reglas?**
 
-Las reglas se procesan en el orden en que se crearon. Se recomienda configurar las reglas multisitio antes que las reglas básicas. Al configurar primero los agentes de escucha multisitio, esta configuración reduce la probabilidad de que el tráfico se enrute al servidor no apropiado. Este problema de enrutamiento puede ocurrir cuando la regla básica debería coincidir con tráfico basado en puerto antes que la regla multisitio que se va a evaluar.
+Las reglas se procesan en orden de Hola se crean. Se recomienda configurar las reglas multisitio antes que las reglas básicas. Al configurar los agentes de escucha de varios sitios en primer lugar, esta configuración reduce Hola posibilidad de que el tráfico enrutado toohello inapropiados backend. Este problema de enrutamiento puede producirse como reglas básicas de hello coincidiría con tráfico basado en la regla de varios sitios de toohello anteriores de puerto que se va a evaluar.
 
-**P. ¿Qué significa el campo Host de los sondeos personalizados?**
+**P. ¿Qué significan el campo de Host de Hola para los sondeos personalizados?**
 
-El campo Host especifica el nombre al que enviar el sondeo. Solo se puede aplicar cuando se ha configurado un entorno multisitio en Application Gateway; de lo contrario hay que usar '127.0.0.1'. Este valor es diferente del nombre de host de máquina virtual y está en formato \<protocolo\>://\<host\>:\<puerto\>\<ruta de acceso\>.
+El campo host especifica Hola nombre toosend Hola sondeo. Solo se puede aplicar cuando se ha configurado un entorno multisitio en Application Gateway; de lo contrario hay que usar '127.0.0.1'. Este valor es diferente del nombre de host de máquina virtual y está en formato \<protocolo\>://\<host\>:\<puerto\>\<ruta de acceso\>.
 
-**P. ¿Puedo permitir a Application Gateway el acceso a algunas direcciones IP de origen?**
+**P. ¿Puede tooa de acceso de puerta de enlace de aplicación de lista blanca pocas direcciones IP de origen?**
 
-Este escenario puede hacerse mediante el uso de grupos de seguridad de red en la subred de Application Gateway. Las siguientes restricciones se deben colocar en la subred en el orden de prioridad indicado:
+Este escenario puede hacerse mediante el uso de grupos de seguridad de red en la subred de Application Gateway. Hola después restricciones debe colocarse en subred hello en hello aparecen orden de prioridad:
 
 * Permitir el tráfico entrante de la IP o intervalo IP de origen.
 
-* Permitir las solicitudes entrantes de todos los orígenes a los puertos 65503-65534 para la [comunicación del estado del back-end](application-gateway-diagnostics.md).
+* Permitir que las solicitudes entrantes de todos los orígenes tooports 65534 65503 para [comunicación de mantenimiento de back-end](application-gateway-diagnostics.md).
 
-* Permitir sondeos entrantes de Azure Load Balancer (con la etiqueta AzureLoadBalancer) y el tráfico de red virtual entrante (con la etiqueta VirtualNetwork) en el [NSG](../virtual-network/virtual-networks-nsg.md).
+* Permitir entrantes sondeos del equilibrador de carga de Azure (etiqueta AzureLoadBalancer) y el tráfico de red virtual (etiqueta VirtualNetwork) entrante en hello [NSG](../virtual-network/virtual-networks-nsg.md).
 
 * Bloquear todo el tráfico entrante restante con una regla Denegar todo.
 
-* Permitir el tráfico saliente a Internet para todos los destinos.
+* Permitir el tráfico saliente toohello internet para todos los destinos.
 
 ## <a name="performance"></a>Rendimiento
 
 **P. ¿Cómo admite Application Gateway la alta disponibilidad y la escalabilidad?**
 
-Application Gateway admite escenarios de alta disponibilidad cuando tiene dos o más instancias implementadas. Azure distribuye estas instancias entre dominios de actualización y de errores para asegurarse de que todas las instancias no produzcan un error al mismo tiempo. Application Gateway admite la escalabilidad mediante la adición de varias instancias de la misma puerta de enlace para compartir la carga.
+Application Gateway admite escenarios de alta disponibilidad cuando tiene dos o más instancias implementadas. Azure distribuye estas instancias a través de la actualización y error tooensure de dominios que no todas las instancias en hello mismo tiempo. Puerta de enlace de aplicación es compatible con la escalabilidad mediante la adición de varias instancias de hello misma carga de hello tooshare de puerta de enlace.
 
 **P. ¿Cómo se puede lograr el escenario de recuperación ante desastres a través de centros de datos con Application Gateway?**
 
-Los clientes pueden usar Traffic Manager para distribuir el tráfico a través de varias instancias de Application Gateway en distintos centros de datos.
+Los clientes pueden usar Traffic Manager toodistribute tráfico a través de varias puertas de enlace de aplicaciones en distintos centros de datos.
 
 **P. ¿Se admite el escalado automático?**
 
-No, pero Application Gateway tiene una métrica de rendimiento que se puede utilizar para mostrar una alerta cuando se alcanza un determinado umbral. Agregar instancias manualmente o cambiar el tamaño no reinicia la puerta de enlace y no afecta al tráfico existente.
+No, pero la puerta de enlace de aplicaciones tiene una métrica de rendimiento que puede ser tooalert usado cuando se alcanza un umbral. Manualmente agregando instancias o cambiar el tamaño no se reinicie la puerta de enlace de hello y no afecta a tráfico existente.
 
 **P. ¿Provoca el escalado o reducción vertical algún tiempo de inactividad?**
 
 No hay ningún tiempo de inactividad, las instancias se distribuyen entre varios dominios de actualización y dominios de error.
 
-**P. ¿Puedo cambiar el tamaño de la instancia de mediano a grande sin que haya una interrupción?**
+**P. ¿Puedo cambiar tamaño de la instancia de Media toolarge sin interrupciones?**
 
-Sí, Azure distribuye las instancias entre los dominios de actualización y de errores para asegurarse de que todas las instancias no produzcan un error al mismo tiempo. Application Gateway admite el escalado mediante la adición de varias instancias de la misma puerta de enlace para compartir la carga.
+Sí, Azure distribuye las instancias a través de la actualización y error tooensure de dominios que no todas las instancias en hello mismo tiempo. Aplicación puerta de enlace admite el escalado mediante la adición de varias instancias de Hola la misma carga de hello tooshare de puerta de enlace.
 
 ## <a name="ssl-configuration"></a>Configuración de SSL
 
@@ -186,9 +186,9 @@ Sí, Azure distribuye las instancias entre los dominios de actualización y de e
 
 Se admiten los certificados autofirmados, los certificados de entidad emisora de certificados y los certificados comodín. No se admiten los certificados de validación extendida (EV).
 
-**P. ¿Cuáles son los conjuntos de cifrado actuales que admite Application Gateway?**
+**P. ¿Cuáles son los conjuntos de cifrado actual Hola admitidos por la puerta de enlace de aplicaciones?**
 
-Los siguientes son los conjuntos de cifrado actuales que admite Application Gateway. Para aprender a personalizar opciones de SSL, visite [Configuración de versiones de directivas SSL y conjuntos de cifrado en Application Gateway](application-gateway-configure-ssl-policy-powershell.md).
+los siguientes Hola son conjuntos de cifrado actual de hello admitidos por la puerta de enlace de aplicaciones. Visita: [configurar SSL versiones de directivas y conjuntos de cifrado en la puerta de enlace de aplicaciones](application-gateway-configure-ssl-policy-powershell.md) toolearn cómo toocustomize opciones de SSL.
 
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
@@ -217,17 +217,17 @@ Los siguientes son los conjuntos de cifrado actuales que admite Application Gate
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-**P. ¿Admite Application Gateway también el recifrado del tráfico dirigido al back-end?**
+**P. ¿Puerta de enlace de aplicaciones también admite recifrado de back-end de tráfico toohello?**
 
-Sí, Application Gateway admite la descarga de SSL y SSL de extremo a extremo, lo cual permite volver a cifrar el tráfico dirigido al back-end.
+Sí, descarga SSL de puerta de enlace de aplicaciones admite y end tooend SSL, que vuelve a cifra Hola tráfico toohello back-end.
 
-**P. ¿Se puede configurar la directiva SSL para controlar las versiones del protocolo SSL?**
+**P. ¿Puedo configurar las versiones SSL directiva toocontrol protocolo SSL?**
 
-Sí, puede configurar Application Gateway para denegar TLS1.0, TLS1.1 y TLS1.2. SSL 2.0 y 3.0 ya están deshabilitados de forma predeterminada y no se pueden configurar.
+Sí, puede configurar la puerta de enlace de aplicaciones toodeny TLS1.0, TLS1.1 y TLS1.2. SSL 2.0 y 3.0 ya están deshabilitados de forma predeterminada y no se pueden configurar.
 
 **P. ¿Puedo configurar los conjuntos de cifrado y el orden de las directivas?**
 
-Sí, se admite la [configuración de conjuntos de cifrado](application-gateway-ssl-policy-overview.md). Al definir una directiva personalizada, se debe habilitar al menos uno de los siguientes conjuntos de cifrado. Application Gateway usa SHA256 para la administración de back-end.
+Sí, se admite la [configuración de conjuntos de cifrado](application-gateway-ssl-policy-overview.md). Al definir una directiva personalizada, debe habilitarse al menos uno de los siguientes conjuntos de cifrado de Hola. Puerta de enlace de aplicación utiliza la administración de back-end de toofor SHA256.
 
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
@@ -238,11 +238,11 @@ Sí, se admite la [configuración de conjuntos de cifrado](application-gateway-s
 
 **P. ¿Cuántos certificados SSL se admiten?**
 
-Se admiten hasta 20 certificados SSL.
+Configurar SSL too20 se admiten certificados.
 
 **P. ¿Cuántos certificados de autenticación de recifrado de back-end se admiten?**
 
-Se admiten hasta 10 certificados de autenticación, con 5 como valor predeterminado.
+Se admiten certificados de autenticación hasta too10 con un valor predeterminado es 5.
 
 **P. ¿Se integra Application Gateway con Azure Key Vault de forma nativa?**
 
@@ -250,11 +250,11 @@ No, no se integra con Azure Key Vault.
 
 ## <a name="web-application-firewall-waf-configuration"></a>Firewall de aplicaciones web (WAF): Configuración
 
-**P. ¿Ofrece la SKU de WAF todas las características disponibles con la SKU estándar?**
+**P. ¿Hola WAFS SKU ofrece todas las características de hello disponibles con hello SKU estándar?**
 
-Sí, WAF admite todas las características de la SKU estándar.
+Sí, WAFS admite todas las características de Hola Hola SKU estándar.
 
-**P. ¿Qué versión de CRS admite Application Gateway?**
+**P. ¿Qué es la versión CRS Hola que admite la puerta de enlace de aplicaciones?**
 
 Application Gateway admite CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) y CRS [3.0](application-gateway-crs-rulegroups-rules.md#owasp30).
 
@@ -268,11 +268,11 @@ No, el modo de detección solo registra el tráfico, que desencadenó una regla 
 
 **P. ¿Cómo se personalizan las reglas de WAF?**
 
-Sí, las reglas de WAF son personalizables. Para obtener más información sobre cómo personalizarlas, visite [Personalización de reglas y grupos de reglas de WAF](application-gateway-customize-waf-rules-portal.md).
+Sí, las reglas de WAFS son personalizables, para obtener más información sobre cómo toocustomize les visitan [reglas y grupos de reglas de personalizar WAFS](application-gateway-customize-waf-rules-portal.md)
 
 **P. ¿Qué reglas están disponibles actualmente?**
 
-WAF actualmente admite CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) y [3.0](application-gateway-crs-rulegroups-rules.md#owasp30), que proporcionan una seguridad de línea de base frente a la mayoría de las 10 principales vulnerabilidades identificadas por Open Web Application Security Project (OWASP) y que se describen en [OWASP top 10 Vulnerabilities](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013) (Las 10 principales vulnerabilidades de OWASP).
+WAFS actualmente admite CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) y [3.0](application-gateway-crs-rulegroups-rules.md#owasp30), que proporcionan seguridad de línea de base en la mayoría de hello vulnerabilidades de 10 mejores identificadas por hello Abrir Web aplicación seguridad proyecto (OWASP) encontrar aquí [OWASP top 10 vulnerabilidades](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013)
 
 * Protección contra la inyección de código SQL
 
@@ -298,30 +298,30 @@ No, WAF no ofrece prevención DDoS.
 
 Hay tres registros disponibles para Application Gateway. Para más información sobre estos registros y otras funcionalidades de diagnóstico, visite [Mantenimiento del back-end, registro de diagnóstico y métricas de Application Gateway](application-gateway-diagnostics.md).
 
-- **ApplicationGatewayAccessLog**: este registro de acceso contiene todas las solicitudes enviadas al front-end de Application Gateway. Los datos incluyen la dirección IP del autor de la llamada, la dirección URL solicitada, la latencia de la respuesta, el código de devolución y los bytes de entrada y salida. El registro de acceso se recopila cada 300 segundos. Este registro contiene un registro por cada instancia de Application Gateway.
-- **ApplicationGatewayPerformanceLog**: este registro de rendimiento captura la información de rendimiento de cada instancia, incluida la cantidad total de solicitudes atendidas, el rendimiento en bytes, la cantidad de solicitudes con error y la cantidad de instancias back-end completadas correcta e incorrectamente.
-- **ApplicationGatewayFirewallLog**: este registro de firewall contiene las solicitudes que se registran con el modo de detección o prevención de una puerta de enlace de aplicaciones que está configurada con el firewall de aplicaciones web.
+- **ApplicationGatewayAccessLog** -registro de acceso de hello contiene cada solicitud enviada front-end de toohello Application Gateway. datos de Hello incluyen IP del llamador Hola, dirección URL solicitada, latencia de la respuesta, devolver el código de bytes de entrada y salida. El registro de acceso se recopila cada 300 segundos. Este registro contiene un registro por cada instancia de Application Gateway.
+- **ApplicationGatewayPerformanceLog** -registro de rendimiento de hello recopila información de rendimiento por instancia en incluida en solicitud total servirse, rendimiento, en bytes, número total de solicitudes servidas, recuento de solicitudes con error, positivos y negativo recuento de instancias de back-end.
+- **ApplicationGatewayFirewallLog** -registro de firewall de hello contiene las solicitudes que se registran con el modo de detección o prevención de una puerta de enlace de la aplicación que está configurado con el servidor de aplicaciones web.
 
 **P. ¿Cómo se puede saber si mis miembros del grupo de back-end están en buenas condiciones?**
 
-Puede usar el cmdlet de PowerShell `Get-AzureRmApplicationGatewayBackendHealth` o comprobar el estado a través del portal visitando [Diagnósticos de Application Gateway](application-gateway-diagnostics.md)
+Puede usar el cmdlet de PowerShell de hello `Get-AzureRmApplicationGatewayBackendHealth` o comprobar el estado a través del portal de hello visitando [diagnóstico de puerta de enlace de aplicaciones](application-gateway-diagnostics.md)
 
-**P. ¿Qué es la directiva de retención en los registros de diagnóstico?**
+**P. ¿Qué es la directiva de retención de hello en los registros de diagnósticos de hello?**
 
-Los registros de diagnóstico fluyen hacia la cuenta de almacenamiento de los clientes y estos pueden establecer la directiva de retención según sus preferencias. Los registros de diagnóstico también se pueden enviar a un centro de eventos o a Log Analytics. Visite [Diagnósticos de Application Gateway](application-gateway-diagnostics.md) para más información.
+Cuenta de almacenamiento de los clientes de toohello de flujo de registros de diagnóstico y los clientes pueden establecer Directiva de retención de hello en función de sus preferencias. También se pueden enviar registros de diagnóstico tooan concentrador de eventos o análisis de registros. Visite [Diagnósticos de Application Gateway](application-gateway-diagnostics.md) para más información.
 
 **P. ¿Cómo se pueden obtener los registros de auditoría de Application Gateway?**
 
-Los registros de auditoría están disponibles para Application Gateway. En el portal, haga clic en **Registro de actividad** en la hoja de menú de una instancia de Application Gateway para tener acceso al registro de auditoría. 
+Los registros de auditoría están disponibles para Application Gateway. En el portal de hello, haga clic en **registro de actividad** en hoja del menú de Hola de un registro de auditoría de puerta de enlace de aplicaciones tooaccess Hola. 
 
 **P. ¿Se pueden establecer alertas con Application Gateway?**
 
-Sí, Application Gateway admite alertas, y estas se configuran a partir de las métricas.  Application Gateway tiene actualmente una métrica de "rendimiento", que se puede configurar para que genere una alerta. Para más información sobre las alertas, visite [Recibir notificaciones de alerta](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Sí, Application Gateway admite alertas, y estas se configuran a partir de las métricas.  Puerta de enlace de aplicaciones no tiene actualmente una métrica de "rendimiento", que puede ser tooalert configurado. toolearn más información acerca de las alertas, visite [recibir notificaciones de alerta](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
 **P. El estado de back-end devuelve un estado desconocido, ¿que puede haberlo provocado?**
 
-La razón más común es que el acceso al servidor está bloqueado por un NSG o DNS personalizado. Visite [Estado de back-end, registros de diagnóstico y métricas de Application Gateway](application-gateway-diagnostics.md) para más información.
+razón más común de Hello es está bloqueando el back-end de acceso toohello un NSG o DNS personalizado. Visite [back-end de estado, registro de diagnósticos y las métricas de puerta de enlace de aplicaciones](application-gateway-diagnostics.md) toolearn más.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre Application Gateway, visite [Introducción a Application Gateway](application-gateway-introduction.md).
+toolearn sobre la puerta de enlace de aplicaciones, visite [Introducción tooApplication puerta de enlace](application-gateway-introduction.md).

@@ -1,5 +1,5 @@
 ---
-title: Hospedaje de alta densidad en Azure App Service | Microsoft Docs
+title: hospedaje de densidad de aaaHigh en el servicio de aplicaciones de Azure | Documentos de Microsoft
 description: Hospedaje de alta densidad en Azure App Service
 author: btardif
 manager: erikre
@@ -14,28 +14,28 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: byvinyal
-ms.openlocfilehash: 459a310a719695f6366470976d857ec2f9d6f4a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a10cb81ace13ba6992b572a44361061ecf72b266
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="high-density-hosting-on-azure-app-service"></a>Hospedaje de alta densidad en Azure App Service
-Cuando se utilice App Service, la aplicación se desacoplará de la capacidad que se le ha asignado por dos conceptos:
+Cuando se usa el servicio de aplicaciones, la aplicación se separa de la capacidad de hello asignada tooit por dos conceptos:
 
-* **La aplicación:** representa la aplicación y la configuración de su sistema en tiempo de ejecución. Por ejemplo, incluye la versión de .NET que el sistema en tiempo de ejecución debe cargar, la configuración de la aplicación, etc.
-* **El plan de App Service:** define las características de la capacidad, el conjunto de características disponibles y la localidad de la aplicación. Por ejemplo, las características podrían ser una máquina grande (cuatro núcleos), cuatro instancias y características Premium del este de EE. UU.
+* **Hola aplicación:** representa la aplicación hello y su configuración en tiempo de ejecución. Por ejemplo, incluye Hola debe cargar la versión de .NET que hello en tiempo de ejecución, configuración de la aplicación hello.
+* **Hola Plan de servicio de aplicaciones:** define Hola características de capacidad de hello, el conjunto de características disponibles y proximidad de la aplicación hello. Por ejemplo, las características podrían ser una máquina grande (cuatro núcleos), cuatro instancias y características Premium del este de EE. UU.
 
-Una aplicación siempre está vinculada a un plan del Servicio de aplicaciones, pero un plan del Servicio de aplicaciones puede proporcionar capacidad para una o más aplicaciones.
+Aplicación siempre está vinculado tooan plan de servicio de aplicaciones, pero un plan de servicio de aplicaciones puede proporcionar capacidad tooone o más aplicaciones.
 
-Como resultado, la plataforma ofrece flexibilidad para aislar una sola aplicación o tiene varias aplicaciones que comparten recursos al compartir un plan de App Service.
+Como resultado, plataforma Hola proporciona Hola flexibilidad tooisolate una única aplicación o tiene varias aplicaciones compartir recursos mediante el uso compartido de un plan de servicio de aplicaciones.
 
 Sin embargo, cuando varias aplicaciones comparten un plan del Servicio de aplicaciones, una instancia de esa aplicación se ejecuta en cada instancia de ese plan.
 
 ## <a name="per-app-scaling"></a>Escalado por aplicación
 *Escalado por aplicación* es una característica que se puede habilitar en el nivel del plan del Servicio de aplicaciones y usar después por aplicación.
 
-El escalado por aplicación escala una aplicación de forma independiente desde el plan del Servicio de aplicaciones que lo hospeda. De esta manera, se puede escalar un plan de App Service a 10 instancias, pero se puede configurar una aplicación para usar solo cinco.
+El escalado por aplicación escala una aplicación de forma independiente desde el plan del Servicio de aplicaciones que lo hospeda. De esta manera, un servicio de aplicaciones puede ser plan escalar too10 instancias, pero se puede establecer una aplicación toouse solo cinco.
 
    >[!NOTE]
    >El escalado por aplicación solo está disponible para los planes de App Service de SKU **premium**.
@@ -43,7 +43,7 @@ El escalado por aplicación escala una aplicación de forma independiente desde 
 
 ### <a name="per-app-scaling-using-powershell"></a>Escalado por aplicación mediante PowerShell
 
-Puede crear un plan configurado como de *escalado por aplicación* pasando el atributo ```-perSiteScaling $true``` al commandlet ```New-AzureRmAppServicePlan```.
+Puede crear un plan configurado como un *por aplicación escalado* plan pasando hello ```-perSiteScaling $true``` atributo toohello ```New-AzureRmAppServicePlan``` commandlet
 
 ```
 New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -52,51 +52,51 @@ New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePla
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Si desea actualizar un plan de App Service existente para usar esta característica: 
+Si desea que un servicio de aplicación existente tooupdate planear toouse esta característica: 
 
-- obtenga el plan de destino ```Get-AzureRmAppServicePlan```
-- modifique la propiedad localmente ```$newASP.PerSiteScaling = $true```
-- publique los cambios en Azure ```Set-AzureRmAppServicePlan``` 
+- obtener el plan de destino de Hola```Get-AzureRmAppServicePlan```
+- Modificar propiedad de hello localmente```$newASP.PerSiteScaling = $true```
+- registrar su tooazure de espera de cambios```Set-AzureRmAppServicePlan``` 
 
 ```
-# Get the new App Service Plan and modify the "PerSiteScaling" property.
+# Get hello new App Service Plan and modify hello "PerSiteScaling" property.
 $newASP = Get-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan
 $newASP
 
-#Modify the local copy to use "PerSiteScaling" property.
+#Modify hello local copy toouse "PerSiteScaling" property.
 $newASP.PerSiteScaling = $true
 $newASP
     
-#Post updated app service plan back to azure
+#Post updated app service plan back tooazure
 Set-AzureRmAppServicePlan $newASP
 ```
 
-En el nivel de aplicación, es necesario configurar el número de instancias que puede usar la aplicación en el plan de App Service.
+En el nivel de aplicación Hola, necesitamos tooconfigure número de Hola de instancias que se puede usar la aplicación hello en el plan de servicio de aplicación Hola.
 
-En el ejemplo siguiente, la aplicación está limitada a dos instancias, independientemente de la cantidad de estas a las que se escale horizontalmente el plan de App Service subyacente.
+En el ejemplo de Hola a continuación, aplicación hello es tootwo limitado instancias sin tener en cuenta el número de instancias Hola subyacente aplicación servicio plan escalas out a.
 
 ```
-# Get the app we want to configure to use "PerSiteScaling"
+# Get hello app we want tooconfigure toouse "PerSiteScaling"
 $newapp = Get-AzureRmWebApp -ResourceGroupName $ResourceGroup -Name $webapp
     
-# Modify the NumberOfWorkers setting to the desired value.
+# Modify hello NumberOfWorkers setting toohello desired value.
 $newapp.SiteConfig.NumberOfWorkers = 2
     
-# Post updated app back to azure
+# Post updated app back tooazure
 Set-AzureRmWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> $newapp.SiteConfig.NumberOfWorkers es diferente de $newapp.MaxNumberOfWorkers. En el escalado por aplicación se usa $newapp.SiteConfig.NumberOfWorkers para determinar las características de escalado de la aplicación.
+> $newapp.SiteConfig.NumberOfWorkers es diferente de $newapp.MaxNumberOfWorkers. Por cada aplicación escala utiliza $newapp. Características de escala de SiteConfig.NumberOfWorkers toodetermine Hola de aplicación hello.
 
 ### <a name="per-app-scaling-using-azure-resource-manager"></a>Escalado por aplicación mediante Azure Resource Manager
 
-La siguiente *plantilla de Azure Resource Manager* crea:
+siguiente Hello *plantilla de Azure Resource Manager* crea:
 
-- Un plan de App Service que se escala horizontalmente a 10 instancias.
-- Una aplicación que está configurada para escalarse hasta un máximo de 5 instancias.
+- Un plan de servicio de aplicaciones que se escala too10 instancias
+- una aplicación que ha configurado tooscale tooa máximo de cinco instancias.
 
-El plan de App Service es establecer la propiedad **PerSiteScaling** en true ```"perSiteScaling": true```. La aplicación configura el **número de trabajadores** que se va a usar en 5 ```"properties": { "numberOfWorkers": "5" }```.
+Hello plan de servicio de aplicaciones para desarrolladores establece hello **PerSiteScaling** propiedad tootrue ```"perSiteScaling": true```. aplicación Hello es establecer hello **número de trabajadores** toouse too5 ```"properties": { "numberOfWorkers": "5" }```.
 
 ```
 {
@@ -146,19 +146,19 @@ El plan de App Service es establecer la propiedad **PerSiteScaling** en true ```
 ```
 
 ## <a name="recommended-configuration-for-high-density-hosting"></a>Configuración recomendada para el hospedaje de alta densidad
-El escalado por aplicación es una característica que está habilitada en las regiones de Azure globales y los entornos de App Service. Sin embargo, la estrategia recomendada es usar entornos del Servicio de aplicaciones para aprovechar sus características avanzadas y los grupos de mayor capacidad.  
+El escalado por aplicación es una característica que está habilitada en las regiones de Azure globales y los entornos de App Service. Sin embargo, Hola recomendado estrategia consiste en usar sus características avanzadas de aprovechar de tootake entornos del servicio de aplicación y grupos más grandes de Hola de capacidad.  
 
-Siga estos pasos para configurar el hospedaje de alta densidad para las aplicaciones:
+Siga estos pasos tooconfigure alta densidad para las aplicaciones de hospedaje:
 
-1. Configure el entorno del App Service y elija un grupo de trabajo dedicado al escenario de hospedaje de alta densidad.
-1. Cree un único plan del Servicio de aplicaciones y escálelo para que utilice toda la capacidad disponible en el grupo de trabajo.
-1. Establezca la marca PerSiteScaling en true en el plan de App Service.
-1. Las nuevas aplicaciones se crean y se asignan al plan de App Service con la propiedad **numberOfWorkers** establecida en **1**. El uso de esta configuración produciría la máxima densidad posible en este grupo de trabajo.
-1. El número de trabajadores se puede configurar por separado por cada aplicación para conceder recursos adicionales según sea necesario. Por ejemplo:
-    - En una aplicación de uso elevado, puede establecer **numberOfWorkers** en **3** para que haya una mayor capacidad de procesamiento para esa aplicación. 
-    - En las aplicaciones de poco uso se establecerá **numberOfWorkers** en **1**.
+1. Configurar el entorno del servicio de aplicación Hola y elija un grupo de trabajo que está dedicado toohello alta densidad escenario de alojamiento.
+1. Crear un único plan de servicio de aplicaciones y escalar toouse todos Hola capacidad disponible en el grupo de trabajo de Hola.
+1. Establecer hello PerSiteScaling marca tootrue en hello plan de servicio de aplicaciones.
+1. Nuevas aplicaciones se crean y se asignan toothat plan de servicio de aplicaciones con la **numberOfWorkers** propiedad establecida demasiado**1**. Con esta configuración produce Hola mayor densidad posible en este grupo de trabajo.
+1. número de Hola de trabajos se puede configurar independientemente por recursos adicionales de toogrant la aplicación según sea necesario. Por ejemplo:
+    - Puede establecer una aplicación de uso elevado **numberOfWorkers** demasiado**3** toohave más capacidad para esa aplicación de procesamiento. 
+    - Aplicaciones de poco uso establecería **numberOfWorkers** demasiado**1**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 - [Introducción detallada sobre los planes de Azure App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md)
-- [Introducción al entorno del Servicio de aplicaciones](../app-service-web/app-service-app-service-environment-intro.md)
+- [Introducción tooApp entorno del servicio](../app-service-web/app-service-app-service-environment-intro.md)

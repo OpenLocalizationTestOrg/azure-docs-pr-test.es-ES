@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con RFPIO | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y RFPIO."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y RFPIO."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,51 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 26a8bb17dad5a01b401ce7f9b484f09822825cbf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e0c692276276edd8f859e73d81cf54d75a65957a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Tutorial: Integración de Azure Active Directory con RFPIO
 
-En este tutorial, aprenderá a integrar RFPIO con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate RFPIO con Azure Active Directory (Azure AD).
 
-La integración de RFPIO con Azure AD le proporciona las siguientes ventajas:
+Integración RFPIO con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a RFPIO.
-- Puede permitir que los usuarios inicien sesión automáticamente en RFPIO (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: Azure Portal.
+- Puede controlar quién en Azure AD que tenga acceso tooRFPIO.
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooRFPIO (Single Sign-On) con sus cuentas de Azure AD.
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure.
 
-Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [Qué es el acceso a las aplicaciones y el inicio de sesión único en Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con RFPIO, necesita los siguientes elementos:
+integración de Azure AD con RFPIO tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD.
 - Una suscripción habilitada para el inicio de sesión único en RFPIO
 
 > [!NOTE]
-> No se recomienda usar un entorno de producción para probar los pasos de este tutorial.
+> No se recomienda que utilice un pasos de hello tootest del entorno de producción en este tutorial.
 
-Para probar los pasos de este tutorial, siga estas recomendaciones:
+pasos de hello tootest en este tutorial, siga estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede [obtener una versión de prueba durante un mes](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hola que se describe en este tutorial consta de dos bloques principales:
 
-1. Adición de RFPIO desde la galería
+1. Agregar RFPIO desde la Galería de Hola.
 2. Configuración y prueba del inicio de sesión único de Azure AD
 
-## <a name="add-rfpio-from-the-gallery"></a>Adición de RFPIO desde la galería
-Para configurar la integración de RFPIO en Azure AD, es preciso agregar dicha solución desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="add-rfpio-from-hello-gallery"></a>Agregar RFPIO de galería de Hola
+integración de hello tooconfigure de RFPIO en Azure AD, deberá tooadd RFPIO de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-### <a name="to-add-rfpio-from-the-gallery"></a>Para agregar RFPIO desde la galería
+### <a name="tooadd-rfpio-from-hello-gallery"></a>tooadd RFPIO de galería de Hola
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, seleccione el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en Hola panel de navegación izquierdo, seleccione hello **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
@@ -65,66 +65,66 @@ Para configurar la integración de RFPIO en Azure AD, es preciso agregar dicha s
 
     ![Aplicaciones][2]
     
-3. Para agregar una nueva aplicación, seleccione el botón **Nueva aplicación** en la parte superior del cuadro de diálogo.
+3. tooadd una nueva aplicación, seleccione hello **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **RFPIO**.
+4. En el cuadro de búsqueda de hello, escriba **RFPIO**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_search.png)
 
-5. En el panel de resultados, seleccione **RFPIO** y, luego, haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **RFPIO**y, a continuación, seleccione hello **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Configuración y prueba del inicio de sesión único en Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con RFPIO con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es la relación entre el usuario homólogo de RFPIO y un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario correspondiente de RFPIO.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow ¿qué relación hello es entre equivalente en RFPIO un usuario y en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en RFPIO debe toobe establecido.
 
-Para establecer la relación de vínculo, asigne el valor de **nombre de usuario** de Azure AD como valor de **nombre de usuario** de RFPIO.
+En RFPIO, asigne el valor de Hola de **nombre de usuario** en Azure AD como valor de Hola de **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con RFPIO, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con RFPIO, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)**: el objetivo es permitir que los usuarios usen esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**: el objetivo es probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de RFPIO](#creating-a-rfpio-test-user)**: el objetivo es tener un homólogo de Britta Simon en RFPIO que esté vinculado a la representación del usuario en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)**: el objetivo es permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Prueba del inicio de sesión único](#testing-single-sign-on)**: el objetivo es comprobar que la configuración funciona.
+1. **[Configurar Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**--tooenable su toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**--tootest inicio de sesión único en Azure AD con Britta Simon.
+3. **[Crear un usuario de prueba RFPIO](#creating-a-rfpio-test-user)**  --toohave un equivalente de Britta Simon en RFPIO que es la representación toohello vinculado Azure AD del usuario.
+4. **[Asignar el usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**tooenable--Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Probar el inicio de sesión único](#testing-single-sign-on)**  --tooverify si Hola configuración funciona.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en la aplicación RFPIO.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación RFPIO.
 
-**Para configurar el inicio de sesión único de Azure AD con RFPIO, realice los pasos siguientes:**
+**inicio de sesión único en Azure AD tooconfigure con RFPIO, realizar Hola pasos:**
 
-1. En la página de integración de la aplicación **RFPIO** de Azure Portal, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **RFPIO** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_samlbase.png)
 
-3. Vaya a la sección **Dominio y direcciones URL de RFPIO**, si quiere configurar la aplicación en modo iniciado por **IDP**:
+3. En hello **RFPIO dominio y las direcciones URL** sección, si desea que aplicación de hello tooconfigure en **IDP** modo iniciado:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url.png)
 
-    a. En el cuadro de texto **Identificador**, escriba la dirección URL: `https://www.rfpio.com`
+    a. Hola **identificador** cuadro de texto, escriba la dirección URL hello:`https://www.rfpio.com`
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url1.png)
 
     b. Active **Mostrar configuración avanzada de URL**.
 
-    c. En el cuadro de texto **Estado de la retransmisión**, escriba un valor de cadena. Póngase en contacto con el [equipo de soporte técnico de RFPIO](https://www.rfpio.com/contact/) para obtener este valor. 
+    c. Hola **estado de retransmisión** cuadro de texto escriba un valor de cadena. Póngase en contacto con [equipo de soporte técnico RFPIO](https://www.rfpio.com/contact/) tooget este valor. 
 
-4. Active **Mostrar configuración avanzada de URL**. Si quiere volver a configurar la aplicación en modo iniciado por **SP**: 
+4. Active **Mostrar configuración avanzada de URL**. Si desea que aplicación de hello tooconfigure en **SP** modo iniciado:   
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url2.png)
 
-    En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL similar a la siguiente: `https://www.app.rfpio.com`
+    Hola **dirección URL de inicio de sesión** cuadro de texto, escriba la dirección URL hello:`https://www.app.rfpio.com`
 
-5. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo de metadatos en el equipo.
+5. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo de metadatos de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_certificate.png) 
 
@@ -132,21 +132,21 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/tutorial_general_400.png)
 
-7. En otra ventana del explorador web, inicie sesión en el sitio web de **RFPIO** como administrador.
+7. En una ventana del explorador web diferente, inicio de sesión toohello **RFPIO** sitio Web como administrador.
 
-8. Haga clic en la lista desplegable de la esquina inferior izquierda.
+8. Haga clic en el desplegable de esquina izquierda inferior de Hola.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/app1.png)
 
-9. Haga clic en **Organization Settings** (Configuración de la organización). 
+9. Haga clic en hello **configuración de la organización**. 
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/app2.png)
 
-10. Haga clic en **FEATURES & INTEGRATION** (CARACTERÍSTICAS E INTEGRACIÓN).
+10. Haga clic en hello **características e integración**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/app4.png)
 
-11. En **SAML SSO Configuration** (Configuración del inicio de sesión único de SAML), haga clic en **Edit** (Editar).
+11. Hola **configuración de SSO de SAML** haga clic en **editar**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/app3.png)
 
@@ -154,66 +154,66 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/app5.png)
     
-    a. Copie el contenido del archivo **XML de metadatos descargado** y péguelo en el campo **identity configuration** (Configuración de identidad).
+    a. Copiar el contenido de Hola de hello **XML de metadatos descargado** y péguelo en hello **configuración de identidad** campo.
 
     > [!NOTE]
-    >Para copiar el contenido del archivo **XML de metadatos** descargado, use **Notepad++** o un **Editor XML** adecuado. 
+    >Hola toocopy contenido de descarga **Metadata XML** Use **el Bloc de notas ++** o adecuada **Editor XML**. 
 
     b. Haga clic en **Validar**.
 
-    c. Después de hacer clic en **Validate** (Validar), mueva **SAML(Enabled)** (SAML [Habilitado]) a activado.
+    c. Después de hacer clic **validar**, voltear **SAML(Enabled)** tooon.
 
     d. Haga clic en **Enviar**.
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-rfpio-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-rfpio-tutorial/create_aaduser_02.png) 
 
-3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-rfpio-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-rfpio-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="create-a-rfpio-test-user"></a>Creación de un usuario de prueba de RFPIO
 
-Para permitir que los usuarios de Azure AD inicien sesión en RFPIO, deben aprovisionarse en dicha solución.  
-En el caso de RFPIO, el aprovisionamiento es una tarea manual.
+toolog de los usuarios de Azure AD tooenable en tooRFPIO, se les deben aprovisionar en RFPIO.  
+En caso de hello de RFPIO, el aprovisionamiento es una tarea manual.
 
-**Para aprovisionar una cuenta de usuario, realice estos pasos:**
+**tooprovision una cuenta de usuario, lleve a cabo Hola pasos:**
 
-1. Regístrese en el sitio de la compañía de RFPIO como administrador.
+1. Inicie sesión en tooyour sitio RFPIO de su compañía como administrador.
 
-2. Haga clic en la lista desplegable de la esquina inferior izquierda.
+2. Haga clic en el desplegable de esquina izquierda inferior de Hola.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/app1.png)
 
-3. Haga clic en **Organization Settings** (Configuración de la organización). 
+3. Haga clic en hello **configuración de la organización**. 
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/app2.png)
 
@@ -225,36 +225,36 @@ En el caso de RFPIO, el aprovisionamiento es una tarea manual.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/app7.png)
 
-6. Vaya a la sección **Add New Members** (Agregar nuevos miembros). Realice las siguientes acciones:
+6. Hola **agregar nuevos miembros** sección. Realice las siguientes acciones:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/app8.png)
 
-    a. Escriba la **dirección de correo electrónico** en el campo **Enter one email per line** (Escribir un correo electrónico por línea).
+    a. ENTRAR **dirección de correo electrónico** en hello **escriba una dirección de correo por línea** campo.
 
     b. Seleccione **Role** (Role) de acuerdo con sus requisitos.
 
     c. Haga clic en **ADD MEMBERS** (AGREGAR MIEMBROS).
         
     > [!NOTE]
-    > El titular de la cuenta de Azure Active Directory recibirá un mensaje de correo y seguirá un vínculo para confirmar su cuenta antes de que se active.
+    > titular de la cuenta de Hello Azure Active Directory recibe un correo electrónico y sigue un vínculo tooconfirm su cuenta antes de activarla.
 
-### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a RFPIO.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooRFPIO.
 
 ![Asignar usuario][200] 
 
-**Para asignar a Britta Simon a RFPIO, realice los pasos siguientes:**
+**tooassign Britta Simon tooRFPIO, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **RFPIO**.
+2. En la lista de aplicaciones de hello, seleccione **RFPIO**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -262,7 +262,7 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -270,14 +270,14 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="test-single-sign-on"></a>Prueba de inicio de sesión único
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión única de Azure AD mediante el uso de hello Panel de acceso.
 
-Al hacer clic en el icono de RFPIO en el Panel de acceso, debería iniciar sesión automáticamente en su aplicación RFPIO.
-Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Al hacer clic en hello RFPIO el icono Panel de acceso de hello, deberá obtener la aplicación de RFPIO tooyour automáticamente ha iniciado sesión.
+Para obtener más información sobre el Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo la integración de aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo toointegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

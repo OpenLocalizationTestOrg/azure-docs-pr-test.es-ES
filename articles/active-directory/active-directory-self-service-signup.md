@@ -1,6 +1,6 @@
 ---
-title: "¿Qué es la suscripción de autoservicio de Azure? | Microsoft Docs"
-description: "Información general de la suscripción de autoservicio de Azure: cómo administrar el proceso de suscripción y adquirir un nombre de dominio DNS."
+title: "¿aaaWhat es la suscripción de autoservicio de Azure? | Microsoft Docs"
+description: "Una suscripción de autoservicio de información general de Azure, cómo toomanage Hola proceso de suscripción y cómo tootake a través de un nombre de dominio DNS."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,132 +14,132 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/08/2017
 ms.author: curtand
-ms.openlocfilehash: de8b55516ae7e19f2b42466fa4dc387b82495a5b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dbf3b59e3807e98f7bf39f3d5591fcde01667323
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-is-self-service-signup-for-azure"></a>¿Qué es la suscripción de autoservicio de Azure?
-En este tema se explica el proceso de registro de autoservicio y el modo de adquirir un nombre de dominio DNS.  
+Este tema explica el proceso de suscripción de autoservicio de Hola y cómo tootake a través de un nombre de dominio DNS.  
 
 ## <a name="why-use-self-service-signup"></a>Razones para usar la suscripción de autoservicio
-* Permita que los usuarios tengan acceso a los servicios que desean más rápido.
+* Get tooservices de los clientes que deseen con mayor rapidez.
 * Cree ofertas basadas en correo electrónico para un servicio.
-* Cree flujos de suscripción basados en correo electrónico que permitan a los usuarios crear identidades rápidamente con sus alias de correo electrónico del trabajo fáciles de recordar.
+* Crear flujos de suscripción basada en correo electrónico que permiten rápidamente a los usuarios identidades toocreate utilizando sus alias de correo electrónico de trabajo fácil de recordar.
 * Los directorios de Azure no administrados se pueden convertir en directorios administrados más adelante y reutilizarse para otros servicios.
 
 ## <a name="terms-and-definitions"></a>Términos y definiciones
-* **Registro de autoservicio**: método por el que un usuario se registra en un servicio en la nube y por el que se le crea automáticamente una identidad en Azure Active Directory (AD) basada en su dominio de correo electrónico.
-* **Directorio de Azure no administrado**: directorio donde se crea la identidad. Un directorio no administrado es un directorio que no tiene administrador global.
+* **Registro de autoservicio**: se trata de método de hello por el que un usuario se suscribe a un servicio de nube y una identidad que se crean automáticamente para ellos en Azure Active Directory (Azure AD) en función de su dominio de correo electrónico.
+* **Directorio de Azure no administrado**: se trata de directorio de hello en el que se crea esa identidad. Un directorio no administrado es un directorio que no tiene administrador global.
 * **Usuario comprobado por correo electrónico**: tipo de cuenta de usuario en Azure AD. Un usuario que tiene una identidad que se crean automáticamente después de suscribirse a una oferta de autoservicio se conoce como usuario comprobado por correo electrónico. Un usuario comprobado por correo electrónico es un miembro regular de un directorio etiquetado con creationmethod = EmailVerified.
 
 ## <a name="user-experience"></a>Experiencia del usuario
-Por ejemplo, supongamos que un usuario cuyo correo electrónico es Dan@BellowsCollege.com recibe archivos confidenciales por correo electrónico. Los archivos se han protegido con Azure Rights Management (Azure RMS). Pero la organización de Dan, Bellows College, no se ha suscrito a Azure RMS ni ha implementado Active Directory RMS. En este caso, Dan puede obtener una suscripción gratuita de RMS para usuarios a fin de leer los archivos protegidos.
+Por ejemplo, supongamos que un usuario cuyo correo electrónico es Dan@BellowsCollege.com recibe archivos confidenciales por correo electrónico. archivos de Hola se protegieron con Azure Rights Management (Azure RMS). Pero la organización de Dan, Bellows College, no se ha suscrito a Azure RMS ni ha implementado Active Directory RMS. En este caso, Dan puede solicitar para una tooRMS suscripción gratuita para usuarios de archivos de pedido tooread Hola protegido.
 
-Si Dan es el primer usuario con una dirección de correo electrónico de BellowsCollege.com en registrarse en esta oferta de autoservicio, se creará un directorio no administrado para BellowsCollege.com en Azure AD. Si otros usuarios del dominio BellowsCollege.com se registran en esta oferta o una oferta de autoservicio similar, también se crearán para ellos cuentas de usuario verificadas por correo electrónico en el mismo directorio no administrado en Azure.
+Si se Dan es el primer usuario con una dirección de correo electrónico de BellowsCollege.com toosign hacia arriba para esta oferta de autoservicio de hello, se creará un directorio no administrado para BellowsCollege.com en Azure AD. Si otros usuarios del dominio de BellowsCollege.com Hola registran para esta oferta o una oferta similar de autoservicio, también tendrán las cuentas de usuario comprobados por correo electrónico creadas en hello administrados por el mismo directorio en Azure.
 
 ## <a name="admin-experience"></a>Experiencia del administrador
-Un administrador que posee el nombre de dominio DNS de un directorio de Azure no administrado puede adquirir o fusionar el directorio después de demostrar la propiedad. En las secciones siguientes se explica con más detalle la experiencia del administrador, pero a continuación se incluye un resumen:
+Un administrador que posee el nombre de dominio DNS de Hola de un directorio de Azure no administrado puede asumir o combinar el directorio de hello después de probar la propiedad. Hola siguiente sección explica la experiencia de administración de hello con más detalle, pero este es un resumen:
 
-* Al adquirir un directorio de Azure no administrado, se convierte en administrador global del directorio no administrado. Esto se denomina a veces adquisición interna.
-* Al fusionar un directorio de Azure no administrado, agregue el nombre de dominio DNS del directorio no administrado a su directorio de Azure administrado; se creará una asignación de usuarios a recursos para que los usuarios puedan seguir teniendo acceso a los servicios sin interrupción. Esto se denomina a veces adquisición externa.
+* Cuando tome el control de un directorio de Azure no administrado, se convierte simplemente en hello administrador global del directorio de hello no administrado. Esto se denomina a veces adquisición interna.
+* Cuando se combina un directorio de Azure no administrado, Agregar nombre de dominio DNS de Hola Hola directorio no administrado tooyour administrado directorio de Azure y se crea una asignación de recursos de los usuarios por lo que los usuarios pueden seguir tooaccess servicios sin interrupción. Esto se denomina a veces adquisición externa.
 
 ## <a name="what-gets-created-in-azure-active-directory"></a>¿Qué se crea en Azure Active Directory?
 #### <a name="directory"></a>Directorio
-* Se crea un directorio de Azure Active Directory para el dominio, un directorio por dominio.
-* El directorio de Azure AD no tiene ningún administrador global.
+* Se crea un directorio de Azure Active Directory para el dominio de hello, un directorio por dominio.
+* directorio de Azure AD de Hello no tiene ningún administrador global.
 
 #### <a name="users"></a>Usuarios
-* Para cada usuario que se registra, se crea un objeto de usuario en el directorio de Azure AD.
+* Para cada usuario que se registra, se crea un objeto de usuario en el directorio de Azure AD Hola.
 * Cada objeto de usuario se marca como externo.
-* Cada usuario tiene acceso al servicio en el que se ha registrado.
+* Cada usuario recibe servicio de toohello de acceso que se inició en.
 
 ### <a name="how-do-i-claim-a-self-service-azure-ad-directory-for-a-domain-i-own"></a>¿Cómo puedo reclamar un directorio de Azure AD de autoservicio para un dominio de mi propiedad?
-Puede reclamar un directorio de Azure AD de autoservicio realizando la validación del dominio. La validación del dominio demuestra que es el propietario del dominio mediante la creación de registros DNS.
+Puede reclamar un directorio de Azure AD de autoservicio realizando la validación del dominio. Validación del dominio demuestra dominio propio hello mediante la creación de registros DNS.
 
-Hay dos formas de realizar una adquisición de DNS de un directorio de Azure AD:
+Hay dos maneras toodo una adquisición DNS de un directorio de Azure AD:
 
-* Adquisición interna (el administrador detecta un directorio de Azure no administrado y desea convertirlo en un directorio administrado).
-* Adquisición externa (el administrador intenta agregar un nuevo dominio a su directorio de Azure administrado).
+* adquisición interno (Admin detecta un directorio de Azure no administrado y desea tooturn en un directorio administrado)
+* adquisición externo (Admin intenta tooadd un nuevo dominio tootheir administrado directorio de Azure)
 
-Puede que le interese validar que posee un dominio, porque va a adquirir un directorio no administrado después de que un usuario realice un registro de autoservicio, o bien puede que quiera agregar un dominio nuevo a un directorio administrado existente. Por ejemplo, tiene un dominio denominado contoso.com y desea agregar un nuevo dominio denominado contoso.co.uk o contoso.uk.
+Puede que esté interesado en la validación que posee un dominio dado que va a realizar en un directorio no administrado después de que un usuario realiza la suscripción de autoservicio o agregar un nuevo dominio tooan administrado directorio existente. Por ejemplo, tiene un dominio llamado contoso.com y desea tooadd un nuevo dominio denominado contoso.es o contoso.uk.
 
 ## <a name="what-is-domain-takeover"></a>¿Qué es la adquisición de un dominio?
-En esta sección se describe cómo validar la propiedad de su dominio.
+Esta sección trata sobre cómo toovalidate que posee un dominio
 
 ### <a name="what-is-domain-validation-and-why-is-it-used"></a>¿Qué es la validación de dominios y por qué se usa?
-Para realizar operaciones en un directorio, Azure AD necesita que valide la propiedad del dominio DNS.  La validación del dominio permite reclamar el directorio y promover el directorio de autoservicio a un directorio administrado o fusionar el directorio de autoservicio en un directorio administrado existente.
+En operaciones de orden tooperform en un directorio, Azure AD necesita que valida la propiedad de dominio DNS de Hola.  La validación del dominio de hello permite directory hello tooclaim y o bien promover Hola autoservicio tooa administrado directorio o directorios de autoservicio Hola de mezcla en una existente administrada directorio.
 
 ## <a name="examples-of-domain-validation"></a>Ejemplos de validación de dominio
-Hay dos formas de realizar una adquisición de DNS de un directorio:
+Hay dos toodo formas una adquisición DNS de un directorio:
 
-* Adquisición interna (por ejemplo, un administrador detecta un directorio no administrado de autoservicio y desea convertirlo en un directorio administrado).
-* Adquisición externa (por ejemplo, un administrador intenta agregar un nuevo dominio a un directorio administrado).
+* adquisición interno (por ejemplo, un administrador detecta un directorio de autoservicio y no administrado y desea tooturn en directorio administrado)
+* adquisición externo (por ejemplo, un administrador intenta tooadd un nuevo directorio administrado de tooa de dominio)
 
-### <a name="internal-takeover---promote-a-self-service-unmanaged-directory-to-be-a-managed-directory"></a>Adquisición interna: promueva un directorio no administrado de autoservicio a un directorio administrado.
-Al realizar una adquisición interna, el directorio pasa de ser un directorio no administrado a un directorio administrado. Debe completar la validación del nombre de dominio DNS, donde crea un registro MX o un registro TXT en la zona DNS. Esa acción:
+### <a name="internal-takeover---promote-a-self-service-unmanaged-directory-toobe-a-managed-directory"></a>Adquisición interno - promover un toobe un directorio administrado de directorio de autoservicio y no administrado
+Al hacerlo adquisición interno, directorio de Hola se convierte desde un directorio administrado tooa de directorio no administrado. Se necesita validación de nombre de dominio DNS toocomplete, y en el que crea un registro MX o un registro TXT en zona DNS de Hola. Esa acción:
 
-* Valida la propiedad de su dominio
-* Hace que el directorio sea administrado
-* Le convierte en administrador global del directorio
+* Valida que posee el dominio de Hola
+* Hace directory Hola administrado
+* Hace Hola administrador global del directorio de Hola
 
-Supongamos que un administrador de TI de Bellows College detecta que los usuarios de la escuela se han suscrito a ofertas de autoservicio. Como propietario registrado del nombre DNS BellowsCollege.com, el administrador de TI puede validar la propiedad del nombre DNS en Azure y adquirir el directorio no administrado. A continuación, el directorio se convierte en un directorio administrado y al administrador de TI se le asigna el rol de administrador global para el directorio BellowsCollege.com.
+Supongamos que un administrador de TI de la Universidad de fuelles detecta que los usuarios de la escuela de hello registrarse para obtener ofertas de autoservicio. Hola registrados propietario de hello DNS nombre BellowsCollege.com, Hola, Administrador de TI puede validar la propiedad de nombre DNS de hello en Azure y, a continuación, asumen el directorio de hello no administrado. Hello directorio, a continuación, se convierte en un directorio administrado y hello Administrador de TI se asigna rol de administrador global de hello para el directorio de BellowsCollege.com Hola.
 
 ### <a name="external-takeover---merge-a-self-service-directory-into-an-existing-managed-directory"></a>Adquisición externa: fusión de un directorio de autoservicio en un directorio administrado existente
-En una adquisición externa, ya tiene un directorio administrado y desea que todos los usuarios y grupos de un directorio no administrado se unan a ese directorio administrado en lugar de poseer dos directorios independientes.
+En una adquisición externo, ya tiene un directorio administrado y desea que todos los usuarios y grupos de un toojoin de directorio no administrado que administran el directorio, en lugar de dos propios directorios independientes.
 
-Como administrador de un directorio administrado, se agrega un dominio que tiene asociado un directorio no administrado.
+Como administrador de un directorio administrado, se agrega un dominio y ese dominio ocurre toohave un directorio no administrado asociado a él.
 
-Por ejemplo, suponga que es administrador de TI y ya tiene un directorio administrado para Contoso.com, un nombre de dominio registrado para su organización. Descubre que los usuarios de su organización han realizado una suscripción de autoservicio a una oferta con un nombre de dominio de correo electrónico user@contoso.co.uk, que es otro nombre de dominio que posee su organización. Actualmente, esos usuarios tienen cuentas en un directorio no administrado para contoso.co.uk.
+Por ejemplo, supongamos que es un administrador de TI y ya tiene un directorio administrado para un nombre de dominio que está registrado tooyour organización Contoso.com. Descubre que los usuarios de su organización han realizado una suscripción de autoservicio a una oferta con un nombre de dominio de correo electrónico user@contoso.co.uk, que es otro nombre de dominio que posee su organización. Actualmente, esos usuarios tienen cuentas en un directorio no administrado para contoso.co.uk.
 
-Usted no desea administrar dos directorios independientes, por lo que fusiona el directorio no administrado para contoso.co.uk en su directorio administrado de TI existente para contoso.com.
+No desea toomanage dos directorios independientes, por lo que combine directorio no administrado de hello contoso.co.uk con el directorio de TI administrados existente para contoso.com.
 
-La adquisición externa sigue el mismo proceso de validación de DNS que la adquisición interna.  La diferencia es que se reasignan los usuarios y servicios al directorio administrado de TI.
+Externo sigue adquisición Hola mismo proceso de validación de DNS como adquisición interno.  Va a las diferencias: usuarios y servicios son toohello reasignado TI directorio administrado.
 
-#### <a name="whats-the-impact-of-performing-an-external-takeover"></a>¿Cuál es el impacto de realizar una adquisición externa?
-Con una adquisición externa, se crea una asignación de usuarios a recursos para que los usuarios sigan teniendo acceso a los servicios sin interrupción. Muchas aplicaciones, como RMS para usuarios, administran la asignación de usuarios a los recursos bien y los usuarios pueden seguir teniendo acceso a los servicios sin cambios. Si una aplicación no administra la asignación de usuarios a recursos de forma eficaz, es posible que se bloquee la adquisición externa explícitamente para evitar una experiencia deficiente de los usuarios.
+#### <a name="whats-hello-impact-of-performing-an-external-takeover"></a>¿Cuál es el impacto de Hola de llevar a cabo una adquisición externo?
+Con una adquisición externo, se crea una asignación de los usuarios a recursos de forma que los usuarios puedan seguir tooaccess servicios sin interrupción. Muchas aplicaciones, como RMS para individuos, controlan asignación de Hola de recursos de los usuarios también, y los usuarios pueden seguir tooaccess esos servicios sin cambios. Si una aplicación no controla asignación Hola de los usuarios a recursos de forma eficaz, adquisición externo puede ser tooprevent explícitamente bloqueados los usuarios una experiencia deficiente.
 
 #### <a name="directory-takeover-support-by-service"></a>Admisión de la adquisición del directorio por servicio
-Actualmente, los servicios siguientes admiten la adquisición:
+Hola actualmente después de adquisición de soporte técnico de servicios:
 
 * RMS
 
-Los siguientes servicios admitirán la adquisición próximamente:
+Hola después services admitirá pronto adquisición:
 
 * PowerBI
 
-Los siguientes servicios no la admiten y requieren una acción adicional del administrador para migrar datos de usuario después de una adquisición externa.
+siguiente Hello no garantizan ni necesita datos de usuario de toomigrate de acción de administración adicionales después de una adquisición externo.
 
 * SharePoint/OneDrive
 
-## <a name="how-to-perform-a-dns-domain-name-takeover"></a>Realización de una adquisición de nombre de dominio DNS
-Tiene unas cuantas opciones para realizar una validación de dominio (y realizar una adquisición si lo desea):
+## <a name="how-tooperform-a-dns-domain-name-takeover"></a>¿Cómo tooperform un dominio DNS nombre adquisición
+Tiene unas cuantas opciones de cómo tooperform una validación de dominio (y realice una adquisición si lo desea):
 
 1. Portal de administración de Azure
 
-   Una adquisición se desencadena  agregando un dominio.  Si ya existe un directorio para el dominio, tendrá la opción de realizar una adquisición externa.
+   Una adquisición se desencadena  agregando un dominio.  Si ya existe un directorio para el dominio de hello, tendrá Hola opción tooperform una adquisición externo.
 
-   Inicio de sesión en el portal de Azure con credenciales  Vaya al directorio existente y, después, a **Agregar dominio**.
+   Inicie sesión en toohello portal de Azure con sus credenciales.  Navegue tooyour de directorio existente y, a continuación, demasiado**Agregar dominio**.
 2. Office 365
 
-   Puede usar las opciones de la [Administrar dominios](https://support.office.com/article/Navigate-to-the-Office-365-Manage-domains-page-026af1f2-0e6d-4f2d-9b33-fd147420fac2/) en Office 365 para trabajar con sus dominios y registros DNS. Consulte [Comprobar el dominio en Office 365](https://support.office.com/article/Verify-your-domain-in-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611/).
+   Puede utilizar opciones de hello en hello [administrar dominios](https://support.office.com/article/Navigate-to-the-Office-365-Manage-domains-page-026af1f2-0e6d-4f2d-9b33-fd147420fac2/) página en Office 365 toowork con los dominios y registros DNS. Consulte [Comprobar el dominio en Office 365](https://support.office.com/article/Verify-your-domain-in-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611/).
 3. Windows PowerShell
 
-   Los pasos siguientes son necesarios para realizar una validación con Windows PowerShell.
+   Hola pasos es necesario tooperform una validación mediante Windows PowerShell.
 
-   | Paso | Cmdlet que se debe usar |
+   | Paso | Cmdlet toouse |
    | --- | --- |
    | Crear un objeto de credencial |Get-Credential |
-   | Conectarse a Azure |Connect-MsolService |
+   | Conectar tooAzure AD |Connect-MsolService |
    | Obtener una lista de dominios |Get-MsolDomain |
    | Crear un desafío |Get-MsolDomainVerificationDns |
    | Crear un registro DNS |Realice esta acción en su servidor de DNS |
-   | Comprobar el desafío |Confirm-MsolEmailVerifiedDomain |
+   | Comprobar el desafío de Hola |Confirm-MsolEmailVerifiedDomain |
 
 Por ejemplo:
 
-1. Conéctese a Azure AD con las credenciales que se usaron para responder a la oferta de autoservicio:
+1. Conectar tooAzure AD mediante credenciales de Hola que estaban toorespond usado toohello autoservicio oferta:
 
         import-module MSOnline
         $msolcred = get-credential
@@ -147,22 +147,22 @@ Por ejemplo:
 2. Obtenga una lista de dominios:
 
     Get-MsolDomain
-3. A continuación, ejecute el cmdlet Get-MsolDomainVerificationDns para crear un desafío:
+3. A continuación, ejecute toocreate de cmdlet Get-MsolDomainVerificationDns Hola un desafío:
 
     Get-MsolDomainVerificationDns –DomainName *nombre_de_dominio* –Mode DnsTxtRecord
 
     Por ejemplo:
 
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
-4. Copie el valor (el desafío) que se devuelve desde este comando.
+4. Copiar valor de hello (desafío Hola) que se devuelve de este comando.
 
     Por ejemplo:
 
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
-5. En el espacio de nombres DNS público, cree un registro txt de DNS que contenga el valor que copió en el paso anterior.
+5. En el espacio de nombres DNS público, cree un registro txt DNS que contiene el valor de Hola que copió en el paso anterior de Hola.
 
-    El nombre de este registro es el nombre del dominio principal, por lo que si crea este registro de recursos con el rol DNS desde Windows Server, deje el nombre del registro en blanco y pegue el valor en el cuadro de texto.
-6. Ejecute el cmdlet Confirm-MsolDomain para comprobar el desafío:
+    nombre de Hola para este registro es el nombre del dominio primario de Hola de Hola, por lo que si crea este registro de recursos con rol de hello DNS de Windows Server, deje el nombre del registro de hello en blanco y simplemente pegue el valor de hello en el cuadro de texto hello
+6. Ejecute el desafío hello tooverify de hello Confirm-MsolDomain cmdlet:
 
     Confirm-MsolEmailVerifiedDomain -DomainName *nombre_de_dominio*
 
@@ -170,33 +170,33 @@ Por ejemplo:
 
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
 
-Un desafío correcto le devuelve el mensaje sin errores.
+Un desafío correcto le devuelve toohello aviso sin errores.
 
 ## <a name="how-do-i-control-self-service-settings"></a>¿Cómo controlo la configuración de autoservicio?
 Actualmente, los administradores tienen dos controles de autoservicio . Pueden controlar:
 
-* Si los usuarios pueden unirse o no al directorio mediante el correo electrónico.
+* Si los usuarios pueden unirse al directorio de Hola a través de correo electrónico.
 * Si los usuarios pueden concederse o no licencias para aplicaciones y servicios.
 
 ### <a name="how-can-i-control-these-capabilities"></a>¿Cómo puedo controlar estas capacidades?
 Un administrador puede configurar estas capacidades con estos parámetros Set-MsolCompanySettings de cmdlet de Azure AD:
 
-* **AllowEmailVerifiedUsers** controla si un usuario puede crear o unirse a un directorio no administrado. Si establece este parámetro en $false, ningún usuario comprobado por correo electrónico se puede unir al directorio.
-* **AllowAdHocSubscriptions** controla la capacidad de los usuarios de realizar suscripciones de autoservicio. Si establece el parámetro en $false, ningún usuario puede realizar suscripciones de autoservicio.
+* **AllowEmailVerifiedUsers** controla si un usuario puede crear o unirse a un directorio no administrado. Si se establece ese parámetro demasiado$ false, no comprobados por correo electrónico a los usuarios pueden unirse al directorio de Hola.
+* **AllowAdHocSubscriptions** controla la capacidad de Hola para los usuarios registrarse tooperform self-service. Si se establece ese parámetro demasiado$ false, ningún usuario puede realizar la suscripción de autoservicio.
 
-### <a name="how-do-the-controls-work-together"></a>¿Cómo funciona los controles conjuntamente?
-Estos dos parámetros se pueden usar juntos para definir un control más preciso de la suscripción de autoservicio. Por ejemplo, el comando siguiente permitirá a los usuarios realizar suscripciones de autoservicio pero solo si estos usuarios ya tienen una cuenta en Azure AD (en otras palabras, los usuarios que necesitan crear una cuenta comprobada por correo electrónico no pueden realizar suscripciones de autoservicio):
+### <a name="how-do-hello-controls-work-together"></a>¿Cómo controles Hola funcionan juntas?
+Estos dos parámetros se pueden usar en conjunción toodefine un control más preciso sobre autoservicio suscribirse. Por ejemplo, hello siguiente comando permitirá que los usuarios tooperform registro de autoservicio, pero solo si los usuarios ya tienen una cuenta de Azure AD (en otras palabras, los usuarios que tendría un toobe cuenta comprobados por correo electrónico creado no pueden realizar sin intervención del Administrador de inicio de sesión seguridad):
 
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
 
-En el siguiente diagrama se explican las distintas combinaciones de estos parámetros y las condiciones resultantes para el directorio y el registro de autoservicio.
+Hello diagrama de flujo siguiente explica todas las combinaciones diferentes de Hola para estos parámetros y Hola resultante condiciones para el directorio de Hola y de registro de autoservicio.
 
 ![][1]
 
-Para obtener más información y ejemplos de cómo usar estos parámetros, consulte [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
+Para obtener más información y ejemplos de cómo toouse estos parámetros, consulte [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 
 ## <a name="see-also"></a>Otras referencias
-* [Instalación y configuración de Azure PowerShell](/powershell/azure/overview)
+* [¿Cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Referencia de cmdlets de Azure](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)

@@ -1,6 +1,6 @@
 ---
-title: Embudos de Azure Application Insights
-description: "Obtenga información sobre cómo usar Funnels para descubrir la forma en que los clientes interactúan con la aplicación."
+title: "aaaAzure Embudos de visión de aplicación"
+description: "Obtenga información acerca de cómo puede utilizar Embudos toodiscover cómo interactúan los clientes con la aplicación."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: cfreeman
-ms.openlocfilehash: 85f47daaaff8967eb83c330bab839023f128b486
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3a90cfd11cb193e303136504df44008ffd04a290
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="discover-how-customers-are-using-your-application-with-the-application-insights-funnels"></a>Descubra cómo los clientes usan la aplicación con los embudos de Application Insights.
+# <a name="discover-how-customers-are-using-your-application-with-hello-application-insights-funnels"></a>Descubra cómo los clientes están usando la aplicación con hello Embudos de visión de aplicación
 
-Conocer la experiencia de los clientes es de suma importancia para su negocio. Si la aplicación implica varias fases, debe saber si la mayoría de los clientes avanzan a través de todo el proceso, o si finalizan el proceso en algún momento. La progresión a través de una serie de pasos en una aplicación web se conoce como "embudo". Puede usar los embudos de Application Insights para obtener información sobre los usuarios y supervisar las tasas de conversión paso a paso. 
+Experiencia del usuario de descripción es de negocio de tooyour de hello máxima importancia. Si la aplicación implica varias fases, necesitará tooknow si la mayoría de los clientes avanzan por proceso completo de hello, o si está finalizando el proceso de hello en algún momento. progresión de Hola a través de una serie de pasos en una aplicación web se conoce como "embudo". Puede usar Hola aplicación visión Embudos toogain visiones los usuarios y los tipos de conversión paso a paso de monitor. 
 
-## <a name="get-started-with-the-funnels-blade"></a>Introducción a la hoja Embudos
-La manera más fácil de obtener información sobre los embudos es a través de un ejemplo. En las siguientes ilustraciones se muestran los pasos que los propietarios de un negocio de comercio electrónico deberían seguir para obtener información sobre cómo sus clientes interactúan con su aplicación web.  
+## <a name="get-started-with-hello-funnels-blade"></a>Introducción a la hoja de Embudos Hola
+Hola toolearn de manera más fácil sobre Embudos es toowalk aunque muestra un ejemplo. Hello en las ilustraciones siguientes muestran los propietarios de pasos de Hola de una empresa de comercio electrónico tardaría toolearn cómo interactúan los clientes con su aplicación web.  
 
 ### <a name="create-your-funnel"></a>Creación de un embudo
-Antes de crear el embudo, debe decidir la pregunta a la que quiere obtener respuesta. Por ejemplo, podría plantearse cuántos clientes de los que visitan su página principal hacen clic en un anuncio. En este ejemplo, los propietarios de la empresa Fabrikam Fiber desean saber el porcentaje de clientes que realizan una compra después de agregar artículos a la cesta durante el último mes.
+Antes de crear el embudo, necesita toodecide en la pregunta de hello desea tooanswer. Por ejemplo, puede tooknow cuántos clientes ver el página principal, haga clic en un anuncio. En este ejemplo, los propietarios de Hola de hello empresa Fabrikam Fiber deseen porcentaje de hello tooknow de clientes que realizan una compra después de agregar tootheir elementos carro de la compra durante el último mes Hola.
 
-Estos son los pasos que deben seguir para crear un embudo.
+Estos son los pasos de hello toman toocreate su embudo.
 
-1. Haga clic en el botón Nuevo en la hoja Embudos.
-1. Seleccione el intervalo de tiempo "Último mes" en la lista desplegable **Intervalo de tiempo**. 
-1. Seleccione el evento **Página del producto** en la lista desplegable **Paso 1**. 
-1. Seleccione el evento **Añadir a cesta** en la lista desplegable **Paso 2**.
-1. Seleccione el evento **Haga clic en Comprar** en la lista desplegable **Paso 3**.
-1. Agregue un nombre para el embudo y haga clic en **Guardar**.
+1. Haga clic en botón nuevo de hello en la hoja de Embudos Hola.
+1. Seleccionar intervalo de tiempo de Hola de "Último mes" de hello **intervalo de tiempo** lista desplegable. 
+1. Seleccione hello **página del producto** eventos de hello **paso 1** lista desplegable. 
+1. Seleccione hello **agregar tooshopping carro** eventos de hello **paso 2** lista desplegable.
+1. Seleccione hello **haga clic en compra** eventos de hello **paso 3** lista desplegable.
+1. Agregar un embudo de toohello de nombre y haga clic en **guardar**.
 
-En la siguiente ilustración se muestran los datos que la hoja Embudos genera. Desde aquí los propietarios de Fabrikam pueden ver que, durante la última semana, el 22,7 % de los clientes que han agregado algún artículo a la cesta han completado la compra. También pueden ver que el 1% de los clientes hicieron clic en un anuncio antes de visitar la página del producto y que el 20% de los clientes cerraron la sesión después de completar la compra.
+Hello en la ilustración siguiente se muestra hello data Hola Embudos módulo genera. Desde aquí Hola propietarios de Fabrikam pueden ver que, durante la última semana hello, 22.7% de los clientes que se agregan un elemento tootheir la compra carro compra Hola completada. También puede ver que 1% de los clientes de hello hace clic en un anuncio antes de visitar la página del producto hello y 20% de sus clientes la sesión después de completar su compra.
 
 
 ![Hoja Embudos con datos](./media/app-insights-understand-usage-patterns/funnel1.png)

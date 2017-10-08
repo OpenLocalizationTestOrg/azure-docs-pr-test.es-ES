@@ -1,6 +1,6 @@
 ---
-title: "Restricciones y problemas conocidos en la importación de la API Azure API Management | Microsoft Docs"
-description: "Detalles de los problemas conocidos y las restricciones en la importación en Azure API Management con los formatos de Open API, WSDL o WADL."
+title: "importan aaaRestrictions y problemas conocidos de la API de administración de Azure | Documentos de Microsoft"
+description: "Detalles de los problemas conocidos y las restricciones en la importación en la administración de API de Azure con formatos de API abiertos, WSDL o WADL de Hola."
 services: api-management
 documentationcenter: 
 author: mattfarm
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: apipm
-ms.openlocfilehash: ac799d66b5038c207413086b0fa71239ff2a332f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0bed5ace47de6ccbfbecba25ea6b69c5329de089
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Restricciones de importación de API y problemas conocidos
 ## <a name="about-this-list"></a>Acerca de esta lista
-Aunque hacemos todo lo que está en nuestras manos para garantizar que la importación de su API en Azure API Management se realiza de forma tan transparente y sencilla como es posible, en ocasiones imponemos restricciones o identificamos problemas que deberán corregirse para poder importar correctamente. Este artículo documentan todo esto y está organizado por el formato de importación de la API.
+Aunque todo lo posible estará tooensure importar su API en la administración de API de Azure es como transparente y sin problemas como sea posible, en ocasiones imponen restricciones ni identificar los problemas que necesitarán toobe rectifique para poder importar correctamente. Este artículo documentan estos, organizados por el formato de importación de Hola de hello API.
 
-## <a name="open-api"> </a>Open API/Swagger
-En general, si recibe errores al importar el documento de Open API, asegúrese de que lo ha validado, ya sea mediante el diseñador en el nuevo Azure Portal (Diseño - Front-End - Open API Specification Editor (Editor de especificaciones de Open API)) o con una herramienta de terceros como <a href="http://www.swagger.io">Swagger Editor</a>.
+## <a name="open-api"></a>Open API/Swagger
+En general, si recibe errores al importar el documento de API abiertos, asegúrese de que los haya validado - mediante el Diseñador de hello en Hola nuevo Portal de Azure (diseño - Front-End - de abrir Editor de especificación de API) o con un 3rd de terceros herramienta como <a href="http://www.swagger.io"> Editor de swagger</a>.
 
 * **Nombre de host**: Se requiere un atributo de nombre de host.
 * **Ruta de acceso base**: Se requiere un atributo de ruta de acceso base.
 * **Esquemas**: Se requiere una matriz de esquema. 
 
-## <a name="wsdl"> </a>WSDL
-Los archivos WSDL se utilizan para generar API de paso a través de SOAP, o para servir como back-end de una API de SOAP a REST.
+## <a name="wsdl"></a>WSDL
+Archivos WSDL son toogenerate usa las API de paso a través de SOAP o servir como Hola back-end de una API de SOAP y REST.
 
-* **WSDL:Import**: Actualmente no se admiten API que usen este atributo. Los clientes deben combinar los elementos importados en un documento.
+* **WSDL:Import**: Actualmente no se admiten API que usen este atributo. Los clientes deben combinar elementos de hello importado en un solo documento.
 * Los **mensajes con varias partes** no se admiten actualmente.
 * Los servicios de SOAP **WCF wsHttpBinding** creados con Windows Communication Foundation deben utilizar basicHttpBinding - wsHttpBinding.
 * **MTOM**: Los servicios que usan MTOM <em>pueden</em> funcionar. No se ofrece soporte técnico oficial en este momento.
-* No se admiten los tipos de **recursión** que se definen de forma recursiva (por ejemplo, una referencia a una matriz de ellos mismos).
+* **Recursividad** tipos que están definen de forma recursiva (p. ej. consulte la matriz tooan de sí mismos) no se admiten.
 
-## <a name="wadl"> </a>WADL
+## <a name="wadl"></a>WADL
 No hay ningún problema de importación WADL conocido actualmente.
 
 
@@ -77,6 +77,6 @@ No hay ningún problema de importación WADL conocido actualmente.
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to create and publish a product]: api-management-howto-add-products.md
-[How to cache operation results in Azure API Management]: api-management-howto-cache.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How toocreate and publish a product]: api-management-howto-add-products.md
+[How toocache operation results in Azure API Management]: api-management-howto-cache.md

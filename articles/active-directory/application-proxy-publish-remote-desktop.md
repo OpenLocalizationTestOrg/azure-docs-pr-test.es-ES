@@ -1,6 +1,6 @@
 ---
-title: "Publicación de Escritorio remoto con el proxy de aplicación de Azure AD | Microsoft Docs"
-description: "Se explican los conceptos básicos acerca de los conectores del Proxy de aplicación de Azure AD."
+title: "aaaPublish escritorio remoto con el Proxy de aplicación de Azure AD | Documentos de Microsoft"
+description: "Abarca conceptos básicos de hello acerca de los conectores de Proxy de aplicación de Azure AD."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -16,77 +16,77 @@ ms.date: 06/11/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 785bb4f893cf6861ef3b090d99780fd9b6b08c0e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1174161d0b5ef1157c334970f00ef4f0702a9545
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publicación de Escritorio Remoto con el Proxy de aplicación de Azure AD
 
-En este artículo se habla de cómo implementar Servicios de Escritorio remoto (RDS) con el proxy de aplicación de modo que los usuarios remotos puedan seguir siendo productivos.
+Este artículo se trata cómo toodeploy servicios de escritorio remoto (RDS) con el Proxy de aplicación para que los usuarios remotos pueden ser más productivos.
 
-La audiencia objetivo para este artículo es:
-- Clientes del proxy de aplicación de Azure AD actuales que desean ofrecer más aplicaciones a los usuarios finales mediante la publicación de aplicaciones locales a través de Servicios de Escritorio remoto.
-- Clientes de Servicios de Escritorio remoto actuales que desean reducir la superficie expuesta a ataques de su implementación mediante el proxy de aplicación de Azure AD. Este escenario ofrece un conjunto limitado de controles de acceso condicional y verificación en dos pasos a RDS.
+Hola dirigida está dirigido a este artículo:
+- Clientes de Proxy de aplicación de Azure AD actuales que desean toooffer los usuarios finales de tootheir de más aplicaciones mediante la publicación de aplicaciones locales a través de servicios de escritorio remoto.
+- Clientes de servicios de escritorio remoto actuales que deseen superficie expuesta a ataques tooreduce Hola de su implementación mediante el uso de Proxy de aplicación de Azure AD. Este escenario le ofrece un conjunto limitado de verificación en dos pasos y tooRDS de controles de acceso condicional.
 
-## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Cómo se adapta el proxy de aplicación a la implementación de RDS estándar
+## <a name="how-application-proxy-fits-in-hello-standard-rds-deployment"></a>Cómo encaja el Proxy de aplicación en la implementación de RDS estándar Hola
 
-Una implementación de RDS estándar incluye diversos servicios de rol de Escritorio remoto que se ejecutan en Windows Server. Al examinar la [arquitectura de Servicios de Escritorio remoto](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture), vemos que hay varias opciones de implementación. La diferencia más destacable entre la [implementación de RDS con el proxy de aplicación de Azure AD](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (mostrada en el siguiente diagrama) y las otras opciones de implementación es que el escenario del proxy de aplicación tiene una conexión saliente permanente desde el servidor que ejecuta el servicio del conector. Otras implementaciones dejan conexiones entrantes abiertas a través de un equilibrador de carga.
+Una implementación de RDS estándar incluye diversos servicios de rol de Escritorio remoto que se ejecutan en Windows Server. Examinando hello [arquitectura de servicios de escritorio remoto](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture), existen varias opciones de implementación. Hola diferencia más notable entre hello [implementación de RDS con el Proxy de aplicación de Azure AD](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture) (que se muestra en hello siguiente diagrama) y hello otras opciones de implementación es ese escenario de Proxy de aplicación hello tiene una salida permanente conexión desde el servidor de hello ejecutando el servicio de conector de Hola. Otras implementaciones dejan conexiones entrantes abiertas a través de un equilibrador de carga.
 
-![El proxy de aplicación se sitúa entre la máquina virtual RDS y la red pública de Internet](./media/application-proxy-publish-remote-desktop/rds-with-app-proxy.png)
+![Aplicación sigue Proxy entre Hola RDS VM y Hola internet pública](./media/application-proxy-publish-remote-desktop/rds-with-app-proxy.png)
 
-En una implementación de RDS, el rol web de Escritorio remoto y el rol Puerta de enlace de Escritorio remoto se ejecutan en máquinas accesibles desde Internet. Estos puntos de conexión se exponen por las siguientes razones:
-- Acceso web de Escritorio remoto ofrece al usuario un punto de conexión público para iniciar sesión y ver los diversos escritorios y aplicaciones locales a los que puede tener acceso. Al seleccionar un recurso, se crea una conexión RDP mediante la aplicación nativa en el SO.
-- Puerta de enlace de Escritorio remoto aparece en escena una vez que un usuario inicia la conexión RDP. Puerta de enlace de Escritorio remoto controla el tráfico RDP que llega a través de Internet y lo traduce al servidor local al que se conecta el usuario. En este escenario, el tráfico que recibe Puerta de enlace de Escritorio remoto procede del proxy de aplicación de Azure AD.
+En una implementación de RDS, rol Web de escritorio remoto de Hola y rol de puerta de enlace de escritorio remoto de Hola se ejecutan en máquinas con conexión a Internet. Estos puntos de conexión se exponen para hello siguientes motivos:
+- Web de escritorio remoto proporciona a usuario Hola un toosign de punto de conexión público en y vista Hola diversas aplicaciones locales y escritorio pueden tener acceso. Al seleccionar un recurso, una conexión RDP se crea mediante la aplicación nativa de hello en hello SO.
+- Puerta de enlace de escritorio remoto entra en la imagen de hello una vez que un usuario inicia la conexión RDP de Hola. Hola puerta de enlace de escritorio remoto controla el tráfico RDP Hola cifrado transmite a través de Internet de Hola y lo traduce toohello servidor local que Hola usuario se conecta a. En este escenario, Hola Hola de tráfico que puerta de enlace de escritorio remoto está recibiendo procede de hello Proxy de aplicación de Azure AD.
 
 >[!TIP]
->Si no ha implementado nunca RDS o desea más información antes de empezar, obtenga información sobre cómo [implementar RDS sin problemas con Azure Resource Manager y Azure Marketplace](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure).
+>Si aún no ha implementado RDS antes, o desea obtener más información antes de comenzar, obtenga información acerca de cómo demasiado[perfectamente implementar RDS con el Administrador de recursos de Azure y Azure Marketplace](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure).
 
 ## <a name="requirements"></a>Requisitos
 
-- Los puntos de conexión de Acceso web y Puerta de enlace de Escritorio remoto deben estar en la misma máquina y compartir una raíz. Acceso web y Puerta de enlace de Escritorio remoto se publicarán como una sola aplicación para que pueda tener experiencia de inicio de sesión único entre las dos aplicaciones.
+- Ambos hello Web de escritorio remoto y puerta de enlace de escritorio remoto deben estar ubicados los puntos de conexión en Hola mismo equipo y con una raíz común. Web de escritorio remoto y puerta de enlace de escritorio remoto se publicará como una única aplicación de forma que pueda tener una experiencia de inicio de sesión única entre aplicaciones de hello dos.
 
 - Ya debe tener [RDS implementados](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure) y el [proxy de aplicación habilitado](active-directory-application-proxy-enable.md).
 
-- En este escenario se da por hecho que los usuarios finales acceden a través de Internet Explorer en escritorios de Windows 7 y Windows 10 que se conectan a través de la página Acceso web de Escritorio remoto. Si necesita compatibilidad con otros sistemas operativos, consulte [Compatibilidad con otras configuraciones de cliente](#support-for-other-client-configurations).
+- Este escenario se supone que los usuarios finales se vaya a través de Internet Explorer en los escritorios de Windows 7 o Windows 10 que se conectan a través de la página Web de escritorio remoto de Hola. Si necesita toosupport otros sistemas operativos, consulte [compatibilidad con otras configuraciones de cliente](#support-for-other-client-configurations).
 
   >[!NOTE]
   >La actualización del creador de Windows 10 no se admite actualmente.
 
-- En Internet Explorer, habilite el complemento ActiveX de RDS.
+- En Internet Explorer, habilite complementos de ActiveX RDS Hola.
 
-## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Implementar el escenario conjunto de RDS y el proxy de aplicación
+## <a name="deploy-hello-joint-rds-and-application-proxy-scenario"></a>Implementar Hola joint escenario RDS y Proxy de aplicación
 
-Una vez configurados RDS y el proxy de aplicación de Azure AD para su entorno, siga los pasos para combinar las dos soluciones. Estos pasos le guían a través de la publicación de los dos puntos de conexión de RDS accesibles desde la Web (Acceso web y Puerta de enlace de Escritorio remoto) como aplicaciones y de la posterior dirección del tráfico de RDS para que pase por el proxy de aplicación.
+Después de configurar el Proxy de aplicación de Azure AD para su entorno y de RDS, siga dos soluciones de hello pasos toocombine Hola. Estos pasos se describe a través de extremos de publicación Hola dos web orientado RDS (Web de escritorio remoto y puerta de enlace de escritorio remoto) como aplicaciones y, a continuación, dirigir el tráfico en su toogo RDS a través de Proxy de aplicación.
 
-### <a name="publish-the-rd-host-endpoint"></a>Publicar el punto de conexión del host de RD
+### <a name="publish-hello-rd-host-endpoint"></a>Publicar el extremo de host de escritorio remoto de Hola
 
-1. [Publique una nueva aplicación del proxy de aplicación](application-proxy-publish-azure-portal.md) con los valores siguientes:
-   - Dirección URL interna: https://\<rdhost\>.com/, donde \<rdhost\> es la raíz común que comparten Acceso web y Puerta de enlace de Escritorio remoto.
-   - Dirección URL externa: este campo se rellena automáticamente según el nombre de la aplicación, pero puede modificarlo. Los usuarios visitarán esta dirección URL cuando tengan acceso a RDS.
+1. [Publicar una nueva aplicación de Proxy de aplicación](application-proxy-publish-azure-portal.md) con hello siguientes valores:
+   - Dirección URL interna: https://\<rdhost\>.com /, donde \<rdhost\> es Hola raíz común que comparten Web de escritorio remoto y puerta de enlace de escritorio remoto.
+   - Dirección URL externa: Este campo se rellena automáticamente basándose en nombre hello aplicación hello, pero puede modificarlo. Los usuarios irá toothis URL cuando acceden a RDS.
    - Método de autenticación previa: Azure Active Directory
    - Traducir URL en encabezados: no
-2. Asigne usuarios a la aplicación publicada de RD. Asegúrese también de que todos tienen acceso a RDS.
-3. Deje el método de inicio de sesión único de la aplicación como **Se desactivó el inicio de sesión único de Azure AD**. Se solicita a los usuarios que se autentiquen una vez en Azure AD y una vez en Acceso web de Escritorio remoto, pero tienen inicio de sesión único en Puerta de enlace de Escritorio remoto.
-4. Vaya a **Azure Active Directory** > **Registros de aplicaciones** > *Su aplicación* > **Configuración**.
-5. Seleccione **Propiedades** y actualice el campo **Dirección URL de la página principal** para apuntar al punto de conexión de Acceso web de Escritorio remoto (como https://\<rdhost\>.com/RDWeb).
+2. Asignar usuarios toohello publicó la aplicación de escritorio remoto. Asegúrese de que todos ellos tienen acceso tooRDS, también.
+3. Leave Hola único inicio de sesión (método) para la aplicación hello como **Azure AD inicio de sesión único deshabilitado**. Los usuarios son más frecuentes tooauthenticate una vez tooAzure AD y una vez tooRD Web, pero tienen único inicio de sesión tooRD puerta de enlace.
+4. Vaya demasiado**Azure Active Directory** > **registros de aplicaciones** > *la aplicación* > **deconfiguración**.
+5. Seleccione **propiedades** actualización hello y **dirección URL de la página de inicio** punto de conexión de campo toopoint tooyour Web de escritorio remoto (como https://\<rdhost\>.com/RDWeb).
 
-### <a name="direct-rds-traffic-to-application-proxy"></a>Dirigir el tráfico RDS al proxy de aplicación
+### <a name="direct-rds-traffic-tooapplication-proxy"></a>Dirigir el tráfico RDS tooApplication Proxy
 
-Conéctese a la implementación de RDS como administrador y cambie el nombre del servidor de Puerta de enlace de Escritorio remoto para la implementación. Esto garantiza que las conexiones pasen por el proxy de aplicación de Azure AD.
+Conectar la implementación de RDS toohello como administrador y cambie el nombre del servidor de puerta de enlace de escritorio remoto de hello para la implementación de Hola. Esto garantiza que las conexiones se vayan a través de hello Proxy de aplicación de Azure AD.
 
-1. Conéctese al servidor RDS que ejecuta el rol Agente de conexión a Escritorio remoto.
+1. Conecte toohello RDS servidor ejecutando el rol de agente de conexión a Escritorio remoto de Hola.
 2. Inicie **Administrador del servidor**.
-3. Seleccione **Servicios de Escritorio remoto** en el panel de la izquierda.
+3. Seleccione **servicios de escritorio remoto** desde panel Hola Hola izquierda.
 4. Seleccione **Información general**.
-5. En la sección Descripción general de la implementación, seleccione el menú desplegable y elija **Editar propiedades de implementación**.
-6. En la pestaña Puerta de enlace de Escritorio remoto, cambie el campo **Nombre del servidor** por la dirección URL externa que ha establecido para el punto de conexión del host de RD en el proxy de aplicación.
-7. Cambie el campo **Método de inicio de sesión** por **Autenticación de contraseña**.
+5. En la sección información general de la implementación de hello, seleccione el menú desplegable de Hola y elija **editar propiedades de implementación**.
+6. En la ficha de la puerta de enlace de escritorio remoto de hello, cambie hello **nombre del servidor** campo toohello dirección URL externa que establecen en el extremo de host de escritorio remoto de Hola de Proxy de aplicación.
+7. Hola de cambio **método de inicio de sesión** campo demasiado**autenticación de contraseña**.
 
   ![Pantalla Propiedades de implementación de RDS](./media/application-proxy-publish-remote-desktop/rds-deployment-properties.png)
 
-8. Para cada colección, ejecute el siguiente comando. Reemplace  *\<yourcollectionname\>*  y  *\<proxyfrontendurl\>*  por su propia información. Este comando habilita el inicio de sesión único entre Acceso web de Escritorio remoto y Puerta de enlace de Escritorio remoto, además de optimizar el rendimiento:
+8. Para cada colección, ejecute el siguiente comando de Hola. Reemplace  *\<yourcollectionname\>*  y  *\<proxyfrontendurl\>*  por su propia información. Este comando habilita el inicio de sesión único entre Acceso web de Escritorio remoto y Puerta de enlace de Escritorio remoto, además de optimizar el rendimiento:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
@@ -97,38 +97,38 @@ Conéctese a la implementación de RDS como administrador y cambie el nombre del
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://gateway.contoso.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
 
-9. Para comprobar la modificación de las propiedades de RDP personalizadas, así como para ver el contenido del archivo RDP que se descargará desde RDWeb para esta colección, ejecute el siguiente comando:
+9. modificación de hello tooverify de propiedades personalizadas de RDP de hello, así como ver Hola RDP contenido del archivo que se descargarán desde RDWeb para esta recopilación, ejecute el siguiente comando de hello:
     ```
     (get-wmiobject -Namespace root\cimv2\terminalservices -Class Win32_RDCentralPublishedRemoteDesktop).RDPFileContents
     ```
 
-Ahora que ha configurado Escritorio remoto, el proxy de aplicación de Azure AD ha asumido el papel de componente accesible desde Internet de RDS. Puede quitar los otros puntos de conexión accesibles desde Internet públicos de sus máquinas Acceso web de Escritorio remoto y Puerta de enlace de Escritorio remoto.
+Ahora que ha configurado el escritorio remoto, el Proxy de aplicación de Azure AD ha asumido como componente de conexión a internet de Hola de RDS. Puede quitar Hola otros puntos de conexión a través de internet públicas en los equipos de Web de escritorio remoto y puerta de enlace de escritorio remoto.
 
-## <a name="test-the-scenario"></a>Probar el escenario
+## <a name="test-hello-scenario"></a>Escenario de prueba de Hola
 
-Pruebe el escenario con Internet Explorer en un equipo con Windows 7 o Windows 10.
+Escenario de hello con Internet Explorer en un Windows 7 o 10 equipo de prueba.
 
-1. Vaya a la dirección URL externa que ha configurado o busque su aplicación en el [panel MyApps](https://myapps.microsoft.com).
-2. Se le solicita que se autentique en Azure Active Directory. Use una cuenta que haya asignado a la aplicación.
-3. Se le solicita que se autentique en Acceso web de Escritorio remoto.
-4. Una vez que la autenticación RDS se realice correctamente, podrá seleccionar el escritorio o aplicación que desee y empezar a trabajar.
+1. Vaya a configurar la URL externa toohello o busque su aplicación en hello [panel mis aplicaciones](https://myapps.microsoft.com).
+2. Se le preguntará tooauthenticate tooAzure Active Directory. Usar una cuenta que se ha asignado toohello aplicación.
+3. Se le preguntará tooauthenticate tooRD Web.
+4. Una vez que la autenticación de RDS se realiza correctamente, puede seleccionar Hola escritorio o aplicación que desee y comenzar a trabajar.
 
 ## <a name="support-for-other-client-configurations"></a>Compatibilidad con otras configuraciones de cliente
 
-La configuración descrita en este artículo es para usuarios de Windows 7 o 10, con Internet Explorer y el complemento de ActiveX de RDS. No obstante, en caso necesario, también se ofrece compatibilidad con otros sistemas operativos o exploradores. La diferencia estriba en el método de autenticación que utilice.
+configuración de Hola que se describe en este artículo es para los usuarios en Windows 7 o 10, con Internet Explorer más complementos de ActiveX RDS Hola. No obstante, en caso necesario, también se ofrece compatibilidad con otros sistemas operativos o exploradores. diferencia de Hello es en el método de autenticación de Hola que usar.
 
 | Método de autenticación | Configuración de cliente compatible |
 | --------------------- | ------------------------------ |
 | Autenticación previa    | Windows 7/10 con Internet Explorer + complemento ActiveX de RDS |
-| Acceso directo | Cualquier otro sistema operativo compatible con la aplicación Escritorio remoto de Microsoft |
+| Acceso directo | Cualquier otro sistema operativo que admita la aplicación de escritorio remoto de Microsoft hello |
 
-El flujo de autenticación previa ofrece más ventajas de seguridad que el flujo de acceso directo. Con la autenticación previa puede aprovechar características de autenticación de Azure AD como el inicio de sesión único, el acceso condicional y la verificación en dos pasos para recursos locales. También garantiza que solo el tráfico autenticado alcance la red.
+flujo de autenticación previa de Hello ofrece más ventajas de seguridad de flujo de paso a través de Hola. Con la autenticación previa puede aprovechar características de autenticación de Azure AD como el inicio de sesión único, el acceso condicional y la verificación en dos pasos para recursos locales. También garantiza que solo el tráfico autenticado alcance la red.
 
-Para usar la autenticación de acceso directo, solo es necesario realizar dos modificaciones en los pasos indicados en este artículo:
-1. En el paso 1 [Publicar el punto de conexión del host de RD](#publish-the-rd-host-endpoint), establezca el método de autenticación previa en **Acceso directo**.
-2. Omita completamente el paso 8, [Dirigir el tráfico RDS al proxy de aplicación](#direct-rds-traffic-to-application-proxy).
+autenticación de paso a través de toouse, existe son solo dos modificaciones toohello pasos enumerados en este artículo:
+1. En [publica el punto de conexión de escritorio remoto de hello host](#publish-the-rd-host-endpoint) el paso 1, establecer método de autenticación previa de hello demasiado**Passthrough**.
+2. En [RDS directa tráfico tooApplication Proxy](#direct-rds-traffic-to-application-proxy), omita el paso 8 completamente.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Habilitar el acceso remoto a SharePoint con el Proxy de aplicación de Azure AD](application-proxy-enable-remote-access-sharepoint.md)  
+[Habilitar acceso remoto tooSharePoint con el Proxy de aplicación de Azure AD](application-proxy-enable-remote-access-sharepoint.md)  
 [Consideraciones de seguridad al obtener acceso a aplicaciones de forma remota con el proxy de aplicación de Azure AD](application-proxy-security-considerations.md)

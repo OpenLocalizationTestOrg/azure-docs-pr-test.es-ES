@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C: descripción de directivas personalizadas del paquete de inicio | Microsoft Docs"
+title: "Azure B2C Directory Active: Descripción de las directivas personalizadas de módulo de inicio de Hola | Documentos de Microsoft"
 description: Un tema acerca de las directivas personalizadas de Azure Active Directory B2C
 services: active-directory-b2c
 documentationcenter: 
@@ -14,89 +14,89 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
-ms.openlocfilehash: 9847bcfcc139a769847678c1cca6a8b9c3a30e93
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3484e8cc6fa6a9d57c2aa14c0cc9616065892d10
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Descripción de las directivas personalizadas del paquete del inicio de directivas personalizadas de Azure AD B2C
+# <a name="understanding-hello-custom-policies-of-hello-azure-ad-b2c-custom-policy-starter-pack"></a>Descripción de las directivas personalizadas de Hola de módulo de inicio de directiva personalizada de hello Azure AD B2C
 
-En esta sección se enumeran todos los elementos básicos de la directiva B2C_1A_base que se incluyen con el **paquete de inicio** y que se aprovechan para la creación de sus propias directivas mediante la herencia de la *directiva B2C_1A_base_extensions*.
+Esta sección enumeran todos los elementos básicos de Hola de directiva de hello B2C_1A_base que viene con hello **Starter Pack** y que se utiliza para crear sus propias directivas a través de la herencia de Hola de hello *B2C_1A_base_ Directiva de extensiones*.
 
-Como tal, se centra particularmente en los tipos de notificaciones, las transformaciones de notificación, las definiciones de contenido, los proveedores de notificaciones con sus perfiles técnicos y los recorridos de usuario principales ya definidos.
+Por lo tanto, lo más especialmente se centra en hello ya definido tipos, las transformaciones de notificaciones, las definiciones de contenido, proveedores de notificaciones con sus perfiles técnicas de notificación y Hola viajes de usuario principal.
 
 > [!IMPORTANT]
-> Microsoft no otorga ninguna garantía, expresa ni implícita, con respecto a la información proporcionada a continuación. En cualquier momento se pueden introducir cambios, antes de la hora de disponibilidad general, en ese mismo momento o después.
+> Microsoft no otorga ninguna garantía, expresa ni implícita, con respecto toohello información proporciona ahora en adelante. En cualquier momento se pueden introducir cambios, antes de la hora de disponibilidad general, en ese mismo momento o después.
 
-Sus propias directivas y la directiva B2C_1A_base_extensions pueden invalidar estas definiciones y extender esta directiva principal proporcionando unas nuevas, según sea necesario.
+Tanto sus propias directivas hello y B2C_1A_base_extensions directiva pueden invalidar estas definiciones y extender esta directiva principal proporcionando perfiles adicionales según sea necesario.
 
-Los elementos básicos de la directiva *B2C_1A_base* son tipos de notificaciones, transformaciones de notificación y definiciones de contenido. Se puede hacer referencia a estos elementos en sus propias directivas o en la *directiva B2C_1A_base_extensions*.
+Hola elementos básicos de hello *B2C_1A_base directiva* son tipos de notificación, las transformaciones de notificaciones y las definiciones de contenido. Estos elementos pueden toobe susceptible al que hace referencia en sus propias directivas así como en hello *B2C_1A_base_extensions directiva*.
 
 ## <a name="claims-schemas"></a>Esquemas de notificaciones
 
 Estos esquemas de notificaciones se dividen en tres secciones:
 
-1.  La primera sección que muestra las notificaciones mínimas necesarias para que los recorridos de usuario funcionen correctamente.
-2.  Una segunda sección que muestra las notificaciones necesarias para que los parámetros de cadena de consulta y otros parámetros especiales se pasen a otros proveedores de notificaciones, en especial login.microsoftonline.com para la autenticación. **No modifique estas notificaciones**.
-3.  Y, finalmente, una tercera sección que muestra las notificaciones adicionales opcionales que pueden recopilarse del usuario, almacenarse en el directorio y enviarse en tokens durante el inicio de sesión. En esta sección se pueden agregar los nuevos tipos de notificaciones que se recopilan del usuario o se envían en el token.
+1.  Primera sección que enumera las notificaciones mínimo de Hola que son necesarios para hello usuario viajes toowork correctamente.
+2.  Una segunda sección que listas Hola notificaciones necesarias para los parámetros de cadena de consulta y otro parámetros especiales toobe pasa tooother proveedores de notificaciones, especialmente login.microsoftonline.com para la autenticación. **No modifique estas notificaciones**.
+3.  Y finalmente, una tercera sección que enumera las notificaciones adicionales y opcionales que se pueden recopilar de usuario de hello, almacenados en el directorio de Hola y envían en símbolos (tokens) durante el inicio de sesión. Pueden agregarse nuevas notificaciones tipo toobe recopilados del usuario de Hola o enviados en el token de hello en esta sección.
 
 > [!IMPORTANT]
-> El esquema de notificaciones contiene restricciones sobre ciertas notificaciones, como contraseñas y nombres de usuario. La directiva del marco de confianza (TF) trata a Azure AD como cualquier otro proveedor de notificaciones y todas sus restricciones se modelan en la directiva premium. Una directiva se podría modificar para agregar más restricciones o usar otro proveedor de notificaciones para el almacenamiento de credenciales que tenga sus propias restricciones.
+> esquema de notificaciones de Hello contiene restricciones en ciertas notificaciones, como contraseñas y nombres de usuario. Hola directiva de confianza Framework (TF) trata Azure AD como cualquier otro proveedor de notificaciones y todas sus restricciones se reproduzcan en la directiva de hello premium. Una directiva podría ser modificado tooadd más restricciones o utilizar otro proveedor de notificaciones para el almacenamiento de credenciales que tendrá sus propias restricciones.
 
-A continuación se enumeran los tipos de notificaciones disponibles.
+tipos de notificación disponibles Hola se enumeran a continuación.
 
-### <a name="claims-that-are-required-for-the-user-journeys"></a>Notificaciones que son necesarias para los recorridos de usuario
+### <a name="claims-that-are-required-for-hello-user-journeys"></a>Notificaciones que son necesarios para los viajes de usuario de Hola
 
-Las siguientes notificaciones son necesarias para que los recorridos de usuario funcionen correctamente:
+Hola siguientes notificaciones se necesitan para usuario viajes toowork correctamente:
 
 | Tipo de notificaciones | Descripción |
 |-------------|-------------|
 | *UserId* | Nombre de usuario |
 | *signInName* | Nombre de inicio de sesión |
-| *tenantId* | Identificador de objeto (id.) del objeto de usuario en Azure AD B2C Premium. |
-| *objectId* | Identificador de objeto (id.) del objeto de usuario en Azure AD B2C Premium. |
+| *tenantId* | Identificador del inquilino (Id.) del objeto de usuario de hello en Premium de Azure AD B2C |
+| *objectId* | Identificador de objeto (Id.) del objeto de usuario de hello en Premium de Azure AD B2C |
 | *password* | Password |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | Directivas de contraseña usadas por Azure AD B2C Premium para determinar la seguridad de la contraseña, su caducidad, etc. |
+| *passwordPolicies* | Directivas de contraseña que se usa seguridad de la contraseña de Azure AD B2C Premium toodetermine, expiración, etcetera. |
 | *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
 | *displayName* | |
 | *strongAuthenticationPhoneNumber* | Número de teléfono del usuario. |
 | *Verified.strongAuthenticationPhoneNumber* | |
-| *email* | Dirección de correo electrónico que puede usarse para ponerse en contacto con el usuario. |
-| *signInNamesInfo.emailAddress* | Dirección de correo electrónico que el usuario puede usar para iniciar sesión. |
-| *otherMails* | Direcciones de correo electrónico que pueden usarse para ponerse en contacto con el usuario. |
-| *userPrincipalName* | Nombre de usuario tal como se almacena en Azure AD B2C Premium. |
+| *email* | Dirección de correo electrónico que puede ser usado toocontact Hola usuario |
+| *signInNamesInfo.emailAddress* | Dirección de correo electrónico Hola usuario puede usar toosign en |
+| *otherMails* | Direcciones de correo electrónico que pueden ser usado toocontact Hola usuario |
+| *userPrincipalName* | Nombre de usuario tal como se almacena en hello Premium de Azure AD B2C |
 | *upnUserName* | Nombre de usuario para la creación del nombre principal de usuario. |
-| *mailNickName* | Nombre de alias de correo electrónico del usuario tal como se almacena en Azure AD B2C Premium |
+| *mailNickName* | Nombre de nick de correo electrónico del usuario tal como se almacena en hello Premium de Azure AD B2C |
 | *newUser* | |
-| *executed-SelfAsserted-Input* | Notificación que especifica si se recopilaron atributos del usuario. |
-| *executed-PhoneFactor-Input* | Notificación que especifica si se recopiló un nuevo número de teléfono del usuario. |
-| *authenticationSource* | Especifica si el usuario se autenticó en el proveedor de identidades sociales, login.microsoftonline.com o en una cuenta local. |
+| *executed-SelfAsserted-Input* | Notificación que especifica si se recopilaron atributos de usuario de Hola |
+| *executed-PhoneFactor-Input* | Notificación que especifica si se ha recopilado un nuevo número de teléfono de usuario de Hola |
+| *authenticationSource* | Especifica si se autenticó el usuario de hello en el proveedor de identidades sociales, login.microsoftonline.com o cuenta local |
 
 ### <a name="claims-required-for-query-string-parameters-and-other-special-parameters"></a>Notificaciones necesarias para los parámetros de cadena de consulta y otros parámetros especiales
 
-Para pasar parámetros especiales (incluidos algunos parámetros de cadena de consulta), se requieren las siguientes notificaciones a otros proveedores de notificaciones:
+Hello notificaciones siguientes son necesarios toopass en proveedores de notificaciones de tooother parámetros especiales (incluidos algunos parámetros de cadena de consulta):
 
 | Tipo de notificaciones | Descripción |
 |-------------|-------------|
-| *nux* | Parámetro especial pasado para la autenticación con la cuenta local en login.microsoftonline.com. |
-| *nca* | Parámetro especial pasado para la autenticación con la cuenta local en login.microsoftonline.com. |
-| *prompt* | Parámetro especial pasado para la autenticación con la cuenta local en login.microsoftonline.com. |
-| *mkt* | Parámetro especial pasado para la autenticación con la cuenta local en login.microsoftonline.com. |
-| *lc* | Parámetro especial pasado para la autenticación con la cuenta local en login.microsoftonline.com. |
-| *grant_type* | Parámetro especial pasado para la autenticación con la cuenta local en login.microsoftonline.com. |
-| *scope* | Parámetro especial pasado para la autenticación con la cuenta local en login.microsoftonline.com. |
-| *client_id* | Parámetro especial pasado para la autenticación con la cuenta local en login.microsoftonline.com. |
-| *objectIdFromSession* | Parámetro proporcionado por el proveedor de administración de sesiones predeterminado para indicar que el identificador de objeto se ha recuperado de una sesión SSO. |
-| *isActiveMFASession* | Parámetro proporcionado por la administración de sesiones MFA para indicar que el usuario tiene una sesión activa de MFA. |
+| *nux* | Parámetro especial que se pasa para toologin.microsoftonline.com de autenticación de cuenta local |
+| *nca* | Parámetro especial que se pasa para toologin.microsoftonline.com de autenticación de cuenta local |
+| *prompt* | Parámetro especial que se pasa para toologin.microsoftonline.com de autenticación de cuenta local |
+| *mkt* | Parámetro especial que se pasa para toologin.microsoftonline.com de autenticación de cuenta local |
+| *lc* | Parámetro especial que se pasa para toologin.microsoftonline.com de autenticación de cuenta local |
+| *grant_type* | Parámetro especial que se pasa para toologin.microsoftonline.com de autenticación de cuenta local |
+| *scope* | Parámetro especial que se pasa para toologin.microsoftonline.com de autenticación de cuenta local |
+| *client_id* | Parámetro especial que se pasa para toologin.microsoftonline.com de autenticación de cuenta local |
+| *objectIdFromSession* | Parámetro proporcionado por hello predeterminado sesión administración proveedor tooindicate que Hola Id. de objeto se ha recuperado de una sesión SSO |
+| *isActiveMFASession* | Parámetro proporcionada por hello MFA sesión administración tooindicate que Hola el usuario tiene una sesión activa de MFA |
 
 ### <a name="additional-optional-claims-that-can-be-collected"></a>Notificaciones (opcionales) adicionales que se pueden recopilar
 
-Las siguientes notificaciones son notificaciones adicionales que pueden recopilarse de los usuarios, almacenarse en el directorio y enviarse en el token. Tal y como se ha descrito anteriormente, se pueden agregar notificaciones adicionales a esta lista.
+siguiente Hola notificaciones son notificaciones adicionales que se pueden recopilar de los usuarios de hello, almacenados en el directorio de Hola y enviados en el token de Hola. Tal y como se ha descrito antes, se pueden agregar notificaciones adicionales toothis lista.
 
 | Tipo de notificaciones | Descripción |
 |-------------|-------------|
@@ -106,7 +106,7 @@ Las siguientes notificaciones son notificaciones adicionales que pueden recopila
 
 ## <a name="claim-transformations"></a>Transformaciones de notificación
 
-Las transformaciones de notificación disponibles se enumeran a continuación.
+transformaciones de notificación disponibles Hola se enumeran a continuación.
 
 | Transformación de notificación | Descripción |
 |----------------------|-------------|
@@ -119,7 +119,7 @@ Las transformaciones de notificación disponibles se enumeran a continuación.
 
 ## <a name="content-definitions"></a>Definiciones de contenido
 
-En esta sección se describen las definiciones de contenido ya declaradas en la directiva *B2C_1A_base*. Se puede hacer referencia a estas definiciones de contenido, se pueden anular o se pueden extender según sea necesario en sus propias directivas, así como en la directiva *B2C_1A_base_extensions*.
+En esta sección se describe las definiciones de contenido de hello ya declaradas en hello *B2C_1A_base* directiva. Estas definiciones de contenido son susceptibles de sufrir toobe al que hace referencia, se reemplaza o extender según sea necesario en sus propias directivas así como en hello *B2C_1A_base_extensions* directiva.
 
 | Proveedor de notificaciones | Descripción |
 |-----------------|-------------|
@@ -136,7 +136,7 @@ En esta sección se describen las definiciones de contenido ya declaradas en la 
 
 ## <a name="technical-profiles"></a>Perfiles técnicos
 
-En esta sección se describen los perfiles técnicos ya declarados por el proveedor de notificaciones en la directiva *B2C_1A_base*. Se puede hacer referencia adicionalmente a estos perfiles técnicos, se pueden anular o se pueden extender según sea necesario en sus propias directivas, así como en la directiva *B2C_1A_base_extensions*.
+En esta sección se describe perfiles técnica Hola ya declarados por el proveedor de notificaciones en hello *B2C_1A_base* directiva. Estos perfiles técnicos son susceptibles de sufrir toobe más al que hace referencia, se reemplaza o extender según sea necesario en sus propias directivas así como en hello *B2C_1A_base_extensions* directiva.
 
 ### <a name="technical-profiles-for-facebook"></a>Perfiles técnicos de Facebook
 
@@ -162,7 +162,7 @@ En esta sección se describen los perfiles técnicos ya declarados por el provee
 
 | Perfil técnico | Descripción |
 |-------------------|-------------|
-| *AAD-Common* | Perfil técnico incluido por los otros perfiles técnicos de AAD-xxx |
+| *AAD-Common* | Perfil técnica incluido por Hola otros perfiles técnicas AAD-xxx |
 | *AAD-UserWriteUsingAlternativeSecurityId* | Perfil técnico de inicios de sesión sociales |
 | *AAD-UserReadUsingAlternativeSecurityId* | Perfil técnico de inicios de sesión sociales |
 | *AAD-UserReadUsingAlternativeSecurityId-NoError* | Perfil técnico de inicios de sesión sociales |
@@ -171,7 +171,7 @@ En esta sección se describen los perfiles técnicos ya declarados por el provee
 | *AAD-UserWriteProfileUsingObjectId* | Perfil técnico de actualización de registros de usuario mediante objectId |
 | *AAD-UserWritePhoneNumberUsingObjectId* | Perfil técnico de actualización de registros de usuario mediante objectId |
 | *AAD-UserWritePasswordUsingObjectId* | Perfil técnico de actualización de registros de usuario mediante objectId |
-| *AAD-UserReadUsingObjectId* | Perfil técnico que se usa para leer datos después de que se autentica el usuario |
+| *AAD-UserReadUsingObjectId* | Perfil técnica es datos tooread usado cuando se autentica el usuario |
 
 ### <a name="technical-profiles-for-self-asserted"></a>Perfiles técnicos autoafirmados
 
@@ -192,13 +192,13 @@ En esta sección se describen los perfiles técnicos ya declarados por el provee
 |-------------------|-------------|
 | *SM-Noop* | |
 | *SM-AAD* | |
-| *SM-SocialSignup* | Nombre de perfil que se usa para eliminar la ambigüedad en una sesión de AAD entre el registro y el inicio de sesión. |
+| *SM-SocialSignup* | Nombre del perfil se sesión AAD toodisambiguate utilizado entre el inicio de sesión y la puesta iniciar sesión en |
 | *SM-SocialLogin* | |
 | *SM-MFA* | |
 
 ### <a name="technical-profiles-for-trustframework-policy-engine-technicalprofiles"></a>Perfiles técnicos de Trustframework Policy Engine TechnicalProfiles
 
-Actualmente, no se ha definido ningún perfil técnico para el proveedor de notificaciones **Trustframework Policy Engine TechnicalProfiles**.
+Actualmente, no hay perfiles técnicas se definen para hello **TechnicalProfiles de motor de directiva de Trustframework** proveedor de notificaciones.
 
 ### <a name="technical-profiles-for-token-issuer"></a>Perfiles técnicos del emisor de tokens
 
@@ -208,7 +208,7 @@ Actualmente, no se ha definido ningún perfil técnico para el proveedor de noti
 
 ## <a name="user-journeys"></a>Recorridos de usuario
 
-En esta sección se describen los recorridos de usuario ya declarados en la directiva *B2C_1A_base*. Se puede hacer referencia adicionalmente a estos recorridos de usuario, se pueden anular o se pueden extender según sea necesario en sus propias directivas, así como en la directiva *B2C_1A_base_extensions*.
+Esta sección describe los viajes de usuario de hello ya declarados en hello *B2C_1A_base* directiva. Estos desplazamientos de usuario son susceptibles de sufrir toobe más al que hace referencia, se reemplaza o extender según sea necesario en sus propias directivas así como en hello *B2C_1A_base_extensions* directiva.
 
 | Recorrido de usuario | Descripción |
 |--------------|-------------|

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Land Gorilla Client | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Land Gorilla."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y terrenos Gorilla."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,72 +13,72 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 744c420aa0298c59c44e645b95a716ad876752de
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e95a30551e636108fe22a7ab6d1827bc12d7f9a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>Tutorial: Integración de Azure Active Directory con Land Gorilla Client
 
-En este tutorial, obtendrá información sobre cómo integrar Land Gorilla Client con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate terrenos Gorilla cliente con Azure Active Directory (Azure AD).
 
-La integración de Land Gorilla Client con Azure AD le proporciona las siguientes ventajas:
+Integración de terrenos Gorilla cliente con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a Land Gorilla Client
-- Puede permitir que los usuarios inicien sesión automáticamente en Land Gorilla Client (inicio de sesión único) con sus cuentas de Azure AD
-- Puede administrar sus cuentas en una ubicación central: el Portal de administración de Azure.
+- Puede controlar en Azure AD que tenga acceso tooLand Gorilla cliente
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooLand cliente Gorilla (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: portal de administración de Azure de Hola
 
-Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [Qué es el acceso a las aplicaciones y el inicio de sesión único en Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con Land Gorilla Client, necesita los siguientes elementos:
+integración de Azure AD con tierra Gorilla cliente tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Land Gorilla Client
 
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No debe usar el entorno de producción, a menos que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Agregar Land Gorilla Client desde la galería
+1. Agregar el cliente de Gorilla tierra de galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
 
-## <a name="adding-land-gorilla-client-from-the-gallery"></a>Agregar Land Gorilla Client desde la galería
-Para configurar la integración de Land Gorilla Client en Azure AD, deberá agregar Land Gorilla Client desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-land-gorilla-client-from-hello-gallery"></a>Agregar el cliente de Gorilla tierra de galería de Hola
+integración de hello tooconfigure de tierra Gorilla cliente en Azure AD, deberá a tooadd terrenos Gorilla cliente de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Land Gorilla Client desde la galería, siga estos pasos:**
+**tooadd terrenos Gorilla cliente desde la Galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **[Portal de administración de Azure](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[Portal de administración de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Haga clic en el botón **Agregar** situado en la parte superior del cuadro de diálogo.
+3. Haga clic en **agregar** botón en la parte superior de saludo del cuadro de diálogo de Hola.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **Land Gorilla Client**.
+4. En el cuadro de búsqueda de hello, escriba **terrenos Gorilla cliente**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_search.png)
 
-5. En el panel de resultados, seleccione **Land Gorilla Client** y luego haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **terrenos Gorilla cliente**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_addfromgallery.png)
 
@@ -86,43 +86,43 @@ Para configurar la integración de Land Gorilla Client en Azure AD, deberá agre
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con Land Gorilla Client con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Land Gorilla Client para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Land Gorilla Client.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en tierra Gorilla cliente es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en tierra Gorilla cliente necesita toobe establecido.
 
-Esta relación de vínculo se establece mediante la asignación del valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario** en Land Gorilla Client.
+Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en tierras Gorilla cliente.
 
-Para configurar y probar el inicio de sesión único de Azure AD con Land Gorilla Client, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con tierra Gorilla cliente, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con un grupo limitado.
-3. **[Creación de un usuario de prueba de Land Gorilla](#creating-a-land-gorilla-test-user)**: para probar el inicio de sesión único de Azure AD con Britta Simon.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en tootest Azure AD con grupo limitado.
+3. **[Crear un usuario de prueba de tierra Gorilla](#creating-a-land-gorilla-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en el Portal de administración de Azure y configurará el inicio de sesión único en la aplicación Land Gorilla Client.
+En esta sección, habilitar inicio de sesión único en Azure AD en el portal de administración de Azure de Hola y configurar el inicio de sesión único en la aplicación cliente de Gorilla terrenos.
 
-**Para configurar el inicio de sesión único de Azure AD con Land Gorilla Client, realice los pasos siguientes:**
+**tooconfigure inicio de sesión único en Azure AD con tierra Gorilla cliente, lleve a cabo Hola pasos:**
 
-1. En el Portal de administración de Azure, en la página de integración de la aplicación **Land Gorilla Client**, haga clic en **Inicio de sesión único**.
+1. En el portal de administración de Azure de hello, en hello **terrenos Gorilla cliente** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo**, seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, como **modo** seleccione **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de Land Gorilla Client**, lleve a cabo los pasos siguientes:
+3. En hello **terrenos Gorilla cliente dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_url_02.png)
 
-    a. En el cuadro de texto **Identificador**, escriba un valor con el siguiente patrón: 
+    a. Hola **identificador** cuadro de texto, valor de tipo hello mediante uno de hello sigue el patrón: 
     
     `https://<customer domain>.landgorilla.com/` 
     
     `https://www.<customer domain>.landgorilla.com`
 
-    b. En el cuadro de texto **URL de respuesta**, escriba una dirección URL con uno de los siguientes patrones:
+    b. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando uno de hello siguiente patrón:
 
     `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`
 
@@ -133,9 +133,9 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en el Port
     `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`
 
     > [!NOTE] 
-    > Tenga en cuenta que estos no son valores reales. Estos valores se tienen que actualizar con los valores reales de Identificador y URL de respuesta. Aquí le recomendamos que utilice el valor de cadena único en el identificador. Póngase en contacto con el [equipo de soporte de Land Gorilla Client](https://www.landgorilla.com/support/) para obtener estos valores. 
+    > Tenga en cuenta que estos no son los valores reales de Hola. Tener tooupdate estos valores con hello URL de identificador y la respuesta real. Aquí le sugerimos toouse Hola único valor de cadena en hello identificador. Póngase en contacto con [equipo terrenos Gorilla clientes](https://www.landgorilla.com/support/) tooget estos valores. 
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo XML en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo XML de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
 
@@ -143,61 +143,61 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en el Port
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-landgorilla-tutorial/tutorial_general_400.png) 
 
-6. Para configurar el inicio de sesión único en el lado de su aplicación Land Gorilla, póngase en contacto con el [equipo de soporte de Land Gorilla Client](https://www.landgorilla.com/support/) para proporcionarles el archivo **XML de metadatos** descargado.
+6. configuración de SSO de tooget completa de la aplicación al final de la tierra Gorilla, póngase en contacto con [equipo de soporte técnico de tierra Gorilla cliente](https://www.landgorilla.com/support/) y proporcionarles Hola descargado **"Metadata XML** archivo.
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en el Portal de administración de Azure llamado Britta Simon.
+objetivo de Hola de esta sección es un usuario de prueba en el portal de administración de Azure de hello llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **Portal de administración de Azure**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de administración de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_01.png) 
 
-2. Vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios** para mostrar la lista de usuarios.
+2. Vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios** toodisplay lista de Hola de usuarios.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_02.png) 
 
-3. En la parte superior del diálogo, haga clic en **Agregar** para abrir el diálogo **Usuario**.
+3. En la parte superior de saludo del cuadro de diálogo de hello haga clic en **agregar** tooopen hello **usuario** cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-landgorilla-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**. 
 
 ### <a name="creating-a-land-gorilla-test-user"></a>Creación de un usuario de prueba de Land Gorilla
 
-Trabaje con el [equipo de soporte técnico de Land Gorilla](https://www.landgorilla.com/support/) para agregar los usuarios a la plataforma de Land Gorilla.
+Trabaje con [equipo de soporte técnico de tierra Gorilla](https://www.landgorilla.com/support/) a los usuarios de tooadd hello en la plataforma de tierra Gorilla Hola.
     
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, va a habilitar a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Land Gorilla Client.
+En esta sección, se habilita Britta Simon toouse Azure inicio de sesión único mediante la concesión de su cliente Gorilla tooLand de acceso.
 
 ![Asignar usuario][200] 
 
-**Para asignar a Britta Simon a Land Gorilla Client, realice los pasos siguientes:**
+**tooassign Britta Simon tooLand Gorilla cliente, lleve a cabo Hola pasos:**
 
-1. En el Portal de administración de Azure, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. A continuación, haga clic en **All applications** (Todas las aplicaciones).
+1. En el portal de administración de Azure de hello, abrir vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **Land Gorilla Client**.
+2. En la lista de aplicaciones de hello, seleccione **terrenos Gorilla cliente**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-landgorilla-tutorial/tutorial_landgorilla_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -205,7 +205,7 @@ En esta sección, va a habilitar a Britta Simon para que use el inicio de sesió
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -215,14 +215,14 @@ En esta sección, va a habilitar a Britta Simon para que use el inicio de sesió
 
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de Land Gorilla Client en el Panel de acceso, debería iniciar sesión automáticamente en su aplicación Land Gorilla Client.
+Al hacer clic en icono de tierra Gorilla cliente Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour aplicación terrenos Gorilla cliente.
 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

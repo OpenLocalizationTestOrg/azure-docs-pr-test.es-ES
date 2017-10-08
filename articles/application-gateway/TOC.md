@@ -6,7 +6,7 @@
 ## [Supervisión del estado](application-gateway-probe-overview.md)
 ## [Enrutamiento de direcciones URL](application-gateway-url-route-overview.md)
 ## [Multisitio](application-gateway-multi-site-overview.md)
-## [SSL de un extremo a otro](application-gateway-backend-ssl.md)
+## [Terminar tooend SSL](application-gateway-backend-ssl.md)
 ## [Directiva SSL](application-gateway-ssl-policy-overview.md)
 ## [Redireccionamiento](application-gateway-redirect-overview.md)
 ## [Compatibilidad multiinquilino](application-gateway-web-app-overview.md)
@@ -37,7 +37,7 @@
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (clásico)](application-gateway-ssl.md)
 ### [CLI de Azure 2.0](application-gateway-ssl.md)
-### [De un extremo a otro](application-gateway-end-to-end-ssl-powershell.md)
+### [Tooend final](application-gateway-end-to-end-ssl-powershell.md)
 ### [Directiva SSL](application-gateway-configure-ssl-policy-powershell.md)
 ## Configuración de enrutamiento basado en ruta de acceso de URL
 ### [Portal](application-gateway-create-url-route-portal.md)
@@ -75,7 +75,7 @@
 ## [VPN Gateway](/azure/vpn-gateway/)
 ## [Máquinas virtuales](/azure/virtual-machines/)
 ## [Equilibrador de carga](/azure/load-balancer/)
-## [Traffic Manager](/azure/traffic-manager/)
+## [Administrador de tráfico](/azure/traffic-manager/)
 # Recursos
 ## [Azure Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Foro de MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)

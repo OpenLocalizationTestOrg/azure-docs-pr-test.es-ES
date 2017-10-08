@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con SCC LifeCycle | Microsoft Docs"
-description: "Aprenda cómo usar SCC LifeCycle con Azure Active Directory para habilitar el inicio de sesión único, el aprovisionamiento automatizado, etc."
+description: "¡Obtenga información acerca de cómo toouse SCC LifeCycle con Azure Active Directory tooenable único inicio de sesión, aprovisionamiento automático y mucho más!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,108 +13,108 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 9a30bcca720ff135d0180d73f46e78403e9bca43
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c10c313c5fc157ed70d2ccecfb930a8a765f8444
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Tutorial: Integración de Azure Active Directory con SCC LifeCycle
-El objetivo de este tutorial es mostrar la integración de Azure y SCC LifeCycle.  
+objetivo de Hola de este tutorial es la integración de hello tooshow de Azure y SCC LifeCycle.  
 
-En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
+escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
 
 * Una suscripción de Azure válida
 * Una suscripción habilitada para el inicio de sesión único (SSO) en SCC LifeCycle
 
-Después de completar este tutorial, los usuarios de Azure AD que ha asignado a SCC LifeCycle podrán realizar un inicio de sesión único en la aplicación en el sitio de la compañía de SCC LifeCycle (inicio de sesión iniciado por el proveedor de servicios) o con la [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Después de completar este tutorial, Hola usuarios de Azure AD que haya asignado será el ciclo de vida de tooSCC toosingle capaz de inicio de sesión en la aplicación hello en el sitio de SCC LifeCycle (servicio iniciado por el proveedor inicio de sesión), o mediante hello [Introducción Panel de acceso de toohello](active-directory-saas-access-panel-introduction.md).
 
-La situación descrita en este tutorial consta de los siguientes bloques de creación:
+escenario de Hello descrito en este tutorial consta de hello después de bloques de creación:
 
-1. Habilitación de la integración de aplicaciones para SCC LifeCycle
+1. Habilitar la integración de aplicación Hola para SCC LifeCycle
 2. Configuración del inicio de sesión único (SSO)
 3. Configuración del aprovisionamiento de usuario
 4. Asignación de usuarios
 
 ![Escenario](./media/active-directory-saas-scc-lifecycle-tutorial/IC794120.png "Escenario")
 
-## <a name="enable-the-application-integration-for-scc-lifecycle"></a>Habilitación de la integración de aplicaciones para SCC LifeCycle
-El objetivo de esta sección es describir cómo habilitar la integración de las aplicaciones para SCC LifeCycle.
+## <a name="enable-hello-application-integration-for-scc-lifecycle"></a>Habilitar la integración de aplicación Hola para SCC LifeCycle
+objetivo de Hola de esta sección es toooutline la integración de aplicaciones de hello tooenable para SCC LifeCycle.
 
-**Siga estos pasos con el fin de habilitar la integración de aplicaciones en SCC LifeCycle:**
+**integración de aplicaciones de hello tooenable para SCC LifeCycle, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del Portal de Azure clásico, haga clic en **Active Directory**.
+1. Hola portal de Azure clásico, en el panel de navegación izquierdo de hello, haga clic en **Active Directory**.
    
     ![Active Directory](./media/active-directory-saas-scc-lifecycle-tutorial/IC700993.png "Active Directory")
-2. En la lista **Directory**, seleccione el directorio cuya integración desee habilitar.
-3. Para abrir la vista de aplicaciones, haga clic en **Applications**, en el menú superior de la vista de directorios.
+2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
+3. Haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
    
     ![Aplicaciones](./media/active-directory-saas-scc-lifecycle-tutorial/IC700994.png "Aplicaciones")
-4. Haga clic en **Agregar** en la parte inferior de la página.
+4. Haga clic en **agregar** final Hola de página Hola.
    
     ![Agregar aplicaciones](./media/active-directory-saas-scc-lifecycle-tutorial/IC749321.png "Agregar aplicaciones")
-5. En el cuadro de diálogo **¿Qué desea hacer?**, haga clic en **Agregar una aplicación de la galería**.
+5. En hello **especifique qué desea toodo** cuadro de diálogo, haga clic en **agregar una aplicación de la Galería de hello**.
    
     ![Agregar una aplicación de la galería](./media/active-directory-saas-scc-lifecycle-tutorial/IC749322.png "Agregar una aplicación de la galería")
-6. En el **cuadro de búsqueda**, escriba **SCC LifeCycle**.
+6. Hola **cuadro de búsqueda**, tipo **SCC LifeCycle**.
    
     ![Galería de aplicaciones](./media/active-directory-saas-scc-lifecycle-tutorial/IC794121.png "Galería de aplicaciones")
-7. En el panel de resultados, seleccione **SCC LifeCycle** y haga clic en **Completar** para agregar la aplicación.
+7. En el panel de resultados de hello, seleccione **SCC LifeCycle**y, a continuación, haga clic en **completar** aplicación de hello tooadd.
    
     ![Ciclo de vida de SCC](./media/active-directory-saas-scc-lifecycle-tutorial/IC795082.png "Ciclo de vida de SCC")
    
 ## <a name="configure-single-sign-on"></a>Configurar inicio de sesión único
 
-El objetivo de esta sección es describir cómo se habilita la autenticación de los usuarios en SCC LifeCycle con su cuenta de Azure AD usando el protocolo SAML basado en la federación.
+objetivo de Hola de esta sección es toooutline cómo tooauthenticate tooSCC del ciclo de vida de tooenable a los usuarios con su cuenta de Azure AD utilizando federación basada en protocolo SAML de Hola.
 
-**Siga estos pasos para configurar el inicio de sesión único:**
+**tooconfigure inicio de sesión único, lleve a cabo Hola pasos:**
 
-1. En el Portal de Azure clásico, en la página de integración de aplicaciones de **SCC LifeCycle**, haga clic en **Configurar inicio de sesión único** para abrir el cuadro de diálogo **Configurar inicio de sesión único**.
+1. En el portal de Azure clásico en Hola Hola **SCC LifeCycle** página de integración de aplicaciones, haga clic en **configurar inicio de sesión único** tooopen Hola ** configurar inicio de sesión único ** cuadro de diálogo.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-scc-lifecycle-tutorial/IC794122.png "Configurar inicio de sesión único")
-2. En la página **¿Cómo desea que los usuarios inicien sesión en SCC LifeCycle?**, seleccione **Inicio de sesión único de Microsoft Azure AD** y haga clic en **Siguiente**.
+2. En hello **¿cómo desea que los usuarios toosign en tooSCC ciclo de vida de** página, seleccione **Microsoft Azure AD Single Sign-On**y, a continuación, haga clic en **siguiente**.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-scc-lifecycle-tutorial/IC794123.png "Configurar inicio de sesión único")
-3. En la página **Configurar dirección URL de la aplicación**, en el cuadro de texto **URL de inicio de sesión** de, escriba la dirección URL utilizada por los usuarios para iniciar sesión en su aplicación de SCC LifeCycle con el patrón "*https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*" y haga clic en **Siguiente**.
+3. En hello **configurar URL de aplicación** página Hola **dirección URL de inicio de sesión** cuadro de texto, escriba la dirección URL Hola utilizado por su toosign a los usuarios en tooyour aplicación de SCC LifeCycle mediante Hola sigue el patrón "*https:// bs1.SCC.com/lc7/Welcome/Customer/PICTtest.aspx*"y, a continuación, haga clic en **siguiente**.
    
     ![Configurar dirección URL de la aplicación](./media/active-directory-saas-scc-lifecycle-tutorial/IC794124.png "Configurar dirección URL de la aplicación")
-4. En la página **Configuración de inicio de sesión único en SCC LifeCycle**, haga clic en **Descargar metadatos** y guarde el archivo de metadatos localmente en el equipo.
+4. En hello **configurar inicio de sesión único en SCC LifeCycle** página, haga clic en **descargar metadatos**y, a continuación, guarde el archivo de metadatos localmente en el equipo.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-scc-lifecycle-tutorial/IC795083.png "Configurar inicio de sesión único")
-5. Reenvíe el archivo de metadatos al equipo de soporte técnico de SCC LifeCycle.
+5. Reenviar ese tooSCC del archivo de metadatos equipo de soporte técnico de ciclo de vida.
    
    >[!NOTE]
-   >El equipo de soporte técnico de SCC LifeCycle es el que debe habilitar el inicio de sesión único.
+   >Inicio de sesión único tiene toobe habilitada por Hola, equipo de soporte técnico de SCC LifeCycle.
    > 
    > 
 
-6. En el Portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único y haga clic en **Completar** para cerrar el cuadro de diálogo **Configurar inicio de sesión único**.
+6. En hello portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único de hello y, a continuación, haga clic en **completar** tooclose hello **configurar inicio de sesión único** cuadro de diálogo.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-scc-lifecycle-tutorial/IC794125.png "Configurar inicio de sesión único")
    
 ## <a name="configure-user-provisioning"></a>Configurar aprovisionamiento de usuarios
 
-Para permitir que los usuarios de Azure AD inicien sesión en SCC LifeCycle, deben aprovisionarse en SCC LifeCycle. No hay elemento de acción para que configure el aprovisionamiento de usuarios en SCC LifeCycle.
+En orden tooenable toolog de los usuarios de Azure AD en SCC LifeCycle, se les deben aprovisionar en SCC LifeCycle. No hay ningún elemento de acción tooconfigure de aprovisionamiento de usuarios tooSCC del ciclo de vida.
 
-Cuando un usuario asignado intente iniciar sesión en LifeCycle, se creará automáticamente una cuenta de LifeCycle si es necesario.
+Cuando un toolog de intentos de usuario asignado en SCC LifeCycle, automáticamente se crea una cuenta de SCC LifeCycle si es necesario.
 
 >[!NOTE]
->Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de SCC LifeCycle ofrecida por SCC LifeCycle para aprovisionar cuentas de usuario de AAD.
+>Puede usar cualquier otra SCC LifeCycle usuario cuenta herramienta de creación o las API proporcionadas por tooprovision de SCC LifeCycle cuentas de usuario AAD.
 > 
 > 
 
 ## <a name="assign-users"></a>Asignar usuarios
-Para probar la configuración, debe conceder acceso a los usuarios de Azure AD a los que quiere permitir el uso de su aplicación.
+tootest la configuración, debe toogrant los usuarios de hello Azure AD que desee tooallow con su tooit de acceso de la aplicación mediante la asignación de ellos.
 
-**Para asignar usuarios a SCC LifeCycle, lleve a cabo los siguientes pasos:**
+**tooassign usuarios tooSCC ciclo de vida, lleve a cabo Hola pasos:**
 
-1. En el Portal de Azure clásico, cree una cuenta de prueba.
-2. En la página de integración de aplicaciones de **SCC LifeCycle**, haga clic en **Asignar usuarios**.
+1. Hola portal de Azure clásico, cree una cuenta de prueba.
+2. En Hola ** SCC LifeCycle ** página de integración de aplicaciones, haga clic en **asignar usuarios**.
    
     ![Asignar usuarios](./media/active-directory-saas-scc-lifecycle-tutorial/IC794126.png "Asignar usuarios")
-3. Seleccione su usuario de prueba, haga clic en **Asignar** y en **Sí** para confirmar la asignación.
+3. Seleccione el usuario de prueba, haga clic en **asignar**y, a continuación, haga clic en **Sí** tooconfirm su asignación.
    
     ![Sí](./media/active-directory-saas-scc-lifecycle-tutorial/IC767830.png "Sí")
 
-Si desea probar la configuración de inicio de sesión único (SSO), abra el panel de acceso. Para obtener más información sobre el Panel de acceso, vea [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Si desea tootest la configuración de SSO, abra Hola Panel de acceso. Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
 

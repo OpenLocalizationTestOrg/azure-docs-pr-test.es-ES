@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de Hybrid Runbook Worker de Azure Automation | Microsoft Docs"
-description: "Se describen los síntomas, las causas y la solución de los problemas más comunes de Hybrid Runbook Worker de Azure Automation."
+title: "aaaTroubleshoot Hybrid Runbook Worker de automatización de Azure | Documentos de Microsoft"
+description: "Se describen los síntomas de hello, causas y la resolución de hello problemas más comunes Hybrid Runbook Worker de automatización de Azure."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: magoedte
-ms.openlocfilehash: 9d1ceda5a072f494651a751a25a8ccf66e4c72ef
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 292af517c88d1ffd21262a286ccc079e7270bfad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-tips-for-hybrid-runbook-worker"></a>Consejos para la solución de problemas de Hybrid Runbook Worker
 
-En este artículo se proporciona ayuda para solucionar los errores comunes que puede experimentar con Hybrid Runbook Worker de Automation y sugiere posibles soluciones para resolverlos.
+Este artículo proporciona ayuda para solucionar los errores que se pueda experimentar con automatización Hybrid Runbook Workers y sugiere soluciones posibles tooresolve ellos.
 
 ## <a name="a-runbook-job-terminates-with-a-status-of-suspended"></a>Un trabajo de Runbook finaliza con el estado Suspendido
 
-El Runbook se suspende poco después de intentar ejecutarlo tres veces. Hay condiciones que pueden interrumpir el Runbook antes de su correcta finalización y el mensaje de error relacionado no incluye información adicional que indique el motivo. En este artículo se proporcionan pasos que ayudan a solucionar problemas relacionados con errores de ejecución de Runbook de Hybrid Runbook Worker.
+Se suspende el runbook poco después de intentar tooexecute que tres veces. Hay condiciones que podrían interrumpir Hola runbook completara correctamente y mensaje de error relacionado con hello no incluye ninguna información adicional que indica por qué. Este artículo proporciona pasos para solucionar problemas de errores de ejecución de runbook de problemas relacionados toohello Hybrid Runbook Worker.
 
-Si su problema con Azure no se trata en este artículo, visite los foros de Azure en [MSDN y Stack Overflow](https://azure.microsoft.com/support/forums/). Puede publicar su problema en ellos o en [@AzureSupport en Twitter](https://twitter.com/AzureSupport). También puede presentar una solicitud de soporte técnico de Azure; para ello seleccione **Obtener soporte técnico** en el sitio de [soporte técnico de Azure](https://azure.microsoft.com/support/options/) .
+Si el problema de Azure no se trata en este artículo, visite Hola foros de Azure en [MSDN y Hola desbordamiento de la pila](https://azure.microsoft.com/support/forums/). Puede publicar su problema en estos foros o demasiado[ @AzureSupport en Twitter](https://twitter.com/AzureSupport). Además, puede registrar una solicitud de soporte técnico de Azure seleccionando **obtener asistencia** en hello [soporte técnico de Azure](https://azure.microsoft.com/support/options/) sitio.
 
 ### <a name="symptom"></a>Síntoma
-Se produce un error en la ejecución de un Runbook y el error devuelto es "La acción de trabajo 'Activar' no se puede ejecutar porque el proceso se detuvo de manera inesperada. La acción de trabajo se intentó 3 veces."
+Se produce un error en la ejecución de un runbook y se ha devuelto un error hello, "hello acción de trabajo 'Activate' no se puede ejecutar porque el proceso de Hola se detuvo inesperadamente. acción de trabajo de Hello intentó 3 veces."
 
-Hay varias causas posibles para este error: 
+Hay varias causas posibles para el error de hello: 
 
-1. Hybrid Worker está detrás de un firewall o proxy.
-2. El equipo en el que se está ejecutando Hybrid Worker no cumple los [requisitos de hardware](automation-offering-get-started.md#hybrid-runbook-worker) mínimos.  
-3. No se pueden autenticar los Runbooks con recursos locales.
+1. hybrid worker de Hello está detrás de un servidor proxy o firewall
+2. Hello hybrid worker de Hola de equipo se está quedando tiene menos de hello mínimo [los requisitos de hardware](automation-offering-get-started.md#hybrid-runbook-worker)  
+3. Hola runbooks no se puede autenticar con recursos locales
 
 #### <a name="cause-1-hybrid-runbook-worker-is-behind-proxy-or-firewall"></a>Causa 1: Hybrid Runbook Worker está detrás de un firewall o proxy
-El equipo en el que se está ejecutando Hybrid Runbook Worker está detrás de un servidor proxy o firewall y es posible que el acceso de red saliente no esté permitido o configurado correctamente.
+Hola Hola de equipo que se está quedando Hybrid Runbook Worker está detrás de un servidor proxy o firewall y acceso de red saliente no se permitirá o configurado correctamente.
 
 #### <a name="solution"></a>Solución
-Compruebe que el equipo tenga acceso saliente a *.azure-automation.net en el puerto 443. 
+Compruebe el equipo de hello tiene acceso de salida too*.azure-automation.net en el puerto 443. 
 
 #### <a name="cause-2-computer-has-less-than-minimum-hardware-requirements"></a>Causa 2: El equipo no cumple los requisitos mínimos de hardware
-Los equipos que ejecutan Hybrid Runbook Worker deben cumplir los requisitos mínimos de hardware antes de indicar que hospede esta característica. De lo contrario, en función del uso de recursos de otros procesos en segundo plano y la contención provocada por Runbooks durante la ejecución, el equipo estará sobreutilizado y provocará retrasos o tiempos de espera en los trabajos de Runbook. 
+Hola a equipos que ejecutan Hola Hybrid Runbook Worker deben cumplir los requisitos mínimos de hardware antes de designar toohost esta característica. En caso contrario, según la utilización de recursos de Hola de otros procesos en segundo plano y la contención porque runbooks durante la ejecución, equipo de Hola se convierten en utilizarán más y provocar retrasos de trabajo de runbook o tiempos de espera. 
 
 #### <a name="solution"></a>Solución
-Confirme primero que el equipo designado para ejecutar la característica Hybrid Runbook Worker cumple los requisitos mínimos de hardware.  Si es así, supervise el uso de la CPU y de memoria para determinar las posibles correlaciones entre el rendimiento de los procesos de Hybrid Runbook Worker y Windows.  Si hay presión de memoria o de la CPU, esto puede indicar que se deben actualizar o agregar procesadores adicionales, o aumentar la memoria para resolver el cuello de botella de recursos y el error. También puede seleccionar un recurso de proceso diferente que pueda admitir los requisitos mínimos y escalarse cuando las demandas de trabajo indiquen que es necesario un aumento.         
+Confirmar primero el equipo de hello designado de la característica de Hybrid Runbook Worker de hello toorun cumple requisitos mínimos de hardware de Hola.  Si es así, supervisar toodetermine de uso de CPU y memoria de las posibles correlaciones entre el rendimiento de Hola de procesos de Hybrid Runbook Worker y Windows.  Si no hay presión de CPU o memoria, esto puede indicar Hola necesidad tooupgrade o agregue procesadores adicionales, o aumento de memoria tooaddress Hola cuello de botella de recursos y resolver errores de Hola. Como alternativa, seleccione un recurso de proceso diferente que puede admitir los requisitos mínimos de Hola y escalar cuando las demandas de carga de trabajo indican que un aumento es necesario.         
 
 #### <a name="cause-3-runbooks-cannot-authenticate-with-local-resources"></a>Causa 3: No se pueden autenticar los Runbooks con recursos locales.
 
 #### <a name="solution"></a>Solución
-Compruebe el registro de eventos **Microsoft SMA** para un evento correspondiente con la descripción *Proceso Win32 cerrado con el código [4294967295]*.  La causa de este error es que no ha configurado la autenticación en sus Runbooks o especificado las credenciales de identificación para el grupo de Hybrid Worker.  Revise los [permisos de runbook](automation-hrw-run-runbooks.md#runbook-permissions) para confirmar que ha configurado correctamente la autenticación para los runbooks.  
+Comprobar hello **Microsoft SMA** registro de eventos para un evento correspondiente con la descripción *Win32 proceso terminó con el código [4294967295]*.  Hola razón de este error es no ha configurado la autenticación de sus runbooks o especificó Hola ejecutar como credenciales para el grupo de hello Hybrid worker.  Revise [Runbook permisos](automation-hrw-run-runbooks.md#runbook-permissions) tooconfirm ha configurado correctamente la autenticación para los runbooks.  
 
 ## <a name="next-steps"></a>Pasos siguientes
 

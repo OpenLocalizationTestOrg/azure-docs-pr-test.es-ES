@@ -1,6 +1,6 @@
 ---
-title: Recomendaciones sobre el costo de Azure Advisor | Microsoft Docs
-description: Utilice Azure Advisor para optimizar el costo de las implementaciones de Azure.
+title: recomendaciones de Advisor costo aaaAzure | Documentos de Microsoft
+description: Utilice el Asistente de Azure toooptimize Hola coste de las implementaciones de Azure.
 services: advisor
 documentationcenter: NA
 author: kumudd
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 5eef2116f238b477fa8de46ce7b25728c393739c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 50f70c33a17f550c8753795435cdfddd51e409f7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="advisor-cost-recommendations"></a>Recomendaciones sobre el costo de Advisor
 
-Advisor lo ayuda a optimizar y reducir el gasto global de Azure mediante la identificación de recursos inactivos e infrautilizados. Puede obtener recomendaciones sobre el costo en la pestaña **Cost** (Costo) del panel de Advisor.
+Advisor lo ayuda a optimizar y reducir el gasto global de Azure mediante la identificación de recursos inactivos e infrautilizados. Puede obtener costo recomendaciones de hello **costo** pestaña Panel de Asistente de Hola.
 
 ![Pestaña Cost (Costo) de Advisor](./media/advisor-cost-recommendations/advisor-cost-tab2.png)
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-underutilized-instances"></a>Optimización del gasto en máquinas virtuales mediante la adecuación del tamaño en instancias infrautilizadas 
-Mientras que determinados escenarios de aplicaciones pueden dar lugar a un uso escaso debido al diseño, a menudo puede ahorrar dinero administrando el tamaño y número de máquinas virtuales. Advisor supervisa la utilización de las máquinas virtuales durante 14 días e identifica aquellas con una utilización escasa. Se considera que una máquina virtual tiene una utilización escasa si su utilización de la CPU es del 5 % o menos y el de la red es de 7 MB o menos durante cuatro o más días.
+Aunque pueden dar lugar a determinados escenarios de aplicación en un uso escaso por diseño, a menudo puede ahorrar dinero mediante la administración del tamaño de Hola y el número de las máquinas virtuales. Advisor supervisa la utilización de las máquinas virtuales durante 14 días e identifica aquellas con una utilización escasa. Se considera que una máquina virtual tiene una utilización escasa si su utilización de la CPU es del 5 % o menos y el de la red es de 7 MB o menos durante cuatro o más días.
 
-Advisor muestra el costo estimado de continuar ejecutando la máquina virtual, para que puede elegir entre apagarla o cambiar su tamaño.  
+El asistente muestra de Hola costo estimado de continuar toorun la máquina virtual, para que pueda elegir tooshut abajo o cambiar su tamaño.  
 
 ![Recomendaciones sobre el costo de Advisor para cambiar el tamaño de máquinas virtuales](./media/advisor-cost-recommendations/advisor-cost-resizevms.png)
 
-## <a name="use-a-cost-effective-solution-to-manage-performance-goals-of-multiple-sql-databases"></a>Usar una solución rentable para administrar los objetivos de rendimiento de varias bases de datos SQL
-Advisor identifica las instancias de SQL Server que pueden beneficiarse de la creación de grupos de bases de datos elásticas. Los grupos de bases de datos elásticas proporcionan una solución sencilla y rentable para administrar los objetivos de rendimiento de varias bases de datos que tienen patrones de utilización diferentes. Para más información sobre los grupos de bases de datos elásticas de Azure, consulte [¿Qué es un grupo elástico de Azure?](https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool/)
+## <a name="use-a-cost-effective-solution-toomanage-performance-goals-of-multiple-sql-databases"></a>Usar un objetivos de rendimiento de la solución más rentable toomanage de varias bases de datos SQL
+Advisor identifica las instancias de SQL Server que pueden beneficiarse de la creación de grupos de bases de datos elásticas. Los grupos de bases de datos elásticas proporcionan una solución simple y rentable toomanage objetivos de rendimiento de Hola de varias bases de datos que tienen diferentes patrones de uso. Para más información sobre los grupos de bases de datos elásticas de Azure, consulte [¿Qué es un grupo elástico de Azure?](https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool/)
 
 ![Recomendaciones sobre el costo de Advisor para grupos de bases de datos elásticas](./media/advisor-cost-recommendations/advisor-cost-elasticdbpools.png)
 
-## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Obtención de acceso a las recomendaciones sobre el costo en Azure Advisor
+## <a name="how-tooaccess-cost-recommendations-in-azure-advisor"></a>¿Cómo tooaccess costo recomendaciones en el Asistente de Azure
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 
-2. En el panel izquierdo, haga clic en **Más servicios**.
+2. En el panel izquierdo de hello, haga clic en **más servicios**.
 
-3. En el panel de menú de servicio, en **Supervisión y administración**, haga clic en **Azure Advisor**.  
- Se muestra el panel de Advisor.
+3. Hola servicio panel de menú, en **supervisión y administración**, haga clic en **Asistente de Azure**.  
+ Hola Advisor panel se abre.
 
-4. En el panel de Advisor, haga clic en la pestaña **Costo**.
+4. En el panel del Asistente de hello, haga clic en hello **costo** ficha.
 
-5. Seleccione la suscripción para la que desea recibir las recomendaciones y haga clic en **Obtener recomendaciones**.
+5. Seleccione la suscripción de hello para el que desea tooreceive recomendaciones y, a continuación, haga clic en **obtener recomendaciones**.
 
 > [!NOTE]
-> Para acceder a las recomendaciones de Advisor, primero debe *registrar su suscripción* en dicha solución. Una suscripción se registra cuando el *propietario de esta* inicia el panel de Advisor y hace clic en el botón **Obtener recomendaciones**. Esta operación *solo se realiza una vez*. Una vez registrada la suscripción, puede acceder a las recomendaciones de Advisor como *Propietario*, *Contribuidor* o *Lector* para una suscripción, un grupo de recursos o un recurso concreto.
+> tooaccess las recomendaciones del asistente, primero debe *registrar su suscripción* con el asistente. Una suscripción se registra cuando un *suscripción propietario* inicia Hola Hola de panel y hace clic en el asistente **obtener recomendaciones** botón. Esta operación *solo se realiza una vez*. Después de registra la suscripción de hello, puede tener acceso a las recomendaciones del asistente como *propietario*, *colaborador*, o *lector* para una suscripción de un grupo de recursos, o recurso específico.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para aprender más sobre las recomendaciones de Advisor, consulte:
-* [Introducción a Advisor](advisor-overview.md)
+toolearn más información acerca de las recomendaciones del asistente, vea:
+* [Introducción tooAdvisor](advisor-overview.md)
 * [Introducción](advisor-get-started.md)
 * [Recomendaciones sobre rendimiento de Advisor](advisor-cost-recommendations.md)
 * [Recomendaciones sobre alta disponibilidad de Advisor](advisor-cost-recommendations.md)

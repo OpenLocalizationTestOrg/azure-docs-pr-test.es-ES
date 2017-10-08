@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con LinkedIn Lookup | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y LinkedIn Lookup."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y búsqueda de LinkedIn."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,131 +13,131 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: e296431866a8611b30e72f286884890adf0f7e50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d79c34baa676391699e4b49806f16422fcfe73e1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-lookup"></a>Tutorial: Integración de Azure Active Directory con LinkedIn Lookup
 
-En este tutorial, aprenderá a integrar LinkedIn Lookup con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate búsqueda LinkedIn con Azure Active Directory (Azure AD).
 
-Integrar LinkedIn Lookup con Azure AD le proporciona las siguientes ventajas:
+Integración de búsqueda de LinkedIn con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a LinkedIn Lookup
-- Puede permitir que los usuarios inicien sesión automáticamente en LinkedIn Lookup (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooLinkedIn búsqueda
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooLinkedIn búsqueda (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con LinkedIn Lookup, necesita lo siguiente:
+tooconfigure integración de Azure AD con búsqueda de LinkedIn, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en LinkedIn Lookup
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Adición de LinkedIn Lookup desde la galería
+1. Agregar LinkedIn búsqueda desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-linkedin-lookup-from-the-gallery"></a>Adición de LinkedIn Lookup desde la galería
-Para configurar la integración de LinkedIn Lookup en Azure AD, deberá agregar esta solución desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-linkedin-lookup-from-hello-gallery"></a>Agregar LinkedIn búsqueda desde la Galería de Hola
+integración de hello tooconfigure de búsqueda de LinkedIn en Azure AD, deberá tooadd LinkedIn búsqueda de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar LinkedIn Lookup desde la galería, realice los pasos siguientes:**
+**tooadd LinkedIn búsqueda desde la Galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Haga clic en el botón **Nueva aplicación** en la parte superior del cuadro de diálogo para agregar la nueva aplicación.
+3. Haga clic en **nueva aplicación** botón en la parte superior de Hola de nueva aplicación de hello diálogo tooadd.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **LinkedIn Lookup**.
+4. En el cuadro de búsqueda de hello, escriba **LinkedIn búsqueda**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedInlookup_search.png)
 
-5. En el panel de resultados, seleccione **LinkedIn Lookup** y luego haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **LinkedIn búsqueda**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedInlookup_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con LinkedIn Lookup utilizando un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de LinkedIn Lookup para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de LinkedIn Lookup.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en búsqueda de LinkedIn es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en búsqueda de LinkedIn debe toobe establecido.
 
-Esta relación de vínculo se establece mediante la asignación del valor de **nombre de usuario** en Azure AD como valor de **Username** (Nombre de usuario) en LinkedIn Lookup.
+Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en búsqueda de LinkedIn.
 
-Para configurar y probar el inicio de sesión único de Azure AD con LinkedIn Lookup, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con búsqueda de LinkedIn, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de LinkedIn Lookup](#creating-an-linkedin-lookup-test-user)**: para tener un homólogo de Britta Simon en LinkedIn Lookup que esté vinculado a la representación en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Creación de un usuario de prueba de búsqueda de LinkedIn](#creating-an-linkedin-lookup-test-user)**  -toohave un equivalente de Britta Simon en búsqueda de LinkedIn es representación toohello vinculado Azure AD.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación LinkedIn Lookup.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de búsqueda de LinkedIn.
 
-**Para configurar el inicio de sesión único de Azure AD con LinkedIn Lookup, realice los pasos siguientes:**
+**inicio de sesión único en Azure AD tooconfigure con búsqueda de LinkedIn, realizar Hola pasos:**
 
-1. En la página de integración de la aplicación **LinkedIn Lookup** de Azure Portal, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **LinkedIn búsqueda** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo**, seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, en **modo** seleccione **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedInlookup_samlbase.png)
 
-3. En otra ventana del explorador web, inicie sesión como administrador en el sitio web de **LinkedIn Lookup**.
+3. En una ventana del explorador web diferente, inicio de sesión tooyour **LinkedIn búsqueda** sitio Web como administrador.
 
-4. En **Account Center** (Centro de cuentas), haga clic en **Global Settings** (Configuración global) en **Settings** (Configuración). Seleccione también **Lookup** en la lista desplegable.
+4. En **Account Center** (Centro de cuentas), haga clic en **Global Settings** (Configuración global) en **Settings** (Configuración). Además, seleccione **búsqueda** de lista desplegable de Hola.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_LinkedIn_admin_011.png)
 
-5. Haga clic en **OR Click Here to load and copy individual fields from the form** (O haga clic aquí para cargar y copiar campos individuales del formulario) y copie el **Id.de entidad** y la **Assertion Consumer Access (ACS) Url** (Url de Acceso de consumidor de aserciones [ACS]).
+5. Haga clic en **o haga clic aquí tooload y copie los campos individuales de formulario de hello** y copie **Id. de entidad** y **dirección Url de acceso de consumidor de aserción (ACS)**
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_LinkedIn_admin_032.png)
 
-6. En la sección **Dominio y direcciones URL de LinkedIn Lookup** de Azure Portal, realice los siguientes pasos si quiere configurar la aplicación en el modo iniciado por **IDP**:
+6. En el portal de Azure, en **LinkedIn búsqueda dominio y las direcciones URL** sección, lleve a cabo Hola siguientes pasos si desea tooconfigure aplicación de hello en **IDP** modo iniciado:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedInlookup_url.png)
 
-    a. En el cuadro de texto **Identificador**, escriba el **Id.de entidad** que copió de LinkedIn Portal 
+    a. Hola **identificador** cuadro de texto, escriba Hola **Id. de entidad** copiados desde el LinkedIn Portal 
 
-    b. En el cuadro de texto **URL de respuesta**, escriba la **Assertion Consumer Access (ACS) Url** (Url de Acceso de consumidor de aserciones [ACS]) que copió de LinkedIn Portal
+    b. Hola **dirección URL de respuesta** cuadro de texto, escriba Hola **dirección Url de acceso de consumidor de aserción (ACS)** copiados desde el LinkedIn Portal
 
-7. Active **Mostrar configuración avanzada de URL**, si desea volver a configurar la aplicación en modo iniciado por **SP**:
+7. Comprobar **mostrar avanzadas de configuración de direcciones URL**, si lo desea tooconfigure aplicación de hello en **SP** modo iniciado:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedInlookup_url1.png)
 
-    En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://www.linkedIn.com/checkpoint/enterprise/login/<AccountId>?application=lookup`.
+    Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://www.linkedIn.com/checkpoint/enterprise/login/<AccountId>?application=lookup`
      
     > [!NOTE] 
-    > Este no es un valor real. El usuario tiene que actualizar estos valores con la dirección URL de inicio de sesión real. Póngase en contacto con el [equipo de soporte de cliente de LinkedIn Lookup](https://business.LinkedIn.com/lookup) para obtener este valor.
+    > Este no es un valor real. usuario de Hello tiene tooupdate estos valores con hello dirección URL de inicio de sesión real. Póngase en contacto con [equipo de soporte técnico de cliente de LinkedIn búsqueda](https://business.LinkedIn.com/lookup) tooget este valor.
 
-8. La aplicación **LinkedIn Lookup** espera las aserciones de SAML en un formato concreto. El usuario tiene que agregar asignaciones de atributo personalizadas a la configuración de atributos de token de SAML. La siguiente captura de pantalla muestra un ejemplo. El valor predeterminado de **Identificador de usuario** es **user.userprincipalname**, pero LinkedIn Lookup espera que este valor se asigne a la dirección de correo del usuario. Para ello, puede usar el atributo **user.mail** de la lista o usar el valor de atributo correspondiente en función de la configuración de su organización. 
+8. Su **LinkedIn búsqueda** aplicación espera las aserciones de SAML de hello en un formato concreto. usuario de Hello tiene configuración de atributos de token de SAML de tooadd atributo personalizado asignaciones toohello. Hola siguiente captura de pantalla muestra un ejemplo. Hola valor predeterminado de **identificador de usuario** es **user.userprincipalname** pero LinkedIn búsqueda espera este toobe asignado con la dirección de correo electrónico del usuario de Hola. Puede usar **user.mail** de atributo de la lista de Hola o usar el valor de atributo apropiado de hello según la configuración de la organización. 
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/updateusermail.png)
     
-9. En la sección **Atributos de usuario**, haga clic en **Ver y editar todos los demás atributos de usuario** y establezca los atributos. El usuario debe agregar cuatro notificaciones denominadas **email**, **department**, **firstname** y **lastname**, y el valor que debe asignarse es **user.mail**, **user.department**, **user.givenname** y **user.surname**, respectivamente
+9. En **atributos de usuario** sección, haga clic en **ver y editar todos los demás atributos de usuario** y establezca los atributos de Hola. usuario de Hello necesita cuatro notificaciones tooadd denominados **correo electrónico**, **departamento**, **firstname**, y **lastname** y valor de hello es toobe asignado con **user.mail**, **user.department**, **user.givenname**, y **user.surname** respectivamente
 
     | Nombre del atributo | Valor de atributo |
     | --- | --- |
@@ -148,29 +148,29 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/userattribute.png)
 
-    a. Haga clic en **Agregar atributo** para abrir el cuadro de diálogo **Agregar atributo**.
+    a. Haga clic en **Agregar atributo** tooopen hello **Agregar atributo** cuadro de diálogo.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/4.png)
    
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/5.png)
    
-    b. En el cuadro de texto **Nombre**, escriba el nombre que se muestra para la fila.
+    b. Hola **nombre** cuadro de texto, nombre de atributo de tipo hello se muestra para esa fila.
     
-    c. En la lista **Valor**, seleccione el atributo que se muestra para esa fila.
+    c. De hello **valor** lista, el valor de atributo de tipo hello se muestra para esa fila.
     
     d. Haga clic en **Aceptar**.
 
-10. Realice los pasos siguientes en el atributo **name**.
+10. Realizar Hola seguir pasos de hello **nombre** atributo:
 
-    a. Haga clic en el atributo para abrir la ventana **Editar atributo**.
+    a. Haga clic en Hola de hello atributo tooopen **Editar atributo** ventana.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/url_update.png)
 
-    b. Elimine el valor de dirección URL de **namespace**.
+    b. Eliminar el valor de dirección URL de Hola de hello **espacio de nombres**.
     
-    c. Haga clic en **Aceptar** para guardar la configuración.
+    c. Haga clic en **Aceptar** configuración de toosave Hola.
 
-10. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo XML en el equipo.
+10. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo XML de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedInlookup_certificate.png) 
 
@@ -178,72 +178,72 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_general_400.png)
 
-12. Vaya a la sección **LinkedIn Admin Settings** (Configuración de administrador de LinkedIn). Cargue el archivo XML que ha descargado de Azure Portal haciendo clic en la opción **Upload XML file** (Cargar archivo XML).
+12. Vaya demasiado**configuración de administración de LinkedIn** sección. Archivo XML carga hello que descargó desde Hola portal de Azure, haga clic en hello **archivo cargar XML** opción.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedIn_metadata_03.png)
 
-13. Haga clic en **On** (Activar) para habilitar SSO. El estado de SSO cambiará de **Not Connected** (No conectado) a **Connected** (Conectado).
+13. Haga clic en **en** tooenable SSO. Estado SSO cambia de **no conectado** demasiado**conectado**
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedIn_admin_05.png)
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones en [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/create_aaduser_01.png) 
 
-2. Vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. Vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/create_aaduser_02.png) 
 
-3. Haga clic en **Agregar** para abrir el cuadro de diálogo **Usuario**.
+3. Haga clic en **agregar** tooopen hello **usuario** cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **Britta Simon**.
+    a. Hola **nombre** cuadro de texto, tipo **Britta Simon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-an-linkedin-lookup-test-user"></a>Creación de un usuario de prueba de LinkedIn Lookup
 
-La aplicación Linked Lookup admite aprovisionamiento de usuarios Just-In-Time (JIT) y, tras la autenticación, los usuarios se crean automáticamente en la aplicación. Active **Automatically assign licenses** (Asignar licencias automáticamente) para asignar una licencia al usuario.
+Aplicación de búsqueda vinculado admite sólo de aprovisionamiento de usuarios de Time (JIT) y después de autenticar usuarios se crean automáticamente en la aplicación hello. Activar **automáticamente asignar licencias** tooassign un usuario de toohello de licencia.
    
    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedin_admin_license.png)
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a LinkedIn Lookup.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooLinkedIn búsqueda.
 
 ![Asignar usuario][200] 
 
-**Para asignar Britta Simon a LinkedIn Lookup, realice los pasos siguientes:**
+**tooassign Britta Simon tooLinkedIn búsqueda, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **LinkedIn Lookup**.
+2. En la lista de aplicaciones de hello, seleccione **LinkedIn búsqueda**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-LinkedInlookup-tutorial/tutorial_linkedInlookup_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -251,7 +251,7 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -260,15 +260,15 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de LinkedIn Lookup del panel de acceso, debería redirigirse a la página de la organización donde tiene que indicar los detalles de su cuenta personal de LinkedIn. Esta página vincula su cuenta personal con su cuenta empresarial de LinkedIn. 
+Al hacer clic en hello LinkedIn búsqueda disponer en mosaico en hello Panel de acceso, debe ser página redirigidos tooOrganizational donde haya tooprovide detalles de su cuenta personales de LinkedIn. Esta página vincula su cuenta personal con su cuenta empresarial de LinkedIn. 
 
 Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

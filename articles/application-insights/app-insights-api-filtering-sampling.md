@@ -1,6 +1,6 @@
 ---
-title: Filtrado y preprocesamiento en el SDK de Azure Application Insights | Microsoft Docs
-description: "Escriba procesadores e inicializadores de telemetría para que el SDK filtre o agregue propiedades a los datos antes de enviar la telemetría al portal de Application Insights."
+title: aaaFiltering y preprocesamiento en hello Azure Application Insights SDK | Documentos de Microsoft
+description: "Escribir procesadores de telemetría y los inicializadores de telemetría Hola SDK toofilter o agregar datos de propiedades toohello antes de telemetría de Hola se envía el portal de Application Insights toohello."
 services: application-insights
 documentationcenter: 
 author: beckylino
@@ -13,45 +13,45 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.openlocfilehash: 17e66775dd2cd1c858594102f1ddb32e2fbbccc8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 51b9db69b2375b8799718f1b0e1af77620dc2692
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtro y preprocesamiento de la telemetría en el SDK de Application Insights
+# <a name="filtering-and-preprocessing-telemetry-in-hello-application-insights-sdk"></a>Filtrado y preprocesamiento telemetría en hello Application Insights SDK
 
 
-Puede escribir y configurar complementos para el SDK de Application Insights con el fin de personalizar cómo se captura y se procesa la telemetría antes de enviarla al servicio de Application Insights.
+Puede escribir y configurar complementos para hello Application Insights SDK toocustomize cómo telemetría se capturan y se procesa antes de enviarlo toohello servicio Application Insights.
 
-* [muestreo](app-insights-sampling.md) reduce el volumen de la telemetría sin que ello influya en las estadísticas. Mantiene juntos los puntos de datos relacionados para que pueda navegar entre ellos a la hora de diagnosticar un problema. En el portal, se multiplican los recuentos totales para compensar el muestreo.
-* El filtrado con procesadores de telemetría [para ASP.NET](#filtering) o [Java](app-insights-java-filter-telemetry.md) permite seleccionar o modificar la telemetría en el SDK antes de enviarla al servidor. Por ejemplo, para reducir el volumen de la telemetría puede excluir las solicitudes de robots. Sin embargo, el filtro constituye un enfoque más básico que el muestreo para reducir el tráfico. Permite ejercer más control sobre lo que se transmite, pero debe tener en cuenta que se verán afectadas las estadísticas: por ejemplo, si filtra todas las solicitudes correctas.
-* [inicializadores de telemetría agregan propiedades](#add-properties) a cualquier telemetría enviada desde la aplicación, incluida la de los módulos estándar. Por ejemplo, puede agregar valores calculados o números de versión para filtrar los datos en el portal.
-* [API del SDK](app-insights-api-custom-events-metrics.md) se usa para enviar métricas y eventos personalizados.
+* [Muestreo](app-insights-sampling.md) reduce el volumen de Hola de telemetría sin que afecte a las estadísticas. Mantiene juntos los puntos de datos relacionados para que pueda navegar entre ellos a la hora de diagnosticar un problema. En el portal de hello, recuentos totales de hello son toocompensate multiplicada para el muestreo de Hola.
+* Filtrar con procesadores de telemetría [para ASP.NET](#filtering) o [Java](app-insights-java-filter-telemetry.md) le permite seleccionar o modificar la telemetría en hello SDK antes de enviarlo toohello server. Por ejemplo, podría reducir el volumen de Hola de telemetría mediante la exclusión de las solicitudes de robots. Pero el filtrado es un tráfico de tooreducing enfoque más básico que el muestreo. Permite más control sobre lo que se transmite, pero tienes toobe tenga en cuenta que afectará a las estadísticas: por ejemplo, si se filtran todas las solicitudes correctas.
+* [Inicializadores de telemetría agregar propiedades](#add-properties) telemetría tooany enviado desde su aplicación, incluida la telemetría de los módulos estándares Hola. Por ejemplo, podría agregar valores calculados; números de versión según las cuales toofilter hello en el portal de Hola o.
+* [la API del SDK de Hello](app-insights-api-custom-events-metrics.md) es toosend usado los eventos personalizados y las métricas.
 
 Antes de comenzar:
 
-* Instale el [SDK de Application Insights para ASP.NET](app-insights-asp-net.md) o [SDK para Java](app-insights-java-get-started.md) en su aplicación.
+* Instalar Hola Application Insights [SDK para ASP.NET](app-insights-asp-net.md) o [SDK para Java](app-insights-java-get-started.md) en la aplicación.
 
 <a name="filtering"></a>
 
 ## <a name="filtering-itelemetryprocessor"></a>Filtrado: ITelemetryProcessor
-Esta técnica le ofrece un control más directo sobre lo que se incluirá en la transmisión de telemetría o lo que se excluirá de ella. Se puede utilizar junto con el muestreo o por separado.
+Esta técnica proporciona un control más directo sobre lo que se incluirán o excluirán de la secuencia de telemetría de Hola. Se puede utilizar junto con el muestreo o por separado.
 
-Para filtrar la telemetría, escriba un procesador de telemetría y regístrelo con el SDK. Toda la telemetría pasa por el procesador. Puede optar por no incluirlo en la transmisión o por agregar propiedades. Esto incluye la telemetría de los módulos estándar como el recopilador de solicitudes HTTP y el recopilador de dependencia, así como la telemetría que haya escrito. Por ejemplo, puede filtrar para dejar fuera la telemetría acerca de las solicitudes de robots o las llamadas de dependencia correctas.
+telemetría toofilter, escribir un procesador de telemetría y registrarlo con hello SDK. Telemetría todos pasa por el procesador y puede elegir toodrop desde Hola transmitir por secuencias o agregar propiedades. Esto incluye la telemetría de los módulos estándares como recopilador de solicitud HTTP de Hola y el recopilador de dependencia de Hola Hola, así como la telemetría que haya escrito usted mismo. Por ejemplo, puede filtrar para dejar fuera la telemetría acerca de las solicitudes de robots o las llamadas de dependencia correctas.
 
 > [!WARNING]
-> El filtrado de la telemetría enviada desde el SDK usando procesadores puede sesgar las estadísticas que se ven en el portal, y dificultar el seguimiento de elementos relacionados.
+> Filtrado telemetría Hola enviado desde Hola SDK utilizan procesadores puede sesgar las estadísticas que se produzcan en el portal de hello y que sea difícil toofollow de Hola de elementos relacionados.
 >
 > En su lugar, puede efectuar un [muestreo](app-insights-sampling.md).
 >
 >
 
 ### <a name="create-a-telemetry-processor-c"></a>Creación de un procesador de telemetría (C#)
-1. Compruebe que la versión del SDK de Application Insights de su proyecto es la versión 2.0.0 o posterior. Haga clic con el botón derecho en el proyecto en el Explorador de soluciones de Visual Studio y elija Administrar paquetes de NuGet. En el Administrador de paquetes NuGet, compruebe Microsoft.ApplicationInsights.Web.
-2. Para crear un filtro, implemente ITelemetryProcessor. Se trata de otro punto de extensibilidad como el módulo de telemetría, el inicializador de telemetría y el canal de telemetría.
+1. Compruebe que Application Insights SDK hello en el proyecto es la versión 2.0.0 o posterior. Haga clic con el botón derecho en el proyecto en el Explorador de soluciones de Visual Studio y elija Administrar paquetes de NuGet. En el Administrador de paquetes NuGet, compruebe Microsoft.ApplicationInsights.Web.
+2. toocreate un filtro, implemente ITelemetryProcessor. Se trata de otro punto de extensibilidad como el módulo de telemetría, el inicializador de telemetría y el canal de telemetría.
 
-    Observe que los procesadores de telemetría forman una cadena de procesamiento. Al crear instancias de un procesador de telemetría, se pasa un vínculo al procesador siguiente en la cadena. Cuando un punto de datos de telemetría se pasa al método de proceso, realiza su trabajo y, a continuación, llama al procesador de telemetría siguiente de la cadena.
+    Observe que los procesadores de telemetría forman una cadena de procesamiento. Cuando crea una instancia de un procesador de telemetría, pasar un procesador siguiente toohello de vínculo en la cadena de Hola. Cuando un punto de datos de telemetría se pasa el método de proceso toohello, que realiza su trabajo y, a continuación, llamadas Hola siguiente procesador de telemetría en cadena Hola.
 
     ``` C#
 
@@ -66,16 +66,16 @@ Para filtrar la telemetría, escriba un procesador de telemetría y regístrelo 
         // You can pass values from .config
         public string MyParamFromConfigFile { get; set; }
 
-        // Link processors to each other in a chain.
+        // Link processors tooeach other in a chain.
         public SuccessfulDependencyFilter(ITelemetryProcessor next)
         {
             this.Next = next;
         }
         public void Process(ITelemetry item)
         {
-            // To filter out an item, just return
+            // toofilter out an item, just return
             if (!OKtoSend(item)) { return; }
-            // Modify the item if required
+            // Modify hello item if required
             ModifyItem(item);
 
             this.Next.Process(item);
@@ -111,16 +111,16 @@ Para filtrar la telemetría, escriba un procesador de telemetría y regístrelo 
 
 ```
 
-(Se trata de la misma sección donde inicializa un filtro de muestreo).
+(Esto es hello misma sección donde se inicializa un filtro de muestreo.)
 
-Puede pasar valores de cadena desde el archivo .config proporcionando propiedades con nombre públicas en la clase.
+Puede pasar valores de cadena del archivo .config de hello proporcionando las propiedades públicas con nombre en la clase.
 
 > [!WARNING]
-> Tenga cuidado para que el nombre de tipo y los nombres de propiedad del archivo .config coincidan con los nombres de clase y propiedad del código. Si el archivo .config hace referencia a un tipo o propiedad que no existe, el SDK puede producir un error de forma silenciosa al enviar cualquier telemetría.
+> Tenga cuidado de nombre de tipo hello toomatch y los nombres de propiedad de clase de hello config file toohello y nombres de propiedad en el código de hello. Si el archivo .config de hello hace referencia a un tipo no existente o una propiedad, Hola SDK en modo silencioso producirán toosend cualquier telemetría.
 >
 >
 
-**Alternativamente,** se puede inicializar el filtro en el código. En una clase de inicialización adecuada (por ejemplo AppStart de Global.asax.cs) inserte el procesador en la cadena:
+**O bien,** se puede inicializar el filtro de hello en el código. En una clase de inicialización adecuado - por ejemplo AppStart en Global.asax.cs - insertar un procesador en cadena hello:
 
 ```C#
 
@@ -138,7 +138,7 @@ Los TelemetryClients creados a partir de este punto usarán sus procesadores.
 
 ### <a name="example-filters"></a>Filtros de ejemplo
 #### <a name="synthetic-requests"></a>Solicitudes sintéticas
-Filtrar las pruebas web y robots. Aunque el Explorador de métricas proporciona la opción para filtrar y dejar fuera los orígenes sintéticos, esta opción reduce el tráfico filtrándolos en el SDK.
+Filtrar las pruebas web y robots. Aunque el Explorador de métricas ofrece Hola toofilter opción orígenes sintético, esta opción reduce el tráfico filtrando en hello SDK.
 
 ``` C#
 
@@ -164,7 +164,7 @@ public void Process(ITelemetry item)
     if (request != null &&
     request.ResponseCode.Equals("401", StringComparison.OrdinalIgnoreCase))
     {
-        // To filter out an item, just terminate the chain:
+        // toofilter out an item, just terminate hello chain:
         return;
     }
     // Send everything else:
@@ -174,10 +174,10 @@ public void Process(ITelemetry item)
 ```
 
 #### <a name="filter-out-fast-remote-dependency-calls"></a>Filtrar las llamadas de dependencia rápida y remota
-Si solo desea diagnosticar las llamadas que son lentas, descarte las rápidas.
+Si solo desea llamadas toodiagnose que son lentas, filtrar Hola fast los.
 
 > [!NOTE]
-> Esto sesgará las estadísticas que se ve en el portal. El gráfico de dependencias será como si las llamadas de dependencia fuesen todos errores.
+> Esto sesga las estadísticas de Hola que se ven en el portal de Hola. gráfico de dependencia de Hello será como si las llamadas de dependencia de hello son todos los errores.
 >
 >
 
@@ -197,17 +197,17 @@ public void Process(ITelemetry item)
 ```
 
 #### <a name="diagnose-dependency-issues"></a>Diagnóstico de problemas de dependencia
-[este blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) se describe un proyecto para diagnosticar problemas de dependencia enviando automáticamente pings regulares a las dependencias.
+[Este blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) describe un problemas de dependencia de proyecto toodiagnose enviando automáticamente toodependencies pings regular.
 
 
 <a name="add-properties"></a>
 
 ## <a name="add-properties-itelemetryinitializer"></a>Agregar propiedades: ITelemetryInitializer
-Use inicializadores de telemetría para definir las propiedades globales que se envían con toda la telemetría; y para invalidar el comportamiento seleccionado de los módulos de telemetría estándar.
+Usar la telemetría inicializadores toodefine propiedades globales que se envían con la telemetría todos; y el comportamiento de toooverride seleccionada de módulos de hello telemetría estándar.
 
-Por ejemplo, para el paquete Application Insights para web recopila telemetría acerca de las solicitudes HTTP. De forma predeterminada, marca como errónea cualquier solicitud con un código de respuesta >= 400. Pero si desea tratar 400 como correcto, puede proporcionar un inicializador de telemetría que establezca la propiedad Éxito.
+Por ejemplo, hello Application Insights para paquete de Web recopila telemetría acerca de las solicitudes HTTP. De forma predeterminada, marca como errónea cualquier solicitud con un código de respuesta >= 400. Pero si desea tootreat 400 como tales, puede proporcionar a un inicializador de telemetría que establece la propiedad de corrección de Hola.
 
-Si se proporciona un inicializador de telemetría, se llama cada vez que se llama a cualquiera de los métodos Track*(). Esto incluye los métodos llamados por los módulos de telemetría estándar. Por convención, estos módulos no establecen ninguna propiedad que ya haya sido establecida por un inicializador.
+Si se proporciona un inicializador de telemetría, se llama cada vez que cualquiera de Hola Track*() se llama a métodos. Esto incluye los métodos llamados por los módulos de hello telemetría estándar. Por convención, estos módulos no establecen ninguna propiedad que ya haya sido establecida por un inicializador.
 
 **Defina su inicializador**
 
@@ -223,7 +223,7 @@ Si se proporciona un inicializador de telemetría, se llama cada vez que se llam
     namespace MvcWebRole.Telemetry
     {
       /*
-       * Custom TelemetryInitializer that overrides the default SDK
+       * Custom TelemetryInitializer that overrides hello default SDK
        * behavior of treating response codes >= 400 as failed requests
        *
        */
@@ -239,12 +239,12 @@ Si se proporciona un inicializador de telemetría, se llama cada vez que se llam
             if (!parsed) return;
             if (code >= 400 && code < 500)
             {
-                // If we set the Success property, the SDK won't change it:
+                // If we set hello Success property, hello SDK won't change it:
                 requestTelemetry.Success = true;
-                // Allow us to filter these requests in the portal:
+                // Allow us toofilter these requests in hello portal:
                 requestTelemetry.Context.Properties["Overridden400s"] = "true";
             }
-            // else leave the SDK to set the Success property      
+            // else leave hello SDK tooset hello Success property      
         }
       }
     }
@@ -262,7 +262,7 @@ En ApplicationInsights.config:
       </TelemetryInitializers>
     </ApplicationInsights>
 
-*Alternativamente,* se pueden crear instancias del inicializador en el código, por ejemplo en Global.aspx.cs:
+*O bien,* puede crear instancias de inicializador de hello en el código, por ejemplo, en Global.aspx.cs:
 
 ```C#
     protected void Application_Start()
@@ -281,7 +281,7 @@ En ApplicationInsights.config:
 ### <a name="javascript-telemetry-initializers"></a>Inicializadores de telemetría de JavaScript
 *JavaScript*
 
-Inserte un inicializador de telemetría inmediatamente después del código de inicialización que obtuvo del portal:
+Insertar a un inicializador de telemetría inmediatamente después de código de inicialización de Hola que obtuvo en el portal de hello:
 
 ```JS
 
@@ -301,17 +301,17 @@ Inserte un inicializador de telemetría inmediatamente después del código de i
             appInsights.context.addTelemetryInitializer(function (envelope) {
                 var telemetryItem = envelope.data.baseData;
 
-                // To check the telemetry item’s type - for example PageView:
+                // toocheck hello telemetry item’s type - for example PageView:
                 if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
                     // this statement removes url from all page view documents
                     telemetryItem.url = "URL CENSORED";
                 }
 
-                // To set custom properties:
+                // tooset custom properties:
                 telemetryItem.properties = telemetryItem.properties || {};
                 telemetryItem.properties["globalProperty"] = "boo";
 
-                // To set custom metrics:
+                // tooset custom metrics:
                 telemetryItem.measurements = telemetryItem.measurements || {};
                 telemetryItem.measurements["globalMetric"] = 100;
             });
@@ -323,16 +323,16 @@ Inserte un inicializador de telemetría inmediatamente después del código de i
     </script>
 ```
 
-Para obtener un resumen de las propiedades no personalizadas disponibles en telemetryItem, consulte [Modelo de exportación de datos de Application Insights](app-insights-export-data-model.md).
+Para obtener un resumen de las propiedades de no personalizado de hello disponibles en hello telemetryItem, consulte [modelo de datos de exportación de aplicación visión](app-insights-export-data-model.md).
 
 Puede agregar tantos inicializadores como desee.
 
 ## <a name="itelemetryprocessor-and-itelemetryinitializer"></a>ITelemetryProcessor e ITelemetryInitializer
-¿Cuál es la diferencia entre los procesadores de telemetría y los inicializadores de telemetría?
+¿Cuál es la diferencia de hello entre procesadores de telemetría y los inicializadores de telemetría?
 
-* Coinciden en algunas funciones: ambos se pueden utilizar para agregar propiedades a una telemetría.
+* Hay algunos superposiciones en lo que puede hacer con ellos: ambos pueden ser utilizados tooadd propiedades tootelemetry.
 * Siempre se ejecutan los objetos TelemetryInitializer antes que los objetos TelemetryProcessor.
-* Los objetos TelemetryProcessor permiten reemplazar o descartar por completo un elemento de telemetría.
+* TelemetryProcessors permiten toocompletely reemplazar o descartar un elemento de telemetría.
 * Los objetos TelemetryProcessor no procesan telemetría de contador de rendimiento.
 
 

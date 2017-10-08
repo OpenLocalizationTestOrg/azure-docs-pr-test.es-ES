@@ -1,6 +1,6 @@
 ---
-title: "Acceso a aplicaciones de autoservicio y administración delegada con Azure Active Directory | Microsoft Docs"
-description: "En este artículo se describe cómo habilitar el acceso a aplicaciones de autoservicio y administración delegada con Azure Active Directory"
+title: "acceso a la aplicación de servicio de aaaSelf y la administración delegada con Azure Active Directory | Documentos de Microsoft"
+description: "Este artículo describe cómo tener acceso aplicaciones de autoservicio de tooenable y la administración delegada con Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,90 +16,90 @@ ms.date: 07/26/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 7872d5229cdc053bfb9dc8ddba01785b0f8e5a9a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 90bec3bd71796f22a782929b028db0d18c3aa1c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Acceso a aplicaciones de autoservicio y administración delegada con Azure Active Directory
-Habilitar las funcionalidades de autoservicio para los usuarios finales es un escenario común para TI empresarial. Muchos usuarios, muchas aplicaciones y es posible que la persona mejor informada para tomar decisiones de concesión de acceso no sea el administrador de directorio. A menudo la persona más adecuada para decidir quién puede tener acceso a una aplicación es un responsable de equipo u otro administrador delegado. Sin embargo, es el usuario que utiliza la aplicación y el que sabe lo que necesitan para poder hacer su trabajo.
+Habilitar las funcionalidades de autoservicio para los usuarios finales es un escenario común para TI empresarial. Una gran cantidad de usuarios, una gran cantidad de aplicaciones y persona hello best-informed acceso toomake concede decisiones no pueden ser administrador del directorio de Hola. Hola a menudo toodecide mejor persona que puede tener acceso a una aplicación es responsable de equipo u otro administrador delegado. Sin embargo, resulta Hola que usa la aplicación hello, usuario y que Hola sabe lo que necesitan toobe capaz de toodo su trabajo.
 
 > [!IMPORTANT]
-> Microsoft recomienda administrar Azure AD con el [Centro de administración de Azure AD](https://aad.portal.azure.com) en Azure Portal en lugar de usar el portal de Azure clásico al que se hace referencia en este artículo. 
+> Microsoft recomienda que administrar Azure AD utilizando hello [centro de administración de Azure AD](https://aad.portal.azure.com) Hola portal de Azure en lugar de usar Hola portal de Azure clásico que se hace referencia en este artículo. 
 
 El acceso a la aplicación de autoservicio es una característica de las licencias [Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/) P1 y P2 que permite a los administradores de directorio:
 
-* Posibilitar que los usuarios soliciten acceso a aplicaciones mediante un icono "Obtener más aplicaciones" en el [Panel de acceso de Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+* Permitir el acceso de usuarios toorequest tooapplications con una opción "obtener más aplicaciones" disponer en mosaico en hello [Panel de acceso de Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
 * Establecer qué usuarios de las aplicaciones pueden solicitar acceso
-* Establecer si los usuarios necesitan aprobación para poder autoasignarse acceso a una aplicación
-* Establecer quién debe aprobar las solicitudes y administrar el acceso para cada aplicación
+* Establecer si o no es necesaria para la aplicación de tooan de acceso de los usuarios toobe asignar tooself capaz de aprobación
+* Conjunto que se debe aprobar las solicitudes de Hola y administrar el acceso para cada aplicación
 
-Hoy en día se admite esta funcionalidad para todas las aplicaciones preintegradas y personalizadas que admiten el inicio de sesión único basado en contraseña en la [galería de aplicaciones de Azure Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/), incluidas aplicaciones como Salesforce, Dropbox, Google Apps y mucho más.
+Hoy en día se admite esta capacidad para todas las aplicaciones previamente integradas y personalizadas que admiten federado o basada en contraseña de inicio de sesión único en hello [Galería de aplicaciones de Azure Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/), incluidas las aplicaciones como Salesforce, Dropbox, Google Apps y mucho más.
 En este artículo se describe cómo:
 
 * Configurar el acceso a aplicaciones de autoservicio para usuarios finales, incluida la configuración de un flujo de trabajo de aprobación opcional. 
-* Delegar la administración del acceso para aplicaciones específicas a las personas más adecuadas de su organización y permitirles utilizar el panel de acceso de Azure AD para aprobar las solicitudes de acceso, asignar el acceso directamente a usuarios seleccionados u, opcionalmente, establecer credenciales para el acceso a aplicaciones cuando está configurado el inicio de sesión único basado en contraseña.
+* Delegar la administración de acceso para las personas más adecuadas de toohello aplicaciones específicas de su organización y habilitarlos toouse hello Azure AD acceso panel tooapprove acceso a las solicitudes, asignar directamente el acceso a los usuarios de tooselected o establecer (opcionalmente) credenciales de acceso a la aplicación cuando se configura basada en contraseña de inicio de sesión único
 
 ## <a name="configuring-self-service-application-access"></a>Configuración del acceso de la aplicación de autoservicio
-Para habilitar el acceso a aplicaciones de autoservicio y configurar las aplicaciones que pueden agregar o solicitar los usuarios finales, siga estas instrucciones.
+acceso a las aplicaciones de autoservicio tooenable y configurar las aplicaciones que pueden agregarse o solicitado por los usuarios finales, siguen estas instrucciones.
 
-1. Inicie sesión en el [Portal de Azure clásico](https://manage.windowsazure.com/).
+1. Inicio de sesión en hello [portal de Azure clásico](https://manage.windowsazure.com/).
 
-2.   En la sección **Active Directory**, seleccione el directorio y, luego, seleccione la pestaña **Aplicaciones**. 
+2.   En hello **Active Directory** sección, seleccione el directorio y después seleccione hello **aplicaciones** ficha. 
 
-3. Seleccione el botón **Agregar** y use la opción de la galería para seleccionar y agregar una aplicación.
+3. Seleccione hello **agregar** botón y use tooselect de opción de la Galería de Hola y agregue una aplicación.
 
-4. Una vez agregada la aplicación, aparecerá la página Inicio rápido de la aplicación. Haga clic en **Configurar inicio de sesión único**, seleccione el modo de inicio de sesión único deseado y guarde la configuración. 
+4. Una vez agregada la aplicación, obtendrá la página de inicio rápido de la aplicación hello. Haga clic en **configurar Single Sign-On**, seleccione Hola único inicio de sesión en modo deseado y guardar la configuración de Hola. 
 
-5. A continuación, seleccione la pestaña **Configurar**. Para que los usuarios puedan solicitar acceso a esta aplicación desde el Panel de acceso de Azure AD, en **Permitir el acceso de autoservicio a las aplicaciones** seleccione **Sí**.
+5. A continuación, seleccione hello **configurar** ficha tooenable usuarios toorequest acceso toothis aplicación desde el panel de acceso de hello Azure AD, establecer **permitir acceso a la aplicación de autoservicio** demasiado**Sí**.
   
   ![][1]
 
-6. Para configurar opcionalmente un flujo de trabajo de aprobación de las solicitudes de acceso, en **Exigir aprobación antes de conceder acceso** seleccione **Sí**. A continuación, se pueden seleccionar uno o más aprobadores mediante el botón **Aprobadores** .
+6. toooptionally configurar un flujo de trabajo de aprobación para las solicitudes de acceso, establecer **requieren la aprobación antes de conceder acceso** demasiado**Sí**. A continuación, se pueden seleccionar uno o más aprobadores mediante hello **aprobadores** botón.
 
-  Un aprobador puede ser cualquier usuario de la organización con una cuenta de Azure AD y podría ser responsable del aprovisionamiento de cuentas, las licencias o cualquier otro proceso de negocio que necesite su organización antes de conceder acceso a una aplicación. El aprobador incluso podría ser el propietario del grupo de uno o más grupos de cuentas compartidos y pueden asignar los usuarios a uno de estos grupos para concederles acceso a través de una cuenta compartida. 
+  Un aprobador puede ser cualquier usuario de la organización de hello con una cuenta de Azure AD y podría ser responsable de aprovisionamiento de cuentas, administración de licencias, o cualquier otro proceso de negocio de su organización requiere antes de conceder acceso tooan aplicación. aprobador Hola incluso podría ser propietario del grupo de Hola de uno o varios comparten grupos de cuentas y puede asignar Hola tooone de los usuarios de estos toogive grupos acceso a través de una cuenta compartida. 
 
-  Si no se requiere ninguna aprobación, los usuarios obtienen instantáneamente la aplicación agregada a su panel de acceso de Azure AD. Si la aplicación se ha configurado para el [aprovisionamiento automático de usuarios](active-directory-saas-app-provisioning.md), o bien se ha configurado el [modo SSO con contraseña "administrada por el usuario"](active-directory-appssoaccess-whatis.md#password-based-single-sign-on), el usuario ya debe tener una cuenta de usuario y conocer la contraseña.
+  Si no se requiere ninguna aprobación, a continuación, los usuarios al instante, obtendrá panel de acceso de hello aplicación agregada tootheir Azure AD. Si se ha configurado la aplicación hello para [aprovisionamiento automático de usuarios](active-directory-saas-app-provisioning.md), o se ha configurado [modo SSO de contraseña "administradas por el usuario"](active-directory-appssoaccess-whatis.md#password-based-single-sign-on), usuario de hello ya debe tener un usuario de la cuenta y conocer la contraseña de Hola.
 
-7. Si la aplicación se ha configurado para utilizar el inicio de sesión único basado en contraseña, también hay disponible una opción para permitir que el aprobador establezca las credenciales del SSO para cada usuario. Para más información, consulte la sección siguiente sobre la [administración de acceso delegado](#delegated-application-access-management).
+7. Si se ha configurado toouse aplicación hello basada en contraseña de inicio de sesión único, a continuación, una opción para permitir el aprobador hello tooset credenciales de SSO de hello en nombre de cada usuario también está disponible. Para obtener más información, vea la sección de hello en [delegar la administración de acceso](#delegated-application-access-management).
 
-8. Por último, el **grupo para usuarios que se asignaron a sí mismos** muestra el nombre del grupo que se utiliza para almacenar los usuarios a los que se ha concedido o asignado acceso a la aplicación. El aprobador de acceso se convierte en el propietario de este grupo. Si el nombre del grupo mostrado no existe, se crea automáticamente. Opcionalmente, el nombre del grupo puede establecerse en el nombre de un grupo existente.
+8. Por último, Hola **grupo para los usuarios de Self-Assigned** muestra Hola nombre del grupo de Hola que es usado toostore Hola que los usuarios se han concedido o acceso toohello aplicación asignada. aprobador de acceso de Hola se convierte en propietario de Hola de este grupo. Si no existe el nombre del grupo de Hola que se muestra, se crea automáticamente. Opcionalmente, se puede establecer nombre del grupo de hello toohello nombre de un grupo existente.
 
-9. Para guardar la configuración, haga clic en **Guardar** en la parte inferior de la pantalla. Ahora los usuarios pueden solicitar acceso a esta aplicación desde el panel de acceso.
+9. configuración de hello toosave, haga clic en **guardar** final Hola de pantalla de bienvenida. Ahora los usuarios pueden toorequest acceso toothis aplicación desde el panel de acceso de Hola.
 
-10. Para probar la experiencia del usuario final, inicie sesión en el Panel de acceso de Azure AD de la organización, en https://myapps.microsoft.com, preferiblemente con una cuenta que no sea de un aprobador de aplicaciones. 
+10. experiencia del usuario final tootry hello, inicio de sesión en el panel de acceso de Azure AD de su organización en https://myapps.microsoft.com, preferiblemente con una cuenta diferente que no es un aprobador de la aplicación. 
 
-11. En la pestaña **Aplicaciones**, haga clic en el icono **Obtener más aplicaciones**. Este icono muestra una galería de todas las aplicaciones que se han habilitado para el acceso a la aplicación de autoservicio en el directorio, con la posibilidad de buscar y filtrar por categoría de aplicaciones de la izquierda. 
+11. En hello **aplicaciones** , haga clic en hello **obtener más aplicaciones** icono. Este icono muestra una galería de todas las aplicaciones de Hola que se han habilitado para el acceso a aplicaciones de autoservicio en directorio de hello, con toosearch de capacidad de Hola y filtrar por categoría de la aplicación hello izquierda. 
 
-12. Al hacer clic en una aplicación, se inicia el proceso de solicitud. Si no se requiere ningún proceso de aprobación, la aplicación se agregará inmediatamente en la pestaña **Aplicaciones** tras una breve confirmación. Si es necesaria la aprobación, verá un cuadro de diálogo que lo indica y se envía un correo electrónico a los aprobadores. Debe iniciar sesión en el panel de acceso como no aprobador para ver este proceso de solicitud.
+12. Al hacer clic en una aplicación inicia el proceso de solicitud de saludo. Si no hay ningún proceso de aprobación es necesaria, aplicación hello se agregarán inmediatamente debajo hello **aplicaciones** ficha después de una confirmación corta. Si se requiere la aprobación, a continuación, verá un cuadro de diálogo que indica esto y se envía un correo electrónico toohello aprobadores. Debe iniciar sesión en hello panel de acceso como un toosee no es aprobador de este proceso de solicitud.
 
-13. El correo electrónico proporciona instrucciones al aprobador para iniciar sesión en el panel de acceso de Azure AD y aprobar la solicitud. Una vez que se ha aprobado la solicitud (y el aprobador ha realizado los procesos especiales definidos), el usuario ve la aplicación en su pestaña **Aplicaciones** , dese donde puede iniciar sesión en ella.
+13. correo electrónico de Hello dirige Hola aprobador toosign en el panel de acceso de Azure AD de Hola y aprobar la solicitud de Hola. Una vez que se aprueba la solicitud de hello (y que se hayan realizado los procesos especiales que se define por aprobador hello), Hola verá Hola aparecen bajo sus **aplicaciones** ficha donde puede iniciar sesión en él.
 
 ## <a name="delegated-application-access-management"></a>Administración de acceso a aplicaciones delegadas
-Un aprobador de acceso a la aplicación puede ser cualquier usuario de la organización que sea la persona más adecuada para aprobar o denegar el acceso a esa aplicación. Este usuario podría ser responsable del aprovisionamiento de cuentas, las licencias o cualquier otro proceso de negocio que necesite su organización antes de conceder acceso a una aplicación.
+Un aprobador de acceso de la aplicación puede ser cualquier usuario de su organización que sea tooapprove persona más adecuada de Hola o denegar acceso toohello aplicación en cuestión. Este usuario podría ser responsable de aprovisionamiento de cuentas, administración de licencias, o cualquier otro proceso de negocio de su organización requiere antes de conceder acceso tooan aplicación.
 
-Al configurar el acceso a la aplicación de autoservicio descrito antes, cualquier aprobador de la aplicación asignado ve un icono **Administrar aplicaciones** adicional en el panel de acceso de Azure AD, que muestra las aplicaciones para las que son administrador de acceso. Al hacer clic en una aplicación, se muestra una pantalla con varias opciones.
+Al configurar el acceso a la aplicación de autoservicio se ha descrito anteriormente, cualquier aplicación asignada ven aprobadores adicionales **administrar aplicaciones** icono en el panel de acceso de hello Azure AD, que muestra las aplicaciones que están Administrador de acceso de Hola para. Al hacer clic en una aplicación, se muestra una pantalla con varias opciones.
 
 ![][2]
 
 ### <a name="approve-requests"></a>Aprobar solicitudes
-El icono **Aprobar solicitudes** permite que los aprobadores vean todas las aprobaciones pendientes específicas de esa aplicación y redirige a la pestaña Aprobaciones, donde se pueden confirmar o denegar las solicitudes. El aprobador también recibe mensajes de correo electrónico automatizados siempre que se crea una solicitud que les indica qué hacer.
+Hola **aprobar solicitudes** icono permite aprobadores toosee pendiente aplicación toothat específico de aprobaciones y pestaña de aprobaciones toohello de redirecciones que solicita Hola puede confirmar o denegar. aprobador Hello también recibe mensajes de correo electrónico automatizadas siempre que se crea una solicitud que les indica qué toodo.
 
 ### <a name="add-users"></a>Agregar usuarios
-El icono **Agregar usuarios** permite a los aprobadores conceder directamente acceso a la aplicación a los usuarios seleccionados. Al hacer clic en este icono, el aprobador verá un cuadro de diálogo que le permite ver y buscar usuarios en su directorio. Al agregar un usuario, la aplicación se muestra en los paneles de acceso de esos usuarios de Azure AD u Office 365. Si es necesario un proceso de aprovisionamiento de usuarios manual en la aplicación antes de que el usuario pueda iniciar sesión, el aprobador debe realizarlo antes de asignar el acceso.  
+Hola **agregar usuarios** icono permite aprobadores toodirectly seleccionado de conceder a los usuarios acceso toohello aplicación. Al hacer clic en este icono, aprobador Hola ve que un cuadro de diálogo permite tooview y búsqueda para los usuarios en su directorio. Al agregar un usuario aplicación Hola se muestran en paneles de acceso de Azure AD de esos usuarios u Office 365. Si se requiere cualquier proceso de aprovisionamiento manual del usuario en la aplicación hello antes de que el usuario de hello es capaz de toosign en, a continuación, aprobador Hola debe realizar este proceso antes de asignar el acceso.  
 
 ### <a name="manage-users"></a>Administrar usuarios
-El icono **Administrar usuarios** permite a los aprobadores actualizar o quitar directamente los usuarios que tienen acceso a la aplicación. 
+Hola **administrar usuarios** icono permite aprobadores toodirectly actualizar o quitar los usuarios que tienen acceso a aplicaciones de toohello. 
 
 ### <a name="configure-password-sso-credentials-if-applicable"></a>Configuración de credenciales de SSO con contraseña (si corresponde)
-El icono **Configurar** solo se muestra si el administrador de TI ha configurado la aplicación para que use el inicio de sesión único basado en contraseña y el administrador ha concedido al aprobador la capacidad de establecer las credenciales de SSO con contraseña como se describió anteriormente. Cuando se selecciona, se presentan varias opciones al aprobador para establecer cómo se propagan las credenciales a los usuarios asignados:
+Hola **configurar** mosaico solo se muestra si aplicación hello configuró Hola TI Administrador toouse basado en contraseña inicio de sesión único, y concede al administrador de hello aprobador Hola credenciales de SSO de contraseña de hello capacidad tooset como se describió anteriormente. Cuando se selecciona, Hola aprobador se presenta con varias opciones para cómo credenciales Hola son tooassigned propagado a los usuarios:
 
 ![][3]
 
-* **Los usuarios inician sesión con sus propias contraseñas**: en este modo, los usuarios asignados saben sus nombres de usuario y contraseñas para la aplicación, y se les pide que los escriban la primera vez que inician sesión en la aplicación. Este escenario corresponde al caso de SSO con contraseña, en el que los [usuarios administran las credenciales](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
-* **Los usuarios inician sesión automáticamente con cuentas independientes que administro yo** : en este modo, los usuarios asignados no tendrán que escribir o conocer sus credenciales específicas de la aplicación al iniciar sesión en la aplicación. En lugar de ello, el aprobador establece las credenciales para cada usuario después de asignar el acceso mediante el icono **Agregar usuario** . Cuando el usuario hace clic en la aplicación en su panel de acceso u Office 365, inicia sesión automáticamente con las credenciales establecidas por el aprobador. Este escenario corresponde al caso de SSO con contraseña, en el que los [administradores administran las credenciales](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
-* **Los usuarios inician sesión automáticamente con una única cuenta que administro yo**: este caso es especial y es adecuado usarlo cuando es necesario conceder acceso a todos los usuarios asignados mediante una única cuenta compartida. El caso de uso más habitual para esta característica son las aplicaciones de redes sociales, donde una organización tiene una única cuenta de "compañía" y varios usuarios deben realizar actualizaciones en esa cuenta. Este escenario corresponde también al caso de SSO con contraseña, en el que los [administradores administran las credenciales](active-directory-appssoaccess-whatis.md#password-based-single-sign-on). Sin embargo, después de seleccionar esta opción, se pedirá al aprobador que escriba el nombre de usuario y la contraseña para la única cuenta compartida. Una vez completado, todos los usuarios asignados inician sesión con esta cuenta al hacer clic en la aplicación en sus paneles de acceso de Azure AD u Office 365.
+* **Los usuarios iniciar sesión con sus propias contraseñas** : en este modo, los usuarios de hello asignado sepan en qué sus nombres de usuario y contraseñas son para la aplicación hello y son tooenter solicitada usarlas en su primera aplicación de inicio de sesión toohello. Hello escenario corresponde caso SSO de contraseña toohello donde hello [a los usuarios administran credenciales](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+* **Los usuarios inician sesión automáticamente en el uso de cuentas independientes que se administran** : en este modo, no se requiere tooenter o sepa cuáles son sus credenciales específico de la aplicación al iniciar sesión en la aplicación hello usuarios de hello asignado. En su lugar, aprobador Hola establece las credenciales de Hola para cada usuario después de asignar el acceso mediante hello **Agregar usuario** icono. Cuando hace clic en usuario de hello en la aplicación hello en su panel de acceso u Office 365, sesión automáticamente con credenciales de hello establecidas por aprobador Hola. Hello escenario corresponde caso SSO de contraseña toohello donde hello [los administradores administrar credenciales](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+* **Los usuarios inician sesión automáticamente en con una cuenta única que administrar** -un caso especial, en este caso es toouse adecuado cuando todos los usuarios asignados deben toobe concede acceso mediante una cuenta compartida única. Hola de caso de uso más común para esta característica es con aplicaciones de redes sociales, donde una organización tiene una cuenta de "company" único y varios usuarios deben toomake actualizaciones toothat cuenta. Hello escenario también corresponde caso SSO de contraseña toohello donde hello [los administradores administrar credenciales](active-directory-appssoaccess-whatis.md#password-based-single-sign-on). Sin embargo, después de seleccionar esta opción, aprobador Hola será el nombre de usuario de tooenter solicitadas hello y contraseña de una cuenta compartida única Hola. Una vez completado, todos los usuarios asignados han iniciado sesión con esta cuenta al hacer clic en la aplicación hello en sus paneles de acceso de Azure AD u Office 365.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Índice de artículos sobre la administración de aplicaciones en Azure Active Directory](active-directory-apps-index.md)

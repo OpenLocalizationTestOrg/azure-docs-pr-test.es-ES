@@ -1,6 +1,6 @@
 ---
 title: "Autenticación de paso a través de Azure AD: limitaciones actuales | Microsoft Docs"
-description: "En este artículo se describen las limitaciones actuales de la autenticación de paso a través de Azure Active Directory (Azure AD)."
+description: "Este artículo describen las limitaciones actuales de Hola de autenticación de paso a través de Azure Active Directory (Azure AD)."
 services: active-directory
 keywords: "Autenticación de paso a través de Azure AD Connect, instalación de Active Directory, componentes necesarios para Azure AD, SSO, inicio de sesión único"
 documentationcenter: 
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: billmath
-ms.openlocfilehash: 37c0ea094d02208f2516a4a040f75894e046c670
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2933745d071aae205c44659e6ea92697f390effb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Autenticación de paso a través de Azure Active Directory: limitaciones actuales
 
 >[!IMPORTANT]
->La autenticación de paso a través de Azure AD se encuentra actualmente en versión preliminar. Es una característica gratuita y no es necesario usar ninguna versión de pago de Azure AD para usarla. La autenticación de paso a través solo está disponible en la instancia mundial de Azure AD y no en [Microsoft Cloud Alemania](http://www.microsoft.de/cloud-deutschland) ni en [Microsoft Azure Government Cloud](https://azure.microsoft.com/features/gov/).
+>La autenticación de paso a través de Azure AD se encuentra actualmente en versión preliminar. Es una característica gratuita y no necesita ninguna edición de pagada de Azure AD toouse lo. Autenticación de paso a través solo está disponible en la instancia de todo el mundo Hola de Azure AD y no se encuentra en [Alemania Microsoft Cloud](http://www.microsoft.de/cloud-deutschland) y [nube de Microsoft Azure Government](https://azure.microsoft.com/features/gov/).
 
 ## <a name="supported-scenarios"></a>Escenarios admitidos
 
-Los siguientes escenarios son totalmente compatibles durante la versión preliminar:
+Hola los escenarios siguientes se admite por completo durante la vista previa:
 
 - Inicios de sesión de usuario en todas las aplicaciones basadas en explorador web.
 - Inicios de sesión de usuario en las aplicaciones cliente de Office 365 que admitan la [autenticación moderna](https://aka.ms/modernauthga).
@@ -36,19 +36,19 @@ Los siguientes escenarios son totalmente compatibles durante la versión prelimi
 
 ## <a name="unsupported-scenarios"></a>Escenarios no admitidos
 
-En la versión preliminar, los siguientes escenarios _no_ se admiten:
+Hello siguientes escenarios son _no_ admiten durante la vista previa:
 
-- Inicios de sesión de usuarios en aplicaciones cliente de Office heredadas (Office 2013 o versiones anteriores). Se recomienda a las organizaciones que cambien a la autenticación moderna, en caso de que sea posible. La autenticación moderna permite la compatibilidad de la autenticación de paso a través, pero también le ayuda a proteger sus cuentas de usuario mediante características de [acceso condicional](../active-directory-conditional-access.md) como Multi-Factor Authentication (MFA).
+- Inicios de sesión de usuarios en aplicaciones cliente de Office heredadas (Office 2013 o versiones anteriores). Las organizaciones están tooswitch recomienda toomodern autenticación, si es posible. La autenticación moderna permite la compatibilidad de la autenticación de paso a través, pero también le ayuda a proteger sus cuentas de usuario mediante características de [acceso condicional](../active-directory-conditional-access.md) como Multi-Factor Authentication (MFA).
 - Inicios de sesión de usuarios en aplicaciones cliente de Skype Empresarial, incluido Skype Empresarial 2016.
 - Inicios de sesión de usuario en PowerShell v1.0. Se recomienda que use PowerShell v2.0 en su lugar.
 
 >[!IMPORTANT]
->Como solución alternativa para escenarios no admitidos, habilite la sincronización de hash de contraseñas en la página [Características opcionales](active-directory-aadconnect-get-started-custom.md#optional-features) del asistente de Azure AD Connect. La sincronización de hash de contraseñas _solo_ actúa como reserva en los escenarios anteriores (y _no_ como reserva genérica en la autenticación de paso a través). Si no necesita estos escenarios, desactive la sincronización hash de contraseñas.
+>Como solución alternativa para escenarios no admitidos, habilitar la sincronización de Hash de contraseña en hello [características opcionales](active-directory-aadconnect-get-started-custom.md#optional-features) página del Asistente para conectar de hello Azure AD. Sincronización de Hash de contraseñas actúa como una acción de reserva para hello anteriores escenarios _sólo_ (y _no_ como genérico tooPass mediante autenticación de reserva). Si no necesita estos escenarios, desactive la sincronización hash de contraseñas.
 
 ## <a name="next-steps"></a>Pasos siguientes
-- [**Inicio rápido** ](active-directory-aadconnect-pass-through-authentication-quick-start.md): desarrollo y ejecución de la autenticación de paso a través de Azure AD.
-- [**Profundización técnica** ](active-directory-aadconnect-pass-through-authentication-how-it-works.md): descripción del funcionamiento de esta característica.
-- [**Preguntas más frecuentes**](active-directory-aadconnect-pass-through-authentication-faq.md): obtenga respuestas a las preguntas más frecuentes.
-- [**Solución de problemas**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): aprenda a resolver problemas comunes de esta característica.
+- [**Inicio rápido**](active-directory-aadconnect-pass-through-authentication-quick-start.md): desarrollo y ejecución de la autenticación de paso a través de Azure AD.
+- [**Profundización técnica**](active-directory-aadconnect-pass-through-authentication-how-it-works.md): descripción del funcionamiento de esta característica.
+- [**Preguntas más frecuentes** ](active-directory-aadconnect-pass-through-authentication-faq.md) -responde toofrequently preguntas más frecuentes.
+- [**Solucionar problemas de** ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) -Obtenga información acerca de cómo emite tooresolve común con la característica de Hola.
 - [**SSO de conexión directa de Azure AD**](active-directory-aadconnect-sso.md): obtenga más información sobre esta característica complementaria.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): para rellenar solicitudes de características nuevas.
+- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): para rellenar solicitudes de características nuevas.

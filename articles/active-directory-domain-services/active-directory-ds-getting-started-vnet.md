@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: Creación o selección de una red virtual | Microsoft Docs"
-description: "Habilitación de Azure Active Directory Domain Services mediante el Portal de Azure clásico"
+description: "Habilitar Azure Active Directory Domain Services mediante Hola portal de Azure clásico"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/28/2017
 ms.author: maheshu
-ms.openlocfilehash: 457519b00b65b0157effe2d4aba033a1c99852e8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 212c741b20e846742d94f70342c4263ce8984153
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-or-select-a-virtual-network-for-azure-active-directory-domain-services"></a>Creación o selección de una red virtual para Azure Active Directory Domain Services
 ## <a name="before-you-begin"></a>Antes de empezar
-Consulte [Consideraciones de red de Azure Active Directory Domain Services](active-directory-ds-networking.md).
+Consulte demasiado[consideraciones de red para servicios de dominio de Active Directory de Azure](active-directory-ds-networking.md).
 
 ## <a name="task-2-create-an-azure-virtual-network"></a>Tarea 2: Creación de una red virtual de Azure
-La siguiente tarea de configuración es crear una red virtual de Azure y una subred dentro de ella. Puede habilitar Azure Active Directory Domain Services en esta subred dentro de la red virtual. Si ya tiene una red virtual que quiere usar, puede omitir este paso.
+tarea de configuración siguiente Hello es toocreate una red virtual de Azure y una subred dentro de él. Puede habilitar Azure Active Directory Domain Services en esta subred dentro de la red virtual. Si tiene una red virtual existente que prefiere toouse, puede omitir este paso.
 
 > [!NOTE]
-> Asegúrese de que la red virtual de Azure que cree o elija usar con Azure Active Directory Domain Services pertenezca a una región de Azure que sea compatible con estos servicios. Consulte la página [Servicios de Azure por región](https://azure.microsoft.com/regions/#services/) para saber en qué regiones de Azure está disponible Azure Active Directory Domain Services.
+> Asegúrese de que ese Hola red virtual de Azure cree o elija toouse con servicios de dominio de Active Directory de Azure pertenece tooan región de Azure es compatible con servicios de dominio de Active Directory de Azure. tooascertain Hola regiones de Azure en el que está disponible servicios de dominio de Active Directory de Azure, consulte [servicios de Azure por región](https://azure.microsoft.com/regions/#services/).
 >
->Anote el nombre de la red virtual para asegurarse de que selecciona la red virtual adecuada al habilitar Azure Active Directory Domain Services en un paso posterior de la configuración.
+>Anote el nombre de Hola de hello tooensure de red virtual que seleccione red virtual derecha hello cuando se habilita servicios de dominio de Active Directory de Azure en un paso de configuración posteriores.
 
 
-Para crear una red virtual de Azure en la que desee habilitar Azure Active Directory Domain Services, siga estas instrucciones de configuración:
+toocreate una red virtual de Azure en el que desea tooenable Azure Active Directory Domain Services, siga estas instrucciones de configuración:
 
-1. Vaya al [Portal de Azure clásico](https://manage.windowsazure.com).
-2. En el panel izquierdo, seleccione **Redes**.
+1. Vaya toohello [portal de Azure clásico](https://manage.windowsazure.com).
+2. En el panel izquierdo de hello, seleccione **redes**.
 
     ![Nodo Redes](./media/active-directory-domain-services-getting-started/networks-node.png)  
-    Se abre la ventana **Redes virtuales**.
-3. En la parte inferior de la ventana, haga clic en **Nuevo** en el panel de tareas.
+    Hola **redes virtuales** abre la ventana.
+3. En el panel de tareas de hello en parte inferior de Hola de ventana hello, haga clic en **nuevo**.
 
     ![Ventana Redes virtuales](./media/active-directory-domain-services-getting-started/virtual-networks.png)
 4. Haga clic en **Network Services** y seleccione **Virtual Network**.
 
     ![Red virtual: creación rápida](./media/active-directory-domain-services-getting-started/virtual-network-quickcreate.png)
-5. Haga clic en **Creación rápida** para crear una red virtual.
+5. Haga clic en una red virtual, toocreate **creación rápida**.
 
-6. Especifique un **nombre** para la red virtual y tenga en cuenta las acciones siguientes:
-    * También puede elegir configurar el **Espacio de direcciones** o el **Número máximo de VM** para esta red.
-    * Por ahora, puede dejar la configuración del **servidor DNS** establecida en **Ninguna**. Puede actualizar la configuración después de habilitar Azure Active Directory Domain Services.
-7. Seleccione una región de Azure compatible en la lista desplegable **Ubicación**.  
-    Consulte la página [Servicios de Azure por región](https://azure.microsoft.com/regions/#services/) para saber en qué regiones de Azure está disponible Azure Active Directory Domain Services.
-8. Para crear la red virtual, haga clic en **Crear una red virtual**.
+6. Especifique un **nombre** para su máquina de red y considere la posibilidad de acciones Hola siguientes:
+    * Puede elegir tooconfigure **espacio de direcciones** o **recuento máximo de VM** para esta red.
+    * Puede dejar hello **servidor DNS** establecer como **ninguno** por ahora. Puede actualizar la configuración de hello después de habilitar servicios de dominio de Active Directory de Azure.
+7. Hola **ubicación** lista desplegable, seleccione una región de Azure admitida.  
+    tooascertain Hola regiones de Azure en el que está disponible servicios de dominio de Active Directory de Azure, consulte [servicios de Azure por región](https://azure.microsoft.com/regions/#services/).
+8. toocreate la red virtual, haga clic en **crear una red Virtual**.
 
     ![Creación de una red virtual para Azure Active Directory Domain Services](./media/active-directory-domain-services-getting-started/create-vnet.png)
-9. Después de crear una red virtual, selecciónela y haga clic en la pestaña **Configurar**.
+9. Después de crear una red virtual, seleccione Hola nombre de red virtual de hello y, a continuación, haga clic en hello **configurar** ficha.
 
     ![Creación de una subred](./media/active-directory-domain-services-getting-started/create-vnet-properties.png)
-10. En **Espacios de direcciones de la red virtual**, haga clic en **Agregar subred**y, a continuación, especifique una subred con el nombre **AaddsSubnet**.
+10. En **espacios de direcciones de red virtual**, haga clic en **Agregar subred**y, a continuación, especifique una subred con el nombre de hello **AaddsSubnet**.
 
     ![Creación de una subred para Azure Active Directory Domain Services](./media/active-directory-domain-services-getting-started/create-vnet-add-subnet.png)
 
-11. Haga clic en **Guardar** para crear la subred.
+11. toocreate Hola subred, haga clic en **guardar**.
 
 
 ## <a name="next-step"></a>Paso siguiente

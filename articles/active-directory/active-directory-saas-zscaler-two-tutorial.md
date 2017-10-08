@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Zscaler Two | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Zscaler Two."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Zscaler Two."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,110 +13,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 38c9da0a6599bb66c452fdb8a8911338601155f9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dcd13d399f093f24a945f234401cd5b7e527ed34
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Tutorial: Integración de Azure Active Directory con Zscaler Two
 
-En este tutorial, aprenderá a integrar Zscaler Two con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate Zscaler Two con Azure Active Directory (Azure AD).
 
-La integración de Zscaler Two con Azure AD proporciona las siguientes ventajas:
+Integración de Zscaler Two con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a Zscaler Two
-- Puede permitir que los usuarios inicien sesión automáticamente en Zscaler Two (inicio de sesión único) con sus cuentas de Azure AD
-- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooZscaler dos
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooZscaler dos (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con Zscaler Two, necesita los siguientes elementos:
+tooconfigure integración de Azure AD con Zscaler Two, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Zscaler Two
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, aquí puede obtener una versión de evaluación de un mes: [Oferta de prueba](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Incorporación de Zscaler Two desde la galería
+1. Agregar Zscaler Two desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-zscaler-two-from-the-gallery"></a>Incorporación de Zscaler Two desde la galería
-Para configurar la integración de Zscaler Two en Azure AD, deberá agregar Zscaler Two desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-zscaler-two-from-hello-gallery"></a>Agregar Zscaler Two desde la Galería de Hola
+integración de hello tooconfigure de Zscaler Two en Azure AD, deberá tooadd Zscaler Two de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Zscaler Two desde la galería, realice los pasos siguientes:**
+**tooadd Zscaler Two desde la Galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **Zscaler Two**.
+4. En el cuadro de búsqueda de hello, escriba **Zscaler Two**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-zscaler-two-tutorial/tutorial_zscalertwo_search.png)
 
-5. En el panel de resultados, seleccione **Zscaler Two** y haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **Zscaler Two**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-zscaler-two-tutorial/tutorial_zscalertwo_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con Zscaler Two con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Zscaler Two para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario asociado de Zscaler Two.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Zscaler Two es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Zscaler Two debe toobe establecido.
 
-Para establecer la relación de vínculo, en Zscaler Two, asigne el valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario**.
+En Zscaler Two, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con Zscaler Two, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con Zscaler Two, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Configuración de las opciones del proxy](#configuring-proxy-settings)**: para definir la configuración del proxy en Internet Explorer
-3. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-4. **[Creación de un usuario de prueba de Zscaler Two](#creating-a-zscaler-two-test-user)**: para tener un homólogo de Britta Simon en Zscaler Two vinculado a la representación del usuario en Azure AD.
-5. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-6. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Configuración de proxy](#configuring-proxy-settings)**  -configuración de proxy de hello tooconfigure en Internet Explorer
+3. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+4. **[Crear un usuario de prueba Zscaler Two](#creating-a-zscaler-two-test-user)**  -toohave un equivalente de Britta Simon en Zscaler Two que es la representación toohello vinculado Azure AD del usuario.
+5. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+6. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación Zscaler Two.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Zscaler Two.
 
-**Para configurar el inicio de sesión único de Azure AD con Zscaler Two, realice los pasos siguientes:**
+**inicio de sesión único en tooconfigure Azure AD con Zscaler Two, siga Hola pasos:**
 
-1. En Azure Portal, en la página de integración de la aplicación **Zscaler Two**, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **Zscaler Two** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-zscaler-two-tutorial/tutorial_zscalertwo_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de Zscaler Two**, lleve a cabo los pasos siguientes:
+3. En hello **Zscaler dos dominios y direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-zscaler-two-tutorial/tutorial_zscalertwo_url.png)
 
-   En el cuadro de texto de la dirección URL de inicio de sesión, escriba la dirección URL con la que los usuarios inician sesión en la aplicación Zscaler Two.
+   En el cuadro de texto de dirección URL de inicio de sesión de hello, escriba dirección URL de hello utilizado por los usuarios en toosign tooyour aplicación de ZScaler Two.
 
     > [!NOTE] 
-    > Tiene que actualizar este valor con la dirección URL de inicio de sesión real. Póngase en contacto con el [equipo de soporte técnico de Zscaler Two](https://www.zscaler.com/company/contact) para obtener estos valores.
+    > Tiene este valor con hello tooupdate dirección URL de inicio de sesión real. Póngase en contacto con [equipo de soporte técnico de Zscaler dos cliente](https://www.zscaler.com/company/contact) tooget estos valores.
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-zscaler-two-tutorial/tutorial_zscalertwo_certificate.png) 
 
@@ -124,13 +124,13 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-zscaler-two-tutorial/tutorial_general_400.png)
 
-6. En la sección **Configuración de Zscaler**, haga clic en **Configurar Zscaler Two** para abrir la ventana **Configurar inicio de sesión**. Copie la **dirección URL de servicio de inicio de sesión único de SAML** de la sección **Referencia rápida**.
+6. En hello **configuración de dos Zscaler** sección, haga clic en **configurar Zscaler Two** tooopen **configurar inicio de sesión** ventana. Hola copia **SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-zscaler-two-tutorial/tutorial_zscalertwo_configure.png) 
 
-7. En otra ventana del explorador web, inicie sesión en el sitio de la compañía de Zscaler Two como administrador.
+7. En una ventana del explorador web diferente, inicie sesión en el sitio de empresa de ZScaler Two de tooyour como administrador.
 
-8. En el menú de la parte superior, haga clic en **Administration**(Administración).
+8. En el menú de hello en la parte superior de hello, haga clic en **administración**.
    
     ![Administración](./media/active-directory-saas-zscaler-two-tutorial/ic800206.png "Administración")
 
@@ -138,7 +138,7 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
             
     ![Administración de usuarios y autenticación](./media/active-directory-saas-zscaler-two-tutorial/ic800207.png "Administración de usuarios y autenticación")
 
-10. En la sección **Choose Authentication Options for your Organization** (Elegir opciones de autenticación para su organización), lleve a cabo los pasos siguientes:   
+10. Hola **elegir opciones de autenticación para su organización** sección, lleve a cabo Hola pasos:   
                 
     ![Autenticación](./media/active-directory-saas-zscaler-two-tutorial/ic800208.png "Autenticación")
    
@@ -146,19 +146,19 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     b. Haga clic en **Configure SAML Single Sign-On Parameters**(Configurar parámetros de inicio de sesión único SAML).
 
-11. En la página de diálogo **Configure SAML Single Sign-On Parameters** (Configurar parámetros de inicio de sesión único SAML), realice estos pasos y luego haga clic en **Done** (Listo)
+11. En hello **configurar SAML Single Sign-On parámetros** página del cuadro de diálogo, realizar pasos de hello y, a continuación, haga clic en **realiza**
 
     ![Inicio de sesión único](./media/active-directory-saas-zscaler-two-tutorial/ic800209.png "Inicio de sesión único")
     
-    a. Pegue el valor de **SAML Single Sign-On Service URL** (Dirección URL del servicio de inicio de sesión único de SAML), que ha copiado de Azure Portal, en el cuadro de texto **de la dirección URL del portal de SAML al que se dirige a los usuarios para la autenticación**.
+    a. Hola pegar **SAML Single Sign-On dirección URL del servicio** valor, que haya copiado desde Hola portal de Azure en hello **dirección URL de los usuarios de toowhich del Portal de SAML de Hola se envía para autenticación** cuadro de texto.
     
-    b. En el cuadro de texto **Attribute containing Login Name** (Atributo que contiene el nombre de inicio de sesión), escriba **NameID**.
+    b. Hola **atributo que contiene el nombre de inicio de sesión** cuadro de texto, tipo **NameID**.
     
-    c. Para cargar el certificado descargado, haga clic en **pem de Zscaler**.
+    c. tooupload el certificado descargado, haga clic en **Zscaler pem**.
     
     d. Seleccione **Habilitar aprovisionamiento automático de SAML**.
 
-12. En la página del cuadro de diálogo **Configurar autenticación de usuario** , realice los pasos siguientes:
+12. En hello **configurar la autenticación de usuario** cuadro de diálogo, siga los pasos de hello:
 
     ![Administración](./media/active-directory-saas-zscaler-two-tutorial/ic800210.png "Administración")
     
@@ -167,78 +167,78 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
     b. Haga clic en **Activar ahora**.
 
 ## <a name="configuring-proxy-settings"></a>Configuración de los valores de proxy
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Para definir la configuración de proxy en Internet Explorer
+### <a name="tooconfigure-hello-proxy-settings-in-internet-explorer"></a>configuración de proxy de hello tooconfigure en Internet Explorer
 
 1. Inicie **Internet Explorer**.
 
-2. Seleccione **Opciones de Internet** en el menú **Herramientas** para abrir el diálogo **Opciones de Internet**.   
+2. Seleccione **opciones de Internet** de hello **herramientas** menú Abrir hello **opciones de Internet** cuadro de diálogo.   
     
      ![Opciones de Internet](./media/active-directory-saas-zscaler-two-tutorial/ic769492.png "Opciones de Internet")
 
-3. Haga clic en la pestaña **Conexiones** .   
+3. Haga clic en hello **conexiones** ficha.   
   
      ![Conexiones](./media/active-directory-saas-zscaler-two-tutorial/ic769493.png "Conexiones")
 
-4. Haga clic en **Configuración de LAN** para abrir el diálogo **Configuración de LAN**.
+4. Haga clic en **configuración de LAN** tooopen hello **configuración de LAN** cuadro de diálogo.
 
-5. En la sección del servidor proxy, lleve a cabo estos pasos:   
+5. En la sección servidor Proxy hello, realizar Hola pasos:   
    
     ![Servidor proxy](./media/active-directory-saas-zscaler-two-tutorial/ic769494.png "Servidor proxy")
 
     a. Seleccione **Usar un servidor proxy para la LAN**.
 
-    b. En el cuadro de texto Dirección, escriba **gateway.zscalertwo.net**.
+    b. En el cuadro de texto de dirección de hello, escriba **gateway.zscalertwo.net**.
 
-    c. En el cuadro de texto Puerto, escriba **80**.
+    c. En el cuadro de texto de puerto de hello, escriba **80**.
 
     d. Seleccione **No usar servidor proxy para direcciones locales**.
 
-    e. Haga clic en **Aceptar** para cerrar el diálogo **Configuración de red de área local (LAN)**.
+    e. Haga clic en **Aceptar** tooclose hello **configuración de red de área Local (LAN)** cuadro de diálogo.
 
-6. Haga clic en **Aceptar** para cerrar el diálogo **Opciones de Internet**.
+6. Haga clic en **Aceptar** tooclose hello **opciones de Internet** cuadro de diálogo.
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-zscaler-two-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-zscaler-two-tutorial/create_aaduser_02.png) 
 
-3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-zscaler-two-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-zscaler-two-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-zscaler-two-test-user"></a>Creación de un usuario de prueba de Zscaler Two
 
-Para permitir que los usuarios de Azure AD inicien sesión en Zscaler Two, deben aprovisionarse a Zscaler Two. En el caso de ZScaler Two, el aprovisionamiento es una tarea manual.
+toolog de los usuarios de Azure AD tooenable en tooZScaler dos, deben ser aprovisionado tooZScaler dos. En caso de hello de ZScaler Two, el aprovisionamiento es una tarea manual.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Siga estos pasos para configurar el aprovisionamiento de usuario:
+### <a name="tooconfigure-user-provisioning-perform-hello-following-steps"></a>tooconfigure aprovisionamiento de usuario, realizar Hola pasos:
 
-1. Inicie sesión en su inquilino de **Zscaler Two**.
+1. Inicie sesión en tooyour **Zscaler Two** inquilino.
 
 2. Haga clic en **Administración**.   
    
@@ -248,38 +248,38 @@ Para permitir que los usuarios de Azure AD inicien sesión en Zscaler Two, deben
         
      ![Agregar](./media/active-directory-saas-zscaler-two-tutorial/ic781036.png "Agregar")
 
-4. En la pestaña **Usuarios**, haga clic en **Agregar**.
+4. Hola **usuarios** , haga clic en **agregar**.
       
     ![Agregar](./media/active-directory-saas-zscaler-two-tutorial/ic781037.png "Agregar")
 
-5. En la sección Agregar usuario, lleve a cabo estos pasos:
+5. En la sección Agregar usuario hello, realizar Hola pasos:
         
     ![Agregar usuario](./media/active-directory-saas-zscaler-two-tutorial/ic781038.png "Agregar usuario")
    
-    a. Escriba el **identificador de usuario**, el **nombre para mostrar del usuario**, la **contraseña**, el valor de **Confirmar contraseña** y, después, seleccione **Grupos** y el valor de **Departamento** de una cuenta de Azure AD válida que quiera aprovisionar.
+    a. Hola de tipo **UserID**, **usuario DisplayName**, **contraseña**, **Confirmar contraseña**y, a continuación, seleccione **grupos**hello y **departamento** de un Azure válida que desee tooprovision de cuenta de AD.
 
     b. Haga clic en **Guardar**.
 
 > [!NOTE]
-> Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de Zscaler Two ofrecida por Zscaler Two para aprovisionar cuentas de usuario de Azure AD.
+> Puede usar cualquier otra ZScaler Two usuario cuenta herramienta de creación o las API proporcionadas por ZScaler Two tooprovision cuentas de usuario de Azure AD.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Zscaler Two.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooZscaler dos.
 
 ![Asignar usuario][200] 
 
-**Para asignar a Britta Simon a Zscaler Two, lleve a cabo los siguientes pasos:**
+**tooassign Britta Simon tooZscaler dos, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **Zscaler Two**.
+2. En la lista de aplicaciones de hello, seleccione **Zscaler Two**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-zscaler-two-tutorial/tutorial_zscalertwo_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -287,7 +287,7 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -295,14 +295,14 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de Zscaler Two del panel de acceso, debería iniciar sesión en la aplicación Zscaler Two automáticamente.
-Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Al hacer clic en hello Zscaler Two icono Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour aplicación de Zscaler Two.
+Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

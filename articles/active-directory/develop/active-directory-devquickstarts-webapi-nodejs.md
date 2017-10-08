@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Node.js de Azure AD | Microsoft Docs"
-description: "Compilación de una API web de REST de Node.js que se integre con Azure AD para su autenticación."
+title: "aaaAzure AD Node.js Introducción | Documentos de Microsoft"
+description: "¿Cómo toobuild una API de REST de Node.js web que se integra con Azure AD para la autenticación."
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
@@ -15,98 +15,98 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 4f58177f540c14172d7ece8b4bc8c8a2b9787f8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 512ae6de9acfde8b58c0447ab4a6b573fb6407c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-web-apis-for-nodejs"></a>Introducción a las API web para Node.js
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-*Passport* es middleware de autenticación para Node.js. Passport es flexible y modular, y se puede usar discretamente en cualquier aplicación web de Restify o basada en Express. Un conjunto completo de estrategias da soporte a la autenticación con nombre de usuario y contraseña, Facebook, Twitter, etc. Hemos desarrollado una estrategia para Microsoft Azure Active Directory (Azure AD). Instalamos este módulo y luego agregaremos el complemento `passport-azure-ad` de Microsoft Azure Active Directory.
+*Passport* es middleware de autenticación para Node.js. Flexible y modular, Passport puede quitarse de forma discreta en tooany basada en Express o Restify la aplicación web. Un conjunto completo de estrategias da soporte a la autenticación con nombre de usuario y contraseña, Facebook, Twitter, etc. Hemos desarrollado una estrategia para Microsoft Azure Active Directory (Azure AD). Se instale este módulo y, a continuación, agregue Hola Microsoft Azure Active Directory `passport-azure-ad` complemento.
 
-Para ello, necesita lo siguiente:
+toodo, necesita:
 
 1. Registrar una aplicación con Azure AD.
-2. Configurar la aplicación para que use el complemento `passport-azure-ad` de Passport.
-3. Configurar una aplicación cliente para llamar a la API web de la Lista de tareas pendientes.
+2. Configurar la aplicación toouse Passport `passport-azure-ad` complemento.
+3. Configurar un cliente aplicación toocall hello tooDo lista API web.
 
-El código de este tutorial se conserva [en GitHub](https://github.com/Azure-Samples/active-directory-node-webapi).
+código de Hello para este tutorial se mantiene [en GitHub](https://github.com/Azure-Samples/active-directory-node-webapi).
 
 > [!NOTE]
-> En este artículo no se trata la implementación de la administración de registros, inicios de sesión y perfiles con Azure AD B2C. Se centra en la llamada a las API web después de que el usuario ya está autenticado.  Para aprender los fundamentos de Azure Active Directory, se recomienda empezar por el documento [Integración con Azure Active Directory](active-directory-how-to-integrate.md).
+> Este artículo no tratan cómo tooimplement sesión, inicio de sesión, o generar perfiles de administración con Azure AD B2C. Se centra en las API de web que realiza la llamada después de hello usuario ya está autenticado.  Es recomendable que comience con [cómo toointegrate con documentos de Azure Active Directory](active-directory-how-to-integrate.md) toolearn sobre conceptos básicos de Hola de Azure Active Directory.
 >
 >
 
-Hemos publicado todo el código fuente de este ejemplo en GitHub bajo una licencia de MIT, así que no dude en clonarlo (o mejor aún, bifurcarlo) y realizar cualquier comentarios y solicitudes de incorporación de cambios.
+Por lo que lanzamos todo código fuente de hello en este ejemplo en GitHub bajo una licencia MIT, sentirse tooclone libre (o incluso mejor, bifurcar) y proporcionar comentarios y solicitudes de extracción.
 
 ## <a name="about-nodejs-modules"></a>Acerca de los módulos Node.js
-En este tutorial se usan módulos Node.js. Los módulos son paquetes JavaScript que pueden cargarse y que proporcionan una funcionalidad específica para su aplicación. Normalmente, para instalar los módulos se usa una herramienta de línea de comandos de NPM de Node.js en el directorio de instalación de NPM. Sin embargo, algunos módulos, como el módulo de HTTP, se incluyen en el paquete principal de Node.js.
+En este tutorial se usan módulos Node.js. Los módulos son paquetes JavaScript que pueden cargarse y que proporcionan una funcionalidad específica para su aplicación. Normalmente se instale módulos mediante hello Node.js una herramienta de línea de comandos de NPM en directorio de instalación de NPM Hola. Sin embargo, algunos módulos, como el módulo HTTP de hello, se incluyen en el paquete de Node.js del núcleo de Hola.
 
-Los módulos instalados se guardan en el directorio **node_modules**, en la raíz del directorio de instalación de Node.js. En el directorio **node_modules**, cada módulo mantiene sus propio directorio **node_modules**, que contiene los módulos de los que depende. Además, cada módulo requerido tiene un directorio **node_modules**. Esta estructura de directorios recursiva representa la cadena de dependencias.
+Módulos instalados se guardan en hello **node_modules** directorio raíz de Hola de su directorio de instalación de Node.js. Cada módulo en hello **node_modules** directory mantiene su propio **node_modules** directorio que contiene los módulos que depende. Además, cada módulo requerido tiene un directorio **node_modules**. Esta estructura de directorios recursiva representa la cadena de dependencia de Hola.
 
-Esta estructura de la cadena de dependencias da como resultado una mayor superficie de la aplicación. Pero también garantiza que se cumplen todas las dependencias y que la versión de los módulos que se usa en el desarrollo también se utiliza en producción. Esto hace que el comportamiento de la aplicación de producción sea más predecible y evita los problemas de control de versiones que pueden afectar a los usuarios.
+Esta estructura de la cadena de dependencias da como resultado una mayor superficie de la aplicación. Pero también garantiza que se cumplen todas las dependencias y esa versión de Hola de módulos de Hola que se usa en el desarrollo también se utiliza en producción. Esto facilita comportamientos de la aplicación de producción de hello más predecible y evita los problemas de control de versiones que podrían afectar a los usuarios.
 
 ## <a name="step-1-register-an-azure-ad-tenant"></a>Paso 1: Registro de un inquilino de Azure AD
-Para usar este ejemplo, se necesita un inquilino de Azure Active Directory. Si no está seguro de qué es un inquilino o de cómo obtener uno, consulte [Obtención de un inquilino de Azure Active Directory](active-directory-howto-tenant.md).
+toouse este ejemplo, necesita un inquilino de Azure Active Directory. Si no está seguro de qué un inquilino o tooget uno, vea [cómo inquilino tooget un Azure AD](active-directory-howto-tenant.md).
 
 ## <a name="step-2-create-an-application"></a>Paso 2: Creación de una aplicación
-A continuación, cree una aplicación en su directorio que proporcione a Azure AD la información que necesita para comunicarse de forma segura con su aplicación.  Tanto la aplicación cliente como la API web se representan mediante un **identificador de aplicación** individual, ya que conforman una aplicación lógica.  Para crear una aplicación, siga [estas instrucciones](active-directory-how-applications-are-added.md). Si va a crear una aplicación de línea de negocio [es posible que estas instrucciones adicionales le resulten útiles](../active-directory-applications-guiding-developers-for-lob-applications.md).
+A continuación, creará una aplicación en el directorio que ofrece Azure AD información que necesita toosecurely comunicarse con la aplicación.  Aplicación de cliente de hello y API web se representan mediante una sola **Id. de aplicación** en este caso, porque están formadas por una aplicación lógica.  toocreate una aplicación, siga [estas instrucciones](active-directory-how-applications-are-added.md). Si va a crear una aplicación de línea de negocio [es posible que estas instrucciones adicionales le resulten útiles](../active-directory-applications-guiding-developers-for-lob-applications.md).
 
-Para crear una aplicación:
+toocreate una aplicación:
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 
-2. En el menú superior, seleccione su cuenta. Luego, en la lista **Directorio**, elija el inquilino de Active Directory en el que desee registrar la aplicación.
+2. En el menú superior de hello, seleccione su cuenta. A continuación, en hello **Directory** lista, seleccione la aplicación de inquilino de Active Directory de Hola donde desea tooregister.
 
-3. En el menú de la izquierda, seleccione **Más servicios** y, después, seleccione **Azure Active Directory**.
+3. En el menú de Hola Hola izquierda, seleccione **más servicios**y, a continuación, seleccione **Azure Active Directory**.
 
 4. Seleccione **Registros de aplicaciones** y luego seleccione **Agregar**.
 
-5. Siga las indicaciones para crear una **Aplicación web o API web**.
+5. Siga Hola indicaciones toocreate una **aplicación Web o WebAPI**.
 
-      * El **nombre** de la aplicación describe la aplicación a los usuarios finales.
+      * Hola **nombre** de hello aplicación describe los usuarios de tooend de aplicación.
 
-      * La **dirección URL de inicio de sesión** es la dirección URL base de su aplicación.  La dirección URL predeterminada del código de ejemplo es `https://localhost:8080`.
+      * Hola **dirección URL de inicio de sesión** es Hola dirección URL base de la aplicación.  Hola predeterminado es la dirección URL del código de ejemplo de Hola `https://localhost:8080`.
 
-6. Después de registrarse, Azure AD asigna a su aplicación un identificador de aplicación individual. Este valor se necesita en las siguientes secciones, así que cópielo de la página de aplicación.
+6. Después de registrarse, Azure AD asigna a su aplicación un identificador de aplicación individual. Se necesita este valor en las secciones siguientes de hello, por lo tanto cópiela desde la página de aplicación Hola.
 
-7. En la página **Configuración** -> **Propiedades** de la aplicación, actualice el URI del identificador de la aplicación. El **URI de id. de aplicación** es un identificador único de su aplicación. La convención consiste en usar `https://<tenant-domain>/<app-name>`, por ejemplo: `https://contoso.onmicrosoft.com/my-first-aad-app`.
+7. De hello **configuración** -> **propiedades** página de la aplicación, actualice Hola App ID URI. Hola **App ID URI** es un identificador único para la aplicación. convención de Hello es toouse `https://<tenant-domain>/<app-name>`, por ejemplo: `https://contoso.onmicrosoft.com/my-first-aad-app`.
 
-8. Cree un **clave** para la aplicación desde la página **Configuración** y cópiela en otro lugar. La necesitará en breve.
+8. Crear un **clave** para la aplicación de hello **configuración** página y, a continuación, cópielo en otro. La necesitará en breve.
 
 ## <a name="step-3-download-nodejs-for-your-platform"></a>Paso 3: Descarga de Node.js para la plataforma
-Para usar correctamente este ejemplo, debe disponer de una instalación en funcionamiento de Node.js.
+toosuccessfully utilizar este ejemplo, debe tener una instalación activa de Node.js.
 
 Instale Node.js desde [http://nodejs.org](http://nodejs.org).
 
 ## <a name="step-4-install-mongodb-on-your-platform"></a>Paso 4: Instalación de MongoDB en la plataforma
-Para usar correctamente este ejemplo, debe disponer de una instalación en funcionamiento de MongoDB. MongoDB se usa para que la API de REST sea persistente en las distintas instancias del servidor.
+toosuccessfully utilizar este ejemplo, debe tener una instalación activa de MongoDB. Utilice MongoDB toomake Hola API de REST persistente en instancias del servidor.
 
 Instale MongoDB desde [http://mongodb.org](http://www.mongodb.org).
 
 > [!NOTE]
-> En este tutorial se da por supuesto que usa la instalación predeterminada y los puntos de conexión de servidor para MongoDB, que en el momento de escribir este artículo es mongodb://localhost.
+> Este tutorial se supone que utiliza Hola instalación y servidor de puntos de conexión predeterminados para MongoDB, que en tiempo de Hola de redactar este artículo es mongodb://localhost.
 >
 >
 
-## <a name="step-5-install-the-restify-modules-in-your-web-api"></a>Paso 5: Instalación de los módulos Restify en su API web
-Vamos a usar Restify para compilar nuestra API de REST. Restify es un marco de trabajo de la aplicación de Node.js mínimo y flexible que se deriva de Express. Tiene un sólido conjunto de características para crear API de REST sobre Connect.
+## <a name="step-5-install-hello-restify-modules-in-your-web-api"></a>Paso 5: Instalar los módulos de Restify hello en la API web
+Estamos usando Restify toobuild nuestra API de REST. Restify es un marco de trabajo de la aplicación de Node.js mínimo y flexible que se deriva de Express. Tiene un sólido conjunto de características para crear API de REST sobre Connect.
 
 ### <a name="install-restify"></a>Instalar Restify
-1. Desde la línea de comandos, cambie al directorio **azuread**. Si el directorio **azuread** no existe, créelo.
+1. Desde la línea de comandos de hello, cambiar directorios toohello **organización** directory. Si hello **organización** directorio no existe, créelo.
 
         `cd azuread - or- mkdir azuread; cd azuread`
 
-2. Escriba el siguiente comando:
+2. Escriba el siguiente comando de hello:
 
     `npm install restify`
 
     Este comando instala Restify.
 
 #### <a name="did-you-get-an-error"></a>¿Ha recibido un error?
-Si se usa NPM en algunos sistemas operativos, se puede que recibir el siguiente mensaje **Error: EPERM, chmod "/usr/local/bin/.."** y una sugerencia de que intente ejecutar la cuenta como administrador. Si esto ocurre, utilice el comando sudo para ejecutar NPM en un nivel de privilegios mayor.
+Si se usa NPM en algunos sistemas operativos, se puede que recibir el siguiente mensaje **Error: EPERM, chmod "/usr/local/bin/.."** y una sugerencia que intentas ejecución cuenta de hello como administrador. Si esto ocurre, use hello sudo comando toorun NPM con un nivel de privilegios superior.
 
 #### <a name="did-you-get-an-error-regarding-dtrace"></a>¿Ha recibido un error relacionado con DTRACE?
 Al instalar Restify puede que vea un error similar al siguiente:
@@ -129,7 +129,7 @@ npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 ```
 Restify proporciona un mecanismo eficaz para rastrear llamadas a REST mediante DTrace. Sin embargo, muchos sistemas operativos no tienen DTrace. Puede omitir estos errores con seguridad.
 
-La salida de este comando debe ser similar a esta:
+salida de Hello de este comando debe ser similar toohello después de salida:
 
     restify@2.6.1 node_modules/restify
     ├── assert-plus@0.1.4
@@ -154,17 +154,17 @@ La salida de este comando debe ser similar a esta:
 
 
 ## <a name="step-6-install-passportjs-in-your-web-api"></a>Paso 6: Instalación de Passport.js en su API web
-[Passport](http://passportjs.org/) es middleware de autenticación para Node.js. Passport es flexible y modular, y se puede usar discretamente en cualquier aplicación web de Restify o basada en Express. Un conjunto completo de estrategias da soporte a la autenticación con nombre de usuario y contraseña, Facebook, Twitter, etc.
+[Passport](http://passportjs.org/) es middleware de autenticación para Node.js. Flexible y modular, Passport puede quitarse de forma discreta en tooany basada en Express o Restify la aplicación web. Un conjunto completo de estrategias da soporte a la autenticación con nombre de usuario y contraseña, Facebook, Twitter, etc.
 
-Hemos desarrollado una estrategia para Azure Active Directory. Instalamos este módulo y, después, agregamos el complemento de la estrategia de Azure Active Directory.
+Hemos desarrollado una estrategia para Azure Active Directory. Se instala este módulo y, a continuación, agrega la estrategia de Azure Active Directory Hola complemento.
 
-1. Desde la línea de comandos, cambie al directorio **azuread**.
+1. Desde la línea de comandos de hello, cambiar directorios toohello **organización** directory.
 
-2. Para instalar passport.js, escriba el siguiente comando:
+2. tooinstall passport.js, escriba el siguiente comando de hello:
 
     `npm install passport`
 
-    La salida del comando debe ser similar a esta:
+    salida de Hello de comando hello debería ser similar siguiente toohello:
 
 ``
         passport@0.1.17 node_modules\passport
@@ -172,21 +172,21 @@ Hemos desarrollado una estrategia para Azure Active Directory. Instalamos este m
         └── pkginfo@0.2.3
 ``
 
-## <a name="step-7-add-passport-azure-ad-to-your-web-api"></a>Paso 7: Incorporación de Passport-Azure-AD a su API web
-A continuación, se agrega la estrategia de OAuth mediante `passport-azure-ad`, un conjunto de estrategias que conectan Azure Active Directory a Passport. En este ejemplo de API de REST, esta estrategia se usa para los tokens de portador.
+## <a name="step-7-add-passport-azure-ad-tooyour-web-api"></a>Paso 7: Agregar AD de Azure de Passport tooyour web API
+A continuación, agregamos estrategia de OAuth de hello mediante el uso de `passport-azure-ad`, un conjunto de estrategias que se conectan tooPassport de Azure Active Directory. En este ejemplo de API de REST, esta estrategia se usa para los tokens de portador.
 
 > [!NOTE]
-> Aunque OAuth2 proporciona un marco en el que se puede emitir cualquier tipo de token conocido, habitualmente solo se usan determinados tipos de token. Los tokens de portador son los que más se usan para proteger los puntos de conexión. Son el tipo de token más emitido en OAuth2. Muchas implementaciones asumen que los tokens de portador son el único tipo de token que se emite.
+> Aunque OAuth2 proporciona un marco en el que se puede emitir cualquier tipo de token conocido, habitualmente solo se usan determinados tipos de token. Tokens de portador son tokens de hello suelen usada para proteger los puntos de conexión. Son tipo hello emitido más comúnmente del token de OAuth2. Muchas implementaciones, se supone que los tokens de portador son Hola único tipo de tokens emitidos.
 >
 >
 
-Desde la línea de comandos, cambie al directorio **azuread**.
+Desde la línea de comandos de hello, cambiar directorios toohello **organización** directory.
 
-Escriba el siguiente comando para instalar el módulo `passport-azure-ad module` de Passport.js:
+Escriba lo siguiente Hola comando hello tooinstall Passport.js `passport-azure-ad module`:
 
 `npm install passport-azure-ad`
 
-La salida del comando debe ser similar a esta:
+resultado de Hello de comando de Hola debería ser similar toohello después de salida:
 
 
     passport-azure-ad@1.0.0 node_modules/passport-azure-ad
@@ -204,32 +204,32 @@ La salida del comando debe ser similar a esta:
 
 
 
-## <a name="step-8-add-mongodb-modules-to-your-web-api"></a>Paso 8: Incorporación de módulos MongoDB a su API web
-MongoDB se usa como almacén de datos. Por eso, es preciso instalar el complemento ampliamente utilizado denominado Mongoose para administrar los modelos y esquemas. También es necesario instalar al controlador de base de datos para MongoDB (que también se denomina MongoDB).
+## <a name="step-8-add-mongodb-modules-tooyour-web-api"></a>Paso 8: Agregar MongoDB módulos tooyour web API
+MongoDB se usa como almacén de datos. Por esta razón, es necesario tooinstall Hola usadas de complemento llamados modelos de toomanage Mongoose y esquemas. También es necesario el controlador de base de datos de hello tooinstall para MongoDB (conocida también como MongoDB).
 
  `npm install mongoose`
 
 ## <a name="step-9-install-additional-modules"></a>Paso 9: Instalación de módulos adicionales
-A continuación, se instalaran los restantes módulos requeridos.
+A continuación se instale Hola restantes módulos necesarios.
 
-1. Desde la línea de comandos, cambie el directorio a la carpeta **azuread**, en caso de que no se encuentre ya en ella.
+1. Desde la línea de comandos de hello, cambiar directorios toohello **organización** carpeta si no está ya no existe.
 
     `cd azuread`
 
-2. Escriba los siguientes comandos para instalar estos módulos en su directorio **node_modules**:
+2. Escriba Hola después comandos tooinstall estos módulos en su **node_modules** directorio:
 
     * `npm install assert-plus`
     * `npm install bunyan`
     * `npm update`
 
 ## <a name="step-10-create-a-serverjs-with-your-dependencies"></a>Paso 10: Creación de server.js con sus dependencias
-El archivo server.js proporciona la mayor parte de la funcionalidad de nuestro servidor de API web. La mayoría del código se agrega a este archivo. Para la producción, se recomienda refactorizar la funcionalidad en archivos más pequeños, como controladores y rutas independientes. En esta demostración, se usa server.js para esta funcionalidad.
+archivo de Hello server.js proporciona la mayor parte de la funcionalidad de hello para el servidor de la API web. Agregamos la mayor parte de nuestro archivo de código toothis. Para fines de producción, se recomienda refactorizar funcionalidad hello en archivos más pequeños, como rutas independientes y controladores. En esta demostración, se usa server.js para esta funcionalidad.
 
-1. Desde la línea de comandos, cambie el directorio a la carpeta **azuread**, en caso de que no se encuentre ya en ella.
+1. Desde la línea de comandos de hello, cambiar directorios toohello **organización** carpeta si no está ya no existe.
 
     `cd azuread`
 
-2. Cree un archivo `server.js` en el editor que prefiera y agregue la siguiente información:
+2. Crear un `server.js` un archivo en el editor que prefiera y después agregue Hola siguiente información:
 
     ```Javascript
         'use strict';
@@ -250,50 +250,50 @@ El archivo server.js proporciona la mayor parte de la funcionalidad de nuestro s
       var BearerStrategy = require('passport-azure-ad').BearerStrategy;
     ```
 
-3. Guarde el archivo . Volveremos a él en breve.
+3. Guarde el archivo hello. Volverás tooit en breve.
 
-## <a name="step-11-create-a-config-file-to-store-your-azure-ad-settings"></a>Paso 11: Creación de un archivo de configuración para almacenar la configuración de Azure AD
-Este archivo de código pasa los parámetros de configuración desde el Portal de Azure Active Directory a Passport.js. Estos valores de configuración se crearon al agregar la API web al portal en la primera parte del tutorial. Explicamos qué incluir en los valores de estos parámetros después de haber copiado el código.
+## <a name="step-11-create-a-config-file-toostore-your-azure-ad-settings"></a>Paso 11: Crear un toostore del archivo de configuración de la configuración de Azure AD
+Este archivo de código pasa los parámetros de configuración de Hola de su tooPassport.js de portal de Azure Active Directory. Estos valores de configuración se crean cuando se agrega hello web API toohello el portal en la primera parte del tutorial Hola de Hola. Se explica qué tooput en valores de hello de estos parámetros después de copiar el código de hello.
 
-1. Desde la línea de comandos, cambie el directorio a la carpeta **azuread**, en caso de que no se encuentre ya en ella.
+1. Desde la línea de comandos de hello, cambiar directorios toohello **organización** carpeta si no está ya no existe.
 
     `cd azuread`
 
-2. Cree un archivo `config.js` en el editor que prefiera y agregue la siguiente información:
+2. Crear un `config.js` un archivo en el editor que prefiera y después agregue Hola siguiente información:
 
     ```Javascript
          exports.creds = {
              mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
              clientID: 'your client ID',
              audience: 'your application URL',
-            // you cannot have users from multiple tenants sign in to your server unless you use the common endpoint
+            // you cannot have users from multiple tenants sign in tooyour server unless you use hello common endpoint
           // example: https://login.microsoftonline.com/common/.well-known/openid-configuration
              identityMetadata: 'https://login.microsoftonline.com/<your tenant id>/.well-known/openid-configuration',
-             validateIssuer: true, // if you have validation on, you cannot have users from multiple tenants sign in to your server
+             validateIssuer: true, // if you have validation on, you cannot have users from multiple tenants sign in tooyour server
              passReqToCallback: false,
-             loggingLevel: 'info' // valid are 'info', 'warn', 'error'. Error always goes to stderr in Unix.
+             loggingLevel: 'info' // valid are 'info', 'warn', 'error'. Error always goes toostderr in Unix.
 
          };
     ```
-3. Guarde el archivo .
+3. Guarde el archivo hello.
 
-## <a name="step-12-add-configuration-values-to-your-serverjs-file"></a>Paso 12: Incorporación de valores de configuración a su archivo server.js
-Estos valores se deben leer del archivo .config que creó en nuestra aplicación. Para ello, agregamos el archivo .config como un recurso necesario a nuestra aplicación. Luego, establecemos las variables globales que coincidan con las variables del documento config.js.
+## <a name="step-12-add-configuration-values-tooyour-serverjs-file"></a>Paso 12: Agregar el archivo de configuración de valores tooyour server.js
+Necesitamos tooread estos valores desde el archivo .config de Hola que creaste en nuestra aplicación. toodo, agregamos archivo .config de hello como un recurso necesario en nuestra aplicación. A continuación, se establecer variables de Hola de toomatch de variables globales de hello en documento config.js de Hola.
 
-1. Desde la línea de comandos, cambie el directorio a la carpeta **azuread**, en caso de que no se encuentre ya en ella.
+1. Desde la línea de comandos de hello, cambiar directorios toohello **organización** carpeta si no está ya no existe.
 
     `cd azuread`
 
-2. Abra el archivo `server.js` en el editor que prefiera y agregue la siguiente información:
+2. Abra su `server.js` un archivo en el editor que prefiera y después agregue Hola siguiente información:
 
     ```Javascript
     var config = require('./config');
     ```
-3. Después, agregue una nueva sección a `server.js` con el código siguiente:
+3. A continuación, agregue una nueva sección demasiado`server.js` con hello siguiente código:
 
     ```Javascript
     var options = {
-        // The URL of the metadata document for your app. We will put the keys for token validation from the URL found in the jwks_uri tag of the in the metadata.
+        // hello URL of hello metadata document for your app. We will put hello keys for token validation from hello URL found in hello jwks_uri tag of hello in hello metadata.
         identityMetadata: config.creds.identityMetadata,
         clientID: config.creds.clientID,
         validateIssuer: config.creds.validateIssuer,
@@ -303,7 +303,7 @@ Estos valores se deben leer del archivo .config que creó en nuestra aplicación
 
     };
 
-    // Array to hold logged in users and the current logged in user (owner).
+    // Array toohold logged in users and hello current logged in user (owner).
     var users = [];
     var owner = null;
 
@@ -323,7 +323,7 @@ Estos valores se deben leer del archivo .config que creó en nuestra aplicación
             }, ]
     });
 
-      // If the logging level is specified, switch to it.
+      // If hello logging level is specified, switch tooit.
       if (config.creds.loggingLevel) { log.levels("console", config.creds.loggingLevel); }
 
     // MongoDB setup.
@@ -332,42 +332,42 @@ Estos valores se deben leer del archivo .config que creó en nuestra aplicación
     var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config.creds.mongoose_auth_local;
     ```
 
-4. Guarde el archivo .
+4. Guarde el archivo hello.
 
-## <a name="step-13-add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>Paso 13: Incorporación del modelo MongoDB y la información del esquema mediante Mongoose
-Ahora toda esta preparación va a empezar a dar sus frutos cuando combinemos estos tres archivos en un servicio API de REST.
+## <a name="step-13-add-hello-mongodb-model-and-schema-information-by-using-mongoose"></a>Paso 13: Agregar Hola MongoDB modelo e información de esquema mediante Mongoose
+Ahora toda esta preparación va toostart buenos resultados tal y como se combinan estos tres archivos en un servicio de API de REST.
 
-En este tutorial, usamos MongoDB para almacenar nuestras tareas, como se describe en el Paso 4.
+En este tutorial, usamos MongoDB toostore nuestro tareas tal como se describe en el paso 4.
 
-En el archivo `config.js`, que creamos en el Paso 11, llamamos a nuestra base de datos `tasklist`, ya que fue lo que incluimos al final de nuestra dirección URL de conexión **mongoose_auth_local**. No es necesario crear esta base de datos por anticipado en MongoDB. En su lugar, MongoDB la crea automáticamente la primera vez que se ejecuta nuestra aplicación de servidor (en caso de que la base de datos no exista).
+Hola `config.js` que hemos creado en el paso 11, llamamos a nuestra base de datos de archivo `tasklist`, porque ese era colocamos final Hola de nuestro **mogoose_auth_local** dirección URL de conexión. No es necesario toocreate esta base de datos con antelación en MongoDB. En su lugar, MongoDB esto para que podamos en hello primero crea ejecución de nuestra aplicación de servidor (suponiendo que aún no existe esa base de datos de hello).
 
-Ahora que hemos indicado al servidor la base de datos MongoDB que deseamos usar, debemos escribir código adicional para crear el modelo y esquema de las tareas de nuestro servidor.
+Ahora que hemos dicho servidor hello a qué base de datos de MongoDB nos gustaría toouse, es necesario toowrite algunos modelos de código adicional toocreate Hola y el esquema para las tareas del servidor.
 
-### <a name="discussion-of-the-model"></a>Análisis del modelo
+### <a name="discussion-of-hello-model"></a>Descripción del modelo de Hola
 Nuestro modelo de esquema es muy sencillo. Expándalo si fuera necesario.
 
-NAME: el nombre de la persona a la que se asigna a la tarea. Un valor de **cadena**.
+NOMBRE: nombre de Hola de hello quien se asigna la tarea de toohello. Un valor de **cadena**.
 
-TASK: la propia tarea. Un valor de **cadena**.
+TAREA: hello propia tarea. Un valor de **cadena**.
 
-DATE: la fecha en que vence la tarea. Un valor **DATETIME**.
+Fecha: Hola esa tarea hello es debida. Un valor **DATETIME**.
 
-COMPLETED: si la tarea se ha completado, o no. Un valor **booleano**.
+COMPLETADO: Si tiene la tarea hello ha completado o no. Un valor **booleano**.
 
-### <a name="creating-the-schema-in-the-code"></a>Creación del esquema en el código
-1. Desde la línea de comandos, cambie el directorio a la carpeta **azuread**, en caso de que no se encuentre ya en ella.
+### <a name="creating-hello-schema-in-hello-code"></a>Crear el esquema de hello en el código de hello
+1. Desde la línea de comandos de hello, cambiar directorios toohello **organización** carpeta si no está ya no existe.
 
     `cd azuread`
 
-2. Abra el archivo `server.js` en el editor que prefiera y agregue la siguiente información debajo de la entrada de configuración:
+2. Abra su `server.js` un archivo en el editor que prefiera y después agregue Hola siguiendo la información que aparece debajo de la entrada de configuración de hello:
 
     ```Javascript
-    // Connect to MongoDB.
+    // Connect tooMongoDB.
     global.db = mongoose.connect(serverURI);
     var Schema = mongoose.Schema;
     log.info('MongoDB Schema loaded');
 
-    // Here we create a schema to store our tasks and users. It's a fairly simple schema for now.
+    // Here we create a schema toostore our tasks and users. It's a fairly simple schema for now.
     var TaskSchema = new Schema({
         owner: String,
         task: String,
@@ -375,17 +375,17 @@ COMPLETED: si la tarea se ha completado, o no. Un valor **booleano**.
         date: Date
     });
 
-    // Use the schema to register a model.
+    // Use hello schema tooregister a model.
     mongoose.model('Task', TaskSchema);
     var Task = mongoose.model('Task');
     ```
-Como puede imaginar por el código, primero se crea un esquema. Después se crea un objeto de modelo que se usa para almacenar los datos en el código cuando se definen las **rutas**.
+Como puede imaginar desde el código de hello, crearemos nuestro esquema primero. A continuación, se crea un objeto de modelo que utilizamos toostore nuestros datos a lo largo de hello código cuando se definen nuestro **rutas**.
 
 ## <a name="step-14-add-our-routes-for-our-task-rest-api-server"></a>Paso 14: Adición de rutas para el servidor de API de REST de la tarea
-Ahora que tenemos un modelo de base de datos con el que trabajar, agreguemos las rutas que vamos a usar para nuestro servidor de API de REST.
+Ahora que tenemos un toowork de modelo de base de datos con, vamos a agregar rutas de hello estamos uso continuo para el servidor de API de REST.
 
 ### <a name="about-routes-in-restify"></a>Información acerca de las rutas en Restify
-Las rutas funcionan en Restify de la misma forma que en la pila de Express. Defina rutas mediante el URI al que espera que llamen las aplicaciones cliente. Normalmente, las rutas se definen en un archivo independiente. Para nuestros propósitos, las rutas las ponemos en el archivo server.js. Se recomienda factorizarlas en su propio archivo para que se puedan usar en producción.
+Rutas de trabajo en Restify Hola igual manera que en hello Express en la pila. Definir las rutas mediante el uso de URI que se espera toocall de las aplicaciones de cliente de Hola Hola. Normalmente, las rutas se definen en un archivo independiente. Para nuestros propósitos, colocamos nuestra rutas de archivo de hello server.js. Se recomienda factorizarlas en su propio archivo para que se puedan usar en producción.
 
 Este es un patrón típico de una ruta de Restify:
 
@@ -398,7 +398,7 @@ function createObject(req, res, next) {
 
  ///...
 
-return next(); // Keep the server going.
+return next(); // Keep hello server going.
 }
 
 ....
@@ -408,16 +408,16 @@ server.post('/service/:add/:object', createObject); // Calls createObject on rou
 ```
 
 
-Este es el patrón en su nivel más básico. Restify (y Express) proporcionan una funcionalidad mucho más profunda, como definir los tipos de aplicación y proporcionar un enrutamiento complejo en distintos puntos de conexión. Estas rutas van a ser simples.
+Este es el patrón de hello en su nivel más básico. Restify (y Express) proporcionan una funcionalidad mucho más profunda, como definir los tipos de aplicación y proporcionar un enrutamiento complejo en distintos puntos de conexión. Estas rutas van a ser simples.
 
-### <a name="add-default-routes-to-our-server"></a>Agregar rutas predeterminadas a nuestro servidor
-Ahora se agregan las rutas CRUD básicas de Create, Retrieve, Update y Delete.
+### <a name="add-default-routes-tooour-server"></a>Agregar servidor de forma predeterminada las rutas tooour
+Ahora agregar hello básico CRUD de las rutas de crear, recuperar, actualizar y eliminar.
 
-1. Desde la línea de comandos, cambie el directorio a la carpeta **azuread**, en caso de que no se encuentre ya en ella:
+1. Desde la línea de comandos de hello, cambiar directorios toohello **organización** carpeta si no está ya no existe:
 
     `cd azuread`
 
-2. Abra el archivo `server.js` en el editor que prefiera y agregue la siguiente información debajo de las anteriores entradas de base de datos que creó:
+2. Abra hello `server.js` un archivo en el editor que prefiera y después agregue Hola siguiendo la información que aparece debajo de hello base de datos las entradas anteriores que haya realizado:
 
 ```Javascript
 
@@ -430,13 +430,13 @@ Ahora se agregan las rutas CRUD básicas de Create, Retrieve, Update y Delete.
 
 function createTask(req, res, next) {
 
-    // Restify currently has a bug which doesn't allow you to set default headers.
-    // These headers comply with CORS and allow us to mongodbServer our response to any origin.
+    // Restify currently has a bug which doesn't allow you tooset default headers.
+    // These headers comply with CORS and allow us toomongodbServer our response tooany origin.
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    // Create a new task model, fill it, and save it to Mongodb.
+    // Create a new task model, fill it, and save it tooMongodb.
     var _task = new Task();
 
     if (!req.params.task) {
@@ -451,7 +451,7 @@ function createTask(req, res, next) {
 
     _task.save(function(err) {
         if (err) {
-            req.log.warn(err, 'createTask: unable to save');
+            req.log.warn(err, 'createTask: unable toosave');
             next(err);
         } else {
             res.send(201, _task);
@@ -474,7 +474,7 @@ function removeTask(req, res, next) {
     }, function(err) {
         if (err) {
             req.log.warn(err,
-                'removeTask: unable to delete %s',
+                'removeTask: unable toodelete %s',
                 req.params.task);
             next(err);
         } else {
@@ -503,7 +503,7 @@ function getTask(req, res, next) {
         owner: owner
     }, function(err, data) {
         if (err) {
-            req.log.warn(err, 'get: unable to read %s', owner);
+            req.log.warn(err, 'get: unable tooread %s', owner);
             next(err);
             return;
         }
@@ -514,11 +514,11 @@ function getTask(req, res, next) {
     return next();
 }
 
-/// Simple returns the list of TODOs that were loaded.
+/// Simple returns hello list of TODOs that were loaded.
 
 function listTasks(req, res, next) {
-    // Restify currently has a bug which doesn't allow you to set default headers.
-    // These headers comply with CORS and allow us to mongodbServer our response to any origin.
+    // Restify currently has a bug which doesn't allow you tooset default headers.
+    // These headers comply with CORS and allow us toomongodbServer our response tooany origin.
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -538,7 +538,7 @@ function listTasks(req, res, next) {
         }
 
         if (!data.length) {
-            log.warn(err, "There is no tasks in the database. Did you initialize the database as stated in the README?");
+            log.warn(err, "There is no tasks in hello database. Did you initialize hello database as stated in hello README?");
         }
 
         if (!owner) {
@@ -558,7 +558,7 @@ function listTasks(req, res, next) {
 ### <a name="add-error-handling-in-our-apis"></a>Incorporación del control de errores a nuestras API
 ```
 
-///--- Errors for communicating something interesting back to the client.
+///--- Errors for communicating something interesting back toohello client.
 
 function MissingTaskError() {
     restify.RestError.call(this, {
@@ -606,9 +606,9 @@ util.inherits(TaskNotFoundError, restify.RestError);
 
 
 ## <a name="step-15-create-your-server"></a>Paso 15: Creación de un servidor
-Hemos definido la base de datos y las rutas están en su lugar. Lo último que hay que hacer es agregar la instancia del servidor que administra las llamadas.
+Hemos definido la base de datos y las rutas están en su lugar. Hola última cosa toodo es agregar instancia del servidor hello que administra las llamadas.
 
-En Restify (y Express) se puede personalizar mucho un servidor de API de REST, pero vamos a volver a usar la configuración más básica.
+Restify (y Express) puede hacer una gran cantidad de personalización de un servidor de la API de REST, pero nuevo vamos toouse hello más básico el programa de instalación para nuestros propósitos.
 
 ```Javascript
 /**
@@ -633,32 +633,32 @@ server.pre(restify.pre.userAgentConnection());
 // Set a per request bunyan logger (with requestid filled in).
 server.use(restify.requestLogger());
 
-// Allow five requests per second by IP, and burst to 10.
+// Allow five requests per second by IP, and burst too10.
 server.use(restify.throttle({
     burst: 10,
     rate: 5,
     ip: true,
 }));
 
-// Use the common stuff you probably want.
+// Use hello common stuff you probably want.
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.dateParser());
 server.use(restify.queryParser());
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser({
     mapParams: true
-})); // Allow for JSON mapping to REST.
+})); // Allow for JSON mapping tooREST.
 ```
 
-## <a name="step-16-add-the-routes-to-the-server-without-authentication-for-now"></a>Paso 16: Adición de las rutas al servidor (sin autenticación por ahora)
+## <a name="step-16-add-hello-routes-toohello-server-without-authentication-for-now"></a>Paso 16: Agregar servidor de toohello de rutas de hello (sin autenticación por ahora)
 ```Javascript
-/// Now the real handlers. Here we just CRUD.
+/// Now hello real handlers. Here we just CRUD.
 /**
 /*
 /* Each of these handlers is protected by our OIDCBearerStrategy by invoking 'oidc-bearer'.
-/* In the pasport.authenticate() method. We set 'session: false' because REST is stateless and
-/* we don't need to maintain session state. You can experiment with removing API protection
-/* by removing the passport.authenticate() method as follows:
+/* In hello pasport.authenticate() method. We set 'session: false' because REST is stateless and
+/* we don't need toomaintain session state. You can experiment with removing API protection
+/* by removing hello passport.authenticate() method as follows:
 /*
 /* server.get('/tasks', listTasks);
 /*
@@ -694,31 +694,31 @@ server.listen(serverPort, function() {
 var consoleMessage = '\n Microsoft Azure Active Directory Tutorial';
 consoleMessage += '\n +++++++++++++++++++++++++++++++++++++++++++++++++++++';
 consoleMessage += '\n %s server is listening at %s';
-consoleMessage += '\n Open your browser to %s/tasks\n';
+consoleMessage += '\n Open your browser too%s/tasks\n';
 consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n';
-consoleMessage += '\n !!! why not try a $curl -isS %s | json to get some ideas? \n';
+consoleMessage += '\n !!! why not try a $curl -isS %s | json tooget some ideas? \n';
 consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 });
 ```
 
-## <a name="step-17-run-the-server-before-adding-oauth-support"></a>Paso 17: Ejecución del servidor (antes de agregar la compatibilidad con OAuth)
+## <a name="step-17-run-hello-server-before-adding-oauth-support"></a>Paso 17: Ejecutar servidor hello (antes de agregar compatibilidad con OAuth)
 Pruebe el servidor antes de agregar la autenticación.
 
-La forma más fácil de probarlo es usar curl en una línea de comandos. Antes de hacerlo, necesitamos una utilidad que nos permita analizar el resultado como JSON.
+Hola tootest de manera más fácil el servidor está utilizando curl en una línea de comandos. Antes de hacerlo, necesitamos una utilidad que nos permite tooparse salida como JSON.
 
-1. Instale la siguiente herramienta JSON (en todos los ejemplos siguientes se usa esta herramienta):
+1. Instalar Hola después de la herramienta JSON (Hola todos los ejemplos siguientes usa esta herramienta):
 
     `$npm install -g jsontool`
 
-    De esta forma, se instala la herramienta JSON globalmente. Ahora que ya lo hemos hecho, practiquemos con el servidor:
+    Esto instala herramienta JSON de hello globalmente. Ahora que nos hemos realizado, vamos a reproducir con servidor hello:
 
 2. En primer lugar, asegúrese de que se ejecuta la instancia de MongoDB:
 
     `$sudo mongod`
 
-3. Después, cambie al directorio e inicie curl:
+3. A continuación, cambie el directorio de toohello e iniciar volver una:
 
-    `$ cd azuread` `$ node server.js`
+    `$ cd azuread``$ node server.js`
 
     `$ curl -isS http://127.0.0.1:8080 | json`
 
@@ -743,7 +743,7 @@ La forma más fácil de probarlo es usar curl en una línea de comandos. Antes d
 
     `$ curl -isS -X POST http://127.0.0.1:8080/tasks/brandon/Hello`
 
-    La respuesta debe ser:
+    respuesta de Hello debe ser:
 
         ```Shell
         HTTP/1.1 201 Created
@@ -759,21 +759,21 @@ La forma más fácil de probarlo es usar curl en una línea de comandos. Antes d
 
         `$ curl -isS http://127.0.0.1:8080/tasks/brandon/`
 
-Si todo esto funciona, estamos listos para agregar OAuth al servidor de API de REST.
+Si todo esto funciona, se dispone de un servidor de la API de REST de listo tooadd OAuth toohello.
 
 Tiene un servidor de API de REST con MongoDB
 
-## <a name="step-18-add-authentication-to-our-rest-api-server"></a>Paso 18: Incorporación de la autenticación al servidor de API de REST
+## <a name="step-18-add-authentication-tooour-rest-api-server"></a>Paso 18: Agregar servidor de la API de REST de autenticación tooour
 Ahora que tenemos una API de REST en ejecución, podemos empezar a darle una utilidad con Azure AD.
 
-Desde la línea de comandos, cambie el directorio a la carpeta **azuread**, en caso de que no se encuentre ya en ella.
+Desde la línea de comandos de hello, cambiar directorios toohello **organización** carpeta si no está ya no existe.
 
 `cd azuread`
 
-### <a name="use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>Use el elemento OIDCBearerStrategy que se incluye con passport-azure-ad
+### <a name="use-hello-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>Usar hello OIDCBearerStrategy que se incluye con azure de passport de ad
 Hasta ahora hemos creado un servidor típico de TODO de REST sin ningún tipo de autorización. Finalmente, empezamos a prepararlo.
 
-1. En primer lugar, necesitamos indicar que queremos usar Passport. Incluya esto justo después de la otra configuración del servidor:
+1. En primer lugar, necesitamos tooindicate que deseamos toouse Passport. Incluya esto justo después de la otra configuración del servidor:
 
     ```Javascript
             // Let's start using Passport.js.
@@ -782,19 +782,19 @@ Hasta ahora hemos creado un servidor típico de TODO de REST sin ningún tipo de
             server.use(passport.session()); // Provides session support.
     ```
     > [!TIP]
-    > Al escribir las API, se recomienda vincular siempre los datos a un elemento único del token cuya identidad el usuario no pueda suplantar. Cuando este servidor almacena tareas pendiente, lo hace en función del id. de objeto del usuario en el token (al que se llama a través de token.oid), que se colocó en el campo "owner". Esto garantiza que ese usuario es el único que puede acceder a sus tareas pendientes. En la API "owner" no queda expuesto, por lo que un usuario externo puede solicitar las tareas pendientes de otros, aunque estén autenticados.                    
+    > No se puede suplantar al escribir las API, es recomendable que vincule siempre Hola datos toosomething único del token de Hola que Hola de usuario. Cuando este servidor almacena elementos de lista de tareas, almacena en función de hello Id. de objeto de usuario de hello en el token de hello (llamado a través de token.oid), que colocamos cuando nos en el campo de "propietario" Hola. Esto garantiza que ese usuario es el único que puede acceder a sus tareas pendientes. No hay ningún riesgo en hello API de "propietario", por lo que un usuario externo puede solicitar Hola TODOs de los demás incluso si se autentican en.                    
 
-2. A continuación, vamos a usar la estrategia de portador que viene con `passport-azure-ad`. Por el momento veamos el código y el resto se explicará en breve. Colóquelo después de lo que pegó anteriormente:
+2. Siguiente vamos a usar la estrategia de portador de Hola que viene con `passport-azure-ad`. Examine el código de hello por ahora y explicaremos rest hello en breve. Colóquelo después de lo que pegó anteriormente:
 
 ```Javascript
     /**
     /*
-    /* Calling the OIDCBearerStrategy and managing users.
+    /* Calling hello OIDCBearerStrategy and managing users.
     /*
-    /* Passport pattern provides the need to manage users and info tokens
-    /* with a FindorCreate() method that must be provided by the implementor.
+    /* Passport pattern provides hello need toomanage users and info tokens
+    /* with a FindorCreate() method that must be provided by hello implementor.
     /* Here we just auto-register any user and implement a FindById().
-    /* You'll want to do something smarter.
+    /* You'll want toodo something smarter.
     **/
 
     var findById = function(id, fn) {
@@ -811,8 +811,8 @@ Hasta ahora hemos creado un servidor típico de TODO de REST sin ningún tipo de
 
     var bearerStrategy = new BearerStrategy(options,
         function(token, done) {
-            log.info('verifying the user');
-            log.info(token, 'was the token retreived');
+            log.info('verifying hello user');
+            log.info(token, 'was hello token retreived');
             findById(token.sub, function(err, user) {
                 if (err) {
                     return done(err);
@@ -833,17 +833,17 @@ Hasta ahora hemos creado un servidor típico de TODO de REST sin ningún tipo de
     passport.use(bearerStrategy);
 ```
 
-Passport usa un patrón similar para todas sus estrategias (Twitter, Facebook, etc.) al que se ajustan todos los escritores de estrategias. Si se examina la estrategia, se percibe que se pasan los parámetros function, que tiene un token, y done. La estrategia se devuelve después de que realiza su trabajo. Después de que lo haga, almacenamos el usuario y guardamos provisionalmente el token, con el fin de que no sea preciso volver a pedirlo.
+Passport usa un patrón similar para todas sus estrategias (Twitter, Facebook, etc.) al que se ajustan todos los escritores de estrategias. Examinando la estrategia de hello, verá que pasamos una función que tiene un token y un hecho como parámetros de Hola. estrategia de Hello incluye volver toous después de que realice su trabajo. Cuando lo hace, almacenamos usuario hello y token de hello complementario por lo que no necesitamos tooask para este nuevo.
 
 > [!IMPORTANT]
-> El código anterior toma cualquier usuario que se autentique en el servidor. Esto se conoce como registro automático. En los servidores de producción, se recomienda no permitir que acceda nadie que no haya pasado por el proceso de registro que decida. Este suele ser el patrón que se observa en las aplicaciones de consumidor que le permiten registrarse con Facebook, pero que luego piden que se rellene información adicional. Si no se tratara de un programa de línea de comandos, el correo electrónico se podría haber extraído del objeto de token devuelto y, a continuación, haber pedido al usuario que rellenara la información adicional. Puesto que se trata de un servidor de prueba, simplemente los agregaremos a la base de datos en memoria.
+> código de Hello anterior toma cualquier usuario que se produce a tooauthenticate tooour server. Esto se conoce como registro automático. En los servidores de producción, se recomienda no permitir que acceda nadie que no haya pasado por el proceso de registro que decida. Se trata normalmente de patrón de Hola que se ven en las aplicaciones de consumidor, que le permiten tooregister con Facebook, pero a continuación, pida toofill información adicional. Si esto no era un programa de línea de comandos, se pudo extrajeron correo electrónico Hola de objeto de símbolo (token) de Hola que se devuelve y, a continuación, más frecuentes Hola usuario toofill información adicional. Dado que se trata de un servidor de prueba, se debe hacer es agregar base de datos de toohello en memoria.
 >
 >
 
 ### <a name="protect-some-endpoints"></a>Protección de puntos de conexión
-Para proteger los puntos de conexión, especifique la llamada `passport.authenticate()` con el protocolo que desea utilizar.
+Proteger los puntos de conexión mediante la especificación de hello `passport.authenticate()` llamada con protocolo de Hola que desea toouse.
 
-Para que nuestro código servidor haga algo más interesante, vamos a editar la ruta.
+toomake nuestro código de servidor hacer algo más interesante, Editar ruta Hola.
 
 ```Javascript
 server.get('/tasks', passport.authenticate('oauth-bearer', {
@@ -882,15 +882,15 @@ next();
 ```
 
 ## <a name="step-19-run-your-server-application-again-and-ensure-it-rejects-you"></a>Paso 19: ejecutar de nuevo su aplicación de servidor y asegurarse de que le rechaza
-Usemos `curl` nuevamente para ver si ahora tenemos protección de OAuth2 contra nuestros extremos. Esta prueba se realiza antes de ejecutar cualquiera de nuestros SDK de cliente en este punto de conexión. Los encabezados que se devuelven deberían ser suficientes para indicarnos si seguimos el camino correcto.
+Vamos a usar `curl` nuevo toosee si ahora tenemos OAuth2 protección contra nuestro puntos de conexión. Esta prueba se realiza antes de ejecutar cualquiera de nuestros SDK de cliente en este punto de conexión. Hello encabezados que se devuelven deben ser suficiente tootell nos si vamos hacia abajo de la ruta de acceso correcta de Hola.
 
 1. En primer lugar, asegúrese de que se ejecuta la instancia de MongoDB:
 
     `$sudo mongod`
 
-2. Después, cambie al directorio e inicie curl.
+2. A continuación, cambie el directorio de toohello e iniciar volver una.
 
-      `$ cd azuread` `$ node server.js`
+      `$ cd azuread``$ node server.js`
 
 3. Pruebe una operación POST básica.
 
@@ -904,16 +904,16 @@ Usemos `curl` nuevamente para ver si ahora tenemos protección de OAuth2 contra 
     Transfer-Encoding: chunked
     ```
 
-Aquí se busca la respuesta 401. Esta respuesta indica que la capa de Passport intenta realizar la redirección al punto de conexión autorizado, que es exactamente lo que desea.
+401 es respuesta Hola que está buscando aquí. Esta respuesta indica que capa de Passport Hola está tratando de tooredirect toohello autorizado extremo, que es exactamente lo que desea.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ha avanzado todo lo posible con este servidor sin usar un cliente compatible con OAuth2. Tendrá que seguir un tutorial adicional.
+Ha avanzado todo lo posible con este servidor sin usar un cliente compatible con OAuth2. Deberá toogo a través de un tutorial adicional.
 
-Ya ha aprendido cómo implementar una API de REST mediante Restify y OAuth2. También tiene más que suficiente código para continuar el desarrollo de su servicio y aprender a basarse en este ejemplo.
+Ahora que ha aprendido cómo tooimplement una API de REST mediante el uso de Restify y OAuth2. También tiene más que suficiente tookeep código desarrollando su servicio y aprender cómo toobuild en este ejemplo.
 
-Si le interesan los próximos pasos en su recorrido por ADAL, a continuación hay algunos clientes ADAL compatibles con los que le recomendamos que siga trabajando.
+Si está interesado en pasos de hello en su viaje AAL, presentamos algunos clientes AAL compatibles se recomienda que seguir trabajando con.
 
-Clona su equipo de desarrollador y configúrelo como se describe en el tutorial.
+Clonar la máquina del desarrollador de tooyour y configurar como se describe en el tutorial Hola.
 
 [ADAL para iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios)
 

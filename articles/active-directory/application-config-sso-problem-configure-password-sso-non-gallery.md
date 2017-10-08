@@ -1,6 +1,6 @@
 ---
-title: "Problema en la configuración del inicio de sesión único con contraseña para una aplicación ajena a la galería | Microsoft Docs"
-description: "Comprender los problemas más comunes a los que se enfrentan los usuarios al configurar un inicio de sesión único con contraseña para las aplicaciones ajenas a la galería que no figuran en la Galería de aplicaciones de Azure AD"
+title: "aaaProblem configuración del inicio de sesión único en contraseña para una aplicación no Galería | Documentos de Microsoft"
+description: "Comprender la cara de personas de problemas comunes de hello al configurar un inicio de sesión único de contraseña para las aplicaciones no Galería personalizadas que no aparecen en hello Galería de aplicaciones de Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 9c76b6f3495e2dd759a156fcef97b57aece8d632
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3aee0a4c525bb3da338da2da0882ec572cf0e5e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problema en la configuración del inicio de sesión único con contraseña para una aplicación ajena a la galería
 
-Este artículo le ayuda a conocer los problemas habituales a los que se enfrentan los usuarios al configurar un **inicio de sesión único con contraseña** con una aplicación ajena a la galería.
+En este artículo le ayudará toounderstand Hola comunes problemas se enfrentan los usuarios al configurar **contraseña inicio de sesión único** con una aplicación no Galería.
 
-## <a name="how-to-capture-sign-in-fields-for-an-application"></a>Captura de campos de inicio de sesión para una aplicación
+## <a name="how-toocapture-sign-in-fields-for-an-application"></a>Cómo iniciar sesión toocapture campos para una aplicación
 
 La captura de campos de inicio de sesión solo es posible en páginas de inicio de sesión compatibles con HTML y **no se admite para páginas de inicio de sesión no estándar**, como aquellas que usan Flash u otras tecnologías incompatibles con HTML.
 
@@ -33,229 +33,228 @@ Existen dos maneras de capturar campos de inicio de sesión para aplicaciones pe
 
 -   Captura manual de campos de inicio de sesión
 
-La **captura automática de campos de inicio de sesión** funciona bien con la mayoría de las páginas de inicio de sesión compatibles con HTML si usan **identificadores DIV conocidos para el campo de entrada de nombre de usuario y contraseña**. Este procedimiento realiza un barrido del HTML en la página para encontrar identificadores DIV que cumplen determinados criterios y, a continuación, guarda esos metadatos para esta aplicación, de forma que las contraseñas puedan reproducirse en ella posteriormente.
+**Captura de campo de inicio de sesión automático** funciona bien con la mayoría basadas en HTML en el inicio de sesión de las páginas, si usan **identificadores conocidos de DIV Hola nombre de usuario y una contraseña de entrada** campo. Hola que esto funciona de forma Hola de barrido de HTML en la página de hello toofind identificadores DIV que cumplan ciertos criterios y, a continuación, guardando que los metadatos para esta aplicación para podemos reproducir contraseñas tooit más tarde.
 
-La **captura manual de campos de inicio de sesión** puede utilizarse en el caso de que el **proveedor de la aplicación no etiquete** los campos de entrada que se utilizan para iniciar sesión. La captura manual de campos de inicio de sesión también puede utilizarse en el caso de que el **proveedor presente varios campos** que no puedan detectarse automáticamente. Azure AD puede almacenar datos de tantos campos como haya en la página de inicio de sesión, siempre que se indique dónde se encuentran esos campos en la página.
+**Captura de campo de inicio de sesión manual** puede usarse en caso de Hola que Hola aplicación **proveedor no etiqueta** Hola campos utilizados para el inicio de sesión de entrada. Captura de campo de inicio de sesión manual también puede usarse en caso de hello cuando hello **proveedor presenta varios campos** que no puede ser detectado automáticamente. Azure AD puede almacenar datos para como muchos campos cuando estén en hello iniciar sesión en la página, siempre y cuando Díganos que esos campos se encuentran en página Hola.
 
-Por lo general, **si la captura automática de campos de inicio de sesión no funciona, se recomienda siempre probar la opción manual.**
+En general, **si captura del campo de inicio de sesión automático no funciona, siempre se recomienda tratar de opción manual de Hola.**
 
-### <a name="how-to-automatically-capture-sign-in-fields-for-an-application"></a>Captura automática de campos de inicio de sesión para una aplicación
+### <a name="how-tooautomatically-capture-sign-in-fields-for-an-application"></a>¿Cómo tooautomatically capturar campos de inicio de sesión para una aplicación
 
-Para configurar **Inicio de sesión único basado en contraseña** para una aplicación con la **captura automática de campos de inicio de sesión**, siga estos pasos:
+tooconfigure **basado en contraseña Single Sign-on** para una aplicación con **captura automática de inicio de sesión en campos**, siga estos pasos hello:
 
-1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global** o **coadministrador**.
+1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
 
-2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
+2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
 
-3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
+3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
 
-4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
+4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
 
-5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
+5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
+  * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
 
-6.  Seleccione la aplicación que desea configurar para el inicio de sesión único.
+6.  Seleccionar aplicación hello desea tooconfigure inicio de sesión único.
 
-7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
+7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
 
-8.  Seleccione el modo de **Inicio de sesión con contraseña**.
+8.  Modo de hello seleccione **sesión basada en contraseña.**
 
-9.  Escriba la **dirección URL de inicio de sesión**. Es la dirección URL en la que los usuarios escriben su nombre de usuario y contraseña para iniciar sesión. **Asegúrese de que los campos de inicio de sesión estén visibles en la dirección URL que proporcione**.
+9.  Escriba hello **dirección URL de inicio de sesión**. Se trata de dirección URL de Hola donde los usuarios escribir su toosign en nombre de usuario y contraseña a. **Asegúrese de inicio de sesión de hello en los campos está visible en la dirección URL de hello proporcionas**.
 
-10. Haga clic en el botón **Save** (Guardar).
+10. Haga clic en hello **guardar** botón.
 
-11. Una vez hecho esto, se cargará automáticamente esa dirección URL con un cuadro de entrada de un nombre de usuario y una contraseña y se le permitirá usar Azure AD para transmitir de forma segura las contraseñas de esa aplicación mediante la extensión de explorador del panel de acceso.
+11. Una vez que lo hace, se podrá extraer automáticamente esa dirección URL para un nombre de usuario y una contraseña cuadro de entrada y le permite toosecurely de Azure AD toouse transmitir aplicación toothat de contraseñas con la extensión de explorador del panel de acceso de Hola.
 
-## <a name="how-to-manually-capture-sign-in-fields-for-an-application"></a>Captura manual de campos de inicio de sesión para una aplicación
+## <a name="how-toomanually-capture-sign-in-fields-for-an-application"></a>¿Cómo toomanually capturar campos de inicio de sesión para una aplicación
 
-Para capturar manualmente los campos de inicio de sesión, primero debe tener instalada la extensión del explorador del panel de acceso y **no utilizar el modo InPrivate, incógnito o privado.** Para instalar la extensión del explorador, siga los pasos descritos en la sección [Cómo instalar la extensión de explorador del Panel de acceso](#i-cannot-manually-detect-sign-in-fields-for-my-application).
-.
+inicio de sesión de captura de toomanually en campos, en primer lugar debe tener extensión de explorador del Panel de acceso de hello instalada y **no se esté ejecutando en modo de inPrivate, incognito o privado.** extensión del navegador tooinstall hello, siga los pasos de Hola Hola [cómo tooinstall Hola extensión de explorador del Panel de acceso](#i-cannot-manually-detect-sign-in-fields-for-my-application) sección.
 
-Para configurar **Inicio de sesión único basado en contraseña** para una aplicación con la **captura manual de campos de inicio de sesión**, siga estos pasos:
+tooconfigure **basado en contraseña Single Sign-on** para una aplicación con **captura manual campo**, siga estos pasos hello:
 
-1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global** o **coadministrador**.
+1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
 
-2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
+2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
 
-3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
+3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
 
-4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
+4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
 
-5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
+5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
 
-   * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
+   * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
 
-6.  Seleccione la aplicación que desea configurar para el inicio de sesión único.
+6.  Seleccionar aplicación hello desea tooconfigure inicio de sesión único.
 
-7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
+7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
 
-8.  Seleccione el modo de **Inicio de sesión con contraseña**.
+8.  Modo de hello seleccione **sesión basada en contraseña.**
 
-9.  Escriba la **dirección URL de inicio de sesión**. Es la dirección URL en la que los usuarios escriben su nombre de usuario y contraseña para iniciar sesión. **Asegúrese de que los campos de inicio de sesión estén visibles en la dirección URL que proporcione**.
+9.  Escriba hello **dirección URL de inicio de sesión**. Se trata de dirección URL de Hola donde los usuarios escribir su toosign en nombre de usuario y contraseña a. **Asegúrese de inicio de sesión de hello en los campos está visible en la dirección URL de hello proporcionas**.
 
-10. Haga clic en el botón **Save** (Guardar).
+10. Haga clic en hello **guardar** botón.
 
-11. Una vez hecho esto, se cargará automáticamente esa dirección URL con un cuadro de entrada de un nombre de usuario y una contraseña y se le permitirá usar Azure AD para transmitir de forma segura las contraseñas de esa aplicación mediante la extensión de explorador del panel de acceso. En el caso de que se produzca un error, puede **cambiar el modo de inicio de sesión para usar la captura manual de campos de inicio de sesión** siguiendo con el paso 12.
+11. Una vez que lo hace, se podrá extraer automáticamente esa dirección URL para un nombre de usuario y una contraseña cuadro de entrada y le permite toosecurely de Azure AD toouse transmitir aplicación toothat de contraseñas con la extensión de explorador del panel de acceso de Hola. En caso de Hola que se produce un error, puede **Hola inicio de sesión en el modo toouse campo de inicio de sesión manual captura modificados** por continuar toostep 12.
 
 12. Haga clic en **Establecer configuración de inicio de sesión único con contraseña de &lt;nombre de la aplicación&gt;**.
 
-13. Seleccione la opción de configuración **Detectar campos de inicio de sesión manualmente**.
+13. Seleccione hello **detectar manualmente los campos de inicio de sesión** opción de configuración.
 
 14. Haga clic en **Aceptar**.
 
 15. Haga clic en **Guardar**.
 
-16. Siga las instrucciones en pantalla para usar el panel de acceso.
+16. Siga hello en pantalla instrucciones toouse Hola Panel de acceso.
 
 ## <a name="i-see-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Error "No pudimos encontrar ningún campo de inicio de sesión en esa URL"
 
-Este error aparece cuando no funciona la detección automática de campos de inicio de sesión. Para resolver este problema, pruebe la detección manual de campos de inicio de sesión mediante los pasos descritos en la sección [Captura manual de campos de inicio de sesión para una aplicación](#how-to-manually-capture-sign-in-fields-for-an-application).
+Este error aparece cuando no funciona la detección automática de campos de inicio de sesión. tooresolve este problema, detección de campo de inicio de sesión manual de try por hello siguiendo los pasos de hello [cómo toomanually capturar campos de inicio de sesión para una aplicación](#how-to-manually-capture-sign-in-fields-for-an-application) sección.
 
-## <a name="i-see-an-unable-to-save-single-sign-on-configuration-error"></a>Error "No se puede guardar la configuración del inicio de sesión único"
+## <a name="i-see-an-unable-toosave-single-sign-on-configuration-error"></a>Aparece un error "no se puede toosave Single Sign-on configuración"
 
-En algunos casos poco frecuentes, puede producirse un error al actualizar la configuración del inicio de sesión único. Para resolver este problema, intente guardar la configuración del inicio de sesión único de nuevo.
+En algunos casos poco frecuentes, actualizando la configuración de inicio de sesión único de hello puede producir un error. tooresolve este intente guardar Hola único inicio de sesión en configuración de nuevo.
 
-Si el problema persiste, abra un caso de soporte técnico y proporcione la información recopilada en las secciones [Visualización de los detalles de una notificación del portal](#i-cannot-manually-detect-sign-in-fields-for-my-application) y [Obtención de ayuda mediante el envío de detalles de la notificación a un ingeniero de soporte técnico](#how-to-get-help-by-sending-notification-details-to-a-support-engineer).
+Si el problema persiste toofail de forma coherente, abrir un caso de soporte técnico y proporcione información de hello recopilada en hello [cómo toosee detalles de Hola de una notificación portal](#i-cannot-manually-detect-sign-in-fields-for-my-application) y [cómo ayudar tooget mediante el envío de notificaciones detalles tooa Ingeniero de soporte técnico](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) secciones.
 
 ## <a name="i-cannot-manually-detect-sign-in-fields-for-my-application"></a>No se detectan manualmente campos de inicio de sesión para mi aplicación
 
-Entre los comportamientos que pueden observarse cuando la detección manual no funciona se incluyen los siguientes:
+Algunos de los comportamientos de Hola que puede ver al detección manual no funciona son:
 
--   El proceso de captura manual parece haber funcionado, pero los campos capturados no son correctos.
+-   proceso de captura manual de Hello parecía toowork pero campos Hola capturados no eran correctas
 
--   No se resaltan los campos correspondientes al realizar el proceso de captura.
+-   campos de la derecha de Hello no obtener resaltan al realizar el proceso de captura de Hola
 
--   El proceso de captura me dirige a la página de inicio de sesión de la aplicación según lo previsto, pero no ocurre nada.
+-   proceso de captura de Hello toma mi página de inicio de sesión de la aplicación toohello según lo previsto, pero no ocurre nada
 
--   La captura manual parece funcionar, pero el SSO no se realiza cuando los usuarios acceden a la aplicación desde el panel de acceso.
+-   Captura manual aparece toowork, pero no ocurre SSO cuando mis usuarios naveguen toohello aplicación Hola Panel de acceso.
 
-Compruebe lo siguiente si se produce alguno de estos problemas:
+Compruebe la siguiente Hola si se produce alguno de estos problemas:
 
--   Asegúrese de tener **instalada** y **habilitada** la versión más reciente de la extensión del explorador del panel de acceso, para lo que debe seguir los pasos descritos en la sección [Cómo instalar la extensión de explorador del Panel de acceso](#how-to-install-the-access-panel-browser-extension).
+-   Asegúrese de que tiene la versión más reciente de Hola de extensión de explorador del panel de acceso de hello **instalado** y **habilitado** siguiendo los pasos de Hola Hola [cómo tooinstall Hola explorador del Panel de acceso extensión](#how-to-install-the-access-panel-browser-extension) sección.
 
--   Asegúrese de que el explorador no se encuentre en los modos **InPrivate, incógnito o privado** mientras se realiza el proceso de captura. La extensión del panel de acceso no es compatible con estos modos.
+-   Asegúrese de que no intenta realizar el proceso de captura de hello mientras el explorador en **incognito, inPrivate o Private modo**. no se admite la extensión del panel de acceso de Hello en estos modos.
 
--   Asegúrese de que los usuarios no intentan iniciar sesión en la aplicación desde el panel de acceso en **los modos incógnito, InPrivate o privado**. La extensión del panel de acceso no es compatible con estos modos.
+-   Asegúrese de que los usuarios no están tratando de toosign en toohello aplicación desde el panel de acceso de hello en **incognito, inPrivate o Private modo**. no se admite la extensión del panel de acceso de Hello en estos modos.
 
--   Intente realizar el proceso de captura manual de nuevo, asegurándose de que los marcadores rojos se encuentren sobre los campos correctos.
+-   Inténtelo de nuevo el proceso de captura manual de hello, asegurarse de marcadores de hello rojo sobre los campos correctos de Hola.
 
--   Si el proceso de captura manual parece no responder o la página de inicio de sesión no hace nada (caso 3 anterior), intente realizar el proceso de captura manual de nuevo. Sin embargo, esta vez, tras completar el proceso, presione el botón **F12** para abrir la consola del desarrollador del explorador. Una vez allí, abra la **consola** y escriba **window.location=”&lt;escriba la dirección URL de inicio de sesión especificada al configurar la aplicación&gt;”** y, a continuación, presione **Entrar**. De este modo, se forzará una redirección de página que finalizará el proceso de captura y almacenará los campos que se han capturado.
+-   Si el proceso de captura manual de hello parece toohang o inicio de sesión de hello en la página no nada (caso 3 anteriormente), proceso de captura manual de hello vuelva a intentarlo. Pero, esta vez después de completar el proceso de hello, presione hello **F12** botón tooopen la consola para desarrolladores de su explorador. Una vez allí, abra hello **consola** y tipo **window.location= "&lt;escriba Hola inicio de sesión en la dirección url que ha especificado al configurar la aplicación hello&gt;"** y, a continuación, presione  **Escriba**. Esta fuerza una página redirigir que finalizar el proceso de captura de Hola y almacenar Hola campos que se han capturado.
 
-Si ninguno de estos métodos funciona, podemos ayudarle. Abra un caso de soporte técnico en el que explique todo lo que ha intentado, además de proporcionar la información recopilada en las secciones [Visualización de los detalles de una notificación del portal](#i-cannot-manually-detect-sign-in-fields-for-my-application) y [Obtención de ayuda mediante el envío de detalles de la notificación a un ingeniero de soporte técnico](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) (si corresponde).
+Si ninguno de estos métodos funciona, podemos ayudarle. Abra un caso de soporte técnico con los detalles de Hola de lo que ha intentado, así como información de hello recopilada en hello [cómo toosee detalles de Hola de una notificación portal](#i-cannot-manually-detect-sign-in-fields-for-my-application) y [cómo ayudar tooget enviando detalles de notificación de soporte técnico de tooa ingeniería](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) secciones (si procede).
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Cómo instalar la extensión de explorador del Panel de acceso
+## <a name="how-tooinstall-hello-access-panel-browser-extension"></a>¿Cómo tooinstall Hola extensión de explorador del Panel de acceso
 
-Para instalar la extensión de explorador del Panel de acceso, siga estos pasos:
+Hola tooinstall extensión de explorador del Panel de acceso, siga Hola pasos:
 
-1.  Abra el [Panel de acceso](https://myapps.microsoft.com) en uno de los exploradores admitidos e inicie sesión como **usuario** en su instancia de Azure AD.
+1.  Abra hello [Panel de acceso](https://myapps.microsoft.com) en uno de los exploradores compatibles de Hola y de inicio de sesión como un **usuario** en Azure AD.
 
-2.  Haga clic en una **aplicación de SSO con contraseña** en el Panel de acceso.
+2.  Haga clic en un **aplicación SSO de contraseña** Hola Panel de acceso.
 
-3.  En el mensaje que le pregunta si desea instalar el software, seleccione **Instalar ahora**.
+3.  En hello símbolo del sistema que se pregunta tooinstall Hola software, seleccione **instalar ahora**.
 
-4.  Se le dirigirá al vínculo de descarga en función del explorador. **Agregue** la extensión al explorador.
+4.  Basado en el explorador es que el vínculo de descarga de toohello dirigida. **Agregar** tooyour Explorador de hello extensión.
 
-5.  Si el explorador lo solicita, seleccione **Habilitar** o **Permitir** la extensión.
+5.  Si el explorador solicita, seleccione tooeither **habilitar** o **permitir** Hola extensión.
 
 6.  Una vez instalada, **reinicie** la sesión del explorador.
 
-7.  Inicie sesión en el panel de acceso y vea si puede **iniciar** las aplicaciones de SSO con contraseña.
+7.  Inicie sesión en el Panel de acceso de Hola y vea si puede **iniciar** las aplicaciones de SSO de contraseña.
 
-También puede descargar la extensión para Chrome y Firefox desde los siguientes vínculos directos:
+También puede descargar extensión Hola para Chrome y Firefox de vínculos directos de Hola a continuación:
 
 -   [Extensión del Panel de acceso para Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 -   [Extensión del panel de acceso para Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="how-to-see-the-details-of-a-portal-notification"></a>Visualización de los detalles de una notificación del portal
+## <a name="how-toosee-hello-details-of-a-portal-notification"></a>¿Cómo toosee detalles de Hola de una notificación de portal
 
-Puede ver los detalles de cualquier notificación del portal si sigue los pasos siguientes:
+Puede ver detalles de Hola de cualquier notificación portal siguiendo estos pasos hello:
 
-1.  Haga clic en el icono de **notificaciones** (la campana) de la esquina superior derecha de Azure Portal.
+1.  Haga clic en hello **notificaciones** icono (campana Hola) en la esquina superior derecha de Hola de hello Portal de Azure
 
-2.  Seleccione cualquier notificación con un estado de **Error** (aquellas con un icono (!) de color rojo situado junto a ellas).
+2.  Seleccione cualquier notificación de un **Error** estado (aquellos con un toothem siguiente (!) de color rojo).
 
   >[NOTA] No puede hacer clic en notificaciones con un estado **Correcto** o **En curso**.
   >
   >
 
-3.  Esto hace que se abra la hoja **Detalles de la notificación**.
+3.  Este Hola abierto **detalles de la notificación** hoja.
 
-4.  Utilice esta información para conocer más detalles acerca del problema.
+4.  Utilice esta información usted mismo toounderstand más detalles sobre el problema de Hola.
 
-5.  Si aún necesita ayuda, también puede compartir esta información con un ingeniero de soporte técnico o el grupo de producto para obtener ayuda.
+5.  Si aún necesita ayuda, también puede compartir esta información con un soporte técnico o hello grupo tooget ayuda del producto con el problema.
 
-6.  Haga clic en el **icono** de **copia** situado a la derecha del cuadro de texto **Copiar error** para copiar todos los detalles de la notificación para compartirlos con un ingeniero de soporte técnico o un grupo de producto.
+6.  Haga clic en hello **copia** **icono** toohello derecha de hello **error al copiar** toocopy de cuadro de texto todos los Hola tooshare de detalles de notificación con un ingeniero de grupo de soporte técnico o el producto.
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Obtención de ayuda mediante el envío de detalles de la notificación a un ingeniero de soporte técnico
+## <a name="how-tooget-help-by-sending-notification-details-tooa-support-engineer"></a>Cómo ayudar tooget enviando el ingeniero de soporte técnico de notificación detalles tooa
 
-Es muy importante que comparta **todos los detalles que se muestran a continuación** con un ingeniero de soporte técnico si necesita ayuda, para que pueda ayudarle rápidamente. Puede hacer esto fácilmente **realizando una captura de pantalla** o haciendo clic en el **icono Copiar error**, que se encuentra a la derecha del cuadro de texto **Copiar error**.
+Es muy importante que use para compartir **todos los detalles que se muestran a continuación de Hola** con un ingeniero de soporte técnico si necesita ayuda, por lo que pueden ayudarle rápidamente. Puede hacer esto fácilmente mediante **tomar una captura de pantalla,** o haciendo clic en hello **icono de error de copia**, encuentra toohello derecha de hello **error al copiar** cuadro de texto.
 
 ## <a name="notification-details-explained"></a>Explicación de los detalles de la notificación
 
-A continuación se explica más en profundidad lo que significa cada uno de los elementos de notificación y se dan ejemplos de cada uno de ellos.
+Hola a continuación explica más cada uno de los elementos de notificación de hello significa y proporciona ejemplos de cada uno de ellos.
 
 ### <a name="essential-notification-items"></a>Elementos esenciales de notificación
 
--   **Título**: el título descriptivo de la notificación
+-   **Título** : Hola título descriptivo de la notificación de Hola
 
     -   Por ejemplo: **Configuración del proxy de aplicación**
 
--   **Descripción**: la descripción de lo que se produjo como resultado de la operación
+-   **Descripción** : Hola descripción de lo que se produjo como resultado de la operación de Hola
 
     -   Por ejemplo: **la dirección url interna especificada ya se está usando en otra aplicación**
 
--   **Identificador de notificación**: el identificador único de la notificación
+-   **Identificador de notificación** : Id. único de Hola de notificación de Hola
 
     -   Por ejemplo: **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Identificador de solicitud de cliente**: el identificador de solicitud específico generado por el explorador
+-   **Id. de solicitud de cliente** : Id. de solicitud específico de hello realizado por el explorador
 
     -   Por ejemplo: **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Marca de tiempo UTC**: la marca de tiempo durante la que tuvo lugar la notificación, en formato UTC
+-   **Hora UTC de marca** : Hola marca de tiempo durante el cual se produjo la notificación de hello, en UTC
 
     -   Por ejemplo: **2017-03-23T19:50:43.7583681Z**
 
--   **Identificador de transacción interno**: el identificador interno que podemos utilizar para buscar el error en nuestros sistemas
+-   **Id. de transacción interna** : Hola Id. interno que podemos usar error de hello toolook en nuestros sistemas
 
     -   Por ejemplo: **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **UPN**: el usuario que realizó la operación
+-   **UPN** : usuario de Hola que realizó la operación de Hola
 
     -   Por ejemplo: **tperkins@f128.info**
 
--   **Identificador de inquilino**: el identificador único del inquilino del que formaba parte el usuario que realizó la operación
+-   **Identificador de inquilino** : Hola Id. único del inquilino Hola Hola usuario que realizó la operación de hello era miembro de
 
     -   Por ejemplo: **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Identificador de objeto de usuario**: el identificador único del usuario que realizó la operación
+-   **Id. de objeto de usuario** : Hola identificador único del usuario de Hola que realizó la operación de Hola
 
     -   Por ejemplo: **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Elementos detallados de notificación
 
--   **Nombre para mostrar**: **(puede estar vacío)** un nombre para mostrar más detallado del error
+-   **Nombre para mostrar** : **(puede estar vacía)** un nombre para mostrar más detallado para el error de Hola
 
     -   Por ejemplo*: **Configuración del proxy de aplicación**
 
--   **Estado**: el estado específico de la notificación
+-   **Estado** : Hola estado específico de notificación de Hola
 
     -   Por ejemplo*: **Error**
 
--   **Identificador de objeto**: **(puede estar vacío)** el identificador del objeto en el que se realizó la operación
+-   **Id. de objeto** : **(puede estar vacía)** Hola Id. de objeto con qué Hola se realizó la operación
 
     -   Por ejemplo: **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Detalles**: la descripción detallada de lo que se produjo como resultado de la operación
+-   **Detalles** : Hola una descripción detallada de lo que se produjo como resultado de la operación de Hola
 
     -   Por ejemplo: **la dirección url interna 'http://bing.com/' no es válida puesto que ya está en uso**
 
--   **Copiar error**: haga clic en el **icono de copia** situado a la derecha del cuadro de texto **Copiar error** para copiar todos los detalles de la notificación para compartirlos con un ingeniero de soporte técnico o un grupo de producto
+-   **Error al copiar** : haga clic en hello **icono de copiar** toohello derecha de Hola **error al copiar** toocopy de cuadro de texto todos los Hola tooshare de detalles de notificación con un ingeniero de grupo de soporte técnico o el producto
 
     -   Por ejemplo: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Proporcionar un inicio de sesión único a las aplicaciones con el proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
+[Proporcionan aplicaciones de tooyour de inicio de sesión único con el Proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
 

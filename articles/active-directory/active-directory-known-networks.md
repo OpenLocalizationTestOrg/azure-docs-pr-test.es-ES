@@ -1,6 +1,6 @@
 ---
-title: "Redes conocidas en el Portal de Azure clásico | Microsoft Docs"
-description: "Mediante la configuración de redes conocidas, puede evitar que direcciones IP que son propiedad de su organización estén incluidas en los informes \"Inicios de sesión desde varias ubicaciones geográficas\" e \"Inicios de sesión desde direcciones IP con actividad sospechosa\"."
+title: "Redes aaaKnown Hola portal de Azure clásico | Documentos de Microsoft"
+description: "Al configurar redes conocidas, puede evitar tener direcciones IP que pertenecen a su organización incluido en hello inicios de sesión desde varias zonas geográficas y los inicios de sesión desde direcciones IP con informes de actividad sospechosa."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,53 +14,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
-ms.openlocfilehash: e4d51d1d2f09fca34d749879e21d49f785eac35c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ec636cdda172cd3baeb1e606dd8d6e1949fbc63b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="known-networks"></a>Redes conocidas
 
 > [!div class="op_single_selector"]
 > * [Portal de Azure clásico](active-directory-known-networks.md)
-> * [Azure Portal](active-directory-known-networks-azure-portal.md)
+> * [Portal de Azure](active-directory-known-networks-azure-portal.md)
 > 
 > 
 
 
-Puede usar los informes de acceso y uso de Active Directory de Azure para proporcionar visibilidad sobre la integridad y la seguridad del directorio de su organización. Con esta información, un administrador de directorios puede determinar mejor dónde puede haber posibles riesgos de seguridad de modo que pueda planear adecuadamente la mitigación de estos riesgos.
+Puede usar el acceso de Active Directory de Azure y visibilidad de toogain de informes de uso de integridad de Hola y seguridad del directorio de su organización. Con esta información, administradores de directorios pueden determinar mejor dónde puede haber posibles riesgos de seguridad para que se pueden planificar adecuadamente toomitigate esos riesgos.
 
-Es posible que los informes "*Inicios de sesión desde varias ubicaciones geográficas*" e "*Inicios de sesión desde direcciones IP con actividad sospechosa*" marquen incorrectamente las direcciones IP que en realidad son propiedad de su organización. 
+Es posible que Hola "*inicios de sesión desde varias zonas geográficas*"y"*inicios de sesión desde direcciones IP con actividad sospechosa*" informes marca incorrectamente las direcciones IP que realmente pertenecen a su organización. 
 
 Por ejemplo, esto puede ocurrir cuando: 
 
-* Un usuario de su oficina de Boston que ha iniciado sesión de forma remota en su centro de datos en San Francisco desencadena el informe "Inicios de sesión desde varias ubicaciones geográficas". 
-* Un usuario de su organización que intenta iniciar sesión varias veces con una contraseña incorrecta desencadena el informe "Inicios de sesión desde direcciones IP con actividad sospechosa". 
+* Ha iniciado sesión un usuario en la oficina de Boston en forma remota tooyour centro de datos en San Francisco desencadenadores Hola informes "Inicios de sesión desde varias zonas geográficas" 
+* Intenta usar un usuario de su organización toosign en varias veces una contraseña incorrecta desencadenadores donde aparece hello con informes de "Inicios de sesión desde direcciones IP con actividad sospechosa" 
 
-Para evitar estos casos de generación de informes de seguridad engañosos, debe agregar intervalos de direcciones IP conocidas a la lista de direcciones IP públicas de su organización.    
+informa de estos casos de la seguridad puede inducir a error de generación de tooprevent, debe agregar conocidos intervalos toohello lista de direcciones IP la dirección IP pública de su organización.    
 
-### <a name="to-add-your-organizations-public-ip-address-ranges-perform-the-following-steps"></a>Para ello, realice los pasos siguientes:
+### <a name="tooadd-your-organizations-public-ip-address-ranges-perform-hello-following-steps"></a>intervalos de tooadd la dirección IP pública de su organización, lleve a cabo Hola pasos:
 
-1. Inicie sesión en el [Portal de administración de Azure](https://manage.windowsazure.com).
+1. Inicio de sesión toohello [portal de administración de Azure](https://manage.windowsazure.com).
 
-2. En el panel izquierdo, haga clic en **Active Directory**. 
+2. En el panel izquierdo de hello, haga clic en **Active Directory**. 
 
     ![Redes conocidas](./media/active-directory-known-networks/known-netwoks-01.png)
 
-3. En la pestaña **Directorio** , seleccione su directorio.
+3. Hola **Directory** ficha, seleccione el directorio.
 
-4. En el menú de la parte superior, haga clic en **Configurar**. 
+4. En el menú de hello en la parte superior de hello, haga clic en **configurar**. 
 
     ![Redes conocidas](./media/active-directory-known-networks/known-netwoks-02.png)
 
-5. En la pestaña Configurar, vaya a **los intervalos de direcciones IP públicos de las organizaciones** 
+5. En la ficha configurar de hello, vaya demasiado**los intervalos de direcciones IP públicos de las organizaciones** 
 
     ![Redes conocidas](./media/active-directory-known-networks/known-netwoks-03.png)
 
 6. Haga clic en **Agregar intervalos de direcciones IP conocidas**.
 
-7. Agregue los intervalos de direcciones en el cuadro de diálogo que aparece y, luego, haga clic en el botón de comprobación cuando haya terminado. 
+7. Agregar los intervalos de direcciones en el cuadro de diálogo de Hola que aparece y, a continuación, haga clic en botón de comprobación de hello cuando haya terminado. 
 
     ![Redes conocidas](./media/active-directory-known-networks/known-netwoks-04.png)
 

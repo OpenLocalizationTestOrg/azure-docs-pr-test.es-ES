@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: modificación del registro en las directivas personalizadas y configuración de un proveedor autoafirmado"
-description: "Un tutorial sobre cómo agregar notificaciones para registrarse y configurar la entrada del usuario"
+description: "Un tutorial sobre cómo agregar notificaciones toosign seguridad y configurar Hola proporcionados por el usuario"
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
@@ -14,30 +14,30 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
-ms.openlocfilehash: 64b9d904d7d070052e125b479f4719d208c9ff85
-ms.sourcegitcommit: b0af2a2cf44101a1b1ff41bd2ad795eaef29612a
+ms.openlocfilehash: c31d737263fef3e771bdf451b809b0ca522c8fe0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: modificación del registro para agregar nuevas notificaciones y configuración de la entrada del usuario.
+# <a name="azure-active-directory-b2c-modify-sign-up-tooadd-new-claims-and-configure-user-input"></a>Azure B2C Directory Active: Modificar tooadd nuevas notificaciones de suscripción y configurar proporcionados por el usuario.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-En este artículo, se agregará una nueva entrada (una notificación) por parte del usuario a un recorrido del usuario de la suscripción.  La entrada se configurará como una lista desplegable y se definirá si es necesario.
+En este artículo, agregará un viaje de usuario suscripción nueva del tooyour de entrada (una notificación) proporcionado por el usuario.  Configurará la entrada de hello como una lista desplegable y definir si es necesario.
 
-Editar Sipi para desencadenar la entrega de prueba.
+Editar Sipi tootrigger prueba entrega.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* Complete los pasos del artículo [Introducción a las directivas personalizadas](active-directory-b2c-get-started-custom.md).  Pruebe el recorrido del usuario de suscripción o inicio de sesión para registrar una nueva cuenta local antes de continuar.
+* Hola completa los pasos en el artículo hello [Introducción a las directivas personalizadas](active-directory-b2c-get-started-custom.md).  Probar Hola suscripción/signin usuario viaje toosignup una nueva cuenta local antes de continuar.
 
 
-La recopilación de los datos iniciales de los usuarios se logra a través de la suscripción o del inicio de sesión.  Posteriormente se pueden recopilar más notificaciones a través de los recorridos de los usuarios de edición de perfil. Cada vez que Azure AD B2C recoge información directamente del usuario de forma interactiva, el marco de la experiencia de identidad usa `selfasserted provider`. Los pasos siguientes se aplican siempre que se usa este proveedor.
+La recopilación de los datos iniciales de los usuarios se logra a través de la suscripción o del inicio de sesión.  Posteriormente se pueden recopilar más notificaciones a través de los recorridos de los usuarios de edición de perfil. Cada vez que Azure AD B2C recopila información directamente desde el usuario de hello interactivamente, Hola identidad experiencia Framework utiliza su `selfasserted provider`. Hola pasos siguientes se aplican siempre que se usa este proveedor.
 
 
-## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>Definición de la notificación, su nombre para mostrar y el tipo de entrada del usuario
-Vamos a pedir al usuario que indique su ciudad.  Agregue el siguiente elemento al elemento `<ClaimsSchema>` del archivo de directiva TrustFrameWorkExtensions:
+## <a name="define-hello-claim-its-display-name-and-hello-user-input-type"></a>Definir la notificación de hello, su nombre para mostrar y Hola tipo de entrada del usuario
+Permite solicitar a usuario Hola su ciudad.  Agregar Hola siguiendo el elemento toohello `<ClaimsSchema>` elemento en el archivo de directiva de hello TrustFrameWorkExtensions:
 
 ```xml
 <ClaimType Id="city">
@@ -47,13 +47,13 @@ Vamos a pedir al usuario que indique su ciudad.  Agregue el siguiente elemento a
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-Aquí puede elegir otras opciones para personalizar la notificación.  Para ver todo el esquema, consulte la guía **Identity Experience Framework Technical Reference Guide** (Guía de referencia técnica del marco de experiencia de identidad).  Esta guía se publicará pronto en la sección de referencias.
+Hay más opciones que puede elegir aquí toocustomize Hola de notificación.  Para un esquema completo, consulte toohello **Guía de referencia técnica de identidad experiencia Framework**.  Esta guía se publicará próximamente en la sección de referencia de Hola.
 
-* `<DisplayName>` es una cadena que define la *etiqueta* a nivel de usuario
+* `<DisplayName>`es una cadena que define orientadas al usuario hello *etiqueta*
 
-* `<UserHelpText>` ayuda al usuario a saber lo que se requiere
+* `<UserHelpText>`ayuda a usuario de Hola a entender lo que se requiere
 
-* `<UserInputType>` tiene las cuatro opciones siguientes resaltadas:
+* `<UserInputType>`ha hello siguientes cuatro opciones resaltado a continuación:
     * `TextBox`
 ```xml
 <ClaimType Id="city">
@@ -78,7 +78,7 @@ Aquí puede elegir otras opciones para personalizar la notificación.  Para ver 
 </ClaimType>
 ```
 
-    * `DropdownSingleSelect`: permite la selección del único valor válido.
+    * `DropdownSingleSelect`-Permite la selección de hello del único valor válido.
 
 ![Captura de pantalla de la opción de la lista desplegable](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
@@ -97,7 +97,7 @@ Aquí puede elegir otras opciones para personalizar la notificación.  Para ver 
 ```
 
 
-* `CheckboxMultiSelect` Permite la selección de uno o varios valores.
+* `CheckboxMultiSelect`Permite la selección de Hola de uno o más valores.
 
 ![Captura de pantalla de una opción con selección múltiple](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
@@ -115,9 +115,9 @@ Aquí puede elegir otras opciones para personalizar la notificación.  Para ver 
 </ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Adición de la notificación al recorrido del usuario de registro o inicio de sesión
+## <a name="add-hello-claim-toohello-sign-upsign-in-user-journey"></a>Agregar el inicio de sesión de hello notificación toohello arriba/inicio de sesión viaje de usuario
 
-1. Agregue la notificación como `<OutputClaim ClaimTypeReferenceId="city"/>` a TechnicalProfile `LocalAccountSignUpWithLogonEmail` (que se encuentra en el archivo de directiva TrustFrameworkBase).  Tenga en cuenta que TechnicalProfile utiliza SelfAssertedAttributeProvider.
+1. Agregar notificación de Hola como un `<OutputClaim ClaimTypeReferenceId="city"/>` toohello TechnicalProfile `LocalAccountSignUpWithLogonEmail` (que se encuentra en el archivo de directiva de hello TrustFrameworkBase).  Tenga en cuenta que este TechnicalProfile usa hello SelfAssertedAttributeProvider.
 
   ```xml
   <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -142,7 +142,7 @@ Aquí puede elegir otras opciones para personalizar la notificación.  Para ver 
       <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
       <OutputClaim ClaimTypeReferenceId="authenticationSource" />
       <OutputClaim ClaimTypeReferenceId="newUser" />
-      <!-- Optional claims, to be collected from the user -->
+      <!-- Optional claims, toobe collected from hello user -->
       <OutputClaim ClaimTypeReferenceId="givenName" />
       <OutputClaim ClaimTypeReferenceId="surName" />
       <OutputClaim ClaimTypeReferenceId="city"/>
@@ -154,7 +154,7 @@ Aquí puede elegir otras opciones para personalizar la notificación.  Para ver 
   </TechnicalProfile>
   ```
 
-2. Agregue la notificación a AAD-UserWriteUsingLogonEmail como `<PersistedClaim ClaimTypeReferenceId="city" />` para escribir la notificación en el directorio de AAD después de recopilarla del usuario. Este paso se puede omitir si se prefiere no conservar la notificación en el directorio para usarla en el futuro.
+2. Agregar Hola notificación toohello AAD UserWriteUsingLogonEmail como un `<PersistedClaim ClaimTypeReferenceId="city" />` directory toowrite Hola notificación toohello AAD después de la recopilación de los usuarios de Hola. Puede omitir este paso si prefiere no toopersist Hola notificación en el directorio de Hola para un uso futuro.
 
   ```xml
   <!-- Technical profiles for local accounts -->
@@ -190,14 +190,14 @@ Aquí puede elegir otras opciones para personalizar la notificación.  Para ver 
   </TechnicalProfile>
   ```
 
-3. Agregue la notificación a la instancia de TechnicalProfile que lee del directorio cuando un usuario inicia sesión como `<OutputClaim ClaimTypeReferenceId="city" />`
+3. Agregar notificación de hello toohello TechnicalProfile que lee desde el directorio de hello cuando un usuario inicia sesión como un`<OutputClaim ClaimTypeReferenceId="city" />`
 
   ```xml
   <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
     <Metadata>
       <Item Key="Operation">Read</Item>
       <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
+      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for hello provided user ID.</Item>
     </Metadata>
     <IncludeInSso>false</IncludeInSso>
     <InputClaims>
@@ -218,7 +218,7 @@ Aquí puede elegir otras opciones para personalizar la notificación.  Para ver 
   </TechnicalProfile>
   ```
 
-4. Agregue `<OutputClaim ClaimTypeReferenceId="city" />` al archivo de directiva de RP SignUporSignIn.xml, con el fin de que esta notificación se envíe a la aplicación en el token después de un recorrido correcto del usuario.
+4. Agregar hello `<OutputClaim ClaimTypeReferenceId="city" />` el archivo de directiva RP toohello SignUporSignIn.xml por lo que esta notificación se envía toohello aplicación en el símbolo (token) de hello después de un viaje de usuario correcta.
 
   ```xml
   <RelyingParty>
@@ -240,17 +240,17 @@ Aquí puede elegir otras opciones para personalizar la notificación.  Para ver 
   </RelyingParty>
   ```
 
-## <a name="test-the-custom-policy-using-run-now"></a>Prueba de la directiva personalizada con "Ejecutar ahora"
+## <a name="test-hello-custom-policy-using-run-now"></a>Probar directiva personalizada de hello mediante "Run Now"
 
-1. Abra la **hoja de Azure AD B2C** y vaya a **Marco de experiencia de identidad > Directivas personalizadas**.
-2. Seleccione la directiva personalizada que cargó y, luego, haga clic en el botón **Ejecutar ahora**.
-3. Debe poder registrarse con una dirección de correo electrónico.
+1. Hola abierto **hoja de Azure AD B2C** y navegue demasiado**identidad experiencia Framework > directivas personalizado**.
+2. Active la directiva personalizada hello que ha cargado y haga clic en hello **ejecutar ahora** botón.
+3. Debe ser capaz de toosign utilizando una dirección de correo electrónico.
 
-La pantalla de registro en modo de prueba debe parecerse a la siguiente:
+pantalla de registro de Hello en modo de prueba debe ser toothis similar:
 
 ![Captura de pantalla de la opción de registro modificada](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-  El token que vuelve a la aplicación incluirá la notificación `city`, como se muestra a continuación
+  Hello token tooyour atrás aplicación ahora incluirá hello `city` tal y como se muestra a continuación de notificación
 ```json
 {
   "exp": 1493596822,
@@ -273,16 +273,16 @@ La pantalla de registro en modo de prueba debe parecerse a la siguiente:
 
 ## <a name="optional-remove-email-verification-from-signup-journey"></a>Eliminación opcional de la comprobación del correo electrónico en el recorrido del registro
 
-Para omitir la comprobación del correo electrónico, el autor de la directiva puede elegir quitar `PartnerClaimType="Verified.Email"`. La dirección de correo electrónico será necesaria pero no se comprobará, salvo que se quite "Required" = true.  Considere cuidadosamente si esta opción es adecuada para sus casos de uso.
+comprobación de correo electrónico de tooskip, autor de la directiva de hello puede elegir tooremove `PartnerClaimType="Verified.Email"`. Hello dirección de correo electrónico, será necesario pero no comprobada, a menos que "Requerido" = true se quita.  Considere cuidadosamente si esta opción es adecuada para sus casos de uso.
 
-El correo electrónico comprobado está habilitado de forma predeterminada en el `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` del archivo de directiva TrustFrameworkBase del módulo de inicio:
+Comprobar el correo electrónico está habilitada de forma predeterminada en hello `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` en archivo de directivas de TrustFrameworkBase de hello en el módulo de inicio de hello:
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Agregue la nueva notificación a los flujos de inicios de sesión de cuentas sociales cambiando las instancias de TechnicalProfiles que se enumeran a continuación. Estas dos instancias se usan en los inicios de sesión de cuentas sociales o federadas para leer y escribir los datos de usuario con alternativeSecurityId como localizador.
+Agregar nueva notificación toohello flujos de Hola para inicios de sesión de cuenta sociales cambiando hello TechnicalProfiles enumeradas a continuación. Éstas son utilizados por toowrite de inicios de sesión de cuenta de social/federada y leer datos de usuario de hello mediante hello alternativeSecurityId como Hola localizador.
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

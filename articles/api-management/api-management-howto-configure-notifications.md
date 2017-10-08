@@ -1,6 +1,6 @@
 ---
-title: "Configuración de notificaciones y plantillas de correo electrónico en Azure API Management | Microsoft Docs"
-description: "Obtenga información acerca de cómo configurar notificaciones y plantillas de correo electrónico en Administración de API de Azure."
+title: "notificaciones de aaaConfigure y enviar por correo electrónico plantillas en la administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooconfigure notificaciones y enviar por correo electrónico plantillas en la administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,63 +14,63 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 3d8b74e32059cfc1a4c3a8fc7d3bd04676ee80c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dc23289c25a1641992b73cb955099b3f207b6968
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Configuración de notificaciones y plantillas de correo electrónico en Administración de API de Azure
-Administración de API ofrece la posibilidad de configurar notificaciones de eventos específicos, así como plantillas de correo electrónico que se usan para comunicarse con los administradores y desarrolladores de una instancia de Administración de API. Este tema muestra cómo configurar notificaciones de los eventos disponibles y ofrece información general sobre la configuración de plantillas de correo electrónico que se usan para estos eventos.
+# <a name="how-tooconfigure-notifications-and-email-templates-in-azure-api-management"></a>¿Cómo tooconfigure notificaciones y enviar por correo electrónico plantillas en la administración de API de Azure
+Administración de API permite hello tooconfigure notificaciones de eventos específicos y las plantillas de correo electrónico de hello tooconfigure que son utilizado toocommunicate con los administradores de Hola y desarrolladores de una instancia de la administración de API. Este tema muestra cómo tooconfigure notificaciones para Hola eventos disponibles y proporciona una visión general de configuración de plantillas de correo electrónico de hello usa estos eventos.
 
-## <a name="publisher-notifications"> </a>Configuración de notificaciones del publicador
-Para configurar las notificaciones, haga clic en **Portal para editores** en Azure Portal en su servicio API Management. De este modo, se abre el portal del publicador de Administración de API.
+## <a name="publisher-notifications"></a>Configuración de notificaciones del publicador
+notificaciones de tooconfigure, haga clic en **portal para desarrolladores de** Hola Portal de Azure para el servicio de administración de API. Esto le llevará toohello portal para desarrolladores de administración de API.
 
 ![Portal del publicador][api-management-management-console]
 
 > [!NOTE] 
-> Si aún no ha creado ninguna instancia del servicio de API Management, consulte [Creación de una instancia del servicio API Management][Create an API Management service instance] en el tutorial [Introducción a Azure API Management][Get started with Azure API Management].
+> Si aún no ha creado una instancia de servicio de administración de API, consulte [crear una instancia de servicio de administración de API] [ Create an API Management service instance] en hello [Introducción a administración de API de Azure] [ Get started with Azure API Management] tutorial.
 
-Haga clic en **Notificaciones** en el menú **API Management** de la izquierda para ver las notificaciones disponibles.
+Haga clic en **notificaciones** de hello **administración de API** menú Hola deja tooview notificaciones disponibles Hola.
 
 ![Notificaciones del publicador][api-management-publisher-notifications]
 
-Se puede configurar la siguiente lista de eventos para notificaciones.
+Hello siguiente lista de eventos se puede configurar para las notificaciones.
 
-* **Solicitudes de suscripción (se requiere aprobación)** : los destinatarios y usuarios de correo electrónico especificados recibirán notificaciones por correo electrónico sobre solicitudes de suscripción de productos de API que requieran aprobación.
-* **Nuevas suscripciones** : los destinatarios y usuarios de correo electrónico especificados recibirán notificaciones por correo electrónico sobre nuevas suscripciones de productos de API.
-* **Solicitudes de la galería de aplicaciones** : los destinatarios y usuarios de correo electrónico especificados recibirán notificaciones por correo electrónico cuando se envíen nuevas aplicaciones a la galería de aplicaciones.
-* **CCO** : los destinatarios y usuarios de correo electrónico especificados recibirán copias carbón ocultas de todos los correos electrónicos enviados a los desarrolladores.
-* **Nuevo problema o comentario** : los destinatarios y usuarios de correo electrónico especificados recibirán notificaciones por correo electrónico cuando se envíe un nuevo problema o comentario en el portal para desarrolladores.
-* **Cerrar mensaje de cuenta** : los destinatarios y usuarios de correo electrónico especificados recibirán notificaciones por correo electrónico cuando se cierre una cuenta.
-* **Aproximación al límite de cuota de suscripción** : los siguientes destinatarios y usuarios de correo electrónico recibirán notificaciones por correo electrónico cuando el uso de la suscripción se acerque a la cuota de uso.
+* **Las solicitudes de suscripción (lo que requiere aprobación)** : Hola destinatarios de correo electrónico especificado y los usuarios recibirán notificaciones de correo electrónico acerca de las solicitudes de suscripción para productos de API que requieren aprobación.
+* **Las nuevas suscripciones** : Hola destinatarios de correo electrónico especificado y los usuarios recibirán notificaciones de correo electrónico sobre nuevas suscripciones de producto de API.
+* **Las solicitudes de la Galería de aplicaciones** : Hola destinatarios de correo electrónico especificado y los usuarios recibirán notificaciones de correo electrónico nuevas aplicaciones una vez enviado toohello Galería de aplicaciones.
+* **CCO** : Hola destinatarios de correo electrónico especificado y los usuarios recibirán copias ocultas de correo electrónico de toodevelopers de todos los correos electrónicos enviados.
+* **Problema nuevo o tu comentario** : Hola destinatarios de correo electrónico especificado y los usuarios recibirán notificaciones de correo electrónico cuando un nuevo asunto o comentario se envía en el portal para desarrolladores de Hola.
+* **Mensaje de cerrar cuenta** : Hola destinatarios de correo electrónico especificado y los usuarios recibirán notificaciones de correo electrónico cuando se cierra una cuenta.
+* **Límite de cuota de suscripción con** : Hola después de destinatarios de correo electrónico y los usuarios recibirán notificaciones de correo electrónico al uso de la suscripción obtiene cuota toousage cerrar.
 
-En cada evento, se pueden especificar destinatarios con el cuadro de texto de dirección de correo electrónico o seleccionar usuarios de una lista.
+Para cada evento, puede especificar a los destinatarios de correo electrónico mediante el cuadro de texto de dirección de correo electrónico de Hola o puede seleccionar los usuarios de una lista.
 
-Para especificar las direcciones de correo electrónico a las que se van a enviar notificaciones, especifíquelas en el cuadro de texto de dirección de correo electrónico. Si tiene varias direcciones de correo electrónico, sepárelas con comas.
+toospecify hello toobe de direcciones de correo electrónico una notificación, escríbalas en el cuadro de texto de dirección de correo electrónico de Hola. Si tiene varias direcciones de correo electrónico, sepárelas con comas.
 
 ![Notification recipients][api-management-email-addresses]
 
-Para especificar los usuarios a los que se va a notificar, haga clic en **Agregar destinatario**, active la casilla situada junto a los usuarios a los que se va a notificar y haga clic en **Aceptar**.
+toospecify Hola usuarios toobe una notificación, haga clic en **Agregar destinatario**, Hola de casilla al lado de hello usuarios toobe una notificación y haga clic en **Aceptar**.
 
 > [!NOTE] 
-> En la lista solo aparecen los administradores.
+> Solo los administradores se muestran en la lista de Hola.
 
 
-Después de configurar los destinatarios de las notificaciones, haga clic en **Guardar** para aplicar los destinatarios de notificación actualizados.
+Después de configurar los destinatarios de notificaciones de hello, haga clic en **guardar** tooapply Hola actualiza destinatarios de notificación.
 
 > [!NOTE] 
-> Si hay cambios sin guardar y sale de la pestaña **Notificaciones del publicador** , el portal del publicador le avisará.
+> Si sale de hello **Publisher notificaciones** portal para desarrolladores de pestaña Hola le avisa si hay cambios no guardados.
 
 
-## <a name="email-templates"> </a>Configuración de plantillas de correo electrónico
-Administración de API proporciona plantillas de correo electrónico para los mensajes de correo electrónico que se envían durante la administración y el uso del servicio. Se incluyen las siguientes plantillas de correo electrónico.
+## <a name="email-templates"></a>Configuración de plantillas de correo electrónico
+Administración de API proporciona plantillas de correo electrónico para hello mensajes de correo electrónico que se envían en curso de Hola de administrar y usar servicio de Hola. se proporciona Hola siguiendo las plantillas de correo electrónico.
 
 * Envío de la galería de aplicaciones aprobado
 * Carta de despedida del desarrollador
 * Notificación de aproximación del límite de cuota del desarrollador
 * Invitación a un usuario
-* Nuevo comentario agregado a un problema
+* Nuevo comentario agregado tooan problema
 * Nuevo problema recibido
 * Nueva suscripción activada
 * Confirmación de suscripción renovada
@@ -79,11 +79,11 @@ Administración de API proporciona plantillas de correo electrónico para los me
 
 Estas plantillas se pueden modificar tal como se desee.
 
-Para ver y configurar las plantillas de correo electrónico de la instancia de API Management, haga clic en **Notificaciones** en el menú **API Management** de la izquierda y seleccione la pestaña **Plantillas de correo electrónico**.
+tooview y configurar plantillas de correo electrónico de hello para la instancia de la administración de API, haga clic en **notificaciones** de hello **administración de API** menú Hola izquierda y seleccione hello **plantillas de correo electrónico**  ficha.
 
 ![Email templates][api-management-email-templates]
 
-Para ver o modificar una plantilla específica, selecciónela en de la lista desplegable **Plantillas** .
+tooview o modificar una plantilla específica, selecciónela en hello **plantillas** lista desplegable.
 
 ![Email templates list][api-management-email-templates-list]
 
@@ -91,14 +91,14 @@ Cada plantilla de correo electrónico tiene un asunto en texto sin formato y una
 
 ![Email template editor][api-management-email-template]
 
-La lista **Parámetros** contiene una lista de parámetros que, al insertarlos en el asunto o en el cuerpo, se reemplazarán por el valor designado cuando se envíe el correo electrónico. Para insertar un parámetro, sitúe el cursor en donde desee que vaya el parámetro y haga clic en la flecha a la izquierda del nombre del parámetro.
+Hola **parámetros** lista contiene una lista de parámetros, que cuando se inserta Hola asunto ni un cuerpo, será el valor de hello reemplazado designado cuando se envía correo electrónico de Hola. tooinsert un parámetro, coloque cursor de Hola donde desea Hola parámetro toogo y haga clic en hello flecha toohello a la izquierda del nombre de parámetro de Hola.
 
-Haga clic en **Vista previa** o en **Enviar una prueba** para ver el aspecto que tendrá el correo electrónico o para enviar un correo electrónico de prueba.
+Haga clic en **vista previa** o **enviar una prueba** toosee cómo correo electrónico Hola se buscar o enviar un correo electrónico de prueba.
 
 > [!NOTE] 
-> Los parámetros no se reemplazan por valores reales al obtener la vista previa o enviar una prueba.
+> parámetros de Hello no se reemplazan por valores reales al obtener una vista previa o enviar una prueba.
 
-Para guardar los cambios efectuados en la plantilla de correo electrónico, haga clic en **Guardar** o, si desea cancelarlos, haga clic en **Cancelar**.
+plantilla de correo electrónico de toohello de toosave Hola cambios, haga clic en **guardar**, o haga clic en cambios de hello toocancel **cancelar**.
  
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
@@ -114,8 +114,8 @@ Para guardar los cambios efectuados en la plantilla de correo electrónico, haga
 [Configure publisher notifications]: #publisher-notifications
 [Configure email templates]: #email-templates
 
-[How to create and use groups]: api-management-howto-create-groups.md
-[How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
+[How toocreate and use groups]: api-management-howto-create-groups.md
+[How tooassociate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance

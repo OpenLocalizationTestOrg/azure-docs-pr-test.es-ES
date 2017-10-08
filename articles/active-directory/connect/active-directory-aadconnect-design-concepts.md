@@ -15,30 +15,30 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: f23443d438c95a784f655fb9a5f20dfcf37be189
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1e5d5c6a716ca653fb14fc059e8155124b433732
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: conceptos de diseño
-El propósito de este tema es describir las áreas que se deben tener en cuenta durante el diseño de implementación de Azure AD Connect. Este tema trata de una profundización en determinadas áreas, y estos conceptos se describen también brevemente en otros temas.
+Hola de este tema sirve toodescribe áreas que deben considerarse a través durante el diseño de implementación de Hola de Azure AD Connect. Este tema trata de una profundización en determinadas áreas, y estos conceptos se describen también brevemente en otros temas.
 
 ## <a name="sourceanchor"></a>sourceAnchor
-El atributo sourceAnchor se define como *un atributo inmutable durante la vigencia de un objeto*. Identifica de forma única que un objeto es el mismo objeto en el entorno local y en Azure AD. El atributo también se denomina **immutableId** y los dos nombres se usan indistintamente.
+atributo de Hello sourceAnchor se define como *un atributo inmutable durante la duración de Hola de un objeto*. Identifica de forma única un objeto como Hola mismo objetos locales y en Azure AD. atributo de Hello también se denomina **immutableId** y Hola dos nombres se usan intercambiables.
 
-La palabra inmutable, es decir, no se puede cambiar, es importante en este tema. Puesto que el valor de este atributo no se puede cambiar después de que se haya establecido, es importante elegir un diseño que respalde su caso.
+word de Hello inmutable, que es "no se puede cambiar", es importante toothis tema. Puesto que el valor de este atributo no se puede cambiar después de que se ha establecido, es importante toopick un diseño que admite el escenario.
 
-El atributo se usa en las situaciones siguientes:
+atributo de Hola se usa para hello los escenarios siguientes:
 
 * Cuando un nuevo servidor de motor de sincronización se genera, o regenera, después de una situación de recuperación ante desastres, este atributo vincula los objetos existentes en Azure AD con los objetos locales.
-* Si se mueve de una identidad solo de nube a un modelo de identidad sincronizada, este atributo permitirá que los objetos existentes en Azure AD coincidan exactamente con los objetos locales.
-* Si usa federación, este atributo junto con el **userPrincipalName** se usan en la notificación para identificar de forma exclusiva un usuario.
+* Si se mueve de un modelo de identidad sincronizados de tooa de identidad solo en la nube, este atributo permite objetos demasiado "coincidencia importante" los objetos existentes en Azure AD con objetos locales.
+* Si utiliza la federación y, a continuación, este atributo junto con hello **userPrincipalName** se utiliza en hello toouniquely identificar a un usuario de notificación.
 
-En este tema solo se habla de sourceAnchor, puesto que está relacionado con los usuarios. Las mismas reglas se aplican a todos los tipos de objeto, pero es solo este problema el que supone una preocupación para los usuarios.
+En este tema sólo se habla sobre sourceAnchor en lo referente toousers. Hello mismas reglas aplican tipos de objeto tooall, pero es solo para los usuarios que este problema suele ser un problema.
 
 ### <a name="selecting-a-good-sourceanchor-attribute"></a>Selección de un buen atributo sourceAnchor
-El valor de atributo debe seguir las reglas siguientes:
+valor del atributo Hola debe seguir Hola siguiendo reglas:
 
 * Debe tener una longitud de menos de 60 caracteres.
   * Los caracteres que no estén entre a-z, A-Z o 0-9 se codifican y cuentan como 3 caracteres.
@@ -47,147 +47,147 @@ El valor de atributo debe seguir las reglas siguientes:
 * Debe ser una cadena, un entero o un número binario.
 * No se debe basar en el nombre del usuario, estos cambios
 * No debe distinguir mayúsculas y minúsculas; evite valores que pueden variar según el caso
-* Debe asignarse cuando se crea el objeto.
+* Debe asignarse cuando se crea el objeto de Hola
 
-Si el atributo sourceAnchor seleccionado no es de tipo cadena, Azure AD Connect aplica Base64Encode al valor de atributo para asegurarse de que no se muestre ningún carácter especial. Si usa otro servidor de federación distinto de ADFS, asegúrese de que también pueda aplicar Base64Encode al atributo.
+Si hello sourceAnchor ha seleccionado no es de tipo cadena, e tooensure de valor de atributo de hello Base64Encode conectarse de Azure AD no aparece ningún carácter especial. Si utiliza otro servidor de federación de AD FS, asegúrese de que el servidor también puede atributo de hello Base64Encode.
 
-El atributo sourceAnchor distingue mayúsculas de minúsculas. El valor "JohnDoe" no es igual que "johndoe". Pero no debería tener dos objetos diferentes con solo una diferencia en mayúsculas o minúsculas.
+atributo de sourceAnchor Hola distingue mayúsculas de minúsculas. Un valor de "JuanPerez" no es Hola igual que "JuanPerez". Pero no debería tener dos objetos diferentes con solo una diferencia en mayúsculas o minúsculas.
 
-Si tiene un solo bosque local, el atributo que debe usar es **objectGUID**. También es el atributo que se usa con la configuración rápida en Azure AD Connect y el atributo de sincronización de directorios.
+Si tiene un solo bosque local, a continuación, atributo Hola debe usar es **objectGUID**. Se trata también de atributo de hello utilizado al usar configuración rápida en Azure AD Connect y también Hola atributo utilizado en la sincronización de directorios.
 
-Si tiene varios bosques y no mueve usuarios entre bosques y dominios, **objectGUID** es un buen atributo para usar incluso en este caso.
+Si tiene varios bosques y no se mueven a los usuarios entre bosques y dominios, a continuación, **objectGUID** es una buena atributo toouse incluso en este caso.
 
-Si mueve usuarios entre bosques y dominios, debe buscar un atributo que no cambie o se puede mover con los usuarios durante el movimiento. Un enfoque recomendado es introducir un atributo sintético. Un atributo que pueda contener algo parecido a un GUID sería adecuado. Durante la creación del objeto se crea un nuevo GUID y se marca en el usuario. Puede crear una regla de sincronización en el servidor del motor de sincronización para crear este valor según el **objectGUID** y actualizar el atributo seleccionado en ADDS. Al mover el objeto, asegúrese de copiar también el contenido de este valor.
+Si mueve los usuarios entre bosques y dominios, debe buscar un atributo que no cambian o se puede mover con usuarios de Hola durante el movimiento de Hola. Un enfoque recomendado es toointroduce un atributo sintético. Un atributo que pueda contener algo parecido a un GUID sería adecuado. Durante la creación de objetos, se crea un nuevo GUID y se con marca de usuario de Hola. Una regla de sincronización personalizados puede crearse en toocreate de servidor de motor de sincronización de hello este valor basándose en hello **objectGUID** y actualización Hola atributo seleccionado en ADDS. Cuando se mueve el objeto de hello, asegúrese de tooalso seguro de copiar el contenido de Hola de este valor.
 
-Otra solución consiste en seleccionar un atributo existente que sepa que no va a cambiar. Uno de los atributos de uso más común es **employeeID**. Si está considerando el uso de un atributo que contenga letras, asegúrese de que no haya ninguna posibilidad de que la distinción de mayúsculas y minúsculas pueda cambiar el valor del atributo. Entre los atributos incorrectos que no deben usarse se incluyen aquellos con el nombre del usuario. En un matrimonio o divorcio se espera que cambie el nombre, lo que no está permitido para este atributo. Este también es uno de los motivos de que atributos como **userPrincipalName**, **mail** y **targetAddress** no se puedan seleccionar en el asistente de instalación de Azure AD Connect. Esos atributos también contienen el carácter "@", que no está permitido en sourceAnchor.
+Otra solución es toopick un atributo existente, sabrá que no cambia. Uno de los atributos de uso más común es **employeeID**. Si considera que un atributo que contiene letras, asegúrese de que no hay que ningún caso de hello oportunidad (mayúsculas y minúsculas) puede cambiar para el valor del atributo de Hola. Atributos incorrectas que no deben usarse incluyen estos atributos con nombre de saludo del usuario de Hola. En el matrimonio o divorcio, nombre de hello es toochange esperado, lo cual no está permitido para este atributo. Esto también es uno de los motivos por qué atributos como **userPrincipalName**, **correo**, y **targetAddress** no son tooselect posible en la instalación de hello Azure AD Connect Asistente. Estos atributos también contienen Hola "@" carácter, que no se permite en hello sourceAnchor.
 
-### <a name="changing-the-sourceanchor-attribute"></a>Cambio del atributo sourceAnchor
-No se puede cambiar el valor del atributo sourceAnchor después de que el objeto se ha creado en Azure AD y la identidad se ha sincronizado.
+### <a name="changing-hello-sourceanchor-attribute"></a>Cambiar el atributo sourceAnchor de Hola
+no se puede cambiar el valor del atributo sourceAnchor Hola después de que se ha creado el objeto de hello en Azure AD y se sincroniza la identidad de Hola.
 
-Por este motivo, se aplican las restricciones siguientes a Azure AD Connect:
+Por esta razón, Hola siguientes restricciones aplica tooAzure AD Connect:
 
-* El atributo sourceAnchor solo puede establecerse durante la instalación inicial. Si vuelve a ejecutar el asistente de instalación, esta opción es de solo lectura. Si necesita cambiar esto, debe desinstalar y reinstalar la aplicación.
-* Si instala otro servidor de Azure AD Connect, debe seleccionar el mismo atributo sourceAnchor usado anteriormente. Si anteriormente ha estado usando la sincronización de directorios y se pasa a Azure AD Connect, debe usar **objectGUID** ya que es el atributo de sincronización de directorios.
-* Si se cambia el valor de sourceAnchor después de que el objeto se ha exportado a Azure AD, Azure AD Connect Sync produce un error y no permite más cambios en ese objeto antes de que el problema se haya corregido y el atributo sourceAnchor cambie de nuevo en el directorio de origen.
+* atributo de sourceAnchor Hola solo puede establecerse durante la instalación inicial. Si se vuelve a ejecutar al Asistente para instalación de hello, esta opción es de solo lectura. Si necesita toochange esta configuración, debe desinstalar y volver a instalar.
+* Si instala otro servidor de Azure AD Connect, a continuación, debe seleccionar Hola mismo atributo sourceAnchor usado como anteriormente. Si anteriormente ha estado usando DirSync y mover tooAzure AD conectarse, debe usar **objectGUID** ya que es el atributo de hello utilizada DirSync.
+* Si se cambia el valor de Hola para sourceAnchor después de objeto Hola se haya exportado tooAzure AD, a continuación, Azure AD Connect sincronización produce un error y no permite más cambios en ese objeto antes de que se ha corregido el problema de Hola y Hola sourceAnchor se cambia en hello directorio de origen.
 
 ## <a name="using-msds-consistencyguid-as-sourceanchor"></a>Uso de msDS-ConsistencyGuid como sourceAnchor
-De forma predeterminada, Azure AD Connect (versión 1.1.486.0 y anteriores) usa objectGUID como atributo sourceAnchor. objectGUID es genera en el sistema. No puede especificar su valor al crear objetos de AD locales. Como se explica en la sección [sourceAnchor](#sourceanchor), en algunos escenarios es necesario especificar el valor de sourceAnchor. Si es su caso, debe usar un atributo de AD configurable (por ejemplo, msDS-ConsistencyGuid) como atributo sourceAnchor.
+De forma predeterminada, Azure AD Connect (versión 1.1.486.0 y anteriores) usa objectGUID como atributo de hello sourceAnchor. objectGUID es genera en el sistema. No puede especificar su valor al crear objetos de AD locales. Como se explica en la sección [sourceAnchor](#sourceanchor), hay escenarios en los que tenga valor de sourceAnchor toospecify Hola. Si los escenarios de hello están tooyou aplicable, debe utilizar un atributo de AD configurable (por ejemplo, msDS-ConsistencyGuid) como atributo de sourceAnchor Hola.
 
-Ahora, Azure AD Connect (versión 1.1.524.0 y posteriores) facilita el uso de msDS-ConsistencyGuid como atributo sourceAnchor. Al utilizar esta característica, Azure AD Connect configura automáticamente las reglas de sincronización para:
+Azure AD Connect (versión 1.1.524.0 y posterior) ahora facilita el uso de Hola de msDS-ConsistencyGuid como atributo sourceAnchor. Al utilizar esta característica, Azure AD Connect configurará automáticamente las reglas de sincronización de Hola para:
 
-1. Usar msDS-ConsistencyGuid como atributo sourceAnchor para los objetos de usuario. objectGUID se usa para otros tipos de objeto.
+1. Usar msDS-ConsistencyGuid como atributo sourceAnchor de Hola para objetos de usuario. objectGUID se usa para otros tipos de objeto.
 
-2. Para cualquier objeto de usuario de AD local cuyo atributo msDS-ConsistencyGuid no esté rellenado, Azure AD Connect escribe su propio valor objectGUID en el atributo msDS-ConsistencyGuid de la instancia local de Active Directory. Después de rellenar el atributo msDS-ConsistencyGuid, Azure AD Connect exporta el objeto a Azure AD.
+2. Para cualquier local usuario AD objeto cuyo atributo msDS-ConsistencyGuid no se rellena, Azure AD Connect escribe el atributo msDS-ConsistencyGuid de objectGUID valor toohello atrás en la instancia local de Active Directory. Una vez se rellena el atributo msDS-ConsistencyGuid de hello, Azure AD Connect, a continuación, exporta hello tooAzure de objeto AD.
 
 >[!NOTE]
-> Una vez que se haya importado un objeto de AD local en Azure AD Connect (es decir, que se haya importado en el espacio conector de AD y se haya proyectado en el metaverso), ya no se puede cambiar su valor para sourceAnchor. Para especificar el valor de sourceAnchor para un objeto de AD local determinado, configure el atributo msDS-ConsistencyGuid antes de importarlo a Azure AD Connect.
+> Una vez un local se importa el objeto de AD en Azure AD Connect (es decir, se importó Hola espacio de conector de AD y se proyectan en hello metaverso), no se puede cambiar su valor de sourceAnchor ya. valor de sourceAnchor toospecify Hola para un dado local AD de objetos, configure el atributo msDS-ConsistencyGuid antes de que se importe en Azure AD Connect.
 
 ### <a name="permission-required"></a>Permiso necesario
-Para que funcione esta característica, se debe conceder a la cuenta de AD DS que se utiliza para sincronizar con la instancia local de Active Directory permiso de escritura en el atributo msDS-ConsistencyGuid de la instancia local de Active Directory.
+Para este toowork característica, Hola AD DS cuenta usada toosynchronize con local de Active Directory debe tener permiso de atributo msDS-ConsistencyGuid escritura toohello en local de Active Directory.
 
-### <a name="how-to-enable-the-consistencyguid-feature---new-installation"></a>Habilitación de la característica ConsistencyGuid: nueva instalación
-Puede habilitar el uso de ConsistencyGuid como sourceAnchor durante la nueva instalación. En esta sección se trata la instalación rápida y personalizada con detalle.
+### <a name="how-tooenable-hello-consistencyguid-feature---new-installation"></a>¿Cómo tooenable Hola ConsistencyGuid característica - instalación nueva
+Puede habilitar el uso de Hola de ConsistencyGuid como sourceAnchor durante la instalación nuevo. En esta sección se trata la instalación rápida y personalizada con detalle.
 
   >[!NOTE]
-  > Solo las versiones más recientes de Azure AD Connect (1.1.524.0 y posteriores) admiten el uso de ConsistencyGuid como sourceAnchor durante la nueva instalación.
+  > Solo las versiones más recientes de Azure AD Connect (1.1.524.0 y después) admite Hola uso de ConsistencyGuid como sourceAnchor durante la instalación nuevo.
 
-### <a name="how-to-enable-the-consistencyguid-feature"></a>Habilitación de la característica ConsistencyGuid
-Actualmente, solo se puede habilitar la característica durante una nueva instalación de Azure AD Connect.
+### <a name="how-tooenable-hello-consistencyguid-feature"></a>¿Cómo tooenable Hola ConsistencyGuid característica
+Actualmente, la característica de hello solo puede habilitarse durante la nueva instalación de Azure AD Connect solo.
 
 #### <a name="express-installation"></a>Instalación rápida
-Cuando se instala Azure AD Connect con el modo Rápido, el asistente de Azure AD Connect determina automáticamente el atributo de AD más adecuado para usarse como atributo sourceAnchor según la lógica siguiente:
+Al instalar Azure AD Connect con el modo de Express, Asistente de Azure AD Connect de hello determina automáticamente hello más apropiado toouse de atributo como atributo de sourceAnchor hello mediante Hola siguiendo la lógica:
 
-* En primer lugar, el asistente de Azure AD Connect consulta el inquilino de Azure AD para recuperar el atributo de AD usado como atributo sourceAnchor en la anterior instalación de Azure AD Connect (de haberla). Si esta información está disponible, Azure AD Connect usa el mismo atributo de AD.
+* En primer lugar, las consultas de Asistente de conectar hello Azure AD que utiliza el atributo de hello AD de Azure AD inquilino tooretrieve como Hola atributo sourceAnchor en la instalación de hello anterior AD Azure Connect (si existe). Si esta información está disponible, Azure AD Connect usa el atributo de hello misma instancia de AD.
 
   >[!NOTE]
-  > Las versiones más recientes de Azure AD Connect (1.1.524.0 y posteriores) son las únicas que almacenan información en su inquilino de Azure AD sobre el atributo sourceAnchor usado durante la instalación. Las versiones anteriores de Azure AD Connect no lo hacen.
+  > Solo las versiones más recientes de Azure AD Connect (1.1.524.0 y después) almacena la información en su inquilino de Azure AD sobre el atributo sourceAnchor de hello usará durante la instalación. Las versiones anteriores de Azure AD Connect no lo hacen.
 
-* Si la información sobre el atributo sourceAnchor usado no está disponible, el asistente comprueba el estado del atributo msDS-ConsistencyGuid en su Active Directory local. Si el atributo no está configurado en ningún objeto del directorio, el asistente usa msDS-ConsistencyGuid como atributo sourceAnchor. Si el atributo está configurado en uno o varios objetos del directorio, el asistente concluye que el atributo se está usando en otras aplicaciones y no es adecuado como atributo sourceAnchor…
+* Si no está disponible la información sobre hello sourceAnchor atributo utilizado, el Asistente de Hola comprueba el estado de hello del atributo msDS-ConsistencyGuid de hello en su Active Directory local. Si atributo hello no está configurado en cualquier objeto de directorio de hello, Asistente de hello utiliza Hola msDS-ConsistencyGuid como atributo de hello sourceAnchor. Si se configura el atributo hello en uno o más objetos de directorio hello, Asistente Hola concluye atributo Hola se está usando en otras aplicaciones y no es adecuado como atributo sourceAnchor...
 
-* En ese caso, el asistente recurre de nuevo a usar objectGUID como atributo sourceAnchor.
+* En este caso, Asistente Hola vuelve toousing objectGUID como atributo de hello sourceAnchor.
 
-* Una vez que decide el atributo sourceAnchor, el asistente almacena la información en su inquilino de Azure AD. Se usará la información en una instalación futura de Azure AD Connect.
+* Una vez que se decide el atributo sourceAnchor de hello, Asistente Hola almacena información de hello en el inquilino de Azure AD. Hola información se usará instalándolas futuras de Azure AD Connect.
 
-Una vez completada la instalación rápida, el asistente le informa de qué atributo se ha elegido como atributo sourceAnchor.
+Una vez completada la instalación rápida, el Asistente de hello le informa de qué atributo se ha detectado como atributo de delimitador de origen Hola.
 
 ![El asistente informa del atributo de AD seleccionado como sourceAnchor](./media/active-directory-aadconnect-design-concepts/consistencyGuid-01.png)
 
 #### <a name="custom-installation"></a>Instalación personalizada
-Cuando se instala Azure AD Connect con el modo Personalizado, el asistente de Azure AD Connect proporciona dos opciones al configurar el atributo sourceAnchor:
+Al instalar Azure AD Connect con el modo personalizado, el Asistente de Azure AD Connect de hello proporciona dos opciones al configurar el atributo sourceAnchor:
 
 ![Instalación personalizada: configuración de sourceAnchor](./media/active-directory-aadconnect-design-concepts/consistencyGuid-02.png)
 
 | Configuración | Descripción |
 | --- | --- |
-| Let Azure manage the source anchor for me (Dejar que Azure administre automáticamente el delimitador de origen) | Seleccione esta opción si desea que Azure AD elija automáticamente el atributo. Si selecciona esta opción, el asistente de Azure AD Connect aplica la misma [lógica de selección del atributo sourceAnchor usada durante la instalación rápida](#express-installation). De forma parecida a la instalación rápida, el asistente indica qué atributo se ha elegido como atributo sourceAnchor una vez finalizada la instalación personalizada. |
-| Un atributo específico | Seleccione esta opción si desea especificar un atributo existente de AD como atributo sourceAnchor. |
+| Dejar que Azure administre delimitador de origen de Hola para mí | Seleccione esta opción si desea atributo de hello toopick de Azure AD para usted. Si selecciona esta opción, se aplica el Asistente de Azure AD Connect Hola mismo [lógica de selección del atributo sourceAnchor utilizada durante la instalación de Express](#express-installation). Instalación tooExpress similar, el Asistente de hello le informa de qué atributo se ha detectado como Hola atributo de delimitador de origen una vez finalizada la instalación personalizada. |
+| Un atributo específico | Seleccione esta opción si desea toospecify un atributo de AD existente como atributo de hello sourceAnchor. |
 
-### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>Habilitación de la característica ConsistencyGuid: implementación existente
-Si tiene una implementación de Azure AD Connect existente que está usando objectGUID como el atributo sourceAnchor, puede cambiarla para usar ConsistencyGuid en su lugar.
+### <a name="how-tooenable-hello-consistencyguid-feature---existing-deployment"></a>¿Cómo tooenable Hola ConsistencyGuid característica - implementación existente
+Si tiene una implementación de Azure AD Connect existente que está usando el objectGUID como atributo de delimitador de origen de hello, puede cambiar lo toousing ConsistencyGuid en su lugar.
 
 >[!NOTE]
-> Solo las versiones más recientes de Azure AD Connect (1.1.552.0 y posteriores) admiten el cambio de ObjectGuid a ConsistencyGuid como el atributo sourceAnchor.
+> Solo las versiones más recientes de Azure AD Connect (1.1.552.0 y después) admite la conmutación de tooConsistencyGuid ObjectGuid como atributo de delimitador de origen Hola.
 
-Para cambiar de objectGUID a ConsistencyGuid como el atributo sourceAnchor:
+tooswitch de tooConsistencyGuid objectGUID como atributo de delimitador de origen de hello:
 
-1. Inicie el asistente de Azure AD Connect y haga clic en **Configurar** para ir a la pantalla de tareas.
+1. Iniciar Asistente de hello Azure AD Connect y haga clic en **configurar** pantalla de toogo toohello tareas.
 
-2. Seleccione la opción de tarea **Configuración del delimitador de origen** y haga clic en **Siguiente**.
+2. Seleccione hello **configurar delimitador de origen** opción de tareas y haga clic en **siguiente**.
 
    ![Habilitación de ConsistencyGuid para la implementación existente: paso 2](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment01.png)
 
 3. Escriba sus credenciales de administrador de Azure AD y haga clic en **Siguiente**.
 
-4. El asistente de Azure AD Connect analiza el estado del atributo msDS-ConsistencyGuid en Active Directory local. Si el atributo no está configurado en ningún objeto del directorio, Azure AD Connect concluye que ninguna otra aplicación está usando en estos momentos el atributo y es seguro usarlo como el atributo sourceAnchor. Haga clic en **Siguiente** para continuar.
+4. Asistente de Azure AD Connect analiza el estado de saludo del atributo msDS-ConsistencyGuid de hello en su Active Directory local. Si no está configurado el atributo de Hola en cualquier objeto en hello que directorio, Azure AD Connect concluye que ninguna otra aplicación está usando el atributo de Hola y es toouse seguro se como atributo de delimitador de origen de Hola. Haga clic en **siguiente** toocontinue.
 
    ![Habilitación de ConsistencyGuid para la implementación existente: paso 4](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment02.png)
 
-5. En la pantalla **Listo para configurar**, haga clic en **Configurar** para que la configuración cambie.
+5. Hola **tooConfigure listo** pantalla, haga clic en **configurar** cambio de configuración de toomake Hola.
 
    ![Habilitación de ConsistencyGuid para la implementación existente: paso 5](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment03.png)
 
-6. Una vez que se complete la configuración, el asistente indica que msDS-ConsistencyGuid ahora se usa como el atributo sourceAnchor.
+6. Una vez que finalice la configuración de hello, Asistente Hola indica que msDS-ConsistencyGuid ahora se usa como atributo de delimitador de origen Hola.
 
    ![Habilitación de ConsistencyGuid para la implementación existente: paso 6](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment04.png)
 
-Durante el análisis (paso 4), si el atributo está configurado en uno o varios objetos del directorio, el asistente concluye que el atributo se está usando en otra aplicación y devuelve un error, como se ilustra en la imagen siguiente. Si está seguro de que el atributo no se está usando en aplicaciones existentes, debe ponerse en contacto con el soporte técnico para obtener información sobre cómo suprimir el error.
+Durante el análisis de hello (paso 4), si se configura el atributo hello en uno o más objetos de directorio hello, Asistente Hola concluye atributo Hola se está usando otra aplicación y devuelve un error como se muestra en el siguiente diagrama de Hola. Si está seguro de que no utiliza ese atributo hello las aplicaciones existentes, debe toocontact soporte técnico para obtener información sobre cómo toosuppress Hola error.
 
 ![Habilitación de ConsistencyGuid para la implementación existente: error](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>Repercusiones en AD FS o la configuración de la federación de terceros
-Si usa Azure AD Connect para administrar una implementación de AD FS local, Azure AD Connect actualiza automáticamente las reglas de notificación para que usen el mismo atributo de AD como sourceAnchor. Esto garantiza que la notificación de ImmutableID generada por AD FS sea coherente con los valores de sourceAnchor que se exportan a Azure AD.
+Si utilizas Azure AD Connect toomanage implementación de AD FS local, hello Azure AD Connect actualiza automáticamente el atributo Hola AD mismo toouse de reglas de notificación de hello como sourceAnchor. Esto garantiza que esa notificación de ImmutableID Hola generada por AD FS es coherente con hello sourceAnchor valores exportados tooAzure AD.
 
-Si administra AD FS fuera de Azure AD Connect o usa servidores de federación de terceros para la autenticación, debe actualizar manualmente las reglas de notificación para que la notificación de ImmutableID sea coherente con los valores de sourceAnchor exportados a Azure AD, como se describe en la sección del artículo [Modificación de las reglas de notificaciones de AD FS](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). El asistente devuelve la siguiente advertencia al completarse la instalación:
+Si está administrando AD FS fuera de Azure AD Connect o está usando los servidores de federación de terceros para la autenticación, debe actualizar manualmente las reglas de notificación de Hola para ImmutableID toobe notificación coherente con los valores de hello sourceAnchor exporta tooAzure AD como se describe en la sección del artículo [modificar AD FS las reglas de notificación](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). Asistente de Hello devuelve Hola después de advertencia después de que finalice la instalación:
 
 ![Configuración de federación de terceros](./media/active-directory-aadconnect-design-concepts/consistencyGuid-03.png)
 
-### <a name="adding-new-directories-to-existing-deployment"></a>Incorporación de nuevos directorios a la implementación existente
-Suponga que ha implementado Azure AD Connect con la característica ConsistencyGuid habilitada y ahora desea agregar otro directorio a la implementación. Cuando intenta agregarlo, el asistente de Azure AD Connect comprueba el estado del atributo msDS-ConsistencyGuid en el directorio. Si el atributo está configurado en uno o varios objetos del directorio, el asistente concluye que el atributo se está usando en otras aplicaciones y devuelve un error, como se ilustra en la imagen siguiente. Si está seguro de que el atributo no se está usando en aplicaciones existentes, debe ponerse en contacto con el soporte técnico para obtener información sobre cómo suprimir el error.
+### <a name="adding-new-directories-tooexisting-deployment"></a>Agregar nueva implementación de tooexisting de directorios
+Suponga que ha implementado Azure AD Connect con hello ConsistencyGuid característica habilitada, y ahora desea tooadd otra implementación de toohello de directorio. Al tratar de directorio de hello tooadd, Asistente de Azure AD Connect comprueba el estado de hello del atributo mSDS-ConsistencyGuid de hello en el directorio de Hola. Si se configura el atributo hello en uno o más objetos de directorio hello, Asistente Hola concluye atributo Hola se está usando en otras aplicaciones y devuelve un error como se muestra en el siguiente diagrama de Hola. Si está seguro de que no utiliza ese atributo hello las aplicaciones existentes, debe toocontact soporte técnico para obtener información sobre cómo toosuppress Hola error.
 
-![Incorporación de nuevos directorios a la implementación existente](./media/active-directory-aadconnect-design-concepts/consistencyGuid-04.png)
+![Agregar nueva implementación de tooexisting de directorios](./media/active-directory-aadconnect-design-concepts/consistencyGuid-04.png)
 
 ## <a name="azure-ad-sign-in"></a>Inicio de sesión de Azure AD
-Al integrar su directorio local con Azure AD, es importante entender cómo la configuración de sincronización puede afectar a la forma en la que los usuarios se autentican. Azure AD usa userPrincipalName (UPN) para autenticar al usuario. Sin embargo, al sincronizar los usuarios tiene que elegir el atributo que se utilizará para el valor userPrincipalName cuidadosamente.
+Al integrar su directorio local con Azure AD, es importante toounderstand cómo configuración de sincronización de hello puede afectar al usuario de manera Hola autentica. Azure AD usa usuario de hello tooauthenticate userPrincipalName (UPN). Sin embargo, al sincronizar los usuarios, debe elegir Hola atributo toobe utilizado para el valor de userPrincipalName con cuidado.
 
-### <a name="choosing-the-attribute-for-userprincipalname"></a>Selección del atributo para userPrincipalName
-Cuando se selecciona el atributo para proporcionar el valor de UPN que se va a usar en Azure es necesario asegurarse de lo siguiente:
+### <a name="choosing-hello-attribute-for-userprincipalname"></a>Atributo de Hola para userPrincipalName
+Debe asegurarse de cuando seleccione atributo Hola para proporcionar el valor de Hola de toobe UPN que se usa en uno de Azure
 
-* Los valores de atributo se ajustan a la sintaxis UPN (RFC 822), es decir, debe tener el formato username@domain
-* El sufijo en los valores coincide con uno de los dominios personalizados comprobados en Azure AD
+* valores de atributo de Hello ajustarse toohello UPN sintaxis (RFC 822), debería tener el formato de Holausername@domain
+* sufijo de Hello en hello tooone de coincidencias de valores de hello comprobado dominios personalizados en Azure AD
 
-En la configuración rápida, la opción que se presupone para el atributo es userPrincipalName. Si el atributo userPrincipalName no contiene el valor que quiera que los usuarios inicien sesión en Azure, debe elegir la **instalación personalizada**.
+En la configuración rápida, Hola supone elección para el atributo de hello es userPrincipalName. Si el atributo userPrincipalName de hello no contiene el valor de Hola desea que su toosign a los usuarios en tooAzure, a continuación, debe elegir **instalación personalizada**.
 
 ### <a name="custom-domain-state-and-upn"></a>Estado de dominio personalizado y UPN
-Es importante asegurarse de que hay un dominio comprobado para el sufijo UPN.
+Es importante tooensure que hay un dominio comprobado para el sufijo UPN de Hola.
 
-John es un usuario de "contoso.com". Desea que John use el UPN local john@contoso.com para iniciar sesión en Azure después haber sincronizado a los usuarios con el directorio de Azure AD azurecontoso.onmicrosoft.com. Para ello, tiene que agregar y comprobar "contoso.com" como un dominio personalizado en Azure AD antes de sincronizar a los usuarios. Si el sufijo UPN de John, por ejemplo, contoso.com, no coincide con un dominio comprobado en Azure AD, Azure AD reemplaza el sufijo UPN con contoso.onmicrosoft.com.
+John es un usuario de "contoso.com". Desea que Juan toouse Hola UPN local john@contoso.com toosign en tooAzure después de se han sincronizado los usuarios tooyour Azure AD directorio contoso.onmicrosoft.com. toodo por lo tanto, necesita tooadd y compruebe contoso.com como un dominio personalizado en Azure AD antes de empezar Vaya a sincronizar usuarios Hola. Si el sufijo UPN de Hola de Juan, por ejemplo, contoso.com, no coincide con un dominio comprobado en Azure AD, Azure AD reemplaza el sufijo UPN de hello con contoso.onmicrosoft.com.
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Dominios locales no enrutables y UPN para Azure AD
-Algunas organizaciones tienen dominios no enrutables, como "contoso.local" o dominios de etiqueta única simple como "contoso". No podrá comprobar un dominio no enrutable en Azure AD. Azure AD Connect puede sincronizarse solo con un dominio comprobado en Azure AD. Cuando se crea un directorio de Azure AD, se crea un dominio enrutable que se convierte en el dominio predeterminado para Azure SD, por ejemplo, "contoso.onmicrosoft.com". Por lo tanto, es necesario comprobar cualquier otro dominio enrutable en este escenario, en caso de que no desee sincronizar con el valor predeterminado ".onmicrosoft.com".
+Algunas organizaciones tienen dominios no enrutables, como "contoso.local" o dominios de etiqueta única simple como "contoso". No son tooverify capaz de un dominio no enrutables en Azure AD. Azure AD Connect puede sincronizar tooonly un dominio comprobado en Azure AD. Cuando se crea un directorio de Azure AD, se crea un dominio enrutable que se convierte en el dominio predeterminado para Azure SD, por ejemplo, "contoso.onmicrosoft.com". Por lo tanto, se convierte en tooverify es necesario ningún otro dominio enrutable en este escenario en caso de que no desea dominio de onmicrosoft.com de toosync toohello predeterminado.
 
-Consulte [Incorporación de su nombre de dominio personalizado a Azure Active Directory](../active-directory-add-domain.md) para más información sobre cómo agregar y comprobar dominios.
+Lectura [agregar su tooAzure de nombre de dominio personalizado Active Directory](../active-directory-add-domain.md) para obtener más información sobre cómo agregar y comprobar los dominios.
 
-Azure AD Connect detecta si está ejecutando en un entorno de dominio no enrutable y le advertirá adecuadamente antes de que prosiga con la configuración rápida. Si está trabajando en un dominio no enrutable, es probable que el UPN de los usuarios tenga también un sufijo no enrutable. Por ejemplo, si se ejecuta bajo "contoso.local", Azure AD Connect le sugiere que utilice la configuración personalizada en lugar de la configuración rápida. Al usar una configuración personalizada, podrá especificar el atributo que debe usarse como UPN para iniciar sesión en Azure después de que los usuarios se sincronicen con Azure AD.
+Azure AD Connect detecta si está ejecutando en un entorno de dominio no enrutable y le advertirá adecuadamente antes de que prosiga con la configuración rápida. Si trabaja en un dominio no es enrutable, es probable que dicho UPN de los usuarios de Hola Hola tienen también sufijos no enrutables. Por ejemplo, si está trabajando en contoso.local, Azure AD Connect sugiere toouse configuración personalizada en lugar de usar configuración rápida. Usar una configuración personalizada, son toospecify capaz de atributo de Hola que debe usarse como UPN toosign en tooAzure después de que los usuarios de hello están sincronizado tooAzure AD.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

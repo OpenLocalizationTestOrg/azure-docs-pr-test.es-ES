@@ -1,5 +1,5 @@
 ---
-title: Expresiones de las directivas de Azure API Management | Microsoft Docs
+title: "expresiones de directiva de administración de API aaaAzure | Documentos de Microsoft"
 description: "Obtenga información acerca de las expresiones de las directivas de Azure API Management."
 services: api-management
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: d96dde8c74141d000c1f7c5fd9ef624ff5e46953
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 79da0d6ca3963307ec811a33aaac3d63a7abd97d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-policy-expressions"></a>Expresiones de las directivas de API Management
-La sintaxis de las expresiones de las directivas es C# 6.0. Cada expresión tiene acceso a la variable de [contexto](api-management-policy-expressions.md#ContextVariables) proporcionada de forma implícita y a un [subconjunto](api-management-policy-expressions.md#CLRTypes) permitido de tipos de .NET Framework.  
+La sintaxis de las expresiones de las directivas es C# 6.0. Cada expresión tiene toohello de acceso proporciona de forma implícita [contexto](api-management-policy-expressions.md#ContextVariables) variable y permitido [subconjunto](api-management-policy-expressions.md#CLRTypes) de tipos de .NET Framework.  
   
 > [!NOTE]
->  Para obtener más información sobre las expresiones de directiva, consulte el vídeo [Policy Expressions](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/) (Expresiones de directivas).  
+>  Para obtener más información acerca de las expresiones de directiva, vea hello [expresiones de directiva](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/) vídeo.  
 >   
->  Para ver una demostración de la configuración de directivas que usan expresiones, consulte [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Episodio 177 de Cloud Cover: más características API Management con Vlad Vinogradsky). Este vídeo contiene las siguientes demostraciones de expresiones de directivas.  
+>  Para ver una demostración de la configuración de directivas que usan expresiones, consulte [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Episodio 177 de Cloud Cover: más características API Management con Vlad Vinogradsky). Este vídeo contiene Hola después demostraciones de expresión de directiva.  
 >   
->  -   En el minuto 10:30 conocerá cómo se aplica la directiva en el nivel de API para proporcionar información de contexto al servicio back-end utilizando las directivas [de establecimiento del parámetro de cadena de consulta](api-management-transformation-policies.md#SetQueryStringParameter) y de [establecimiento del encabezado HTTP](api-management-transformation-policies.md#SetHTTPheader). En el minuto 12:10 se realiza una demostración de cómo llamar a una operación en el portal para desarrolladores donde podrá ver estas directivas en funcionamiento.  
-> -   En el minuto 13:50 se muestra cómo utilizar la directiva de [validación de JWT](api-management-access-restriction-policies.md#ValidateJWT) para preautorizar el acceso a operaciones según notificaciones de token. Avance rápidamente hasta 15:00 para ver las directivas configuradas en el editor de directivas y hasta 18:50 para ver una demostración de llamada de una operación desde el portal para desarrolladores tanto con y sin el token de autorización necesario.  
-> -   En el minuto 21:00 verá cómo se utiliza un seguimiento de [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) para ver cómo se evalúan las directivas y los resultados de las evaluaciones.  
-> -   En el minuto 25:25 se muestra cómo usar expresiones de directivas con las directivas de [obtención de caché](api-management-caching-policies.md#GetFromCache) y [lmacenamiento en caché](api-management-caching-policies.md#StoreToCache) para configurar la duración del almacenamiento en memoria caché de la respuesta de API Management para que coincida con el almacenamiento en caché de respuesta del servicio back-end especificado por la directiva `Cache-Control` de dicho servicio.  
-> -   En el minuto 34:30 se muestra cómo filtrar contenido quitando elementos de datos de la respuesta recibida desde el servicio back-end mediante las directivas de [flujo de control](api-management-advanced-policies.md#choose) y [establecimiento de cuerpo](api-management-transformation-policies.md#SetBody). Empiece en el minuto 31:50 para ver una introducción a la [API de previsión de Dark Sky](https://developer.forecast.io/) empleada en esta demostración.  
-> -   Para descargar las declaraciones de directiva que se usan en este vídeo, acceda a [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) en el repositorio de GitHub.  
+>  -   10:30 - vea cómo Directiva tooapply en API Hola nivel servicio toosupply contexto información toohello back-end mediante hello [establecer el parámetro de cadena de consulta](api-management-transformation-policies.md#SetQueryStringParameter) y [encabezado HTTP establecer](api-management-transformation-policies.md#SetHTTPheader) directivas. No hay una demostración de llamar a una operación de portal para desarrolladores de Hola donde puede ver estas directivas en el trabajo a las 12:10.  
+> -   13:50 - vea cómo hello toouse [validar JWT](api-management-access-restriction-policies.md#ValidateJWT) toopre directiva-autorizar toooperations de acceso basado en notificaciones de token. Avance rápido too15:00 las directivas de hello toosee configuradas en el editor de directiva de hello y, a continuación, too18:50 para ver una demostración de la llamada a una operación de portal para desarrolladores de hello con y sin Hola necesario token de autorización.  
+> -   21:00 - vea cómo toouse una [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) toosee cómo las directivas se evalúan y Hola resultados de las evaluaciones de Hola de seguimiento.  
+> -   25:25 - vea cómo Hola toouse las expresiones de directiva con [obtener de caché](api-management-caching-policies.md#GetFromCache) y [toocache almacén](api-management-caching-policies.md#StoreToCache) respuesta de administración de API de directivas tooconfigure almacenamiento en caché de duración que coincidencias hello las respuestas en caché de hello servicio de back-end tal y como especifica Hola realizó la copia del servicio `Cache-Control` directiva.  
+> -   34:30 - vea cómo contenido tooperform filtrado mediante la eliminación de elementos de datos de respuesta de hello recibido del servicio de back-end de hello mediante hello [flujo de Control](api-management-advanced-policies.md#choose) y [establecer cuerpo](api-management-transformation-policies.md#SetBody) directivas. Iniciar en 31:50 toosee una visión general de [Hola API de previsión de Sky oscuro](https://developer.forecast.io/) utilizada para esta demostración.  
+> -   las instrucciones de directiva de hello toodownload utilizadas en este vídeo, consulte hello [api--ejemplos/directivas de administración de](https://github.com/Azure/api-management-samples/tree/master/policies) repositorio de github.  
   
   
 ##  <a name="Syntax"></a> Sintaxis  
@@ -68,13 +68,13 @@ La sintaxis de las expresiones de las directivas es C# 6.0. Cada expresión tien
 ```  
   
 ##  <a name="PolicyExpressionsUsage"></a> Uso  
- Las expresiones pueden utilizarse como valores de atributos o valores de texto en cualquiera de las [directivas](api-management-policies.md) de API Management, a menos que la referencia de la directiva especifique lo contrario.  
+ Pueden utilizarse expresiones como valores de atributo o valores de texto en cualquiera de administración de API de hello [directivas](api-management-policies.md), a menos que la referencia de la directiva de Hola se especifique lo contrario.  
   
 > [!IMPORTANT]
->  Tenga en cuenta que, al utilizar expresiones de directiva, solo hay una comprobación limitada de estas cuando se define la directiva. Dado que la puerta de enlace ejecuta las expresiones durante el tiempo de ejecución en la canalización de entrada o de salida, cualquier excepción de tiempo de ejecución que genere las expresiones de directiva producirá un error de tiempo de ejecución en la llamada API.  
+>  Tenga en cuenta que cuando utilice expresiones de directiva, hay solo una comprobación limitada de expresiones de directiva de Hola Hola directiva definida. Dado que las expresiones de Hola se ejecutan en tiempo de ejecución de canalización de entrada o salida de hello puerta de enlace de hello, las excepciones de tiempo de ejecución generadas por las expresiones de directiva Hola producirá un error en tiempo de ejecución en la llamada de hello API.  
   
 ##  <a name="CLRTypes"></a>Tipos de .NET framework que se permiten en expresiones de directiva  
- En la tabla siguiente se enumeran los tipos de .NET Framework que se permiten en las expresiones de directiva y sus miembros.  
+ Hello tabla siguiente enumeran los tipos de .NET Framework de Hola y los miembros que se permiten en expresiones de directiva.  
   
 |Tipos CLR|Métodos admitidos|  
 |--------------|-----------------------|  
@@ -168,7 +168,7 @@ La sintaxis de las expresiones de las directivas es C# 6.0. Cada expresión tien
 |System.Xml.XmlNodeType|Todo|  
   
 ##  <a name="ContextVariables"></a> Variable de contexto  
- Una variable denominada `context` está disponible implícitamente en todas las [expresiones](api-management-policy-expressions.md#Syntax) de directiva. Sus miembros proporcionan información relativa a `\request`. Todos los miembros de `context` son de solo lectura.  
+ Una variable denominada `context` está disponible implícitamente en todas las [expresiones](api-management-policy-expressions.md#Syntax) de directiva. Sus miembros proporcionan información pertinente toohello `\request`. Todos los de hello `context` miembros son de solo lectura.  
   
 |Variable de contexto|Métodos, propiedades y valores de parámetro admitidos|  
 |----------------------|-------------------------------------------------------|  
@@ -179,26 +179,26 @@ La sintaxis de las expresiones de las directivas es C# 6.0. Cada expresión tien
 |context.Operation|Id: cadena<br /><br /> Method: cadena<br /><br /> Name: cadena<br /><br /> UrlTemplate: cadena|  
 |context.Product|Apis: IEnumerable<IApi\><br /><br /> ApprovalRequired: bool<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: cadena<br /><br /> Name: cadena<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|  
 |context.Request|Body: IMessageBody<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Headers: IReadOnlyDictionary<cadena, cadena[]><br /><br /> IpAddress: cadena<br /><br /> MatchedParameters: IReadOnlyDictionary<cadena, cadena><br /><br /> Method: cadena<br /><br /> OriginalUrl:IUrl<br /><br /> Url: IUrl|  
-|string context.Request.Headers.GetValueOrDefault(headerName: cadena, defaultValue: cadena)|headerName: cadena<br /><br /> defaultValue: cadena<br /><br /> Devuelve valores de encabezado de solicitud separados por comas o `defaultValue`, si no se encuentra el encabezado.|  
+|string context.Request.Headers.GetValueOrDefault(headerName: cadena, defaultValue: cadena)|headerName: cadena<br /><br /> defaultValue: cadena<br /><br /> Valores de encabezado de solicitud separados por comas de Devuelve o `defaultValue` si no se encuentra el encabezado de Hola.|  
 |context.Response|Body: IMessageBody<br /><br /> Headers: IReadOnlyDictionary<cadena, cadena[]><br /><br /> StatusCode: int<br /><br /> StatusReason: cadena|  
-|string context.Response.Headers.GetValueOrDefault(headerName: cadena, defaultValue: cadena)|headerName: cadena<br /><br /> defaultValue: cadena<br /><br /> Devuelve valores de encabezado de respuesta separados por comas o `defaultValue`, si no se encuentra el encabezado.|  
+|string context.Response.Headers.GetValueOrDefault(headerName: cadena, defaultValue: cadena)|headerName: cadena<br /><br /> defaultValue: cadena<br /><br /> Devuelve valores de encabezado de respuesta separados por coma o `defaultValue` si no se encuentra el encabezado de Hola.|  
 |context.Subscription|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> Id: cadena<br /><br /> Key: cadena<br /><br /> Name: cadena<br /><br /> PrimaryKey: cadena<br /><br /> SecondaryKey: cadena<br /><br /> StartDate: DateTime?|  
 |context.User|Email: cadena<br /><br /> FirstName: cadena<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: cadena<br /><br /> Identities: IEnumerable<IUserIdentity\><br /><br /> LastName: cadena<br /><br /> Note: cadena<br /><br /> RegistrationDate: DateTime|  
 |IApi|Id: cadena<br /><br /> Name: cadena<br /><br /> Path: cadena<br /><br /> Protocols: IEnumerable<cadena\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|  
 |IGroup|Id: cadena<br /><br /> Name: cadena|  
-|IMessageBody|As<T\>(preserveContent: bool = false): donde T: cadena, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Los métodos `context.Request.Body.As<T>` y `context.Response.Body.As<T>` se usan para leer los cuerpos de un mensaje de respuesta y solicitud en un tipo `T` especificado. De forma predeterminada, el método usa la secuencia de cuerpo del mensaje original y lo presenta como no disponible tras la devolución. Para evitar este resultado haciendo que el método procese una copia de la secuencia del cuerpo, establezca el parámetro `preserveContent` en `true`. Vaya [aquí](api-management-transformation-policies.md#SetBody) para ver un ejemplo.|  
+|IMessageBody|As<T\>(preserveContent: bool = false): donde T: cadena, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Hola `context.Request.Body.As<T>` y `context.Response.Body.As<T>` métodos son utilizado tooread organismos de un mensaje de solicitud y respuesta en un tipo especificado `T`. De forma predeterminada hello secuencia de cuerpo de método usa Hola original mensajes y reneders no está disponible después de devuelve. tooavoid que manteniendo método hello operan en una copia de la secuencia del cuerpo hello, conjunto hello `preserveContent` parámetro demasiado`true`. Vaya [aquí](api-management-transformation-policies.md#SetBody) toosee muestra un ejemplo.|  
 |IUrl|Host: cadena<br /><br /> Path: cadena<br /><br /> Port: int<br /><br /> Query: IReadOnlyDictionary<cadena, cadena[]><br /><br /> QueryString: cadena<br /><br /> Scheme: cadena|  
 |IUserIdentity|Id: cadena<br /><br /> Provider: cadena|  
 |ISubscriptionKeyParameterNames|Header: cadena<br /><br /> Query: cadena|  
-|string IUrl.Query.GetValueOrDefault(queryParameterName: cadena, defaultValue: cadena)|queryParameterName: cadena<br /><br /> defaultValue: cadena<br /><br /> Devuelve valores de parámetro de consulta separados por comas o `defaultValue`, si no se encuentra el parámetro.|  
-|T context.Variables.GetValueOrDefault<T\>(variableName: cadena, defaultValue: T)|variableName: cadena<br /><br /> defaultValue: T<br /><br /> Devuelve el valor de la variable convertido al tipo `T` o `defaultValue` si no se encuentra la variable.<br /><br /> Este método produce una excepción si el tipo especificado no coincide con el tipo real de la variable devuelta.|  
-|BasicAuthCredentials AsBasic(input: esta cadena)|input: cadena<br /><br /> Si el parámetro de entrada contiene un valor válido de encabezado de solicitud de autorización de autenticación básica HTTP, el método devuelve un objeto de tipo `BasicAuthCredentials`; en caso contrario, el método devuelve nulo.|  
-|bool TryParseBasic(input: esta cadena, result: BasicAuthCredentials de salida)|input: cadena<br /><br /> resultado: out BasicAuthCredentials<br /><br /> Si el parámetro de entrada contiene un valor válido de encabezado de solicitud de autorización de autenticación básica HTTP, el método devuelve `true` y el parámetro de resultado contiene un valor del tipo `BasicAuthCredentials`; en caso contrario, el método devuelve `false`.|  
+|string IUrl.Query.GetValueOrDefault(queryParameterName: cadena, defaultValue: cadena)|queryParameterName: cadena<br /><br /> defaultValue: cadena<br /><br /> Valores de parámetro de consulta separados por comas de Devuelve o `defaultValue` si no se encuentra el parámetro hello.|  
+|T context.Variables.GetValueOrDefault<T\>(variableName: cadena, defaultValue: T)|variableName: cadena<br /><br /> defaultValue: T<br /><br /> Devuelve el valor de la variable conversión tootype `T` o `defaultValue` si no se encuentra la variable de saludo.<br /><br /> Este método produce una excepción si hello tipo especificado no coincide con tipo real de Hola de hello devuelve la variable.|  
+|BasicAuthCredentials AsBasic(input: esta cadena)|input: cadena<br /><br /> Si el parámetro de entrada de hello contiene un valor válido del encabezado de solicitud de autorización de la autenticación básica HTTP, método hello devuelve un objeto de tipo `BasicAuthCredentials`; en caso contrario, el método hello devuelve null.|  
+|bool TryParseBasic(input: esta cadena, result: BasicAuthCredentials de salida)|input: cadena<br /><br /> resultado: out BasicAuthCredentials<br /><br /> Si el parámetro de entrada de hello contiene un valor válido del encabezado de solicitud de autorización de la autenticación básica HTTP, método hello devuelve `true` y parámetro de resultado de hello contiene un valor de tipo `BasicAuthCredentials`; en caso contrario, devuelve el método hello `false`.|  
 |BasicAuthCredentials|Password: cadena<br /><br /> UserId: cadena|  
-|Jwt AsJwt(input: esta cadena)|input: cadena<br /><br /> Si el parámetro de entrada contiene un valor de token JWT válido, el método devuelve un objeto de tipo `Jwt`; en caso contrario, el método devuelve `null`.|  
-|bool TryParseJwt(input: esta cadena, result: Jwt de salida)|input: cadena<br /><br /> resultado: JWT de salida<br /><br /> Si el parámetro de entrada contiene un valor de token JWT válido, el método devuelve `true` y el parámetro de resultado contiene un valor de tipo `Jwt`; en caso contrario, el método devuelve `false`.|  
+|Jwt AsJwt(input: esta cadena)|input: cadena<br /><br /> Si el parámetro de entrada de hello contiene un valor de token JWT válido, el método hello devuelve un objeto de tipo `Jwt`; en caso contrario, devuelve el método hello `null`.|  
+|bool TryParseJwt(input: esta cadena, result: Jwt de salida)|input: cadena<br /><br /> resultado: JWT de salida<br /><br /> Si el parámetro de entrada de hello contiene un valor de token JWT válido, método hello devuelve `true` y parámetro de resultado de hello contiene un valor de tipo `Jwt`; en caso contrario, devuelve el método hello `false`.|  
 |Jwt|Algorithm: cadena<br /><br /> Audience: IEnumerable<cadena\><br /><br /> Claims: IReadOnlyDictionary<cadena, cadena[]><br /><br /> ExpirationTime: DateTime?<br /><br /> Id: cadena<br /><br /> Issuer: cadena<br /><br /> NotBefore: DateTime?<br /><br /> Subject: cadena<br /><br /> Type: cadena|  
-|cadena Jwt.Claims.GetValueOrDefault(claimName: cadena, defaultValue: cadena)|claimName: cadena<br /><br /> defaultValue: cadena<br /><br /> Devuelve valores de notificación separados por comas o `defaultValue`, si no se encuentra el encabezado.|
+|cadena Jwt.Claims.GetValueOrDefault(claimName: cadena, defaultValue: cadena)|claimName: cadena<br /><br /> defaultValue: cadena<br /><br /> Devuelve los valores de notificación separados por comas o `defaultValue` si no se encuentra el encabezado de Hola.|
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para más información sobre cómo trabajar con directivas, consulte a [Directivas de API Management](api-management-howto-policies.md).  

@@ -1,6 +1,6 @@
 ---
-title: "Restablecimiento de contraseñas en Azure Active Directory | Microsoft Docs"
-description: "En este artículo se explica cómo restablecer la contraseña de un usuario de Azure Active Directory | Microsoft Azure"
+title: aaaPassword restablecer en Azure Active Directory | Documentos de Microsoft
+description: "Explica cómo tooreset Hola contraseña para un usuario en Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,36 +16,36 @@ ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e7c38c7f0d40a310dd0b6bd0e866d2d55115550
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4bb201803ffc50bcc937a309ae4f0d613da2ae4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Restablecimiento de la contraseña de un usuario en Azure Active Directory
+# <a name="reset-hello-password-for-a-user-in-azure-active-directory"></a>Restablecer la contraseña de Hola para un usuario en Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Portal de Azure](active-directory-users-reset-password-azure-portal.md)
 > * [Portal de Azure clásico](active-directory-create-users-reset-password.md)
 >
 >
 
-## <a name="how-to-reset-the-password-for-a-user"></a>Restablecimiento de la contraseña de un usuario
-1. Inicie sesión en [Azure Portal](https://portal.azure.com) con una cuenta que tenga el rol de administrador global en el directorio.
-2. Seleccione **Más servicios**, escriba **Usuarios y grupos** en el cuadro de texto y presione **Entrar**.
+## <a name="how-tooreset-hello-password-for-a-user"></a>¿Cómo tooreset Hola contraseña para un usuario
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+2. Seleccione **más servicios**, escriba **usuarios y grupos** en Hola cuadro de texto y, a continuación, seleccione **ENTRAR**.
 
    ![Apertura de Administración de usuarios](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
-3. En la hoja **Usuarios y grupos**, seleccione **Usuarios**.
+3. En hello **usuarios y grupos** hoja, seleccione **usuarios**.
 
-   ![Apertura de la hoja Usuarios](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
-4. En la hoja **Usuarios y grupos - Usuarios** , seleccione un usuario de la lista.
-5. En la hoja del usuario seleccionado, seleccione **Introducción** y, después, en la barra de comandos, seleccione **Restablecer contraseña**.
+   ![Hoja de apertura Hola usuarios](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
+4. En hello **a los usuarios y grupos: los usuarios** hoja, seleccione un usuario de la lista de Hola.
+5. En la hoja de hello para el usuario seleccionado de hello, seleccione **Introducción**y, a continuación, en la barra de comandos de hello, seleccione **de restablecimiento de contraseña**.
 
-    ![Selección del comando Restablecer contraseña](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
-6. En la hoja **Restablecer contraseña**, seleccione **Restablecer contraseña**.
+    ![Seleccionar Hola Reset, comando de contraseña](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
+6. En hello **de restablecimiento de contraseña** hoja, seleccione **de restablecimiento de contraseña**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Adición de un usuario](active-directory-users-create-azure-portal.md)
-* [Asignar a un usuario a un rol de Azure AD](active-directory-users-assign-role-azure-portal.md)
+* [Asignar un rol de usuario tooa en Azure AD](active-directory-users-assign-role-azure-portal.md)
 * [Cambiar la información de trabajo de un usuario](active-directory-users-work-info-azure-portal.md)
 * [Administrar perfiles de usuario](active-directory-users-profile-azure-portal.md)
 * [Eliminar un usuario de Azure AD](active-directory-users-delete-user-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Mobile Apps: tutoriales y referencia de API | Microsoft Docs"
-description: Aprenda a usar Mobile Apps en Azure App Service para compilar y hospedar aplicaciones iOS, Android o Windows nativas o aplicaciones multiplataforma con Xamarin o Cordova.
+title: "aaaAzure documentación de aplicaciones móviles - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse aplicaciones móviles en Windows, Android o iOS nativo toobuild y el host de servicio de aplicaciones de Azure o las aplicaciones multiplataforma con Xamarin o Cordova."
 services: app-service\mobile
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 09b103b274c66f515d9a34bbdcb54cf0ff3a035a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="mobile-apps-documentation"></a>Documentación de Mobile Apps
 
-Aprenda a usar Mobile Apps en Azure App Service para compilar aplicaciones iOS, Android o Windows nativas o aplicaciones multiplataforma con Xamarin o Cordova. En los tutoriales, los vídeos, la documentación del SDK de cliente y demás, se muestra cómo compilar y hospedar el back-end para cualquier aplicación móvil.
+Obtenga información acerca de cómo toouse aplicaciones móviles en el servicio de aplicaciones de Azure toobuild nativas para iOS, Android o Windows o aplicaciones multiplataforma con Xamarin o Cordova. Tutoriales, vídeos, documentación del SDK de cliente y más mostrarán cómo toobuild y host Hola back-end para cualquier aplicación móvil.
 
 <ul class="panelContent cardsFTitle">
     <li>

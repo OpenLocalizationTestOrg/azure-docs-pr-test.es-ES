@@ -1,6 +1,6 @@
 ---
-title: Web App on Linux | Microsoft Docs
-description: "¿Qué es Web App on Linux? Introducción a Web App on Linux"
+title: "Aplicación en Linux aaaWeb | Documentos de Microsoft"
+description: "¿Qué es Web App on Linux? Una aplicación en Linux de introducción tooWeb."
 keywords: azure app service, linux, oss
 services: app-service
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: naziml
-ms.openlocfilehash: 4207da871572cf60e3c33cafd68e8e122ce2028c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2be7bb3446aa5fcf206264370fb1e1ebcdfc44d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="web-app-on-linux-documentation"></a>Documentación de Web App on Linux
-Web App on Linux está actualmente en versión preliminar pública y permite a los clientes ejecutar sus aplicaciones web de forma nativa en una plataforma Linux. lo que mejora la compatibilidad de ciertos tipos de aplicaciones y facilita la migración de las aplicaciones web existentes hospedadas en una plataforma de Linux a otra parte de Azure App Services.
+Web App en Linux está actualmente en versión preliminar pública y permite a los clientes toorun sus aplicaciones web de forma nativa en una plataforma de Linux. Esto permite una mejor compatibilidad con las aplicaciones de ciertos tipos de aplicaciones y hace que sea más fácil toomigrate existente aplicaciones web hospedadas en una plataforma de Linux en otra parte en servicios de aplicaciones de Azure.
 
 Los clientes pueden crear aplicaciones web en Linux solo dentro un plan de App Service habilitado para Linux y dicho plan solo puede hospedar aplicaciones web basadas en Linux. 
 
-> El precio de la versión preliminar pública de Web App on Linux es un 50 % del precio normal y se calcula reduciendo a la mitad el número de horas de proceso que consume el plan de App Service.
+> Precio de vista previa pública para la aplicación Web en Linux es un 50% de precio normal de Hola y Hola precio se calcula mediante la reducción de número de Hola de horas de proceso consumida por su Plan de servicio de aplicaciones.
 > 
-> No se ofrece Acuerdo de Nivel de Servicio durante el período de versión preliminar pública. 
+> No se ofrece ningún SLA durante el período de vista previa pública de Hola. 
 > 
 > 
 

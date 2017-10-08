@@ -1,5 +1,5 @@
 ---
-title: "Solución de problemas de pertenencia dinámica para grupos| Microsoft Docs"
+title: "aaaTroubleshooting pertenencia dinámica para grupos | Documentos de Microsoft"
 description: "Solución de problemas para la pertenencia dinámica para grupos en Azure AD."
 services: active-directory
 documentationcenter: 
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: curtand
-ms.openlocfilehash: 32947e8cc69c9a48d9a285bf0a37ab3398571f86
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d792fc406288844e2c5dbe3702c2c9870d09473e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>Solución de problemas relacionados con las pertenencias dinámicas para grupos
-**He configurado una regla en un grupo pero las pertenencias no se actualizan en el grupo**.<br/>Compruebe que la opción **Habilitar la administración de grupos delegados** está establecida en **Sí** en la pestaña **Configurar**. Esta opción solo se verá si ha iniciado sesión como un usuario a quien se ha asignado una licencia de Active Directory Premium de Azure. Compruebe los valores de atributos de usuario en la regla: ¿hay usuarios que cumplen la regla?
+**He configurado una regla en un grupo pero ningún pertenencias a grupos se actualizan en el grupo de Hola**<br/>Compruebe que hello **Habilitar administración de grupos delegados** opción se establece demasiado**Sí** en hello **configurar** ficha. Verá esta opción únicamente si ha iniciado sesión ya está asignado a un toowhom de usuario una licencia de Azure Active Directory Premium. Comprobar los valores de hello para los atributos de usuario en la regla de hello: ¿hay usuarios que cumplen la regla de hello?
 
-**He configurado una regla, pero ahora se han quitado los miembros existentes de la regla**.<br/>Este es el comportamiento esperado. Los miembros existentes del grupo se quitan cuando una regla se habilita o se cambia. Los usuarios devueltos tras la evaluación de la regla se agregan como miembros al grupo.     
+**He configurado una regla, pero ahora se quitan los miembros existentes de Hola de regla de Hola**<br/>Este es el comportamiento esperado. Los miembros existentes del grupo de Hola se quitan cuando se habilita o modifica una regla. los usuarios de Hello procedentes de la evaluación de regla de Hola se agregan como toohello grupo de miembros.     
 
-**No veo los cambios en la pertenencia al instante cuando agrego o cambio una regla, ¿por qué pasa esto?**<br/>La evaluación de pertenencia dedicada se realiza periódicamente en un proceso asincrónico en segundo plano. La duración del proceso viene determinada por el número de usuarios del directorio y el tamaño del grupo creado como resultado de la regla. Normalmente, los directorios con un número pequeño de usuarios verán los cambios en la pertenencia al grupo en unos pocos minutos. Los directorios con un gran número de usuarios pueden tardar 30 minutos o más en completarse.
+**No veo los cambios en la pertenencia al instante cuando agrego o cambio una regla, ¿por qué pasa esto?**<br/>La evaluación de pertenencia dedicada se realiza periódicamente en un proceso asincrónico en segundo plano. ¿Durante cuánto tiempo Hola proceso toma viene determinado por número de Hola de los usuarios de su tamaño hello y directorio de los grupos de hello creado como resultado de la regla de Hola. Por lo general, directorios con un número pequeño de usuarios verán los cambios de pertenencia de grupo de hello en unos pocos minutos. Directorios con un gran número de usuarios pueden tardar 30 minutos o más toopopulate.
 
 ### <a name="next-steps"></a>Pasos siguientes
 Estos artículos proporcionan información adicional sobre Azure Active Directory.
 
-* [Administración del acceso a los recursos con grupos de Azure Active Directory](active-directory-manage-groups.md)
+* [Administrar acceso tooresources con grupos de Active Directory de Azure](active-directory-manage-groups.md)
 * [Índice de artículos sobre la administración de aplicaciones en Azure Active Directory](active-directory-apps-index.md)
 * [¿Qué es Azure Active Directory?](active-directory-whatis.md)
 * [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md)

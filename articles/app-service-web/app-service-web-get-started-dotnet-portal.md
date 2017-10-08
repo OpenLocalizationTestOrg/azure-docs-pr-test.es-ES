@@ -1,6 +1,6 @@
 ---
-title: "Implementación de una aplicación web de Umbraco en Azure Portal en cinco minutos | Microsoft Docs"
-description: "Aprenda lo fácil que es ejecutar aplicaciones web en App Service mediante la implementación de una aplicación ASP.NET de ejemplo. Vea los resultados inmediatamente."
+title: "una aplicación web de Umbraco Hola portal de Azure en cinco minutos aaaDeploy | Documentos de Microsoft"
+description: "Obtenga información acerca de lo fácil que es toorun las aplicaciones web en el servicio de aplicaciones mediante la implementación de una aplicación de ASP.NET de ejemplo. Vea los resultados inmediatamente."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: cephalin
-ms.openlocfilehash: 9e3e2130a66cdfe5f06eb3b366e53028c44e7e6a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6da45f99b3043a3684e3d99c14e6443d597b5212
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-an-umbraco-web-app-in-the-azure-portal-in-five-minutes"></a>Implementación de una aplicación web de Umbraco en Azure Portal en cinco minutos
+# <a name="deploy-an-umbraco-web-app-in-hello-azure-portal-in-five-minutes"></a>Implementar una aplicación web de Umbraco Hola portal de Azure en cinco minutos
 
-Este tutorial le ayuda a implementar una aplicación web de [Umbraco](https://our.umbraco.org/) en [Azure App Service](../app-service/app-service-value-prop-what-is.md) en cuestión de minutos.
+Este tutorial le ayudará a implementar n [Umbraco](https://our.umbraco.org/) aplicación web demasiado[servicio de aplicaciones de Azure](../app-service/app-service-value-prop-what-is.md) en minutos.
 
 ![Aplicación de Umbraco](./media/app-service-web-get-started-dotnet-portal/defaultpage.png)
 
@@ -30,50 +30,50 @@ Este tutorial le ayuda a implementar una aplicación web de [Umbraco](https://ou
 Necesita una cuenta de Microsoft Azure. Si aún no tiene ninguna, puede [registrarse para una evaluación gratuita](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) o [activar las ventajas de suscriptor de Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> También puede [probar App Service](https://azure.microsoft.com/try/app-service/) sin una cuenta de Azure. Cree una aplicación de inicio y juegue con ella durante una hora como máximo; no se requiere ninguna tarjeta de crédito ni ningún compromiso.
+> También puede [probar App Service](https://azure.microsoft.com/try/app-service/) sin una cuenta de Azure. Crear una aplicación de inicio y trabajar con él para la hora de tooan--ninguna tarjeta de crédito necesario, sin compromisos.
 > 
 > 
 
-## <a name="deploy-the-aspnet-app"></a>Implementación de la aplicación ASP.NET
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+## <a name="deploy-hello-aspnet-app"></a>Implementar la aplicación ASP.NET de hello
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 
 2. Abra [https://portal.azure.com/#create/umbracoorg.UmbracoCMS](https://portal.azure.com/#create/umbracoorg.UmbracoCMS).
 
-    Este vínculo es un acceso directo para configurar inmediatamente una nueva aplicación de Umbraco en Azure Portal.
+    Este vínculo es un método abreviado tooimmediately configurar una nueva aplicación de Umbraco Hola portal de Azure.
 
-3. En **Nombre de la aplicación**, escriba un nombre de aplicación web. Verá una marca de verificación verde en el cuadro si el nombre es único en el dominio `azurewebsites.net`.
+3. En **Nombre de la aplicación**, escriba un nombre de aplicación web. Verá una marca de verificación verde en el cuadro de hello si Hola nombre es único en hello `azurewebsites.net` dominio.
    
-5. En **Grupo de recursos**, haga clic en **Create new** (Crear nuevo) para crear un nuevo [grupo de recursos](../azure-resource-manager/resource-group-overview.md) y, luego, asígnele un nombre.
+5. En **grupo de recursos**, haga clic en **crear nuevo** toocreate un nuevo [grupo de recursos](../azure-resource-manager/resource-group-overview.md), a continuación, asígnele un nombre.
 
-7. Haga clic en **Plan de App Service/Ubicación** > **Create New** (Crear nuevo). Configure el [plan de App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) tal como se muestra:
+7. Haga clic en **Plan de App Service/Ubicación** > **Create New** (Crear nuevo). Configurar hello [plan de servicio de aplicaciones](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) tal como se muestra:
 
-    - En **Plan de App Service**, escriba el nombre deseado.
-    - En **Ubicación**, elija una ubicación para hospedar el plan.
+    - En **plan de servicio de aplicaciones**, nombre de tipo hello deseado.
+    - En **ubicación**, elegir una ubicación toohost el plan.
     - Haga clic en **Plan de tarifa** y luego seleccione **F1 Free** (F1 Gratis) u otro plan que se adapta a sus necesidades y, seguidamente, haga clic en **Seleccionar**.
     - Haga clic en **Aceptar**.
 
-    La configuración de CMS de Umbraco debe parecerse a la captura de pantalla siguiente:
+    La configuración de Umbraco CMS debe parecerse Hola siguiente captura de pantalla:
 
     ![Configuración en curso: primera aplicación de Umbraco en Azure App Service](./media/app-service-web-get-started-dotnet-portal/configure-in-progress.png)
 
-12. Haga clic en **SQL Database** > **Crear una base de datos nueva**. Configure la base de datos SQL tal y como se muestra:
+12. Haga clic en **SQL Database** > **Crear una base de datos nueva**. Configurar base de datos SQL de hello tal como se muestra:
 
     - En **Nombre**, escriba un nombre, como **myBD**.
     - Haga clic en **Plan de tarifa** y luego seleccione **F1 Free** (F1 Gratis) u otro plan que se adapta a sus necesidades y, seguidamente, haga clic en **Seleccionar**.
-    - Haga clic en **Servidor de destino** > **Crear un servidor nuevo**. Configure el servidor de base de datos tal y como se muestra:
+    - Haga clic en **Servidor de destino** > **Crear un servidor nuevo**. Configurar el servidor de base de datos de hello tal como se muestra:
 
-        - En **Nombre del servidor**, escriba un nombre para el servidor. Verá una marca de verificación verde en el cuadro si el nombre es único en el dominio `.database.windows.net`.
-        - En **Inicio de sesión del administrador del servidor**, escriba el nombre de usuario de administrador deseado.
-        - En **Contraseña** y **Confirmar contraseña**, escriba la contraseña deseada.
-        - En Ubicación, seleccione la misma ubicación que usa para la aplicación web.
-        - Asegúrese de que la opción **Permitir que los servicios de Azure accedan al servidor** esté seleccionada.
+        - En **Nombre del servidor**, escriba un nombre para el servidor. Verá una marca de verificación verde en el cuadro de hello si Hola nombre es único en hello `.database.windows.net` dominio.
+        - En **inicio de sesión de administrador de servidor**, Hola tipo deseado de nombre de usuario de administrador.
+        - En **contraseña** y **Confirmar contraseña**, contraseña de tipo hello deseada.
+        - En ubicación, seleccione Hola la misma ubicación que utiliza para la aplicación web de Hola.
+        - Asegúrese de que **server tooaccess de permitir que los servicios de azure** está seleccionada.
         - Haga clic en **Seleccionar**.
     
     - Haga clic en **Seleccionar**.
 
-13. Haga clic en **Configuración de aplicación web**, especifique el nombre de usuario y la contraseña de la base de datos y haga clic en **Aceptar**.
+13. Haga clic en **configuración de aplicación Web**, especifique el nombre de usuario de base de datos de Hola y la contraseña y haga clic en **Aceptar**.
 
-    La configuración de CMS de Umbraco debe parecerse a la captura de pantalla siguiente:
+    La configuración de Umbraco CMS debe parecerse Hola siguiente captura de pantalla:
 
     ![Configuración finalizada: primera aplicación de Umbraco en Azure App Service](./media/app-service-web-get-started-dotnet-portal/configure-complete.png)
 
@@ -89,19 +89,19 @@ Cuando Azure finalice la implementación de aplicación, verá otra notificació
 
 ![La implementación finalizó correctamente: primera aplicación de Umbraco en Azure App Service](./media/app-service-web-get-started-dotnet-portal/deployment-succeeded.png)
 
-1. Haga clic en la notificación. Si se la ha perdido, siempre puede acceder a ella haciendo clic en la campana de notificación (![Notificación siguiente: primera aplicación de Umbraco en Azure App Service](./media/app-service-web-get-started-dotnet-portal/notification.png)).
+1. Haga clic en la notificación de Hola. Si se lo haya perdido, siempre puede acceso haciendo clic en campana de notificación de hello (![siguientes notificación - Umbraco primero en el servicio de aplicación de Azure](./media/app-service-web-get-started-dotnet-portal/notification.png)).
 
     Ahora verá la [hoja](../azure-resource-manager/resource-group-portal.md#manage-resources) de administración de la aplicación web (*hoja*: una página del portal que se abre horizontalmente).
 
-3. En la parte superior de la página de introducción, haga clic en **Examinar**.
+3. En la parte superior de Hola de página de información general de hello, haga clic en **examinar**.
    
     ![Examinar: primera aplicación de Umbraco en Azure App Service](./media/app-service-web-get-started-dotnet-portal/browse.png)
 
-    Ahora puede ver la página de **bienvenida** de Umbraco. Configure la instalación de Umbraco y ya puede comenzar a jugar.
+    Ahora puede ver Hola Umbraco **bienvenida** página. Configurar una instalación de Umbraco de Hola y comenzar a jugar con él.
 
     ![Configuración de Umbraco: primera aplicación de Umbraco en Azure App Service](./media/app-service-web-get-started-dotnet-portal/umbraco-config.png)
     
 ## <a name="next-steps"></a>Pasos siguientes
-* [Implementación de una aplicación web creada con ASP.NET en Azure App Service mediante Visual Studio](app-service-web-get-started-dotnet.md): aprenda a crear una nueva aplicación web de Azure desde Visual Studio, con cualquiera de las plantillas de aplicación que se incluyen.
-* [Implementación del código en Azure App Service](web-sites-deploy.md): aprenda a implementar desde FTP o desde repositorios de control del código fuente.
-* [Incorporación de funcionalidad a su primera aplicación web](app-service-web-get-started-2.md): lleve su aplicación de Azure al siguiente nivel. Autentique los usuarios. Escálela según la demanda. Configure algunas alertas de rendimiento. Todo ello con unos cuantos clics.
+* [Implementar una aplicación de web ASP.NET tooAzure servicio de aplicación mediante Visual Studio](app-service-web-get-started-dotnet.md) -Descubra cómo toocreate una nueva aplicación web de Azure desde Visual Studio, con cualquiera de hello incluye plantillas de la aplicación.
+* [Implementar el servicio de aplicaciones de código tooAzure](web-sites-deploy.md)-Obtenga información acerca de cómo toodeploy de FTP o de origen controlar repositorios.
+* [Agregar funcionalidad tooyour primera web aplicación](app-service-web-get-started-2.md) -lleve su aplicación de Azure toohello siguiente nivel. Autentique los usuarios. Escálela según la demanda. Configure algunas alertas de rendimiento. Todo ello con unos cuantos clics.

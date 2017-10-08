@@ -1,6 +1,6 @@
 ---
-title: "Bibliotecas de autenticación de Azure Active Directory v2.0 | Microsoft Docs"
-description: "Las bibliotecas de cliente y de middleware de servidor compatibles, junto con vínculos dlibrary/source/samples relacionados, para el punto de conexión Azure Active Directory v2.0."
+title: "bibliotecas de autenticación de v2.0 de Active Directory aaaAzure | Documentos de Microsoft"
+description: "Bibliotecas de cliente compatible y bibliotecas de middleware de servidor y biblioteca relacionado, origen y vínculos de ejemplos, para el punto de conexión de hello Azure Active Directory v2.0."
 services: active-directory
 documentationcenter: 
 author: dstrockis
@@ -15,45 +15,45 @@ ms.workload: identity
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: c8dc0fab1a4da2bf9ae1463cb5e17fc2c2b12e5c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7affdaac3a087b951d54d96fa68edde2a065172
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Bibliotecas de autenticación de Azure Active Directory v2.0
-El punto de conexión Azure Active Directory (Azure AD) v2.0 admite los protocolos OAuth 2.0 y OpenID Connect 1.0 estándar del sector. Puede utilizar diversas bibliotecas de Microsoft y otras organizaciones con el punto de conexión de v2.0.
+el punto de conexión de Hello Azure Active Directory (Azure AD) v2.0 admite protocolos de OAuth 2.0 y OpenID Connect 1.0 estándar del sector Hola. Puede usar distintas bibliotecas de Microsoft y otras organizaciones con el punto de conexión de hello v2.0.
 
-Al compilar una aplicación que utiliza el punto de conexión v2.0, se recomienda usar bibliotecas que hayan escrito expertos en los dominios del protocolo que sigan una metodología de ciclo de vida de desarrollo de seguridad (SDL), como [a la que sigue Microsoft][Microsoft-SDL]. Si decide codificar manualmente los protocolos, se recomienda seguir la metodología SDL y observar detenidamente las consideraciones de seguridad de las especificaciones de los estándares de cada protocolo.
+Al compilar una aplicación que utiliza el punto de conexión de hello v2.0, recomendamos que utilice bibliotecas escritas por expertos de dominio de protocolo que sigan una metodología de ciclo de vida de desarrollo de seguridad (SDL), como [Hola uno seguido por Microsoft] [Microsoft-SDL]. Si decide soporte toohand código para los protocolos de hello, se recomienda seguir la metodología SDL y preste especial atención toohello consideraciones de seguridad en las especificaciones de los estándares de Hola para cada protocolo.
 
 ## <a name="types-of-libraries"></a>Tipos de bibliotecas
 Azure AD v2.0 funciona con dos tipos de bibliotecas:
 
-* **Bibliotecas de cliente**. Los servidores y clientes nativos utilizan bibliotecas de clientes para obtener tokens de acceso para llamar a un recurso, como Microsoft Graph.
-* **Bibliotecas de middleware de servidores**. Las aplicaciones web usan bibliotecas de middleware de servidor para el inicio de sesión de usuario. Las API de web utilizan bibliotecas de middleware de servidor para validar los tokens que se envían mediante clientes nativos o mediante otros servidores.
+* **Bibliotecas de cliente**. Servidores y clientes nativos usan tokens de acceso de tooget de bibliotecas de cliente para llamar a un recurso, como Microsoft Graph.
+* **Bibliotecas de middleware de servidores**. Las aplicaciones web usan bibliotecas de middleware de servidor para el inicio de sesión de usuario. Las API Web usan tokens de toovalidate de bibliotecas de middleware de servidor que se envían mediante clientes nativos o en los otros servidores.
 
 ## <a name="library-support"></a>Compatibilidad con bibliotecas
-Puesto que puede elegir cualquier biblioteca que cumpla los estándares al utilizar el punto de conexión v2.0, es importante saber dónde obtener soporte técnico. Para problemas y solicitudes de características en el código de la biblioteca, póngase en contacto con el propietario de la biblioteca. Para problemas y solicitudes de características de la implementación del protocolo en el servicio, póngase en contacto con Microsoft.
+Dado que puede elegir cualquier biblioteca compatible con los estándares cuando se utiliza el punto de conexión de hello v2.0, es importante tooknow donde toogo para soporte técnico. Para problemas y las solicitudes de características en el código de biblioteca, póngase en contacto con el propietario de la biblioteca de Hola. Para las solicitudes de características de implementación de protocolo del servicio de Hola y problemas, póngase en contacto con Microsoft.
 
 Las bibliotecas se dividen en dos categorías de soporte técnico:
 
 * **Soporte técnico de Microsoft**. Microsoft proporciona soluciones para estas bibliotecas y ha hecho las diligencias necesarias con SDL para estas bibliotecas.
-* **Compatible**. Microsoft ha probado estas bibliotecas en escenarios básicos y ha confirmado que funcionan con el punto de conexión v2.0. Microsoft no proporciona correcciones para estas bibliotecas y no ha realizado una revisión de estas bibliotecas. Los problemas y las solicitudes de características deben dirigirse al proyecto de código abierto de la biblioteca.
+* **Compatible**. Microsoft ha probado estas bibliotecas en escenarios básicos y confirmar que funcionan con el punto de conexión de hello v2.0. Microsoft no proporciona correcciones para estas bibliotecas y no ha realizado una revisión de estas bibliotecas. Problemas y las solicitudes de características deben ser el proyecto de código abierto de la biblioteca de toohello dirigida.
 
-Para obtener una lista de bibliotecas que funcionan con el punto de conexión v2.0, lea las secciones siguientes de este artículo.
+Para obtener una lista de bibliotecas que funcionan con el punto de conexión de hello v2.0, consulte las secciones siguientes de Hola de este artículo.
 
 
 ## <a name="microsoft-supported-client-libraries"></a>Bibliotecas de cliente compatibles con Microsoft
 
 > [!IMPORTANT]
-> Las bibliotecas de versión preliminar MSAL son adecuadas para su uso en entorno de producción. Se ofrece el mismo soporte técnico de nivel de producción para estas bibliotecas que para nuestras bibliotecas de producción actuales (ADAL). Durante el período de versión preliminar pueden realizarse cambios a la API de MSAL, al formato de la memoria caché interna y a otros mecanismos de estas bibliotecas sin previo aviso, lo que deberá aceptar junto con correcciones de errores o mejoras de las características. Esto puede afectar a la aplicación. Por ejemplo, un cambio al formato de la memoria caché puede afectar a sus usuarios, como, por ejemplo, exigirles que vuelva a iniciar sesión. Un cambio a la API puede requerir que actualice el código. Cuando se ofrezca la versión de disponibilidad general, deberá actualizar a esta versión en los seis meses siguientes, ya que es posible que las aplicaciones escritas con una versión de biblioteca de versión preliminar dejen de funcionar.
+> bibliotecas de vista previa de Hello MSAL son adecuadas para su uso en un entorno de producción. Proporcionamos Hola mismo soporte de nivel de producción de estas bibliotecas como lo hacemos nuestras bibliotecas de producción actual (AAL). Durante la vista previa de Hola que realizamos cambios toohello MSAL API, formato de caché interna, y otros mecanismos de estas bibliotecas sin previo aviso, que será necesario tootake junto con correcciones o mejoras de las características. Esto puede afectar a la aplicación. Por ejemplo, un formato de caché de toohello de cambio puede afectar a los usuarios, como el requerimiento de ellos toosign de nuevo. Un cambio en la API puede requerir tooupdate su código. Cuando se proporciona Hola versión de disponibilidad General, se requerirá tooupdate toohello Disponibilidad General versión dentro de seis meses, como las aplicaciones escritas mediante una vista previa versión de biblioteca ya no funcionen.
 
 | Plataforma | Biblioteca | Descargar | Código fuente | Muestra | Referencia
 | --- | --- | --- | --- | --- | --- |
 | Cliente .NET, Tienda Windows, UWP, Xamarin iOS y Android | MSAL .NET (versión preliminar) |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Aplicación de escritorio](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  |
 | JavaScript | MSAL.js (versión preliminar) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [Aplicación de una sola página](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  |
 | iOS, macOS | MSAL (versión preliminar) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [Aplicación para iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
-| Android | MSAL (versión preliminar) | [The Central Repository](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Aplicación para Android](guidedsetups/active-directory-mobileanddesktopapp-android-intro.md) | [JavaDocs](http://javadoc.io/doc/com.microsoft.identity.client/msal) |
+| Android | MSAL (versión preliminar) | [Hola repositorio Central](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Aplicación para Android](guidedsetups/active-directory-mobileanddesktopapp-android-intro.md) | [JavaDocs](http://javadoc.io/doc/com.microsoft.identity.client/msal) |
 
 ## <a name="microsoft-supported-server-middleware-libraries"></a>Bibliotecas de middleware de servidor compatibles de Microsoft
 
@@ -78,12 +78,12 @@ Para obtener una lista de bibliotecas que funcionan con el punto de conexión v2
 | Plataforma | Nombre de la biblioteca | Versión probada | Código fuente | Muestra |
 |:---:|:---:|:---:|:---:|:---:|
 | Java | [Scribejava Scribe Java](https://github.com/scribejava/scribejava) | [Versión 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/archive/scribejava-3.2.0.zip) | |
-| PHP | [PHP League oauth2-cliente](https://github.com/thephpleague/oauth2-client) | [Versión 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | |
+| PHP | [Hola PHP liga oauth2-cliente](https://github.com/thephpleague/oauth2-client) | [Versión 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | |
 | Python-Flask |[Matraz OAuthlib](https://github.com/lepture/flask-oauthlib) |0.9.3 |[Matraz OAuthlib](https://github.com/lepture/flask-oauthlib) |[Aplicación web](https://github.com/Azure-Samples/active-directory-python-flask-graphapi-web-v2) |
 | Ruby |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1</br>omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)</br>[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 
 ## <a name="related-content"></a>Contenido relacionado
-Para obtener más información sobre el punto de conexión de Azure AD v2.0, consulte la [introducción a la versión 2.0 del modelo de aplicaciones de Azure AD][AAD-App-Model-V2-Overview].
+Para obtener más información sobre el punto de conexión de hello Azure AD v2.0, consulte hello [información general de v2.0 del modelo de aplicaciones de Azure AD][AAD-App-Model-V2-Overview].
 
 <!--Image references-->
 

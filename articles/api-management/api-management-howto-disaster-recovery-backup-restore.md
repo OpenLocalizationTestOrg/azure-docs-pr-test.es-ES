@@ -1,6 +1,6 @@
 ---
-title: "Implementación de la recuperación ante desastres mediante copias de seguridad y restauración en Azure API Management | Microsoft Docs"
-description: "Obtenga información acerca de cómo usar las tareas de copias de seguridad y restauración para llevar a cabo la recuperación ante desastres en Administración de API de Azure."
+title: "recuperación ante desastres de aaaImplement mediante una copia de seguridad y restauración en la administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse copias de seguridad y restaura tooperform de recuperación ante desastres en la administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,60 +14,60 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 07c0265490cfae733133b6e0c938f90f9b392da4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 058bfb579e3a3f51fb1dac8ea37eb4fdbc83a4ad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Procedimiento para implementar la recuperación ante desastres mediante copias de seguridad y restauración del servicio en Administración de API de Azure
-Si decide publicar y administrar las API a través de Administración de API de Azure, podrá aprovechar numerosas capacidades de infraestructura y tolerancia a errores que con otros recursos tendría que diseñar, implementar y administrar. La plataforma Azure mitiga una gran cantidad de posibles errores a un costo reducido.
+# <a name="how-tooimplement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>¿Cómo tooimplement ante desastres recuperación mediante copia de seguridad de servicio y restaurar en la administración de API de Azure
+Mediante la elección de toopublish y administrar las API a través de administración de API de Azure se sacar partido de las muchas capacidades de tolerancia y la infraestructura del error que, de lo contrario tendría toodesign, implementar y administrar. Hola plataforma Windows Azure, mitiga una gran parte de los posibles errores en una fracción del costo de Hola.
 
-Para poder recuperarse de problemas de disponibilidad que afecten a la región donde se hospeda el servicio Administración de API, debe estar preparado para reconstituir el servicio en una región diferente en cualquier momento. En función de sus objetivos de disponibilidad y tiempo de recuperación, tal vez desee reservar un servicio de copia de seguridad en una o varias regiones e intentar mantener sincronizados con el servicio activo el contenido y la configuración correspondientes. La característica de copia de seguridad y restauración del servicio ofrece el apoyo necesario para implementar una estrategia de recuperación ante desastres.
+toorecover de problemas de disponibilidad que afectan a Hola región donde reside el servicio de administración de API hospedadas debe ser tooreconstitute preparado su servicio en una región diferente en cualquier momento. Según los objetivos de disponibilidad y el objetivo de tiempo de recuperación podría desea tooreserve un servicio de copia de seguridad en una o varias regiones e intente toomaintain su configuración y contenido sincronizado con el servicio activo de Hola. copia de seguridad de servicio de Hola y la característica de restauración proporciona Hola bloques de creación necesarios para implementar la estrategia de recuperación ante desastres.
 
-Esta guía muestra cómo autenticar las solicitudes del Administrador de recursos de Azure y cómo realizar copias de seguridad y restauraciones de las instancias de servicio de administración de API.
+Esta guía le mostrará cómo tooauthenticate Azure Resource Manager solicita y cómo toobackup y restaurar las instancias de servicio de administración de API.
 
 > [!NOTE]
-> El proceso de copia de seguridad y restauración de una instancia del servicio de administración de API para recuperación ante desastres también puede utilizarse para replicar las instancias de servicio de administración de API para escenarios como almacenamiento provisional.
+> proceso de Hola para realizar copias de seguridad y restauración de una instancia de servicio de administración de API para la recuperación ante desastres puede utilizarse también para la replicación de instancias de servicio de administración de API para escenarios, como el almacenamiento provisional.
 >
-> Tenga en cuenta que cada copia de seguridad expira después de 30 días. Si intenta restaurar una copia de seguridad una vez transcurrido el período de expiración de 30 días, se producirá un error en la restauración con un mensaje `Cannot restore: backup expired`.
+> Tenga en cuenta que cada copia de seguridad expira después de 30 días. Si intentas toorestore una copia de seguridad después de que ha expirado el período de expiración de 30 días de hello, se producirá un error de restauración de hello con un `Cannot restore: backup expired` mensaje.
 >
 >
 
 ## <a name="authenticating-azure-resource-manager-requests"></a>Solicitudes de autenticación del Administrador de recursos de Azure
 > [!IMPORTANT]
-> La API de REST para copia de seguridad y restauración utiliza el Administrador de recursos de Azure y tiene un mecanismo de autenticación diferente que las API de REST para administrar las entidades de la administración de API. Los pasos de esta sección describen cómo autenticar las solicitudes del Administrador de recursos de Azure. Par obtener más información, consulte [Solicitudes de autenticación del Administrador de recursos de Azure](http://msdn.microsoft.com/library/azure/dn790557.aspx).
+> Hello API de REST para copia de seguridad y restauración usa Azure Resource Manager y tiene un mecanismo de autenticación distinto de hello las API de REST para administrar las entidades de la administración de API. pasos de Hello en esta sección describe cómo solicita tooauthenticate Azure Resource Manager. Par obtener más información, consulte [Solicitudes de autenticación del Administrador de recursos de Azure](http://msdn.microsoft.com/library/azure/dn790557.aspx).
 >
 >
 
-Todas las tareas que se realizan en los recursos mediante el Administrador de recursos de Azure deben autenticarse con Azure Active Directory mediante los siguientes pasos.
+Todas las tareas de Hola que realice en los recursos con hello Azure Resource Manager deben autenticarse con Azure Active Directory con hello pasos.
 
-* Agregue una aplicación al inquilino de Azure Active Directory.
-* Establezca permisos para la aplicación que ha agregado.
-* Obtenga el token para autenticar solicitudes al Administrador de recursos de Azure.
+* Agregar a un inquilino de Azure Active Directory de toohello de aplicación.
+* Establecer permisos para la aplicación hello que agregó.
+* Obtener token de Hola para autenticar las solicitudes tooAzure el Administrador de recursos.
 
-El primer paso es crear una aplicación de Azure Active Directory. Inicie sesión en el [Portal de Azure clásico](http://manage.windowsazure.com/) mediante la suscripción que contiene la instancia del servicio Administración de API y navegue hasta la pestaña **Aplicaciones** para su Azure Active Directory predeterminado.
+Hola primer paso es toocreate una aplicación de Azure Active Directory. Inicie sesión en hello [Portal clásico de Azure](http://manage.windowsazure.com/) usando suscripción Hola que contiene el servicio de administración de API de instancia y navegue toohello **aplicaciones** ficha para su Azure Active Directory de manera predeterminada.
 
 > [!NOTE]
-> Si el directorio predeterminado de Azure Active Directory no está visible en su cuenta, póngase en contacto con el administrador de la suscripción de Azure para que le conceda los permisos necesarios para su cuenta.
+> Si directorio predeterminado de hello Azure Active Directory no es visible tooyour cuenta, Administrador de contacto Hola de Hola Hola de toogrant de suscripción de Azure requiere una cuenta con permisos tooyour.
 
 ![Creación de una aplicación de Azure Active Directory][api-management-add-aad-application]
 
-Haga clic en **Agregar**, **Agregar una aplicación que mi organización está desarrollando** y elija **Aplicación de cliente nativo**. Escriba un nombre descriptivo y haga clic en la flecha siguiente. Escriba una dirección URL de marcador de posición como `http://resources` para el **URI de redireccionamiento**, ya que es un campo obligatorio, pero el valor no se utiliza más adelante. Haga clic en la casilla para guardar la aplicación.
+Haga clic en **Agregar**, **Agregar una aplicación que mi organización está desarrollando** y elija **Aplicación de cliente nativo**. Escriba un nombre descriptivo y haga clic en la flecha siguiente Hola. Escriba una dirección URL de marcador de posición como `http://resources` para hello **URI de redireccionamiento**, tal y como es un campo obligatorio, pero no se usa el valor de hello más tarde. Haga clic en la aplicación de hello casilla toosave Hola.
 
-Una vez que se guarda la aplicación, haga clic en **Configurar**, desplácese hacia abajo a la sección **Permisos para otras aplicaciones** y haga clic en **Agregar aplicación**.
+Una vez que se guarda la aplicación hello, haga clic en **configurar**, desplácese hacia abajo toohello **permisos tooother aplicaciones** sección y haga clic en **Agregar aplicación**.
 
 ![Adición de permisos][api-management-aad-permissions-add]
 
-Seleccione **Windows** **Azure Service Management API** y haga clic en la casilla para agregar la aplicación.
+Seleccione **Windows** **API de administración de servicios de Azure** y haga clic en la aplicación de hello casilla tooadd Hola.
 
 ![Adición de permisos][api-management-aad-permissions]
 
-Haga clic en **Permisos delegados** al lado de la aplicación recién agregada **Windows** **Azure Service Management API**, active la casilla para **Acceso a Azure Service Management (vista previa)** y haga clic en **Guardar**.
+Haga clic en **permisos delegados** lateral Hola recién agregado **Windows** **API de administración de servicios de Azure** aplicación, casilla Hola para **acceso de Azure Administración de servicios (versión preliminar)**y haga clic en **guardar**.
 
 ![Adición de permisos][api-management-aad-delegated-permissions]
 
-Antes de invocar las API que generan la copia de seguridad y la restauran, es necesario obtener un token. En el ejemplo siguiente se utiliza el paquete de nuget [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) para recuperar el token.
+Tooinvoking anterior hello las API que generan Hola copia de seguridad y restaurarlo, es necesario tooget un token. Hello en el ejemplo siguiente se usa hello [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) token de Hola de tooretrieve de paquete de nuget.
 
 ```c#
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -83,7 +83,7 @@ namespace GetTokenResourceManagerRequests
             var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
 
             if (result == null) {
-                throw new InvalidOperationException("Failed to obtain the JWT token");
+                throw new InvalidOperationException("Failed tooobtain hello JWT token");
             }
 
             Console.WriteLine(result.AccessToken);
@@ -94,105 +94,105 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Reemplace `{tentand id}`, `{application id}` y `{redirect uri}` mediante las siguientes instrucciones.
+Reemplace `{tentand id}`, `{application id}`, y `{redirect uri}` Hola siguiendo las instrucciones de uso.
 
-Reemplace `{tenant id}` con el identificador del inquilino de la aplicación de Azure Active Directory que acaba de crear. Para tener acceso al Id. haga clic en **Ver extremos**.
+Reemplace `{tenant id}` con el identificador de inquilino de Hola de hello aplicación de Azure Active Directory que acaba de crear. Puede tener acceso a identificador hello haciendo clic en **ver extremos**.
 
 ![Puntos de conexión][api-management-aad-default-directory]
 
 ![Puntos de conexión][api-management-endpoint]
 
-Reemplace `{application id}` y `{redirect uri}` mediante el **Id. de cliente** y la dirección URL de la sección **URI de redirección** desde la pestaña **Configurar** de su aplicación de Azure Active Directory.
+Reemplace `{application id}` y `{redirect uri}` con hello **Id. de cliente** y Hola dirección URL de hello **URI de redireccionamiento** sección de la aplicación de Azure Active Directory **configurar**  ficha.
 
 ![Recursos][api-management-aad-resources]
 
-Una vez que se especifican los valores, el ejemplo de código debe devolver un token similar al ejemplo siguiente.
+Una vez que se especifican valores de hello, ejemplo de código de hello debe devolver un token toohello similar siguiente ejemplo.
 
 ![SWT][api-management-arm-token]
 
-Antes de llamar a las operaciones de copia de seguridad y restauración descritas en las secciones siguientes, establezca el encabezado de solicitud de autorización para la llamada REST.
+Antes de llamar a Hola copia de seguridad y restaurar las operaciones que se describe en las secciones siguientes de hello, establezca el encabezado de solicitud de autorización de hello para la llamada de REST.
 
 ```c#
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-## <a name="step1"> </a>Crear una copia de seguridad del servicio API Management
-Para crear una copia de seguridad del servicio API Management, emita esta solicitud HTTP:
+## <a name="step1"></a>Crear una copia de seguridad del servicio API Management
+tooback seguridad un Hola de problema de servicio de administración de API después de la solicitud HTTP:
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
 
 donde:
 
-* `subscriptionId`: identificador de la suscripción que contiene el servicio Administración de API del que desea crear una copia de seguridad.
-* `resourceGroupName`: una cadena de tipo "Api-Default-{service-region}", donde `service-region` identifica la región de Azure donde se hospeda el servicio Administración de API del que desea crear una copia de seguridad (por ejemplo, `North-Central-US`).
-* `serviceName` : el nombre del servicio Administración de API del que desea crear una copia de seguridad que se especificó durante su creación.
+* `subscriptionId`-Id. de suscripción de Hola que contiene el servicio de administración de API de hello estás intentando toobackup
+* `resourceGroupName`-una cadena con formato hello 'Api - Default: {región del servicio}' donde `service-region` identifica Hola región de Azure donde se hospeda el servicio de administración de API que estamos toobackup Hola, p. ej.`North-Central-US`
+* `serviceName`-nombre de Hola de hello servicio de administración de API que se está realizando una copia de seguridad especificado en tiempo de presentación de su creación
 * `api-version`: reemplazar por `2014-02-14`
 
-En el cuerpo de la solicitud, especifique el nombre de la copia de seguridad, el nombre del contenedor de blobs, la clave de acceso y el nombre de la cuenta de almacenamiento de Azure de destino:
+En el cuerpo de saludo de solicitud de hello, especifique el nombre de cuenta de almacenamiento de Azure de destino de hello, clave de acceso, el nombre del contenedor de blob y nombre de la copia de seguridad:
 
 ```
 '{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
+    storageAccount : {storage account name for hello backup},  
+    accessKey : {access key for hello account},  
     containerName : {backup container name},  
     backupName : {backup blob name}  
 }'
 ```
 
-Establezca el valor del encabezado de solicitud `Content-Type` en `application/json`.
+Establecer valor de Hola de hello `Content-Type` encabezado de solicitud demasiado`application/json`.
 
-La creación de una copia de seguridad es una operación de larga duración que puede tardar varios minutos en completarse.  Si la solicitud es correcta y el proceso de copia de seguridad se inicia, recibirá un código de estado de respuesta `202 Accepted` con el encabezado `Location`.  Realice solicitudes "GET" en la URL del encabezado `Location` para averiguar el estado de la operación. Mientras se crea la copia de seguridad, recibirá el código de estado "202 Aceptado". El código de respuesta `200 OK` indica que la operación de copia de seguridad se ha completado correctamente.
+Copia de seguridad es una operación larga que puede tardar varios toocomplete minutos.  Si se completó la solicitud de Hola y se inició el proceso de copia de seguridad de hello recibirá un `202 Accepted` código de estado de respuesta con un `Location` encabezado.  Asegúrese de 'GET'. las solicitudes URL toohello Hola `Location` toofind encabezado estado Hola de operación de Hola. Mientras se realiza la copia de seguridad de hello continuará tooreceive un código de estado '202 aceptado'. El código de respuesta `200 OK` indicará la finalización correcta de la operación de copia de seguridad de Hola.
 
-Tenga en cuenta las siguientes restricciones al realizar una solicitud de copia de seguridad.
+Tenga en cuenta las siguientes restricciones cuando se realiza una solicitud de copia de seguridad de Hola.
 
-* El **contenedor** que se especifique en el cuerpo de la solicitud **debe ser real**.
+* **Contenedor** especificado en el cuerpo de la solicitud de hello **debe existir**.
 * Mientras se crea la copia de seguridad, **no realice ninguna operación de administración del servicio** (por ejemplo, una actualización o degradación de SKU o un cambio de nombre de dominio).
-* La restauración de una **copia de seguridad se garantiza solo durante 30 días** a partir del momento en que esta se crea.
-* Los **datos de uso** con los que se crean informes de análisis **no se incluyen** en la copia de seguridad. La [API de REST de Azure API Management][Azure API Management REST API] permite recibir de forma periódica informes de análisis para guardarlos en un lugar seguro.
-* La frecuencia con la que se crean las copias de seguridad afecta al objetivo de punto de recuperación. Para minimizarlo, se recomienda crear las copias de seguridad de forma periódica y también a petición tras realizar cambios importantes en el servicio Administración de API.
-* Es posible que los **cambios** que se realicen en la configuración del servicio (por ejemplo, en la API, las directivas o la apariencia del portal para desarrolladores) mientras se está realizando la copia de seguridad **no se incluyan en la copia de seguridad y se pierdan**.
+* Restauración de un **copia de seguridad se garantiza que sólo durante 30 días** desde el momento de Hola de su creación.
+* **Datos de uso** utiliza para crear informes de análisis **no se incluye** en copia de seguridad de Hola. Use [API de REST de administración de API de Azure] [ Azure API Management REST API] tooperiodically recuperar informes de análisis por motivos de seguridad.
+* frecuencia de Hello con el que realizar copias de seguridad de servicio afectará a su objetivo de punto de recuperación. toominimize, se recomienda implementar copias de seguridad periódicas, así como realizar copias de seguridad a petición después de realizar importante cambia tooyour servicio de administración de API.
+* **Cambios** configuración del servicio realizadas toohello (p. ej., API, las directivas de apariencia portal para desarrolladores) durante la operación de copia de seguridad está en curso **no pueden incluirse en la copia de seguridad de hello y, por tanto, se perderán**.
 
-## <a name="step2"> </a>Restaurar el servicio Administración de API
-Para restaurar el servicio Administración de API de una copia de seguridad anterior, realice esta solicitud HTTP:
+## <a name="step2"></a>Restaurar el servicio Administración de API
+toorestore un servicio de administración de API desde una copia de seguridad creado anteriormente que Hola después de la solicitud HTTP:
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}`
 
 donde:
 
-* `subscriptionId`: identificador de la suscripción que contiene el servicio Administración de API en el que se restaura una copia de seguridad.
-* `resourceGroupName`: una cadena de tipo "Api-Default-{service-region}", donde `service-region` identifica la región de Azure donde se hospeda el servicio Administración de API en el que desea restaurar una copia de seguridad (por ejemplo, `North-Central-US`).
-* `serviceName` : el nombre del servicio Administración de API que desea restaurar que se especificó durante su creación.
+* `subscriptionId`-Id. de suscripción de Hola que contiene el servicio de administración de API de hello va a restaurar una copia de seguridad en
+* `resourceGroupName`-una cadena con formato hello 'Api - Default: {región del servicio}' donde `service-region` identifica Hola región de Azure donde se hospeda Hola va a restaurar una copia de seguridad en el servicio de administración de API, p. ej.`North-Central-US`
+* `serviceName`-nombre de Hola de hello administración de API se restauran en el servicio especificado en tiempo de presentación de su creación
 * `api-version`: reemplazar por `2014-02-14`
 
-En el cuerpo de la solicitud, especifique la ubicación del archivo de copia de seguridad, es decir, el nombre de la copia de seguridad, el nombre del contenedor de blobs, la clave de acceso y el nombre de la cuenta de almacenamiento de Azure:
+En el cuerpo de saludo de solicitud de hello, especificar ubicación del archivo de copia de seguridad de hello, es decir, nombre de la cuenta de almacenamiento de Azure, la clave de acceso, el nombre del contenedor de blob y nombre de copia de seguridad:
 
 ```
 '{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
+    storageAccount : {storage account name for hello backup},  
+    accessKey : {access key for hello account},  
     containerName : {backup container name},  
     backupName : {backup blob name}  
 }'
 ```
 
-Establezca el valor del encabezado de solicitud `Content-Type` en `application/json`.
+Establecer valor de Hola de hello `Content-Type` encabezado de solicitud demasiado`application/json`.
 
-La restauración es una operación de larga duración que puede tardar 30 minutos o más en completarse.  Si la solicitud es correcta y el proceso de restauración se inicia, recibirá un código de estado de respuesta `202 Accepted` con el encabezado `Location`.  Realice solicitudes "GET" en la URL del encabezado `Location` para averiguar el estado de la operación. Mientras se realiza la restauración, recibirá el código de estado "202 Aceptado". El código de respuesta `200 OK` indica que la operación de restauración se ha completado correctamente.
+Restauración es una operación larga que puede llevar hasta too30 o toocomplete de minutos más.  Si se completó la solicitud de Hola y se inició el proceso de restauración de hello recibirá un `202 Accepted` código de estado de respuesta con un `Location` encabezado.  Asegúrese de 'GET'. las solicitudes URL toohello Hola `Location` toofind encabezado estado Hola de operación de Hola. Mientras se realiza la restauración de hello continuará tooreceive código de estado de "202 Accepted". El código de respuesta `200 OK` indicará la finalización correcta de la operación de restauración de Hola.
 
 > [!IMPORTANT]
-> **La SKU** en la que desea restaurar el servicio **debe coincidir** con la SKU del servicio del que ha creado una copia de seguridad que desea restaurar.
+> **Hola SKU** del servicio de Hola se restauran en **debe coincidir con** Hola SKU de hello copia de seguridad que se están restaurando el servicio.
 >
-> Los **cambios** que se realicen en la configuración del servicio (por ejemplo, en la API, las directivas o la apariencia del portal para desarrolladores) con el proceso de restauración en curso **pueden sobrescribirse**.
+> **Cambios** toohello realizadas servicio configuración (por ejemplo, API, directivas, apariencia portal para desarrolladores) durante la operación de restauración está en curso **podría sobrescribirse**.
 >
 >
 
 ## <a name="next-steps"></a>Pasos siguientes
-Consulte los siguientes blogs de Microsoft para dos tutoriales diferentes del proceso de copia de seguridad y restauración.
+Extraer del repositorio Hola después de blogs de Microsoft para los dos tutoriales diferentes del proceso de copia de seguridad/restauración Hola.
 
 * [Replicate Azure API Management Accounts (Réplica de cuentas de Administración de API de Azure)](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
-  * Gracias a Gisela por su colaboración en este artículo.
+  * Gracias tooGisela para su artículo de toothis contribución.
 * [Azure API Management: Backing Up and Restoring Configuration (Administración de API de Azure: copia de seguridad y restauración de la configuración)](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-  * El enfoque detallado por Stuart no coincide con la orientación oficial, pero es muy interesante.
+  * enfoque de Hello detallado por Stuart no coincide con la orientación oficial de Hola pero es muy interesante.
 
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2

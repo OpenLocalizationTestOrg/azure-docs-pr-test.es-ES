@@ -1,6 +1,6 @@
 ---
-title: Notificaciones de informes de Azure Active Directory
-description: "Uso de las notificaciones de informes de Azure Active Directory para inicios de sesión sospechosos"
+title: aaaAzure notificaciones de informes de Active Directory
+description: "¿Cómo toouse Hola las notificaciones informes de Azure Active Directory para el inicio de sesión sospechoso ins."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -16,36 +16,36 @@ ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f4632bd2af802b10c8c64972e8c605d7ad7c0eaf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3843c45eaf9d68e671943bfdbc7ab68933f38fbb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Notificaciones de informes de Azure Active Directory
 ## <a name="what-reports-generate-email-notifications"></a>Qué informes generan notificaciones de correo electrónico
-En este momento, solo el informe Actividad de inicio de sesión irregular desencadena notificaciones por correo electrónico.
+En este momento, solo Hola inicios de sesión anómalos en los desencadenadores de informe de actividad notificaciones por correo electrónico.
 
 ## <a name="what-is-an-irregular-sign-in"></a>¿Qué es un "inicio de sesión irregular"?
-Los inicios de sesión irregulares son aquellos que han identificado los algoritmos de aprendizaje automático, de acuerdo con una condición de "viaje imposible" combinada con una ubicación y un dispositivo de inicio de sesión anómalos. Esto puede indicar que un hacker ha intentado iniciar sesión con esta cuenta.
+Inicios de sesión irregulares son aquellos que se han identificado por nuestro algoritmos, según Hola de una condición de "viaje imposible" combinada con una ubicación de inicio de sesión anómala y el dispositivo de aprendizaje automático. Esto puede indicar que un hacker ha ha intentado toosign sesión con esta cuenta.
 
-## <a name="who-receives-the-email-notifications"></a>¿Quién recibe las notificaciones de correo electrónico?
-El correo electrónico se envía a todos los administradores globales a los que se ha asignado una licencia de Active Directory Premium. Para asegurarnos de que se entrega, también lo enviamos a la dirección de correo electrónico alternativa de los administradores. Los administradores deben incluir aad-alerts-noreply@mail.windowsazure.com en su lista de remitentes seguros para no perder el correo electrónico.
+## <a name="who-receives-hello-email-notifications"></a>¿Quién recibe notificaciones de correo electrónico de hello?
+correo electrónico de Hola se envía tooall administradores globales que se ha asignado una licencia de Active Directory Premium. tooensure se envía, además lo enviamos toohello administradores dirección de correo electrónico alternativa también. Los administradores deben incluir aad-alerts-noreply@mail.windowsazure.com en su lista de remitentes seguros, por lo que no falte correo electrónico Hola.
 
 ## <a name="how-often-are-these-emails-sent"></a>¿Con qué frecuencia se envían los correos electrónicos?
-El correo electrónico se envía si se producen 10 nuevas actividades de inicio de sesión irregulares en los últimos 30 días, o desde que se envió el último correo electrónico, lo que tenga lugar antes.
+correo electrónico de Hola se envía si 10 irregular de inicio de sesión actividades nuevas que se producen en hello últimos 30 días, o desde que se envió el correo electrónico última hello, lo que sea menor.
 
-## <a name="how-do-i-access-the-report-mentioned-in-the-email"></a>¿Cómo puedo tener acceso al informe mencionado en el correo electrónico?
-Al hacer clic en el vínculo, se le redirigirá a la página del informe en el Portal de Azure clásico. Para tener acceso al informe, deberá ser:
+## <a name="how-do-i-access-hello-report-mentioned-in-hello-email"></a>¿Cómo obtengo acceso informe Hola mencionado en el correo electrónico de hello?
+Al hacer clic en el vínculo de hello, será redirigido toohello página del informe en hello portal de Azure clásico. En orden tooaccess Hola informes, es necesario toobe ambos:
 
 * Administrador o coadministrador de su suscripción de Azure
-* Administrador global en el directorio y tener asignada una licencia de Active Directory Premium. Para obtener más información, consulte [Ediciones de Azure Active Directory](active-directory-editions.md).
+* Un administrador global en el directorio de hello y asigna una licencia de Active Directory Premium. Para obtener más información, consulte [Ediciones de Azure Active Directory](active-directory-editions.md).
 
 ## <a name="can-i-turn-off-these-emails"></a>¿Puedo desactivar los correos electrónicos?
-Sí, para desactivar las notificaciones relacionadas con inicios de sesión anómalos en el Portal de Azure clásico, haga clic en **Configurar** y, luego, seleccione **Deshabilitado** en la sección **Notificaciones**.
+Sí, tooturn las notificaciones relacionadas con inicios de sesión de tooanomalous dentro de hello portal de Azure clásico, haga clic en **configurar**y, a continuación, seleccione **deshabilitado** en hello **notificaciones**sección.
 
 ## <a name="whats-next"></a>Pasos siguientes
 * ¿Tiene curiosidad sobre qué informes de actividad, auditoría y seguridad están disponibles? Consulte [Informes de actividad, auditoría y seguridad de Azure AD](active-directory-view-access-usage-reports.md)
 * [Introducción a Azure Active Directory Premium](active-directory-get-started-premium.md)
-* [Incorporación de la marca de empresa a sus páginas de inicio de sesión y panel de acceso](active-directory-add-company-branding.md)
+* [Agregar marcas tooyour páginas de inicio de sesión y Panel de acceso de empresa](active-directory-add-company-branding.md)
 

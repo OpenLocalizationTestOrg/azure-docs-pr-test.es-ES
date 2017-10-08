@@ -1,6 +1,6 @@
 ---
-title: "Administración de aplicaciones con Azure Active Directory | Microsoft Docs"
-description: "En este artículo se describen las ventajas de la integración de Azure Active Directory con las aplicaciones locales, SaaS y de nube."
+title: aaaManaging aplicaciones con Azure Active Directory | Documentos de Microsoft
+description: "Este beneficios de Hola de artículo de la integración de Azure Active Directory con su local, en la nube y aplicaciones SaaS."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,102 +14,102 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: b8f0cfdb468094bc761d6b939ca318fcfbea3ea4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0016f8b433e101d8a150bc6d9be3931851578241
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Administración de aplicaciones con Azure Active Directory
-Además del flujo de trabajo o contenido real, para las empresas las aplicaciones deben cumplir dos requisitos básicos:
+Más allá de flujo de trabajo real de Hola o contenido, las empresas tienen dos requisitos básicos para todas las aplicaciones:
 
-1. Para aumentar la productividad, debe ser fácil detectar y tener acceso a las aplicaciones.
-2. Para permitir la seguridad y la regulación, las organizaciones deben controlar y supervisar quién puede tener acceso y quién accede realmente a cada aplicación.
+1. productividad tooincrease, las aplicaciones deben tener toodiscover fácil y acceso
+2. tooenable seguridad y gobernanza, organización Hola necesita un control y supervisión de quién puede y realmente tiene acceso a cada aplicación
 
-En el mundo de las aplicaciones en la nube, esto se consigue mejor usando la identidad para controlar "*A QUIÉN se le permite hacer QUÉ*".
+En Hola mundo de aplicaciones de nube mejor esto puede lograrse mediante identidad toocontrol "*que se permite toodo lo*".
 
 En la terminología informática:
 
-* *Quién* se conoce como *identidad*: la administración de usuarios y grupos
-* *Qué* se conoce como *administración de acceso*: la administración del acceso a los recursos protegidos
+* *Que* se conoce como *identidad* -Hola administración de usuarios y grupos
+* *¿Qué* se conoce como *administración de accesos* : Hola administración de acceso a los recursos tooprotected
 
-Ambos componentes juntos se conocen como *Administración de identidad y acceso (IAM)*, que, según define el grupo [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam), es "*la disciplina de seguridad que permite a las personas adecuadas tener acceso a los recursos adecuados en los momentos adecuados y por los motivos adecuados*".
+Ambos componentes juntos se conocen como *identidad y administración de acceso (IAM)*, que se define por hello [Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) grupo como "*Hola en materia de seguridad que permite derecha Hola recursos adecuados Hola de individuos tooaccess en hello derecha veces por motivos de derecho de hello*".
 
-Entonces, ¿cuál es el problema? Si IAM *no se administra* en un solo lugar con una solución integrada:
+Bien, ¿cuál es el problema de hello? Si IAM *no se administra* en un solo lugar con una solución integrada:
 
-* Los administradores de identidades tienen que crear y actualizar individualmente las cuentas de usuario de todas las aplicaciones por separado, una actividad repetitiva y laboriosa.
-* Los usuarios tienen que memorizar varias credenciales para tener acceso a las aplicaciones con las que necesitan trabajar. Como resultado, los usuarios tienden a anotar las contraseñas o usar otras soluciones de administración de contraseñas que presentan otros riesgos para la seguridad de los datos.
-* Las actividades repetitivas y laboriosas reducen la cantidad de tiempo que los usuarios y los administradores trabajan en actividades que aumentan el balance final del negocio.
+* Los administradores de identidad tienen tooindividually crear y actualizar cuentas de usuario en todas las aplicaciones por separado, una actividad de un proceso lento y redundante.
+* Los usuarios tienen toomemorize varias credenciales tooaccess hello las aplicaciones que necesitan toowork con. Como resultado, los usuarios suelen toowrite sus contraseñas o usar otras soluciones de administración de contraseñas que presenta otros riesgos de seguridad de datos.
+* Actividades redundantes, lleva mucho tiempo reducen la cantidad de Hola de tiempo que los usuarios y los administradores trabajan en las actividades de negocio que aumentar la rentabilidad de su empresa.
 
 De modo que, ¿qué impide normalmente a las organizaciones adoptar soluciones IAM integradas?
 
-* La mayoría de las soluciones técnicas se basan en plataformas de software que cada organización debe implementar y adaptar para sus propias aplicaciones.
+* Soluciones más técnicas se basan en plataformas de software que necesitan toobe implementado y adaptado por cada organización para sus propias aplicaciones.
 * Las aplicaciones de nube a menudo se adoptan a un ritmo más rápido del que las organizaciones de TI pueden integrarse con las soluciones IAM existentes.
-* Las herramientas de seguridad y supervisión requieren personalización e integración adicionales para conseguir escenarios E2E integrales.
+* Seguridad y herramientas de supervisión requieren personalización e integración tooachieve completa E2E escenarios adicionales.
 
 ## <a name="azure-active-directory-integrated-with-applications"></a>Azure Active Directory integrado con las aplicaciones
 Azure Active Directory es la solución completa de identidad como servicio (IDaaS) de Microsoft que:
 
 * Habilita la IAM como un servicio en la nube. 
 * Proporciona administración de acceso central, inicio de sesión único (SSO) y creación de informes. 
-* Admite la administración de acceso integrado para [miles de aplicaciones](https://azure.microsoft.com/marketplace/active-directory/) de la Galería de aplicaciones, incluidas Salesforce, Google Apps, Box, Concur, etc. 
+* Admite la administración de acceso integrado para [miles de aplicaciones](https://azure.microsoft.com/marketplace/active-directory/) en Galería de aplicaciones de hello, incluyendo Salesforce, Google Apps, Box, Concur e. 
 
-Con todas las aplicaciones de Azure Active Directory que publica para sus asociados y clientes (empresa o consumidor) tendrá las mismas funcionalidades de administración de identidad y acceso.<br> Esto permite reducir significativamente los costos operativos.
+Con Azure Active Directory, todas las aplicaciones que publique la aplicación por los socios y los clientes (business o consumidor) tienen Hola mismas capacidades de administración de identidades y acceso.<br> Esto permite toosignificantly reducir los costos operativos.
 
-¿Y si necesita implementar una aplicación que aún no aparece en la galería de aplicaciones? Aunque es un proceso un poco más lento que configurar el inicio de sesión único para las aplicaciones desde la galería de aplicaciones, Azure AD proporciona un asistente que le ayudará con la configuración.
+¿Qué ocurre si necesita una aplicación que todavía no figura en la Galería de aplicaciones de hello tooimplement? Aunque esto es un poco más lento que la configuración de SSO para aplicaciones de la Galería de aplicaciones de Hola, Azure AD proporciona un asistente que le ayudará con la configuración de Hola.
 
-El valor de Azure AD no solo se limita a las aplicaciones en la nube. También puede utilizarlo con aplicaciones locales al proporcionar acceso remoto seguro. Con el acceso remoto seguro, puede eliminar la necesidad de VPN o de otras implementaciones tradicionales de administración de acceso remoto.
+valor de Hola de Azure AD va más allá de "solo" aplicaciones en la nube. También puede utilizarlo con aplicaciones locales al proporcionar acceso remoto seguro. Con el acceso remoto seguro, podrá eliminar Hola Hola necesario para las redes privadas virtuales u otras implementaciones de administración de acceso remoto tradicionales.
 
-Al proporcionar administración de acceso centralizada e inicio de sesión único (SSO) para todas las aplicaciones, Azure AD es la solución a los principales problemas de seguridad y productividad de los datos.
+Al proporcionar administración de acceso central y el inicio de sesión único (SSO) para todas las aplicaciones, Azure AD proporciona soluciones hello toohello problemas de seguridad y productividad de datos principal.
 
-* Los usuarios pueden tener acceso a varias aplicaciones con un solo inicio de sesión, lo que se traduce en más tiempo para generar ingresos o para realizar actividades de operaciones empresariales.
-* Los administradores de identidades pueden administrar el acceso a las aplicaciones en un solo lugar.
+* Los usuarios pueden tener acceso a varias aplicaciones con un inicio de sesión que proporciona más tooincome tiempo empresariales o generar actividades de operaciones realizadas.
+* Los administradores de identidad pueden administrar tooapplications de acceso en un solo lugar.
 
-La ventaja para el usuario y la empresa es obvia. Examinemos más de cerca las ventajas para un administrador de identidades y para la organización.
+beneficio de Hello para el usuario de Hola y de su empresa es obvio. Echemos un vistazo más de cerca en ventajas de Hola para un administrador de identidades y la organización de Hola.
 
 ## <a name="integrated-application-benefits"></a>Ventajas de aplicaciones integradas
-El proceso SSO consta de dos pasos:
+Hola proceso SSO consta de dos pasos:
 
-* Autenticación, el proceso de validar la identidad del usuario.
-* Autorización, la decisión de habilitar o bloquear el acceso a un recurso con una directiva de acceso.
+* Autenticación, proceso de Hola de validación de identidad del usuario de Hola.
+* Autorización, Hola tooenable de decisión o bloquear el acceso a recursos de tooa con una directiva de acceso.
 
-Al usar Azure AD para administrar las aplicaciones y habilitar el SSO:
+Al utilizar aplicaciones de Azure AD toomanage y habilitar SSO:
 
-* La autenticación se realiza en la cuenta local del usuario (por ejemplo, AD) o en la cuenta de Azure AD.
-* La autorización se ejecuta en la directiva de asignación y protección de Azure AD, lo que garantiza una experiencia coherente para el usuario final y permite agregar asignaciones, ubicaciones y condiciones MFA en cualquier aplicación, independientemente de sus capacidades internas.
+* La autenticación se realiza en (por ejemplo, AD) local o la cuenta de Azure AD del usuario de Hola.
+* Autorización se ejecuta en hello Azure AD protección y asignación de directiva asegurándose de experiencia del usuario final coherente y Habilitar asignación tooadd, ubicaciones y las condiciones MFA en cualquier aplicación, independientemente de sus capacidades internas.
 
-Es importante comprender que la forma en que la autorización se aplica en la aplicación de destino varía en función de cómo se integra la aplicación con Azure AD.
+Es importante toounderstand que Hola autorización de manera Hola está aplicado en la aplicación de destino de hello varía en función de la aplicación hello se integró con Azure AD.
 
-* **Aplicaciones integradas previamente por el proveedor de servicios**, como Office 365 y Azure. Se trata de aplicaciones integradas directamente en Azure AD y que dependen de él para sus funcionalidades completas de administración de identidades y acceso. El acceso a estas aplicaciones se habilita a través de la información de directorio y la emisión de tokens.
-* **Aplicaciones integradas previamente por Microsoft y aplicaciones personalizadas**. Son aplicaciones de nube independientes que dependen de un directorio de aplicaciones interno y pueden funcionar con independencia de Azure AD. El acceso a estas aplicaciones se habilita mediante la emisión de una credencial específica de la aplicación asignada a una cuenta de aplicación. Dependiendo de las funcionalidades de la aplicación, la credencial puede ser un token de federación o un nombre de usuario y una contraseña para una cuenta que se aprovisionó anteriormente en la aplicación.
-* **Aplicaciones locales**. Son aplicaciones publicadas principalmente a través del proxy de la aplicación, que permiten el acceso a aplicaciones locales. Estas aplicaciones se basan en un directorio local central, como Windows Server Active Directory. El acceso a estas aplicaciones se habilita mediante el desencadenamiento del proxy para entregar el contenido de la aplicación al usuario final, al tiempo que se respeta el requisito de inicio de sesión local.
+* **Aplicaciones integradas previamente por el proveedor de servicios**, como Office 365 y Azure. Se trata de aplicaciones integradas directamente en Azure AD y que dependen de él para sus funcionalidades completas de administración de identidades y acceso. Las aplicaciones de Access toothese se habilita a través de la emisión de información y el símbolo (token) de directorio.
+* **Aplicaciones integradas previamente por Microsoft y aplicaciones personalizadas**. Son aplicaciones de nube independientes que dependen de un directorio de aplicaciones interno y pueden funcionar con independencia de Azure AD. Las aplicaciones de Access toothese está habilitado mediante la emisión de una cuenta de aplicación de aplicación específico credencial asignada tooan. Según las capacidades de aplicación Hola, credencial Hola puede ser un símbolo (token) de federación o el nombre de usuario y la contraseña de una cuenta que se haya proporcionado anteriormente en la aplicación hello.
+* **Aplicaciones locales** aplicaciones publican a través de proxy de aplicación hello Azure AD principalmente habilitar las aplicaciones de access tooon local. Estas aplicaciones se basan en un directorio local central, como Windows Server Active Directory. Las aplicaciones de Access toothese está habilitado mediante la activación de usuario final de hello proxy toodeliver Hola aplicación toohello contenido respetando Hola local sesión requisito al mismo tiempo.
 
-Por ejemplo, si un usuario se une a su organización, deberá crear una cuenta para él en Azure AD para las operaciones de inicio de sesión principales. Si este usuario requiere acceso a una aplicación administrada, como Salesforce, también deberá crearle una cuenta en Salesforce y vincularla a la cuenta de Azure para que SSO funcione. Cuando el usuario deja la organización, es aconsejable eliminar la cuenta de Azure AD y todas las cuentas homólogas de los almacenes de IAM de las aplicaciones a las que el usuario tuvo acceso.
+Por ejemplo, si un usuario une a su organización, debe toocreate una cuenta de usuario de hello en Azure AD para operaciones de inicio de sesión principal de Hola. Si este usuario necesita acceso tooa administrar aplicaciones, como Salesforce, también necesitará toocreate una cuenta para este usuario en Salesforce y vincúlela trabajo SSO de toomake de toohello cuenta de Azure. Cuando Hola alguien deja la empresa, es aconsejable toodelete Hola cuenta de Azure AD y todas las cuentas de homólogo Hola almacenes IAM de aplicaciones de Hola Hola usuario tenía acceso a.
 
 ## <a name="access-detection"></a>Detección de acceso
-En las empresas modernas, los departamentos de TI no son a menudo conscientes de todas las aplicaciones en la nube que se usan. Junto con Cloud App Discovery, Azure AD proporciona una solución para detectar estas aplicaciones.
+En las empresas modernas, los departamentos de TI a menudo no son conscientes de las aplicaciones de nube de Hola que se utilizan. De forma conjunta con Cloud App Discovery, Azure AD proporciona una solución toodetect estas aplicaciones.
 
 ## <a name="account-management"></a>Administración de cuentas
-Tradicionalmente, la administración de cuentas de las distintas aplicaciones es un proceso manual que realiza TI o el personal de soporte de la organización. Azure AD automatiza completamente la administración de cuentas en todas las aplicaciones integradas del proveedor de servicios y en esas aplicaciones previamente integradas por Microsoft que admiten el aprovisionamiento automático de usuarios o SAML JIT.
+Tradicionalmente, administra cuentas en hello diversas aplicaciones es un proceso manual realizado por TI o compatible con el personal de organización de Hola. Azure AD automatiza completamente la administración de cuentas en todas las aplicaciones integradas del proveedor de servicios y en esas aplicaciones previamente integradas por Microsoft que admiten el aprovisionamiento automático de usuarios o SAML JIT.
 
 ## <a name="automated-user-provisioning"></a>Aprovisionamiento automático de usuarios
-Algunas aplicaciones proporcionan interfaces de automatización para la creación y eliminación (o desactivación) de cuentas. Si un proveedor ofrece esta interfaz, Azure Active Directory hace uso de ella. De esta manera, se reducen los costos operativos porque las tareas administrativas se producen automáticamente y se mejora la seguridad del entorno dado que disminuye la probabilidad de acceso no autorizado.
+Algunas aplicaciones proporcionan interfaces de automatización para la creación y eliminación (o desactivación) de cuentas. Si un proveedor ofrece esta interfaz, Azure Active Directory hace uso de ella. Esto reduce los costos operativos dado que las tareas administrativas se realizan automáticamente y mejora la seguridad de Hola de su entorno ya que reduce la posibilidad de Hola de acceso no autorizado.
 
 ## <a name="access-management"></a>administración de acceso
-Con Azure AD puede administrar el acceso a las aplicaciones mediante asignaciones basadas en reglas o individuales. También puede delegar la administración del acceso en las personas adecuadas de la organización, lo que garantiza una mejor supervisión y reduce la carga sobre el departamento de soporte técnico.
+Con Azure AD puede administrar acceso a tooapplications mediante individuales o regla controlada por las asignaciones. También puede delegar el acceso a administración toohello personas en hello organización garantizar Hola mejor supervisión y reducir la carga de Hola de departamento de soporte técnico.
 
 ## <a name="on-premises-applications"></a>Aplicaciones locales
-El proxy de la aplicación integrado permite publicar las aplicaciones locales en los usuarios, lo que da lugar a una experiencia de usuario coherente con las aplicaciones modernas de nube, junto con las ventajas de las funcionalidades de supervisión, creación de informes y seguridad de Azure AD.
+Hola integrada en el proxy de aplicación permite toopublish experiencia con las ventajas de hello y aplicación de nube modernas de acceso de los usuarios de tooyour de aplicaciones local resultante en ambas coherente de supervisión de Azure AD, los informes y capacidades de seguridad .
 
 ## <a name="reporting-and-monitoring"></a>Creación de informes y supervisión
-Azure AD proporciona funcionalidades previamente integradas de supervisión y creación de informes que le permiten saber quién tiene acceso a las aplicaciones y cuándo se usan realmente.
+Azure AD proporciona y capacidades que permiten tooknow quién tiene acceso tooapplications y cuando realmente utilizan ellos de supervisión e informes previamente integradas.
 
 ## <a name="related-capabilities"></a>Funcionalidades relacionadas
-Con Azure AD puede proteger las aplicaciones con directivas de acceso granular y MFA previamente integrada. Para obtener más información sobre Azure MFA, consulte [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/).
+Con Azure AD puede proteger las aplicaciones con directivas de acceso granular y MFA previamente integrada. toolearn más sobre Azure MFA, consulte [Azure MFA](https://azure.microsoft.com/services/multi-factor-authentication/).
 
 ## <a name="getting-started"></a>Introducción
-Para comenzar a integrar las aplicaciones con Azure AD, eche un vistazo a la [Guía de introducción a la integración de Azure Active Directory con las aplicaciones](active-directory-integrating-applications-getting-started.md).
+tooget a integrar aplicaciones con Azure AD, eche un vistazo a hello [Guía de introducción de integración de Azure Active Directory con las aplicaciones obtener](active-directory-integrating-applications-getting-started.md).
 
-## <a name="see-also"></a>Consulte también
+## <a name="see-also"></a>Otras referencias
 [Índice de artículos sobre la administración de aplicaciones en Azure Active Directory](active-directory-apps-index.md)
 

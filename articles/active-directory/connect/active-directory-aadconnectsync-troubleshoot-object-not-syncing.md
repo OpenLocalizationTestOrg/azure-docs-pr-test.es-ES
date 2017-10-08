@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de un objeto que no se ha sincronizado con Azure AD | Microsoft Docs"
-description: "Solucione problemas de por qué un objeto no se sincroniza con Azure AD."
+title: un objeto que no se han sincronizado tooAzure AD aaaTroubleshoot | Documentos de Microsoft
+description: "Solucionar problemas de por qué un objeto no se han sincronizado tooAzure AD."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,133 +14,133 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 491a920ceeaac62dd37b1def3f02234056aebfb0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 81e0a0793a1d5ec76cfcaec6e974726d7854f58e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Solución de problemas de un objeto que no se sincroniza con Azure AD
+# <a name="troubleshoot-an-object-that-is-not-synchronizing-tooazure-ad"></a>Solucionar problemas de un objeto que no se han sincronizado tooAzure AD
 
-Si un objeto no se ha sincronizado como esperaba con Azure AD, puede ser debido a varias razones. Si ha recibido un mensaje de correo electrónico de error de Azure AD o si ve el error en Azure AD Connect Health, lea el artículo sobre cómo [solucionar errores de exportación](active-directory-aadconnect-troubleshoot-sync-errors.md). Sin embargo, si va a solucionar un problema en el que el objeto no está en Azure AD, este es el tema que tiene que leer. Describe cómo buscar errores en el componente local de sincronización de Azure AD Connect.
+Si un objeto no se han sincronizado como se esperaba tooAzure AD, puede ser debido a varias razones. Si ha recibido un mensaje de error de Azure AD o si ven errores de hello en Azure AD Connect Health, a continuación, leer [solucionar errores de exportación](active-directory-aadconnect-troubleshoot-sync-errors.md) en su lugar. Pero si está solucionando un problema donde objeto hello no está en Azure AD, a continuación, en este tema es para usted. Describe cómo sincronización los errores de toofind en el componente de local de hello Azure AD Connect.
 
-Para encontrar los errores, tendrá que examinar varios sitios en el orden siguiente:
+errores de hello toofind, va toolook en varios sitios en hello siguiendo el orden:
 
-1. Los [registros de operaciones](#operations) para buscar errores que ha identificado el motor de sincronización durante la importación y sincronización.
-2. El [espacio del conector](#connector-space-object-properties) para buscar objetos que faltan y errores de sincronización.
-3. El [metaverso](#metaverse-object-properties) para buscar problemas relacionados con los datos.
+1. Hola [registros de operaciones](#operations) para buscar errores identificados por el motor de sincronización de Hola durante la importación y sincronización.
+2. Hola [espacio conector](#connector-space-object-properties) para buscar objetos que faltan y errores de sincronización.
+3. Hola [metaverso](#metaverse-object-properties) para buscar problemas relacionados con los datos.
 
 Inicie [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) antes de comenzar a realizar estos pasos.
 
 ## <a name="operations"></a>Operaciones
-La pestaña de operaciones de Synchronization Service Manager es donde se deben comenzar la solucionar problemas. En la pestaña Operaciones se muestran los resultados de las operaciones más recientes.  
+ficha de operaciones de Hello en hello Synchronization Service Manager es donde debe comenzar la solución de problemas. ficha de operaciones de Hello muestra los resultados de Hola de operaciones más recientes de Hola.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/operations.png)  
 
-La mitad superior muestra todas las ejecuciones en orden cronológico. De forma predeterminada, el registro de operaciones conservará información sobre los últimos 7 días, pero puede cambiar este parámetro con el [programador](active-directory-aadconnectsync-feature-scheduler.md). Debe buscar las ejecuciones que no muestran un estado de operación correcta. Para cambiar la ordenación, haga clic en los encabezados.
+mitad superior de Hello muestra todas las ejecuciones en orden crónica. De forma predeterminada, registro de operaciones de hello mantiene información acerca de hello últimos siete días, pero se puede cambiar esta configuración con hello [programador](active-directory-aadconnectsync-feature-scheduler.md). Desea toolook para cualquier serie que no se muestren el estado correcto. Puede cambiar Hola ordenar haciendo clic en los encabezados de Hola.
 
-En la columna **Estado** se encuentra la información más importante, puesto que muestra el problema más grave de una ejecución. A continuación tiene un resumen rápido de los estados más comunes que debe analizar por orden de prioridad (donde * indica varias cadenas de error posibles).
+Hola **estado** columna es la información más importante de Hola y muestra Hola problema más grave para una ejecución. Este es un breve resumen de los estados más comunes de hello en orden de prioridad tooinvestigate (donde * indicar varias cadenas de error posibles).
 
 | Estado | Comentario |
 | --- | --- |
-| stopped-* |No se ha podido completar la ejecución. Por ejemplo, si el sistema remoto está inactivo y no se puede conectar a él. |
-| stopped-error-limit |Se han generado más de 5000 errores. La ejecución se ha detenido automáticamente debido al elevado número de errores. |
-| completed-\*-errors |Se completa la ejecución, pero hay errores (menos de 5000) que deben investigarse. |
-| completed-\*-warnings |La ejecución se ha completado, pero algunos datos no tienen el estado esperado. Si se producen errores, es posible que se trate únicamente de un síntoma. Le recomendamos que primero resuelva los errores y que luego investigue las advertencias. |
+| stopped-* |no se pudo completar Hola ejecutar. Por ejemplo, si hello sistema remoto está inactivo y no se puede contactar. |
+| stopped-error-limit |Se han generado más de 5000 errores. Hola ejecutar automáticamente se detuvo debido toohello gran número de errores. |
+| completed-\*-errors |Hola ejecución se completó, pero existen errores (menos de 5000) que deben investigarse. |
+| completed-\*-warnings |Hola ejecutar completó, pero algunos datos no están en estado de espera de Hola. Si se producen errores, es posible que se trate únicamente de un síntoma. Le recomendamos que primero resuelva los errores y que luego investigue las advertencias. |
 | Correcto |No hay ningún problema. |
 
-Cuando seleccione una fila, la parte inferior se actualizará para mostrar los detalles de la ejecución. En el extremo izquierdo de la parte inferior, es posible que aparezca una lista con la información **Paso #**. Solo aparecerá si tiene varios dominios en el bosque; cada dominio estará representado por un paso. El nombre de dominio puede encontrarse bajo el encabezado **Partición**. En **Synchronization Statistics**(Estadísticas de sincronización) puede encontrar más información sobre el número de cambios que se han procesado. Puede hacer clic en los vínculos para obtener una lista de los objetos modificados. Si hay objetos con errores, estos se mostrarán en **Errores de sincronización**.
+Cuando se selecciona una fila, inferior Hola actualiza los detalles de hello tooshow de que se ejecutan. toohello extremo izquierdo de la parte inferior de hello, es posible que tenga un hablados lista **paso #**. Solo aparecerá si tiene varios dominios en el bosque; cada dominio estará representado por un paso. nombre de dominio de Hello puede encontrarse bajo el encabezado de hello **partición**. En **las estadísticas de sincronización**, también puede encontrar más información acerca del número de Hola de cambios que se han procesado. Puede hacer clic en hello vínculos tooget una lista de objetos de hello cambiado. Si hay objetos con errores, estos se mostrarán en **Errores de sincronización**.
 
 ### <a name="troubleshoot-errors-in-operations-tab"></a>Solución de problemas en la pestaña Operaciones
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorsync.png)  
-Cuando se producen errores, tanto el objeto del error como el propio error son vínculos que proporcionarán información adicional.
+Cuando se producen errores, ambos objetos Hola de error y el propio error Hola son vínculos que proporcionan más información.
 
-Empiece haciendo clic en la cadena de error (en la imagen anterior,**sync-rule-error-function-triggered** ). En primer lugar, aparecerá información general del objeto. Para ver el error real, haga clic en el botón **Seguimiento de la pila**. De esta forma, podrá consultar información de depuración del error.
+Inicio haciendo clic en la cadena de error de hello (**sincronización regla-error-función-desencadenada** en la imagen de hello). Se le presentará una descripción general del objeto de Hola. toosee Hola error real, haga clic en el botón de hello **seguimiento de la pila**. Este seguimiento proporciona información de nivel de depuración para el error de Hola.
 
-Puede hacer clic con el botón derecho en la casilla **call stack information** (información de la pila de llamadas), hacer clic en **seleccionar todo** y, después, en **copiar**. A continuación, puede copiar la pila y buscar el error en el editor que prefiera, como el Bloc de notas.
+Puede hacer clic en hello **información de la pila de llamadas** cuadro, elija **seleccionar todo**, y **copia**. Luego puede copiar pila hello y examine el error de hello en su editor favorito, como el Bloc de notas.
 
-* Si el error procede de **SyncRulesEngine**, la información de la pila de llamadas tendrá en primer lugar una lista de todos los atributos del objeto. Desplácese hacia abajo hasta que vea el encabezado **InnerException = >**.  
+* Si procede error hello **SyncRulesEngine**, a continuación, en primer lugar, información de pila de llamadas de hello tiene una lista de todos los atributos en el objeto de Hola. Desplácese hacia abajo hasta que vea el encabezado de hello **InnerException = >**.  
   ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/errorinnerexception.png)  
-  La línea posterior muestra el error. En la imagen anterior, el error procede de una regla de sincronización personalizada creada por Fabrikam.
+  línea de Hello después muestra Hola error. En la imagen anterior de hello, error de hello es de un Fabrikam de regla de sincronización personalizado creado.
 
-Si el error no proporciona suficiente información, puede fijarse en los datos. Puede hacer clic en el vínculo con el identificador de objeto y continuar solucionando el problema con el [objeto importado del espacio conector](#cs-import).
+Si el propio error hello no proporcionan suficiente información, es toolook de tiempo en los propios datos Hola. Puede hacer clic Hola vínculo con el identificador de objeto de Hola y continuar solucionando hello [objeto importado de espacio de conector](#cs-import).
 
 ## <a name="connector-space-object-properties"></a>Propiedades de objeto del espacio del conector
-Si no encuentra errores en la pestaña [operaciones](#operations), el paso siguiente consiste en realizar un seguimiento del objeto del espacio de conector de Active Directory en el metaverso y en Azure AD. En esta ruta de acceso, debería encontrar dónde está el problema.
+Si no tiene todos los errores encontrados en hello [operations](#operations) ficha, a continuación, el paso siguiente de hello es toofollow Hola el objeto de espacio de conector de Active Directory, toohello metaverso y tooAzure AD. En esta ruta de acceso, debe encontrar dónde está el problema de Hola.
 
-### <a name="search-for-an-object-in-the-cs"></a>Búsqueda de un objeto en el servidor de configuración
+### <a name="search-for-an-object-in-hello-cs"></a>Buscar un objeto en hello CS
 
-En **Synchronization Service Manager**, haga clic en **Conectores**, seleccione el conector de Active Directory y **Espacio del conector de búsqueda**.
+En **Synchronization Service Manager**, haga clic en **conectores**, seleccione Hola conector de Active Directory, y **espacio de conector de búsqueda**.
 
-En **Ámbito**, seleccione **RDN** (cuando quiera realizar una búsqueda en el atributo CN) o **DN o delimitador** (cuando desee buscar en el atributo distinguishedName). Escriba un valor y haga clic en **Buscar**.  
+En **ámbito**, seleccione **RDN** (cuando desee toosearch en el atributo de hello CN) o **DN o delimitador** (cuando desee toosearch en el atributo de hello distinguishedName). Escriba un valor y haga clic en **Buscar**.  
 ![Búsqueda del espacio conector](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearch.png)  
 
-Si no encuentra el objeto que está buscando, podría haberse filtrado con un [filtrado basado en dominios](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) o uno [basado en la unidad organizativa](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering). Lea el tema sobre [configuración de filtrado](active-directory-aadconnectsync-configure-filtering.md) para comprobar que el filtrado se haya configurado según lo previsto.
+Si no encuentra el objeto de Hola que está buscando, a continuación, puede que se han filtrado con [filtrado basado en dominio](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering) o [filtrado basado en la unidad organizativa](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering). Hola de lectura [configurar el filtrado de](active-directory-aadconnectsync-configure-filtering.md) tooverify de tema que Hola filtrado se configura según lo esperado.
 
-Otra búsqueda útil consiste en seleccionar Azure AD Connector. En **Ámbito**, elija la opción de **importación pendiente**y active la casilla **Agregar**. Esta búsqueda proporciona todos los objetos sincronizados con Azure AD que no se pueden asociar con un objeto local.  
+Otra búsqueda útil es tooselect Hola conector de Azure AD, en **ámbito** seleccione **importación pendiente**, seleccione hello y **agregar** casilla de verificación. Esta búsqueda proporciona todos los objetos sincronizados con Azure AD que no se pueden asociar con un objeto local.  
 ![Búsqueda de objetos huérfanos del espacio de conector](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearchorphan.png)  
-Esos objetos lo han creado otro motor de sincronización o un motor de sincronización con una configuración de filtrado diferente. Esta vista es una lista de objetos **huérfanos** no administrados. Revise esta lista y considere la posibilidad de quitar estos objetos ejecutando los cmdlets de [PowerShell de Azure AD](http://aka.ms/aadposh).
+Esos objetos lo han creado otro motor de sincronización o un motor de sincronización con una configuración de filtrado diferente. Esta vista es una lista de objetos **huérfanos** no administrados. Revise esta lista y considere la posibilidad de quitar estos objetos mediante hello [PowerShell de Azure AD](http://aka.ms/aadposh) cmdlets.
 
 ### <a name="cs-import"></a>Importación del servidor de configuración
-Al abrir un objeto cs, aparecen varias pestañas en la parte superior. La pestaña **Importación** muestra los datos que se almacenan provisionalmente después de una importación.  
+Cuando se abre un objeto cs, hay varias pestañas en la parte superior de Hola. Hola **importar** ficha muestra datos Hola intermedia después de una importación.  
 ![Objeto del servidor de configuración](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/csobject.png)    
-En **Valor antiguo** se muestran los datos almacenados en Connect y en **Nuevo valor**, los que se han recibido desde el sistema de origen y no se han aplicado todavía. Si se produce un error en el objeto, los cambios no se procesan.
+Hola **valor antiguo** muestra lo que se almacena en Connect y hello **nuevo valor** lo que se ha recibido de sistema de origen de hello y no se ha aplicado todavía. Si se produce un error en el objeto de hello, los cambios no se procesan.
 
 **Error**  
 ![Objeto del servidor de configuración](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssyncerror.png)  
-La pestaña **Error de sincronización** solo está visible si se produce un problema con el objeto. Para obtener más información, consulte el artículo sobre cómo [solucionar errores de sincronización](#troubleshoot-errors-in-operations-tab).
+Hola **Error de sincronización** ficha solo está visible si hay un problema con objeto de Hola. Para obtener más información, consulte el artículo sobre cómo [solucionar errores de sincronización](#troubleshoot-errors-in-operations-tab).
 
 ### <a name="cs-lineage"></a>Linaje del servidor de configuración
-La pestaña Linaje muestra cómo el objeto de espacio del conector está relacionado con el objeto de metaverso. Puede ver cuándo fue la última vez que el Conector importó un cambio desde el sistema conectado y qué reglas que se han aplicado para rellenar los datos en el metaverso.  
+pestaña de linaje de Hello muestra cómo objeto de espacio de conector de hello es objeto de metaverso toohello relacionados. Puede ver cuando Hola conector última importa un cambio de Hola sistema conectado y qué datos de toopopulate de reglas que se aplican en Hola metaverso.  
 ![Linaje del servidor de configuración](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cslineage.png)  
-En la columna **Acción** vemos que hay una regla de sincronización **Entrante** con la acción **Aprovisionar**. Esto indica que, siempre que este objeto de espacio del conector esté presente, el objeto de metaverso permanecerá. En cambio, si la lista de reglas de sincronización muestra una regla de sincronización con la dirección **Saliente** y **Aprovisionar**, indica que este objeto se eliminará cuando se quite el objeto de metaverso.  
+Hola **acción** columna, puede ver hay uno **entrada** la regla de sincronización con la acción de hello **aprovisionar**. Valor que indica que siempre que este objeto de espacio de conector está presente, objeto de metaverso Hola permanece. Si lista Hola de reglas de sincronización en su lugar, muestra una regla de sincronización con la dirección de **saliente** y **aprovisionar**, indica que este objeto se elimina cuando se elimina el objeto de metaverso Hola.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cslineageout.png)  
-También podemos ver en la columna **PasswordSync** que el espacio del conector entrante puede contribuir a los cambios realizados en la contraseña debido a que una regla de sincronización tiene el valor **True**. Esta contraseña se envía a Azure AD a través de la regla de salida.
+También puede ver en hello **PasswordSync** columna que Hola espacio de conector de entrada puede contribuir contraseña toohello de cambios ya que una regla de sincronización con el valor de hello **True**. Esta contraseña se envía tooAzure AD a través de la regla de salida de hello.
 
-Desde la pestaña Linaje, puede acceder al metaverso haciendo clic en [Metaverse Object Properties](#mv-attributes)(Propiedades del objeto de metaverso).
+Desde la pestaña de linaje de hello, se puede obtener toohello metaverso haciendo clic en [propiedades del objeto de metaverso](#mv-attributes).
 
-En la parte inferior de todas las pestañas, hay dos botones: **Vista previa** y **Registro**.
+En parte inferior de Hola de todas las fichas, hay dos botones: **vista previa** y **registro**.
 
 ### <a name="preview"></a>Vista previa
-La página de vista previa se usa para sincronizar un único objeto. Es útil si está solucionando problemas de algunas reglas de sincronización personalizadas del cliente y desea ver el efecto de un cambio en un único objeto. Puede seleccionar entre **Sincronización completa** y **Sincronización diferencial**. También puede elegir entre **Generate Preview** (Generar vista previa), que únicamente mantendrá el cambio en la memoria, y **Vista previa de confirmación**, que actualizó el metaverso y llevará a cabo todos los cambios en los espacios del conector de destino.  
+página de vista previa de Hello es toosynchronize usa un único objeto. Resulta útil si está solucionando algunas reglas de sincronización personalizada y desea toosee Hola efecto de un cambio en un único objeto. Puede seleccionar entre **Sincronización completa** y **Sincronización diferencial**. También puede seleccionar entre **generar vista previa**, que mantiene solo cambio de hello en la memoria, y **confirmar Preview**, que actualiza Hola metaverso y todas las fases cambia tootarget espacios de conectores.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/preview.png)  
-Puede inspeccionar el objeto y la regla a la que se aplica un flujo de atributo concreto.  
+Puede inspeccionar el objeto de Hola y aplica la regla para un flujo de atributo concreto.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>Registro
-La página de registro se usa para ver el estado y el historial de la sincronización de contraseñas. Para obtener más información, consulte el artículo sobre la [sincronización de contraseñas](active-directory-aadconnectsync-troubleshoot-password-synchronization.md).
+página de registro de Hello es historial y estado de sincronización de contraseña de hello toosee usado. Para obtener más información, consulte el artículo sobre la [sincronización de contraseñas](active-directory-aadconnectsync-troubleshoot-password-synchronization.md).
 
 ## <a name="metaverse-object-properties"></a>Propiedades de objetos del metaverso
-Se recomienda iniciar la búsqueda desde el [espacio conector](#connector-space) de Active Directory de origen. Pero también puede iniciar la búsqueda en el metaverso.
+Es mejor toostart realizar búsquedas desde Active Directory de origen de hello [espacio conector](#connector-space). Pero también puede iniciar la búsqueda de metaverso Hola.
 
-### <a name="search-for-an-object-in-the-mv"></a>Búsqueda de un objeto en el metaverso
-En **Synchronization Service Manager**, haga clic en **Búsqueda de metaverso**. Cree una consulta que sabrá que encontrará al usuario. Puede buscar atributos comunes, como accountName (sAMAccountName) y userPrincipalName. Para obtener más información, consulte [Búsqueda de metaverso](active-directory-aadconnectsync-service-manager-ui-mvsearch.md).
+### <a name="search-for-an-object-in-hello-mv"></a>Buscar un objeto en hello MV
+En **Synchronization Service Manager**, haga clic en **Búsqueda de metaverso**. Crear una consulta que sabe busca Hola usuario. Puede buscar atributos comunes, como accountName (sAMAccountName) y userPrincipalName. Para obtener más información, consulte [Búsqueda de metaverso](active-directory-aadconnectsync-service-manager-ui-mvsearch.md).
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvsearch.png)  
 
-En la ventana **Resultados de la búsqueda**, haga clic en el objeto.
+Hola **resultados de la búsqueda** ventana, haga clic en el objeto de Hola.
 
-Si no se encuentra el objeto, significa que no ha alcanzado el metaverso. Continúe buscando el objeto en el [espacio conector](#connector-space-object-properties) de Active Directory. Podría haber un error de sincronización que impide que el objeto llegue al metaverso un filtro aplicado.
+Si no se encontró el objeto de hello, a continuación, aún no ha llegado Hola metaverso. Continuar toosearch para el objeto de Hola Hola Active Directory [espacio conector](#connector-space-object-properties). Podría haber un error de sincronización que está bloqueando el objeto Hola de metaverso de toohello próximos o podrían haber aplicado un filtro.
 
 ### <a name="mv-attributes"></a>Atributos del metaverso
-En la pestaña Atributos puede ver los valores y qué conector los aportó.  
+En la ficha de atributos de hello, puede ver los valores de hello y el conector que han contribuido a él.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvobject.png)  
 
-Si un objeto no se está sincronizando, examine los atributos siguientes en el metaverso:
-- ¿Está presente el atributo **cloudFiltered**y establecido en **True**? En caso afirmativo, significa que se ha filtrado según los pasos descritos en el [filtrado basado en atributos](active-directory-aadconnectsync-configure-filtering.md#attribute-based-filtering).
-- ¿Está presente el atributo **sourceAnchor**? En caso negativo, ¿tiene una topología de bosque de cuenta-recurso? Si un objeto se identifica como un buzón vinculado (el atributo **msExchRecipientTypeDetails** tiene el valor 2), el valor de sourceAnchor lo proporcionará el bosque con una cuenta de Active Directory habilitada. Asegúrese de que la cuenta maestra se ha importado y sincronizado correctamente. La cuenta maestra debe aparecer en los [conectores](#mv-connectors) del objeto.
+Si un objeto no se han sincronizado, mire Hola siguientes atributos en el metaverso hello:
+- ¿Es el atributo de hello **cloudFiltered** presentes y establecidas demasiado**true**? Si es, a continuación, se ha filtrado según los pasos de toohello de [filtrado basado en atributos](active-directory-aadconnectsync-configure-filtering.md#attribute-based-filtering).
+- ¿Es el atributo de hello **sourceAnchor** presente? En caso negativo, ¿tiene una topología de bosque de cuenta-recurso? Si un objeto se identifica como un buzón vinculado (atributo Hola **msExchRecipientTypeDetails** posee el valor 2 de Hola), a continuación, hello sourceAnchor es aportado por bosque Hola con una cuenta de Active Directory habilitada. Asegúrese de que cuenta maestra Hola se ha importado y sincronizan correctamente. cuenta maestra Hola debe estar incluido en hello [conectores](#mv-connectors) para el objeto de Hola.
 
 ### <a name="mv-connectors"></a>Conectores del metaverso
-La pestaña Conectores muestra todos los espacios del conector que tienen una representación del objeto.  
+ficha de conectores de Hello muestra todos los espacios conectores que tienen una representación de objeto de Hola.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/mvconnectors.png)  
 Debe tener un conector para los siguientes elementos:
 
-- Todos los bosques de Active Directory donde esté representado el usuario. Esta representación puede incluir foreignSecurityPrincipals y objetos de contacto.
+- Cada usuario de Hola de bosque de Active Directory se representa en. Esta representación puede incluir foreignSecurityPrincipals y objetos de contacto.
 - Un conector de Azure AD.
 
-Si falta el conector en Azure AD, lea la sección de [atributos del metaverso](#MV-attributes) para comprobar los criterios de aprovisionamiento en Azure AD.
+Si faltan Hola conector tooAzure AD, a continuación, leer [atributos MV](#MV-attributes) criterios de hello tooverify para que se va a aprovisionan tooAzure AD.
 
-Esta pestaña también permite navegar al [objeto de espacio del conector](#connector-space-object-properties). Seleccione una fila y haga clic en **Propiedades**.
+Esta pestaña también le permite toonavigate toohello [objeto del espacio del conector](#connector-space-object-properties). Seleccione una fila y haga clic en **Propiedades**.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información sobre la configuración de la [Sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) .
+Obtener más información sobre hello [sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) configuración.
 
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

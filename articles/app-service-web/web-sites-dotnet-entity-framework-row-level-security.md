@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Creación de una aplicación web con una base de datos multiempresa mediante Entity Framework y la seguridad de nivel de fila"
-description: "Aprenda a desarrollar una aplicación web de ASP.NET MVC 5 con un back-end de Base de datos SQL multiempresa, mediante Entity Framework y la seguridad de nivel de fila."
+description: "Obtenga información acerca de cómo toodevelop un 5 de MVC de ASP.NET web app con la base de datos SQL backent, mediante Entity Framework y seguridad de nivel de fila de varios inquilinos."
 metakeywords: azure asp.net mvc entity framework multi tenant row level security rls sql database
 services: app-service\web
 documentationcenter: .net
@@ -14,30 +14,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/25/2016
 ms.author: thmullan
-ms.openlocfilehash: ba1bb3d84b462dfebbb2564569517d7336bf54fd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1b715e01807032c3f6497c374ce427dd762af141
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-web-app-with-a-multi-tenant-database-using-entity-framework-and-row-level-security"></a>Tutorial: Creación de una aplicación web con una base de datos multiempresa mediante Entity Framework y la seguridad de nivel de fila
-En este tutorial se muestra cómo crear una aplicación web multiempresa con un modelo de arrendamiento "[base de datos compartida, esquema compartido](https://msdn.microsoft.com/library/aa479086.aspx)", con Entity Framework y la [seguridad de nivel de fila](https://msdn.microsoft.com/library/dn765131.aspx). En este modelo, una sola base de datos contiene datos de muchos inquilinos, y cada fila de cada tabla está asociada a un "identificador de inquilino". La seguridad de nivel de fila (RLS), una nueva característica de Base de datos SQL de Azure, se usa para impedir que los inquilinos obtengan acceso a los datos de los demás inquilinos. Para ello solo es necesario realizar un pequeño cambio en la aplicación. Al centralizar la lógica de acceso del inquilino dentro de la propia base de datos, RLS simplifica el código de la aplicación y reduce el riesgo de pérdidas accidentales de los datos entre los inquilinos.
+Este tutorial muestra cómo toobuild de varios inquilinos web app con un "[base de datos compartida, esquema compartido](https://msdn.microsoft.com/library/aa479086.aspx)" modelo de inquilinos, mediante Entity Framework y [seguridad de nivel de fila](https://msdn.microsoft.com/library/dn765131.aspx). En este modelo, una sola base de datos contiene datos de muchos inquilinos, y cada fila de cada tabla está asociada a un "identificador de inquilino". Seguridad de nivel de fila (RLS), una nueva característica de base de datos de SQL Azure, es usado tooprevent inquilinos tengan acceso a datos de todas las demás. Esto requiere solo una único, pequeño cambio toohello la aplicación. ¡¡¡¡Centralizando la lógica de acceso inquilino de Hola de hello base de datos, RLS simplifica el código de la aplicación hello y reduce el riesgo de hello accidental de pérdida de datos entre los inquilinos.
 
-Vamos a comenzar con la aplicación sencilla de Contact Manager de la sección [Creación de una aplicación de ASP.NET MVP con autenticación y Base de datos SQL e implementación en el Servicio de aplicaciones de Azure](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md). Ahora mismo, la aplicación permite a todos los usuarios (inquilinos) ver todos los contactos:
+Comenzaremos con la aplicación de hello simple póngase en contacto con el Administrador de [crear una aplicación de MVP de ASP.NET con la autenticación y la base de datos SQL e implementar tooAzure servicio de aplicaciones](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md). Derecho ahora, aplicación hello permite toosee de todos los usuarios (inquilinos) todos los contactos:
 
 ![Aplicación de Contact Manager antes de habilitar RLS](./media/web-sites-dotnet-entity-framework-row-level-security/ContactManagerApp-Before.png)
 
-Con solo algunos pequeños cambios, agregaremos compatibilidad con multiempresa, de forma que los usuarios solo podrán ver los contactos que les pertenecen.
+Con tan solo unos pequeños cambios, se agregará compatibilidad para varios inquilinos, para que los usuarios puede toosee sólo Hola los contactos que pertenecen toothem.
 
-## <a name="step-1-add-an-interceptor-class-in-the-application-to-set-the-sessioncontext"></a>Paso 1: Incorporación de una clase de Interceptor en la aplicación para establecer el valor de SESSION_CONTEXT
-Solo tenemos que realizar un cambio en la aplicación. Puesto que todos los usuarios de la aplicación se conectan a la base de datos con la misma cadena de conexión (es decir, el mismo inicio de sesión SQL), no hay actualmente ninguna forma de que una directiva RSL sepa por qué usuario se debería filtrar. Este enfoque es muy común en las aplicaciones web porque permite la agrupación eficaz de conexiones, pero significa que necesitamos otra manera de identificar al usuario actual de la aplicación dentro de la base de datos. La solución consiste en que la aplicación establezca un par de clave-valor para el UserId actual en [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806) inmediatamente después de abrir una conexión y antes de ejecutar una consulta. SESSION_CONTEXT es un almacén de pares de clave-valor con ámbito de sesión, y nuestra política RLS usará el UserId almacenado en él para identificar al usuario actual.
+## <a name="step-1-add-an-interceptor-class-in-hello-application-tooset-hello-sessioncontext"></a>Paso 1: Agregar una clase de Interceptor Hola tooset de aplicación hello SESSION_CONTEXT
+Hay un cambio de aplicación es necesario toomake. Dado que todos los usuarios de aplicación conectarán toohello base de datos mediante Hola misma cadena de conexión (es decir, mismo inicio de sesión SQL), actualmente no hay ninguna manera de que un tooknow de directivas RLS que el usuario debe utilizar un filtro para. Este enfoque es muy habitual en aplicaciones web porque habilita la agrupación de conexiones eficaz, pero significa que necesitamos otra manera tooidentify Hola actual usuario de la aplicación de base de datos de Hola. Hello solución es toohave Hola aplicación conjunto un par clave-valor para Hola UserId actual en hello [SESSION_CONTEXT](https://msdn.microsoft.com/library/mt590806) inmediatamente después de abrir una conexión, antes ejecuta ninguna de las consultas. SESSION_CONTEXT es un almacén de clave y valor de ámbito de sesión y nuestra directiva RLS usará Hola UserId almacenado en ella usuario actual de tooidentify Hola.
 
-Agregaremos un [interceptor](https://msdn.microsoft.com/data/dn469464.aspx) (en concreto [DbConnectionInterceptor](https://msdn.microsoft.com/library/system.data.entity.infrastructure.interception.idbconnectioninterceptor)), una nueva característica de Entity Framework (EF) 6, para establecer automáticamente el UserId actual en SESSION_CONTEXT ejecutando una instrucción T-SQL cuando EF abra una conexión.
+Agregaremos una [interceptor](https://msdn.microsoft.com/data/dn469464.aspx) (en concreto, un [DbConnectionInterceptor](https://msdn.microsoft.com/library/system.data.entity.infrastructure.interception.idbconnectioninterceptor)), una característica nueva en Entity Framework (EF) 6, conjunto de tooautomatically Hola UserId actual en hello SESSION_CONTEXT mediante la ejecución de un Instrucción de T-SQL siempre que EF abre una conexión.
 
-1. Abra el proyecto ContactManager en Visual Studio.
-2. Haga clic con el botón derecho en la carpeta Modelos en el Explorador de soluciones y seleccione Agregar > Clase.
-3. Asigne a la nueva clase el nombre "SessionContextInterceptor.cs" y haga clic en Agregar.
-4. Reemplace el contenido de SessionContextInterceptor.cs por el código siguiente.
+1. Abra el proyecto de ContactManager de hello en Visual Studio.
+2. Haga doble clic en la carpeta de modelos de Hola Hola el Explorador de soluciones y elija Agregar > clase.
+3. Clase nueva Hola el nombre "SessionContextInterceptor.cs" y haga clic en Agregar.
+4. Reemplace el contenido de Hola de SessionContextInterceptor.cs con el siguiente código de hello.
 
 ```
 using System;
@@ -55,7 +55,7 @@ namespace ContactManager.Models
     {
         public void Opened(DbConnection connection, DbConnectionInterceptionContext interceptionContext)
         {
-            // Set SESSION_CONTEXT to current UserId whenever EF opens a connection
+            // Set SESSION_CONTEXT toocurrent UserId whenever EF opens a connection
             try
             {
                 var userId = System.Web.HttpContext.Current.User.Identity.GetUserId();
@@ -179,41 +179,41 @@ namespace ContactManager.Models
 }
 ```
 
-Este es el único cambio que precisa la aplicación. Siga adelante y compile y publique la aplicación.
+Que es el cambio de aplicación solo de hello necesario. Continúe y generar y publicar la aplicación hello.
 
-## <a name="step-2-add-a-userid-column-to-the-database-schema"></a>Paso 2: Incorporación de una columna UserId al esquema de base de datos
-A continuación, debemos agregar una columna UserId a la tabla Contactos para asociar cada fila a un usuario (inquilino). Modificaremos el esquema directamente en la base de datos, por lo que no tenemos que incluir este campo en nuestro modelo de datos de EF.
+## <a name="step-2-add-a-userid-column-toohello-database-schema"></a>Paso 2: Agregar un esquema de base de datos de toohello de columna de identificador de usuario
+A continuación, necesitamos tooadd un tooassociate de tabla de contactos de UserId columna toohello cada fila con un usuario (inquilino). Se modificará el esquema de hello directamente en la base de datos de hello, para que no tengamos tooinclude este campo en nuestro modelo de datos EF.
 
-Conéctese a la base de datos directamente, mediante SQL Server Management Studio o Visual Studio, y luego ejecute la siguiente instrucción T-SQL:
+Conectar directamente, toohello base de datos mediante SQL Server Management Studio o Visual Studio y, a continuación, ejecute hello después de T-SQL:
 
 ```
 ALTER TABLE Contacts ADD UserId nvarchar(128)
     DEFAULT CAST(SESSION_CONTEXT(N'UserId') AS nvarchar(128))
 ```
 
-Se agrega una columna UserId a la tabla Contactos. Usamos el tipo de datos nvarchar (128) para que coincidan los UserId almacenados en la tabla AspNetUsers y creamos una restricción DEFAULT que establece automáticamente  que el UserId de las filas recién insertadas sea el UserId almacenado actualmente en SESSION_CONTEXT.
+Esto agrega una tabla de contactos de toohello de columna de identificador de usuario. Usamos Hola nvarchar (128) datos tipo toomatch Hola que identificadores de usuario almacenados en la tabla de hello AspNetUsers, y se crea una restricción DEFAULT que establecerá automáticamente hello UserId para las filas recién insertadas toobe Hola UserId almacenado actualmente en SESSION_CONTEXT.
 
-Ahora la tabla tiene este aspecto:
+Ahora Hola tabla tiene este aspecto:
 
 ![Tabla Contactos de SSMS](./media/web-sites-dotnet-entity-framework-row-level-security/SSMS-Contacts.png)
 
-Cuando se creen nuevos contactos, se les asignará automáticamente el UserId correcto. No obstante, con fines de demostración, vamos a asignar algunos de estos contactos existentes a un usuario existente.
+Cuando se crean nuevos contactos, le asignarán automáticamente Hola corregir UserId. Con fines de demostración, sin embargo, vamos a asignar a algunos de estos tooan contactos existentes existente de usuario.
 
-Si ya ha creado unos cuantos usuarios en la aplicación (por ejemplo, mediante cuentas locales, de Google o de Facebook), los verá en la tabla AspNetUsers. En la siguiente captura de pantalla, hasta el momento solo hay un usuario.
+Si ha creado a determinados usuarios en la aplicación hello ya (p. ej., uso local, Google o Facebook cuentas), podrá verlas en la tabla de AspNetUsers Hola. En la siguiente captura de pantalla de hello, hay solo un usuario hasta ahora.
 
 ![Tabla AspNetUsers de SSMS](./media/web-sites-dotnet-entity-framework-row-level-security/SSMS-AspNetUsers.png)
 
-Copie el identificador de user1@contoso.com y péguelo en la siguiente instrucción T-SQL. Ejecute esta instrucción para asociar tres de los contactos con este UserId.
+Hola copia Id. de user1@contoso.comy péguela en la instrucción de hello T-SQL siguiente. Ejecute esta instrucción tooassociate tres de hello contactos con este identificador de usuario.
 
 ```
 UPDATE Contacts SET UserId = '19bc9b0d-28dd-4510-bd5e-d6b6d445f511'
 WHERE ContactId IN (1, 2, 5)
 ```
 
-## <a name="step-3-create-a-row-level-security-policy-in-the-database"></a>Paso 3: Creación de una directiva de seguridad de nivel de fila en la base de datos
-El paso final consiste en crear una directiva de seguridad que use el UserId de SESSION_CONTEXT para filtrar automáticamente los resultados devueltos por las consultas.
+## <a name="step-3-create-a-row-level-security-policy-in-hello-database"></a>Paso 3: Crear una directiva de seguridad de nivel de fila en la base de datos de Hola
+Hola último paso es toocreate una directiva de seguridad que utiliza Hola UserId en SESSION_CONTEXT tooautomatically filtro Hola resultados devueltos por las consultas.
 
-Mientras sigue conectado a la base de datos, ejecute la siguiente instrucción T-SQL:
+Mientras sigue conectado toohello de base de datos, ejecute hello después de T-SQL:
 
 ```
 CREATE SCHEMA Security
@@ -234,18 +234,18 @@ go
 
 ```
 
-Este código hace tres cosas. En primer lugar, crea un nuevo esquema como procedimiento recomendado para centralizar y limitar el acceso a los objetos RLS. A continuación, crea una función de predicado que devolverá '1' cuando el UserId de una fila coincide con el UserId de SESSION_CONTEXT. Finalmente, crea una directiva de seguridad que agrega esta función como un predicado de filtro y bloqueo en la tabla Contactos. El predicado de filtro hace que las consultas solo devuelvan las filas que pertenecen al usuario actual, y el predicado de bloqueo actúa como salvaguarda para impedir que la aplicación inserte por accidente una fila para el usuario incorrecto.
+Este código hace tres cosas. En primer lugar, se crea un esquema nuevo como un procedimiento recomendado para centralizar y limitar el acceso toohello RLS objetos. A continuación, crea una función de predicado que devolverá '1' cuando Hola UserId de una fila coincide con hello UserId en SESSION_CONTEXT. Por último, crea una directiva de seguridad que agregue esta función como predicado de filtro y de bloqueo en la tabla de contactos de Hola. predicado de filtro de Hello provoca tooreturn consultas solo las filas que pertenecen el usuario actual toohello; predicado block que Hola actúa como una aplicación de protección tooprevent hello alguna vez accidentalmente inserte una fila por usuario equivocada Hola.
 
-Ejecute ahora la aplicación e inicie sesión como user1@contoso.com. Ahora este usuario solo ve los contactos que se asignaron anteriormente a este UserId:
+Ahora ejecute la aplicación hello e inicie sesión como user1@contoso.com. Ahora, este usuario ve únicamente los contactos de hello asignamos toothis UserId:
 
 ![Aplicación de Contact Manager antes de habilitar RLS](./media/web-sites-dotnet-entity-framework-row-level-security/ContactManagerApp-After.png)
 
-Para validar esto aún más, intente registrar un nuevo usuario. Este usuario no verá ningún contacto, ya que no se le ha asignado ninguno. Si dicho usuario crea un nuevo contacto, se le asignará a él, y solo él podrá verlo.
+toovalidate este aún más, intente registrar un usuario nuevo. No verán ningún contacto, porque no se han asignado toothem. Si crea un nuevo contacto, se le asignará toothem y sólo estarán toosee capaz de él.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Eso es todo. La aplicación web sencilla de Contact Manager se ha convertido en una aplicación multiempresa donde cada usuario tiene su propia lista de contactos. Mediante la seguridad de nivel de fila, hemos evitado la complejidad de aplicar lógica de acceso de inquilino a nuestro código de aplicación. Esta transparencia permite a la aplicación centrarse en el problema empresarial real entre manos, y también reduce el riesgo de pérdida accidental de datos cuando el código base de la aplicación crece.
+Eso es todo. aplicación de Hello simple póngase en contacto con el administrador web se ha convertido en uno que cada usuario tiene su propia lista de contactos de varios inquilinos. Mediante la seguridad de nivel de fila, nos hemos evitar complejidad Hola de aplicar la lógica de acceso de inquilino en el código de aplicación. Esta transparencia permite toofocus de aplicación hello en el problema en cuestión de hello empresariales reales, y también reduce el riesgo de Hola de pérdida accidental de datos como aplicación hello código base del crece.
 
-En este tutorial solo se ha mostrado una mínima parte de lo que se puede hacer con RLS. Por ejemplo, se puede tener una lógica de acceso más sofisticada o granular, y es posible almacenar más valores que únicamente el UserId de SESSION_CONTEXT. También es posible [integrar RLS con las bibliotecas de cliente de herramientas de base de datos elástica](../sql-database/sql-database-elastic-tools-multi-tenant-row-level-security.md) para permitir particiones multiempresa en una capa de datos de escalado horizontal.
+Este tutorial tiene solo un Hola arañado superficie de lo que es posible con RLS. Por ejemplo, es posible toohave más sofisticada o la lógica de acceso granular y su posible toostore Hola algo más que un identificador de usuario actual en hello SESSION_CONTEXT. También es posible demasiado[integrar RLS con bibliotecas de cliente de herramientas de base de datos elástica hello](../sql-database/sql-database-elastic-tools-multi-tenant-row-level-security.md) toosupport particiones de varios inquilinos en una capa de datos de escala horizontal.
 
-Al margen de estas posibilidades, también estamos trabajando para mejorar RLS más incluso. Si tiene alguna pregunta, idea o cosas que le gustaría ver, háganos llegar sus comentarios. Agradecemos su participación.
+Más allá de estas posibilidades, también trabajamos toomake RLS aún mejor. Si tiene alguna pregunta, ideas y las cosas que le gustaría toosee, háganoslo saber en comentarios de Hola. Agradecemos su participación.
 

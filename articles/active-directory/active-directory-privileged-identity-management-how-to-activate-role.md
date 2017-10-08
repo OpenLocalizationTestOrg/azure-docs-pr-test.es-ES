@@ -1,6 +1,6 @@
 ---
-title: "Activación o desactivación de un rol | Microsoft Docs"
-description: "Aprenda a activar roles para identidades con privilegios con la aplicación Privileged Identity Management de Azure."
+title: aaaHow tooactivate o desactivar un rol | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooactivate roles para privileged identidades con aplicaciones de Azure Privileged Identity Management de Hola."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,60 +15,60 @@ ms.workload: identity
 ms.date: 02/14/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: a143fd78eae52fda0cbadb7e74fd8209f24629a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8c68ad69e4b006263bbb8a1cfc7ed3dba974e1db
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-activate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>Activación y desactivación de roles en Privileged Identity Management de Azure AD
-Privileged Identity Management de Azure Active Directory (AD) simplifica el modo en que las empresas administra el acceso con privilegios a los recursos de Azure AD y en otros servicios en línea de Microsoft como Office 365 o Microsoft Intune.  
+# <a name="how-tooactivate-or-deactivate-roles-in-azure-ad-privileged-identity-management"></a>¿Cómo tooactivate o desactivar los roles en Azure AD Privileged Identity Management
+Active Directory (AD) Privileged Identity Management de Azure simplifica cómo las empresas administran tooresources de acceso con privilegios en Azure AD y otros servicios en línea de Microsoft como Office 365 o Microsoft Intune.  
 
-Si se le ha considerado apto para un rol administrativo, significa que puede activar el rol cuando tenga la necesidad de realizar acciones que requieran ciertos privilegios. Por ejemplo, si administra de vez en cuando características de Office 365, los administradores de roles con privilegios de su organización puede que no le hayan asignado el rol de administrador global permanente, ya que ese rol afecta también a otros servicios. En su lugar, pueden asignarle roles de Azure AD como administrador de Exchange Online. Puede solicitar la activación de ese rol cuando necesite sus privilegios y entonces tendrá control administrativo durante un período predeterminado.
+Si realizaron aptas para un rol administrativo, que significa que puede activar ese rol cuando necesite acciones tooperform con privilegios. Por ejemplo, si administra de vez en cuando características de Office 365, los administradores de roles con privilegios de su organización puede que no le hayan asignado el rol de administrador global permanente, ya que ese rol afecta también a otros servicios. En su lugar, pueden asignarle roles de Azure AD como administrador de Exchange Online. Puede solicitar tooactivate ese rol cuando necesite sus privilegios y, a continuación, tendrá el control de administración para un período de tiempo predeterminado.
 
-Este artículo va dirigido a los administradores que necesitan activar su rol en Privileged Identity Management (PIM) de Azure AD. Le llevará por los pasos para activar un rol cuando necesite los permisos y desactivar el rol cuando haya terminado. Además, los administradores con roles con privilegios pueden requerir aprobación para activar un rol (versión preliminar). Obtenga más información sobre [flujos de trabajo de aprobación de PIM](./privileged-identity-management/azure-ad-pim-approval-workflow.md) aquí.
+Este artículo es para que los administradores que necesitan tooactivate su rol en Azure AD Privileged Identity Management (PIM). Le guiará por hello pasos tooactivate un rol cuando se necesitan permisos de Hola y desactiva la función hello cuando haya terminado. Además, los administradores de roles con privilegios pueden solicitar aprobación tooactivate un rol (versión preliminar). Obtenga más información sobre [flujos de trabajo de aprobación de PIM](./privileged-identity-management/azure-ad-pim-approval-workflow.md) aquí.
 
-## <a name="add-the-privileged-identity-management-application"></a>Incorporación de la aplicación Privileged Identity Management
-Use la aplicación Privileged Identity Management de Azure AD en el [Portal de Azure](https://portal.azure.com/) para solicitar una activación del rol aunque vaya a trabajar en otro portal o mediante PowerShell. Si no tiene la aplicación en el Portal de Azure, siga estos pasos para comenzar:
+## <a name="add-hello-privileged-identity-management-application"></a>Agregar aplicación de hello Privileged Identity Management
+Usar la aplicación de Privileged Identity Management de hello Azure AD en hello [portal de Azure](https://portal.azure.com/) toorequest activación de un rol, incluso si se va a toooperate en otro portal o PowerShell. Si no tiene la aplicación de Azure AD Privileged Identity Management de hello en el portal de Azure, siga estas tooget pasos que se inició.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
-2. Seleccione su nombre de usuario en la esquina superior derecha del Portal de Azure y elija el directorio donde va a trabajar.
-3. Seleccione **Más servicios** y use el cuadro de texto Filtro para buscar **Azure AD Privileged Identity Management**.
-4. Active **Anclar al panel** y haga clic en **Crear**. Se abre la aplicación Privileged Identity Management.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
+2. Seleccione el nombre de usuario en hello superior derecho de hello portal de Azure y directorio Hola seleccione donde tendrá estar en funcionamiento.
+3. Seleccione **más servicios** y usar hello toosearch de cuadro de texto de filtro para **Azure AD Privileged Identity Management**.
+4. Comprobar **Pin toodashboard** y, a continuación, haga clic en **crear**. Hola aplicación Privileged Identity Management se abre.
 
 ## <a name="activate-a-role"></a>Activación de un rol
-Cuando necesite asumir un rol, puede solicitar la activación de una solicitud seleccionando la opción de exploración **Mis roles** en la columna de exploración de la izquierda, en la aplicación Privileged Identity Management de Azure AD.
+Cuando necesite tootake en un rol, puede solicitar la activación seleccionando hello **Roles Mis** opción de navegación en la aplicación de Privileged Identity Management de hello Azure AD de la columna de navegación izquierda.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/) y seleccione el icono de Privileged Identity Management de Azure AD.
-2. Seleccione **My Roles** (Mis roles). Aparecerá una lista de sus roles aptos asignados en la agrupación en la parte superior de la página.
-3. Seleccione un rol para activar.
-4. Seleccione **Activar**. Aparecerá la hoja **Solicitar activación del role** .
-5. Algunos roles requieren Multi-Factor Authentication (MFA) para poder activarlos. Solo tiene que autenticarse una vez por sesión.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/) y el icono de Privileged Identity Management seleccione hello Azure AD.
+2. Seleccione **My Roles** (Mis roles). Aparecerá una lista de sus roles válidos asignados en hello agrupación al principio de Hola de página de Hola.
+3. Seleccione un rol tooactivate.
+4. Seleccione **Activar**. Hola **solicitar la activación de rol** aparece hoja.
+5. Algunos roles requieren la autenticación multifactor (MFA) para poder activar el rol de Hola. Solo tiene tooauthenticate una vez por sesión.
    
     ![Comprobación con MFA antes de la activación del rol: captura de pantalla][2]
-6. En el campo de texto, escriba el motivo de la solicitud de activación.  Algunos roles requieren que proporcione un número de vale de problema.
-7. Seleccione **Aceptar**.  Si el rol no requiere aprobación, ahora se activa y aparece en la lista de roles activos (directamente debajo de la lista de asignaciones de roles válidos). Si el [rol requiere aprobación](./privileged-identity-management/azure-ad-pim-approval-workflow.md) para activarse, aparecerá brevemente una notificación del sistema en la esquina superior derecha del explorador que le informa de que la solicitud está pendiente de aprobación.
+6. Escriba el motivo de hello para la solicitud de activación de hello en el campo de texto hello.  Algunos roles requieren toosupply un número de vales de problemas.
+7. Seleccione **Aceptar**.  Si el rol de hello no requiere aprobación, ahora se activa y rol de hello aparece en la lista Hola de roles activos (directamente debajo de hello las asignaciones de roles válidos). Si hello [rol requiere aprobación](./privileged-identity-management/azure-ad-pim-approval-workflow.md) tooactivate, aparecerá una notificación del sistema brevemente en hello superior derecha del explorador que le informa de solicitud de hello está pendiente de aprobación.
 
     ![Notificación de solicitud pendiente: captura de pantalla][3]
 
 ## <a name="deactivate-a-role"></a>Desactivación de un rol
 Cuando se ha activado un rol, si alcanza su límite de tiempo (de duración elegible), se desactiva automáticamente.
 
-Si completa pronto sus tareas administrativas, también puede desactivar un rol de forma manual en la aplicación Privileged Identity Management de Azure AD.  Seleccione **Mis roles**, elija el rol con el que haya terminado en la agrupación **Asignaciones de roles activas** y, a continuación, seleccione **Desactivar**.  
+Si completar tareas de administración al principio, también puede desactivar un rol manualmente en hello aplicación de Azure AD Privileged Identity Management.  Seleccione **Roles Mis**, elija rol Hola haya terminado con desde hello **las asignaciones de roles de Active** agrupación y, a continuación, seleccione **desactivar**.  
 
 ## <a name="cancel-a-pending-request"></a>Cancelación de una solicitud pendiente
-En caso de que no necesite activar un rol que requiera aprobación, puede cancelar una solicitud pendiente en cualquier momento. Basta con seleccionar la opción de exploración **Mis roles** en la columna de exploración de la izquierda, en la aplicación Privileged Identity Management de Azure AD.
+En caso de hello no requieren activación de un rol que requiere aprobación, puede cancelar una solicitud pendiente en cualquier momento. Simplemente seleccione hello **Roles Mis** opción de navegación en la aplicación de Privileged Identity Management de hello Azure AD de la columna de navegación izquierda.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/) y seleccione el icono de Privileged Identity Management de Azure AD.
-2. Seleccione **My Roles** (Mis roles). Aparecerá una lista de sus roles aptos asignados en la agrupación en la parte superior de la página.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/) y el icono de Privileged Identity Management seleccione hello Azure AD.
+2. Seleccione **My Roles** (Mis roles). Aparecerá una lista de sus roles válidos asignados en hello agrupación al principio de Hola de página de Hola.
 3. Seleccione un rol.
-4. Seleccione entonces el banner **Activation is pending approval** (La activación está pendiente de aprobación) en la hoja de detalles de activación del rol.
-5. Seleccione **Cancelar** en la parte superior de la hoja **Pendiente de aprobación**.
+4. Seleccione hello **activación está pendiente de aprobación** banner en la hoja de detalles de activación de rol de Hola.
+5. Seleccione **cancelar** en parte superior de Hola de hello **pendiente de aprobación** hoja.
 
    ![Captura de pantalla de la solicitud de cancelación pendiente][4]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Si le interesa aprender más sobre Privileged Identity Management de Azure AD, puede encontrar más información en los siguientes vínculos.
+Si está interesado en aprender más sobre Azure AD Privileged Identity Management, hello vínculos siguientes tienen más información.
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

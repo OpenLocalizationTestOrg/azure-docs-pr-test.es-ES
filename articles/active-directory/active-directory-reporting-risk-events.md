@@ -1,5 +1,5 @@
 ---
-title: Eventos de riesgo de Azure Active Directory | Microsoft Docs
+title: eventos de riesgo de Active Directory aaaAzure | Documentos de Microsoft
 description: "En este tema se explica detalladamente qué son los eventos de riesgo."
 services: active-directory
 keywords: azure active directory identity protection, seguridad, riesgo, nivel de riesgo, vulnerabilidad, directiva de seguridad
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d771c1f43707744aac728c4f72000d855cbd6e1d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Eventos de riesgo de Azure Active Directory
 
-La mayoría de las infracciones de seguridad tienen lugar cuando los atacantes obtienen acceso a un entorno mediante el robo de identidad de un usuario. Descubrir las identidades en peligro no es tarea fácil. Azure Active Directory utiliza algoritmos y heurística de aprendizaje automático adaptable para detectar acciones sospechosas que están relacionadas con las cuentas de usuario. Cada acción sospechosa detectada se almacena en un registro denominado *evento de riesgo*.
+mayoría de Hola de toman las infracciones de seguridad colocar cuando los atacantes tuvieran el entorno de acceso tooan por robo de identidad de un usuario. Descubrir las identidades en peligro no es tarea fácil. Azure Active Directory utiliza algoritmos y heurística acciones sospechosas toodetect que son cuentas de usuario de tooyour relacionados de aprendizaje de automático adaptable. Cada acción sospechosa detectada se almacena en un registro denominado *evento de riesgo*.
 
 En la actualidad, Azure Active Directory detecta seis tipos de eventos de riesgo:
 
 - [Usuarios con credenciales perdidas](#leaked-credentials) 
 - [Inicios de sesión desde direcciones IP anónimas](#sign-ins-from-anonymous-ip-addresses) 
-- [Viaje imposible a ubicaciones inusuales](#impossible-travel-to-atypical-locations) 
+- [Viaje imposible tooatypical ubicaciones](#impossible-travel-to-atypical-locations) 
 - [Inicios de sesión desde ubicaciones desconocidas](#sign-in-from-unfamiliar-locations)
 - [Inicios de sesión desde dispositivos infectados](#sign-ins-from-infected-devices) 
 - [Inicios de sesión desde direcciones IP con actividad sospechosa](#sign-ins-from-ip-addresses-with-suspicious-activity) 
@@ -36,71 +36,71 @@ En la actualidad, Azure Active Directory detecta seis tipos de eventos de riesgo
 
 ![Evento de riesgo](./media/active-directory-reporting-risk-events/91.png)
 
-En este tema se ofrece información general detallada de los eventos de riesgo y cómo puede usarlos para proteger las identidades de Azure AD.
+Este tema proporciona también una descripción detallada de los eventos de riesgo son y cómo puede usarlos tooprotect las identidades de Azure AD.
 
 
 ## <a name="risk-event-types"></a>Tipo de evento de riesgo
 
-La propiedad de tipo de evento de riesgo es un identificador de la acción sospechosa para la que se ha creado un registro de evento de riesgo.  
-Las continuas inversiones de Microsoft en procesos de detección conducirán a:
+propiedad de tipo de evento de riesgo de Hello es que un identificador para la acción sospechosa Hola un registro de eventos de riesgo se ha creado para.  
+Crear las inversiones en continuo en el proceso de detección de Hola de Microsoft:
 
-- Mejoras en la precisión de la detección de los eventos de riesgo ya existentes 
-- Nuevos tipos de eventos de riesgo que se agregarán en el futuro
+- Precisión de la detección de toohello mejoras de eventos de riesgo existentes 
+- Nuevos tipos de eventos de riesgo que se agregarán en hello futuras
 
 ### <a name="leaked-credentials"></a>Credenciales con fugas
 
-Cuando los cibercriminales llegan a poner en peligro las contraseñas válidas de usuarios legítimos, es frecuente que las compartan. Suelen hacer esto publicándolas en la Web oscura o sitios de pegado, o bien mediante el intercambio o la venta de esas credenciales en el mercado negro. El servicio de filtrado de credenciales de Microsoft adquiere pares de nombre de usuario y contraseña mediante la supervisión de sitios web públicos y de la Web oscura y trabajando en conjunto con:
+Si ciberdelincuentes poner en peligro las contraseñas válidas de los usuarios legítimos, delincuentes Hola compartirán a menudo esas credenciales. Esto se suele hacer publicándolas públicamente en sitios web o pegar oscuros del Hola o comerciales o las credenciales de hello en el mercado negro de Hola de venta. Microsoft Hello filtren las credenciales de servicio adquiere el nombre de usuario / contraseña pares mediante la supervisión de sitios web públicos y oscuro y el trabajo con:
 
 - Investigadores
 - Autoridades judiciales
 - Equipos de seguridad de Microsoft
 - Otros orígenes de confianza 
 
-Cuando el servicio adquiere pares de nombre de usuario y contraseña, se comprueban con respecto a las credenciales actuales válidas de los usuarios de AAD. Cuando se encuentra una coincidencia, significa que la contraseña de un usuario está en peligro y se crea un *evento de riesgo de credenciales filtradas*.
+Si el servicio de Hola adquiere username / pares de contraseña, se comprueban con credenciales válidas actual de los usuarios de AAD. Cuando se encuentra una coincidencia, significa que la contraseña de un usuario está en peligro y se crea un *evento de riesgo de credenciales filtradas*.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Inicios de sesión desde direcciones IP anónimas
 
-Este tipo de evento de riesgo identifica los usuarios que han iniciado sesión correctamente desde una dirección IP que se ha identificado como una dirección IP de proxy anónima. A menudo, estos servidores proxy los usan los usuarios que desean ocultar la dirección IP del dispositivo y es posible que se usen con fines malintencionados.
+Este tipo de evento de riesgo identifica los usuarios que han iniciado sesión correctamente desde una dirección IP que se ha identificado como una dirección IP de proxy anónima. Estos servidores proxy son la utilizan los usuarios que quieran toohide dirección IP de su dispositivo y puede utilizarse de forma malintencionada.
 
 
-### <a name="impossible-travel-to-atypical-locations"></a>Viaje imposible a ubicaciones inusuales
+### <a name="impossible-travel-tooatypical-locations"></a>Viaje imposible tooatypical ubicaciones
 
-Este tipo de evento de riesgo identifica dos inicios de sesión procedentes de ubicaciones geográficamente distantes, donde al menos una de las ubicaciones puede también ser inusual para el usuario, según su comportamiento anterior. Además, el tiempo entre los dos inicios de sesión es menor que el tiempo que habría necesitado el usuario para viajar de la primera ubicación a la segunda, lo que indica que otro usuario utiliza las mismas credenciales. 
+Este tipo de evento de riesgo identifica dos inicios de sesión que se originan desde ubicaciones distantes geográficamente, donde al menos una de las ubicaciones de hello también se pueden inusual para el usuario de hello, tiene más allá de comportamiento. Además, el tiempo de hello entre Hola dos inicios de sesión es menor que tiempo Hola Hola usuario tootravel de hello primera ubicación toohello le hubiera llevado segundo, que indica que está usando otro usuario Hola mismo credenciales. 
 
-Este algoritmo de aprendizaje automático omite*falsos positivos*obvios que contribuyen a la condición de viaje imposible, como las VPN y las ubicaciones que usan con regularidad otros usuarios de la organización.  El sistema tiene un período de aprendizaje inicial de 14 días, durante el cual aprende el comportamiento de inicios de sesión del nuevo usuario.
+Este algoritmo de aprendizaje de máquina que no distingue entre obvio "*falsos positivos*" que han contribuido toohello viaje imposible condición, como las redes privadas virtuales y las ubicaciones que se usen con frecuencia otros usuarios de la organización de Hola.  sistema de Hello tiene un período de aprendizaje inicial de 14 días durante el cual aprende el comportamiento de inicio de sesión de un usuario nuevo.
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Inicio de sesión desde ubicaciones desconocidas
 
-Este tipo de evento de riesgo tiene en cuenta las ubicaciones de inicio de sesión anteriores (dirección IP, latitud/longitud y ASN) para determinar las ubicaciones nuevas o desconocidas. El sistema almacena información acerca de las ubicaciones anteriores utilizadas por un usuario y considera estas ubicaciones "conocidas". El evento de riesgo se desencadena cuando el inicio de sesión se produce desde una ubicación que no está en la lista de ubicaciones conocidas. El sistema tiene un período de aprendizaje inicial de 30 días, durante el cual no marca ninguna nueva ubicación como ubicación desconocida. El sistema también ignora los inicios de sesión desde dispositivos conocidos y ubicaciones geográficamente cercanas a una ubicación conocida. 
+Este tipo de evento de riesgo se considera más allá de las ubicaciones de inicio de sesión (IP, latitud y longitud y ASN) toodetermine nuevo / familiarizado ubicaciones. sistema de Hello almacena información acerca de las ubicaciones anteriores utilizados por un usuario y considera que estas ubicaciones "conocidas". eventos de riesgo de Hola se desencadenan al inicio de sesión de Hola se produce desde una ubicación que no esté ya en la lista de Hola de ubicaciones conocidas. sistema de Hello tiene un período de aprendizaje inicial de 30 días, durante el cual no marca las nuevas ubicaciones como ubicaciones desconocidas. sistema de Hello también omite los inicios de sesión desde dispositivos conocidos y ubicaciones geográficamente cierre tooa familiarizado ubicación. 
 
 ### <a name="sign-ins-from-infected-devices"></a>Inicios de sesión desde dispositivos infectados
 
-Este tipo de evento de riesgo identifica los inicios de sesión desde dispositivos infectados con malware, que se sabe que se comunican activamente con un servidor bot. Esto se determina mediante la correlación de direcciones IP de dispositivos de usuarios con direcciones IP que estuvieron en contacto con un servidor bot. 
+Este tipo de evento de riesgo identifica inicios de sesión desde dispositivos infectados con malware, que se conocen tooactively comunicarse con un servidor bot. Esto se determina mediante la correlación de direcciones IP de dispositivo del usuario de hello contra las direcciones IP que estuvieron en contacto con un servidor bot. 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Inicios de sesión desde direcciones IP con actividad sospechosa
-Este tipo de evento de riesgo identifica las direcciones IP desde las que se ha producido un gran número de intentos fallidos de inicio de sesión, en varias cuentas de usuario, durante un corto período de tiempo. Esto compara los patrones de tráfico de direcciones IP usadas por atacantes y es un claro indicador de que las cuentas están ya o van a estar en peligro. Se trata de un algoritmo de aprendizaje automático que omite "*falsos positivos*" obvios, como las direcciones IP que utilizan con regularidad otros usuarios de la organización.  El sistema tiene un período de aprendizaje inicial de 14 días, durante el cual aprende el comportamiento de inicio de sesión de un nuevo usuario y un nuevo inquilino.
+Este tipo de evento de riesgo identifica las direcciones IP desde las que se ha producido un gran número de intentos fallidos de inicio de sesión, en varias cuentas de usuario, durante un corto período de tiempo. Esto coincide con los patrones de tráfico de direcciones IP usadas por los atacantes y es un claro indicador de que las cuentas ya están bien o son toobe puesto en peligro. Se trata de un algoritmo de aprendizaje de máquina que no distingue entre obvio "*falsos positivos*", como direcciones IP que se usen con frecuencia otros usuarios de la organización de Hola.  sistema de Hello tiene un período de aprendizaje inicial de 14 días donde aprende Hola inicio de sesión de comportamiento de un nuevo usuario y el nuevo inquilino.
 
 
 ## <a name="detection-type"></a>Tipo de detección
 
-La propiedad de tipo de detección es un indicador (en tiempo real o sin conexión) del período de tiempo de detección de un evento de riesgo.  
-Actualmente, la mayoría de los eventos de riesgo se detectan sin conexión en una operación posterior de procesamiento una vez que ya se ha producido el evento de riesgo.
+propiedad de tipo de detección de Hello es un indicador (en tiempo real o sin conexión) para el período de tiempo de detección de Hola de un evento de riesgo.  
+Actualmente, la mayoría de los eventos de riesgo se detectan sin conexión en una operación posterior al procesamiento después de que se ha producido el evento de riesgo de Hola.
 
-En la tabla siguiente se muestra la cantidad de tiempo que tarda un tipo de detección en aparecer en un informe relacionado:
+Hello en la tabla siguiente muestra la cantidad de Hola de tiempo que tarda un tooshow del tipo de detección en un informe relacionado:
 
 | Tipo de detección | Informes de latencia |
 | --- | --- |
-| Tiempo real | 5 a 10 minutos |
-| Sin conexión | 2 a 4 horas |
+| Tiempo real | too10 5 minutos |
+| Sin conexión | too4 2 horas |
 
 
-Para los tipos de evento de riesgo que detecta Azure Active Directory, los tipos de detección son los siguientes:
+Para los tipos de eventos de riesgo de hello que Azure Active Directory detecta, tipos de detección de hello son:
 
 | Tipo de evento de riesgo | Tipo de detección |
 | :-- | --- | 
 | [Usuarios con credenciales perdidas](#leaked-credentials) | Sin conexión |
 | [Inicios de sesión desde direcciones IP anónimas](#sign-ins-from-anonymous-ip-addresses) | Tiempo real |
-| [Viaje imposible a ubicaciones inusuales](#impossible-travel-to-atypical-locations) | Sin conexión |
+| [Viaje imposible tooatypical ubicaciones](#impossible-travel-to-atypical-locations) | Sin conexión |
 | [Inicios de sesión desde ubicaciones desconocidas](#sign-in-from-unfamiliar-locations) | Tiempo real |
 | [Inicios de sesión desde dispositivos infectados](#sign-ins-from-infected-devices) | Sin conexión |
 | [Inicios de sesión desde direcciones IP con actividad sospechosa](#sign-ins-from-ip-addresses-with-suspicious-activity) | Sin conexión|
@@ -108,78 +108,78 @@ Para los tipos de evento de riesgo que detecta Azure Active Directory, los tipos
 
 ## <a name="risk-level"></a>Nivel de riesgo
 
-La propiedad de nivel de riesgo de un evento de riesgo es un indicador (alto, medio o bajo) de la gravedad y la confianza de un evento de riesgo. Esta propiedad le ayuda a clasificar por orden de prioridad las acciones que debe realizar. 
+propiedad de nivel de riesgo de Hola de un evento de riesgo es un indicador (alto, medio o bajo) para la gravedad de Hola y confianza Hola de un evento de riesgo. Esta propiedad le ayuda a acciones de hello tooprioritize que debe realizar. 
 
-La gravedad del evento de riesgo representa la fuerza de la señal como predicción del riesgo de la identidad.  
-La confianza es indicador de la posibilidad de que existan falsos positivos. 
+gravedad de Hola de evento de riesgo de hello representa la importancia de Hola de señal de Hola como un predictor de riesgo de identidad.  
+confianza de Hello es un indicador con posibilidad de Hola de falsos positivos. 
 
 Por ejemplo, 
 
-* **Alto**: evento de riesgo de gravedad alta y de alta confianza. Estos eventos son buenos indicadores de que se ha puesto en peligro la identidad del usuario; las cuentas de usuario afectadas deben corregirse inmediatamente.
+* **Alto**: evento de riesgo de gravedad alta y de alta confianza. Estos eventos son buenos indicadores que se ha puesto en peligro la identidad del usuario de Hola y las cuentas de usuario afectadas deben corregirse inmediatamente.
 
 * **Medio**: evento de riesgo de gravedad alta, pero confianza inferior, o viceversa. Estos eventos son potencialmente peligrosos y las cuentas de usuario afectadas deben corregirse.
 
-* **Bajo**: evento de riesgo de baja confianza y gravedad baja. Este evento puede no requerir una acción inmediata, pero cuando se combina con otros eventos de riesgo, puede proporcionar una indicación clara de que la identidad está en peligro.
+* **Bajo**: evento de riesgo de baja confianza y gravedad baja. Este evento no puede requerir una acción inmediata, pero cuando se combina con otros eventos de riesgo, puede proporcionar una indicación clara que Hola identidad está en peligro.
 
 ![Nivel de riesgo](./media/active-directory-reporting-risk-events/01.png)
 
 ### <a name="leaked-credentials"></a>Credenciales con fugas
 
-Los eventos de riesgo de credenciales con fugas se clasifican con gravedad **Alta**, ya que proporcionan una indicación clara de que el nombre de usuario y la contraseña están a disposición de un atacante.
+Filtren las credenciales de eventos de riesgo se clasifican como un **alta**, ya que proporcionan una indicación clara que Hola nombre de usuario y la contraseña son atacante tooan disponible.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Inicios de sesión desde direcciones IP anónimas
 
-El nivel de riesgo de este tipo de evento es **Medio** porque una dirección IP anónima no es una indicación clara de una cuenta en riesgo.  
-Se recomienda ponerse en contacto inmediatamente con el usuario para comprobar si utilizaba direcciones IP anónimas.
+es el nivel de riesgo de Hola para este tipo de evento de riesgo **medio** porque una dirección IP anónima no es una indicación clara de un ataque de cuenta.  
+Se recomienda que se inmediatamente en contacto con hello usuario tooverify si estaban usando direcciones IP anónimas.
 
 
-### <a name="impossible-travel-to-atypical-locations"></a>Viaje imposible a ubicaciones inusuales
+### <a name="impossible-travel-tooatypical-locations"></a>Viaje imposible tooatypical ubicaciones
 
-Un viaje imposible suele ser un buen indicador de que un hacker logró iniciar sesión correctamente. Sin embargo, pueden producirse falsos positivos cuando un usuario viaja con un nuevo dispositivo o usa una VPN que normalmente no utilizan otros usuarios de la organización. Otra fuente de falsos positivos son las aplicaciones que pasan incorrectamente direcciones IP del servidor como IP de cliente, lo que puede dar la impresión de que los inicios de sesión tienen lugar desde el centro de datos en el que está hospedado el back-end de esa aplicación (a menudo son centros de datos de Microsoft, por lo que parece que los inicios de sesión tienen lugar en direcciones IP propiedad de Microsoft). Como resultado de estos falsos positivos, el nivel de riesgo de estos eventos de riesgo es **Medio**.
+Viaje imposible suele ser un buen indicador de que un hacker fue capaz de toosuccessfully sesión. Sin embargo, los falsos positivos pueden producirse cuando un usuario viaja con un dispositivo nuevo o con una VPN que normalmente no se utiliza por otros usuarios de la organización de Hola. Otra fuente de falsos positivos es aplicaciones que pasan incorrectamente direcciones IP de servidor como direcciones IP, que puede dar el aspecto de Hola de cliente de inicios de sesión se hospeda teniendo lugar desde el centro de datos de hello en esa aplicación del back-end (a menudo son los centros de datos de Microsoft que puede dar el aspecto de Hola de inicios de sesión tiene lugar de Microsoft propiedad direcciones IP). Como resultado de estos falsos positivos, es el nivel de riesgo de Hola para este evento de riesgo **medio**.
 
 > [!TIP]
-> Puede reducir la cantidad de falsos positivos informados para este tipo de evento de riesgo si configura [ubicaciones con nombre](active-directory-named-locations.md). 
+> Puede reducir cantidad de Hola de false-positves notificado para este tipo de evento de riesgo mediante la configuración de [ubicaciones con nombre](active-directory-named-locations.md). 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Inicio de sesión desde ubicaciones desconocidas
 
-Las ubicaciones desconocidas pueden proporcionar una indicación clara de que un atacante puede usar una identidad robada. Se pueden producir falsos positivos cuando un usuario está viajando o probando un nuevo dispositivo, o bien usando una VPN nueva. Como resultado de estos falsos positivos, el nivel de riesgo para este tipo de evento es **Medio**.
+Ubicaciones desconocidas pueden proporcionar una indicación clara que un atacante es capaz de toouse una identidad robada. Se pueden producir falsos positivos cuando un usuario está viajando o probando un nuevo dispositivo, o bien usando una VPN nueva. Como resultado de estos falsos positivos, es el nivel de riesgo de Hola para este tipo de evento **medio**.
 
 ### <a name="sign-ins-from-infected-devices"></a>Inicios de sesión desde dispositivos infectados
 
-Este evento de riesgo identifica las direcciones IP, no los dispositivos de usuarios. Si hay varios dispositivos detrás de una única dirección IP, y solo algunos son controlados por una red bot, los inicios de sesión desde otros dispositivos pueden desencadenar este evento innecesariamente, por lo que se clasifica este evento de riesgo como **Bajo**.  
+Este evento de riesgo identifica las direcciones IP, no los dispositivos de usuarios. Si varios dispositivos están detrás de una única dirección IP, y solo algunos son controlados por una red de robots, inicios de sesión de otros dispositivos mi desencadenador este evento innecesariamente, que es el motivo de Hola para clasificar este evento de riesgo como **bajo**.  
 
-Se recomienda ponerse en contacto con el usuario y examinar todos sus dispositivos. También es posible que el dispositivo personal de un usuario esté infectado o, como se ha mencionado antes, que otra persona estaba usando un dispositivo infectado desde la misma dirección IP que el usuario. A menudo, los dispositivos infectados son infectados por malware que todavía no ha sido identificado por el software antivirus, y también pueden indicar unos hábitos del usuario incorrectos que pueden haber hecho que el dispositivo se infecte.
+Se recomienda que ponerse en contacto con el usuario de Hola y dispositivos de todos los usuarios de Hola de digitalización. También es posible que un dispositivo de usuario personal está infectado o, como se mencionó anteriormente, que otra persona estaba usando un dispositivo infectado de hello igual de direcciones IP como usuario de Hola. Dispositivos infectados a menudo están infectados con malware que todavía no ha sido identificado por el software antivirus y también pueden indicar como hábitos de usuario incorrectos que pueden haber causado Hola dispositivo toobecome infectado.
 
-Para obtener más información acerca de cómo tratar infecciones de malware, consulte el [Centro de protección contra malware](http://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
+Para obtener más información acerca de cómo tooaddress infecciones de malware, vea hello [Malware Protection Center](http://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Inicios de sesión desde direcciones IP con actividad sospechosa
 
-Se recomienda ponerse en contacto con el usuario para comprobar si realmente iniciaron sesión desde una dirección IP marcada como sospechosa. El nivel de riesgo de este tipo de evento es "**Medio**" porque varios dispositivos pueden encontrarse detrás de la misma dirección IP, mientras que solo algunos pueden ser responsables de la actividad sospechosa. 
+Se recomienda ponerse en contacto con hello usuario tooverify si realmente firmados desde una dirección IP que se marcó como sospechosa. nivel de riesgo de Hola para este tipo de evento es "**medio**" porque varios dispositivos pueden estar detrás de hello misma dirección IP, mientras que sólo algunos pueden ser responsables de cualquier actividad sospechosa Hola. 
 
 
  
 ## <a name="next-steps"></a>Pasos siguientes
 
-Los eventos de riesgo son la base para proteger las identidades de Azure AD. Azure AD actualmente puede detectar seis eventos de riesgo: 
+Los eventos de riesgo son foundation Hola para proteger las identidades de Azure AD. Azure AD actualmente puede detectar seis eventos de riesgo: 
 
 
 | Tipo de evento de riesgo | Nivel de riesgo | Tipo de detección |
 | :-- | --- | --- |
 | [Usuarios con credenciales perdidas](#leaked-credentials) | Alto | Sin conexión |
 | [Inicios de sesión desde direcciones IP anónimas](#sign-ins-from-anonymous-ip-addresses) | Mediano | Tiempo real |
-| [Viaje imposible a ubicaciones inusuales](#impossible-travel-to-atypical-locations) | Mediano | Sin conexión |
+| [Viaje imposible tooatypical ubicaciones](#impossible-travel-to-atypical-locations) | Mediano | Sin conexión |
 | [Inicios de sesión desde ubicaciones desconocidas](#sign-in-from-unfamiliar-locations) | Mediano | Tiempo real |
 | [Inicios de sesión desde dispositivos infectados](#sign-ins-from-infected-devices) | Bajo | Sin conexión |
 | [Inicios de sesión desde direcciones IP con actividad sospechosa](#sign-ins-from-ip-addresses-with-suspicious-activity) | Mediano | Sin conexión|
 
-¿Dónde se pueden encontrar los eventos de riesgo que se detectaron en el entorno?
+¿Dónde puede encontrar Hola eventos de riesgo que se han detectado en su entorno?
 Hay dos lugares donde puede revisar los eventos de riesgo informados:
 
- - **Informes de Azure AD**: los eventos de riesgo forman parte de los informes de seguridad de Azure AD. Para más información, consulte el [informe de seguridad de usuarios en riesgo](active-directory-reporting-security-user-at-risk.md) y el [informe de seguridad de inicios de sesión riesgosos](active-directory-reporting-security-risky-sign-ins.md).
+ - **Informes de Azure AD**: los eventos de riesgo forman parte de los informes de seguridad de Azure AD. Para obtener más información, vea hello [a los usuarios en el informe de seguridad de riesgo](active-directory-reporting-security-user-at-risk.md) hello y [informe de seguridad de los inicios de sesión arriesgado](active-directory-reporting-security-risky-sign-ins.md).
 
  - **Azure AD Identity Protection**: los eventos de riesgo también forman parte de las funcionalidades de informes de [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
     
 
-Si bien la detección de eventos de riesgo ya representa un aspecto importante de la protección de las identidades, también tiene la opción de abordarlas manualmente o, incluso, implementar respuestas automatizadas si configura directivas de acceso condicional. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+Mientras que la detección de Hola de eventos de riesgo ya representa un aspecto importante de la protección de las identidades, también tiene Hola opción tooeither tratarlas manualmente o incluso implementan respuestas automatizadas mediante la configuración de directivas de acceso condicional. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
  

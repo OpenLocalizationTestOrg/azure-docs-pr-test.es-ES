@@ -1,6 +1,6 @@
 ---
-title: "Exportación de telemetría desde Application Insights | Microsoft Docs"
-description: "Exporte datos de diagnóstico y uso al almacenamiento en Microsoft Azure y descárguelos desde allí."
+title: "exportación de aaaContinuous de telemetría de Application Insights | Documentos de Microsoft"
+description: "Exportar toostorage de datos de diagnóstico y uso de Microsoft Azure y descargarla desde allí."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,115 +13,115 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: bwren
-ms.openlocfilehash: 6ac3bda5101593b5ca66b4c9035e2fdac9d1e833
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: be9ed7e05922c1c8186df9ca4e642862adaa5fd0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportación de telemetría desde Application Insights
-¿Desea mantener la telemetría durante más tiempo que el período de retención estándar? ¿O quiere procesarla de algún modo especializado? La exportación continua es lo más conveniente para ello. Los eventos que se ven en el portal de Application Insights pueden exportarse a almacenamiento en Microsoft Azure en formato JSON. Desde allí puede descargar los datos y escribir cualquier código necesario para procesarlos.  
+¿Desea tookeep la telemetría durante más tiempo que el período de retención estándar de hello? ¿O quiere procesarla de algún modo especializado? La exportación continua es lo más conveniente para ello. eventos de Hola que se ven en el portal de Application Insights Hola pueden ser exportado toostorage en Microsoft Azure en formato JSON. Desde allí se puede descargar los datos y escribir cualquier código que se necesita tooprocess lo.  
 
 El uso de la exportación continua puede conllevar un cargo adicional. Consulte su [modelo de fijación de precios](http://azure.microsoft.com/pricing/details/application-insights/).
 
-Antes de configurar la exportación continua, hay algunas alternativas que conviene tener en cuenta:
+Antes de configurar la exportación continua, hay algunas alternativas que puede querer tooconsider:
 
-* El botón Exportar de la parte superior de una hoja de búsqueda o métricas permite transferir tablas y gráficos a una hoja de cálculo de Excel.
+* botón de exportación de Hello en parte superior de Hola de una hoja de métricas o buscar permite transferir spreadsheet de Excel tooan de tablas y gráficos.
 
 * [Analytics](app-insights-analytics.md) proporciona un lenguaje de consulta eficaz para telemetría. También puede exportar los resultados.
-* Si lo que le interesa es [explorar los datos en Power BI](app-insights-export-power-bi.md), puede hacerlo sin usar la exportación continua.
-* La [API de REST de acceso a datos](https://dev.applicationinsights.io/) le permite acceder a datos de telemetría con programación.
+* Si está pensando demasiado[explorar los datos en Power BI](app-insights-export-power-bi.md), puede hacerlo sin usar exportar continua.
+* Hola [API de REST de acceso a datos](https://dev.applicationinsights.io/) le permite tener acceso mediante programación a la telemetría.
 
-Cuando la exportación continua copie sus datos en el almacenamiento (donde pueden permanecer tanto tiempo como quiera), seguirán estando disponibles en Application Insights durante el [período de retención](app-insights-data-retention-privacy.md) habitual.
+Después de exportar continua copia su toostorage de datos (donde puede permanecer siempre como sea necesario), está todavía disponible en Application Insights para saludo habitual [período de retención](app-insights-data-retention-privacy.md).
 
 ## <a name="setup"></a>Creación de una exportación continua.
-1. En el recurso de Application Insights de su aplicación, abra Exportación continua y elija **Agregar**:
+1. En hello recurso de Application Insights para su aplicación, abra exportar continua y elija **agregar**:
 
     ![Desplácese hacia abajo y haga clic en Exportación continua.](./media/app-insights-export-telemetry/01-export.png)
 
-2. Elija los tipos de datos de telemetría que quiere exportar.
+2. Elegir tipos de datos de telemetría de hello desea tooexport.
 
-3. Cree o seleccione una [cuenta de almacenamiento de Azure](../storage/common/storage-introduction.md) donde quiera almacenar los datos.
+3. Cree o seleccione un [cuenta de almacenamiento de Azure](../storage/common/storage-introduction.md) donde desea toostore Hola datos.
 
     > [!Warning]
-    > De forma predeterminada, la ubicación de almacenamiento se establecerá en la misma región geográfica que el recurso de Application Insights. Si los almacena en una región diferente, puede conllevar gastos de transferencia.
+    > De forma predeterminada, la ubicación de almacenamiento de Hola se establecerá toohello misma región geográfica que el recurso de Application Insights. Si los almacena en una región diferente, puede conllevar gastos de transferencia.
 
     ![Haga clic en Agregar, Destino de exportación, Cuenta de almacenamiento y cree un nuevo almacén o elija uno almacén.](./media/app-insights-export-telemetry/02-add.png)
 
-4. Cree o seleccione un contenedor en el almacenamiento:
+4. Cree o seleccione un contenedor de almacenamiento de hello:
 
     ![Haga clic en Elegir tipos de evento.](./media/app-insights-export-telemetry/create-container.png)
 
-Una vez que ha creado la exportación, comienza el proceso. Solo obtendrá los datos que lleguen después de crear la exportación.
+Una vez que ha creado la exportación, comienza el proceso. Solo obtiene los datos que llegan después de crear la exportación de Hola.
 
-Puede haber un retraso de aproximadamente una hora antes de que aparezcan los datos en el almacenamiento.
+Puede haber un retraso de aproximadamente una hora antes de que los datos aparecen en el almacenamiento de Hola.
 
-### <a name="to-edit-continuous-export"></a>Para editar la exportación continua
+### <a name="tooedit-continuous-export"></a>exportación de tooedit continua
 
-Si desea cambiar los tipos de evento más tarde, simplemente edite la exportación:
+Si desea que los tipos de evento de hello toochange más tarde, edite exportación hello:
 
 ![Haga clic en Elegir tipos de evento.](./media/app-insights-export-telemetry/05-edit.png)
 
-### <a name="to-stop-continuous-export"></a>Para detener la exportación continua
+### <a name="toostop-continuous-export"></a>exportación de toostop continua
 
-Para detener la exportación, haga clic en Deshabilitar. Al hacer clic en Habilitar de nuevo, la exportación se reinicia con nuevos datos. No obtendrá los datos que llegaron al portal mientras estaba deshabilitada la exportación.
+exportación de hello toostop, haga clic en deshabilitar. Al hacer clic en habilitar de nuevo, se reiniciará exportación Hola con nuevos datos. No obtendrá datos Hola que han llegado en el portal de hello mientras estaba deshabilitada la exportación.
 
-Para detener la exportación de forma permanente, elimínela. Al realizar esta acción no se eliminan los datos del almacenamiento.
+exportación de hello toostop, eliminarlo de forma permanente. Al realizar esta acción no se eliminan los datos del almacenamiento.
 
 ### <a name="cant-add-or-change-an-export"></a>¿No puede agregar o cambiar una exportación?
-* Para agregar o cambiar las exportaciones, necesita derechos de propietario, colaborador o colaborador de Application Insights. [Más información sobre los roles][roles].
+* exportaciones de tooadd o cambiar, necesita derechos de acceso de propietario, Colaborador o colaborador de la información de aplicación. [Más información sobre los roles][roles].
 
 ## <a name="analyze"></a> ¿Qué eventos obtiene?
-Los datos exportados son la telemetría sin procesar que recibimos de la aplicación, aunque también agregamos los datos de ubicación que calculamos a partir de la dirección IP del cliente.
+Hello datos exportados están telemetría sin procesar de Hola que recibimos desde su aplicación, salvo que se agregue datos de ubicación que se calculan Hola dirección IP de cliente.
 
-Los datos que se han descartado por [muestreo](app-insights-sampling.md) no se incluyen en los datos exportados.
+Datos que se ha descartado por [muestreo](app-insights-sampling.md) no se incluye en hello exportan datos.
 
-No se incluyen otras métricas calculadas. Por ejemplo, no exportamos el uso medio de la CPU, pero sí la telemetría sin procesar a partir de la que se calcula la media.
+No se incluyen otras métricas calculadas. Por ejemplo, no Exportamos uso promedio de la CPU, pero Exportamos telemetría de hello sin formato desde el que se calcula la media de Hola.
 
-Los datos también incluyen los resultados de cualquier [prueba web de disponibilidad](app-insights-monitor-web-app-availability.md) que haya configurado.
+Hello datos también incluyen los resultados de Hola de cualquier [disponibilidad las pruebas web](app-insights-monitor-web-app-availability.md) que ha configurado.
 
 > [!NOTE]
-> **Muestreo.** Si la aplicación envía muchos datos, la característica de muestreo puede operar y enviar solamente una fracción de la telemetría generada. [Obtenga más información sobre el muestreo.](app-insights-sampling.md)
+> **Muestreo.** Si la aplicación envía una gran cantidad de datos, característica de muestreo de Hola puede operar y enviar sólo una fracción de telemetría de hello generado. [Aprenda más sobre el muestreo.](app-insights-sampling.md)
 >
 >
 
-## <a name="get"></a> Inspección de los datos
-Puede inspeccionar el almacenamiento directamente en el portal. Haga clic en **Examinar**, seleccione la cuenta de almacenamiento y abra **Contenedores**.
+## <a name="get"></a>Inspeccionar los datos de Hola
+Puede inspeccionar almacenamiento Hola directamente en el portal de Hola. Haga clic en **Examinar**, seleccione la cuenta de almacenamiento y abra **Contenedores**.
 
-Para inspeccionar Azure Storage en Visual Studio, abra **Ver**, **Cloud Explorer**. (Si no dispone de ese comando de menú, deberá instalar el SDK de Azure: abra el cuadro de diálogo **Nuevo proyecto**, expanda Visual C#/Cloud y elija **Obtener el SDK de Microsoft Azure para. NET**).
+tooinspect almacenamiento de Azure en Visual Studio, abra **vista**, **nube explorador**. (Si no tiene ese comando de menú, necesita tooinstall hello Azure SDK: Hola abierto **nuevo proyecto** cuadro de diálogo, expanda Visual C# y de la nube y elija **obtener Microsoft Azure SDK para .NET**.)
 
-Al abrir el almacén de blobs, verá un contenedor con un conjunto de archivos blob. El URI de cada archivo que se deriva del nombre del recurso de Application Insights, su clave de instrumentación, y el tipo, fecha y hora de telemetría. (El nombre del recurso está todo en minúsculas y la clave de instrumentación omite guiones).
+Al abrir el almacén de blobs, verá un contenedor con un conjunto de archivos blob. Hola URI de cada archivo que se deriva de su nombre de recurso de Application Insights, su clave de instrumentación, telemetría-tipo, fecha y hora. (nombre de recurso de hello está en minúsculas y clave de instrumentación de hello omite guiones).
 
-![Inspección del almacén de blobs con una herramienta apropiada](./media/app-insights-export-telemetry/04-data.png)
+![Inspeccionar Hola el almacén de blobs con una herramienta apropiada](./media/app-insights-export-telemetry/04-data.png)
 
-La fecha y hora son UTC e indican cuándo se depositó la telemetría en el almacén, no la hora en que se generó. De modo que si escribe código para descargar los datos, se puede mover linealmente a través de los datos.
+Hola fecha y hora son UTC y cuando telemetría Hola se deposita en almacén de hello: tiempo de presentación no se generó. Por lo que si se escribe código toodownload Hola dato, puede mover a través de los datos de Hola linealmente.
 
-Este es el formato de la ruta de acceso:
+A continuación aparece el formulario de Hola de ruta de acceso de hello:
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
 Where
 
-* `blobCreationTimeUtc` es la hora de creación del blob en el almacenamiento provisional interno.
-* `blobDeliveryTimeUtc` es la hora de copia del blob en el almacenamiento de destino de exportación.
+* `blobCreationTimeUtc`es hora blob se creó en hello interno de almacenamiento provisional almacenamiento
+* `blobDeliveryTimeUtc`es el momento de hello cuando está copiada toohello exportación destino almacenamiento blob
 
 ## <a name="format"></a> Formato de datos
-* Cada blob es un archivo de texto que contiene varias filas separadas por' \n'. Contiene la telemetría procesada durante un período de aproximadamente la mitad de un minuto.
+* Cada blob es un archivo de texto que contiene varias filas separadas por' \n'. Contiene telemetría Hola procesado durante un período de tiempo de aproximadamente la mitad de un minuto.
 * Cada fila representa un punto de datos de telemetría, como una vista de página o una solicitud.
-* Cada fila es un documento JSON sin formato. Si quiere sentarse a mirarlo, ábralo en Visual Studio y elija Editar, Avanzadas, Archivo de formato:
+* Cada fila es un documento JSON sin formato. Si desea toosit y te quedas mirando en él, ábralo en Visual Studio y elija Editar, avanzadas, archivo de formato:
 
-![Visualización de la telemetría con una herramienta apropiada](./media/app-insights-export-telemetry/06-json.png)
+![Vista Hola telemetría con una herramienta apropiada](./media/app-insights-export-telemetry/06-json.png)
 
-Las duraciones de tiempo son tics, donde 10 000 tics = 1 ms. Por ejemplo, estos valores muestran un tiempo de 1 ms para enviar una solicitud desde el explorador, 3 ms para recibirla y 1,8 s para procesar la página en el explorador:
+Las duraciones de tiempo son tics, donde 10 000 tics = 1 ms. Por ejemplo, estos valores muestran un tiempo de 1 ms toosend una solicitud de explorador hello, 3ms tooreceive y 1.8s tooprocess Hola página en el Explorador de hello:
 
     "sendRequest": {"value": 10000.0},
     "receiveRequest": {"value": 30000.0},
     "clientProcess": {"value": 17970000.0}
 
-[Referencia detallada del modelo de datos para los tipos y valores de propiedad.](app-insights-export-data-model.md)
+[Referencia para tipos de propiedad de Hola y valores del modelo de datos detallados.](app-insights-export-data-model.md)
 
-## <a name="processing-the-data"></a>Procesamiento de los datos
-En una pequeña escala, puede escribir código para separar sus datos, leerlos en una hoja de cálculo, etc. Por ejemplo:
+## <a name="processing-hello-data"></a>Procesamiento de datos de Hola
+En una escala pequeña, puede escribir algunas toopull código alejados de los datos, leer en una hoja de cálculo y así sucesivamente. Por ejemplo:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -143,56 +143,56 @@ En una pequeña escala, puede escribir código para separar sus datos, leerlos e
 Para obtener un ejemplo de código más grande, consulte el [uso de un rol de trabajo][exportasa].
 
 ## <a name="delete"></a>Eliminación de los datos antiguos
-Tenga en cuenta que usted es responsable de administrar su capacidad de almacenamiento y eliminar los datos antiguos si es necesario.
+Tenga en cuenta que usted es responsable de administrar la capacidad de almacenamiento y eliminar datos antiguos de hello si es necesario.
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Si vuelve a generar la clave de almacenamiento...
-Si cambia la clave para el almacenamiento, la exportación continua dejará de funcionar. Verá una notificación en su cuenta de Azure.
+Si cambia el almacenamiento de claves tooyour hello, exportación continua dejará de funcionar. Verá una notificación en su cuenta de Azure.
 
-Abra la hoja Exportación continua y edite la exportación. Modifique el destino de exportación, pero deje el mismo almacenamiento seleccionado. Haga clic en Aceptar para confirmar.
+Abra hoja exportar continua de Hola y edite la exportación. Editar Hola exportar destino, pero deje Hola mismo almacenamiento seleccionado. Haga clic en Aceptar tooconfirm.
 
-![Edite la exportación continua y abra y cierre el destino de exportación.](./media/app-insights-export-telemetry/07-resetstore.png)
+![Editar Hola continua exportar, abra y cierre tres destino de exportación.](./media/app-insights-export-telemetry/07-resetstore.png)
 
-La exportación continua se reiniciará.
+exportación continua Hola se reiniciará.
 
 ## <a name="export-samples"></a>Ejemplos de exportación
 
-* [Exportación a SQL con Stream Analytics][exportasa]
+* [Exportar tooSQL mediante el análisis de transmisiones][exportasa]
 * [Ejemplo 2 de Stream Analytics](app-insights-export-stream-analytics.md)
 
-En escalas más grandes, considere la posibilidad de clústeres de Hadoop en [HDInsight](https://azure.microsoft.com/services/hdinsight/) en la nube. HDInsight ofrece una amplia variedad de tecnologías para administrar y analizar macrodatos, y puede usarlo para procesar datos que se han exportado desde Application Insights.
+En escalas más grandes, considere la posibilidad de [HDInsight](https://azure.microsoft.com/services/hdinsight/) -clústeres de Hadoop en la nube de Hola. HDInsight proporciona una variedad de tecnologías para administrar y analizar grandes cantidades de datos y podría utilizar tooprocess datos que se han exportado desde Application Insights.
 
 ## <a name="q--a"></a>Preguntas y respuestas
 * *Lo único que quiero es una descarga única de un gráfico.*  
 
-    Sí, puede hacerlo. En la parte superior de la hoja, haga clic en **Exportar datos**.
+    Sí, puede hacerlo. En la parte superior de Hola de hoja de hello, haga clic en **exportar datos**.
 * *Configuro una exportación, pero no hay ningún dato en el almacén.*
 
-    ¿Recibió Application Insights alguna telemetría de su aplicación desde que configuró la exportación? Solo recibirá datos nuevos.
-* *Intenté configurar una exportación, pero se deniega el acceso.*
+    ¿Application Insights recibió cualquier telemetría de la aplicación desde que ha configurado la exportación de hello? Solo recibirá datos nuevos.
+* *Intentó tooset de una exportación, pero se denegó el acceso*
 
-    Si la cuenta pertenece a su organización, debe ser miembro de los grupos de propietarios o colaboradores.
-* *¿Puedo exportar directamente a mi propio almacén local?*
+    Si cuenta Hola pertenece a su organización, deberá toobe un miembro de los grupos de los propietarios o colaboradores de Hola.
+* *¿Se pueden exportar un almacén local propio toomy recta?*
 
     Lamentablemente, no. Nuestro motor de exportación actualmente solo funciona con el almacenamiento de Azure.  
-* *¿Hay ningún límite para la cantidad de datos que puedo colocar en mi almacén?*
+* *¿Hay cualquier cantidad de toohello límite de datos que pone en el almacén my?*
 
-    No. Seguiremos insertando datos hasta que elimine la exportación. Pararemos si alcanzamos los límites externos del almacenamiento de blobs, pero hasta llegar ahí falta mucho. Depende de usted controlar la cantidad de almacenamiento que usa.  
-* *¿Cuántos blobs debería ver en el almacenamiento?*
+    No. Le mantenemos datos hasta que se elimina la exportación de Hola. Se detendrá si encontramos límites hello para el almacenamiento de blobs, pero esto es bastante grande. Es una tooyou toocontrol cuánto almacenamiento usa.  
+* *¿Blobs cuántos debo ver en el almacenamiento de hello?*
 
-  * Para cada tipo de datos que seleccionó para exportar, se crea un blob nuevo cada minuto (si los datos están disponibles).
+  * Para el tipo de datos de cada tooexport seleccionada, un nuevo blob se crea cada minuto (si los datos están disponibles).
   * Además, para las aplicaciones con mucho tráfico, se asignan unidades de partición adicionales. En este caso, cada unidad crea un blob cada minuto.
-* *Volví a generar la clave de mi almacenamiento o cambié el nombre del contenedor, y ahora no funciona la exportación.*
+* *Volver a generar almacenamiento de claves toomy de Hola o ha cambiado el nombre de Hola de contenedor de Hola y ahora no funciona la exportación de Hola.*
 
-    Edite la exportación y abra la hoja de destino de la exportación. Deje el mismo almacenamiento seleccionado que antes y haga clic en Aceptar para confirmar. La exportación se reiniciará. Si el cambio estaba dentro de los últimos días, no perderá datos.
-* *¿Puedo detener la exportación?*
+    Editar exportación hello y abra la hoja de destino de exportación de Hola. Dejar Hola mismo almacenamiento seleccionado como antes y haga clic en Aceptar tooconfirm. La exportación se reiniciará. Si cambió de hello en hello pocos días pasados, no perderá los datos.
+* *¿Puedo hacer una pausa de exportación de hello?*
 
     Sí. Haga clic en Deshabilitar.
 
 ## <a name="code-samples"></a>Ejemplos de código
 
 * [Ejemplo de Stream Analytics](app-insights-export-stream-analytics.md)
-* [Exportación a SQL con Stream Analytics][exportasa]
-* [Referencia detallada del modelo de datos para los tipos y valores de propiedad.](app-insights-export-data-model.md)
+* [Exportar tooSQL mediante el análisis de transmisiones][exportasa]
+* [Referencia para tipos de propiedad de Hola y valores del modelo de datos detallados.](app-insights-export-data-model.md)
 
 <!--Link references-->
 

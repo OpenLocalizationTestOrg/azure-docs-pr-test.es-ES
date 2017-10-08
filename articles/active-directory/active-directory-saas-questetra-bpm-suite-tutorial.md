@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Questetra BPM Suite | Microsoft Docs"
-description: "Obtenga información sobre cómo configurar el inicio de sesión único entre Azure Active Directory y Questetra BPM Suite."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Questetra BPM Suite."
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -14,262 +14,262 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 7ae75446c9d19ce15a82caa9604658a528ab9941
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4907e3b5751cd79f994fbd2ebcb7faec4eac34e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Tutorial: Integración de Azure Active Directory con Questetra BPM Suite
-El objetivo de este tutorial es mostrar cómo integrar Questetra BPM Suite con Azure Active Directory (Azure AD).  
-La integración de Questetra BPM Suite con Azure AD proporciona las siguientes ventajas: 
+objetivo de Hola de este tutorial es tooshow, cómo toointegrate Questetra BPM Suite con Azure Active Directory (Azure AD).  
+Integración Questetra BPM Suite con Azure AD proporciona Hola siguientes ventajas: 
 
-* Puede controlar en Azure AD quién tiene acceso a Questetra BPM Suite 
-* Puede permitir que los usuarios inicien sesión automáticamente en Questetra BPM Suite (inicio de sesión único) con sus cuentas de Azure AD.
-* Puede administrar sus cuentas en una ubicación central: el Portal de Azure clásico.
+* Puede controlar en Azure AD que tenga acceso tooQuestetra conjunto de BPM 
+* Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooQuestetra BPM Suite (Single Sign-On) con sus cuentas de Azure AD
+* Puede administrar las cuentas en una ubicación central: Hola portal de Azure clásico
 
-Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [Qué es el acceso a las aplicaciones y el inicio de sesión único en Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para configurar la integración de Azure AD con Questetra BPM Suite, necesita los siguientes elementos:
+integración de Azure AD con Questetra BPM Suite tooconfigure, necesita Hola siguientes elementos:
 
 * Una suscripción de Azure AD
 * Una suscripción habilitada para el inicio de sesión único en [Questetra BPM Suite](https://senbon-imadegawa-988.questetra.net/)
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 > 
 > 
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 * No debe usar el entorno de producción, a menos que sea necesario.
 * Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/). 
 
 ## <a name="scenario-description"></a>Descripción del escenario
-El objetivo de este tutorial es permitirle probar el inicio de sesión único de Azure AD en un entorno de prueba.  
-El escenario descrito en este tutorial consta de tres bloques de creación principales:
+objetivo de Hola de este tutorial es tooenable tootest inicio de sesión único en Azure AD en un entorno de prueba.  
+escenario de Hello descrito en este tutorial consta de tres pilares principales:
 
-1. Incorporación de Questetra BPM Suite desde la galería 
+1. Agregar conjunto de BPM Questetra desde galería Hola 
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-questetra-bpm-suite-from-the-gallery"></a>Incorporación de Questetra BPM Suite desde la galería
-Para configurar la integración de Questetra BPM Suite en Azure AD, deberá agregar Questetra BPM Suite desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-questetra-bpm-suite-from-hello-gallery"></a>Agregar conjunto de BPM Questetra desde galería Hola
+integración de hello tooconfigure de Questetra BPM Suite en Azure AD, deberá tooadd Questetra BPM Suite de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Questetra BPM Suite desde la galería, realice los pasos siguientes:**
+**tooadd Questetra BPM Suite de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **Portal de Azure clásico**, haga clic en **Active Directory**. 
+1. Hola **portal de Azure clásico**, en Hola panel de navegación izquierdo, haga clic en **Active Directory**. 
    
     ![Active Directory][1]
 
-2. En la lista **Directory** , seleccione el directorio cuya integración desee habilitar.
+2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
 
-3. Para abrir la vista de aplicaciones, haga clic en **Applications** , en el menú superior de la vista de directorios.
+3. Haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
    
-    ![Applications][2]
+    ![Aplicaciones][2]
 
-4. Haga clic en **Agregar** en la parte inferior de la página.
+4. Haga clic en **agregar** final Hola de página Hola.
    
     ![Aplicaciones][3]
 
-5. En el cuadro de diálogo **¿Qué desea hacer?**, haga clic en **Agregar una aplicación de la galería**.
+5. En hello **especifique qué desea toodo** cuadro de diálogo, haga clic en **agregar una aplicación de la Galería de hello**.
    
     ![Aplicaciones][4]
 
-6. En el cuadro de búsqueda, escriba **Questetra BPM Suite**.
+6. En el cuadro de búsqueda de hello, escriba **Questetra BPM Suite**.
    
     ![Aplicaciones][5]
 
-7. En el panel de resultados, seleccione **Questetra BPM Suite** y, después, haga clic en **Completar** para agregar la aplicación.
+7. En el panel de resultados de hello, seleccione **Questetra BPM Suite**y, a continuación, haga clic en **completar** aplicación de hello tooadd.
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
-El objetivo de esta sección es mostrar cómo configurar y probar el inicio de sesión único de Azure AD con Questetra BPM Suite con un usuario de prueba denominado "Britta Simon".
+objetivo de Hola de esta sección es tooshow cómo tooconfigure y prueba de inicio de sesión único en Azure AD con Questetra BPM Suite a partir de un usuario de prueba denominado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Questetra BPM Suite para un usuario de Azure AD. Es decir, se requiere establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Questetra BPM Suite.  
-Para establecer esta relación de vínculo, se asigna el valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario** en Questetra BPM Suite.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow es qué usuario equivalente de hello en usuario de tooan Questetra BPM Suite en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en el conjunto de BPM Questetra debe toobe establecido.  
+Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en Questetra BPM Suite.
 
-Para configurar y probar el inicio de sesión único de Azure AD con Questetra BPM Suite, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con Questetra BPM Suite, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de Questetra BPM Suite](#creating-a-questetra-bpm-suite-test-user)** : para tener un homólogo de Britta Simon en Questetra BPM Suite que esté vinculado a la representación de ella en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Prueba del inicio de sesión único](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba del conjunto de BPM Questetra](#creating-a-questetra-bpm-suite-test-user)**  -toohave un equivalente de Britta Simon Questetra BPM conjunto de representación toohello vinculado Azure AD de ella.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
-El objetivo de esta sección es habilitar el inicio de sesión único de Azure AD en el Portal de Azure clásico y configurar el inicio de sesión único en la aplicación Questetra BPM Suite.
+objetivo de Hola de esta sección es tooenable Azure AD single sign-on en hello portal de Azure clásico y tooconfigure inicio de sesión único en la aplicación Questetra BPM Suite.
 
-**Para configurar el inicio de sesión único de Azure AD con Questetra BPM Suite, realice los pasos siguientes:**
+**tooconfigure inicio de sesión único en Azure AD con Questetra BPM Suite, lleve a cabo Hola pasos:**
 
-1. En el Portal de Azure clásico, en la página de integración de aplicaciones de **Questetra BPM Suite**, haga clic en **Configurar inicio de sesión único** para abrir el diálogo **Configurar inicio de sesión único**.
+1. En el portal de Azure clásico en Hola Hola **Questetra BPM Suite** página de integración de aplicaciones, haga clic en **configurar inicio de sesión único** tooopen hello **configurar Single Sign-On**  cuadro de diálogo.
    
     ![Configurar inicio de sesión único][8]
 
-2. En la página **¿Cómo desea que los usuarios inicien sesión en Questetra BPM Suite?**, seleccione **Inicio de sesión único de Microsoft Azure AD** y haga clic en **Siguiente**.
+2. En hello **¿cómo desea que los usuarios toosign en tooQuestetra BPM Suite** página, seleccione **Azure AD Single Sign-On**y, a continuación, haga clic en **siguiente**.
    
     ![Inicio de sesión único de Azure AD ][9]
 
 3. En otra ventana del explorador web, inicie sesión en el sitio de la compañía de **Questetra BPM Suite** como administrador.
 
-4. En el menú de la parte superior, haga clic en **Configuración del sistema**. 
+4. En el menú de hello en la parte superior de hello, haga clic en **configuración del sistema**. 
    
     ![Inicio de sesión único de Azure AD ][10]
 
-5. Para abrir la página **SingleSignOnSAML**, haga clic en **SSO (SAML)**. 
+5. Hola tooopen **SingleSignOnSAML** página, haga clic en **SSO (SAML)**. 
    
     ![Inicio de sesión único de Azure AD ][11]
 
-6. En el Portal de Azure clásico, en la página de diálogo **Configurar las opciones de la aplicación** , realice los pasos siguientes: 
+6. En el portal de Azure clásico en Hola Hola **configurar opciones de aplicación** cuadro de diálogo, siga los pasos de hello: 
    
     ![Configurar las opciones de la aplicación][13]
    
-    a. En el sitio de la compañía de **Questetra BPM Suite**, en la sección de información de SP, copie la **URL de ACS** y, después, péguela en el cuadro de texto **URL de inicio de sesión**.
+    a. Depende de usted **Questetra BPM Suite** sitio de la empresa, en la sección de información de SP hello, Hola copia **dirección URL de ACS**y, a continuación, péguelo en hello **dirección URL de inicio de sesión** cuadro de texto.
    
-    b. En el sitio de la compañía de **Questetra BPM Suite**, en la sección de información de SP, copie el valor de **Entity ID** (Id. de entidad) y, después, péguelo en el cuadro de texto **URL del emisor**.
+    b. Depende de usted **Questetra BPM Suite** sitio de la empresa, en la sección de información de SP hello, Hola copia **Id. de entidad**y, a continuación, péguelo en hello **dirección URL del emisor** cuadro de texto.
    
-    c. En el sitio de la compañía de **Questetra BPM Suite**, en la sección de información de SP, copie el valor de **URL de ACS** y, después, péguelo en el cuadro de texto **URL de respuesta**.
+    c. Depende de usted **Questetra BPM Suite** sitio de la empresa, en la sección de información de SP hello, Hola copia **dirección URL de ACS**y, a continuación, péguelo en hello **dirección URL de respuesta** cuadro de texto.
    
     d. Haga clic en **Siguiente**.
 
-7. En la página **Configurar inicio de sesión único en Questetra BPM Suite**, haga clic en **Descargar certificado** y guarde el archivo de certificado de forma local en el equipo.
+7. En hello **configurar inicio de sesión único en el conjunto de BPM Questetra** página, haga clic en **Descargar certificado**y, a continuación, guarde el archivo de certificado de hello localmente en el equipo.
    
     ![Configurar inicio de sesión único][14]
 
-8. En el sitio de la compañía **Questetra BPM Suite** , realice los pasos siguientes: 
+8. Depende de usted **Questetra BPM Suite** sitio de la compañía, lleve a cabo Hola pasos: 
    
     ![Configurar inicio de sesión único][15]
    
     a. Seleccione **Enable Single Sign-On**(Habilitar inicio de sesión único).
    
-    b. En el Portal de Azure clásico, copie el valor de **URL del emisor** y péguelo en el cuadro de texto **Id. de entidad**.
+    b. En el portal de Azure clásico hello, copie hello **dirección URL del emisor** valor y, a continuación, péguelo en hello **Id. de entidad** cuadro de texto.
    
-    c. En el Portal de Azure clásico, copie el valor de **Dirección URL del servicio de inicio de sesión único** y péguelo en el cuadro de texto **Dirección URL de la página de inicio de sesión**.
+    c. En el portal de Azure clásico hello, copie hello **URL de servicio de inicio de sesión único** valor y, a continuación, péguelo en hello **URL de la página de inicio de sesión** cuadro de texto.
    
-    d. En el Portal de Azure clásico, copie el valor de **Dirección URL del servicio de cierre de sesión único** y péguelo en el cuadro de texto **Dirección URL de la página de cierre de sesión**.
+    d. En el portal de Azure clásico hello, copie hello **dirección URL del servicio de cierre de sesión único** valor y, a continuación, péguelo en hello **URL de la página de cierre de sesión** cuadro de texto.
    
-    e. En el cuadro de texto **NameID format** (Formato de id. de nombre), escriba **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**.
+    e. Hola **formato de NameID** cuadro de texto, tipo **urn: oasis: nombres: tc: SAML:1.1:nameid-formato: emailAddress**.
 
     f. Cree un archivo codificado en base 64 a partir del certificado descargado. 
 
     >[!TIP] 
-    >Para obtener más información, consulte [Conversión de un certificado binario en un archivo de texto](http://youtu.be/PlgrzUZ-Y1o).
+    >Para obtener más información, consulte [cómo tooconvert certificado de un archivo binario en un archivo de texto](http://youtu.be/PlgrzUZ-Y1o).
 
-    g. Abra el certificado codificado en base 64 en el Bloc de notas, copie su contenido en el Portapapeles y, a continuación, péguelo en el cuadro de texto **Certificado de validación** . 
+    g. Abra el certificado codificado en base 64 en el Bloc de notas, Hola copia contenido del mismo en el Portapapeles y, a continuación, péguelo en hello **certificado de validación** cuadro de texto. 
 
-    h. Haga clic en **Save**.
+    h. Haga clic en **Guardar**.
 
-1. En el Portal de Azure clásico, seleccione la confirmación de la configuración de inicio de sesión único y haga clic en **Siguiente**. 
+1. En hello portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único de hello y, a continuación, haga clic en **siguiente**. 
    
     ![Qué es Azure AD Connect][17]
 
-2. En la página **Confirmación del inicio de sesión único**, haga clic en **Completar**.  
+2. En hello **única confirmación de inicio de sesión** página, haga clic en **completar**.  
    
     ![Qué es Azure AD Connect][18]
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en el Portal de Azure clásico llamado Britta Simon.
+objetivo de Hola de esta sección es un usuario de prueba en el portal de Azure clásico que se llama a Britta Simon hello toocreate.
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **Portal de Azure clásico**, haga clic en **Active Directory**.
+1. Hola **portal de Azure clásico**, en Hola panel de navegación izquierdo, haga clic en **Active Directory**.
    
     ![Creación de un usuario de prueba de Azure AD][100] 
 
-2. En la lista **Directory** , seleccione el directorio cuya integración desee habilitar.
+2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
 
-3. Para mostrar la lista de usuarios, en el menú de la parte superior, haga clic en **Usuarios**.
+3. Haga clic en lista de hello toodisplay de usuarios, en el menú de hello en la parte superior de hello, **usuarios**.
    
     ![Creación de un usuario de prueba de Azure AD][101] 
 
-4. Para abrir el cuadro de diálogo **Agregar usuario**, en la barra de herramientas de la parte inferior, haga clic en **Agregar usuario**. 
+4. Hola tooopen **Agregar usuario** cuadro de diálogo, en la barra de herramientas de hello en la parte inferior de hello, haga clic en **Agregar usuario**. 
    
     ![Creación de un usuario de prueba de Azure AD][102] 
 
-5. En la página de diálogo **Proporcione información sobre este usuario** , realice los pasos siguientes:
+5. En hello **envíenos comentarios acerca de este usuario** cuadro de diálogo, siga los pasos de hello:
    
     ![Creación de un usuario de prueba de Azure AD][103]
    
     a. En **Tipo de usuario**, seleccione **Nuevo usuario de la organización**.
    
-    b. En el cuadro de texto **Nombre de usuario**, escriba**BrittaSimon**.
+    b. En nombre de usuario de hello **cuadro de texto**, tipo **BrittaSimon**.
    
     c. Haga clic en Siguiente.
 
-6. En la página de diálogo **Perfil de usuario** , realice los siguientes pasos: 
+6. En hello **perfil de usuario** cuadro de diálogo, siga los pasos de hello: 
    
     ![Creación de un usuario de prueba de Azure AD][104] 
    
-    a. En el cuadro de texto **Nombre**, escriba **Britta**. 
+    a. Hola **nombre** cuadro de texto, tipo **Bárbara**. 
    
-    b. En el cuadro de texto **Apellidos**, escriba **Simon**.
+    b. Hola **Last Name** cuadro de texto, tipo, **Simon**.
    
-    c. En el cuadro de texto **Nombre para mostrar**, escriba **Britta Simon**.
+    c. Hola **nombre para mostrar** cuadro de texto, tipo **Britta Simon**.
    
-    d. En la lista **Rol**, seleccione **Usuario**.
+    d. Hola **rol** lista, seleccione **usuario**.
    
     e. Haga clic en **Siguiente**.
 
-7. En el cuadro de diálogo **Obtener contraseña temporal**, haga clic en **Crear**.
+7. En hello **obtener contraseña temporal** página del cuadro de diálogo, haga clic en **crear**.
    
     ![Creación de un usuario de prueba de Azure AD][105]  
 
-8. En la página de diálogo **Obtener contraseña temporal** , realice los pasos siguientes:
+8. En hello **obtener contraseña temporal** cuadro de diálogo, siga los pasos de hello:
    
     ![Creación de un usuario de prueba de Azure AD][106]   
    
-    a. Anote el valor del campo **Nueva contraseña**.
+    a. Anote el valor de Hola de hello **nueva contraseña**.
    
     b. Haga clic en **Completo**.   
 
 ### <a name="creating-a-questetra-bpm-suite-test-user"></a>Creación de un usuario de prueba de Questetra BPM Suite
-El objetivo de esta sección es crear un usuario de prueba llamado Britta Simon en Questetra BPM Suite.
+objetivo de Hola de esta sección es toocreate un usuario llamado a Britta Simon en Questetra BPM Suite.
 
-**Para crear un usuario llamado Britta Simon en Questetra BPM Suite, realice los pasos siguientes:**
+**toocreate un usuario llamado Britta Simon en Questetra BPM Suite, lleve a cabo Hola pasos:**
 
-1. Inicie sesión en el sitio de la compañía de Questetra BPM Suite como administrador.
-2. Vaya a **System Settings > User List > New User** (Configuración del sistema > Lista de usuarios > Nuevo usuario). 
-3. En el cuadro de diálogo Nuevo usuario, realice los pasos siguientes: 
+1. Sitio de empresa de Questetra BPM Suite tooyour inicio de sesión como administrador.
+2. Vaya demasiado**configuración del sistema > lista de usuarios > nuevo usuario**. 
+3. Cuadro de diálogo nuevo usuario de hello, realizar Hola pasos: 
    
     ![Creación de un usuario de prueba][300] 
    
-    a. En el cuadro de texto **Name** (Nombre), escriba el nombre de usuario de Britta en Azure AD.
+    a. Hola **nombre** cuadro de texto, escriba el nombre de usuario de Bárbara en Azure AD.
    
-    b. En el cuadro de texto **Email** (Correo electrónico), escriba el nombre de usuario de Britta en Azure AD.
+    b. Hola **correo electrónico** cuadro de texto, escriba el nombre de usuario de Bárbara en Azure AD.
    
-    c. En el cuadro de texto **Password** (Contraseña), escriba una contraseña.
+    c. Hola **contraseña** cuadro de texto, escriba una contraseña.
 
 4. Haga clic en **Add new user**(Agregar nuevo usuario).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
-El objetivo de esta sección es permitir que Britta Simon use el inicio de sesión único de Azure al concederle acceso a Questetra BPM Suite.
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+objetivo de Hola de esta sección es tooenabling Britta Simon toouse Azure inicio de sesión único mediante la concesión de su conjunto de BPM tooQuestetra de acceso.
 
 ![Qué es Azure AD Connect][200]
 
-**Para asignar Britta Simon a Questetra BPM Suite, realice los pasos siguientes:**
+**tooassign Britta Simon tooQuestetra BPM Suite, lleve a cabo Hola pasos:**
 
-1. En el Portal de Azure clásico, para abrir la vista de aplicaciones, en la vista del directorio, haga clic en la opción **Aplicaciones** del menú superior.
+1. En hello Azure portal clásico, vista de aplicaciones de hello tooopen, en la vista de directorio de hello, haga clic en **aplicaciones** en el menú superior Hola.
    
     ![Qué es Azure AD Connect][201]
-2. En la lista de aplicaciones, seleccione **Questetra BPM Suite**.
+2. En la lista de aplicaciones de hello, seleccione **Questetra BPM Suite**.
    
     ![Qué es Azure AD Connect][205]
-3. En el menú de la parte superior, haga clic en **Usuarios**.
+3. En el menú de hello en la parte superior de hello, haga clic en **usuarios**.
    
     ![Qué es Azure AD Connect][202]
-4. En la lista Usuarios, seleccione **Britta Simon**.
+4. En la lista de usuarios de hello, seleccione **Britta Simon**.
    
     ![Qué es Azure AD Connect][203]
-5. En la barra de herramientas de la parte inferior, haga clic en **Asignar**.
+5. En la barra de herramientas de hello en la parte inferior de hello, haga clic en **asignar**.
    
     ![Qué es Azure AD Connect][204]
 
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
-El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.  
-Al hacer clic en el icono Questetra BPM Suite en el Panel de acceso, debería iniciar sesión automáticamente en su aplicación de Questetra BPM Suite.
+objetivo de Hola de esta sección es tootest su configuración de inicio de sesión único de Azure AD mediante Hola Panel de acceso.  
+Al hacer clic en icono de conjunto de BPM Questetra Hola Hola Panel de acceso, deberá obtener la aplicación de conjunto de BPM Questetra tooyour automáticamente ha iniciado sesión.
 
 ## <a name="additional-resources"></a>Recursos adicionales
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

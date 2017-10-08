@@ -1,6 +1,6 @@
 ---
-title: "Creación o importación de un runbook en Azure Automation"
-description: "En este artículo se describe cómo crear un runbook nuevo en Azure Automation o importar uno desde un archivo."
+title: "aaaCreating o importar un runbook en automatización de Azure"
+description: "Este artículo se describe cómo toocreate un nuevo runbook en automatización de Azure o importar desde un archivo."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,84 +14,84 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 0264de12caaf62e976673a423df731ad27ab01e0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d45f44cf15fbcacdd0de2977668502c2e1671063
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Creación o importación de un runbook en Azure Automation
-Para agregar un runbook a Azure Automation, puede [crear uno](#creating-a-new-runbook) o importar un runbook existente desde un archivo o desde la [Galería de runbooks](automation-runbook-gallery.md). Este artículo ofrece información sobre cómo crear e importar runbooks de un archivo.  Puede obtener todos los detalles sobre el acceso a los módulos y los runbooks de la comunidad en [Galería de runbooks y módulos para Azure Automation](automation-runbook-gallery.md).
+Puede agregar un runbook tooAzure automatización, ya sea [crear una nueva](#creating-a-new-runbook) o importando un runbook existente desde un archivo o de hello [Galería de runbooks](automation-runbook-gallery.md). Este artículo ofrece información sobre cómo crear e importar runbooks de un archivo.  Puede obtener todos los detalles de hello sobre cómo acceder a la Comunidad runbooks y módulos en [galerías de módulos y runbooks de automatización de Azure](automation-runbook-gallery.md).
 
 ## <a name="creating-a-new-runbook"></a>Creación de un nuevo runbook
-Puede crear un nuevo runbook en Azure Automation mediante uno de los portales de Azure o Windows PowerShell. Cuando se haya creado el runbook, puede editarlo con la información de [Aprendizaje del flujo de trabajo de Windows PowerShell](automation-powershell-workflow.md) y [Creación gráfica en Azure Automation](automation-graphical-authoring-intro.md).
+Puede crear un nuevo runbook en automatización de Azure mediante uno de hello Azure portales o Windows PowerShell. Una vez que se ha creado el runbook de hello, puede editar siguiendo la información en [el flujo de trabajo de aprendizaje PowerShell](automation-powershell-workflow.md) y [edición gráfica en automatización de Azure](automation-graphical-authoring-intro.md).
 
-### <a name="to-create-a-new-azure-automation-runbook-with-the-azure-classic-portal"></a>Para crear un nuevo runbook de Azure Automation con el Portal de Azure clásico
-Solo puede trabajar con [runbooks del flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks) en Azure Portal.
+### <a name="toocreate-a-new-azure-automation-runbook-with-hello-azure-classic-portal"></a>toocreate un nuevo runbook de automatización de Azure con el portal de Azure clásico de Hola
+Sólo se puede trabajar con [runbooks de flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks) Hola portal de Azure.
 
-1. En el Portal de Azure clásico, haga clic en **Nuevo**, **App Services**, **Automation**, **Runbook**, **Creación rápida**.
-2. Escriba la información necesaria y luego haga clic en **Crear**. El nombre del runbook debe empezar por una letra y puede tener letras, números, caracteres de subrayado y guiones.
-3. Si quiere editar el runbook ahora, haga clic en **Editar runbook**. De lo contrario, haga clic en **Aceptar**.
-4. Su nuevo runbook aparecerá en la pestaña **Runbooks** .
+1. En el portal de Azure clásico de hello, haga clic en, **New**, **servicios de aplicaciones**, **automatización**, **Runbook**, **creaciónrápida**.
+2. Escriba información de hello necesario y, a continuación, haga clic en **crear**. nombre de runbook de Hello debe empezar por una letra y puede contener letras, números, caracteres de subrayado y guiones.
+3. Si desea tooedit Hola runbook ahora, a continuación, haga clic en **editar Runbook**. De lo contrario, haga clic en **Aceptar**.
+4. El nuevo runbook aparecerá en hello **Runbooks** ficha.
 
-### <a name="to-create-a-new-azure-automation-runbook-with-the-azure-portal"></a>Para crear un nuevo runbook de Azure Automation con Azure Portal
-1. En Azure Portal, abra su cuenta de Automation.
-2. Desde el centro, seleccione **Runbooks** para abrir la lista de runbooks.
-3. Haga clic en el botón **Agregar un Runbook** y, después, en **Crear un runbook nuevo**.
-4. Escriba un **Nombre** para el runbook y seleccione su [Tipo](automation-runbook-types.md). El nombre del runbook debe empezar por una letra y puede tener letras, números, caracteres de subrayado y guiones.
-5. Haga clic en **Crear** para crear el runbook y abra el editor.
+### <a name="toocreate-a-new-azure-automation-runbook-with-hello-azure-portal"></a>toocreate un nuevo runbook de automatización de Azure con hello portal de Azure
+1. Hola portal de Azure, abra su cuenta de automatización.
+2. En hello concentrador, seleccione **Runbooks** tooopen lista de Hola de runbooks.
+3. Haga clic en hello **agregar un runbook** botón y, a continuación, **crear un nuevo runbook**.
+4. Escriba un **nombre** de runbook de Hola y seleccione su [tipo](automation-runbook-types.md). nombre de runbook de Hello debe empezar por una letra y puede contener letras, números, caracteres de subrayado y guiones.
+5. Haga clic en **crear** toocreate Hola runbook y editor Hola abierto.
 
-### <a name="to-create-a-new-azure-automation-runbook-with-windows-powershell"></a>Para crear un nuevo runbook de Azure Automation con Windows PowerShell
-Puede usar el cmdlet [New-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt619376.aspx) para crear un [runbook de flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks) vacío. Puede especificar el parámetro **Name** para crear un runbook vacío que puede editar posteriormente, o bien puede especificar el parámetro **Path** para importar un archivo de runbook. El parámetro **Type** también se debe incluir para especificar uno de los cuatro tipos de runbook.
+### <a name="toocreate-a-new-azure-automation-runbook-with-windows-powershell"></a>toocreate un nuevo runbook de automatización de Azure con Windows PowerShell
+Puede usar hello [New-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt619376.aspx) toocreate cmdlet vacío [runbook de flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks). Puede especificar hello **nombre** toocreate parámetro un runbook vacío que pueda modificar más adelante, o puede especificar hello **ruta de acceso** parámetro tooimport un archivo de runbook. Hola **tipo** parámetro también debe ser toospecify incluye uno de los tipos de runbook de hello cuatro.
 
-Los comandos de ejemplo siguientes muestran cómo crear un nuevo runbook vacío.
+Mostrar comandos de ejemplo siguiente Hola cómo toocreate un runbook nuevo vacío.
 
     New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
     -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
 
 ## <a name="importing-a-runbook-from-a-file-into-azure-automation"></a>Importar un runbook de un archivo en Azure Automation
-Puede crear un nuevo runbook en Azure Automation importando un script de PowerShell o un flujo de trabajo de PowerShell (extensión. ps1) o un runbook gráfico exportado (.graphrunbook).  Necesita especificar el [tipo de runbook](automation-runbook-types.md) que se creará de la importación teniendo en cuenta las consideraciones siguientes.
+Puede crear un nuevo runbook en Azure Automation importando un script de PowerShell o un flujo de trabajo de PowerShell (extensión. ps1) o un runbook gráfico exportado (.graphrunbook).  Debe especificar hello [tipo de runbook](automation-runbook-types.md) que se creará de importación de hello habida Hola de cuenta siguientes consideraciones.
 
 * Solo se puede importar un archivo de .graphrunbook en un [runbook gráfico](automation-runbook-types.md#graphical-runbooks)nuevo y solo se pueden crear runbooks gráficos desde un archivo .graphrunbook.
-* Un archivo .ps1 que contiene un flujo de trabajo de PowerShell solo se puede importar en un [runbook de flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks).  Si el archivo contiene varios flujos de trabajo de PowerShell, se producirá un error en la importación. Debe guardar cada flujo de trabajo en su propio archivo e importar cada uno por separado.
-* Un archivo .ps1 que no contenga un flujo de trabajo se puede importar en un [runbook de PowerShell](automation-runbook-types.md#powershell-runbooks) o en un [runbook de flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks).  Si se importa en un runbook de flujo de trabajo de PowerShell, se convertirá en un flujo de trabajo y los comentarios se incluirán en el runbook especificando los cambios realizados.
+* Un archivo .ps1 que contiene un flujo de trabajo de PowerShell solo se puede importar en un [runbook de flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks).  Si el archivo hello contiene varios flujos de trabajo de PowerShell, se producirá un error importación Hola. Debe guardar cada archivo propio tooits de flujo de trabajo e importar cada uno de ellos por separado.
+* Un archivo .ps1 que no contenga un flujo de trabajo se puede importar en un [runbook de PowerShell](automation-runbook-types.md#powershell-runbooks) o en un [runbook de flujo de trabajo de PowerShell](automation-runbook-types.md#powershell-workflow-runbooks).  Si se importa en un runbook de flujo de trabajo de PowerShell, entonces será convertido tooa flujo de trabajo y los comentarios se incluirán en runbook Hola especificando Hola cambios realizados.
 
-### <a name="to-import-a-runbook-from-a-file-with-the-azure-classic-portal"></a>Para importar un runbook de un archivo con el Portal de Azure clásico
-Puede usar el siguiente procedimiento para importar un archivo de script en Azure Automation.  Tenga en cuenta que solo puede importar un archivo. ps1 en un runbook de flujo de trabajo de PowerShell mediante este portal.  Debe usar Azure Portal para otros tipos.
+### <a name="tooimport-a-runbook-from-a-file-with-hello-azure-classic-portal"></a>tooimport un runbook desde un archivo con el portal de Azure clásico de Hola
+Puede usar Hola siguiendo el procedimiento tooimport un archivo de script en la automatización de Azure.  Tenga en cuenta que solo puede importar un archivo. ps1 en un runbook de flujo de trabajo de PowerShell mediante este portal.  Debe usar hello portal de Azure para otros tipos.
 
-1. En el portal de administración de Azure, seleccione **Automation** y luego haga clic en el nombre de una cuenta de Automation.
+1. En el portal de administración de Azure de hello, seleccione **automatización** y, a continuación, seleccione una cuenta de automatización.
 2. Haga clic en **Import**.
-3. Haga clic en **Buscar archivo** y busque el archivo de script que va a importar.
-4. Si quiere editar el runbook ahora, haga clic en **Editar runbook**. De lo contrario, haga clic en Aceptar.
-5. El runbook nuevo aparecerá en la pestaña **Runbooks** para la cuenta de Automation.
-6. Debe [publicar el runbook](#publishing-a-runbook) para poder ejecutarlo.
+3. Haga clic en **Buscar archivo** y busque tooimport de archivo de script de Hola.
+4. Si desea tooedit Hola runbook ahora, a continuación, haga clic en **editar Runbook**. De lo contrario, haga clic en Aceptar.
+5. Hola nuevo runbook aparecerá en hello **Runbooks** pestaña Hola cuenta de automatización.
+6. Debe [publicar Hola runbook](#publishing-a-runbook) antes de que pueda ejecutar.
 
-### <a name="to-import-a-runbook-from-a-file-with-the-azure-portal"></a>Para importar un runbook desde un archivo con Azure Portal
-Puede usar el siguiente procedimiento para importar un archivo de script en Azure Automation.  
-
-> [!NOTE]
-> Tenga en cuenta que solo puede importar un archivo. ps1 en un runbook de flujo de trabajo de PowerShell mediante el portal.
-> 
-> 
-
-1. En Azure Portal, abra su cuenta de Automation.
-2. Desde el centro, seleccione **Runbooks** para abrir la lista de runbooks.
-3. Haga clic en el botón **Agregar un runbook** y, después, en **Importar**.
-4. Haga clic en **Archivo de runbook** para seleccionar el archivo que se va a importar.
-5. Si el campo **Nombre** está habilitado, tiene la opción de cambiarlo.  El nombre del runbook debe empezar por una letra y puede tener letras, números, caracteres de subrayado y guiones.
-6. El [tipo de runbook](automation-runbook-types.md) se seleccionará automáticamente, pero puede cambiarlo después de tomar en cuenta las restricciones aplicables. 
-7. El nuevo runbook aparecerá en la lista de runbooks para la cuenta de Automation.
-8. Debe [publicar el runbook](#publishing-a-runbook) para poder ejecutarlo.
+### <a name="tooimport-a-runbook-from-a-file-with-hello-azure-portal"></a>tooimport un runbook desde un archivo con hello portal de Azure
+Puede usar Hola siguiendo el procedimiento tooimport un archivo de script en la automatización de Azure.  
 
 > [!NOTE]
-> Después de importar un runbook gráfico o un runbook gráfico de flujo de trabajo de PowerShell, tiene la opción de convertir a otro tipo si así lo desea. No es posible convertir a texto.
+> Tenga en cuenta que sólo se puede importar un archivo. ps1 en un runbook de flujo de trabajo de PowerShell mediante el portal de Hola.
 > 
 > 
 
-### <a name="to-import-a-runbook-from-a-script-file-with-windows-powershell"></a>Para importar un runbook de un archivo de script con Windows PowerShell
-Puede usar el cmdlet [Import-AzureRMAutomationRunbook](https://msdn.microsoft.com/library/mt603735.aspx) para importar un archivo de script como un runbook de flujo de trabajo de PowerShell en borrador. Si ya existe el runbook, la importación dará error, a menos que utilice el parámetro *-Force* . 
+1. Hola portal de Azure, abra su cuenta de automatización.
+2. En hello concentrador, seleccione **Runbooks** tooopen lista de Hola de runbooks.
+3. Haga clic en hello **agregar un runbook** botón y, a continuación, **importación**.
+4. Haga clic en **archivo de Runbook** tooselect Hola archivo tooimport
+5. Si hello **nombre** campo está habilitado, entonces tiene Hola opción toochange lo.  nombre de runbook de Hello debe empezar por una letra y puede contener letras, números, caracteres de subrayado y guiones.
+6. Hola [tipo de runbook](automation-runbook-types.md) se seleccionará automáticamente, pero se puede cambiar el tipo hello después de poner restricciones aplicables de hello en cuenta. 
+7. Hola nuevo runbook aparecerá en la lista Hola de runbooks para hello cuenta de automatización.
+8. Debe [publicar Hola runbook](#publishing-a-runbook) antes de que pueda ejecutar.
 
-Los comandos de ejemplo siguientes muestran cómo importar un archivo de script en un runbook.
+> [!NOTE]
+> Después de importar un runbook gráfico o un runbook gráfico de flujo de trabajo de PowerShell, tendrá Hola opción tooconvert toohello otro tipo si lo desea. No se puede convertir tootextual.
+> 
+> 
+
+### <a name="tooimport-a-runbook-from-a-script-file-with-windows-powershell"></a>tooimport un runbook desde un archivo de script con Windows PowerShell
+Puede usar hello [AzureRMAutomationRunbook de importación](https://msdn.microsoft.com/library/mt603735.aspx) cmdlet tooimport un archivo de script como un borrador de runbook de flujo de trabajo de PowerShell. Si ya existe un runbook de hello, importación de Hola se producirá un error a menos que utilice hello *-Force* parámetro. 
+
+Hola después de comandos de ejemplo muestra cómo tooimport una secuencia de comandos de archivos en un runbook.
 
     $automationAccountName =  "AutomationAccount"
     $runbookName = "Sample_TestRunbook"
@@ -104,20 +104,20 @@ Los comandos de ejemplo siguientes muestran cómo importar un archivo de script 
 
 
 ## <a name="publishing-a-runbook"></a>Publicación de un runbook
-Cuando cree o importe un runbook nuevo, debe publicarlo para poder ejecutarlo.  Cada runbook de Automation tiene una versión de borrador y una versión publicada. Solo es posible ejecutar la versión publicada y solo es posible editar la versión de borrador. Los cambios realizados en la versión de borrador no afectan la versión publicada. Cuando la versión de borrador deba estar lista para su disponibilidad, puede publicarla, lo que sobrescribirá la versión publicada con la versión de borrador.
+Cuando cree o importe un runbook nuevo, debe publicarlo para poder ejecutarlo.  Cada runbook de Automation tiene una versión de borrador y una versión publicada. Versión publicada de hello solo está disponible toobe ejecutar y versión de borrador de hello solo se puede editar. versión publicada de Hola se ve afectado por cualquier versión de borrador de toohello de cambios. Cuando la versión de borrador de hello debe estar disponible, a continuación, se publica y se sobrescribe la versión publicada de hello con versión de borrador de Hola.
 
-## <a name="to-publish-a-runbook-using-the-azure-classic-portal"></a>Para publicar un runbook mediante el Portal de Azure clásico
-1. Abra el runbook en el Portal de Azure clásico.
-2. En la parte superior de la pantalla, haga clic en **Autor**.
-3. En la parte inferior de la pantalla, haga clic en **Publicar** y, después, haga clic en **Sí** en el mensaje de comprobación.
+## <a name="toopublish-a-runbook-using-hello-azure-classic-portal"></a>toopublish un runbook mediante el portal de Azure clásico de Hola
+1. Abra runbook hello en el portal de Azure clásico de Hola.
+2. En la parte superior de Hola de pantalla de bienvenida, haga clic en **autor**.
+3. En la parte inferior de Hola de pantalla de bienvenida, haga clic en **publicar** y, a continuación, **Sí** toohello mensaje de comprobación.
 
-## <a name="to-publish-a-runbook-using-the-azure-portal"></a>Para publicar un runbook mediante Azure Portal
-1. Abra el runbook en Azure Portal.
-2. Haga clic en el botón **Editar** .
-3. Haga clic en el botón **Publicar** y, después, haga clic en **Sí** en el mensaje de comprobación.
+## <a name="toopublish-a-runbook-using-hello-azure-portal"></a>toopublish un runbook mediante Hola portal de Azure
+1. Abra runbook Hola Hola portal de Azure.
+2. Haga clic en hello **editar** botón.
+3. Haga clic en hello **publicar** botón y, a continuación, **Sí** toohello mensaje de comprobación.
 
-## <a name="to-publish-a-runbook-using-windows-powershell"></a>Para publicar un runbook mediante Windows PowerShell
-Puede usar el cmdlet [Publish-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603705.aspx) para publicar un runbook con Windows PowerShell. Los comandos de ejemplo siguientes muestran cómo crear un runbook de ejemplo.
+## <a name="toopublish-a-runbook-using-windows-powershell"></a>toopublish un runbook mediante Windows PowerShell
+Puede usar hello [AzureRmAutomationRunbook publicar](https://msdn.microsoft.com/library/mt603705.aspx) cmdlet toopublish un runbook con Windows PowerShell. Mostrar comandos de ejemplo siguiente Hola cómo toopublish un runbook de ejemplo.
 
     $automationAccountName =  AutomationAccount"
     $runbookName = "Sample_TestRunbook"
@@ -128,7 +128,7 @@ Puede usar el cmdlet [Publish-AzureRmAutomationRunbook](https://msdn.microsoft.c
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para más información sobre las ventajas de la Galería de runbooks y módulos de PowerShell, vea [Galerías de runbooks y módulos para Azure Automation](automation-runbook-gallery.md).
-* Para más información acerca de la edición de runbooks de PowerShell y flujo de trabajo de PowerShell, consulte [Edición de runbooks de texto en Azure Automation](automation-edit-textual-runbook.md)
-* Para más información sobre la creación de runbooks de gráficos, consulte [Creación gráfica en Azure Automation](automation-graphical-authoring-intro.md)
+* toolearn acerca de cómo puede beneficiarse de hello Runbook y Galería de módulos de PowerShell, consulte [galerías de módulos y runbooks de automatización de Azure](automation-runbook-gallery.md)
+* toolearn más información acerca de la edición de runbooks de flujo de trabajo de PowerShell y PowerShell con un editor de texto, consulte [edición textuales runbooks en automatización de Azure](automation-edit-textual-runbook.md)
+* toolearn más información acerca de la creación de runbooks gráficos, consulte [creación gráfica en automatización de Azure](automation-graphical-authoring-intro.md)
 

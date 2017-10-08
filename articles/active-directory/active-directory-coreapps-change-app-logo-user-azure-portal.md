@@ -1,6 +1,6 @@
 ---
-title: "Cambio del nombre o el logotipo de una aplicación empresarial en Azure Active Directory | Microsoft Docs"
-description: "Cómo cambiar el nombre o el logotipo de una aplicación empresarial personalizada en Azure Active Directory"
+title: "aaaChange Hola nombre o el logotipo de una aplicación de empresa en Azure Active Directory | Documentos de Microsoft"
+description: "¿Cómo toochange Hola nombre o el logotipo para una aplicación de empresa personalizados en Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 3e44e876dcbac704a9809ae5b3957bf94be21c48
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b660e1f0f6c7ffd626e17e2e3399e7169f6e8bc8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory"></a>Cambio del nombre o el logotipo de una aplicación empresarial en Azure Active Directory
-Cambiar el nombre o el logotipo de una aplicación empresarial personalizada en Azure Active Directory (Azure AD) es fácil. Debe tener los permisos adecuados para realizar estos cambios, y debe ser el creador de la aplicación personalizada.
+# <a name="change-hello-name-or-logo-of-an-enterprise-app-in-azure-active-directory"></a>Cambiar el nombre de Hola o el logotipo de una aplicación de empresa en Azure Active Directory
+Es el nombre de Hola de toochange fácil o logotipo para una aplicación de empresa personalizados en Azure Active Directory (Azure AD). Debe tener toomake de los permisos adecuados de hello estos cambios y debe ser creador de Hola de aplicación personalizada hello.
 
 ## <a name="how-do-i-change-an-enterprise-apps-name-or-logo"></a>¿Cómo puedo cambiar el nombre o el logotipo de una aplicación empresarial?
-1. Inicie sesión en [Azure Portal](https://portal.azure.com) con una cuenta que tenga el rol de administrador global en el directorio.
-2. Seleccione **Más servicios**, escriba **Azure Active Directory** en el cuadro de texto y presione **ENTRAR**.
-3. En la hoja **Azure Active Directory - *nombreDelDirectorio*** (es decir, la hoja de Azure AD del directorio que está administrando), seleccione **Aplicaciones empresariales**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+2. Seleccione **más servicios**, escriba **Azure Active Directory** en Hola cuadro de texto y, a continuación, seleccione **ENTRAR**.
+3. En hello **Azure Active Directory - *directoryname***  hoja (es decir, hello Azure AD hoja para el directorio de hello administra), seleccione **aplicaciones empresariales**.
 
     ![Apertura de Enterprise apps (Aplicaciones empresariales)](./media/active-directory-coreapps-change-app-logo-azure-portal/open-enterprise-apps.png)
-4. En la hoja **Aplicaciones empresariales**, seleccione **Todas las aplicaciones**. Verá una lista de las aplicaciones que puede administrar.
-5. En la hoja **Enterprise applications (Aplicaciones empresariales) - Todas las aplicaciones** , seleccione una aplicación.
-6. En la hoja ***nombreDeLaAplicación*** (es decir, la hoja con el nombre de la aplicación seleccionada en el título), seleccione **Propiedades**.
+4. En hello **aplicaciones empresariales** hoja, seleccione **todas las aplicaciones**. Verá una lista de aplicaciones de hello que puede administrar.
+5. En hello **aplicaciones empresariales - todas las aplicaciones** hoja, seleccione una aplicación.
+6. En hello ***appname*** hoja (es decir, Hola hoja con nombre Hola de aplicación seleccionada de hello en el título de hello), seleccione **propiedades**.
 
-    ![Selección del comando Propiedades](./media/active-directory-coreapps-change-app-logo-azure-portal/select-app.png)
-7. En la hoja ***nombreDeAplicación*** **- Propiedades**, busque el archivo que desea usar como nuevo logotipo o edite el nombre de la aplicación, o ambas opciones.
+    ![Al seleccionar el comando de propiedades de Hola](./media/active-directory-coreapps-change-app-logo-azure-portal/select-app.png)
+7. En hello ***appname*** **-propiedades** hoja, busque un toouse de archivo como un logotipo nuevo o editar el nombre de la aplicación hello, o ambos.
 
-    ![Cambio del logotipo o de la aplicación o comando de propiedades de nombre](./media/active-directory-coreapps-change-app-logo-azure-portal/change-logo.png)
-8. Haga clic en el comando **Guardar** .
+    ![Cambiar los comandos de logotipo o nameproperties aplicación Hola](./media/active-directory-coreapps-change-app-logo-azure-portal/change-logo.png)
+8. Seleccione hello **guardar** comando.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Ver todos mis grupos](active-directory-groups-view-azure-portal.md)
-* [Asignar un usuario o grupo a una aplicación empresarial](active-directory-coreapps-assign-user-azure-portal.md)
+* [Asignar un usuario o grupo tooan su aplicación empresarial](active-directory-coreapps-assign-user-azure-portal.md)
 * [Eliminación de asignaciones de usuario o grupo de una aplicación empresarial](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Deshabilitar los inicios de sesión de los usuarios de una aplicación empresarial](active-directory-coreapps-disable-app-azure-portal.md)

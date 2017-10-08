@@ -1,6 +1,6 @@
 ---
-title: "Incorporación de notificaciones push a una aplicación de la Plataforma universal de Windows (UWP) | Microsoft Docs"
-description: "Obtenga información acerca de cómo usar Aplicaciones móviles del Servicio de aplicaciones de Azure y Centros de notificaciones de Azure para enviar notificaciones push a la aplicación de la Plataforma universal de Windows (UWP)."
+title: "aplicación de plataforma Universal de Windows (UWP) de aaaAdd inserción notificaciones tooyour | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse aplicaciones de Mobile de servicio de aplicación de Azure y los centros de notificaciones de Azure toosend push notificaciones tooyour plataforma Universal de Windows (UWP) aplicaciones."
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
 author: ysxu
@@ -14,68 +14,68 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
-ms.openlocfilehash: a14bb0320c1f6a563f766a6a0fad5cf556fe7b70
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 378ce59cab974830c0a3801108b24b30a21ae5cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-push-notifications-to-your-windows-app"></a>Incorporación de notificaciones push a la aplicación de Windows
+# <a name="add-push-notifications-tooyour-windows-app"></a>Agregar aplicación de Windows de tooyour de notificaciones de inserción
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Información general
-En este tutorial, agregará notificaciones de inserción al proyecto de [inicio rápido de Windows](app-service-mobile-windows-store-dotnet-get-started.md) para que cada vez que se envíe una notificación de inserción al dispositivo, se inserte un registro.
+En este tutorial, agregará toohello de notificaciones de inserción [inicio rápido de Windows](app-service-mobile-windows-store-dotnet-get-started.md) del proyecto para que se envía una notificación de inserción toohello dispositivo cada vez que se inserta un registro.
 
-Si no usa el proyecto de servidor de inicio rápido descargado, necesitará el paquete de extensión de la notificación de inserción. Vea [Trabajar con el SDK de servidor de back-end de .NET para Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) para obtener más información.
+Si no usa Hola descarga el proyecto de servidor de inicio rápido, se necesita Hola paquete de extensión de notificación de inserción. Vea [trabajar con el servidor back-end de .NET Hola SDK para aplicaciones móviles de Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) para obtener más información.
 
 ## <a name="configure-hub"></a>Configurar un Centro de notificaciones
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>Registro de la aplicación para notificaciones push
-Debe enviar la aplicación a la Tienda Windows y, después, configurar el proyecto de servidor para integrarlo con los Servicios de notificaciones de Windows (WNS) para enviar la inserción.
+Se necesita toosubmit su toohello aplicación tienda Windows, después de configura su toointegrate de project server con servicios de notificación de Windows (WNS) toosend inserción.
 
-1. En el Explorador de soluciones de Visual Studio, haga clic con el botón derecho en el proyecto de aplicación UWP y luego haga clic en **Tienda** > **Asociar aplicación con la Tienda...**.
+1. En Visual Studio Solution Explorer, el proyecto de aplicación UWP de Hola de menú contextual, haga clic en **almacén** > **asociar aplicación con hello almacén...** .
 
     ![Asociar aplicación con la Tienda Windows](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
-2. En el asistente, haga clic en **Siguiente**, inicie sesión con su cuenta Microsoft, escriba un nombre para la aplicación en **Reserve un nuevo nombre de aplicación** y haga clic en **Reservar**.
-3. Después de crear correctamente el registro de la aplicación, seleccione el nuevo nombre de la aplicación, haga clic en **Siguiente** y, después, en **Asociar**. Se agrega la información de registro necesaria de la Tienda Windows al manifiesto de aplicación.  
-4. Navegue al [Centro de desarrollo de Windows](https://dev.windows.com/en-us/overview), inicie sesión con su cuenta Microsoft, haga clic en el nuevo registro de aplicación en **Mis aplicaciones** y, luego, expanda **Servicios** > **Notificaciones push**.
-5. En la página **Notificaciones push**, haga clic en el **sitio de Servicios Live** en **Microsoft Azure Mobile Services**.
-6. En la página de registro, anote los valores de **Secretos de aplicación** y **SID del paquete**, que va a utilizar a continuación para configurar el back-end de aplicación móvil.
+2. En el Asistente de hello, haga clic en **siguiente**, inicie sesión con su cuenta de Microsoft, escriba un nombre para la aplicación en **reservar un nuevo nombre de aplicación**, a continuación, haga clic en **reserva**.
+3. Después de registro de una aplicación Hola es Hola se creó correctamente, seleccione Nuevo nombre de aplicación, haga clic en **siguiente**y, a continuación, haga clic en **asociar**. Esto agrega manifiesto de aplicación Hola necesario tienda Windows registro información toohello.  
+4. Navegue toohello [centro de desarrollo de Windows](https://dev.windows.com/en-us/overview), iniciar sesión con tu cuenta de Microsoft, haga clic en nuevo registro de aplicación hello en **mis aplicaciones**, a continuación, expanda **servicios**  >  **Notificaciones de inserción**.
+5. Hola **notificaciones de inserción** página, haga clic en **sitio de los servicios de Live** en **servicios móviles de Microsoft Azure**.
+6. En la página de registro de hello, tome nota del valor de hello en **secretos de aplicación** hello y **SID del paquete**, que a continuación utilizará tooconfigure su aplicación móvil de back-end.
 
     ![Asociar aplicación con la Tienda Windows](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
-   > El secreto de cliente y el SID del paquete son credenciales de seguridad importantes. No los comparta con nadie ni los distribuya con su aplicación. El **Id. de aplicación** se usa con el secreto para configurar la autenticación de la cuenta de Microsoft.
+   > secreto de cliente de Hola y el SID del paquete son credenciales de seguridad importantes. No los comparta con nadie ni los distribuya con su aplicación. Hola **Id. de aplicación** se utiliza con la autenticación de Microsoft Account de hello tooconfigure secreto.
    >
    >
 
-## <a name="configure-the-backend-to-send-push-notifications"></a>Configuración del back-end para enviar notificaciones push
+## <a name="configure-hello-backend-toosend-push-notifications"></a>Configurar notificaciones de inserción de hello back-end toosend
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a id="update-service"></a>Actualización del servidor para enviar notificaciones de inserción
-Use uno de los procedimientos siguientes que se ajusten al tipo de proyecto de back-end&mdash;: [back-end de .NET](#dotnet) o [back-end de Node.js](#nodejs).
+## <a id="update-service"></a>Actualizar notificaciones de inserción de hello server toosend
+Utilice Hola procedimiento siguiente que corresponda al tipo de proyecto de back-end&mdash;cualquier [back-end de .NET](#dotnet) o [Node.js back-end](#nodejs).
 
 ### <a name="dotnet"></a>Proyecto de back-end de .NET
-1. En Visual Studio, haga clic con el botón derecho en el proyecto de servidor, haga clic en **Administrar paquetes NuGet**, busque Microsoft.Azure.NotificationHubs y haga clic en **Instalar**. Esto instala la biblioteca de cliente de Centros de notificaciones.
-2. Expanda **Controladores**, abra TodoItemController.cs y agregue las siguientes instrucciones using:
+1. En Visual Studio, haga clic en proyecto de servidor de Hola y haga clic en **administrar paquetes de NuGet**, busque Microsoft.Azure.NotificationHubs, a continuación, haga clic en **instalar**. Esto instala la biblioteca de cliente de hello centros de notificaciones.
+2. Expanda **controladores**, abra TodoItemController.cs y agregue Hola siguientes instrucciones using:
 
         using System.Collections.Generic;
         using Microsoft.Azure.NotificationHubs;
         using Microsoft.Azure.Mobile.Server.Config;
-3. En el método **PostTodoItem**, agregue el código siguiente después de la llamada a **InsertAsync**:
+3. Hola **PostTodoItem** método, agregar Hola siguiente código después de la llamada de hello demasiado**InsertAsync**:
 
-        // Get the settings for the server project.
+        // Get hello settings for hello server project.
         HttpConfiguration config = this.Configuration;
         MobileAppSettingsDictionary settings =
             this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
-        // Get the Notification Hubs credentials for the Mobile App.
+        // Get hello Notification Hubs credentials for hello Mobile App.
         string notificationHubName = settings.NotificationHubName;
         string notificationHubConnection = settings
             .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
 
-        // Create the notification hub client.
+        // Create hello notification hub client.
         NotificationHubClient hub = NotificationHubClient
             .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
@@ -84,25 +84,25 @@ Use uno de los procedimientos siguientes que se ajusten al tipo de proyecto de b
                                 + item.Text + @"</text></binding></visual></toast>";
         try
         {
-            // Send the push notification.
+            // Send hello push notification.
             var result = await hub.SendWindowsNativeNotificationAsync(windowsToastPayload);
 
-            // Write the success result to the logs.
+            // Write hello success result toohello logs.
             config.Services.GetTraceWriter().Info(result.State.ToString());
         }
         catch (System.Exception ex)
         {
-            // Write the failure result to the logs.
+            // Write hello failure result toohello logs.
             config.Services.GetTraceWriter()
                 .Error(ex.Message, null, "Push.SendAsync Error");
         }
 
-    Este código indica al centro de notificaciones que envíe una notificación push después de la inserción de un elemento nuevo.
-4. Vuelva a publicar el proyecto de servidor.
+    Este código indica una notificación de inserción de toosend de concentrador de notificación de Hola después de un nuevo elemento de inserción.
+4. Volver a publicar el proyecto de servidor de Hola.
 
 ### <a name="nodejs"></a>Proyecto de back-end de Node.js
-1. Si aún no lo ha hecho, [descargue el proyecto de inicio rápido](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) o utilice el [editor en línea de Azure Portal](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Reemplace el código existente en el archivo todoitem.js por lo siguiente:
+1. Si ya no lo ha hecho, [Descargar proyecto de inicio rápido de hello](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) o persona use hello [editor en línea en el portal de Azure hello](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
+2. Reemplace el código existente en archivo de hello todoitem.js de Hola por hello siguiente:
 
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -111,19 +111,19 @@ Use uno de los procedimientos siguientes que se ajusten al tipo de proyecto de b
         var table = azureMobileApps.table();
 
         table.insert(function (context) {
-        // For more information about the Notification Hubs JavaScript SDK,
+        // For more information about hello Notification Hubs JavaScript SDK,
         // see http://aka.ms/nodejshubs
         logger.info('Running TodoItem.insert');
 
-        // Define the WNS payload that contains the new item Text.
+        // Define hello WNS payload that contains hello new item Text.
         var payload = "<toast><visual><binding template=\ToastText01\><text id=\"1\">"
                                     + context.item.text + "</text></binding></visual></toast>";
 
-        // Execute the insert.  The insert returns the results as a Promise,
-        // Do the push as a post-execute action within the promise flow.
+        // Execute hello insert.  hello insert returns hello results as a Promise,
+        // Do hello push as a post-execute action within hello promise flow.
         return context.execute()
             .then(function (results) {
-                // Only do the push if configured
+                // Only do hello push if configured
                 if (context.push) {
                     // Send a WNS native toast notification.
                     context.push.wns.sendToast(null, payload, function (error) {
@@ -134,7 +134,7 @@ Use uno de los procedimientos siguientes que se ajusten al tipo de proyecto de b
                         }
                     });
                 }
-                // Don't forget to return the results from the context.execute()
+                // Don't forget tooreturn hello results from hello context.execute()
                 return results;
             })
             .catch(function (error) {
@@ -144,17 +144,17 @@ Use uno de los procedimientos siguientes que se ajusten al tipo de proyecto de b
 
         module.exports = table;
 
-    Esta acción envía una notificación del sistema de WNS que contiene el item.text cuando se inserta un nuevo elemento todo.
-3. Cuando edite el archivo en el equipo local, vuelva a publicar el proyecto de servidor.
+    Este modo envía una notificación de WNS que contiene hello item.text Cuando se inserta un nuevo elemento de lista de tareas.
+3. Al editar el archivo hello en el equipo local, volver a publicar el proyecto de servidor de Hola.
 
-## <a id="update-app"></a>Incorporación de notificaciones de inserción a la aplicación
-Después, debe registrarse la aplicación para recibir notificaciones push en el inicio. Cuando tenga habilitada la autenticación, asegúrese de que el usuario inicia sesión antes de intentar registrarse para recibir notificaciones push.
+## <a id="update-app"></a>Agregar aplicación de tooyour de notificaciones de inserción
+Después, debe registrarse la aplicación para recibir notificaciones push en el inicio. Si ya se ha habilitado la autenticación, asegúrese de que ese Hola usuario inicia sesión antes de intentar tooregister para las notificaciones de inserción.
 
-1. Abra el archivo de proyecto **App.xaml.cs** y agregue las siguientes instrucciones `using`:
+1. Abra hello **App.xaml.cs** archivo de proyecto y agregue el siguiente de hello `using` instrucciones:
 
         using System.Threading.Tasks;
         using Windows.Networking.PushNotifications;
-2. En el mismo archivo, agregue la siguiente definición del método **InitNotificationsAsync** a la clase **App**:
+2. En Hola el mismo archivo, agregue la siguiente hello **InitNotificationsAsync** toohello de definición de método **aplicación** clase:
 
         private async Task InitNotificationsAsync()
         {
@@ -162,12 +162,12 @@ Después, debe registrarse la aplicación para recibir notificaciones push en el
             var channel = await PushNotificationChannelManager
                 .CreatePushNotificationChannelForApplicationAsync();
 
-            // Register the channel URI with Notification Hubs.
+            // Register hello channel URI with Notification Hubs.
             await App.MobileService.GetPush().RegisterAsync(channel.Uri);
         }
 
-    Este código recupera el valor de ChannelURI de la aplicación desde WNS y, a continuación, lo registra con sus Aplicaciones móviles del Servicio de aplicaciones.
-3. En la parte superior del controlador de eventos **OnLaunched**, en **App.xaml.cs**, agregue el modificador **async** a la definición del método y agregue la siguiente llamada al nuevo método **InitNotificationsAsync**, como se muestra en el siguiente ejemplo:
+    Este código recupera hello URI del canal para la aplicación hello de WNS y, a continuación, registra ese URI del canal con la aplicación de servicio de aplicaciones móviles.
+3. En parte superior de Hola de hello **OnLaunched** controlador de eventos de **App.xaml.cs**, agregar hello **async** definición de método de modificador toohello y agregue el siguiente de hello llamada toohello nueva  **InitNotificationsAsync** método, como en el siguiente ejemplo de Hola:
 
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
@@ -176,26 +176,26 @@ Después, debe registrarse la aplicación para recibir notificaciones push en el
             // ...
         }
 
-    Esto garantiza que el valor de ChannelURI de corta duración se registra cada vez que se inicia la aplicación.
-4. Recompile el proyecto de aplicación para UWP. La carpeta ahora ya está lista para recibir notificaciones.
+    Esto garantiza que hello que channeluri de corta duración se registra cada vez que se inicia la aplicación hello.
+4. Recompile el proyecto de aplicación para UWP. La aplicación ya está listo tooreceive recibir notificaciones del sistema.
 
-## <a id="test"></a>Prueba de las notificaciones push en su aplicación
+## <a id="test"></a>Prueba de las notificaciones de inserción en su aplicación
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
 ## <a id="more"></a>Pasos siguientes
 Más información sobre las notificaciones de inserción:
 
-* [Uso del cliente administrado para Aplicaciones móviles de Azure](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications)  
-  : las plantillas proporcionan flexibilidad para enviar inserciones multiplataforma e inserciones localizadas. Sepa cómo registrar plantillas.
+* [Cómo toouse Hola administra a cliente para aplicaciones móviles de Azure](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications)  
+  Plantillas de proporcionan inserciones de flexibilidad toosend multiplataforma e inserciones localizados. Obtenga información acerca de cómo tooregister plantillas.
 * [Diagnosticar problemas de notificaciones push](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-  : existen varias razones para que las notificaciones se pierdan o no lleguen a los dispositivos. En este tema se muestra cómo analizar y descubrir la causa principal de los errores de notificación de inserción.
+  : existen varias razones para que las notificaciones se pierdan o no lleguen a los dispositivos. Este tema muestra cómo hacer que tooanalyze y averiguar la raíz de Hola de errores de notificación de inserción.
 
-También podría continuar con uno de los siguientes tutoriales:
+Considere la posibilidad de continuar en tooone de hello tutoriales:
 
-* [Incorporación de la autenticación a la aplicación de Windows](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  : aprenda a autenticar a los usuarios de su aplicación con un proveedor de identidades.
-* [Activación de la sincronización sin conexión para la aplicación de Windows](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  : aprenda a agregar compatibilidad sin conexión a su aplicación con un back-end de aplicación móvil. La sincronización sin conexión permite a los usuarios finales interactuar con una aplicación móvil (ver, agregar o modificar datos) aun cuando no haya conexión de red.
+* [Agregar aplicación de autenticación tooyour](app-service-mobile-windows-store-dotnet-get-started-users.md)  
+  Obtenga información acerca de cómo tooauthenticate a los usuarios de la aplicación con un proveedor de identidades.
+* [Habilitación de la sincronización sin conexión para su aplicación](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
+  Obtenga información acerca de cómo tooadd sin conexión son compatibles con la aplicación con un aplicación móvil de back-end. Sincronización sin conexión permite a los usuarios finales toointeract con una aplicación móvil&mdash;ver, agregar o modificar datos&mdash;incluso cuando no hay ninguna conexión de red.
 
 <!-- Anchors. -->
 

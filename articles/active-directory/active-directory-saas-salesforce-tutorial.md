@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Salesforce | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Salesforce."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Salesforce."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 639e40ca7e406a1726033e9f5c5363c289087589
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1d848518ee30910e051cdc4746c599219f3b5a3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Tutorial: Integración de Azure Active Directory con Salesforce
 
-En este tutorial, aprenderá a integrar Salesforce con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate Salesforce con Azure Active Directory (Azure AD).
 
-La integración de Salesforce con Azure AD proporciona las siguientes ventajas:
+Integración de Salesforce con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a Salesforce.
-- Puede permitir que los usuarios inicien sesión automáticamente en Salesforce (inicio de sesión único) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una sola ubicación central: Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooSalesforce
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooSalesforce (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con Salesforce, necesita los siguientes elementos:
+tooconfigure integración de Azure AD con Salesforce, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Salesforce
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Adición de Salesforce desde la galería
+1. Adición de Salesforce de galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-salesforce-from-the-gallery"></a>Adición de Salesforce desde la galería
-Para configurar la integración de Salesforce en Azure AD, deberá agregar Salesforce desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-salesforce-from-hello-gallery"></a>Adición de Salesforce de galería de Hola
+integración de hello tooconfigure de Salesforce en Azure AD, deberá tooadd Salesforce de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Salesforce desde la galería, realice los pasos siguientes:**
+**tooadd Salesforce desde la Galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. Haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo de Hola.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **Salesforce**.
+4. En el cuadro de búsqueda de hello, escriba **Salesforce**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_search.png)
 
-5. En el panel de resultados, seleccione **Salesforce** y luego haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **Salesforce**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con Salesforce con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Salesforce para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Salesforce.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Salesforce es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Salesforce debe toobe establecido.
 
-Esta relación de vínculo se establece mediante la asignación del valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario** en Salesforce.
+Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en Salesforce.
 
-Para configurar y probar el inicio de sesión único de Azure AD con Salesforce, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con Salesforce, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba en Ssalesforce](#creating-a-salesforce-test-user)**: el objetivo es tener un homólogo de Britta Simon en Salesforce que esté vinculado a la representación del usuario en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba de Salesforce](#creating-a-salesforce-test-user)**  -toohave un equivalente de Britta Simon en Salesforce que es la representación toohello vinculado Azure AD del usuario.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en la aplicación Salesforce.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Salesforce.
 
-**Para configurar el inicio de sesión único de Azure AD con Salesforce, realice los pasos siguientes:**
+**inicio de sesión único en tooconfigure Azure AD con Salesforce, siga Hola pasos:**
 
-1. En la página de integración de la aplicación **Salesforce** de Azure Portal, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **Salesforce** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de Salesforce**, lleve a cabo los pasos siguientes:
+3. En hello **dominio de Salesforce y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_url.png)
 
-    En el cuadro de texto **URL de inicio de sesión**, escriba el valor con el siguiente patrón: 
+    Hola **dirección URL de inicio de sesión** cuadro de texto, valor de tipo hello mediante Hola sigue el patrón: 
    * Cuenta de empresa: `https://<subdomain>.my.salesforce.com`
    * Cuenta de desarrollador: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE] 
-    > Estos valores no son reales. Debe actualizarlos con la dirección de inicio de sesión real. Póngase en contacto con el [equipo de atención al cliente de Salesforce](https://help.salesforce.com/support) para obtener estos valores. 
+    > Estos valores no son Hola real. Actualizar estos valores con la URL de inicio de sesión real de Hola. Póngase en contacto con [equipo de soporte técnico de Salesforce cliente](https://help.salesforce.com/support) tooget estos valores. 
  
-4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado** y, a continuación, guarde el archivo de certificado en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **certificado** y, a continuación, guarde el archivo de certificado de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_certificate.png) 
 
@@ -125,126 +125,126 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/tutorial_general_400.png)
 
-6. En la sección **Configuración de Salesforce**, haga clic en **Configurar Salesforce** para abrir la ventana **Configurar inicio de sesión**. Copie **SAML Entity ID and SAML Single Sign-On Service URL** (URL del servicio de inicio de sesión único de SAML e Identificador de entidad de SAML) de la sección **Referencia rápida**. 
+6. En hello **configuración de Salesforce** sección, haga clic en **configurar Salesforce** tooopen **configurar inicio de sesión** ventana. Hola copia **Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.** 
 
     ![Configuración del inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_configure.png) 
 <CS>
-7.  Abra una nueva pestaña en el explorador e inicie sesión en su cuenta de administrador de Salesforce.
+7.  Abra una nueva pestaña en el explorador e inicie sesión tooyour cuenta de administrador de Salesforce.
 
-8.  En el panel de navegación **Administrador**, haga clic en **Controles de seguridad** para expandir la sección relacionada. A continuación, haga clic en **Configuración de inicio de sesión único**.
+8.  En hello **administrador** panel de navegación, haga clic en **controles de seguridad** tooexpand Hola relacionados con la sección. A continuación, haga clic en **Configuración de inicio de sesión único**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso.png)
 
-9.  En la página **Configuración de inicio de sesión único**, haga clic en el botón **Editar**.
+9.  En hello **configuración de inicio de sesión único** página, haga clic en hello **editar** botón.
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-edit.png)
 
       > [!NOTE]
-      > Si no puede habilitar la configuración de inicio de sesión único para su cuenta de Salesforce, puede que necesite ponerse en contacto con el [equipo de soporte técnico de Salesforce](https://help.salesforce.com/support). 
+      > Si está configuración de Single Sign-On no se puede tooenable para su cuenta de Salesforce, puede que necesite toocontact [equipo de soporte técnico de Salesforce cliente](https://help.salesforce.com/support). 
 
 10. Seleccione **SAML habilitado** y haga clic en **Guardar**.
 
       ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/sf-enable-saml.png)
-11. Para establecer la configuración de inicio de sesión único de SAML, haga clic en **Nuevo**.
+11. tooconfigure su SAML único inicio de sesión en configuración, haga clic en **nuevo**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-new.png)
 
-12. En la página **Edición de la configuración de inicio de sesión único de SAML** , realice las siguientes configuraciones:
+12. En hello **SAML Single Sign-On editar la configuración de** página, asegúrese de hello siguiendo configuraciones:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/sf-saml-config.png)
 
-    a. En el campo **Nombre** , escriba un nombre descriptivo para esta configuración. Si se proporciona un valor para **Name** (Nombre), se completa automáticamente el cuadro de texto **API Name** (Nombre de API).
+    a. Para hello **nombre** , escriba un nombre descriptivo para esta configuración. Proporciona un valor para **nombre** rellenar automáticamente hello **nombre de la API** cuadro de texto.
 
-    b. Pegue el valor **SMAL Entity ID** (Id. de entidad de SAML) en el campo **Issuer** (Emisor) de Salesforce.
+    b. Pegar **Id. de entidad Small** valor en hello **emisor** campo Salesforce.
 
-    c. En el **Cuadro de texto de identificador de entidades**, escriba el nombre de dominio de Salesforce con el siguiente patrón:
+    c. Hola **cuadro de texto Id. de entidad**, escriba el nombre de dominio de Salesforce con hello sigue el patrón:
       
       * Cuenta de empresa: `https://<subdomain>.my.salesforce.com`
       * Cuenta de desarrollador: `https://<subdomain>-dev-ed.my.salesforce.com`
       
-    d. Haga clic en **Browse** (Examinar) o **Choose File** (Elegir archivo) para abrir el cuadro de diálogo **Choose File to Upload** (Elegir archivos para cargar), seleccione el certificado de Salesforce y haga clic en **Open** (Abrir) para cargar el certificado.
+    d. Haga clic en **examinar** o **Elegir archivo** tooopen hello **tooUpload Elegir archivo** cuadro de diálogo, seleccione el certificado de Salesforce y, a continuación, haga clic en **abrir**certificado de hello tooupload.
 
     e. En **SAML Identity Type** (Tipo de identidad de SAML), seleccione **Assertion contains User's salesforce.com username** (La aserción contiene el nombre de usuario de salesforce.com del usuario).
 
-    f. En **SAML Identity Location** (Ubicación de identidad de SAML), seleccione **Identity is in the NameIdentifier element of the Subject statement** (La identidad está en el elemento NameIdentifier de la instrucción de asunto).
+    f. Para **ubicación de identidad SAML**, seleccione **identidad está en el elemento NameIdentifier de Hola de hello instrucción Subject**
 
-    g. Pegue la **URL de servicio de inicio de sesión** en el campo **Identity Provider Login URL** (URL de inicio de sesión del proveedor de identidades) de Salesforce.
+    g. Pegar **URL de servicio de inicio de sesión único** en hello **URL de inicio de sesión del proveedor de identidades** campo Salesforce.
     
     h. En **Service Provider Initiated Request Binding** (Vinculación de solicitud iniciada del proveedor de servicios), seleccione **HTTP Redirect** (Redirección HTTP).
     
-    i. Por último, haga clic en **Guardar** para aplicar la configuración de inicio de sesión único de SAML.
+    i. Por último, haga clic en **guardar** tooapply las opciones de inicio de sesión único de SAML.
 
-13. En el panel de navegación izquierdo de Salesforce, haga clic en **Domain Management** (Administración de dominios) para expandir la sección relacionada y haga clic en **My Domain** (Mi dominio).
+13. En el panel de navegación izquierdo de hello en Salesforce, haga clic en **Domain Management** tooexpand Hola sección relacionada y, a continuación, haga clic en **mi dominio**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/sf-my-domain.png)
 
-14. Desplácese hacia abajo hasta la sección **Authentication Configuration** (Configuración de autenticación) y haga clic en el botón **Edit** (Editar).
+14. Desplácese hacia abajo toohello **configuración de autenticación** sección y haga clic en hello **editar** botón.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/sf-edit-auth-config.png)
 
-15. En la sección **Authentication Service** (Servicio de autenticación), seleccione el nombre descriptivo de la configuración de SSO de SAML y haga clic en **Save** (Guardar).
+15. Hola **servicio de autenticación** sección, seleccione Hola nombre descriptivo de la configuración de SSO de SAML y, a continuación, haga clic en **guardar**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
-    > Si se selecciona más de un servicio de autenticación, cuando los usuarios intentan realizar un inicio de sesión único para el entorno Salesforce, se les pedirá que seleccionen el servicio de autenticación con el que les gustaría iniciar sesión. Si no desea que esto ocurra, **deje sin activar todos los demás servicios de autenticación**.
+    > Si se selecciona más de un servicio de autenticación, los usuarios son solicitada tooselect qué servicio de autenticación que deseen toosign sesión al iniciar el entorno de Salesforce tooyour de inicio de sesión único. Si no desea toohappen, entonces debe **dejar sin seleccionar todos los demás servicios de autenticación**.
 <CE>    
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones en [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada mediante la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Documentación insertada sobre Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. En el panel de navegación izquierdo de Hola Hola **portal de Azure**, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-salesforce-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-salesforce-tutorial/create_aaduser_02.png) 
 
-3. En la parte superior del diálogo, haga clic en **Agregar** para abrir el diálogo **Usuario**.
+3. En la parte superior de saludo del cuadro de diálogo de hello, haga clic en **agregar** tooopen hello **usuario** cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-salesforce-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-salesforce-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-salesforce-test-user"></a>Creación de un usuario de prueba de Salesforce
 
 En esta sección, creará un usuario llamado a Britta Simon en Salesforce. Salesforce admite el aprovisionamiento Just-In-Time, que está habilitado de forma predeterminada.
-No hay ningún elemento de acción para usted en esta sección. Si el usuario no existe aún en Salesforce, se crea uno nuevo cuando se intenta acceder a esta aplicación.
+No hay ningún elemento de acción para usted en esta sección. Si un usuario ya no existe en Salesforce, se crea uno nuevo si intentas tooaccess Salesforce.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Salesforce.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooSalesforce.
 
 ![Asignar usuario][200] 
 
-**Para asignar a Britta Simon a Salesforce, realice los pasos siguientes:**
+**tooassign Britta Simon tooSalesforce, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **Salesforce**.
+2. En la lista de aplicaciones de hello, seleccione **Salesforce**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -252,7 +252,7 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -260,11 +260,11 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-Para probar la configuración de inicio de sesión único, abra el Panel de acceso en [https://myapps.microsoft.com](https://myapps.microsoft.com/) y, a continuación, inicie sesión en la cuenta de prueba y haga clic en **Salesforce**.
+tootest Hola de su inicio de sesión configuración de inicio único, abra Panel de acceso en [https://myapps.microsoft.com](https://myapps.microsoft.com/), a continuación, inicie sesión en la cuenta de prueba de Hola y haga clic en **Salesforce**.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Configuración del aprovisionamiento de usuarios](active-directory-saas-salesforce-provisioning-tutorial.md)
 

@@ -1,6 +1,6 @@
 ---
-title: "Autenticación basada en certificados de Azure Active Directory en Android | Microsoft Docs"
-description: "Obtenga información acerca de los escenarios admitidos y los requisitos para configurar la autenticación basada en certificados en las soluciones con dispositivos Android"
+title: "autenticación basada en certificados en Active Directory aaaAzure en Android | Documentos de Microsoft"
+description: "Obtenga información acerca de los escenarios de hello admitido y los requisitos de Hola para configurar la autenticación basada en certificados en soluciones con dispositivos Android"
 services: active-directory
 author: MarkusVi
 documentationcenter: na
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 08/28/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 8005bfe821fea25539c84efdccf6c49bd5f1f8ee
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 148275fa3da610530c278fcd57e02e907f735d9a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Autenticación basada en certificados de Azure Active Directory en Android
 
 
-La autenticación basada en certificados (CBA) le permite autenticarse mediante Azure Active Directory con un certificado de cliente en un dispositivo Windows, Android o iOS al conectar su cuenta de Exchange Online a: 
+Autenticación basada en certificados (CBA) le permite toobe autenticado por Azure Active Directory con un certificado de cliente en un dispositivo de Windows, Android o iOS cuando se conecte a su cuenta de Exchange online para: 
 
 * aplicaciones móviles de Office como Microsoft Outlook y Microsoft Word,   
 * clientes de Exchange ActiveSync (EAS). 
 
-Al configurar esta función, no tendrá que escribir una combinación de nombre de usuario y contraseña en determinadas aplicaciones de correo electrónico y Microsoft Office de su dispositivo móvil. 
+La configuración de esta característica elimina Hola necesidad tooenter un nombre de usuario y la combinación de contraseña en determinados correo electrónico y aplicaciones de Microsoft Office en su dispositivo móvil. 
 
-En este tema se proporcionan los requisitos y los escenarios admitidos para configurar CBA en un dispositivo iOS (Android) para usuarios de inquilinos de planes de Office 365 Enterprise, Empresa, Educación, US Government, China y Alemania.
+En este tema se proporciona con los requisitos de Hola y escenarios de hello admitida para configurar CBA en un dispositivo iOS(Android) para los usuarios de inquilinos de Office 365 Enterprise, Business, educación, gobierno de Estados Unidos, China y planes de Alemania.
 
 
 
@@ -53,35 +53,35 @@ Esta característica se encuentra disponible como versión preliminar en los pla
 
 ### <a name="implementation-requirements"></a>Requisitos de implementación
 
-La versión del sistema operativo del dispositivo debe ser Android 5.0 (Lollipop) y superior. 
+Hello versión de sistema operativo del dispositivo debe ser Android 5.0 (círculo) y versiones posteriores. 
 
 Se debe configurar un servidor de federación.  
 
-Para que Azure Active Directory revoque un certificado de cliente, el token de ADFS debe tener las siguientes notificaciones:  
+Para toorevoke un certificado de cliente de Azure Active Directory, token ADFS Hola debe tener Hola siguientes notificaciones:  
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`  
-  (el número de serie del certificado de cliente) 
+  (número de serie de Hola Hola del certificado de cliente) 
 * `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`  
-  (la cadena del emisor del certificado de cliente) 
+  (cadena de Hola de emisor de Hola Hola del certificado de cliente) 
 
-Azure Active Directory agrega estas notificaciones para el token de actualización, en caso de que estén disponibles en el token de ADFS (o en cualquier otro token SAML). Cuando hay que validar el token de actualización, esta información se utiliza para comprobar la revocación. 
+Azure Active Directory agrega estos token de actualización de toohello notificaciones si están disponibles en el símbolo (token) de AD FS de hello (o cualquier otro token SAML). Cuando el token de actualización de hello necesita toobe validado, esta información es toocheck usado Hola revocación. 
 
-Se recomienda actualizar las páginas de error de ADFS con instrucciones sobre cómo obtener un certificado de usuario.  
-Para más información, consulte [Personalizar las páginas de inicio de sesión de AD FS](https://technet.microsoft.com/library/dn280950.aspx).  
+Como práctica recomendada, debe actualizar las páginas de error de hello ADFS con instrucciones sobre cómo tooget un certificado de usuario.  
+Para obtener más información, consulte [Customizing Hola AD FS Sign-in Pages](https://technet.microsoft.com/library/dn280950.aspx).  
 
-Algunas aplicaciones de Office (con la autenticación moderna habilitada) envían ‘*prompt=login*’ a Azure AD en su solicitud. De manera predeterminada, Azure AD lo traduce en la solicitud para ADFS a '*wauth = usernamepassworduri*' (pide a ADFS que realice la autenticación de U y P) y '*wfresh = 0*' (pide a ADFS que ignore el estado de SSO y realice una autenticación nueva). Si desea habilitar la autenticación basada en certificados para estas aplicaciones, es preciso que modifique el comportamiento predeterminado de Azure AD. Basta con establecer '*PromptLoginBehavior*' en la configuración del dominio federado como '*Disabled*'. Para realizar esta tarea, puede usar el cmdlet [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0):
+Algunas aplicaciones de Office (con la autenticación moderna habilitada) enviar '*= inicio de sesión de símbolo del sistema*' tooAzure AD en su solicitud. De forma predeterminada, Azure AD la traduce en hello solicitud tooADFS demasiado '*wauth = usernamepassworduri*' (solicita la autenticación ADFS toodo U/P) y '*wfresh = 0*' (solicita el estado SSO de tooignore ADFS y realice una nueva autenticación) . Si desea que la autenticación basada en certificados tooenable para estas aplicaciones, que necesite un comportamiento de Azure AD de toomodify Hola de forma predeterminada. Solo un conjunto hello '*PromptLoginBehavior*' en la configuración del dominio federado demasiado '*deshabilitado*'. Puede usar hello [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) tooperform cmdlet esta tarea:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 
 
 
 ## <a name="exchange-activesync-clients-support"></a>Compatibilidad con clientes de Exchange ActiveSync
-Hay algunas aplicaciones de Exchange ActiveSync que son compatibles con Android 5.0 (Lollipop) o posterior. Para determinar si la aplicación de correo electrónico admite esta característica, póngase en contacto con el desarrollador de la aplicación. 
+Hay algunas aplicaciones de Exchange ActiveSync que son compatibles con Android 5.0 (Lollipop) o posterior. toodetermine si la aplicación de correo electrónico es compatible con esta característica, póngase en contacto con el desarrollador de aplicaciones. 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si quiere configurar la autenticación basada en certificados en su entorno, consulte las instrucciones de [Introducción a la autenticación basada en certificados en Android](active-directory-certificate-based-authentication-get-started.md).
+Si desea que la autenticación basada en certificados tooconfigure en su entorno, consulte [empezar a trabajar con autenticación basada en certificados en Android](active-directory-certificate-based-authentication-get-started.md) para obtener instrucciones.
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png

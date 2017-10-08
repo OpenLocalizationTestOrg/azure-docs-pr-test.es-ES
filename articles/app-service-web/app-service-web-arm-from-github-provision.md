@@ -1,6 +1,6 @@
 ---
-title: "Implementación de una aplicación web vinculada a un repositorio de GitHub | Microsoft Docs"
-description: "Use una plantilla de Administrador de recursos de Azure para implementar una aplicación web que contenga un proyecto de un repositorio de GitHub."
+title: "aaaDeploy una aplicación web que está vinculado el repositorio de GitHub de tooa | Documentos de Microsoft"
+description: "Utilice un toodeploy de plantilla de Azure Resource Manager una aplicación web que contiene un proyecto desde un repositorio de GitHub."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
-ms.openlocfilehash: 77064802814296d0c21f004534e4264d2f97252e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b23416c4c06a60991517e6ee4cd82bebc5a9d73
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-web-app-linked-to-a-github-repository"></a>Implementación de una aplicación web vinculada a un repositorio de GitHub
-En este tema, aprenderá a crear una plantilla de Administrador de recursos de Azure que implementa una aplicación web que está vinculada a un proyecto en un repositorio de GitHub. Aprenderá a definir los recursos que se implementan y los parámetros que se especifican cuando se ejecuta la implementación. Puede usar esta plantilla para sus propias implementaciones o personalizarla para satisfacer sus necesidades.
+# <a name="deploy-a-web-app-linked-tooa-github-repository"></a>Implementar un repositorio de GitHub de web app vinculado tooa
+En este tema, obtendrá información sobre cómo toocreate una plantilla de Azure Resource Manager que se puede implementar una aplicación web que está había vinculado tooa proyecto en un repositorio de GitHub. Obtendrá información sobre cómo toodefine qué recursos se implementan y cómo toodefine parámetros que especifican cuando se ejecuta la implementación de Hola. Puede usar esta plantilla para sus propias implementaciones o personalizarlo toomeet sus requisitos.
 
 Para obtener más información sobre la creación de plantillas, consulte [Creación de plantillas de Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Para la plantilla completa, consulte [Aplicación web vinculada a la plantilla de GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json).
+Para la plantilla de hello completa, consulte [Web App vinculado plantilla tooGitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="what-you-will-deploy"></a>Lo que implementará
-Con esta plantilla, implementará una aplicación web que contiene el código de un proyecto en GitHub.
+Con esta plantilla, se implementará una aplicación web que contiene el código de hello desde un proyecto en GitHub.
 
-Para ejecutar automáticamente la implementación, haga clic en el botón siguiente:
+toorun Hola implementación automáticamente, haga clic en hello después de botón:
 
-[![Implementación en Azure](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
+[![Implementar tooAzure](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
 
-## <a name="parameters"></a>Parámetros
+## <a name="parameters"></a>parameters
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 ### <a name="repourl"></a>repoURL
-La dirección URL del repositorio GitHub que contiene el proyecto que se va a implementar. Este parámetro contiene un valor predeterminado, pero la finalidad de este valor es únicamente mostrarle cómo proporcionar la dirección URL del repositorio. Puede usar este valor cuando pruebe la plantilla, pero lo más seguro es que quiera proporcionar la dirección URL de su propio repositorio cuando trabaje con la plantilla.
+dirección URL de Hello para el repositorio de GitHub que contiene Hola proyecto toodeploy. Este parámetro contiene un valor predeterminado, pero este valor es solo previsto tooshow también cómo tooprovide Hola dirección URL para el repositorio. Puede usar este valor pruebas plantilla Hola pero resulta conveniente tooprovide Hola URL su propio repositorio cuando se trabaja con plantilla Hola.
 
     "repoURL": {
         "type": "string",
@@ -48,23 +48,23 @@ La dirección URL del repositorio GitHub que contiene el proyecto que se va a im
     }
 
 ### <a name="branch"></a>branch
-La rama del repositorio que se va a usar al implementar la aplicación. El valor predeterminado es maestro, pero puede proporcionar el nombre de cualquier rama del repositorio que desee implementar.
+rama de Hola de hello repositorio toouse al implementar la aplicación hello. valor predeterminado de Hello es principal, pero puede proporcionar nombre Hola de alguna de las bifurcaciones en el repositorio de Hola que desea toodeploy.
 
     "branch": {
         "type": "string",
         "defaultValue": "master"
     }
 
-## <a name="resources-to-deploy"></a>Recursos para implementar
+## <a name="resources-toodeploy"></a>Toodeploy de recursos
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 ### <a name="web-app"></a>Aplicación web
-Crea la aplicación web que está vinculada al proyecto en GitHub. 
+Crea la aplicación web de hello que está vinculado toohello proyecto en GitHub. 
 
-Especifique el nombre de la aplicación web a través del parámetro **siteName** y la ubicación de la aplicación web a través del parámetro **siteLocation**. En el elemento **dependsOn** , la plantilla define la aplicación web como dependiente del plan de hospedaje de servicio. Puesto que depende del plan de hospedaje, la aplicación web no se crea hasta que ha terminado de crearse el plan de hospedaje. El elemento **dependsOn** solo se usa para especificar el orden de implementación. Si no marca la aplicación web como dependientes en el plan de hospedaje, el Administrador de recursos de Azure intentará crear ambos recursos al mismo tiempo y puede recibir un error si la aplicación web se crea antes que el plan de hospedaje.
+Especificar nombre de Hola de aplicación web de hello a través de hello **siteName** parámetro y la ubicación de Hola de aplicación web de hello a través de hello **siteLocation** parámetro. Hola **dependsOn** elemento, plantilla de Hola define aplicación web de hello como dependiente de plan de hospedaje de servicio de Hola. Dado que es dependiente de hello plan de hospedaje, aplicación web de hello no se crea hasta Hola plan de hospedaje ha terminado de crear. Hola **dependsOn** elemento es solo el orden de implementación toospecify usado. Si no marca la aplicación web de hello como dependiente de plan de hospedaje de Hola, Azure Resource Manager intentará toocreate los recursos en hello mismo tiempo y puede que aparezca un error si se crea la aplicación web de hello antes de hello plan de hospedaje.
 
-La aplicación web también tiene un recurso secundario que se define en la sección sobre **recursos** posterior. Este recurso secundario define el control de código fuente para el proyecto implementado con la aplicación web. En esta plantilla, el control de código fuente está vinculado a un repositorio de GitHub determinado. El repositorio de GitHub se define con el código **"RepoUrl": "https://github.com/davidebbo-test/Mvc52Application.git"** Podría codificar de forma rígida la dirección URL del repositorio cuando desee crear una plantilla que implemente de forma repetida un único proyecto y se requiera el número mínimo de parámetros.
-En lugar de codificar de forma rígida la dirección URL del repositorio, puede agregar un parámetro para ella y usar ese valor para la propiedad **RepoUrl**.
+aplicación web de Hello también tiene un recurso secundario que se define en **recursos** sección más adelante. Este recurso secundario define el control de código fuente para proyecto de hello implementado con la aplicación web de hello. En esta plantilla, control de código fuente de hello es vinculado tooa repositorio de GitHub determinado. repositorio de GitHub de Hola se define con código de hello **"Dirección URL del repositorio": "https://github.com/davidebbo-test/Mvc52Application.git"** podría URL del repositorio de codificar de forma rígida hello cuando desee toocreate una plantilla que implementa varias veces una proyecto solo requieren un mínimo de parámetros Hola.
+En lugar de codificar de forma rígida Hola dirección URL del repositorio, puede agregar un parámetro de dirección URL de repositorio de Hola y usar ese valor para hello **dirección URL del repositorio** propiedad.
 
     {
       "apiVersion": "2015-08-01",
@@ -94,7 +94,7 @@ En lugar de codificar de forma rígida la dirección URL del repositorio, puede 
       ]
     }
 
-## <a name="commands-to-run-deployment"></a>Comandos para ejecutar la implementación
+## <a name="commands-toorun-deployment"></a>Implementación de toorun de comandos
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
@@ -109,7 +109,7 @@ En lugar de codificar de forma rígida la dirección URL del repositorio, puede 
     az group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
 > [!NOTE] 
-> Para el contenido del archivo JSON de parámetros, consulte [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.parameters.json).
+> Para el contenido del archivo JSON de parámetros de hello, consulte [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.parameters.json).
 >
 >
 

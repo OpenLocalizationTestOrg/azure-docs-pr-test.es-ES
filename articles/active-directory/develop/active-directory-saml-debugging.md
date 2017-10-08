@@ -1,6 +1,6 @@
 ---
-title: "Depuración del inicio de sesión único basado en SAML en aplicaciones de Azure Active Directory | Microsoft Docs"
-description: "Obtenga información acerca de cómo depurar el inicio de sesión único basado en SAML en aplicaciones de Azure Active Directory  "
+title: aaaHow toodebug basado en SAML single sign-on tooapplications en Azure Active Directory | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toodebug basado en SAML single sign-on tooapplications en Azure Active Directory "
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -15,27 +15,27 @@ ms.date: 07/20/2017
 ms.author: asmalser
 ms.custom: aaddev
 ms.reviewer: dastrock
-ms.openlocfilehash: 31447d597296bac57481dc2acb4a95ee3a104161
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 846c7b3497c8842947c5b406f4362b9e06785b14
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Cómo depurar el inicio de sesión único basado en SAML en aplicaciones de Azure Active Directory
-Cuando se depura una integración de la aplicación basada en SAML, a menudo resulta útil usar una herramienta como [Fiddler](http://www.telerik.com/fiddler) para ver la solicitud SAML, la respuesta de SAML y el token SAML real que se emite a la aplicación. Mediante el examen del token SAML, puede asegurarse de que todos los atributos necesarios, el nombre de usuario del SAML Subject y el URI del emisor se logren del modo esperado.
+# <a name="how-toodebug-saml-based-single-sign-on-tooapplications-in-azure-active-directory"></a>¿Cómo toodebug basado en SAML single sign-on tooapplications en Azure Active Directory
+Cuando se depura una integración de aplicaciones basado en SAML, es a menudo útil toouse una herramienta como [Fiddler](http://www.telerik.com/fiddler) toosee Hola solicitud, respuesta de SAML de Hola y token SAML real Hola emitido toohello aplicación de SAML. Mediante el examen de token SAML de hello, puede Asegúrese de que todos Hola requiera atributos, Hola nombre de usuario de sujeto SAML de Hola y Hola a emisor URI está entrando en según lo previsto.
 
 ![][1]
 
-Normalmente, la respuesta de Azure AD que contiene el token SAML es la que se produce después de un redireccionamiento HTTP 302 desde https://login.windows.net, y se envía a la **URL de respuesta** configurada de la aplicación. 
+Hello respuesta de Azure AD que contiene el token SAML de hello suele ser Hola uno que tiene lugar después de una redirección HTTP 302 de https://login.windows.net y se ha configurado toohello enviado **dirección URL de respuesta** de aplicación hello. 
 
-Para ver el token SAML, seleccione esta línea y, luego, seleccione la pestaña **Inspectors > WebForms** (Inspectores > WebForms) en el panel derecho. Desde ahí, haga clic con el botón derecho en el valor **SAMLResponse** y seleccione **Send to TextWizard** (Enviar a TextWizard). Después, seleccione **From Base64** (De Base64) en el menú **Transform** (Transformar) para descodificar el token y ver su contenido.
+Puede ver el token SAML de hello seleccionando esta línea y, a continuación, seleccionando hello **inspectores > WebForms** ficha en el panel derecho de Hola. Desde allí, haga clic en hello **SAMLResponse** valor y seleccione **enviar tooTextWizard**. A continuación, seleccione **de Base64** de hello **transformar** menú toodecode Hola símbolo (token) y ver su contenido.
 
-**Nota**: Para ver el contenido de esta solicitud HTTP, es posible que Fiddler le solicite configurar el cifrado del tráfico HTTPS, que tendrá que llevar a cabo.
+**Tenga en cuenta**: solicitud de contenido de hello toosee de este HTTP, Fiddler puede solicitarle que tooconfigure el descifrado de tráfico HTTPS, que tendrá toodo.
 
 ## <a name="related-articles"></a>Artículos relacionados
 * [Índice de artículos sobre la administración de aplicaciones en Azure Active Directory](../active-directory-apps-index.md)
-* [Configuración del inicio de sesión único en aplicaciones que no están en la Galería de aplicaciones de Azure Active Directory](../active-directory-saas-custom-apps.md)
-* [Personalización de notificaciones emitidas en el token SAML para aplicaciones previamente integradas en Azure Active Directory](active-directory-saml-claims-customization.md)
+* [Configurar tooapplications de inicio de sesión único que no están en la Galería de aplicaciones de Azure Active Directory Hola](../active-directory-saas-custom-apps.md)
+* [Cómo se emiten las notificaciones tooCustomize en hello Token de SAML para aplicaciones Pre-Integrated](active-directory-saml-claims-customization.md)
 
 <!--Image references-->
 [1]: ../media/active-directory-saml-debugging/fiddler.png

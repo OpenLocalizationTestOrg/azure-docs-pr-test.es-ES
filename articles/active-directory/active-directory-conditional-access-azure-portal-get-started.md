@@ -1,8 +1,8 @@
 ---
-title: "Introducción al acceso condicional en Azure Active Directory | Microsoft Docs"
+title: aaaGet a trabajar con acceso condicional en Active Directory de Azure | Documentos de Microsoft
 description: "Probar el acceso condicional con una condición de ubicación."
 services: active-directory
-keywords: acceso condicional a aplicaciones, acceso condicional con Azure AD, acceso seguro a recursos de empresa, directivas de acceso condicional
+keywords: tooapps de acceso condicional, el acceso condicional con Azure AD, proteger el acceso toocompany recursos, las directivas de acceso condicional
 documentationcenter: 
 author: MarkusVi
 manager: femila
@@ -15,35 +15,35 @@ ms.workload: identity
 ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: cd53e8be32d1e98aaf9f72177895871dba69df86
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4521f5a34f5882e026f5e58a7127d8c55cba2f0b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Introducción al acceso condicional en Azure Active Directory
 
-El acceso condicional es una funcionalidad de Azure Active Directory que permite definir las condiciones en las que los usuarios autorizados pueden acceder a las aplicaciones. 
+Acceso condicional es una capacidad de Azure Active Directory que permite toodefine las condiciones en las que los usuarios autorizados pueden tener acceso a las aplicaciones. 
 
 En este tema se proporcionan instrucciones para probar un acceso condicional basado en una condición de ubicación en su entorno.  
 
 
 ## <a name="scenario-description"></a>Descripción del escenario
 
-En muchas organizaciones, un requisito habitual es requerir solo autenticación multifactor para el acceso a las aplicaciones que no se realiza desde la intranet corporativa. Con Azure Active Directory, puede conseguir este objetivo fácilmente mediante la configuración de una directiva de acceso condicional basado en la ubicación. En este tema se proporcionan instrucciones detalladas para configurar esta directiva. La directiva aprovecha las [direcciones IP de confianza](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) para distinguir entre los intentos de acceso que se realizan desde la intranet corporativa y todas las demás ubicaciones.
+Un requisito común en muchas organizaciones es tooonly requerir la autenticación multifactor para tooapps de acceso que no se realiza desde la intranet corporativa de Hola. Con Azure Active Directory, puede conseguir este objetivo fácilmente mediante la configuración de una directiva de acceso condicional basado en la ubicación. En este tema se proporcionan instrucciones detalladas para configurar esta directiva. Hola aprovecha la directiva [IP de confianza](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) toodistinguish entre los intentos de acceso de hello corporativa de la intranet y todas las demás ubicaciones.
 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-En el escenario descrito en este tema se da por supuesto que está familiarizado con los conceptos que se describen en [Acceso condicional de Azure Active Directory](active-directory-conditional-access-azure-portal.md).
+Hello escenario descrito en este tema se da por supuesto que está familiarizado con conceptos de Hola que se describen en [acceso condicional de Azure Active Directory](active-directory-conditional-access-azure-portal.md).
 
-Para probar este escenario, deberá:
+tootest este escenario, necesita:
 
 - Crear un usuario de prueba 
 
-- Asignar una licencia de Azure AD Premium al usuario de prueba
+- Asignar a un usuario de prueba de toohello de licencia de Azure AD Premium
 
-- Configurar una aplicación administrada y asignarle el usuario de prueba
+- Configurar una aplicación administrada y asignar su tooit de usuario de prueba
 
 - Configurar direcciones IP de confianza
 
@@ -52,29 +52,29 @@ Si necesita obtener más información acerca de las direcciones IP de confianza,
 
 ## <a name="policy-configuration-steps"></a>Pasos de la configuración de la directiva
 
-**Para configurar la directiva de acceso condicional, haga lo siguiente:**
+**tooconfigure la directiva de acceso condicional, hacer:**
 
-1. En Azure Portal, en la barra de navegación izquierda, haga clic en **Azure Active Directory**. 
+1. Hola portal de Azure, en la barra de navegación izquierdo de hello, haga clic en **Azure Active Directory**. 
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/01.png)
 
-2. En la hoja **Azure Active Directory**, en la sección **Administrar**, haga clic en **Acceso condicional**.
+2. En hello **Azure Active Directory** hoja en hello **administrar** sección, haga clic en **acceso condicional**.
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/02.png)
  
-3. En la hoja **Acceso condicional**, en la barra de herramientas de la parte superior, haga clic en **Agregar** para abrir la hoja **Nuevo**.
+3. En hello **acceso condicional** hoja, hello tooopen **New** hoja, en la barra de herramientas de hello en la parte superior de hello, haga clic en **agregar**.
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/03.png)
 
-4. En la hoja **Nuevo**, en el cuadro de texto **Nombre**, escriba un nombre para la directiva.
+4. En hello **New** hoja en hello **nombre** cuadro de texto, escriba un nombre para la directiva.
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/04.png)
 
-5. En la sección **Asignación**, haga clic en **Usuarios y grupos**.
+5. Hola **asignación** sección, haga clic en **usuarios y grupos**.
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/05.png)
 
-6. En la hoja **Usuarios y grupos**, siga estos pasos:
+6. En hello **usuarios y grupos** hoja, realizar Hola pasos:
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/06.png)
 
@@ -82,15 +82,15 @@ Si necesita obtener más información acerca de las direcciones IP de confianza,
 
     b. Haga clic en **Seleccionar**.
 
-    c. En la hoja **Seleccionar**, seleccione el usuario de prueba y haga clic en **Seleccionar**.
+    c. En hello **seleccione** hoja, seleccione el usuario de prueba y, a continuación, haga clic en **seleccione**.
 
-    d. En la hoja **Usuarios y grupos**, haga clic en **Listo**.
+    d. En hello **usuarios y grupos** hoja, haga clic en **realiza**.
 
-7. En la hoja **Nuevo**, en la sección **Asignación**, haga clic en **Aplicaciones en la nube** para abrir la hoja **Aplicaciones en la nube**.
+7. En hello **New** hoja, hello tooopen **las aplicaciones de nube** hoja en hello **asignación** sección, haga clic en **las aplicaciones de nube**.
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/07.png)
 
-8. En la hoja **Aplicaciones en la nube**, siga estos pasos:
+8. En hello **las aplicaciones de nube** hoja, realizar Hola pasos:
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/08.png)
 
@@ -98,19 +98,19 @@ Si necesita obtener más información acerca de las direcciones IP de confianza,
 
     b. Haga clic en **Seleccionar**.
 
-    c. En la hoja **Seleccionar**, seleccione la aplicación en la nube y haga clic en **Seleccionar**.
+    c. En hello **seleccione** hoja, seleccione la aplicación en la nube y, a continuación, haga clic en **seleccione**.
 
-    d. En la hoja **Aplicaciones en la nube**, haga clic en **Listo**.
+    d. En hello **las aplicaciones de nube** hoja, haga clic en **realiza**.
 
-9. En la hoja **Nuevo**, en la sección **Asignación**, haga clic en **Condiciones** para abrir la hoja **Condiciones**.
+9. En hello **New** hoja, hello tooopen **condiciones** hoja en hello **asignación** sección, haga clic en **condiciones**.
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/09.png)
 
-10. En la hoja **Condiciones**, haga clic en **Ubicaciones** para abrir la hoja **Ubicaciones**.
+10. En hello **condiciones** hoja, hello tooopen **ubicaciones** hoja, haga clic en **ubicaciones**.
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/10.png)
 
-11. En la hoja **Ubicaciones**, siga estos pasos:
+11. En hello **ubicaciones** hoja, realizar Hola pasos:
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/11.png)
 
@@ -124,13 +124,13 @@ Si necesita obtener más información acerca de las direcciones IP de confianza,
 
     d. Haga clic en **Done**(Listo).
 
-12. En la hoja **Condiciones**, haga clic en **Listo**.
+12. En hello **condiciones** hoja, haga clic en **realiza**.
 
-13. En la hoja **Nuevo**, en la sección **Controles**, haga clic en **Conceder** para abrir la hoja **Conceder**.
+13. En hello **New** hoja, hello tooopen **Grant** hoja en hello **controles** sección, haga clic en **Grant**.
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/13.png)
 
-14. En la hoja **Conceder**, siga estos pasos:
+14. En hello **Grant** hoja, realizar Hola pasos:
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/14.png)
 
@@ -138,16 +138,16 @@ Si necesita obtener más información acerca de las direcciones IP de confianza,
 
     b. Haga clic en **Seleccionar**.
 
-15. En la hoja **Nuevo**, en **Habilitar directiva**, haga clic en **Activar**.
+15. En hello **New** hoja, en **habilitar Directiva de**, haga clic en **en**.
 
     ![Acceso condicional](./media/active-directory-conditional-access-azure-portal-get-started/15.png)
 
-16. En la hoja **Nuevo**, haga clic en **Crear**.
+16. En hello **New** hoja, haga clic en **crear**.
 
 
-## <a name="testing-the-policy"></a>Prueba de la directiva
+## <a name="testing-hello-policy"></a>Probar directiva Hola
 
-Para probar la directiva, debe acceder a la aplicación desde un dispositivo que cumpla estas condiciones: 
+tootest la directiva, debe tener acceso a la aplicación desde un dispositivo que: 
 
 1. Tener una dirección IP que esté dentro de las direcciones IP de confianza configuradas. 
 
@@ -158,5 +158,5 @@ La autenticación multifactor solo se requerirá durante un intento de conexión
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre el acceso condicional, consulte [Acceso condicional de Azure Active Directory](active-directory-conditional-access-azure-portal.md).
+Si desea que toolearn más sobre el acceso condicional, consulte [acceso condicional de Azure Active Directory](active-directory-conditional-access-azure-portal.md).
 

@@ -1,6 +1,6 @@
 ---
 title: Cuentas y permisos de Azure AD Connect | Microsoft Docs
-description: "En este tema se describen las cuentas usadas y creadas, así como los permisos necesarios."
+description: Este tema describe las cuentas de hello usado y creado y los permisos necesarios.
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: billmath
-ms.openlocfilehash: fdd90721b6823c20c1ff27383769bfff24e80eae
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 70a7013e0353d74714ec8a3ff54b3e811789a0b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: cuentas y permisos
-El asistente para instalación de Azure AD Connect ofrece dos itinerarios diferentes:
+Asistente para la instalación de Hello Azure AD Connect ofrece dos rutas de acceso diferentes:
 
-* En la Configuración rápida, el asistente necesita más privilegios.  Esto es para que pueda establecer la configuración con facilidad, sin necesidad de crear usuarios ni de configurar permisos.
-* En la Configuración personalizada, el asistente ofrece más opciones. Sin embargo, existen algunas situaciones en que debe asegurarse de que tiene los permisos correctos.
+* En la configuración rápida, Asistente Hola requiere más privilegios.  Esto es para que puede establecer la configuración de fácilmente, sin necesidad de los usuarios de toocreate o configurar los permisos.
+* En la configuración personalizada, el Asistente de hello ofrece más opciones y opciones. Sin embargo, existen algunas situaciones en que es necesario tooensure tiene los permisos correctos de Hola.
 
 ## <a name="related-documentation"></a>documentación relacionada
-Si no leyó la documentación que se encuentra en [Integración de las identidades locales con Azure Active Directory](../active-directory-aadconnect.md), en la tabla siguiente se proporcionan vínculos a temas relacionados.
+Si no se leyó documentación hello en [integrar las identidades locales con Azure Active Directory](../active-directory-aadconnect.md), hello tabla siguiente proporciona vínculos toorelated temas.
 
 |Tema. |Vínculo|  
 | --- | --- |
@@ -36,25 +36,25 @@ Si no leyó la documentación que se encuentra en [Integración de las identidad
 |Instalación mediante configuración rápida | [Instalación rápida de Azure AD Connect](./active-directory-aadconnect-get-started-express.md)|
 |Instalación mediante configuración personalizada | [Instalación personalizada de Azure AD Connect](./active-directory-aadconnect-get-started-custom.md)|
 |Actualización desde DirSync | [Actualización desde la herramienta de sincronización de Azure AD (DirSync)](./active-directory-aadconnect-dirsync-upgrade-get-started.md)|
-|Después de la instalación | [Comprobación de la instalación y asignación de licencias ](active-directory-aadconnect-whats-next.md)|
+|Después de la instalación | [Comprobar la instalación de Hola y asignar licencias](active-directory-aadconnect-whats-next.md)|
 
 ## <a name="express-settings-installation"></a>Instalación de la configuración rápida
-En la Configuración rápida, el Asistente para instalación solicita las credenciales de administrador de organización de AD DS.  Esto es para que se pueda configurar el entorno local de Active Directory con los permisos necesarios para Azure AD Connect. Si va a actualizar desde DirSync, las credenciales de administradores de organización de AD DS se usan para restablecer la contraseña de la cuenta utilizada por DirSync. También necesitará credenciales de administrador global de Azure AD.
+En la configuración rápida, Asistente para la instalación de hello solicita las credenciales de administrador de organización de AD DS.  Esto es para que se pueda configurar el entorno local de Active Directory con los permisos necesarios para Azure AD Connect. Si va a actualizar desde DirSync, las credenciales de administradores de empresas de DS Hola AD están tooreset usado Hola por contraseña de cuenta de hello utilizada DirSync. También necesitará credenciales de administrador global de Azure AD.
 
 | Página del asistente | Credenciales recopiladas | Permisos necesarios | Se usa para |
 | --- | --- | --- | --- |
-| N/D |Usuario que ejecuta el asistente para instalación |Administrador del servidor local |<li>Crea la cuenta local que se usa como [cuenta de servicio de motor de sincronización](#azure-ad-connect-sync-service-account). |
-| Conectarse a Azure |Credenciales de directorio de Azure AD |Rol de administrador global en Azure AD |<li>Habilitación de la sincronización en el directorio de Azure AD</li>  <li>Creación de la [cuenta de Azure AD](#azure-ad-service-account) que se usa para operaciones de sincronización continua en Azure AD.</li> |
-| Conectarse a AD DS |Credenciales de Active Directory local |Miembro del grupo de administradores de empresa (EA) en Active Directory |<li>Crea un [cuenta](#active-directory-account) en Active Directory y concede permisos en ella. Esta cuenta creada se usa para leer y escribir información de directorio durante la sincronización.</li> |
+| N/D |Asistente para instalación de hello ejecución de usuario |Administrador del servidor local de Hola |<li>Crea Hola cuenta local que se utiliza como hello [cuenta de servicio de motor de sincronización](#azure-ad-connect-sync-service-account). |
+| Conectar tooAzure AD |Credenciales de directorio de Azure AD |Rol de administrador global en Azure AD |<li>Habilitando la sincronización en el directorio de Azure AD Hola.</li>  <li>Creación de hello [cuenta de Azure AD](#azure-ad-service-account) que se utiliza para operaciones de sincronización en curso en Azure AD.</li> |
+| Conectar tooAD DS |Credenciales de Active Directory local |Miembro del grupo de administradores empresariales (EA) hello en Active Directory |<li>Crea un [cuenta](#active-directory-account) en Active Directory y concede permisos tooit. Esto crea la cuenta es información de directorio tooread y escritura usada durante la sincronización.</li> |
 
 ### <a name="enterprise-admin-credentials"></a>Credenciales de administrador de organización
-Estas credenciales solo se usan durante la instalación y no se usan una vez completada la misma. El administrador de empresa, y no el del dominio, debe asegurarse de que se pueden establecer los permisos de Active Directory en todos los dominios.
+Estas credenciales solo se usan durante la instalación de hello y no se utilizan una vez completada la instalación de Hola. Hola, Administrador de organización, Administrador de dominio y no Hola debe asegurarse de que se pueden establecer permisos de hello en Active Directory en todos los dominios.
 
 ### <a name="global-admin-credentials"></a>Credenciales de administrador global
-Estas credenciales solo se usan durante la instalación y no se usan una vez completada la misma. Se utiliza para crear la [cuenta de Azure AD](#azure-ad-service-account) usada para sincronizar cambios en Azure AD. La cuenta también habilita la sincronización como una característica de Azure AD.
+Estas credenciales solo se usan durante la instalación de hello y no se utilizan una vez completada la instalación de Hola. Es utilizado toocreate Hola [cuenta de Azure AD](#azure-ad-service-account) usados para sincronizar cambios tooAzure AD. cuenta de Hello también habilita la sincronización como una característica de Azure AD.
 
-### <a name="permissions-for-the-created-ad-ds-account-for-express-settings"></a>Permisos de la cuenta de AD DS creada para la configuración rápida
-Cuando se cree la [cuenta](#active-directory-account) para leer y escribir en AD DS con la configuración rápida, tendrá los permisos siguientes:
+### <a name="permissions-for-hello-created-ad-ds-account-for-express-settings"></a>Permisos para hello crean cuenta de AD DS para la configuración rápida
+Hola [cuenta](#active-directory-account) creado para leer y escribir tooAD DS tienen los siguientes permisos al crear mediante la configuración rápida de hello:
 
 | Permiso | Usado para |
 | --- | --- |
@@ -66,75 +66,75 @@ Cuando se cree la [cuenta](#active-directory-account) para leer y escribir en AD
 | Restablecimiento de contraseña |Preparación para habilitar la escritura diferida de contraseñas |
 
 ## <a name="custom-settings-installation"></a>Instalación de la configuración personalizada
-Azure AD Connect 1.1.524.0 y las versiones posteriores ofrecen la opción para permitir que el asistente de Azure AD Connect cree la cuenta utilizada para conectarse a Active Directory.  Las versiones anteriores requieren que la cuenta se cree antes de la instalación. Los permisos que debe conceder a esta cuenta se pueden encontrar en [Creación de la cuenta de AD DS](#create-the-ad-ds-account). 
+Azure AD Connect versión 1.1.524.0 y versiones posteriores Asistente de hello opción toolet hello Azure AD Connect crear Hola cuenta usada tooconnect tooActive Directory.  Las versiones anteriores requieren que se crea la cuenta de hello antes de la instalación de Hola. permisos de Hello debe conceder a esta cuenta se pueden encontrar en [crear cuenta de hello AD DS](#create-the-ad-ds-account). 
 
 | Página del asistente | Credenciales recopiladas | Permisos necesarios | Se usa para |
 | --- | --- | --- | --- |
-| N/D |Usuario que ejecuta el asistente para instalación |<li>Administrador del servidor local</li><li>Si usa SQL Server completo, el usuario debe ser administrador del sistema (SA) en SQL.</li> |De forma predeterminada, crea la cuenta local que se usa como [cuenta de servicio del motor de sincronización](#azure-ad-connect-sync-service-account). La cuenta solo se crea cuando el administrador no especifica una cuenta determinada. |
-| Instalar servicios de sincronización, opción de cuenta de servicio |Credenciales de cuenta de usuario local o de AD |Usuario, el asistente para instalación concede los permisos |Si el administrador especifica una cuenta, esta se usa como cuenta de servicio para el servicio de sincronización. |
-| Conectarse a Azure |Credenciales de directorio de Azure AD |Rol de administrador global en Azure AD |<li>Habilitación de la sincronización en el directorio de Azure AD</li>  <li>Creación de la [cuenta de Azure AD](#azure-ad-service-account) que se usa para operaciones de sincronización continua en Azure AD.</li> |
-| Conectar sus directorios |Credenciales de Active Directory local para cada bosque que se conecta a Azure AD |Los permisos dependen de qué características permite y se pueden encontrar en [Creación de la cuenta de AD DS](#create-the-ad-ds-account) |Esta cuenta se usa para leer y escribir información de directorio durante la sincronización. |
-| Servidores de AD FS |Para cada servidor de la lista, el asistente recopila credenciales cuando las credenciales de inicio de sesión del usuario que ejecuta el asistente no son suficientes para conectarse. |Administrador de dominio |Instalación y configuración del rol de servidor de AD FS. |
-| Servidores proxy de aplicación web |Para cada servidor de la lista, el asistente recopila credenciales cuando las credenciales de inicio de sesión del usuario que ejecuta el asistente no son suficientes para conectarse. |Administrador local en la máquina de destino |Instalación y configuración del rol de servidor de WAP. |
-| Credenciales de confianza del proxy |Credenciales de confianza del servicio de federación (las credenciales que el proxy usa para inscribirse para obtener un certificado de confianza de FS) |Cuenta de dominio que es un administrador local del servidor de AD FS |Inscripción inicial de certificados de confianza de FS WAP |
-| Página de cuenta de servicio de AD FS, "Usar una opción de cuenta de usuario de dominio" |Credenciales de cuenta de usuario de AD |Usuario de dominio |La cuenta de usuario de AD cuyas credenciales se proporcionan se usa como cuenta de inicio de sesión del servicio AD FS. |
+| N/D |Asistente para instalación de hello ejecución de usuario |<li>Administrador del servidor local de Hola</li><li>Si usa una versión completa de SQL Server, el usuario de hello debe ser administrador del sistema (SA) en SQL</li> |De forma predeterminada, crea la cuenta local de Hola que se usa como hello [cuenta de servicio de motor de sincronización](#azure-ad-connect-sync-service-account). cuenta de Hello solo se crea al Hola, administrador no especifica una cuenta determinada. |
+| Instalar servicios de sincronización, opción de cuenta de servicio |Credenciales de cuenta de usuario local o de AD |Usuario, los permisos se conceden mediante el Asistente para la instalación de Hola |Si Hola, administrador especifica una cuenta, esta cuenta se usa como cuenta de servicio de Hola Hola servicio de sincronización. |
+| Conectar tooAzure AD |Credenciales de directorio de Azure AD |Rol de administrador global en Azure AD |<li>Habilitando la sincronización en el directorio de Azure AD Hola.</li>  <li>Creación de hello [cuenta de Azure AD](#azure-ad-service-account) que se utiliza para operaciones de sincronización en curso en Azure AD.</li> |
+| Conectar sus directorios |Las credenciales de Active Directory para cada bosque que está conectado tooAzure AD local |permisos de Hello dependen en las características que habilite y se encuentra en [crear cuenta de hello AD DS](#create-the-ad-ds-account) |Esta cuenta es la información de directorio tooread y escritura usada durante la sincronización. |
+| Servidores de AD FS |Para cada servidor en la lista de hello, Asistente Hola recopila las credenciales cuando Hola credenciales de inicio de sesión del usuario de hello Ejecutar Asistente de Hola tooconnect insuficiente |Administrador de dominio |Instalación y configuración del rol de servidor de hello AD FS. |
+| Servidores proxy de aplicación web |Para cada servidor en la lista de hello, Asistente Hola recopila las credenciales cuando Hola credenciales de inicio de sesión del usuario de hello Ejecutar Asistente de Hola tooconnect insuficiente |Administrador local del equipo de destino de Hola |Instalación y configuración del rol de servidor de WAP. |
+| Credenciales de confianza del proxy |Credenciales de confianza de servicio de federación (Hola credenciales Hola utiliza proxy tooenroll para un certificado de confianza de Hola FS |Cuenta de dominio que sea un administrador local del servidor de hello AD FS |Inscripción inicial de certificados de confianza de FS WAP |
+| Página de cuenta de servicio de AD FS, "Usar una opción de cuenta de usuario de dominio" |Credenciales de cuenta de usuario de AD |Usuario de dominio |se usa la cuenta de usuario de Hello AD cuyas credenciales se proporcionan como cuenta de inicio de sesión de Hola de hello AD FS. |
 
-### <a name="create-the-ad-ds-account"></a>Creación de la cuenta de AD DS
-La cuenta especificada en la página **Conectar sus directorios** debe estar presente en Active Directory antes de la instalación.  También debe tener los permisos necesarios concedidos. El asistente para instalación no comprueba los permisos y los problemas solo se encuentran durante la sincronización.
+### <a name="create-hello-ad-ds-account"></a>Crear cuenta de hello AD DS
+Hola cuenta que especifique en hello **conectar sus directorios** página debe estar presente en Active Directory anterior tooinstallation.  También debe tener permisos de hello necesario concedidos. Asistente para la instalación de Hello no comprueba los permisos de Hola y de los problemas solo se encuentran durante la sincronización.
 
-Los permisos que requiera dependen de las características opcionales que habilite. Si tiene varios dominios, se deben conceder los permisos para todos los dominios del bosque. Si no habilita ninguna de estas características, los permisos **Usuario de dominio** predeterminados son suficientes.
+¿Qué permisos necesita depende de características opcionales de Hola habilitar. Si tiene varios dominios, se deben conceder permisos de Hola para todos los dominios en el bosque de Hola. Si no habilita ninguna de estas características, Hola predeterminado **usuario de dominio** permisos son suficientes.
 
 | Característica | Permisos |
 | --- | --- |
-| característica msDS-ConsistencyGuid |Permisos de escritura para el atributo msDS-ConsistencyGuid documentado en [Conceptos de diseño: Using msDS-ConsistencyGuid as sourceAnchor (Uso de msDS-ConsistencyGuid como sourceAnchor)](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor). | 
+| característica msDS-ConsistencyGuid |Permisos de escritura toohello msDS-ConsistencyGuid atributo documentado en [conceptos de diseño: uso de msDS-ConsistencyGuid como sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor). | 
 | Sincronización de contraseñas |<li>Replicación de cambios de directorio</li>  <li>Replicación de todos los cambios de directorio |
-| Implementación híbrida de Exchange |Permisos de escritura en los atributos que se documentan en [Escritura diferida híbrida de Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) para usuarios, grupos y contactos. |
-| Carpeta pública de correo de Exchange |Permisos de lectura para los atributos que se documentan en [carpetas públicas de correo electrónico de Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) para las carpetas públicas. | 
-| Escritura diferida de contraseñas |Permisos de escritura en los atributos que se documentan en [Introducción a la administración de contraseñas](../active-directory-passwords-writeback.md) para los usuarios. |
+| Implementación híbrida de Exchange |Escribir atributos de toohello de permisos que se describen en [Exchange híbrido reescritura](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) para usuarios, grupos y contactos. |
+| Carpeta pública de correo de Exchange |Atributos de toohello de permisos de lectura se documentan en [carpetas públicas de correo electrónico de Exchange](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) para las carpetas públicas. | 
+| Escritura diferida de contraseñas |Escribir atributos de toohello de permisos que se describen en [Introducción a administración de contraseñas](../active-directory-passwords-writeback.md) para los usuarios. |
 | Escritura diferida de dispositivos |Los permisos concedidos con un script de PowerShell como se describe en [Escritura diferida de dispositivos](active-directory-aadconnect-feature-device-writeback.md). |
 | Escritura diferida de grupos |Objetos de grupo Leer, Crear, Actualizar y Eliminar para **grupos de Office 365** sincronizados.  Para más información, vea [Escritura diferida de grupos](active-directory-aadconnect-feature-preview.md#group-writeback).|
 
 ## <a name="upgrade"></a>Actualizar
-Al actualizar desde una versión de Azure AD Connect a una nueva versión, necesita los siguientes permisos:
+Cuando se actualiza desde una versión de Azure AD Connect tooa nueva versión, debe Hola los siguientes permisos:
 
 | Principal | Permisos necesarios | Se usa para |
 | --- | --- | --- |
-| Usuario que ejecuta el asistente para instalación |Administrador del servidor local |Archivos binarios de la actualización. |
-| Usuario que ejecuta el asistente para instalación |Miembro de ADSyncAdmins |Realice cambios en las reglas de sincronización y en otra configuración. |
-| Usuario que ejecuta el asistente para instalación |Si utiliza un servidor SQL completo: DBO (o similar) de la base de datos del motor de sincronización |Realice los cambios de nivel de base de datos, como actualizar tablas con nuevas columnas. |
+| Asistente para instalación de hello ejecución de usuario |Administrador del servidor local de Hola |Archivos binarios de la actualización. |
+| Asistente para instalación de hello ejecución de usuario |Miembro de ADSyncAdmins |Realice los cambios tooSync reglas y otra configuración. |
+| Asistente para instalación de hello ejecución de usuario |Si usa una versión completa de SQL server: DBO (o similar) de la base de datos de motor de sincronización de Hola |Realice los cambios de nivel de base de datos, como actualizar tablas con nuevas columnas. |
 
-## <a name="more-about-the-created-accounts"></a>Más información acerca de las cuentas creadas
+## <a name="more-about-hello-created-accounts"></a>Más información acerca de hello creado cuentas
 ### <a name="active-directory-account"></a>Cuenta de Active Directory
-Si utiliza la configuración rápida, se crea una cuenta en Active Directory que se usa para sincronización. La cuenta creada se ubica en el dominio raíz del bosque en el contenedor Usuarios y su nombre tiene el prefijo **MSOL_**. La cuenta se crea con una contraseña larga compleja que no expira. Si tiene una directiva de contraseñas en el dominio, asegúrese de que se permitan contraseñas largas y complejas para esta cuenta.
+Si utiliza la configuración rápida, se crea una cuenta en Active Directory que se usa para sincronización. cuenta de Hello creado se encuentra en el dominio raíz del bosque hello en el contenedor de usuarios de Hola y con su nombre como prefijo **MSOL_**. cuenta de Hello se crea con una contraseña larga compleja que no expire. Si tiene una directiva de contraseñas en el dominio, asegúrese de que se permitan contraseñas largas y complejas para esta cuenta.
 
 ![Cuenta de AD](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
-Si usa una configuración personalizada, es responsable de crear la cuenta antes de iniciar la instalación.
+Si usa una configuración personalizada, son responsables de crear la cuenta de hello antes de empezar la instalación de Hola.
 
 ### <a name="azure-ad-connect-sync-service-account"></a>Cuenta del servicio Azure AD Connect Sync
-El servicio de sincronización puede ejecutarse con diferentes cuentas. Puede ejecutarse con una **cuenta de servicio virtual** (VSA), una **cuenta de servicio administrada de grupo** (gMSA/sMSA), o una cuenta de usuario normal. Las opciones admitidas cambiaron con la versión de abril de 2017 de Connect cuando se realiza una instalación nueva. Si actualiza desde una versión anterior de Azure AD Connect, estas opciones adicionales no están disponibles.
+puede ejecutar el servicio de sincronización de Hello bajo diferentes cuentas. Puede ejecutarse con una **cuenta de servicio virtual** (VSA), una **cuenta de servicio administrada de grupo** (gMSA/sMSA), o una cuenta de usuario normal. Opciones de Hello admitida cambiaron con hello 2017 versión de abril de Connect cuando se realiza una instalación nueva. Si actualiza desde una versión anterior de Azure AD Connect, estas opciones adicionales no están disponibles.
 
 | Tipo de cuenta | Opción de instalación | Descripción |
 | --- | --- | --- |
-| [Cuenta de servicio virtual](#virtual-service-account) | Rápida y personalizada, abril de 2017 y versiones posteriores | Es la opción utilizada para todas las instalaciones rápidas, excepto para las instalaciones en un controlador de dominio. Para las instalaciones personalizadas, es la opción predeterminada a menos que se use otra opción. |
-| [Cuenta de servicio administrada de grupo](#group-managed-service-account) | Personalizada, abril de 2017 y versiones posteriores | Si utiliza un servidor SQL remoto, se recomienda usar una cuenta de servicio administrada de grupo. |
+| [Cuenta de servicio virtual](#virtual-service-account) | Rápida y personalizada, abril de 2017 y versiones posteriores | Ésta es la opción de Hola que se utiliza para todas las instalaciones de express, excepto para las instalaciones en un controlador de dominio. Para personalizar, es opción predeterminada de Hola a menos que se use otra opción. |
+| [Cuenta de servicio administrada de grupo](#group-managed-service-account) | Personalizada, abril de 2017 y versiones posteriores | Si usa un servidor SQL remoto, se recomienda toouse un grupo de cuenta de servicio administrada. |
 | [Cuenta de usuario](#user-account) | Rápida y personalizada, abril de 2017 y versiones posteriores | Durante la instalación, solo se crea una cuenta de usuario con el prefijo AAD_ cuando se instala en Windows Server 2008 y cuando se instala en un controlador de dominio. |
 | [Cuenta de usuario](#user-account) | Rápida y personalizada, marzo de 2017 y versiones anteriores | Se crea una cuenta local con el prefijo AAD_ durante la instalación. Cuando se utiliza la instalación personalizada, se puede especificar otra cuenta. |
 
-Si utiliza Connect con una compilación de marzo de 2017 o anterior, no debe restablecer la contraseña en la cuenta de servicio, ya que Windows destruye las claves de cifrado por motivos de seguridad. No se puede cambiar la cuenta a cualquier otra cuenta sin volver a instalar Azure AD Connect. Si se actualiza a una compilación de abril de 2017 o posterior, es posible cambiar la contraseña de la cuenta de servicio, pero no puede cambiar la cuenta utilizada.
+Si utiliza Connect con una compilación de marzo de 2017 o versiones anteriores, a continuación, no debe restablecer la contraseña de hello en la cuenta de servicio de Hola desde Windows destruye claves de cifrado de Hola por motivos de seguridad. No se puede cambiar otra cuenta de hello cuenta tooany sin volver a instalar Azure AD Connect. Si actualizar tooa compilación de 2017 abril o más adelante, a continuación, es contraseña de hello toochange admitidos en la cuenta de servicio de Hola pero no se puede cambiar la cuenta de hello utilizada.
 
 > [!Important]
-> Solo se puede establecer la cuenta de servicio en la primera instalación. No es posible cambiar la cuenta de servicio una vez completada la instalación.
+> Sólo puede establecer la cuenta de servicio de hello instalación la primera vez. No admite la cuenta de servicio de hello toochange una vez completada la instalación de Hola.
 
-Esta es la tabla de los valores predeterminados, recomendados y admitidos para la cuenta del servicio de sincronización.
+Se trata de una tabla de Hola de forma predeterminada, que se recomienda, y cuenta de servicio de sincronización de opciones admitidas para saludo.
 
 Leyenda:
 
-- **Negrita** indica la opción predeterminada y, en la mayoría de los casos, la opción recomendada.
-- *Cursiva* indica la opción recomendada si no es la opción predeterminada.
+- **Negrita** indica la opción predeterminada de Hola y Hola la mayoría de los casos la opción recomendada.
+- *Cursiva* indica Hola opción recomendada cuando no es una opción predeterminada de Hola.
 - 2008: opción predeterminada cuando se instala en Windows Server 2008
 - Sin negrita: opción admitida
-- Cuenta local: cuenta de usuario local en el servidor
+- Cuenta local, la cuenta de usuario Local en servidor hello
 - Cuenta de dominio: cuenta de usuario de dominio
 - sMSA: [cuenta de servicio administrada independiente](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA: [cuenta de servicio administrada de grupo](https://technet.microsoft.com/library/hh831782.aspx)
@@ -150,46 +150,46 @@ Una cuenta de servicio virtual es un tipo especial de cuenta que no tiene contra
 
 ![VSA](./media/active-directory-aadconnect-accounts-permissions/aadsyncvsa.png)
 
-Una VSA está pensada para usarse en escenarios donde el motor de sincronización y SQL están en el mismo servidor. Si usa SQL remoto, se recomienda utilizar una [cuenta de servicio administrada de grupo](#managed-service-account) en su lugar.
+Hola VSA está previsto toobe utilizada con escenarios donde motor de sincronización de Hola y SQL están en hello mismo servidor. Si usas SQL remoto, se recomienda toouse una [cuenta de servicio administrada de grupo](#managed-service-account) en su lugar.
 
-Esta característica requiere Windows Server 2008 R2 o versiones posteriores. Si instala Azure AD Connect en Windows Server 2008, la instalación vuelve a utilizar una [cuenta de usuario](#user-account) en su lugar.
+Esta característica requiere Windows Server 2008 R2 o versiones posteriores. Si instalar Azure AD Connect en Windows Server 2008, instalación de hello vuelve toousing una [cuenta de usuario](#user-account) en su lugar.
 
 #### <a name="group-managed-service-account"></a>Cuenta de servicio administrada de grupo
-Si usa un servidor SQL remoto, se recomienda utilizar una **cuenta de servicio administrada de grupo**. Para más información sobre cómo preparar Active Directory para la cuenta de servicio administrada de grupo, consulte [Información general de las cuentas de servicio administradas de grupo](https://technet.microsoft.com/library/hh831782.aspx).
+Si usa un servidor SQL remoto, se recomienda toousing una **cuenta de servicio administrada de grupo**. Para obtener más información acerca de cómo tooprepare su Active Directory para la cuenta de servicio administrada de grupo, consulte [Group Managed Service Accounts Overview](https://technet.microsoft.com/library/hh831782.aspx).
 
-Para usar esta opción, en la página [Instalar los componentes necesarios](active-directory-aadconnect-get-started-custom.md#install-required-components), seleccione **Usar una cuenta de servicio existente** y seleccione **Cuenta de servicio administrada**.  
+toouse esta opción, en hello [instalar los componentes necesarios](active-directory-aadconnect-get-started-custom.md#install-required-components) página, seleccione **usar una cuenta de servicio existente**y seleccione **cuenta de servicio administrada**.  
 ![VSA](./media/active-directory-aadconnect-accounts-permissions/serviceaccount.png)  
-También se puede usar una [cuenta de servicio administrada independiente](https://technet.microsoft.com/library/dd548356.aspx). Sin embargo, solo se pueden utilizar en el equipo local y no hay ningún beneficio al usarlas en lugar de la cuenta de servicio virtual predeterminada.
+También es compatible toouse una [independiente cuenta de servicio administrada](https://technet.microsoft.com/library/dd548356.aspx). Sin embargo, solo se pueden usar en el equipo local de hello y no hay ninguna ventaja toouse ellas a través de la cuenta de servicio virtual Hola predeterminada.
 
-Esta característica requiere Windows Server 2012 o posterior. Si necesita usar un sistema operativo anterior y usar SQL remoto, debe usar una [cuenta de usuario](#user-account).
+Esta característica requiere Windows Server 2012 o posterior. Si necesita toouse un sistema operativo anterior y utilizan SQL remoto, debe usar un [cuenta de usuario](#user-account).
 
 #### <a name="user-account"></a>Cuenta de usuario
-El asistente para instalación crea una cuenta de servicio local (a menos que especifique la cuenta que se desea usar en la configuración personalizada). La cuenta lleva delante **AAD_** y se usa para el servicio de sincronización real como cuenta de ejecución. Si instala Azure AD Connect en un controlador de dominio, la cuenta se crea en el dominio. La cuenta de servicio **AAD_** debe estar ubicada en el dominio si:
+Se crea una cuenta de servicio local mediante el Asistente para la instalación de hello (a menos que especifique Hola cuenta toouse en una configuración personalizada). cuenta de Hello tiene como prefijo **AAD_** y usar para hello toorun de servicio de sincronización real como. Si instala Azure AD Connect en un controlador de dominio, cuenta de hello se crea en el dominio Hola. Hola **AAD_** cuenta de servicio debe estar ubicada en el dominio de hello si:
    - Se usa un servidor remoto que ejecuta SQL Server.
    - Se usa a un proxy que requiere autenticación.
 
 ![Cuenta de servicio de sincronización](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
-La cuenta se crea con una contraseña larga compleja que no expira.
+cuenta de Hello se crea con una contraseña larga compleja que no expire.
 
-Esta se utiliza para almacenar de forma segura las contraseñas de las otras cuentas, que se almacenan cifradas en la base de datos. Las claves privadas de las claves de cifrado se protegen con el cifrado de clave secreta de los servicios criptográficos mediante la API de protección de datos de Windows (DPAPI).
+Esta cuenta es contraseñas de hello toostore usado para hello otras cuentas de una manera segura. Estas otras contraseñas de cuentas se almacenan cifrados en la base de datos de Hola. las claves privadas de Hola para las claves de cifrado de hello están protegidas con cifrado de clave secreta de servicios criptográficos de hello mediante la API de protección de datos (DPAPI) de Windows.
 
-Si usa SQL Server completo, la cuenta de servicio es el DBO de la base de datos creada para el motor de sincronización. El servicio no funcionará como se pretende con ningún otro permiso. También se crea un inicio de sesión SQL.
+Si usa una versión completa de SQL Server, cuenta de servicio de hello es hello DBO de la base de datos de hello creado para el motor de sincronización de Hola. servicio de Hello no funcionará según lo previsto con ningún otro permiso. También se crea un inicio de sesión SQL.
 
-A la cuenta también se le conceden permisos para archivos, claves del Registro y otros objetos relacionados con el motor de sincronización.
+cuenta de Hello también se concede permisos toofiles, las claves del registro y otro motor de sincronización de objetos relacionados toohello.
 
 ### <a name="azure-ad-service-account"></a>Cuenta de servicio de Azure AD
-Se crea una cuenta de Azure AD para el uso del servicio de sincronización. Esta cuenta se puede identificar por su nombre para mostrar.
+Se crea una cuenta de Azure AD para su uso del servicio de sincronización de Hola. Esta cuenta se puede identificar por su nombre para mostrar.
 
 ![Cuenta de AD](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount.png)
 
-El nombre del servidor en el que se usa la cuenta se puede identificar en la segunda parte del nombre de usuario. En la imagen el nombre del servidor es FABRIKAMCON. Si tiene servidores de ensayo, cada servidor tiene su propia cuenta.
+Hola nombre de cuenta de hello servidor Hola se usa en puede identificarse en la segunda parte del nombre de usuario de Hola de Hola. En la imagen de hello, el nombre del servidor de hello es FABRIKAMCON. Si tiene servidores de ensayo, cada servidor tiene su propia cuenta.
 
-La cuenta de servicio se crea con una contraseña larga compleja que no expira. Se le concede el rol especial **Cuentas de sincronización de directorio** que solo tiene permisos para realizar tareas de sincronización de directorios. No se puede conceder este rol integrado especial fuera del asistente de Azure AD Connect. En Azure Portal se muestra esta cuenta con el rol **Usuario**.
+cuenta de servicio de Hola se crea con una contraseña larga compleja que no expire. Se ha concedido un rol especial **cuentas de sincronización de Directory** que solo tiene permisos tooperform directory sincronización tareas. No se puede conceder este rol integrado especial fuera de Asistente de Azure AD Connect de Hola. portal de Azure Hello muestra esta cuenta con la función hello **usuario**.
 
-Hay un límite de 20 cuentas de servicio de sincronización en Azure AD. Para obtener la lista de cuentas de servicio de Azure AD existentes en Azure AD, ejecute el siguiente cmdlet de Azure AD PowerShell: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+Hay un límite de 20 cuentas de servicio de sincronización en Azure AD. lista de hello tooget existentes Azure AD de cuentas de servicio en Azure AD, ejecute hello siguiente cmdlet de PowerShell de Azure AD:`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
-Para quitar las cuentas de servicio de Azure AD sin usar, ejecute el siguiente cmdlet de Azure AD PowerShell: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+tooremove sin usar cuentas de servicio de Azure AD, ejecute hello siguiente cmdlet de PowerShell de Azure AD:`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 ## <a name="next-steps"></a>Pasos siguientes
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](../active-directory-aadconnect.md).

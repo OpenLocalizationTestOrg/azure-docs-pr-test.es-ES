@@ -1,6 +1,6 @@
 ---
-title: "Plantillas de aplicación en Azure API Management | Microsoft Docs"
-description: "Aprenda a personalizar el contenido de las páginas de aplicación del portal para desarrolladores en Azure API Management."
+title: "plantillas de aaaApplication en la administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocustomize Hola contenido de las páginas de aplicación hello en el portal para desarrolladores de hello en la administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 6d2d44465800219f16866a621d4822614ac9e1dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4dc078be7163b047ca2e640a9065ba9e5ba709e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-templates-in-azure-api-management"></a>Plantillas de aplicación en Azure API Management
-Azure API Management le ofrece la posibilidad de personalizar el contenido de las páginas del portal para desarrolladores mediante un conjunto de plantillas que configuran su contenido. Por medio de la sintaxis [DotLiquid](http://dotliquidmarkup.org/) y el editor que prefiera, como [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) (DotLiquid para diseñadores), y un conjunto proporcionado de [recursos de cadena](api-management-template-resources.md#strings), [recursos de glifo](api-management-template-resources.md#glyphs) y [controles de página](api-management-page-controls.md) localizados, puede disponer de una gran flexibilidad para configurar el contenido de las páginas como considere oportuno mediante estas plantillas.  
+Administración de API de Azure proporciona que Hola contenido de hello toocustomize de capacidad de páginas del portal para desarrolladores con un conjunto de plantillas que configure su contenido. Usar [DotLiquid](http://dotliquidmarkup.org/) editor hello y sintaxis de su elección, como [DotLiquid a los diseñadores](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), o cambie de tamaño un conjunto proporcionado de [los recursos de cadena](api-management-template-resources.md#strings), [ Recursos de glifo](api-management-template-resources.md#glyphs), y [página controles](api-management-page-controls.md), tienen contenido de gran flexibilidad tooconfigure Hola de páginas de Hola como considere oportuno mediante estas plantillas.  
   
- Las plantillas de esta sección le permiten personalizar el contenido de las páginas de Application en el portal para desarrolladores.  
+ las plantillas de Hello en esta sección permiten contenido de hello toocustomize de páginas de la aplicación hello en el portal para desarrolladores de Hola.  
   
 -   [Application list](#ProductList)  
   
 -   [Aplicación](#Application)  
   
 > [!NOTE]
->  En la siguiente documentación se incluyen plantillas predeterminadas de ejemplo; sin embargo, están sujetas a cambios debido a mejoras continuas. Puede ver las plantillas predeterminadas en vivo en el portal para desarrolladores; para ello, vaya hasta a las plantillas individuales que desee. Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Plantillas predeterminadas de ejemplo se incluyen en hello siguiendo documentación, pero están toochange asunto debido toocontinuous mejoras. Puede ver plantillas de hello predeterminado en vivo en el portal para desarrolladores de hello desplazándose plantillas individuales toohello deseado. Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="ProductList"></a> Application list  
- La plantilla **Application list** le permite personalizar el cuerpo de la página de lista de aplicaciones en el portal para desarrolladores.  
+ Hola **lista de aplicaciones** plantilla permite cuerpo de hello toocustomize de página de lista de aplicaciones de hello en el portal para desarrolladores de Hola.  
   
  ![Plantillas del portal para desarrolladores de la página de lista de aplicaciones](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de lista de aplicaciones de APIM")  
   
@@ -70,7 +70,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ### <a name="controls"></a>Controles  
- La plantilla `Product list` puede usar los siguientes [controles de página](api-management-page-controls.md).  
+ Hola `Product list` plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -78,9 +78,9 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
   
 |Propiedad|Escriba|Descripción|  
 |--------------|----------|-----------------|  
-|Paginación|Entidad [Paging](api-management-template-data-model-reference.md#Paging).|La información de paginación de la colección de aplicaciones.|  
-|Aplicaciones|Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).|Las aplicaciones visibles para el usuario actual.|  
-|CategoryName|string|La categoría de aplicación.|  
+|Paginación|Entidad [Paging](api-management-template-data-model-reference.md#Paging).|información de paginación de Hello para la colección de aplicaciones de Hola.|  
+|Aplicaciones|Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).|Hola aplicaciones toohello visible el usuario actual.|  
+|CategoryName|cadena|categoría de Hola de aplicación.|  
   
 ### <a name="sample-template-data"></a>Ejemplo de datos de plantilla  
   
@@ -134,7 +134,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ##  <a name="Application"></a> Application  
- La plantilla **Application** le permite personalizar el cuerpo de la página de aplicación en el portal para desarrolladores.  
+ Hola **aplicación** plantilla permite cuerpo de hello toocustomize de página de la aplicación hello en el portal para desarrolladores de Hola.  
   
  ![Plantillas del portal para desarrolladores de la página de aplicación](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de aplicación de APIM")  
   
@@ -177,7 +177,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ### <a name="controls"></a>Controles  
- La plantilla `Application` no permite el uso de ningún [control de página](api-management-page-controls.md).  
+ Hola `Application` plantilla no permite el uso de Hola de cualquier [página controles](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Modelo de datos  
  Entidad [Application](api-management-template-data-model-reference.md#Application).  
@@ -220,4 +220,4 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](api-management-developer-portal-templates.md).
+Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](api-management-developer-portal-templates.md).

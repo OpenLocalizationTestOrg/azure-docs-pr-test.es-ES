@@ -1,6 +1,6 @@
 ---
-title: "Consideraciones sobre el diseño de identidad híbrida de Azure Active Directory: determinación de los requisitos de administración de contenido| Microsoft Docs"
-description: "Se proporciona información detallada sobre cómo determinar los requisitos de administración de contenido de su empresa. Normalmente, cuando un usuario tiene su propio dispositivo lo habitual es que tenga más varias credenciales que se irán alternando según la aplicación que use. Es importante distinguir qué contenido se creó con las credenciales personales frente al que se creó con las credenciales corporativas. La solución de identidad debe ser capaz de interactuar con los servicios en la nube a fin de proporcionar al usuario final una experiencia sin fisuras, y al mismo tiempo asegurar su privacidad y aumentar la protección frente a la pérdida de datos."
+title: "Consideraciones de diseño de identidad de aaaAzure Active Directory híbrida - determinar los requisitos de administración de contenido | Documentos de Microsoft"
+description: "Proporciona una visión general de cómo toodetermine Hola requerimientos de administración de contenido de su negocio. Normalmente cuando un usuario tiene su propio dispositivo puede tener también varias credenciales que se pueden alternar aplicación toohello correspondiente que se utiliza. Es importante toodifferentiate el contenido que se creó mediante credenciales personales frente a hello las siguieron credenciales corporativas. La solución de identidad debe ser capaz de toointeract con tooprovide de servicios de nube un experiencia perfecta toohello final de usuario mientras se garantiza su privacidad y aumentar la protección de hello contra la pérdida de datos."
 documentationcenter: 
 services: active-directory
 author: billmath
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 840de1e1fcba74285788d51d8f544375f0affa77
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 607d366633c37b65ec5cf8ae5c64d73ca1cc96b7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Determinación de los requisitos de administración de contenido para la solución de identidad híbrida
-Comprender los requisitos de administración de contenido de su empresa puede afectar directamente a su decisión sobre la solución de identidad híbrida que es mejor usar. Con la proliferación de tantos dispositivos y la posibilidad de que los usuarios traigan los suyos propios ([BYOD](http://aka.ms/byodcg)), la empresa debe proteger sus propios datos, pero también mantener intacta la privacidad del usuario. Normalmente, cuando un usuario tiene su propio dispositivo lo habitual es que tenga más varias credenciales que se irán alternando según la aplicación que use. Es importante distinguir qué contenido se creó con las credenciales personales frente al que se creó con las credenciales corporativas. La solución de identidad debe ser capaz de interactuar con los servicios en la nube a fin de proporcionar al usuario final una experiencia sin fisuras, y al mismo tiempo asegurar su privacidad y aumentar la protección frente a la pérdida de datos. 
+Descripción Hola administración de contenido de los requisitos de su empresa puedan dirigir afectan a la decisión sobre qué toouse de solución de identidad híbrida. Con Hola proliferación de varios dispositivos y la capacidad de Hola de usuarios toobring sus propios dispositivos ([BYOD](http://aka.ms/byodcg)), empresa Hola debe proteger sus propios datos sin embargo también debe tener privacidad del usuario intacta. Normalmente cuando un usuario tiene su propio dispositivo puede tener también varias credenciales que se pueden alternar aplicación toohello correspondiente que se utiliza. Es importante toodifferentiate el contenido que se creó mediante credenciales personales frente a hello las siguieron credenciales corporativas. La solución de identidad debe ser capaz de toointeract con tooprovide de servicios de nube un experiencia perfecta toohello final de usuario mientras se garantiza su privacidad y aumentar la protección de hello contra la pérdida de datos. 
 
-Diferentes controles técnicos aprovecharán la solución de identidad para proporcionar administración de contenido, como se muestra en la siguiente ilustración:
+La solución de identidad se aprovecharán por los diferentes controles técnicos en administración de contenido de orden tooprovide tal y como se muestra en la siguiente ilustración de hello:
 
 ![](./media/hybrid-id-design-considerations/securitycontrols.png)
 
 **Controles de seguridad que aprovecharán su sistema de administración de identidad**
 
-En general, los requisitos de administración de contenido aprovecharán su sistema de administración de identidad en las áreas siguientes:
+En general, los requisitos de administración de contenido aprovecharán su sistema de administración de identidades en hello siguientes áreas:
 
-* Privacidad: identificarán al usuario propietario de un recurso y aplicarán los controles adecuados para mantener la integridad.
-* Clasificación de datos: identificarán al usuario o grupo y el nivel de acceso a un objeto en función de su clasificación. 
-* Protección contra pérdida de datos: los controles de seguridad responsables de la protección de los datos deberán interactuar con el sistema de identidad para validar la identidad del usuario a fin de evitar la pérdida de estos datos. Esto también es importante para los fines de seguimiento de auditoría.
+* Privacidad: identificación de usuario de Hola que posee un recurso y aplicar la integridad de toomaintain de hello controles adecuados.
+* Clasificación de datos: identificar usuario Hola o de grupo y de nivel de objeto de tooan de acceso según la clasificación de tooits. 
+* Protección contra la pérdida de datos: controles de seguridad responsables de proteger la pérdida de datos tooavoid deberá toointeract con la identidad del usuario de hello identidad sistema toovalidate Hola. Esto también es importante para los fines de seguimiento de auditoría.
 
 > [!NOTE]
 > Lea [Clasificación de los datos para prepararlos para la nube](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) para obtener más información sobre los procedimientos recomendados e instrucciones para la clasificación de los datos.
 > 
 > 
 
-Al planear la solución de identidad híbrida, asegúrese de que puede responder a las siguientes preguntas según los requisitos de su organización:
+Cuando planifique la solución de identidad híbrida asegurarse de esa Hola después se responden preguntas según los requisitos de la organización tooyour:
 
-* ¿Tiene su empresa controles de seguridad para aplicar la privacidad de los datos?
-  * En caso afirmativo, ¿podrán integrarse esos controles de seguridad con la solución de identidad híbrida que va a adoptar?
+* ¿La compañía tiene controles de seguridad en lugar tooenforce privacidad de los datos?
+  * ¿Si es así, los controles de seguridad será capaz de toointegrate con la solución de identidad híbrida de Hola que son tooadopt continua?
 * ¿Usa su empresa clasificación de los datos?
-  * En caso afirmativo, ¿se puede integrar la solución actual con la solución de identidad híbrida que va a adoptar?
+  * ¿Si es así, es toointegrate capaz de hello actual de solución con la solución de identidad híbrida de Hola que son tooadopt continuo?
 * ¿Tiene su empresa actualmente una solución para hacer frente a la pérdida de datos? 
-  * En caso afirmativo, ¿se puede integrar la solución actual con la solución de identidad híbrida que va a adoptar?
-* ¿Necesita su empresa auditar el acceso a los recursos?
+  * ¿Si es así, es toointegrate capaz de hello actual de solución con la solución de identidad híbrida de Hola que son tooadopt continuo?
+* ¿La compañía necesita tooaudit acceso tooresources?
   * En caso afirmativo, ¿para qué tipo de recursos?
   * En caso afirmativo, ¿qué nivel de información es necesario?
-  * En caso afirmativo, ¿dónde debe residir el registro de auditoría? ¿En el entorno local o en la nube?
-* ¿Necesita su empresa cifrar los mensajes de correo electrónico que contienen datos confidenciales (números de seguridad social, números de tarjeta de crédito, etc.)?
-* ¿Necesita su empresa cifrar todos los documentos o contenidos compartidos con socios comerciales externos?
-* ¿Necesita su empresa aplicar directivas corporativas en determinadas clases de correos electrónicos (no responder a todos, no reenvíar)?
+  * ¿En caso afirmativo, donde debe residir registro de auditoría de hello? ¿Local o en la nube de hello?
+* ¿La compañía necesita tooencrypt los mensajes de correo electrónico que contengan datos confidenciales (números de seguridad social, números de tarjeta de crédito, etcetera)?
+* ¿La compañía necesita tooencrypt todos los documentos o contenido compartido con socios comerciales externos?
+* ¿La compañía necesita las directivas corporativas de tooenforce en ciertos tipos de mensajes de correo electrónico (sin responder a todos, no reenviar)?
 
 > [!NOTE]
-> Asegúrese de anotar cada respuesta y de que comprende las razones que se esconden detrás. [Definición de la estrategia de protección de datos](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) se recorren las opciones disponibles y las ventajas y desventajas de cada una.  Las respuestas que obtenga partir de estas preguntas le servirán para seleccionar la opción que mejor se adapte a sus necesidades empresariales.
+> Hacer notas de tootake seguro de cada respuesta y entender el razonamiento de hello detrás de respuesta de Hola. [Definir la estrategia de protección de datos](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) irá Hola opciones disponibles y las ventajas y desventajas de cada opción.  Las respuestas que obtenga partir de estas preguntas le servirán para seleccionar la opción que mejor se adapte a sus necesidades empresariales.
 > 
 > 
 

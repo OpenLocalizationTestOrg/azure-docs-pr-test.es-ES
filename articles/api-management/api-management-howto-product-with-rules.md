@@ -1,6 +1,6 @@
 ---
-title: "Protección de la API con Azure API Management | Microsoft Docs"
-description: "Aprenda a proteger su API con directivas de cuotas y limitaciones (limitación de frecuencia)."
+title: "aaaProtect su API con administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooprotect su API con las cuotas y la limitación de las directivas (limitación de velocidad)."
 services: api-management
 documentationcenter: 
 author: vladvino
@@ -14,106 +14,106 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 5553bcb8f9fd38630f694151dc644a684266387c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3113fd277d434da0c051b8b90fd629a102bf4867
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Protección de su API con límites de frecuencia mediante Azure API Management
-Esta guía muestra lo fácil que es agregar protección para la API de back-end mediante la configuración de directivas de cuota y límite de frecuencia con Azure API Management.
+Esta guía muestra lo fácil que es tooadd protección para el API de back-end mediante la configuración de directivas de límite y la cuota de la tasa con la administración de API de Azure.
 
-En este tutorial, creará un producto de API de "evaluación gratuita" que permita a los desarrolladores realizar hasta 10 llamadas por minuto y hasta un máximo de 200 llamadas por semana a la API mediante las directivas [Limitar la frecuencia de llamadas por suscripción](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) y [Establecer la cuota de uso por suscripción](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota). A continuación, publicará la API y probará la directiva de límite de frecuencia.
+En este tutorial, aprenderá a crear un producto de "Prueba gratuita" API que permite a los desarrolladores toomake too10 llamadas por minuto e instalación tooa máximo de 200 llamadas por semana tooyour API con hello [limitar la tasa de llamadas por suscripción](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) y [ Establecer la cuota de uso por suscripción](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) directivas. Podrá publicar API hello y probar la directiva de límite de velocidad de Hola.
 
-Para más información sobre escenarios de limitación avanzados mediante las directivas [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) y [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey), consulte [Limitación avanzada de solicitudes con Azure API Management](api-management-sample-flexible-throttling.md).
+Más avanzados limitación escenarios con hello [límite de velocidad por clave](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) y [cuota por clave](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) directivas, vea [solicitud avanzada limitación con administración de API de Azure](api-management-sample-flexible-throttling.md).
 
-## <a name="create-product"> </a>Para crear un producto
+## <a name="create-product"></a>toocreate un producto
 En este paso, creará un producto de evaluación gratuita que no requiere aprobación de suscripción.
 
 > [!NOTE]
-> Si ya tiene un producto configurado y desea usarlo para este tutorial, puede pasar la sección [Configurar directivas de cuota y límite de frecuencia][Configure call rate limit and quota policies] y seguir el tutorial a partir de ahí con su producto en lugar de con el producto de evaluación gratuita.
+> Si ya tiene un producto configurado y desea toouse, para este tutorial, puede saltar a continuación demasiado[configurar directivas de límite y la cuota de tasa de llamadas] [ Configure call rate limit and quota policies] y siga el tutorial de Hola desde ahí con el producto en lugar de producto de evaluación gratuita de Hola.
 > 
 > 
 
-Para comenzar, haga clic en **Portal para editores** en Azure Portal para el servicio API Management.
+tooget iniciado, haga clic en **portal para desarrolladores de** Hola Portal de Azure para el servicio de administración de API.
 
 ![Portal del publicador][api-management-management-console]
 
-> Si aún no ha creado ninguna instancia del servicio de API Management, consulte [Creación de una instancia del servicio API Management][Create an API Management service instance] en el tutorial [Administración de su primera API en Azure API Management][Manage your first API in Azure API Management].
+> Si aún no ha creado una instancia de servicio de administración de API, consulte [crear una instancia de servicio de administración de API] [ Create an API Management service instance] en hello [administrar su primera API de administración de API de Azure] [ Manage your first API in Azure API Management] tutorial.
 > 
 > 
 
-Haga clic en **Productos** en el menú **API Management** a la izquierda para mostrar la página **Productos**.
+Haga clic en **productos** en hello **administración de API** menú Hola toodisplay izquierdo Hola **productos** página.
 
 ![Add product][api-management-add-product]
 
-Haga clic en **Agregar producto** para mostrar el cuadro de diálogo **Agregar nuevo producto**.
+Haga clic en **agregar producto** toodisplay hello **Agregar nuevo producto** cuadro de diálogo.
 
 ![Agregar nuevo producto][api-management-new-product-window]
 
-En el cuadro **Título** escriba **Evaluación gratuita**.
+Hola **título** , escriba **gratuita**.
 
-En el cuadro **Descripción**, escriba **Los suscriptores podrán realizar 10 llamadas/minuto hasta un máximo de 200 llamadas/semana; después, el acceso se denegará.**
+Hola **descripción** cuadro, Hola de tipo siguiente texto: **suscriptores van a ser capaz de toorun 10 llamadas por minuto seguridad tooa máximo de 200 llamadas/semana después del cual se deniega el acceso.**
 
-Los productos de API Management pueden estar abiertos o protegidos. Para poder usar los productos protegidos es necesario suscribirse antes a ellos, mientras que los productos abiertos pueden usarse sin suscripción. Asegúrese de que la opción **Requerir suscripción** está seleccionada para crear un producto protegido que requiera una suscripción. Esta es la configuración predeterminada.
+Los productos de API Management pueden estar abiertos o protegidos. Productos protegidos deben ser toobefore suscrito se pueden usar. mientras que los productos abiertos pueden usarse sin suscripción. Asegúrese de que **requieren suscripción** es toocreate seleccionado un producto protegido que requiere una suscripción. Se trata de una configuración predeterminada de Hola.
 
-Si desea que un administrador revise y acepte o rechace los intentos de suscripción a este producto, active **Requerir aprobación de suscripción**. Si la casilla no está seleccionada, los intentos de suscripción se aprobarán automáticamente. En este ejemplo, las suscripciones se aprueban automáticamente, por lo que no tiene que seleccionar la casilla.
+Si desea que un administrador tooreview y Aceptar o rechazar suscripción intenta toothis producto, seleccione **requieren la aprobación de suscripción**. Si no se selecciona la casilla de verificación de hello, intentos de suscripción será aprobada automáticamente. En este ejemplo, las suscripciones se aprueban automáticamente, por lo que no se active la casilla de Hola.
 
-Para permitir que las cuentas de desarrollador se suscriban varias veces al nuevo producto, active la casilla **Permitir varias suscripciones simultáneas** . En este tutorial no se usan varias suscripciones simultáneas; por tanto, no active la casilla.
+cuentas de desarrollador tooallow toosubscribe toohello nuevo producto de varias veces, seleccione hello **permitir múltiples suscripciones simultáneas** casilla de verificación. En este tutorial no se usan varias suscripciones simultáneas; por tanto, no active la casilla.
 
-Una vez especificados todos los valores, haga clic en **Guardar** para crear el producto.
+Después de introducen todos los valores, haga clic en **guardar** producto de hello toocreate.
 
 ![Product added][api-management-product-added]
 
-De forma predeterminada, los usuarios pueden ver los nuevos productos en el grupo **Administradores** . Vamos a agregar el grupo **Desarrolladores** . Haga clic en **Evaluación gratuita** y, después, en la pestaña **Visibilidad**.
+De forma predeterminada, los nuevos productos están toousers visible en hello **administradores** grupo. Vamos hello tooadd **a los desarrolladores** grupo. Haga clic en **gratuita**y, a continuación, haga clic en hello **visibilidad** ficha.
 
-> En API Management, los grupos se usan para administrar la visibilidad de productos para los desarrolladores. Los productos conceden visibilidad a los grupos y los desarrolladores pueden ver los productos visibles a los grupos a los que pertenecen y suscribirse a ellos. Para más información, consulte [Creación y uso de grupos en Azure API Management][How to create and use groups in Azure API Management].
+> Administración de API, los grupos son utilizados toomanage Hola visibilidad de toodevelopers de productos. Productos conceder toogroups de visibilidad, y los desarrolladores pueden ver y suscribirse toohello productos que son grupos de toohello visible en la que pertenecen. Para obtener más información, consulte [cómo toocreate y use los grupos de administración de API de Azure][How toocreate and use groups in Azure API Management].
 > 
 > 
 
 ![Add developers group][api-management-add-developers-group]
 
-Seleccione la casilla **Desarrolladores** y, a continuación, haga clic en **Guardar**.
+Seleccione hello **a los desarrolladores** casilla de verificación y, a continuación, haga clic en **guardar**.
 
-## <a name="add-api"> </a>Para agregar una API al producto
-En este paso del tutorial, agregaremos la API Eco al nuevo producto Prueba gratuita.
+## <a name="add-api"></a>tooadd una API toohello producto
+En este paso del tutorial de hello, agregaremos Hola eco API toohello nuevo gratuita producto.
 
-> Cada instancia del servicio API Management viene previamente configurada con una API Eco que se puede usar para experimentar con API Management y aprender de esta. Para más información, consulte [Administración de su primera API en Azure API Management][Manage your first API in Azure API Management].
+> Cada instancia de servicio de administración de API viene preconfigurado con una API de eco que se pueden tooexperiment usado con y obtener información acerca de la API de administración. Para más información, consulte [Administración de su primera API en Azure API Management][Manage your first API in Azure API Management].
 > 
 > 
 
-Haga clic en **Productos** en el menú **API Management** a la izquierda y luego haga clic en **Evaluación gratuita** para configurar el producto.
+Haga clic en **productos** de hello **administración de API** menú Hola izquierda y, a continuación, haga clic en **gratuita** producto de hello tooconfigure.
 
 ![Configure product][api-management-configure-product]
 
-Haga clic en **Agregar API al producto**.
+Haga clic en **tooproduct agregar API**.
 
-![Agregar API al producto][api-management-add-api]
+![Agregar API tooproduct][api-management-add-api]
 
 Seleccione **Echo API** (API Eco ) y luego haga clic en **Guardar**.
 
 ![Add Echo API][api-management-add-echo-api]
 
-## <a name="policies"> </a>Para configurar las directivas de límite de frecuencia de llamadas y de cuota
-Los límites de tasa y las cuotas se configuran en el editor de directivas. Las dos directivas que se van a agregar en este tutorial son [Limitar la frecuencia de llamadas por suscripción](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) y [Establecer la cuota de uso por suscripción](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota). Estas directivas deben aplicarse en el ámbito del producto.
+## <a name="policies"></a>tooconfigure las directivas de límite y la cuota de tasa de llamadas
+Límites de velocidad y las cuotas se configuran en el editor de directiva de Hola. las directivas de Hello dos que se va a agregar en este tutorial son hello [limitar la tasa de llamadas por suscripción](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate) y [establecer la cuota de uso por suscripción](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota) directivas. Estas directivas deben aplicarse en el ámbito del producto de Hola.
 
-Haga clic en **Directivas** en el menú **API Management** de la izquierda. En la lista **Producto**, haga clic en **Evaluación gratuita**.
+Haga clic en **directivas** en hello **administración de API** menú de hello izquierda. Hola **producto** lista, haga clic en **gratuita**.
 
 ![Product policy][api-management-product-policy]
 
-Haga clic en **Agregar directiva** para importar la plantilla de directivas y comenzar a crear la directiva de límite de frecuencia y de cuota.
+Haga clic en **Agregar directiva** tooimport Hola plantilla de directiva y empezar a crear directivas de cuota y el límite de velocidad de Hola.
 
-![Agregar directiva][api-management-add-policy]
+![Add policy][api-management-add-policy]
 
-Las directivas de límite de tasa y de cuota son directivas de entrada, por lo que debe posicionar el cursor en el elemento inbound.
+Tasa límite y la cuota directivas son entrante, por lo que posición Hola cursor en el elemento de entrada de Hola.
 
 ![Policy editor][api-management-policy-editor-inbound]
 
-Desplácese por la lista de directivas y busque la entrada de directiva para **limitar la frecuencia de llamadas por suscripción**.
+Desplácese por la lista de directivas de Hola y busque hello **limitar la tasa de llamadas por suscripción** entrada de directiva.
 
 ![Policy statements][api-management-limit-policies]
 
-Una vez que el cursor se ha situado en el elemento de directiva **inbound**, haga clic en la flecha situada junto a **Limitar la frecuencia de llamadas por suscripción** para insertar su plantilla de directiva.
+Después de hello cursor se coloca en hello **entrada** elemento de directiva, haga clic en la flecha de hello junto a **limitar la tasa de llamadas por suscripción** tooinsert su plantilla de directiva.
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
@@ -123,21 +123,21 @@ Una vez que el cursor se ha situado en el elemento de directiva **inbound**, hag
 </rate-limit>
 ```
 
-Como puede ver por el fragmento de código, la directiva permite establecer los límites de las API y las operaciones del producto. En este tutorial no se usará esa funcionalidad, así que elimine los elementos **api** y **operation** del elemento **rate-limit**, de forma que solo quede el elemento **rate-limit** exterior, como se muestra en el ejemplo siguiente.
+Como puede ver en el fragmento de código de hello, directiva de hello permite establecer límites para el producto Hola API y operaciones. En este tutorial se utilizará no esa capacidad, por lo que elimina hello **api** y **operación** elementos de hello **límite de velocidad** elemento, de forma que solo Hola externa**límite de velocidad** elemento permanece, tal y como se muestra en el siguiente ejemplo de Hola.
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
 </rate-limit>
 ```
 
-En el producto de evaluación gratuita, la tasa máxima de llamadas permitida es de 10 llamadas por minuto; por tanto, escriba **10** como el valor para el atributo **calls** y **60** para el atributo **renewal-period**.
+En el producto de evaluación gratuita de hello, velocidad máxima permitida de llamadas de hello es 10 llamadas por minuto, así que escriba **10** como valor de Hola de hello **llamadas** atributo, y **60** para hello **período de renovación** atributo.
 
 ```xml
 <rate-limit calls="10" renewal-period="60">
 </rate-limit>
 ```
 
-Para configurar la directiva **Establecer la cuota de uso por suscripción**, sitúe el cursor inmediatamente debajo del elemento **rate-limit** recién agregado dentro del elemento **inbound** y haga clic en la flecha situada a la izquierda de **Establecer la cuota de uso por suscripción**.
+Hola tooconfigure **establecer la cuota de uso por suscripción** directiva, posición el cursor se encuentra justo debajo Hola recién agregado **límite de velocidad** elemento dentro de hello **entrada** elemento y, a continuación, busque y haga clic en hello flecha toohello a la izquierda de **establecer la cuota de uso por suscripción**.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
@@ -147,32 +147,32 @@ Para configurar la directiva **Establecer la cuota de uso por suscripción**, si
 </quota>
 ```
 
-Al igual que la directiva **Limitar la frecuencia de llamadas por suscripción**, la directiva **Establecer la cuota de uso por suscripción** permite configurar los límites de las APY y las operaciones del producto. En este tutorial no se usará esa funcionalidad, así que elimine los elementos **api** y **operation** del elemento **quota**, como se muestra en el ejemplo siguiente.
+Del mismo modo toohello **establecer la cuota de uso por suscripción** directiva, **establecer la cuota de uso por suscripción** directiva permite configurar extremos para en las operaciones y las API del producto de Hola. En este tutorial se utilizará no esa capacidad, por lo que elimina hello **api** y **operación** elementos de hello **cuota** elemento, como se muestra en el siguiente ejemplo de Hola.
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
 </quota>
 ```
 
-Las cuotas se pueden basar en el número de llamadas por intervalo, ancho de banda o ambos. En este tutorial no estamos fijando límites en función del ancho de banda, por lo que puede eliminar el atributo **bandwidth** .
+Las cuotas pueden basarse en número de Hola de llamadas por intervalo, el ancho de banda o ambos. En este tutorial, no nos estamos limitación en función de ancho de banda, por lo que elimine hello **ancho de banda** atributo.
 
 ```xml
 <quota calls="number" renewal-period="seconds">
 </quota>
 ```
 
-En el producto Prueba gratuita, la cuota es de 200 llamadas por semana. Especifique **200** como el valor del atributo **calls** y **604800** como el valor de **renewal-period**.
+En el producto de evaluación gratuita de hello, cuota de hello es 200 llamadas por semana. Especifique **200** como valor de Hola de hello **llamadas** de atributo y, a continuación, especifique **604800** como valor de Hola de hello **período de renovación** atributo.
 
 ```xml
 <quota calls="200" renewal-period="604800">
 </quota>
 ```
 
-> Los intervalos de directiva se especifican en segundos. Para calcular el intervalo para una semana, puede multiplicar el número de días (7) por el número de horas de un día (24) por el número de minutos de una hora (60) por el número de segundos de un minuto (60): 7 * 24 * 60 * 60 = 604800.
+> Los intervalos de directiva se especifican en segundos. intervalo de saludo toocalculate durante una semana, puede multiplicar número Hola de días (7) mediante el número de horas en un día (24) por número de Hola de minutos durante una hora (60) mediante el número de segundos en un minuto (60) Hola Hola: 7 * 24 * 60 * 60 = 604800.
 > 
 > 
 
-Cuando haya terminado de configurar la directiva, debe coincidir con el siguiente ejemplo.
+Cuando haya terminado de configurar la directiva de hello, debe coincidir con el siguiente ejemplo de Hola.
 
 ```xml
 <policies>
@@ -192,27 +192,27 @@ Cuando haya terminado de configurar la directiva, debe coincidir con el siguient
 </policies>
 ```
 
-Una vez configuradas las directivas deseadas, haga clic en **Guardar**.
+Después de hello deseado se configuran las directivas, haga clic en **guardar**.
 
 ![Save policy][api-management-policy-save]
 
-## <a name="publish-product"> </a> Para publicar el producto
-Ahora que se agregaron las API y se configuraron las directivas, el producto debe publicarse para que los desarrolladores puedan usarlo. Haga clic en **Productos** en el menú **API Management** a la izquierda y luego haga clic en **Evaluación gratuita** para configurar el producto.
+## <a name="publish-product"></a> producto de hello toopublish
+Ahora que hello hello las API se agregan y se configuran las directivas de hello, producto Hola debe publicarse para que los desarrolladores pueden usar. Haga clic en **productos** de hello **administración de API** menú Hola izquierda y, a continuación, haga clic en **gratuita** producto de hello tooconfigure.
 
 ![Configure product][api-management-configure-product]
 
-Haga clic en **Publicar** y luego en **Sí, publicarlo** para confirmar la operación.
+Haga clic en **publicar**y, a continuación, haga clic en **Sí, publicarlo** tooconfirm.
 
 ![Publish product][api-management-publish-product]
 
-## <a name="subscribe-account"> </a>Suscripción de una cuenta de desarrollador al producto
-Ahora que el producto se ha publicado, estará disponible para suscribirse a él y que los desarrolladores lo usen.
+## <a name="subscribe-account"></a>toosubscribe un producto de toohello de cuenta de desarrollador
+Ahora se publica ese producto hello, es tooand toobe disponibles suscrito la usan los programadores.
 
-> Los administradores de una instancia de API Management se suscriben automáticamente a cada producto. En este paso del tutorial suscribiremos una de las cuentas de desarrollador que no es de administrador al producto Prueba gratuita. Si la cuenta de desarrollador es parte del rol Administradores, puede seguir con este paso aunque esté suscrito.
+> Los administradores de una instancia de la administración de API son producto tooevery automáticamente suscrito. En este paso del tutorial, se suscribirá uno de producto de evaluación gratuita de hello desarrollador sin privilegios de administrador cuentas toohello. Si la cuenta de desarrollador forma parte del rol de administradores de hello, después, puede seguir este paso, incluso si ya está suscrito.
 > 
 > 
 
-Haga clic en **Usuarios** en el menú **API Management** a la izquierda y haga clic en el nombre de su cuenta de desarrollador. En este ejemplo usamos la cuenta del desarrollador **Clayton Gragg** .
+Haga clic en **usuarios** en hello **administración de API** menú Hola izquierda y, a continuación, haga clic en nombre de saludo de la cuenta de desarrollador. En este ejemplo, estamos utilizando hello **Clayton Gragg** cuenta de desarrollador.
 
 ![Configure developer][api-management-configure-developer]
 
@@ -225,23 +225,23 @@ Seleccione **Evaluación gratuita** y, después, haga clic en **Suscribirse**.
 ![Agregar suscripción][api-management-add-subscription]
 
 > [!NOTE]
-> En este tutorial, no está habilitada la posibilidad de varias suscripciones simultáneas para el producto de evaluación gratuita. Si lo estuvieran, se le pediría que pusiera un nombre a la suscripción, tal como se muestra en el ejemplo siguiente.
+> En este tutorial, varias suscripciones simultáneas no están habilitadas para el producto de evaluación gratuita de Hola. Si se hubieran, sería tooname solicitadas Hola suscripción, como se muestra en el siguiente ejemplo de Hola.
 > 
 > 
 
 ![Agregar suscripción][api-management-add-subscription-multiple]
 
-Después de hacer clic **Suscribirse**, el producto aparece en la lista **Suscripción** del usuario.
+Después de hacer clic **suscribir**, producto Hola aparece en hello **suscripción** lista para el usuario de Hola.
 
 ![Subscription added][api-management-subscription-added]
 
-## <a name="test-rate-limit"> </a>Para llamar a una operación y prueba del límite de frecuencia
-Ahora que el producto Prueba gratuita está configurado y publicado, podemos llamar a algunas operaciones y probar la directiva de límite de tasa.
-Haga clic en **Portal para desarrolladores** en el menú superior derecho para cambiar al portal para desarrolladores.
+## <a name="test-rate-limit"></a>toocall un límite de velocidad de Hola de operación y prueba
+Ahora que hello producto de evaluación gratuita se configura y se publica, podemos llamar a algunas operaciones y probar la directiva de límite de velocidad de Hola.
+Portal para desarrolladores de conmutador toohello haciendo clic en **portal para desarrolladores de** en el menú de hello superior derecha.
 
 ![portal para desarrolladores][api-management-developer-portal-menu]
 
-Haga clic en **API** en el menú superior y, después, en **Echo API** (API Eco).
+Haga clic en **API** en Hola menú superior y, a continuación, haga clic en **API de eco**.
 
 ![portal para desarrolladores][api-management-developer-portal-api-menu]
 
@@ -249,29 +249,29 @@ Haga clic en **GET Resource** (Recurso GET) y, después, en **Pruébelo**.
 
 ![Open console][api-management-open-console]
 
-Mantenga los valores predeterminados de los parámetros y seleccione la clave de suscripción para el producto de evaluación gratuita.
+Mantener valores de parámetro de predeterminado de hello y, a continuación, seleccione la clave de suscripción para el producto de evaluación gratuita de Hola.
 
 ![Subscription key][api-management-select-key]
 
 > [!NOTE]
-> Si tiene varias suscripciones, asegúrese de seleccionar la clave para **Prueba gratuita**ya que, de lo contrario, las directivas configuradas en los pasos anteriores no entrarán en vigor.
+> Si tiene varias suscripciones, ser seguro de clave de Hola de tooselect para **gratuita**, o más directivas de Hola que se configuraron en pasos anteriores hello no estará en vigor.
 > 
 > 
 
-Haga clic en **Enviar**y vea la respuesta. Observe el **Estado de respuesta** de **200 OK**.
+Haga clic en **enviar**y, a continuación, ver la respuesta de Hola. Hola Nota **estado de respuesta** de **200 Aceptar**.
 
 ![Operation results][api-management-http-get-results]
 
-Haga clic en **Enviar** en una frecuencia mayor que la directiva del límite de frecuencia de 10 llamadas por minuto. Una vez superada la directiva del límite de frecuencia, se devolverá un estado de respuesta de **429 Too many Requests** .
+Haga clic en **enviar** a una velocidad mayor que la directiva de límite de velocidad de Hola de 10 llamadas por minuto. Después de que se supera la directiva de límite de velocidad de hello, el estado de respuesta **429 demasiado muchas solicitudes** se devuelve.
 
 ![Operation results][api-management-http-get-429]
 
-El valor de **Contenido de respuesta** indica el intervalo restante antes de que los reintentos sean correctos.
+Hola **contenido de la respuesta** indica Hola restantes intervalo antes de reintentos se realice correctamente.
 
-Cuando la directiva de límite de tasa de 10 llamadas por minuto se aplique, las llamadas posteriores no se podrán realizar hasta que transcurran 60 segundos desde la primera de las 10 llamadas correctas al producto antes de que se superara el límite de tasa. En este ejemplo, el intervalo restante es 54 segundos.
+Cuando la directiva de límite de velocidad de Hola de 10 llamadas por minuto está habilitada, las llamadas subsiguientes se producirá un error hasta que hayan transcurrido 60 segundos de hello primer de producto de toohello de hello 10 llamadas correctas antes de que se ha superado el límite de velocidad de Hola. En este ejemplo, hello restantes intervalo es 54 segundos.
 
-## <a name="next-steps"> </a>Pasos siguientes
-* Vea una demostración de la configuración de cuotas y límites de frecuencia en el siguiente vídeo.
+## <a name="next-steps"></a>Pasos siguientes
+* Vea una demostración de establecer límites de velocidad y las cuotas en hello después de vídeo.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 > 
@@ -304,24 +304,24 @@ Cuando la directiva de límite de tasa de 10 llamadas por minuto se aplique, las
 [api-management-subscription-added]: ./media/api-management-howto-product-with-rules/api-management-subscription-added.png
 [api-management-add-subscription-multiple]: ./media/api-management-howto-product-with-rules/api-management-add-subscription-multiple.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to add and publish a product]: api-management-howto-add-products.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How tooadd and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: ../api-management-monitoring.md
-[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Manage your first API in Azure API Management]: api-management-get-started.md
-[How to create and use groups in Azure API Management]: api-management-howto-create-groups.md
-[View subscribers to a product]: api-management-howto-add-products.md#view-subscribers
+[How toocreate and use groups in Azure API Management]: api-management-howto-create-groups.md
+[View subscribers tooa product]: api-management-howto-add-products.md#view-subscribers
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Next steps]: #next-steps
 
 [Create a product]: #create-product
 [Configure call rate limit and quota policies]: #policies
-[Add an API to the product]: #add-api
-[Publish the product]: #publish-product
-[Subscribe a developer account to the product]: #subscribe-account
-[Call an operation and test the rate limit]: #test-rate-limit
+[Add an API toohello product]: #add-api
+[Publish hello product]: #publish-product
+[Subscribe a developer account toohello product]: #subscribe-account
+[Call an operation and test hello rate limit]: #test-rate-limit
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota

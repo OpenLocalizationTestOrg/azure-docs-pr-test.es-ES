@@ -1,6 +1,6 @@
 ---
-title: "Administración de los grupos a los que pertenece un grupo en Azure Active Directory | Microsoft Docs"
-description: "Los grupos pueden contener otros grupos en Azure Active Directory. Aquí se muestra cómo administrar las pertenencias a grupos."
+title: grupos de hello aaaManage su grupo pertenece tooin Azure Active Directory | Documentos de Microsoft
+description: "Los grupos pueden contener otros grupos en Azure Active Directory. Le mostramos cómo toomanage esas pertenencias."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08e04a6590176c4084ca47b4bd6cbb22500eca2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0a0a1967084de0968e1e802559f9cdfd7ca6ae4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Administración de los grupos a los que pertenece un grupo en el inquilino de Azure Active Directory
-Los grupos pueden contener otros grupos en Azure Active Directory. Aquí se muestra cómo administrar las pertenencias a grupos.
+# <a name="manage-toowhich-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Administrar grupos de toowhich que pertenece un grupo en el inquilino de Azure Active Directory
+Los grupos pueden contener otros grupos en Azure Active Directory. Le mostramos cómo toomanage esas pertenencias.
 
-## <a name="how-do-i-find-the-groups-my-group-is-a-member-of"></a>¿Cómo puedo encontrar los grupos de los que es miembro mi grupo?
-1. Inicie sesión en [Azure Portal](https://portal.azure.com) con una cuenta que tenga el rol de administrador global en el directorio.
-2. Seleccione **Más servicios**, escriba **Usuarios y grupos** en el cuadro de texto y presione **Entrar**.
+## <a name="how-do-i-find-hello-groups-my-group-is-a-member-of"></a>¿Cómo se puede encontrar grupos de hello de que mi grupo es un miembro?
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+2. Seleccione **más servicios**, escriba **usuarios y grupos** en Hola cuadro de texto y, a continuación, seleccione **ENTRAR**.
 
    ![Apertura de Administración de usuarios](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
-3. En la hoja **Usuarios y grupos**, seleccione **Todos los grupos**.
+3. En hello **usuarios y grupos** hoja, seleccione **todos los grupos de**.
 
-   ![Apertura de la hoja Grupos](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
-4. En la hoja **Usuarios y grupos - Todos los grupos** seleccione un grupo.
-5. En la hoja **Grupo - *nombre del grupo*** seleccione **Pertenencia a grupos**.
+   ![Hoja de apertura Hola grupos](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
+4. En hello **a los usuarios y grupos: todos los grupos de** hoja, seleccione un grupo.
+5. En hello **grupo - *groupname***  hoja, seleccione **las pertenencias a grupos**.
 
-   ![Apertura de la hoja Pertenencia a grupos](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-6. Para agregar un grupo como miembro de otro grupo, en la hoja **Grupo - Pertenencia a grupos** seleccione el comando **Agregar** comando.
-7. Seleccione un grupo de la hoja **Seleccionar grupo** y, después, haga clic en el botón **Seleccionar** situado en la parte inferior de dicha hoja. Solo se pueden agregar grupos a otros grupos de uno en uno. El cuadro **Usuario** filtra la visualización en función de si coincide lo que ha escrito con cualquier parte del nombre de un usuario o dispositivo. No se aceptan caracteres comodín en el cuadro.
+   ![Hoja de pertenencia a grupo de apertura Hola](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
+6. tooadd el grupo como miembro de otro grupo, en hello **de grupo: las pertenencias a grupos** hoja, seleccione hello **agregar** comando.
+7. Seleccione un grupo de hello **Seleccionar grupo** hoja y, a continuación, seleccione hello **seleccione** situado en parte inferior de Hola de hoja de Hola. Puede agregar el grupo de una tooonly a la vez. Hola **usuario** cuadro filtra Hola presentación de acuerdo con la parte de un nombre de usuario o dispositivo tooany de entrada de búsqueda de coincidencias. No se aceptan caracteres comodín en el cuadro.
 
    ![Adición de una pertenencia a grupos](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
-8. Para quitar un grupo como miembro de otro grupo, en la hoja **Grupo - Pertenencia a grupos** , seleccione uno.
-9. En la hoja ***nombreDelGrupo***, seleccione el comando **Quitar** y confirme la elección en el símbolo del sistema.
+8. tooremove el grupo como miembro de otro grupo, en hello **de grupo: las pertenencias a grupos** hoja, seleccione un grupo.
+9. En hello ***groupname*** hoja, seleccione hello **quitar** comando y confirme su elección en el símbolo del sistema de Hola.
 
    ![Comando de eliminación de pertenencia a grupo](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
 10. Cuando termine de cambiar las pertenencias a grupos de su grupo, seleccione **Guardar**.

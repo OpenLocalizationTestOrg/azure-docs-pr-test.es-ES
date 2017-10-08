@@ -1,5 +1,5 @@
 ---
-title: "Usuarios con actividad de inicio de sesión erróneo."
+title: "aaaUsers con actividad de inicio de sesión anómalo"
 description: "Un informe que indica todas las cuentas de usuario respecto a las cuales se ha identificado la actividad de inicio de sesión anómala."
 services: active-directory
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-ms.openlocfilehash: acba4a4d3fa589aa1846f63883e5482e60605b70
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: efc9e21cfc3156b345a84da7527bf749af2b563c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="users-with-anomalous-sign-in-activity"></a>Usuarios con actividad de inicio de sesión erróneo.
-Se trata de un informe de agregado que combina los inicios de sesión sospechosos de los siguientes informes:
+Se trata de un informe de agregado que combina los inicios de sesión sospechosos desde Hola después de informes:
 
 <ul><li>Inicios de sesión desde orígenes desconocidos</li>
 <li>Inicios de sesión tras varios errores</li>

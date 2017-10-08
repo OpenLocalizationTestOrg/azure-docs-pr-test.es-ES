@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory Domain Services: Unión de una máquina virtual de Red Hat Enterprise Linux a un dominio administrado | Microsoft Docs"
-description: "Unión de una máquina virtual Red Hat Enterprise Linux a un dominio administrado de Azure AD"
+title: 'Azure Active Directory Domain Services: Unirse a un dominio administrado de RHEL VM tooa | Documentos de Microsoft'
+description: "Unir una máquina virtual de Red Hat Enterprise Linux tooAzure AD los servicios de dominio"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,131 +14,131 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 69f1850bfed90392e9a4695e2443ffaa6bfc746d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 41ca2aaf2eefbf9c403d2b834d61a1aa0943d950
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Unión de una máquina virtual de Red Hat Enterprise Linux 7 a un dominio administrado
-Este artículo muestra cómo unir una máquina virtual de Red Hat Enterprise Linux (RHEL) 7 a un dominio administrado con Servicios de dominio de Azure AD.
+# <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-tooa-managed-domain"></a>Unirse a un dominio administrado de Red Hat Enterprise Linux 7 máquina virtual tooa
+Este artículo muestra cómo toojoin una tooan de máquina virtual de Red Hat Enterprise Linux (RHEL) 7 Servicios de dominio de Azure AD administra el dominio.
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Aprovisionamiento de una máquina virtual de Red Hat Enterprise Linux
-Realice los pasos siguientes para aprovisionar una máquina virtual de RHEL 7 mediante el Portal de Azure.
+Realizar Hola después de la máquina virtual pasos tooprovision un RHEL 7 a través de hello portal de Azure.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 
     ![Panel de Portal de Azure](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-dashboard.png)
-2. Haga clic en **Nuevo** en el panel izquierdo y escriba **Red Hat** en la barra de búsqueda, como se muestra en la siguiente captura de pantalla. Las entradas para Red Hat Enterprise Linux en los resultados de búsqueda. Haga clic en **Red Hat Enterprise Linux 7.2**.
+2. Haga clic en **New** en hello dejado panel y escriba **Red Hat** en la barra de búsqueda de hello tal y como se muestra en la siguiente captura de pantalla de Hola. Las entradas para Red Hat Enterprise Linux aparezcan en resultados de la búsqueda de Hola. Haga clic en **Red Hat Enterprise Linux 7.2**.
 
     ![Seleccionar RHEL en resultados](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-find-rhel-image.png)
-3. En los resultados de búsqueda del panel **Todo** se debe mostrar la imagen de Red Hat Enterprise Linux 7.2. Haga clic en **Red Hat Enterprise Linux 7.2** para obtener más información sobre la imagen de la máquina virtual.
+3. resultados de búsqueda de Hello en hello **todo** panel debe enumerar imagen Hola Red Hat Enterprise Linux 7.2. Haga clic en **Red Hat Enterprise Linux 7.2** tooview obtener más información acerca de la imagen de máquina virtual de Hola.
 
     ![Seleccionar RHEL en resultados](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-select-rhel-image.png)
-4. En el panel **Red Hat Enterprise Linux 7.2** debería ver más información sobre la imagen de la máquina virtual. En el menú desplegable **Seleccionar un modelo de implementación**, seleccione **Clásico**. Después, haga clic en el botón **Crear** .
+4. Hola **Red Hat Enterprise Linux 7.2** panel, debería ver más información acerca de la imagen de máquina virtual de Hola. Hola **seleccionar un modelo de implementación** lista desplegable, seleccione **clásico**. A continuación, haga clic en hello **crear** botón.
 
     ![Ver detalles de la imagen](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-clicked.png)
-5. En la página **Aspectos básicos** del Asistente para **crear máquina virtual**, escriba el **nombre de host** para la nueva máquina virtual. Especifique también un nombre de usuario de administrador local en el campo **Nombre de usuario** y una **Contraseña**. También puede decidir utilizar una clave SSH para autenticar al usuario de administrador local. Seleccione también un **Plan de tarifa** para la máquina virtual.
+5. Hola **conceptos básicos de** página de hello **crear máquina virtual** asistente, escriba Hola **nombre de Host** para la máquina virtual nueva de Hola. Especificar un nombre de usuario de administrador local en hello **nombre de usuario** campo y un **contraseña**. También puede elegir toouse un usuario de administrador local de Hola de tooauthenticate clave SSH. Seleccionar una **tarifa** para la máquina virtual de Hola.
 
     ![Crear máquina virtual: página de aspectos básicos](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-basic-details.png)
-6. En la página **Tamaño** del Asistente para **crear máquina virtual**, seleccione el tamaño de la máquina virtual.
+6. Hola **tamaño** página de hello **crear máquina virtual** tamaño Hola asistente, seleccione para la máquina virtual de Hola.
 
     ![Crear máquina virtual: seleccionar tamaño](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-select-vm-size.png)
 
-7. En la página **Configuración** del Asistente para **crear máquina virtual**, seleccione la cuenta de almacenamiento para la máquina virtual. Haga clic en **Red virtual** para seleccionar la red virtual en la que se debe implementar la máquina virtual Linux. En la hoja **Red virtual**, seleccione la red virtual en la que Azure AD Domain Services estará disponible. En este ejemplo, se ha elegido la red virtual "MyPreviewVNet".
+7. Hola **configuración** página de hello **crear máquina virtual** cuenta de almacenamiento de saludo del asistente, seleccione para la máquina virtual de Hola. Haga clic en **red Virtual** tooselect Hola Hola de toowhich de red virtual se deben implementar la VM de Linux. Hola **red Virtual** hoja, red virtual seleccione hello en el que los servicios de dominio de Azure AD está disponible. En este ejemplo, hemos elegido red virtual de hello 'MyPreviewVNet'.
 
     ![Crear máquina virtual: seleccionar la red virtual](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-select-vnet.png)
-8. En la página **Resumen** del Asistente para **crear máquina virtual**, revise y haga clic en el botón **Aceptar**.
+8. En hello **resumen** página de hello **crear máquina virtual** Hola asistente, revise y haga clic en **Aceptar** botón.
 
     ![Crear máquina virtual: red virtual seleccionada](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-vnet-selected.png)
-9. Debe comenzar la implementación de la nueva máquina virtual basada en la imagen de RHEL 7.2.
+9. Debe iniciar la implementación de hello nueva máquina virtual basada en imagen de hello RHEL 7.2.
 
     ![Crear máquina virtual: implementación iniciada](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-deployment-started.png)
-10. Después de unos minutos, la máquina virtual se debe implementar correctamente y estar lista para su uso.
+10. Después de unos minutos, máquina virtual de hello debe ser implementada correctamente y está listo para su uso.
 
     ![Crear máquina virtual: implementado](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-deployed.png)
 
-## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Conexión remota a la máquina virtual de Linux recién aprovisionada
-Se ha aprovisionado la máquina virtual de RHEL 7.2 en Azure. La siguiente tarea es conectarse de forma remota a la máquina virtual.
+## <a name="connect-remotely-toohello-newly-provisioned-linux-virtual-machine"></a>Conectar la máquina virtual de Linux toohello recién aprovisionado de forma remota
+máquina virtual de Hello RHEL 7.2 se haya aprovisionado en Azure. Hola siguiente tarea es tooconnect de forma remota máquinas virtuales de toohello.
 
-**Conectarse a la máquina virtual de RHEL 7.2** Siga las instrucciones del artículo [Inicio de sesión en una máquina virtual con Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+**Conectar máquina virtual de toohello RHEL 7.2** siga las instrucciones de hello en el artículo hello [cómo toolog en la máquina virtual de tooa ejecutan Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-En el resto de los pasos se supone que usa el cliente de SSH PuTTY para conectarse a la máquina virtual de RHEL. Para más información, consulte la página [PuTTY Download Page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)(Página de descarga de PuTTY).
+resto de Hola de pasos de hello supongamos que se usa Hola PuTTY SSH cliente tooconnect toohello RHEL máquina virtual. Para obtener más información, vea hello [página de descargas de PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
-1. Abra el programa PuTTY.
-2. Escriba el **Nombre de host** para la máquina virtual de RHEL recién creada. En este ejemplo, la máquina virtual tiene el nombre de host "contoso rhel.cloudapp .net". Si no está seguro del nombre de host de su máquina virtual, consulte el panel de máquinas virtuales en el Portal de Azure.
+1. Abra Hola PuTTY programa.
+2. Escriba hello **nombre de Host** para hello recién creado la máquina virtual RHEL. En este ejemplo, de la máquina virtual tiene el nombre de host de hello 'contoso rhel.cloudapp .net'. Si no está seguro del nombre de host de saludo de la máquina virtual, consulte toohello panel de máquinas virtuales en hello portal de Azure.
 
     ![Conexión a PuTTY](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-connect.png)
-3. Inicie sesión en la máquina virtual con las credenciales de administrador local que ha especificado al crear la máquina virtual. En este ejemplo, se usa la cuenta de administrador local "mahesh".
+3. Inicie sesión en la máquina virtual de toohello con credenciales de administrador local de Hola que especificó cuando creó la máquina virtual de Hola. En este ejemplo, se utiliza la cuenta de administrador local de Hola "mahesh".
 
     ![Inicio de sesión de PuTTY](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-login.png)
 
-## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Instalación de los paquetes necesarios en la máquina virtual de Linux
-Después de conectarse a la máquina virtual, la siguiente tarea es instalar los paquetes necesarios para unir un dominio a la máquina virtual. Lleve a cabo los siguiente pasos:
+## <a name="install-required-packages-on-hello-linux-virtual-machine"></a>Instalar los paquetes necesarios en la máquina virtual de Linux de Hola
+Después de la máquina virtual en conexión toohello Hola siguiente tarea es paquetes tooinstall necesarios para unirse a un dominio en la máquina virtual de Hola. Lleve a cabo Hola pasos:
 
-1. **Instale realmd** : el paquete realmd se utiliza para unirse a un dominio. En el terminal PuTTY, escriba el comando siguiente:
+1. **Instalar realmd:** paquete de hello realmd se usa para unirse a un dominio. En el terminal PuTTY, escriba Hola siguiente comando:
 
     sudo yum install realmd
 
     ![Instalar realmd](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-realmd.png)
 
-    Después de unos minutos, el paquete realmd debe estar instalado en la máquina virtual.
+    Después de unos minutos, paquete de hello realmd debe se instala en la máquina virtual de Hola.
 
     ![realmd instalado](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-installed.png)
-2. **Instale sssd** : el paquete realmd depende de SSSD para realizar las operaciones de unión al dominio. En el terminal PuTTY, escriba el comando siguiente:
+2. **Instalar sssd:** hello realmd paquete dependiente sssd tooperform las operaciones de combinación de dominio. En el terminal PuTTY, escriba Hola siguiente comando:
 
     sudo yum install sssd
 
     ![Instalar sssd](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-sssd.png)
 
-    Después de unos minutos, el paquete sssd debe estar instalado en la máquina virtual.
+    Después de unos minutos, paquete de hello sssd debe se instala en la máquina virtual de Hola.
 
     ![realmd instalado](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-sssd-installed.png)
-3. **Instale Kerberos**: en el terminal PuTTY, escriba el comando siguiente:
+3. **Instalar kerberos:** de su terminal PuTTY, escriba Hola siguiente comando:
 
     sudo yum install krb5-workstation krb5-libs
 
     ![Instalar kerberos](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-kerberos.png)
 
-    Después de unos minutos, el paquete realmd debe estar instalado en la máquina virtual.
+    Después de unos minutos, paquete de hello realmd debe se instala en la máquina virtual de Hola.
 
     ![Kerberos instalado](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-kerberos-installed.png)
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Unión de la máquina virtual de Linux al dominio administrado
-Ahora que los paquetes necesarios están instalados en la máquina virtual de Linux, la siguiente tarea es unir la máquina virtual al dominio administrado.
+## <a name="join-hello-linux-virtual-machine-toohello-managed-domain"></a>Unirse a dominio administrado del toohello de máquina virtual Linux Hola
+Ahora que los paquetes de saludo necesario están instalados en la máquina virtual de Linux de hello, Hola siguiente tarea es dominio administrado del toohello toojoin Hola máquina virtual.
 
-1. Detecte el dominio administrado con Servicios de dominio de AAD. En el terminal PuTTY, escriba el comando siguiente:
+1. Detectar el dominio administrado de los servicios de dominio de AAD Hola. En el terminal PuTTY, escriba Hola siguiente comando:
 
     sudo realm discover CONTOSO100.COM
 
     ![realm discover](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-discover.png)
 
-    Si **realm discover** no puede encontrar el dominio administrado, asegúrese de que se puede acceder al dominio desde la máquina virtual (pruebe con ping). Asegúrese de que la máquina virtual se ha implementado realmente en la misma red virtual en la que el dominio administrado está disponible.
-2. Inicialice kerberos. En el terminal PuTTY, escriba el siguiente comando: Asegúrese de especificar un usuario que pertenezca al grupo "Administradores del controlador de dominio de AAD". Solo estos usuarios pueden unir equipos al dominio administrado.
+    Si **territorio detectar** es no se puede toofind el dominio administrado, asegúrese de ese dominio hello es accesible desde la máquina virtual de hello (try ping). Asegúrese también de que la máquina virtual Hola realmente ha sido implementado toohello misma red virtual en qué Hola dominio administrado está disponible.
+2. Inicialice kerberos. En el terminal PuTTY, escriba Hola siguiente comando. Asegúrese de especificar un usuario que pertenece el grupo toohello 'AAD DC administradores'. Solo estos usuarios pueden unirse a dominio administrado de equipos toohello.
 
     kinit bob@CONTOSO100.COM
 
     ![kinit ](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-kinit.png)
 
-    Asegúrese de especificar el nombre de dominio en mayúsculas o kinit generará un error.
-3. Una la máquina al dominio. En el terminal PuTTY, escriba el siguiente comando: Especifique el mismo usuario que ha especificado el paso anterior ("kinit").
+    Asegurarse de que se especifique el nombre de dominio de hello en letras mayúsculas, kinit else se produce un error.
+3. Unirse a dominio de hello máquina toohello. En el terminal PuTTY, escriba Hola siguiente comando. Especificar Hola mismo usuario que especificó en hello anterior paso ('kinit').
 
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
 
     ![Unión a dominio kerberos](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-join.png)
 
-Debe obtener un mensaje (Máquina inscrita correctamente en el dominio kerberos) cuando la máquina está unida correctamente al dominio administrado.
+Debe obtener un mensaje ("se inscribió correctamente máquina en el dominio Kerberos") cuando la máquina de hello es dominio administrado toohello se unió correctamente.
 
 ## <a name="verify-domain-join"></a>Verificación de la unión a un dominio
-Puede verificar rápidamente si el equipo se ha unido correctamente al dominio administrado. Conecte a la máquina virtual de RHEL recién unida al dominio con SSH y una cuenta de usuario del dominio y, después,compruebe si la cuenta de usuario se ha resuelto correctamente.
+Para comprobar rápidamente si máquina Hola ha sido el dominio administrado toohello se unió correctamente. Conectar toohello recién Unidos a un dominio RHEL VM con SSH y una cuenta de usuario de dominio y, a continuación, toosee de comprobación si la cuenta de usuario de Hola se resuelve correctamente.
 
-1. En el terminal PuTTY, escriba el comando siguiente para conectarse a la nueva máquina virtual de RHEL recién unida al dominio con SSH. Use una cuenta de dominio que pertenezca al dominio administrado (por ejemplo, "bob@CONTOSO100.COM" en este caso).
+1. En el terminal, PuTTY Hola de tipo siguientes comando tooconnect toohello recién Unidos RHEL virtual máquina mediante SSH a un dominio. Usar una cuenta de dominio que pertenece el dominio administrado toohello (por ejemplo, 'bob@CONTOSO100.COM' en este caso.)
 
     ssh -l bob@CONTOSO100.COM contoso-rhel.cloudapp.net
-2. En el terminal PuTTY, escriba el comando siguiente para ver si el directorio principal se ha inicializado correctamente.
+2. En el terminal PuTTY, escriba Hola después toosee comando si el directorio particular de Hola se inicializó correctamente.
 
     pwd
-3. En el terminal PuTTY, escriba el comando siguiente para ver si los miembros del grupo se está resolviendo correctamente.
+3. En el terminal PuTTY, escriba Hola después toosee comando si se están resolviendo las pertenencias a grupos de hello correctamente.
 
     id
 
@@ -147,11 +147,11 @@ Este es un ejemplo de los resultados de estos comandos:
 ![Verificación de la unión a un dominio](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-verify-domain-join.png)
 
 ## <a name="troubleshooting-domain-join"></a>Solución de problemas de unión al dominio
-Consulte el artículo [Solución de problemas de unión al dominio](active-directory-ds-admin-guide-join-windows-vm.md#troubleshooting-domain-join) .
+Consulte toohello [unión al dominio de solución de problemas](active-directory-ds-admin-guide-join-windows-vm.md#troubleshooting-domain-join) artículo.
 
 ## <a name="related-content"></a>Contenido relacionado
 * [Introducción a Azure AD Domain Services](active-directory-ds-getting-started.md)
-* [Unión de una máquina virtual de Windows Server a un dominio administrado](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Inicio de sesión en una máquina virtual con Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* [Unirse a un dominio administrado de Windows Server máquina virtual tooan servicios de dominio de AD de Azure](active-directory-ds-admin-guide-join-windows-vm.md)
+* [¿Cómo toolog en la máquina virtual de tooa ejecutan Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * [Installing Kerberos (Instalación de Kerberos)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
 * [Red Hat Enterprise Linux 7 - Windows Integration Guide (Red Hat Enterprise Linux 7: guía de integración de Windows)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)

@@ -1,5 +1,5 @@
 ---
-title: "Escalado de una aplicación en un entorno del Servicio de aplicaciones"
+title: "aaaHow tooScale una aplicación en un entorno de servicio de aplicaciones"
 description: "Escalado de una aplicación en un entorno del Servicio de aplicaciones"
 services: app-service
 documentationcenter: 
@@ -14,59 +14,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-ms.openlocfilehash: 240c2486c23b7cd84e2471bf5b2170e08ee1f150
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 08916eac056c46bf8cb6edffbf96285317b32062
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>Escalado de aplicaciones en un entorno del Servicio de aplicaciones
-En el Servicio de aplicaciones de Azure hay normalmente tres cosas que puede escalar:
+Hola servicio de aplicaciones de Azure hay puede escalar normalmente tres cosas:
 
 * plan de precios
 * tamaño de trabajo 
 * número de instancias.
 
-En un entorno del Servicio de aplicaciones no es necesario seleccionar o cambiar el plan de precios.  En términos de capacidades ya está en un nivel de capacidad de precios Premium.  
+En un ASE no hay ninguna necesidad de tooselect o cambiar Hola plan de precios.  En términos de capacidades ya está en un nivel de capacidad de precios Premium.  
 
-Con respecto a los tamaños de trabajo, el administrador de ASE puede asignar el tamaño del recurso de proceso para que lo use cada grupo de trabajo.  Eso significa que puede tener el grupo de trabajo 1 con recursos de proceso P4 y el grupo de trabajo 2 con recursos de proceso P1, si lo desea.  No tienen que estar en orden de tamaño.  Para información sobre los tamaños y los precios consulte el documento [Precios de Azure App Service][AppServicePricing].  Esto deja las opciones de escalado para aplicaciones web y planes del Servicio de aplicaciones en un entorno del Servicio de aplicaciones para que sean:
+Con sentido tooworker tamaños, Hola, administrador ASE puede asignar tamaño Hola de toobe de recursos de proceso de hello utilizado para cada grupo de trabajo.  Eso significa que puede tener el grupo de trabajo 1 con recursos de proceso P4 y el grupo de trabajo 2 con recursos de proceso P1, si lo desea.  No tiene toobe en orden de tamaño.  Para obtener detalles sobre tamaños de Hola y su plan de tarifa vea aquí el documento de hello [tarifas de servicio de aplicación de Azure][AppServicePricing].  Esto deja Hola desarrollo para aplicaciones web y planes de servicio de aplicación en un entorno de servicio de aplicaciones toobe:
 
 * selección de grupo de trabajo
 * número de instancias
 
-El cambio de cualquier elemento se realiza a través de la IU adecuada mostrada con sus planes del Servicio de aplicaciones hospedados en el ASE.  
+Cambiar cualquiera de los elementos se realiza a través de hello adecuados se muestra su ASE hospedados planes de servicio de aplicación de la interfaz de usuario.  
 
 ![][1]
 
-No podrá escalar verticalmente el plan del Servicio de aplicaciones por encima de la cantidad de recursos de proceso disponibles en el grupo de trabajo en el que se encuentra dicho plan.  Si necesita recursos de proceso de ese grupo de trabajo, tendrá que obtener el administrador de ASE para agregarlos.  Para información sobre la reconfiguración de ASE, lea esta información: [Configuración de una instancia de App Service Environment][HowtoConfigureASE].  Puede que también quiera aprovechar las características de escalado automático de ASE para agregar capacidad en función de una programación o unas métricas.  Para más detalles sobre la configuración del escalado automático para el propio entorno de ASE, consulte [Escalado automático y App Service Environment][ASEAutoscale].
+No se puede escalar más allá de número de Hola de recursos de proceso disponibles en el grupo de trabajo de Hola que ASP se encuentra en la página ASP.  Si se necesitan recursos de proceso de ese grupo de trabajo debe tooget su tooadd de administrador ASE ellos.  Para obtener información alrededor de volver a configurar su ASE lea información Hola aquí: [cómo tooConfigure un entorno de servicio de aplicaciones][HowtoConfigureASE].  También puede tootake aprovechar Hola ASE de escalado automático características tooadd capacidad basada en programación o las métricas.  tooget vea más detalles sobre la configuración de escalado automático para el propio entorno Hola ASE [cómo tooconfigure Autoescala para un entorno de servicio de aplicaciones][ASEAutoscale].
 
-Puede crear varios planes de servicio de aplicaciones mediante recursos de proceso de distintos grupos de trabajo, o bien puede utilizar el mismo grupo de trabajo.  Por ejemplo, si cuenta con 10 recursos de proceso disponibles en el grupo de trabajo 1, puede optar por crear un plan de servicio de aplicaciones utilizando 6 de estos recursos, así como un segundo plan que emplee los 4 restantes.
+Puede crear aplicaciones de varios planes de servicio mediante los recursos de proceso de los grupos de trabajo diferente, o puede usar Hola el mismo grupo de trabajo.  Por ejemplo si tiene (10) de los recursos de proceso disponibles en el trabajo del grupo 1, puede elegir toocreate plan de servicio de una aplicación con recursos de proceso (6) y planificar un segundo servicio de aplicación que utiliza (4) de los recursos de proceso.
 
-### <a name="scaling-the-number-of-instances"></a>Escalado del número de instancias
-Cuando cree su aplicación web por primera vez en un Entorno del Servicio de aplicaciones, comenzará con una instancia.  Después, puede escalar horizontalmente instancias adicionales para conferir más recursos de proceso a la aplicación.   
+### <a name="scaling-hello-number-of-instances"></a>Número de hello escalado de instancias
+Cuando cree su aplicación web por primera vez en un Entorno del Servicio de aplicaciones, comenzará con una instancia.  También puede, a continuación, recursos de la aplicación de proceso de escalado horizontal tooadditional instancias tooprovide adicional.   
 
-Si su ASE tiene suficiente capacidad, entonces esto es bastante sencillo.  Vaya a su plan del Servicio de aplicaciones que contiene los sitios que desea escalar verticalmente y seleccione Escalar.  Se abre la interfaz de usuario, donde puede establecer manualmente la escala del ASP o configurar reglas de escalado automático para este.  Para escalar manualmente la aplicación, simplemente establezca ***Escalar por*** en ***un recuento de instancias que escribe manualmente***.  Desde aquí, arrastre el control deslizante a la cantidad deseada o escríbala en el cuadro situado junto a él.  
+Si su ASE tiene suficiente capacidad, entonces esto es bastante sencillo.  Vaya tooyour Plan de servicio de aplicaciones que contiene sitios de Hola que desee tooscale seguridad y seleccione escala.  Se abrirá Hola donde puede establecer la escala de hello para la página ASP o configurar reglas de escalado automático para la página ASP manualmente la interfaz de usuario.  basta con establece la aplicación de escala de toomanually ***escalar*** demasiado***un recuento de instancias que especifique manualmente***.  Desde aquí arrastre quantity de toohello deseado del control deslizante de Hola o escríbalo en el regulador de hello cuadro siguiente toohello.  
 
 ![][2] 
 
-Las reglas de escalado automático de un ASP en un ASE funcionan igual que lo hacen normalmente.  Puede seleccionar ***Porcentaje de CPU*** en ***Escalar por*** y crear reglas de escalado automático para el ASP según el porcentaje de CPU, o puede crear reglas más complejas con ***reglas de programación y rendimiento***.  Para ver más detalles sobre la configuración del escalado automático, use la guía de [escalado de aplicaciones en Azure App Service][AppScale]. 
+reglas de escalado automático de Hola para un ASP en un trabajo de ASE Hola igual a como lo hacen normalmente.  Puede seleccionar ***Porcentaje de CPU*** en ***Escalar por*** y crear reglas de escalado automático para el ASP según el porcentaje de CPU, o puede crear reglas más complejas con ***reglas de programación y rendimiento***.  toosee completar más detalles sobre cómo configurar la Guía de Hola de uso de escalado automático aquí [escalar una aplicación de servicio de aplicaciones de Azure][AppScale]. 
 
 ### <a name="worker-pool-selection"></a>selección de grupo de trabajo
-Como se indicó anteriormente, a la selección del grupo de trabajo se accede desde la interfaz de usuario de ASP.  Abra la hoja del ASP que quiera escalar y seleccione un grupo de trabajo.  Verá todos los grupos de trabajo que ha configurado en el entorno del Servicio de aplicaciones.  Si solamente tiene un grupo de trabajo, solo se mostrará ese grupo en la lista.  Para cambiar el grupo de trabajo en el que se encuentra el ASP, simplemente seleccione el grupo de trabajo al que quiere mover su plan del Servicio de aplicaciones.  
+Como se indicó anteriormente, selección de grupo de trabajo de Hola se accede desde Hola interfaz de usuario de ASP.  Abrir la hoja de Hola para hello ASP que desee tooscale y seleccione el grupo de trabajo.  Verá todos los grupos de trabajo de Hola que configuró en el entorno de servicio de aplicaciones.  Si tienes un grupo de trabajo solo una, a continuación, solo verá un grupo de hello enumerado.  toochange qué trabajo bloque ASP está en, basta con seleccionar grupo de trabajo de hello desea que su toomove al Plan de servicio de aplicaciones.  
 
 ![][3]
 
-Antes de mover el ASP de un grupo de trabajo a otro, es importante asegurarse de que tendrá la capacidad adecuada para él.  En la lista de grupos de trabajo, no solo se muestra el nombre del grupo de trabajo, sino que también puede ver cuántos trabajos están disponibles en ese grupo de trabajo.  Asegúrese de que hay suficientes instancias disponibles para contener su plan de Servicio de aplicaciones.  Si necesita más recursos de proceso en el grupo de trabajo al que desea moverse, tendrá que agregarlos a través del administrador de ASE.  
+Antes de mover la página ASP de tooanother de grupo de uno trabajo es importante toomake seguro de que tendrá la capacidad adecuada para la página ASP.  En lista de Hola de grupos de trabajo, no solo se muestra el nombre del grupo de trabajo de hello pero también puede ver el número de trabajadores están disponibles en ese grupo de trabajo.  Asegúrese de que hay suficiente toocontain disponibles instancias su Plan de servicio de aplicaciones.  Si se necesitan más recursos de proceso en el grupo de trabajo de hello desea toomove para, a continuación, obtener su tooadd de administrador ASE ellos.  
 
 > [!NOTE]
-> Si se mueve un ASP de un grupo de trabajo, se provocarán arranques en frío de las aplicaciones de ese ASP.  Esto puede provocar que las solicitudes se ejecuten lentamente, ya que la aplicación se ha arrancado en frío en los nuevos recursos de proceso.  El arranque en frío se evita con la [funcionalidad de preparación de aplicaciones][AppWarmup] de Azure App Service.  El módulo de inicialización de aplicaciones descrito en el artículo también funciona para los arranques frío, porque el proceso de inicialización también se invoca cuando las aplicaciones se arrancan en frío en los nuevos recursos de proceso. 
+> Mover que un ASP de grupo de uno trabajo provocará frío inicia de aplicaciones de hello en que ASP.  Esto puede causar solicitudes toorun lenta como la aplicación está fría iniciado en recursos de proceso nuevo Hola.  Hello arranque en frío se puede evitar mediante el uso de hello [aplicación activa la capacidad de] [ AppWarmup] en el servicio de aplicación de Azure.  módulo de inicialización de la aplicación Hello descrita en el artículo hello también funciona para arranques en frío porque el proceso de inicialización de hello también se invoca cuando las aplicaciones están inactivas iniciado en nuevos recursos de proceso. 
 > 
 > 
 
 ## <a name="getting-started"></a>Introducción
-Para empezar a trabajar con los entornos de App Service, consulte el artículo sobre [creación de un entorno de App Service][HowtoCreateASE].
+tooget iniciado con el entorno de servicio de aplicación, vea [cómo tooCreate un entorno de servicio de aplicaciones][HowtoCreateASE]
 
-Para obtener más información sobre la plataforma Azure App Service, consulte [Azure App Service][AzureAppService].
+Para obtener más información acerca de la plataforma de servicio de aplicaciones de Azure de hello, consulte [servicio de aplicaciones de Azure][AzureAppService].
 
 <!--Image references-->
 [1]: ./media/app-service-web-scale-a-web-app-in-an-app-service-environment/aseappscale-aspblade.png

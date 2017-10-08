@@ -1,6 +1,6 @@
 ---
-title: Latencias de informes de Azure Active Directory | Microsoft Docs
-description: Cantidad de tiempo necesaria para que los eventos de informes aparezcan en su directorio de Azure Active Directory
+title: aaaAzure latencias de informes de Active Directory | Documentos de Microsoft
+description: Cantidad de tiempo que tarda informando eventos tooshow en Azure Active Directory
 services: active-directory
 documentationcenter: 
 author: dhanyahk
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: dhanyahk;markvi
-ms.openlocfilehash: 9443a00232420d58dea52ed01f31a4ef964a1620
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 14367d21dfb28359f991037cc924d416420be456
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-report-latencies"></a>Latencias de informes de Azure Active Directory
-*Esta documentación forma parte de la [guía de informes de Azure Active Directory](active-directory-reporting-guide.md).*
+*Esta documentación forma parte del programa Hola a [Azure Active Directory Reporting guía](active-directory-reporting-guide.md).*
 
 | Informe | Mínima | Media | Máxima |
 | --- | --- | --- | --- |

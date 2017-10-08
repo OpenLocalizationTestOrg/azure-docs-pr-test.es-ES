@@ -1,5 +1,5 @@
 ---
-title: "Administración de nombres de dominio personalizados en Azure Active Directory | Microsoft Docs"
+title: nombres de dominio personalizado de aaaManaging en Azure Active Directory | Documentos de Microsoft
 description: "Conceptos y procedimientos de administración de un dominio personalizado en Azure Active Directory"
 services: active-directory
 documentationcenter: 
@@ -16,63 +16,63 @@ ms.date: 07/26/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: 5ae19bb370064de96cf466ca09b13d02563d65a4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4b6d06fecf3be0621be51c38a1330eafdc1b4d35
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Administración de los nombres de dominio personalizados en Azure Active Directory
 Un nombre de dominio puede ser un identificador importante para muchos recursos de directorio, como parte de:
 
 * Un nombre de usuario o una dirección de correo electrónico de un usuario
-* La dirección de un grupo
-* El identificador URI del id. de aplicación para una aplicación
+* dirección de Hola para un grupo
+* URI del Id. de aplicación de Hello para una aplicación
 
-Un recurso en Azure Active Directory (Azure AD) puede incluir un nombre de dominio cuya pertenencia al directorio que contiene el recurso ya se haya verificado. Solo los administradores globales pueden realizar tareas de administración de Azure AD.
+Un recurso en Azure Active Directory (Azure AD) puede incluir un nombre de dominio que ya se comprobó toobe propiedad de directorio de Hola que contiene recursos de Hola. Solo los administradores globales pueden realizar tareas de administración de Azure AD.
 
 > [!IMPORTANT]
-> Microsoft recomienda administrar Azure AD con el [Centro de administración de Azure AD](https://aad.portal.azure.com) en Azure Portal en lugar de usar el portal de Azure clásico al que se hace referencia en este artículo. Para saber cómo administrar los nombres de dominio en el centro de administración de Azure AD, consulte [Administración de los nombres de dominio personalizados en Azure Active Directory](active-directory-domains-manage-azure-portal.md).
+> Microsoft recomienda que administrar Azure AD utilizando hello [centro de administración de Azure AD](https://aad.portal.azure.com) Hola portal de Azure en lugar de usar Hola portal de Azure clásico que se hace referencia en este artículo. Para cómo toomanage los nombres de dominio en el centro de administración de hello Azure AD, consulte [administrar nombres de dominio personalizado en Azure Active Directory](active-directory-domains-manage-azure-portal.md).
 
-## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Establecimiento del nombre de dominio principal para su directorio de Azure AD
-Cuando se crea el directorio, el nombre de dominio inicial, por ejemplo, "contoso.onmicrosoft.com", también es el nombre de dominio principal para el directorio. El dominio principal es el nombre de dominio predeterminado para un nuevo usuario cuando se crea un nuevo usuario en el [Portal de Azure clásico](https://manage.windowsazure.com/)o en otros portales, como el portal de administración de Office 365. Esto simplifica el proceso para que un administrador cree usuarios nuevos en el portal.
+## <a name="set-hello-primary-domain-name-for-your-azure-ad-directory"></a>Establecer el nombre de dominio principal de Hola para su directorio Azure AD
+Cuando se crea el directorio, el nombre de dominio inicial de hello, por ejemplo, "contoso.onmicrosoft.com", también es nombre de dominio principal de hello para el directorio. dominio principal de Hello es el nombre de dominio de predeterminado de Hola para un nuevo usuario cuando se crea un nuevo usuario en hello [portal de Azure clásico](https://manage.windowsazure.com/), otros portales como portal de administración de Office 365 Hola o. Esto simplifica el proceso de Hola para un administrador toocreate nuevos usuarios portal Hola.
 
-Para cambiar el nombre de dominio principal para el directorio:
+nombre de dominio principal de toochange hello para el directorio:
 
-1. Inicie sesión en el [Portal de Azure clásico](https://manage.windowsazure.com/) con una cuenta de usuario que sea administrador global de su directorio de Azure AD.
-2. Seleccione **Active Directory** en la barra de navegación de la izquierda.
+1. Inicie sesión en toohello [portal de Azure clásico](https://manage.windowsazure.com/) con una cuenta de usuario que sea un administrador global de su directorio Azure AD.
+2. Seleccione **Active Directory** en la barra de navegación izquierda de Hola.
 3. Abra el directorio.
-4. Seleccione la pestaña **Dominios** .
-5. Seleccione el botón **Cambiar principal** en la barra de comandos.
-6. Seleccione el dominio que desea convertir en el nuevo dominio principal para el directorio.
+4. Seleccione hello **dominios** ficha.
+5. Seleccione hello **cambio principal** botón de barra de comandos de Hola.
+6. Seleccione dominio Hola que quiere toobe Hola nueva principal del dominio de su directorio.
 
-Puede cambiar el nombre de dominio principal para el directorio de modo que sea cualquier dominio personalizado comprobado que no esté federado. El hecho de cambiar el dominio principal para el directorio no cambiará los nombres de usuario existentes.
+Puede cambiar el nombre de dominio principal de hello para el directorio toobe cualquier dominio personalizado comprobado que no es federada. Cambiar dominio principal de hello para el directorio no cambiará los nombres de usuario de Hola para todos los usuarios existentes.
 
-## <a name="add-custom-domain-names-to-your-azure-ad"></a>Adición de dominios personalizados a Azure AD
-Puede agregar hasta 900 nombres de dominio personalizado a cada directorio de Azure AD. El proceso de [agregar un nombre de dominio personalizado adicional](active-directory-add-domain.md) es igual para el primer nombre de dominio personalizado.
+## <a name="add-custom-domain-names-tooyour-azure-ad"></a>Agregar nombres de dominio personalizado tooyour Azure AD
+Puede sumar el directorio de Azure AD de tooeach de nombres de dominio personalizado de too900. Hola proceso demasiado[agregar un nombre de dominio personalizados adicionales](active-directory-add-domain.md) Hola mismo para el primer nombre de dominio personalizado Hola.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Adición de subdominios de un dominio personalizado
-Si desea agregar un nombre de dominio de tercer nivel, como "europe.contoso.com", a su directorio, primero debe agregar y comprobar el dominio de segundo nivel, como contoso.com. Azure AD comprobará automáticamente el subdominio. Para ver que se ha comprobado el subdominio que acaba de agregar, actualice la página del explorador que muestra los dominios en el directorio.
+Si desea que tooadd un nombre de dominio de tercer nivel, como 'europe.contoso.com' tooyour directory, primero debe agregar y comprobar el dominio de segundo nivel de hello, por ejemplo, contoso.com. subdominio Hola se comprobarán automáticamente por Azure AD. se ha comprobado toosee que Hola subdominio que acaba de agregar, página de actualización de hello en el Explorador de Hola que enumera los dominios de hello en el directorio.
 
-## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Qué hacer si se cambia el registrador DNS del nombre de dominio personalizado
-Si solo cambia el registrador DNS para el nombre de dominio personalizado, puede continuar usando el nombre de dominio personalizado con el propio Azure AD sin interrupción y sin tareas de configuración adicionales. Si usa el nombre de dominio personalizado con Office 365, Intune u otros servicios que dependan de los nombres de dominio personalizados en Azure AD, consulte la documentación de dichos servicios.
+## <a name="what-toodo-if-you-change-hello-dns-registrar-for-your-custom-domain-name"></a>¿Qué toodo si cambia el registrador de DNS de hello para el nombre de dominio personalizado
+Si cambia el registrador de DNS de hello para el nombre de dominio personalizado, puede continuar toouse nombre de dominio personalizado con Azure AD sin interrupción y sin tareas de configuración adicionales. Si usa el nombre de dominio personalizado con Office 365, Intune u otros servicios que se basan en nombres de dominio personalizado en Azure AD, consulte la documentación de toohello para esos servicios.
 
 ## <a name="delete-a-custom-domain-name"></a>Eliminación de un nombre de dominio personalizado
-Puede eliminar un nombre de dominio personalizado de Azure AD si su organización ya no utiliza ese nombre de dominio o si necesita utilizar ese nombre de dominio con otro Azure AD.
+Puede eliminar un nombre de dominio personalizado de Azure AD si su organización ya no utiliza ese nombre de dominio, o si necesita toouse ese nombre de dominio con otro Azure AD.
 
-Para eliminar un nombre de dominio personalizado, primero debe asegurarse de que no haya recursos en el directorio que se basen en el nombre de dominio. No puede eliminar un nombre de dominio de su directorio si:
+toodelete un nombre de dominio personalizado, primero debe asegurarse de que no hay recursos en el directorio se basan en nombre de dominio de Hola. No puede eliminar un nombre de dominio de su directorio si:
 
-* Algún usuario tiene un nombre de usuario, una dirección de correo electrónico o una dirección de proxy que incluyan el nombre de dominio.
-* Algún grupo tiene una dirección de correo electrónico o una dirección de proxy que incluya el nombre de dominio.
-* Alguna aplicación en Azure AD tiene un URI de identificador de aplicación que incluya el nombre de dominio.
+* Cualquier usuario tiene un nombre de usuario, la dirección de correo electrónico o la dirección de proxy que incluyen el nombre de dominio de Hola.
+* Cualquier grupo tiene una dirección de correo electrónico o la dirección de proxy que incluye el nombre de dominio de Hola.
+* Cualquier aplicación en Azure AD tiene una identificador URI que incluye el nombre de dominio de Hola de aplicación.
 
-Debe cambiar o eliminar dichos recursos en su directorio Azure AD para poder eliminar el nombre de dominio personalizado.
+Debe cambiar o eliminar dichos recursos en su directorio Azure AD antes de poder eliminar el nombre de dominio personalizado de Hola.
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Utilización de PowerShell o API Graph para administrar nombres de dominio
+## <a name="use-powershell-or-graph-api-toomanage-domain-names"></a>Usar nombres de dominio toomanage PowerShell o API Graph
 También se pueden completar la mayoría de las tareas de administración para los nombres de dominio de Azure Active Directory mediante Microsoft PowerShell, o mediante programación utilizando la API de Azure Graph.
 
-* [Utilización de PowerShell para administrar los nombres de dominio en Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
-* [Using Graph API to manage domain names in Azure AD (Uso de la API Graph para administrar nombres de dominio en Azure AD)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [Usar nombres de dominio de toomanage de PowerShell de Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
+* [Usar nombres de dominio de toomanage de API Graph de Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Obtenga más información acerca de los nombres de dominio en Azure AD](active-directory-add-domain-concepts.md)

@@ -1,6 +1,6 @@
 ---
-title: Procedimiento para configurar una instancia de App Service Environment v1
-description: "Configuración, administración y supervisión de App Service Environment v1"
+title: aaaHow tooConfigure v1 de un entorno de servicio de aplicaciones
+description: "Configuración, administración y supervisión de hello v1 de entorno del servicio de aplicaciones"
 services: app-service
 documentationcenter: 
 author: ccompy
@@ -14,186 +14,186 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: ae99f5a412f73cddc28543ba12c66c82f1a7835a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f9539a72517276d8a1e340a408841561e8b8f56d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Configuración de una instancia de App Service Environment v1
 
 > [!NOTE]
-> Este artículo trata sobre App Service Environment v1.  Hay una versión más reciente de App Service Environment que resulta más fácil de usar y se ejecuta en una infraestructura más eficaz. Para aprender más sobre la nueva versión, consulte [Introducción a App Service Environment](../app-service/app-service-environment/intro.md).
+> Este artículo trata sobre Hola v1 de entorno del servicio de aplicaciones.  Hay una versión más reciente de hello entorno del servicio de aplicación que es más fácil toouse y se ejecuta en una infraestructura más eficaz. toolearn más información acerca de la nueva versión de hello iniciar con hello [toohello Introducción entono](../app-service/app-service-environment/intro.md).
 > 
 
 ## <a name="overview"></a>Información general
 A grandes rasgos, un entorno de Azure App Service Environment consta de varios componentes principales:
 
-* Los recursos de proceso que se ejecutan en el servicio hospedado del entorno del Servicio de aplicaciones
-* Almacenamiento
+* Recursos de proceso que se ejecutan en el entorno del servicio de aplicación Hola servicio hospedado
+* Storage
 * Una base de datos
 * Una Red virtual de Azure (VNet) implementada según el modelo clásico (V1) o según el modelo de Resource Manager (V2) 
-* Una subred con el servicio hospedado del entorno del Servicio de aplicaciones que se ejecuta en él
+* Una subred con el servicio de entorno del servicio de aplicaciones hospedadas de hello en ella se está ejecutando
 
 ### <a name="compute-resources"></a>Recursos de proceso
-Utilice los recursos de proceso para los cuatro grupos de recursos.  Cada entorno del Servicio de aplicaciones (ASE) tiene un conjunto de servidores front-end y tres posibles grupos de trabajo. No es necesario usar los tres grupos de trabajo y, si lo desea, puede usar solo uno o dos.
+Usar recursos de proceso de hello los cuatro grupos de recursos.  Cada entorno del Servicio de aplicaciones (ASE) tiene un conjunto de servidores front-end y tres posibles grupos de trabajo. No es necesario toouse todos los grupos de trabajo tres--si lo desea, puede utilizar uno o dos.
 
-Los host de los grupos de recursos, los servidores front-end y los trabajos no son accesibles directamente para los inquilinos. No se puede usar el protocolo de escritorio remoto (RDP) para conectarse a ellos, cambiar su aprovisionamiento o actuar como un administrador en ellos.
+hosts de Hello en grupos de recursos de hello (front-end y los trabajadores) no son directamente accesibles tootenants. No se puede usar el protocolo de escritorio remoto (RDP) tooconnect toothem, cambiar su aprovisionamiento o actuar como un administrador en ellos.
 
 Puede establecer el tamaño y la cantidad de grupos de recursos. En un ASE tiene cuatro opciones de tamaño cuyos nombres van de P1 a P4. Para obtener detalles sobre los tamaños y sus precios, consulte [Precios de Servicio de aplicaciones](../app-service/app-service-value-prop-what-is.md).
-Cambiar el tamaño o la cantidad se llama operación de escalado.  Solo puede haber una operación de escalado en curso en un momento determinado.
+Cambiar la cantidad de Hola o tamaño se llama a una operación de escala.  Solo puede haber una operación de escalado en curso en un momento determinado.
 
-**Front-ends**: Los servidores front-end son los puntos de conexión HTTP/HTTPS para las aplicaciones que se mantienen en el ASE. No se ejecutan cargas de trabajo en los servidores front-end.
+**Front-end**: servidores front-end de hello es puntos de conexión de hello HTTP/HTTPS para las aplicaciones que se mantienen en su ASE. No ejecutar cargas de trabajo en hello servidores front-end.
 
-* Un ASE comienza con dos P2, lo cual es suficiente para cargas de trabajo de desarrollo y pruebas y cargas de trabajo de producción de bajo nivel. Es muy recomendable que utilice los P3 para cargas de trabajo de producción de moderadas a intensas.
-* Para las cargas de trabajo de moderadas a intensas, se recomienda contar con al menos cuatro P3 para garantizar que haya suficientes servidores front-end en ejecución cuando se produzca el mantenimiento programado. Las actividades de mantenimiento programado desactivan un front-end cada vez. Esto reduce la capacidad global de los servidores front-end disponibles durante las actividades de mantenimiento.
-* Los servidores front-end pueden tardar hasta una hora en aprovisionarse. 
-* Para afinar más en el escalado, debe supervisar el porcentaje de CPU, el porcentaje de memoria y las métricas de solicitudes activas para el grupo de servidores front-end. Si los porcentajes de CPU o memoria están por encima del 70 % cuando se ejecutan los P3, agregue más servidores front-end. Si los valores de solicitudes activas están en promedio entre 15 000 y 20 000 solicitudes por front-end, debe agregar también más servidores front-end. El objetivo general es mantener los porcentajes de CPU y memoria por debajo del 70 % y el promedio de solicitudes activas por debajo de 15 000 solicitudes por front-end al ejecutar P3.  
+* Un ASE comienza con dos P2, lo cual es suficiente para cargas de trabajo de desarrollo y pruebas y cargas de trabajo de producción de bajo nivel. Se recomienda encarecidamente P3s para tooheavy moderado las cargas de trabajo de producción.
+* Tooheavy moderado cargas de trabajo de producción, se recomienda que haya al menos cuatro tooensure P3s hay suficiente servidores front-end que se ejecuta cuando se produce un mantenimiento programado. Las actividades de mantenimiento programado desactivan un front-end cada vez. Esto reduce la capacidad global de los servidores front-end disponibles durante las actividades de mantenimiento.
+* Servidores front-end puede tardar hasta tooan hora tooprovision. 
+* Para optimizar las más escala, debe supervisar el porcentaje de CPU de hello, porcentaje de memoria y las métricas de solicitudes activas de grupo de servidores front-end de Hola. Si los porcentajes de CPU o memoria de hello están por encima del 70 por ciento cuando se ejecuta P3s, agregar más servidores front-end. Si el valor de solicitudes activas de hello calcula el promedio too15, too20 000, 000 solicitudes por front-end, también debe agregar más servidores front-end. Hola objetivo global es tookeep CPU y uso de memoria por debajo de 70% y calcular el promedio de espera toobelow 15.000 solicitudes por front-end si estás ejecutando P3s de solicitudes activas.  
 
-**Trabajos**: Los trabajos se encuentran donde se ejecutan realmente sus aplicaciones. Al escalar verticalmente sus planes del Servicio de aplicaciones se utiliza el trabajo del grupo de trabajo asociado.
+**Los trabajadores**: los trabajos de hello son donde las aplicaciones se ejecutan realmente. Al escalar una planes de servicio de aplicación, que utiliza los trabajadores de hello asociado el grupo de trabajo.
 
-* No es posible agregar trabajo de manera instantánea. Pueden tardar hasta una hora en aprovisionarse.
-* Escalar el tamaño de un recurso de proceso para cualquier grupo tardará menos de una hora por cada dominio de actualización. Hay 20 dominios de actualización en un ASE. El escalado del tamaño de proceso de un grupo de trabajo con diez instancias puede tardar hasta diez horas.
-* Si cambia el tamaño de los recursos de proceso que se usan en un grupo de trabajo, provocará arranques en frío de las aplicaciones que se ejecutan en ese grupo de trabajo.
+* No es posible agregar trabajo de manera instantánea. Puede ocupar tooan hora tooprovision.
+* Ajuste de escala de tamaño de Hola de un recurso de proceso para cualquier grupo tardará < 1 hora por cada dominio de actualización. Hay 20 dominios de actualización en un ASE. Si aplica una escala de tamaño de proceso de Hola de un grupo de trabajo con 10 instancias, pueden tardar too10 horas toocomplete.
+* Si cambia el tamaño de Hola Hola de recursos de proceso que se utilizan en un grupo de trabajo, hará que los arranques en frío de hello las aplicaciones que se ejecutan en ese grupo de trabajo.
 
-La forma más rápida de cambiar el tamaño de recursos de proceso de un grupo de trabajo que no está ejecutando aplicaciones es el siguiente:
+Hola toochange Calcular tamaño de recurso de un grupo de trabajo que no se está ejecutando ninguna aplicación de forma más rápida de Hello es:
 
-* Reduzca la cantidad de trabajos a 2.  El tamaño mínimo de la reducción en el portal es 2. El proceso de cancelación de la asignación de instancias tardará algunos minutos. 
-* Seleccione el nuevo tamaño de proceso y el número de instancias. Desde este punto, el proceso tardará hasta 2 horas en completarse.
+* Reducir la cantidad de Hola de trabajadores too2.  escala mínima de Hello hacia abajo de tamaño en el portal de hello es 2. Tardará unos toodeallocate minutos las instancias. 
+* Tamaño y número de instancias de proceso seleccione Hola de nuevo. Desde aquí, tardará too2 horas toocomplete.
 
-Si las aplicaciones requieren un mayor tamaño de recursos de proceso, no le servirán las indicaciones anteriores. En lugar de cambiar el tamaño del grupo de trabajo que hospeda esas aplicaciones, puede rellenar otro grupo de trabajo con instancias del tamaño deseado y trasladar sus aplicaciones a ese grupo.
+Si las aplicaciones requieren un tamaño mayor de recursos de proceso, no podrá aprovechar las instrucciones anteriores Hola. En lugar de cambiar el tamaño de Hola de grupo de trabajo de Hola que hospeda las aplicaciones, puede rellenar otro grupo de trabajo con los trabajadores del tamaño deseado de Hola y mover las aplicaciones a través del grupo de toothat.
 
-* Cree las instancias adicionales del tamaño de proceso necesario en otro grupo de trabajo. Desde este punto, el proceso tardará hasta una hora en completarse.
-* Vuelva a asignar sus planes del Servicio de aplicaciones que hospedan las aplicaciones que necesitan un tamaño mayor al grupo de trabajo recién configurado. Se trata de una operación rápida que debería tardar menos de un minuto en completarse.  
-* Reduzca verticalmente el primer grupo de trabajo si ya no necesita esas instancias no utilizadas. La operación tarda unos minutos.
+* Crear instancias adicionales de Hola de hello necesario calcular tamaño en otro grupo de trabajo. Esto le llevará una tooan toocomplete de hora.
+* Volver a asignar los planes de servicio de aplicaciones que hospedan aplicaciones de Hola que necesitan un grupo de trabajo de mayor tamaño toohello recién configurado. Se trata de una operación rápida que debería tardar menos de un minuto toocomplete.  
+* Reducir el primer grupo de trabajo Hola si ya no necesita esas instancias no utilizadas. Esta operación tarda unos toocomplete minutos.
 
-**Escalado automático**: Una de las herramientas que le pueden ayudar a administrar el consumo de recursos de proceso es el escalado automático. Este se puede aplicar a grupos de trabajo o servidores front-end. Puede, por ejemplo, aumentar las instancias de cualquier tipo de grupo por la mañana y reducirlo por la noche. O puede agregar instancias cuando la cantidad de trabajo disponible en un grupo de trabajo caiga por debajo de un umbral determinado.
+**Escalado automático**: una de las herramientas de Hola que le permitirá toomanage su consumo de recursos de proceso es escalado automático. Este se puede aplicar a grupos de trabajo o servidores front-end. Puede realizar acciones como aumentar las instancias de cualquier tipo de grupo de mañana hello y reducir por noche Hola. O quizás que agregue instancias al número de Hola de trabajadores que están disponibles en un grupo de trabajo cae por debajo de un umbral determinado.
 
-Si desea establecer reglas de escalado automático alrededor de métricas del grupo de recursos de proceso, tenga en cuenta el tiempo necesario para el aprovisionamiento. Para más detalles sobre el escalado automático de los entornos de App Service, consulte [Escalado automático y el entorno de App Service][ASEAutoscale].
+Se requiere si desea que las reglas de escalado automático de tooset alrededor de métricas de grupo de recursos de proceso, tenga en tiempo de presentación de la cuenta que el aprovisionamiento. Para obtener más información acerca de la escala automática entornos del servicio de aplicación, consulte [cómo escalado automático tooconfigure en un entorno de servicio de aplicaciones][ASEAutoscale].
 
-### <a name="storage"></a>Almacenamiento
-Cada ASE se configura con 500 GB de almacenamiento. Este espacio se usa en todas las aplicaciones del ASE. Este espacio de almacenamiento es parte del ASE y actualmente no se puede cambiar para usar su espacio de almacenamiento. Si va a realizar ajustes en el enrutamiento o la seguridad de la red virtual, debe seguir permitiendo el acceso a Azure Storage o, de lo contrario, ASE no funcionará.
+### <a name="storage"></a>Storage
+Cada ASE se configura con 500 GB de almacenamiento. Este espacio se utiliza en todas las aplicaciones de Hola Hola ASE. Este espacio de almacenamiento es una parte del programa Hola ASE y no puede estar desactivado toouse el espacio de almacenamiento. Si está realizando el enrutamiento de red virtual de ajustes tooyour o seguridad, necesita toostill permitir acceso tooAzure almacenamiento--u Hola ASE no puede funcionar.
 
 ### <a name="database"></a>Base de datos
-La base de datos contiene la información que define el entorno, así como los detalles acerca de las aplicaciones que se ejecutan en él. Esto también forma parte de la suscripción mantenida en Azure. No es algo que tenga una capacidad directa para manipular. Si va a realizar ajustes en el enrutamiento o la seguridad de la red virtual, debe seguir permitiendo el acceso a SQL Azure o, de lo contrario, ASE no funcionará.
+base de datos de Hello contiene información de Hola que define el entorno de hello, así como detalles de hello acerca de las aplicaciones de Hola que se ejecutan dentro de él. Demasiado, esto es una parte de hello suscripción mantenidos en Azure. No es algo que tiene una capacidad directa toomanipulate. Si está realizando el enrutamiento de red virtual de ajustes tooyour o seguridad, necesita toostill permitir acceso tooSQL Azure--u Hola ASE no puede funcionar.
 
 ### <a name="network"></a>Red
-La red virtual que se usa con el ASE puede ser una de las que hizo al crear el ASE o alguna que ya tuviera de antes. Si crea la subred durante la creación del ASE, obligará al ASE a permanecer en el mismo grupo de recursos que la red virtual. Si necesita el grupo de recursos que usa su ASE sea diferente de la red virtual, debe crear su ASE utilizando una plantilla de Resource Manager.
+Hola red virtual que se utiliza con su ASE puede ser uno de los que realizó cuando creaste Hola ASE o uno que haya realizado antes de tiempo. Cuando se crea la subred de Hola durante la creación de ASE, fuerza toobe Hola ASE Hola mismo grupo de recursos como la red virtual de Hola. Si necesita Hola grupo de recursos utilizado por la toobe ASE diferente de la red virtual, deberá toocreate su ASE utilizando una plantilla de administrador de recursos.
 
-Existen algunas restricciones en la red virtual que se aplican a un ASE:
+Hay algunas restricciones en la red virtual de Hola que se usa para un ASE:
 
-* La red virtual debe ser una red virtual regional.
-* Es necesario que haya una subred con 8 o más direcciones donde se implementa el ASE.
-* Después de utilizar una subred para hospedar un ASE, no se puede cambiar el intervalo de direcciones de la subred. Por este motivo, se recomienda que la subred contenga al menos 64 direcciones para tener en cuenta el crecimiento futuro del ASE.
-* Puede que no haya nada más en la subred excepto el ASE.
+* red virtual de Hello debe ser una red virtual regional.
+* Es necesario toobe una subred con 8 o más direcciones donde se implementa ASE Hola.
+* Después de una subred es toohost usado un ASE, intervalo de direcciones de Hola de subred de hello no se puede cambiar. Por este motivo, se recomienda que dicha subred hello contiene al menos 64 direcciones tooaccommodate crecimiento futuro ASE.
+* Puede haber nada en la subred de hello pero ASE Hola.
 
-A diferencia del servicio hospedado que contiene el ASE, el usuario controla la [red virtual][virtualnetwork] y la subred.  Puede administrar la red virtual a través de la interfaz de usuario de la red virtual o de Powershell.  Un ASE se puede implementar en una red virtual según el modelo clásico o según el modelo de Resource Manager.  Las experiencias del portal y de la API son ligeramente diferentes para las redes virtuales implementadas según el modelo clásico y aquellas implementadas según el modelo de Resource Manager pero la experiencia del ASE es la misma.
+A diferencia de servicio de hello hospedado que contiene ASE hello, Hola [red virtual] [ virtualnetwork] y subred están bajo control de usuario.  Puede administrar la red virtual a través de la interfaz de usuario de red Virtual de Hola o PowerShell.  Un ASE se puede implementar en una red virtual según el modelo clásico o según el modelo de Resource Manager.  portal de Hola y experiencias de API son ligeramente diferentes entre clásico y el Administrador de recursos VNets pero se Hola Hola experiencia ASE igual.
 
-La red virtual que se utiliza para hospedar un ASE puede usar direcciones IP RFC1918 privadas o puede usar direcciones IP públicas.  Si desea usar un intervalo IP que no está cubierto por RFC1918 (10.0.0.0/8, 172.16.0.0/12 y 192.168.0.0/16), deberá crear la red virtual y la subred que va a usar el ASE antes de la creación de este.
+Hola red virtual que es usado toohost un ASE puede usar cualquier direcciones IP RFC1918 privadas o puede usar direcciones IP públicas.  Si desea toouse un intervalo IP que no está cubierto por RFC1918 (10.0.0.0/8, 172.16.0.0/12 y 192.168.0.0/16) debe toocreate su toobe de red virtual y subred utilizada por su ASE por delante de la creación de ASE.
 
-Dado que esta funcionalidad coloca el Servicio de aplicaciones de Azure en la red virtual, significa que las aplicaciones hospedadas en el ASE ahora pueden tener acceso a los recursos disponibles a través de ExpressRoute o redes privadas virtuales de sitio a sitio directamente. Las aplicaciones que están dentro de los entornos del Servicio de aplicaciones no requieren características de red adicionales para tener acceso a los recursos disponibles de la red virtual que hospeda el entorno del Servicio de aplicaciones. Esto significa que no es necesario usar la integración de red virtual o conexiones híbridas para acceder a los recursos o para conectarse a la red virtual. Sin embargo, puede usar ambas características para acceder a los recursos en redes que no están conectadas a la red virtual.
+Dado que esta capacidad coloca Hola servicio de aplicaciones de Azure en la red virtual, significa que las aplicaciones que se hospedan en su ASE ahora pueden tener acceso a recursos que están disponibles a través de ExpressRoute o redes privadas virtuales (VPN) de sitio a sitio directamente. aplicaciones de Hola que están dentro de su entorno de servicio de aplicaciones no requieren adicionales red características tooaccess recursos disponibles toohello red virtual que hospeda el entorno de servicio de aplicaciones. Esto significa que no es necesario tooresources de tooget de toouse la integración de red virtual o las conexiones híbridas en o red virtual tooyour conectado. Todavía puede usar tanto de esas características aunque tooaccess recursos en redes que no están conectados tooyour de red virtual.
 
-Por ejemplo, puede usar la integración de red virtual para integrarse con una red virtual que está en su suscripción, pero que no está conectada a la red virtual en la que se encuentra el ASE. También puede usar las conexiones híbridas para tener acceso a los recursos de otras redes, de la manera habitual.  
+Por ejemplo, puede utilizar toointegrate de integración de la red virtual con una red virtual que está en su suscripción, pero no está conectado toohello red virtual que se encuentra su ASE en. Todavía también puede usar recursos de tooaccess de conexiones híbridas que se encuentran en otras redes, exactamente igual que normalmente.  
 
-Si la red virtual está configurada con una VPN de ExpressRoute, debe tener en cuenta las necesidades de enrutamiento que tenga un ASE. Existen algunas configuraciones de rutas definidas por el usuario (UDR) que son incompatibles con un ASE. Para información detallada respecto a la ejecución de un ASE en una red virtual con ExpressRoute, consulte el artículo sobre la [ejecución de un entorno de App Service en una red virtual con ExpressRoute][ExpressRoute].
+Si tiene la red virtual configurada con una VPN de ExpressRoute, debe tener en cuenta algunas de sus necesidades de enrutamiento de hello tiene un ASE. Existen algunas configuraciones de rutas definidas por el usuario (UDR) que son incompatibles con un ASE. Para información detallada respecto a la ejecución de un ASE en una red virtual con ExpressRoute, consulte el artículo sobre la [ejecución de un entorno de App Service en una red virtual con ExpressRoute][ExpressRoute].
 
 #### <a name="securing-inbound-traffic"></a>Protección del tráfico de entrada
-Hay dos métodos principales para controlar el tráfico entrante en el ASE.  Puede utilizar grupos de seguridad de red (NSG) para controlar qué direcciones IP pueden tener acceso al ASE como se describe aquí [Cómo controlar el tráfico de entrada a un entorno del Servicio de aplicaciones](app-service-app-service-environment-control-inbound-traffic.md) y también puede configurar el ASE con un equilibrador de carga interno (ILB).  Estas características también pueden utilizarse a la vez si desea restringir el acceso mediante los NSG al ASE del ILB.
+Hay dos toocontrol métodos principales ASE tooyour de tráfico de entrada.  Puede usar toocontrol Groups(NSGs) de seguridad de red qué IP direcciones pueden tener acceso a su ASE como se describe aquí [cómo el tráfico en un entorno de servicio de aplicaciones de la entrada de toocontrol](app-service-app-service-environment-control-inbound-traffic.md) y también puede configurar su ASE con una carga interno Balancer(ILB).  Estas características también pueden utilizarse conjuntamente si desea tener acceso de toorestrict con NSG tooyour ASE de ILB.
 
 Cuando se crea un ASE, este creará a una dirección VIP de la red virtual.  Hay dos tipos de direcciones VIP, internas y externas.  Cuando se crea un ASE con una dirección VIP externa, se podrá acceder a las aplicaciones del ASE a través de una dirección IP enrutable de Internet. Si selecciona una dirección VIP interna, el ASE se configurara con un ILB y no podrá acceder directamente a ella a través de Internet.  Un ASE del ILB seguirá necesitando una dirección VIP externa pero solo se utilizará para la administración de Azure y el acceso de mantenimiento.  
 
-Durante la creación del ASE del ILB deberá proporcionar el subdominio utilizado por este y tendrá que administrar su propio DNS para el subdominio que especifique.  Puesto que ha establecido el nombre del subdominio deberá administrar también el certificado usado para el acceso HTTPS.  Después de la creación del ASE se le pedirá que proporcione el certificado.  Para más información sobre la creación y utilización de un ASE del ILB, lea [Uso de un equilibrador de carga interno con un entorno de App Service][ILBASE]. 
+Durante la creación de ILB ASE proporcionan subdominio hello usa hello ILB ASE y tendrá toomanage su propio DNS para el subdominio de Hola que especifique.  Porque establecer nombre de subdominio Hola debe certificado de hello toomanage usado para el acceso HTTPS.  Después de ASE creación que está pide certificado de hello tooprovide.  lee toolearn más información acerca de crear y usar una ASE de ILB [mediante un equilibrador de carga interno con un entorno de servicio de aplicaciones][ILBASE]. 
 
 ## <a name="portal"></a>Portal
-Puede administrar y supervisar el entorno del Servicio de aplicaciones mediante la interfaz de usuario que está disponible en el Portal de Azure. Si tiene un ASE, es probable que vea el símbolo del Servicio de aplicaciones en la barra lateral. Este símbolo se usa para representar entornos del Servicio de aplicaciones en el Portal de Azure:
+Puede administrar y supervisar el entorno de servicio de aplicaciones mediante el uso de hello UI Hola portal de Azure. Si tienes un ASE, son probablemente toosee Hola símbolos de servicio de aplicaciones en la barra lateral. Este símbolo es toorepresent usado entornos del servicio de aplicación Hola portal de Azure:
 
 ![Símbolo del entorno del Servicio de aplicaciones][1]
 
-Para abrir la interfaz de usuario que muestra todos los entornos del Servicio de aplicaciones, puede utilizar el icono o seleccionar el botón de contenido adicional (símbolo ">") en la parte inferior de la barra lateral para seleccionar los entornos del Servicio de aplicaciones. Al seleccionar uno de los ASE mostrados, se abre la interfaz de usuario usada para supervisarlo y administrarlo.
+tooopen Hola de interfaz de usuario que se muestra todos los entornos de servicio de aplicación, puede usar Hola icono o en el botón de contenido adicional de hello seleccione (">" símbolos) final Hola de hello sidebar tooselect entornos del servicio de aplicación. Al seleccionar uno de los ASEs Hola enumerados, abra Hola interfaz de usuario utilizado toomonitor y administrarlo.
 
 ![Interfaz de usuario para supervisar y administrar el entorno del Servicio de aplicaciones][2]
 
-La primera hoja muestra algunas de las propiedades del ASE junto con un gráfico de métrica por grupo de recursos. Algunas de las propiedades que aparecen en el bloque **Essentials** también son hipervínculos que abrirán la hoja asociada. Por ejemplo puede seleccionar el nombre de la **red virtual** para abrir la interfaz de usuario asociada a la red virtual en la que se ejecuta el ASE. Los **planes de App Service** y las **aplicaciones** abren hojas que muestran los elementos que se encuentran en el ASE.  
+La primera hoja muestra algunas de las propiedades del ASE junto con un gráfico de métrica por grupo de recursos. Algunas de las propiedades de Hola que aparecen en hello **Essentials** bloque también son hipervínculos que se abrirán una hoja de Hola que está asociado a él. Por ejemplo, puede seleccionar hello **red Virtual** tooopen de nombre una interfaz de usuario de hello asociados con la red virtual de Hola que su ASE se ejecuta en. Los **planes de App Service** y las **aplicaciones** abren hojas que muestran los elementos que se encuentran en el ASE.  
 
 ### <a name="monitoring"></a>Supervisión
-Los gráficos le permiten ver una variedad de estadísticas de rendimiento de cada grupo de recursos. Para el grupo de servidores front-end, puede supervisar la CPU y la memoria promedio. Para grupos de trabajo, puede supervisar la cantidad que se usa y la cantidad que está disponible.
+gráficos de Hello permiten toosee una variedad de estadísticas de rendimiento de cada grupo de recursos. Para el grupo de servidores front-end de hello, puede supervisar Hola promedio de CPU y memoria. Para los grupos de trabajo, puede supervisar cantidad Hola que se usa y la cantidad de Hola que está disponible.
 
-Varios planes del Servicio de aplicaciones pueden usar los trabajos en un grupo de trabajo. La carga de trabajo no se distribuye de la misma manera que en los servidores front-end; por tanto, el uso de CPU y memoria no proporciona una gran cantidad de información útil. Es más importante realizar el seguimiento de cuántos trabajos usó y están disponibles, sobre todo si va a administrar este sistema para que otros lo usen.  
+Use varios servicios de aplicación pueden hacer planes de los trabajadores de hello en un grupo de trabajo. carga de trabajo de Hello no se distribuye en Hola de igual forma al igual que con los servidores front-end de hello, por lo que el uso de CPU y memoria de hello no proporcionan la mayor parte de manera Hola de información útil. Es más importante tootrack cuántos trabajos que ha usado y están disponibles, especialmente si está administrando este sistema para que otros usuarios toouse.  
 
-También puede utilizar todas las métricas que se pueden seguir en los gráficos para configurar alertas. La configuración de alertas funciona aquí de la misma forma que en cualquier otro lugar del Servicio de aplicaciones. Puede establecer una alerta de la parte de la interfaz de usuario de **alertas** o a partir de la exploración en profundidad de la interfaz de usuario de métricas y de hacer clic en **Agregar alerta**.
+También puede utilizar todas las métricas de Hola que pueden realizar el seguimiento en hello gráficos tooset las alertas. Cómo configurar alertas aquí Hola funciona igual como en otros lugares en el servicio de aplicaciones. Puede establecer una alerta de cualquier hello **alertas** UI parte o de obtención de detalles de todas las métricas de interfaz de usuario y seleccione **Agregar alerta**.
 
 ![Interfaz de usuario de métricas][3]
 
-Las métricas que acabamos de analizar son las métricas el entorno del Servicio de aplicaciones. También hay métricas disponibles en el nivel del plan del Servicio de aplicaciones. Aquí es dónde la supervisión de la CPU y de la memoria tiene más sentido.
+métricas de Hola que acabamos de describir son métricas de entorno del servicio de aplicaciones de Hola. También hay métricas que están disponibles en el nivel del plan de servicio de aplicaciones de Hola. Aquí es dónde la supervisión de la CPU y de la memoria tiene más sentido.
 
-En un ASE, todos los planes del Servicio de aplicaciones son planes dedicados. Esto significa que las únicas aplicaciones que se ejecutan en los hosts asignados a dicho plan del Servicio de aplicaciones son las aplicaciones de este plan. Para ver los detalles del plan del Servicio de aplicaciones, muéstrelo desde cualquiera de las listas de la interfaz de usuario del ASE o examine los **planes del Servicio de aplicaciones** que enumeran todos ellos.   
+En un ASE todas Hola que planes de servicio de aplicaciones son planes de servicio de aplicaciones dedicados. Esto significa que Hola únicas aplicaciones que se ejecutan en hosts asignados de hello toothat plan de servicio de aplicaciones son aplicaciones de hello en ese plan de servicio de aplicaciones. detalles de toosee en su plan de servicio de aplicaciones, abrirá el plan de servicio de aplicaciones desde cualquiera de las listas de Hola Hola ASE interfaz de usuario o de **planes de servicio de aplicaciones de examinar** (que enumeran todas ellas).   
 
 ### <a name="settings"></a>Settings
-En la hoja del ASE hay una sección de **configuración** que contiene varias funcionalidades importantes:
+En la hoja de hello ASE, hay un **configuración** sección que contiene varias funciones importantes:
 
-**Configuración** > **Propiedades**: la hoja **Configuración** se abrirá automáticamente cuando acceda a la hoja del ASE. En la parte superior se encuentra **Propiedades**. Hay una serie de elementos aquí que son redundantes con lo que ve en **Essentials**, aunque lo que es muy útil es la **dirección IP virtual**, así como la **dirección IP saliente**.
+**Configuración de** > **propiedades**: Hola **configuración** hoja se abre automáticamente cuando se activa la hoja de ASE. En hello superior es **propiedades**. Hay una serie de elementos aquí toowhat redundante que se ven en **Essentials**, pero lo que resulta muy útil es **dirección IP Virtual**, así como **direcciones IP saliente**.
 
 ![Hoja de configuración y propiedades][4]
 
-**Settings** > **Direcciones IP**: Al crear una aplicación de capa de sockets seguros (SSL) de IP en el ASE, necesita una dirección SSL de IP. Para obtener una, el ASE debe tener algunas direcciones SSL de IP que se puedan asignar. Cuando se crea un ASE, este tiene una dirección SSL de IP para este propósito, pero puede agregar más. Las direcciones SSL de IP adicionales conllevan un cargo, como se muestra en los [precios de App Service][AppServicePricing], en la sección sobre las conexiones SSL. El precio adicional es el precio de SSL de IP.
+**Settings** > **Direcciones IP**: Al crear una aplicación de capa de sockets seguros (SSL) de IP en el ASE, necesita una dirección SSL de IP. En orden tooobtain uno, su ASE tiene direcciones IP SSL que posee y que se pueden asignar. Cuando se crea un ASE, este tiene una dirección SSL de IP para este propósito, pero puede agregar más. Hay un cargo de dirección SSL de IP adicionales, como se muestra en [de precios de servicio de aplicaciones] [ AppServicePricing] (en la sección de hello en las conexiones SSL). precio adicional Hello es hello precio de IP SSL.
 
-**Configuración** > **Grupo de servidores front-end** / **Grupos de trabajo**: cada una de estas hojas del grupo de recursos ofrece la posibilidad de ver información únicamente acerca de ese grupo de recursos, además de proporcionar controles para escalar completamente ese grupo de recursos.  
+**Configuración de** > **el grupo de servidores de Front-End** / **los grupos de trabajo**: cada uno de estos módulos de grupo de recursos ofrece información de toosee de capacidad de hello solo en ese grupo de recursos , además tooproviding controla la escala de toofully ese grupo de recursos.  
 
-La hoja base de cada grupo de recursos proporciona un gráfico con métricas de dicho grupo de recursos. Al igual que con los gráficos de la hoja de ASE, puede acceder al gráfico y configurar las alertas como desee. Configurar una alerta desde la hoja del ASE para un grupo de recursos específico es igual que hacerlo desde el grupo de recursos. Desde la hoja de **configuración** del grupo de trabajo tendrá acceso a la lista de todas las aplicaciones o planes del Servicio de aplicaciones que se ejecutan en este grupo de trabajo.
+hoja de base de Hola para cada grupo de recursos proporciona un gráfico con métricas para ese grupo de recursos. Al igual que con gráficos de Hola de hoja de ASE hello, puede entrar en el gráfico de Hola y configurar alertas según sea necesario. Establecer una alerta de hoja de ASE de Hola para un grupo de recursos específico Hola lo mismo que hacerlo desde el grupo de recursos de Hola. Desde el grupo de trabajo de hello **configuración** hoja, tiene hello tooall de acceso a aplicaciones o planes de servicio de aplicaciones que se ejecutan en este grupo de trabajo.
 
 ![Interfaz de usuario de configuración de grupo de trabajo][5]
 
 ### <a name="portal-scale-capabilities"></a>Funcionalidad de escalado del portal
 Hay tres operaciones de escala:
 
-* Cambio del número de direcciones IP en el ASE que están disponibles para el uso de SSL de IP.
-* Cambio de tamaño del recurso de proceso usado en un grupo de recursos.
-* Cambio de la cantidad de recursos de proceso que se usa en un grupo de recursos, bien manualmente o mediante el escalado automático.
+* Cambiar el número de Hola de direcciones IP en hello ASE que están disponibles para el uso de SSL de IP.
+* Cambiar tamaño de Hola Hola de recurso de proceso que se utiliza en un grupo de recursos.
+* Cambiar el número de Hola de recursos de proceso que se utilizan en un grupo de recursos, ya sea manualmente o a través de escalado automático.
 
-En el portal existen tres formas de controlar el número de servidores de los grupos de recursos:
+En el portal de hello, hay tres toocontrol formas cuántos servidores que tienen en los grupos de recursos:
 
-* Una operación de escalado desde la hoja de ASE principal de la parte superior. Puede realizar varios cambios en la configuración de escalado de los grupos de servidores front-end y trabajo. Todas se aplican como una única operación.
-* Una operación de escalado manual desde la hoja **Escala** de grupos de recursos individuales que se encuentran en **Configuración**.
-* Una operación de escalado automático que se configura desde la hoja **Escala** de grupos de recursos individuales.
+* Una operación de escala de hoja de ASE principal hello en la parte superior de Hola. Puede realizar varias escala toohello front-end y los grupos de trabajo de los cambios de configuración. Todas se aplican como una única operación.
+* Una operación de escala manual de grupo de recursos individuales de hello **escala** hoja, que se encuentra en **configuración**.
+* Escala automática, que se configura desde el grupo de recursos individuales de hello **escala** hoja.
 
-Para usar la operación de escalado en la hoja de ASE, arrastre el control deslizante a la cantidad que desea y guarde. Esta interfaz de usuario también admite el cambio del tamaño.  
+operación de escalado de hello toouse de hoja de ASE hello, arrastre quantity de toohello de control deslizante de Hola que desea y guarda. Esta interfaz de usuario también admite cambiar tamaño de Hola.  
 
 ![Interfaz de usuario de escalado][6]
 
-Para usar las funcionalidades de escalado manual o automático en un grupo de recursos específico, vaya a **Configuración** > **Grupo de servidores front-end** / **Grupos de trabajo** según corresponda. Abra el grupo que desea cambiar. Vaya a **Configuración** > **Escalar horizontalmente** o **Configuración** > **Escalar verticalmente**. La hoja **Escalar horizontalmente** le permite controlar la cantidad de la instancia. **Escalar verticalmente** le permite controlar el tamaño del recurso.  
+capacidades de manual o de escalado automático de Hola de toouse en un grupo de recursos específico, vaya demasiado**configuración** > **el grupo de servidores de Front-End** / **los grupos de trabajo** como adecuados. A continuación, se abrirán grupo Hola que desea toochange. Vaya demasiado**configuración** > **horizontalmente** o **configuración** > **escalar vertical**. Hola **horizontalmente** hoja permite toocontrol cantidad de instancia. **Escalar vertical** permite toocontrol tamaño del recurso.  
 
 ![Interfaz de usuario de configuración de escalado][7]
 
 ## <a name="fault-tolerance-considerations"></a>Consideraciones de tolerancia a errores
-Puede configurar un entorno del Servicio de aplicaciones para usar hasta 55 recursos de proceso en total. De esos 55 recursos de proceso, solamente 50 se pueden usar para hospedar cargas de trabajo. El motivo es de esto es doble. Hay un mínimo de 2 recursos de proceso front-end.  Esto deja hasta 53 para admitir la asignación de grupos de trabajo. Para proporcionar tolerancia a errores, necesita tener un recurso de proceso adicional asignado según las reglas siguientes:
+Puede configurar un toouse entono too55 recursos de proceso total. Esos 55 recursos de proceso, 50 solo puede ser toohost usa las cargas de trabajo. motivo Hello es doble. Hay un mínimo de 2 recursos de proceso front-end.  Esto deja una asignación de grupo de trabajo de too53 toosupport Hola. Tolerancia a errores tooprovide orden, necesita toohave un recurso de proceso adicional que se asigna según toohello siguientes reglas:
 
-* Cada grupo de trabajo necesita al menos un recurso de proceso adicional al que no se puede asignar cargas de trabajo.
-* Cuando la cantidad de recursos de proceso de un grupo de trabajo supera un determinado valor, se necesita otro recurso de proceso para tolerancia a errores. Esto no ocurre en el grupo de servidores front-end.
+* Cada grupo de trabajo necesita al menos 1 recurso de proceso adicional que no está disponible toobe asigna una carga de trabajo.
+* Cuando la cantidad de Hola de recursos de proceso en un grupo de trabajo está por encima de un determinado valor, otro recurso de proceso es necesario para la tolerancia a errores. No es el caso de hello en el grupo de servidores front-end de Hola.
 
-Dentro de cualquier grupo de trabajo los requisitos de tolerancia a errores son que para un determinado valor de X recursos asignados a un grupo de trabajo:
+Dentro de cualquier grupo de trabajo único, los requisitos de tolerancia a errores de hello son que para un determinado valor de X recursos asignados tooa grupo de trabajo:
 
-* Si el valor de X está comprendido entre 2 y 20, la cantidad de recursos de proceso utilizables que puede usar para cargas de trabajo es X-1.
-* Si el valor de X está comprendido entre 21 y 40, la cantidad de recursos de proceso utilizables que puede usar para cargas de trabajo es X-2.
-* Si el valor de X está comprendido entre 41 y 53, la cantidad de recursos de proceso utilizables que puede usar para cargas de trabajo es X-3.
+* Si X es entre 2 y 20, cantidad de hello utilizable de recursos de proceso que puede usar para cargas de trabajo es x-1.
+* Si X es entre 21 y 40, cantidad de hello utilizable de recursos de proceso que puede usar para cargas de trabajo es X-2.
+* Si X es entre 41 y 53, cantidad de hello utilizable de recursos de proceso que puede usar para cargas de trabajo es X-3.
 
-La superficie mínima tiene dos servidores front-end y dos trabajos.  Con las instrucciones anteriores, se muestran a continuación algunos ejemplos que sirven de aclaración:  
+superficie mínima de Hello tiene 2 servidores front-end y 2 trabajos.  Con hello por encima de las instrucciones a continuación, presentamos unos tooclarify de ejemplos:  
 
-* Si tiene 30 trabajos en un solo grupo, 28 de ellos pueden usarse para hospedar las cargas de trabajo.
-* Si tiene dos trabajos en un solo grupo, en este caso solo se puede usar uno para hospedar las cargas de trabajo.
-* Si tiene 20 trabajos en un solo grupo, en este caso solo se pueden usar 19 para hospedar las cargas de trabajo.  
-* Si tiene 21 trabajos en un solo grupo, en este caso solo se pueden usar 19 para hospedar las cargas de trabajo.  
+* Si tiene 30 trabajos en un único grupo, 28 de ellos puede ser usado toohost cargas de trabajo.
+* Si tiene 2 trabajos en un único grupo, 1 puede ser usado toohost cargas de trabajo.
+* Si tiene 20 trabajadores en un único grupo, 19 puede ser usado toohost cargas de trabajo.  
+* Si tienes 21 trabajadores en un único grupo, sigue solo 19 pueden ser utilizados toohost cargas de trabajo.  
 
-El aspecto de la tolerancia a errores es importante, pero debe tenerlo en cuenta cuando la escala supera determinados umbrales. Si desea agregar más capacidad a partir de 20 instancias, en este caso elija 22 o un valor superior ya que 21 no agregará más capacidad. Lo mismo puede decirse por encima de 40, donde el número siguiente que agrega capacidad es 42.  
+aspecto de la tolerancia a errores de Hello es importante, pero debe tookeep en cuenta que escala superior a determinados umbrales. Si desea que tooadd más capacidad de pasar de 20 instancias y, a continuación, vaya too22 o superior como 21 no se agrega más capacidad. Hola que mismo puede decirse de pasar por encima de 40, donde el número siguiente de Hola que agrega capacidad es 42.  
 
 ## <a name="deleting-an-app-service-environment"></a>Eliminación de un entorno del Servicio de aplicaciones
-Si desea eliminar un entorno del Servicio de aplicaciones, simplemente utilice la acción **Eliminar** que se encuentra en la parte superior de la hoja Entorno del Servicio de aplicaciones. Al hacerlo, se le pedirá que escriba el nombre del entorno del Servicio de aplicaciones para confirmar que realmente quiere hacerlo. Tenga en cuenta que cuando se elimina un entorno del Servicio de aplicaciones, se elimina también todo su contenido.  
+Si desea toodelete un entorno de servicio de aplicaciones, a continuación, simplemente utilice hello **eliminar** acción en la parte superior de Hola de hoja de entorno del servicio de aplicaciones de Hola. Al hacerlo, podrá nombre de hello tooenter solicitadas de su tooconfirm de entorno de servicio de aplicaciones que realmente desea toodo esto. Tenga en cuenta que cuando se elimina un entorno de servicio de aplicaciones, se eliminen todas de hello contenido también.  
 
 ![Eliminación de la interfaz de usuario de un entorno del Servicio de aplicaciones][9]  
 
 ## <a name="getting-started"></a>Introducción
-Para empezar a trabajar con los entornos del Servicio de aplicaciones, consulte [Creación de un entorno del Servicio de aplicaciones](app-service-web-how-to-create-an-app-service-environment.md).
+tooget iniciado con el entorno de servicio de aplicación, consulte [cómo toocreate un entorno de servicio de aplicaciones](app-service-web-how-to-create-an-app-service-environment.md).
 
-Para obtener más información acerca de la plataforma de Servicio de aplicaciones de Azure, consulte [Servicio de aplicaciones de Azure](../app-service/app-service-value-prop-what-is.md).
+Para obtener más información acerca de la plataforma de servicio de aplicaciones de Azure de hello, consulte [servicio de aplicaciones de Azure](../app-service/app-service-value-prop-what-is.md).
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

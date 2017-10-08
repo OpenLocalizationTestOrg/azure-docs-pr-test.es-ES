@@ -1,6 +1,6 @@
 ---
 title: "Solución de problemas de la configuración de Enterprise State Roaming en Azure Active Directory | Microsoft Docs"
-description: "Responde a algunas preguntas que los administradores de TI podrían tener sobre la sincronización de datos de aplicación y la configuración."
+description: "Proporciona respuestas toosome preguntas los administradores de TI podrían tener sobre la configuración y sincronización de datos de aplicaciones."
 services: active-directory
 keywords: "configuración de enterprise state roaming, nube de windows, preguntas más frecuentes sobre enterprise state roaming"
 documentationcenter: 
@@ -15,104 +15,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 5d6b0869d2cf0e90b7b81b2304d95e01d1937925
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4636d016983426e30d696459f54167b8ad2babcd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Solución de problemas de la configuración de Enterprise State Roaming en Azure Active Directory
 
-En este tema se proporciona información sobre cómo diagnosticar y solucionar problemas Enterprise State Roaming, y proporciona una lista de problemas conocidos.
+Este tema proporciona información acerca de cómo tootroubleshoot y diagnosticar problemas con la itinerancia de estado de empresa y proporciona una lista de problemas conocidos.
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>Pasos preliminares para solucionar problemas 
-Antes de comenzar la solución de problemas, compruebe que el usuario y el dispositivo se han configurado correctamente y que se cumplen todos los requisitos de Enterprise State Roaming por el dispositivo y el usuario. 
+Antes de comenzar la solución de problemas, compruebe que los usuarios de Hola y de dispositivos se hayan configurado correctamente y que se cumplen todos los requisitos de Hola de itinerancia de estado de empresa por usuarios de Hola y de dispositivos de Hola. 
 
-1. Windows 10, con las actualizaciones más recientes, y la versión 1511 como mínimo (compilación del sistema operativo 10586 o posterior) está instalado en el dispositivo. 
-2. El dispositivo está unido a Azure AD o unido a un dominio y registrado con Azure AD.
-3. En el portal de Azure Active Directory, **Enterprise State Roaming** está habilitado para el directorio en **Configurar** > **Dispositivos** > **Los usuarios pueden sincronizar la configuración y los datos de aplicaciones empresariales**. O todos los usuarios seleccionados o el usuario están habilitados para la sincronización a través de la opción seleccionada y se incluyen en el grupo de seguridad.
-4. El usuario tiene una suscripción de Azure Active Directory Premium asignada.  
-5. Se ha reiniciado el dispositivo y el usuario ha iniciado sesión después de habilitado Enterprise State Roaming.
+1. Windows 10, con las actualizaciones más recientes de hello y un mínimo versión 1511 (compilación del sistema operativo 10586 o posterior) está instalado en el dispositivo de Hola. 
+2. dispositivo de Hello es Azure AD Unidos, o Unidos a un dominio y registrado con Azure AD.
+3. En el portal de Azure Active Directory de hello, **itinerancia de estado de Enterprise** está habilitada para directorio de hello en **configurar** > **dispositivos**  >  **a los usuarios pueden sincronizar la configuración y datos de aplicaciones empresariales**. Todos los usuarios seleccionados, o bien usuario hello es habilitado para la sincronización a través de la opción seleccionada de Hola e incluido en el grupo de seguridad de Hola.
+4. usuario de Hello tiene una suscripción de Azure Active Directory Premium asignada toothem.  
+5. se ha reiniciado el dispositivo de Hola y Hola usuario ha iniciado la sesión después de que se ha habilitado la itinerancia de estado de Enterprise.
 
-## <a name="information-to-include-when-you-need-help"></a>Información para incluir si necesita ayuda
-Si no puede resolver el problema con las instrucciones siguientes, póngase en contacto con nuestros ingenieros de soporte técnico. Cuando se comunique con ellos, se recomienda que incluya la información siguiente:
+## <a name="information-tooinclude-when-you-need-help"></a>Información tooinclude cuando necesite ayuda
+Si no puede resolver el problema con las guías de Hola a continuación, póngase en contacto con nuestros ingenieros de soporte técnico. Cuando se comunique con ellos, se recomienda hello tooinclude siguiente información:
 
-- **Descripción general del error**: ¿el usuario ve mensajes de error? Si no hay ningún mensaje de error, describe detalladamente el comportamiento inesperado observado. ¿Qué características están habilitadas para la sincronización y qué espera sincronizar el usuario? ¿Son varias características las que no se sincronizan o está aislado a una?
+- **Descripción general del error de Hola** : ¿hay mensajes de error que ve Hola usuario? Si no apareció ningún mensaje de error, describa Hola comportamiento inesperado que observó en detalle. ¿Qué características están habilitadas para la sincronización y qué es usuario de hello espera toosync? ¿Son varias características no está sincronizando o está aislada de TI tooone?
 - **Usuarios afectados**: el funcionamiento o error de la sincronización afecta a uno o a varios usuarios. ¿Cuántos dispositivos están implicados por usuario? ¿No se está sincronizando ninguno de ellos o algunos se están sincronizando y otros no?
-- **Información sobre el usuario**: ¿qué identidad está usando el usuario para iniciar sesión en el dispositivo? ¿Cómo inicia sesión el usuario en el dispositivo? ¿Forman parte de un grupo de seguridad seleccionado al que se permite sincronizarse? 
-- **Información sobre el dispositivo**: ¿este dispositivo está unido a Azure AD o unidos a un dominio? ¿Cuál es la compilación del dispositivo? ¿Cuáles son las actualizaciones más recientes?
-- **Fecha/hora/zona horaria**: ¿en qué fecha y a qué hora exactamente se ha generado el error (incluir la zona horaria)?
+- **¿Información acerca del usuario de Hola** : qué identidad es usuario de hello en toolog toohello dispositivo? ¿Cómo se registro de usuarios de hello en dispositivo toohello? ¿Son parte de un grupo de seguridad seleccionado permitido toosync? 
+- **¿Obtener información acerca del dispositivo de Hola** : este dispositivo Unidos a Azure AD o Unidos a un dominio? ¿Qué compilación es dispositivo hello en? ¿Cuáles son las actualizaciones más recientes de hello?
+- **Fecha / hora / zona horaria** : ¿cuál era Hola fecha y hora precisa vio el error hello (incluya la zona horaria de hello)?
 - Incluir esta información nos ayudará a solucionar su problema lo antes posible.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Solución de problemas y diagnóstico de problemas
-En esta sección se ofrecen sugerencias sobre cómo solucionar y diagnosticar problemas relacionados con Enterprise State Roaming.
+Esta sección proporciona sugerencias sobre cómo tootroubleshoot y diagnosticar problemas tooEnterprise relacionados itinerancia de estado.
 
-## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Comprobación de la sincronización y la página de configuración de "Sincronizar la configuración" 
+## <a name="verify-sync-and-hello-sync-your-settings-settings-page"></a>Comprobar la sincronización y Hola "Sincronizar la configuración" página de configuración 
 
-1. Después de unir los equipos Windows 10 a un dominio que está configurado para permitir Enterprise State Roaming, inicie sesión con su cuenta profesional. Vaya a **Configuración** > **Cuentas** > **Sincronizar mi configuración** y confirme que la sincronización y la configuración individual están activadas y que la parte superior de la página de configuración indica que está realizando la sincronización con su cuenta profesional. Confirme que la misma cuenta también se usa como la cuenta de inicio de sesión en **Settings** > **Accounts** > **Your Info** (Configuración > Cuentas > Su información). 
-2. Compruebe que la sincronización funciona en varias máquinas realizando algunos cambios en la máquina original, como mover la barra de tareas al lado derecho o en la parte superior de la pantalla. Observe que el cambio se propaga a la segunda máquina en cinco minutos. 
- - El bloqueo y desbloqueo de la pantalla (Win + L) puede ayudar a desencadenar una sincronización.
- - Debe estar usando la misma cuenta de inicio de sesión en ambos PC para que funcione la sincronización, dado que Enterprise State Roaming está enlazado a la cuenta de usuario y no a la cuenta de máquina.
+1. Después de unirse a los equipos que ejecutan Windows 10 tooa dominio que está configurado tooallow itinerancia de estado de Enterprise, inicio de sesión con su cuenta profesional. Vaya demasiado**configuración** > **cuentas** > **la configuración de sincronización** y confirmar que hello y sincronización de configuración individuales y ese top Hola de página de configuración de Hello indica que están sincronizando con su cuenta profesional. Confirmar Hola cuenta también se usa como la cuenta de inicio de sesión en **configuración** > **cuentas** > **su información**. 
+2. Compruebe que funciona la sincronización en varios equipos mediante la realización de algunos cambios en la máquina original de hello, como mover Hola barra de tareas toohello parte derecha o superior de la pantalla de bienvenida. Ver el cambio de hello propagar toohello segunda máquina dentro de cinco minutos. 
+ - Pantalla de bienvenida de bloqueo y desbloqueo (Win + L) puede ayudar a desencadenar una sincronización.
+ - Debe contar con Hola misma cuenta de inicio de sesión en ambos equipos para sincronización toowork – como itinerancia de estado de empresa es no cuenta de equipo de Hola y la cuenta de usuario de toohello relacionados.
 
-**Problema potencial**: la página de configuración tiene los alternadores atenuados y, en lugar de ver una cuenta, verá un texto que indica que algunas características de Windows solo están disponibles si se usa una cuenta de Microsoft o una cuenta profesional. Este problema puede surgir en aquellos dispositivos que se han configurado para estar unidos a un dominio y registrado en Azure AD, pero el dispositivo no ha autenticado correctamente en Azure AD. Una posible causa es que se debe aplicar la directiva de dispositivo, pero esta aplicación se realiza de forma asincrónica y puede retrasarse unas pocas horas. Para comprobar este problema, siga que los pasos para comprobar el estado de registro de dispositivo para ver si este es el caso.
+**Problema potencial**: página de configuración de Hola se alterna de hello en gris y, en lugar de ver una cuenta, verá texto hello "algunas características de Windows sólo están disponibles si usa una cuenta de Microsoft o cuenta profesional". Este problema puede producirse para dispositivos que se han configurado toobe Unidos a un dominio y registrado tooAzure AD, pero el dispositivo de hello no ha autenticado correctamente tooAzure AD. Una posible causa es que se debe aplicar la directiva de dispositivo de hello, pero esta aplicación realiza de forma asincrónica y puede retrasarse por unas pocas horas. tooverify compruebe este problema, siga los pasos de hello en Hola toocheck de estado de registro de dispositivo si éste es el caso de hello.
 
-### <a name="verify-the-device-registration-status"></a>Comprobación del estado de registro de dispositivo
-Enterprise State Roaming requiere que el dispositivo esté registrado con Azure AD. Aunque no son específicas para Enterprise State Roaming, las instrucciones siguientes pueden ayudarle a confirmar que el cliente de Windows 10 está registrado, y confirmar la huella digital, la dirección URL de la configuración de Azure AD, el estado de NGC o cualquier otra información.
+### <a name="verify-hello-device-registration-status"></a>Compruebe el estado de registro del dispositivo Hola
+Itinerancia de estado de empresa requiere Hola dispositivo toobe registrado con Azure AD. Aunque tooEnterprise no específico del estado de movilidad, Hola instrucciones siguientes puede ayudarle a confirmar que Hola cliente de Windows 10 está registrado y confirmar huella digital, dirección URL de la configuración de Azure AD, NGC o estado y otra información.
 
-1.  Abra el símbolo del sistema sin privilegios elevados. Para ello, en Windows, abra el selector Ejecutar (Win + R) y escriba "cmd" para abrirlo.
-2.  Una vez abierto el símbolo del sistema, escriba "*dsregcmd.exe /status*".
-3.  Para la salida esperada, el valor del campo **AzureAdJoined** debe ser "YES", el valor del campo de **WamDefaultSet** debe ser "YES" y el valor del campo **WamDefaultGUID** debe ser un GUID con "(AzureAd)" al final.
+1.  Hola abrir símbolo reducido. toodo esto en Windows, abra Hola selector de ejecución (Win + R) y escriba "cmd" tooopen.
+2.  Una vez abierto Hola símbolo del sistema, escriba "*/Status dsregcmd.exe*".
+3.  Para la salida esperada, Hola **AzureAdJoined** valor del campo debe ser "YES", **WamDefaultSet** valor del campo debe ser "YES" y Hola **WamDefaultGUID** valor de campo debe ser un GUID con "(organización)" al final de Hola.
 
-**Problema potencial**: **WamDefaultSet** y **AzureAdJoined** tienen "NO" en el valor del campo, el dispositivo está unido a un dominio y registrado con Azure AD y no se sincroniza. Si se muestra esto, el dispositivo puede que tenga que esperar la aplicación de la directiva o se producirá un error de autenticación cuando el dispositivo se conecte a Azure AD. El usuario puede tener que esperar unas pocas horas para la directiva se aplique. Otros pasos de solución de problemas pueden incluir volver a intentar el registro automático mediante el cierre y el inicio de sesión, o el mediante el inicio de la tarea en el Programador de tareas. En algunos casos, puede ayudar a resolver este problema ejecutar "*dsregcmd.exe /leave*" en una ventana del símbolo del sistema con privilegios elevados, reiniciar y volver a intentar el registro.
+**Problema potencial**: **WamDefaultSet** y **AzureAdJoined** tanto tienen "N" en el valor del campo de hello, dispositivo Hola era Unidos a un dominio y registrado con Azure AD y dispositivo hello no se sincroniza. Si se muestra esto, dispositivo Hola puede necesita toowait para toobe de directiva aplicada u Hola autenticación para error al conectar tooAzure AD del dispositivo de Hola. usuario de Hello habrá toowait unas pocas horas para hello toobe de directiva aplicada. Otros pasos de solución de problemas pueden incluir volver a intentar el registro automático de firma y vuelve o iniciar tarea hello en el programador de tareas. En algunos casos, puede ayudar a resolver este problema ejecutar "*dsregcmd.exe /leave*" en una ventana del símbolo del sistema con privilegios elevados, reiniciar y volver a intentar el registro.
 
 
-**Problema potencial**: el campo de **AzureAdSettingsUrl** está vacío y el dispositivo no se sincroniza. El usuario puede haber iniciado sesión en el dispositivo antes de habilitar Enterprise State Roaming en el portal de Azure Active Directory. Reinicie el dispositivo pida al usuario que inicie sesión. Además, en el portal, pruebe a deshabilitar el administrador de TI y vuelva a habilitar la opción de que los usuarios puedan sincronizar la configuración y los datos de aplicaciones empresariales. Cuando se haya vuelto a habilitar, reinicie el dispositivo pida al usuario que inicie sesión. Si no se soluciona el problema, **AzureAdSettingsUrl** puede estar vacío en el caso de un certificado de dispositivo defectuoso. En este caso, puede ayudar a resolver este problema ejecutar "*dsregcmd.exe /leave*" en una ventana del símbolo del sistema con privilegios elevados, reiniciar y volver a intentar el registro.
+**Problema potencial**: campo de Hola para **AzureAdSettingsUrl** está vacía y hello dispositivo no sync. Hola usuario puede haber inició la última toohello dispositivo antes de habilitar la itinerancia de estado de empresa en hello Azure Active Portal de directorio. Reiniciar el dispositivo de Hola y tener inicio de sesión de usuario de Hola. Si lo desea, en el portal de hello, intente tener Hola, Administrador de TI deshabilitar y volver a habilitar la configuración de sincronización de los usuarios pueden y datos de aplicaciones empresariales. Una vez que vuelve a habilitar, reiniciar el dispositivo de Hola y tener inicio de sesión de usuario de Hola. Si no se soluciona el problema de hello, **AzureAdSettingsUrl** puede estar vacío en caso de hello de un certificado de dispositivo defectuoso. En este caso, puede ayudar a resolver este problema ejecutar "*dsregcmd.exe /leave*" en una ventana del símbolo del sistema con privilegios elevados, reiniciar y volver a intentar el registro.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming y Multi-Factor Authentication 
-En algunas circunstancias, Enterprise State Roaming no puede sincronizar los datos si se ha configurado Azure Multi-Factor Authentication. Para más información sobre estos síntomas, consulte el documento de soporte técnico [KB3193683](https://support.microsoft.com/kb/3193683). 
+Bajo ciertas condiciones, la itinerancia de estado de empresa puede producir un error toosync datos si se configura la autenticación multifactor de Azure. Para obtener más detalles sobre estos síntomas, consulte el documento de soporte técnico de hello [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Problema potencial**: Si el dispositivo está configurado para requerir Multi-Factor Authentication en el portal de Azure Active Directory, se puede producir un error al sincronizar la configuración cuando se inicia sesión en un dispositivo Windows 10 con una contraseña. Este tipo de configuración de Multi-Factor Authentication se ha diseñado para proteger cuentas de administrador de Azure. Los usuarios administradores pueden seguir realizando la sincronización al iniciar sesión en sus dispositivos Windows 10 con su PIN de Microsoft Passport for Work o también pueden completar Multi-Factor Authentication al acceder a otros servicios de Azure, como Office 365.
+**Problema potencial**: si el dispositivo está configurado toorequire la autenticación multifactor en el portal de Azure Active Directory de hello, pueden producirse errores toosync configuración al iniciar sesión en el dispositivo tooa Windows 10 con una contraseña. Este tipo de configuración de la autenticación multifactor está previsto tooprotect una cuenta de administrador de Azure. Los usuarios administradores todavía pueden ser capaz de toosync debe iniciar sesión en dispositivos Windows 10 tootheir con su Microsoft Passport para el PIN de trabajo o realizando la autenticación multifactor al tener acceso a otros servicios de Azure como Office 365.
 
-**Problema potencial**: La sincronización puede producir un error si el administrador configura la directiva de acceso condicional de Multi-Factor Authentication de Active Directory Federation Services y caduca el token de acceso en el dispositivo. Asegúrese de iniciar sesión y de cerrarla con el PIN de Microsoft Passport for Work, o bien de completar Multi-Factor Authentication al acceder a otros servicios de Azure, como Office 365.
+**Problema potencial**: sincronización puede producir un error si Hola, administrador configura la directiva de acceso condicional de Active Directory Federation Services la autenticación multifactor de Hola y el token de acceso de hello en dispositivo Hola expira. Asegúrese de que iniciar sesión y cierre la sesión usando Hola Microsoft Passport para el PIN de trabajo o completar la autenticación multifactor al tener acceso a otros servicios de Azure como Office 365.
 
 ###<a name="event-viewer"></a>Visor de eventos
-Para la solución avanzada de problemas, se puede usar el Visor de eventos para buscar errores específicos. Estos aparecen documentados en la tabla siguiente. Los eventos se pueden encontrar en Visor de eventos > Registros de aplicaciones y servicios > **Microsoft** > **Windows** > **SettingSync** y para problemas relacionados con la identidad con la sincronización **Microsoft** > **Windows** > **Azure AD**.
+Para la solución avanzada, Visor de eventos puede ser errores específicos de toofind usado. Éstos aparecen documentados en la siguiente tabla se Hola. Hola eventos pueden encontrarse en el Visor de eventos > registros de aplicaciones y servicios > **Microsoft** > **Windows** > **SettingSync** y para problemas relacionados con la identidad con la sincronización de **Microsoft** > **Windows** > **Azure AD**.
 
 
 ## <a name="known-issues"></a>Problemas conocidos
 
 ### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>La sincronización no funciona en los dispositivos que tienen aplicaciones que se hayan cargado con software MDM
 
-Afecta a los dispositivos que ejecutan la actualización de aniversario de Windows 10 (versión 1607). En el Visor de eventos en los registros de SettingSync-Azure, se suele ver el evento Id. 6013 con el error 80070259.
+Afecta a dispositivos que ejecutan Hola actualización de aniversario de Windows 10 (versión 1607). En el Visor de eventos en registros de Azure SettingSync hello, con frecuencia se ve hello 6013 de Id. de evento con el error 80070259.
 
 **Acción recomendada**  
-Asegúrese de que el cliente de Windows 10 v1607 tiene la actualización acumulativa del 23 de agosto de 2016 ([KB3176934](https://support.microsoft.com/kb/3176934) compilación del sistema operativo 14393.82). 
+Asegúrese de que cliente v1607 de hello Windows 10 tiene Hola 23 de agosto de 2016 actualización acumulativa ([KB3176934](https://support.microsoft.com/kb/3176934) 14393.82 de compilación del sistema operativo). 
 
 ---
 
 ### <a name="internet-explorer-favorites-do-not-sync"></a>Los favoritos de Internet Explorer no se sincronizan
 
-Afecta a los dispositivos que ejecutan la actualización de noviembre de Windows 10 (versión 1511).
+Afecta a dispositivos que ejecutan Hola actualización de noviembre de Windows 10 (versión 1511).
 
 **Acción recomendada**  
-Asegúrese de que el cliente de Windows 10 v1511 tiene la actualización acumulativa de julio de 2016 ([KB3172985](https://support.microsoft.com/kb/3172985) compilación del sistema operativo 10586.494).
+Asegúrese de que cliente v1511 de hello Windows 10 tiene Hola julio de 2016 actualización acumulativa ([KB3172985](https://support.microsoft.com/kb/3172985) 10586.494 de compilación del sistema operativo).
 
 ---
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>El tema no se está sincronizando, así como los datos protegidos Windows Information Protection 
 
-Para evitar la pérdida de datos, los datos que están protegidos con [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) no se sincronizarán a través de Enterprise State Roaming para dispositivos con la actualización de aniversario de Windows 10.
+tooprevent pérdida de datos, los datos que está protegidos con [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) no se sincronizarán a través de itinerancia de estado de empresa para dispositivos con Hola actualización de aniversario de Windows 10.
 
 
 
 **Acción recomendada**  
-Ninguno. Las futuras actualizaciones de Windows pueden resolver este problema.
+Ninguno. Las actualizaciones futuras tooWindows puede resolver este problema.
 
 ---
 
 ### <a name="date-time-and-region-settings-do-not-sync-on-domain-joined-device"></a>La configuración de fecha, hora y región no se sincroniza en dispositivos unidos a un dominio 
   
-Los dispositivos que están unidos a un dominio no sincronizarán la configuración de fecha, hora y región: hora automática. El uso de la hora automática puede invalidar otras configuraciones de fecha, hora y región, y hacer que esos valores se sincronicen. 
+Dispositivos que están unidos a un dominio no experimentarán la sincronización de hello establecer fecha, hora y región: hora automática. Mediante la hora automática puede override Hola otros valores de fecha, hora y región y hacer que esas configuraciones no toosync. 
 
 **Acción recomendada**  
 Ninguno. 
@@ -121,62 +121,62 @@ Ninguno.
 
 ### <a name="uac-prompts-when-syncing-passwords"></a>UAC avisa al sincronizar las contraseñas
 
-Afecta a los dispositivos que ejecutan la actualización de noviembre de Windows 10 (versión 1511) con una NIC inalámbrica configurada para sincronizar contraseñas.
+Dispositivos de afecta a ejecutando Hola actualización de noviembre de 10 (versión 1511) de Windows con una NIC inalámbrica que se configuran toosync contraseñas.
 
 **Acción recomendada**  
-Asegúrese de que el cliente de Windows 10 v1511 tiene la actualización acumulativa ([KB3140743](https://support.microsoft.com/kb/3140743) Compilación del sistema operativo 10586.494).
+Asegúrese de que cliente v1511 de hello Windows 10 tiene la actualización acumulativa de hello ([KB3140743](https://support.microsoft.com/kb/3140743) 10586.494 de compilación del sistema operativo).
 
 ---
 
 ### <a name="sync-does-not-work-on-devices-that-use-smart-card-for-login"></a>La sincronización no funciona en dispositivos que usan tarjetas inteligentes para el inicio de sesión
-Si intenta iniciar sesión en el dispositivo Windows con una tarjeta inteligente o tarjeta inteligente virtual, la sincronización dejará de funcionar.     
+Si intentas toosign en el dispositivo de Windows de tooyour mediante una tarjeta inteligente o tarjeta inteligente virtual, sincronización de configuración dejará de funcionar.     
 
 **Acción recomendada**  
-Ninguno. Las futuras actualizaciones de Windows pueden resolver este problema.
+Ninguno. Las actualizaciones futuras tooWindows puede resolver este problema.
 
 ---
 
 ### <a name="domain-joined-device-is-not-syncing-after-leaving-corporate-network"></a>El dispositivo unidos a un dominio no se sincroniza después de salir de la red corporativa     
-Los dispositivos unidos a un dominio registrados en Azure AD pueden experimentar errores de sincronización si el dispositivo está fuera del sitio durante largos períodos de tiempo y no se puede completar la autenticación de dominio.
+Dispositivos Unidos a un dominio registrado tooAzure que AD puede experimentar errores de sincronización si Hola dispositivo está fuera del sitio durante largos períodos de tiempo, no se puede completar la autenticación de dominio.
 
 **Acción recomendada**  
-Conecte el dispositivo a una red corporativa, para que pueda reanudarse la sincronización.
+Conectar red corporativa de hello dispositivo tooa de modo que puede reanudar la sincronización.
 
 ---
 
- ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>El dispositivo unido a Azure AD no se está sincronizando y el usuario tiene un nombre principal de usuario con mayúsculas y minúsculas.
- Si el usuario se escribe con mayúsculas y minúsculas (por ejemplo, Nombre de Usuario en lugar de nombre de usuario) y el usuario se encuentra en un dispositivo unido a Azure AD que se ha actualizado de Windows 10 Build 10586 a 14393, se puede producir un error en el dispositivo del usuario al realizar la sincronización. 
+ ### <a name="azure-ad-joined-device-is-not-syncing-and-hello-user-has-a-mixed-case-user-principal-name"></a>No se está sincronizando los dispositivos de Azure AD combinada y usuario de hello tiene un nombre Principal de usuario en grafía mixta.
+ Si el usuario de hello tiene un mayúsculas y minúsculas mezcladas UPN (p. ej. nombre de usuario en lugar del nombre de usuario) y hello es en un dispositivo Unidos a Azure AD que ha actualizado desde Windows 10 de compilación 10586 too14393, dispositivo del usuario de hello puede producir un error toosync. 
 
 **Acción recomendada**  
-El usuario deberá separar y volver a unir el dispositivo a la nube. Para ello, inicie sesión como usuario de administrador local y separe el dispositivo en **Configuración** > **Sistema** > **Acerca de** y seleccione "Administrar o desconectar del trabajo o de la escuela". Limpie los archivos siguientes y, después, una de nuevo el dispositivo con Azure AD en **Configuración** > **Sistema** > **Acerca de** y seleccionando "Conectarse a la red del trabajo o colegio". Continúe uniendo el dispositivo con Azure Active Directory y complete el flujo.
+usuario de Hello necesitará toounjoin y volver a unir el dispositivo de la nube toohello Hola. toodo, inicie sesión como usuario de administrador Local de Hola y separación de dispositivo de hello yendo demasiado**configuración** > **System** > **sobre** y seleccione " Administrar o desconectarse de la empresa o centro educativo". Limpiar los archivos de hello y, a continuación, Azure AD Join Hola dispositivo nuevo en **configuración** > **System** > **sobre** y seleccionando "conectar tooWork o la escuela". Continuar toojoin Hola dispositivo tooAzure Active Directory y el flujo de hello completa.
 
-En el paso de limpieza, limpie los archivos siguientes:
+En el paso de limpieza de hello, Hola de limpieza siguientes archivos:
 - Settings.dat en `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- Todos los archivos en la carpeta `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+- Todos los archivos de Hola Hola carpeta`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 
 ### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Id. de evento 6065: 80070533 Este usuario no puede iniciar sesión porque esta cuenta está deshabilitada  
-En el Visor de eventos, en los registros de SettingSync/Debug, este error puede verse cuando las credenciales del usuario han expirado. Además, puede producirse cuando el inquilino no tenía AzureRMS aprovisionado automáticamente. 
+Este error puede verse en el Visor de eventos en registros de hello SettingSync/Debug, cuando las credenciales del usuario de hello expiraron. Además, puede producirse cuando el inquilino de hello no tenía automáticamente AzureRMS aprovisionado. 
 
 **Acción recomendada**  
-En el primer caso, pida al usuario que actualice sus credenciales e inicie sesión en el dispositivo con las nuevas credenciales. Para resolver el problema de AzureRMS, continúe con los pasos enumerados en [KB3193791](https://support.microsoft.com/kb/3193791). 
+En el primer caso de hello, tener usuario Hola actualizar sus credenciales y el dispositivo de inicio de sesión toohello con nuevas credenciales de Hola. Hola toosolve AzureRMS problema, continúe con pasos de hello enumerados en [KB3193791](https://support.microsoft.com/kb/3193791). 
 
 ---
 
 ### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Id. de evento 1098: Error: error en la operación del agente de token de 0xCAA5001C  
-En el Visor de eventos, en los registros AAD/Operational, este error puede aparecer como evento 1104: llamada de complemento AP de nube AAD Obtener error devuelto por token: 0xC000005F. Este problema se produce si faltan permisos o atributos de propiedad.  
+En el Visor de eventos en registros AAD/Operational hello, este error puede aparecer con el evento 1104: punto de acceso de AAD en la nube complemento llamada Get símbolo (token) devolvió el error: 0xC000005F. Este problema se produce si faltan permisos o atributos de propiedad.    
 
 **Acción recomendada**  
-Continúe con los pasos enumerados en el artículo [KB3196528](https://support.microsoft.com/kb/3196528).  
+Continúe con los pasos de hello aparecen [KB3196528](https://support.microsoft.com/kb/3196528).  
 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Emplee el foro [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/158658-enterprise-state-roaming) para proporcionar comentarios y realizar sugerencias sobre cómo mejorar Enterprise State Roaming.
+- Hola de uso [foro de User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/158658-enterprise-state-roaming) sugerencias de comentarios y asegúrese de tooprovide en cómo Enterprise tooimprove estado de movilidad.
 
-- Para más información, consulte [Información general de Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md). 
+- Para obtener más información, vea hello [Introducción a la itinerancia de estado de Enterprise](active-directory-windows-enterprise-state-roaming-overview.md). 
 
 ## <a name="related-topics"></a>Temas relacionados
 * [Información general de Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)

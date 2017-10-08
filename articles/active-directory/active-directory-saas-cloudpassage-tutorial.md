@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con CloudPassage | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y CloudPassage."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y CloudPassage."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,121 +13,122 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 094740e20570665e975dec1a591989e411f90c16
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 32fb007b90f071626c9b40fb5afc341dd3c1ae99
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>Tutorial: integración de Azure Active Directory con CloudPassage
 
-En este tutorial, aprenderá a integrar CloudPassage con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate CloudPassage con Azure Active Directory (Azure AD).
 
-La integración de CloudPassage con Azure AD proporciona las siguientes ventajas:
+Integración CloudPassage con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a CloudPassage.
-- Puede permitir que los usuarios inicien sesión automáticamente en CloudPassage (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar las cuentas en una sola ubicación central: Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooCloudPassage
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooCloudPassage (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con CloudPassage, necesita los siguientes elementos:
+integración de Azure AD con CloudPassage tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en CloudPassage
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Adición de CloudPassage desde la galería
+1. Agregar CloudPassage desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-cloudpassage-from-the-gallery"></a>Adición de CloudPassage desde la galería
-Para configurar la integración de CloudPassage en Azure AD, deberá agregar CloudPassage desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-cloudpassage-from-hello-gallery"></a>Agregar CloudPassage desde la Galería de Hola
+integración de hello tooconfigure de CloudPassage en Azure AD, deberá tooadd CloudPassage de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar CloudPassage desde la galería, realice los pasos siguientes:**
+**tooadd CloudPassage de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **CloudPassage**.
+4. En el cuadro de búsqueda de hello, escriba **CloudPassage**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_search.png)
 
-5. En el panel de resultados, seleccione **CloudPassage** y luego haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **CloudPassage**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, va a configurar y probar el inicio de sesión único de Azure AD con CloudPassage con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de CloudPassage para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de CloudPassage.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en CloudPassage es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en CloudPassage debe toobe establecido.
 
-Para establecer la relación de vínculo, en CloudPassage, asigne el valor de **nombre de usuario** de Azure AD como valor de **nombre de usuario**.
+En CloudPassage, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con CloudPassage, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con CloudPassage, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de CloudPassage](#creating-a-cloudpassage-test-user)**: para tener un homólogo de Britta Simon en CloudPassage que esté vinculado a la representación del usuario en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba CloudPassage](#creating-a-cloudpassage-test-user)**  -toohave un equivalente de Britta Simon en CloudPassage que es la representación toohello vinculado Azure AD del usuario.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación CloudPassage.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación CloudPassage.
 
-**Para configurar el inicio de sesión único de Azure AD con CloudPassage, realice los pasos siguientes:**
+**inicio de sesión único en Azure AD tooconfigure con CloudPassage, realizar Hola pasos:**
 
-1. En Azure Portal, en la página de integración de la aplicación **CloudPassage**, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **CloudPassage** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de CloudPassage**, lleve a cabo los pasos siguientes:
+3. En hello **CloudPassage dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_url.png)
 
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://portal.cloudpassage.com/saml/init/accountid`.
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://portal.cloudpassage.com/saml/init/accountid`
 
-    b. En el cuadro de texto **URL de respuesta**, escriba una dirección URL con el siguiente patrón: `https://portal.cloudpassage.com/saml/consume/accountid`. Para obtener el valor de este atributo, haga clic en **SSO Setup documentation** (Documentación de instalación de inicio de sesión única) en la sección **Single Sign-on Settings** (Configuración de inicio de sesión único) del portal de CloudPassage.
+    b. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón: `https://portal.cloudpassage.com/saml/consume/accountid`. Puede obtener el valor para este atributo, haga clic en **documentación de instalación de SSO** en hello **configuración de inicio de sesión único** sección del portal CloudPassage.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_05.png)
      
     > [!NOTE] 
-    > Estos valores no son reales. Actualice estos valores con los valores reales de URL de respuesta y URL de inicio de sesión. Póngase en contacto con el [equipo de soporte de cliente de CloudPassage](https://www.cloudpassage.com/company/contact/) para obtener estos valores. 
+    > Estos valores no son reales. Actualizar estos valores con la dirección URL de respuesta real hello y dirección URL de inicio de sesión. Póngase en contacto con [equipo de soporte técnico de cliente de CloudPassage](https://www.cloudpassage.com/company/contact/) tooget estos valores. 
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_certificate.png) 
 
-5. La aplicación CloudPassage espera las aserciones de SAML en un formato específico, que requiere que se agreguen asignaciones de atributos personalizados a la configuración de los atributos del token de SAML. La siguiente captura de pantalla le muestra un ejemplo de esto.
+5. La aplicación CloudPassage espera las aserciones de SAML de hello en un formato específico, lo que requiere tooadd atributo personalizado tooyour SAML atributos de token configuración de asignaciones.   
+Hola siguiente captura de pantalla muestra un ejemplo de esto.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_25.png) 
 
-6. En la sección **Atributos de usuario** del cuadro de diálogo **Inicio de sesión único**, configure el atributo Token SAML como muestra la imagen anterior y realice los siguientes pasos:
+6. Hola **atributos de usuario** sección en hello **inicio de sesión único** cuadro de diálogo, configurar atributos de token de SAML como se muestra en la imagen de hello anterior y realizar Hola pasos:
 
     | Nombre del atributo | Valor de atributo |
     | --- | --- |
@@ -135,15 +136,15 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
     | lastname |user.surname |
     | email |user.mail |
     
-    a. Haga clic en **Agregar atributo** para abrir el cuadro de diálogo **Agregar atributo**.
+    a. Haga clic en **Agregar atributo** tooopen hello **Agregar atributo** cuadro de diálogo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_attribute_04.png)
     
     ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_attribute_05.png)
     
-    b. En el cuadro de texto **Nombre**, escriba el nombre que se muestra para la fila.
+    b. Hola **nombre** cuadro de texto, nombre de atributo de tipo hello se muestra para esa fila.
 
-    c. En la lista **Valor**, seleccione el atributo que se muestra para esa fila.
+    c. De hello **valor** lista, el valor de atributo de tipo hello se muestra para esa fila.
     
     d. Haga clic en **Aceptar**.
 
@@ -151,117 +152,117 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_general_400.png)
     
-8. En la sección **Configuración de CloudPassage**, haga clic en **Configurar CloudPassage** para abrir la ventana **Configurar inicio de sesión**. Copie la **URL del servicio de inicio de sesión único de SAML, el identificador de entidad de SAML y la dirección URL de cierre de sesión** de la sección **Referencia rápida**.
+8. En hello **CloudPassage configuración** sección, haga clic en **configurar CloudPassage** tooopen **configurar inicio de sesión** ventana. Hola copia **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_configure.png) 
 
-9. En otra ventana del explorador, inicie sesión en su sitio de la compañía de CloudPassage como administrador.
+9. En otra ventana del explorador, inicio de sesión tooyour CloudPassage el sitio de la empresa como administrador.
 
-10. En el menú de la parte superior, haga clic en **Settings** (Configuración) y en **Site Administration** (Administración del sitio). 
+10. En el menú de hello en la parte superior de hello, haga clic en **configuración**y, a continuación, haga clic en **administración de sitios**. 
    
     ![Configurar inicio de sesión único][12]
 
-11. Haga clic en la pestaña **Authentication Settings** (Configuración de autenticación). 
+11. Haga clic en hello **configuración de autenticación** ficha. 
    
     ![Configurar inicio de sesión único][13]
 
-12. En la sección **Single Sign-on Settings** (Configuración del inicio de sesión único), siga estos pasos: 
+12. Hola **configuración de inicio de sesión único** sección, lleve a cabo Hola pasos: 
    
     ![Configurar inicio de sesión único][14]
 
     a. Seleccione la casilla **Enable Single sign-on(SSO)(SSO Setup Documentation)** (Habilitar el inicio de sesión único (SSO) (Documentación de configuración de SSO)).
     
-    b. Pegue el **identificador de entidad de SAML** en el cuadro de texto **URL del emisor de SAML**.
+    b. Pegar **Id. de entidad SAML** en hello **dirección URL del emisor SAML** cuadro de texto.
   
-    c. Pegue **Dirección URL del servicio de inicio de sesión único de SAML** en el cuadro de texto **Dirección URL del punto de conexión de SAML**.
+    c. Pegar **SAML Single Sign-On dirección URL del servicio** en hello **dirección URL del extremo SAML** cuadro de texto.
   
-    d. Pegue **Dirección URL de cierre de sesión** en el cuadro de texto **Logout landing page** (Página de aterrizaje de cierre de sesión).
+    d. Pegar **dirección URL de cierre de sesión** en hello **página de aterrizaje de cierre de sesión** cuadro de texto.
   
-    e. Abra el certificado descargado en el Bloc de notas, copie el contenido del mismo en el Portapapeles y luego péguelo en el cuadro de texto **Certificado x 509**.
+    e. Abra el certificado descargado en el Bloc de notas, Hola copia contenido de certificado descargado en el Portapapeles y, a continuación, péguelo en hello **certificado x 509** cuadro de texto.
   
     f. Haga clic en **Guardar**.
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_02.png) 
 
-3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-cloudpassage-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-cloudpassage-test-user"></a>Creación de un usuario de prueba de CloudPassage
 
-El objetivo de esta sección es crear un usuario de prueba llamado Britta Simon en CloudPassage.
+objetivo de Hola de esta sección es un usuario llamado a Britta Simon en CloudPassage toocreate.
 
-**Para crear un usuario llamado Britta Simon en CloudPassage, realice los pasos siguientes:**
+**toocreate un usuario llamado Britta Simon en CloudPassage, lleve a cabo Hola pasos:**
 
-1. Inicie sesión en su sitio de la compañía de **CloudPassage** como administrador. 
+1. Inicio de sesión tooyour **CloudPassage** sitio de la empresa como administrador. 
 
-2. En la barra de herramientas de la parte superior, haga clic en **Settings** (Configuración) y en **Site Administration** (Administración del sitio). 
+2. En la barra de herramientas de hello en la parte superior de hello, haga clic en **configuración**y, a continuación, haga clic en **administración de sitios**. 
    
    ![Creación de un usuario de prueba de CloudPassage][22] 
 
-3. Haga clic en la pestaña **Users** (Usuarios) y, a continuación, en **Add New User** (Agregar nuevo usuario). 
+3. Haga clic en hello **usuarios** ficha y, a continuación, haga clic en **Agregar nuevo usuario**. 
    
    ![Creación de un usuario de prueba de CloudPassage][23]
 
-4. En la sección **Agregar nuevo usuario** , lleve a cabo estos pasos: 
+4. Hola **Agregar nuevo usuario** sección, lleve a cabo Hola pasos: 
    
    ![Creación de un usuario de prueba de CloudPassage][24]
     
-    a. En el cuadro de texto **First Name** (Nombre), escriba Britta. 
+    a. Hola **nombre** cuadro de texto, escribe Bárbara. 
   
-    b. En el cuadro de texto **Last Name** (Apellidos), escriba Simon.
+    b. Hola **Last Name** cuadro de texto, escriba Simon.
   
-    c. En el cuadro de texto **Username** (Nombre de usuario), el cuadro de texto **Email** (Correo electrónico) y el cuadro de texto **Retype Email** (Volver a escribir correo electrónico), escriba el nombre de usuario de Britta en Azure AD.
+    c. Hola **nombre de usuario** cuadro de texto, hello **correo electrónico** cuadro de texto hello y **vuelva a escribir correo electrónico** cuadro de texto, escriba el nombre de usuario de Bárbara en Azure AD.
   
     d. En **Access Type** (Tipo de acceso), seleccione **Enable Halo Portal Access** (Habilitar el acceso de Portal de Halo).
   
     e. Haga clic en **Agregar**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a CloudPassage.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooCloudPassage.
 
 ![Asignar usuario][200] 
 
-**Para asignar un usuario llamado Britta Simon a CloudPassage, realice los pasos siguientes:**
+**tooassign Britta Simon tooCloudPassage, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **CloudPassage**.
+2. En la lista de aplicaciones de hello, seleccione **CloudPassage**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-cloudpassage-tutorial/tutorial_cloudpassage_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -269,7 +270,7 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -277,13 +278,13 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.
+objetivo de Hola de esta sección es tootest la configuración de SSO de Azure AD mediante Hola Panel de acceso.
 
-Al hacer clic en el icono de CloudPassage en el Panel de acceso, debería iniciar sesión automáticamente en su aplicación de CloudPassage.
+Al hacer clic en icono de CloudPassage Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour CloudPassage aplicación.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

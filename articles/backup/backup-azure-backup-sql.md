@@ -1,6 +1,6 @@
 ---
-title: Azure Backup para cargas de trabajo SQL Server con DPM | Microsoft Docs
-description: "Introducción a copia de seguridad de bases de datos SQL Server mediante el servicio Copia de seguridad de Azure"
+title: aaaAzure copia de seguridad para las cargas de trabajo de SQL Server con DPM | Documentos de Microsoft
+description: "Un toobacking de introducción de bases de datos de SQL Server mediante el servicio de copia de seguridad de Azure Hola"
 services: backup
 documentationcenter: 
 author: adigan
@@ -14,148 +14,147 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: c9edc066ea2edc9cd4b8453047d5584a588174dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ba78dbf1c7934a259a7bd0bdb7d4467ac75d05a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Realización de una copia de seguridad de SQL Server en Azure como una carga de trabajo DPM
-Este artículo le guiará por los pasos de configuración de la copia de seguridad de bases de datos de SQL Server mediante la Copia de seguridad de Azure.
+# <a name="back-up-sql-server-tooazure-as-a-dpm-workload"></a>Copia de seguridad tooAzure de SQL Server como una carga de trabajo DPM
+En este artículo le guiará por los pasos de configuración de Hola para copia de seguridad de bases de datos de SQL Server mediante copia de seguridad de Azure.
 
-Para realizar una copia de seguridad de las bases de datos de SQL Server en Azure, necesita una cuenta de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
+tooback la tooAzure de las bases de datos de SQL Server, necesita una cuenta de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-La administración de la copia de seguridad de bases de datos de SQL Server en Azure implica tres pasos:
+administración de Hola de tooAzure de copia de seguridad de base de datos de SQL Server y la recuperación de Azure implica tres pasos:
 
-1. Cree una directiva de copia de seguridad para proteger las bases de datos SQL Server en Azure.
-2. Creación de copias de seguridad a petición en Azure.
-3. Recuperación de la base de datos de Azure.
+1. Crear un tooAzure de bases de datos de SQL Server de tooprotect de directiva de copia de seguridad.
+2. Crear copias de seguridad a petición tooAzure.
+3. Recuperar base de datos de Hola de Azure.
 
 ## <a name="before-you-start"></a>Antes de comenzar
-Antes de comenzar, asegúrese de que se cumplen todos los [requisitos previos](backup-azure-dpm-introduction.md#prerequisites) para usar Copia de seguridad de Microsoft Azure a fin de proteger las cargas de trabajo. Los requisitos previos cubren tareas como: crear un almacén de copia de seguridad, descargar las credenciales del almacén, instalar el agente de Copia de seguridad de Azure y registrar el servidor con el almacén.
+Antes de comenzar, asegúrese de que todos los Hola [requisitos previos](backup-azure-dpm-introduction.md#prerequisites) para el uso de copia de seguridad de Microsoft Azure se cumplieron las cargas de trabajo tooprotect. requisitos previos de Hello abarcan tareas como: crear un almacén de copia de seguridad, descargar las credenciales de almacén, instalar Hola agente de copia de seguridad de Azure y registrar servidor hello con almacén Hola.
 
-## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Crear una directiva de copia de seguridad para proteger las bases de datos SQL Server en Azure
-1. En el servidor DPM, haga clic en el espacio de trabajo **Protección**
-2. En la cinta de herramientas, haga clic en **Nuevo** para crear un nuevo grupo de protección.
+## <a name="create-a-backup-policy-tooprotect-sql-server-databases-tooazure"></a>Crear un tooAzure de bases de datos de SQL Server de directiva de copia de seguridad tooprotect
+1. En el servidor DPM hello, haga clic en hello **protección** área de trabajo.
+2. En la cinta de opciones de herramienta de hello, haga clic en **New** toocreate un nuevo grupo de protección.
 
     ![Creación de un grupo de protección](./media/backup-azure-backup-sql/protection-group.png)
-3. DPM muestra la pantalla de inicio con instrucciones sobre cómo crear un **Grupo de protección**. Haga clic en **Siguiente**.
+3. DPM muestra la pantalla de inicio de hello con las guías de hello acerca de cómo crear un **grupo de protección**. Haga clic en **Siguiente**.
 4. Seleccione **Servidores**.
 
     ![Selección de tipo de grupo de protección - 'Servidores'](./media/backup-azure-backup-sql/pg-servers.png)
-5. Expanda la máquina de SQL Server en la que se encuentran las bases de datos en las que se van a realizar copias de seguridad. DPM muestra varios orígenes de datos de los que se puede hacer copias de seguridad desde ese servidor. Expanda **Todos los recursos compartidos SQL** y seleccione las bases de datos (en este caso, seleccionamos ReportServer$MSDPM2012 y ReportServer$MSDPM2012TempDB) para realizar copias de seguridad. Haga clic en **Siguiente**.
+5. Expanda el equipo con SQL Server Hola donde hello las bases de datos toobe copia de seguridad están presentes. DPM muestra varios orígenes de datos de los que se puede hacer copias de seguridad desde ese servidor. Expanda hello **todos los recursos compartidos de SQL** y seleccione las bases de datos de hello (en este caso se seleccionan ReportServer$ MSDPM2012 y ReportServer$ MSDPM2012TempDB) toobe copia de seguridad. Haga clic en **Siguiente**.
 
     ![Selección de base de datos SQL](./media/backup-azure-backup-sql/pg-databases.png)
-6. Proporcione un nombre para el grupo de protección y active la casilla **Quiero protección en línea** .
+6. Proporcione un nombre para el grupo de protección de Hola y seleccione hello **deseo protección en línea** casilla de verificación.
 
     ![Método de protección de datos: disco a corto plazo y en línea de Azure](./media/backup-azure-backup-sql/pg-name.png)
-7. En la pantalla **Especificar objetivos a corto plazo** , incluya las entradas necesarias para crear puntos de copia de seguridad en el disco.
+7. Hola **especificar objetivos a corto plazo** pantalla, incluya Hola entradas necesarias toocreate puntos de copia de seguridad toodisk.
 
-    Aquí vemos que **Duración de retención** está establecida en *5 días*, **Frecuencia de la sincronización** está establecida en una vez cada *15 minutos*, que es la frecuencia con la que se realiza la copia de seguridad. <seg>
-  **Copia de seguridad completa rápida** está establecido en *8:00 p.m*.</seg>
+    Aquí vemos que **duración de retención** se establece demasiado*5 días*, **frecuencia de sincronización** se establece tooonce cada *15 minutos* que es hello frecuencia con la que se realizó la copia de seguridad. **Copia de seguridad completa rápida** se establece demasiado*8:00 P.M*.
 
     ![Objetivos a corto plazo](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > A las 20:00 (de acuerdo con la entrada de la pantalla) se crea un punto de copia de seguridad cada día mediante la transferencia de los datos modificados desde el punto de copia de seguridad de las 20:00 del día anterior. Este proceso se denomina **Copia de seguridad completa rápida**. Mientras los registros transaccionales se sincronizan cada 15 minutos, si es necesario recuperar la base de datos a las 9:00 p.m., entonces se crea el punto mediante la reproducción de los registros de la última copia de seguridad completa rápida (8 p.m. en este caso).
+   > A las 8:00 P.M. (según la entrada de pantalla de toohello) se crea cada día a un punto de copia de seguridad mediante la transferencia de datos de Hola que se ha modificado de hello punto de copia de seguridad de 8:00 P.M. del día anterior. Este proceso se denomina **Copia de seguridad completa rápida**. Mientras se sincronizan los registros de transacciones de hello cada 15 minutos, si hay una base de datos de necesidad toorecover Hola a las 9:00 P.M. –, a continuación, se crea el punto de hello mediante la reproducción de registros de Hola de hello express última copia de seguridad completa, seleccione (8 pm en este caso).
    >
    >
 
 8. Haga clic en **Siguiente**
 
-    DPM muestra el espacio de almacenamiento total disponible y el uso del espacio de disco potencial.
+    DPM muestra Hola general espacio de almacenamiento disponible y utilización del espacio de disco posibles de Hola.
 
     ![Asignación de disco](./media/backup-azure-backup-sql/pg-storage.png)
 
-    De forma predeterminada, DPM crea un volumen por origen de datos (base de datos SQL Server) que se usa para la copia de seguridad inicial. Con este enfoque, el Administrador de discos lógicos (LDM) limita la protección de DPM a 300 orígenes de datos (bases de datos SQL Server). Para evitar esta limitación, seleccione la opción **Colocar datos en bloque de almacenamiento de DPM**. Si utiliza esta opción, DPM usa un único volumen para varios orígenes de datos, que permite a DPM proteger hasta 2000 bases de datos SQL.
+    De forma predeterminada, DPM crea un volumen por origen de datos (base de datos de SQL Server) que se usa para la copia de seguridad inicial de Hola. Con este enfoque, el Administrador de discos lógicos (LDM) de hello limita orígenes de datos de too300 de protección de DPM (bases de datos de SQL Server). toowork solucionar esta limitación, seleccione hello **colocar datos en bloque de almacenamiento de DPM**, opción. Si utiliza esta opción, DPM usa un único volumen para varios orígenes de datos, que permite a DPM tooprotect seguridad too2000 bases de datos SQL.
 
-    Si la opción **Expandir automáticamente los volúmenes** está seleccionada, DPM puede tener en cuenta el aumento del volumen de copia de seguridad al ir creciendo los datos de producción. Si la opción **Expandir automáticamente los volúmenes** no está seleccionada, DPM limitará el almacenamiento de copia de seguridad usado para los orígenes de datos del grupo de protección.
-9. Los administradores tienen la opción de transferir esta copia de seguridad inicial manualmente (fuera de red) para evitar la congestión del ancho de banda o a través de la red. También pueden configurar la hora a la que se puede producir la transferencia inicial. Haga clic en **Siguiente**.
+    Si **expandir automáticamente los volúmenes de hello** opción está seleccionada, DPM puede tener en cuenta para el volumen de copia de seguridad de hello aumenta a medida que crecen de datos de producción de hello. Si **expandir automáticamente los volúmenes de hello** opción no está seleccionada, DPM limita Hola orígenes de datos de toohello de almacenamiento de copia de seguridad utilizado en el grupo de protección de Hola.
+9. Elección de Hola de transferencia de evitar esta congestión de ancho de banda tooavoid inicial de copia de seguridad manualmente (fuera de red) o a través de red de Hola se otorgan a los administradores. También puede configurar tiempo de hello en qué Hola puede ocurrir transferencia inicial. Haga clic en **Siguiente**.
 
     ![Método de replicación inicial](./media/backup-azure-backup-sql/pg-manual.png)
 
-    La copia de seguridad inicial requiere la transferencia de todo el origen de datos (base de datos SQL Server) desde el servidor de producción (máquina SQL Server) al servidor DPM. Estos datos pueden ser grandes y la transferencia de los datos a través de la red podría superar el ancho de banda. Por este motivo, los administradores pueden elegir transferir la copia de seguridad inicial: **Manualmente** (mediante un soporte físico extraíble) para evitar la congestión del ancho de banda, o **Automáticamente a través de la red** (en un momento determinado).
+    copia de seguridad inicial de Hello requiere a transferencia Hola completa del origen de datos (base de datos de SQL Server) desde el servidor DPM toohello de producción server (máquina de SQL Server). Estos datos pueden ser grandes y transferir datos de Hola por red Hola pudieron superar el ancho de banda. Por este motivo, los administradores pueden elegir la copia de seguridad inicial de tootransfer Hola: **manualmente** (mediante un medio extraíble) tooavoid congestión del ancho de banda, o **automáticamente a través de la red de hello** (en un determinado hora).
 
-    Una vez completada la copia de seguridad inicial, el resto de las copias de seguridad son copias de seguridad incrementales sobre la copia de seguridad inicial. Las copias de seguridad incrementales tienden a ser pequeñas y se transfieren fácilmente a través de la red.
-10. Elija cuándo quiere que se ejecute la comprobación de coherencia y haga clic en **Siguiente**.
+    Una vez completada la copia de seguridad inicial de hello, el resto de Hola de copias de seguridad de hello son copias de seguridad incrementales en la copia de seguridad inicial de Hola. Copias de seguridad incrementales suelen toobe pequeño y se transfieren fácilmente a través de la red de Hola.
+10. Elija si desea que toorun de comprobación de coherencia de Hola y haga clic en **siguiente**.
 
     ![Comprobación de coherencia](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    DPM puede realizar una comprobación de coherencia para comprobar la integridad del punto de copia de seguridad. Calcula la suma de comprobación del archivo de copia de seguridad en el servidor de producción (máquina de SQL Server en este escenario) y los datos de copia de seguridad para ese archivo en DPM. En caso de conflicto, se supone que el archivo de copia de seguridad de DPM está dañado. DPM rectifica los datos de copia de seguridad mediante el envío de los bloques correspondientes a la suma de comprobación no coincidente. Como la comprobación de coherencia es una operación que requiere un rendimiento intensivo, los administradores tienen la opción de programarla o ejecutarla automáticamente.
-11. Para especificar la protección en línea de los orígenes de datos, seleccione las bases de datos que se van proteger en Azure y haga clic en **Siguiente**.
+    DPM puede realizar una coherencia comprobar toocheck Hola la integridad del punto de copia de seguridad de Hola. Calcula la suma de comprobación de hello del archivo de copia de seguridad de hello en el servidor de producción de hello (máquina de SQL Server en este escenario) y datos de copia de seguridad de Hola para ese archivo en DPM. En caso de hello de conflicto, se supone que Hola archivo de copia de seguridad de DPM está dañada. DPM rectifica datos de copia de seguridad de hello mediante el envío de bloques de hello correspondiente toohello incoherencia de suma de comprobación. Como la comprobación de coherencia hello es una operación de rendimiento intensivo, los administradores tienen la opción de Hola de programación de comprobación de coherencia de Hola o ejecutarlo automáticamente.
+11. toospecify protección en línea de orígenes de datos de hello, seleccione hello toobe de bases de datos protegido tooAzure y haga clic en **siguiente**.
 
     ![Selección de orígenes de datos](./media/backup-azure-backup-sql/pg-sqldatabases.png)
 12. Los administradores pueden elegir las programaciones de copia de seguridad y las directivas de retención que se ajusten a las directivas de la organización.
 
     ![Programación y retención](./media/backup-azure-backup-sql/pg-schedule.png)
 
-    En este ejemplo, las copias de seguridad se realizan una vez a las 12:00 p.m. y a las 8 p.m. (parte inferior de la pantalla)
+    En este ejemplo, las copias de seguridad se realizan una vez al día a 12:00 P.M. y las 8 P.M. (parte inferior de la pantalla de bienvenida)
 
     > [!NOTE]
-    > Es recomendable tener algunos puntos de recuperación a corto plazo en disco para una recuperación rápida. Estos puntos de recuperación se utilizan para la "recuperación operacional". Azure actúa como una ubicación válida fuera de sitio con unos contratos de nivel de servicio mayores y una disponibilidad garantizada.
+    > Es una buena práctica toohave algunos puntos de recuperación a corto plazo en disco para una rápida recuperación. Estos puntos de recuperación se utilizan para la "recuperación operacional". Azure actúa como una ubicación válida fuera de sitio con unos contratos de nivel de servicio mayores y una disponibilidad garantizada.
     >
     >
 
-    **Práctica recomendada**: asegúrese de que se programan copias de seguridad de Azure tras realizar copias de seguridad de disco local con DPM. Esto permitirá que la última copia de seguridad de disco se copie en Azure.
+    **Procedimiento recomendado**: asegúrese de que se programan copias de seguridad de Azure tras la finalización de Hola de copias de seguridad de disco local con DPM. Esto permite hello tooAzure de toobe de copia de seguridad copia de disco más reciente.
 
-13. Seleccione la programación de la directiva de retención. Se proporcionan detalles sobre el funcionamiento de la directiva de retención en [Usar la copia de seguridad de Azure para cambiar su infraestructura de cintas](backup-azure-backup-cloud-as-tape.md).
+13. Elegir programación hello de la directiva de retención. se proporcionan detalles de Hello sobre el funcionamiento de la directiva de retención de hello en [tooreplace de copia de seguridad de Azure Use el artículo de la infraestructura de cinta](backup-azure-backup-cloud-as-tape.md).
 
     ![Directiva de retención](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     En este ejemplo:
 
-    * Las copias de seguridad se realizan una vez a las 12:00 p.m. y a las 8 p.m. (parte inferior de la pantalla) y se conservan durante 180 días.
-    * La copia de seguridad es el sábado a las 12:00 P.M. se conserva durante 104 semanas
-    * La copia de seguridad es el último sábado de 12:00 P.M. se conserva durante 60 meses
-    * La copia de seguridad es el último sábado de marzo a las 12:00 P.M. se conserva durante 10 años
-14. Haga clic en **Siguiente** y seleccione la opción adecuada para transferir la copia de seguridad inicial a Azure. Puede elegir **Automáticamente a través de la red** o **Copia de seguridad sin conexión**.
+    * Las copias de seguridad se realizan una vez al día al 12:00 P.M. y las 8 P.M. (parte inferior de la pantalla de bienvenida) y se conservan durante 180 días.
+    * copia de seguridad de Hello en sábado a las 12:00 p. M. se conserva durante 104 semanas
+    * copia de seguridad de Hello en último sábado a las 12:00 p. M. se conserva durante 60 meses
+    * copia de seguridad de Hello en último sábado de marzo a las 12:00 p. M. se conserva durante 10 años
+14. Haga clic en **siguiente** y seleccione Hola opción apropiada para transferir hello tooAzure de copia de seguridad inicial. Puede elegir **automáticamente a través de la red de hello** o **copia de seguridad sin conexión**.
 
-    * **Automáticamente a través de la red** transferirá los datos de copia de seguridad a Azure en función de la programación seleccionada para la copia de seguridad.
+    * **Automáticamente a través de la red de hello** transferencias Hola tooAzure de datos de copia de seguridad según la programación de hello elegido para la copia de seguridad.
     * Se explica cómo funciona **Copia de seguridad sin conexión** en [Flujo de trabajo de copia de seguridad sin conexión en Copia de seguridad de Azure](backup-azure-backup-import-export.md).
 
-    Seleccione el mecanismo de transferencia correspondiente para enviar la copia de seguridad inicial a Azure y haga clic en **Siguiente**.
-15. Una vez revisados los detalles de la directiva en la pantalla **Resumen**, haga clic en el botón **Crear grupo** para completar el flujo de trabajo. Puede hacer clic en el botón **Cerrar** y supervisar el progreso del trabajo en el área de trabajo de supervisión.
+    Seleccione Transferir relevante de hello tooAzure de copia de seguridad inicial de mecanismo toosend hello y haga clic en **siguiente**.
+15. Una vez que revisar detalles de la directiva de Hola Hola **resumen** pantalla, haga clic en hello **crear grupo** el flujo de trabajo de botón toocomplete Hola. Puede hacer clic en hello **cerrar** botón y monitor de progreso del trabajo hello en el área de trabajo de supervisión.
 
     ![Creación de un grupo de protección en curso](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>Copia de seguridad a petición de una base de datos SQL Server
-Aunque los pasos anteriores crean una directiva de copia de seguridad, solo se crea un “punto de recuperación” cuando se produce la primera copia de seguridad. En lugar de esperar a que se inicie el programador, los pasos siguientes activarán la creación de un punto de recuperación manualmente.
+Aunque los pasos anteriores de hello crean una directiva de copia de seguridad, se crea un "punto de recuperación" solo cuando se produce la primera copia de seguridad de Hola. En lugar de esperar Hola programador tookick en, pasos de Hola por debajo de la creación de hello de desencadenador de una recuperación del punto de manualmente.
 
-1. Espere hasta que el estado del grupo de protección muestre **Correcto** para la base de datos antes de crear el punto de recuperación.
+1. Espere hasta que se muestra el estado del grupo de protección de hello **Aceptar** de base de datos de hello antes de crear el punto de recuperación de Hola.
 
     ![Miembros del grupo de protección](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
-2. Haga clic con el botón derecho en la base de datos y seleccione **Crear punto de recuperación**.
+2. Haga doble clic en la base de datos de Hola y seleccione **crear punto de recuperación**.
 
     ![Creación de punto de recuperación en línea](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
-3. Elija **Protección en línea** en el menú desplegable y haga clic en **Aceptar**. Se iniciará la creación de un punto de recuperación en Azure.
+3. Elija **protección en línea** en el menú desplegable de Hola y haga clic en **Aceptar**. Creación de hello de un punto de recuperación se inicia en Azure.
 
     ![Crear punto de recuperación](./media/backup-azure-backup-sql/sqlbackup-azure.png)
-4. Puede ver el progreso del trabajo en el área de trabajo **Supervisión** donde encontrará un trabajo en curso como el descrito en la ilustración siguiente.
+4. Puede ver el progreso del trabajo de Hola Hola **supervisión** donde encontrará un curso en el área de trabajo del trabajo como una muestra en la figura siguiente Hola Hola.
 
     ![Consola de supervisión](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Recuperación de una base de datos SQL Server de Azure
-Los pasos siguientes son necesarios para recuperar una entidad protegida (base de datos SQL) de Azure.
+Hello siguientes pasos son necesario toorecover una entidad protegida (base de datos de SQL Server) de Azure.
 
-1. Abra el consola de administración del servidor DPM. Vaya al área de trabajo **Recuperación** donde podrá ver los servidores de los que DPM realiza una copia de seguridad. Examine la base de datos requerida (en este caso ReportServer$MSDPM2012). Seleccione una hora en **Recuperación desde** que finalice con **En línea**.
+1. Abra la consola de administración del servidor DPM Hola. Navegue demasiado**recuperación** área de trabajo donde puede ver los servidores de hello respaldada por DPM. Examinar la base de datos necesarios de hello (en este caso ReportServer$ MSDPM2012). Seleccione una hora en **Recuperación desde** que finalice con **En línea**.
 
     ![Selección de punto de recuperación](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. Haga clic con el botón secundario en el nombre de la base de datos y haga clic en **Recuperar**.
+2. Haga clic en nombre de la base de datos de Hola y haga clic en **recuperar**.
 
     ![Recuperación desde Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. DPM muestra los detalles del punto de recuperación. Haga clic en **Siguiente**. Para sobrescribir la base de datos, seleccione el tipo de recuperación **Recuperar en instancia original de servidor SQL Server**. Haga clic en **Siguiente**.
+3. DPM muestra los detalles de Hola Hola del punto de recuperación. Haga clic en **Siguiente**. base de datos de toooverwrite hello, tipo de recuperación de hello seleccione **recuperar toooriginal instancia de SQL Server**. Haga clic en **Siguiente**.
 
-    ![Recuperación en ubicación original](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
+    ![Recuperar tooOriginal ubicación](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
-    En este ejemplo, DPM permite la recuperación de la base de datos en otra instancia de SQL Server o en una carpeta de red independiente.
-4. En la pantalla **Especificar opciones de recuperación** , puede seleccionar las opciones de recuperación como Límite de uso del ancho de banda de red para limitar el ancho de banda usado por la recuperación. Haga clic en **Siguiente**.
-5. En la pantalla **Resumen** , podrá ver todas las configuraciones de recuperación proporcionadas hasta ahora. Haga clic en **Recuperar**.
+    En este ejemplo, DPM permite la recuperación de la instancia de SQL Server de tooanother de base de datos de Hola o una carpeta de red de tooa independiente.
+4. Hola **opciones de recuperación especificar** pantalla, puede seleccionar opciones de recuperación de hello como límite de ancho de banda de toothrottle Hola utilizado por recuperación de uso de ancho de banda de red. Haga clic en **Siguiente**.
+5. Hola **resumen** pantalla, verá todas las configuraciones de recuperación de hello proporcionadas hasta ahora. Haga clic en **Recuperar**.
 
-    El estado de recuperación muestra que la base de datos se está recuperando. Puede hacer clic en **Cerrar** para cerrar el asistente y ver el progreso en el área de trabajo **Supervisión**.
+    Hola estado de recuperación muestra base de datos de Hola que se va a recuperar. Puede hacer clic en **cerrar** tooclose Hola asistente y vista Hola progreso Hola **supervisión** área de trabajo.
 
     ![Inicio de proceso de recuperación](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 
-    Una vez completada la recuperación, la base de datos restaurada será coherente con la aplicación.
+    Una vez completada la recuperación de hello, base de datos de hello restaurado es coherente con la aplicación.
 
 ### <a name="next-steps"></a>Pasos siguientes:
 •   [Preguntas más frecuentes de Azure Backup](backup-azure-backup-faq.md)

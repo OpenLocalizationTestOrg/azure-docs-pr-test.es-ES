@@ -1,6 +1,6 @@
 ---
-title: "Implementación de la distribución de paquetes piloto (pruebas beta) en el Servicio de aplicaciones de Azure"
-description: "Aprenda a distribuir paquetes piloto de nuevas características en las aplicaciones o a probar la versión beta de sus actualizaciones en este tutorial integral. Reúne las características del Servicio de aplicaciones como publicación continua, ranuras, enrutamiento de tráfico y la integración de Application Insights."
+title: "implementación de aaaFlighting (beta prueba) en el servicio de aplicación de Azure"
+description: "Obtenga información acerca de cómo tooflight nuevas características en su aplicación o la versión beta de probar las actualizaciones en este tutorial to-end. Reúne las características del Servicio de aplicaciones como publicación continua, ranuras, enrutamiento de tráfico y la integración de Application Insights."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -14,96 +14,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2016
 ms.author: cephalin
-ms.openlocfilehash: 83e3247310461ac148fff3c4ade3aa7216478537
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e83477b1fe46be09e5baa7bc2bd239b840b05cf7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="flighting-deployment-beta-testing-in-azure-app-service"></a>Implementación de la distribución de paquetes piloto (pruebas beta) en el Servicio de aplicaciones de Azure
-Este tutorial muestra cómo hacer *implementaciones de distribución de paquetes piloto* mediante la integración de las distintas capacidades de [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) y [Azure Application Insights](/services/application-insights/).
+Este tutorial muestra cómo toodo *las implementaciones de programa Windows Insider* mediante la integración de Hola varias funciones de [servicio de aplicaciones de Azure](http://go.microsoft.com/fwlink/?LinkId=529714) y [Azure Application Insights](/services/application-insights/).
 
-*La distribución de paquetes piloto* es un proceso de implementación que valida una nueva característica o cambio con un número limitado de clientes reales, y es una prueba importante en el escenario de producción. Es similar a las pruebas beta y a veces se conoce como "vuelo de prueba controlado". Muchas grandes empresas con una presencia web usan este enfoque para obtener validación temprana en las actualizaciones de sus aplicaciones dentro de su prácticas de [desarrollo ágil](https://en.wikipedia.org/wiki/Agile_software_development). El Servicio de aplicaciones de Azure le permite integrar la prueba en producción con publicación continua y con Application Insight para implementar el mismo escenario de DevOps. Las ventajas de este enfoque incluyen:
+*La distribución de paquetes piloto* es un proceso de implementación que valida una nueva característica o cambio con un número limitado de clientes reales, y es una prueba importante en el escenario de producción. Es toobeta analogía pruebas y a veces se conoce como "vuelo de pruebas controlado". Muchas grandes empresas con una presencia web usan este enfoque para obtener validación temprana en las actualizaciones de sus aplicaciones dentro de su prácticas de [desarrollo ágil](https://en.wikipedia.org/wiki/Agile_software_development). Servicio de aplicaciones de Azure le permite toointegrate prueba en producción con la publicación continua y Application Insights tooimplement Hola mismo escenario de DevOps. Las ventajas de este enfoque incluyen:
 
-* **Obtención de información real a partir de comentarios *antes* de que se publiquen las actualizaciones en el entorno de producción** (si hay algo mejor que recibir comentarios tan pronto como la versión se publique, es recibir comentarios antes de publicar). Puede probar las actualizaciones con tráfico y comportamientos reales de los usuarios tan pronto como desee dentro el ciclo de vida del producto.
+* **Obtener comentarios real *antes de* las actualizaciones están publicada tooproduction** -Hola solo lo mejor que tengan comentarios tan pronto como la versión está adquiriendo cada vez comentarios antes de liberar. Puede probar las actualizaciones con tráfico de usuario real y comportamientos tan pronto como se desee en el ciclo de vida de productos de Hola.
 * **Mejora [del desarrollo continuo controlado por pruebas (CTDD)](https://en.wikipedia.org/wiki/Continuous_test-driven_development)** a través de la integración de pruebas en la producción, con integración continua e instrumentación con Application Insights, la validación de usuario se produce al principio y de forma automática dentro del ciclo de vida del producto. Esto ayuda a reducir las inversiones de tiempo de ejecución de pruebas manuales.
-* **Optimización del flujo de trabajo de prueba**: Mediante la automatización de la prueba en producción con instrumentación de supervisión continua, puede lograr en un único proceso los objetivos de distintos tipos de pruebas, como [integración](https://en.wikipedia.org/wiki/Integration_testing), [regresión](https://en.wikipedia.org/wiki/Regression_testing), [facilidad de uso](https://en.wikipedia.org/wiki/Usability_testing), accesibilidad, localización, [rendimiento](https://en.wikipedia.org/wiki/Software_performance_testing), [seguridad](https://en.wikipedia.org/wiki/Security_testing) y [aceptación](https://en.wikipedia.org/wiki/Acceptance_testing).
+* **Optimizar el flujo de trabajo de prueba** -mediante la automatización de prueba en producción con la instrumentación de supervisión continua, puede potencialmente lograr Hola objetivos de varias clases de pruebas en un único proceso, como [integración](https://en.wikipedia.org/wiki/Integration_testing), [regresión](https://en.wikipedia.org/wiki/Regression_testing), [facilidad de uso](https://en.wikipedia.org/wiki/Usability_testing), accesibilidad, localización, [rendimiento](https://en.wikipedia.org/wiki/Software_performance_testing), [seguridad](https://en.wikipedia.org/wiki/Security_testing), y [ aceptación](https://en.wikipedia.org/wiki/Acceptance_testing).
 
-En una implementación de distribución de paquetes piloto, no se trata solamente del enrutamiento de tráfico real. En este tipo de implementación lo que se pretende es tener una percepción y conocimientos sobre la misma lo antes posible, tanto si se trata de un error inesperado como de la degradación del rendimiento o de problemas de experiencia de usuario. Recuerde que se trata de los clientes reales. Así que para hacerlo bien, tiene que asegurarse de que ha configurado la implementación de distribución de paquetes piloto de forma que pueda recopilar todos los datos que necesita para tomar una decisión informada en el paso siguiente. Este tutorial muestra cómo recopilar datos con Application Insights, pero puede usar New Relic u otra tecnología que se adapte a su situación.
+En una implementación de distribución de paquetes piloto, no se trata solamente del enrutamiento de tráfico real. En ese tipo de implementación que desee toogain una visión general de lo más rápido posible, ya sea un error inesperado, degradación del rendimiento, problemas de la experiencia de usuario. Recuerde que se trata de los clientes reales. Toodo por lo que, a la derecha, debe asegurarse de que ha configurado el programa Windows Insider toogather implementación todos los datos de Hola que necesita en orden toomake una decisión informada para el paso siguiente. Este tutorial muestra cómo toocollect de datos con Application Insights, pero se puede utilizar New Relic u otras tecnologías que se adapte a su escenario.
 
 ## <a name="what-you-will-do"></a>Lo que hará
-En este tutorial, obtendrá información sobre cómo reunir los escenarios siguientes para probar su aplicación de Servicio de la aplicaciones en producción:
+En este tutorial, aprenderá cómo toobring Hola siguientes escenarios juntos tootest la aplicación de servicio de aplicaciones de producción:
 
-* [Enrutar el tráfico de producción](app-service-web-test-in-production-get-start.md) a la aplicación beta
-* [Instrumentar la aplicación](../application-insights/app-insights-web-track-usage.md) para obtener métricas útiles
+* [Redirigir el tráfico de producción](app-service-web-test-in-production-get-start.md) tooyour beta aplicación
+* [Instrumentar la aplicación](../application-insights/app-insights-web-track-usage.md) tooobtain útil métricas
 * Implementar la aplicación beta y realizar un seguimiento de las métricas de aplicación de forma continua
-* Comparar las métricas entre la aplicación de producción y la aplicación beta para ver de qué forma los cambios de código se traducen en resultados
+* Las métricas de comparación entre la aplicación de producción de hello y cómo cambia el código de hello beta aplicación toosee traducen tooresults
 
 ## <a name="what-you-will-need"></a>Qué necesita
 * Una cuenta de Azure
 * Una cuenta [GitHub](https://github.com/)
-* Visual Studio de 2015, puede descargar la [edición Community](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx).
-* Shell de Git (instalado con [GitHub para Windows](https://windows.github.com/)): esto le permite ejecutar comandos de PowerShell y Git en la misma sesión
+* Visual Studio 2015: puede descargar hello [edición Community](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx).
+* GIT Shell (instalado con [GitHub para Windows](https://windows.github.com/))-Esto permite toorun ambos comandos de PowerShell y Git Hola Hola misma sesión
 * Bits más recientes de [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/v0.9.8-September2015/azure-powershell.0.9.8.msi)
-* Conocimientos básicos de lo siguiente:
+* Conocimientos básicos de los siguientes hello:
   * Implementación de plantillas de [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) (consulte [Aprovisionamiento e implementación predecibles de microservicios en Azure](app-service-deploy-complex-application-predictably.md))
   * [Git](http://git-scm.com/documentation)
   * [PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
 > [!NOTE]
-> Para completar este tutorial, deberá tener una cuenta de Azure:
+> Necesita una cuenta de Azure toocomplete este tutorial:
 >
-> * Puede [abrir una cuenta de Azure de manera gratuita](https://azure.microsoft.com/pricing/free-trial/) : obtiene crédito que puede usar para probar los servicios de Azure de pago, e incluso una vez agotado este podrá mantener la cuenta y usar servicios gratuitos de Azure, tales como Aplicaciones web.
+> * También puede [abrir una cuenta de Azure de forma gratuita](https://azure.microsoft.com/pricing/free-trial/) -obtendrá créditos puede usar tootry los servicios de Azure de pago e incluso después de que agoten puede mantener la cuenta de hello y libre de usar servicios de Azure, como las aplicaciones Web.
 > * Puede [activar las ventajas de suscriptor de Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) : su suscripción a Visual Studio le proporciona crédito todos los meses que puede usar con servicios de Azure de pago.
 >
-> Si desea empezar a trabajar con el Servicio de aplicaciones de Azure antes de inscribirse para abrir una cuenta de Azure, vaya a [Prueba del Servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde podrá crear inmediatamente una aplicación web de inicio de corta duración en el Servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
+> Si desea tooget iniciado con el servicio de aplicación de Azure antes de registrarse para una cuenta de Azure, vaya demasiado[pruebe el servicio de aplicaciones](https://azure.microsoft.com/try/app-service/), donde puede crear inmediatamente una aplicación web de inicio de corta duración en el servicio de aplicaciones. No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.
 >
 >
 
 ## <a name="set-up-your-production-web-app"></a>Configuración de la aplicación web de producción
 > [!NOTE]
-> El script que se emplea en este tutorial configurará automáticamente la publicación continua desde el repositorio de GitHub. Esto requiere que las credenciales de GitHub ya estén almacenadas en Azure; en caso contrario, no se realizará la implementación con script al intentar definir la configuración del control de código fuente para las aplicaciones web.
+> script de Hola utilizado en este tutorial configurará automáticamente la publicación continua desde el repositorio de GitHub. Esto requiere que las credenciales de GitHub ya están almacenadas en Azure, en caso contrario hello mediante secuencias de comandos se producirá un error al intentar tooconfigure configuración de control de código fuente para las aplicaciones web de Hola.
 >
-> Para almacenar sus credenciales de GitHub en Azure, cree una aplicación web en [Azure Portal](https://portal.azure.com/) y [configure la implementación de GitHub](app-service-continuous-deployment.md). Solo tiene que hacer esto una vez.
+> toostore su GitHub credenciales de Azure, cree una aplicación web en hello [Portal de Azure](https://portal.azure.com/) y [configurar la implementación de GitHub](app-service-continuous-deployment.md). Solo necesita esta vez toodo.
 >
 >
 
-En un escenario típico de DevOps, tiene una aplicación que se ejecuta directamente en Azure y quiere realizar cambios en ella mediante publicación continua. En este escenario, se implementará en producción una plantilla que haya desarrollado y probado.
+En un escenario típico de DevOps, tiene una aplicación que se ejecuta en Azure y desea toomake cambios tooit a través de la publicación continua. En este escenario, implementará tooproduction una plantilla que haya desarrollado y probado.
 
-1. Cree su propia bifurcación del repositorio [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) . Para obtener información sobre la creación de la bifurcación, consulte [Bifurcación de un repositorio](https://help.github.com/articles/fork-a-repo/). Una vez creada la bifurcación, puede verla en el explorador.
+1. Crear su propia bifurcación de hello [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) repositorio. Para obtener información sobre la creación de la bifurcación, consulte [Bifurcación de un repositorio](https://help.github.com/articles/fork-a-repo/). Una vez creada la bifurcación, puede verla en el explorador.
 
    ![](./media/app-service-agile-software-development/production-1-private-repo.png)
 2. Abra una sesión del Shell de Git. Si aún no tiene el Shell de Git, instale ahora [GitHub para Windows](https://windows.github.com/) .
-3. Cree un clon local de la bifurcación ejecutando el comando siguiente:
+3. Crear un clon de la bifurcación local mediante la ejecución de hello siguiente comando:
 
      git clone https://github.com/<su_bifurcación>/ToDoApp.git
-4. Cuando tenga el clon local, vaya a *&lt;raíz_repositorio>*\ARMTemplates y ejecute el script deploy.ps1 con un sufijo único, como se muestra a continuación:
+4. Una vez que tenga el clon local, vaya demasiado*&lt;repository_root >*\ARMTemplates y ejecución hello deploy.ps1 secuencia de comandos con un sufijo único, como se muestra a continuación:
 
      .\deploy.ps1 –RepoUrl https://github.com/<your_fork>/todoapp.git -ResourceGroupSuffix <your_suffix>
-5. Cuando se le solicite, escriba el nombre de usuario y la contraseña que quiera para el acceso a la base de datos. Recuerde las credenciales de la base de datos porque tendrá que especificarlas al actualizar el grupo de recursos.
+5. Cuando se le solicite, escriba el nombre de usuario de hello deseado y una contraseña para el acceso a la base de datos. Recordar las credenciales de la base de datos ya que necesitará toospecify implementarlos de nuevo cuando la actualización Hola grupo de recursos.
 
-   Debería ver el progreso de aprovisionamiento de varios recursos de Azure. Cuando finalice la implementación, el script iniciará la aplicación en el explorador y emitirá un bip.
+   Debería ver Hola aprovisionamiento progreso por varios recursos de Azure. Cuando se completa la implementación, el script de Hola Iniciar aplicación hello en el Explorador de Hola y proporcionarle un bip descriptivo.
    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.1-app-in-browser.png)
 6. De nuevo en la sesión del Shell de Git, ejecute:
 
      .\swap –Name ToDoApp<su_sufijo>
 
    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.2-swap-to-production.png)
-7. Cuando finalice el script, vuelva a examinar la dirección del front-end (http://ToDoApp*&lt;su_sufijo>*.azurewebsites.net/) para ver la ejecución de la aplicación en producción.
-8. Inicie sesión en el [Portal de Azure](https://portal.azure.com/) y observe lo que se crea.
+7. Cuando finaliza el script de Hola, vuelva atrás toobrowse toohello dirección del front-end (http://ToDoApp*&lt;your_suffix >*.azurewebsites.net/) toosee Hola ejecuta aplicación en producción.
+8. Inicie sesión en hello [Portal de Azure](https://portal.azure.com/) y eche un vistazo a lo que se crea.
 
-   Podrá ver dos aplicaciones web en el mismo grupo de recursos, una con el sufijo `Api` en el nombre. Si observa la vista de grupo de recursos, también verá el servidor y Base de datos SQL, el plan de Servicio de aplicaciones y las ranuras de ensayo para las aplicaciones web. Examine los distintos recursos y compárelos con *&lt;ráiz_repositorio>*\ARMTemplates\ProdAndStage.json para ver cómo están configurados en la plantilla.
+   Debe ser capaz de toosee dos aplicaciones de web Hola mismo grupo de recursos, uno con hello `Api` sufijo de nombre de Hola. Si observa en vista de grupo de recursos de hello, también verá Hola base de datos SQL y servidor, Hola plan de servicio de aplicaciones y zonas de ensayo de Hola para las aplicaciones web de Hola. Examine los distintos recursos de Hola y compararlos con  *&lt;repository_root >*toosee \ARMTemplates\ProdAndStage.json cómo estén configuradas en la plantilla de Hola.
 
    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.3-resource-group-view.png)
 
-Ha configurado la aplicación de producción.  Ahora, imaginemos que recibe comentarios informándole de que la facilidad de uso de la aplicación es insuficiente. Por lo que decide investigar. Va a instrumentar la aplicación para que le proporcione información.
+Ha configurado la aplicación de producción de hello.  Ahora, imaginemos que recibe información que es insuficiente para la aplicación hello facilidad de uso. Por lo que decida tooinvestigate. Se vayan tooinstrument toogive de su aplicación, comentarios.
 
 ## <a name="investigate-instrument-your-client-app-for-monitoringmetrics"></a>Investigación: instrumentar la aplicación de cliente para supervisión y métricas
 1. Abra *&lt;raíz_repositorio>*\src\MultiChannelToDo.sln en Visual Studio.
 2. Restaure todos los paquetes de Nuget haciendo clic con el botón derecho en la solución > **Administrar paquetes de NuGet para la solución** > **Restaurar**.
-3. Haga clic con el botón derecho en **MultiChannelToDo.Web** > **Agregar Telemetría de Application Insights** > **Definir la configuración** > Cambie el grupo de recursos a ToDoApp*&lt;su_sufijo>* > **Agregar Application Insights al proyecto**.
-4. En el Portal de Azure, abra la hoja para el recurso de Application Insight **MultiChannelToDo.Web** . A continuación, en la parte de **Estado de la aplicación**, haga clic en **Obtenga información sobre cómo recopilar datos de carga de página del explorador** > Copiar código.
-5. Agregue el código de instrumentación JS copiado a *&lt;raíz_repsitorio>*\src\MultiChannelToDo.Web\app\Index.cshtml, justo antes de la etiqueta `<heading>` de cierre. Debe contener la clave de instrumentación única del recurso de Application Insight.
+3. Haga clic en **MultiChannelToDo.Web** > **Agregar aplicación visión telemetría** > **configurar opciones de** > grupo de recursos de cambio tooToDoApp*&lt;your_suffix >* > **tooProject agregar Application Insights**.
+4. Hola Portal de Azure, abra hoja Hola para hello **MultiChannelToDo.Web** recursos Application Insight. A continuación, en hello **estado de la aplicación** parte, haga clic en **Obtenga información acerca de la página del explorador toocollect cargar datos** > Copiar el código.
+5. Agregar Hola copia código de instrumentación de JS demasiado*&lt;repository_root >*\src\MultiChannelToDo.Web\app\Index.cshtml, justo antes de cerrarse de hello `<heading>` etiqueta. Debe incluir Hola Instrumental única clave del recurso Application Insight.
 
         <script type="text/javascript">
         var appInsights=window.appInsights||function(config){
@@ -115,7 +115,7 @@ Ha configurado la aplicación de producción.  Ahora, imaginemos que recibe come
         window.appInsights=appInsights;
         appInsights.trackPageView();
         </script>
-6. Envíe eventos personalizados a Application Insights para los clics del mouse agregando el código siguiente a la parte inferior del cuerpo:
+6. Enviar eventos personalizados tooApplication visión de clics del mouse mediante la adición de hello después de la parte inferior de toohello de código del cuerpo:
 
        <script>
            $(document.body).find("*").click(function(event) {
@@ -124,16 +124,16 @@ Ha configurado la aplicación de producción.  Ahora, imaginemos que recibe come
            });
        </script>
 
-   Este fragmento de código de JavaScript envía un evento personalizado a Application Insights cada vez que un usuario hace clic en cualquier parte de la aplicación web.
-7. En el Shell de Git, confirme e inserte los cambios en la bifurcación en GitHub. A continuación, espere a que los clientes actualicen el explorador.
+   Este fragmento de código de JavaScript envía un evento personalizado tooApplication información cada vez que un usuario hace clic en cualquier lugar en la aplicación web de hello.
+7. En el Shell de Git, confirme e inserte la bifurcación de tooyour cambios en GitHub. A continuación, espere explorador toorefresh de los clientes.
 
        git add -A :/
        git commit -m "add AI configuration for client app"
        git push origin master
-8. Cambie los cambios de la aplicación implementados a producción:
+8. Hola de intercambio implementado tooproduction de cambios de aplicación:
 
      .\swap –Name ToDoApp<su_sufijo>
-9. Busque el recurso de Application Insights que configuró. Haga clic en Eventos personalizados
+9. Examinar los recursos de Application Insights toohello que ha configurado. Haga clic en Eventos personalizados
 
    ![](./media/app-service-web-test-in-production-controlled-test-flight/01-custom-events.png)
 
@@ -143,39 +143,39 @@ Supongamos que ve un gráfico como el siguiente:
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/02-custom-events-chart-view.png)
 
-Y la cuadrícula de eventos debajo de él:
+Y cuadrícula de eventos de Hola por debajo de él:
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/03-custom-event-grid-view.png)
 
-Según el código de aplicación ToDoApp, el evento **BUTTON** se corresponde con el botón Enviar y el evento **INPUT** se corresponde con el cuadro de texto. Hasta aquí, todo está claro. Sin embargo, parece que hay bastantes clics y muy pocos clics en los elementos de tareas pendientes (el evento **LI** ).
+Según el código de la aplicación de tooyour ToDoApp, Hola **botón** evento corresponde hello y botón de envío de toohello **entrada** evento corresponde toohello cuadro de texto. Hasta aquí, todo está claro. Sin embargo, parece que hay una gran cantidad de clics y muy pocos clics en los elementos de tareas pendientes de hello (hello **LI** eventos).
 
-Según esto, puede formular la hipótesis de que algunos usuarios no tienen claro en qué parte de la interfaz de usuario se puede hacer clic, y es porque el cursor se ha adaptado para la selección de texto cuando se mantiene el mouse sobre los elementos de lista y sus iconos.
+A partir de este, formulario esas hipótesis que algunos usuarios confundir qué parte del programa Hola a interfaz de usuario es interactivo y es porque el estilo del cursor de hello para la selección de texto cuando mantiene el mouse sobre elementos de lista de Hola y sus iconos.
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/04-to-do-list-item-ui.png)
 
-Este podría ser un ejemplo inventado. De cualquier forma, realice una mejora en la aplicación y, a continuación, implemente una distribución de paquetes piloto para obtener comentarios sobre la facilidad de uso por parte de los clientes.
+Este podría ser un ejemplo inventado. No obstante, está continuo toomake una aplicación de tooyour mejora y, a continuación, realizar un programa Windows Insider comentarios de facilidad de uso de tooget de implementación de clientes en vivo.
 
 ### <a name="instrument-your-server-app-for-monitoringmetrics"></a>Instrumentación de la aplicación del servidor para supervisión y métricas
-Este es un tema tangencial, porque el escenario con el que se trabaja en este tutorial solo concierne a la aplicación cliente. De todas formas, para tener una visión completa se configurará también la aplicación del lado del servidor.
+Se trata de una tangente puesto que el escenario de Hola que se muestran en este tutorial solo se ocupa de la aplicación de cliente de hello. Sin embargo, a efectos de integridad a configurar aplicación de servidor hello.
 
-1. Haga clic con el botón derecho en **MultiChannelToDo** > **Agregar Telemetría de Application Insights** > **Definir la configuración** > Cambie el grupo de recursos a ToDoApp*&lt;su_sufijo>* > **Agregar Application Insights al proyecto**.
-2. En el Shell de Git, confirme e inserte los cambios en la bifurcación en GitHub. A continuación, espere a que los clientes actualicen el explorador.
+1. Haga clic en **MultiChannelToDo** > **Agregar aplicación visión telemetría** > **configurar opciones de** > grupo de recursos de cambio tooToDoApp*&lt;your_suffix >* > **tooProject agregar Application Insights**.
+2. En el Shell de Git, confirme e inserte la bifurcación de tooyour cambios en GitHub. A continuación, espere explorador toorefresh de los clientes.
 
        git add -A :/
        git commit -m "add AI configuration for server app"
        git push origin master
-3. Cambie los cambios de la aplicación implementados a producción:
+3. Hola de intercambio implementado tooproduction de cambios de aplicación:
 
      .\swap –Name ToDoApp<su_sufijo>
 
 Eso es todo.
 
-## <a name="investigate-add-slot-specific-tags-to-your-client-app-metrics"></a>Investigación: agregar etiquetas específicas de ranura a las métricas de la aplicación de cliente
-En esta sección, configurará las diferentes ranuras de implementación para enviar telemetría específica de cada ranura al mismo recurso de Application Insights. De este modo, puede comparar los datos de telemetría entre el tráfico de las diferentes ranuras (entornos de implementación) para ver rápidamente el efecto de los cambios que se realizaron en la aplicación. Al mismo tiempo, puede separar el tráfico de producción del resto para poder continuar supervisando la aplicación de producción, según sea necesario.
+## <a name="investigate-add-slot-specific-tags-tooyour-client-app-metrics"></a>Investigar: Agregar métricas de aplicación de cliente de etiquetas específicas de la ranura tooyour
+En esta sección, configurará Hola implementación diferentes ranuras toosend telemetría específica de la ranura toohello mismo recurso de Application Insights. De esta manera, puede comparar la telemetría datos entre el tráfico de ranuras diferentes (entornos de implementación) tooeasily ver el efecto de Hola de los cambios de la aplicación. Hola al mismo tiempo, puede separar el tráfico de producción de hello de rest de Hola para que pueda continuar toomonitor la aplicación de producción según sea necesario.
 
-Como está recopilando datos sobre el comportamiento del cliente, [agregará un inicializador de telemetría al código JavaScript](../application-insights/app-insights-api-filtering-sampling.md) en index.cshtml. Si desea probar el rendimiento del servidor, por ejemplo, puede hacer algo similar en el código del servidor (consulte [API de Application Insights para eventos y métricas personalizados](../application-insights/app-insights-api-custom-events-metrics.md)).
+Puesto que va a recopilar datos en el comportamiento del cliente, que se van a [agregar un tooyour de inicializador de telemetría código JavaScript](../application-insights/app-insights-api-filtering-sampling.md) en index.cshtml. Si desea que el rendimiento del servidor de tootest, por ejemplo, también puede hacer de forma similar en el código del servidor (consulte [API de visión de la aplicación para eventos personalizados y las métricas](../application-insights/app-insights-api-custom-events-metrics.md).
 
-1. En primer lugar, agregue el código entre los dos comentarios `//` a continuación en el código JavaScript que agregó antes a la etiqueta `<heading>`.
+1. En primer lugar, agregue Hola de fuente del código de hello dos `//` comentarios a continuación en el bloque de JavaScript de Hola que ha agregado toohello `<heading>` etiqueta anteriormente.
 
         window.appInsights = appInsights;
 
@@ -191,34 +191,34 @@ Como está recopilando datos sobre el comportamiento del cliente, [agregará un 
 
         appInsights.trackPageView();
 
-    Este código de inicializador hace que el objeto `appInsights` agregue una propiedad personalizada denominada `Environment` a cada dato de telemetría que envía.
-2. A continuación, agregue esta propiedad personalizada como una [configuración de ranura](web-sites-staged-publishing.md#AboutConfiguration) para la aplicación web en Azure. Para ello, ejecute el siguiente comando en la sesión de Shell de Git:
+    Este código de inicializador hace hello `appInsights` tooadd objeto Hola una propiedad personalizada denominada `Environment` tooevery parte de telemetría envía.
+2. A continuación, agregue esta propiedad personalizada como una [configuración de ranura](web-sites-staged-publishing.md#AboutConfiguration) para la aplicación web en Azure. toodo, Hola ejecución siga los comandos en la sesión de Git Shell.
 
         $app = Get-AzureWebsite -Name todoapp<your_suffix> -Slot production
         $app.AppSettings.Add("environment", "Production")
         $app.SlotStickyAppSettingNames.Add("environment")
         $app | Set-AzureWebsite -Name todoapp<your_suffix> -Slot production
 
-    El archivo Web.config del proyecto ya define el valor `environment` de la aplicación. Con esta configuración, al probar la aplicación localmente, las métricas se etiquetarán con `VS Debugger`. De todas formas, cuando inserte los cambios en Azure, Azure encontrará y usará el valor de la aplicación `environment` en la configuración de la aplicación web en su lugar, y las métricas se etiquetarán con `Production`.
-3. Confirme e inserte los cambios de código para la bifurcación en GitHub, y espere a que los usuarios usen la nueva aplicación (es necesario actualizar el explorador). La nueva propiedad tarda unos 15 minutos en aparecer en el recurso `MultiChannelToDo.Web` de Application Insights.
+    Hola Web.config en el proyecto ya define hello `environment` configuración de la aplicación. Con esta configuración, al probar la aplicación hello localmente, las métricas se etiqueta con `VS Debugger`. Sin embargo, cuando realice una inserción su tooAzure cambios, Azure se encuentra y usar hello `environment` aplicación establecer en la configuración de la aplicación hello web en su lugar y la métrica se etiqueta con `Production`.
+3. Confirmar inserción la bifurcación de tooyour de cambios de código en GitHub y esperar a que la aplicación nueva de los usuarios toouse Hola (necesidad toorefresh Hola explorador). Ocupe Hola nueva propiedad tooshow unos 15 minutos en la información de la aplicación `MultiChannelToDo.Web` recursos.
 
         git add -A :/
-        git commit -m "add environment property to AI events for client app"
+        git commit -m "add environment property tooAI events for client app"
         git push origin master
-4. Ahora, vaya a la hoja **Eventos personalizados** de nuevo y filtre las métricas en `Environment=Production`. Verá todos los nuevos eventos personalizados en la ranura de producción con este filtro.
+4. Ahora, vaya toohello **eventos personalizados** hoja nuevo y filtro Hola métricas en `Environment=Production`. Ahora debe ser capaz de toosee todos los Hola nuevos eventos personalizados en producción de hello zona con este filtro.
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/05-filter-on-production-environment.png)
-5. Haga clic en el botón **Favoritos** para guardar la configuración actual del Explorador de métricas con un nombre del tipo **Eventos personalizados: producción**. Más adelante puede cambiar fácilmente entre esta vista y la vista de una ranura de implementación.
+5. Haga clic en hello **favoritos** como botón toosave Hola actual explorador métricas configuración toosomething **eventos personalizados: producción**. Más adelante puede cambiar fácilmente entre esta vista y la vista de una ranura de implementación.
 
    > [!TIP]
    > Para realizar análisis aún más eficaces, considere la posibilidad de la [integración de los recursos de Application Insights con Power BI](../application-insights/app-insights-export-power-bi.md).
    >
    >
 
-### <a name="add-slot-specific-tags-to-your-server-app-metrics"></a>Incorporación de etiquetas específicas de ranura a las métricas de la aplicación de servidor
-De nuevo, con el fin de tener una visión completa se configurará también la aplicación del lado del servidor. A diferencia de la aplicación de cliente que se instrumenta en JavaScript, las etiquetas específicas de ranura para la aplicación de servidor se instrumentan con código. NET.
+### <a name="add-slot-specific-tags-tooyour-server-app-metrics"></a>Agregar etiquetas específicas de la ranura tooyour server aplicación métricas
+Una vez más, por integridad, se establecerá una aplicación de servidor hello. A diferencia de la aplicación de cliente de hello que se indique en JavaScript, etiquetas específicos de la ranura de aplicación de servidor hello se ha instrumentado con código. NET.
 
-1. Abra *&lt;raíz_repositorio>*\src\MultiChannelToDo\Global.asax.cs. Agregue el bloque de código siguiente, justo antes de cerrar la llave del espacio de nombres.
+1. Abra *&lt;raíz_repositorio>*\src\MultiChannelToDo\Global.asax.cs. Agregar bloque de código de hello a continuación, justo antes de hello Cerrar llave de espacio de nombres.
 
         namespace MultiChannelToDo
         {
@@ -235,41 +235,41 @@ De nuevo, con el fin de tener una visión completa se configurará también la a
             }
                 // End new code
         }
-2. Corrija los errores de resolución de nombres mediante la incorporación al principio del archivo de las instrucciones `using` a continuación:
+2. Corregir errores de resolución de nombres de hello agregando hello `using` instrucciones a continuación toohello a partir del archivo hello:
 
         using Microsoft.ApplicationInsights.Channel;
         using Microsoft.ApplicationInsights.Extensibility;
-3. Agregue el código siguiente al principio del método `Application_Start()` :
+3. Agregue código de hello debajo toohello a partir de hello `Application_Start()` método:
 
         TelemetryConfiguration.Active.TelemetryInitializers.Add(new ConfigInitializer());
-4. Confirme e inserte los cambios de código para la bifurcación en GitHub, y espere a que los usuarios usen la nueva aplicación (es necesario actualizar el explorador). La nueva propiedad tarda unos 15 minutos en aparecer en el recurso `MultiChannelToDo` de Application Insights.
+4. Confirmar inserción la bifurcación de tooyour de cambios de código en GitHub y esperar a que la aplicación nueva de los usuarios toouse Hola (necesidad toorefresh Hola explorador). Ocupe Hola nueva propiedad tooshow unos 15 minutos en la información de la aplicación `MultiChannelToDo` recursos.
 
         git add -A :/
-        git commit -m "add environment property to AI events for server app"
+        git commit -m "add environment property tooAI events for server app"
         git push origin master
 
 ## <a name="update-set-up-your-beta-branch"></a>Actualización: configurar la bifurcación de la versión beta
-1. Abra *&lt;raíz_repositorio>*\ARMTemplates\ProdAndStagetest.json y encuentre los recursos `appsettings` (busque `"name": "appsettings"`). Hay 4 de ellos, uno para cada ranura.
-2. Para cada recurso `appsettings`, agregue un valor de aplicación `"environment": "[parameters('slotName')]"` al final de la matriz `properties`. No olvide poner una coma al final de la línea anterior.
+1. Abra  *&lt;repository_root >*\ARMTemplates\ProdAndStagetest.json y buscar hello `appsettings` recursos (buscar `"name": "appsettings"`). Hay 4 de ellos, uno para cada ranura.
+2. Para cada `appsettings` recursos, agregue un `"environment": "[parameters('slotName')]"` toohello final de configuración de aplicación de hello `properties` matriz. No olvide la línea anterior de hello tooend con una coma.
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/06-arm-app-setting-with-slot-name.png)
 
-    Acaba de agregar el valor de aplicación `environment` a todas las ranuras de la plantilla.
-3. En el mismo archivo, busque los recursos `slotconfignames` (buscar `"name": "slotconfignames"`). Hay 2 de ellos, uno para cada aplicación.
-4. Para cada recurso `slotconfignames`, agregue `"environment"` al final de la matriz `appSettingNames`. No olvide poner una coma al final de la línea anterior.
+    Acaba de agregar hello `environment` aplicación establecer tooall ranuras de hello en plantilla Hola.
+3. En Hola el mismo archivo, busque hello `slotconfignames` recursos (buscar `"name": "slotconfignames"`). Hay 2 de ellos, uno para cada aplicación.
+4. Para cada `slotconfignames` recursos, agregue `"environment"` toohello final de hello `appSettingNames` matriz. No olvide la línea anterior de hello tooend con una coma.
 
-    Acaba de hacer que el valor de aplicación `environment` se ajuste a la ranura de implementación correspondiente para ambas aplicaciones.  
-5. En su sesión del Git Shell, ejecute los comandos siguientes con el mismo sufijo de grupo de recursos que usó antes.
+    Acaba de crear hello `environment` configuración stick tooits implementación respectivos la ranura de aplicación para las aplicaciones.  
+5. En la sesión de Git Shell, siguiente ejecución Hola comandos con hello mismo sufijo de grupo de recursos que usó anteriormente.
 
         git checkout -b beta
         git push origin beta
         .\deploy.ps1 -RepoUrl https://github.com/<your_fork>/ToDoApp.git -ResourceGroupSuffix <your_suffix> -SlotName beta -Branch beta
-6. Cuando se le pida, especifique las mismas credenciales de Base de datos SQL que antes. A continuación, cuando se le pida que actualice el grupo de recursos, escriba `Y`, y luego `ENTER`.
+6. Cuando se le solicite, especifique Hola mismas credenciales de base de datos SQL como antes. A continuación, cuando solicita el grupo de recursos de hello tooupdate, tipo `Y`, a continuación, `ENTER`.
 
-    Una vez que finalice el script, se conservan todos los recursos en el grupo de recursos original, pero se crea en él una nueva ranura llamada "beta" con la misma configuración que la ranura de "Ensayo" que se creó al principio.
+    Una vez que finaliza el script de Hola, se conservan todos los recursos en el grupo de recursos de hello original, pero una ranura nueva denominada "beta" que se crea en él con hello mismo configuración como ranura de "Ensayo" hello que se creó en el principio de Hola.
 
    > [!NOTE]
-   > Este método de creación de diferentes entornos de implementación es diferente del método en [Agile Software Development con el Servicio de aplicaciones de Azure](app-service-agile-software-development.md). Aquí puede crear entornos de implementación con las ranuras de implementación, mientras que en el otro caso los entornos de implementación se crean con grupos de recursos. Administrar entornos de implementación con grupos de recursos le permite mantener el entorno de producción fuera del radio de acción de los desarrolladores, pero no es fácil realizar pruebas en producción, lo que sí es fácil de hacer con las ranuras.
+   > Este método de creación de diferentes entornos de implementación es diferente del método hello en [desarrollo de software ágil con el servicio de aplicación de Azure](app-service-agile-software-development.md). Aquí puede crear entornos de implementación con las ranuras de implementación, mientras que en el otro caso los entornos de implementación se crean con grupos de recursos. La administración de entornos de implementación con grupos de recursos permite toodevelopers off-limits del entorno de producción hello tookeep, pero no resulta fácil toodo pruebas en producción, lo que puede hacer fácilmente con ranuras.
    >
    >
 
@@ -281,26 +281,26 @@ Si lo desea, también puede crear una aplicación alfa ejecutando
 
 Para este tutorial, continúe usando la aplicación beta.
 
-## <a name="update-push-your-updates-to-the-beta-app"></a>Actualización: insertar las actualizaciones en la aplicación beta
-Volver a la aplicación que desea mejorar.
+## <a name="update-push-your-updates-toohello-beta-app"></a>Actualización: La aplicación de actualizaciones toohello beta de inserción
+Realice una copia de aplicación de tooyour que desea que se tooimprove.
 
 1. Asegúrese de que se encuentra ahora en la bifurcación de la versión beta
 
         git checkout beta
-2. En *&lt;raíz_repositorio>*\src\MultiChannelToDo.Web\app\Index.cshtml, encuentre la etiqueta `<li>` y agregue el atributo `style="cursor:pointer"`, como se muestra a continuación.
+2. En  *&lt;repository_root >*\src\MultiChannelToDo.Web\app\Index.cshtml, buscar hello `<li>` etiquetar y agregar hello `style="cursor:pointer"` atributo, tal y como se muestra a continuación.
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/07-change-cursor-style-on-li.png)
-3. confirme e inserte en Azure.
-4. Compruebe que el cambio se refleja en la ranura de la versión beta yendo a http://todoapp*&lt;su_sufijo>*-beta.azurewebsites.net/. Si aún no ve el cambio, actualice el explorador para obtener el nuevo código de javascript.
+3. Confirme e inserte tooAzure.
+4. Comprobar que el cambio de Hola se reflejan en la ranura de la versión beta de hello desplazándose toohttp://todoapp*&lt;your_suffix >*-beta.azurewebsites.net/. Si no ve Hola cambiar todavía, actualice el explorador tooget Hola nuevo código de javascript.
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/08-verify-change-in-beta-site.png)
 
-Ahora que ya tiene el cambio ejecutándose en la ranura de la versión beta, está listo para realizar una implementación de distribución de paquetes piloto.
+Ahora que tiene el cambio que se ejecuta en la ranura de la versión beta de hello, está listo tooperform una implementación programa Windows Insider.
 
-## <a name="validate-route-traffic-to-the-beta-app"></a>Validación: enrutar el tráfico a la aplicación beta
-En esta sección, enrutará el tráfico a la aplicación beta. Por motivos de claridad en la demostración, va a enrutar una parte significativa de tráfico de usuario a la aplicación. En realidad, la cantidad de tráfico que debe enrutar dependerá de la situación específica. Por ejemplo, si su sitio está en la escala de microsoft.com, probablemente necesite menos del uno por ciento del tráfico total para poder obtener datos útiles.
+## <a name="validate-route-traffic-toohello-beta-app"></a>Validar: Enrutar el tráfico toohello beta aplicación
+En esta sección, enrutará el tráfico toohello beta aplicación. Por motivos de claridad de la demostración, va tooroute una parte significativa de tooit de tráfico de usuario de Hola. En realidad, Hola cantidad de tráfico que desee tooroute dependerá de su situación concreta. Por ejemplo, si el sitio está a escala Hola de microsoft.com, a continuación, deberá menor que uno por ciento del tráfico total de datos útiles de orden toogain.
 
-1. En su sesión del Git Shell, ejecute los siguientes comandos para enrutar la mitad del tráfico de producción a la ranura de versión beta:
+1. En la sesión de Git Shell, ejecute hello después comandos tooroute la mitad de la ranura beta toohello tráfico de producción de hello:
 
         $siteName = "ToDoApp<your suffix>"
         $rule = New-Object Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.RampUpRule
@@ -309,50 +309,50 @@ En esta sección, enrutará el tráfico a la aplicación beta. Por motivos de cl
         $rule.Name = "beta"
         Set-AzureWebsite $siteName -Slot Production -RoutingRules $rule
 
-   La propiedad `ReroutePercentage=50` especifica que el 50 % del tráfico de producción se enrutará a la URL de la aplicación beta (especificada por la propiedad `ActionHostName`).
-2. Vaya ahora a http://ToDoApp*&lt;su_sufijo>*.azurewebsites.net. El 50 % del tráfico debería ahora redirigirse a la ranura de la versión beta.
-3. En el recurso de Application Insights, filtre las métricas por entorno = "beta".
+   Hola `ReroutePercentage=50` propiedad especifica que el 50% del tráfico de producción de hello será URL de la aplicación de toohello enrutado beta (especificado por hello `ActionHostName` propiedad).
+2. Ahora, explore toohttp://ToDoApp*&lt;your_suffix >*. azurewebsites.net. 50% del tráfico de hello ahora debería ranura de beta toohello redirigida.
+3. En el recurso de Application Insights, filtrar las métricas de hello entorno = "beta".
 
    > [!NOTE]
-   > Si guarda esta vista filtrada como otro favorito, es muy fácil alternar las vistas del explorador de métrica entre las vista de producción y de la versión beta.
+   > Si guarda esta vista filtrada como favorito otro, puede examinar fácilmente vistas del explorador de métrica de hello entre producción y vistas de la versión beta.
    >
    >
 
-Supongamos que en Application Insights ve algo similar a lo siguiente:
+Suponga que en Application Insights ve toohello algo similar a continuación:
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/09-test-beta-site-in-production.png)
 
-No solo se muestra que se están haciendo muchos más clics en las etiquetas `<li>`, sino que parece haber un aumento importante de clics en las etiquetas `<li>`. Por tanto se puede concluir que los usuarios han descubierto que se puede hacer clic en las nuevas etiquetas `<li>` y ahora están borrando todas sus tareas completadas previamente en la aplicación.
+No solo Esto muestra que hay muchos más clics en hello `<li>` etiquetas, pero parece que hay toobe una sobrecarga de clics en `<li>` etiquetas. A continuación, puede estar seguro de que personas han descubierto Hola nuevo `<li>` las etiquetas son seleccionables y ahora está borrando todas sus tareas completados anteriormente en la aplicación hello.
 
-Según los datos de la implementación de distribución de paquetes piloto, usted decide que la nueva interfaz de usuario está lista para su fase de producción.
+En función de datos de saludo de la implementación del programa Windows Insider, decide que la nueva interfaz de usuario está listo para producción.
 
 ## <a name="go-live-move-your-new-code-into-production"></a>Puesta en marcha: mover el código nuevo a producción
-Ahora ya está listo para mover la actualización a producción. Lo bueno es que ahora sabe que la actualización ya se ha validado *antes* de que se inserte en producción. Ahora puede implementarlo con confianza. Puesto que realizó una actualización a la aplicación de cliente AngularJS, solo se valida el código de cliente. Si desea realizar cambios en la aplicación de la API de web de back-end, puede validar los cambios de forma similar y fácilmente.
+Se está ahora listo toomove su tooproduction de actualización. ¿Qué es grande es que ahora sabe que la actualización ya se ha validado *antes de* se inserta tooproduction. Ahora puede implementarlo con confianza. Desde que realizó una aplicación de cliente de actualización toohello AngularJS, sólo se valida el código del lado cliente de Hola. Si se encontraba aplicaciones de API Web de back-end de toomake cambios toohello, pudo validar los cambios de forma similar y sencilla.
 
-1. En el Shell de Git, ejecute el comando siguiente para quitar la regla de enrutamiento de tráfico:
+1. En el Shell de Git, quite la regla de enrutamiento de tráfico de hello ejecutando Hola siguiente comando:
 
         Set-AzureWebsite $siteName -Slot Production -RoutingRules @()
-2. Ejecute los comandos Git:
+2. Ejecute comandos de Git de hello:
 
         git checkout master
         git pull origin master
         git merge beta
         git push origin master
-3. Espere unos minutos para que el nuevo código se implemente en la ranura de ensayo y luego inicie http://ToDoApp*&lt;su_sufijo>*-staging.azurewebsites.net para comprobar que la nueva actualización está preparada en la ranura de ensayo. Recuerde que la rama de la bifurcación principal está vinculado a la ranura de ensayo de la aplicación.
-4. Ahora, cambie la ranura de ensayo a producción
+3. Espere unos minutos para hello nuevo código toohello toobe implementado ranura de ensayo y vuelva a iniciar http://ToDoApp*&lt;your_suffix >*-tooverify staging.azurewebsites.net que Hola nueva actualización se activa en almacenamiento provisional de Hola ranura. Recuerde que Hola bifurcación principal de la bifurcación está vinculado toohello ensayo ranura de la aplicación.
+4. Ahora, intercambiar Hola ranura de ensayo a producción
 
         cd <ROOT>\ToDoApp\ARMTemplates
         .\swap.ps1 -Name todoapp<your_suffix>
 
 ## <a name="summary"></a>Resumen
-El Servicio de aplicaciones de Azure permite que las pequeñas y medianas empresas prueben con facilidad sus aplicaciones para clientes en producción, algo que tradicionalmente estaba reservado a las grandes empresas. Esperamos que este tutorial le haya proporcionado los conocimientos necesarios para reunir el Servicio de aplicaciones y Application Insights y posibilitar la implementación de la distribución de paquetes piloto, e incluso para otros escenarios de prueba en producción en su entorno de DevOps.
+Servicio de aplicaciones de Azure facilita toomedium pequeña empresas tootest sus aplicaciones orientado al cliente en producción, algo que se ha realizado tradicionalmente en grandes empresas. Con suerte, este tutorial le ha concedido Hola conocimientos necesarios toobring juntos servicio de aplicaciones y Application Insights toomake programa Windows Insider implementación posibles e incluso otros escenarios de prueba en producción, en el mundo de DevOps.
 
 ## <a name="more-resources"></a>Más recursos
 * [Agile Software Development con el Servicio de aplicaciones de Azure](app-service-agile-software-development.md)
 * [Configuración de entornos de ensayo para aplicaciones web en el Servicio de aplicaciones de Azure](web-sites-staged-publishing.md)
 * [Implementación predecible de una aplicación compleja en Azure](app-service-deploy-complex-application-predictably.md)
-* [Creación de plantillas de Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md)
-* [JSONLint: validador de JSON](http://jsonlint.com/)
+* [Creación de plantillas del Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md)
+* [JSONLint - Hola validador de JSON](http://jsonlint.com/)
 * [Creación de ramas de Git: combinación y creación de ramas básicas](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Wiki de Project Kudu](https://github.com/projectkudu/kudu/wiki)

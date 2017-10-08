@@ -1,6 +1,6 @@
 ---
-title: "Creación de una instancia de Azure Application Gateway (CLI de Azure 1.0) | Microsoft Docs"
-description: Aprenda a crear una puerta de enlace de aplicaciones mediante la CLI de Azure 1.0 en Resource Manager.
+title: "aaaCreate una puerta de enlace de la aplicación de Azure - 1.0 de CLI de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate una puerta de enlace de la aplicación mediante el uso de Hola 1.0 de CLI de Azure en el Administrador de recursos"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
-ms.openlocfilehash: e7b16e789e0f241aa8ca2292aacb2bccde8777ee
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3c0d2d96b6be404d0372d00f0deb2a32959ca419
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Creación de una puerta de enlace de aplicaciones mediante la CLI de Azure
+# <a name="create-an-application-gateway-by-using-hello-azure-cli"></a>Crear una puerta de enlace de la aplicación mediante el uso de hello CLI de Azure
 
 > [!div class="op_single_selector"]
 > * [Portal de Azure](application-gateway-create-gateway-portal.md)
@@ -33,18 +33,18 @@ ms.lasthandoff: 08/03/2017
 > 
 > 
 
-Puerta de enlace de aplicaciones de Azure es un equilibrador de carga de nivel 7 . Proporciona conmutación por error, solicitudes HTTP de enrutamiento de rendimiento entre distintos servidores, independientemente de que se encuentren en la nube o en una implementación local. Puerta de enlace de aplicaciones tiene las siguientes características de entrega de aplicaciones: equilibrio de carga HTTP, afinidad de sesiones basada en cookies, descarga SSL (capa de sockets seguros), sondeos personalizados sobre el estado y compatibilidad con sitios múltiples.
+Azure Application Gateway es un equilibrador de carga de nivel 7. Proporciona conmutación por error, enrutamiento de rendimiento de las solicitudes HTTP entre diferentes servidores, independientemente de si están en la nube de Hola o de forma local. Puerta de enlace de aplicaciones tiene Hola siguientes características de entrega de aplicación: cargar los sondeos de personalizada del estado de equilibrio, afinidad de sesión basado en cookies y descarga de capa de Sockets seguros (SSL), HTTP y la compatibilidad de varios sitios.
 
-## <a name="prerequisite-install-the-azure-cli"></a>Requisito previo: instalar la CLI de Azure
+## <a name="prerequisite-install-hello-azure-cli"></a>Requisito previo: Instalar Hola CLI de Azure
 
-Para seguir los pasos de este artículo, es preciso [instalar la interfaz de la línea de comandos de Azure para Mac, Linux y Windows (CLI de Azure)](../xplat-cli-install.md) e [iniciar sesión en Azure](../xplat-cli-connect.md). 
+Hola tooperform los pasos de este artículo, deberá demasiado[instalar Hola interfaz de línea de comandos de Azure para Mac, Linux y Windows (CLI de Azure)](../xplat-cli-install.md) y necesita demasiado[tooAzure de inicio de sesión](../xplat-cli-connect.md). 
 
 > [!NOTE]
 > Si no tiene una cuenta de Azure, necesitará una. Regístrese para [obtener una prueba gratuita aquí](../active-directory/sign-up-organization.md).
 
 ## <a name="scenario"></a>Escenario
 
-En este escenario, aprenderá a crear una puerta de enlace de aplicaciones mediante Azure Portal.
+En este escenario, aprenderá cómo toocreate una puerta de enlace de aplicaciones con Hola portal de Azure.
 
 En este escenario:
 
@@ -53,41 +53,41 @@ En este escenario:
 * Creará una subred denominada subnet01 que usa 10.0.0.0/28 como bloque CIDR.
 
 > [!NOTE]
-> La configuración adicional de la puerta de enlace de aplicaciones, incluidos los sondeos personalizados sobre el estado, las direcciones del grupo de back-end y las reglas se realiza después de que se configura la puerta de enlace de aplicaciones, no durante la implementación inicial.
+> Las comprobaciones de la configuración adicional de puerta de enlace de aplicaciones de hello, incluido el estado personalizado, se configuran las direcciones de grupo back-end y reglas adicionales después de configura la puerta de enlace de aplicaciones de hello y no durante la implementación inicial.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-Azure Application Gateway requiere su propia subred. Al crear una red virtual, asegúrese de dejar suficiente espacio de direcciones para que tenga varias subredes. Una vez que se implementa una puerta de enlace de aplicaciones en una subred adicional solo se pueden agregar a ella puertas de enlace de aplicaciones adicionales.
+Azure Application Gateway requiere su propia subred. Al crear una red virtual, asegúrese de dejar suficiente toohave de espacio de direcciones en varias subredes. Una vez que se implementa una subred tooa de puerta de enlace de aplicaciones, las puertas de enlace de aplicaciones únicas opciones adicionales son toobe puede agregar subred toohello.
 
-## <a name="log-in-to-azure"></a>Inicie sesión en Azure.
+## <a name="log-in-tooazure"></a>Inicie sesión en tooAzure
 
-Abra el **símbolo del sistema de Microsoft Azure**e inicie sesión. 
+Abra hello **Microsoft Azure Command Prompt**e inicie sesión. 
 
 ```azurecli-interactive
 azure login
 ```
 
-Una vez que haya escrito el ejemplo anterior, se proporciona un código. Navegue a https://aka.ms/devicelogin en un explorador para continuar el proceso de inicio de sesión.
+Una vez que escriba Hola anterior ejemplo, se proporciona un código. Navegue toohttps://aka.ms/devicelogin en un proceso de inicio de sesión de explorador toocontinue Hola.
 
 ![cmd que muestra el inicio de sesión de dispositivos][1]
 
-En el explorador, escriba el código que recibió. Se le redirigirá a una página de inicio de sesión.
+En el Explorador de hello, escriba el código de hello que ha recibido. Está página de inicio de sesión tooa redirigida.
 
-![explorador para escribir código][2]
+![código de tooenter de explorador][2]
 
-Una vez especificado el código, habrá iniciado sesión; cierre el explorador para continuar con el escenario.
+Una vez que se ha especificado el código de hello ha iniciado sesión, cierre Hola explorador toocontinue con el escenario de Hola.
 
 ![ha iniciado sesión correctamente][3]
 
-## <a name="switch-to-resource-manager-mode"></a>Cambie al modo Resource Manager.
+## <a name="switch-tooresource-manager-mode"></a>Cambiar tooResource modo de administrador
 
 ```azurecli-interactive
 azure config mode arm
 ```
 
-## <a name="create-the-resource-group"></a>Creación del grupo de recursos
+## <a name="create-hello-resource-group"></a>Crear grupo de recursos de Hola
 
-Antes de crear la puerta de enlace de aplicaciones, se creará un grupo de recursos para que pueda contenerla. A continuación, se muestra el comando.
+Antes de crear la puerta de enlace de aplicaciones de hello, un grupo de recursos se crea la puerta de enlace de aplicaciones de toocontain Hola. siguiente Hello muestra comandos de Hola.
 
 ```azurecli-interactive
 azure group create \
@@ -97,7 +97,7 @@ azure group create \
 
 ## <a name="create-a-virtual-network"></a>Crear una red virtual
 
-Una vez creado el grupo de recursos, se crea una red virtual para la puerta de enlace de aplicaciones.  En el ejemplo siguiente, el espacio de direcciones era 10.0.0.0/16 tal como se definió en las notas del escenario anterior.
+Una vez creado el grupo de recursos de hello, se crea una red virtual de puerta de enlace de aplicación Hola.  En el siguiente ejemplo de Hola, espacio de direcciones de hello era tan 10.0.0.0/16 tal como se define en hello anterior notas de escenario.
 
 ```azurecli-interactive
 azure network vnet create \
@@ -109,7 +109,7 @@ azure network vnet create \
 
 ## <a name="create-a-subnet"></a>Creación de una subred
 
-Después de crear la red virtual, se agrega una subred para la puerta de enlace de aplicaciones.  Si piensa utilizar la puerta de enlace de aplicaciones con una aplicación web hospedada en la misma red virtual que la puerta de enlace de aplicaciones asegúrese de dejar suficiente espacio para otra subred.
+Después de crea la red virtual de hello, se agrega una subred de puerta de enlace de aplicación Hola.  Si tiene previsto toouse la puerta de enlace de aplicaciones con una aplicación web hospedado en hello mismo virtual de red como puerta de enlace de aplicación Hola, tooleave seguro espacio suficiente para otra subred.
 
 ```azurecli-interactive
 azure network vnet subnet create \
@@ -119,9 +119,9 @@ azure network vnet subnet create \
 --address-prefix 10.0.0.0/28 
 ```
 
-## <a name="create-the-application-gateway"></a>Creación de la puerta de enlace de aplicaciones
+## <a name="create-hello-application-gateway"></a>Crear puerta de enlace de aplicación Hola
 
-Una vez que se crean la red virtual y la subred, los requisitos previos de la puerta de enlace de aplicaciones están completos. Además, para el paso siguiente son necesarios un certificado .pfx exportado previamente y la contraseña para el certificado. La direcciones IP que se usan para el back-end son las direcciones IP para el servidor back-end. Estos valores pueden ser direcciones IP privadas de la red virtual, direcciones IP públicas o nombres de dominio completos de los servidores back-end.
+Una vez que se crean, subred y red virtual de hello requisitos previos de hello para la puerta de enlace de aplicaciones de hello están completos. Además, un archivo .pfx exportado anteriormente hello y certificado contraseña Hola certificado son necesarios para hello siguiendo el paso: direcciones IP de hello utilizadas para hello back-end son direcciones IP de hello para el servidor back-end. Estos valores pueden ser cualquier IP privadas en la red virtual de hello, direcciones IP públicas o nombres de dominio completo para los servidores back-end.
 
 ```azurecli-interactive
 azure network application-gateway create \
@@ -143,16 +143,16 @@ azure network application-gateway create \
 ```
 
 > [!NOTE]
-> Para ver una lista de parámetros que se pueden usar durante la creación, ejecute el siguiente comando: **azure network application-gateway create --help**.
+> Para obtener una lista de parámetros que se pueden proporcionar durante la creación de ejecutar el siguiente comando de hello: **crear aplicación-puerta de enlace de red de azure--ayuda**.
 
-Con este ejemplo sea crea una puerta de enlace de aplicaciones básica con la configuración predeterminada para el agente de escucha, el grupo de back-end, la configuración de http de back-end y las reglas. Esta configuración se puede modificar para adaptarse a la implementación una vez que el aprovisionamiento sea correcto.
-Si ya definió una aplicación web con el grupo de back-end en los pasos anteriores, una vez creada, comienza el equilibrio de carga.
+Este ejemplo crea una puerta de enlace de aplicaciones básica con la configuración predeterminada para el agente de escucha de hello, grupo back-end, configuración de http de back-end y reglas. Puede modificar estos toosuit configuración su implementación una vez que el aprovisionamiento de hello es correcta.
+Si ya tiene la aplicación web definida con el grupo de back-end de Hola Hola anteriores pasos, una vez creados, equilibrio de carga comienza.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para aprender a crear sondeos de estado personalizado, visite [Create a custom probe for Application Gateway by using the portal](application-gateway-create-probe-portal.md)
+Obtenga información acerca de cómo sondeos de estado personalizado de toocreate visitando [crear un sondeo de estado personalizados](application-gateway-create-probe-portal.md)
 
-Para aprender a configurar la descarga de SSL y eliminar la cara descripción de SSL de los servidores web, visite [Configuración de una puerta de enlace de aplicaciones para la descarga SSL mediante Azure Resource Manager](application-gateway-ssl-arm.md)
+Obtenga información acerca de cómo tooconfigure la descarga de SSL y descifrado de SSL costoso de toman Hola desactivado los servidores web visitando [configurar la descarga de SSL](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 

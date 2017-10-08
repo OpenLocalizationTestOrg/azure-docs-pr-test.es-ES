@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Bynder | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Bynder."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Bynder."
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -14,202 +14,202 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 6786d7eb6a11405278ef7267f25279f9e39b3bde
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2a8477580d28fe422f2836f483dff286bc71c93
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bynder"></a>Tutorial: Integración de Azure Active Directory con Bynder
-El objetivo de este tutorial es mostrar cómo integrar Bynder con Azure Active Directory (Azure AD).
+objetivo de Hola de este tutorial es tooshow, cómo toointegrate Bynder con Azure Active Directory (Azure AD).
 
-Integrar Bynder con Azure AD le proporciona las siguientes ventajas:
+Integración Bynder con Azure AD proporciona Hola siguientes ventajas:
 
-* Puede controlar en Azure AD quién tiene acceso a Bynder.
-* Puede permitir que los usuarios inicien sesión automáticamente en Bynder (inicio de sesión único) con sus cuentas de Azure AD.
-* Puede administrar sus cuentas en una ubicación central: el Portal de Azure clásico.
+* Puede controlar en Azure AD que tenga acceso tooBynder
+* Puede habilitar los usuarios tooautomatically get tooBynder ha iniciado sesión con inicio de sesión único (SSO) con sus cuentas de Azure AD
+* Puede administrar las cuentas en una ubicación central: Hola portal de Azure clásico
 
-Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [Qué es el acceso a las aplicaciones y el inicio de sesión único en Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para configurar la integración de Azure AD con Bynder, se necesitan los siguientes elementos:
+integración de Azure AD con Bynder tooconfigure, necesita Hola siguientes elementos:
 
 * Una suscripción de Azure AD
 * Una suscripción habilitada para el inicio de sesión único en Bynder
 
 >[!NOTE]
->Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción. 
+>Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción. 
 > 
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 * No debe usar el entorno de producción, a menos que sea necesario.
 * Si no dispone de un entorno de prueba de Azure AD, puede [obtener una versión de prueba durante un mes](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-El objetivo de este tutorial es permitirle probar el inicio de sesión único de Microsoft Azure AD en un entorno de prueba.
+objetivo de Hola de este tutorial es tooenable tootest Microsoft Azure AD SSO en un entorno de prueba.
 
-La situación descrita en este tutorial consta de dos bloques de creación principales:
+escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Adición de Bynder desde la galería
+1. Agregar Bynder desde la Galería de Hola
 2. Configuración y prueba del inicio de sesión único de Microsoft Azure AD
 
-## <a name="add-bynder-from-the-gallery"></a>Adición de Bynder desde la galería
-Para configurar la integración de Bynder en Azure AD, deberá agregar Bynder desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="add-bynder-from-hello-gallery"></a>Agregar Bynder de galería de Hola
+integración de hello tooconfigure de Bynder en Azure AD, deberá tooadd Bynder de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Bynder desde la galería, realice los pasos siguientes:**
+**tooadd Bynder de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **Portal de Azure clásico**, haga clic en **Active Directory**. 
+1. Hola **Portal de Azure clásico**, en Hola panel de navegación izquierdo, haga clic en **Active Directory**. 
    
     ![Active Directory][1]
-2. En la lista **Directory** , seleccione el directorio cuya integración desee habilitar.
-3. Para abrir la vista de aplicaciones, haga clic en **Applications** , en el menú superior de la vista de directorios.
+2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
+3. Haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
    
-    ![Applications][2]
-4. Haga clic en **Agregar** en la parte inferior de la página.
+    ![Aplicaciones][2]
+4. Haga clic en **agregar** final Hola de página Hola.
    
     ![Aplicaciones][3]
-5. En el cuadro de diálogo **¿Qué desea hacer?**, haga clic en **Agregar una aplicación de la galería**.
+5. En hello **especifique qué desea toodo** cuadro de diálogo, haga clic en **agregar una aplicación de la Galería de hello**.
    
     ![Aplicaciones][4]
-6. En el cuadro de búsqueda, escriba **Bynder**.
+6. En el cuadro de búsqueda de hello, escriba **Bynder**.
    
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-bynder-tutorial/tutorial_bynder_01.png)
-7. En el panel de resultados, seleccione **Bynder** y haga clic en **Completar** para agregar la aplicación.
+7. En el panel de resultados de hello, seleccione **Bynder**y, a continuación, haga clic en **completar** aplicación de hello tooadd.
    
-    ![Selección de la aplicación en la galería](./media/active-directory-saas-bynder-tutorial/tutorial_bynder_001.png)
+    ![Seleccionar aplicación hello en la Galería de Hola](./media/active-directory-saas-bynder-tutorial/tutorial_bynder_001.png)
 
 ## <a name="configure-and-test-microsoft-azure-ad-sso"></a>Configuración y prueba del inicio de sesión único de Microsoft Azure AD
-El objetivo de esta sección es mostrar cómo configurar y probar el inicio de sesión único de Microsoft Azure AD con Bynder con un usuario de prueba llamado "Britta Simon".
+objetivo de Hola de esta sección es tooshow cómo tooconfigure y probar Microsoft Azure AD SSO con Bynder a partir de un usuario de prueba denominado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Bynder para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Bynder.
+Para toowork SSO, Azure AD necesita tooknow es qué usuario equivalente de hello en Bynder tooan usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Bynder debe toobe establecido.
 
-Esta relación de vínculo se establece asignando el valor de **nombre de usuario** en Azure AD como el valor de **nombre de usuario** en Bynder.
+Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en Bynder.
 
-Para configurar y probar el inicio de sesión único de Microsoft Azure AD con Bynder, es preciso completar los bloques de creación:
+tooconfigure y prueba de Microsoft Azure AD SSO con Bynder, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Microsoft Azure AD](#configuring-azure-ad-single-single-sign-on)**: para que los usuarios puedan usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Microsoft Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de Bynder](#creating-a-bynder-test-user)** : para tener un homólogo de Britta Simon en Bynder que esté vinculado a la representación de ella en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para que Britta Simon pueda usar el inicio de sesión único de Microsoft Azure AD.
-5. **[Prueba del inicio de sesión único](#testing-single-sign-on)**: para comprobar si funciona la configuración.
+1. **[Configuración del inicio de sesión único en Microsoft Azure AD](#configuring-azure-ad-single-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -tootest Microsoft Azure AD Single Sign-On con Britta Simon.
+3. **[Crear un usuario de prueba Bynder](#creating-a-bynder-test-user)**  -toohave un equivalente de Britta Simon en Bynder que está vinculado toohello Azure AD representación de ella.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Microsoft Azure AD Single Sign-On.
+5. **[Probar el inicio de sesión único](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-microsoft-azure-ad-sso"></a>Configuración del inicio de sesión único de Microsoft Azure AD
-En esta sección, habilitará el inicio de sesión único de Microsoft Azure AD en el portal clásico y configurará el inicio de sesión único en la aplicación Bynder.
+En esta sección, habilita el SSO de Microsoft Azure AD en el portal clásico de Hola y configurar SSO en la aplicación Bynder.
 
-**Para configurar el inicio de sesión único de Microsoft Azure AD con Bynder, realice los pasos siguientes:**
+**tooconfigure Microsoft Azure AD SSO con Bynder, lleve a cabo Hola pasos:**
 
-1. En el portal clásico, en la página de integración de aplicaciones de **Bynder**, haga clic en **Configurar inicio de sesión único** para abrir el cuadro de diálogo **Configurar inicio de sesión único**.
+1. En portal clásico de hello, en hello **Bynder** página de integración de aplicaciones, haga clic en **configurar inicio de sesión único** tooopen hello **configurar Single Sign-On** cuadro de diálogo.
    
     ![Configurar inicio de sesión único][6] 
-2. En la página **¿Cómo desea que los usuarios inicien sesión en Bynder?**, seleccione **Inicio de sesión único de Microsoft Azure AD** y haga clic en **Siguiente**.
+2. En hello **¿cómo desea que los usuarios toosign en tooBynder** página, seleccione **Microsoft Azure AD Single Sign-On**y, a continuación, haga clic en **siguiente**.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-bynder-tutorial/tutorial_bynder_03.png)
-3. En el cuadro de diálogo **Configurar las opciones de la aplicación**, si desea configurar la aplicación en el **modo iniciado por el proveedor de identidades**, realice los pasos siguientes y haga clic en **Siguiente**:
+3. En hello **configurar opciones de aplicación** página de diálogo, si lo desea tooconfigure aplicación de hello en **modo iniciado por IDP**, realizar pasos de Hola y haga clic en **siguiente**:
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-bynder-tutorial/tutorial_bynder_04.png)
-  1. En el cuadro de texto **URL de respuesta**, escriba una dirección URL con el siguiente patrón: `https://<company name>.getbynder.com/sso/SAML/authenticate/`.
+  1. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<company name>.getbynder.com/sso/SAML/authenticate/`
   2. Haga clic en **Siguiente**.
-4. Si quiere configurar la aplicación en el **modo iniciado por el proveedor de servicios**, en la página de diálogo **Configurar las opciones de la aplicación**, haga clic en **"Mostrar la configuración avanzada (opcional)"**, escriba la **URL de inicio de sesión** y haga clic en **Siguiente**.
+4. Si desea que aplicación de hello tooconfigure en **modo iniciado en SP** en hello **configurar opciones de aplicación** página de diálogo y, a continuación, haga clic en hello **"Show advanced configuración (opcional)"**y, a continuación, escriba Hola **dirección URL de inicio de sesión** y haga clic en **siguiente**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-bynder-tutorial/tutorial_bynder_10.png)
-  1. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<company name>.getbynder.com/login/`.
+  1. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<company name>.getbynder.com/login/`
   2. Haga clic en **Siguiente**.
   
    >[!NOTE]
-   >El valor de la dirección URL de inicio de sesión de este tutorial es solo un marcador de posición. Para obtener el valor real para su entorno, póngase en contacto con Bynder.
+   >valor Hola Hola dirección URL de inicio de sesión en este tutorial es simplemente un placeholfer. valor real de hello tooget para su entorno, póngase en contacto con Bynder.
    >
 
-5. En la página **Configurar inicio de sesión único en Bynder**, realice los pasos siguientes y haga clic en **Siguiente**:
+5. En hello **configurar inicio de sesión único en Bynder** página, realizar pasos de Hola y haga clic en **siguiente**:
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-bynder-tutorial/tutorial_bynder_05.png)  
-  1. Haga clic en **Descargar metadatos**y luego guarde el archivo en el equipo.
+  1. Haga clic en **descargar metadatos**y, a continuación, guarde el archivo hello en el equipo.
   2. Haga clic en **Siguiente**.
-6. Para configurar el inicio de sesión único para la aplicación, póngase en contacto con el equipo de soporte técnico de Bynder. Adjunte el archivo de metadatos descargado y compártalo con el equipo de Bynder para que le configure el inicio de sesión único.
-7. En el portal clásico, seleccione la confirmación de la configuración de inicio de sesión único y haga clic en **Siguiente**.
+6. tooget SSO configurado para la aplicación, póngase en contacto con el equipo de soporte de Bynder. Adjuntar el archivo de metadatos descargado de Hola y compartirlo con Bynder equipo tooset seguridad SSO en uno de su lados.
+7. En el portal clásico de hello, seleccione la confirmación de configuración de inicio de sesión único de hello y, a continuación, haga clic en **siguiente**.
    
     ![Inicio de sesión único de Azure AD ][10]
-8. En la página **Confirmación del inicio de sesión único**, haga clic en **Completar**.  
+8. En hello **única confirmación de inicio de sesión** página, haga clic en **completar**.  
    
     ![Inicio de sesión único de Azure AD ][11]
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en el Portal clásico llamado Britta Simon.
+objetivo de Hola de esta sección es toocreate un usuario de prueba en el portal clásico de hello llamado a Britta Simon.
 
 ![Creación de un usuario de Azure AD][20]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo del **Portal de Azure clásico**, haga clic en **Active Directory**.
+1. Hola **Portal de Azure clásico**, en Hola panel de navegación izquierdo, haga clic en **Active Directory**.
    
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-bynder-tutorial/create_aaduser_09.png)
-2. En la lista **Directory** , seleccione el directorio cuya integración desee habilitar.
-3. Para mostrar la lista de usuarios, en el menú de la parte superior, haga clic en **Usuarios**.
+2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
+3. Haga clic en lista de hello toodisplay de usuarios, en el menú de hello en la parte superior de hello, **usuarios**.
    
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-bynder-tutorial/create_aaduser_03.png)
-4. Para abrir el cuadro de diálogo **Agregar usuario**, en la barra de herramientas de la parte inferior, haga clic en **Agregar usuario**.
+4. Hola tooopen **Agregar usuario** cuadro de diálogo, en la barra de herramientas de hello en la parte inferior de hello, haga clic en **Agregar usuario**.
    
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-bynder-tutorial/create_aaduser_04.png)
-5. En la página de diálogo **Proporcione información sobre este usuario** , realice los pasos siguientes:
+5. En hello **envíenos comentarios acerca de este usuario** cuadro de diálogo, siga los pasos de hello:
    
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-bynder-tutorial/create_aaduser_05.png)
   1. En Tipo de usuario, seleccione Nuevo usuario de la organización.
-  2. En el cuadro de texto **Nombre de usuario**, escriba**BrittaSimon**.
+  2. En nombre de usuario de hello **cuadro de texto**, tipo **BrittaSimon**.
   3. Haga clic en **Siguiente**.
-6. En la página de diálogo **Perfil de usuario** , realice los pasos siguientes:
+6. En hello **perfil de usuario** cuadro de diálogo, siga los pasos de hello:
    
    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-bynder-tutorial/create_aaduser_06.png)
-  1. En el cuadro de texto **Nombre**, escriba **Britta**.  
-  2. En el cuadro de texto **Apellidos**, escriba **Simon**. 
-  3. En el cuadro de texto **Nombre para mostrar**, escriba **Britta Simon**.
-  4. En la lista **Rol**, seleccione **Usuario**.
+  1. Hola **nombre** cuadro de texto, tipo **Bárbara**.  
+  2. Hola **Last Name** cuadro de texto, tipo, **Simon**. 
+  3. Hola **nombre para mostrar** cuadro de texto, tipo **Britta Simon**.
+  4. Hola **rol** lista, seleccione **usuario**.
   5. Haga clic en **Siguiente**.
-7. En el cuadro de diálogo **Obtener contraseña temporal**, haga clic en **Crear**.
+7. En hello **obtener contraseña temporal** página del cuadro de diálogo, haga clic en **crear**.
    
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-bynder-tutorial/create_aaduser_07.png)
-8. En la página de diálogo **Obtener contraseña temporal** , realice los pasos siguientes:
+8. En hello **obtener contraseña temporal** cuadro de diálogo, siga los pasos de hello:
    
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-bynder-tutorial/create_aaduser_08.png)
-   1. Anote el valor del campo **Nueva contraseña**.
+   1. Anote el valor de Hola de hello **nueva contraseña**.
    2. Haga clic en **Completo**.   
 
 ### <a name="create-a-bynder-test-user"></a>Creación de un usuario de prueba de Bynder
-El objetivo de esta sección es crear un usuario llamado Britta Simon en Bynder. Bynder admite el aprovisionamiento Just-In-Time, que está habilitado de forma predeterminada.
+objetivo de Hola de esta sección es un usuario llamado a Britta Simon en Bynder toocreate. Bynder admite el aprovisionamiento Just-In-Time, que está habilitado de forma predeterminada.
 
-No hay ningún elemento de acción para usted en esta sección. Durante un intento de acceder a Bynder se creará un nuevo usuario, en caso de que no exista.
+No hay ningún elemento de acción para usted en esta sección. Si no existe todavía, se creará un nuevo usuario durante un tooaccess intento Bynder.
 
 >[!NOTE]
->Si necesita crear manualmente un usuario, es preciso que se ponga en contacto con el equipo de soporte técnico de Bynder. 
+>Si necesita un usuario toocreate manualmente, debe equipo de soporte técnico de toocontact hello Bynder. 
 > 
 
-### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
-El objetivo de esta sección es permitir que Britta Simon use el inicio de sesión único de Azure, para lo cual se le concederá acceso a Bynder.
+### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
+objetivo de Hola de esta sección es tooenabling Britta Simon toouse Azure SSO mediante la concesión de su tooBynder de acceso.
 
    ![Asignar usuario][200]
 
-**Para asignar a Britta Simon a Bynder, realice los pasos siguientes:**
+**tooassign Britta Simon tooBynder, lleve a cabo Hola pasos:**
 
-1. En el portal clásico, para abrir la vista de aplicaciones, en la vista del directorio, haga clic en **Aplicaciones** en el menú superior.
+1. En el portal clásico de hello, haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
    
     ![Asignar usuario][201]
-2. En la lista de aplicaciones, seleccione **Bynder**.
+2. En la lista de aplicaciones de hello, seleccione **Bynder**.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-bynder-tutorial/tutorial_bynder_50.png)
-3. En el menú de la parte superior, haga clic en **Usuarios**.
+3. En el menú de hello en la parte superior de hello, haga clic en **usuarios**.
    
     ![Asignar usuario][203]
-4. En la lista Usuarios, seleccione **Britta Simon**.
-5. En la barra de herramientas de la parte inferior, haga clic en **Asignar**.
+4. En la lista de usuarios de hello, seleccione **Britta Simon**.
+5. En la barra de herramientas de hello en la parte inferior de hello, haga clic en **asignar**.
    
     ![Asignar usuario][205]
 
 ### <a name="test-single-sign-on"></a>Prueba de inicio de sesión único
-El objetivo de esta sección es probar la configuración del inicio de sesión único de Microsoft Azure AD mediante el panel de acceso.
+objetivo de Hola de esta sección es tootest la configuración de SSO de Microsoft Azure AD mediante Hola Panel de acceso.
 
-Al hacer clic en el icono de Bynder en el panel de acceso, debería iniciar sesión automáticamente en su aplicación Bynder.
+Al hacer clic en icono de Bynder Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour Bynder aplicación.
 
 ## <a name="additional-resources"></a>Recursos adicionales
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

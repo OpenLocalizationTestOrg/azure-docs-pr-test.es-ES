@@ -1,5 +1,5 @@
 ---
-title: "Administración de precios y volúmenes de datos de Azure Application Insights | Microsoft Docs"
+title: aaaManage precios y volumen de datos de Azure Application Insights | Documentos de Microsoft
 description: "Administre los volúmenes de telemetría y supervise los costos en Application Insights."
 services: application-insights
 documentationcenter: 
@@ -13,165 +13,165 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: bwren
-ms.openlocfilehash: 65d11d30e23cd7671b769c3c17e4aba32c432340
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4621c989cd467735aefc48ec9547fcbe1b1ae41b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Administración de precios y volúmenes de datos de Application Insights
 
 
-Los precios para [Azure Application Insights][start] se basan en el volumen de datos por aplicación. Lo más probable es que sea gratuito en el caso de una baja utilización durante el desarrollo o para una aplicación pequeña, porque hay una provisión mensual de 1 GB de datos de telemetría.
+Los precios para [Azure Application Insights][start] se basan en el volumen de datos por aplicación. Poca utilización durante el desarrollo o para una aplicación pequeña es probable que toobe libre, porque no hay una deducción mensual de 1 GB de datos de telemetría.
 
-Cada recurso de Application Insights se cobra como un servicio independiente y contribuye a la factura de la suscripción a Azure.
+Cada recurso de Application Insights se carga como un servicio independiente y contribuye toohello factura para su tooAzure de suscripción.
 
-Hay dos planes de precios. El plan predeterminado se conoce como Básico. Puede elegir el plan Enterprise, que tiene un cargo diario, pero permite que determinadas características adicionales como la [exportación continua](app-insights-export-telemetry.md).
+Hay dos planes de precios. plan de Hello predeterminado se denomina Basic. Puede optar por plan empresarial de hello, que tiene un cargo diario, pero permite que determinadas características adicionales como [exportación continua](app-insights-export-telemetry.md).
 
-Si tiene preguntas sobre cómo funciona los precios para Application Insights, no dude en publicar una pregunta en nuestro [foro](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights). 
+Si tiene alguna pregunta acerca del funcionamiento de precios para Application Insights, sentirse toopost libre una pregunta en nuestros [foro](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights). 
 
-## <a name="the-price-plans"></a>Los planes de precios
+## <a name="hello-price-plans"></a>planes de precios de Hola
 
-Consulte la [página de precios de Application Insights][pricing] para ver los precios actuales en su moneda.
+Vea hello [Application Insights página de precios] [ pricing] para los precios actuales en su moneda.
 
 ### <a name="basic-plan"></a>Plan Básico
 
-El plan Básico es el predeterminado cuando se crea un nuevo recurso de Application Insights y bastará para la mayoría de los clientes.
+plan básico de Hello es predeterminado de hello cuando se crea un nuevo recurso de Application Insights y será suficiente para la mayoría de los clientes.
 
-* En el plan Básico, se le cobrará por volumen de datos: el número de bytes de telemetría que reciba Application Insights. El volumen de datos se mide como el tamaño del paquete de datos JSON sin comprimir que reciba Application Insights de su aplicación.
-Para [los datos tabulares importados en Analytics](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-import), el volumen de datos se mide como el tamaño descomprimido de los archivos enviados a Application Insights.  
-* El primer GB de cada aplicación es gratuito, por lo que si solo está experimentando o desarrollando, lo más probable es que no tenga que pagar nada.
+* En el plan básico de hello, se le cobra por volumen de datos: número de bytes de telemetría recibidos por Application Insights. Volumen de datos se mide como tamaño de Hola Hola sin comprimir JSON del conjunto de datos recibido por Application Insights de la aplicación.
+Para [importados en análisis de datos tabulares](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-import), volumen de datos de Hola se mide como Hola tamaño descomprimido de archivos enviados tooApplication visión.  
+* El primer 1 GB para cada aplicación está disponible, para que si simplemente experimentar o desarrollar, que sea improbable toohave toopay.
 * Los datos de la [secuencia de métricas en directo](app-insights-live-stream.md) no cuentan para calcular los precios.
-* La [exportación continua](app-insights-export-telemetry.md) se encuentra disponible a cambio de un cargo adicional por cada GB en el plan Básico.
+* [Exportación continua](app-insights-export-telemetry.md) está disponible para un cargo adicional por cada GB en el plan básico de Hola.
 
 ### <a name="enterprise-plan"></a>Plan Enterprise
 
-* En el plan Enterprise, su aplicación puede usar todas las características de Application Insights. La [exportación continua](app-insights-export-telemetry.md) y 
+* En el plan de empresa de hello, puede usar todas las características de Hola de Application Insights para su aplicación. La [exportación continua](app-insights-export-telemetry.md) y 
 
-el [conector de Log Analytics](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) se encuentran disponibles sin ningún cargo adicional en el plan Enterprise.
-* En dicho plan, se paga por nodo que envíe telemetría desde cualquier aplicación. 
+[Conector de análisis de registro](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) están disponibles sin ningún cargo adicional en el plan de hello empresarial.
+* Se paga por nodo que está enviando la telemetría para las aplicaciones en el plan de la empresa de Hola. 
  * Un *nodo* es un servidor físico o virtual o una instancia de rol de plataforma como servicio que hospeda su aplicación.
  * Los equipos de desarrollo, los exploradores cliente y los dispositivos móviles no se cuentan como nodos.
  * Si su aplicación presenta varios componentes que envían telemetría, como un servicio web y un trabajo de back-end, se cuentan por separado.
- * Los datos de [Live Metrics Stream](app-insights-live-stream.md) no cuentan para calcular los precios.* En una suscripción, sus cargos son por nodo, no por aplicación. Si tiene cinco nodos que envían telemetría de 12 aplicaciones, se le cobrará por 5 nodos.
-* Aunque los cargos se presupuestan mensualmente, solo se le cobrarán las horas en las que un nodo envíe telemetría de una aplicación. El cargo por hora es el cargo mensual presupuestado partido por 744 (el número de horas en un mes de 31 días).
-* Se proporciona una asignación de volumen de datos de 200 MB por día para cada nodo detectado (con una granularidad de horas). Las asignaciones de datos no utilizadas no se guardarán de un día para otro.
- * Si elige el plan Enterprise, cada suscripción recibe una asignación de datos diaria en función del número de nodos que envíen telemetría a los recursos de Application Insights de esa suscripción. De modo que, si tiene 5 nodos enviando datos todos los días, tendrá una asignación global de 1 GB para todos los recursos de Application Insights de esa suscripción. No importa si algunos nodos envían más datos que otros, porque los datos incluidos se comparten entre todos los nodos. Si, un día determinado, los recursos de Application Insights reciben más datos de los que se incluyen en la asignación de datos diaria para esta suscripción, se aplicarán los cargos de datos por encima del límite por cada GB. 
- * La asignación de datos diaria se calcula como el número de horas del día (de acuerdo con UTC) que cada nodo envía telemetría dividido entre 24 por 200 MB. Es decir, si tiene 4 nodos enviando telemetría durante 15 de las 24 horas del día, los datos incluidos para ese día serán ((4 x 15) / 24) x 200 MB = 500 MB. A un precio de 2,30 USD por GB en el caso de uso por encima del límite de datos, el cargo sería de 1,15 USB si los nodos envían 1 GB de datos ese día.
- * Tenga en cuenta que la asignación diaria del plan Enterprise no se comparte con las aplicaciones para las que haya elegido la opción Básica y que las asignaciones no utilizadas no se guardan de un día a otro. 
+ * Los datos de [Live Metrics Stream](app-insights-live-stream.md) no cuentan para calcular los precios.* En una suscripción, sus cargos son por nodo, no por aplicación. Si tiene cinco nodos enviar telemetría para 12 aplicaciones, a continuación, Hola cobra es de cinco nodos.
+* Aunque los cargos se presupuestan mensualmente, solo se le cobrarán las horas en las que un nodo envíe telemetría de una aplicación. Hola cargo por hora es Hola entrecomillados cargo mensual / 744 (Hola número de horas en un mes de 31 días).
+* Se proporciona una asignación de volumen de datos de 200 MB por día para cada nodo detectado (con una granularidad de horas). La asignación de datos no utilizados no se realiza a través de un día toohello junto.
+ * Si elige Hola opción de precios de Enterprise, cada suscripción Obtiene una deducción diaria de datos según el número de Hola de nodos enviar telemetría toohello recursos de Application Insights en esa suscripción. Por lo que si tiene 5 nodos enviar datos de todo el día, tendrán una deducción de 1 GB aplica tooall Hola Application Insights recursos agrupada en esa suscripción. No importa si determinados nodos están enviando que datos más que otros nodos porque Hola incluía datos se comparten entre todos los nodos. Si, en un día determinado, recursos de Application Insights Hola recibirán más datos de los que se incluye en la asignación de datos diario Hola para esta suscripción, se aplican cargos de datos por encima del límite de Hola por GB. 
+ * asignación de datos diario Hola se calcula como número de Hola de horas en hello día de inicio (UTC) que cada nodo está enviando telemetría dividido entre 200 MB de 24 horas. Por tanto, si tiene 4 nodos enviar telemetría durante 15 de hello 24 horas del día de hello, Hola incluye datos para ese día sería ((4 x 15) / 24) x 200 MB = 500 MB. En el precio de Hola de 2.30 USD por GB por exceso de uso de datos, gratuito Hola sería USD 1.15 si 1 GB de datos, los nodos de hello enviar ese día.
+ * Tenga en cuenta que asignación diaria del plan de hello empresarial no se comparte con las aplicaciones para el que ha elegido la opción básica de Hola y asignación sin usar no se traslada de diarias. 
 * Estos son algunos de los ejemplos de cómo determinar el número concreto de nodos:
 | Escenario                               | Número de nodos total diario |
 |:---------------------------------------|:----------------:|
 | 1 aplicación está usando 3 instancias de Azure App Service y 1 servidor virtual. | 4 |
-| 3 aplicaciones que se ejecutan en 2 máquinas virtuales, y los recursos de Application Insights de estas aplicaciones se encuentran en la misma suscripción y en el plan Enterprise. | 2 | 
-| 4 aplicaciones cuyos recursos de Application Insights se encuentran en la misma suscripción. Cada aplicación ejecuta 2 instancias durante 16 horas de poca actividad y 4 durante 8 horas de máxima actividad. | 13,33 | 
+| 3 aplicaciones que se ejecutan en 2 máquinas virtuales y recursos de Application Insights de Hola para estas aplicaciones están en Hola misma suscripción y Hola Enterprise planear | 2 | 
+| 4 aplicaciones cuyos recursos de información de las aplicaciones están en Hola misma suscripción. Cada aplicación ejecuta 2 instancias durante 16 horas de poca actividad y 4 durante 8 horas de máxima actividad. | 13,33 | 
 | Servicios en la nube con 1 rol de trabajo y 1 rol web; cada uno ejecuta 2 instancias. | 4 | 
 | Clúster de Service Fabric de 5 nodos que ejecuta 50 microservicios; cada uno de estos últimos ejecuta 3 instancias. | 5|
 
-* El comportamiento concreto del recuento de nodos depende del SDK de Application Insights que esté usando su aplicación. 
-  * En la versión 2.2 del SDK y posteriores, tanto el [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) como el [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) de Application Insights notificará a cada aplicación host como un nodo. Por ejemplo, el nombre del equipo del servidor físico y los hosts de las máquinas virtuales o el nombre de la instancia, en el caso de servicios en la nube.  Las aplicaciones que usan [.NET Core](https://dotnet.github.io/) y el Core SDK de Application Insights constituyen la única excepción. En este caso, solo se indicará un nodo para todos los hosts porque el nombre de host no se encuentra disponible. 
-  * Para las versiones anteriores del SDK, el [SDK Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) se comportará del mismo modo que las versiones más nuevas. Sin embargo, [SDK Core](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) solo notificará un nodo, con independencia del número real de hosts de la aplicación. 
-  * Tenga en cuenta que si su aplicación está usando el SDK para establecer roleInstance en un valor personalizado, ese mismo valor se usará para determinar el recuento de nodos de forma predeterminada. 
-  * Si utiliza una nueva versión del SDK con una aplicación que se ejecuta desde equipos cliente o dispositivos móviles, es posible que el recuento de nodos devuelva un número muy grande (del gran número de equipos cliente o dispositivos móviles). 
+* el comportamiento de recuento de nodo precisa Hola depende de en el que está usando el SDK de visión de aplicación de la aplicación. 
+  * En las versiones SDK 2.2 y y versiones posteriores, ambos Hola Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) o [SDK Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) van a cada host de aplicación como un nodo de informes, por ejemplo Hola nombre de equipo para el servidor físico y los hosts de VM o hello nombre de la instancia en caso de hello de servicios en la nube.  Hola única excepción es aplicaciones solamente con [.NET Core](https://dotnet.github.io/) hello Application Insights Core SDK, en la que un único nodo case se notificará para todos los hosts porque no está disponible el nombre de host de Hola y. 
+  * Para las versiones anteriores de hello SDK, Hola [SDK Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) se comportará igual hello las versiones más recientes de SDK, sin embargo Hola [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) informará de un único nodo, independientemente del número de Hola de hosts de aplicación real. 
+  * Tenga en cuenta que si la aplicación está utilizando el valor personalizado de hello SDK tooset roleInstance tooa, de forma predeterminada ese mismo valor se utiliza el recuento de hello toodetermine de nodos. 
+  * Si utilizas una nueva versión SDK con una aplicación que se ejecuta desde dispositivos móviles o equipos cliente, es posible que el recuento de Hola de nodos podría devolver un número que es muy grande (de hello gran número de dispositivos móviles o equipos cliente). 
 
 ### <a name="multi-step-web-tests"></a>Pruebas web de varios pasos
 
-Se realiza un cargo adicional para las [pruebas web de varios pasos](app-insights-monitor-web-app-availability.md#multi-step-web-tests). Es decir, pruebas web que realizan una secuencia de acciones. 
+Se realiza un cargo adicional para las [pruebas web de varios pasos](app-insights-monitor-web-app-availability.md#multi-step-web-tests). Esto refiere tooweb pruebas que ejecute una secuencia de acciones. 
 
 No hay ningún cargo aparte para las "pruebas de ping" de una sola página. La telemetría de las pruebas de ping y de las de varios pasos se carga junto con el resto de la telemetría de su aplicación.
  
 ## <a name="operations-management-suite-subscription-entitlement"></a>Derechos de suscripción de Operations Management Suite
 
-Como se [anunció recientemente](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/), los clientes que compran Microsoft Operations Management Suite E1 y E2 pueden obtener Application Insights Enterprise como componente adicional sin costo alguno. Específicamente, cada unidad de Operations Management Suite E1 y E2 incluye el derecho a usar un nodo del plan Enterprise de Application Insights. Como se mencionó antes, cada nodo de Application Insights incluye hasta 200 MB de datos ingeridos por día (independientes de la ingesta de datos de Log Analytics), con la retención de datos de 90 días sin costo adicional alguno. 
+Como [anunció recientemente](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/), los clientes que compran Microsoft Operations Management Suite E1 y E2 son tooget capaz de aplicación visión empresarial como un componente adicional sin ningún costo adicional. En concreto, cada unidad de Operations Management Suite E1 y E2 incluye un nodo de too1 de derechos de plan empresarial de Hola de Application Insights. Como se mencionó anteriormente, cada nodo de Application Insights incluye too200 MB de datos ingeridos por día (independiente de la recopilación de datos de análisis de registros), con la retención de datos de 90 días sin costo adicional alguno. 
 
 > [!NOTE]
-> Para garantizar que tiene este derecho, debe disponer de los recursos de Application Insights en el plan de precios Enterprise. Este derecho se aplica solo como nodos, por lo que los recursos de Application Insights en el plan Básico no tendrán ninguna ventaja. Tenga en cuenta que este derecho no será visible en los costos estimados que se muestran en la hoja Características y precios. 
+> tooensure que obtiene este derecho, debe tener los recursos de Application Insights de empresa de hello plan de precios. Este derecho se aplica solo como nodos, por lo que los recursos de Application Insights en el plan básico de Hola no obtendrán ninguna ventaja. Tenga en cuenta que este derecho no estarán visible en hello estimado costos mostrados en las características de hello + hoja de precios. 
 >
  
 ## <a name="review-pricing-plans-and-estimate-costs"></a>Revisión de los planes de precios y cálculo de costos
 
-Application Insights permite entender fácilmente los planes de precios disponibles y qué costos se basarán probablemente en los patrones de uso reciente. Comience abriendo la hoja **Características y precios** en el recurso de Application Insights de Azure Portal.
+Visión Applicaition facilita hello toounderstand fácil precios planes disponibles y qué Hola costes son probablemente puede basarse en patrones de uso reciente. Comience por abrir hello **características + precios** hoja Hola recurso de Application Insights en hello portal de Azure:
 
 ![Elija el precio.](./media/app-insights-pricing/01-pricing.png)
 
-**a.** Revise el volumen de datos para el mes. Esto incluye todos los datos recibidos y retenidos (después de cualquier [muestreo](app-insights-sampling.md) de las aplicaciones de servidor y cliente, y de las pruebas de disponibilidad.
+**a.** Revise el volumen de datos para el mes de Hola. Esto incluye todos los datos de hello recibido y conservan (después de un [muestreo](app-insights-sampling.md) desde las aplicaciones de cliente y servidor y de pruebas de disponibilidad.
 
-**b.** Se realiza un cargo adicional para las [pruebas web de varios pasos](app-insights-monitor-web-app-availability.md#multi-step-web-tests). (Esto no incluye pruebas de disponibilidad simples, que se incluyen en la carga de volumen de datos).
+**b.** Se realiza un cargo adicional para las [pruebas web de varios pasos](app-insights-monitor-web-app-availability.md#multi-step-web-tests). (Esto no incluye pruebas de disponibilidad simple, que se incluyen en la carga de volumen de datos de Hola.)
 
-**c.** Habilite el plan Enterprise.
+**c.** Habilitar plan empresarial de Hola.
 
-**d.** Haga clic en las opciones de administración de datos para ver el volumen de datos del último mes, establecer un límite diario o configurar un muestreo de ingesta.
+**d.** Desplazarse por volumen de datos de toodata administración opciones tooview para hello último mes, establezca un límite diario o muestreo de recopilación.
 
-Los cargos de Application Insights se agregarán a la factura de Azure. Puede ver los detalles de su factura de Azure en la sección de facturación de Azure Portal o en el [Portal de facturación de Azure](https://account.windowsazure.com/Subscriptions). 
+Los cargos de visión de aplicación se agregan tooyour factura de Azure. Puede ver detalles de su Azure facturar en la sección de facturación de hello portal de Azure o en Hola Hola [Azure Billing Portal](https://account.windowsazure.com/Subscriptions). 
 
-![En el menú lateral, elija Facturación.](./media/app-insights-pricing/02-billing.png)
+![En el menú del lado de hello, elija la facturación.](./media/app-insights-pricing/02-billing.png)
 
 ## <a name="data-rate"></a>Velocidad de datos
-Hay tres formas en que se limita el volumen de envío de datos:
+Hay tres maneras de en qué Hola se limita volumen enviar datos:
 
-* **Muestreo:** este mecanismo se puede usar para reducir la cantidad de telemetría enviada desde las aplicaciones de servidor y de cliente, con mínima distorsión de las métricas. Se trata de la principal herramienta de la que dispone para ajustar la cantidad de datos. Obtenga más información sobre las [características de muestreo](app-insights-sampling.md). 
-* **Límite diario:** al crear un recurso de Application Insights desde Azure Portal, este recurso se establece en 500 GB/día. La capacidad predeterminada al crear un recurso de Application Insights desde Visual Studio, es pequeña (solo 32,3 MB/día), cuya finalidad no es más que facilitar las pruebas. En este caso, el objetivo es que el usuario aumente el límite diario antes de implementar la aplicación en producción. El límite máximo es de 500 GB/día, a menos que haya solicitado un máximo superior para una aplicación con mucho tráfico. Actúe con precaución al establecer el límite diario, ya que su intención debería ser **no alcanzarlo nunca**, pues en ese caso perderá datos durante el resto del día y no podrá supervisar la aplicación. Para cambiarlo, use la hoja Límite de volumen diario, vinculada desde la hoja Administración de datos (consúltese a continuación). Tenga en cuenta que algunos tipos de suscripción disponen de un crédito que no se puede usar para Application Insights. Si la suscripción tiene un límite de gasto, la hoja Límite diario contará con instrucciones sobre cómo quitarlo y habilitarlo para que supere los 32,3 MB/día.  
-* **Limitación**: esta restringe la velocidad de datos a 32 000 eventos por segundo, promediados durante 1 minuto. 
+* **Muestreo:** se puede utilizar este mecanismo Acorte Hola enviado desde las aplicaciones cliente y servidor, con la mínima distorsión de las métricas de telemetría. Se trata de herramienta principal de hello tiene tootune Hola cantidad de datos. Obtenga más información sobre las [características de muestreo](app-insights-sampling.md). 
+* **Límite diario:** cuando la creación de un recurso de Application Insights de hello portal de Azure esto está establecida a too500 GB/día. Hola de forma predeterminada al crear un recurso de información de la aplicación desde Visual Studio, es pequeño (solo 32,3 MB/día) que está pensado solo toofaciliate pruebas. En este caso está dirigida a que ese usuario Hola generará límite diario de hello antes de implementar la aplicación hello en producción. límite máximo de Hello es 500 GB/día a menos que se ha solicitado una máxima más alta para una aplicación de mucho tráfico. Tenga cuidado al establecer el límite diario de hello, ya que debe ser su intención **nunca las límite diario de las hello toohit**, ya que, a continuación, se pierdan los datos para el resto de hello del día de Hola y ser toomonitor no se puede la aplicación. toochange lo, hoja de cap de volumen diario de uso hello, vinculada del programa de hoja de administración de volúmenes de datos de hello (ver abajo). Tenga en cuenta que algunos tipos de suscripción disponen de un crédito que no se puede usar para Application Insights. Si suscripción hello tiene gasto limitar, Hola diariamente hoja cap tendrá instrucciones cómo tooremove y habilitar Hola diaria toobe cap generado más allá del 32,3 MB/día.  
+* **Limitación:** este límites Hola datos tasa too32 k eventos por segundo, promedio durante más de 1 minuto. 
 
 
-*¿Qué ocurre si mi aplicación supera el porcentaje de limitación?*
+*¿Qué ocurre si mi aplicación supera la limitación de velocidad de hello?*
 
-* El volumen de datos que su aplicación envía se evalúa cada minuto. Si se supera la tasa por segundo promediada por minuto, el servidor rechazará algunas solicitudes. El SDK almacena los datos en el búfer e intenta volver a enviarlos, lo que genera un sobrevoltaje durante varios minutos. Si su aplicación envía de forma consistente un volumen de datos que supera la tasa de limitación, es posible que algunos se eliminen. (Los SDK de ASP.NET, Java y JavaScript intentan volver a enviarlos de esta manera; otros SDK pueden simplemente eliminar los datos limitados.) Si se produce la limitación, verá una notificación de advertencia que indica que esto ha sucedido.
+* volumen de Hola de datos que envía la aplicación se evalúa cada minuto. Si supera la tasa por segundo de hello promediada por minuto de hello, servidor de hello rechaza algunas solicitudes. Hola SDK almacena en búfer los datos de hello y, a continuación, intenta tooresend, distribuya una sobrecarga durante varios minutos. Si la aplicación coherente envía datos por encima de la limitación de velocidad de hello, algunos datos se van a quitar. (Hola ASP.NET, Java y JavaScript SDK intentan tooresend de esta manera; otros SDK podría simplemente los datos de colocar limitada). Si se produce la limitación, verá una notificación de advertencia que indica que esto ha sucedido.
 
 *¿Cómo puedo saber cuántos datos envía mi aplicación?*
 
-* Abra la hoja **Administración de datos** para ver el gráfico de volumen de datos diario. 
+* Abra hello **administración del volumen de datos** gráfico de volumen de hoja toosee Hola diaria datos. 
 * O bien, en el Explorador de métricas, agregue un nuevo gráfico y seleccione **Volumen de punto de datos** como su métrica. Active la agrupación y agrupe por **Tipo de datos**.
 
-## <a name="to-reduce-your-data-rate"></a>Reducción de la velocidad de datos
-Estas son algunas cosas que puede hacer para reducir el volumen de datos:
+## <a name="tooreduce-your-data-rate"></a>tooreduce la velocidad de datos
+Estas son algunas cosas que puede hacer tooreduce el volumen de datos:
 
-* Use el [Muestreo](app-insights-sampling.md). Esta tecnología reduce la velocidad de los datos sin sesgar las métricas y sin interrumpir la capacidad de navegar entre los elementos relacionados en la búsqueda. En las aplicaciones de servidor, funciona automáticamente.
-* [Limite el número de llamadas AJAX que se pueden notificar](app-insights-javascript.md#detailed-configuration) en cada vista de página o desactive los informes de AJAX.
+* Use el [Muestreo](app-insights-sampling.md). Esta tecnología reduce la velocidad de datos sin sesgar las métricas y sin interrumpir Hola capacidad toonavigate entre los elementos relacionados en la búsqueda. En las aplicaciones de servidor, funciona automáticamente.
+* [Limitar número de Hola de llamadas de Ajax que se pueden notificar](app-insights-javascript.md#detailed-configuration) en cada vista de página o conmutador desactivar informes de Ajax.
 * Desactivar los módulos de recopilación que no necesite; para ello, [edite ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Por ejemplo, podría decidir que los contadores de rendimiento o datos de dependencia no son esenciales.
-* Divida la telemetría para separar las claves de instrumentación. 
-* Métricas agregadas previamente. Si ha colocado llamadas a TrackMetric en su aplicación, puede reducir el tráfico mediante la sobrecarga que acepta el cálculo de la media y la desviación estándar de un lote de medidas. O bien, puede usar un [paquete de agregación previa](https://www.myget.org/gallery/applicationinsights-sdk-labs).
+* Divida las claves de instrumentación de telemetría tooseparate. 
+* Métricas agregadas previamente. Si ha colocado tooTrackMetric de llamadas en la aplicación, puede reducir el tráfico mediante el uso de la sobrecarga de Hola que acepta el cálculo de Media de Hola y desviación estándar de un lote de mediciones. O bien, puede usar un [paquete de agregación previa](https://www.myget.org/gallery/applicationinsights-sdk-labs).
 
-## <a name="managing-the-maximum-daily-data-volume"></a>Administración del volumen de datos diario máximo
+## <a name="managing-hello-maximum-daily-data-volume"></a>Administrar el volumen de datos máximo diario Hola
 
-Puede usar el límite diario de volumen para limitar los datos recopilados pero, si se alcanza el límite, se producirá una pérdida de todos los datos de telemetría enviados desde la aplicación para el resto del día. **No se recomienda** que la aplicación alcance el límite diario, ya que no puede realizar el seguimiento del estado y el rendimiento de la aplicación una vez que se alcanza. 
+Puede utilizar Hola diaria volumen cap toolimit Hola datos recopilados, pero si se cumple la cap de hello, se producirá una pérdida de todos los telemetery enviados desde la aplicación para el resto de hello del día de Hola. Es **no recomienda** toohave su límite diario de aplicación toohit Hola desde que son estado de hello no se puede tootrack y el rendimiento de la aplicación después de que se ejecute. 
 
-En su lugar, use el [muestreo](app-insights-sampling.md) para optimizar el volumen de datos en el nivel que desee y use el límite diario únicamente como "último recurso" por si la aplicación comienza a enviar volúmenes de datos de telemetría mucho mayores de forma inesperada. 
+En su lugar, use [muestreo](app-insights-sampling.md) tootune Hola datos toohello nivel de volumen que desee y usar límite diario de hello solo como "último recurso" en caso de que la aplicación comienza a enviar más volúmenes de telemetery de forma inesperada. 
 
-Para cambiar el límite diario, en la sección de configuración del recurso de Application Insights, haga clic en **Administración de datos** y, a continuación, en **Límite diario**.
+Haga clic en toochange límite diario de hello, Hola sección de configuración de los recursos de aplicación Insihgts, **administración del volumen de datos** , a continuación, **límite diario**.
 
-![Ajuste del límite de volumen de telemetría diario](./media/app-insights-pricing/daily-cap.png) 
+![Ajustar Hola telemetría volumen límite diario](./media/app-insights-pricing/daily-cap.png) 
 
 ## <a name="sampling"></a>muestreo
-[Sampling](app-insights-sampling.md)es un método que permite reducir la velocidad a la que se envían datos de telemetría a la aplicación, al mismo tiempo que se conserva la capacidad de buscar eventos relacionados durante las búsquedas de diagnósticos y se conservan los recuentos de eventos correctos. 
+[Muestreo](app-insights-sampling.md) es un método de reducción de la velocidad de hello en el que telemetría se envía tooyour aplicación, al tiempo que se mantiene Hola capacidad toofind relacionada con eventos durante las búsquedas de diagnóstico y recuentos de eventos apropiado siga conservando. 
 
-El muestreo es una manera efectiva de reducir los gastos y permanecer dentro de la cuota mensual. El algoritmo de muestreo conserva elementos relacionados con la telemetría, de modo que, por ejemplo, al usar la búsqueda se puede buscar la solicitud relacionada con una excepción determinada. El algoritmo también conserva recuentos correctos, para que pueda ver en el Explorador de métricas los valores correctos de tasas de solicitudes, tasas de excepciones y otros recuentos.
+El muestreo es una manera eficaz de tooreduce se aplicarán cargos y permanezca dentro de su cuota mensual. Hello algoritmo de muestreo conserva elementos relacionados de telemetría, por lo que, por ejemplo, cuando se usa la búsqueda, puede encontrar excepciones concretas tooa relacionados con la solicitud de Hola. algoritmo de Hello también conserva recuentos correctos, de manera que vea valores correctos hello en el Explorador de métrica de velocidad de solicitudes, tasas de excepción y otros recuentos.
 
 Existen varias formas de muestreo.
 
-* [Adaptive sampling](app-insights-sampling.md) es el predeterminado para el SDK de ASP.NET, que ajusta automáticamente el volumen de telemetría que envía la aplicación. Funciona automáticamente en el SDK de la aplicación web, de modo que se reduce el tráfico de telemetría en la red. 
-* *muestreo de ingesta* es una opción alternativa que funciona en el momento en que la telemetría procedente de su aplicación entra en el servicio Application Insights. No afecta al volumen de telemetría que envía la aplicación, pero reduce el volumen que retiene el servicio. Puede utilizarlo para reducir la cuota que utiliza la telemetría de exploradores y otros SDK.
+* [Muestreo adaptativo](app-insights-sampling.md) es predeterminado de Hola para hello SDK de ASP.NET, que ajusta automáticamente el volumen de toohello de telemetría que envía la aplicación. Su funcionamiento automáticamente en hello SDK en la aplicación web, por lo que se reduce el tráfico de telemetría de hello en red Hola. 
+* *Muestreo de ingesta* es una alternativa que se aplica en el punto de Hola donde telemetría desde la aplicación entra en servicio de Application Insights de Hola. No se ve afectada volumen Hola de telemetría enviado desde su aplicación, pero reduce el volumen de hello retenida por el servicio de Hola. Puede usar cuota de hello tooreduce usa telemetría de exploradores y otros SDK de.
 
-Para establecer el muestreo de ingesta, establezca el control en la hoja de precios:
+tooset ingesta de muestreo, establezca el control de hello en la hoja de precios de hello:
 
-![En la hoja Cuota y precios, haga clic en el icono Ejemplos y seleccione una fracción de muestreo.](./media/app-insights-pricing/04.png)
+![De cuota de Hola y de hoja de precios, haga clic en el icono de ejemplos de hello y seleccione una fracción de muestreo.](./media/app-insights-pricing/04.png)
 
 > [!WARNING]
-> La hoja de muestreo Datos solo controla el valor de muestreo de la ingesta. No refleja la velocidad de muestreo que se aplica mediante el SDK de Application Insights en la aplicación. Si ya se ha muestreado la telemetría entrante en el SDK, no se aplica el muestreo de ingesta.
+> hoja de muestreo de datos de Hello sólo controla el valor Hola de muestreo de recopilación. No reflejar frecuencia de muestreo de Hola que se aplican por hello Application Insights SDK en la aplicación. Si ya se han tomado muestras telemetría de Hola entrantes en hello SDK, no se aplica el muestreo de recopilación.
 > 
 
-Para conocer la frecuencia de muestreo real independientemente de dónde se ha aplicado, use una [consulta de Analytics](app-insights-analytics.md) como esta:
+hello toodiscover real muestreo tasa independientemente de donde se ha aplicado, use un [consulta de análisis](app-insights-analytics.md) como este:
 
     requests | where timestamp > ago(1d)
     | summarize 100/avg(itemCount) by bin(timestamp, 1h) 
     | render areachart 
 
-En cada registro retenido, `itemCount` indica el número de registros originales que representa, equivale a 1 + el número de registros descartados anteriores. 
+En cada uno de ellos conserva el registro, `itemCount` indica Hola número de registros original que representa, too1 igual + número de Hola de registros descartados anteriores. 
 
 
-## <a name="automation"></a>Automatización
+## <a name="automation"></a>Automation
 
-Puede escribir un script para establecer el plan de precios con la administración de recursos de Azure. [Más información](app-insights-powershell.md#price).
+Puede escribir un plan de precios de secuencia de comandos tooset hello, con administración de recursos de Azure. [Más información](app-insights-powershell.md#price).
 
 ## <a name="limits-summary"></a>Resumen de límites
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
