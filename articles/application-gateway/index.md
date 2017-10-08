@@ -1,6 +1,6 @@
 ---
-title: "Documentación sobre Azure Application Gateway: tutoriales y referencia de API | Microsoft Docs"
-description: "Obtenga información acerca de cómo implementar un controlador de entrega de aplicaciones en la nube. La documentación muestra cómo configurar el enrutamiento de nivel de aplicación y equilibrio de carga para un servidor front-end web."
+title: "aaaAzure documentación de puerta de enlace de la aplicación - tutoriales, referencia de API | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toodeploy un controlador de entrega de aplicaciones de nube. La documentación muestra cómo tooset una copia de seguridad enrutamiento de nivel de aplicación y equilibrio de carga para un front-end web."
 services: application-gateway
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 535364a9da46b137c4d32e1c3049a5be3496e5d2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9351bbc5cf288fd4650e9edb89be5a601c2a13ce
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-gateway-documentation"></a>Documentación de Application Gateway
 
-Obtenga información acerca de cómo implementar Application Gateway, un controlador de entrega de aplicaciones (ADC), como servicio. Los tutoriales, las referencias de API y otra documentación muestran cómo configurar el equilibrio de carga y el enrutamiento de nivel de aplicación que permiten crear sistemas front-end web escalables y de alta disponibilidad.
+Obtenga información acerca de cómo toodeploy puerta de enlace de la aplicación, un controlador de entrega de aplicaciones (ADC) como un servicio. Tutoriales, referencias de API y otra documentación mostrarán cómo tooset enrutamiento y servicios que le permiten de equilibrio de carga de nivel de aplicación generan un front-end web escalable y de alta disponibilidad.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Obtenga información acerca de cómo implementar Application Gateway, un control
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción a Application Gateway con Azure Portal</h3>
+                        <h3>Introducción a la puerta de enlace de aplicaciones con hello portal de Azure</h3>
                     </div>
                 </div>
             </div>

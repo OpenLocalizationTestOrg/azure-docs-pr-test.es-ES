@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Trakstar | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Trakstar."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Trakstar."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,203 +13,203 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 757429aa187e6536489b6636a0a11d122c7f9378
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 88101355ce2674bd14e3131000bbe182a06f252a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trakstar"></a><span data-ttu-id="4e2c7-103">Tutorial: integración de Azure Active Directory con Trakstar</span><span class="sxs-lookup"><span data-stu-id="4e2c7-103">Tutorial: Azure Active Directory integration with Trakstar</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-trakstar"></a><span data-ttu-id="f0541-103">Tutorial: integración de Azure Active Directory con Trakstar</span><span class="sxs-lookup"><span data-stu-id="f0541-103">Tutorial: Azure Active Directory integration with Trakstar</span></span>
 
-<span data-ttu-id="4e2c7-104">En este tutorial, aprenderá a integrar Trakstar con Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="4e2c7-104">In this tutorial, you learn how to integrate Trakstar with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="f0541-104">En este tutorial, aprenderá cómo toointegrate Trakstar con Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="f0541-104">In this tutorial, you learn how toointegrate Trakstar with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="4e2c7-105">La integración de Trakstar con Azure AD proporciona las siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="4e2c7-105">Integrating Trakstar with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="f0541-105">Integración Trakstar con Azure AD proporciona Hola siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="f0541-105">Integrating Trakstar with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="4e2c7-106">Puede controlar en Azure AD quién tiene acceso a Trakstar.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-106">You can control in Azure AD who has access to Trakstar</span></span>
-- <span data-ttu-id="4e2c7-107">Puede permitir que los usuarios inicien sesión automáticamente en Trakstar (inicio de sesión único) con sus cuentas de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-107">You can enable your users to automatically get signed-on to Trakstar (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="4e2c7-108">Puede administrar las cuentas en una sola ubicación central: Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="f0541-106">Puede controlar en Azure AD que tenga acceso tooTrakstar</span><span class="sxs-lookup"><span data-stu-id="f0541-106">You can control in Azure AD who has access tooTrakstar</span></span>
+- <span data-ttu-id="f0541-107">Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooTrakstar (Single Sign-On) con sus cuentas de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f0541-107">You can enable your users tooautomatically get signed-on tooTrakstar (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="f0541-108">Puede administrar las cuentas en una ubicación central: Hola portal de Azure</span><span class="sxs-lookup"><span data-stu-id="f0541-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="4e2c7-109">Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="4e2c7-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="f0541-109">Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="f0541-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="4e2c7-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="4e2c7-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="f0541-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="f0541-110">Prerequisites</span></span>
 
-<span data-ttu-id="4e2c7-111">Para configurar la integración de Azure AD con Trakstar, necesita los siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="4e2c7-111">To configure Azure AD integration with Trakstar, you need the following items:</span></span>
+<span data-ttu-id="f0541-111">integración de Azure AD con Trakstar tooconfigure, necesita Hola siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="f0541-111">tooconfigure Azure AD integration with Trakstar, you need hello following items:</span></span>
 
-- <span data-ttu-id="4e2c7-112">Una suscripción de Azure AD</span><span class="sxs-lookup"><span data-stu-id="4e2c7-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="4e2c7-113">Una suscripción habilitada para el inicio de sesión único en Trakstar</span><span class="sxs-lookup"><span data-stu-id="4e2c7-113">A Trakstar single-sign on enabled subscription</span></span>
+- <span data-ttu-id="f0541-112">Una suscripción de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f0541-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="f0541-113">Una suscripción habilitada para el inicio de sesión único en Trakstar</span><span class="sxs-lookup"><span data-stu-id="f0541-113">A Trakstar single-sign on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="4e2c7-114">Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="f0541-114">Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.</span><span class="sxs-lookup"><span data-stu-id="f0541-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="4e2c7-115">Para probar los pasos de este tutorial, debe seguir estas recomendaciones:</span><span class="sxs-lookup"><span data-stu-id="4e2c7-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="f0541-115">pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:</span><span class="sxs-lookup"><span data-stu-id="f0541-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="4e2c7-116">No use el entorno de producción, salvo que sea necesario.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="4e2c7-117">Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="4e2c7-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="f0541-116">No use el entorno de producción, salvo que sea necesario.</span><span class="sxs-lookup"><span data-stu-id="f0541-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="f0541-117">Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="f0541-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="4e2c7-118">Descripción del escenario</span><span class="sxs-lookup"><span data-stu-id="4e2c7-118">Scenario description</span></span>
-<span data-ttu-id="4e2c7-119">En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="4e2c7-120">La situación descrita en este tutorial consta de dos bloques de creación principales:</span><span class="sxs-lookup"><span data-stu-id="4e2c7-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="f0541-118">Descripción del escenario</span><span class="sxs-lookup"><span data-stu-id="f0541-118">Scenario description</span></span>
+<span data-ttu-id="f0541-119">En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba.</span><span class="sxs-lookup"><span data-stu-id="f0541-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="f0541-120">escenario de Hello descrito en este tutorial consta de dos bloques principales:</span><span class="sxs-lookup"><span data-stu-id="f0541-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="4e2c7-121">Adición de Trakstar desde la galería</span><span class="sxs-lookup"><span data-stu-id="4e2c7-121">Adding Trakstar from the gallery</span></span>
-2. <span data-ttu-id="4e2c7-122">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="4e2c7-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="f0541-121">Agregar Trakstar desde la Galería de Hola</span><span class="sxs-lookup"><span data-stu-id="f0541-121">Adding Trakstar from hello gallery</span></span>
+2. <span data-ttu-id="f0541-122">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f0541-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-trakstar-from-the-gallery"></a><span data-ttu-id="4e2c7-123">Adición de Trakstar desde la galería</span><span class="sxs-lookup"><span data-stu-id="4e2c7-123">Adding Trakstar from the gallery</span></span>
-<span data-ttu-id="4e2c7-124">Para configurar la integración de Trakstar en Azure AD, será preciso que agregue Trakstar desde la galería a la lista de aplicaciones SaaS administradas.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-124">To configure the integration of Trakstar into Azure AD, you need to add Trakstar from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-trakstar-from-hello-gallery"></a><span data-ttu-id="f0541-123">Agregar Trakstar desde la Galería de Hola</span><span class="sxs-lookup"><span data-stu-id="f0541-123">Adding Trakstar from hello gallery</span></span>
+<span data-ttu-id="f0541-124">integración de hello tooconfigure de Trakstar en Azure AD, deberá tooadd Trakstar de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.</span><span class="sxs-lookup"><span data-stu-id="f0541-124">tooconfigure hello integration of Trakstar into Azure AD, you need tooadd Trakstar from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="4e2c7-125">**Para agregar Trakstar desde la galería, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="4e2c7-125">**To add Trakstar from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="f0541-125">**tooadd Trakstar de galería de hello, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="f0541-125">**tooadd Trakstar from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="4e2c7-126">En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="f0541-126">Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono.</span><span class="sxs-lookup"><span data-stu-id="f0541-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="4e2c7-128">Vaya a **Aplicaciones empresariales**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="4e2c7-129">A continuación, vaya a **Todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="f0541-128">Navegue demasiado**aplicaciones empresariales**.</span><span class="sxs-lookup"><span data-stu-id="f0541-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="f0541-129">A continuación, vaya demasiado**todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="f0541-129">Then go too**All applications**.</span></span>
 
     ![Aplicaciones][2]
     
-3. <span data-ttu-id="4e2c7-131">Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="f0541-131">tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="f0541-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplicaciones][3]
 
-4. <span data-ttu-id="4e2c7-133">En el cuadro de búsqueda, escriba **Trakstar**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-133">In the search box, type **Trakstar**.</span></span>
+4. <span data-ttu-id="f0541-133">En el cuadro de búsqueda de hello, escriba **Trakstar**.</span><span class="sxs-lookup"><span data-stu-id="f0541-133">In hello search box, type **Trakstar**.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_search.png)
 
-5. <span data-ttu-id="4e2c7-135">En el panel de resultados, seleccione **Trakstar** y haga clic en el botón **Agregar** para agregar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-135">In the results panel, select **Trakstar**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="f0541-135">En el panel de resultados de hello, seleccione **Trakstar**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.</span><span class="sxs-lookup"><span data-stu-id="f0541-135">In hello results panel, select **Trakstar**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="4e2c7-137">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="4e2c7-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="4e2c7-138">En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Trakstar con un usuario de prueba llamado Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-138">In this section, you configure and test Azure AD single sign-on with Trakstar based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="f0541-137">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f0541-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="f0541-138">En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Trakstar con un usuario de prueba llamado Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="f0541-138">In this section, you configure and test Azure AD single sign-on with Trakstar based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="4e2c7-139">Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Trakstar para un usuario de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Trakstar is to a user in Azure AD.</span></span> <span data-ttu-id="4e2c7-140">Es decir, es preciso establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Trakstar.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-140">In other words, a link relationship between an Azure AD user and the related user in Trakstar needs to be established.</span></span>
+<span data-ttu-id="f0541-139">Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Trakstar es tooa usuario en Azure AD.</span><span class="sxs-lookup"><span data-stu-id="f0541-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Trakstar is tooa user in Azure AD.</span></span> <span data-ttu-id="f0541-140">En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Trakstar debe toobe establecido.</span><span class="sxs-lookup"><span data-stu-id="f0541-140">In other words, a link relationship between an Azure AD user and hello related user in Trakstar needs toobe established.</span></span>
 
-<span data-ttu-id="4e2c7-141">Para establecer la relación de vínculo, en Trakstar, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-141">In Trakstar, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="f0541-141">En Trakstar, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.</span><span class="sxs-lookup"><span data-stu-id="f0541-141">In Trakstar, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="4e2c7-142">Para configurar y probar el inicio de sesión único de Azure AD con Trakstar, es preciso completar los siguientes bloques de creación:</span><span class="sxs-lookup"><span data-stu-id="4e2c7-142">To configure and test Azure AD single sign-on with Trakstar, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="f0541-142">tooconfigure y prueba de inicio de sesión único en Azure AD con Trakstar, deberá hello toocomplete después de bloques de creación:</span><span class="sxs-lookup"><span data-stu-id="f0541-142">tooconfigure and test Azure AD single sign-on with Trakstar, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="4e2c7-143">**[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="4e2c7-144">**[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="4e2c7-145">**[Creación de un usuario de prueba de Trakstar](#creating-a-trakstar-test-user)** : para tener un homólogo de Britta Simon en Trakstar vinculado a la representación del usuario en Azure AD.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-145">**[Creating a Trakstar test user](#creating-a-trakstar-test-user)** - to have a counterpart of Britta Simon in Trakstar that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="4e2c7-146">**[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="4e2c7-147">**[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="f0541-143">**[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.</span><span class="sxs-lookup"><span data-stu-id="f0541-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="f0541-144">**[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="f0541-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="f0541-145">**[Crear un usuario de prueba Trakstar](#creating-a-trakstar-test-user)**  -toohave un equivalente de Britta Simon en Trakstar que es la representación toohello vinculado Azure AD del usuario.</span><span class="sxs-lookup"><span data-stu-id="f0541-145">**[Creating a Trakstar test user](#creating-a-trakstar-test-user)** - toohave a counterpart of Britta Simon in Trakstar that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="f0541-146">**[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="f0541-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="f0541-147">**[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.</span><span class="sxs-lookup"><span data-stu-id="f0541-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="4e2c7-148">Configuración del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="4e2c7-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="f0541-148">Configuración del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f0541-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="4e2c7-149">En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación Trakstar.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Trakstar application.</span></span>
+<span data-ttu-id="f0541-149">En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación Trakstar.</span><span class="sxs-lookup"><span data-stu-id="f0541-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Trakstar application.</span></span>
 
-<span data-ttu-id="4e2c7-150">**Para configurar el inicio de sesión único de Azure AD con Trakstar, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="4e2c7-150">**To configure Azure AD single sign-on with Trakstar, perform the following steps:**</span></span>
+<span data-ttu-id="f0541-150">**inicio de sesión único en Azure AD tooconfigure con Trakstar, realizar Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="f0541-150">**tooconfigure Azure AD single sign-on with Trakstar, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="4e2c7-151">En Azure Portal, en la página de integración de la aplicación **Trakstar**, haga clic en **Inicio de sesión único**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-151">In the Azure portal, on the **Trakstar** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="f0541-151">En el portal de Azure, en Hola Hola **Trakstar** página de integración de aplicaciones, haga clic en **inicio de sesión único**.</span><span class="sxs-lookup"><span data-stu-id="f0541-151">In hello Azure portal, on hello **Trakstar** application integration page, click **Single sign-on**.</span></span>
 
     ![Configurar inicio de sesión único][4]
 
-2. <span data-ttu-id="4e2c7-153">En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="f0541-153">En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="f0541-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_samlbase.png)
 
-3. <span data-ttu-id="4e2c7-155">En la sección **Trakstar Domain and URLs** (Dominio y direcciones URL de Trakstar), lleve a cabo los pasos siguientes:</span><span class="sxs-lookup"><span data-stu-id="4e2c7-155">On the **Trakstar Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="f0541-155">En hello **Trakstar dominio y las direcciones URL** sección, lleve a cabo Hola pasos:</span><span class="sxs-lookup"><span data-stu-id="f0541-155">On hello **Trakstar Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_url.png)
 
-    <span data-ttu-id="4e2c7-157">a.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-157">a.</span></span> <span data-ttu-id="4e2c7-158">En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://app.trakstar.com/auth/saml/callback?namespace=<NAMESPACE>`.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-158">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://app.trakstar.com/auth/saml/callback?namespace=<NAMESPACE>`</span></span>
+    <span data-ttu-id="f0541-157">a.</span><span class="sxs-lookup"><span data-stu-id="f0541-157">a.</span></span> <span data-ttu-id="f0541-158">Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://app.trakstar.com/auth/saml/callback?namespace=<NAMESPACE>`</span><span class="sxs-lookup"><span data-stu-id="f0541-158">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://app.trakstar.com/auth/saml/callback?namespace=<NAMESPACE>`</span></span>
 
-    <span data-ttu-id="4e2c7-159">b.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-159">b.</span></span> <span data-ttu-id="4e2c7-160">En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<subdomain>.trakstar.com`</span><span class="sxs-lookup"><span data-stu-id="4e2c7-160">In the **Identifier** textbox, type a URL using the following pattern: `https://<subdomain>.trakstar.com`</span></span>
+    <span data-ttu-id="f0541-159">b.</span><span class="sxs-lookup"><span data-stu-id="f0541-159">b.</span></span> <span data-ttu-id="f0541-160">Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<subdomain>.trakstar.com`</span><span class="sxs-lookup"><span data-stu-id="f0541-160">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<subdomain>.trakstar.com`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="4e2c7-161">Estos valores no son reales.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-161">These values are not real.</span></span> <span data-ttu-id="4e2c7-162">Debe actualizarlos con la dirección URL y el identificador reales de inicio de sesión.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-162">Update these values with the actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="4e2c7-163">Póngase en contacto con el [equipo de soporte técnico de Trakstar](mailto:integrations@trakstar.com) para obtener estos valores.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-163">Contact [Trakstar Client support team](mailto:integrations@trakstar.com) to get these values.</span></span> 
+    > <span data-ttu-id="f0541-161">Estos valores no son reales.</span><span class="sxs-lookup"><span data-stu-id="f0541-161">These values are not real.</span></span> <span data-ttu-id="f0541-162">Actualizar estos valores con hello real de dirección URL de inicio de sesión y el identificador.</span><span class="sxs-lookup"><span data-stu-id="f0541-162">Update these values with hello actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="f0541-163">Póngase en contacto con [equipo de soporte técnico de cliente de Trakstar](mailto:integrations@trakstar.com) tooget estos valores.</span><span class="sxs-lookup"><span data-stu-id="f0541-163">Contact [Trakstar Client support team](mailto:integrations@trakstar.com) tooget these values.</span></span> 
  
-4. <span data-ttu-id="4e2c7-164">En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-164">On the **SAML Signing Certificate** section, click **Certificate (Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="f0541-164">En hello **el certificado de firma de SAML** sección, haga clic en **certificado (Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.</span><span class="sxs-lookup"><span data-stu-id="f0541-164">On hello **SAML Signing Certificate** section, click **Certificate (Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_certificate.png) 
 
-5. <span data-ttu-id="4e2c7-166">Haga clic en el botón **Guardar** .</span><span class="sxs-lookup"><span data-stu-id="4e2c7-166">Click **Save** button.</span></span>
+5. <span data-ttu-id="f0541-166">Haga clic en el botón **Guardar** .</span><span class="sxs-lookup"><span data-stu-id="f0541-166">Click **Save** button.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-trakstar-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="4e2c7-168">En la sección **Trakstar Configuration** (Configuración de Trakstar), haga clic en **Configure Trakstar** (Configurar Trakstar) para abrir la ventana **Configurar inicio de sesión**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-168">On the **Trakstar Configuration** section, click **Configure Trakstar** to open **Configure sign-on** window.</span></span> <span data-ttu-id="4e2c7-169">Copie la **URL del servicio de inicio de sesión único de SAML, el identificador de entidad de SAML y la dirección URL de cierre de sesión** de la sección **Referencia rápida**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-169">Copy the **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="f0541-168">En hello **Trakstar configuración** sección, haga clic en **configurar Trakstar** tooopen **configurar inicio de sesión** ventana.</span><span class="sxs-lookup"><span data-stu-id="f0541-168">On hello **Trakstar Configuration** section, click **Configure Trakstar** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="f0541-169">Hola copia **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**</span><span class="sxs-lookup"><span data-stu-id="f0541-169">Copy hello **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_configure.png) 
 
-7. <span data-ttu-id="4e2c7-171">Para configurar el inicio de sesión único en **Trakstar**, es preciso enviar el **Certificado (Base64)** descargado, la **dirección URL de cierre de sesión, el identificador de identidad de SAML y la dirección URL del servicio de inicio de sesión único de SAML** al [equipo de soporte técnico de Trakstar](mailto:integrations@trakstar.com).</span><span class="sxs-lookup"><span data-stu-id="4e2c7-171">To configure single sign-on on **Trakstar** side, you need to send the downloaded **Certificate (Base64)**, **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** to [Trakstar support team](mailto:integrations@trakstar.com).</span></span> 
+7. <span data-ttu-id="f0541-171">tooconfigure inicio de sesión único en **Trakstar** lado, necesita hello toosend descargado **certificado (Base64)**, **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio**demasiado[equipo de soporte técnico de Trakstar](mailto:integrations@trakstar.com).</span><span class="sxs-lookup"><span data-stu-id="f0541-171">tooconfigure single sign-on on **Trakstar** side, you need toosend hello downloaded **Certificate (Base64)**, **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** too[Trakstar support team](mailto:integrations@trakstar.com).</span></span> 
 
 > [!TIP]
-> <span data-ttu-id="4e2c7-172">Ahora puede leer una versión concisa de estas instrucciones en [Azure Portal](https://portal.azure.com) mientras configura la aplicación.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-172">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="4e2c7-173">Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-173">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="4e2c7-174">Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="4e2c7-174">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="f0541-172">Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!</span><span class="sxs-lookup"><span data-stu-id="f0541-172">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="f0541-173">Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola.</span><span class="sxs-lookup"><span data-stu-id="f0541-173">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="f0541-174">Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="f0541-174">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="4e2c7-175">Creación de un usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="4e2c7-175">Creating an Azure AD test user</span></span>
-<span data-ttu-id="4e2c7-176">El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="4e2c7-176">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="f0541-175">Creación de un usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="f0541-175">Creating an Azure AD test user</span></span>
+<span data-ttu-id="f0541-176">objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.</span><span class="sxs-lookup"><span data-stu-id="f0541-176">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Creación de un usuario de Azure AD][100]
 
-<span data-ttu-id="4e2c7-178">**Siga estos pasos para crear un usuario de prueba en Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="4e2c7-178">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="f0541-178">**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="f0541-178">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="4e2c7-179">En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-179">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="f0541-179">Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.</span><span class="sxs-lookup"><span data-stu-id="f0541-179">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-trakstar-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="4e2c7-181">Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-181">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="f0541-181">lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.</span><span class="sxs-lookup"><span data-stu-id="f0541-181">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-trakstar-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="4e2c7-183">Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-183">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="f0541-183">Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.</span><span class="sxs-lookup"><span data-stu-id="f0541-183">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-trakstar-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="4e2c7-185">En la página de diálogo **Usuario**, realice los siguientes pasos:</span><span class="sxs-lookup"><span data-stu-id="4e2c7-185">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="f0541-185">En hello **usuario** cuadro de diálogo, siga los pasos de hello:</span><span class="sxs-lookup"><span data-stu-id="f0541-185">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-trakstar-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="4e2c7-187">a.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-187">a.</span></span> <span data-ttu-id="4e2c7-188">En el cuadro de texto **Nombre**, escriba **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-188">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="f0541-187">a.</span><span class="sxs-lookup"><span data-stu-id="f0541-187">a.</span></span> <span data-ttu-id="f0541-188">Hola **nombre** cuadro de texto, tipo **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="f0541-188">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="4e2c7-189">b.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-189">b.</span></span> <span data-ttu-id="4e2c7-190">En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-190">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="f0541-189">b.</span><span class="sxs-lookup"><span data-stu-id="f0541-189">b.</span></span> <span data-ttu-id="f0541-190">Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="f0541-190">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="4e2c7-191">c.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-191">c.</span></span> <span data-ttu-id="4e2c7-192">Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-192">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="f0541-191">c.</span><span class="sxs-lookup"><span data-stu-id="f0541-191">c.</span></span> <span data-ttu-id="f0541-192">Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.</span><span class="sxs-lookup"><span data-stu-id="f0541-192">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="4e2c7-193">d.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-193">d.</span></span> <span data-ttu-id="4e2c7-194">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-194">Click **Create**.</span></span>
+    <span data-ttu-id="f0541-193">d.</span><span class="sxs-lookup"><span data-stu-id="f0541-193">d.</span></span> <span data-ttu-id="f0541-194">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="f0541-194">Click **Create**.</span></span>
  
-### <a name="creating-a-trakstar-test-user"></a><span data-ttu-id="4e2c7-195">Crear un usuario de prueba de Trakstar</span><span class="sxs-lookup"><span data-stu-id="4e2c7-195">Creating a Trakstar test user</span></span>
+### <a name="creating-a-trakstar-test-user"></a><span data-ttu-id="f0541-195">Crear un usuario de prueba de Trakstar</span><span class="sxs-lookup"><span data-stu-id="f0541-195">Creating a Trakstar test user</span></span>
 
-<span data-ttu-id="4e2c7-196">El objetivo de esta sección es crear un usuario de prueba llamado Britta Simon en Trakstar.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-196">The objective of this section is to create a user called Britta Simon in Trakstar.</span></span> <span data-ttu-id="4e2c7-197">Trabaje con el [equipo de soporte técnico de Trakstar](mailto:integrations@trakstar.com) para agregar los usuarios en la cuenta de Trakstar.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-197">Work with [Trakstar support team](mailto:integrations@trakstar.com) to add the users in the Trakstar account.</span></span> 
+<span data-ttu-id="f0541-196">objetivo de Hola de esta sección es un usuario llamado a Britta Simon en Trakstar toocreate.</span><span class="sxs-lookup"><span data-stu-id="f0541-196">hello objective of this section is toocreate a user called Britta Simon in Trakstar.</span></span> <span data-ttu-id="f0541-197">Trabajar con [equipo de soporte técnico de Trakstar](mailto:integrations@trakstar.com) a los usuarios de tooadd Hola Hola Trakstar cuenta.</span><span class="sxs-lookup"><span data-stu-id="f0541-197">Work with [Trakstar support team](mailto:integrations@trakstar.com) tooadd hello users in hello Trakstar account.</span></span> 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="4e2c7-198">Asignación del usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="4e2c7-198">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="f0541-198">Asignación de usuario de prueba de hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="f0541-198">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="4e2c7-199">En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Trakstar.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-199">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Trakstar.</span></span>
+<span data-ttu-id="f0541-199">En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooTrakstar.</span><span class="sxs-lookup"><span data-stu-id="f0541-199">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooTrakstar.</span></span>
 
 ![Asignar usuario][200] 
 
-<span data-ttu-id="4e2c7-201">**Para asignar a Britta Simon a Trakstar, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="4e2c7-201">**To assign Britta Simon to Trakstar, perform the following steps:**</span></span>
+<span data-ttu-id="f0541-201">**tooassign Britta Simon tooTrakstar, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="f0541-201">**tooassign Britta Simon tooTrakstar, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="4e2c7-202">En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-202">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="f0541-202">Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="f0541-202">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Asignar usuario][201] 
 
-2. <span data-ttu-id="4e2c7-204">En la lista de aplicaciones, seleccione **@Trakstar**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-204">In the applications list, select **Trakstar**.</span></span>
+2. <span data-ttu-id="f0541-204">En la lista de aplicaciones de hello, seleccione **Trakstar**.</span><span class="sxs-lookup"><span data-stu-id="f0541-204">In hello applications list, select **Trakstar**.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-trakstar-tutorial/tutorial_trakstar_app.png) 
 
-3. <span data-ttu-id="4e2c7-206">En el menú de la izquierda, haga clic en **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-206">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="f0541-206">En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="f0541-206">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Asignar usuario][202] 
 
-4. <span data-ttu-id="4e2c7-208">Haga clic en el botón **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-208">Click **Add** button.</span></span> <span data-ttu-id="4e2c7-209">Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-209">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="f0541-208">Haga clic en el botón **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="f0541-208">Click **Add** button.</span></span> <span data-ttu-id="f0541-209">Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="f0541-209">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Asignar usuario][203]
 
-5. <span data-ttu-id="4e2c7-211">En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-211">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="f0541-211">En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.</span><span class="sxs-lookup"><span data-stu-id="f0541-211">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="4e2c7-212">Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-212">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="f0541-212">Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="f0541-212">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="4e2c7-213">Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-213">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="f0541-213">Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="f0541-213">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="4e2c7-214">Prueba del inicio de sesión único </span><span class="sxs-lookup"><span data-stu-id="4e2c7-214">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="f0541-214">Prueba del inicio de sesión único </span><span class="sxs-lookup"><span data-stu-id="f0541-214">Testing single sign-on</span></span>
 
-<span data-ttu-id="4e2c7-215">El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-215">The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.</span></span>  
-<span data-ttu-id="4e2c7-216">Al hacer clic en el icono de Trakstar en el panel de acceso, debería iniciar sesión automáticamente en su aplicación Trakstar.</span><span class="sxs-lookup"><span data-stu-id="4e2c7-216">When you click the Trakstar tile in the Access Panel, you should get automatically signed-on to your Trakstar application.</span></span> 
+<span data-ttu-id="f0541-215">objetivo de Hola de esta sección es tootest su configuración de inicio de sesión único de Azure AD mediante Hola Panel de acceso.</span><span class="sxs-lookup"><span data-stu-id="f0541-215">hello objective of this section is tootest your Azure AD single sign-on configuration using hello Access Panel.</span></span>  
+<span data-ttu-id="f0541-216">Al hacer clic en icono de Trakstar Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour Trakstar aplicación.</span><span class="sxs-lookup"><span data-stu-id="f0541-216">When you click hello Trakstar tile in hello Access Panel, you should get automatically signed-on tooyour Trakstar application.</span></span> 
 
-## <a name="additional-resources"></a><span data-ttu-id="4e2c7-217">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="4e2c7-217">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="f0541-217">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="f0541-217">Additional resources</span></span>
 
-* [<span data-ttu-id="4e2c7-218">Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="4e2c7-218">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="4e2c7-219">¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="4e2c7-219">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="f0541-218">Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="f0541-218">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="f0541-219">¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="f0541-219">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

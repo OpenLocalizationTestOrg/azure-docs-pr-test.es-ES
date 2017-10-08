@@ -1,6 +1,6 @@
 ---
-title: "Ejemplos de la API de auditoría de generación de informes de Azure Active Directory | Microsoft Docs"
-description: "Introducción a la API de informes de Azure Active Directory"
+title: "informes de Active Directory de aaaAzure auditoría ejemplos de API | Documentos de Microsoft"
+description: "¿Cómo tooget partió hello Azure Active Directory Reporting API"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,32 +15,32 @@ ms.workload: identity
 ms.date: 08/02/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6e3e127fbdc228ff0535be64fe4a4a696731a897
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 6ada8a7184d7baacaba5ba9c1b9130653b1cf7fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-reporting-audit-api-samples"></a><span data-ttu-id="b5593-103">Ejemplos de la API de auditoría de generación de informes de Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="b5593-103">Azure Active Directory reporting audit API samples</span></span>
-<span data-ttu-id="b5593-104">Este tema forma parte de una serie de temas sobre la API de informes de Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="b5593-104">This topic is part of a collection of topics about the Azure Active Directory reporting API.</span></span>  
-<span data-ttu-id="b5593-105">La característica de generación de informes de Azure AD proporciona una API que permite acceder a los datos de auditoría mediante el uso de código o herramientas relacionadas.</span><span class="sxs-lookup"><span data-stu-id="b5593-105">Azure AD reporting provides you with an API that enables you to access audit data using code or related tools.</span></span>
-<span data-ttu-id="b5593-106">Este tema se centra en proporcionar el código de ejemplo para la **API de actividad de auditoría**.</span><span class="sxs-lookup"><span data-stu-id="b5593-106">The scope of this topic is to provide you with sample code for the **audit API**.</span></span>
+# <a name="azure-active-directory-reporting-audit-api-samples"></a><span data-ttu-id="ebd00-103">Ejemplos de la API de auditoría de generación de informes de Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="ebd00-103">Azure Active Directory reporting audit API samples</span></span>
+<span data-ttu-id="ebd00-104">Este tema forma parte de una colección de temas sobre hello Azure Active Directory API de informes.</span><span class="sxs-lookup"><span data-stu-id="ebd00-104">This topic is part of a collection of topics about hello Azure Active Directory reporting API.</span></span>  
+<span data-ttu-id="ebd00-105">Reporting de Azure AD proporciona una API que permite los datos de auditoría tooaccess mediante código o herramientas relacionadas.</span><span class="sxs-lookup"><span data-stu-id="ebd00-105">Azure AD reporting provides you with an API that enables you tooaccess audit data using code or related tools.</span></span>
+<span data-ttu-id="ebd00-106">Hola ámbito de este tema es tooprovide, con el ejemplo de código de hello **API de auditoría**.</span><span class="sxs-lookup"><span data-stu-id="ebd00-106">hello scope of this topic is tooprovide you with sample code for hello **audit API**.</span></span>
 
-<span data-ttu-id="b5593-107">Consulte:</span><span class="sxs-lookup"><span data-stu-id="b5593-107">See:</span></span>
+<span data-ttu-id="ebd00-107">Consulte:</span><span class="sxs-lookup"><span data-stu-id="ebd00-107">See:</span></span>
 
-* <span data-ttu-id="b5593-108">[Registros de auditoría](active-directory-reporting-azure-portal.md#activity-reports) para obtener más información</span><span class="sxs-lookup"><span data-stu-id="b5593-108">[Audit logs](active-directory-reporting-azure-portal.md#activity-reports) for more conceptual information</span></span>
-* <span data-ttu-id="b5593-109">[Introducción a la API de generación de informes de Azure Active Directory](active-directory-reporting-api-getting-started.md) para obtener más información sobre esta API</span><span class="sxs-lookup"><span data-stu-id="b5593-109">[Getting started with the Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) for more information about the reporting API.</span></span>
+* <span data-ttu-id="ebd00-108">[Registros de auditoría](active-directory-reporting-azure-portal.md#activity-reports) para obtener más información</span><span class="sxs-lookup"><span data-stu-id="ebd00-108">[Audit logs](active-directory-reporting-azure-portal.md#activity-reports) for more conceptual information</span></span>
+* <span data-ttu-id="ebd00-109">[Introducción a Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md) para obtener más información acerca de la API de informes de Hola.</span><span class="sxs-lookup"><span data-stu-id="ebd00-109">[Getting started with hello Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) for more information about hello reporting API.</span></span>
 
-<span data-ttu-id="b5593-110">Para ver preguntas, problemas o comentarios, póngase en contacto con el equipo de [ayuda de informes de AAD](mailto:aadreportinghelp@microsoft.com).</span><span class="sxs-lookup"><span data-stu-id="b5593-110">For questions, issues or feedback, please contact [AAD Reporting Help](mailto:aadreportinghelp@microsoft.com).</span></span>
+<span data-ttu-id="ebd00-110">Para ver preguntas, problemas o comentarios, póngase en contacto con el equipo de [ayuda de informes de AAD](mailto:aadreportinghelp@microsoft.com).</span><span class="sxs-lookup"><span data-stu-id="ebd00-110">For questions, issues or feedback, please contact [AAD Reporting Help](mailto:aadreportinghelp@microsoft.com).</span></span>
 
 
-## <a name="prerequisites"></a><span data-ttu-id="b5593-111">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="b5593-111">Prerequisites</span></span>
-<span data-ttu-id="b5593-112">Para poder usar los ejemplos de este tema, debe completar la [requisitos previos para tener acceso a la API de generación de informes de Azure AD](active-directory-reporting-api-prerequisites.md).</span><span class="sxs-lookup"><span data-stu-id="b5593-112">Before you can use the samples in this topic, you need to complete the [prerequisites to access the Azure AD reporting API](active-directory-reporting-api-prerequisites.md).</span></span>  
+## <a name="prerequisites"></a><span data-ttu-id="ebd00-111">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="ebd00-111">Prerequisites</span></span>
+<span data-ttu-id="ebd00-112">Para poder usar los ejemplos de hello en este tema, deberá hello toocomplete [API de generación de informes de requisitos previos tooaccess hello Azure AD](active-directory-reporting-api-prerequisites.md).</span><span class="sxs-lookup"><span data-stu-id="ebd00-112">Before you can use hello samples in this topic, you need toocomplete hello [prerequisites tooaccess hello Azure AD reporting API](active-directory-reporting-api-prerequisites.md).</span></span>  
 
-## <a name="known-issue"></a><span data-ttu-id="b5593-113">Problema conocido</span><span class="sxs-lookup"><span data-stu-id="b5593-113">Known issue</span></span>
-<span data-ttu-id="b5593-114">La autenticación de aplicaciones no funcionará si el inquilino está en la región de la UE.</span><span class="sxs-lookup"><span data-stu-id="b5593-114">App Auth will not work if your tenant is in the EU region.</span></span> <span data-ttu-id="b5593-115">Utilice la autenticación de usuario para acceder a la API de auditoría como alternativa hasta que se corrija el problema.</span><span class="sxs-lookup"><span data-stu-id="b5593-115">Please use User Auth for accessing the Audit API as a workaround until we fix the issue.</span></span> 
+## <a name="known-issue"></a><span data-ttu-id="ebd00-113">Problema conocido</span><span class="sxs-lookup"><span data-stu-id="ebd00-113">Known issue</span></span>
+<span data-ttu-id="ebd00-114">Autenticación de la aplicación no funcionará si su inquilino está en la región de Europa Hola.</span><span class="sxs-lookup"><span data-stu-id="ebd00-114">App Auth will not work if your tenant is in hello EU region.</span></span> <span data-ttu-id="ebd00-115">Use la autenticación de usuario para tener acceso a API de auditoría de Hola para solucionar este problema hasta que se corrija el problema de Hola.</span><span class="sxs-lookup"><span data-stu-id="ebd00-115">Please use User Auth for accessing hello Audit API as a workaround until we fix hello issue.</span></span> 
 
-## <a name="powershell-script"></a><span data-ttu-id="b5593-116">Script de PowerShell</span><span class="sxs-lookup"><span data-stu-id="b5593-116">PowerShell script</span></span>
+## <a name="powershell-script"></a><span data-ttu-id="ebd00-116">Script de PowerShell</span><span class="sxs-lookup"><span data-stu-id="ebd00-116">PowerShell script</span></span>
     # This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)
 
     # Constants
@@ -49,14 +49,14 @@ ms.lasthandoff: 08/18/2017
     $loginURL       = "https://login.microsoftonline.com"     # AAD Instance; for example https://login.microsoftonline.com
     $tenantdomain   = "your-tenant-domain.onmicrosoft.com"    # AAD Tenant; for example, contoso.onmicrosoft.com
     $resource       = "https://graph.windows.net"             # Azure AD Graph API resource URI
-    $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
+    $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' toodecrement minutes, for example
     Write-Output "Searching for events starting $7daysago"
 
     # Create HTTP header, get an OAuth2 access token based on client id, secret and tenant domain
     $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
     $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
-    # Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
+    # Parse audit report items, save output toofile(s): auditX.json, where X = 0 thru n for number of nextLink pages
     if ($oauth.access_token -ne $null) {   
         $i=0
         $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
@@ -64,15 +64,15 @@ ms.lasthandoff: 08/18/2017
 
         # loop through each query page (1 through n)
         Do{
-            # display each event on the console window
+            # display each event on hello console window
             Write-Output "Fetching data using Uri: $url"
             $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
             foreach ($event in ($myReport.Content | ConvertFrom-Json).value) {
                 Write-Output ($event | ConvertTo-Json)
             }
 
-            # save the query page to an output file
-            Write-Output "Save the output to a file audit$i.json"
+            # save hello query page tooan output file
+            Write-Output "Save hello output tooa file audit$i.json"
             $myReport.Content | Out-File -FilePath audit$i.json -Force
             $url = ($myReport.Content | ConvertFrom-Json).'@odata.nextLink'
             $i = $i+1
@@ -81,16 +81,16 @@ ms.lasthandoff: 08/18/2017
         Write-Host "ERROR: No Access Token"
         }
 
-    Write-Host "Press any key to continue ..."
+    Write-Host "Press any key toocontinue ..."
     $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 
-### <a name="executing-the-powershell-script"></a><span data-ttu-id="b5593-117">Ejecución del script de PowerShell</span><span class="sxs-lookup"><span data-stu-id="b5593-117">Executing the PowerShell script</span></span>
-<span data-ttu-id="b5593-118">Una vez que termine de editar el script, ejecútelo y compruebe que el informe de registros de auditoría devuelve los datos esperados.</span><span class="sxs-lookup"><span data-stu-id="b5593-118">Once you finish editing the script, run it and verify that the expected data from the Audit logs report is returned.</span></span>
+### <a name="executing-hello-powershell-script"></a><span data-ttu-id="ebd00-117">Ejecutar script de PowerShell de Hola</span><span class="sxs-lookup"><span data-stu-id="ebd00-117">Executing hello PowerShell script</span></span>
+<span data-ttu-id="ebd00-118">Una vez termine de editar el script de Hola, ejecutarlo y compruebe que Hola se espera que se devuelven datos de informe de registros de auditoría de Hola.</span><span class="sxs-lookup"><span data-stu-id="ebd00-118">Once you finish editing hello script, run it and verify that hello expected data from hello Audit logs report is returned.</span></span>
 
-<span data-ttu-id="b5593-119">El script devuelve la salida del informe de auditoría en formato JSON.</span><span class="sxs-lookup"><span data-stu-id="b5593-119">The script returns output from the audit report in JSON format.</span></span> <span data-ttu-id="b5593-120">También se crea un archivo `audit.json` con la misma salida.</span><span class="sxs-lookup"><span data-stu-id="b5593-120">It also creates an `audit.json` file with the same output.</span></span> <span data-ttu-id="b5593-121">Puede experimentar modificando el script para que devuelva datos de otros informes y convertir en comentario los formatos de salida que no necesite.</span><span class="sxs-lookup"><span data-stu-id="b5593-121">You can experiment by modifying the script to return data from other reports, and comment out the output formats that you do not need.</span></span>
+<span data-ttu-id="ebd00-119">script de Hola devuelve una salida de informe de auditoría de hello en formato JSON.</span><span class="sxs-lookup"><span data-stu-id="ebd00-119">hello script returns output from hello audit report in JSON format.</span></span> <span data-ttu-id="ebd00-120">También se crea un `audit.json` archivos con hello el mismo resultado.</span><span class="sxs-lookup"><span data-stu-id="ebd00-120">It also creates an `audit.json` file with hello same output.</span></span> <span data-ttu-id="ebd00-121">Puede experimentar mediante la modificación de datos de tooreturn de script de Hola desde otros informes, y marque como comentario los formatos de salida de hello que no es necesario.</span><span class="sxs-lookup"><span data-stu-id="ebd00-121">You can experiment by modifying hello script tooreturn data from other reports, and comment out hello output formats that you do not need.</span></span>
 
-## <a name="bash-script"></a><span data-ttu-id="b5593-122">Script de Bash</span><span class="sxs-lookup"><span data-stu-id="b5593-122">Bash script</span></span>
+## <a name="bash-script"></a><span data-ttu-id="ebd00-122">Script de Bash</span><span class="sxs-lookup"><span data-stu-id="ebd00-122">Bash script</span></span>
     #!/bin/bash
 
     # Author: Ken Hoff (kenhoff@microsoft.com)
@@ -118,10 +118,10 @@ ms.lasthandoff: 08/18/2017
 
     echo $REPORT | ./jq-win64.exe -r '.value' | ./jq-win64.exe -r ".[]"
 
-## <a name="python-script"></a><span data-ttu-id="b5593-123">Script de Python</span><span class="sxs-lookup"><span data-stu-id="b5593-123">Python script</span></span>
+## <a name="python-script"></a><span data-ttu-id="ebd00-123">Script de Python</span><span class="sxs-lookup"><span data-stu-id="ebd00-123">Python script</span></span>
     # Author: Michael McLaughlin (michmcla@microsoft.com)
     # Date: January 20, 2016
-    # This requires the Python Requests module: http://docs.python-requests.org
+    # This requires hello Python Requests module: http://docs.python-requests.org
 
     import requests
     import datetime
@@ -147,7 +147,7 @@ ms.lasthandoff: 08/18/2017
         print "ERROR: Couldn't get access token"
         sys.exit(1)
 
-    # Use the access token to make the API request
+    # Use hello access token toomake hello API request
     yesterday = datetime.date.strftime(datetime.date.today() - datetime.timedelta(days=1), '%Y-%m-%d')
 
     header_params = {'Authorization': token_type + ' ' + access_token}
@@ -163,8 +163,8 @@ ms.lasthandoff: 08/18/2017
 
 
 
-## <a name="next-steps"></a><span data-ttu-id="b5593-124">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="b5593-124">Next steps</span></span>
-* <span data-ttu-id="b5593-125">¿Quiere personalizar los ejemplos de este tema?</span><span class="sxs-lookup"><span data-stu-id="b5593-125">Would you like to customize the samples in this topic?</span></span> <span data-ttu-id="b5593-126">Consulte la [referencia de la API de auditoría de Azure Active Directory](active-directory-reporting-api-audit-reference.md).</span><span class="sxs-lookup"><span data-stu-id="b5593-126">Check out the [Azure Active Directory audit API reference](active-directory-reporting-api-audit-reference.md).</span></span> 
-* <span data-ttu-id="b5593-127">Si quiere obtener una descripción completa del uso de la API de generación de informes de Azure Active Directory, consulte el artículo de [introducción a la API de generación de informes de Azure Active Directory](active-directory-reporting-api-getting-started.md).</span><span class="sxs-lookup"><span data-stu-id="b5593-127">If you want to see a complete overview of using the Azure Active Directory reporting API, see [Getting started with the Azure Active Directory reporting API](active-directory-reporting-api-getting-started.md).</span></span>
-* <span data-ttu-id="b5593-128">Si quiere obtener más información sobre informes de Azure Active Directory, consulte la [guía de generación de informes de Azure Active Directory](active-directory-reporting-guide.md).</span><span class="sxs-lookup"><span data-stu-id="b5593-128">If you would like to find out more about Azure Active Directory reporting, see the [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).</span></span>  
+## <a name="next-steps"></a><span data-ttu-id="ebd00-124">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="ebd00-124">Next steps</span></span>
+* <span data-ttu-id="ebd00-125">¿Le gustaría toocustomize ejemplos de hello en este tema?</span><span class="sxs-lookup"><span data-stu-id="ebd00-125">Would you like toocustomize hello samples in this topic?</span></span> <span data-ttu-id="ebd00-126">Extraer del repositorio hello [auditoría de Azure Active Directory referencia de la API](active-directory-reporting-api-audit-reference.md).</span><span class="sxs-lookup"><span data-stu-id="ebd00-126">Check out hello [Azure Active Directory audit API reference](active-directory-reporting-api-audit-reference.md).</span></span> 
+* <span data-ttu-id="ebd00-127">Si desea que toosee información general completa del uso de hello Azure Active Directory API de informes, consulte [Introducción a Azure Active Directory API de informes de Hola](active-directory-reporting-api-getting-started.md).</span><span class="sxs-lookup"><span data-stu-id="ebd00-127">If you want toosee a complete overview of using hello Azure Active Directory reporting API, see [Getting started with hello Azure Active Directory reporting API](active-directory-reporting-api-getting-started.md).</span></span>
+* <span data-ttu-id="ebd00-128">Si desea que toofind más acerca de los informes de Azure Active Directory, vea hello [Azure Active Directory Reporting guía](active-directory-reporting-guide.md).</span><span class="sxs-lookup"><span data-stu-id="ebd00-128">If you would like toofind out more about Azure Active Directory reporting, see hello [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).</span></span>  
 

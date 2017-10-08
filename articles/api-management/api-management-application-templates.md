@@ -1,6 +1,6 @@
 ---
-title: "Plantillas de aplicación en Azure API Management | Microsoft Docs"
-description: "Aprenda a personalizar el contenido de las páginas de aplicación del portal para desarrolladores en Azure API Management."
+title: "plantillas de aaaApplication en la administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocustomize Hola contenido de las páginas de aplicación hello en el portal para desarrolladores de hello en la administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 6d2d44465800219f16866a621d4822614ac9e1dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4dc078be7163b047ca2e640a9065ba9e5ba709e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="application-templates-in-azure-api-management"></a><span data-ttu-id="f330d-103">Plantillas de aplicación en Azure API Management</span><span class="sxs-lookup"><span data-stu-id="f330d-103">Application templates in Azure API Management</span></span>
-<span data-ttu-id="f330d-104">Azure API Management le ofrece la posibilidad de personalizar el contenido de las páginas del portal para desarrolladores mediante un conjunto de plantillas que configuran su contenido.</span><span class="sxs-lookup"><span data-stu-id="f330d-104">Azure API Management provides you the ability to customize the content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="f330d-105">Por medio de la sintaxis [DotLiquid](http://dotliquidmarkup.org/) y el editor que prefiera, como [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) (DotLiquid para diseñadores), y un conjunto proporcionado de [recursos de cadena](api-management-template-resources.md#strings), [recursos de glifo](api-management-template-resources.md#glyphs) y [controles de página](api-management-page-controls.md) localizados, puede disponer de una gran flexibilidad para configurar el contenido de las páginas como considere oportuno mediante estas plantillas.</span><span class="sxs-lookup"><span data-stu-id="f330d-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and the editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility to configure the content of the pages as you see fit using these templates.</span></span>  
+# <a name="application-templates-in-azure-api-management"></a><span data-ttu-id="8dc45-103">Plantillas de aplicación en Azure API Management</span><span class="sxs-lookup"><span data-stu-id="8dc45-103">Application templates in Azure API Management</span></span>
+<span data-ttu-id="8dc45-104">Administración de API de Azure proporciona que Hola contenido de hello toocustomize de capacidad de páginas del portal para desarrolladores con un conjunto de plantillas que configure su contenido.</span><span class="sxs-lookup"><span data-stu-id="8dc45-104">Azure API Management provides you hello ability toocustomize hello content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="8dc45-105">Usar [DotLiquid](http://dotliquidmarkup.org/) editor hello y sintaxis de su elección, como [DotLiquid a los diseñadores](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), o cambie de tamaño un conjunto proporcionado de [los recursos de cadena](api-management-template-resources.md#strings), [ Recursos de glifo](api-management-template-resources.md#glyphs), y [página controles](api-management-page-controls.md), tienen contenido de gran flexibilidad tooconfigure Hola de páginas de Hola como considere oportuno mediante estas plantillas.</span><span class="sxs-lookup"><span data-stu-id="8dc45-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and hello editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility tooconfigure hello content of hello pages as you see fit using these templates.</span></span>  
   
- <span data-ttu-id="f330d-106">Las plantillas de esta sección le permiten personalizar el contenido de las páginas de Application en el portal para desarrolladores.</span><span class="sxs-lookup"><span data-stu-id="f330d-106">The templates in this section allow you to customize the content of the Application pages in the developer portal.</span></span>  
+ <span data-ttu-id="8dc45-106">las plantillas de Hello en esta sección permiten contenido de hello toocustomize de páginas de la aplicación hello en el portal para desarrolladores de Hola.</span><span class="sxs-lookup"><span data-stu-id="8dc45-106">hello templates in this section allow you toocustomize hello content of hello Application pages in hello developer portal.</span></span>  
   
--   [<span data-ttu-id="f330d-107">Application list</span><span class="sxs-lookup"><span data-stu-id="f330d-107">Application list</span></span>](#ProductList)  
+-   [<span data-ttu-id="8dc45-107">Application list</span><span class="sxs-lookup"><span data-stu-id="8dc45-107">Application list</span></span>](#ProductList)  
   
--   [<span data-ttu-id="f330d-108">Aplicación</span><span class="sxs-lookup"><span data-stu-id="f330d-108">Application</span></span>](#Application)  
+-   [<span data-ttu-id="8dc45-108">Aplicación</span><span class="sxs-lookup"><span data-stu-id="8dc45-108">Application</span></span>](#Application)  
   
 > [!NOTE]
->  <span data-ttu-id="f330d-109">En la siguiente documentación se incluyen plantillas predeterminadas de ejemplo; sin embargo, están sujetas a cambios debido a mejoras continuas.</span><span class="sxs-lookup"><span data-stu-id="f330d-109">Sample default templates are included in the following documentation, but are subject to change due to continuous improvements.</span></span> <span data-ttu-id="f330d-110">Puede ver las plantillas predeterminadas en vivo en el portal para desarrolladores; para ello, vaya hasta a las plantillas individuales que desee.</span><span class="sxs-lookup"><span data-stu-id="f330d-110">You can view the live default templates in the developer portal by navigating to the desired individual templates.</span></span> <span data-ttu-id="f330d-111">Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="f330d-111">For more information about working with templates, see [How to customize the API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
+>  <span data-ttu-id="8dc45-109">Plantillas predeterminadas de ejemplo se incluyen en hello siguiendo documentación, pero están toochange asunto debido toocontinuous mejoras.</span><span class="sxs-lookup"><span data-stu-id="8dc45-109">Sample default templates are included in hello following documentation, but are subject toochange due toocontinuous improvements.</span></span> <span data-ttu-id="8dc45-110">Puede ver plantillas de hello predeterminado en vivo en el portal para desarrolladores de hello desplazándose plantillas individuales toohello deseado.</span><span class="sxs-lookup"><span data-stu-id="8dc45-110">You can view hello live default templates in hello developer portal by navigating toohello desired individual templates.</span></span> <span data-ttu-id="8dc45-111">Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="8dc45-111">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
   
-##  <span data-ttu-id="f330d-112"><a name="ProductList"></a> Application list</span><span class="sxs-lookup"><span data-stu-id="f330d-112"><a name="ProductList"></a> Application list</span></span>  
- <span data-ttu-id="f330d-113">La plantilla **Application list** le permite personalizar el cuerpo de la página de lista de aplicaciones en el portal para desarrolladores.</span><span class="sxs-lookup"><span data-stu-id="f330d-113">The **Application list** template allows you to customize the body of the application list page in the developer portal.</span></span>  
+##  <span data-ttu-id="8dc45-112"><a name="ProductList"></a> Application list</span><span class="sxs-lookup"><span data-stu-id="8dc45-112"><a name="ProductList"></a> Application list</span></span>  
+ <span data-ttu-id="8dc45-113">Hola **lista de aplicaciones** plantilla permite cuerpo de hello toocustomize de página de lista de aplicaciones de hello en el portal para desarrolladores de Hola.</span><span class="sxs-lookup"><span data-stu-id="8dc45-113">hello **Application list** template allows you toocustomize hello body of hello application list page in hello developer portal.</span></span>  
   
- <span data-ttu-id="f330d-114">![Plantillas del portal para desarrolladores de la página de lista de aplicaciones](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de lista de aplicaciones de APIM")</span><span class="sxs-lookup"><span data-stu-id="f330d-114">![Application List Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM Application List Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="8dc45-114">![Plantillas del portal para desarrolladores de la página de lista de aplicaciones](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de lista de aplicaciones de APIM")</span><span class="sxs-lookup"><span data-stu-id="8dc45-114">![Application List Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM Application List Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="f330d-115">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="f330d-115">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="8dc45-115">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="8dc45-115">Default template</span></span>  
   
 ```xml  
 <div class="row">  
@@ -69,20 +69,20 @@ ms.lasthandoff: 07/11/2017
 </div>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="f330d-116">Controles</span><span class="sxs-lookup"><span data-stu-id="f330d-116">Controls</span></span>  
- <span data-ttu-id="f330d-117">La plantilla `Product list` puede usar los siguientes [controles de página](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="f330d-117">The `Product list` template may use the following [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="8dc45-116">Controles</span><span class="sxs-lookup"><span data-stu-id="8dc45-116">Controls</span></span>  
+ <span data-ttu-id="8dc45-117">Hola `Product list` plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="8dc45-117">hello `Product list` template may use hello following [page controls](api-management-page-controls.md).</span></span>  
   
--   [<span data-ttu-id="f330d-118">paging-control</span><span class="sxs-lookup"><span data-stu-id="f330d-118">paging-control</span></span>](api-management-page-controls.md#paging-control)  
+-   [<span data-ttu-id="8dc45-118">paging-control</span><span class="sxs-lookup"><span data-stu-id="8dc45-118">paging-control</span></span>](api-management-page-controls.md#paging-control)  
   
-### <a name="data-model"></a><span data-ttu-id="f330d-119">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="f330d-119">Data model</span></span>  
+### <a name="data-model"></a><span data-ttu-id="8dc45-119">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="8dc45-119">Data model</span></span>  
   
-|<span data-ttu-id="f330d-120">Propiedad</span><span class="sxs-lookup"><span data-stu-id="f330d-120">Property</span></span>|<span data-ttu-id="f330d-121">Escriba</span><span class="sxs-lookup"><span data-stu-id="f330d-121">Type</span></span>|<span data-ttu-id="f330d-122">Descripción</span><span class="sxs-lookup"><span data-stu-id="f330d-122">Description</span></span>|  
+|<span data-ttu-id="8dc45-120">Propiedad</span><span class="sxs-lookup"><span data-stu-id="8dc45-120">Property</span></span>|<span data-ttu-id="8dc45-121">Escriba</span><span class="sxs-lookup"><span data-stu-id="8dc45-121">Type</span></span>|<span data-ttu-id="8dc45-122">Descripción</span><span class="sxs-lookup"><span data-stu-id="8dc45-122">Description</span></span>|  
 |--------------|----------|-----------------|  
-|<span data-ttu-id="f330d-123">Paginación</span><span class="sxs-lookup"><span data-stu-id="f330d-123">Paging</span></span>|<span data-ttu-id="f330d-124">Entidad [Paging](api-management-template-data-model-reference.md#Paging).</span><span class="sxs-lookup"><span data-stu-id="f330d-124">[Paging](api-management-template-data-model-reference.md#Paging) entity.</span></span>|<span data-ttu-id="f330d-125">La información de paginación de la colección de aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="f330d-125">The paging information for the applications collection.</span></span>|  
-|<span data-ttu-id="f330d-126">Aplicaciones</span><span class="sxs-lookup"><span data-stu-id="f330d-126">Applications</span></span>|<span data-ttu-id="f330d-127">Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).</span><span class="sxs-lookup"><span data-stu-id="f330d-127">Collection of [Application](api-management-template-data-model-reference.md#Application) entities.</span></span>|<span data-ttu-id="f330d-128">Las aplicaciones visibles para el usuario actual.</span><span class="sxs-lookup"><span data-stu-id="f330d-128">The applications visible to the current user.</span></span>|  
-|<span data-ttu-id="f330d-129">CategoryName</span><span class="sxs-lookup"><span data-stu-id="f330d-129">CategoryName</span></span>|<span data-ttu-id="f330d-130">string</span><span class="sxs-lookup"><span data-stu-id="f330d-130">string</span></span>|<span data-ttu-id="f330d-131">La categoría de aplicación.</span><span class="sxs-lookup"><span data-stu-id="f330d-131">The category of application.</span></span>|  
+|<span data-ttu-id="8dc45-123">Paginación</span><span class="sxs-lookup"><span data-stu-id="8dc45-123">Paging</span></span>|<span data-ttu-id="8dc45-124">Entidad [Paging](api-management-template-data-model-reference.md#Paging).</span><span class="sxs-lookup"><span data-stu-id="8dc45-124">[Paging](api-management-template-data-model-reference.md#Paging) entity.</span></span>|<span data-ttu-id="8dc45-125">información de paginación de Hello para la colección de aplicaciones de Hola.</span><span class="sxs-lookup"><span data-stu-id="8dc45-125">hello paging information for hello applications collection.</span></span>|  
+|<span data-ttu-id="8dc45-126">Aplicaciones</span><span class="sxs-lookup"><span data-stu-id="8dc45-126">Applications</span></span>|<span data-ttu-id="8dc45-127">Colección de entidades de [aplicación](api-management-template-data-model-reference.md#Application).</span><span class="sxs-lookup"><span data-stu-id="8dc45-127">Collection of [Application](api-management-template-data-model-reference.md#Application) entities.</span></span>|<span data-ttu-id="8dc45-128">Hola aplicaciones toohello visible el usuario actual.</span><span class="sxs-lookup"><span data-stu-id="8dc45-128">hello applications visible toohello current user.</span></span>|  
+|<span data-ttu-id="8dc45-129">CategoryName</span><span class="sxs-lookup"><span data-stu-id="8dc45-129">CategoryName</span></span>|<span data-ttu-id="8dc45-130">cadena</span><span class="sxs-lookup"><span data-stu-id="8dc45-130">string</span></span>|<span data-ttu-id="8dc45-131">categoría de Hola de aplicación.</span><span class="sxs-lookup"><span data-stu-id="8dc45-131">hello category of application.</span></span>|  
   
-### <a name="sample-template-data"></a><span data-ttu-id="f330d-132">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="f330d-132">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="8dc45-132">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="8dc45-132">Sample template data</span></span>  
   
 ```json  
 {  
@@ -133,12 +133,12 @@ ms.lasthandoff: 07/11/2017
 }  
 ```  
   
-##  <span data-ttu-id="f330d-133"><a name="Application"></a> Application</span><span class="sxs-lookup"><span data-stu-id="f330d-133"><a name="Application"></a> Application</span></span>  
- <span data-ttu-id="f330d-134">La plantilla **Application** le permite personalizar el cuerpo de la página de aplicación en el portal para desarrolladores.</span><span class="sxs-lookup"><span data-stu-id="f330d-134">The **Application** template allows you to customize the body of the application page in the developer portal.</span></span>  
+##  <span data-ttu-id="8dc45-133"><a name="Application"></a> Application</span><span class="sxs-lookup"><span data-stu-id="8dc45-133"><a name="Application"></a> Application</span></span>  
+ <span data-ttu-id="8dc45-134">Hola **aplicación** plantilla permite cuerpo de hello toocustomize de página de la aplicación hello en el portal para desarrolladores de Hola.</span><span class="sxs-lookup"><span data-stu-id="8dc45-134">hello **Application** template allows you toocustomize hello body of hello application page in hello developer portal.</span></span>  
   
- <span data-ttu-id="f330d-135">![Plantillas del portal para desarrolladores de la página de aplicación](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de aplicación de APIM")</span><span class="sxs-lookup"><span data-stu-id="f330d-135">![Application Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM Application Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="8dc45-135">![Plantillas del portal para desarrolladores de la página de aplicación](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de aplicación de APIM")</span><span class="sxs-lookup"><span data-stu-id="8dc45-135">![Application Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM Application Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="f330d-136">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="f330d-136">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="8dc45-136">Plantilla predeterminada</span><span class="sxs-lookup"><span data-stu-id="8dc45-136">Default template</span></span>  
   
 ```xml  
 <h2>{{title}}</h2>  
@@ -176,13 +176,13 @@ ms.lasthandoff: 07/11/2017
   
 ```  
   
-### <a name="controls"></a><span data-ttu-id="f330d-137">Controles</span><span class="sxs-lookup"><span data-stu-id="f330d-137">Controls</span></span>  
- <span data-ttu-id="f330d-138">La plantilla `Application` no permite el uso de ningún [control de página](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="f330d-138">The `Application` template does not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="8dc45-137">Controles</span><span class="sxs-lookup"><span data-stu-id="8dc45-137">Controls</span></span>  
+ <span data-ttu-id="8dc45-138">Hola `Application` plantilla no permite el uso de Hola de cualquier [página controles](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="8dc45-138">hello `Application` template does not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-### <a name="data-model"></a><span data-ttu-id="f330d-139">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="f330d-139">Data model</span></span>  
- <span data-ttu-id="f330d-140">Entidad [Application](api-management-template-data-model-reference.md#Application).</span><span class="sxs-lookup"><span data-stu-id="f330d-140">[Application](api-management-template-data-model-reference.md#Application) entity.</span></span>  
+### <a name="data-model"></a><span data-ttu-id="8dc45-139">Modelo de datos</span><span class="sxs-lookup"><span data-stu-id="8dc45-139">Data model</span></span>  
+ <span data-ttu-id="8dc45-140">Entidad [Application](api-management-template-data-model-reference.md#Application).</span><span class="sxs-lookup"><span data-stu-id="8dc45-140">[Application](api-management-template-data-model-reference.md#Application) entity.</span></span>  
   
-### <a name="sample-template-data"></a><span data-ttu-id="f330d-141">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="f330d-141">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="8dc45-141">Ejemplo de datos de plantilla</span><span class="sxs-lookup"><span data-stu-id="8dc45-141">Sample template data</span></span>  
   
 ```json  
 {  
@@ -219,5 +219,5 @@ ms.lasthandoff: 07/11/2017
 }  
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="f330d-142">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="f330d-142">Next steps</span></span>
-<span data-ttu-id="f330d-143">Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="f330d-143">For more information about working with templates, see [How to customize the API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="8dc45-142">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="8dc45-142">Next steps</span></span>
+<span data-ttu-id="8dc45-143">Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="8dc45-143">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>

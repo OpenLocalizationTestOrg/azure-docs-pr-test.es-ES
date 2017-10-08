@@ -1,6 +1,6 @@
 ---
-title: "Incorporación del inicio de sesión a una aplicación iOS mediante el punto de conexión de Azure AD v2.0 | Microsoft Docs"
-description: "Procedimiento para compilar una aplicación iOS con la que los usuarios pueden iniciar sesión utilizando su cuenta personal de Microsoft como sus cuentas profesionales o educativas mediante bibliotecas de terceros"
+title: "aplicación de iOS de inicio de sesión tooan de aaaAdd con Hola extremo v2.0 de Azure AD | Documentos de Microsoft"
+description: "¿Cómo toobuild una aplicación de iOS que inicia sesión en los usuarios con ambos cuenta personal de Microsoft y cuentas profesionales o educativas mediante el uso de bibliotecas de otros fabricantes."
 services: active-directory
 documentationcenter: 
 author: brandwe
@@ -15,61 +15,61 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cf1455dc3d55ea3581195f7a315556d134c23a26
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a384062e6e4bd398a2b12318800728e627e05c32
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a><span data-ttu-id="a14a2-103">Adición de inicio de sesión a una aplicación iOS mediante una biblioteca de terceros con la API Graph mediante la versión 2.0 del punto de conexión</span><span class="sxs-lookup"><span data-stu-id="a14a2-103">Add sign-in to an iOS app using a third-party library with Graph API using the v2.0 endpoint</span></span>
-<span data-ttu-id="a14a2-104">La plataforma Microsoft Identity utiliza estándares abiertos como OAuth2 y OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="a14a2-104">The Microsoft identity platform uses open standards such as OAuth2 and OpenID Connect.</span></span> <span data-ttu-id="a14a2-105">Los desarrolladores pueden usar la biblioteca que quieran integrar con nuestros servicios.</span><span class="sxs-lookup"><span data-stu-id="a14a2-105">Developers can use any library they want to integrate with our services.</span></span> <span data-ttu-id="a14a2-106">Para ayudar a los desarrolladores a utilizar nuestra plataforma con otras bibliotecas, hemos escrito algunos tutoriales como este para demostrar cómo configurar bibliotecas de terceros con el objetivo de conectarse a la plataforma Microsoft Identity.</span><span class="sxs-lookup"><span data-stu-id="a14a2-106">To help developers use our platform with other libraries, we've written a few walkthroughs like this one to demonstrate how to configure third-party libraries to connect to the Microsoft identity platform.</span></span> <span data-ttu-id="a14a2-107">La mayoría de las bibliotecas que implementan [la especificación OAuth2 RFC6749](https://tools.ietf.org/html/rfc6749) pueden conectarse a la plataforma Microsoft Identity.</span><span class="sxs-lookup"><span data-stu-id="a14a2-107">Most libraries that implement [the RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) can connect to the Microsoft identity platform.</span></span>
+# <a name="add-sign-in-tooan-ios-app-using-a-third-party-library-with-graph-api-using-hello-v20-endpoint"></a><span data-ttu-id="4c3b9-103">Agregar aplicación de iOS de inicio de sesión tooan mediante una biblioteca de terceros con API Graph con el punto de conexión de hello v2.0</span><span class="sxs-lookup"><span data-stu-id="4c3b9-103">Add sign-in tooan iOS app using a third-party library with Graph API using hello v2.0 endpoint</span></span>
+<span data-ttu-id="4c3b9-104">plataforma de identidad de Microsoft Hello usa estándares abiertos como OAuth2 y OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-104">hello Microsoft identity platform uses open standards such as OAuth2 and OpenID Connect.</span></span> <span data-ttu-id="4c3b9-105">Los desarrolladores pueden usar cualquier biblioteca que deseen toointegrate con nuestros servicios.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-105">Developers can use any library they want toointegrate with our services.</span></span> <span data-ttu-id="4c3b9-106">toohelp a los desarrolladores usar nuestra plataforma con otras bibliotecas, hemos escrito algunos tutoriales como este uno toodemonstrate la plataforma de identidad de Microsoft de tooconfigure bibliotecas de otros fabricantes tooconnect toohello.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-106">toohelp developers use our platform with other libraries, we've written a few walkthroughs like this one toodemonstrate how tooconfigure third-party libraries tooconnect toohello Microsoft identity platform.</span></span> <span data-ttu-id="4c3b9-107">La mayoría de las bibliotecas que implementan [especificación de hello RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) toohello plataforma de identidad de Microsoft se pueden conectar.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-107">Most libraries that implement [hello RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) can connect toohello Microsoft identity platform.</span></span>
 
-<span data-ttu-id="a14a2-108">Con la aplicación que se crea en este tutorial, los usuarios podrán iniciar sesión en su organización y, después, buscar a otros de la misma organización mediante la API Graph.</span><span class="sxs-lookup"><span data-stu-id="a14a2-108">With the application that this walkthrough creates, users can sign in to their organization and then search for others in their organization by using the Graph API.</span></span>
+<span data-ttu-id="4c3b9-108">Con una aplicación Hola que crea en este tutorial, los usuarios pueden iniciar sesión en la organización de tootheir y, a continuación, busque otras personas de su organización mediante Hola API Graph.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-108">With hello application that this walkthrough creates, users can sign in tootheir organization and then search for others in their organization by using hello Graph API.</span></span>
 
-<span data-ttu-id="a14a2-109">Si no está familiarizado con OAuth2 o con OpenID Connect, es posible que gran parte de esta configuración de ejemplo no le sea relevante.</span><span class="sxs-lookup"><span data-stu-id="a14a2-109">If you're new to OAuth2 or OpenID Connect, much of this sample configuration may not make sense to you.</span></span> <span data-ttu-id="a14a2-110">Si este es el caso, le recomendamos que lea [Protocolos de la versión 2.0: Flujo de código de autorización de OAuth 2.0](active-directory-v2-protocols-oauth-code.md).</span><span class="sxs-lookup"><span data-stu-id="a14a2-110">We recommend that you read  [v2.0 Protocols - OAuth 2.0 Authorization Code Flow](active-directory-v2-protocols-oauth-code.md) for background.</span></span>
-
-> [!NOTE]
-> <span data-ttu-id="a14a2-111">Algunas características de nuestra plataforma mencionadas en los estándares OAuth2 u OpenID Connect, como el acceso condicional y la administración de directivas de Intune, deben usar nuestras bibliotecas de código abierto de Microsoft Azure Identity.</span><span class="sxs-lookup"><span data-stu-id="a14a2-111">Some features of our platform that do have an expression in the OAuth2 or OpenID Connect standards, such as Conditional Access and Intune policy management, require you to use our open source Microsoft Azure Identity Libraries.</span></span>
-> 
-> 
-
-<span data-ttu-id="a14a2-112">No todas las características y escenarios de Azure Active Directory son compatibles con la versión 2.0 del punto de conexión.</span><span class="sxs-lookup"><span data-stu-id="a14a2-112">The v2.0 endpoint does not support all Azure Active Directory scenarios and features.</span></span>
+<span data-ttu-id="4c3b9-109">Si es nuevo tooOAuth2 u OpenID Connect, gran parte de esta configuración de ejemplo puede que no tenga sentido tooyou.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-109">If you're new tooOAuth2 or OpenID Connect, much of this sample configuration may not make sense tooyou.</span></span> <span data-ttu-id="4c3b9-110">Si este es el caso, le recomendamos que lea [Protocolos de la versión 2.0: Flujo de código de autorización de OAuth 2.0](active-directory-v2-protocols-oauth-code.md).</span><span class="sxs-lookup"><span data-stu-id="4c3b9-110">We recommend that you read  [v2.0 Protocols - OAuth 2.0 Authorization Code Flow](active-directory-v2-protocols-oauth-code.md) for background.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="a14a2-113">Para determinar si debe utilizar la versión 2.0 del punto de conexión, obtenga información sobre las [limitaciones de esta versión](active-directory-v2-limitations.md).</span><span class="sxs-lookup"><span data-stu-id="a14a2-113">To determine if you should use the v2.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).</span></span>
+> <span data-ttu-id="4c3b9-111">Algunas características de la plataforma que tiene una expresión en Hola OAuth2 o estándares de OpenID Connect, como acceso condicional y administración de directivas de Intune, requieren toouse nuestro código abierto bibliotecas de identidad de Microsoft Azure.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-111">Some features of our platform that do have an expression in hello OAuth2 or OpenID Connect standards, such as Conditional Access and Intune policy management, require you toouse our open source Microsoft Azure Identity Libraries.</span></span>
 > 
 > 
 
-## <a name="download-code-from-github"></a><span data-ttu-id="a14a2-114">Descarga del código desde GitHub</span><span class="sxs-lookup"><span data-stu-id="a14a2-114">Download code from GitHub</span></span>
-<span data-ttu-id="a14a2-115">El código de este tutorial se conserva [en GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2).</span><span class="sxs-lookup"><span data-stu-id="a14a2-115">The code for this tutorial is maintained [on GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2).</span></span>  <span data-ttu-id="a14a2-116">Para continuar, puede [descargar el esqueleto de la aplicación como un archivo .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) o clonar el esqueleto:</span><span class="sxs-lookup"><span data-stu-id="a14a2-116">To follow along, you can [download the app's skeleton as a .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) or clone the skeleton:</span></span>
+<span data-ttu-id="4c3b9-112">el punto de conexión de Hello v2.0 no admite todas las características y escenarios de Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-112">hello v2.0 endpoint does not support all Azure Active Directory scenarios and features.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="4c3b9-113">toodetermine si debe utilizar Hola v2.0 extremo, que conozca [v2.0 limitaciones](active-directory-v2-limitations.md).</span><span class="sxs-lookup"><span data-stu-id="4c3b9-113">toodetermine if you should use hello v2.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).</span></span>
+> 
+> 
+
+## <a name="download-code-from-github"></a><span data-ttu-id="4c3b9-114">Descarga del código desde GitHub</span><span class="sxs-lookup"><span data-stu-id="4c3b9-114">Download code from GitHub</span></span>
+<span data-ttu-id="4c3b9-115">código de Hello para este tutorial se mantiene [en GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2).</span><span class="sxs-lookup"><span data-stu-id="4c3b9-115">hello code for this tutorial is maintained [on GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2).</span></span>  <span data-ttu-id="4c3b9-116">toofollow a lo largo, puede [descargar el esqueleto de la aplicación hello como .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) o esqueleto de Hola de clon:</span><span class="sxs-lookup"><span data-stu-id="4c3b9-116">toofollow along, you can [download hello app's skeleton as a .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) or clone hello skeleton:</span></span>
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.git
 ```
 
-<span data-ttu-id="a14a2-117">También puede descargar el ejemplo y comenzar a trabajar inmediatamente:</span><span class="sxs-lookup"><span data-stu-id="a14a2-117">You can also just download the sample and get started right away:</span></span>
+<span data-ttu-id="4c3b9-117">También se puede descargar el ejemplo de Hola y empezar a trabajar de forma inmediata:</span><span class="sxs-lookup"><span data-stu-id="4c3b9-117">You can also just download hello sample and get started right away:</span></span>
 
 ```
 git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.git
 ```
 
-## <a name="register-an-app"></a><span data-ttu-id="a14a2-118">Registrar una aplicación</span><span class="sxs-lookup"><span data-stu-id="a14a2-118">Register an app</span></span>
-<span data-ttu-id="a14a2-119">Cree una aplicación en el [Portal de registro de aplicaciones](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) o siga los pasos que se detallan en [Cómo registrar una aplicación con el punto de conexión v2.0](active-directory-v2-app-registration.md).</span><span class="sxs-lookup"><span data-stu-id="a14a2-119">Create a new app at the [Application registration portal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), or follow the detailed steps at  [How to register an app with the v2.0 endpoint](active-directory-v2-app-registration.md).</span></span>  <span data-ttu-id="a14a2-120">Asegúrese de que:</span><span class="sxs-lookup"><span data-stu-id="a14a2-120">Make sure to:</span></span>
+## <a name="register-an-app"></a><span data-ttu-id="4c3b9-118">Registrar una aplicación</span><span class="sxs-lookup"><span data-stu-id="4c3b9-118">Register an app</span></span>
+<span data-ttu-id="4c3b9-119">Crear una nueva aplicación en hello [portal de registro de aplicación](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), o siga Hola pasos detallados en [cómo una aplicación con el punto de conexión de hello v2.0 tooregister](active-directory-v2-app-registration.md).</span><span class="sxs-lookup"><span data-stu-id="4c3b9-119">Create a new app at hello [Application registration portal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), or follow hello detailed steps at  [How tooregister an app with hello v2.0 endpoint](active-directory-v2-app-registration.md).</span></span>  <span data-ttu-id="4c3b9-120">Asegúrese de que:</span><span class="sxs-lookup"><span data-stu-id="4c3b9-120">Make sure to:</span></span>
 
-* <span data-ttu-id="a14a2-121">Copie el **id. de aplicación** asignado a su aplicación, ya que lo necesitará pronto.</span><span class="sxs-lookup"><span data-stu-id="a14a2-121">Copy the **Application Id** that's assigned to your app because you'll need it soon.</span></span>
-* <span data-ttu-id="a14a2-122">Agregar la plataforma **Móvil** a la aplicación.</span><span class="sxs-lookup"><span data-stu-id="a14a2-122">Add the **Mobile** platform for your app.</span></span>
-* <span data-ttu-id="a14a2-123">Copie el **URI de redireccionamiento** del portal.</span><span class="sxs-lookup"><span data-stu-id="a14a2-123">Copy the **Redirect URI** from the portal.</span></span> <span data-ttu-id="a14a2-124">Debe usar el valor predeterminado de `urn:ietf:wg:oauth:2.0:oob`.</span><span class="sxs-lookup"><span data-stu-id="a14a2-124">You must use the default value of `urn:ietf:wg:oauth:2.0:oob`.</span></span>
+* <span data-ttu-id="4c3b9-121">Hola copia **identificador de la aplicación** que está asignado tooyour aplicación porque lo necesitará pronto.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-121">Copy hello **Application Id** that's assigned tooyour app because you'll need it soon.</span></span>
+* <span data-ttu-id="4c3b9-122">Agregar hello **Mobile** plataforma para la aplicación.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-122">Add hello **Mobile** platform for your app.</span></span>
+* <span data-ttu-id="4c3b9-123">Hola copia **URI de redireccionamiento** desde el portal de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-123">Copy hello **Redirect URI** from hello portal.</span></span> <span data-ttu-id="4c3b9-124">Debe usar el valor predeterminado de Hola de `urn:ietf:wg:oauth:2.0:oob`.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-124">You must use hello default value of `urn:ietf:wg:oauth:2.0:oob`.</span></span>
 
-## <a name="download-the-third-party-nxoauth2-library-and-create-a-workspace"></a><span data-ttu-id="a14a2-125">Descarga de la biblioteca de terceros NXOAuth2 y creación de un área de trabajo</span><span class="sxs-lookup"><span data-stu-id="a14a2-125">Download the third-party NXOAuth2 library and create a workspace</span></span>
-<span data-ttu-id="a14a2-126">Para este tutorial, usaremos OAuth2Client desde GitHub, que es una biblioteca de OAuth2 para Mac OS X e iOS (Cocoa y Cocoa touch).</span><span class="sxs-lookup"><span data-stu-id="a14a2-126">For this walkthrough, you will use the OAuth2Client from GitHub, which is an OAuth2 library for Mac OS X and iOS (Cocoa and Cocoa touch).</span></span> <span data-ttu-id="a14a2-127">Esta biblioteca se basa en el borrador 10 de la especificación OAuth2.</span><span class="sxs-lookup"><span data-stu-id="a14a2-127">This library is based on draft 10 of the OAuth2 spec.</span></span> <span data-ttu-id="a14a2-128">Implementa el perfil de la aplicación nativa y admite el punto de conexión de autorización del usuario.</span><span class="sxs-lookup"><span data-stu-id="a14a2-128">It implements the native application profile and supports the authorization endpoint of the user.</span></span> <span data-ttu-id="a14a2-129">Esto es todo lo que vamos a necesitar para integrarlo con la plataforma de Microsoft Identity.</span><span class="sxs-lookup"><span data-stu-id="a14a2-129">These are all the things you'll need to integrate with the Microsoft identity platform.</span></span>
+## <a name="download-hello-third-party-nxoauth2-library-and-create-a-workspace"></a><span data-ttu-id="4c3b9-125">Descargar Hola terceros NXOAuth2 biblioteca y crear un área de trabajo</span><span class="sxs-lookup"><span data-stu-id="4c3b9-125">Download hello third-party NXOAuth2 library and create a workspace</span></span>
+<span data-ttu-id="4c3b9-126">En este tutorial, usará hello OAuth2Client desde GitHub, que es una biblioteca de OAuth2 para Mac OS X y iOS (cacao y sus touch).</span><span class="sxs-lookup"><span data-stu-id="4c3b9-126">For this walkthrough, you will use hello OAuth2Client from GitHub, which is an OAuth2 library for Mac OS X and iOS (Cocoa and Cocoa touch).</span></span> <span data-ttu-id="4c3b9-127">Esta biblioteca se basa en 10 de borrador de especificación de OAuth2 Hola. Implementa el perfil de aplicación nativa de Hola y es compatible con el extremo de autorización de saludo del usuario de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-127">This library is based on draft 10 of hello OAuth2 spec. It implements hello native application profile and supports hello authorization endpoint of hello user.</span></span> <span data-ttu-id="4c3b9-128">Éstos son todos los puntos de hello, deberá toointegrate a la plataforma de identidad de Microsoft de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-128">These are all hello things you'll need toointegrate with hello Microsoft identity platform.</span></span>
 
-### <a name="add-the-library-to-your-project-by-using-cocoapods"></a><span data-ttu-id="a14a2-130">Adición de la biblioteca al proyecto mediante CocoaPods</span><span class="sxs-lookup"><span data-stu-id="a14a2-130">Add the library to your project by using CocoaPods</span></span>
-<span data-ttu-id="a14a2-131">CocoaPods es un administrador de dependencias para proyectos de Xcode.</span><span class="sxs-lookup"><span data-stu-id="a14a2-131">CocoaPods is a dependency manager for Xcode projects.</span></span> <span data-ttu-id="a14a2-132">Administra automáticamente los pasos de instalación anteriores.</span><span class="sxs-lookup"><span data-stu-id="a14a2-132">It manages the previous installation steps automatically.</span></span>
+### <a name="add-hello-library-tooyour-project-by-using-cocoapods"></a><span data-ttu-id="4c3b9-129">Agregar proyecto de biblioteca tooyour de hello mediante CocoaPods</span><span class="sxs-lookup"><span data-stu-id="4c3b9-129">Add hello library tooyour project by using CocoaPods</span></span>
+<span data-ttu-id="4c3b9-130">CocoaPods es un administrador de dependencias para proyectos de Xcode.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-130">CocoaPods is a dependency manager for Xcode projects.</span></span> <span data-ttu-id="4c3b9-131">Administra automáticamente los pasos de la instalación anterior de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-131">It manages hello previous installation steps automatically.</span></span>
 
 ```
 $ vi Podfile
 ```
-1. <span data-ttu-id="a14a2-133">Agregue lo siguiente a este podfile:</span><span class="sxs-lookup"><span data-stu-id="a14a2-133">Add the following to this podfile:</span></span>
+1. <span data-ttu-id="4c3b9-132">Agregue Hola después toothis podfile:</span><span class="sxs-lookup"><span data-stu-id="4c3b9-132">Add hello following toothis podfile:</span></span>
    
     ```
      platform :ios, '8.0'
@@ -80,7 +80,7 @@ $ vi Podfile
    
      end
     ```
-2. <span data-ttu-id="a14a2-134">Cargue el archivo podfile mediante CocoaPods.</span><span class="sxs-lookup"><span data-stu-id="a14a2-134">Load the podfile by using CocoaPods.</span></span> <span data-ttu-id="a14a2-135">Así se creará una nueva área de trabajo de XCode que cargará.</span><span class="sxs-lookup"><span data-stu-id="a14a2-135">This will create a new Xcode workspace that you will load.</span></span>
+2. <span data-ttu-id="4c3b9-133">Cargar hello podfile mediante CocoaPods.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-133">Load hello podfile by using CocoaPods.</span></span> <span data-ttu-id="4c3b9-134">Así se creará una nueva área de trabajo de XCode que cargará.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-134">This will create a new Xcode workspace that you will load.</span></span>
    
     ```
     $ pod install
@@ -88,24 +88,24 @@ $ vi Podfile
     $ open QuickStart.xcworkspace
     ```
 
-## <a name="explore-the-structure-of-the-project"></a><span data-ttu-id="a14a2-136">Exploración de la estructura del proyecto</span><span class="sxs-lookup"><span data-stu-id="a14a2-136">Explore the structure of the project</span></span>
-<span data-ttu-id="a14a2-137">Hemos configurado la siguiente estructura para nuestro proyecto en el esquema:</span><span class="sxs-lookup"><span data-stu-id="a14a2-137">The following structure is set up for our project in the skeleton:</span></span>
+## <a name="explore-hello-structure-of-hello-project"></a><span data-ttu-id="4c3b9-135">Explorar Hola estructura del proyecto de Hola</span><span class="sxs-lookup"><span data-stu-id="4c3b9-135">Explore hello structure of hello project</span></span>
+<span data-ttu-id="4c3b9-136">Hola siguiendo estructura está configurado para nuestro proyecto de esqueleto de hello:</span><span class="sxs-lookup"><span data-stu-id="4c3b9-136">hello following structure is set up for our project in hello skeleton:</span></span>
 
-* <span data-ttu-id="a14a2-138">Una vista principal con una búsqueda UPN</span><span class="sxs-lookup"><span data-stu-id="a14a2-138">A Master View with a UPN Search</span></span>
-* <span data-ttu-id="a14a2-139">Una vista de detalle para los datos sobre el usuario seleccionado</span><span class="sxs-lookup"><span data-stu-id="a14a2-139">A Detail View for the data about the selected user</span></span>
-* <span data-ttu-id="a14a2-140">Una vista de inicio de sesión que permite al usuario iniciar sesión en la aplicación para consultar el gráfico</span><span class="sxs-lookup"><span data-stu-id="a14a2-140">A Login View where a user can sign in to the app to query the graph</span></span>
+* <span data-ttu-id="4c3b9-137">Una vista principal con una búsqueda UPN</span><span class="sxs-lookup"><span data-stu-id="4c3b9-137">A Master View with a UPN Search</span></span>
+* <span data-ttu-id="4c3b9-138">Una vista de detalle para los datos de hello acerca del usuario seleccionado Hola</span><span class="sxs-lookup"><span data-stu-id="4c3b9-138">A Detail View for hello data about hello selected user</span></span>
+* <span data-ttu-id="4c3b9-139">Una vista de inicio de sesión donde un usuario puede iniciar sesión en el gráfico de toohello aplicación tooquery Hola</span><span class="sxs-lookup"><span data-stu-id="4c3b9-139">A Login View where a user can sign in toohello app tooquery hello graph</span></span>
 
-<span data-ttu-id="a14a2-141">Pasaremos por varios archivos del esquema para agregar la autenticación.</span><span class="sxs-lookup"><span data-stu-id="a14a2-141">We will move to various files in the skeleton to add authentication.</span></span> <span data-ttu-id="a14a2-142">Aunque otras partes del código, como el código visual, no son relevantes para la identidad, se incluyen también.</span><span class="sxs-lookup"><span data-stu-id="a14a2-142">Other parts of the code, such as the visual code, do not pertain to identity but are provided for you.</span></span>
+<span data-ttu-id="4c3b9-140">Moveremos toovarious archivos en la autenticación de esqueleto tooadd Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-140">We will move toovarious files in hello skeleton tooadd authentication.</span></span> <span data-ttu-id="4c3b9-141">Otras partes del código de hello, como el código visual de hello, no pertenecen tooidentity pero se proporcionan automáticamente.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-141">Other parts of hello code, such as hello visual code, do not pertain tooidentity but are provided for you.</span></span>
 
-## <a name="set-up-the-settingsplst-file-in-the-library"></a><span data-ttu-id="a14a2-143">Configuración del archivo settings.plst en la biblioteca</span><span class="sxs-lookup"><span data-stu-id="a14a2-143">Set up the settings.plst file in the library</span></span>
-* <span data-ttu-id="a14a2-144">En el proyecto QuickStart, abra el archivo `settings.plist` .</span><span class="sxs-lookup"><span data-stu-id="a14a2-144">In the QuickStart project, open the `settings.plist` file.</span></span> <span data-ttu-id="a14a2-145">Reemplace los valores de los elementos de la sección para que reflejen los usados en el Portal de Azure.</span><span class="sxs-lookup"><span data-stu-id="a14a2-145">Replace the values of the elements in the section to reflect the values that you used in the Azure portal.</span></span> <span data-ttu-id="a14a2-146">El código hará referencia a estos valores cada vez que use la biblioteca de autenticación de Active Directory.</span><span class="sxs-lookup"><span data-stu-id="a14a2-146">Your code will reference these values whenever it uses the Active Directory Authentication Library.</span></span>
-  * <span data-ttu-id="a14a2-147">`clientId` es el identificador de cliente de la aplicación que copió del portal.</span><span class="sxs-lookup"><span data-stu-id="a14a2-147">The `clientId` is the client ID of your application that you copied from the portal.</span></span>
-  * <span data-ttu-id="a14a2-148">`redirectUri` es la URL de redirección que ha proporcionado el portal.</span><span class="sxs-lookup"><span data-stu-id="a14a2-148">The `redirectUri` is the redirect URL that the portal provided.</span></span>
+## <a name="set-up-hello-settingsplst-file-in-hello-library"></a><span data-ttu-id="4c3b9-142">Configure hello settings.plst archivo de biblioteca de Hola</span><span class="sxs-lookup"><span data-stu-id="4c3b9-142">Set up hello settings.plst file in hello library</span></span>
+* <span data-ttu-id="4c3b9-143">En el proyecto de inicio rápido de hello, abra hello `settings.plist` archivo.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-143">In hello QuickStart project, open hello `settings.plist` file.</span></span> <span data-ttu-id="4c3b9-144">Reemplace los valores de hello de elementos de Hola de hello tooreflect Hola valores de una sección que usó en el portal de Azure Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-144">Replace hello values of hello elements in hello section tooreflect hello values that you used in hello Azure portal.</span></span> <span data-ttu-id="4c3b9-145">El código hará referencia a estos valores cada vez que usa Hola biblioteca de autenticación de Active Directory.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-145">Your code will reference these values whenever it uses hello Active Directory Authentication Library.</span></span>
+  * <span data-ttu-id="4c3b9-146">Hola `clientId` es Hola Id. de cliente de la aplicación que ha copiado desde el portal de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-146">hello `clientId` is hello client ID of your application that you copied from hello portal.</span></span>
+  * <span data-ttu-id="4c3b9-147">Hola `redirectUri` es dirección URL de redireccionamiento de hello ese portal Hola proporcionado.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-147">hello `redirectUri` is hello redirect URL that hello portal provided.</span></span>
 
-## <a name="set-up-the-nxoauth2client-library-in-your-loginviewcontroller"></a><span data-ttu-id="a14a2-149">Configuración de la biblioteca de NXOAuth2Client en LoginViewController</span><span class="sxs-lookup"><span data-stu-id="a14a2-149">Set up the NXOAuth2Client library in your LoginViewController</span></span>
-<span data-ttu-id="a14a2-150">La biblioteca NXOAuth2Client requiere que se configuren algunos valores.</span><span class="sxs-lookup"><span data-stu-id="a14a2-150">The NXOAuth2Client library requires some values to get set up.</span></span> <span data-ttu-id="a14a2-151">Después de completar esa tarea, puede usar el token obtenido para llamar a la API Graph.</span><span class="sxs-lookup"><span data-stu-id="a14a2-151">After you complete that task, you can use the acquired token to call the Graph API.</span></span> <span data-ttu-id="a14a2-152">Como se llamará a `LoginView` cada vez que tengamos que autenticarnos, procede insertar los valores de configuración en ese archivo.</span><span class="sxs-lookup"><span data-stu-id="a14a2-152">Because `LoginView` will be called any time we need to authenticate, it makes sense to put configuration values in to that file.</span></span>
+## <a name="set-up-hello-nxoauth2client-library-in-your-loginviewcontroller"></a><span data-ttu-id="4c3b9-148">Configurar la biblioteca de NXOAuth2Client hello en su LoginViewController</span><span class="sxs-lookup"><span data-stu-id="4c3b9-148">Set up hello NXOAuth2Client library in your LoginViewController</span></span>
+<span data-ttu-id="4c3b9-149">biblioteca de Hello NXOAuth2Client requiere algunos tooget valores configurar.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-149">hello NXOAuth2Client library requires some values tooget set up.</span></span> <span data-ttu-id="4c3b9-150">Después de completar esa tarea, puede usar Hola adquirida toocall token Hola API Graph.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-150">After you complete that task, you can use hello acquired token toocall hello Graph API.</span></span> <span data-ttu-id="4c3b9-151">Dado que `LoginView` se llamará cada vez que necesitamos tooauthenticate, tiene sentido tooput valores de configuración en el archivo toothat.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-151">Because `LoginView` will be called any time we need tooauthenticate, it makes sense tooput configuration values in toothat file.</span></span>
 
-* <span data-ttu-id="a14a2-153">Vamos a agregar algunos valores al archivo `LoginViewController.m` para establecer el contexto de la autenticación y autorización.</span><span class="sxs-lookup"><span data-stu-id="a14a2-153">Let's add some values to the  `LoginViewController.m` file to set the context for authentication and authorization.</span></span> <span data-ttu-id="a14a2-154">Después del código, encontrará los detalles de los valores.</span><span class="sxs-lookup"><span data-stu-id="a14a2-154">Details about the values follow the code.</span></span>
+* <span data-ttu-id="4c3b9-152">Vamos a agregar algunos valores toohello `LoginViewController.m` de contexto del archivo tooset hello para la autenticación y autorización.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-152">Let's add some values toohello  `LoginViewController.m` file tooset hello context for authentication and authorization.</span></span> <span data-ttu-id="4c3b9-153">Obtener más información acerca de los valores de hello seguir código de hello.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-153">Details about hello values follow hello code.</span></span>
   
     ```objc
     NSString *scopes = @"openid offline_access User.Read";
@@ -122,22 +122,22 @@ $ vi Podfile
     NSURL *authcode;
     ```
 
-<span data-ttu-id="a14a2-155">Analicemos los detalles del código.</span><span class="sxs-lookup"><span data-stu-id="a14a2-155">Let's look at details about the code.</span></span>
+<span data-ttu-id="4c3b9-154">Echemos un vistazo a los detalles sobre el código de hello.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-154">Let's look at details about hello code.</span></span>
 
-<span data-ttu-id="a14a2-156">La primera cadena es para `scopes`.</span><span class="sxs-lookup"><span data-stu-id="a14a2-156">The first string is for `scopes`.</span></span>  <span data-ttu-id="a14a2-157">El valor `User.Read` permite leer el perfil básico del usuario que ha iniciado sesión.</span><span class="sxs-lookup"><span data-stu-id="a14a2-157">The `User.Read` value allows you to read the basic profile of the signed in user.</span></span>
+<span data-ttu-id="4c3b9-155">primera cadena de Hello es para `scopes`.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-155">hello first string is for `scopes`.</span></span>  <span data-ttu-id="4c3b9-156">Hola `User.Read` valor permite perfil básico de hello tooread de hello firmado en usuario.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-156">hello `User.Read` value allows you tooread hello basic profile of hello signed in user.</span></span>
 
-<span data-ttu-id="a14a2-158">Puede obtener más información sobre todos los ámbitos disponibles en [Microsoft Graph permission scopes](https://graph.microsoft.io/docs/authorization/permission_scopes)(Ámbitos de los permisos de Microsoft Graph).</span><span class="sxs-lookup"><span data-stu-id="a14a2-158">You can learn more about all the available scopes at [Microsoft Graph permission scopes](https://graph.microsoft.io/docs/authorization/permission_scopes).</span></span>
+<span data-ttu-id="4c3b9-157">Puede aprender más acerca de todos los ámbitos disponibles de hello en [ámbitos de permiso de Microsoft Graph](https://graph.microsoft.io/docs/authorization/permission_scopes).</span><span class="sxs-lookup"><span data-stu-id="4c3b9-157">You can learn more about all hello available scopes at [Microsoft Graph permission scopes](https://graph.microsoft.io/docs/authorization/permission_scopes).</span></span>
 
-<span data-ttu-id="a14a2-159">Para `authURL`, `loginURL`, `bhh` y `tokenURL`, debe utilizar los valores indicados anteriormente.</span><span class="sxs-lookup"><span data-stu-id="a14a2-159">For `authURL`, `loginURL`, `bhh`, and `tokenURL`, you should use the values provided previously.</span></span> <span data-ttu-id="a14a2-160">Si usa las bibliotecas de código abierto de Microsoft Azure Identity, podemos obtener estos datos para que se utilice nuestro punto de conexión de metadatos.</span><span class="sxs-lookup"><span data-stu-id="a14a2-160">If you use the open source Microsoft Azure Identity Libraries, we pull this data down for you by using our metadata endpoint.</span></span> <span data-ttu-id="a14a2-161">Hemos hecho lo más difícil al extraer estos valores.</span><span class="sxs-lookup"><span data-stu-id="a14a2-161">We've done the hard work of extracting these values for you.</span></span>
+<span data-ttu-id="4c3b9-158">Para `authURL`, `loginURL`, `bhh`, y `tokenURL`, debe utilizar valores de hello indicados anteriormente.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-158">For `authURL`, `loginURL`, `bhh`, and `tokenURL`, you should use hello values provided previously.</span></span> <span data-ttu-id="4c3b9-159">Si utiliza código abierto de hello bibliotecas de identidad de Microsoft Azure, se extraen estos datos automáticamente mediante el uso de nuestro extremo de metadatos.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-159">If you use hello open source Microsoft Azure Identity Libraries, we pull this data down for you by using our metadata endpoint.</span></span> <span data-ttu-id="4c3b9-160">Que hemos hecho esfuerzo Hola de extraer estos valores automáticamente.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-160">We've done hello hard work of extracting these values for you.</span></span>
 
-<span data-ttu-id="a14a2-162">`keychain` es el contenedor que la biblioteca NXOAuth2Client utilizará para crear una cadena de claves con el fin de almacenar los tokens.</span><span class="sxs-lookup"><span data-stu-id="a14a2-162">The `keychain` value is the container that the NXOAuth2Client library will use to create a keychain to store your tokens.</span></span> <span data-ttu-id="a14a2-163">Si quiere obtener el inicio de sesión único (SSO) en varias aplicaciones, puede especificar la misma cadena de claves en cada una de las aplicaciones, así como solicitar el uso de esa cadena de claves en los derechos de XCode.</span><span class="sxs-lookup"><span data-stu-id="a14a2-163">If you'd like to get single sign-on (SSO) across numerous apps, you can specify the same keychain in each of your applications and request the use of that keychain in your Xcode entitlements.</span></span> <span data-ttu-id="a14a2-164">Esto se explica en la documentación de Apple.</span><span class="sxs-lookup"><span data-stu-id="a14a2-164">This is explained in the Apple documentation.</span></span>
+<span data-ttu-id="4c3b9-161">Hola `keychain` valor es contenedor Hola Hola NXOAuth2Client biblioteca utilizará toocreate un toostore llaveros sus tokens.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-161">hello `keychain` value is hello container that hello NXOAuth2Client library will use toocreate a keychain toostore your tokens.</span></span> <span data-ttu-id="4c3b9-162">Si desea tooget inicio de sesión único (SSO) en numerosas aplicaciones, puede especificar Hola la misma cadena de claves en cada una de las aplicaciones y solicitar la utilización de Hola de esa cadena de claves en los derechos de Xcode.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-162">If you'd like tooget single sign-on (SSO) across numerous apps, you can specify hello same keychain in each of your applications and request hello use of that keychain in your Xcode entitlements.</span></span> <span data-ttu-id="4c3b9-163">Esto se explica en hello documentación de Apple.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-163">This is explained in hello Apple documentation.</span></span>
 
-<span data-ttu-id="a14a2-165">El resto de estos valores se necesitan para usar la biblioteca y crear sitios para agregar los valores al contexto.</span><span class="sxs-lookup"><span data-stu-id="a14a2-165">The rest of these values are required to use the library and create places for you to carry values to the context.</span></span>
+<span data-ttu-id="4c3b9-164">rest Hola de estos valores son la biblioteca de hello toouse necesario y crear lugares para usted contexto toohello de toocarry valores.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-164">hello rest of these values are required toouse hello library and create places for you toocarry values toohello context.</span></span>
 
-### <a name="create-a-url-cache"></a><span data-ttu-id="a14a2-166">Creación de una caché de URL</span><span class="sxs-lookup"><span data-stu-id="a14a2-166">Create a URL cache</span></span>
-<span data-ttu-id="a14a2-167">Dentro de `(void)viewDidLoad()`, que siempre se invoca después de cargar la vista, el código siguiente prepara una memoria caché para que podamos utilizarlo.</span><span class="sxs-lookup"><span data-stu-id="a14a2-167">Inside `(void)viewDidLoad()`, which is always called after the view is loaded, the following code primes a cache for our use.</span></span>
+### <a name="create-a-url-cache"></a><span data-ttu-id="4c3b9-165">Creación de una caché de URL</span><span class="sxs-lookup"><span data-stu-id="4c3b9-165">Create a URL cache</span></span>
+<span data-ttu-id="4c3b9-166">Dentro de `(void)viewDidLoad()`, siempre que se llama después de carga la vista hello, hello código siguiente primes de la memoria caché de nuestro uso.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-166">Inside `(void)viewDidLoad()`, which is always called after hello view is loaded, hello following code primes a cache for our use.</span></span>
 
-<span data-ttu-id="a14a2-168">Agregue el siguiente código:</span><span class="sxs-lookup"><span data-stu-id="a14a2-168">Add the following code:</span></span>
+<span data-ttu-id="4c3b9-167">Agregue Hola siguiente código:</span><span class="sxs-lookup"><span data-stu-id="4c3b9-167">Add hello following code:</span></span>
 
 ```objc
 - (void)viewDidLoad {
@@ -153,15 +153,15 @@ $ vi Podfile
 }
 ```
 
-### <a name="create-a-webview-for-sign-in"></a><span data-ttu-id="a14a2-169">Creación de una vista web para iniciar sesión</span><span class="sxs-lookup"><span data-stu-id="a14a2-169">Create a WebView for sign-in</span></span>
-<span data-ttu-id="a14a2-170">Gracias a las vistas web, podemos solicitar al usuario factores adicionales, como mensajes de texto SMS (si están configurados) o devolver mensajes de error al usuario.</span><span class="sxs-lookup"><span data-stu-id="a14a2-170">A WebView can prompt the user for additional factors like SMS text message (if configured) or return error messages to the user.</span></span> <span data-ttu-id="a14a2-171">Aquí también configuraremos la vista web y, después, escribiremos el código para controlar las devoluciones de llamada que se realizarán en la vista web de los servicios de identidad.</span><span class="sxs-lookup"><span data-stu-id="a14a2-171">Here you'll set up the WebView and then later write the code to handle the callbacks that will happen in the WebView from the identity services.</span></span>
+### <a name="create-a-webview-for-sign-in"></a><span data-ttu-id="4c3b9-168">Creación de una vista web para iniciar sesión</span><span class="sxs-lookup"><span data-stu-id="4c3b9-168">Create a WebView for sign-in</span></span>
+<span data-ttu-id="4c3b9-169">Una vista Web puede solicitar al usuario de Hola de factores adicionales como mensaje de texto SMS (si está configurado) o devolver usuario de toohello de mensajes de error.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-169">A WebView can prompt hello user for additional factors like SMS text message (if configured) or return error messages toohello user.</span></span> <span data-ttu-id="4c3b9-170">Aquí configurará Hola WebView y, más adelante Hola de escritura código toohandle hello las devoluciones de llamada se realizarán en hello WebView de servicios de identidad de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-170">Here you'll set up hello WebView and then later write hello code toohandle hello callbacks that will happen in hello WebView from hello identity services.</span></span>
 
 ```objc
 -(void)requestOAuth2Access {
-    //to sign in to Microsoft APIs using OAuth2, we must show an embedded browser (UIWebView)
+    //toosign in tooMicrosoft APIs using OAuth2, we must show an embedded browser (UIWebView)
     [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:@"myGraphService"
                                    withPreparedAuthorizationURLHandler:^(NSURL *preparedURL) {
-                                       //navigate to the URL returned by NXOAuth2Client
+                                       //navigate toohello URL returned by NXOAuth2Client
 
                                        NSURLRequest *r = [NSURLRequest requestWithURL:preparedURL];
                                        [self.loginView loadRequest:r];
@@ -169,13 +169,13 @@ $ vi Podfile
 }
 ```
 
-### <a name="override-the-webview-methods-to-handle-authentication"></a><span data-ttu-id="a14a2-172">Invalidación de los métodos de la vista web para controlar la autenticación</span><span class="sxs-lookup"><span data-stu-id="a14a2-172">Override the WebView methods to handle authentication</span></span>
-<span data-ttu-id="a14a2-173">Tal y como hemos explicado anteriormente, para indicar a la vista web lo que sucederá cuando un usuario tenga que iniciar sesión, puede pegar el código siguiente.</span><span class="sxs-lookup"><span data-stu-id="a14a2-173">To tell the WebView what happens when a user needs to sign in as discussed previously, you can paste the following code.</span></span>
+### <a name="override-hello-webview-methods-toohandle-authentication"></a><span data-ttu-id="4c3b9-171">Invalidar la autenticación de hello WebView métodos toohandle</span><span class="sxs-lookup"><span data-stu-id="4c3b9-171">Override hello WebView methods toohandle authentication</span></span>
+<span data-ttu-id="4c3b9-172">Hola tootell WebView lo que sucede cuando un usuario necesita toosign en según lo descrito anteriormente, puede pegar Hola siguiente código.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-172">tootell hello WebView what happens when a user needs toosign in as discussed previously, you can paste hello following code.</span></span>
 
 ```objc
 - (void)resolveUsingUIWebView:(NSURL *)URL {
 
-    // We get the auth token from a redirect so we need to handle that in the webview.
+    // We get hello auth token from a redirect so we need toohandle that in hello webview.
 
     if (![NSThread isMainThread]) {
         [self performSelectorOnMainThread:@selector(resolveUsingUIWebView:) withObject:URL waitUntilDone:YES];
@@ -193,27 +193,27 @@ $ vi Podfile
 
     NSLog(@"webView:shouldStartLoadWithRequest: %@ (%li)", request.URL, (long)navigationType);
 
-    // The webview is where all the communication happens. Slightly complicated.
+    // hello webview is where all hello communication happens. Slightly complicated.
 
     myLoadedUrl = [webView.request mainDocumentURL];
     NSLog(@"***Loaded url: %@", myLoadedUrl);
 
-    //if the UIWebView is showing our authorization URL or consent URL, show the UIWebView control
+    //if hello UIWebView is showing our authorization URL or consent URL, show hello UIWebView control
     if ([request.URL.absoluteString rangeOfString:authURL options:NSCaseInsensitiveSearch].location != NSNotFound) {
         self.loginView.hidden = NO;
     } else if ([request.URL.absoluteString rangeOfString:loginURL options:NSCaseInsensitiveSearch].location != NSNotFound) {
-        //otherwise hide the UIWebView, we've left the authorization flow
+        //otherwise hide hello UIWebView, we've left hello authorization flow
         self.loginView.hidden = NO;
     } else if ([request.URL.absoluteString rangeOfString:bhh options:NSCaseInsensitiveSearch].location != NSNotFound) {
-        //otherwise hide the UIWebView, we've left the authorization flow
+        //otherwise hide hello UIWebView, we've left hello authorization flow
         self.loginView.hidden = YES;
         [[NXOAuth2AccountStore sharedStore] handleRedirectURL:request.URL];
     }
     else {
         self.loginView.hidden = NO;
-        //read the Location from the UIWebView, this is how Microsoft APIs is returning the
-        //authentication code and relation information. This is controlled by the redirect URL we chose to use from Microsoft APIs
-        //continue the OAuth2 flow
+        //read hello Location from hello UIWebView, this is how Microsoft APIs is returning the
+        //authentication code and relation information. This is controlled by hello redirect URL we chose toouse from Microsoft APIs
+        //continue hello OAuth2 flow
        // [[NXOAuth2AccountStore sharedStore] handleRedirectURL:request.URL];
     }
 
@@ -222,17 +222,17 @@ $ vi Podfile
 }
 ```
 
-### <a name="write-code-to-handle-the-result-of-the-oauth2-request"></a><span data-ttu-id="a14a2-174">Escriba el código para controlar el resultado de la solicitud de OAuth2.</span><span class="sxs-lookup"><span data-stu-id="a14a2-174">Write code to handle the result of the OAuth2 request</span></span>
-<span data-ttu-id="a14a2-175">El siguiente código controlará la URL de redireccionamiento que se devuelve desde la vista web.</span><span class="sxs-lookup"><span data-stu-id="a14a2-175">The following code will handle the redirectURL that returns from the WebView.</span></span> <span data-ttu-id="a14a2-176">Si la autenticación no se realizó correctamente, el código volverá a tratar de realizar la operación.</span><span class="sxs-lookup"><span data-stu-id="a14a2-176">If authentication wasn't successful, the code will try again.</span></span> <span data-ttu-id="a14a2-177">Mientras tanto, la biblioteca proporcionará el error que se puede ver en la consola, o bien lo controlará de forma asincrónica.</span><span class="sxs-lookup"><span data-stu-id="a14a2-177">Meanwhile, the library will provide the error that you can see in the console or handle asynchronously.</span></span>
+### <a name="write-code-toohandle-hello-result-of-hello-oauth2-request"></a><span data-ttu-id="4c3b9-173">Escribir código toohandle Hola resultado de solicitud de OAuth2 de Hola</span><span class="sxs-lookup"><span data-stu-id="4c3b9-173">Write code toohandle hello result of hello OAuth2 request</span></span>
+<span data-ttu-id="4c3b9-174">Hello código siguiente controlará redirectURL Hola que devuelve de hello WebView.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-174">hello following code will handle hello redirectURL that returns from hello WebView.</span></span> <span data-ttu-id="4c3b9-175">Si la autenticación no era correcta, el código de hello volverá a intentarlo.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-175">If authentication wasn't successful, hello code will try again.</span></span> <span data-ttu-id="4c3b9-176">Mientras tanto, biblioteca de hello proporcionará error Hola que puede ver en la consola de Hola o administrar de forma asincrónica.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-176">Meanwhile, hello library will provide hello error that you can see in hello console or handle asynchronously.</span></span>
 
 ```objc
 - (void)handleOAuth2AccessResult:(NSString *)accessResult {
 
     AppData* data = [AppData getInstance];
 
-    //parse the response for success or failure
+    //parse hello response for success or failure
      if (accessResult)
-    //if success, complete the OAuth2 flow by handling the redirect URL and obtaining a token
+    //if success, complete hello OAuth2 flow by handling hello redirect URL and obtaining a token
      {
          [[NXOAuth2AccountStore sharedStore] handleRedirectURL:accessResult];
     } else {
@@ -242,8 +242,8 @@ $ vi Podfile
 }
 ```
 
-### <a name="set-up-the-oauth-context-called-account-store"></a><span data-ttu-id="a14a2-178">Configuración del contexto de OAuth (denominado "almacén de cuentas")</span><span class="sxs-lookup"><span data-stu-id="a14a2-178">Set up the OAuth Context (called account store)</span></span>
-<span data-ttu-id="a14a2-179">Aquí se puede llamar a `-[NXOAuth2AccountStore setClientID:secret:authorizationURL:tokenURL:redirectURL:forAccountType:]` en el almacén de cuentas compartidas para cada servicio al que quiere que acceda la aplicación.</span><span class="sxs-lookup"><span data-stu-id="a14a2-179">Here you can call `-[NXOAuth2AccountStore setClientID:secret:authorizationURL:tokenURL:redirectURL:forAccountType:]` on the shared account store for each service that you want the application to be able to access.</span></span> <span data-ttu-id="a14a2-180">El tipo de cuenta es una cadena que se utiliza como identificador para un servicio determinado.</span><span class="sxs-lookup"><span data-stu-id="a14a2-180">The account type is a string that is used as an identifier for a certain service.</span></span> <span data-ttu-id="a14a2-181">Como va a acceder a la API Graph, el código hará referencia a ella como `"myGraphService"`.</span><span class="sxs-lookup"><span data-stu-id="a14a2-181">Because you are accessing the Graph API, the code refers to it as `"myGraphService"`.</span></span> <span data-ttu-id="a14a2-182">Después, configuramos un observador que nos indicará cuándo cambia algo con el token.</span><span class="sxs-lookup"><span data-stu-id="a14a2-182">You then set up an observer that will tell you when anything changes with the token.</span></span> <span data-ttu-id="a14a2-183">Una vez obtenido el token, devolvemos al usuario a la `masterView`.</span><span class="sxs-lookup"><span data-stu-id="a14a2-183">After you get the token, you return the user back to the `masterView`.</span></span>
+### <a name="set-up-hello-oauth-context-called-account-store"></a><span data-ttu-id="4c3b9-177">Configurar Hola contexto OAuth (denominado almacén de cuentas)</span><span class="sxs-lookup"><span data-stu-id="4c3b9-177">Set up hello OAuth Context (called account store)</span></span>
+<span data-ttu-id="4c3b9-178">Aquí puede llamar a `-[NXOAuth2AccountStore setClientID:secret:authorizationURL:tokenURL:redirectURL:forAccountType:]` en el almacén de una cuenta compartida de Hola para cada servicio que desea Hola aplicación toobe capaz de tooaccess.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-178">Here you can call `-[NXOAuth2AccountStore setClientID:secret:authorizationURL:tokenURL:redirectURL:forAccountType:]` on hello shared account store for each service that you want hello application toobe able tooaccess.</span></span> <span data-ttu-id="4c3b9-179">tipo de cuenta de Hello es una cadena que se utiliza como identificador para un servicio determinado.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-179">hello account type is a string that is used as an identifier for a certain service.</span></span> <span data-ttu-id="4c3b9-180">Dado que se obtiene acceso a API Graph hello, código de hello hace referencia tooit como `"myGraphService"`.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-180">Because you are accessing hello Graph API, hello code refers tooit as `"myGraphService"`.</span></span> <span data-ttu-id="4c3b9-181">A continuación, configure un observador que le indicará cuando algo cambia con el token de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-181">You then set up an observer that will tell you when anything changes with hello token.</span></span> <span data-ttu-id="4c3b9-182">Después de obtener el token de hello, devolver Hola usuario espera toohello `masterView`.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-182">After you get hello token, you return hello user back toohello `masterView`.</span></span>
 
 ```objc
 - (void)setupOAuth2AccountStore {
@@ -288,16 +288,16 @@ $ vi Podfile
 }
 ```
 
-## <a name="set-up-the-master-view-to-search-and-display-the-users-from-the-graph-api"></a><span data-ttu-id="a14a2-184">Configuración de la vista principal para buscar y mostrar los usuarios de la API Graph</span><span class="sxs-lookup"><span data-stu-id="a14a2-184">Set up the Master View to search and display the users from the Graph API</span></span>
-<span data-ttu-id="a14a2-185">Las aplicaciones de control de vista principal (MVC) que muestran los datos devueltos en la cuadrícula no se tratan en este tutorial. Hay varios en línea que explican cómo crear una.</span><span class="sxs-lookup"><span data-stu-id="a14a2-185">A Master-View-Controller (MVC) app that displays the returned data in the grid is beyond the scope of this walkthrough, and many online tutorials explain how to build one.</span></span> <span data-ttu-id="a14a2-186">Todo este código se encuentra en el archivo de esquema.</span><span class="sxs-lookup"><span data-stu-id="a14a2-186">All this code is in the skeleton file.</span></span> <span data-ttu-id="a14a2-187">Sin embargo, debemos tratar algunos aspectos en esta aplicación MVC:</span><span class="sxs-lookup"><span data-stu-id="a14a2-187">However, you do need to deal with a few things in this MVC application:</span></span>
+## <a name="set-up-hello-master-view-toosearch-and-display-hello-users-from-hello-graph-api"></a><span data-ttu-id="4c3b9-183">Configurar hello toosearch de vista maestra y mostrar los usuarios Hola Hola API Graph</span><span class="sxs-lookup"><span data-stu-id="4c3b9-183">Set up hello Master View toosearch and display hello users from hello Graph API</span></span>
+<span data-ttu-id="4c3b9-184">Una aplicación de Master-View-Controller (MVC) que se muestra hello devuelve datos en la cuadrícula de hello está más allá del ámbito de Hola de este tutorial y muchos tutoriales en línea se explican cómo toobuild uno.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-184">A Master-View-Controller (MVC) app that displays hello returned data in hello grid is beyond hello scope of this walkthrough, and many online tutorials explain how toobuild one.</span></span> <span data-ttu-id="4c3b9-185">Todo este código está en archivo esqueleto Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-185">All this code is in hello skeleton file.</span></span> <span data-ttu-id="4c3b9-186">Sin embargo, deberá toodeal con algunas cosas en esta aplicación de MVC:</span><span class="sxs-lookup"><span data-stu-id="4c3b9-186">However, you do need toodeal with a few things in this MVC application:</span></span>
 
-* <span data-ttu-id="a14a2-188">Interceptar cuando el usuario escribe algo en el campo de búsqueda</span><span class="sxs-lookup"><span data-stu-id="a14a2-188">Intercept when a user types something in the search field</span></span>
-* <span data-ttu-id="a14a2-189">Proporcionar un objeto de datos a la vista principal para que pueda mostrar los resultados en la cuadrícula</span><span class="sxs-lookup"><span data-stu-id="a14a2-189">Provide an object of data back to the MasterView so it can display the results in the grid</span></span>
+* <span data-ttu-id="4c3b9-187">Interceptar cuando un usuario escribe algo en el campo de búsqueda de Hola</span><span class="sxs-lookup"><span data-stu-id="4c3b9-187">Intercept when a user types something in hello search field</span></span>
+* <span data-ttu-id="4c3b9-188">Proporcionar un objeto de datos back-toohello MasterView por lo que pueden mostrar los resultados de hello en cuadrícula Hola</span><span class="sxs-lookup"><span data-stu-id="4c3b9-188">Provide an object of data back toohello MasterView so it can display hello results in hello grid</span></span>
 
-<span data-ttu-id="a14a2-190">Lo haremos todo a continuación.</span><span class="sxs-lookup"><span data-stu-id="a14a2-190">We'll do those below.</span></span>
+<span data-ttu-id="4c3b9-189">Lo haremos todo a continuación.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-189">We'll do those below.</span></span>
 
-### <a name="add-a-check-to-see-if-youre-logged-in"></a><span data-ttu-id="a14a2-191">Adición de una comprobación para ver si hemos iniciado sesión</span><span class="sxs-lookup"><span data-stu-id="a14a2-191">Add a check to see if you're logged in</span></span>
-<span data-ttu-id="a14a2-192">La aplicación no sirve de mucho si el usuario no ha iniciado sesión, por lo que se recomienda comprobar si ya hay un token en la memoria caché.</span><span class="sxs-lookup"><span data-stu-id="a14a2-192">The application does little if the user is not signed in, so it's smart to check if there is already a token in the cache.</span></span> <span data-ttu-id="a14a2-193">De lo contrario, volveremos a la vista de inicio de sesión para que el usuario inicie sesión.</span><span class="sxs-lookup"><span data-stu-id="a14a2-193">If not, you redirect to the LoginView for the user to sign in.</span></span> <span data-ttu-id="a14a2-194">Como recordará, la mejor manera de realizar acciones cuando se carga una vista es usar el método `viewDidLoad()` que proporciona Apple.</span><span class="sxs-lookup"><span data-stu-id="a14a2-194">If you recall, the best way to do actions when a view loads is to use the `viewDidLoad()` method that Apple provides us.</span></span>
+### <a name="add-a-check-toosee-if-youre-logged-in"></a><span data-ttu-id="4c3b9-190">Agregar un toosee de verificación si ha iniciado sesión</span><span class="sxs-lookup"><span data-stu-id="4c3b9-190">Add a check toosee if you're logged in</span></span>
+<span data-ttu-id="4c3b9-191">aplicación Hello no hace poco si Hola usuario no ha iniciado sesión, por lo que es toocheck inteligente si ya hay un token en memoria caché de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-191">hello application does little if hello user is not signed in, so it's smart toocheck if there is already a token in hello cache.</span></span> <span data-ttu-id="4c3b9-192">Si no es así, redirige toohello LoginView para hello usuario toosign en.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-192">If not, you redirect toohello LoginView for hello user toosign in.</span></span> <span data-ttu-id="4c3b9-193">Si recuerda, Hola mejor manera toodo acciones cuando se carga una vista es hello toouse `viewDidLoad()` método que nos proporciona Apple.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-193">If you recall, hello best way toodo actions when a view loads is toouse hello `viewDidLoad()` method that Apple provides us.</span></span>
 
 ```objc
 - (void)viewDidLoad {
@@ -317,8 +317,8 @@ $ vi Podfile
         }
 ```
 
-### <a name="update-the-table-view-when-data-is-received"></a><span data-ttu-id="a14a2-195">Actualizar la vista de tabla cuando se reciben datos</span><span class="sxs-lookup"><span data-stu-id="a14a2-195">Update the Table View when data is received</span></span>
-<span data-ttu-id="a14a2-196">Cuando la API Graph devuelve los datos, debe mostrarlos.</span><span class="sxs-lookup"><span data-stu-id="a14a2-196">When the Graph API returns data, you need to display the data.</span></span> <span data-ttu-id="a14a2-197">Para simplificar, este es todo el código que necesita si quiere actualizar la tabla.</span><span class="sxs-lookup"><span data-stu-id="a14a2-197">For simplicity, here is all the code to update the table.</span></span> <span data-ttu-id="a14a2-198">Solo tiene que pegar los valores correctos en el código reutilizable de MVC.</span><span class="sxs-lookup"><span data-stu-id="a14a2-198">You can just paste the right values in your MVC boilerplate code.</span></span>
+### <a name="update-hello-table-view-when-data-is-received"></a><span data-ttu-id="4c3b9-194">Actualizar Hola vista de tabla cuando se reciben datos</span><span class="sxs-lookup"><span data-stu-id="4c3b9-194">Update hello Table View when data is received</span></span>
+<span data-ttu-id="4c3b9-195">Cuando Hola API Graph devuelve datos, necesita toodisplay Hola datos.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-195">When hello Graph API returns data, you need toodisplay hello data.</span></span> <span data-ttu-id="4c3b9-196">Para simplificar, aquí tiene todos los Hola código tooupdate Hola la tabla.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-196">For simplicity, here is all hello code tooupdate hello table.</span></span> <span data-ttu-id="4c3b9-197">Solo puede pegar los valores correctos de hello en el código reutilizable MVC.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-197">You can just paste hello right values in your MVC boilerplate code.</span></span>
 
 ```objc
 #pragma mark - Table View
@@ -344,7 +344,7 @@ $ vi Podfile
      user = [upnArray objectAtIndex:indexPath.row];
 
 
-    // Configure the cell
+    // Configure hello cell
     cell.textLabel.text = user.name;
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 
@@ -353,8 +353,8 @@ $ vi Podfile
 
 ```
 
-### <a name="provide-a-way-to-call-the-graph-api-when-someone-types-in-the-search-field"></a><span data-ttu-id="a14a2-199">Proporcionar una manera de llamar a la API Graph cuando alguien escribe en el campo de búsqueda</span><span class="sxs-lookup"><span data-stu-id="a14a2-199">Provide a way to call the Graph API when someone types in the search field</span></span>
-<span data-ttu-id="a14a2-200">Cuando un usuario escribe una búsqueda en el cuadro, hay que llevarla a la API Graph.</span><span class="sxs-lookup"><span data-stu-id="a14a2-200">When a user types a search in the box, you need to shove that over to the Graph API.</span></span> <span data-ttu-id="a14a2-201">La clase `GraphAPICaller` , que creará en el código siguiente, separa la funcionalidad de búsqueda de la de presentación.</span><span class="sxs-lookup"><span data-stu-id="a14a2-201">The `GraphAPICaller` class, which you will build in the following code, separates the lookup functionality from the presentation.</span></span> <span data-ttu-id="a14a2-202">Por ahora, vamos a escribir el código que transmite los caracteres de búsqueda a la API Graph.</span><span class="sxs-lookup"><span data-stu-id="a14a2-202">For now, let's write the code that feeds any search characters to the Graph API.</span></span> <span data-ttu-id="a14a2-203">Para ello, se proporciona el método denominado " `lookupInGraph`", que toma la cadena que queremos buscar.</span><span class="sxs-lookup"><span data-stu-id="a14a2-203">We do this by providing a method called `lookupInGraph`, which takes the string that we want to search for.</span></span>
+### <a name="provide-a-way-toocall-hello-graph-api-when-someone-types-in-hello-search-field"></a><span data-ttu-id="4c3b9-198">Proporcionar un hello toocall de manera API Graph cuando alguien escribe en el campo de búsqueda de Hola</span><span class="sxs-lookup"><span data-stu-id="4c3b9-198">Provide a way toocall hello Graph API when someone types in hello search field</span></span>
+<span data-ttu-id="4c3b9-199">Cuando un usuario escribe una búsqueda en el cuadro de hello, necesita tooshove que, con toohello API Graph.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-199">When a user types a search in hello box, you need tooshove that over toohello Graph API.</span></span> <span data-ttu-id="4c3b9-200">Hola `GraphAPICaller` (clase), que van a generar en el siguiente código de hello, separa la funcionalidad de búsqueda de Hola de presentación de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-200">hello `GraphAPICaller` class, which you will build in hello following code, separates hello lookup functionality from hello presentation.</span></span> <span data-ttu-id="4c3b9-201">Por ahora, vamos a escribir código de hello que cualquier toohello de caracteres de búsqueda API Graph de fuentes de distribución.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-201">For now, let's write hello code that feeds any search characters toohello Graph API.</span></span> <span data-ttu-id="4c3b9-202">Para ello, proporciona un método denominado `lookupInGraph`, que toma la cadena de Hola que queremos toosearch para.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-202">We do this by providing a method called `lookupInGraph`, which takes hello string that we want toosearch for.</span></span>
 
 ```objc
 
@@ -391,11 +391,11 @@ if (searchText.length > 0) {
 }
 ```
 
-## <a name="write-a-helper-class-to-access-the-graph-api"></a><span data-ttu-id="a14a2-204">Escritura de una clase auxiliar para acceder a la API Graph</span><span class="sxs-lookup"><span data-stu-id="a14a2-204">Write a Helper class to access the Graph API</span></span>
-<span data-ttu-id="a14a2-205">Se trata del núcleo de nuestra aplicación.</span><span class="sxs-lookup"><span data-stu-id="a14a2-205">This is the core of our application.</span></span> <span data-ttu-id="a14a2-206">Mientras que el resto consistía en insertar código en el patrón MVC predeterminado de Apple, aquí escribimos código para consultar el gráfico cuando el usuario escribe y devolver los datos.</span><span class="sxs-lookup"><span data-stu-id="a14a2-206">Whereas the rest was inserting code in the default MVC pattern from Apple, here you write code to query the graph as the user types and then return that data.</span></span> <span data-ttu-id="a14a2-207">Aquí se muestra el código y, abajo de este, proporcionamos una explicación detallada.</span><span class="sxs-lookup"><span data-stu-id="a14a2-207">Here's the code, and a detailed explanation follows it.</span></span>
+## <a name="write-a-helper-class-tooaccess-hello-graph-api"></a><span data-ttu-id="4c3b9-203">Escribir un tooaccess de clase auxiliar Hola API Graph</span><span class="sxs-lookup"><span data-stu-id="4c3b9-203">Write a Helper class tooaccess hello Graph API</span></span>
+<span data-ttu-id="4c3b9-204">Este es el núcleo de Hola de nuestra aplicación.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-204">This is hello core of our application.</span></span> <span data-ttu-id="4c3b9-205">Mientras que el resto de Hola inserta código en el modelo MVC predeterminada de Hola de Apple, aquí se pueden escribir gráfico de hello tooquery código como usuario de hello tipos y, a continuación, devolver los datos.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-205">Whereas hello rest was inserting code in hello default MVC pattern from Apple, here you write code tooquery hello graph as hello user types and then return that data.</span></span> <span data-ttu-id="4c3b9-206">Este es el código de hello y una explicación detallada lo sigue.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-206">Here's hello code, and a detailed explanation follows it.</span></span>
 
-### <a name="create-a-new-objective-c-header-file"></a><span data-ttu-id="a14a2-208">Creación de un nuevo archivo de encabezado Objective C</span><span class="sxs-lookup"><span data-stu-id="a14a2-208">Create a new Objective C header file</span></span>
-<span data-ttu-id="a14a2-209">Denomine al archivo `GraphAPICaller.h`y agregue el código siguiente.</span><span class="sxs-lookup"><span data-stu-id="a14a2-209">Name the file `GraphAPICaller.h`, and add the following code.</span></span>
+### <a name="create-a-new-objective-c-header-file"></a><span data-ttu-id="4c3b9-207">Creación de un nuevo archivo de encabezado Objective C</span><span class="sxs-lookup"><span data-stu-id="4c3b9-207">Create a new Objective C header file</span></span>
+<span data-ttu-id="4c3b9-208">Archivo de nombre hello `GraphAPICaller.h`y agregue el siguiente código de hello.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-208">Name hello file `GraphAPICaller.h`, and add hello following code.</span></span>
 
 ```objc
 @interface GraphAPICaller : NSObject<NSURLConnectionDataDelegate>
@@ -406,10 +406,10 @@ if (searchText.length > 0) {
 @end
 ```
 
-<span data-ttu-id="a14a2-210">Se puede ver que estamos especificando un método que toma una cadena y devuelve un elemento completionBlock.</span><span class="sxs-lookup"><span data-stu-id="a14a2-210">Here you see that a specified method takes a string and returns a completionBlock.</span></span> <span data-ttu-id="a14a2-211">Este elemento completionBlock, como se habrá imaginado, actualizará la tabla proporcionando un objeto con datos rellenados en tiempo real cuando el usuario realiza las búsquedas.</span><span class="sxs-lookup"><span data-stu-id="a14a2-211">This completionBlock, as you may have guessed, will update the table by providing an object with populated data in real time as the user searches.</span></span>
+<span data-ttu-id="4c3b9-209">Se puede ver que estamos especificando un método que toma una cadena y devuelve un elemento completionBlock.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-209">Here you see that a specified method takes a string and returns a completionBlock.</span></span> <span data-ttu-id="4c3b9-210">Este completionBlock, tal y como habrá adivinado, actualizará Hola tabla proporcionando un objeto con datos rellenada en tiempo real como Hola búsquedas de usuario.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-210">This completionBlock, as you may have guessed, will update hello table by providing an object with populated data in real time as hello user searches.</span></span>
 
-### <a name="create-a-new-objective-c-file"></a><span data-ttu-id="a14a2-212">Creación de un nuevo archivo Objective C</span><span class="sxs-lookup"><span data-stu-id="a14a2-212">Create a new Objective C file</span></span>
-<span data-ttu-id="a14a2-213">Denomine al archivo `GraphAPICaller.m`y agregue el método siguiente.</span><span class="sxs-lookup"><span data-stu-id="a14a2-213">Name the file `GraphAPICaller.m`, and add the following method.</span></span>
+### <a name="create-a-new-objective-c-file"></a><span data-ttu-id="4c3b9-211">Creación de un nuevo archivo Objective C</span><span class="sxs-lookup"><span data-stu-id="4c3b9-211">Create a new Objective C file</span></span>
+<span data-ttu-id="4c3b9-212">Archivo de nombre hello `GraphAPICaller.m`y agregue Hola siguiendo el método.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-212">Name hello file `GraphAPICaller.m`, and add hello following method.</span></span>
 
 ```objc
 +(void) searchUserList:(NSString*)searchString
@@ -436,16 +436,16 @@ if (searchText.length > 0) {
                    // e.g., update a progress indicator
                }
                    responseHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
-                       // Process the response
+                       // Process hello response
                        if (responseData) {
                            NSError *error;
                            NSDictionary *dataReturned = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                            NSLog(@"Graph Response was: %@", dataReturned);
 
-                           // We can grab the top most JSON node to get our graph data.
+                           // We can grab hello top most JSON node tooget our graph data.
                            NSArray *graphDataArray = [dataReturned objectForKey:@"value"];
 
-                           // Don't be thrown off by the key name being "value". It really is the name of the
+                           // Don't be thrown off by hello key name being "value". It really is hello name of the
                            // first node. :-)
 
                            //each object is a key value pair
@@ -479,24 +479,24 @@ if (searchText.length > 0) {
 
 ```
 
-<span data-ttu-id="a14a2-214">Analicemos pormenorizadamente este método.</span><span class="sxs-lookup"><span data-stu-id="a14a2-214">Let's go through this method in detail.</span></span>
+<span data-ttu-id="4c3b9-213">Analicemos pormenorizadamente este método.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-213">Let's go through this method in detail.</span></span>
 
-<span data-ttu-id="a14a2-215">El núcleo de este código se encuentra en el método `NXOAuth2Request`, que toma los parámetros que ya hemos definido dentro del archivo settings.plist.</span><span class="sxs-lookup"><span data-stu-id="a14a2-215">The core of this code is in the `NXOAuth2Request`, method which takes the parameters that you've already defined in the settings.plist file.</span></span>
+<span data-ttu-id="4c3b9-214">núcleo de Hola de este código es Hola `NXOAuth2Request`, método que toma parámetros de Hola que ya haya definido en el archivo de hello settings.plist.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-214">hello core of this code is in hello `NXOAuth2Request`, method which takes hello parameters that you've already defined in hello settings.plist file.</span></span>
 
-<span data-ttu-id="a14a2-216">El primer paso consiste en crear la llamada correcta a la API Graph.</span><span class="sxs-lookup"><span data-stu-id="a14a2-216">The first step is to construct the right Graph API call.</span></span> <span data-ttu-id="a14a2-217">Como vamos a llamar a `/users`, lo especificamos anexándolo a nuestro recurso de API Graph junto con la versión.</span><span class="sxs-lookup"><span data-stu-id="a14a2-217">Because you are calling `/users`, you specify that by appending it to the Graph API resource along with the version.</span></span> <span data-ttu-id="a14a2-218">Se recomienda colocarlos en un archivo de configuración externo, ya que pueden cambiar cuando evolucione la API.</span><span class="sxs-lookup"><span data-stu-id="a14a2-218">It makes sense to put these in an external settings file because these can change as the API evolves.</span></span>
+<span data-ttu-id="4c3b9-215">Hola primer paso es llamada de API Graph tooconstruct Hola right.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-215">hello first step is tooconstruct hello right Graph API call.</span></span> <span data-ttu-id="4c3b9-216">Dado que se llama `/users`, especificar que mediante la anexión de recurso de la API de Graph toohello junto con la versión de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-216">Because you are calling `/users`, you specify that by appending it toohello Graph API resource along with hello version.</span></span> <span data-ttu-id="4c3b9-217">Tiene sentido tooput estas opciones en un archivo de configuración externo ya estos pueden variar a medida que evoluciona Hola API.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-217">It makes sense tooput these in an external settings file because these can change as hello API evolves.</span></span>
 
 ```objc
 NSString *graphURL = [NSString stringWithFormat:@"%@%@/users", data.graphApiUrlString, data.apiversion];
 ```
 
-<span data-ttu-id="a14a2-219">Después, tenemos que especificar los parámetros, que también proporcionaremos a la llamada de API Graph.</span><span class="sxs-lookup"><span data-stu-id="a14a2-219">Next, you need to specify parameters that you will also provide to the Graph API call.</span></span> <span data-ttu-id="a14a2-220">Es *muy importante* que no coloque los parámetros en el punto de conexión de los recursos, ya que se eliminan todos los caracteres del identificador URI no compatibles en el entorno de tiempo de ejecución.</span><span class="sxs-lookup"><span data-stu-id="a14a2-220">It is *very important* that you do not put the parameters in the resource endpoint because that is scrubbed for all non-URI conforming characters at runtime.</span></span> <span data-ttu-id="a14a2-221">Todo el código de consulta debe indicarse en los parámetros.</span><span class="sxs-lookup"><span data-stu-id="a14a2-221">All query code must be provided in the parameters.</span></span>
+<span data-ttu-id="4c3b9-218">A continuación, hay parámetros de toospecify también proporcionará toohello llamada de API Graph.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-218">Next, you need toospecify parameters that you will also provide toohello Graph API call.</span></span> <span data-ttu-id="4c3b9-219">Es *muy importante* no coloque parámetros hello en el punto de conexión de hello recurso dado que se limpia para todos los caracteres de URI no conformes en tiempo de ejecución.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-219">It is *very important* that you do not put hello parameters in hello resource endpoint because that is scrubbed for all non-URI conforming characters at runtime.</span></span> <span data-ttu-id="4c3b9-220">Todo el código de consulta debe proporcionarse en parámetros de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-220">All query code must be provided in hello parameters.</span></span>
 
 ```objc
 
 NSDictionary* params = [self convertParamsToDictionary:searchString];
 ```
 
-<span data-ttu-id="a14a2-222">Es posible que observe que se llama a un método `convertParamsToDictionary` que todavía no se ha escrito.</span><span class="sxs-lookup"><span data-stu-id="a14a2-222">You might notice this calls a `convertParamsToDictionary` method that you haven't written yet.</span></span> <span data-ttu-id="a14a2-223">Lo haremos ahora al final del archivo:</span><span class="sxs-lookup"><span data-stu-id="a14a2-223">Let's do so now at the end of the file:</span></span>
+<span data-ttu-id="4c3b9-221">Es posible que observe que se llama a un método `convertParamsToDictionary` que todavía no se ha escrito.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-221">You might notice this calls a `convertParamsToDictionary` method that you haven't written yet.</span></span> <span data-ttu-id="4c3b9-222">Vamos a hacer ahora al final de hello del archivo hello:</span><span class="sxs-lookup"><span data-stu-id="4c3b9-222">Let's do so now at hello end of hello file:</span></span>
 
 ```objc
 +(NSDictionary*) convertParamsToDictionary:(NSString*)searchString
@@ -513,7 +513,7 @@ NSDictionary* params = [self convertParamsToDictionary:searchString];
 }
 
 ```
-<span data-ttu-id="a14a2-224">A continuación, vamos a usar el método `NXOAuth2Request` para obtener los datos de la API en formato JSON.</span><span class="sxs-lookup"><span data-stu-id="a14a2-224">Next, let's use the `NXOAuth2Request` method to get data back from the API in JSON format.</span></span>
+<span data-ttu-id="4c3b9-223">A continuación, vamos a usar hello `NXOAuth2Request` copia datos de tooget de método de hello API en formato JSON.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-223">Next, let's use hello `NXOAuth2Request` method tooget data back from hello API in JSON format.</span></span>
 
 ```objc
 NSArray *accounts = [store accountsWithAccountType:@"myGraphService"];
@@ -525,23 +525,23 @@ NSArray *accounts = [store accountsWithAccountType:@"myGraphService"];
                    // e.g., update a progress indicator
                }
                    responseHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
-                       // Process the response
+                       // Process hello response
                        if (responseData) {
                            NSError *error;
                            NSDictionary *dataReturned = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                            NSLog(@"Graph Response was: %@", dataReturned);
 
-                           // We can grab the top most JSON node to get our graph data.
+                           // We can grab hello top most JSON node tooget our graph data.
                            NSArray *graphDataArray = [dataReturned objectForKey:@"value"];
 ```
 
-<span data-ttu-id="a14a2-225">Finalmente, veamos cómo se devuelven los datos al método MasterViewController.</span><span class="sxs-lookup"><span data-stu-id="a14a2-225">Finally, let's look at how you return the data to the MasterViewController.</span></span> <span data-ttu-id="a14a2-226">Los datos los obtenemos serializados; tenemos que deserializarlos y cargarlos en un objeto que pueda utilizar MainViewController.</span><span class="sxs-lookup"><span data-stu-id="a14a2-226">The data returns as serialized and needs to be deserialized and loaded in an object that the MainViewController can consume.</span></span> <span data-ttu-id="a14a2-227">Por este motivo, el esquema tiene un archivo `User.m/h` que crea un objeto de usuario.</span><span class="sxs-lookup"><span data-stu-id="a14a2-227">For this purpose, the skeleton has a `User.m/h` file that creates a User object.</span></span> <span data-ttu-id="a14a2-228">Rellenamos ese objeto de usuario con la información del gráfico.</span><span class="sxs-lookup"><span data-stu-id="a14a2-228">You populate that User object with information from the graph.</span></span>
+<span data-ttu-id="4c3b9-224">Por último, echemos un vistazo a cómo devolver datos de hello toohello MasterViewController.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-224">Finally, let's look at how you return hello data toohello MasterViewController.</span></span> <span data-ttu-id="4c3b9-225">datos de Hello devuelve como en serie y necesita toobe deserializa y se cargan en un objeto puede usan ese hello MainViewController.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-225">hello data returns as serialized and needs toobe deserialized and loaded in an object that hello MainViewController can consume.</span></span> <span data-ttu-id="4c3b9-226">Para ello, tiene el esqueleto de hello un `User.m/h` archivo que crea un objeto de usuario.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-226">For this purpose, hello skeleton has a `User.m/h` file that creates a User object.</span></span> <span data-ttu-id="4c3b9-227">Rellenar ese objeto de usuario con información del gráfico de Hola.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-227">You populate that User object with information from hello graph.</span></span>
 
 ```objc
-                           // We can grab the top most JSON node to get our graph data.
+                           // We can grab hello top most JSON node tooget our graph data.
                            NSArray *graphDataArray = [dataReturned objectForKey:@"value"];
 
-                           // Don't be thrown off by the key name being "value". It really is the name of the
+                           // Don't be thrown off by hello key name being "value". It really is hello name of the
                            // first node. :-)
 
                            //each object is a key value pair
@@ -564,9 +564,9 @@ NSArray *accounts = [store accountsWithAccountType:@"myGraphService"];
 ```
 
 
-## <a name="run-the-sample"></a><span data-ttu-id="a14a2-229">Ejecución del ejemplo</span><span class="sxs-lookup"><span data-stu-id="a14a2-229">Run the sample</span></span>
-<span data-ttu-id="a14a2-230">Si ha utilizado el esquema o ha seguido todo el tutorial, la aplicación debería ejecutarse ahora.</span><span class="sxs-lookup"><span data-stu-id="a14a2-230">If you've used the skeleton or followed along with the walkthrough your application should now run.</span></span> <span data-ttu-id="a14a2-231">Inicie el simulador y haga clic en **Iniciar sesión** para usar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="a14a2-231">Start the simulator and click **Sign in** to use the application.</span></span>
+## <a name="run-hello-sample"></a><span data-ttu-id="4c3b9-228">Ejecutar el ejemplo hello</span><span class="sxs-lookup"><span data-stu-id="4c3b9-228">Run hello sample</span></span>
+<span data-ttu-id="4c3b9-229">Si ha utilizado el esqueleto de Hola o seguido junto con el tutorial Hola que ahora debe ejecutar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-229">If you've used hello skeleton or followed along with hello walkthrough your application should now run.</span></span> <span data-ttu-id="4c3b9-230">Iniciar el simulador de Hola y haga clic en **iniciar sesión en** aplicación de hello toouse.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-230">Start hello simulator and click **Sign in** toouse hello application.</span></span>
 
-## <a name="get-security-updates-for-our-product"></a><span data-ttu-id="a14a2-232">Obtención de actualizaciones de seguridad para nuestro producto</span><span class="sxs-lookup"><span data-stu-id="a14a2-232">Get security updates for our product</span></span>
-<span data-ttu-id="a14a2-233">Le animamos a que obtenga notificaciones de los incidentes de seguridad que se produzcan; para ello, visite la página [TechCenter de seguridad](https://technet.microsoft.com/security/dd252948) y suscríbase a las alertas de documentos informativos de seguridad.</span><span class="sxs-lookup"><span data-stu-id="a14a2-233">We encourage you to get notifications of when security incidents occur by visiting the [Security TechCenter](https://technet.microsoft.com/security/dd252948) and subscribing to Security Advisory Alerts.</span></span>
+## <a name="get-security-updates-for-our-product"></a><span data-ttu-id="4c3b9-231">Obtención de actualizaciones de seguridad para nuestro producto</span><span class="sxs-lookup"><span data-stu-id="4c3b9-231">Get security updates for our product</span></span>
+<span data-ttu-id="4c3b9-232">Le recomendamos que las notificaciones de tooget de cuando se producen incidentes de seguridad visitando hello [TechCenter de seguridad](https://technet.microsoft.com/security/dd252948) y la suscripción tooSecurity asesoramiento alertas.</span><span class="sxs-lookup"><span data-stu-id="4c3b9-232">We encourage you tooget notifications of when security incidents occur by visiting hello [Security TechCenter](https://technet.microsoft.com/security/dd252948) and subscribing tooSecurity Advisory Alerts.</span></span>
 

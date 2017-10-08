@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con AnswerHub | Microsoft Docs"
-description: "Obtenga información sobre cómo configurar el inicio de sesión único entre Azure Active Directory y AnswerHub."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y AnswerHub."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,254 +13,254 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 3a1c9cc5d7a2ebe28e9fb7e0e6ed8e3d393873ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 90b530da31abe7e6f18bfa2c5409f8ff1d4f1063
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a><span data-ttu-id="e9990-103">Tutorial: Integración de Azure Active Directory con AnswerHub</span><span class="sxs-lookup"><span data-stu-id="e9990-103">Tutorial: Azure Active Directory integration with AnswerHub</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a><span data-ttu-id="1de0b-103">Tutorial: Integración de Azure Active Directory con AnswerHub</span><span class="sxs-lookup"><span data-stu-id="1de0b-103">Tutorial: Azure Active Directory integration with AnswerHub</span></span>
 
-<span data-ttu-id="e9990-104">En este tutorial, obtendrá información sobre cómo integrar AnswerHub con Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="e9990-104">In this tutorial, you learn how to integrate AnswerHub with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="1de0b-104">En este tutorial, aprenderá cómo toointegrate AnswerHub con Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="1de0b-104">In this tutorial, you learn how toointegrate AnswerHub with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="e9990-105">La integración de AnswerHub con Azure AD proporciona las siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="e9990-105">Integrating AnswerHub with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="1de0b-105">Integración de AnswerHub con Azure AD proporciona Hola siguientes ventajas:</span><span class="sxs-lookup"><span data-stu-id="1de0b-105">Integrating AnswerHub with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="e9990-106">En Azure AD puede controlar quién tiene acceso a AnswerHub</span><span class="sxs-lookup"><span data-stu-id="e9990-106">You can control in Azure AD who has access to AnswerHub</span></span>
-- <span data-ttu-id="e9990-107">Puede permitir que los usuarios inicien sesión automáticamente en AnswerHub (inicio de sesión único) con sus cuentas de Azure AD</span><span class="sxs-lookup"><span data-stu-id="e9990-107">You can enable your users to automatically get signed-on to AnswerHub (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="e9990-108">Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="e9990-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="1de0b-106">Puede controlar en Azure AD que tenga acceso tooAnswerHub</span><span class="sxs-lookup"><span data-stu-id="1de0b-106">You can control in Azure AD who has access tooAnswerHub</span></span>
+- <span data-ttu-id="1de0b-107">Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooAnswerHub (Single Sign-On) con sus cuentas de Azure AD</span><span class="sxs-lookup"><span data-stu-id="1de0b-107">You can enable your users tooautomatically get signed-on tooAnswerHub (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="1de0b-108">Puede administrar las cuentas en una ubicación central: Hola portal de Azure</span><span class="sxs-lookup"><span data-stu-id="1de0b-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="e9990-109">Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="e9990-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="1de0b-109">Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="1de0b-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="e9990-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="e9990-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="1de0b-110">Requisitos previos</span><span class="sxs-lookup"><span data-stu-id="1de0b-110">Prerequisites</span></span>
 
-<span data-ttu-id="e9990-111">Para configurar la integración de Azure AD con AnswerHub, se necesitan los siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="e9990-111">To configure Azure AD integration with AnswerHub, you need the following items:</span></span>
+<span data-ttu-id="1de0b-111">integración de Azure AD con AnswerHub tooconfigure, necesita Hola siguientes elementos:</span><span class="sxs-lookup"><span data-stu-id="1de0b-111">tooconfigure Azure AD integration with AnswerHub, you need hello following items:</span></span>
 
-- <span data-ttu-id="e9990-112">Una suscripción de Azure AD</span><span class="sxs-lookup"><span data-stu-id="e9990-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="e9990-113">Una suscripción habilitada para el inicio de sesión único en AnswerHub</span><span class="sxs-lookup"><span data-stu-id="e9990-113">An AnswerHub single sign-on enabled subscription</span></span>
+- <span data-ttu-id="1de0b-112">Una suscripción de Azure AD</span><span class="sxs-lookup"><span data-stu-id="1de0b-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="1de0b-113">Una suscripción habilitada para el inicio de sesión único en AnswerHub</span><span class="sxs-lookup"><span data-stu-id="1de0b-113">An AnswerHub single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="e9990-114">Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.</span><span class="sxs-lookup"><span data-stu-id="e9990-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="1de0b-114">Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.</span><span class="sxs-lookup"><span data-stu-id="1de0b-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="e9990-115">Para probar los pasos de este tutorial, debe seguir estas recomendaciones:</span><span class="sxs-lookup"><span data-stu-id="e9990-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="1de0b-115">pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:</span><span class="sxs-lookup"><span data-stu-id="1de0b-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="e9990-116">No use el entorno de producción, salvo que sea necesario.</span><span class="sxs-lookup"><span data-stu-id="e9990-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="e9990-117">Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="e9990-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="1de0b-116">No use el entorno de producción, salvo que sea necesario.</span><span class="sxs-lookup"><span data-stu-id="1de0b-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="1de0b-117">Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="1de0b-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="e9990-118">Descripción del escenario</span><span class="sxs-lookup"><span data-stu-id="e9990-118">Scenario description</span></span>
-<span data-ttu-id="e9990-119">En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba.</span><span class="sxs-lookup"><span data-stu-id="e9990-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="e9990-120">La situación descrita en este tutorial consta de dos bloques de creación principales:</span><span class="sxs-lookup"><span data-stu-id="e9990-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="1de0b-118">Descripción del escenario</span><span class="sxs-lookup"><span data-stu-id="1de0b-118">Scenario description</span></span>
+<span data-ttu-id="1de0b-119">En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba.</span><span class="sxs-lookup"><span data-stu-id="1de0b-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="1de0b-120">escenario de Hello descrito en este tutorial consta de dos bloques principales:</span><span class="sxs-lookup"><span data-stu-id="1de0b-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="e9990-121">Incorporación de AnswerHub desde la galería</span><span class="sxs-lookup"><span data-stu-id="e9990-121">Adding AnswerHub from the gallery</span></span>
-2. <span data-ttu-id="e9990-122">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="e9990-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="1de0b-121">Adición de AnswerHub de galería de Hola</span><span class="sxs-lookup"><span data-stu-id="1de0b-121">Adding AnswerHub from hello gallery</span></span>
+2. <span data-ttu-id="1de0b-122">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="1de0b-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-answerhub-from-the-gallery"></a><span data-ttu-id="e9990-123">Incorporación de AnswerHub desde la galería</span><span class="sxs-lookup"><span data-stu-id="e9990-123">Adding AnswerHub from the gallery</span></span>
-<span data-ttu-id="e9990-124">Para configurar la integración de AnswerHub en Azure AD, será preciso que agregue AnswerHub desde la galería a la lista de aplicaciones SaaS administradas.</span><span class="sxs-lookup"><span data-stu-id="e9990-124">To configure the integration of AnswerHub into Azure AD, you need to add AnswerHub from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-answerhub-from-hello-gallery"></a><span data-ttu-id="1de0b-123">Adición de AnswerHub de galería de Hola</span><span class="sxs-lookup"><span data-stu-id="1de0b-123">Adding AnswerHub from hello gallery</span></span>
+<span data-ttu-id="1de0b-124">integración de hello tooconfigure de AnswerHub en Azure AD, deberá tooadd AnswerHub de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.</span><span class="sxs-lookup"><span data-stu-id="1de0b-124">tooconfigure hello integration of AnswerHub into Azure AD, you need tooadd AnswerHub from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="e9990-125">**Para agregar AnswerHub desde la galería, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="e9990-125">**To add AnswerHub from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="1de0b-125">**tooadd AnswerHub de galería de hello, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="1de0b-125">**tooadd AnswerHub from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="e9990-126">En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="e9990-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="1de0b-126">Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono.</span><span class="sxs-lookup"><span data-stu-id="1de0b-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="e9990-128">Vaya a **Aplicaciones empresariales**.</span><span class="sxs-lookup"><span data-stu-id="e9990-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="e9990-129">A continuación, vaya a **Todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="e9990-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="1de0b-128">Navegue demasiado**aplicaciones empresariales**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="1de0b-129">A continuación, vaya demasiado**todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-129">Then go too**All applications**.</span></span>
 
     ![Aplicaciones][2]
     
-3. <span data-ttu-id="e9990-131">Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="e9990-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="1de0b-131">tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="1de0b-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Aplicaciones][3]
 
-4. <span data-ttu-id="e9990-133">En el cuadro de búsqueda, escriba **AnswerHub**.</span><span class="sxs-lookup"><span data-stu-id="e9990-133">In the search box, type **AnswerHub**.</span></span>
+4. <span data-ttu-id="1de0b-133">En el cuadro de búsqueda de hello, escriba **AnswerHub**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-133">In hello search box, type **AnswerHub**.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_search.png)
 
-5. <span data-ttu-id="e9990-135">En el panel de resultados, seleccione **AnswerHub** y, luego, haga clic en el botón **Agregar** para agregar la aplicación.</span><span class="sxs-lookup"><span data-stu-id="e9990-135">In the results panel, select **AnswerHub**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="1de0b-135">En el panel de resultados de hello, seleccione **AnswerHub**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.</span><span class="sxs-lookup"><span data-stu-id="1de0b-135">In hello results panel, select **AnswerHub**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="e9990-137">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="e9990-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="e9990-138">En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con AnswerHub con un usuario de prueba llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="e9990-138">In this section, you configure and test Azure AD single sign-on with AnswerHub based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="1de0b-137">Configuración y comprobación del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="1de0b-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="1de0b-138">En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con AnswerHub con un usuario de prueba llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="1de0b-138">In this section, you configure and test Azure AD single sign-on with AnswerHub based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="e9990-139">Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de AnswerHub para un usuario de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="e9990-139">For single sign-on to work, Azure AD needs to know what the counterpart user in AnswerHub is to a user in Azure AD.</span></span> <span data-ttu-id="e9990-140">Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="e9990-140">In other words, a link relationship between an Azure AD user and the related user in AnswerHub needs to be established.</span></span>
+<span data-ttu-id="1de0b-139">Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en AnswerHub es tooa usuario en Azure AD.</span><span class="sxs-lookup"><span data-stu-id="1de0b-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in AnswerHub is tooa user in Azure AD.</span></span> <span data-ttu-id="1de0b-140">En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en AnswerHub debe toobe establecido.</span><span class="sxs-lookup"><span data-stu-id="1de0b-140">In other words, a link relationship between an Azure AD user and hello related user in AnswerHub needs toobe established.</span></span>
 
-<span data-ttu-id="e9990-141">Para establecer la relación de vínculo, en AnswerHub, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.</span><span class="sxs-lookup"><span data-stu-id="e9990-141">In AnswerHub, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="1de0b-141">En AnswerHub, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.</span><span class="sxs-lookup"><span data-stu-id="1de0b-141">In AnswerHub, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="e9990-142">Para configurar y probar el inicio de sesión único de Azure AD con AnswerHub, es preciso completar los siguientes bloques de creación:</span><span class="sxs-lookup"><span data-stu-id="e9990-142">To configure and test Azure AD single sign-on with AnswerHub, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="1de0b-142">tooconfigure y prueba de inicio de sesión único en Azure AD con AnswerHub, deberá hello toocomplete después de bloques de creación:</span><span class="sxs-lookup"><span data-stu-id="1de0b-142">tooconfigure and test Azure AD single sign-on with AnswerHub, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="e9990-143">**[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.</span><span class="sxs-lookup"><span data-stu-id="e9990-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="e9990-144">**[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="e9990-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="e9990-145">**[Creación de un usuario de prueba de AnswerHub](#creating-an-answerhub-test-user)**: para tener un homólogo de Britta Simon en AnswerHub que esté vinculado a la representación del usuario en Azure AD.</span><span class="sxs-lookup"><span data-stu-id="e9990-145">**[Creating an AnswerHub test user](#creating-an-answerhub-test-user)** - to have a counterpart of Britta Simon in AnswerHub that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="e9990-146">**[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.</span><span class="sxs-lookup"><span data-stu-id="e9990-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="e9990-147">**[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.</span><span class="sxs-lookup"><span data-stu-id="e9990-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="1de0b-143">**[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.</span><span class="sxs-lookup"><span data-stu-id="1de0b-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="1de0b-144">**[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="1de0b-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="1de0b-145">**[Creación de un usuario de prueba de AnswerHub](#creating-an-answerhub-test-user)**  -toohave un equivalente de Britta Simon en AnswerHub que es la representación toohello vinculado Azure AD del usuario.</span><span class="sxs-lookup"><span data-stu-id="1de0b-145">**[Creating an AnswerHub test user](#creating-an-answerhub-test-user)** - toohave a counterpart of Britta Simon in AnswerHub that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="1de0b-146">**[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="1de0b-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="1de0b-147">**[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.</span><span class="sxs-lookup"><span data-stu-id="1de0b-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="e9990-148">Configuración del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="e9990-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="1de0b-148">Configuración del inicio de sesión único de Azure AD</span><span class="sxs-lookup"><span data-stu-id="1de0b-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="e9990-149">En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="e9990-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your AnswerHub application.</span></span>
+<span data-ttu-id="1de0b-149">En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="1de0b-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your AnswerHub application.</span></span>
 
-<span data-ttu-id="e9990-150">**Para configurar el inicio de sesión único de Azure AD con AnswerHub, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="e9990-150">**To configure Azure AD single sign-on with AnswerHub, perform the following steps:**</span></span>
+<span data-ttu-id="1de0b-150">**inicio de sesión único en Azure AD tooconfigure con AnswerHub, siga Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="1de0b-150">**tooconfigure Azure AD single sign-on with AnswerHub, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="e9990-151">En Azure Portal, en la página de integración de la aplicación **AnswerHub**, haga clic en **Inicio de sesión único**.</span><span class="sxs-lookup"><span data-stu-id="e9990-151">In the Azure portal, on the **AnswerHub** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="1de0b-151">En el portal de Azure, en Hola Hola **AnswerHub** página de integración de aplicaciones, haga clic en **inicio de sesión único**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-151">In hello Azure portal, on hello **AnswerHub** application integration page, click **Single sign-on**.</span></span>
 
     ![Configurar inicio de sesión único][4]
 
-2. <span data-ttu-id="e9990-153">En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="e9990-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="1de0b-153">En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.</span><span class="sxs-lookup"><span data-stu-id="1de0b-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_samlbase.png)
 
-3. <span data-ttu-id="e9990-155">En la sección de **dominio y direcciones URL de AnswerHub**, lleve a cabo los pasos siguientes:</span><span class="sxs-lookup"><span data-stu-id="e9990-155">On the **AnswerHub Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="1de0b-155">En hello **AnswerHub dominio y las direcciones URL** sección, lleve a cabo Hola pasos:</span><span class="sxs-lookup"><span data-stu-id="1de0b-155">On hello **AnswerHub Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_url.png)
 
-    <span data-ttu-id="e9990-157">a.</span><span class="sxs-lookup"><span data-stu-id="e9990-157">a.</span></span> <span data-ttu-id="e9990-158">En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<company>.answerhub.com`.</span><span class="sxs-lookup"><span data-stu-id="e9990-158">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<company>.answerhub.com`</span></span>
+    <span data-ttu-id="1de0b-157">a.</span><span class="sxs-lookup"><span data-stu-id="1de0b-157">a.</span></span> <span data-ttu-id="1de0b-158">Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<company>.answerhub.com`</span><span class="sxs-lookup"><span data-stu-id="1de0b-158">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<company>.answerhub.com`</span></span>
 
-    <span data-ttu-id="e9990-159">b.</span><span class="sxs-lookup"><span data-stu-id="e9990-159">b.</span></span> <span data-ttu-id="e9990-160">En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<company>.answerhub.com`</span><span class="sxs-lookup"><span data-stu-id="e9990-160">In the **Identifier** textbox, type a URL using the following pattern: `https://<company>.answerhub.com`</span></span>
+    <span data-ttu-id="1de0b-159">b.</span><span class="sxs-lookup"><span data-stu-id="1de0b-159">b.</span></span> <span data-ttu-id="1de0b-160">Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<company>.answerhub.com`</span><span class="sxs-lookup"><span data-stu-id="1de0b-160">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<company>.answerhub.com`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="e9990-161">Estos valores no son reales.</span><span class="sxs-lookup"><span data-stu-id="e9990-161">These values are not real.</span></span> <span data-ttu-id="e9990-162">Debe actualizarlos con la dirección URL y el identificador reales de inicio de sesión.</span><span class="sxs-lookup"><span data-stu-id="e9990-162">Update these values with the actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="e9990-163">Póngase en contacto con el [equipo de soporte de cliente de AnswerHub](mailto:success@answerhub.com) para obtener estos valores.</span><span class="sxs-lookup"><span data-stu-id="e9990-163">Contact [AnswerHub Client support team](mailto:success@answerhub.com) to get these values.</span></span> 
+    > <span data-ttu-id="1de0b-161">Estos valores no son reales.</span><span class="sxs-lookup"><span data-stu-id="1de0b-161">These values are not real.</span></span> <span data-ttu-id="1de0b-162">Actualizar estos valores con hello real de dirección URL de inicio de sesión y el identificador.</span><span class="sxs-lookup"><span data-stu-id="1de0b-162">Update these values with hello actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="1de0b-163">Póngase en contacto con [equipo de soporte técnico de cliente de AnswerHub](mailto:success@answerhub.com) tooget estos valores.</span><span class="sxs-lookup"><span data-stu-id="1de0b-163">Contact [AnswerHub Client support team](mailto:success@answerhub.com) tooget these values.</span></span> 
  
-4. <span data-ttu-id="e9990-164">En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.</span><span class="sxs-lookup"><span data-stu-id="e9990-164">On the **SAML Signing Certificate** section, click **Certificate(Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="1de0b-164">En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.</span><span class="sxs-lookup"><span data-stu-id="1de0b-164">On hello **SAML Signing Certificate** section, click **Certificate(Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_certificate.png) 
 
-5. <span data-ttu-id="e9990-166">Haga clic en el botón **Guardar** .</span><span class="sxs-lookup"><span data-stu-id="e9990-166">Click **Save** button.</span></span>
+5. <span data-ttu-id="1de0b-166">Haga clic en el botón **Guardar** .</span><span class="sxs-lookup"><span data-stu-id="1de0b-166">Click **Save** button.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-answerhub-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="e9990-168">En la sección **Configuración de AnswerHub**, haga clic en **Configurar AnswerHub** para abrir la ventana **Configurar inicio de sesión**.</span><span class="sxs-lookup"><span data-stu-id="e9990-168">On the **AnswerHub Configuration** section, click **Configure AnswerHub** to open **Configure sign-on** window.</span></span> <span data-ttu-id="e9990-169">Copie la **dirección URL de cierre de sesión y la dirección URL del servicio de inicio de sesión único de SAML** de la **sección de referencia rápida**.</span><span class="sxs-lookup"><span data-stu-id="e9990-169">Copy the **Sign-Out URL, and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="1de0b-168">En hello **configuración de AnswerHub** sección, haga clic en **configurar AnswerHub** tooopen **configurar inicio de sesión** ventana.</span><span class="sxs-lookup"><span data-stu-id="1de0b-168">On hello **AnswerHub Configuration** section, click **Configure AnswerHub** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="1de0b-169">Hola copia **dirección URL de cierre de sesión y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**</span><span class="sxs-lookup"><span data-stu-id="1de0b-169">Copy hello **Sign-Out URL, and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_configure.png) 
 
-7. <span data-ttu-id="e9990-171">En otra ventana del explorador web, inicie sesión en el sitio de la compañía de AnswerHub como administrador.</span><span class="sxs-lookup"><span data-stu-id="e9990-171">In a different web browser window, log into your AnswerHub company site as an administrator.</span></span>
+7. <span data-ttu-id="1de0b-171">En otra ventana del explorador web, inicie sesión en el sitio de la compañía de AnswerHub como administrador.</span><span class="sxs-lookup"><span data-stu-id="1de0b-171">In a different web browser window, log into your AnswerHub company site as an administrator.</span></span>
    
     >[!NOTE]
-    ><span data-ttu-id="e9990-172">Si necesita ayuda para configurar AnswerHub, póngase en contacto con el [equipo de soporte técnico de AnswerHub](mailto:success@answerhub.com.).</span><span class="sxs-lookup"><span data-stu-id="e9990-172">If you need help configuring AnswerHub, contact [AnswerHub's support team](mailto:success@answerhub.com.).</span></span>
+    ><span data-ttu-id="1de0b-172">Si necesita ayuda para configurar AnswerHub, póngase en contacto con el [equipo de soporte técnico de AnswerHub](mailto:success@answerhub.com.).</span><span class="sxs-lookup"><span data-stu-id="1de0b-172">If you need help configuring AnswerHub, contact [AnswerHub's support team](mailto:success@answerhub.com.).</span></span>
    
-8. <span data-ttu-id="e9990-173">Vaya a **Administración**.</span><span class="sxs-lookup"><span data-stu-id="e9990-173">Go to **Administration**.</span></span>
+8. <span data-ttu-id="1de0b-173">Vaya demasiado**administración**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-173">Go too**Administration**.</span></span>
 
-9. <span data-ttu-id="e9990-174">Haga clic en la pestaña **Usuario y grupo** .</span><span class="sxs-lookup"><span data-stu-id="e9990-174">Click the **User and Group** tab.</span></span>
+9. <span data-ttu-id="1de0b-174">Haga clic en hello **usuario y grupo** ficha.</span><span class="sxs-lookup"><span data-stu-id="1de0b-174">Click hello **User and Group** tab.</span></span>
 
-10. <span data-ttu-id="e9990-175">En el panel de navegación izquierdo, en la sección **Social Settings** (Configuración social), haga clic en **SAML Setup** (Configuración de SAML).</span><span class="sxs-lookup"><span data-stu-id="e9990-175">In the navigation pane on the left side, in the **Social Settings** section, click **SAML Setup**.</span></span>
+10. <span data-ttu-id="1de0b-175">En panel de navegación de hello en el lado izquierdo, en Hola de Hola **configuración de redes sociales** sección, haga clic en **configuración de SAML**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-175">In hello navigation pane on hello left side, in hello **Social Settings** section, click **SAML Setup**.</span></span>
 
-11. <span data-ttu-id="e9990-176">Haga clic en la pestaña **Configuración de IDP** .</span><span class="sxs-lookup"><span data-stu-id="e9990-176">Click **IDP Config** tab.</span></span>
+11. <span data-ttu-id="1de0b-176">Haga clic en la pestaña **Configuración de IDP** .</span><span class="sxs-lookup"><span data-stu-id="1de0b-176">Click **IDP Config** tab.</span></span>
 
-12. <span data-ttu-id="e9990-177">En la pestaña **Configuración de IDP** , lleve a cabo estos pasos:</span><span class="sxs-lookup"><span data-stu-id="e9990-177">On the **IDP Config** tab, perform the following steps:</span></span>
+12. <span data-ttu-id="1de0b-177">En hello **configuración de IDP** , realice los pasos de hello:</span><span class="sxs-lookup"><span data-stu-id="1de0b-177">On hello **IDP Config** tab, perform hello following steps:</span></span>
 
-     <span data-ttu-id="e9990-178">![Configuración de SAML](./media/active-directory-saas-answerhub-tutorial/ic785172.png "Configuración de SAML")</span><span class="sxs-lookup"><span data-stu-id="e9990-178">![SAML Setup](./media/active-directory-saas-answerhub-tutorial/ic785172.png "SAML Setup")</span></span>  
+     <span data-ttu-id="1de0b-178">![Configuración de SAML](./media/active-directory-saas-answerhub-tutorial/ic785172.png "Configuración de SAML")</span><span class="sxs-lookup"><span data-stu-id="1de0b-178">![SAML Setup](./media/active-directory-saas-answerhub-tutorial/ic785172.png "SAML Setup")</span></span>  
   
-     <span data-ttu-id="e9990-179">a.</span><span class="sxs-lookup"><span data-stu-id="e9990-179">a.</span></span> <span data-ttu-id="e9990-180">En el cuadro de texto **IDP Login URL** (Dirección URL de inicio de sesión de IDP), pegue la **dirección URL del servicio de inicio de sesión único de SAML** que copió desde Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="e9990-180">In **IDP Login URL** textbox, paste **SAML Single Sign-On Service URL** which you have copied from Azure portal.</span></span>
+     <span data-ttu-id="1de0b-179">a.</span><span class="sxs-lookup"><span data-stu-id="1de0b-179">a.</span></span> <span data-ttu-id="1de0b-180">En el cuadro de texto **IDP Login URL** (Dirección URL de inicio de sesión de IDP), pegue la **dirección URL del servicio de inicio de sesión único de SAML** que copió desde Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="1de0b-180">In **IDP Login URL** textbox, paste **SAML Single Sign-On Service URL** which you have copied from Azure portal.</span></span>
   
-     <span data-ttu-id="e9990-181">b.</span><span class="sxs-lookup"><span data-stu-id="e9990-181">b.</span></span> <span data-ttu-id="e9990-182">En el cuadro de texto **IDP Logout URL** (Dirección URL de cierre de sesión de IDP), pegue la **dirección URL de cierre de sesión** que copió desde Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="e9990-182">In **IDP Logout URL** textbox, paste **Sign-Out URL** value which you have copied from Azure portal.</span></span>
+     <span data-ttu-id="1de0b-181">b.</span><span class="sxs-lookup"><span data-stu-id="1de0b-181">b.</span></span> <span data-ttu-id="1de0b-182">En el cuadro de texto **IDP Logout URL** (Dirección URL de cierre de sesión de IDP), pegue la **dirección URL de cierre de sesión** que copió desde Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="1de0b-182">In **IDP Logout URL** textbox, paste **Sign-Out URL** value which you have copied from Azure portal.</span></span>
      
-     <span data-ttu-id="e9990-183">c.</span><span class="sxs-lookup"><span data-stu-id="e9990-183">c.</span></span> <span data-ttu-id="e9990-184">En el cuadro de texto **IDP Name Identifier Format** (Formato del identificador de nombre de IDP), escriba el valor de identificador de usuario igual que el que se seleccionó en Azure Portal en la sección **Atributos de usuario**.</span><span class="sxs-lookup"><span data-stu-id="e9990-184">In **IDP Name Identifier Format** textbox, enter the user Identifier value same as selected in Azure portal in **User Attributes** section.</span></span>
+     <span data-ttu-id="1de0b-183">c.</span><span class="sxs-lookup"><span data-stu-id="1de0b-183">c.</span></span> <span data-ttu-id="1de0b-184">En **formato del identificador de nombre IDP** cuadro de texto, escriba usuario Hola identificador igual valor seleccionado en el portal de Azure en **atributos de usuario** sección.</span><span class="sxs-lookup"><span data-stu-id="1de0b-184">In **IDP Name Identifier Format** textbox, enter hello user Identifier value same as selected in Azure portal in **User Attributes** section.</span></span>
   
-     <span data-ttu-id="e9990-185">d.</span><span class="sxs-lookup"><span data-stu-id="e9990-185">d.</span></span> <span data-ttu-id="e9990-186">Haga clic en **Claves y certificados**.</span><span class="sxs-lookup"><span data-stu-id="e9990-186">Click **Keys and Certificates**.</span></span>
+     <span data-ttu-id="1de0b-185">d.</span><span class="sxs-lookup"><span data-stu-id="1de0b-185">d.</span></span> <span data-ttu-id="1de0b-186">Haga clic en **Claves y certificados**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-186">Click **Keys and Certificates**.</span></span>
 
-13. <span data-ttu-id="e9990-187">En la pestaña Claves y certificados, realice los pasos siguientes:</span><span class="sxs-lookup"><span data-stu-id="e9990-187">On the Keys and Certificates tab, perform the following steps:</span></span>
+13. <span data-ttu-id="1de0b-187">En la pestaña de claves y certificados de hello, realizar Hola pasos:</span><span class="sxs-lookup"><span data-stu-id="1de0b-187">On hello Keys and Certificates tab, perform hello following steps:</span></span>
     
-     <span data-ttu-id="e9990-188">![Claves y certificados](./media/active-directory-saas-answerhub-tutorial/ic785173.png "Claves y certificados")</span><span class="sxs-lookup"><span data-stu-id="e9990-188">![Keys and Certificates](./media/active-directory-saas-answerhub-tutorial/ic785173.png "Keys and Certificates")</span></span>  
+     <span data-ttu-id="1de0b-188">![Claves y certificados](./media/active-directory-saas-answerhub-tutorial/ic785173.png "Claves y certificados")</span><span class="sxs-lookup"><span data-stu-id="1de0b-188">![Keys and Certificates](./media/active-directory-saas-answerhub-tutorial/ic785173.png "Keys and Certificates")</span></span>  
  
-     <span data-ttu-id="e9990-189">a.</span><span class="sxs-lookup"><span data-stu-id="e9990-189">a.</span></span> <span data-ttu-id="e9990-190">Abra el certificado codificado en Base 64 que descargó de Azure Portal en el Bloc de notas, copie el contenido en el Portapapeles y, luego, péguelo en el cuadro de texto **IDP Public Key (x509 Format)** (Clave pública de IDP [formato x509]).</span><span class="sxs-lookup"><span data-stu-id="e9990-190">Open your base-64 encoded certificate which you have downloaded from Azure portal in notepad, copy the content of it into your clipboard, and then paste it to the **IDP Public Key (x509 Format)** textbox.</span></span>
+     <span data-ttu-id="1de0b-189">a.</span><span class="sxs-lookup"><span data-stu-id="1de0b-189">a.</span></span> <span data-ttu-id="1de0b-190">Abra el certificado codificado en base 64 que ha descargado desde el portal de Azure en el Bloc de notas, Hola copia contenido del mismo en el Portapapeles y, a continuación, péguelo toohello **clave pública IDP (formato x 509)** cuadro de texto.</span><span class="sxs-lookup"><span data-stu-id="1de0b-190">Open your base-64 encoded certificate which you have downloaded from Azure portal in notepad, copy hello content of it into your clipboard, and then paste it toohello **IDP Public Key (x509 Format)** textbox.</span></span>
   
-     <span data-ttu-id="e9990-191">b.</span><span class="sxs-lookup"><span data-stu-id="e9990-191">b.</span></span> <span data-ttu-id="e9990-192">Haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="e9990-192">Click **Save**.</span></span>
+     <span data-ttu-id="1de0b-191">b.</span><span class="sxs-lookup"><span data-stu-id="1de0b-191">b.</span></span> <span data-ttu-id="1de0b-192">Haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-192">Click **Save**.</span></span>
 
-14. <span data-ttu-id="e9990-193">En la pestaña **IDP Config** (Configuración de IDP), haga clic en **Save** (Guardar).</span><span class="sxs-lookup"><span data-stu-id="e9990-193">On the **IDP Config** tab, click **Save**.</span></span>
+14. <span data-ttu-id="1de0b-193">En hello **configuración de IDP** , haga clic en **guardar**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-193">On hello **IDP Config** tab, click **Save**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="e9990-194">Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.</span><span class="sxs-lookup"><span data-stu-id="e9990-194">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="e9990-195">Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior.</span><span class="sxs-lookup"><span data-stu-id="e9990-195">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="e9990-196">Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="e9990-196">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="1de0b-194">Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!</span><span class="sxs-lookup"><span data-stu-id="1de0b-194">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="1de0b-195">Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola.</span><span class="sxs-lookup"><span data-stu-id="1de0b-195">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="1de0b-196">Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="1de0b-196">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="e9990-197">Creación de un usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="e9990-197">Creating an Azure AD test user</span></span>
-<span data-ttu-id="e9990-198">El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".</span><span class="sxs-lookup"><span data-stu-id="e9990-198">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="1de0b-197">Creación de un usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="1de0b-197">Creating an Azure AD test user</span></span>
+<span data-ttu-id="1de0b-198">objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.</span><span class="sxs-lookup"><span data-stu-id="1de0b-198">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Creación de un usuario de Azure AD][100]
 
-<span data-ttu-id="e9990-200">**Siga estos pasos para crear un usuario de prueba en Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="e9990-200">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="1de0b-200">**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="1de0b-200">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="e9990-201">En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="e9990-201">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="1de0b-201">Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.</span><span class="sxs-lookup"><span data-stu-id="1de0b-201">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-answerhub-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="e9990-203">Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.</span><span class="sxs-lookup"><span data-stu-id="e9990-203">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="1de0b-203">lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-203">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-answerhub-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="e9990-205">Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="e9990-205">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="1de0b-205">Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.</span><span class="sxs-lookup"><span data-stu-id="1de0b-205">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-answerhub-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="e9990-207">En la página de diálogo **Usuario**, realice los siguientes pasos:</span><span class="sxs-lookup"><span data-stu-id="e9990-207">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="1de0b-207">En hello **usuario** cuadro de diálogo, siga los pasos de hello:</span><span class="sxs-lookup"><span data-stu-id="1de0b-207">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-answerhub-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="e9990-209">a.</span><span class="sxs-lookup"><span data-stu-id="e9990-209">a.</span></span> <span data-ttu-id="e9990-210">En el cuadro de texto **Nombre**, escriba **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="e9990-210">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="1de0b-209">a.</span><span class="sxs-lookup"><span data-stu-id="1de0b-209">a.</span></span> <span data-ttu-id="1de0b-210">Hola **nombre** cuadro de texto, tipo **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-210">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="e9990-211">b.</span><span class="sxs-lookup"><span data-stu-id="e9990-211">b.</span></span> <span data-ttu-id="e9990-212">En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="e9990-212">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="1de0b-211">b.</span><span class="sxs-lookup"><span data-stu-id="1de0b-211">b.</span></span> <span data-ttu-id="1de0b-212">Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="1de0b-212">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="e9990-213">c.</span><span class="sxs-lookup"><span data-stu-id="e9990-213">c.</span></span> <span data-ttu-id="e9990-214">Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.</span><span class="sxs-lookup"><span data-stu-id="e9990-214">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="1de0b-213">c.</span><span class="sxs-lookup"><span data-stu-id="1de0b-213">c.</span></span> <span data-ttu-id="1de0b-214">Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-214">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="e9990-215">d.</span><span class="sxs-lookup"><span data-stu-id="e9990-215">d.</span></span> <span data-ttu-id="e9990-216">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="e9990-216">Click **Create**.</span></span>
+    <span data-ttu-id="1de0b-215">d.</span><span class="sxs-lookup"><span data-stu-id="1de0b-215">d.</span></span> <span data-ttu-id="1de0b-216">Haga clic en **Crear**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-216">Click **Create**.</span></span>
  
-### <a name="creating-an-answerhub-test-user"></a><span data-ttu-id="e9990-217">Creación de un usuario de prueba de AnswerHub</span><span class="sxs-lookup"><span data-stu-id="e9990-217">Creating an AnswerHub test user</span></span>
+### <a name="creating-an-answerhub-test-user"></a><span data-ttu-id="1de0b-217">Creación de un usuario de prueba de AnswerHub</span><span class="sxs-lookup"><span data-stu-id="1de0b-217">Creating an AnswerHub test user</span></span>
 
-<span data-ttu-id="e9990-218">Para permitir que los usuarios de Azure AD inicien sesión en AnswerHub, tienen que aprovisionarse en AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="e9990-218">To enable Azure AD users to log in to AnswerHub, they must be provisioned into AnswerHub.</span></span>  
-<span data-ttu-id="e9990-219">En el caso de AnswerHub, el aprovisionamiento es una tarea manual.</span><span class="sxs-lookup"><span data-stu-id="e9990-219">In the case of AnswerHub, provisioning is a manual task.</span></span>
+<span data-ttu-id="1de0b-218">toolog de los usuarios de Azure AD tooenable en tooAnswerHub, se les deben aprovisionar en AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="1de0b-218">tooenable Azure AD users toolog in tooAnswerHub, they must be provisioned into AnswerHub.</span></span>  
+<span data-ttu-id="1de0b-219">En caso de hello de AnswerHub, el aprovisionamiento es una tarea manual.</span><span class="sxs-lookup"><span data-stu-id="1de0b-219">In hello case of AnswerHub, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="e9990-220">**Para aprovisionar una cuenta de usuario, realice estos pasos:**</span><span class="sxs-lookup"><span data-stu-id="e9990-220">**To provision a user account, perform the following steps:**</span></span>
+<span data-ttu-id="1de0b-220">**tooprovision una cuenta de usuario, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="1de0b-220">**tooprovision a user account, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="e9990-221">Inicie sesión en el sitio de la compañía de **AnswerHub** como administrador.</span><span class="sxs-lookup"><span data-stu-id="e9990-221">Log in to your **AnswerHub** company site as administrator.</span></span>
+1. <span data-ttu-id="1de0b-221">Inicie sesión en tooyour **AnswerHub** como administrador.</span><span class="sxs-lookup"><span data-stu-id="1de0b-221">Log in tooyour **AnswerHub** company site as administrator.</span></span>
 
-2. <span data-ttu-id="e9990-222">Vaya a **Administración**.</span><span class="sxs-lookup"><span data-stu-id="e9990-222">Go to **Administration**.</span></span>
+2. <span data-ttu-id="1de0b-222">Vaya demasiado**administración**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-222">Go too**Administration**.</span></span>
 
-3. <span data-ttu-id="e9990-223">Haga clic en la pestaña **Users & Groups** (Usuarios y grupos).</span><span class="sxs-lookup"><span data-stu-id="e9990-223">Click the **Users & Groups** tab.</span></span>
+3. <span data-ttu-id="1de0b-223">Haga clic en hello **usuarios y grupos** ficha.</span><span class="sxs-lookup"><span data-stu-id="1de0b-223">Click hello **Users & Groups** tab.</span></span>
 
-4. <span data-ttu-id="e9990-224">En el panel de navegación izquierdo, en la sección **Manage Users** (Administrar usuarios), haga clic en **Create or import users** (Crear o importar usuarios).</span><span class="sxs-lookup"><span data-stu-id="e9990-224">In the navigation pane on the left side, in the **Manage Users** section, click **Create or import users**.</span></span>
+4. <span data-ttu-id="1de0b-224">En panel de navegación de hello en el lado izquierdo, en Hola de Hola **administrar usuarios** sección, haga clic en **crear o importar usuarios**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-224">In hello navigation pane on hello left side, in hello **Manage Users** section, click **Create or import users**.</span></span>
    
-   <span data-ttu-id="e9990-225">![Usuarios y grupos](./media/active-directory-saas-answerhub-tutorial/ic785175.png "Usuarios y grupos")</span><span class="sxs-lookup"><span data-stu-id="e9990-225">![Users & Groups](./media/active-directory-saas-answerhub-tutorial/ic785175.png "Users & Groups")</span></span>
+   <span data-ttu-id="1de0b-225">![Usuarios y grupos](./media/active-directory-saas-answerhub-tutorial/ic785175.png "Usuarios y grupos")</span><span class="sxs-lookup"><span data-stu-id="1de0b-225">![Users & Groups](./media/active-directory-saas-answerhub-tutorial/ic785175.png "Users & Groups")</span></span>
 
-5. <span data-ttu-id="e9990-226">Escriba la **dirección de correo electrónico**, el **nombre de usuario** y la **contraseña** de una cuenta de Azure Active Directory válida que desee aprovisionar en los cuadros de texto relacionados y haga clic en **Save** (Guardar).</span><span class="sxs-lookup"><span data-stu-id="e9990-226">Type the **Email address**, **Username** and **Password** of a valid Azure Active Directory account you want to provision into the related textboxes, and then click **Save**.</span></span>
+5. <span data-ttu-id="1de0b-226">Hola de tipo **dirección de correo electrónico**, **nombre de usuario** y **contraseña** de un Azure válida cuenta de Active Directory que quiera tooprovision en hello relacionados con cuadros de texto y, a continuación, haga clic en  **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-226">Type hello **Email address**, **Username** and **Password** of a valid Azure Active Directory account you want tooprovision into hello related textboxes, and then click **Save**.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="e9990-227">Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de AnswerHub ofrecida por AnswerHub para aprovisionar cuentas de usuario de AAD.</span><span class="sxs-lookup"><span data-stu-id="e9990-227">You can use any other AnswerHub user account creation tools or APIs provided by AnswerHub to provision AAD user accounts.</span></span>
+><span data-ttu-id="1de0b-227">Puede usar cualquier otra AnswerHub usuario cuenta herramienta de creación o las API proporcionadas por AnswerHub tooprovision cuentas de usuario AAD.</span><span class="sxs-lookup"><span data-stu-id="1de0b-227">You can use any other AnswerHub user account creation tools or APIs provided by AnswerHub tooprovision AAD user accounts.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="e9990-228">Asignación del usuario de prueba de Azure AD</span><span class="sxs-lookup"><span data-stu-id="e9990-228">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="1de0b-228">Asignación de usuario de prueba de hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="1de0b-228">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="e9990-229">En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="e9990-229">In this section, you enable Britta Simon to use Azure single sign-on by granting access to AnswerHub.</span></span>
+<span data-ttu-id="1de0b-229">En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooAnswerHub.</span><span class="sxs-lookup"><span data-stu-id="1de0b-229">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooAnswerHub.</span></span>
 
 ![Asignar usuario][200] 
 
-<span data-ttu-id="e9990-231">**Para asignar Britta Simon a AnswerHub, realice los pasos siguientes:**</span><span class="sxs-lookup"><span data-stu-id="e9990-231">**To assign Britta Simon to AnswerHub, perform the following steps:**</span></span>
+<span data-ttu-id="1de0b-231">**tooassign Britta Simon tooAnswerHub, lleve a cabo Hola pasos:**</span><span class="sxs-lookup"><span data-stu-id="1de0b-231">**tooassign Britta Simon tooAnswerHub, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="e9990-232">En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="e9990-232">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="1de0b-232">Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-232">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Asignar usuario][201] 
 
-2. <span data-ttu-id="e9990-234">En la lista de aplicaciones, seleccione **AnswerHub**.</span><span class="sxs-lookup"><span data-stu-id="e9990-234">In the applications list, select **AnswerHub**.</span></span>
+2. <span data-ttu-id="1de0b-234">En la lista de aplicaciones de hello, seleccione **AnswerHub**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-234">In hello applications list, select **AnswerHub**.</span></span>
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_app.png) 
 
-3. <span data-ttu-id="e9990-236">En el menú de la izquierda, haga clic en **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="e9990-236">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="1de0b-236">En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-236">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Asignar usuario][202] 
 
-4. <span data-ttu-id="e9990-238">Haga clic en el botón **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="e9990-238">Click **Add** button.</span></span> <span data-ttu-id="e9990-239">Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="e9990-239">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="1de0b-238">Haga clic en el botón **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-238">Click **Add** button.</span></span> <span data-ttu-id="1de0b-239">Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-239">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Asignar usuario][203]
 
-5. <span data-ttu-id="e9990-241">En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.</span><span class="sxs-lookup"><span data-stu-id="e9990-241">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="1de0b-241">En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.</span><span class="sxs-lookup"><span data-stu-id="1de0b-241">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="e9990-242">Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="e9990-242">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="1de0b-242">Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-242">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="e9990-243">Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="e9990-243">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="1de0b-243">Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.</span><span class="sxs-lookup"><span data-stu-id="1de0b-243">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="e9990-244">Prueba del inicio de sesión único </span><span class="sxs-lookup"><span data-stu-id="e9990-244">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="1de0b-244">Prueba del inicio de sesión único </span><span class="sxs-lookup"><span data-stu-id="1de0b-244">Testing single sign-on</span></span>
 
-<span data-ttu-id="e9990-245">En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.</span><span class="sxs-lookup"><span data-stu-id="e9990-245">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="1de0b-245">En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.</span><span class="sxs-lookup"><span data-stu-id="1de0b-245">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="e9990-246">Al hacer clic en el icono de AnswerHub en el Panel de acceso, debería iniciar sesión automáticamente en su aplicación AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="e9990-246">When you click the AnswerHub tile in the Access Panel, you should get automatically signed-on to your AnswerHub application.</span></span>
-<span data-ttu-id="e9990-247">Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="e9990-247">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
+<span data-ttu-id="1de0b-246">Al hacer clic en icono de AnswerHub de Hola Hola Panel de acceso, deberá obtener aplicaciones de AnswerHub de tooyour automáticamente ha iniciado sesión.</span><span class="sxs-lookup"><span data-stu-id="1de0b-246">When you click hello AnswerHub tile in hello Access Panel, you should get automatically signed-on tooyour AnswerHub application.</span></span>
+<span data-ttu-id="1de0b-247">Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="1de0b-247">For more information about hello Access Panel, see [Introduction toohello Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="e9990-248">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="e9990-248">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="1de0b-248">Recursos adicionales</span><span class="sxs-lookup"><span data-stu-id="1de0b-248">Additional resources</span></span>
 
-* [<span data-ttu-id="e9990-249">Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="e9990-249">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="e9990-250">¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="e9990-250">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="1de0b-249">Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="1de0b-249">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="1de0b-250">¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="1de0b-250">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

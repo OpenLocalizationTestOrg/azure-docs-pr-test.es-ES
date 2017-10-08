@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect Sync: cambio de la contraseña de la cuenta de AD DS | Microsoft Docs"
-description: "En este tema se describe cómo actualizar Azure AD Connect después de cambiar la contraseña de la cuenta de AD DS."
+title: "Azure AD Connect sync: cambiar contraseña de cuenta de hello AD DS | Documentos de Microsoft"
+description: "Este documento de tema describe cómo se cambia tooupdate Azure AD Connect después de la contraseña de Hola de cuenta de hello AD DS."
 services: active-directory
 keywords: "cuenta de AD DS, cuenta de Active Directory, contraseña"
 documentationcenter: 
@@ -15,43 +15,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 14e16a238e60ecfeeb3cbf88c3922a79349dcc75
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2707c9246446612f8d083ecde876b3b4fb2435ca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="changing-the-ad-ds-account-password"></a><span data-ttu-id="2c77a-104">Cambio de la contraseña de la cuenta de AD DS</span><span class="sxs-lookup"><span data-stu-id="2c77a-104">Changing the AD DS account password</span></span>
-<span data-ttu-id="2c77a-105">La cuenta de AD DS se refiere a la cuenta de usuario que usa Azure AD Connect para comunicarse con la instancia local de Active Directory.</span><span class="sxs-lookup"><span data-stu-id="2c77a-105">The AD DS account refers to the user account used by Azure AD Connect to communicate with on-premises Active Directory.</span></span> <span data-ttu-id="2c77a-106">Si cambia la contraseña de la cuenta de AD DS, debe actualizar Azure AD Connect Synchronization Service con la nueva contraseña.</span><span class="sxs-lookup"><span data-stu-id="2c77a-106">If you change the password of the AD DS account, you must update Azure AD Connect Synchronization Service with the new password.</span></span> <span data-ttu-id="2c77a-107">En caso contrario, el servicio ya no puede sincronizar correctamente con la instancia local de Active Directory y se producirán los errores siguientes:</span><span class="sxs-lookup"><span data-stu-id="2c77a-107">Otherwise, the Synchronization can no longer synchronize correctly with the on-premises Active Directory and you will encounter the following errors:</span></span>
+# <a name="changing-hello-ad-ds-account-password"></a><span data-ttu-id="beb6d-104">Cambiar la contraseña de la cuenta de hello AD DS</span><span class="sxs-lookup"><span data-stu-id="beb6d-104">Changing hello AD DS account password</span></span>
+<span data-ttu-id="beb6d-105">cuenta de Hello AD DS refiere la cuenta de usuario de toohello utilizada toocommunicate de Azure AD Connect con local de Active Directory.</span><span class="sxs-lookup"><span data-stu-id="beb6d-105">hello AD DS account refers toohello user account used by Azure AD Connect toocommunicate with on-premises Active Directory.</span></span> <span data-ttu-id="beb6d-106">Si cambia la contraseña Hola de hello cuenta AD DS, debe actualizar servicio de sincronización de Connect de Azure AD con hello nueva contraseña.</span><span class="sxs-lookup"><span data-stu-id="beb6d-106">If you change hello password of hello AD DS account, you must update Azure AD Connect Synchronization Service with hello new password.</span></span> <span data-ttu-id="beb6d-107">En caso contrario, Hola que sincronización ya no se puede sincronizar correctamente con hello Active Directory local y se producirán Hola siguientes errores:</span><span class="sxs-lookup"><span data-stu-id="beb6d-107">Otherwise, hello Synchronization can no longer synchronize correctly with hello on-premises Active Directory and you will encounter hello following errors:</span></span>
 
-* <span data-ttu-id="2c77a-108">En Synchronization Service Manager, cualquier operación de importación o exportación con un directorio de AD local genera un error **no-start-credentials**.</span><span class="sxs-lookup"><span data-stu-id="2c77a-108">In the Synchronization Service Manager, any import or export operation with on-premises AD fails with **no-start-credentials** error.</span></span>
+* <span data-ttu-id="beb6d-108">Hola operación Synchronization Service Manager, cualquier importación o exportación con local se produce un error de AD con **credenciales de inicio no** error.</span><span class="sxs-lookup"><span data-stu-id="beb6d-108">In hello Synchronization Service Manager, any import or export operation with on-premises AD fails with **no-start-credentials** error.</span></span>
 
-* <span data-ttu-id="2c77a-109">En el Visor de eventos de Windows, el registro de eventos de aplicación contiene un error con el **identificador de evento 6000** y mensaje **'El agente de administración "contoso.com" no se pudo ejecutar porque las credenciales no eran válidas'**.</span><span class="sxs-lookup"><span data-stu-id="2c77a-109">Under Windows Event Viewer, the application event log contains an error with **Event ID 6000** and message **'The management agent "contoso.com" failed to run because the credentials were invalid'**.</span></span>
+* <span data-ttu-id="beb6d-109">En el Visor de eventos de Windows, el registro de eventos de aplicación Hola contiene un error con **6000 de Id. de evento** y mensaje **'agente de administración de Hola "contoso.com" error toorun porque las credenciales de hello no eran válidas'** .</span><span class="sxs-lookup"><span data-stu-id="beb6d-109">Under Windows Event Viewer, hello application event log contains an error with **Event ID 6000** and message **'hello management agent "contoso.com" failed toorun because hello credentials were invalid'**.</span></span>
 
 
-## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a><span data-ttu-id="2c77a-110">Cómo actualizar Synchronization Service con la nueva contraseña de la cuenta de AD DS</span><span class="sxs-lookup"><span data-stu-id="2c77a-110">How to update the Synchronization Service with new password for AD DS account</span></span>
-<span data-ttu-id="2c77a-111">Para actualizar Synchronization Service con la nueva contraseña:</span><span class="sxs-lookup"><span data-stu-id="2c77a-111">To update the Synchronization Service with the new password:</span></span>
+## <a name="how-tooupdate-hello-synchronization-service-with-new-password-for-ad-ds-account"></a><span data-ttu-id="beb6d-110">¿Cómo tooupdate Hola servicio de sincronización con la nueva contraseña de cuenta de AD DS</span><span class="sxs-lookup"><span data-stu-id="beb6d-110">How tooupdate hello Synchronization Service with new password for AD DS account</span></span>
+<span data-ttu-id="beb6d-111">Hola de tooupdate servicio de sincronización con la nueva contraseña de hello:</span><span class="sxs-lookup"><span data-stu-id="beb6d-111">tooupdate hello Synchronization Service with hello new password:</span></span>
 
-1. <span data-ttu-id="2c77a-112">Inicie el Synchronization Service Manager (INICIO → Synchronization Service).</span><span class="sxs-lookup"><span data-stu-id="2c77a-112">Start the Synchronization Service Manager (START → Synchronization Service).</span></span>
-</br><span data-ttu-id="2c77a-113">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span><span class="sxs-lookup"><span data-stu-id="2c77a-113">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span></span>  
+1. <span data-ttu-id="beb6d-112">Iniciar Hola Synchronization Service Manager (servicio de sincronización de inicio →).</span><span class="sxs-lookup"><span data-stu-id="beb6d-112">Start hello Synchronization Service Manager (START → Synchronization Service).</span></span>
+</br><span data-ttu-id="beb6d-113">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span><span class="sxs-lookup"><span data-stu-id="beb6d-113">![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)</span></span>  
 
-2. <span data-ttu-id="2c77a-114">Vaya a la pestaña **Conectores**.</span><span class="sxs-lookup"><span data-stu-id="2c77a-114">Go to the **Connectors** tab.</span></span>
+2. <span data-ttu-id="beb6d-114">Vaya toohello **conectores** ficha.</span><span class="sxs-lookup"><span data-stu-id="beb6d-114">Go toohello **Connectors** tab.</span></span>
 
-3. <span data-ttu-id="2c77a-115">Seleccione el **Conector AD** correspondiente a la cuenta de AD DS cuya contraseña se ha cambiado.</span><span class="sxs-lookup"><span data-stu-id="2c77a-115">Select the **AD Connector** that corresponds to the AD DS account for which its password was changed.</span></span>
+3. <span data-ttu-id="beb6d-115">Seleccione hello **conector AD** correspondiente cuenta de toohello AD DS para la que se ha cambiado su contraseña.</span><span class="sxs-lookup"><span data-stu-id="beb6d-115">Select hello **AD Connector** that corresponds toohello AD DS account for which its password was changed.</span></span>
 
-4. <span data-ttu-id="2c77a-116">En **Acciones**, seleccione **Propiedades**.</span><span class="sxs-lookup"><span data-stu-id="2c77a-116">Under **Actions**, select **Properties**.</span></span>
+4. <span data-ttu-id="beb6d-116">En **Acciones**, seleccione **Propiedades**.</span><span class="sxs-lookup"><span data-stu-id="beb6d-116">Under **Actions**, select **Properties**.</span></span>
 
-5. <span data-ttu-id="2c77a-117">En el cuadro de diálogo emergente, seleccione **Connect to Active Directory Forest** (Conectar con el bosque de Active Directory):</span><span class="sxs-lookup"><span data-stu-id="2c77a-117">In the pop-up dialog, select **Connect to Active Directory Forest**:</span></span>
+5. <span data-ttu-id="beb6d-117">En el cuadro de diálogo emergente de hello, seleccione **conectar tooActive Directory bosque**:</span><span class="sxs-lookup"><span data-stu-id="beb6d-117">In hello pop-up dialog, select **Connect tooActive Directory Forest**:</span></span>
 
-6. <span data-ttu-id="2c77a-118">Escriba la nueva contraseña de la cuenta de AD DS en el cuadro de texto **Password** (Contraseña).</span><span class="sxs-lookup"><span data-stu-id="2c77a-118">Enter the new password of the AD DS account in the **Password** textbox.</span></span>
+6. <span data-ttu-id="beb6d-118">Escriba Hola nueva contraseña de cuenta de AD DS Hola Hola **contraseña** cuadro de texto.</span><span class="sxs-lookup"><span data-stu-id="beb6d-118">Enter hello new password of hello AD DS account in hello **Password** textbox.</span></span>
 
-7. <span data-ttu-id="2c77a-119">Haga clic en **OK** (Aceptar) para guardar la nueva contraseña y cerrar el cuadro de diálogo emergente.</span><span class="sxs-lookup"><span data-stu-id="2c77a-119">Click **OK** to save the new password and close the pop-up dialog.</span></span>
+7. <span data-ttu-id="beb6d-119">Haga clic en **Aceptar** toosave Hola nueva contraseña y el cuadro de diálogo emergente de hello cerrar.</span><span class="sxs-lookup"><span data-stu-id="beb6d-119">Click **OK** toosave hello new password and close hello pop-up dialog.</span></span>
 
-8. <span data-ttu-id="2c77a-120">Reinicie Azure AD Connect Synchronization Service en el Administrador de Control de servicios de Windows.</span><span class="sxs-lookup"><span data-stu-id="2c77a-120">Restart the Azure AD Connect Synchronization Service under Windows Service Control Manager.</span></span> <span data-ttu-id="2c77a-121">Esto sirve para asegurarse de que cualquier referencia a la contraseña antigua se quita de la memoria caché.</span><span class="sxs-lookup"><span data-stu-id="2c77a-121">This is to ensure that any reference to the old password is removed from the memory cache.</span></span>
+8. <span data-ttu-id="beb6d-120">Reinicio Hola servicio Azure AD Connect sincronización en el Administrador de Control de servicios de Windows.</span><span class="sxs-lookup"><span data-stu-id="beb6d-120">Restart hello Azure AD Connect Synchronization Service under Windows Service Control Manager.</span></span> <span data-ttu-id="beb6d-121">Se trata de tooensure que cualquier contraseña antigua de toohello de referencia se quita de la caché de memoria de Hola.</span><span class="sxs-lookup"><span data-stu-id="beb6d-121">This is tooensure that any reference toohello old password is removed from hello memory cache.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="2c77a-122">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="2c77a-122">Next steps</span></span>
-<span data-ttu-id="2c77a-123">**Temas de introducción**</span><span class="sxs-lookup"><span data-stu-id="2c77a-123">**Overview topics**</span></span>
+## <a name="next-steps"></a><span data-ttu-id="beb6d-122">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="beb6d-122">Next steps</span></span>
+<span data-ttu-id="beb6d-123">**Temas de introducción**</span><span class="sxs-lookup"><span data-stu-id="beb6d-123">**Overview topics**</span></span>
 
-* [<span data-ttu-id="2c77a-124">Sincronización de Azure AD Connect: comprender y personalizar la sincronización</span><span class="sxs-lookup"><span data-stu-id="2c77a-124">Azure AD Connect sync: Understand and customize synchronization</span></span>](active-directory-aadconnectsync-whatis.md)
+* [<span data-ttu-id="beb6d-124">Sincronización de Azure AD Connect: comprender y personalizar la sincronización</span><span class="sxs-lookup"><span data-stu-id="beb6d-124">Azure AD Connect sync: Understand and customize synchronization</span></span>](active-directory-aadconnectsync-whatis.md)
 
-* [<span data-ttu-id="2c77a-125">Integración de las identidades locales con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="2c77a-125">Integrating your on-premises identities with Azure Active Directory</span></span>](active-directory-aadconnect.md)
+* [<span data-ttu-id="beb6d-125">Integración de las identidades locales con Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="beb6d-125">Integrating your on-premises identities with Azure Active Directory</span></span>](active-directory-aadconnect.md)
