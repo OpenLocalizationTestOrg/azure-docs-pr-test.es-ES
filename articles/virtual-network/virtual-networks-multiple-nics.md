@@ -1,6 +1,6 @@
 ---
-title: "Implementar máquinas virtuales con varias NIC (clásica) mediante PowerShell | Microsoft Docs"
-description: "Aprenda a crear y configurar máquinas virtuales con varias tarjetas NIC mediante PowerShell."
+title: "aaaCreate una máquina virtual (clásica) con varias NIC mediante PowerShell | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate y configurar las máquinas virtuales con varias NIC con PowerShell."
 services: virtual-network, virtual-machines
 documentationcenter: na
 author: jimdial
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-ms.openlocfilehash: 68ccc1cac22e593b099729fe68c6bee63df44d9b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ef35bd4cfd7e6a527080f1cfc541275ca86f5e7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics"></a>Creación de una máquina virtual (clásica) con varias NIC
-Puede crear máquinas virtuales (VM) en Azure y asociar varias interfaces de red (NIC) a cada una de las máquinas virtuales. Tener varias NIC es un requisito para muchos dispositivos virtuales de red, por ejemplo, las soluciones de optimización de WAN y de entrega de aplicaciones. Varias NIC también aportan aislamiento del tráfico entre ellas.
+Puede crear máquinas virtuales (VM) en Azure y conectar múltiples tooeach (NIC) de interfaces de red de las máquinas virtuales. Tener varias NIC es un requisito para muchos dispositivos virtuales de red, por ejemplo, las soluciones de optimización de WAN y de entrega de aplicaciones. Varias NIC también aportan aislamiento del tráfico entre ellas.
 
 ![Varias NIC para máquina virtual](./media/virtual-networks-multiple-nics/IC757773.png)
 
-La figura anterior muestra una máquina virtual con tres NIC, cada una de ellas conectada a una subred diferente.
+Hola ilustración, se muestra una máquina virtual con tres NICs, cada uno conectado tooa otra subred.
 
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../resource-manager-deployment-model.md). Este artículo trata del modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen Resource Manager.
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../resource-manager-deployment-model.md). Este artículo incluye el uso de modelo de implementación clásica de Hola. Microsoft recomienda que las implementaciones más recientes usen Resource Manager.
 
-* La VIP accesible desde Internet (implementaciones clásicas) solo se admite en la NIC marcada como "predeterminada". Solo hay una VIP a la IP de la NIC predeterminada.
+* VIP a través de Internet (implementaciones clásicas) solo se admite en la NIC de Hola "predeterminada". Hay solo una dirección IP de toohello de VIP de NIC de hello predeterminada.
 * En estos momentos, no se admiten direcciones IP públicas (implementaciones clásicas) de nivel de instancia (LPIP) para máquinas virtuales con varias NIC.
-* El orden de las NIC desde la máquina virtual será aleatorio y también podría cambiar en todas las actualizaciones de infraestructura de Azure. Sin embargo, las direcciones IP y las direcciones MAC Ethernet correspondientes seguirán siendo las mismas. Por ejemplo, suponga que **Eth1** tiene la dirección IP 10.1.0.100 y la dirección MAC 00-0D-3A-B0-39-0D; después de una actualización de la infraestructura de Azure y de reiniciar el equipo, se podría cambiar a **Eth2**, pero el emparejamiento de la IP y la MAC seguirá siendo el mismo. Cuando es un cliente quien ejecuta un reinicio, el orden de NIC seguirá siendo el mismo.
-* La dirección de cada NIC en cada máquina virtual debe estar ubicada en una subred; las direcciones que se encuentran en la misma subred se pueden asignar a cada una de las varias NIC de una sola máquina virtual.
-* El tamaño de la máquina virtual determina el número de las NIC que se puede crear para una máquina virtual. Consulte los artículos sobre el tamaño de las máquinas virtuales [Windows Server](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) y [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) para determinar cuántas NIC admite cada tamaño. 
+* Hola orden de NIC de Hola desde dentro de hello VM será aleatorio y también podría cambiar en todas las actualizaciones de infraestructura de Azure. Sin embargo, direcciones IP de Hola y Hola MAC de ethernet correspondiente permanecerán direcciones Hola igual. Por ejemplo, suponga **Eth1** tiene la dirección IP 10.1.0.100 y la dirección MAC 00-0D-3A-B0-39-0D; después de una actualización de la infraestructura de Azure y un reinicio, se podría cambiar demasiado**Eth2**, pero Hola IP y MAC emparejamiento will permanecen Hola igual. Cuando un reinicio es iniciado por el cliente, Hola orden de NIC seguirá siendo Hola igual.
+* Hello dirección para cada NIC en cada máquina virtual debe estar ubicado en una subred, varias NIC en una sola máquina virtual cada uno se puede asignar direcciones que se encuentran en Hola misma subred.
+* Hola tamaño de máquina virtual determina el número de Hola de NIC que se pueden crear para una máquina virtual. Hola de referencia [Windows Server](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) y [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) tamaños de VM artículos toodetermine cuántas NIC es compatible con el tamaño de cada máquina virtual. 
 
 ## <a name="network-security-groups-nsgs"></a>Grupos de seguridad de red (NSG)
-En una implementación del Administrador de recursos, cualquier NIC de una máquina virtual puede asociarse a un grupo de seguridad de red (NSG), incluyendo cualquier NIC de una máquina virtual que tenga varias NIC habilitadas. Si a una NIC se le asigna una dirección dentro de una subred que está asociada a un NSG, las reglas de NSG de la subred también se aplican a esa NIC. Además de asociar subredes a NSG, también puede asociar una NIC a un NSG.
+En una implementación del Administrador de recursos, cualquier NIC de una máquina virtual puede asociarse a un grupo de seguridad de red (NSG), incluyendo cualquier NIC de una máquina virtual que tenga varias NIC habilitadas. Si una NIC se asigna una dirección de una subred que está asociado con un NSG subred hello, a continuación, hello reglas en NSG la subred de hello también aplican toothat equipo NIC. En subredes tooassociating de suma con NSG, también puede asociar una NIC con un NSG.
 
-Si una subred está asociada a un NSG y una NIC dentro de esa subred está asociada individualmente a un NSG, las reglas asociadas de NSG se aplican en **orden de flujo** según la dirección del tráfico que se pasa dentro o fuera de la NIC:
+Si una subred está asociada con un NSG y una NIC en esa subred individualmente asociada a un NSG, se aplican las reglas NSG de hello asociado en **flujo orden** según la dirección de toohello del tráfico de Hola que se pasa dentro o fuera de Hola NIC:
 
-* **tráfico entrante** cuyo destino es la NIC en cuestión fluye primero a través de la subred y desencadena las reglas de NSG de la subred antes de pasar a la NIC y desencadenar las reglas de NSG de la NIC.
-* **tráfico de salida** cuyo origen es la NIC en cuestión fluye primero fuera de la NIC, desencadenando reglas de NSG de la NIC, antes de pasar a la subred y desencadenar reglas de NSG de la subred.
+* **El tráfico entrante** cuyo destino es hello NIC en cuestión fluyen primero a través de la subred hello, desencadenar reglas NSG de la subred de hello, antes de pasar a Hola NIC, a continuación, desencadenar reglas de NSG Hola NIC.
+* **El tráfico saliente** cuyo origen es hello NIC en cuestión fluyen primero en salir de hello NIC, desencadenar reglas NSG del NIC hello, antes de pasar a través de la subred de hello, a continuación, desencadenar reglas de NSG Hola la subred.
 
-Obtener más información sobre los [Grupos de seguridad de red](virtual-networks-nsg.md) y cómo se aplican en función de las asociaciones de subredes, las máquinas virtuales y las NIC.
+Obtenga más información sobre [grupos de seguridad de red](virtual-networks-nsg.md) y cómo se aplican en función de las asociaciones toosubnets, las máquinas virtuales y NIC...
 
-## <a name="how-to-configure-a-multi-nic-vm-in-a-classic-deployment"></a>Cómo configurar una máquina virtual con varias NIC en una implementación clásica
-Las instrucciones siguientes le ayudarán a crear una máquina virtual de varias NIC con 3 NIC: una NIC predeterminada y dos NIC adicionales. Los pasos de configuración crearán una máquina virtual que se configurará según el fragmento de archivo de configuración de servicio siguiente:
+## <a name="how-tooconfigure-a-multi-nic-vm-in-a-classic-deployment"></a>¿Cómo tooConfigure una VM de NIC múltiples en una implementación clásica
+instrucciones de Hola a continuación le ayudará a crear una VM de NIC con 3 NIC múltiples: una NIC predeterminada y dos NIC adicionales. pasos de configuración de Hello creará una máquina virtual que se configurarán según el fragmento de archivo de configuración de servicio de toohello siguiente:
 
     <VirtualNetworkSite name="MultiNIC-VNet" Location="North Europe">
     <AddressSpace>
@@ -68,19 +68,19 @@ Las instrucciones siguientes le ayudarán a crear una máquina virtual de varias
             <AddressPrefix>10.1.200.0/28</AddressPrefix>
           </Subnet>
         </Subnets>
-    … Skip over the remainder section …
+    … Skip over hello remainder section …
     </VirtualNetworkSite>
 
 
-Necesitará cumplir los siguientes requisitos previos antes de poder ejecutar los comandos de PowerShell del ejemplo.
+Necesita Hola siguiendo los requisitos previos antes de intentar toorun comandos de PowerShell de hello en el ejemplo de Hola.
 
 * Una suscripción de Azure.
 * Una red virtual configurada. Para obtener más información sobre redes virtuales, consulte [Información general sobre redes virtuales](virtual-networks-overview.md) .
-* La versión más reciente de Azure PowerShell descargada e instalada. Consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
+* versión más reciente de Hola de Azure PowerShell descargado e instalado. Vea [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
 
-Para crear una máquina virtual con varias NIC, complete los pasos siguientes escribiendo cada comando en una única sesión de PowerShell:
+toocreate una máquina virtual con varias NIC, Hola completa siguiendo los pasos, escriba cada comando en una única sesión de PowerShell:
 
-1. Seleccione una imagen de máquina virutal en la galería de imágenes de máquinas virtuales de Azure. Tenga en cuenta que las imágenes cambian con frecuencia y están disponibles por región. La imagen especificada en el ejemplo siguiente puede cambiar o puede no estar presente en su región, así que asegúrese de especificar la imagen que necesita.
+1. Seleccione una imagen de máquina virutal en la galería de imágenes de máquinas virtuales de Azure. Tenga en cuenta que las imágenes cambian con frecuencia y están disponibles por región. Hello imagen especificada en el siguiente ejemplo de Hola puede cambiar o puede no estar en su región, por lo que toospecify imagen de Hola que se necesita.
 
     ```powershell
     $image = Get-AzureVMImage `
@@ -94,14 +94,14 @@ Para crear una máquina virtual con varias NIC, complete los pasos siguientes es
     -Image $image.ImageName –AvailabilitySetName "MyAVSet"
     ```
 
-3. Cree el inicio de sesión de administrador predeterminado.
+3. Crear el inicio de sesión de administrador de hello predeterminado.
 
     ```powershell
     Add-AzureProvisioningConfig –VM $vm -Windows -AdminUserName "<YourAdminUID>" `
     -Password "<YourAdminPassword>"
     ```
 
-4. Agregue NIC adicionales a la configuración de la máquina virtual.
+4. Agregar configuración de máquina virtual de toohello NIC adicional.
 
     ```powershell
     Add-AzureNetworkInterfaceConfig -Name "Ethernet1" `
@@ -110,35 +110,35 @@ Para crear una máquina virtual con varias NIC, complete los pasos siguientes es
     -SubnetName "Backend" -StaticVNetIPAddress "10.1.2.222" -VM $vm
     ```
 
-5. Especifique la subred y la dirección IP de la NIC predeterminada.
+5. Especifique una subred de Hola y dirección IP para la NIC de hello predeterminada.
 
     ```powershell
     Set-AzureSubnet -SubnetNames "Frontend" -VM $vm
     Set-AzureStaticVNetIP -IPAddress "10.1.0.100" -VM $vm
     ```
 
-6. Cree la máquina virtual en la red virtual.
+6. Crear Hola VM en la red virtual.
 
     ```powershell
     New-AzureVM -ServiceName "MultiNIC-CS" –VNetName "MultiNIC-VNet" –VMs $vm
     ```
 
     > [!NOTE]
-    > La red virtual que especifique aquí debe existir previamente (tal como se indicó en los requisitos previos). En el ejemplo siguiente se especifica una red virtual denominada **MultiNIC VNet**.
+    > Hola red virtual que especifique aquí debe existir (como se menciona en los requisitos previos de hello). ejemplo de Hola siguiente especifica una red virtual denominada **MultiNIC-VNet**.
     >
 
 ## <a name="limitations"></a>Limitaciones
-Se aplican las siguientes limitaciones al usar varias NIC:
+Hola siguientes limitaciones es aplicable al uso de varias NIC:
 
 * Las máquinas virtuales con varias NIC deben crearse en redes virtuales de Azure. Las máquinas virtuales que no son de redes virtuales no se pueden configurar con varias NIC.
-* Todas las máquinas virtuales de un conjunto de disponibilidad deben usar varias NIC o una NIC única. En un conjunto de disponibilidad no puede haber una combinación de máquinas virtuales de varias NIC y de NIC única. Para las máquinas virtuales de un servicio en la nube se aplican las mismas reglas. No es necesario que las máquinas virtuales de varias NIC tengan el mismo número de tarjetas NIC, siempre y cuando cada una tenga al menos dos.
+* Todas las máquinas virtuales en la disponibilidad de un conjunto necesidad toouse varios NIC o una NIC único. En un conjunto de disponibilidad no puede haber una combinación de máquinas virtuales de varias NIC y de NIC única. Para las máquinas virtuales de un servicio en la nube se aplican las mismas reglas. Varias NIC máquinas virtuales, no están necesarios que toohave Hola el mismo número de NIC, siempre y cuando cada uno de ellos tiene al menos dos.
 * Una máquina virtual con una NIC única no se puede configurar con varias NIC (y viceversa) una vez implementada si no se elimina y se vuelve a crear.
 
-## <a name="secondary-nics-access-to-other-subnets"></a>Acceso de las NIC secundarias a otras subredes
-De forma predeterminada, las NIC secundarias no se configurarán con una puerta de enlace predeterminada, por lo que el flujo de tráfico en ellas se limitará para que esté dentro de la misma subred. Si los usuarios desean habilitar las NIC secundarias para comunicarse fuera de su propia subred, tendrán que agregar una entrada en la tabla de enrutamiento para configurar la puerta de enlace, tal y como se describe a continuación.
+## <a name="secondary-nics-access-tooother-subnets"></a>NIC secundarias tener acceso a subredes de tooother
+De forma predeterminada la NIC secundarias no se configurarán con una puerta de enlace predeterminada, debido toowhich flujo de tráfico de hello en hello NIC secundarias será toobe limitado en hello misma subred. Si desean que los usuarios de hello tooenable secundaria NIC tootalk fuera de su propia subred, necesitarán tooadd una entrada de hello enrutamiento tabla tooconfigure Hola puerta de enlace como se describe a continuación.
 
 > [!NOTE]
-> Las máquinas virtuales creadas antes de julio de 2015 pueden tener una puerta de enlace predeterminada configurada para todas las NIC. La puerta de enlace predeterminada para las NIC secundarias no se quitará hasta que se hayan reiniciado estas máquinas virtuales. En los sistemas operativos que usan el modelo de enrutamiento de host no seguro (como Linux), la conectividad a Internet se puede interrumpir si el tráfico de entrada y salida usa NIC diferentes.
+> Las máquinas virtuales creadas antes de julio de 2015 pueden tener una puerta de enlace predeterminada configurada para todas las NIC. Hola puerta de enlace predeterminada NIC secundarias no se quitará hasta que estas máquinas virtuales se reinician. En los sistemas operativos que utilizan Hola modelo enrutamiento de host no seguro, como Linux, puede interrumpir la conectividad a Internet si el tráfico de entrada y salida hello usa NIC diferentes.
 > 
 
 ### <a name="configure-windows-vms"></a>Configurar las máquinas virtuales de Windows
@@ -147,7 +147,7 @@ Suponga que tiene una máquina virtual de Windows con dos NIC, tal y como se mue
 * Dirección IP de la NIC principal: 192.168.1.4
 * Dirección IP de la NIC secundaria: 192.168.2.5
 
-La tabla de enrutamiento de IPv4 para esta máquina virtual tendría este aspecto:
+tabla de rutas de IPv4 de Hola para esta máquina virtual sería similar al siguiente:
 
     IPv4 Route Table
     ===========================================================================
@@ -172,7 +172,7 @@ La tabla de enrutamiento de IPv4 para esta máquina virtual tendría este aspect
       255.255.255.255  255.255.255.255         On-link       192.168.2.5    261
     ===========================================================================
 
-Tenga en cuenta que la ruta predeterminada (0.0.0.0) sólo está disponible para la NIC principal. No podrá obtener acceso a recursos externos a la subred de la NIC secundaria, tal y como se muestra a continuación:
+Tenga en cuenta que esa ruta de hello predeterminada (0.0.0.0) es sólo toohello disponibles de NIC principal No será capaz de tooaccess recursos externos a subred Hola para hello secundaria NIC, tal como se muestra a continuación:
 
     C:\Users\Administrator>ping 192.168.1.7 -S 192.165.2.5
 
@@ -182,9 +182,9 @@ Tenga en cuenta que la ruta predeterminada (0.0.0.0) sólo está disponible para
     PING: transmit failed. General failure.
     PING: transmit failed. General failure.
 
-Para agregar una ruta predeterminada en la NIC secundaria, siga estos pasos:
+tooadd enrutar el valor predeterminado de Hola NIC secundaria, siga los pasos de Hola a continuación:
 
-1. Desde un símbolo del sistema, ejecute el comando siguiente para identificar el número de índice de la NIC secundaria:
+1. Desde un símbolo del sistema, ejecute el comando de Hola por debajo del número de índice de hello tooidentify de hello NIC secundaria:
    
         C:\Users\Administrator>route print
         ===========================================================================
@@ -195,11 +195,11 @@ Para agregar una ruta predeterminada en la NIC secundaria, siga estos pasos:
          14...00 00 00 00 00 00 00 e0 Teredo Tunneling Pseudo-Interface
          20...00 00 00 00 00 00 00 e0 Microsoft ISATAP Adapter #2
         ===========================================================================
-2. Busque la segunda entrada en la tabla con un índice de 27 (en este ejemplo).
-3. Desde el símbolo del sistema, ejecute el comando **route add** tal y como se muestra a continuación. En este ejemplo, está especificando 192.168.2.1 como puerta de enlace predeterminada para la NIC secundaria:
+2. Observe la segunda entrada de hello en la tabla de hello, con un índice de 27 (en este ejemplo).
+3. Hola desde línea de comandos, ejecute hello **Agregar ruta** comando tal y como se muestra a continuación. En este ejemplo, está especificando 192.168.2.1 como Hola puerta de enlace predeterminada Hola NIC secundaria:
    
         route ADD -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5000 IF 27
-4. Para probar la conectividad, vuelva al símbolo del sistema e intente hacer ping en una subred distinta de la NIC secundaria, tal y como se muestra en el ejemplo siguiente:
+4. conectividad de tootest atrás toohello símbolo e intenta tooping una subred distinta de Hola NIC secundaria como se muestra int eh ejemplo siguiente:
    
         C:\Users\Administrator>ping 192.168.1.7 -S 192.165.2.5
    
@@ -207,7 +207,7 @@ Para agregar una ruta predeterminada en la NIC secundaria, siga estos pasos:
         Reply from 192.168.1.7: bytes=32 time<1ms TTL=128
         Reply from 192.168.1.7: bytes=32 time=2ms TTL=128
         Reply from 192.168.1.7: bytes=32 time<1ms TTL=128
-5. Asimismo, puede consultar la tabla de rutas para comprobar la ruta recién agregada, tal y como se muestra a continuación:
+5. También puede comprobar su hello toocheck de tabla de ruta recién agregado ruta, tal y como se muestra a continuación:
    
         C:\Users\Administrator>route print
    
@@ -222,7 +222,7 @@ Para agregar una ruta predeterminada en la NIC secundaria, siga estos pasos:
                 127.0.0.0        255.0.0.0         On-link         127.0.0.1    306
 
 ### <a name="configure-linux-vms"></a>Configurar máquinas virtuales de Linux
-En cuanto a las máquinas virtuales de Linux, puesto que el comportamiento predeterminado está usando el enrutamiento del host no seguro, le recomendamos restrinja el flujo de tráfico de las NIC secundarias para que permanezca dentro de la misma subred. Sin embargo, si ciertos escenarios exigen que tenga conectividad fuera de la subred, los usuarios deben habilitar el enrutamiento basado en las directivas para asegurarse de que el tráfico de entrada y salida utiliza la misma NIC.
+Para máquinas virtuales de Linux, puesto que comportamiento predeterminado de hello utiliza host débil enrutamiento, es recomendable que Hola NIC secundarias son flujos de tootraffic restringida solo dentro de hello misma subred. Sin embargo, si determinados escenarios exigen conectividad exterior de la subred hello, los usuarios deben habilitar tooensure de enrutamiento basada en directivas que Hola entrada y usos de tráfico de salida Hola mismo NIC.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Implemente [máquinas virtuales MultiNIC en un escenario de aplicación de 2 niveles en una implementación del Administrador de recursos](virtual-network-deploy-multinic-arm-template.md).

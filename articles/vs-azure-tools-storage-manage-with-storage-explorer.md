@@ -1,5 +1,5 @@
 ---
-title: "Introducción al Explorador de Storage (versión preliminar) | Microsoft Docs"
+title: "aaaGet a trabajar con el Explorador de almacenamiento (versión preliminar) | Documentos de Microsoft"
 description: "Administración de recursos de almacenamiento de Azure con el Explorador de almacenamiento (versión preliminar)"
 services: storage
 documentationcenter: na
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/17/2017
 ms.author: kraigb
-ms.openlocfilehash: 1794a86a4185d587cf184a1f61a5720e2ab65e92
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 57737b51baace92858eb07c7dbc3139bd7e041f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Introducción al Explorador de Storage (versión preliminar)
 ## <a name="overview"></a>Información general
-El Explorador de Azure Storage (versión preliminar) es una aplicación independiente que permite trabajar fácilmente con datos de Azure Storage en Windows, macOS y Linux. En este artículo aprenderá las diferentes maneras de conectarse a cuentas de Azure Storage y de administrarlas.
+Explorador de almacenamiento de Azure (vista previa) es una aplicación independiente que permite trabajar tooeasily con los datos de almacenamiento de Azure en Windows, Mac OS y Linux. En este artículo, aprenderá Hola diversas formas de conectarse tooand administrar sus cuentas de almacenamiento de Azure.
 
 ![Explorador de almacenamiento de Microsoft Azure (versión preliminar)][15]
 
 ## <a name="prerequisites"></a>Requisitos previos
 * [Descargue e instale el Explorador de Storage (versión preliminar)](http://www.storageexplorer.com)
 
-## <a name="connect-to-a-storage-account-or-service"></a>Conexión a una cuenta de almacenamiento o servicio
-El Explorador de Storage (versión preliminar) proporciona varias maneras de conectar con las cuentas de almacenamiento. Por ejemplo, puede:
-* Conectar con las cuentas de almacenamiento asociadas a las suscripciones de Azure.
-* Conectar con las cuentas de almacenamiento y los servicios que se comparten desde otras suscripciones de Azure.
-* Conectar con el almacenamiento local, y administrarlo, mediante el Emulador de Azure Storage. 
+## <a name="connect-tooa-storage-account-or-service"></a>Conecte tooa cuenta de almacenamiento o servicio
+Explorador de almacenamiento (versión preliminar) proporciona varias maneras de tooconnect toostorage cuentas. Por ejemplo, puede:
+* Conectar las cuentas de toostorage asociadas a las suscripciones de Azure.
+* Conectar toostorage cuentas y los servicios que se comparten desde otras suscripciones de Azure.
+* Conectar tooand administrar el almacenamiento local mediante el uso de hello emulador de almacenamiento de Azure. 
 
 Además, puede trabajar con cuentas de almacenamiento en nubes de Azure globales y nacionales:
 
-* [Conexión a una suscripción de Azure](#connect-to-an-azure-subscription): administre los recursos de almacenamiento que pertenecen a su suscripción de Azure.
-* [Trabajo con el almacenamiento de desarrollo local](#work-with-local-development-storage): administre el almacenamiento local mediante el Emulador de Azure Storage.
-* [Conexión a almacenamiento externo](#attach-or-detach-an-external-storage-account): administre los recursos de almacenamiento que pertenecen a otra suscripción de Azure o que se encuentran en nubes de Azure nacionales mediante el nombre, la clave y los puntos de conexión de la cuenta de almacenamiento.
-* [Asociación de una cuenta de almacenamiento mediante una SAS](#attach-storage-account-using-sas): administre recursos de almacenamiento que pertenecen a otra suscripción de Azure mediante una firma de acceso compartido (SAS).
-* [Asociación de un servicio mediante una SAS](#attach-service-using-sas): administre un servicio de almacenamiento específico (contenedor de blobs, cola o tabla) que pertenece a otra suscripción de Azure mediante una SAS.
+* [Conectar tooan suscripción de Azure](#connect-to-an-azure-subscription): administrar recursos de almacenamiento que pertenecen tooyour suscripción de Azure.
+* [Trabajar con almacenamiento de desarrollo local](#work-with-local-development-storage): administrar el almacenamiento local mediante el uso de hello emulador de almacenamiento de Azure.
+* [Conectar almacenamiento tooexternal](#attach-or-detach-an-external-storage-account): administrar recursos de almacenamiento que pertenecen tooanother suscripción de Azure o que están bajo nubes Azure nacionales mediante nombre de la cuenta de almacenamiento de hello, claves y los puntos de conexión.
+* [Asociar una cuenta de almacenamiento mediante una SAS](#attach-storage-account-using-sas): administrar recursos de almacenamiento que pertenecen tooanother suscripción de Azure utilizando una firma de acceso compartido (SAS).
+* [Asociar un servicio mediante una SAS](#attach-service-using-sas): administrar un servicio de almacenamiento específica (contenedor de blob, cola o tabla) que pertenece tooanother suscripción de Azure mediante el uso de una SAS.
 
-## <a name="connect-to-an-azure-subscription"></a>Conexión a una suscripción de Azure
+## <a name="connect-tooan-azure-subscription"></a>Conectar tooan suscripción de Azure
 > [!NOTE]
 > Si aún no tiene ninguna cuenta de Azure, puede [registrarse para una evaluación gratuita](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) o [activar las ventajas de suscriptor de Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 >
@@ -53,39 +53,39 @@ Además, puede trabajar con cuentas de almacenamiento en nubes de Azure globales
 
     ![Configuración de la cuenta de Azure][0]
 
-2. En el panel izquierdo se muestran todas las cuentas de Microsoft en las que ha iniciado sesión. Para conectarse a otra cuenta, seleccione **Agregar una cuenta** y siga las instrucciones para iniciar sesión con una cuenta de Microsoft que esté asociada a una suscripción activa de Azure por lo menos.
+2. panel izquierdo de Hello muestra todas las cuentas de Microsoft de Hola que ha iniciado la sesión. cuenta de tooconnect tooanother, seleccione **agregar una cuenta**y, a continuación, siga Hola instrucciones toosign con una cuenta de Microsoft que está asociada con al menos una suscripción activa de Azure.
 
     >[!NOTE]
-    >Actualmente no se admite la conexión a una nube de Azure nacional (como Azure Alemania, Azure Government y Azure China mediante inicio de sesión). Consulte la sección "Conexión a almacenamiento externo" para saber cómo conectarse a cuentas de Azure Storage nacionales.
+    >Conexión toonational Azure (por ejemplo, Azure en Alemania, administración pública de Azure y Azure China a través de inicio de sesión) actualmente no se admite. Vea Hola "adjuntar o separar una cuenta de almacenamiento externo" sección para saber cómo las cuentas de almacenamiento de Azure de toonational tooconnect.
 
-3. Después de haber iniciado sesión correctamente con una cuenta de Microsoft, el panel izquierdo se llenará con las suscripciones de Azure asociadas a dicha cuenta. Elija las suscripciones de Azure con las que desea trabajar y luego seleccione **Aplicar**. (Al seleccionar **Todas las suscripciones** , se alterna entre todas o ninguna de las suscripciones de Azure que aparecen).
+3. Después de iniciar sesión correctamente con una cuenta de Microsoft, Hola izquierda panel se llena con hello Azure suscripciones asociadas a esa cuenta. Seleccione Hola suscripciones de Azure que desee toowork con y, a continuación, seleccione **aplicar**. (Seleccione **todas las suscripciones** alterna seleccionando todas o ninguna de hello muestran las suscripciones de Azure.)
 
     ![Selección de suscripciones de Azure][3]  
-    El panel izquierdo muestra ahora las cuentas de almacenamiento asociadas a las suscripciones de Azure seleccionadas.
+    panel izquierdo de Hello muestra las cuentas de almacenamiento de hello asociadas con suscripciones de Azure Hola seleccionado.
 
     ![Suscripciones de Azure seleccionadas][4]
 
-## <a name="connect-to-an-azure-stack-subscription"></a>Conexión a una suscripción de Azure Stack
+## <a name="connect-tooan-azure-stack-subscription"></a>Conectar suscripción de Azure pila tooan
 
-Para más información sobre cómo conectarse a una suscripción de Azure Stack, consulte [Conexión de Storage Explorer a una suscripción de Azure Stack](azure-stack/azure-stack-storage-connect-se.md).
+Para obtener información acerca de la suscripción de Azure pila tooan conexión, consulte [conectar Explorador de almacenamiento tooan suscripción de Azure pila](azure-stack/azure-stack-storage-connect-se.md).
 
 ## <a name="work-with-local-development-storage"></a>Trabajo con el almacenamiento de desarrollo local
-Con el Explorador de Storage (versión preliminar), puede trabajar con el almacenamiento local mediante el Emulador de Azure Storage. Este enfoque le permite escribir código y realizar pruebas de almacenamiento sin necesidad de tener una cuenta de almacenamiento implementada en Azure (ya que el Emulador de Azure Storage emula dicha cuenta).
+Con el Explorador de almacenamiento (vista previa), puede trabajar en el almacenamiento local mediante el uso de hello emulador de almacenamiento de Azure. Este enfoque le permite escribir código frente a y el almacenamiento de prueba sin necesidad de tener una cuenta de almacenamiento implementada en Azure, porque la cuenta de almacenamiento de hello está siendo emulado por hello emulador de almacenamiento de Azure.
 
 > [!NOTE]
-> El Emulador de almacenamiento de Azure actualmente solo se admite para Windows.
+> Hola emulador de almacenamiento de Azure actualmente solo se admite para Windows.
 >
 >
 
-1. En el panel izquierdo del Explorador de Storage (versión preliminar), expanda el nodo **Local and Attached (Local y asociados)** > **Cuentas de almacenamiento** > **(Desarrollo)**.
+1. En el panel izquierdo de hello del explorador de almacenamiento (versión preliminar), expanda hello **(locales y adjuntas)** > **cuentas de almacenamiento** > **(desarrollo)** nodo.
 
     ![Nodo de desarrollo local][21]
 
-2. Si aún no ha instalado el Emulador de Azure Storage, se le solicita que lo haga a través de una barra de información. Si se muestra la barra de información, seleccione **Descargar la última versión** e instale el emulador.
+2. Si aún no ha instalado Hola emulador de almacenamiento de Azure, son toodo solicitada por lo que a través de una barra de información. Si se muestra la barra de información de hello, seleccione **descargue la versión más reciente de hello**y, a continuación, instalar el emulador de Hola.
 
     ![Mensaje para descargar el emulador de Almacenamiento de Azure][22]
 
-3. Después de que el emulador se ha instalado, puede crear tablas, colas y blobs locales, y trabajar con ellos. Para aprender a trabajar con cada tipo de cuenta de almacenamiento, seleccione uno de los siguientes vínculos:
+3. Después de instala el emulador de hello, puede crear y trabajar con tablas, colas y blobs locales. toolearn cómo escribe toowork con cada cuenta de almacenamiento, consulte uno de los siguientes hello:
 
     * [Administración de recursos de Azure Blob Storage](vs-azure-tools-storage-explorer-blobs.md)
     * Administración de recursos de almacenamiento de recurso compartido de archivos de Azure; *próximamente*
@@ -93,139 +93,139 @@ Con el Explorador de Storage (versión preliminar), puede trabajar con el almace
     * Administración de recursos de Azure Table Storage; *próximamente*
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>Conexión a almacenamiento externo
-Con el Explorador de Storage (versión preliminar), puede conectarse a cuentas de almacenamiento externas, lo que facilita el uso compartido de las cuentas de almacenamiento. En esta sección se explica cómo asociar (y desasociar) cuentas de almacenamiento externo.
+Con el Explorador de almacenamiento (vista previa), puede asociar las cuentas de almacenamiento de tooexternal para que pueden compartirse fácilmente las cuentas de almacenamiento. Esta sección se explica cómo tooattach too(and detach from) cuentas de almacenamiento externo.
 
-### <a name="get-the-storage-account-credentials"></a>Obtención de las credenciales de la cuenta de almacenamiento
-Para compartir una cuenta de almacenamiento externa, su propietario debe obtener primero las credenciales (nombre y clave de cuenta) de esta, y compartir dicha información con la persona que desea asociar a dicha cuenta (externa). Puede obtener las credenciales de la cuenta de almacenamiento mediante el portal de Azure haciendo lo siguiente:
+### <a name="get-hello-storage-account-credentials"></a>Obtener las credenciales de cuenta de almacenamiento de Hola
+tooshare una cuenta de almacenamiento externo, el propietario de Hola de esa cuenta debe primero obtener credenciales de hello (nombre de cuenta y clave) para la cuenta de hello y, a continuación, compartir esa información con hello quien desea tooattach toothat (externo) cuenta. Puede obtener credenciales de cuenta de almacenamiento de Hola a través del portal de Azure Hola haciendo Hola siguiente:
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 
 2. Seleccione **Examinar**.
 
 3. Seleccione **Cuentas de almacenamiento**.
 
-4. En la hoja **Cuentas de almacenamiento**, seleccione la cuenta de almacenamiento deseada.
+4. En hello **cuentas de almacenamiento** hoja, seleccione Hola deseado cuenta de almacenamiento.
 
-5. En la hoja **Configuración** de la cuenta de almacenamiento elegida, seleccione **Claves de acceso**.
+5. En hello **configuración** hoja para hello seleccionado cuenta de almacenamiento, seleccione **las claves de acceso**.
 
     ![Opción de teclas de acceso][5]
 
-6. En la hoja **Claves de acceso**, copie los valores de **Nombre de cuenta de almacenamiento** y **key1** para usarlos en la conexión a la cuenta de almacenamiento.
+6. En hello **las claves de acceso** hoja, Hola copia **nombre de la cuenta de almacenamiento** y **key1** valores para su uso al asociar la cuenta de almacenamiento de toohello.
 
     ![Claves de acceso][6]
 
-### <a name="attach-to-an-external-storage-account"></a>Asociación de una cuenta de almacenamiento externo
-Para la asociación a una cuenta de almacenamiento externa, se necesitan el nombre y la clave de la misma. En la sección "Obtención de las credenciales de la cuenta de almacenamiento" se explica cómo obtener estos valores desde el portal de Azure. Sin embargo, en el portal, la clave de cuenta se denomina **key1**. Por tanto, cuando el Explorador de Storage (versión preliminar) solicite una clave de cuenta, escriba el valor **key1**.
+### <a name="attach-tooan-external-storage-account"></a>Asociar la cuenta de almacenamiento externa tooan
+cuenta de almacenamiento externo de tooattach tooan, necesita la cuenta de hello nombre y clave. Hola "Obtener credenciales de cuenta de hello almacenamiento" sección explica cómo tooobtain estos valores de hello portal de Azure. Sin embargo, en el portal de hello, clave de cuenta de hello se denomina **key1**. Por tanto, cuando el Explorador de almacenamiento (versión preliminar) solicita una clave de cuenta, escriba Hola **key1** valor.
 
-1. En el Explorador de almacenamiento (versión preliminar), seleccione **Connect to Azure storage**(Conectar con el almacenamiento de Azure).
+1. En el Explorador de almacenamiento (versión preliminar), seleccione **conectar almacenamiento tooAzure**.
 
-    ![Opción de conexión a Almacenamiento de Azure][23]
+    ![Opción de almacenamiento de tooAzure de conexión][23]
 
-2. En el cuadro de diálogo **Connect to Azure storage** (Conectar con Azure Storage), especifique la clave de cuenta (el valor **key1** del portal de Azure) y seleccione **Siguiente**.
+2. Hola **conectar tooAzure almacenamiento** diálogo cuadro, especifique la clave de la cuenta de hello (hello **key1** valor de hello portal de Azure) y, a continuación, seleccione **siguiente**.
 
     > [!NOTE]
-    > Puede escribir la cadena de conexión de almacenamiento desde una cuenta de almacenamiento en una nube de Azure nacional. Por ejemplo, para conectarse a las cuentas de almacenamiento de Azure Alemania, escriba cadenas de conexión similares a las siguientes: 
+    > Puede escribir la cadena de conexión de almacenamiento de Hola desde una cuenta de almacenamiento en Azure nacional. Por ejemplo, cuentas de almacenamiento de tooconnect tooAzure Alemania, escriba similar toohello siguiente de cadenas de conexión: 
     >
     >* DefaultEndpointsProtocol=https
     >* AccountName=cawatest03
     >* AccountKey=<storage_account_key>
     >* EndpointSuffix=core.cloudapi.de
     
-    >Puede obtener la cadena de conexión desde el portal de Azure tal y como se describe en la sección "Obtención de las credenciales de la cuenta de almacenamiento".
+    >Puede obtener la cadena de conexión de Hola de hello Azure portal Hola igual manera que se describe en Hola sección "Obtener credenciales de cuenta de almacenamiento de Hola".
 
-    ![Cuadro de diálogo Connect to Azure storage (Conectar con Azure Storage)][24]
+    ![Cuadro de diálogo de almacenamiento de tooAzure conectar][24]
 
-3. En el cuadro de diálogo **Attach External Storage** (Asociar almacenamiento externo), escriba el nombre de la cuenta de almacenamiento en el cuadro **Nombre de la cuenta**, especifique los demás valores deseados y luego seleccione **Siguiente**.
+3. Hola **adjuntar almacenamiento externo** cuadro de diálogo hello **nombre-cuenta** cuadro, escriba el nombre de cuenta de almacenamiento de hello, especifique cualquier otro valor deseado y, a continuación, seleccione **siguiente**.
 
     ![Cuadro de diálogo Attach External Storage (Asociar almacenamiento externo)][8]
 
-4. En el cuadro de diálogo **Connection Summary** (Resumen de conexiones), compruebe la información. Si desea cambiar algo, seleccione **Atrás** y vuelva a escribir la configuración deseada. 
+4. Hola **conexión resumen** diálogo cuadro, compruebe la información de Hola. Seleccione si desea toochange nada, **volver** y vuelva a escribir la configuración de hello deseado. 
 
 5. Seleccione **Conectar**.
 
-6. Una vez conectado correctamente, se muestra la cuenta de almacenamiento externa con el texto **(Externa)** junto al nombre de esta.
+6. Cuando está conectado correctamente, se muestra la cuenta de almacenamiento externo de hello con **(externo)** anexa toohello nombre de la cuenta de almacenamiento.
 
-    ![Resultado de la conexión a una cuenta de almacenamiento externo][9]
+    ![Resultado de conexión de cuenta de almacenamiento externo tooan][9]
 
 ### <a name="detach-from-an-external-storage-account"></a>Desasociación de una cuenta de almacenamiento externo
-1. Haga clic con el botón derecho en la cuenta de almacenamiento externa que desea desconectar y luego seleccione **Desconectar**.
+1. Haga clic en la cuenta de almacenamiento externo de Hola que desee toodetach y, a continuación, seleccione **separar**.
 
     ![Opción para desasociar del almacenamiento][10]
 
-2. En el mensaje de confirmación, seleccione **Sí** para confirmar la desasociación de la cuenta de almacenamiento externa.
+2. En el mensaje de confirmación de hello, seleccione **Sí** desasociación de hello tooconfirm de cuenta de almacenamiento externo de Hola.
 
 ## <a name="attach-a-storage-account-by-using-an-sas"></a>Asociación de una cuenta de almacenamiento mediante una SAS
-Una [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) permite al administrador de una suscripción de Azure conceder acceso temporal a una cuenta de almacenamiento sin tener que proporcionar las credenciales de suscripción de Azure.
+Un [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) permite Hola, Administrador de una suscripción de Azure conceder acceso temporal de cuenta de almacenamiento de tooa sin necesidad de credenciales de suscripción de Azure tooprovide.
 
-Para ilustrar este escenario, supongamos que el Usuario A es administrador de una suscripción de Azure y desea permitir que el Usuario B acceda a una cuenta de almacenamiento durante un tiempo limitado con determinados permisos:
+tooillustrate este escenario, vamos a decir que ese UserA es un administrador de una suscripción de Azure y UserA desea tooallow UserB tooaccess cuenta de almacenamiento durante un tiempo limitado con permisos específicos:
 
-1. El Usuario A genera una SAS (que consiste en una cadena de conexión para la cuenta de almacenamiento) durante un período de tiempo específico y con los permisos deseados.
+1. UserA genera una SAS (que consta de cadena de conexión de Hola Hola cuenta de almacenamiento) de una hora específica período y con permisos de hello deseado.
 
-2. El Usuario A comparte la SAS con la persona que desea tener acceso a la cuenta de almacenamiento (en nuestro ejemplo el Usuario B).  
+2. Recursos compartidos de UserA Hola SAS con persona hello (UserB, en nuestro ejemplo) que desea la cuenta de almacenamiento de toohello de acceso.  
 
-3. El Usuario B usa el Explorador de Storage (versión preliminar) para conectarse a la cuenta que pertenece al Usuario A, con la SAS proporcionada.
+3. UserB registrará el Explorador de almacenamiento (versión preliminar) tooattach toohello pertenece tooUserA mediante el uso de hello proporcionado SAS.
 
-### <a name="get-an-sas-for-the-account-you-want-to-share"></a>Obtención de una SAS para la cuenta que se desea compartir
-1. En el Explorador de Storage (versión preliminar), haga clic con el botón derecho en la cuenta de almacenamiento que quiere compartir y seleccione **Get Shared Access Signature**(Obtener firma de acceso compartido).
+### <a name="get-an-sas-for-hello-account-you-want-tooshare"></a>Obtener una SAS para la cuenta de hello que desea tooshare
+1. En el Explorador de almacenamiento (vista previa), haga clic en la cuenta de almacenamiento de Hola que desee compartir y, a continuación, seleccione **obtener firma de acceso compartido**.
 
     ![Opción de menú contextual para obtener la SAS][13]
 
-2. En el cuadro de diálogo **Firma de acceso compartido**, especifique el período y los permisos que desee para la cuenta y luego seleccione **Crear**.
+2. Hola **firma de acceso compartido** diálogo cuadro, especifique el período de tiempo de Hola y los permisos que desee para la cuenta de hello y, a continuación, seleccione **crear**.
 
     ![Cuadro de diálogo Get SAS (Obtener SAS)][14]  
-    Se abre el cuadro de diálogo **Firma de acceso compartido**, que muestra la SAS.
+    Hola **firma de acceso compartido** cuadro de diálogo se abre y muestra hello SAS.
 
-3. Junto a la **cadena de conexión**, seleccione **Copiar** para copiarla en el Portapapeles y, a continuación, seleccione **Cerrar**.
+3. Siguiente toohello **cadena de conexión**, seleccione **copia** toocopy se toohello Portapapeles y, a continuación, seleccione **cerrar**.
 
-### <a name="attach-to-the-shared-account-by-using-the-sas"></a>Conexión a la cuenta compartida mediante la SAS
-1. En el Explorador de almacenamiento (versión preliminar), seleccione **Connect to Azure storage**(Conectar con el almacenamiento de Azure).
+### <a name="attach-toohello-shared-account-by-using-hello-sas"></a>Asociar cuenta toohello compartido mediante Hola SAS
+1. En el Explorador de almacenamiento (versión preliminar), seleccione **conectar almacenamiento tooAzure**.
 
-    ![Opción de conexión a Almacenamiento de Azure][23]
+    ![Opción de almacenamiento de tooAzure de conexión][23]
 
-2. En el cuadro de diálogo **Connect to Azure storage** (Conectar con Azure Storage), especifique la cadena de conexión y seleccione **Siguiente**.
+2. Hola **conectar tooAzure almacenamiento** cuadro de diálogo, especifique la cadena de conexión de hello y, a continuación, seleccione **siguiente**.
 
-    ![Cuadro de diálogo Connect to Azure storage (Conectar con Azure Storage)][24]
+    ![Cuadro de diálogo de almacenamiento de tooAzure conectar][24]
 
-3. En el cuadro de diálogo **Connection Summary** (Resumen de conexiones), compruebe la información. Para realizar cambios, seleccione **Atrás** y luego escriba los valores de configuración deseados. 
+3. Hola **conexión resumen** diálogo cuadro, compruebe la información de Hola. cambios de toomake, seleccione **volver**y, a continuación, escriba la configuración de Hola que desee. 
 
 4. Seleccione **Conectar**.
 
-5. Después de conectarse, la cuenta de almacenamiento se muestra con **(SAS)** anexada al nombre de cuenta que ha proporcionado.
+5. Después de que está conectado, se muestra la cuenta de almacenamiento de hello con **(SAS)** anexa el nombre de la cuenta de toohello que ha proporcionado.
 
-    ![Resultado de conectarse a una cuenta mediante SAS][17]
+    ![Resultado de la cuenta de tooan conectados mediante el uso de SAS][17]
 
 ## <a name="attach-a-service-by-using-an-sas"></a>Asociación de un servicio mediante una SAS
-En la sección "Asociación de una cuenta de almacenamiento mediante una SAS" se explica cómo el administrador de una suscripción de Azure puede conceder acceso temporal a una cuenta de almacenamiento mediante la generación y el uso compartido de una SAS para dicha cuenta. De igual forma, se puede generar una SAS para un servicio específico (contenedor de blobs, cola o tabla) dentro de una cuenta de almacenamiento.  
+sección de "Adjuntar una cuenta de almacenamiento mediante una SAS" Hello explica cómo un administrador de suscripción de Azure puede conceder cuenta de almacenamiento de acceso temporal tooa generar y compartir una SAS Hola cuenta de almacenamiento. De igual forma, se puede generar una SAS para un servicio específico (contenedor de blobs, cola o tabla) dentro de una cuenta de almacenamiento.  
 
-### <a name="generate-an-sas-for-the-service-that-you-want-to-share"></a>Generación de una SAS para el servicio que se desea compartir
-En este contexto, un servicio puede ser un contenedor de blobs, una cola o una tabla. Para generar la SAS para un servicio enumerado, consulte:
+### <a name="generate-an-sas-for-hello-service-that-you-want-tooshare"></a>Generar una SAS para el servicio de Hola que desea tooshare
+En este contexto, un servicio puede ser un contenedor de blobs, una cola o una tabla. Hola toogenerate SAS para un servicio de la lista, vea:
 
-* [Get the SAS for a blob container (Obtención de la SAS para un contenedor de blobs)](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
-* Obtención de la SAS para un recurso compartido de archivos; *próximamente*
-* Obtención de la SAS para una cola; *próximamente*
-* Obtención de la SAS para una tabla; *próximamente*
+* [Obtener Hola SAS para un contenedor de blobs](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
+* Obtener Hola SAS para un recurso compartido de archivos: *próximamente*
+* Obtener Hola SAS para una cola: *próximamente*
+* Obtener Hola SAS para una tabla: *próximamente*
 
-### <a name="attach-to-the-shared-account-service-by-using-the-sas"></a>Conexión al servicio de la cuenta de almacenamiento mediante la SAS
-1. En el Explorador de almacenamiento (versión preliminar), seleccione **Connect to Azure storage**(Conectar con el almacenamiento de Azure).
+### <a name="attach-toohello-shared-account-service-by-using-hello-sas"></a>Asociar cuenta toohello compartido Hola de servicio mediante el uso de SAS
+1. En el Explorador de almacenamiento (versión preliminar), seleccione **conectar almacenamiento tooAzure**.
 
-    ![Opción de conexión a Almacenamiento de Azure][23]
+    ![Opción de almacenamiento de tooAzure de conexión][23]
 
-2. En el cuadro de diálogo **Connect to Azure storage** (Conectar con Azure Storage), especifique el identificador URI de SAS y luego seleccione **Siguiente**.
+2. Hola **conectar tooAzure almacenamiento** cuadro de diálogo, especifique el URI de SAS de hello y, a continuación, seleccione **siguiente**.
 
-    ![Cuadro de diálogo Connect to Azure storage (Conectar con Azure Storage)][24]
+    ![Cuadro de diálogo de almacenamiento de tooAzure conectar][24]
 
-3. En el cuadro de diálogo **Connection Summary** (Resumen de conexiones), compruebe la información. Para realizar cambios, seleccione **Atrás** y luego escriba los valores de configuración deseados. 
+3. Hola **conexión resumen** diálogo cuadro, compruebe la información de Hola. cambios de toomake, seleccione **volver**y, a continuación, escriba la configuración de Hola que desee. 
 
 4. Seleccione **Conectar**.
 
-5. Una vez conectado, el servicio aparecerá en el nodo **(Service SAS)** [(SAS de servicio)].
+5. Una vez que se conecta, hello servicio recién conectado se muestra en hello **(servicio SAS)** nodo.
 
-    ![Resultado de la conexión a un servicio compartido mediante una SAS][20]
+    ![Resultado de adjuntar servicio tooa compartido mediante una SAS][20]
 
 ## <a name="search-for-storage-accounts"></a>Búsqueda de cuentas de almacenamiento
-Si tiene una larga lista de cuentas de almacenamiento, puede usar el cuadro de búsqueda en la parte superior del panel izquierdo para encontrar rápidamente una cuenta de almacenamiento concreta.
+Si tiene una larga lista de cuentas de almacenamiento, un toolocate de forma rápida una cuenta de almacenamiento concreta es toouse Hola búsqueda cuadro Hola parte superior del panel izquierdo de Hola.
 
-A medida que vaya escribiendo en el cuadro de búsqueda, el panel izquierdo mostrará solo las cuentas de almacenamiento que coincidan con el valor de búsqueda que haya escrito hasta ese momento. Por ejemplo, en la pantalla siguiente se muestra una búsqueda de todas las cuentas de almacenamiento cuyo nombre contenga **tarcher**:
+Cuando escribe en el cuadro de búsqueda de hello, Hola panel izquierdo de las cuentas de almacenamiento de hello muestra que coinciden con el valor de búsqueda de Hola que ha especificado seguridad toothat punto. Por ejemplo, una búsqueda para todo el almacenamiento de cuentas cuyo nombre contenga **tarcher** se muestra en la siguiente captura de pantalla de hello:
 
 ![Búsqueda de cuenta de almacenamiento][11]
 

@@ -1,5 +1,5 @@
 ---
-title: "Acerca de los requisitos criptográficos y las puertas de enlace de VPN de Azure | Microsoft Docs"
+title: aaaAbout requisitos de cifrado y las puertas de enlace de VPN de Azure | Documentos de Microsoft
 description: "Este artículo describe los requisitos criptográficos y las puertas de enlace de VPN de Azure"
 services: vpn-gateway
 documentationcenter: na
@@ -15,39 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: yushwang
-ms.openlocfilehash: c789e6c278fc0c58c64f5d96e57f94aee5a6cefc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: af5f14d66beeea5316218f9788c4ad7876826162
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Acerca de los requisitos criptográficos y las puertas de enlace de VPN de Azure
 
-En este artículo se explica cómo configurar puertas de enlace de VPN de Azure para satisfacer los requisitos criptográficos para los túneles de VPN de sitio a sitio entre entornos y las conexiones entre redes virtuales dentro de Azure. 
+En este artículo se describe cómo se pueden configurar los requisitos de cifrado para los túneles de VPN de S2S entre entornos y las conexiones de red virtual a red virtual dentro de Azure de toosatisfy de puertas de enlace de VPN de Azure. 
 
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>Acerca de los parámetros de la directiva de IPsec e IKE para puertas de enlace de VPN de Azure
-El protocolo IPsec e IKE estándar admite una gran variedad de algoritmos criptográficos en diversas combinaciones. Si los clientes no solicitan una combinación específica de algoritmos y parámetros criptográficos, las puertas de enlace de VPN de Azure usan un conjunto de propuestas predeterminadas. Los conjuntos de directivas predeterminados se eligieron para maximizar la interoperabilidad con una amplia gama de dispositivos VPN de terceros en las configuraciones predeterminadas. Como resultado, las directivas y el número de propuestas no pueden cubrir todas las posibles combinaciones de algoritmos criptográficos disponibles y puntos fuertes clave.
+El protocolo IPsec e IKE estándar admite una gran variedad de algoritmos criptográficos en diversas combinaciones. Si los clientes no solicitan una combinación específica de algoritmos y parámetros criptográficos, las puertas de enlace de VPN de Azure usan un conjunto de propuestas predeterminadas. conjuntos de directivas de Hello predeterminados se eligieron toomaximize interoperabilidad con una amplia gama de dispositivos VPN de terceros en las configuraciones predeterminadas. Como resultado, las directivas de Hola y el número de Hola de propuestas no pueden cubrir todas las posibles combinaciones de algoritmos criptográficos disponibles y ventajas claves.
 
-La directiva predeterminada establecida para la puerta de enlace de VPN de Azure se muestra en el documento: [Acerca de los dispositivos VPN y los parámetros de IPsec o IKE para conexiones de VPN Gateway de sitio a sitio](vpn-gateway-about-vpn-devices.md).
+Hola directiva predeterminado establecido para la puerta de enlace VPN de Azure se muestra en el documento de hello: [dispositivos acerca de VPN y los parámetros de IPsec/IKE para las conexiones de puerta de enlace VPN de sitio a sitio](vpn-gateway-about-vpn-devices.md).
 
 ## <a name="cryptographic-requirements"></a>Requisitos criptográficos
-Para las comunicaciones que requieren determinados algoritmos o parámetros criptográficos, normalmente debido a los requisitos de seguridad o de conformidad con normas, ahora los clientes pueden configurar sus puertas de enlace de VPN de Azure para usar una directiva personalizada de IPsec o IKE con determinados algoritmos criptográficos y puntos fuertes clave, en lugar de los conjuntos de directivas predeterminados de Azure.
+Para las comunicaciones que requieren determinados algoritmos criptográficos o parámetros, normalmente debido a requisitos de seguridad o toocompliance, los clientes ahora pueden configurar su toouse de puertas de enlace de VPN de Azure una directiva personalizada de IPsec/IKE con concreto criptográfico algoritmos y ventajas claves, en lugar de conjuntos de directivas de hello predeterminado de Azure.
 
-Por ejemplo, las directivas de modo principal de IKEv2 para puertas de enlace de VPN de Azure usan solo Grupo Diffie-Hellman 2 (1024 bits), mientras que es posible que los clientes necesiten especificar grupos más sólidos para su uso en IKE, por ejemplo, Grupo 14 (2048 bits), Grupo 24 (grupo de MODP de 2048 bits) o ECP (grupos de curva elíptica) de 256 o 384 bits (Grupo 19 y Grupo 20, respectivamente). También se aplican requisitos similares a las directivas de modo rápido de IPsec.
+Por ejemplo, las directivas de modo principal de hello IKEv2 para puertas de enlace de VPN de Azure usan solo Diffie-Hellman grupo 2 (1024 bits), mientras que los clientes pueden necesitar toobe toospecify de grupos más seguro usar en IKE, como grupo 14 (2048 bits), 24 de grupo (grupo de MODP de 2048 bits) o ECP (elíptica curva grupos) 256 o 384 bits (grupo 19 y 20 de grupo, respectivamente). Requisitos similares aplican también las directivas de modo rápido de tooIPsec.
 
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Directiva personalizada de IPsec o IKE con puertas de enlace de VPN de Azure
-Ahora las puertas de enlace de VPN de Azure admiten directivas de IPsec o IKE personalizadas y por conexión. Para una conexión entre sitios o entre redes virtuales puede elegir una combinación específica de algoritmos criptográficos para IPsec e IKE con el nivel de clave deseado, como se muestra en el ejemplo siguiente:
+Ahora las puertas de enlace de VPN de Azure admiten directivas de IPsec o IKE personalizadas y por conexión. Para una conexión de red virtual a red virtual o de sitio a sitio, puede elegir una combinación específica de algoritmos criptográficos de IPsec e IKE con nivel de clave de hello deseado, como se muestra en el siguiente ejemplo de Hola:
 
 ![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
-Puede crear una directiva de IPsec o IKE y aplicarla a una conexión nueva o existente. 
+Puede crear una directiva de IPsec/IKE y aplicar tooa conexión nuevo o existente. 
 
 ### <a name="workflow"></a>Flujo de trabajo
 
-1. Cree las redes virtuales, las puertas de enlace de VPN o las puertas de enlace de red local para su topología de conectividad, como se describe en otros documentos y procedimientos.
-2. Cree una directiva IPsec o IKE.
-3. Puede aplicar la directiva cuando se crea una conexión de S2S o entre redes virtuales
-4. Si ya se ha creado la conexión, puede aplicar la directiva a una conexión existente o actualizarla.
+1. Crear redes virtuales hello, puertas de enlace VPN o puertas de enlace de red local para la topología de conectividad como se describe en otras toodocuments cómo
+2. Cree una directiva IPsec/IKE.
+3. Puede aplicar directiva de hello cuando se crea una conexión de S2S o red virtual a red virtual
+4. Si ya se creó la conexión de hello, puede aplicar o actualizar la conexión existente de hello directiva tooan
 
 
 ## <a name="ipsecike-policy-faq"></a>P+F sobre directivas de IPsec o IKE
@@ -58,4 +58,4 @@ Puede crear una directiva de IPsec o IKE y aplicarla a una conexión nueva o exi
 ## <a name="next-steps"></a>Pasos siguientes
 Consulte [Configure IPsec/IKE policy](vpn-gateway-ipsecikepolicy-rm-powershell.md) (Configuración de la directiva de IPsec o IKE) para obtener instrucciones paso a paso acerca de cómo configurar directivas personalizadas de IPsec o IKE en una conexión.
 
-Consulte también [Conexión de varios dispositivos VPN basados en directivas](vpn-gateway-connect-multiple-policybased-rm-ps.md) para obtener más información sobre la opción UsePolicyBasedTrafficSelectors.
+Vea también [conectar varios dispositivos VPN basada en directivas](vpn-gateway-connect-multiple-policybased-rm-ps.md) toolearn más información acerca de hello UsePolicyBasedTrafficSelectors opción.

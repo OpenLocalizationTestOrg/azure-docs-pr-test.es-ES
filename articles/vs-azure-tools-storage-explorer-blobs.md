@@ -1,5 +1,5 @@
 ---
-title: "Administración de recursos de Azure Blob Storage con el Explorador de almacenamiento (versión preliminar) | Microsoft Docs"
+title: "recursos de almacenamiento de blobs de Azure de aaaManage con el Explorador de almacenamiento (versión preliminar) | Documentos de Microsoft"
 description: "Administración de blobs y contenedores de blobs de Azure con el Explorador de almacenamiento (versión preliminar)"
 services: storage
 documentationcenter: na
@@ -14,206 +14,206 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: kraigb
-ms.openlocfilehash: f833027203441e12340bd93f3570de073d297223
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 503dd061b205875da127378ab48e8d465800fc09
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Administración de recursos de Almacenamiento de blobs de Azure con el Explorador de almacenamiento (versión preliminar)
 ## <a name="overview"></a>Información general
-[Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) es un servicio para almacenar grandes cantidades de datos no estructurados, como texto o datos binarios, a los que puede acceder desde cualquier lugar del mundo a través de HTTP o HTTPS.
-Puede usar el almacenamiento de blobs para exponer datos públicamente o para almacenar datos de la aplicación de manera privada. En este artículo, aprenderá a usar el Explorador de almacenamiento (versión preliminar) para trabajar con blobs y contenedores de blobs.
+[Almacenamiento de blobs de Azure](storage/blobs/storage-dotnet-how-to-use-blobs.md) es un servicio para almacenar grandes cantidades de datos no estructurados, como texto o binario, que puede tener acceso desde cualquier lugar Hola mundo a través de HTTP o HTTPS.
+Puede usar datos de tooexpose de almacenamiento de Blob públicamente toohello world o datos de la aplicación toostore privada. En este artículo, aprenderá cómo toouse toowork de explorador de almacenamiento (versión preliminar) con contenedores de blob y los blobs.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para completar los pasos de este artículo, necesitará:
+pasos de hello toocomplete en este artículo, necesitará Hola siguiente:
 
-* [Descargar e instalar el Explorador de almacenamiento (versión preliminar)](http://www.storageexplorer.com)
-* [Conectarse a una cuenta de almacenamiento de Azure o a un servicio](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
+* [Descargue e instale el Explorador de almacenamiento (versión preliminar)](http://www.storageexplorer.com)
+* [Conectar la cuenta de almacenamiento de Azure tooa o servicio](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Creación de un contenedor de blobs
 Todos los blobs deben residir en un contenedor de blobs, que no es más que una agrupación lógica de blobs. Una cuenta puede contener un número ilimitado de contenedores y cada contenedor puede almacenar un número ilimitado de blobs.
 
-Los siguientes pasos muestran cómo crear un contenedor de blob en el Explorador de almacenamiento (versión preliminar).
+Hello siguientes pasos muestran cómo toocreate un contenedor de blobs en el Explorador de almacenamiento (versión preliminar).
 
 1. Abra el Explorador de almacenamiento (versión preliminar).
-2. En el panel izquierdo, expanda la cuenta de almacenamiento en la que desea crear el contenedor de blobs.
-3. Haga clic con el botón derecho en **Contenedores de blobs** y, en el menú contextual, seleccione **Crear contenedor de blobs**.
+2. En el panel izquierdo de hello, expanda cuenta de almacenamiento de hello dentro del cual desea contenedor de blobs de toocreate Hola.
+3. Haga clic en **contenedores de blobs**y - en el menú contextual de hello: seleccione **crear contenedor de blobs**.
 
    ![Menú contextual Crear contenedores de blobs][0]
-4. Aparecerá un cuadro de texto debajo de la carpeta **Contenedores de blob** . Escriba el nombre del contenedor de blobs. Para ver una lista de reglas y restricciones en la nomenclatura de contenedores de blob, consulte la sección [Reglas de nomenclatura de contenedor](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container).
+4. Aparecerá un cuadro de texto bajo hello **contenedores de blobs** carpeta. Escriba el nombre de hello para el contenedor de blob. Vea hello [las reglas de nomenclatura de contenedor](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) sección para obtener una lista de reglas y restricciones en la nomenclatura de contenedores de blobs.
 
    ![Crear cuadro de texto Contenedores de blobs][1]
-5. Presione **ENTRAR** cuando termine para crear el contenedor de blobs o **Esc** para cancelar la operación. Una vez que el contenedor de blobs se haya creado correctamente, se mostrará en la carpeta **Contenedores de Blob** de la cuenta de almacenamiento seleccionada.
+5. Presione **ENTRAR** cuando haya finalizado la toocreate contenedor de blobs de hello, o **Esc** toocancel. Una vez que se ha creado correctamente el contenedor de blob de hello, se mostrará en hello **contenedores de blobs** selecciona la carpeta para hello cuenta de almacenamiento.
 
    ![Contenedor de blobs creado][2]
 
 ## <a name="view-a-blob-containers-contents"></a>Visualización del contenido de un contenedor de blobs
 Los contenedores de blobs contienen blobs y carpetas (que también contienen blobs).
 
-Los siguientes pasos muestran cómo ver el contenido de un contenedor de blobs en el Explorador de almacenamiento (versión preliminar):
+Hello siguientes pasos muestran cómo contenido de hello tooview de un contenedor de blobs en el Explorador de almacenamiento (versión preliminar):
 
 1. Abra el Explorador de almacenamiento (versión preliminar).
-2. En el panel izquierdo, expanda la cuenta de almacenamiento que contiene el contenedor de blobs que desea ver.
-3. Expanda **Contenedores de blob**de la cuenta de almacenamiento.
-4. Haga clic con el botón derecho en el contenedor de blobs que desea ver y (en el menú contextual) seleccione **Abrir editor de contenedores de blobs**.
-   También puede hacer doble clic en el contenedor de blobs que desea ver.
+2. En el panel izquierdo de hello, expanda cuenta de almacenamiento de Hola que contiene el contenedor de blobs de hello desea tooview.
+3. Expanda la cuenta de almacenamiento de hello **contenedores de blobs**.
+4. Contenedor de blobs de hello contextual desea tooview y - en el menú contextual de hello: seleccione **abrir Editor de contenedor de Blob**.
+   También puede hacer doble clic contenedor de blobs de hello desea tooview.
 
    ![Menú contextual Abrir editor de contenedor de blobs][19]
-5. El panel principal mostrará el contenido del contenedor de blobs.
+5. panel principal Hola mostrará el contenido del contenedor de blob de Hola.
 
    ![Editor de contenedor de blobs][3]
 
 ## <a name="delete-a-blob-container"></a>Eliminación de contenedores de blobs
-Los contenedores de blobs se pueden crear fácilmente y eliminarse según sea necesario. (Para ver cómo eliminar blobs individuales, consulte la sección [Administración de blobs de un contenedor de blobs](#managing-blobs-in-a-blob-container)).
+Los contenedores de blobs se pueden crear fácilmente y eliminarse según sea necesario. (toosee cómo blobs toodelete individuales, consulte sección toohello, [administrar blobs en un contenedor de blobs](#managing-blobs-in-a-blob-container).)
 
-Los siguientes pasos muestran cómo eliminar un contenedor de blobs en el Explorador de almacenamiento (versión preliminar):
+Hello siguientes pasos muestran cómo toodelete un contenedor de blobs en el Explorador de almacenamiento (versión preliminar):
 
 1. Abra el Explorador de almacenamiento (versión preliminar).
-2. En el panel izquierdo, expanda la cuenta de almacenamiento que contiene el contenedor de blobs que desea ver.
-3. Expanda **Contenedores de blob**de la cuenta de almacenamiento.
-4. Haga clic con el botón derecho en el contenedor de blobs que desea eliminar y (en el menú contextual) seleccione **Eliminar**.
-   También puede presionar **Suprimir** para eliminar el contenedor de blobs actualmente seleccionado.
+2. En el panel izquierdo de hello, expanda cuenta de almacenamiento de Hola que contiene el contenedor de blobs de hello desea tooview.
+3. Expanda la cuenta de almacenamiento de hello **contenedores de blobs**.
+4. Contenedor de blobs de hello contextual desea toodelete y - en el menú contextual de hello: seleccione **eliminar**.
+   También puede presionar **eliminar** contenedor de toodelete Hola blob actualmente seleccionado.
 
    ![Menú contextual Eliminar contenedores de blobs][4]
-5. Haga clic en **Sí** en el cuadro de diálogo de confirmación.
+5. Seleccione **Sí** toohello cuadro de diálogo de confirmación.
 
    ![Cuadro de diálogo de confirmación Eliminar contenedores de blobs][5]
 
 ## <a name="copy-a-blob-container"></a>Copia de un contenedor de blobs
-Explorador de almacenamiento (versión preliminar) permite copiar un contenedor de blobs en el Portapapeles y, a continuación, pegarlo en otra cuenta de almacenamiento. (Para ver cómo copiar blobs individuales, consulte la sección [Administración de blobs de un contenedor de blobs](#managing-blobs-in-a-blob-container)).
+Explorador de almacenamiento (vista previa) le permite toocopy un Portapapeles toohello de contenedor de blob y, a continuación, pegue que contenedor de blobs en otra cuenta de almacenamiento. (toosee cómo blobs toocopy individuales, consulte sección toohello, [administrar blobs en un contenedor de blobs](#managing-blobs-in-a-blob-container).)
 
-Los siguientes pasos muestran cómo copiar un contenedor de blobs de una cuenta de almacenamiento a otra.
+Hola pasos ilustran toocopy un contenedor de blob desde el almacenamiento de una cuenta y cómo tooanother.
 
 1. Abra el Explorador de almacenamiento (versión preliminar).
-2. En el panel izquierdo, expanda la cuenta de almacenamiento que contiene el contenedor de blobs que desea copiar.
-3. Expanda **Contenedores de blob**de la cuenta de almacenamiento.
-4. Haga clic con el botón derecho en el contenedor de blobs que desea copiar y (en el menú contextual) seleccione **Copy Blob Container**(Copiar contenedor de blobs).
+2. En el panel izquierdo de hello, expanda cuenta de almacenamiento de Hola que contiene el contenedor de blobs de hello desea toocopy.
+3. Expanda la cuenta de almacenamiento de hello **contenedores de blobs**.
+4. Contenedor de blobs de hello contextual desea toocopy y - en el menú contextual de hello: seleccione **contenedor de blobs de copia**.
 
    ![Menú contextual Copiar contenedor de blobs][6]
-5. Haga clic con el botón derecho en la cuenta de almacenamiento de "destino" deseada en la que desea pegar el contenedor de blobs y (en el menú contextual) seleccione **Paste Blob Container**(Pegar contenedor de blobs).
+5. Haga clic en la cuenta de almacenamiento de destino"hello deseado" en la que desee toopaste contenedor de blobs de Hola y - en el menú contextual de hello: seleccione **contenedor de blobs de pegar**.
 
    ![Menú contextual Pegar contenedor de blobs][7]
 
-## <a name="get-the-sas-for-a-blob-container"></a>Obtención de la SAS para un contenedor de blobs
-Una [firma de acceso compartido (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) ofrece acceso delegado a los recursos en la cuenta de almacenamiento.
-Esto significa que puede conceder permisos limitados de los clientes a objetos en su cuenta de almacenamiento durante un período específico y con un conjunto determinado de permisos sin tener que compartir las claves de acceso a las cuentas.
+## <a name="get-hello-sas-for-a-blob-container"></a>Obtener Hola SAS para un contenedor de blobs
+A [firma de acceso compartido (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) proporciona acceso delegado tooresources en su cuenta de almacenamiento.
+Esto significa que puede conceder a que un cliente limitada tooobjects permisos en su cuenta de almacenamiento en un periodo de tiempo y con un conjunto especificado de permisos, sin tener que compartir claves de acceso de su cuenta.
 
-Los siguientes pasos muestran cómo crear una SAS para un contenedor de blobs:
+Hello siguientes pasos muestran cómo toocreate una SAS para un contenedor de blobs:
 
 1. Abra el Explorador de almacenamiento (versión preliminar).
-2. En el panel izquierdo, expanda la cuenta de almacenamiento que contiene el contenedor de blobs del que desea obtener una SAS.
-3. Expanda **Contenedores de blob**de la cuenta de almacenamiento.
-4. Haga clic con el botón derecho en el contenedor de blobs deseado y (en el menú contextual) seleccione **Get Shared Access Signature**(Obtener firma de acceso compartido).
+2. En el panel izquierdo de hello, expanda cuenta de almacenamiento de Hola que contiene el contenedor de blobs de hello para el que desea tooget una SAS.
+3. Expanda la cuenta de almacenamiento de hello **contenedores de blobs**.
+4. Haga clic en el contenedor de blobs que se prefiera de Hola y - en el menú contextual de hello: seleccione **obtener firma de acceso compartido**.
 
    ![Menú contextual Obtener SAS][8]
-5. En el cuadro de diálogo **Firma de acceso compartido** , especifique la directiva, las fechas de inicio y vencimiento, la zona horaria y los niveles de acceso que desea para el recurso.
+5. Hola **firma de acceso compartido** cuadro de diálogo, especifique la directiva de hello, las fechas de inicio y finalización, zona horaria y tener acceso a niveles que desee para el recurso de Hola.
 
    ![Opciones de Obtener SAS][9]
-6. Cuando haya terminado de especificar las opciones de SAS, seleccione **Crear**.
-7. Después, un segundo cuadro de diálogo **Firma de acceso compartido** mostrará el contenedor de blobs junto con la dirección URL y las QueryStrings que se pueden utilizar para acceder al recurso de almacenamiento.
-   Seleccione **Copiar** junto a la dirección URL que desea copiar al Portapapeles.
+6. Cuando haya terminado de especificar las opciones de SAS de hello, seleccione **crear**.
+7. Un segundo **firma de acceso compartido** cuadro de diálogo, a continuación, mostrará que listas Hola contenedor de blobs junto con la dirección URL de Hola y cadenas que se puede usar tooaccess Hola recurso de almacenamiento.
+   Seleccione **copia** siguiente dirección URL de toohello desea toocopy toohello Portapapeles.
 
    ![Copiar direcciones URL de SAS][10]
 8. Cuando haya terminado, seleccione **Cerrar**.
 
 ## <a name="manage-access-policies-for-a-blob-container"></a>Administración de directivas de acceso para un contenedor de blobs
-Los siguientes pasos muestran cómo administrar (agregar y quitar) las directivas de acceso de un contenedor de blobs:
+Hello siguientes pasos muestran cómo toomanage (agregar y quitar) las directivas para un contenedor de blobs de acceso:
 
 1. Abra el Explorador de almacenamiento (versión preliminar).
-2. En el panel izquierdo, expanda la cuenta de almacenamiento que contiene el contenedor de blobs cuyas directivas de acceso desea administrar.
-3. Expanda **Contenedores de blob**de la cuenta de almacenamiento.
-4. Seleccione el contenedor de blobs deseado y (en el menú contextual) seleccione **Manage Access Policies**(Administrar directivas de acceso).
+2. En el panel izquierdo de hello, expanda cuenta de almacenamiento de Hola que contiene el contenedor de blobs de hello cuyas directivas de acceso que se va toomanage.
+3. Expanda la cuenta de almacenamiento de hello **contenedores de blobs**.
+4. Seleccionar contenedor de blobs deseado de Hola y - en el menú contextual de hello: seleccione **administrar directivas de acceso**.
 
    ![Menú contextual Administrar directivas de acceso][11]
-5. El cuadro de diálogo **Directivas de acceso** enumerará las directivas de acceso creadas para el contenedor de blobs seleccionado.
+5. Hola **las directivas de acceso** cuadro de diálogo mostrará una lista de las directivas de acceso creadas anteriormente para el contenedor de blob seleccionados Hola.
 
    ![Opciones de Directiva de acceso][12]        
-6. Siga estos pasos en función de la tarea de administración de directivas de acceso:
+6. Siga estos pasos dependiendo de la tarea de administración de directivas de acceso de Hola:
 
-   * **Agregar una nueva directiva de acceso**: seleccione **Agregar**. Una vez generada, el cuadro de diálogo **Directivas de acceso** mostrará la directiva de acceso recién agregada (con la configuración predeterminada).
+   * **Agregar una nueva directiva de acceso**: seleccione **Agregar**. Una vez generado, Hola **las directivas de acceso** cuadro de diálogo mostrará Hola recién agregado tener acceso a la directiva (con configuración predeterminada).
    * **Editar una directiva de acceso**: realice las modificaciones que desee y seleccione **Guardar**.
-   * **Quitar una directiva de acceso**: seleccione **Quitar** junto a la directiva de acceso que desea quitar.
+   * **Quitar una directiva de acceso** : seleccione esta opción **quitar** siguiente directiva de acceso de toohello desea tooremove.
 
-## <a name="set-the-public-access-level-for-a-blob-container"></a>Establecimiento del nivel de acceso público para un contenedor de blobs
-De manera predeterminada, todos los contenedores de blobs se establecen en "Sin acceso público".
+## <a name="set-hello-public-access-level-for-a-blob-container"></a>Establecer nivel de acceso público de hello en un contenedor de blob
+De forma predeterminada, cada contenedor de blob se establece demasiado "Ningún acceso público".
 
-Los siguientes pasos muestran cómo especificar un nivel de acceso público para un contenedor de blobs.
+Hello siguientes pasos muestran cómo toospecify un complemento público tiene acceso a nivel de un contenedor de blobs.
 
 1. Abra el Explorador de almacenamiento (versión preliminar).
-2. En el panel izquierdo, expanda la cuenta de almacenamiento que contiene el contenedor de blobs cuyas directivas de acceso desea administrar.
-3. Expanda **Contenedores de blob**de la cuenta de almacenamiento.
-4. Seleccione el contenedor de blobs deseado y (en el menú contextual) seleccione **Set Public Access Level**(Establecer nivel de acceso público).
+2. En el panel izquierdo de hello, expanda cuenta de almacenamiento de Hola que contiene el contenedor de blobs de hello cuyas directivas de acceso que se va toomanage.
+3. Expanda la cuenta de almacenamiento de hello **contenedores de blobs**.
+4. Seleccionar contenedor de blobs deseado de Hola y - en el menú contextual de hello: seleccione **establecer el nivel de acceso público**.
 
    ![Menú contextual Establecer nivel de acceso público][13]
-5. En el cuadro de diálogo **Set Container Public Access Level** (Establecer nivel de acceso público de contenedor), especifique el nivel de acceso deseado.
+5. Hola **establecer el nivel de acceso público de contenedor** cuadro de diálogo, especifique el nivel de acceso de hello deseado.
 
    ![Opciones de Establecer nivel de acceso público][14]
 6. Seleccione **Aplicar**.
 
 ## <a name="managing-blobs-in-a-blob-container"></a>Administración de blobs de un contenedor de blobs
-Una vez que haya creado un contenedor de blobs, puede cargar un blob en él, descargar un blob en el equipo local, abrir un blob en el equipo local, etc.
+Una vez que ha creado un contenedor de blobs, puede cargar un contenedor de blobs de blob toothat, descargue un equipo local de blob tooyour, abrir un blob en el equipo local y mucho más.
 
-Los siguientes pasos muestran cómo administrar los blobs (y carpetas) en un contenedor de blobs.
+Hola siguientes pasos muestra cómo toomanage Hola blobs (y carpetas) dentro de un contenedor de blob.
 
 1. Abra el Explorador de almacenamiento (versión preliminar).
-2. En el panel izquierdo, expanda la cuenta de almacenamiento que contiene el contenedor de blobs que desea administrar.
-3. Expanda **Contenedores de blob**de la cuenta de almacenamiento.
-4. Haga doble clic en el contenedor de blobs que desea ver.
-5. El panel principal mostrará el contenido del contenedor de blobs.
+2. En el panel izquierdo de hello, expanda cuenta de almacenamiento de Hola que contiene el contenedor de blobs de hello desea toomanage.
+3. Expanda la cuenta de almacenamiento de hello **contenedores de blobs**.
+4. Haga doble clic en el contenedor de blobs de hello desea tooview.
+5. panel principal Hola mostrará el contenido del contenedor de blob de Hola.
 
    ![Ver contenedor de blobs][3]
-6. El panel principal mostrará el contenido del contenedor de blobs.
-7. Siga estos pasos según la tarea que desea realizar:
+6. panel principal Hola mostrará el contenido del contenedor de blob de Hola.
+7. Siga estos que pasos dependiendo de la tarea hello desea tooperform:
 
-   * **Cargar archivos en un contenedor de blobs**
+   * **Cargar el contenedor de blobs de tooa de archivos**
 
-     1. En la barra de herramientas del panel principal, seleccione **Cargar** y, luego, **Cargar archivos** en el menú desplegable.
+     1. En la barra de herramientas del panel principal de hello, seleccione **cargar**y, a continuación, **cargar archivos** desde el menú desplegable de Hola.
 
         ![Menú Cargar archivos][15]
-     2. En el cuadro de diálogo **Cargar archivos**, seleccione el botón de puntos suspensivos (**...**) a la derecha del cuadro de texto **Archivos** para seleccionar los archivos que desea cargar.
+     2. Hola **cargar archivos** cuadro de diálogo, los puntos suspensivos Hola seleccione (**...** ) situado a derecha Hola de hello **archivos** tooselect Hola archivos desea tooupload de cuadro de texto.
 
         ![Opciones de Cargar archivos][16]
-     3. Especifique el **tipo de blob**. El artículo [Introducción a Azure Blob Storage mediante .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) explica las diferencias entre los distintos tipos de blob.
-     4. Opcionalmente, especifique la carpeta de destino en la que se cargarán los archivos seleccionados. Si la carpeta de destino no existe, se creará.
+     3. Especificar tipo de Hola de **tipo de Blob**. artículo de Hello [Introducción al almacenamiento de blobs de Azure mediante .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) se explican las diferencias de hello entre Hola diversos tipos de blob.
+     4. Si lo desea, especifique una carpeta de destino en la que se cargarán los archivos seleccionados de Hola. Si no existe la carpeta de destino de hello, se creará.
      5. Seleccione **Cargar**.
-   * **Cargar una carpeta en un contenedor de blobs**
+   * **Cargar un contenedor de blobs de tooa de carpeta**
 
-     1. En la barra de herramientas del panel principal, seleccione **Cargar**, y luego **Cargar carpeta** en el menú desplegable.
+     1. En la barra de herramientas del panel principal de hello, seleccione **cargar**y, a continuación, **cargar carpeta** desde el menú desplegable de Hola.
 
         ![Menú Cargar carpeta][17]
-     2. En el cuadro de diálogo **Cargar carpeta**, seleccione el botón de puntos suspensivos (**...**) a la derecha del cuadro de texto **Carpeta** para seleccionar la carpeta cuyo contenido desea cargar.
+     2. Hola **carga carpeta** cuadro de diálogo, los puntos suspensivos Hola seleccione (**...** ) situado a derecha Hola de hello **carpeta** carpeta de Hola de tooselect de cuadro de texto cuyo contenido desea tooupload.
 
         ![Opciones de Cargar carpeta][18]
-     3. Especifique el **tipo de blob**. El artículo [Introducción a Azure Blob Storage mediante .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) explica las diferencias entre los distintos tipos de blob.
-     4. Opcionalmente, especifique la carpeta de destino en la que se cargará el contenido de la carpeta seleccionada. Si la carpeta de destino no existe, se creará.
+     3. Especificar tipo de Hola de **tipo de Blob**. artículo de Hello [Introducción al almacenamiento de blobs de Azure mediante .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) se explican las diferencias de hello entre Hola diversos tipos de blob.
+     4. Si lo desea, especifique una carpeta de destino en qué Hola se cargará el contenido de la carpeta seleccionada. Si no existe la carpeta de destino de hello, se creará.
      5. Seleccione **Cargar**.
-   * **Descargar un blob en el equipo local**
+   * **Descargar un equipo local de blob tooyour**
 
-     1. Seleccione el blob que desea descargar.
-     2. En la barra de herramientas del panel principal, seleccione **Descargar**.
-     3. En el cuadro de diálogo **Specify where to save the downloaded blob** (Especificar dónde se guarda el blob descargado), especifique la ubicación en que desea descargar el blob y el nombre que desee darle.  
+     1. Seleccione el blob de hello desea toodownload.
+     2. En la barra de herramientas del panel principal de hello, seleccione **descargar**.
+     3. Hola **especificar donde hello toosave descarga blob** cuadro de diálogo, especificar ubicación de Hola donde desea blob Hola descargó y Hola nombre que desee toogive se.  
      4. Seleccione **Guardar**.
    * **Abrir un blob en el equipo local**
 
-     1. Seleccione el blob que desea abrir.
-     2. En la barra de herramientas del panel principal, seleccione **Abrir**.
-     3. El blob se descargará y se abrirá con la aplicación asociada con el tipo de archivo subyacente del blob.
-   * **Copiar un blob en el Portapapeles**
+     1. Seleccione el blob de hello desea tooopen.
+     2. En la barra de herramientas del panel principal de hello, seleccione **abiertos**.
+     3. blob de Hola se van a descargar y abre con la aplicación hello asociada con el tipo de archivo subyacente del blob de Hola.
+   * **Copiar un Portapapeles toohello de blob**
 
-     1. Seleccione el blob que desea copiar.
-     2. En la barra de herramientas del panel principal, seleccione **Copiar**.
-     3. En el panel izquierdo, navegue a otro contenedor de blobs y haga doble clic en él para verlo en el panel principal.
-     4. En la barra de herramientas del panel principal, seleccione **Pegar** para crear una copia del blob.
+     1. Seleccione el blob de hello desea toocopy.
+     2. En la barra de herramientas del panel principal de hello, seleccione **copia**.
+     3. En el panel izquierdo de hello, navegar por el contenedor de blobs de tooanother y haga doble clic tooview en el panel principal Hola.
+     4. En la barra de herramientas del panel principal de hello, seleccione **pegar** toocreate una copia de blob de Hola.
    * **Eliminar un blob**
 
-     1. Seleccione el blob que desea eliminar.
-     2. En la barra de herramientas del panel principal, seleccione **Eliminar**.
-     3. Haga clic en **Sí** en el cuadro de diálogo de confirmación.
+     1. Seleccione el blob de hello desea toodelete.
+     2. En la barra de herramientas del panel principal de hello, seleccione **eliminar**.
+     3. Seleccione **Sí** toohello cuadro de diálogo de confirmación.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Ver las [notas de la versión y los vídeos más recientes del Explorador de almacenamiento (versión preliminar)](http://www.storageexplorer.com).
-* Obtenga información acerca de cómo [crear aplicaciones con blobs, tablas, colas y archivos de Azure](https://azure.microsoft.com/documentation/services/storage/).
+* Hola de vista [notas de la versión de explorador de almacenamiento (versión preliminar) y los vídeos más recientes](http://www.storageexplorer.com).
+* Obtenga información acerca de cómo demasiado[crear aplicaciones mediante Azure blobs, tablas, colas y archivos](https://azure.microsoft.com/documentation/services/storage/).
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png
 [1]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-create.png

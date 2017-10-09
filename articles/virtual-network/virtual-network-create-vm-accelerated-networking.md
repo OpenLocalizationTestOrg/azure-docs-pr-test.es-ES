@@ -1,6 +1,6 @@
 ---
-title: "Creación de una máquina virtual de Azure con Accelerated Networking | Microsoft Docs"
-description: "Aprenda a crear una máquina virtual con Accelerated Networking."
+title: "aaaCreate una máquina virtual de Azure con Accelerated redes | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate una máquina virtual con Accelerated redes."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,53 +16,53 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449425189a3b42dcb2c31316c1c8e38fac69d761
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 241362891bfe083ab32c2f558be54f63f87c0693
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-machine-with-accelerated-networking"></a>Creación de una máquina virtual con Accelerated Networking
 
-En este tutorial, obtendrá información sobre cómo crear una máquina virtual de Azure con Accelerated Networking. Las redes aceleradas están en disponibilidad general para Windows y en versión preliminar pública para distribuciones de Linux específicas. Accelerated Networking habilita la virtualización de E/S de raíz única (SR-IOV) en una máquina virtual (VM), lo que mejora significativamente su rendimiento en la red. Esta ruta de alto rendimiento omite el host de la ruta de acceso de datos, lo que reduce la latencia, la inestabilidad y la utilización de la CPU para su uso con las cargas de trabajo de red más exigentes en tipos de máquina virtual compatibles. En la siguiente imagen, se muestra la comunicación entre dos máquinas virtuales (VM) con y sin Accelerated Networking:
+En este tutorial, aprenderá cómo toocreate una máquina Virtual (VM) de Azure con Accelerated redes. Las redes aceleradas están en disponibilidad general para Windows y en versión preliminar pública para distribuciones de Linux específicas. Redes acelerada permite tooa virtualización (SR-IOV) de E/S de raíz única máquina virtual, se mejora significativamente el rendimiento de red. Esta ruta de acceso de alto rendimiento omite host Hola de ruta de datos de hello reduce la latencia y vibración, uso de CPU, para su uso con hello más exigentes red cargas de trabajo en tipos admitidos de máquina virtual. Hola la siguiente imagen se muestra en comunicación entre dos máquinas virtuales (VM) con y sin redes acelerada:
 
 ![De comparación](./media/virtual-network-create-vm-accelerated-networking/image1.png)
 
-Sin Accelerated Networking, todo el tráfico de red de entrada y salida de la máquina virtual tiene que atravesar el host y el conmutador virtual. El conmutador virtual se encarga de toda la aplicación de directivas, como grupos de seguridad de red, listas de control de acceso, aislamiento y otros servicios virtualizados de red, al tráfico de red. Para más información sobre los conmutadores virtuales, lea el artículo sobre [virtualización de red y conmutador virtual de Hyper-V](https://technet.microsoft.com/library/jj945275.aspx).
+Sin red acelerado, todo el tráfico de red dentro y fuera de hello VM debe atravesar host Hola y el conmutador virtual de Hola. conmutador virtual de Hello exige la aplicación de directiva de todos los, tales como grupos de seguridad de red acceso a listas de control, aislamiento y otro tráfico de toonetwork de servicios de red virtualizado. más información acerca de los modificadores virtuales, leer hello toolearn [virtualización de red de Hyper-V y el conmutador virtual](https://technet.microsoft.com/library/jj945275.aspx) artículo.
 
-Con Accelerated Networking, el tráfico de red llega a la interfaz de red (NIC) de la máquina virtual y se reenvía después a la máquina virtual. Todas las directivas de red que el conmutador virtual aplica sin Accelerated Networking se descargan y aplican en el hardware. La aplicación de directivas en hardware permite que la NIC reenvíe el tráfico de red directamente a la máquina virtual, pasando por alto el host y el conmutador virtual, al mismo tiempo que se mantienen todas las directivas aplicadas en el host.
+Con las redes acelerada, el tráfico de red llega a la interfaz de red (NIC) de la máquina virtual de hello y, a continuación, se reenvía toohello máquina virtual. Se aplica todas las directivas de red que Hola conmutador virtual sin redes acelerada se descarga y se aplican en hardware. Aplicar directiva de hardware permite Hola NIC tooforward tráfico de red directamente toohello VM, omitiendo el host de Hola y el conmutador virtual de hello, al tiempo que mantiene todas las directivas de Hola aplica en el host de Hola.
 
-Las ventajas de Accelerated Networking solo se aplican a la máquina virtual donde esté habilitado. Para obtener resultados óptimos, lo ideal es habilitar esta característica en al menos dos máquinas virtuales conectadas a la misma instancia de Azure Virtual Network (VNet). Al comunicarse entre redes virtuales o conectarse de forma local, esta característica tiene un efecto mínimo sobre la latencia total.
+Hello ventajas de las redes acelerada solo aplican toohello máquina virtual que se ha habilitado en. Para obtener mejores resultados de hello, resulta ideal tooenable esta característica en al menos dos máquinas virtuales conectadas toohello misma red Virtual de Azure (VNet). Cuando se comunica a través de redes virtuales o conexión de forma local, esta característica tiene una latencia toooverall un impacto mínimo.
 
 > [!WARNING]
-> Esta versión preliminar pública de Linux podría no tener el mismo nivel de disponibilidad y confiabilidad que las características que se encuentran en las versiones de disponibilidad general. Esta característica no se admite, puede tener funcionalidades limitadas y no estar disponible en todas las ubicaciones de Azure. Para ver las notificaciones más actuales sobre la disponibilidad y el estado de esta característica, consulte la página de actualizaciones de Azure Virtual Network.
+> Este Linux versión preliminar pública que no tenga Hola son del mismo nivel de disponibilidad y confiabilidad como características que por lo general versión de disponibilidad. características de Hello no se admiten, pueden haber limitado las capacidades y pueden no estar disponibles en todas las ubicaciones de Azure. Para hello más las notificaciones de actualización de disponibilidad y estado de esta característica, consulte la página de actualizaciones de red Virtual de Azure de Hola.
 
 ## <a name="benefits"></a>Ventajas
-* **Menor latencia/Más paquetes por segundo (pps):** al quitarse el conmutador virtual de la ruta de acceso de datos, se elimina el tiempo que los paquetes pasan en el host para el procesamiento de las directivas y se aumenta el número de paquetes que se pueden procesar dentro de la máquina virtual.
-* **Inestabilidad reducida:** el procesamiento del conmutador virtual depende de la cantidad de directivas que deben aplicarse y la carga de trabajo de la CPU que se encarga del procesamiento. Al descargarse la aplicación de directivas en el hardware, se elimina esa variabilidad, ya que los paquetes se entregan directamente a la máquina virtual y se elimina el host de la comunicación de la máquina virtual, así como todas las interrupciones de software y los cambios de contexto.
-* **Disminución de la utilización de la CPU:** el pasar por alto el conmutador virtual en el host conlleva una disminución de la utilización de la CPU para procesar el tráfico de red.
+* **Menor latencia / superior paquetes por segundo (pps):** conmutador virtual de hello Removing de ruta de datos de hello quita tiempo Hola dedican de paquetes en el host de hello para el procesamiento de directiva y aumenta Hola número de paquetes que se pueden procesar dentro de hello VM.
+* **Reduce la vibración:** conmutador Virtual de procesamiento depende de la cantidad de Hola de directiva que necesita toobe aplicado y carga de trabajo Hola de hello CPU que realiza el procesamiento de Hola. La descarga de hardware de toohello de cumplimiento de directiva de hello quita esa variabilidad proporcionando paquetes directamente toohello máquina virtual, quite interrupciones de software y contexto de comunicación con el host tooVM hello y todos los conmutadores.
+* **Reduce el uso de CPU:** omisión Hola del conmutador virtual de host de hello conduce uso de CPU que no requiere herramientas para procesar el tráfico de red.
 
 ## <a name="Limitations"></a>Limitaciones
-Cuando se utiliza esta funcionalidad, existen las siguientes limitaciones:
+Hola siguientes limitaciones existe cuando se usa esta capacidad:
 
 * **Creación de interfaz de red:** Accelerated Networking solo se puede habilitar para una nueva interfaz de red. No se puede habilitar para una NIC existente.
-* **Creación de máquina virtual:** una NIC con Accelerated Networking habilitado solo se puede asociar a una máquina virtual cuando esta se crea. La NIC no puede asociarse a una máquina virtual existente.
-* **Regiones:** la mayoría de las regiones de Azure ofrecen máquinas virtuales de Windows con Accelerated Networking. En numerosas regiones se ofrecen máquinas virtuales de Linux con redes aceleradas. El número de regiones en las que esta funcionalidad está disponible va en aumento. Consulte más abajo el blog de actualizaciones de redes virtuales de Azure para ver la información más reciente.   
+* **Creación de máquinas virtuales:** una NIC con redes acelerada habilitada puede solo tooa adjunto VM cuando hello máquina virtual se creará. Hola NIC no puede ser tooan adjunto existente de la máquina virtual.
+* **Regiones:** la mayoría de las regiones de Azure ofrecen máquinas virtuales de Windows con Accelerated Networking. En numerosas regiones se ofrecen máquinas virtuales de Linux con redes aceleradas. se está expandiendo regiones Hola esta capacidad está disponible en. Vea el blog de las actualizaciones de red Virtual de Azure de Hola a continuación para obtener información más reciente de Hola.   
 * **Sistemas operativos compatibles:** para Windows, Microsoft Windows Server 2012 R2 Datacenter y Windows Server 2016. Para Linux, Ubuntu Server 16.04 LTS con kernel 4.4.0-77 o superior, SLES 12 SP2, RHEL 7.3 y CentOS 7.3 (publicado por Rogue Wave Software).
-* **Tamaño de máquina virtual:** instancias de uso general y de proceso optimizado con ocho o más núcleos. Para más información, consulte los artículos sobre los tamaños de máquina virtual de [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) y de [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). El conjunto de tamaños de instancia de máquina virtual compatibles se ampliará en el futuro.
+* **Tamaño de máquina virtual:** instancias de uso general y de proceso optimizado con ocho o más núcleos. Para obtener más información, vea hello [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) y [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artículos de tamaños de máquina virtual. Hola se expandirá conjunto de tamaños de instancia de máquina virtual admitidos en hello futuras.
 * **Implementación mediante Azure Resource Manager (ARM):** la funcionalidad de redes aceleradas no se puede implementar mediante ASM/RDFE.
 
-Los cambios en estas limitaciones se anunciarán a través de la página de [actualizaciones para Azure Virtual Networking](https://azure.microsoft.com/updates/accelerated-networking-in-preview).
+Limitaciones de toothese de cambios se anuncian a través de hello [red Virtual de Azure actualiza](https://azure.microsoft.com/updates/accelerated-networking-in-preview) página.
 
 ## <a name="create-a-windows-vm"></a>Creación de una máquina virtual Windows
-Puede usar Azure Portal o Azure [PowerShell](#windows-powershell) para crear la máquina virtual.
+Puede usar Hola portal de Azure o Azure [PowerShell](#windows-powershell) toocreate Hola máquina virtual.
 
 ### <a name="windows-portal"></a>Portal
 
-1. Desde un explorador de Internet, abra[Azure Portal](https://portal.azure.com) e inicie sesión con su [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) de Azure. Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
-2. En el portal, haga clic en **Nuevo** > **Compute** > **Windows Server 2016 Datacenter**. 
-3. En la hoja **Windows Server 2016 Datacenter**, deje seleccionado *Resource Manager* en **Seleccionar un modelo de implementación** y haga clic en **Crear**.
-4. En la hoja **Datos básicos** que aparece, escriba los valores a continuación, deje las opciones restantes con las opciones predeterminadas o seleccione o escriba sus propios valores y haga clic en el botón **Aceptar**:
+1. Desde un explorador de Internet, abra hello Azure [portal](https://portal.azure.com) e inicie sesión con Azure [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
+2. En el portal de hello, haga clic en **+ nuevo** > **proceso** > **Windows Server 2016 Datacenter**. 
+3. Hola **Windows Server 2016 Datacenter** hoja que aparece, deje *el Administrador de recursos* seleccionado en **seleccionar un modelo de implementación**y haga clic en **crear **.
+4. Hola **Fundamentos** hoja que aparece, escriba Hola después de valores, deje Hola restantes opciones predeterminadas o seleccione o escriba sus propios valores y haga clic en hello **Aceptar** botón:
 
     |Configuración|Valor|
     |---|---|
@@ -70,18 +70,18 @@ Puede usar Azure Portal o Azure [PowerShell](#windows-powershell) para crear la 
     |Grupos de recursos|Deje seleccionado **Crear nuevo** y escriba *MyResourceGroup*.|
     |Ubicación|Oeste de EE. UU. 2|
 
-    Si no está familiarizado con Azure, consulte más información sobre [grupos de recursos](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [suscripciones](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) y [ubicaciones](https://azure.microsoft.com/regions) (también denominadas regiones).
-5. En la hoja **Elegir un tamaño** que aparece, escriba *8* en el cuadro **Minimum cores** (cantidad mínima de núcleos), a continuación, haga clic en **Ver todos**.
-6. Haga clic en **DS4_V2 Standard** o en cualquier máquina virtual compatible y, después, en el botón **Seleccionar**.
-7. En el hoja **Configuración** que aparece, deje todos los valores como están excepto **Habilitado**, haga clic en esta opción en **Accelerated Networking**, a continuación, haga clic en el botón **Aceptar**. **Nota:** Si en los pasos anteriores, seleccionó valores de tamaño de máquina virtual, sistema operativo o ubicación que no aparecen en la sección [Limitaciones](#Limitations) de este artículo, **Accelerated Networking** no estará visible.
-8. En la hoja **Resumen** que aparece, haga clic en el botón **Aceptar**. Azure comienza a crear la máquina virtual. La creación tarda unos minutos.
-9. Para instalar el controlador de Accelerated Networking para Windows, complete los pasos descritos en la sección [Configuración de Windows](#configure-windows) de este artículo.
+    Si es nuevo tooAzure, obtenga más información sobre [grupos de recursos](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [suscripciones](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription), y [ubicaciones](https://azure.microsoft.com/regions) (que también aparecen tooas regiones).
+5. Hola **elegir un tamaño de** hoja que aparece, escriba *8* en hello **cantidad mínima de núcleos** cuadro, a continuación, haga clic en **todas las ver**.
+6. Haga clic en **DS4_V2 estándar**, o cualquier admitido VM, a continuación, haga clic en hello **seleccione** botón.
+7. Hola **configuración** hoja que aparece, deje todos los valores de configuración como-es, pero sin hacer clic **habilitado** en **Accelerated redes**, a continuación, haga clic en hello **Aceptar** botón. **Nota:** si, en los pasos anteriores, seleccionó valores de tamaño VM, el sistema operativo o la ubicación que no aparezcan en hello [limitaciones](#Limitations) sección de este artículo, **acelerado redes**no está visible.
+8. Hola **resumen** hoja que aparece, haga clic en hello **Aceptar** botón. Azure comienza a crear Hola máquina virtual. La creación tarda unos minutos.
+9. Hola tooinstall accelerated controlador de redes para Windows, Hola completa los pasos de hello [configurar Windows](#configure-windows) sección de este artículo.
 
 ### <a name="windows-powershell"></a>PowerShell
-1. Instale la versión más reciente del módulo [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) de Azure PowerShell. Si no está familiarizado con Azure PowerShell, consulte el artículo [Introducción a Azure PowerShell](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Inicie una sesión de PowerShell haciendo clic en el botón Inicio de Windows, luego escriba **Powershell** y, a continuación, en los resultados de búsqueda, haga clic en **PowerShell**.
-3. En la ventana de PowerShell, escriba el comando `login-azurermaccount` para iniciar sesión con su [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) de Azure. Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
-4. En su explorador, copie el siguiente script:
+1. Instale Hola la versión más reciente de hello Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) módulo. Si es nuevo tooAzure PowerShell, leer hello [Introducción a Azure PowerShell](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json) artículo.
+2. Iniciar una sesión de PowerShell haciendo clic en el botón de inicio de Windows hello, escriba **powershell**, a continuación, haga clic en **PowerShell** en los resultados de búsqueda de Hola.
+3. En la ventana de PowerShell, escriba Hola `login-azurermaccount` toosign de comando con Azure [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
+4. En el explorador, copie Hola siguiente secuencia de comandos:
     ```powershell
     $RgName="MyResourceGroup"
     $Location="westus2"
@@ -111,7 +111,7 @@ Puede usar Azure Portal o Azure [PowerShell](#windows-powershell) para crear la 
       -Location $Location `
       -AllocationMethod Static
 
-    # Create a virtual network interface and associate the public IP address to it
+    # Create a virtual network interface and associate hello public IP address tooit
     $Nic = New-AzureRmNetworkInterface `
       -Name MyNic `
       -ResourceGroupName $RgName `
@@ -120,7 +120,7 @@ Puede usar Azure Portal o Azure [PowerShell](#windows-powershell) para crear la 
       -PublicIpAddressId $Pip.Id `
       -EnableAcceleratedNetworking
      
-    # Define a credential object for the VM. PowerShell prompts you for a username and password.
+    # Define a credential object for hello VM. PowerShell prompts you for a username and password.
     $Cred = Get-Credential
 
     # Create a virtual machine configuration
@@ -137,60 +137,60 @@ Puede usar Azure Portal o Azure [PowerShell](#windows-powershell) para crear la 
       -Version latest | `
     Add-AzureRmVMNetworkInterface -Id $Nic.Id 
 
-    # Create the virtual machine.    
+    # Create hello virtual machine.    
     New-AzureRmVM `
       -ResourceGroupName $RgName `
       -Location $Location `
       -VM $VmConfig
     #
     ```
-5. En la ventana de PowerShell, haga clic con el botón derecho para pegar el script y empezar a ejecutarlo. Se le pide un nombre de usuario y una contraseña. Use estas credenciales para iniciar sesión en la máquina virtual cuando se conecte a ella en el paso siguiente. Si ha cambiado valores en el script antes de ejecutarlo y se produce un error en el script, confirme que los valores que utilizó para el tamaño, sistema operativo, y ubicación de la máquina virtual se muestran en la sección [Limitaciones](#Limitations) de este artículo.
-6. Para instalar el controlador de Accelerated Networking para Windows, complete los pasos descritos en la sección [Configuración de Windows](#configure-windows) de este artículo.
+5. En la ventana de PowerShell, haga clic en el script de Hola toopaste e iniciará ejecutarla. Se le pide un nombre de usuario y una contraseña. Usar estas credenciales toolog en toohello VM al conectarse tooit en el paso siguiente Hola. Si se produce un error en la secuencia de comandos de Hola y cambiar valores en el script de Hola antes de ejecutarlo, confirme los valores de hello que ha utilizado para el tamaño de máquina virtual, sistema operativo, y ubicación se muestran en hello [limitaciones](#Limitations) sección de este artículo.
+6. Hola tooinstall accelerated controlador de redes para Windows, Hola completa los pasos de hello [configurar Windows](#configure-windows) sección de este artículo.
 
 ### <a name="configure-windows"></a>Configuración de Windows
-Una vez creada la máquina virtual en Azure, tiene que instalar al controlador de Accelerated Networking para Windows. Antes de completar los pasos a continuación, tiene que haber creado una máquina virtual Windows con Accelerated Networking mediante los pasos indicados para el [Portal](#windows-portal) o para [PowerShell](#windows-powershell) de este artículo. 
+Una vez que cree Hola VM en Azure, debe instalar el controlador de red acelerada de Hola para Windows. Antes de completar Hola pasos, debe haber creado una máquina virtual de Windows con redes acelerada con cualquier hello [portal](#windows-portal) o [PowerShell](#windows-powershell) los pasos de este artículo. 
 
-1. Desde un explorador de Internet, abra[Azure Portal](https://portal.azure.com) e inicie sesión con su [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) de Azure. Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
-2. En el cuadro que contiene el texto *Buscar recursos*, en la parte superior de Azure Portal, escriba *MyVm*. Haga clic en **MyVm** cuando aparezca en los resultados de búsqueda.
-3. En la hoja **MyVm** que aparece, haga clic en el botón **Conectar** en la esquina superior izquierda de la hoja. **Nota:** Si **Creando** está visible en el botón **Conectar**, Azure no ha terminado de crear la máquina virtual. Haga clic en **Conectar** solo después de que ya no se vea **Creando** en el botón **Conectar**.
-4. Permita que el explorador descargue el archivo **MyVm.rdp**.  Una vez descargado, haga clic en el archivo para abrirlo. 
-5. Haga clic en el botón **Conectar** en el cuadro **Conexión a Escritorio remoto** que aparece notificándole que el publicador de esta conexión remota no se puede identificar.
-6. En el cuadro **Seguridad de Windows** que aparece, haga clic en **Más opciones**, a continuación, haga clic en **Usar otra cuenta**. Escriba el nombre de usuario y la contraseña que escribió en el paso 4, a continuación, haga clic en el botón **Aceptar**.
-7. Haga clic en el botón **Sí** en el cuadro Conexión a Escritorio remoto que le informa de que no se puede comprobar la identidad del equipo remoto.
-8. Haga clic con el botón derecho en el botón Inicio de Windows y haga clic en **Administrador de dispositivos**. Expanda el nodo **Adaptadores de red**. Compruebe que el **Adaptador Ethernet de función virtual ConnectX-3 de Mellanox** aparezca como se muestra en la siguiente imagen:
+1. Desde un explorador de Internet, abra hello Azure [portal](https://portal.azure.com) e inicie sesión con Azure [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
+2. En el cuadro de Hola que contiene texto hello *buscar recursos* Hola parte superior de hello portal de Azure, escriba *MyVm*. Cuando **MyVm** aparece en los resultados de búsqueda de hello, haga clic en él.
+3. Hola **MyVm** hoja que aparece, haga clic en hello **conectar** botón en hello la esquina superior izquierda de la hoja de Hola. **Nota:** si **crear** está visible en hello **conectar** botón, Azure no ha terminado de crear Hola máquina virtual. Haga clic en **conectar** sólo después de que ya no verá **crear** en hello **conectar** botón.
+4. Permitir su Hola de explorador toodownload **MyVm.rdp** archivo.  Una vez descargado, haga clic en hello archivo tooopen lo. 
+5. Haga clic en hello **conectar** botón en hello **conexión a Escritorio remoto** cuadro que aparece, le notifica que hello no se puede identificar el Editor de conexión remota de Hola.
+6. Hola **la seguridad de Windows** cuadro que aparece, haga clic en **más opciones**, a continuación, haga clic en **Use otra cuenta**. Escriba el nombre de usuario de Hola y la contraseña que especificó en el paso 4, haga clic en hello **Aceptar** botón.
+7. Haga clic en hello **Sí** en botón del cuadro de conexión a Escritorio remoto de Hola que aparece, le notifica que no se puede comprobar la identidad de hello del equipo remoto Hola.
+8. Haga clic en el botón de inicio de Windows hello y haga clic en **el Administrador de dispositivos**. Expanda hello **adaptadores de red** nodo. Confirme que hello **Mellanox ConnectX-3 adaptador de Ethernet de función Virtual** aparece como se muestra en hello después de imagen:
    
     ![Administrador de dispositivos](./media/virtual-network-create-vm-accelerated-networking/image2.png)
 
 9. Las redes aceleradas ya están habilitadas para su máquina virtual.
 
 ## <a name="create-a-linux-vm"></a>Creación de una máquina virtual Linux
-Puede usar Azure Portal o Azure [PowerShell](#linux-powershell) para crear una máquina virtual Ubuntu o SLES. En el caso de las máquinas virtuales RHEL y CentOS, el flujo de trabajo es diferente.  Vea las instrucciones que se describen a continuación.
+Puede usar Hola portal de Azure o Azure [PowerShell](#linux-powershell) toocreate un Ubuntu o SLES VM. En el caso de las máquinas virtuales RHEL y CentOS, el flujo de trabajo es diferente.  Consulte las instrucciones de hello siguientes.
 
 ### <a name="linux-portal"></a>Portal
-1. Regístrese para Accelerated Networking para la versión preliminar de Linux siguiendo los pasos del 1 al 5 de la sección [Creación de una máquina virtual Linux: PowerShell](#linux-powershell) de este artículo.  No se puede registrar para versión preliminar en el portal.
-2. Complete los pasos del 1 al 8 en la sección [Creación de una máquina virtual Windows: Portal](#windows-portal) de este artículo. En el paso 2, haga clic en **Ubuntu Server 16.04 LTS** en lugar de **Windows Server 2016 Datacenter**. Para este tutorial, elija utilizar una contraseña en lugar de una clave SSH, aunque para las implementaciones de producción, puede usar cualquiera de las dos opciones. Si **Accelerated Networking** no aparece cuando se completa el paso 7 de la sección [Creación de una máquina virtual Windows: Portal](#windows-portal) de este artículo, es probable que sea por uno de los siguientes motivos:
-    - No se ha registrado para la versión preliminar. Confirme que su estado de registro es **Registrado**, tal como se describe en el paso 4 de la sección [Creación de una máquina virtual Linux: PowerShell](#linux-powershell) de este artículo. **Nota:** Si participó en la versión preliminar de Accelerated Networking para máquinas virtuales de Windows (ya no es necesario registrarse para usar Accelerated Networking para máquinas virtuales de Windows), no se registrará automáticamente para la versión preliminar de Accelerated Networking para máquinas virtuales de Linux. Para poder participar en la versión preliminar de Accelerated Networking para máquinas virtuales de Linux, tiene que registrarse.
-    - No ha seleccionado el tamaño de máquina virtual, el sistema operativo o la ubicación que se enumeran en la sección [Limitaciones](#limitations) de este artículo.
-3. Para instalar el controlador de Accelerated Networking para Linux, complete los pasos descritos en la sección [Configuración de Linux](#configure-linux) de este artículo.
+1. Registro de hello accelerated redes de Linux preview siguiendo los pasos del 1 al 5 del programa Hola a [crear una VM Linux - PowerShell](#linux-powershell) sección de este artículo.  No se puede registrar para la vista previa de hello en el portal de Hola.
+2. Complete los pasos 1-8 en hello [crear una VM de Windows - portal](#windows-portal) sección de este artículo. En el paso 2, haga clic en **Ubuntu Server 16.04 LTS** en lugar de **Windows Server 2016 Datacenter**. Para este tutorial, elija toouse una contraseña, en lugar de una clave SSH, aunque para las implementaciones de producción, puede usar. Si **Accelerated redes** no aparece cuando se completa el paso 7 de hello [crear una VM de Windows - portal](#windows-portal) sección de este artículo, es probable para uno de hello siguientes motivos:
+    - No se ha registrado para la vista previa de Hola. Confirme que el estado de registro es **registrado**, tal como se describe en el paso 4 de hello [crear una VM Linux - Powershell](#linux-powershell) sección de este artículo. **Nota:** si ha participado en hello acelerado de red para la vista previa de máquinas virtuales de Windows (su ningún toouse tooregister necesarios más acelerado de redes para máquinas virtuales de Windows), no se registra automáticamente para hello acelerado red para Obtener una vista previa en máquinas virtuales de Linux. Debe registrar para hello acelerado de red para obtener una vista previa en máquinas virtuales de Linux tooparticipate en ella.
+    - No se ha seleccionado un tamaño VM, el sistema operativo o la ubicación que se indica en hello [limitaciones](#limitations) sección de este artículo.
+3. Hola tooinstall accelerated controlador de redes de Linux, Hola completa los pasos de hello [configurar Linux](#configure-linux) sección de este artículo.
 
 ### <a name="linux-powershell"></a>PowerShell
 
 >[!WARNING]
->Si crea máquinas virtuales de Linux con Accelerated Networking en una suscripción y después intenta crear una máquina virtual Windows con Accelerated Networking en la misma suscripción, se puede producir un error en la creación de la máquina virtual Windows. Durante esta versión preliminar, se recomienda probar las máquinas virtuales Windows y Linux con Accelerated Networking en suscripciones independientes.
+>Si crear máquinas virtuales de Linux con redes acelerada en una suscripción y, a continuación, intente toocreate una VM de Windows con las redes acelerada de Hola misma suscripción, que puede producir un error Hola creación de VM de Windows. Durante esta versión preliminar, se recomienda probar las máquinas virtuales Windows y Linux con Accelerated Networking en suscripciones independientes.
 >
 
-1. Instale la versión más reciente del módulo [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) de Azure PowerShell. Si no está familiarizado con Azure PowerShell, consulte el artículo [Introducción a Azure PowerShell](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Inicie una sesión de PowerShell haciendo clic en el botón Inicio de Windows, luego escriba **Powershell** y, a continuación, en los resultados de búsqueda, haga clic en **PowerShell**.
-3. En la ventana de PowerShell, escriba el comando `login-azurermaccount` para iniciar sesión con su [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) de Azure. Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
-4. Regístrese para la versión preliminar de Accelerated Networking para Azure siguiendo los pasos a continuación:
-    - Envíe un correo electrónico a [axnpreview@microsoft.com](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) con su identificador de suscripción de Azure y el uso previsto. Espere a recibir una confirmación por correo electrónico de Microsoft que le indique que la suscripción está habilitada.
-    - Escriba el siguiente comando para confirmar que está registrado para la versión preliminar:
+1. Instale Hola la versión más reciente de hello Azure PowerShell [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) módulo. Si es nuevo tooAzure PowerShell, leer hello [Introducción a Azure PowerShell](/powershell/azure/get-started-azureps?toc=%2fazure%2fvirtual-network%2ftoc.json) artículo.
+2. Iniciar una sesión de PowerShell haciendo clic en el botón de inicio de Windows hello, escriba **powershell**, a continuación, haga clic en **PowerShell** en los resultados de búsqueda de Hola.
+3. En la ventana de PowerShell, escriba Hola `login-azurermaccount` toosign de comando con Azure [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
+4. Registrarme para hello accelerated redes de Azure preview siguiendo Hola pasos:
+    - Enviar un correo electrónico demasiado[ axnpreview@microsoft.com ](mailto:axnpreview@microsoft.com?subject=Request%20to%20enable%20subscription%20%3csubscription%20id%3e) con su Id. de suscripción de Azure y el uso previsto. Espere a recibir una confirmación por correo electrónico de Microsoft que le indique que la suscripción está habilitada.
+    - Escriba Hola después tooconfirm de comando que se registra para la vista previa de hello:
     
         ```powershell
         Get-AzureRmProviderFeature -FeatureName AllowAcceleratedNetworkingForLinux -ProviderNamespace Microsoft.Network
         ```
 
-        No continúe con el paso 5 hasta que aparezca **Registrado** en la salida después de escribir el comando anterior. El resultado debe ser similar a la salida siguiente antes de continuar:
+        No continúe con el paso 5 hasta que **registrado** aparece en hello después de escribir el comando anterior Hola de salida. El resultado debe ser similar siguiente de hello resultado antes de continuar:
     
         ```powershell
         FeatureName                        ProviderName      RegistrationState
@@ -199,9 +199,9 @@ Puede usar Azure Portal o Azure [PowerShell](#linux-powershell) para crear una m
         ```
         
       >[!NOTE]
-      >Si participó en la versión preliminar de Accelerated Networking para máquinas virtuales de Windows (ya no es necesario registrarse para usar Accelerated Networking para máquinas virtuales de Windows), no se registrará automáticamente para la versión preliminar de Accelerated Networking para máquinas virtuales de Linux. Para poder participar en la versión preliminar de Accelerated Networking para máquinas virtuales de Linux, tiene que registrarse.
+      >Si ha participado en hello acelerado de red para la vista previa de máquinas virtuales de Windows (su ningún toouse tooregister necesarios más acelerado de redes para máquinas virtuales de Windows), no se registra automáticamente para hello acelerado de la red para la vista previa de las máquinas virtuales de Linux. Debe registrar para hello acelerado de red para obtener una vista previa en máquinas virtuales de Linux tooparticipate en ella.
       >
-5. En el explorador, copie el script siguiente y sustituya Ubuntu o SLES según sea necesario.  Redhat y CentOS tienen un flujo de trabajo diferente, que se describe a continuación:
+5. En el explorador, copie Hola siguiente secuencia de comandos sustituyendo Ubuntu o SLES según sea necesario.  Redhat y CentOS tienen un flujo de trabajo diferente, que se describe a continuación:
 
     ```powershell
     $RgName="MyResourceGroup"
@@ -232,7 +232,7 @@ Puede usar Azure Portal o Azure [PowerShell](#linux-powershell) para crear una m
       -Location $Location `
       -AllocationMethod Static
 
-    # Create a virtual network interface and associate the public IP address to it
+    # Create a virtual network interface and associate hello public IP address tooit
     $Nic = New-AzureRmNetworkInterface `
       -Name MyNic `
       -ResourceGroupName $RgName `
@@ -241,7 +241,7 @@ Puede usar Azure Portal o Azure [PowerShell](#linux-powershell) para crear una m
       -PublicIpAddressId $Pip.Id `
       -EnableAcceleratedNetworking
      
-    # Create a new Storage account and define the new VM’s OSDisk name and its URI
+    # Create a new Storage account and define hello new VM’s OSDisk name and its URI
     # Must end with ".vhd" extension
     $OSDiskName = "MyOsDiskName.vhd"
     # Storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
@@ -249,7 +249,7 @@ Puede usar Azure Portal o Azure [PowerShell](#linux-powershell) para crear una m
     $StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $RgName -Name $OSDiskSAName -Type "Standard_GRS" -Location $Location
     $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDiskName
  
-    # Define a credential object for the VM. PowerShell prompts you for a username and password.
+    # Define a credential object for hello VM. PowerShell prompts you for a username and password.
     $Cred = Get-Credential
 
     # Create a virtual machine configuration
@@ -269,56 +269,56 @@ Puede usar Azure Portal o Azure [PowerShell](#linux-powershell) para crear una m
       -VhdUri $OSDiskUri `
       -CreateOption FromImage 
 
-    # Create the virtual machine.    
+    # Create hello virtual machine.    
     New-AzureRmVM `
       -ResourceGroupName $RgName `
       -Location $Location `
       -VM $VmConfig
     ```
     
-6. En la ventana de PowerShell, haga clic con el botón derecho para pegar el script y empezar a ejecutarlo. Se le pide un nombre de usuario y una contraseña. Use estas credenciales para iniciar sesión en la máquina virtual cuando se conecte a ella en el paso siguiente. Si se produce un error en el script, confirme que:
-    - Se registró para la versión preliminar, tal como se describe en el paso 4
-    - Si ha cambiado los valores de tamaño de máquina virtual, tipo de sistema operativo o ubicación en el script antes de ejecutarlo, confirme que los valores que ha utilizado se muestran en la sección [Limitaciones](#Limitations) de este artículo.
-7. Para instalar el controlador de Accelerated Networking para Linux, complete los pasos descritos en la sección [Configuración de Linux](#configure-linux) de este artículo.
+6. En la ventana de PowerShell, haga clic en el script de Hola toopaste e iniciará ejecutarla. Se le pide un nombre de usuario y una contraseña. Usar estas credenciales toolog en toohello VM al conectarse tooit en el paso siguiente Hola. Si se produce un error en la secuencia de comandos de hello, confirme:
+    - Se registran para la vista previa de hello, tal como se describe en el paso 4
+    - Si cambia de tamaño, el tipo de sistema operativo o los valores de ubicación en el script de Hola VM antes de ejecutarlo y que se mostrarán los valores de hello en hello [limitaciones](#Limitations) sección de este artículo.
+7. Hola tooinstall accelerated controlador de redes de Linux, Hola completa los pasos de hello [configurar Linux](#configure-linux) sección de este artículo.
 
 ### <a name="configure-linux"></a>Configuración de Linux
 
-Una vez creada la máquina virtual en Azure, tiene que instalar al controlador de Accelerated Networking para Linux. Antes de completar los pasos a continuación, tiene que haber creado una máquina virtual Linux con Accelerated Networking mediante los pasos indicados para el [Portal](#linux-portal) o para [PowerShell](#linux-powershell) de este artículo. 
+Una vez que cree Hola VM en Azure, debe instalar el controlador de red acelerada de Hola para Linux. Antes de completar Hola pasos, debe haber creado una VM de Linux con redes acelerada con cualquier hello [portal](#linux-portal) o [PowerShell](#linux-powershell) los pasos de este artículo. 
 
-1. Desde un explorador de Internet, abra[Azure Portal](https://portal.azure.com) e inicie sesión con su [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account) de Azure. Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
-2. En la parte superior del portal, a la derecha de la barra *Buscar recursos*, haga clic en el icono **>_** para iniciar una instancia de Cloud Shell de Bash (versión preliminar). El panel de Cloud Shell de Bash aparece en la parte inferior del portal y, después de unos segundos, presenta el símbolo del sistema **username@Azure:~ $**. Aunque puede conectarse mediante SSH a la máquina virtual desde su equipo, en lugar de mediante Cloud Shell, las instrucciones de este tutorial asumen que está usando Cloud Shell.
-3. En la parte superior de Azure Portal, en el cuadro que contiene el texto *Buscar recursos*, escriba *MyVm*. Haga clic en **MyVm** cuando aparezca en los resultados de búsqueda.
-4. En la hoja **MyVm** que aparece, haga clic en el botón **Conectar** en la esquina superior izquierda de la hoja. **Nota:** Si **Creando** está visible en el botón **Conectar**, Azure no ha terminado de crear la máquina virtual. Haga clic en **Conectar** solo después de que ya no se vea **Creando** en el botón **Conectar**.
-5. Azure abre un cuadro que le pide que escriba la `ssh adminuser@<ipaddress>`. Escriba este comando en Cloud Shell (o cópielo en el cuadro que aparece en el paso 4 y péguelo en Cloud Shell) y luego presione ENTRAR.
-6. Seleccione **Sí** como respuesta a la pregunta de si desea seguir conectado, luego presione ENTRAR.
-7. Escriba la contraseña que especificó al crear la máquina virtual. Una vez iniciada sesión correctamente en la máquina virtual, verá un símbolo del sistema adminuser@MyVm:~$. Ahora tiene iniciada sesión en la máquina virtual a través de la sesión de Cloud Shell. **Nota:** Las sesiones de Cloud Shell agotan el tiempo de espera tras 10 minutos de inactividad.
+1. Desde un explorador de Internet, abra hello Azure [portal](https://portal.azure.com) e inicie sesión con Azure [cuenta](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Si aún no dispone de una cuenta, puede registrarse para obtener una [evaluación gratuita](https://azure.microsoft.com/offers/ms-azr-0044p).
+2. En parte superior de Hola de hello portal, toohello derecha hello *buscar recursos* barra, haga clic en hello **> _** icono toostart un shell de Bash en la nube (versión preliminar). Hello panel de shell de Bash en la nube aparece en hello parte inferior del portal de Hola y después de unos segundos, se presenta un ** username@Azure:~ $** símbolo del sistema. Aunque puede SSH toohello máquina virtual desde su equipo, en lugar de shell en la nube de hello, instrucciones de hello en este tutorial en el que se supone que usa el shell de hello en la nube.
+3. Hola parte superior de portal de hello, en el cuadro de Hola que contiene texto hello *buscar recursos*, tipo *MyVm*. Cuando **MyVm** aparece en los resultados de búsqueda de hello, haga clic en él.
+4. Hola **MyVm** hoja que aparece, haga clic en hello **conectar** botón en hello la esquina superior izquierda de la hoja de Hola. **Nota:** si **crear** está visible en hello **conectar** botón, Azure no ha terminado de crear Hola máquina virtual. Haga clic en **conectar** sólo después de que ya no verá **crear** en hello **conectar** botón.
+5. Azure abre un cuadro que indique hello tooenter `ssh adminuser@<ipaddress>`. Escriba este comando en hello en la nube shell (o copia del cuadro de Hola que aparecían en el paso 4 y péguelo en el shell de nube toohello), a continuación, presione ENTRAR.
+6. ENTRAR **Sí** toohello preguntando si desea conectar toocontinue, a continuación, presionar ENTRAR.
+7. Escriba la contraseña de Hola que especificó al crear Hola máquina virtual. Una vez ha iniciado sesión correctamente en toohello de máquina virtual, verá un adminuser@MyVm:~ símbolo del sistema de $. Ahora se registran en toohello máquina virtual a través de la sesión de shell de hello en la nube. **Nota:** Las sesiones de Cloud Shell agotan el tiempo de espera tras 10 minutos de inactividad.
 
-Llegados a este punto, las instrucciones difieren en función de la distribución que se use. 
+En este momento, las instrucciones de hello varían en función de distribución de Hola que usa. 
 
 #### <a name="ubuntusles"></a>Ubuntu/SLES
 
-1. En el símbolo del sistema, escriba `uname -r` y confirme la versión para:
+1. En el símbolo del sistema de hello, escriba `uname -r` y confirme la versión de Hola para:
 
     * Ubuntu: "4.4.0-77-generic," o superior
     * SLES: "4.4.59-92.20-default" o superior
 
-2. Cree un bond entre la vNIC de redes estándar y la vNIC de Accelerated Networking mediante la ejecución de los comandos que siguen. El tráfico de red utiliza la vNIC de Accelerated Networking que tiene mayor rendimiento, mientras el bond garantiza que el tráfico de redes no se interrumpe en determinados cambios de configuración.
+2. Crear un bono entre vNIC de red estándar de Hola y Hola accelerated red vNIC mediante la ejecución de los comandos de Hola que siguen. Tráfico de red usa Hola con mayor rendimiento acelerado vNIC de red, mientras bond Hola garantiza que el tráfico de red no se interrumpe en determinados cambios de configuración.
           
      ```bash
      wget https://raw.githubusercontent.com/LIS/lis-next/master/tools/sriov/configure_hv_sriov.sh
      chmod +x ./configure_hv_sriov.sh
      sudo ./configure_hv_sriov.sh
      ```
-3. Después de ejecutar el script, la máquina virtual se reiniciará al cabo de una pausa de 60 segundos.
-4. Una vez que se reinicia la máquina virtual, vuelva a conectarse a ello completando de nuevo los pasos del 5 al 7.
-5. Ejecute el comando `ifconfig` y confirme que sale bond0 y se muestra la interfaz como UP. 
+3. Después de ejecutar script de Hola, Hola VM se reiniciará después de pausar un 60 segundos.
+4. Una vez Hola VM se reinicia, vuelva a conectar tooit completando los pasos 5 a 7 nuevo.
+5. Ejecute hello `ifconfig` comando y confirme que sale bond0 e interfaz Hola se muestra como arriba. 
  
  >[!NOTE]
-      >Las aplicaciones que usen redes aceleradas deben comunicarse a través de la interfaz *bond0*, no de la interfaz *eth0*.  El nombre de la interfaz puede cambiar antes de que Accelerated Networking alcance la disponibilidad general.
+      >Las aplicaciones que usan las redes acelerada deben comunicarse a través de hello *bond0* interfaz, no *eth0*.  nombre de la interfaz de Hello puede cambiar antes de que las redes acelerada alcance la disponibilidad general.
 
 #### <a name="rhelcentos"></a>RHEL/CentOS
 
-Para crear una máquina virtual de Red Hat Enterprise Linux o CentOS 7.3, debe seguir algunos pasos adicionales para cargar los controladores más recientes necesarios para SR-IOV y el controlador de función virtual (VF) de la tarjeta de red. En la primera fase de las instrucciones se prepara una imagen que puede usarse para crear una o varias máquinas virtuales que tengan los controladores precargados.
+Creación de una Red Hat Enterprise Linux o CentOS 7.3 VM requiere algunos adicional de los pasos necesarios para SR-IOV y controlador de función Virtual (VF) de tarjeta de red de Hola Hola controladores tooload hello más recientes. Hola primera fase de instrucciones de hello prepara una imagen que puede ser utilizado toomake uno o más máquinas virtuales que tienen controladores de hello previamente cargados.
 
 ##### <a name="phase-one-prepare-a-red-hat-enterprise-linux-or-centos-73-base-image"></a>Fase uno: preparar una imagen base de Red Hat Enterprise Linux o CentOS 7.3. 
 
@@ -350,11 +350,11 @@ Para crear una máquina virtual de Red Hat Enterprise Linux o CentOS 7.3, debe s
     sudo waagent -deprovision+user 
     ```
 
-5.  Desde Azure Portal, detenga esta máquina virtual, vaya a "Discos" en la máquina virtual y capture el URI de VHD de OSDisk. Este URI contiene el nombre de VHD de la imagen base y su cuenta de almacenamiento. 
+5.  Desde el portal de Azure, detener esta máquina virtual; y vaya "Discos" del tooVM, capturar el URI de VHD de hello OSDisk. Este URI contiene el nombre de disco duro virtual de la imagen base de Hola y su cuenta de almacenamiento. 
  
 ##### <a name="phase-two-provision-new-vms-on-azure"></a>Fase 2: aprovisionar nuevas máquinas virtuales en Azure
 
-1.  Aprovisione nuevas máquinas virtuales con New-AzureRMVMConfig por medio del VHD de la imagen base capturado en la fase uno, con AcceleratedNetworking habilitado en la vNIC:
+1.  Aprovisionar nuevas máquinas virtuales según con New-AzureRMVMConfig utilizando Hola base imagen VHD capturado en la primera fase, con AcceleratedNetworking habilitado en hello vNIC:
 
     ```powershell
     $RgName="MyResourceGroup"
@@ -385,7 +385,7 @@ Para crear una máquina virtual de Red Hat Enterprise Linux o CentOS 7.3, debe s
      -Location $Location `
      -AllocationMethod Static
     
-    # Create a virtual network interface and associate the public IP address to it
+    # Create a virtual network interface and associate hello public IP address tooit
     $Nic = New-AzureRmNetworkInterface `
      -Name MyNic `
      -ResourceGroupName $RgName `
@@ -394,18 +394,18 @@ Para crear una máquina virtual de Red Hat Enterprise Linux o CentOS 7.3, debe s
      -PublicIpAddressId $Pip.Id `
      -EnableAcceleratedNetworking
     
-    # Specify the base image's VHD URI (from phase one step 5). 
-    # Note: The storage account of this base image vhd should have "Storage service encryption" disabled
+    # Specify hello base image's VHD URI (from phase one step 5). 
+    # Note: hello storage account of this base image vhd should have "Storage service encryption" disabled
     # See more from here: https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption
-    # This is just an example URI, you will need to replace this when running this script
+    # This is just an example URI, you will need tooreplace this when running this script
     $sourceUri="https://myexamplesa.blob.core.windows.net/vhds/CentOS73-Base-Test120170629111341.vhd" 
 
-    # Specify a URI for the location from which the new image binary large object (BLOB) is copied to start the virtual machine. 
+    # Specify a URI for hello location from which hello new image binary large object (BLOB) is copied toostart hello virtual machine. 
     # Must end with ".vhd" extension
     $OsDiskName = "MyOsDiskName.vhd" 
     $destOsDiskUri = "https://myexamplesa.blob.core.windows.net/vhds/" + $OsDiskName
     
-    # Define a credential object for the VM. PowerShell prompts you for a username and password.
+    # Define a credential object for hello VM. PowerShell prompts you for a username and password.
     $Cred = Get-Credential
     
     # Create a custom virtual machine configuration
@@ -423,29 +423,29 @@ Para crear una máquina virtual de Red Hat Enterprise Linux o CentOS 7.3, debe s
      -CreateOption FromImage `
      -Linux
     
-    # Create the virtual machine.    
+    # Create hello virtual machine.    
     New-AzureRmVM `
      -ResourceGroupName $RgName `
      -Location $Location `
      -VM $VmConfig
     ```
 
-2.  Una vez que las máquinas virtuales hayan arrancado, compruebe el dispositivo de función virtual mediante el comando "lspci" y consulte la entrada Mellanox. Por ejemplo, debería ver este elemento en la salida de lspci:
+2.  Después de arrancan las máquinas virtuales, comprobar el dispositivo de VF Hola por "lspci" y compruebe la entrada del Mellanox Hola. Por ejemplo, debemos vemos este elemento en la salida de hello lspci:
     
     ```
     0001:00:02.0 Ethernet controller: Mellanox Technologies MT27500/MT27520 Family [ConnectX-3/ConnectX-3 Pro Virtual Function]
     ```
     
-3.  Ejecute el script de unión:
+3.  Ejecutar script de unión de Hola por:
 
     ```bash
     sudo bondvf.sh
     ```
 
-4.  Reinicie las máquinas virtuales nuevas:
+4.  Reiniciar Hola nuevas máquinas virtuales:
 
     ```bash
     sudo reboot
     ```
 
-La máquina virtual debe arrancar con bond0 configurado y la ruta de acceso de las redes aceleradas habilitada.  Ejecute `ifconfig` para confirmarlo.
+Hola VM debe comenzar con hello ruta acelerado de red habilitado y bond0 configurado.  Ejecutar `ifconfig` tooconfirm.

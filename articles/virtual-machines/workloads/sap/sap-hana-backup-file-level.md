@@ -1,5 +1,5 @@
 ---
-title: Azure Backup de SAP HANA en el nivel de archivo | Microsoft Docs
+title: aaaSAP HANA la copia de seguridad de Azure en el nivel de archivo | Documentos de Microsoft
 description: "Existen dos posibilidades de copia de seguridad principales para SAP HANA en Azure Virtual Machines. Este artículo trata sobre Azure Backup de SAP HANA en el nivel de archivo"
 services: virtual-machines-linux
 documentationcenter: 
@@ -13,149 +13,149 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-ms.openlocfilehash: 5db0ceb1648b5afa278e1cbe1c42fce8033bfdc1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d5a55de5634ac7724e7fd0fa3760c6c408c3db74
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Azure Backup de SAP HANA en el nivel de archivo
 
 ## <a name="introduction"></a>Introducción
 
-Esto forma parte de una serie de tres partes de artículos relacionados sobre copia de seguridad de SAP HANA. [Guía de copia de seguridad de SAP HANA en Azure Virtual Machines](./sap-hana-backup-guide.md) proporciona una introducción e información sobre los pasos iniciales, y [Copia de seguridad de SAP HANA basada en instantáneas de almacenamiento](./sap-hana-backup-storage-snapshots.md) trata la opción de copia de seguridad basada en instantáneas de almacenamiento.
+Esto forma parte de una serie de tres partes de artículos relacionados sobre copia de seguridad de SAP HANA. [Guía de backup para SAP HANA en máquinas virtuales Azure](./sap-hana-backup-guide.md) proporciona una introducción e información sobre los pasos iniciales, y [copia de seguridad de SAP HANA basándose en instantáneas de almacenamiento](./sap-hana-backup-storage-snapshots.md) portadas Hola opción de copia de seguridad basados en instantáneas de almacenamiento.
 
-Puede examinar los tamaños de máquina virtual de Azure para comprobar que GS5 permite 64 discos de datos asociados. Para los sistemas de SAP HANA de gran tamaño, puede haberse tomado ya un número significativo de discos para archivos de registro y datos, posiblemente junto con el RAID del software para ofrecer un rendimiento óptimo de E/S del disco. La pregunta es: ¿Cuándo almacenar archivos de copia de seguridad de SAP HANA que puedan llenar los discos de datos asociados con el paso del tiempo? Vea [Tamaños de las máquinas virtuales Linux en Azure](../../linux/sizes.md) para las tablas de tamaño de máquina virtual de Azure.
+Examinando los tamaños de máquina virtual de Azure de hello, uno puede ver que una GS5 permite 64 discos de datos adjuntos. Para los sistemas de SAP HANA de gran tamaño, puede haberse tomado ya un número significativo de discos para archivos de registro y datos, posiblemente junto con el RAID del software para ofrecer un rendimiento óptimo de E/S del disco. ¿a continuación, la pregunta de Hello es donde toostore SAP HANA copia de seguridad de archivos, que podrían llenarse datos Hola adjunta discos con el tiempo? Vea [tamaños de máquinas virtuales de Linux en Azure](../../linux/sizes.md) para las tablas de tamaño de máquina virtual de Azure Hola.
 
-En este momento no hay ninguna integración de copia de seguridad de SAP HANA disponible con el servicio Azure Backup. Es el método estándar de administración de la copia de seguridad/restauración en el nivel de archivo es con una copia de seguridad basada en archivos a través de SAP HANA Studio o a través de instrucciones SQL de SAP HANA. Vea [SAP HANA SQL y referencia de vistas del sistema](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf) para obtener más información.
+En este momento no hay ninguna integración de copia de seguridad de SAP HANA disponible con el servicio Azure Backup. manera estándar de Hello toomanage copia de seguridad/restauración en el nivel de archivo hello es con una copia de seguridad basada en archivos a través de SAP HANA Studio o instrucciones SQL de SAP HANA. Vea [SAP HANA SQL y referencia de vistas del sistema](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf) para obtener más información.
 
-![Esta ilustración muestra el cuadro de diálogo del elemento de menú de copia de seguridad en SAP HANA Studio](media/sap-hana-backup-file-level/image022.png)
+![Esta ilustración muestra el cuadro de diálogo de Hola Hola copia de seguridad del elemento de menú en SAP HANA Studio](media/sap-hana-backup-file-level/image022.png)
 
-Esta ilustración muestra el cuadro de diálogo del elemento de menú de copia de seguridad en SAP HANA Studio. Al elegir el tipo &quot;archivo&quot;, tiene que especificar una ruta de acceso den el sistema de archivos donde SAP HANA escribe los archivos de copia de seguridad. La restauración funciona del mismo modo.
+Esta ilustración muestra el cuadro de diálogo de Hola Hola copia de seguridad del elemento de menú en SAP HANA Studio. Al elegir el tipo &quot;archivo&quot; uno tiene toospecify una ruta de acceso del sistema de archivos de Hola donde SAP HANA escribe archivos de copia de seguridad de Hola. Restauración funciona Hola igual.
 
-Aunque esta opción suena simple y sencilla, existen algunas consideraciones. Como se mencionó antes, una máquina virtual de Azure tiene una limitación del número de discos de datos que se pueden asociar. No habrá capacidad para almacenar archivos de copia de seguridad de SAP HANA en los sistemas de archivos de la VM, según el tamaño de los requisitos de rendimiento del disco y la base de datos, que podría provocar que el RAID del software use la fragmentación en varios discos de datos. Se proporcionan más opciones para mover estos archivos de copia de seguridad y administrar las restricciones de tamaño de archivo y el rendimiento cuando se administran terabytes de datos más adelante en este artículo.
+Aunque esta opción suena simple y sencilla, existen algunas consideraciones. Como se mencionó antes, una máquina virtual de Azure tiene una limitación del número de discos de datos que se pueden asociar. No puede haber archivos de copia de seguridad de SAP HANA de toostore y capacidad en sistemas de archivos de Hola Hola de máquina virtual, según el tamaño de Hola de hello base de datos y disco requisitos de rendimiento, que podría causar el software RAID mediante la creación de bandas a través de los datos de varios discos. Se proporcionan más opciones para mover estos archivos de copia de seguridad y administrar las restricciones de tamaño de archivo y el rendimiento cuando se administran terabytes de datos más adelante en este artículo.
 
-Otra opción, que ofrece más libertad con respecto a la capacidad total, es Azure Blob Storage. Aunque un único blob también se restringe a 1 TB, la capacidad total de un único contenedor de blobs es actualmente de 500 TB. Además, ofrece a los clientes la opción de seleccionar el denominado almacenamiento de blobs en &quot;frío&quot;, que tiene un costo-beneficio. Vea [Azure Blob Storage: capas de almacenamiento de acceso frecuente y esporádico](../../../storage/blobs/storage-blob-storage-tiers.md) para obtener más información sobre el almacenamiento de blobs en frío.
+Otra opción, que ofrece más libertad con respecto a la capacidad total, es Azure Blob Storage. Mientras un único blob también está restringido too1 TB, la capacidad total de Hola de un único contenedor blobs está actualmente 500 TB. Además, ofrece a los clientes Hola choice tooselect denominada &quot;frío&quot; almacenamiento de blobs, que tiene una ventaja de costo. Vea [Azure Blob Storage: capas de almacenamiento de acceso frecuente y esporádico](../../../storage/blobs/storage-blob-storage-tiers.md) para obtener más información sobre el almacenamiento de blobs en frío.
 
-Para obtener una seguridad adicional, utilice una cuenta de almacenamiento con replicación geográfica para almacenar las copias de seguridad de SAP HANA. Vea [Replicación de Azure Storage](../../../storage/common/storage-redundancy.md) para obtener más información sobre la replicación de la cuenta de almacenamiento.
+Por motivos de seguridad adicional, utilice un almacenamiento de replicación geográfica cuenta toostore Hola SAP HANA las copias de seguridad. Vea [Replicación de Azure Storage](../../../storage/common/storage-redundancy.md) para obtener más información sobre la replicación de la cuenta de almacenamiento.
 
-Puede colocar VHD dedicados para copias de seguridad de SAP HANA en una cuenta de almacenamiento de copia de seguridad dedicada con replicación geográfica. También puede copiar los VHD que conserven las copias de seguridad de SAP HANA en una cuenta de almacenamiento de replicación geográfica o en una cuenta de almacenamiento que se encuentre en una región diferente.
+Puede colocar VHD dedicados para copias de seguridad de SAP HANA en una cuenta de almacenamiento de copia de seguridad dedicada con replicación geográfica. O bien uno podría copiar discos duros virtuales de Hola que mantienen copias de seguridad de SAP HANA Hola cuenta de almacenamiento georreplicadas tooa o tooa cuenta de almacenamiento que se encuentra en una región diferente.
 
 ## <a name="azure-backup-agent"></a>Azure Backup Agent
 
-Azure Backup Agent ofrece la opción de no solo realizar copias de seguridad de las VM completadas, sino también de archivos y directorios mediante el agente de copia de seguridad, que debe estar instalado en el sistema operativo invitado. Sin embargo, a partir de diciembre de 2016, este agente solo se admite en Windows (vea [Copia de seguridad desde Windows Server o un cliente de Windows en Azure mediante el modelo de implementación de Resource Manager](../../../backup/backup-configure-vault.md)).
+Ofertas de copia de seguridad de Azure Hola opción toonot solo realizar una copia completa de máquinas virtuales, pero también archivos y directorios a través de agente de copia de seguridad de hello, que tiene instalado en el sistema operativo invitado de Hola de toobe. Pero a partir de 2016 de diciembre, este agente sólo se admite en Windows (vea [copia de seguridad una tooAzure de Windows Server o cliente utilizando el modelo de implementación del Administrador de recursos de hello](../../../backup/backup-configure-vault.md)).
 
-Una solución alternativa es copiar primero archivos de copia de seguridad de SAP HANA en una VM Windows en Azure (por ejemplo, a través de recursos compartidos SAMBA) y, a continuación, usar Azure Backup Agent desde allí. Aunque es técnicamente posible, podría agregar complejidad y ralentizar la copia de seguridad o restaurar el proceso un poco debido a la copia entre la VM Windows y Linux. No se recomienda seguir este enfoque.
+Una solución alternativa es copia de toofirst tooa de archivos de copia de seguridad de SAP HANA VM de Windows en Azure (por ejemplo, a través de recursos compartidos SAMBA) y, a continuación, usar hello agente de copia de seguridad de Azure desde allí. Aunque es técnicamente posible, podría agregar complejidad y ralentizar la copia de seguridad de Hola o proceso un poco debido toohello copia entre hello VM de Windows y Linux de Hola de restauración. No es recomendable toofollow este enfoque.
 
 ## <a name="azure-blobxfer-utility-details"></a>Detalles de la utilidad bloxfer de Azure
 
-Para almacenar directorios y archivos en Azure Storage, puede usar CLI o PowerShell, o desarrollar una herramienta mediante uno de los [Azure SDK](https://azure.microsoft.com/downloads/). También hay una utilidad lista para usar, AzCopy, para copiar datos a Azure Storage, pero es solo para Windows (vea [Transferencia de datos con la utilidad en línea de comandos AzCopy](../../../storage/common/storage-use-azcopy.md)).
+toostore directorios y archivos en almacenamiento de Azure, podría usar una CLI o PowerShell, o desarrolle una herramienta mediante uno de hello [Azure SDK](https://azure.microsoft.com/downloads/). También hay una utilidad listos para usar, AzCopy, para la copia de almacenamiento de datos tooAzure, pero se trata solo de Windows (consulte [transferir datos con hello utilidad de línea de comandos de AzCopy](../../../storage/common/storage-use-azcopy.md)).
 
-Por lo tanto, se usó blobxfer para copiar los archivos de copia de seguridad de SAP HANA. Se trata de código abierto, que usan muchos clientes en entornos de producción, y que está disponible en [GitHub](https://github.com/Azure/blobxfer). Esta herramienta permite copiar datos directamente a Azure Blob Storage o al recurso compartido de archivos de Azure. También ofrece una gama de características útiles, como hash md5 o paralelismo automático al copiar un directorio con varios archivos.
+Por lo tanto, se usó blobxfer para copiar los archivos de copia de seguridad de SAP HANA. Se trata de código abierto, que usan muchos clientes en entornos de producción, y que está disponible en [GitHub](https://github.com/Azure/blobxfer). Esta herramienta permite que los datos de una toocopy directamente tooeither Azure blob storage o recurso compartido de archivos de Azure. También ofrece una gama de características útiles, como hash md5 o paralelismo automático al copiar un directorio con varios archivos.
 
 ## <a name="sap-hana-backup-performance"></a>Rendimiento de copia de seguridad de SAP HANA
 
-![Esta captura de pantalla es de la consola de copia de seguridad de SAP HANA en SAP HANA Studio](media/sap-hana-backup-file-level/image023.png)
+![Esta captura de pantalla es de la consola de copia de seguridad de SAP HANA hello en SAP HANA Studio](media/sap-hana-backup-file-level/image023.png)
 
-Esta captura de pantalla es de la consola de copia de seguridad de SAP HANA en SAP HANA Studio. Se tardó 42 minutos en realizar la copia de seguridad de 230 GB en un único disco de almacenamiento estándar de Azure asociado a la VM de HANA con el sistema de archivos XFS.
+Esta captura de pantalla es de la consola de copia de seguridad de SAP HANA hello en SAP HANA Studio. Copia de seguridad de aproximadamente 42 minutos toodo Hola. se tardó de hello 230 GB en un disco de almacenamiento de Azure único estándar adjunta toohello HANA VM mediante el sistema de archivos XFS.
 
-![Esta captura de pantalla es de YaST en la VM de prueba de SAP HANA](media/sap-hana-backup-file-level/image024.png)
+![Esta captura de pantalla es de YaST en la máquina virtual de la prueba de SAP HANA Hola](media/sap-hana-backup-file-level/image024.png)
 
-Esta captura de pantalla es de YaST en la VM de prueba de SAP HANA. Puede ver el disco único de 1 TB para la copia de seguridad de SAP HANA como se mencionó antes. Se tardó 42 minutos en realizar la copia de seguridad de 230 GB. Además, se asocian cinco discos de 200 GB y software RAID md0 creado, con la fragmentación en la parte superior de estaos cinco discos de datos de Azure.
+Esta captura de pantalla es de YaST en la máquina virtual de la prueba de SAP HANA Hola. Como se mencionó antes, se puede ver solo disco de 1 TB de Hola para copia de seguridad de SAP HANA. Se tardó aproximadamente 42 minutos toobackup 230 GB. Además, se asocian cinco discos de 200 GB y software RAID md0 creado, con la fragmentación en la parte superior de estaos cinco discos de datos de Azure.
 
-![La repetición de la misma copia de seguridad en software RAID con fragmentación en cinco discos de datos de Azure Standard Storage asociados](media/sap-hana-backup-file-level/image025.png)
+![Repetir Hola igual de copia de seguridad en RAID de software con creación de bandas en cinco discos de datos de almacenamiento estándar Azure conectados](media/sap-hana-backup-file-level/image025.png)
 
-La repetición de la misma copia de seguridad en software RAID con fragmentación en cinco discos de datos de Azure Standard Storage asociados provocó que el tiempo de copia de seguridad descendiera de 42 a 10 minutos. Los discos se asociaron sin el almacenamiento en caché en la VM. Por lo tanto, resulta evidente la importancia del rendimiento de la escritura en disco para el tiempo de copia de seguridad. Puede entonces cambiar a Azure Premium Storage para acelerar aún más el proceso para obtener un rendimiento óptimo. En general, debe usarse Azure Premium Storage para los sistemas de producción.
+Hola repetición igual de copia de seguridad en RAID de software con creación de bandas en cinco conectado hora de copia de seguridad de Azure almacenamiento estándar datos discos poner Hola de 42 minutos hacia abajo too10 minutos. se han adjuntado discos Hola sin almacenamiento en caché toohello máquina virtual. Por lo que resulta evidente la importancia rendimiento de escritura en disco es para tiempo de copia de seguridad de Hola. Uno podría conmutador tooAzure premium almacenamiento toofurther acelerar el proceso de Hola para un rendimiento óptimo. En general, debe usarse Azure Premium Storage para los sistemas de producción.
 
-## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>Copia de archivos de copia de seguridad de SAP HA en Azure Blob Storage
+## <a name="copy-sap-hana-backup-files-tooazure-blob-storage"></a>Copie el almacenamiento de blobs de tooAzure de archivos de copia de seguridad de SAP HANA
 
-A partir de diciembre de 2016, la mejor opción para almacenar rápidamente archivos de copia de seguridad de SAP HANA es Azure Blob Storage. Un contenedor de blob único tiene un límite de 500 TB, que es suficiente para la mayoría de los sistemas de SAP HANA que se ejecutan en una VM GS5 en Azure, para mantener bastantes copias de seguridad de SAP HANA. Los clientes pueden elegir entre el almacenamiento de blobs en &quot;caliente&quot; y en &quot;frío&quot; (vea [Azure Blob Storage: capas de almacenamiento de acceso frecuente y esporádico](../../../storage/blobs/storage-blob-storage-tiers.md)).
+Como de 2016 de diciembre, Hola mejor opción tooquickly almacén SAP HANA copias de seguridad es el almacenamiento de blobs de Azure. Un contenedor de blob único tiene un límite de 500 TB, suficiente para la mayoría de los sistemas de SAP HANA, ejecute en una máquina virtual GS5 en Azure, tookeep suficientes SAP HANA las copias de seguridad. Los clientes tienen la opción de hello entre &quot;activa&quot; y &quot;frío&quot; almacenamiento de blobs (vea [almacenamiento de blobs de Azure: caliente y estupendo capas de almacenamiento](../../../storage/blobs/storage-blob-storage-tiers.md)).
 
-Con la herramienta blobxfer, es fácil copiar los archivos de copia de seguridad de SAP HANA directamente en Azure Blob Storage.
+Con la herramienta de blobxfer Hola, son archivos de copia de seguridad de fácil toocopy Hola SAP HANA directamente tooAzure almacenamiento de blobs.
 
-![Aquí puede ver los archivos de una copia de seguridad completa de archivos de SAP HANA](media/sap-hana-backup-file-level/image026.png)
+![Aquí se pueden ver archivos de Hola de una copia de seguridad completa del archivo de SAP HANA](media/sap-hana-backup-file-level/image026.png)
 
-Aquí puede ver los archivos de una copia de seguridad completa de archivos de SAP HANA. Existen cuatro archivos y el mayor tiene aproximadamente 230 GB.
+Aquí se pueden ver archivos de Hola de una copia de seguridad completa del archivo de SAP HANA. Hay cuatro archivos y una mayor hello tiene aproximadamente 230 GB.
 
-![Se tardó aproximadamente 3000 segundos en copiar 230 GB en un contenedor de blobs de la cuenta de Azure Standard Storage](media/sap-hana-backup-file-level/image027.png)
+![Se tardó aproximadamente 3.000 segundos contenedor de blob de la cuenta del almacenamiento estándar Azure tooan toocopy Hola de 230 GB](media/sap-hana-backup-file-level/image027.png)
 
-Sin usar el hash md5 en la prueba inicial, se tardó aproximadamente 3000 segundos en copiar 230 GB en un contenedor de blobs de la cuenta de Azure Standard Storage.
+No usar hash md5 en prueba inicial de hello, que tardó aproximadamente 3.000 segundos contenedor de blob de la cuenta del almacenamiento estándar Azure tooan toocopy Hola de 230 GB.
 
-![En esta captura de pantalla, puede ver el aspecto en Azure Portal](media/sap-hana-backup-file-level/image028.png)
+![En esta captura de pantalla, uno puede ver su aspecto en hello portal de Azure](media/sap-hana-backup-file-level/image028.png)
 
-En esta captura de pantalla, puede ver el aspecto en Azure Portal. Se creó un contenedor de blobs denominado &quot;sap-hana-backups&quot; e incluye los cuatro blobs, que representan los archivos de copia de seguridad de SAP HANA. Uno de ellos tiene un tamaño de aproximadamente 230 GB.
+En esta captura de pantalla, uno puede ver su aspecto en hello portal de Azure. Un contenedor de blobs denominado &quot;backups de sap hana&quot; creó e incluye blobs Hola cuatro, que representan los archivos de copia de seguridad de SAP HANA Hola. Uno de ellos tiene un tamaño de aproximadamente 230 GB.
 
-La consola de copia de seguridad de HANA Studio permite restringir el tamaño máximo de archivo de los archivos de copia de seguridad de HANA. En el entorno de ejemplo, mejoró el rendimiento haciendo posible disponer de varios archivos de copia de seguridad más pequeños, en lugar de un archivo grande de 230 GB.
+consola de copia de seguridad de Hello HANA Studio permite un tamaño máximo de archivo de hello toorestrict de archivos de copia de seguridad de HANA. En el entorno de ejemplo de Hola, lo mayor rendimiento posible toohave archivos de varias copias de seguridad más pequeños, en lugar de un archivo grande de 230 GB para convertirla.
 
-![El establecimiento del límite del tamaño del archivo de copia de seguridad en la parte de HANA no mejora el tiempo de copia de seguridad](media/sap-hana-backup-file-level/image029.png)
+![Establecer límite de tamaño de archivo de copia de seguridad de hello en hello HANA lado &#39; t mejorar el tiempo de copia de seguridad de Hola](media/sap-hana-backup-file-level/image029.png)
 
-El establecimiento del límite del tamaño del archivo de copia de seguridad en la parte de HANA no mejora el tiempo de copia de seguridad porque los archivos se escriben secuencialmente como se muestra en esta figura. El límite de tamaño de archivo se estableció en 60 GB, por lo que la copia de seguridad creó cuatro archivos de datos de gran tamaño en lugar del archivo único de 230 GB.
+Establecer límite de tamaño de archivo de copia de seguridad de hello en hello HANA lado &#39; t mejoran el tiempo de copia de seguridad de hello, dado que los archivos de saludo se escriben secuencialmente, tal como se muestra en esta ilustración. límite de tamaño de archivo de Hola se estableció too60 GB, por lo que copia de seguridad de hello crea cuatro archivos de datos de gran tamaño en lugar de hello 230 GB único archivo.
 
-![Para probar el paralelismo de la herramienta blobxfer, el tamaño máximo de archivo para las copias de seguridad HANA se estableció en 15 GB](media/sap-hana-backup-file-level/image030.png)
+![paralelismo de tootest de herramienta de hello blobxfer, tamaño máximo de archivo de Hola para copias de seguridad HANA, a continuación, se estableció too15 GB](media/sap-hana-backup-file-level/image030.png)
 
-Para probar el paralelismo de la herramienta blobxfer, el tamaño máximo de archivo para las copias de seguridad HANA se estableció en 15 GB, que generó 19 archivos de copia de seguridad. Esta configuración provocó que el tiempo en el que blobxfer copió 230 GB en Azure Blob Storage descendiera de 3000 a 875 segundos.
+paralelismo de tootest de herramienta de hello blobxfer, tamaño máximo de archivo de Hola para copias de seguridad HANA, a continuación, se estableció too15 GB, lo que provocó 19 archivos de copia de seguridad. Esta configuración, vuelva a tiempo hello para el almacenamiento de blobs de blobxfer toocopy Hola de 230 GB tooAzure de 3.000 segundos hacia abajo too875 segundos.
 
-Este resultado se debe al límite de 60 MB/s para la escritura de un blob de Azure. El paralelismo a través de varios blobs resuelve el cuello de botella, pero tiene un inconveniente: el aumento del rendimiento de la herramienta blobxfer para copiar todos estos archivos de copia de seguridad de HANA en Azure Blob Storage supone una carga en la VM de HANA y la red. Afecta al funcionamiento del sistema de HANA.
+El resultado es pagar toohello límite de 60 MB/s para escribir un blob de Azure. Paralelismo a través de varios blobs resuelve el cuello de botella de hello, pero tiene un inconveniente: aumento del rendimiento de hello blobxfer herramienta toocopy estos tooAzure de copia de seguridad de archivos HANA almacenamiento de blobs supone una carga en hello HANA VM y red de Hola. Afecta al funcionamiento del sistema de HANA.
 
 ## <a name="blob-copy-of-dedicated-azure-data-disks-in-backup-software-raid"></a>Copia de blob de discos de datos de Azure dedicados en el software RAID de copia de seguridad
 
-A diferencia de la copia de seguridad del disco de datos de VM, en este enfoque no se realizan copias de seguridad todos los discos de datos en una VM para guardar toda la instalación de SAP, incluidos los datos de HANA, los archivos de registro de HANA y los archivos de configuración. En su lugar, la idea es disponer del software RAID dedicado con fragmentación en varios VHD de datos de Azure para el almacenamiento de una copia de seguridad de archivos de SAP HANA completa. Copie solo estos discos, que tienen una copia de seguridad de SAP HANA. Pueden guardarse fácilmente en una cuenta de almacenamiento de copia de seguridad de HANA dedicada, o asociarse a una &quot;VM de administración de copia de seguridad&quot; dedicada para un procesamiento posterior.
+A diferencia de hello VM datos disco copia de seguridad manual, en este enfoque uno no realizar copias de seguridad todos los discos de datos de hello en una máquina virtual toosave Hola SAP instalación completa, incluidos los datos HANA HANA registra los archivos y archivos de configuración. En su lugar, Hola idea es RAID de software toohave dedicado con creación de bandas en varios discos duros virtuales de datos de Azure para almacenar una copia de seguridad completa del archivo de SAP HANA. Una copia de solo estos discos, que tienen copia de seguridad de hello SAP HANA. Se podía mantenerse fácilmente en una cuenta de almacenamiento de copia de seguridad de HANA dedicada o adjunta tooa dedicado &quot;administración de máquinas virtuales de copia de seguridad&quot; para su posterior procesamiento.
 
-![Todos los VHD se copiaron con el comando de PowerShell **start-azurestorageblobcopy**](media/sap-hana-backup-file-level/image031.png)
+![Se han copiado todos los discos duros virtuales implicadas con Hola ** iniciar-azurestorageblobcopy ** comandos de PowerShell](media/sap-hana-backup-file-level/image031.png)
 
-Después de complementar el software RAID local, todos los VHD implicados se copiaron con el comando de PowerShell **start-azurestorageblobcopy** (vea [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy)). Como solo afecta al sistema de archivos dedicado para mantener archivos de copia de seguridad, no hay preocupaciones sobre la coherencia de los archivos de registro o de datos de SAP HANA en el disco. Una ventaja de este comando es que funciona mientras la VM se encuentra en línea. Para estar seguro de que no se escribe ningún proceso en el conjunto de fragmentos de copia de seguridad, asegúrese de desmontarlo antes de la copia de blob y montarlo de nuevo posteriormente. También puede usar una forma apropiada de &quot;inmovilizar&quot; el sistema de archivos. Por ejemplo, a través de xfs\_freeze para el sistema de archivos XFS.
+Después de que se completó hello toohello copia de seguridad local de software RAID, todos los discos duros virtuales implicadas se copiaron con hello **inicio azurestorageblobcopy** comando de PowerShell (vea [AzureStorageBlobCopy inicio](/powershell/module/azure.storage/start-azurestorageblobcopy)). Como solo afecta al sistema de archivos de hello dedicado para conservar los archivos de copia de seguridad de hello, no hay preocupaciones acerca de la coherencia de los archivos de datos o de registro de SAP HANA en disco Hola. Una ventaja de este comando es que funciona mientras Hola VM permanece en línea. toobe determinado que no hay ningún proceso escribe un conjunto de copia de seguridad bandas toohello, ser seguro toounmount con anterioridad Hola copia de blob y montar de nuevo posteriormente. O se podría usar un adecuado demasiado&quot;inmovilizar&quot; Hola de sistema de archivos. Por ejemplo, a través de xfs\_inmovilizar Hola XFS sistema de archivos.
 
-![Esta captura de pantalla muestra la lista de blobs en el contenedor de VHD en Azure Portal](media/sap-hana-backup-file-level/image032.png)
+![Esta captura de pantalla muestra la lista de Hola de blobs en contenedor de discos duros virtuales Hola Hola portal de Azure](media/sap-hana-backup-file-level/image032.png)
 
-Esta captura de pantalla muestra la lista de blobs en el contenedor de &quot;vhd&quot; en Azure Portal. La captura de pantalla muestra los cinco VHD, que se han asociado a la VM del servidor de SAP HANA para que actúe como software RAID para mantener los archivos de copia de seguridad de SAP HANA. También muestra las cinco copias, que se han realizado a través del comando de copia de blob.
+Esta captura de pantalla muestra la lista de Hola de blobs en hello &quot;discos duros virtuales&quot; contenedor en hello portal de Azure. captura de pantalla de Hello muestra hello cinco discos duros virtuales, que estuviera conectada toohello SAP HANA servidor VM tooserve como archivos de copia de seguridad de hello software RAID tookeep SAP HANA. También muestra hello cinco copias, que se han realizado a través del comando de copia de blob de Hola.
 
-![Para fines de prueba, las copias de los discos del software RAID de copia de seguridad de SAP HANA se asociaron a la VM del servidor de aplicaciones](media/sap-hana-backup-file-level/image033.png)
+![Para realizar pruebas, copias de Hola de los discos RAID de software de copia de seguridad de SAP HANA Hola estaban máquina virtual del servidor de aplicación toohello adjunto](media/sap-hana-backup-file-level/image033.png)
 
-Para fines de prueba, las copias de los discos del software RAID de copia de seguridad de SAP HANA se asociaron a la VM del servidor de aplicaciones.
+Para realizar pruebas, copias de Hola de los discos RAID de software de copia de seguridad de SAP HANA Hola eran máquina virtual del servidor de aplicación toohello adjunto.
 
-![La VM del servidor de aplicaciones se apagó para asociar las copias de disco](media/sap-hana-backup-file-level/image034.png)
+![máquina virtual del servidor de aplicación Hola se cerró tooattach Hola disco copias](media/sap-hana-backup-file-level/image034.png)
 
-La VM del servidor de aplicaciones se apagó para asociar las copias de disco. Después de iniciar la VM, se detectaron correctamente los discos y RAID (montado a través de UUID). Solo faltaba el punto de montaje, que se creó mediante el particionador YaST. Después, las copias del archivo de copia de seguridad pasaron a estar visibles en el nivel de SO.
+máquina virtual del servidor de aplicación Hola se cerró tooattach Hola disco copias. Después de iniciar Hola VM, se detectaron correctamente hello RAID y discos de hello (montado a través de UUID). Solo el punto de montaje Hola faltaba, que se creó mediante particionador de YaST Hola. Después copias de archivos de copia de seguridad de SAP HANA de hello pasara a ser visibles en el nivel del sistema operativo.
 
-## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>Copia de archivos de copia de seguridad de SAP HA en el recurso compartido NFS
+## <a name="copy-sap-hana-backup-files-toonfs-share"></a>Copiar archivos de copia de seguridad de SAP HANA tooNFS compartir
 
-Para reducir el impacto potencial en el sistema SAP HANA desde una perspectiva de espacio o disco o rendimiento, puede considerar almacenar los archivos de copia de seguridad de SAP HANA en un recurso compartido NFS. Técnicamente funciona, pero implica la utilización de una segunda máquina virtual de Azure como host del recurso compartido NFS. No debe ser un tamaño de VM pequeño, debido al ancho de banda de red de VM. Tendría sentido cerrar esta &quot;VM de copia de seguridad&quot; y solo activarla para la ejecución de la copia de seguridad de SAP HANA. La escritura en un recurso NFS supone una carga en la red y afecta al sistema de SAP HANA, pero la simple administración de los archivos de copia de seguridad posterior en la &quot;VM de copia de seguridad&quot; no influiría en absoluto en el sistema de SAP HANA.
+toolessen Hola posible impacto en el sistema de SAP HANA desde una perspectiva de espacio de disco o rendimiento hello, uno puede almacenar los archivos de copia de seguridad de SAP HANA hello en un recurso compartido NFS. Técnicamente funciona, pero significa utilizando una segunda máquina virtual de Azure como host de Hola de hello que recursos compartidos de NFS. No debe ser un tamaño de máquina virtual pequeño, debido a ancho de banda de red VM de toohello. Sería sentido, a continuación, tooshut hacia abajo esto &quot;VM de copia de seguridad&quot; y solo se ponga a ejecutar copia de seguridad de hello SAP HANA. Escribir en un NFS recurso compartido supone una carga de red de Hola e impactos Hola sistema SAP HANA, pero simplemente administrar Hola archivos de copia de seguridad después de hello &quot;VM de copia de seguridad&quot; no pueda influir en sistema de SAP HANA hello en absoluto.
 
-![Se montó un recurso compartido NFS desde otra máquina virtual de Azure en la VM de servidor de SAP HANA](media/sap-hana-backup-file-level/image035.png)
+![Un recurso compartido NFS desde otra máquina virtual de Azure era la máquina virtual del servidor de SAP HANA toohello montado](media/sap-hana-backup-file-level/image035.png)
 
-Para comprobar el caso de uso de NFS, se montó un recurso compartido NFS desde otra Azure VM en la VM de servidor de SAP HANA. No se ha aplicado ningún ajuste de NFS especial.
+caso de uso de hello tooverify NFS, un recurso compartido NFS desde otra máquina virtual de Azure fue la máquina virtual del servidor de SAP HANA toohello montada. No se ha aplicado ningún ajuste de NFS especial.
 
-![Se tardó 1 hora y 46 minutos en realizar la copia de seguridad directamente](media/sap-hana-backup-file-level/image036.png)
+![Tardó copia de seguridad de 1 hora y 46 minutos toodo Hola directamente](media/sap-hana-backup-file-level/image036.png)
 
-El recurso compartido NFS era un conjunto de fragmentación rápido, como el del servidor de SAP HANA. No obstante, se tardó 1 hora y 46 minutos en realizar la copia de seguridad directamente en el recurso compartido de NFS en lugar de 10 minutos, cuando se escribía en una fragmentación local.
+recurso compartido NFS de Hello era un conjunto de bandas rápida, como Hola uno en el servidor de SAP HANA Hola. No obstante, se tardaron 1 hora y Hola de 46 minutos toodo copia de seguridad directamente en el recurso compartido NFS de hello en lugar de 10 minutos, cuando se escribe un conjunto de bandas local tooa.
 
-![Alternativa no mucho más rápida que 1 hora y 43 minutos](media/sap-hana-backup-file-level/image037.png)
+![alternativa de Hello no estaba mucho más rápido en 1 hora y 43 minutos](media/sap-hana-backup-file-level/image037.png)
 
-La alternativa de realizar una copia de seguridad en una fragmentación local y la copia del recurso compartido NFS en el nivel del SO (comando **cp -avr** simple) no fue mucho más rápida. Se tardó 1 hora y 43 minutos.
+alternativa de Hola de realizar un conjunto de bandas local de copia de seguridad tooa y copiar toohello recursos compartidos de NFS en el nivel del sistema operativo (un sencillo **cp - avr** comandos) no estaba mucho más rápido. Se tardó 1 hora y 43 minutos.
 
-Por lo tanto, funciona. Sin embargo, el rendimiento no fue bueno para la prueba de copia de seguridad de 230 GB. Podría ser incluso peor para varios terabytes.
+Por lo que funciona, pero el rendimiento no era válido durante la prueba de copia de seguridad de 230 GB Hola. Podría ser incluso peor para varios terabytes.
 
-## <a name="copy-sap-hana-backup-files-to-azure-file-service"></a>Copia de archivos de copia de seguridad de SAP HA en el servicio de archivos de Azure
+## <a name="copy-sap-hana-backup-files-tooazure-file-service"></a>Copie el servicio de archivos de tooAzure de archivos de copia de seguridad de SAP HANA
 
-Es posible montar un recurso compartido de archivos de Azure dentro de una VM Linux de Azure. En el artículo [Uso de Azure File Storage con Linux](../../../storage/files/storage-how-to-use-files-linux.md) encontrará información sobre cómo hacerlo. Tenga en cuenta que actualmente hay un límite de cuota de 5 TB de un recurso compartido de archivos de Azure y un límite de tamaño de archivo de 1 TB por cada archivo. Vea [Objetivos de escalabilidad y rendimiento de Azure Storage](../../../storage/common/storage-scalability-targets.md) para obtener más información sobre los límites de almacenamiento.
+Es posible toomount compartir un archivo de Azure dentro de una máquina virtual Linux de Azure. artículo de Hello [cómo toouse almacenamiento de archivos de Azure con Linux](../../../storage/files/storage-how-to-use-files-linux.md) proporciona detalles acerca de cómo toodo lo. Tenga en cuenta que actualmente hay un límite de cuota de 5 TB de un recurso compartido de archivos de Azure y un límite de tamaño de archivo de 1 TB por cada archivo. Vea [Objetivos de escalabilidad y rendimiento de Azure Storage](../../../storage/common/storage-scalability-targets.md) para obtener más información sobre los límites de almacenamiento.
 
 Sin embargo, las pruebas demuestran que la copia de seguridad de SAP HANA no funciona hoy en día directamente con este tipo de montaje CIFS. También se estableció en la [nota 1820529 de SAP](https://launchpad.support.sap.com/#/notes/1820529) que no se recomienda CIFS.
 
-![Esta ilustración muestra un error en el cuadro de diálogo de copia de seguridad en SAP HANA Studio](media/sap-hana-backup-file-level/image038.png)
+![Esta ilustración muestra un error en el cuadro de diálogo copia de seguridad de Hola de SAP HANA Studio](media/sap-hana-backup-file-level/image038.png)
 
-Esta ilustración muestra un error en el cuadro de diálogo de copia de seguridad en SAP HANA Studio al intentar realizar una copia de seguridad directamente en un recurso compartido de archivos de Azure con CIFS montado. Por lo tanto, tiene que realizar una copia de seguridad de SAP HANA estándar en un sistema de archivos de VM primero y, a continuación, copiar los archivos de copia de seguridad desde ahí al servicio de archivos de Azure.
+En esta ilustración se muestra un error en el cuadro de diálogo copia de seguridad de Hola de SAP HANA Studio, al tratar de tooback directamente recurso compartido de archivos de Azure montados en CIFS tooa. Por lo que uno tiene toodo una copia de seguridad estándar de SAP HANA en un sistema de archivos de máquina virtual en primer lugar y, a continuación, archivos de copia de seguridad de Hola desde ahí tooAzure servicio de archivos.
 
-![Esta ilustración muestra que se tardó aproximadamente 929 segundos en copiar 19 archivos de copia de seguridad de SAP HANA](media/sap-hana-backup-file-level/image039.png)
+![Esta ilustración muestra que tardó aproximadamente 929 segundos toocopy 19 SAP HANA copias de seguridad](media/sap-hana-backup-file-level/image039.png)
 
-Esta ilustración muestra que se tardó aproximadamente 929 segundos en copiar 19 archivos de copia de seguridad de SAP HANA con un tamaño total de aproximadamente 230 GB en el recurso de archivos de Azure.
+Esta ilustración muestra que tardaron aproximadamente 929 segundos toocopy 19 archivos de copia de seguridad de SAP HANA con un tamaño total aproximadamente 230 GB toohello Azure recurso compartido de archivos.
 
-![La estructura de directorios de origen en la VM de SAP HANA se copió en el recurso compartido de archivos de Azure](media/sap-hana-backup-file-level/image040.png)
+![estructura de directorios de origen de Hello en hello VM de SAP HANA era el recurso compartido de archivos de Azure toohello copiados](media/sap-hana-backup-file-level/image040.png)
 
-En esta captura de pantalla, puede ver que la estructura de directorios de origen en la VM de SAP HANA se copió en el recurso compartido de archivos de Azure: un directorio (hana\_backup\_fsl\_15gb) y 19 archivos de copia de seguridad individuales.
+En esta captura de pantalla, se puede ver que estructura de directorios de origen de hello en hello VM de SAP HANA fue recurso compartido de archivos de Azure toohello copiada: un directorio (hana\_copia de seguridad\_fsl\_15 gb) y 19 archivos de copia de seguridad individuales.
 
-El almacenamiento de los archivos de copia de seguridad de SAP HANA en archivos de Azure podría ser una opción interesante en el futuro cuando las copias de seguridad de archivos de SAP HANA lo admitan directamente, o cuando sea posible montar archivos de Azure a través de NFS y el límite de cuota máxima sea considerablemente superior a 5 TB.
+Almacenar los archivos de copia de seguridad de SAP HANA en archivos de Azure podría ser una opción interesante en hello futuro, cuando las copias de seguridad del archivo de SAP HANA admitan directamente. O bien, cuando es posible que toomount archivos de Azure a través de NFS y límite de cuota máximo hello es considerablemente mayor que 5 TB.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Guía de copia de seguridad de SAP HANA en Azure Virtual Machines](sap-hana-backup-guide.md) ofrece una introducción e información sobre los pasos iniciales.
-* [Copia de seguridad de SAP HANA basada en instantáneas de almacenamiento](sap-hana-backup-storage-snapshots.md) describe la opción de copia de seguridad basada en instantáneas de almacenamiento.
-* Para obtener información sobre cómo establecer la alta disponibilidad y planear la recuperación ante desastres de SAP HANA en Azure (instancias grandes), vea [Alta disponibilidad y recuperación ante desastres de SAP HANA en Azure (instancias grandes)](hana-overview-high-availability-disaster-recovery.md).
+* [Copia de seguridad de SAP HANA basándose en instantáneas de almacenamiento](sap-hana-backup-storage-snapshots.md) describe Hola almacenamiento basados en instantáneas copia de seguridad de las opciones.
+* toolearn tooestablish alta disponibilidad y el plan de recuperación ante desastres de SAP HANA en Azure (instancias grandes), vea [SAP HANA (instancias de gran tamaño) alta disponibilidad y recuperación ante desastres en Azure](hana-overview-high-availability-disaster-recovery.md).

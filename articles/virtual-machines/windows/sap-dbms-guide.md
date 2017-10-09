@@ -1,5 +1,5 @@
 ---
-title: "SAP NetWeaver en máquinas virtuales de Azure: guía de implementación de DBMS | Microsoft Docs"
+title: "aaaSAP NetWeaver en máquinas virtuales de Azure: Guía de implementación de DBMS | Documentos de Microsoft"
 description: "SAP NetWeaver en máquinas virtuales de Azure: guía de implementación de DBMS"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: 
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc7c85382d8f8183ef3eb3cc7496b012808148e5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a56b8f6b3b26fa10e01a25a251a3e4a7bfc77e2b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sap-netweaver-on-azure-windows-virtual-machines-vms--dbms-deployment-guide"></a>SAP NetWeaver en máquinas virtuales Windows de Azure: guía de implementación de DBMS
-[767598]:https://launchpad.support.sap.com/#/notes/767598
+[767598 ]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
@@ -257,7 +257,7 @@ ms.lasthandoff: 07/11/2017
 [virtual-machines-azure-resource-manager-architecture]:../../resource-manager-deployment-model.md
 [virtual-machines-azurerm-versus-azuresm]:../../resource-manager-deployment-model.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../virtual-machines-windows-classic-configure-oracle-data-guard.md
-[virtual-machines-linux-cli-deploy-templates]:../linux/cli-deploy-templates.md (Deploy and manage virtual machines by using Azure Resource Manager templates and the Azure CLI)
+[virtual-machines-linux-cli-deploy-templates]:../linux/cli-deploy-templates.md (Deploy and manage virtual machines by using Azure Resource Manager templates and hello Azure CLI)
 [virtual-machines-deploy-rmtemplates-powershell]:../virtual-machines-windows-ps-manage.md (Manage virtual machines using Azure Resource Manager and PowerShell)
 [virtual-machines-linux-agent-user-guide]:../linux/agent-user-guide.md
 [virtual-machines-linux-agent-user-guide-command-line-options]:../linux/agent-user-guide.md#command-line-options
@@ -303,42 +303,42 @@ ms.lasthandoff: 07/11/2017
 [xplat-cli]:../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../xplat-cli-azure-resource-manager.md
 
-Esta guía forma parte de la documentación sobre la implementación del software de SAP en Microsoft Azure. Antes de leer esta guía, consulte la [Guía de planeamiento e implementación][planning-guide]. En este documento se explica cómo implementar varios sistemas de administración de bases de datos relacionales (RDBMS) y productos relacionados, además de SAP en máquinas virtuales de Microsoft Azure, mediante el uso de las funcionalidades de la infraestructura como servicio (IaaS) de Azure.
+Esta guía forma parte de documentación de hello sobre la implementación y la implementación de software SAP de hello en Microsoft Azure. Antes de leer esta guía, lea hello [Guía de implementación y planificación][planning-guide]. Este documento centra en implementación Hola de los distintos sistemas de administración de base de datos relacionales (RDBMS) y productos relacionados en combinación con SAP máquinas virtuales en Microsoft Azure (VM) con hello infraestructura de Azure como las capacidades de un servicio (IaaS).
 
-Dicho documento complementa la documentación de instalación de SAP y las notas de SAP, que representan los principales recursos para las instalaciones e implementaciones de software de SAP en determinadas plataformas.
+Hola papel complementa Hola documentación de la instalación de SAP y las notas de SAP que representan recursos principales de Hola para las instalaciones e implementaciones de software SAP en correctos plataformas
 
 ## <a name="general-considerations"></a>Consideraciones generales
-En este capítulo, se presentan consideraciones sobre ejecución de sistemas DBMS relacionados con SAP en máquinas virtuales de Azure. En este capítulo, se hacen algunas referencias a sistemas DBMS específicos. No obstante, ahondaremos en este tema en el siguiente capítulo de este documento.
+En este capítulo, se presentan consideraciones sobre ejecución de sistemas DBMS relacionados con SAP en máquinas virtuales de Azure. Hay algunas referencias toospecific los sistemas DBMS en este capítulo. En su lugar sistemas DBMS específicos de Hola se tratan en este documento, después de este capítulo.
 
 ### <a name="definitions-upfront"></a>Lista de definiciones
-En el documento se utilizarán los términos siguientes:
+En el documento de hello utilizamos Hola términos siguientes:
 
 * IaaS: infraestructura como servicio.
 * PaaS: plataforma como servicio.
 * SaaS: software como servicio.
 * Componente de SAP: una aplicación de SAP individual, como ECC, BW, Solution Manager o EP.  Los componentes de SAP pueden basarse en tecnologías tradicionales, como ABAP o Java, o en una aplicación no basada en NetWeaver, como Business Objects.
-* Entorno de SAP: uno o varios componentes de SAP agrupados lógicamente para desempeñar una función empresarial, como desarrollo, control de calidad, aprendizaje, recuperación ante desastres o producción.
-* Infraestructura de SAP: hace referencia a todos los activos de SAP de la infraestructura de TI de un cliente. La infraestructura de SAP incluye todos los entornos, tanto los que son de producción como los que no.
-* Sistema SAP: la combinación de la capa DBMS y la de aplicaciones, como la de un sistema de desarrollo SAP ERP, de prueba SAP BW, de producción SAP CRM, etc. En las implementaciones de Azure no se admite la división de estas dos capas entre la infraestructura local y de Azure. Esto significa que un sistema SAP debe implementarse de forma local o en Azure, pero no en ambos. Sin embargo, los diferentes sistemas de un entorno de SAP pueden implementarse en Azure o de forma local. Por ejemplo, podría implementar los sistemas de prueba y desarrollo de SAP CRM en Azure, y el sistema de producción de SAP CRM de manera local.
-* Implementación exclusiva en la nube: una implementación donde la suscripción de Azure no está conectada de sitio a sitio o a través de ExpressRoute a la infraestructura de red local. En la documentación habitual de Azure este tipo de implementaciones se denomina "implementaciones exclusivas en la nube". A las máquinas virtuales implementadas con este método se tiene acceso a través de Internet y puntos de conexión de Internet asignados a las máquinas virtuales de Azure. El DNS y Active Directory (AD) locales no se extienden a Azure en este tipo de implementaciones. Por lo tanto, las máquinas virtuales no forman parte de Active Directory local. Nota: Las implementaciones exclusivas en la nube se definen en este documento como infraestructuras de SAP completas ejecutadas exclusivamente en Azure sin extensión de Active Directory ni resolución de nombres desde la infraestructura local a la nube pública. No se admiten configuraciones exclusivas en la nube con sistemas de producción SAP, o con configuraciones donde deban usarse SAP STMS u otros recursos locales entre sistemas SAP hospedados en Azure y recursos locales.
-* Entre locales: describe un escenario donde se implementan máquinas virtuales en una suscripción de Azure con conexión de sitio a sitio, entre varios sitios o de ExpressRoute entre los centros de datos locales y Azure. En la documentación habitual de Azure, este tipo de implementaciones se denominan "escenarios entre locales". El motivo de la conexión es ampliar los dominios locales, Active Directory local y DNS local a Azure. La infraestructura local se extiende a los recursos de Azure de la suscripción. Con esta extensión, las máquinas virtuales pueden formar parte del dominio local. Los usuarios del dominio local pueden tener acceso a los servidores y ejecutar servicios en esas máquinas virtuales (por ejemplo, servicios de DBMS). Es posible la comunicación y resolución de nombres entre máquinas virtuales implementadas de forma local y en Azure. Esperamos que este sea el escenario más habitual para implementar activos de SAP en Azure. Para más información, consulte [este][vpn-gateway-cross-premises-options] artículo y [este][vpn-gateway-site-to-site-create] vínculo.
+* Entorno SAP: uno o más componentes SAP agrupan lógicamente tooperform una función empresarial, como desarrollo, QAS, aprendizaje, recuperación ante desastres o producción.
+* Panorama SAP: Se refiere toohello todos activos de SAP en un cliente panorama de TI. Hola panorama SAP incluye todos los entornos de producción y no es de producción.
+* Sistema SAP: combinación de Hola de capa de DBMS y la capa de aplicación de, por ejemplo, un sistema de desarrollo SAP ERP, sistema de prueba de SAP BW, sistema de producción de SAP CRM, etcetera. En Azure implementaciones no es compatible con toodivide estas dos capas entre local y Azure. Esto significa que un sistema SAP debe implementarse de forma local o en Azure, pero no en ambos. Sin embargo, puede implementar diferentes sistemas de Hola de un panorama SAP en Azure o de forma local. Por ejemplo, podría implementar los sistemas de desarrollo y prueba de SAP CRM hello en Azure pero Hola SAP CRM producción sistema local.
+* Implementación solo en la nube: una implementación donde hello suscripción de Azure no está conectado a través de un sitio a sitio o ExpressRoute conexión toohello local la infraestructura de red. En la documentación habitual de Azure este tipo de implementaciones se denomina "implementaciones exclusivas en la nube". Máquinas virtuales implementadas con este método se tiene acceso a través de Internet de Hola y extremos públicos de Internet asignan toohello las máquinas virtuales en Azure. Hola Active Directory (AD) local y DNS no se extiende tooAzure en estos tipos de implementaciones. Por lo tanto, las máquinas virtuales de hello no forman parte de hello Active Directory local. Nota: Las implementaciones exclusivas en la nube se definen en este documento como infraestructuras de SAP completas ejecutadas exclusivamente en Azure sin extensión de Active Directory ni resolución de nombres desde la infraestructura local a la nube pública. Configuraciones solo en la nube no están compatible con sistemas de SAP de producción ni las configuraciones donde STMS de SAP u otros recursos locales tener toobe utiliza entre los sistemas SAP hospedados en Azure y recursos que se encuentran en local.
+* Entre entornos: Describe un escenario donde las máquinas virtuales son implementado tooan suscripción de Azure que tiene el sitio a sitio, de varios sitio o conectividad de ExpressRoute entre datacenter(s) de hello local y Azure. En la documentación habitual de Azure, este tipo de implementaciones se denominan "escenarios entre locales". motivo de Hola de conexión de hello es tooextend dominios locales, Active Directory local y local DNS en Azure. Hola horizontal local es extendido toohello activos de Azure de suscripción de Hola. Con esta extensión, hello las máquinas virtuales puede formar parte del dominio local de Hola. Los usuarios de dominio del dominio local de hello pueden tener acceso a servidores de Hola y pueden ejecutar servicios en esas máquinas virtuales (por ejemplo, servicios de DBMS). Es posible la comunicación y resolución de nombres entre máquinas virtuales implementadas de forma local y en Azure. Esperamos que este escenario más común de hello toobe para la implementación de activos SAP en Azure. Para más información, consulte [este][vpn-gateway-cross-premises-options] artículo y [este][vpn-gateway-site-to-site-create] vínculo.
 
 > [!NOTE]
-> En sistemas de producción SAP, se admiten implementaciones entre locales de sistemas SAP donde las máquinas virtuales de Azure que ejecuten sistemas SAP pertenezcan a un dominio local. Las configuraciones entre locales se admiten para la implementación completa o parcial de infraestructuras de SAP en Azure. Incluso la ejecución de una infraestructura completa de SAP en Azure requiere que esas máquinas virtuales formen parte del dominio local y ADS. En versiones anteriores de la documentación se describen escenarios de TI híbridos, donde "híbrido" implica una conectividad entre locales de la infraestructura local y Azure. En este caso, "híbrido" también significa que las máquinas virtuales de Azure forman parte de Active Directory local.
+> En sistemas de producción SAP, se admiten implementaciones entre locales de sistemas SAP donde las máquinas virtuales de Azure que ejecuten sistemas SAP pertenezcan a un dominio local. Las configuraciones entre locales se admiten para la implementación completa o parcial de infraestructuras de SAP en Azure. Incluso en ejecución completa panorama de SAP hello en Azure requiere tener esas máquinas virtuales que se va a parte del dominio local y anuncios. En versiones anteriores de documentación de hello hablamos sobre escenarios de TI híbrida, donde el término de Hola "Híbrido" se ha modificado en hechos de Hola que hay una conectividad entre entornos entre local y Azure. En este caso "Híbrido" también significa que las máquinas virtuales de hello en Azure forman parte de hello en Active Directory local.
 >
 >
 
-Algunos documentos de Microsoft describen escenarios entre locales de un modo ligeramente distinto, en especial en configuraciones de DBMS de alta disponibilidad. En el caso de documentos relacionados con SAP, el escenario entre locales se reduce a una conectividad de sitio a sitio o privada (ExpressRoute) y a que la infraestructura de SAP se distribuye entre medios locales y Azure.
+Algunos documentos de Microsoft describen escenarios entre locales de un modo ligeramente distinto, en especial en configuraciones de DBMS de alta disponibilidad. Hola caso de hello SAP documentos relacionados, escenario de hello entre locales solo reduce toohaving un sitio a sitio o privado (ExpressRoute) conectividad y toohello hecho que el panorama de SAP de Hola se distribuye entre local y Azure.
 
 ### <a name="resources"></a>Recursos
-Hay disponibles las siguientes guías sobre el tema de las implementaciones de SAP en Azure:
+Hello guías siguientes están disponibles para hello tema de las implementaciones de SAP en Azure:
 
 * [SAP NetWeaver en Azure Virtual Machines (VMs): guía de planeación e implementación][planning-guide]
 * [SAP NetWeaver en Azure Virtual Machines: guía de implementación][deployment-guide]
 * [SAP NetWeaver en máquinas virtuales de Azure: guía de implementación de DBMS (este documento)][dbms-guide]
 * [SAP NetWeaver en máquinas virtuales de Azure: guía de implementación de alta disponibilidad][ha-guide]
 
-Las siguientes notas de SAP están relacionadas con el tema de SAP en Azure:
+Hola siguiendo las notas de SAP está relacionadas toohello tema de SAP en Azure:
 
 | Número de nota | Título |
 | --- | --- |
@@ -348,65 +348,65 @@ Las siguientes notas de SAP están relacionadas con el tema de SAP en Azure:
 | [2178632] |Key Monitoring Metrics for SAP on Microsoft Azure (Métricas de supervisión clave para SAP en Microsoft Azure) |
 | [1409604] |Virtualization on Windows: Enhanced Monitoring (Virtualización en Windows: supervisión mejorada) |
 | [2191498] |SAP on Linux with Azure: Enhanced Monitoring (SAP en Linux con Azure: supervisión mejorada) |
-| [2039619] |SAP Applications on Microsoft Azure using the Oracle Database: Supported Products and Versions (Aplicaciones de SAP en Microsoft Azure con Base de datos de Oracle: versiones y productos compatibles) |
+| [2039619] |Hola de aplicaciones SAP en Microsoft Azure con base de datos de Oracle: admite productos y versiones |
 | [2233094] |DB6: SAP Applications on Azure Using IBM DB2 for Linux, UNIX, and Windows - Additional Information (DB6: aplicaciones de SAP en Azure con IBM DB2 para Linux, UNIX y Windows: información adicional) |
 | [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP license issues (Linux y máquinas virtuales de Microsoft Azure (IaaS): problemas de licencia de SAP) |
 | [1984787] |SUSE LINUX Enterprise Server 12: Installation notes (SUSE Linux Enterprise Server 12: notas de instalación) |
 | [2002167] |Red Hat Enterprise Linux 7.x: Installation and Upgrade (Red Hat Enterprise Linux 7.x: instalación y actualización) |
 
-Lea también la [wiki de SCN](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) , que contiene todas las notas de SAP para Linux.
+Lea también hello [Wiki de SCN](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) que contiene todas las notas de SAP para Linux.
 
-Debe tener conocimientos prácticos sobre la arquitectura de Microsoft Azure y cómo se implementan y utilizan las máquinas virtuales de Microsoft Azure. Puede encontrar más información aquí <https://azure.microsoft.com/documentation/>.
+Debe tener conocimientos prácticos acerca de hello arquitectura de Microsoft Azure y cómo se implementan y opera máquinas virtuales de Microsoft Azure. Puede encontrar más información aquí <https://azure.microsoft.com/documentation/>.
 
 > [!NOTE]
-> En este documento **no** hablaremos sobre las ofertas de la plataforma como servicio (PaaS) de Microsoft Azure. En su lugar, explicaremos cómo ejecutar un sistema de administración de bases de datos (DBMS) en máquinas virtuales de Microsoft Azure (IaaS) de la misma forma que ejecutaría este tipo de sistema en un entorno local. Las funcionalidades de bases de datos de estas dos ofertas son muy diferentes y no deben combinarse. Consulte también: <https://azure.microsoft.com/services/sql-database/>.
+> Estamos **no** hablando de la plataforma Microsoft Azure como las ofertas de servicio (PaaS) de hello plataforma Microsoft Azure. Este documento es sobre la ejecución de máquinas virtuales en Microsoft Azure (IaaS) de un sistema de administración de bases de datos (DBMS) igual que ejecutaría Hola DBMS en su entorno local. Las funcionalidades de bases de datos de estas dos ofertas son muy diferentes y no deben combinarse. Consulte también: <https://azure.microsoft.com/services/sql-database/>.
 >
 >
 
-Como estamos analizando el modelo IaaS, en general, el proceso de instalación y configuración de DBMS, Windows y Linux es prácticamente el mismo en cualquier máquina virtual o máquina sin sistema operativo que instalaría en un entorno local. Sin embargo, hay algunas decisiones de implementación de administración de sistemas y arquitecturas que diferirán cuando se utilice el modelo IaaS. El objetivo de este documento consiste en explicar las diferencias de administración de sistemas y arquitecturas específicas que debe tener en cuenta a la hora de utilizar IaaS.
+Puesto que estamos analizando la IaaS, por lo general Hola Windows, Linux y DBMS la instalación y configuración son básicamente Hola igual que cualquier máquina virtual o una máquina sin sistema operativo se instala localmente. Sin embargo, hay algunas decisiones de implementación de administración de sistemas y arquitecturas que diferirán cuando se utilice el modelo IaaS. Hola de este documento sirve tooexplain Hola arquitectónicas y sistema de administración diferencias específicas que debe estar preparado para cuando utilice la IaaS.
 
-En general, las principales diferencias que se describen en este artículo son las siguientes:
+En general, hello áreas generales de diferencia que se tratará en este documento son:
 
-* Planear el diseño adecuado de los VHD y las máquinas virtuales de los sistemas SAP para garantizar que se dispone de la distribución correcta de archivos de datos y de la cantidad suficiente de IOPS para la carga de trabajo
+* Planear el diseño VM/VHD adecuado de Hola de tooensure de sistemas SAP tiene diseño del archivo de datos apropiados de Hola y puede lograr suficientes IOPS para la carga de trabajo.
 * Consideraciones sobre redes al utilizar IaaS
-* Características específicas de bases de datos que se deben usar para optimizar el diseño de las bases de datos
+* Toouse características de base de datos específica en el diseño de base de datos de pedido toooptimize Hola.
 * Consideraciones sobre las operaciones de copia de seguridad y restauración en IaaS
 * Uso de diferentes tipos de imágenes para tareas de implementación
 * Alta disponibilidad en IaaS de Azure
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Estructura de una implementación de RDBMS
-Para poder ir entendiendo lo que se explica en este capítulo, hay que comprender la información de [este][deployment-guide-3] capítulo de la [Guía de implementación][deployment-guide]. Antes de leer este capítulo, debe comprender lo que explicamos sobre la serie de máquinas virtuales y sus diferencias, así como las disimilitudes entre el almacenamiento estándar y premium de Azure.
+En orden, siga este capítulo, es necesario toounderstand lo que se presenta en [esto] [ deployment-guide-3] capítulo de hello [Guía de implementación][deployment-guide]. Conocimiento sobre Hola distintos Series de máquinas virtuales y sus diferencias y las diferencias del estándar de Azure y almacenamiento Premium deben comprender y se conoce antes de leer este capítulo.
 
-Los VHD de Azure que contienen un sistema operativo tenían una limitación de tamaño de 127 GB, Esta limitación se eliminó en marzo de 2015 (para más información, consulte <https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/>). A partir de esa fecha, los VHD con el sistema operativo puede tener el mismo tamaño que cualquier otro disco duro virtual. No obstante, se prefiere una estructura de implementación en la que el sistema operativo, el DBMS y los archivos binarios finales de SAP sean independientes de los archivos de base de datos. Por lo tanto, se espera que los sistemas SAP que se ejecutan en máquinas virtuales de Azure tengan instalada la máquina virtual base (o VHD) con el sistema operativo, y los archivos ejecutables del sistema de administración de bases de datos administración y de SAP. Los archivos de datos y de registro de DBMS se almacenarán en archivos VHD independientes de Almacenamiento de Azure (estándar o premium) y se asociarán como discos lógicos a la máquina virtual de imagen del sistema operativo de Azure original.
+Hasta marzo de 2015, discos duros virtuales de Azure que contienen un sistema operativo estaba limitado too127 GB de tamaño. Esta limitación se eliminó en marzo de 2015 (para más información, consulte <https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/>). Desde allí en discos duros virtuales contenedor sistema de operativo Hola puede haber Hola mismo tamaño como cualquier otro disco duro virtual. No obstante, se prefiere una estructura de implementación donde hello sistema operativo, eventual archivos binarios SAP y DBMS son independientes de los archivos de base de datos de Hola. Por lo tanto, esperamos que sistemas SAP que se ejecutan en máquinas virtuales de Azure tendrá Hola base virtual (o VHD) instalada con sistema operativo de hello, base de datos administración los ejecutables del sistema y los ejecutables de SAP. Hola datos del DBMS y los archivos de registro se almacenados en el almacenamiento de Azure (Standard o Premium almacenamiento) en archivos VHD aparte y adjunta como imagen de sistema operativo Azure original VM de discos lógicos toohello.
 
-En función de cómo se utilice el almacenamiento de Azure estándar o premium (por ejemplo, con máquinas virtuales de serie DS o GS), habrá otras cuotas de Azure que se explican [aquí][virtual-machines-sizes]. Al planear los VHD de Azure, tendrá que encontrar el mejor equilibrio de las cuotas en los siguientes recursos:
+Depende de aprovechar Azure estándar o Premium almacenamiento (por ejemplo, mediante el uso de Hola DS-series o GS-series las máquinas virtuales) se están otras cuotas en Azure que se documentan [aquí][virtual-machines-sizes]. Al planificar sus VHD de Azure, necesitará toofind Hola mejor equilibrio en las cuotas de Hola para siguiente hello:
 
-* El número de archivos de datos
-* El número de VHD que contienen los archivos
-* Las cuotas de IOPS de un solo VHD
-* El rendimiento por VHD
-* El número de VHD adicionales posibles por tamaño de máquina virtual
-* El rendimiento de almacenamiento global que puede proporcionar una máquina virtual
+* número de Hola de archivos de datos.
+* número de Hola de discos duros virtuales que contienen archivos de Hola.
+* cuotas de IOPS de Hola de un solo disco duro virtual.
+* rendimiento de datos de Hola por VHD.
+* número de Hola de posibles de discos duros virtuales adicionales por tamaño de máquina virtual.
+* Hello general rendimiento de almacenamiento una máquina virtual puede proporcionar.
 
-Azure aplicará una cuota de IOPS por unidad de VHD. Estas cuotas son diferentes para los VHD hospedados en el almacenamiento estándar y premium de Azure. Las latencias de E/S también será muy distintas entre los dos tipos de almacenamiento; Almacenamiento premium ofrece mejores latencias de E/S. Cada uno de los distintos tipos de máquina virtual tiene un número limitado de VHD que se pueden asociar. Otra restricción consiste en que solo determinados tipos de máquinas virtuales pueden utilizar el Almacenamiento premium de Azure. Es decir, la decisión de elegir un determinado tipo de máquina virtual podría no estar basada exclusivamente en los requisitos de CPU y memoria, sino también en los de rendimiento de disco, latencia y número de IOPS que normalmente se escalan con el número de VHD o el tipo de discos de Almacenamiento premium. El tamaño de un VHD también podría venir determinado por el número de IOPS y el rendimiento que haya que obtener en cada disco duro virtual, especialmente con el Almacenamiento premium.
+Azure aplicará una cuota de IOPS por unidad de VHD. Estas cuotas son diferentes para los VHD hospedados en el almacenamiento estándar y premium de Azure. Las latencias de E/S también será muy diferentes entre dos tipos de almacenamiento Hola con almacenamiento Premium entregar factores mejor latencias de E/S. Cada uno de los diferentes tipos de VM hello tiene un número limitado de discos duros virtuales que es capaz de tooattach. Otra restricción consiste en que solo determinados tipos de máquinas virtuales pueden utilizar Azure Premium Storage. Esto significa la decisión de Hola para un determinado tipo de máquina virtual podría no solo está determinado por hello CPU y requisitos de memoria, sino también por hello IOPS, requisitos de rendimiento de disco y latencia que normalmente se escalan con número de Hola de discos duros virtuales u Hola tipo de discos de almacenamiento Premium. Especialmente con almacenamiento Premium tamaño Hola de un disco duro virtual también puede determinarse por número de Hola de e/s por segundo y el rendimiento que necesita toobe logra por cada disco duro virtual.
 
-El hecho de que la tasa de IOPS general, el número de VHD montados y el tamaño de la máquina virtual estén relacionados puede provocar que la configuración de Azure de un sistema SAP sea diferente a la de la implementación local. Los límites de IOPS por LUN suelen poder configurarse en las implementaciones locales, al contrario que en el almacenamiento de Azure, donde los límites son fijos, o en el Almacenamiento Premium, que dependen del tipo de disco. Por tanto, con las implementaciones locales encontramos configuraciones de clientes de servidores de bases de datos que utilizan muchos volúmenes diferentes para archivos ejecutables especiales como SAP y DBMS, o bien volúmenes especiales para espacios de tablas o bases de datos temporales. Cuando se mueven dichos sistemas locales a Azure, podría perderse ancho de banda de IOPS potencial al desperdiciar un VHD para archivos ejecutables o bases de datos que no realizan operaciones IOPS. Por lo tanto, en máquinas virtuales de Azure recomendamos que los archivos ejecutables de SAP y DBMS se instalen, si es posible, en el disco del sistema operativo.
+hecho de Hola Hola tasa de IOPS general, número de Hola de VHD montados y Hola tamaño de hello VM estén todos relacionados, puede provocar una configuración de un toobe de sistema SAP diferente de su implementación local de Azure. límites de IOPS de Hola por LUN son normalmente configurables en las implementaciones locales. Mientras que con el almacenamiento de Azure esos límites son fijos o como en almacenamiento Premium depende de tipo de disco de Hola. Por lo que con las implementaciones locales vemos configuraciones del cliente de los servidores de base de datos que se están utilizando muchos volúmenes diferentes para los ejecutables especiales como SAP y Hola DBMS o volúmenes especiales para bases de datos temporales o espacios de tabla. Dichos sistemas local una vez movida tooAzure podría dar lugar tooa residuos de ancho de banda IOPS potencial al desperdiciar un VHD para ejecutables o bases de datos que no tienen que realizar alguna o no una gran cantidad de e/s por segundo. Por lo tanto, en máquinas virtuales de Azure recomendamos que ejecutables SAP y DBMS Hola instalarse en el disco de hello SO si es posible.
 
-La colocación de los archivos de base de datos y de registro y el tipo de almacenamiento de Azure que se utilice se debe definir en función de los requisitos de IOPS, latencia y rendimiento. Con el objetivo de disponer de una cantidad suficiente de IOPS para el registro de transacciones, es posible que tenga que utilizar varios VHD para el archivo de registro de transacciones o emplear un disco de Almacenamiento premium de mayor tamaño. En este caso, bastaría simplemente con compilar software RAID (por ejemplo, un grupo de almacenamiento de Windows para Windows o MDADM y LVM [Logical Volumen Manager] para Linux) con los VHD que contendrán el registro de transacciones.
+Hello selección de ubicación de archivos de base de datos de Hola y archivos de registro y tipo de Hola de almacenamiento de Azure utilizado, se debería definir IOPS, latencia y requisitos de rendimiento. En orden toohave suficientes IOPS para el registro de transacciones de hello, podría ser forzada tooleverage varios discos duros virtuales para registro de transacciones de Hola de archivo o usen un disco de almacenamiento Premium de mayor tamaño. En este caso podría simplemente compilar un RAID de software (por ejemplo, grupo de almacenamiento de Windows para Windows o MDADM y LVM (Administrador de discos lógicos) para Linux) con discos duros virtuales que contendrá el registro de transacciones de Hola Hola.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> La unidad D:\ de una máquina virtual de Azure es una unidad no persistente respaldada por algunos discos locales del nodo de proceso de Azure. Como no es persistente, significa que los cambios realizados en el contenido de la unidad D:\ se perderán cuando se reinicie la máquina virtual. Por "cambios", nos referimos a los archivos guardados, los directorios creados, las aplicaciones instaladas, etc.
+> Unidad D:\ en una máquina virtual de Azure es una unidad no persistente que está respaldada por algunos discos locales en el nodo de proceso de Azure de Hola. Dado que es no persistente, esto significa que cualquier contenido de toohello los cambios realizados en la unidad D:\ Hola se pierde cuando Hola VM se reinicia. Por "cambios", nos referimos a los archivos guardados, los directorios creados, las aplicaciones instaladas, etc.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Las máquinas virtuales de Linux de Azure montan automáticamente una unidad en /mnt/Resource, que se trata de una unidad no persistente respaldada por discos locales del nodo de proceso de Azure. Como no es persistente, significa que los cambios realizados en el contenido de la unidad /mnt/resource se perderán cuando se reinicie la máquina virtual. Por "cambios", nos referimos a los archivos guardados, los directorios creados, las aplicaciones instaladas, etc.
+> Las máquinas virtuales de Linux Azure automáticamente montar una unidad en/mnt/Resource que es una unidad no persistente respaldada por discos locales de nodo de proceso de Azure Hola. Dado que es no persistente, esto significa que cualquier toocontent los cambios realizados en/mnt/Resource se pierden cuando se reinicia la VM de Hola. Por "cambios", nos referimos a los archivos guardados, los directorios creados, las aplicaciones instaladas, etc.
 >
 >
 
 - - -
-En función de la serie de máquinas virtuales de Azure, los discos locales del nodo de proceso tendrán un rendimiento diferente. Esto se puede clasificar de la siguiente forma:
+Dependiente de hello series de máquinas virtuales de Azure, los discos locales de Hola de Hola proceso mostrar diferentes el rendimiento del nodo que se pueden clasificar como:
 
 * A0-A7: rendimiento muy limitado. No se puede usar para un recurso que no sea un archivo de paginación de Windows.
 * A8-A11: características de rendimiento muy buenas con 10 000 IOPS y una tasa de más de 1 GB/seg.
@@ -415,45 +415,45 @@ En función de la serie de máquinas virtuales de Azure, los discos locales del 
 * Serie G: características de rendimiento muy buenas con 10 000 IOPS y una tasa de más de 1 GB/seg.
 * Serie GS: características de rendimiento muy buenas con 10 000 IOPS y una tasa de más de 1 GB/seg.
 
-Las afirmaciones anteriores se aplican a los tipos de máquinas virtuales que estén certificados para utilizarse con SAP. La serie de máquina virtual con un rendimiento y una cantidad de IOPS excelentes puede aprovechar algunas características de DBMS, como tempdb o el espacio de tabla temporal.
+Las instrucciones anteriores están aplicando los tipos de VM toohello certificados con SAP. Hola series de máquinas virtuales con excelente IOPS y el rendimiento son aptos para aprovechar algunas características de DBMS, como tempdb o espacio de tabla temporal.
 
 ### <a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Almacenamiento en caché de máquinas virtuales y VHD
-Al crear esos discos o VHD mediante el portal o cuando montemos VHD cargados en máquinas virtuales, podremos elegir si almacenar en caché el tráfico de E/S entre la máquina virtual y los VHD ubicados en el almacenamiento de Azure. El almacenamiento estándar y premium de Azure utilizan dos tecnologías diferentes para este tipo de almacenamiento en caché. En ambos casos, la memoria caché sería el disco cuya copia de seguridad se realiza en la misma unidad que emplea el disco temporal (D:\ en Windows o /mnt/resource en Linux) de la máquina virtual.
+Cuando creamos esos discos/discos duros virtuales a través del portal de Hola o cuando montamos cargado tooVMs de discos duros virtuales, podemos elegir si el tráfico de hello E/S entre hello VM y los discos duros virtuales ubicados en el almacenamiento de Azure se almacenan en caché. Azure Standard Storage and Azure Premium Storage utilizan dos tecnologías diferentes para este tipo de almacenamiento en caché. En ambos casos, Hola propia caché se disco realizarían en hello usan mismas unidades por hello disco temporal (D:\ en Windows) o/mnt/Resource en Linux de hello máquina virtual.
 
-En el almacenamiento estándar de Azure, estos son los tipos posibles de almacenamiento en caché:
+Almacenamiento de Azure estándar Hola posibles tipos de caché son:
 
 * Sin almacenamiento en caché
 * Almacenamiento en caché de lectura
 * Almacenamiento en caché de lectura y escritura
 
-Para obtener un rendimiento coherente y determinista, debe establecer el valor del almacenamiento en caché de Almacenamiento de Azure estándar en todos los VHD que contienen **archivos de datos, archivos de registro y espacio de tablas relacionados con DBMS en NINGUNO**. El valor del almacenamiento en caché de la máquina virtual puede seguir siendo el predeterminado.
+En orden tooget coherente y determinista el rendimiento, debería establecer Hola almacenamiento en caché en el almacenamiento de Azure estándar para todos los discos duros virtuales que contiene **DBMS relacionados con archivos de datos, archivos de registro y too'NONE de espacio de tabla '**. Hola almacenamiento en caché de hello VM puede permanecer no tiene valor predeterminado de Hola.
 
-Para Azure Premium Storage, se encuentran disponibles las siguientes opciones de almacenamiento en caché:
+Almacenamiento de Azure Premium existe Hola siguientes opciones de almacenamiento en caché:
 
 * Sin almacenamiento en caché
 * Almacenamiento en caché de lectura
 
-Para Azure Premium Storage, se recomienda aprovechar el **almacenamiento en caché de lectura para archivos de datos** de la base de datos de SAP y no elegir **almacenamiento en caché para los VHD de archivos de registro**.
+Recomendación para el almacenamiento de Azure Premium es tooleverage **almacenamiento en caché para archivos de datos de lectura** de base de datos SAP de Hola y seleccione **ningún almacenamiento en caché para VHD de los archivos de registro de hello**.
 
 ### <a name="c8e566f9-21b7-4457-9f7f-126036971a91"></a>RAID de software
-Como ya se ha indicado anteriormente, tendrá que equilibrar el número de operaciones IOPS necesarias para los archivos de base de datos entre el número de VDH que se pueden configurar y la cantidad máxima de IOPS que proporcionará una máquina virtual de Azure por tipo de disco de Almacenamiento premium o VHD. La forma más sencilla de gestionar la carga de IOPS en los VHD consiste en compilar software RAID en los diferentes discos duros virtuales. Después, coloque una serie de archivos de datos del DBMS de SAP en los LUN extraídas del software RAID. En función de los requisitos, se recomienda también plantearse el uso de Almacenamiento premium, ya que dos de los tres discos de Almacenamiento premium diferentes proporcionan mayor cuota de IOPS que los VHD basados en el almacenamiento estándar. Además, Almacenamiento premium de Azure ofrece mucha mejor latencia de E/S.
+Como ya se ha indicado anteriormente, necesitará toobalance Hola número de IOPS necesarios para los archivos de base de datos de hello en número de Hola de hello y discos duros virtuales que se puede configurar número máximo de IOPS proporcionará una VM de Azure por VHD o almacenamiento Premium disco tipo. La manera más fácil toodeal con carga de IOPS en discos duros virtuales de hello es toobuild una RAID de software a través de Hola diferentes discos duros virtuales. A continuación, colocar una cantidad de archivos de datos de SAP DBMS hello en hello que LUN se extraen de RAID de software de Hola. Depende de los requisitos de hello que conviene tooconsider Hola uso de almacenamiento Premium también desde dos hello, tres discos diferentes de almacenamiento Premium proporcionan mayor cuota de IOPS de discos duros virtuales en función de almacenamiento estándar. Además, Hola significativos mejor latencia de E/S proporciona almacenamiento Premium de Azure.
 
-Lo mismo se aplica al registro de transacciones de los diferentes sistemas DBMS. Muchos de ellos simplemente agregan más archivos de registro de transacciones, lo que no resulta de ayuda, ya que los sistemas DBMS solo realizan operaciones de escritura en uno de los archivos a la vez. Si se necesitan tasas de IOPS más elevadas que las que ofrece un único almacenamiento estándar basado en VHD, puede realizar secciones en varios VHD de almacenamiento estándar o usar un tipo de disco de almacenamiento Premium mayor que ofrezca, aparte de mayores tasas de IOPS, una menor latencia de E/S en la operación de E/S de escritura en el registro de transacciones.
+Esto mismo aplica toohello el registro de transacciones de distintos sistemas de DBMS Hola. Con muchos de ellos limitarse a agregar más archivos de registro de transacciones no se soluciona porque los sistemas DBMS Hola escribir en uno de los archivos de hello en uno solo. Si se necesitan mayores tasas de e/s por segundo que un almacenamiento en función del estándar solo puede entregar el disco duro virtual, puede crear bandas en varios discos duros de virtuales de almacenamiento estándar o puede usar un tipo de disco de almacenamiento Premium mayor que, más allá de los mayores tasas de e/s por segundo, también ofrece factores menor latencia de escritura de hello I / Sistema operativo en el registro de transacciones de Hola.
 
 Estas son las situaciones experimentadas en las implementaciones de Azure que se favorecerían si se emplea software RAID:
 
 * El registro de transacciones y el de rehacer necesitan más IOPS que lo que ofrece Azure para un solo VHD. Tal y como se mencionó anteriormente, esto puede solucionarse creando un LUN en varios VHD que utilicen software RAID.
-* La distribución de cargas de trabajo de E/S desigual por los diferentes archivos de datos de la base de datos de SAP. En tales casos, se puede experimentar que un archivo de datos alcance la cuota con bastante frecuencia; mientras que otros archivos de datos ni siquiera se acercan a la cuota de IOPS de un solo VHD. En estos casos, la solución más sencilla consiste en crear un LUN en varios VHD que utilicen software RAID.
-* No sabe cuál es la carga de trabajo de E/S exacta por archivo de datos y solo conoce, más o menos, la carga de trabajo general de IOPS en el DBMS. La forma más sencilla es crear un LUN con la ayuda de un software RAID. La suma de las cuotas de varios VHD subyacentes a este LUN debe alcanzar la tasa de IOPS conocida.
+* E/S cargas de trabajo distribución desigual sobre Hola diferentes archivos de datos de base de datos SAP de Hola. En tales casos, uno puede experimentar un archivo de datos que se alcanza la cuota de hello en su lugar a menudo. Mientras que otros archivos de datos no obtienen incluso cerrar toohello cuota de IOPS de un solo disco duro virtual. En este tipo hello casos solución más fácil es toobuild una LUN en varios discos duros virtuales con un software RAID.
+* No sabe qué Hola exacta E/S cargas de trabajo por cada archivo de datos es y solo aproximadamente saber qué Hola es de carga de trabajo de e/s por segundo de hello DBMS general. Toodo más fácil es toobuild un LUN con hello ayuda de un software RAID. suma de Hola de cuotas de varios discos duros virtuales detrás de este LUN, a continuación, debe cumplir Hola conocida IOPS velocidad.
 
 - - -
 > ![Windows][Logo_Windows] Windows
 >
-> Se recomienda usar Windows Server 2012 o espacios de almacenamiento superior, ya que es más eficaz que la funcionalidad de creación de secciones de versiones anteriores de Windows. Tenga en cuenta que es posible que tenga que crear los espacios y los grupos de almacenamiento de Windows mediante comandos de PowerShell al utilizar Windows Server 2012 como sistema operativo. Los comandos de PowerShell se pueden encontrar aquí <https://technet.microsoft.com/library/jj851254.aspx>.
+> Se recomienda usar Windows Server 2012 o espacios de almacenamiento superior, ya que es más eficaz que la funcionalidad de creación de secciones de versiones anteriores de Windows. Ten en cuenta que puede ser necesario toocreate Hola grupos de almacenamiento de Windows y espacios de almacenamiento mediante comandos de PowerShell cuando se usa Windows Server 2012 como sistema operativo. comandos de PowerShell de Hello pueden encontrarse aquí <https://technet.microsoft.com/library/jj851254.aspx>
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Para crear un software RAID en Linux, solo se admiten MDADM y LVM (Logical Volume Manager). Para más información, consulte los siguientes artículos:
+> Sólo MDADM y LVM (Administrador de discos lógicos) son compatible toobuild una RAID de software en Linux. Para obtener más información, lea Hola siguientes artículos:
 >
 > * [Configuración de RAID de software en Linux][virtual-machines-linux-configure-raid] (para MDADM)
 > * [Configuración del LVM en una máquina virtual Linux en Azure][virtual-machines-linux-configure-lvm]
@@ -461,261 +461,261 @@ Estas son las situaciones experimentadas en las implementaciones de Azure que se
 >
 
 - - -
-Estas suelen ser las consideraciones que hay que tener en cuenta para utilizar la serie de máquinas virtuales que pueden funcionar con el Almacenamiento premium de Azure normalmente son:
+Consideraciones para aprovechar la serie de máquinas virtuales que suelen ser capaz de toowork con almacenamiento Premium de Azure son:
 
-* Peticiones de latencias de E/S que se acerquen a los que proporcionan los dispositivos SAN o NAS
-* Petición proporcionar una mejor latencia de E/S que la que puede proporcionar el almacenamiento estándar de Azure.
+* Las peticiones de las latencias de E/S que cierre toowhat SAN/NAS dispositivos entregar.
+* Petición proporcionar una mejor latencia de E/S que la que puede proporcionar Azure Standard Storage.
 * Mayor tasa de IOPS por máquina virtual que la que podría obtenerse con varios VHD de almacenamiento estándar en un determinado tipo de máquina virtual.
 
-Puesto que el almacenamiento de Azure subyacente replica cada VHD en al menos tres nodos de almacenamiento, puede usarse la funcionalidad de creación se secciones de RAID 0. No hay que implementar RAID5 o RAID1.
+Desde Hola almacenamiento de Azure subyacente replica a cada nodos de almacenamiento de disco duro virtual tooat tres mínimos, RAID 0 se puede utilizar la creación de bandas simple. No hay ninguna necesidad tooimplement RAID 5 o RAID 1.
 
 ### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Almacenamiento de Microsoft Azure
-Almacenamiento de Microsoft Azure almacenará la máquina virtual (con SO) y los VHD o blobs base en, al menos, 3 nodos de almacenamiento independientes. Al crear una cuenta de almacenamiento, se ofrece una opción de protección, tal y como se muestra aquí:
+Microsoft almacenará el almacenamiento de Azure Hola VM base (con SO) y discos duros virtuales o BLOBs de nodos de almacenamiento independientes tooat 3 mínimos. Al crear una cuenta de almacenamiento, se ofrece una opción de protección, tal y como se muestra aquí:
 
-![Replicación geográfica habilitada para la cuenta de Almacenamiento de Azure][dbms-guide-figure-100]
+![Replicación geográfica habilitada para la cuenta de almacenamiento de Azure][dbms-guide-figure-100]
 
-La replicación local de Almacenamiento de Azure (con redundancia local) proporciona niveles de protección contra la pérdida de datos debido a un error de infraestructura que pocos clientes pueden permitirse implementar. Tal y como se mostró anteriormente, hay 4 opciones diferentes con una quinta que es una variación de una de las tres primeras. Si las analizamos más detenidamente, podemos distinguir:
+Replicación almacenamiento de Azure Local (redundancia local) proporciona niveles de protección contra la pérdida de datos debido a errores de tooinfrastructure que pocos clientes pueden permitirse toodeploy. Como se indicó anteriormente hay 4 opciones diferentes con una quinta parte que se va a una variación de uno de hello en primer lugar tres. Si las analizamos más detenidamente, podemos distinguir:
 
-* **Almacenamiento con redundancia local (LRS) premium**: el Almacenamiento premium de Azure ofrece compatibilidad con discos de alto rendimiento y latencia baja para máquinas virtuales con cargas de trabajo intensivas de E/S. Existen 3 réplicas de los datos en el mismo centro de datos de Azure de una región de Azure. Las copias se encontrarán en dominios de error y actualización diferentes (para familiarizarse con los conceptos, consulte [este][planning-guide-3.2] capítulo de la [Guía de planeamiento][planning-guide]). En el caso de que una réplica de los datos se quede fuera de servicio debido a un error de disco o del nodo de almacenamiento, se generará automáticamente una nueva réplica.
-* **Almacenamiento con redundancia local (LRS)**: en este caso, existen tres réplicas de los datos en el mismo centro de datos de Azure de una región de Azure. Las copias se encontrarán en dominios de error y actualización diferentes (para familiarizarse con los conceptos, consulte [este][planning-guide-3.2] capítulo de la [Guía de planeamiento][planning-guide]). En el caso de que una réplica de los datos se quede fuera de servicio debido a un error de disco o del nodo de almacenamiento, se generará automáticamente una nueva réplica.
-* **Almacenamiento con redundancia geográfica (GRS)**: en este caso, hay una replicación asincrónica que alimentará tres réplicas adicionales de los datos en otra región de Azure que se encuentra, en la mayoría de los casos, en la misma región geográfica (como Europa del Norte y Europa Occidental). Esta opción generará 3 réplicas adicionales, por lo que habrá 6 réplicas en total. Una variación de esta opción es una adición en la que pueden utilizarse los datos de la región de Azure replicada geográficamente para operaciones de lectura (redundancia geográfica con acceso de lectura).
-* **Almacenamiento con redundancia de zona (ZRS)**: en este caso, las tres réplicas de los datos permanecen en la misma región de Azure. Tal y como se explica en [este][planning-guide-3.1] capítulo de la [Guía de planeamiento][planning-guide], una región de Azure puede incluir varios centros de datos que se encuentren muy cerca. En el caso de LRS, las réplicas se distribuyen por los distintos centros de datos que conforman una región de Azure.
+* **Almacenamiento con redundancia local (LRS) premium**: Azure Premium Storage ofrece compatibilidad con discos de alto rendimiento y latencia baja para máquinas virtuales con cargas de trabajo intensivas de E/S. Hay 3 réplicas de datos de hello en hello mismo centro de datos de Azure de una región de Azure. Hello copias estará en diferentes dominios de error y actualización (para conceptos, vea [esto] [ planning-guide-3.2] capítulo Hola [Guía de planificación][planning-guide]). En el caso de una réplica de datos de Hola que salen de servicio debido a error de nodo de almacenamiento de tooa o error de disco, una nueva réplica se genera automáticamente.
+* **Almacenamiento redundante local (LRS)**: en este caso, hay 3 réplicas de datos de hello en hello mismo centro de datos de Azure de una región de Azure. Hello copias estará en diferentes dominios de error y actualización (para conceptos, vea [esto] [ planning-guide-3.2] capítulo Hola [Guía de planificación][planning-guide]). En el caso de una réplica de datos de Hola que salen de servicio debido a error de nodo de almacenamiento de tooa o error de disco, una nueva réplica se genera automáticamente.
+* **Almacenamiento con redundancia geográfica (GRS)**: en este caso, hay una replicación asincrónica que se alimenta el papel más 3 réplicas de datos de hello en otra región de Azure que se encuentra en la mayoría de casos de hello en Hola misma región geográfica (por ejemplo, Europa del Norte y oeste Europa). Esta opción generará 3 réplicas adicionales, por lo que habrá 6 réplicas en total. Una variación de este es una adición donde se pueden usar datos de hello en región de Azure replicada Hola geográfica para su lectura (acceso de lectura con redundancia geográfica).
+* **La zona de almacenamiento redundante (ZRS)**: en este caso réplicas Hola 3 de hello datos permanecen en Hola la misma región de Azure. Como se explica en [esto] [ planning-guide-3.1] capítulo de hello [Guía de planificación] [ planning-guide] una región de Azure puede ser un número de centros de datos cerca unas de otras. En caso de hello de LRS réplicas Hola se reparte Hola distintos centros de datos que hacen que una región de Azure.
 
 Puede encontrar más información [aquí][storage-redundancy].
 
 > [!NOTE]
-> En lo que respecta a las implementaciones de DBMS, no se recomienda usar el almacenamiento con redundancia geográfica.
+> Para las implementaciones de DBMS, no se recomienda el uso de Hola de almacenamiento con redundancia geográfica
 >
-> La replicación geográfica del almacenamiento de Azure es asincrónica. La replicación de VHD individuales montados en una sola máquina virtual no se sincroniza en el paso de bloqueo. Por lo tanto, no es adecuada para replicar los archivos DBMS que se distribuyen por diferentes VHD o que se implementan con un software RAID basado en varios discos duros virtuales. El software de DBMS requiere que el almacenamiento en disco persistente se sincronice con precisión en los distintos LUN y en los VHD, discos o ejes subyacentes. El software de DBMS utiliza diversos mecanismos para secuenciar las actividades de escritura de E/S y un DBMS informará de que el almacenamiento en disco que tiene como destino la replicación está dañado si dichas actividades varían en unos pocos milisegundos. Por consiguiente, si se quiere disponer de una configuración de base de datos con una base de datos que se extienda en varios VHD replicados geográficamente, dicha replicación debe realizarse con la funcionalidad y los medios de la base de datos. No se debe depender de la replicación geográfica del almacenamiento de Azure para llevar a cabo este trabajo.
+> La replicación geográfica de Azure Storage es asincrónica. Replicación de discos duros virtuales individuales montado tooa sola máquina virtual no están sincronizadas en el paso de bloqueo. Por lo tanto, no son archivos DBMS tooreplicate adecuado que se distribuyen en diferentes discos duros virtuales o se implementa con un software RAID basada en varios discos duros virtuales. El software de DBMS requiere que el almacenamiento en disco persistente Hola se sincronice con precisión en LUN diferentes y subyacentes discos/discos duros virtuales/ejes. El software de DBMS utiliza diversos toosequence mecanismos actividades de escritura de E/S y un DBMS informará de que el almacenamiento en disco Hola dirigida por la replicación de hello está dañado si estas varían incluso en unos pocos milisegundos. Por lo tanto, si realmente desea una configuración de base de datos con una base de datos que se extienda a través de varios discos duros virtuales con replicación geográfica, dicha replicación debe realizar con los medios de la base de datos y la funcionalidad de toobe. No se debe depender de replicación geográfica del almacenamiento Azure tooperform este trabajo.
 >
-> El problema se explica mejor con un sistema de ejemplo. Supongamos que tiene un sistema SAP cargado en Azure con 8 discos VHD que contienen archivos de datos del DBMS más otro disco duro virtual con el archivo de registro de transacciones. En cada uno de estos 9 VHD se escriben datos con un método coherente con el DBMS, con independencia de que esta operación se realice en los archivos de registro de transacciones o de datos.
+> problema de Hello es más sencillo tooexplain con un sistema de ejemplo. Supongamos que tiene un sistema SAP cargado en Azure con 8 discos duros virtuales que contienen archivos de datos de hello DBMS más un disco duro virtual que lo contiene Hola transacción archivo de registro. Cada uno de estos 9 VHD tendrá datos escritos toothem en un método coherente según toohello DBMS, si se escriben los archivos de registro de transacciones o datos toohello datos de Hola.
 >
-> Para replicar geográficamente y de manera eficaz los datos y mantener una imagen coherente de la base de datos, el contenido de los 9 VHD tendría que replicarse geográficamente en el orden exacto en que se ejecutaron las operaciones de E/S en estos 9 VHD. Sin embargo, la replicación geográfica del almacenamiento de Azure no permite declarar las dependencias entre los VHD. Es decir, la replicación geográfica del almacenamiento de Microsoft Azure no conoce el hecho de que el contenido de estos 9 VHD diferentes está relacionado entre sí, ni tampoco que los cambios de datos solo son coherentes cuando la replicación se realiza en el orden en que se llevan a cabo las operaciones de E/S en esos 9 discos duros virtuales.
+> En orden tooproperly replicar geográficamente Hola datos y mantener una imagen de la base de datos coherente, el contenido de Hola de los nueve VHD habría toobe replicación geográfica en operaciones de hello orden exacto Hola E/S ejecutados contra Hola nueve VHD diferentes. Sin embargo, la replicación geográfica del almacenamiento de Azure no permite toodeclare dependencias entre los discos duros virtuales. Esto significa que no sabe replicación geográfica del almacenamiento de Azure de Microsoft sobre el hecho de Hola que el contenido de hello en estos nueve VHD diferentes están relacionado tooeach otra y que los cambios de datos de hello son coherentes solo cuando se replican Hola orden hello en operaciones de E/S ha ocurrido en todos los discos duros virtuales Hola 9.
 >
-> Además de que existen bastantes probabilidades de que las imágenes replicadas geográficamente del escenario no proporcionen una imagen coherente de la base de datos, el almacenamiento con redundancia geográfica puede afectar considerablemente al rendimiento. En resumen, no utilice este tipo de redundancia de almacenamiento para las cargas de trabajo de tipo DBMS.
+> Además de posibilidades alta que imágenes de replicación geográfica de hello en el escenario de hello proporcionan una imagen de la base de datos coherente, también hay una reducción del rendimiento que se muestra con almacenamiento con redundancia geográfica que graves puede afectar al rendimiento. En resumen, no utilice este tipo de redundancia de almacenamiento para las cargas de trabajo de tipo DBMS.
 >
 >
 
 #### <a name="mapping-vhds-into-azure-virtual-machine-service-storage-accounts"></a>Asignación de VHD en cuentas de almacenamiento del servicio de máquina virtual de Azure
-Las cuentas de almacenamiento de Azure se usan con fines administrativos y presentan algunas limitaciones. Sin embargo, las limitaciones serán diferentes en función de si se trata de una cuenta de Azure Standard Storage o de Azure Premium Storage. En [este artículo][storage-scalability-targets] se muestran las funcionalidades y limitaciones exactas.
+Las cuentas de almacenamiento de Azure se usan con fines administrativos y presentan algunas limitaciones. Mientras que las limitaciones de hello varían si hablamos de una cuenta de almacenamiento de Azure estándar o una cuenta de almacenamiento Premium de Azure. Hola exacta capacidades y limitaciones se enumeran [aquí][storage-scalability-targets]
 
-Es importante señalar que en Azure Standard Storage hay un límite en el número de E/S por segundo para cada cuenta de almacenamiento (en la fila de velocidad total de solicitudes de [este artículo][storage-scalability-targets]). Además, hay un límite inicial de 100 cuentas de almacenamiento por suscripción de Azure (a partir de julio de 2015). Por lo tanto, se recomienda equilibrar la cantidad de IOPS de máquinas virtuales entre las diferentes cuentas de almacenamiento al usar Azure Standard Storage. Asimismo, lo ideal es que una sola máquina virtual utilice una cuenta de almacenamiento, si es posible. Por consiguiente, si hablamos de implementaciones de DBMS donde cada VHD que se hospeda en Azure Standard Storage puede alcanzar su límite de cuota, solo se deben implementar entre 30 y 40 VHD por cuenta de almacenamiento de Azure que utilice Azure Standard Storage. Por otro lado, si utiliza Azure Premium Storage y desea almacenar volúmenes de base de datos de mayor volumen, le recomendamos equilibrar el número de IOPS. No obstante, una cuenta de Azure Premium Storage es mucho más restrictiva en lo que respecta al volumen de datos que una cuenta de Azure Standard Storage. Como resultado, solo se puede implementar un número limitado de VHD en una cuenta de Almacenamiento premium de Azure antes de alcanzar el límite de volumen de datos. Finalmente, también hay que tener en cuenta que una cuenta de almacenamiento de Azure funciona como una SAN virtual y presenta limitaciones en cuanto a capacidad e IOPS. Como resultado, hay que seguir definiendo, como en las implementaciones locales, el diseño de los VHD de los distintos sistemas SAP en los diferentes dispositivos SAN imaginarios o cuentas de almacenamiento de Azure.
+Modo estándar para almacenamiento de Azure que es importante toonote hay un límite en hello IOPS por cuenta de almacenamiento (en la fila que contiene 'Velocidad Total de solicitudes' [artículo hello][storage-scalability-targets]). Además, hay un límite inicial de 100 cuentas de almacenamiento por suscripción de Azure (a partir de julio de 2015). Por lo tanto, se recomienda toobalance IOPS de máquinas virtuales entre varias cuentas de almacenamiento al usar el almacenamiento de Azure estándar. Asimismo, lo ideal es que una sola máquina virtual utilice una cuenta de almacenamiento, si es posible. Por consiguiente, si hablamos de implementaciones de DBMS donde cada VHD que se hospeda en Azure Standard Storage puede alcanzar su límite de cuota, solo se deben implementar entre 30 y 40 VHD por cuenta de almacenamiento de Azure que utilice Azure Standard Storage. En hello otra parte, si aprovechar almacenamiento Premium de Azure y desea toostore volúmenes de base de datos grande, es posible que un problema en términos de IOPS. No obstante, una cuenta de Azure Premium Storage es mucho más restrictiva en lo que respecta al volumen de datos que una cuenta de Azure Standard Storage. Como resultado, solo se puede implementar un número limitado de discos duros virtuales dentro de una cuenta de almacenamiento de Azure Premium antes de alcanzar el límite de volumen de datos de Hola. En la reflexión de hello final de una cuenta de almacenamiento de Azure como una "SAN Virtual" tiene capacidades limitadas en IOPS y capacidad. Como resultado, tarea hello sigue siendo, como las implementaciones locales, diseño de hello toodefine de hello discos duros virtuales de diferentes sistemas SAP Hola sobre Hola diferentes 'dispositivos SAN imaginarios' o cuentas de almacenamiento de Azure.
 
-Para el almacenamiento estándar de Azure no se recomienda, si es posible, proporcionar el almacenamiento de diferentes cuentas de almacenamiento en una sola máquina virtual.
+Para Azure no se recomienda toopresent almacenamiento de tooa de cuentas de almacenamiento diferente de almacenamiento estándar única VM si es posible.
 
-Al utilizar la serie DS o GS de máquinas virtuales de Azure es posible montar los VHD de cuentas de almacenamiento estándar y Premium Storage de Azure. A la mente vienen casos de uso en los que puede aprovecharse el almacenamiento heterogéneo. Por ejemplo, escribir copias de seguridad en VHD respaldadas por el almacenamiento estándar mientras que los archivos de registro y datos de DBMS se mantienen en el Almacenamiento premium.
+Mientras que el uso de Hola DS o GS-series de máquinas virtuales de Azure es posible toomount discos duros virtuales de cuentas de almacenamiento de Azure estándar y cuentas de almacenamiento Premium. Casos de uso como escribir copias de seguridad en almacenamiento estándar habían respaldado discos duros virtuales, mientras que los datos de DBMS y archivos de registro en almacenamiento Premium vienen toomind donde puede aprovecharse dicho almacenamiento heterogénea.
 
-En función de las pruebas e implementaciones de entre 30 y 40 VHD que contienen archivos de registro y de datos de base de datos, el aprovisionamiento puede realizarse en una única cuenta de almacenamiento estándar de Azure con un rendimiento aceptable. Tal y como se mencionó anteriormente, es probable que la limitación de una cuenta de Azure Premium Storage sea la capacidad de los datos que puede albergar y no los IOPS.
+Basándose en las implementaciones de clientes y pruebas too40 aproximadamente 30 discos duros virtuales que contiene archivos de datos de la base de datos y archivos de registro se pueden aprovisionar en una cuenta de almacenamiento estándar de Azure único con un rendimiento aceptable. Tal y como se mencionó anteriormente, limitación de Hola de una cuenta de almacenamiento de Azure Premium es capacidad de datos de hello toobe es probable que puede contener y no IOPS.
 
-Al igual que con los dispositivos SAN locales, para poder compartir recursos hay que realizar algunas tareas de supervisión. De este modo, se pueden detectar los cuellos de botella que puedan producirse en una cuenta de almacenamiento de Azure. La extensión de supervisión de Azure para SAP y el Portal de Azure son algunas de las herramientas que puede utilizar para detectar cuentas de almacenamiento de Azure ocupadas que pueden estar proporcionando un rendimiento de E/S poco óptimo.  Si se detecta esta situación, se recomienda mover las máquinas virtuales ocupadas a otra cuenta de almacenamiento de Azure. Consulte la [Guía de implementación][deployment-guide] para más información sobre cómo activar las funcionalidades de supervisión de hosts de SAP.
+Como con SAN dispositivos locales, uso compartido requiere algunos supervisión en orden tooeventually detectar cuellos de botella en una cuenta de almacenamiento de Azure. Hola extensión de supervisión de Azure para SAP y Hola Portal de Azure son herramientas que pueden ser utilizado toodetect ocupados cuentas de almacenamiento de Azure que pueden estar proporcionando poco óptimo rendimiento de E/S.  Si se detecta esta situación, se recomienda toomove ocupado máquinas virtuales tooanother cuenta de almacenamiento de Azure. Consulte toohello [Guía de implementación] [ deployment-guide] para obtener más información sobre cómo tooactivate Hola SAP hospedar las capacidades de supervisión.
 
-Otro artículo donde se resumen los procedimientos recomendados para el almacenamiento estándar de Azure y las cuentas de almacenamiento estándar de Azure se puede encontrar aquí <https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx>
+Otro artículo donde se resumen los procedimientos recomendados para Azure Standard Storage y las cuentas de Azure Standard Storage se puede encontrar aquí <https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx>
 
-#### <a name="moving-deployed-dbms-vms-from-azure-standard-storage-to-azure-premium-storage"></a>Sobre el procedimiento para mover máquinas virtuales de DBMS implementadas del almacenamiento estándar al premium de Azure
-Nos encontramos con bastante frecuencia algunos escenarios donde, como cliente, desea mover una máquina virtual implementada del almacenamiento de estándar al premium de Azure. Este procedimiento no puede realizarse sin mover físicamente los datos. Hay varias maneras de conseguir este objetivo.
+#### <a name="moving-deployed-dbms-vms-from-azure-standard-storage-tooazure-premium-storage"></a>Mover implementa las VM de DBMS desde el almacenamiento de Azure estándar tooAzure almacenamiento Premium
+Descubrimos bastante algunos escenarios donde desea que como cliente toomove una VM implementada estándar del almacenamiento de Azure en almacenamiento Premium de Azure. Esto no es posible sin mover físicamente los datos de Hola. Hay objetivo de Hola de tooachieve de varias maneras:
 
-* Podría copiar simplemente todos los VHD, el VHD base y los VHD de datos en una nueva cuenta de Almacenamiento premium de Azure. Es bastante frecuente que el número de VHD del almacenamiento estándar de Azure no se elija por el hecho de que se necesita ese volumen de datos concreto, sino por los IOPS. Cuando se mueven todos los VHD al Almacenamiento premium de Azure, con menos discos duros virtuales podría obtener el mismo rendimiento de IOPS. Como el almacenamiento estándar de Azure se paga por los datos usados y no por el tamaño nominal del disco, la cantidad de VHD no es relevante en términos de costes. Sin embargo, con el Almacenamiento premium de Azure Premium pagaría por el tamaño nominal del disco. Por lo tanto, la mayoría de los clientes tratan de mantener el número de VHD de Azure del Almacenamiento Premium en la cantidad necesaria para obtener el rendimiento de IOPS necesario. En definitiva, la mayoría de los clientes deciden adoptar el modelo de copia 1:1.
-* Si aún no lo ha hecho, monte un solo VHD que pueda contener una copia de seguridad de la base de datos de SAP. Después de realizar la copia de seguridad, desmonte todos los VHD, incluido el que contiene la copia de seguridad, y copie el VHD base y el de la copia de seguridad en una cuenta de Azure Premium Storage. Después, implementaría la máquina virtual basada en el VHD y montaría el VHD con la copia de seguridad. Ahora, cree discos de Premium Storage vacíos adicionales para la máquina virtual que se utilizó para restaurar la base de datos. Se supone que el DBMS permite cambiar las rutas de acceso a los archivos de registro y de datos como parte del proceso de restauración.
-* Otra posibilidad consiste en una variación del proceso anterior, donde simplemente se copia el VHD de copia de seguridad en Azure Premium Storage y se asocia en una máquina virtual que haya implementado e instalado recientemente.
-* La cuarta posibilidad consistiría en cambiar el número de archivos de datos de la base de datos cuando se necesario. En ese caso, realizaría una copia del sistema homogéneo de SAP mediante procesos de exportación e importación. Coloque los archivos de exportación en un VHD que se haya copiado en una cuenta de Almacenamiento premium de Azure y asóciela a una máquina virtual que utilice para ejecutar los procesos de importación. Los clientes usan esta posibilidad principalmente cuando desean reducir el número de archivos de datos.
+* Podría copiar simplemente todos los VHD, el VHD base y los VHD de datos en una nueva cuenta de Azure Premium Storage. Muy a menudo número Hola de discos duros virtuales que eligió en el almacenamiento de Azure estándar no debido a hechos de hello precisó de volumen de datos de Hola. Pero necesitan que muchos discos duros virtuales debido a Hola e/s por segundo. Ahora que mover tooAzure almacenamiento Premium podría ir con forma menos tooachieve discos duros virtuales Hola algunas rendimiento de e/s por segundo. Dado el hecho de Hola que almacenamiento de Azure estándar se paga por hello usa datos y no el tamaño de disco nominal hello, número de Hola de discos duros virtuales no importa realmente en términos de costos. Sin embargo, con el almacenamiento de Azure Premium, pagaría por tamaño de disco nominal de Hola. Por lo tanto, la mayoría de los clientes de hello pruebe con tookeep Hola número de discos duros virtuales de Azure en almacenamiento Premium a Hola número tooachieve necesarios Hola IOPS rendimiento necesario. Por lo tanto, la mayoría de los clientes deciden en forma de Hola de un simple 1:1 copia.
+* Si aún no lo ha hecho, monte un solo VHD que pueda contener una copia de seguridad de la base de datos de SAP. Después de la copia de seguridad de hello, desmontar todos los discos duros virtuales incluida copia Hola VHD del contenedor Hola y Hola de copia base VHD y Hola VHD con copia de seguridad de hello en una cuenta de almacenamiento Premium de Azure. A continuación, implemente Hola que VM en función de Hola base VHD y montaje Hola VHD con copia de seguridad de Hola. Ahora cree adicional Premium almacenamiento discos vacíos para hello VM base de datos de uso toorestore hello en. Esto se da por supuesto que Hola DBMS permite toochange toohello datos y registro de archivos de las rutas de acceso como parte del proceso de restauración de Hola.
+* Otra posibilidad es una variación del proceso anterior hello, donde se copia VHD de copia de seguridad de hello en almacenamiento Premium de Azure y adjuntar contra una VM que implementaron e instalaron recientemente.
+* posibilidad cuarto Hola elegiría cuando haya necesitados número de hello toochange de archivos de datos de la base de datos. En ese caso, realizaría una copia del sistema homogéneo de SAP mediante procesos de exportación e importación. Coloque los archivos de exportación en un disco duro virtual que se copia en una cuenta de almacenamiento de Azure Premium y adjuntarlo tooa VM que usar procesos de importación de toorun Hola. Los clientes usar esta posibilidad principalmente cuando lo deseen número de hello toodecrease de archivos de datos.
 
 ### <a name="deployment-of-vms-for-sap-in-azure"></a>Implementación de máquinas virtuales para SAP en Azure
-Microsoft Azure ofrece varias maneras de implementar máquinas virtuales y discos asociados. Por tanto, es muy importante comprender las diferencias, puesto que los preparativos de las máquinas virtuales pueden variar según la forma de implementación. En general, nos centramos en los escenarios que se describen en los capítulos siguientes.
+Microsoft Azure ofrece varias maneras de toodeploy las máquinas virtuales y discos de asociados. Por tanto, es muy importante toounderstand diferencias de Hola, ya preparativos de hello las máquinas virtuales pueden variar según en forma de Hola de implementación. En general, ponemos atención a los escenarios de hello descritos en hello siguientes capítulos.
 
-#### <a name="deploying-a-vm-from-the-azure-marketplace"></a>Implementación de máquinas virtuales desde Azure Marketplace
-Desea seleccionar una imagen proporcionada por Microsoft o un tercero en Azure Marketplace para implementar la máquina virtual. Una vez que se ha implementado la máquina virtual en Azure, sigue las mismas instrucciones y utilice las mismas herramientas para instalar el software de SAP en la máquina virtual de la misma forma que lo haría en un entorno local. Para instalar el software de SAP en la máquina virtual de Azure, SAP y Microsoft recomiendan cargar y almacenar el medio de instalación de SAP en los VHD de Azure, o bien crear una máquina virtual de Azure que funcione como un servidor de archivos que contenga todos los medios de instalación de SAP que resulten necesarios.
+#### <a name="deploying-a-vm-from-hello-azure-marketplace"></a>Implementación de una máquina virtual de hello Azure Marketplace
+Le gusta tootake Microsoft o entidad 3rd proporciona imágenes de hello Azure Marketplace toodeploy la máquina virtual. Una vez implementada la máquina virtual en Azure, siga Hola mismas instrucciones y herramientas tooinstall Hola software SAP en la máquina virtual como lo haría en un entorno local. Para la instalación de software de SAP de hello en hello VM de Azure, SAP y Microsoft recomienda tooupload y almacenan medios de instalación de SAP de hello en discos duros virtuales de Azure o toocreate una VM de Azure funciona como un servidor de archivos' ' que contiene todos los Hola necesarios SAP medios de instalación.
 
 #### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>Implementación de máquinas virtuales con una imagen generalizada específica del cliente
-Debido a los requisitos de revisión específicos en lo que respecta a la versión del SO o DBMS, puede que las imágenes proporcionadas en Azure Marketplace no satisfagan sus necesidades. Por lo tanto, se recomienda crear una máquina virtual con su propia imagen privada de máquina virtual de SO o DBMS que pueda implementarse varias veces más adelante. Para preparar una imagen privada para tareas de duplicación, el sistema operativo de la máquina virtual local debe ser generalizado. Consulte la [Guía de implementación][deployment-guide] para más información sobre cómo generalizar una máquina virtual.
+Debido a requisitos de revisión de toospecific en lo que respecta tooyour sistema operativo o versión DBMS, imágenes Hola proporcionado en hello Azure Marketplace no pueden ajustarla a sus necesidades. Por lo tanto, tendrá que toocreate una máquina virtual mediante su propia imagen de VM de SO o DBMS 'private' que se puede implementar varias veces con posterioridad. tooprepare una imagen 'privada' para la duplicación, Hola que SO debe estar generalizado en hello local de máquina virtual. Consulte toohello [Guía de implementación] [ deployment-guide] para obtener más información acerca de cómo toogeneralize una máquina virtual.
 
-Si ya ha instalado contenido de SAP en la máquina virtual local (especialmente en los sistemas de dos niveles), puede adaptar la configuración del sistema SAP después de realizar la implementación de la máquina virtual de Azure mediante el procedimiento de cambio de nombre de instancia admitido por el administrador de aprovisionamiento de software de SAP (nota de SAP [1619720]). De lo contrario, puede instalar el software de SAP después de la implementación de la máquina virtual de Azure.
+Si ya ha instalado contenido de SAP en la VM local (especialmente para sistemas de 2 niveles), puede adaptar la configuración del sistema SAP Hola después de implementación de Hola de hello Azure VM a través de la instancia de hello cambiar el nombre de procedimiento admite Hola aprovisionamiento de Software de SAP Administrador (Nota de SAP [1619720]). En caso contrario, puede instalar software SAP de hello más tarde después de la implementación de Hola de hello VM de Azure.
 
-A partir del contenido de base de datos que usa la aplicación de SAP, puede generar el contenido nuevo mediante una instalación de SAP o importarlo a Azure utilizando un VHD con una copia de seguridad de base de datos de DBMS o aprovechando las funcionalidades del DBMS para realizar la copia de seguridad directamente en Microsoft Azure Storage. En este caso, puede preparar los VHD con los archivos de registro y de datos de DBMS local y, después, importarlos como discos en Azure. Sin embargo, la transferencia de datos de DBMS que se carga desde el entorno local a Azure funcionaría en los discos VHD que tienen que estar preparados en el entorno local.
+A partir de contenido de base de datos de hello usados por hello aplicación SAP, puede generar contenido Hola nuevo mediante una instalación de SAP o puede importar el contenido a Azure mediante el uso de un disco duro virtual con una copia de seguridad de base de datos DBMS o mediante el aprovechamiento de las capacidades de hello DBMS toodirectly copia de seguridad en el almacenamiento de Azure de Microsoft. En este caso, puede preparar VHD con datos del DBMS de hello y registrar archivos locales y, a continuación, importarlos como discos en Azure. Pero la transferencia de Hola de datos DBMS que se está cargando desde local tooAzure funcionaría en los discos VHD que necesitan toobe preparado local.
 
-#### <a name="moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a>Sobre el procedimiento para mover máquinas virtuales del entorno local a Azure con un disco no generalizado
-Planea mover un sistema SAP específico desde un entorno local a Azure (elevar y desplazar). Esto puede hacerse cargando en Azure el VHD que contiene el sistema operativo, los archivos binarios de SAP y los finales de DBMS, así como los discos duros virtuales con los archivos de registro y de datos del DBMS. En contraposición al segundo escenario anterior, mantendrá el nombre de host, el SID de SAP y las cuentas de usuario de SAP en la máquina virtual de Azure, ya que se configuraron en el entorno local. Por lo tanto, no es necesario generalizar la imagen. Este caso se aplicará principalmente a escenarios entre locales donde una parte de la infraestructura de SAP se ejecuta de forma local y otra en Azure.
+#### <a name="moving-a-vm-from-on-premises-tooazure-with-a-non-generalized-disk"></a>Mover una máquina virtual de tooAzure local con un disco no generalizado
+Planee toomove un sistema SAP específico desde local tooAzure (elevar y cambiar). Esto puede hacerse mediante la carga de hello VHD que contiene Hola SO, Hola archivos binarios SAP y los archivos binarios DBMS eventuales más Hola discos duros virtuales con archivos de datos y registro de hello de hello DBMS tooAzure. En opuesto tooscenario #2 anterior, mantener Hola hostname, SID de SAP y las cuentas de usuario SAP en hello Azure VM tal y como se configuraron en el entorno local de Hola. Por lo tanto, no es necesario generalizar la imagen de Hola. En este caso se aplicará sobre todo en escenarios entre entornos donde una parte del programa Hola panorama de SAP se ejecuta en local y los elementos en Azure.
 
 ## <a name="871dfc27-e509-4222-9370-ab1de77021c3"></a>Alta disponibilidad y recuperación ante desastres con máquinas virtuales de Azure
-Azure ofrece las siguientes funcionalidades de alta disponibilidad (HA) y recuperación ante desastres (DR) que se aplican a los diferentes componentes que se utilizarían para las implementaciones de SAP y DBMS.
+Azure ofrece Hola siguiendo las funcionalidades de alta disponibilidad (HA) y recuperación ante desastres (DR) que se aplican los componentes toodifferent que se utilizaría para las implementaciones de SAP y DBMS
 
 ### <a name="vms-deployed-on-azure-nodes"></a>Máquinas virtuales implementadas en nodos de Azure
-La plataforma Azure no ofrece características como la migración en vivo de máquinas virtuales implementadas. Es decir, que si hay que realizar un mantenimiento en un clúster de servidor en el que se ha implementado una máquina virtual, esta debe detenerse y reiniciarse. El mantenimiento de Azure se realiza utilizando los llamados "dominios de actualización" de los clústeres de servidores. Solo se mantiene a la vez un único dominio de actualización. Durante un reinicio se producirá una interrupción del servicio mientras la máquina virtual está apagada, se realiza el mantenimiento y se reinicia la máquina virtual. Sin embargo, la mayoría de los proveedores de DBMS proporciona funcionalidades de alta disponibilidad y recuperación ante desastres que reinician rápidamente los servicios de DBMS de otro nodo si el principal no está disponible. La plataforma Azure ofrece funcionalidades para distribuir las máquinas virtuales, el almacenamiento y otros servicios de Azure por los dominios de actualización para asegurarse de que los errores de infraestructura o mantenimientos planeados afecten solo a un pequeño subconjunto de máquinas virtuales o servicios.  Si se realiza una planeación cuidadosa, se pueden alcanzar niveles de disponibilidad comparables a los de las infraestructuras locales.
+Hola plataforma de Azure no ofrece características como la migración en vivo de máquinas virtuales implementadas. Esto significa que si hay mantenimiento necesario en un clúster de servidor en el que se implementa una máquina virtual, Hola VM debe tooget detenerse y reiniciarse. El mantenimiento de Azure se realiza utilizando los llamados "dominios de actualización" de los clústeres de servidores. Solo se mantiene a la vez un único dominio de actualización. Durante un reinicio habrá una interrupción del servicio mientras Hola que VM se apaga, realizando el mantenimiento y reinicia la máquina virtual. Sin embargo, la mayoría de los proveedores DBMS proporciona funcionalidad de alta disponibilidad y recuperación ante desastres que reinicia rápidamente servicios del DBMS hello en otro nodo si el nodo principal de hello no está disponible. Hello plataforma Azure ofrece funcionalidad toodistribute máquinas virtuales, almacenamiento y otros servicios de Azure a través de dominios de actualización tooensure que prevé errores de infraestructura o de mantenimiento solo afectarán a un pequeño subconjunto de máquinas virtuales o servicios.  Con una planificación cuidadosa es infraestructuras de posibles tooachieve disponibilidad niveles comparables tooon local.
 
-Los conjuntos de disponibilidad de Microsoft Azure constituyen una agrupación lógica de máquinas virtuales o servicios que garantizan que las máquinas virtuales y otros servicios se distribuyan por diferentes dominios de error y actualización de un clúster de forma que solo se produzca el apagado de un nodo en un momento dado (consulte [este][virtual-machines-manage-availability] artículo para más información).
+Conjuntos de disponibilidad de Microsoft Azure son una agrupación lógica de máquinas virtuales o servicios que garantizan que las máquinas virtuales y otros servicios son distribuida toodifferent error y dominios de actualización dentro de un clúster de forma que solo habría un apagado de nodo en cualquier momento en el tiempo (lectura [esto] [ virtual-machines-manage-availability] artículo para obtener más detalles).
 
-Debe configurarse expresamente durante la implementación de máquinas virtuales y como se muestra aquí:
+Necesita toobe configurado según su fin al implementarse las máquinas virtuales tal como se muestra aquí:
 
 ![Definición de conjunto de disponibilidad para configuraciones de alta disponibilidad de DBMS][dbms-guide-figure-200]
 
-Si deseamos crear configuraciones de alta disponibilidad de implementaciones de DBMS (independientemente de la funcionalidad de DBMS de alta disponibilidad que se emplee), las máquinas virtuales de DBMS tendrían que cumplir los siguientes requisitos:
+Si queremos toocreate configuraciones de alta disponibilidad de las implementaciones de DBMS (independientes de hello individuales HA de DBMS funcionalidad usada), las VM de DBMS Hola tendría que:
 
-* Agregar las máquinas virtuales a la misma red virtual de Azure (<https://azure.microsoft.com/documentation/services/virtual-network/>)
-* Las máquinas virtuales de la configuración de alta disponibilidad también deben estar en la misma subred. El proceso de resolución de nombres entre las diferentes subredes no se puede realizar en las implementaciones exclusivas en la nube, solo funcionará la resolución de direcciones IP. Al utilizar la conectividad ExpressRoute de sitio a sitio para las implementaciones entre locales, ya deberá haber establecida una red con al menos una subred. El proceso de resolución de nombres se realizará según la infraestructura de red y las directivas AD locales.
+* Agregar toohello de máquinas virtuales de hello misma red Virtual de Azure (<https://azure.microsoft.com/documentation/services/virtual-network/>)
+* También debe estar Hello las máquinas virtuales de la configuración de alta disponibilidad de Hola Hola misma subred. Resolución de nombres entre diferentes subredes de hello no es posible en las implementaciones que solo en la nube, la resolución IP solo funcionará. Al utilizar la conectividad ExpressRoute de sitio a sitio para las implementaciones entre locales, ya deberá haber establecida una red con al menos una subred. Resolución de nombres se hará según toohello local las directivas de AD y la infraestructura de red.
 
 [comment]: <> (MSSedusch TODO Test if still true in ARM)
 
 #### <a name="ip-addresses"></a>Direcciones IP
-Se recomienda encarecidamente configurar las máquinas virtuales para configuraciones de alta disponibilidad de una manera flexible. En Azure no se recomienda depender de las direcciones IP para abordar los asociados de alta disponibilidad dentro de la configuración de alta disponibilidad, a menos que se utilizan direcciones IP estáticas. Hay dos conceptos de apagado en Azure:
+Se recomienda encarecidamente toosetup hello las máquinas virtuales para las configuraciones de alta disponibilidad de una manera flexible. Confiar en el asociado de HA de IP direcciones tooaddress Hola dentro de la configuración de alta disponibilidad de hello no es confiable en Azure, a menos que se utilizan direcciones IP estáticas. Hay dos conceptos de apagado en Azure:
 
-* Apagado a través del Portal de Azure o el cmdlet de Azure PowerShell Stop-AzureRmVM: en este caso, la máquina virtual se apaga y se anula la asignación. No se realizará ningún cargo en su cuenta de Azure por esta máquina virtual; los únicos gastos que se le cobrarán serán por el almacenamiento usado. Sin embargo, si la dirección IP privada de la interfaz de red no era estática, se liberará la dirección IP y no se garantizará que la interfaz de red vuelva a tener asignada la dirección IP antigua después de reiniciar la máquina virtual. Al realizar el apagado a través del Portal de Azure o mediante una llamada a Stop-AzureRmVM, se anulará automáticamente la asignación. Si no desea anular la asignación de la máquina, use Stop-AzureRmVM -StayProvisioned.
-* Si apaga la máquina virtual desde un sistema operativo, esta se apagará y NO se anulará la asignación. Sin embargo, en este caso, se siguen realizando cargos en la cuenta de Azure por la máquina virtual, a pesar de que está apagada. En tal caso, la asignación de la dirección IP a una máquina virtual detenida permanecerá intacta. Al apagar la máquina virtual desde esta no se forzará automáticamente la anulación de la asignación.
+* Apagado a través del Portal de Azure o Azure PowerShell cmdlet Stop-AzureRmVM: en este caso Hola Máquina Virtual obtiene cierre y desasigne. Su cuenta de Azure ya no se le cobrará por esta máquina virtual para que hello únicos gastos que se le cobrará son para el almacenamiento de hello usa. Sin embargo, si dirección IP privada de Hola de interfaz de red de hello no es estático, se libera la dirección IP de hello y no se garantiza que esa interfaz de red de hello Obtiene la dirección IP antigua Hola asigna nuevo después del reinicio del programa Hola a máquina virtual. Realizar Hola apagado a través del Portal de Azure de Hola o automáticamente hará que la cancelación de la asignación mediante una llamada a Stop-AzureRmVM. Si no desea que uso AzureRmVM Stop - StayProvisioned de la máquina de hello toodeallocat
+* Si apaga Hola máquina virtual desde un nivel de sistema operativo, Hola VM obtiene apagar y de asignación no se cancela. Sin embargo, en este caso, su cuenta de Azure todavía se cobrará por Hola de máquina virtual, a pesar del hecho de Hola que está apagada. En tal caso, hello asignación de tooa de dirección IP de hello VM detenida permanecerá intacta. Cerrando Hola VM desde dentro no automáticamente forzará la cancelación de la asignación.
 
-Incluso en los escenarios entre locales, de forma predeterminada, tras realizarse un apagado y una anulación de la asignación, se desasignarán las direcciones IP de la máquina virtual, aunque las directivas locales de la configuración de DHCP sean diferentes.
+Incluso en escenarios entre locales, de forma predeterminada un apagado y la cancelación de la asignación significan una desasignación del programa Hola a direcciones IP de Hola de máquina virtual, incluso si las directivas locales en la configuración de DHCP son diferentes.
 
-* Existe una excepción si se asigna una dirección IP estática a una interfaz de red tal y como se describe [aquí][virtual-networks-reserved-private-ip].
-* En tal caso, la dirección IP permanecerá fija mientras no se elimine la interfaz de red.
+* Hello excepción es si uno asigna una interfaz de red estática de tooa dirección IP como se describe [aquí][virtual-networks-reserved-private-ip].
+* En tal caso dirección IP de hello permanece fija mientras no se elimina la interfaz de red de Hola.
 
 > [!IMPORTANT]
-> Para conseguir que todo el proceso de implementación sea sencillo y fácil de administrar, sin duda, se recomienda configurar las máquinas virtuales asociadas a un DBMS de alta disponibilidad o a una configuración de recuperación ante desastres en Azure de manera que se realice correctamente un proceso de resolución de nombres entre las diferentes máquinas virtuales.
+> En orden tookeep Hola toda implementación simple y fácil de administrar, desactive la recomendación es toosetup Hola Hola colaborar en una configuración de HA de DBMS o recuperación ante desastres en Azure de forma que hay una resolución de nombres funciona entre Hola implicadas diferentes máquinas virtuales de las máquinas virtuales.
 >
 >
 
 ## <a name="deployment-of-host-monitoring"></a>Implementación de funcionalidades de supervisión de hosts
-Para usar de manera productiva las aplicaciones de las máquinas virtuales de Azure, SAP requiere que se obtengan datos de supervisión de los hosts físicos que se ejecutan en las máquinas virtuales de Azure. Se requiere un nivel de revisión específico del agente de host de SAP que permita esta funcionalidad en SAPOSCOL y el agente de host de SAP. El nivel de revisión exacto se menciona en la nota de SAP [1409604].
+Para el uso productivo de las aplicaciones SAP en máquinas virtuales de Azure, SAP requiere host tooget Hola capacidad que datos de supervisión de hosts físicos que Hola ejecutan Hola máquinas virtuales de Azure. Se requiere un nivel de revisión específico del agente de host de SAP que permita esta funcionalidad en SAPOSCOL y el agente de host de SAP. nivel de revisión exacto de Hola se documenta en la nota de SAP [1409604].
 
-Para más información sobre la implementación de componentes que proporcionen datos de host a SAPOSCOL y el agente de host de SAP, así como sobre la administración del ciclo de vida de los componentes, consulte la [Guía de implementación][deployment-guide]
+Para obtener detalles de hello con respecto a la implementación de componentes que proporcionan los host datos tooSAPOSCOL y HostAgent de SAP y Hola administración del ciclo de vida de esos componentes, consulte toohello [Guía de implementación][deployment-guide]
 
-## <a name="3264829e-075e-4d25-966e-a49dad878737"></a>Consideraciones concretas sobre Microsoft SQL Server
+## <a name="3264829e-075e-4d25-966e-a49dad878737"></a>Detalles tooMicrosoft SQL Server
 ### <a name="sql-server-iaas"></a>IaaS de SQL Server
-A partir de Microsoft Azure, puede migrar fácilmente sus aplicaciones de SQL Server integradas en la plataforma Windows Server a máquinas virtuales de Azure. SQL Server en una máquina virtual permite reducir el coste total de propiedad de implementación, administración y mantenimiento de aplicaciones empresariales al migrar fácilmente estas aplicaciones a Microsoft Azure. Con SQL Server en una máquina virtual de Azure, los administradores y los desarrolladores pueden seguir usando las mismas herramientas de desarrollo y administración que se encuentran disponibles de forma local.
+A partir de Microsoft Azure, puede migrar fácilmente aplicaciones existentes de SQL Server depende de la plataforma de Windows Server tooAzure máquinas virtuales. SQL Server en una máquina Virtual permite tooreduce Hola costo total de propiedad de implementación, administración y mantenimiento de aplicaciones empresariales al migrar fácilmente estas tooMicrosoft aplicaciones Azure. Con SQL Server en una máquina Virtual de Azure, los administradores y desarrolladores todavía pueden usar Hola mismas herramientas de desarrollo y administración que están disponibles en local.
 
 > [!IMPORTANT]
-> Tenga en cuenta que no hablaremos sobre Base de datos SQL de Microsoft Azure, que es la oferta de plataforma como servicio de Microsoft Azure. En este documento se aborda la ejecución del producto SQL Server tal cual para implementaciones locales en máquinas virtuales de Azure, con lo que se aprovecha la funcionalidad de infraestructura como servicio. Las funcionalidades de bases de datos de estas dos ofertas son diferentes y no deben combinarse. Consulte también: <https://azure.microsoft.com/services/sql-database/>.
+> Tenga en cuenta que no estamos analizando Microsoft Azure SQL Database, que es una plataforma como una oferta de servicio de hello plataforma Microsoft Azure. análisis de Hello en este documento es sobre la ejecución de producto de SQL Server de hello tal y como se le conoce para las implementaciones locales en máquinas virtuales de Azure, Hola sacar provecho de infraestructura como una capacidad de servicio de Azure. Las funcionalidades de bases de datos de estas dos ofertas son diferentes y no deben combinarse. Consulte también: <https://azure.microsoft.com/services/sql-database/>.
 >
 >
 
-Se recomienda encarecidamente revisar [esta][virtual-machines-sql-server-infrastructure-services] documentación antes de continuar.
+Se recomienda encarecidamente tooreview [esto] [ virtual-machines-sql-server-infrastructure-services] documentación antes de continuar.
 
-En las secciones siguientes se agregan y mencionan fragmentos de partes de la documentación del vínculo anterior. Se describen de forma más detallada algunos conceptos y se mencionan consideraciones sobre SAP. Sin embargo, se recomienda encarecidamente consultar la documentación de arriba primero antes de leer la documentación específica de SQL Server.
+Hola siguientes piezas de secciones de partes de la documentación de hello en el vínculo de hello anterior se agregan y se ha mencionado. Se describen de forma más detallada algunos conceptos y se mencionan consideraciones sobre SAP. Sin embargo, se recomienda encarecidamente toowork en la documentación de hello sobre primero antes de leer la documentación específica de SQL Server de Hola.
 
 Debe conocer información específica sobre SQL Server en IaaS antes de continuar:
 
 * **Acuerdo de Nivel de Servicio de máquina virtual**: hay un Acuerdo de Nivel de Servicio para Virtual Machines que se ejecuta en Azure que puede encontrarse aquí: <https://azure.microsoft.com/support/legal/sla/>.  
-* **Soporte para versiones de SQL**: para los clientes de SAP, prestamos soporte para SQL Server 2008 R2 y posteriores en las máquinas virtuales de Microsoft Azure. No se prestará soporte para versiones anteriores. Revise esta [declaración de soporte](https://support.microsoft.com/kb/956893) general para más información. Tenga en cuenta que, a rasgos generales, Microsoft también presta soporte para SQL Server 2008. Sin embargo, debido a la importante funcionalidad de SAP que se introdujo con SQL Server 2008 R2, SQL Server 2008 R2 es la versión mínima que se requiere para SAP. Tenga en cuenta que SQL Server 2012 y 2014 se ampliaron agregando mayor integración con el escenario de IaaS (como la realización de copias de seguridad directamente en el almacenamiento de Azure). Por lo tanto, el ámbito de este documento se limita a SQL Server 2012 y 2014 con el nivel de revisión más reciente para Azure.
-* **Soporte para características de SQL**: se presta soporte para la mayoría de las características de SQL Server en las máquinas virtuales de Microsoft Azure, aunque con algunas excepciones. **No se presta soporte para los clústeres de conmutación por error de SQL Server que usan discos compartidos**.  Las tecnologías distribuidas, como la creación de reflejo de base de datos, los grupos de disponibilidad AlwaysOn, la replicación, el trasvase de registros y Service Broker, se admiten en una única región de Azure. SQL Server AlwaysOn también se admite entre diferentes regiones, como se documenta aquí:  <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.  Revise la [declaración de soporte](https://support.microsoft.com/kb/956893) para más información. Se muestra un ejemplo de cómo implementar una configuración AlwaysOn en [este][virtual-machines-workload-template-sql-alwayson] artículo. Además, revise los procedimientos recomendados [aquí][virtual-machines-sql-server-infrastructure-services].
-* **Rendimiento de SQL**: estamos seguros de que las máquinas virtuales de Microsoft Azure hospedadas funcionarán muy bien en comparación con otras ofertas de virtualización de nube pública, aunque los resultados individuales pueden variar. Consulte [este][virtual-machines-sql-server-performance-best-practices] artículo.
-* **Uso de imágenes de Azure Marketplace**: la forma más rápida de implementar una nueva máquina virtual de Microsoft Azure es utilizando una imagen de Azure Marketplace. Hay imágenes en Azure Marketplace que contienen SQL Server. Las imágenes donde ya se ha instalado SQL Server no se pueden utilizar inmediatamente para aplicaciones de SAP NetWeaver. El motivo es que la intercalación de SQL Server predeterminada está instalada en esas imágenes y no la que requieren los sistemas SAP NetWeaver. Para poder usar estas imágenes, consulte los pasos que se explican en el capítulo [Uso de imágenes de SQL Server fuera de Microsoft Azure Marketplace][dbms-guide-5.6].
-* Para más información, consulte [Precios de Azure](https://azure.microsoft.com/pricing/) . La [Guía de licencias de SQL Server 2012](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf) y la de [SQL Server 2014](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf) también constituyen un recurso importante.
+* **Soporte para versiones de SQL**: para los clientes de SAP, prestamos soporte para SQL Server 2008 R2 y posteriores en las máquinas virtuales de Microsoft Azure. No se prestará soporte para versiones anteriores. Revise esta [declaración de soporte](https://support.microsoft.com/kb/956893) general para más información. Tenga en cuenta que, a rasgos generales, Microsoft también presta soporte para SQL Server 2008. Sin embargo, debido a la funcionalidad toosignificant para SAP que se introdujo con SQL Server 2008 R2, SQL Server 2008 R2 es la versión mínima de Hola para SAP. Tenga en cuenta que SQL Server 2012 y 2014 se amplió con una integración más profunda en el escenario de IaaS de hello (por ejemplo, realizar copias de seguridad directamente frente al almacenamiento de Azure). Por lo tanto, se restringen este tooSQL papel Server 2012 y 2014 con su nivel de revisión más reciente de Azure.
+* **Soporte para características de SQL**: se presta soporte para la mayoría de las características de SQL Server en las máquinas virtuales de Microsoft Azure, aunque con algunas excepciones. **No se presta soporte para los clústeres de conmutación por error de SQL Server que usan discos compartidos**.  Las tecnologías distribuidas, como la creación de reflejo de base de datos, los grupos de disponibilidad AlwaysOn, la replicación, el trasvase de registros y Service Broker, se admiten en una única región de Azure. SQL Server AlwaysOn también se admite entre diferentes regiones, como se documenta aquí:  <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.  Hola de revisión [declaración de soporte técnico](https://support.microsoft.com/kb/956893) para obtener más detalles. Un ejemplo de cómo toodeploy que se muestra una configuración de AlwaysOn en [esto] [ virtual-machines-workload-template-sql-alwayson] artículo. Asimismo, consulte Hola prácticas recomendadas documentadas [aquí][virtual-machines-sql-server-infrastructure-services]
+* **El rendimiento de SQL**: se está seguros de que Microsoft Azure máquinas virtuales hospedadas realizará muy bien en las ofertas de virtualización de nube pública de comparación tooother, pero los resultados individuales pueden variar. Consulte [este][virtual-machines-sql-server-performance-best-practices] artículo.
+* **Uso de imágenes de Azure Marketplace**: toodeploy de manera más rápida de hello una nueva máquina virtual de Azure de Microsoft es toouse una imagen de hello Azure Marketplace. Hay imágenes en hello Azure Marketplace que contienen SQL Server. imágenes de Hello SQL Server ya está instalado no se puede utilizar inmediatamente para las aplicaciones de SAP NetWeaver. motivo de Hello es la intercalación predeterminada del servidor SQL de Hola se instala dentro de esas imágenes y no la intercalación del Hola requeridos por los sistemas SAP NetWeaver. En Ordenar toouse dichas imágenes, compruebe los pasos de hello documentados en el capítulo [utilizando un servidor SQL Server imágenes fuera de Microsoft Azure Marketplace hello][dbms-guide-5.6].
+* Para más información, consulte [Precios de Azure](https://azure.microsoft.com/pricing/) . Hola [Guía de administrador de licencias de SQL Server 2012](https://download.microsoft.com/download/7/3/C/73CAD4E0-D0B5-4BE5-AB49-D5B886A5AE00/SQL_Server_2012_Licensing_Reference_Guide.pdf) y [Guía de administrador de licencias de SQL Server 2014](https://download.microsoft.com/download/B/4/E/B4E604D9-9D38-4BBA-A927-56E4C872E41C/SQL_Server_2014_Licensing_Guide.pdf) también son un recurso importante.
 
 ### <a name="sql-server-configuration-guidelines-for-sap-related-sql-server-installations-in-azure-vms"></a>Directrices de configuración de SQL Server para SAP relacionadas con las instalaciones de SQL Server en máquinas virtuales de Azure
 #### <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Recomendaciones sobre la estructura de máquina virtual y VHD para SAP relacionadas con las implementaciones de SQL Server
-Según la descripción general, los archivos ejecutables de SQL Server se deben ubicar o instalar en la unidad del sistema del VHD base de la máquina virtual (unidad C:\).  Normalmente, la carga de trabajo de SAP NetWeaver no utiliza en gran medida la mayoría de las bases de datos de sistema de SQL Server. Por lo tanto, las bases de datos de sistema de SQL Server (master, msdb y model) pueden permanecer también en la unidad C:\. Una excepción podría ser tempdb, que, en el caso de algunas cargas de trabajo de SAP ERP y de todas las de BW, podría requerir un volumen de datos mayor o un volumen de operaciones de E/S que no cumple los requisitos de la máquina virtual original. Para estos sistemas, se deben realizar los pasos siguientes:
+Con arreglo a la descripción general de hello, se encuentra o se instala en unidad del sistema Hola de disco duro virtual base de la máquina virtual de hello ejecutables de SQL Server (la unidad C:\).  Normalmente, la mayoría de las bases de datos del sistema de SQL Server de hello no se utiliza en un nivel alto por carga de trabajo de SAP NetWeaver. Por lo tanto, hello las bases de datos de SQL Server (master, msdb y model) pueden permanecer en hello también la unidad C:\. Una excepción podría ser tempdb, que en caso de hello de algunos SAP ERP y todas las cargas de trabajo de BW, podría requerir mayor volumen de datos o volumen de operaciones de E/S que no cabe en hello de la VM original. En estos sistemas, debe realizarse Hola pasos:
 
-* Mueva los archivos de datos de la base de datos tempdb principal a la misma unidad lógica que los archivos de datos principal de la base de datos de SAP.
-* Agregue los archivos de datos adicionales de tempdb a cada una del resto de las unidades lógicas que contengan un archivo de datos de la base de datos de usuario de SAP.
-* Agregue el archivo de registro de tempdb a la unidad lógica que contiene el archivo de registro de la base de datos de usuario.
-* **Solo en los tipos de máquinas virtuales que usan SSD locales** en el nodo de proceso, los archivos de registro y de datos de tempdb podrían colocarse en la unidad D:\. No obstante, se podría recomendar usar varios archivos de datos de tempdb. Tenga en cuenta que los volúmenes de la unidad D:\ serán diferentes en función del tipo de máquina virtual.
+* Mover toohello de los archivos de datos de tempdb primarios Hola misma unidad lógica que los archivos de datos principal de Hola de base de datos SAP de Hola.
+* Agregue cualquier tooeach de archivos de datos de tempdb adicionales del programa Hola a otras unidades lógicas que contiene un archivo de datos de la base de datos de usuario SAP de Hola.
+* Agregar Hola tempdb logfile toohello unidad lógica que contiene el archivo de registro de hello usuario de base de datos.
+* **Exclusivamente para los tipos VM que usan SSD local** en datos de tempdb del nodo de proceso de Hola y registro de archivos podrían estar colocados en hello unidad D:\. No obstante, puede ser recomendable toouse varios archivos de datos de tempdb. Tenga en cuenta los volúmenes de unidad D:\ son diferentes en función de hello tipo de máquina virtual.
 
-Estas configuraciones permiten que tempdb consuma más espacio que el que la unidad del sistema puede proporcionar. Para determinar el tamaño correcto de tempdb, se puede comprobar los tamaños de tempdb en los sistemas existentes que se ejecutan de forma local. Además, dicha configuración admitiría los números de IOPS en la tempdb, que no se pueden proporcionar con la unidad del sistema. De nuevo, los sistemas que se ejecutan de forma local pueden utilizarse para supervisar la carga de trabajo de E/S en tempdb, de forma que puede derivar los números de IOPS que espera observar en tempdb.
+Estas configuraciones permiten tempdb tooconsume más espacio de unidad del sistema hello es capaz de tooprovide. En el tamaño correcto de tempdb de orden toodetermine hello, se pueden comprobar los tamaños de tempdb de hello en los sistemas existentes que se ejecutan de forma local. Además, dicha configuración permitiría a números de IOPS frente a tempdb que no se pueden proporcionar con la unidad del sistema Hola. De nuevo, sistemas que se ejecutan en local pueden cargas de trabajo de toomonitor usa E/S frente a tempdb para que pueda obtener los números de IOPS de hello espera toosee en tempdb.
 
-Una configuración de máquina virtual que ejecuta SQL Server con una base de datos de SAP donde el archivo de registro de tempdb y el de datos se colocan en la unidad D:\ tendría el siguiente aspecto:
+Una configuración de máquina virtual que ejecuta SQL Server con una base de datos SAP y donde se colocan los datos de tempdb y el archivo de registro de tempdb en la unidad D:\ de hello sería:
 
 ![Configuración de referencia de máquinas virtuales IaaS de Azure en SAP][dbms-guide-figure-300]
 
-Tenga en cuenta que la unidad D:\ tiene distintos tamaños en función del tipo de máquina virtual. Según los requisitos de tamaño de tempdb, podría verse obligado a emparejar los archivos de registro y de datos de tempdb con los de la base de datos de SAP en aquellos casos donde el tamaño de la unidad D:\ sea demasiado pequeño.
+Tenga en cuenta que esa unidad D:\ hello tiene distintos tamaños depende Hola tipo de máquina virtual. Dependiente de requisito de tamaño de Hola de tempdb podrían ser datos de tempdb de toopair forzada y archivos de registro con hello la base de datos de SAP y archivos de registro en casos donde la unidad D:\ es demasiado pequeño.
 
-#### <a name="formatting-the-vhds"></a>Formateo de los VHD
-Para SQL Server, el tamaño de bloque NTFS de los VHD que contienen los archivos de registro y de datos de SQL Server deben tener un tamaño de 64 kB. No hay que formatear la unidad D:\, ya que este proceso se ha realizado previamente.
+#### <a name="formatting-hello-vhds"></a>Dar formato a discos duros virtuales de Hola
+Para hello tamaño de bloque NTFS para discos duros virtuales que contiene datos de SQL Server y de registro de SQL Server los archivos deben estar 64K. No hay ningún Hola de tooformat necesidad unidad D:\. ya que este proceso se ha realizado previamente.
 
-Para asegurarse de que la restauración o la creación de bases de datos no inicialice los archivos de datos llenando con ceros el contenido de los archivos, hay que asegurarse de que el servicio de SQL Server que se ejecuta en el contexto de usuario tiene un permiso determinado. Normalmente, los usuarios del grupo de administrador de Windows tienen estos permisos. Si el servicio SQL Server se ejecuta en el contexto de usuario del usuario no administrador de Windows, debe asignar a ese usuario el derecho de usuario Realizar tareas de mantenimiento del volumen.  Consulte los detalles en este artículo de Microsoft Knowledge Base: <https://support.microsoft.com/kb/2574695>.
+En orden toomake seguro de que hello restauración o la creación de bases de datos no inicializan los archivos de datos de hello al poner ceros en contenido de Hola de archivos de hello, uno debe asegurarse de que se está ejecutando el servicio de SQL Server de Hola Hola usuario contexto tiene un permiso determinado. Normalmente, los usuarios del grupo de administrador de Windows hello tienen estos permisos. Si Hola servicio SQL Server se ejecuta en el contexto de usuario de Hola de usuario de administrador distinto de Windows, deberá tooassign ese derecho de usuario 'Realizar tareas de mantenimiento del volumen' hello de usuario.  Ver detalles de hello en este artículo de Microsoft Knowledge Base: <https://support.microsoft.com/kb/2574695>
 
 #### <a name="impact-of-database-compression"></a>Impacto de la compresión de las bases de datos
-En configuraciones donde el ancho de banda de E/S puede convertirse en un factor de limitación, todas las medidas que reduzca el número de IOPS podrían ayudar a ajustar la carga de trabajo que se puede ejecutar en un escenario de IaaS como Azure. Por lo tanto, si aún no lo ha hecho, se recomienda encarecidamente que Microsoft y SAP apliquen la compresión de página de SQL Server antes de cargar bases de datos de SAP existentes en Azure.
+En configuraciones donde el ancho de banda de E/S puede convertirse en un factor restrictivo, todas las medidas que reduzca las IOPS podrían ayudar a cargas de trabajo de toostretch Hola puede ejecutar en un escenario IaaS como Azure. Por lo tanto, si no ha hecho todavía, aplicar compresión de página de SQL Server se recomienda por SAP y Microsoft antes de cargar una SAP existente tooAzure las bases de datos.
 
-La recomendación para realizar la compresión de la base de datos antes de cargar en Azure viene motivada por dos razones:
+Hola recomendación tooperform compresión de base de datos antes de cargar tooAzure viene dada por dos motivos:
 
-* La cantidad de datos que se carga es menor.
-* La duración de la ejecución de la compresión es más breve dándose por supuesto que se puede utilizar hardware más eficaz con más CPU, mayor ancho de banda de E/S o menos latencia de E/S en un entorno local.
-* Si se utilizan tamaños de base de datos más pequeños, se incurriría en menos costes de asignación de disco.
+* cantidad de Hola de toobe de datos cargado es menor.
+* duración de Hello de la ejecución de la compresión de hello es más corta, suponiendo que uno puede utilizar hardware más fuerte con más CPU o mayor ancho de banda de E/S o menos latencia de E/S en local.
+* Los tamaños de base de datos más pequeños podrían provocar los costos que no requiere herramientas para la asignación de disco
 
-La compresión de las bases de datos funciona también correctamente en las máquinas virtuales de Azure de la misma forma que en local. Para más información sobre cómo comprimir una base de datos SQL Server existente para SAP, consulte aquí: <https://blogs.msdn.com/b/saponsqlserver/archive/2010/10/08/compressing-an-sap-database-using-report-msscompress.aspx>.
+La compresión de las bases de datos funciona también correctamente en las máquinas virtuales de Azure de la misma forma que en local. Para obtener más detalles sobre cómo toocompress una base de datos de SAP SQL Server existente, visite: <https://blogs.msdn.com/b/saponsqlserver/archive/2010/10/08/compressing-an-sap-database-using-report-msscompress.aspx>
 
 ### <a name="sql-server-2014--storing-database-files-directly-on-azure-blog-storage"></a>SQL Server 2014: almacenamiento de archivos directamente en Almacenamiento de blobs de Azure
-SQL Server 2014 ofrece la posibilidad de almacenar archivos de base de datos directamente en el almacén de blobs de Azure sin necesidad de usar contenedor de un VHD en ellos. Especialmente al utilizar el almacenamiento estándar de Azure o tipos de máquina virtual con tamaños más pequeños, se producen escenarios donde pueden superarse los límites de IOPS impuestos por un número de limitado de VHD que pueden montarse en tipos de máquinas virtuales de menor tamaño. Aunque esto funciona con las bases de datos de usuario, no lo hace con las de sistema de SQL Server. También funciona con los archivos de registro y de datos de SQL Server. Si desea implementar una base de datos de SQL Server de SAP de este modo, en lugar de contenerla en VHD, tenga en cuenta lo siguiente:
+SQL Server 2014 abre los archivos de base de datos de hello posibilidad toostore directamente en el almacén de blobs de Azure sin Hola "contenedor" de un disco duro virtual a su alrededor. Especialmente con el almacenamiento de Azure estándar o tipos VM más pequeños Esto habilita escenarios donde puede superar los límites de Hola de e/s por segundo que se pueden imponer un número limitado de discos duros virtuales que pueden ser tipos VM más pequeños toosome montada. Aunque esto funciona con las bases de datos de usuario, no lo hace con las de sistema de SQL Server. También funciona con los archivos de registro y de datos de SQL Server. Si desea que toodeploy un SAP SQL Server de base de datos en lugar de este modo, 'ajuste' en discos duros virtuales, tenga en cuenta los siguiente hello:
 
-* La cuenta de almacenamiento utilizada debe estar en la misma región de Azure que la que se empleó para implementar la máquina virtual que se está ejecutando en SQL Server.
-* Para este método de implementaciones también se aplican las consideraciones que se indicaron anteriormente relacionadas con la distribución de los VHD en diferentes cuentas de almacenamiento de Azure. Significa que el número de operaciones de E/S cuenta para los límites de la cuenta de almacenamiento de Azure.
+* Hola toobe de necesidades de cuenta de almacenamiento usada en Hola misma región de Azure como Hola uno que es hello toodeploy usado VM SQL Server se ejecuta en.
+* Se aplican consideraciones enumeradas anteriormente en lo que respecta toodistribute discos duros virtuales a través de diferentes cuentas de almacenamiento de Azure para este método de también en las implementaciones. Significa Hola recuento de operaciones de E/S con límites de Hola de hello cuenta de almacenamiento de Azure.
 
 [comment]: <> (MSSedusch TODO But this will use network bandwith and not storage bandwith, doesn't it?)
 
 Los detalles acerca de este tipo de implementación se indican aquí: <https://msdn.microsoft.com/library/dn385720.aspx>.
 
-Para almacenar archivos de datos de SQL Server directamente en Azure Premium Storage, debe tener una versión mínima de revisión de SQL Server 2014 que se explica en este artículo: <https://support.microsoft.com/kb/3063054>. El almacenamiento de archivos de datos de SQL Server en el almacenamiento estándar de Azure funcionan con la versión de lanzamiento de SQL Server 2014. Sin embargo, las mismas revisiones contienen otra serie de correcciones que hacen que sea más confiable usar directamente Almacenamiento de blobs de Azure para copias de seguridad y archivos de datos de SQL Server. Por lo tanto, en general, se recomienda usar estas revisiones.
+En archivos de datos de orden toostore SQL Server directamente en almacenamiento Premium de Azure, deberá toohave un mínimo de SQL Server 2014 versión de revisión que se documenta aquí: <https://support.microsoft.com/kb/3063054>. Almacenar archivos de datos de SQL Server en almacenamiento de Azure estándar funciona con la versión de Hola publicada de SQL Server 2014. Sin embargo, muy mismas revisiones de hello contienen otra serie de correcciones que hacen uso directo Hola de almacenamiento de blobs de Azure para archivos de datos de SQL Server y las copias de seguridad más confiable. Por lo tanto, se recomienda toouse estas revisiones en general.
 
 ### <a name="sql-server-2014-buffer-pool-extension"></a>Extensión de grupo de búferes de SQL Server 2014
-SQL Server 2014 introdujo una nueva característica denominada "extensión de grupo de búferes". Esta funcionalidad amplía el grupo de búferes de SQL Server que se mantiene en memoria con una memoria caché de segundo nivel respaldada por SSD locales de un servidor o una máquina virtual. De este modo, se puede mantener en memoria un conjunto de datos de mayor volumen. En comparación con el acceso al almacenamiento estándar de Azure, el acceso a la extensión de grupo de búferes que se almacena en SSD locales de una máquina virtual de Azure es mucho más rápido.  Por lo tanto, utilizar la unidad D:\ local de los tipos de máquina virtual que tienen un rendimiento y un número de IOPS excelentes podría ser una forma muy razonable de reducir la carga de IOPS en Almacenamiento de Azure y de mejorar considerablemente los tiempos de respuesta de las consultas. Esto sucede sobre todo cuando no se utiliza el Almacenamiento premium. En el caso del Almacenamiento premium y el uso de la memoria caché de lectura de Azure premium en el nodo de proceso, tal y como se recomienda para los archivos de datos, no se producen resultados muy diferentes. El motivo es que las memorias caché (extensión de grupo de búferes de SQL Server y memoria caché de lectura de almacenamiento premium) utilizan los discos locales de los nodos de proceso.
+SQL Server 2014 introdujo una nueva característica denominada "extensión de grupo de búferes". Esta funcionalidad extiende el grupo de búferes de Hola de SQL Server que se mantiene en memoria con una caché de segundo nivel que esté respaldada por SSD local de un servidor o la máquina virtual. Esto permite tookeep un espacio de trabajo más grande de datos 'in memory'. Tooaccessing en comparación con acceso de almacenamiento de Azure estándar hello en extensión de hello del grupo de búferes de Hola que se almacena en las SSD locales de una VM de Azure es más rápido muchos factores.  Por lo tanto, aprovechando la unidad D:\ local de Hola de tipos VM de hello con excelente IOPS y el rendimiento podría ser un Hola de tooreduce de manera muy razonable IOPS cargar en el almacenamiento de Azure y mejorar drásticamente los tiempos de respuesta de las consultas. Esto sucede sobre todo cuando no se utiliza Premium Storage. En el caso de almacenamiento Premium y el uso de Hola de hello caché de lectura de Azure Premium en el nodo de proceso de hello, tal como se recomienda para los archivos de datos, no se esperan que ningún grandes diferencias. Razón es que las memorias caché (SQL Server Buffer Pool Extension y caché de lectura de almacenamiento Premium) utilizan discos locales de Hola Hola de nodos de ejecución.
 Para más información sobre esta funcionalidad, consulte esta documentación: <https://msdn.microsoft.com/library/dn133176.aspx>.
 
 ### <a name="backuprecovery-considerations-for-sql-server"></a>Consideraciones de copia de seguridad y recuperación en SQL Server
-Al implementar SQL Server en Azure, se debe revisar la metodología de copia de seguridad. Aunque no se trate de un sistema productivo, debe realizarse de manera periódica una copia de seguridad de la base de datos de SAP hospedada por SQL Server. Como Azure Storage mantiene tres imágenes, una copia de seguridad es menos importante para compensar un bloqueo de almacenamiento. El principal motivo para mantener un plan de copia de seguridad y recuperación adecuado es más que poder compensar los errores lógicos o manuales proporcionando funcionalidades de recuperación a un momento dado. El objetivo es usar las copias de seguridad para restaurar la base de datos a un momento dado o utilizar las copias de seguridad de Azure para propagar otro sistema mediante la copia de la base de datos existente. Por ejemplo, podría transferir archivos desde una configuración de SAP de 2 niveles a una configuración de sistema de 3 niveles del mismo sistema mediante la restauración de una copia de seguridad.
+Al implementar SQL Server en Azure, se debe revisar la metodología de copia de seguridad. Incluso si el sistema de hello no es un sistema productivo, base de datos SAP de hello hospedada por SQL Server debe hacer copia periódicamente. Puesto que el almacenamiento de Azure mantiene tres imágenes, una copia de seguridad ahora es menos importante en sentido toocompensating un bloqueo de almacenamiento. razón de prioridad de Hello para el mantenimiento de un plan de copia de seguridad y recuperación adecuado es mayor que compensar los errores lógicos/manuales al proporcionar capacidades de recuperación de tiempo. Por lo que el objetivo de hello es tooeither usar copias de seguridad toorestore Hola base de datos nuevo tooa determinado punto en tiempo o toouse Hola copias de seguridad en Azure tooseed otro sistema mediante la copia de base de datos existente de Hola. Por ejemplo, podría transferir desde una instalación de sistema de 3 niveles 2 niveles SAP configuración tooa de hello mismo sistema mediante la restauración de una copia de seguridad.
 
-Hay tres formas diferentes de realizar la copia de seguridad de SQL Server en Azure Storage:
+Hay tres maneras diferentes toobackup SQL Server tooAzure almacenamiento:
 
-1. SQL Server 2012 CU4 y posterior puede realizar copias de seguridad de forma nativa de las bases de datos en una dirección URL. Esto se detalla en la entrada de blog [New functionality in SQL Server 2014 – Part 5 – Backup/Restore Enhancements](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx)(Nueva funcionalidad en SQL Server 2014 [parte 5]: mejoras en los procesos de copia de seguridad y restauración). Consulte el capítulo [SQL Server 2012 SP1 CU4 y versiones posteriores][dbms-guide-5.5.1].
-2. Las versiones de SQL Server anteriores a SQL 2012 CU4 pueden utilizar la funcionalidad de redirección para realizar copias de seguridad en un VHD y, básicamente, mover la secuencia de escritura a una ubicación de Azure Storage que se haya configurado. Consulte el capítulo [SQL Server 2012 SP1 CU3 y versiones anteriores][dbms-guide-5.5.2].
-3. El método final consiste en realizar una copia de seguridad convencional de SQL Server en disco en un dispositivo de VHD.  Se trata de un proceso idéntico al patrón de implementación local y no se explica detalladamente en este documento.
+1. SQL Server 2012 CU4 y la dirección URL tooa de forma nativa copia de seguridad de bases de datos de mayor can. Esto se detalla en el blog de hello [nueva funcionalidad de las mejoras de copia de seguridad y restauración de SQL Server 2014 – parte 5 –](https://blogs.msdn.com/b/saponsqlserver/archive/2014/02/15/new-functionality-in-sql-server-2014-part-5-backup-restore-enhancements.aspx). Consulte el capítulo [SQL Server 2012 SP1 CU4 y versiones posteriores][dbms-guide-5.5.1].
+2. TooSQL anterior de las versiones de SQL Server 2012 CU4 puede usar un tooa de toobackup de funcionalidad de redirección VHD y básicamente avanzar la secuencia de escritura de hello hacia una ubicación de almacenamiento de Azure que se ha configurado. Consulte el capítulo [SQL Server 2012 SP1 CU3 y versiones anteriores][dbms-guide-5.5.2].
+3. método final Hello es tooperform un comando de toodisk de copia de seguridad convencional de SQL Server en un dispositivo de disco VHD.  Esto es idéntico toohello patrón de implementación de local y no se describe en detalle en este documento.
 
 #### <a name="0fef0e79-d3fe-4ae2-85af-73666a6f7268"></a>SQL Server 2012 SP1 CU4 y versiones posteriores
-Esta funcionalidad permite realizar directamente copias de seguridad en el almacenamiento de blobs de Azure. Sin este método, debe realizar las copias de seguridad en otros VHD de Azure, lo que consumiría la capacidad de IOPS y de los VHD. La idea es básicamente la siguiente:
+Esta funcionalidad permite el almacenamiento de blobs de copia de seguridad tooAzure toodirectly. Sin este método, deben realizar backup tooother discos duros virtuales de Azure que consumiría capacidad de disco duro virtual e IOPS. idea Hello es básicamente lo siguiente:
 
- ![Uso de copias de seguridad de SQL Server 2012 para blobs de Almacenamiento de Microsoft Azure][dbms-guide-figure-400]
+ ![Uso de copias de seguridad de SQL Server 2012 tooMicrosoft BLOB de almacenamiento de Azure][dbms-guide-figure-400]
 
-En este caso, la ventaja es que no se necesita utilizar VHD para almacenar las copias de seguridad de SQL Server. Por tanto, tendrá menos VHD asignados y el ancho de banda total de IOPS de los VHD se podrá usar para los archivos de datos y de registro. Tenga en cuenta que el tamaño máximo de una copia de seguridad se limita a un máximo de 1 TB, tal como se describe en la sección "Limitaciones" de este artículo: <https://msdn.microsoft.com/library/dn435916.aspx#limitations>. Si el tamaño de la copia de seguridad, a pesar de usar la compresión de copia de seguridad de SQL Server, es superior a 1 TB, debe usarse la funcionalidad que se describe en el capítulo [SQL Server 2012 SP1 CU3 y versiones anteriores][dbms-guide-5.5.2].
+ventaja de Hello en este caso es que no es necesario las copias de seguridad de SQL Server de toospend discos duros virtuales toostore en. Por lo que tiene menos discos duros virtuales asignados y ancho de banda completo Hola de VHD IOPS se puede utilizar para los archivos de datos y de registro. Tenga en cuenta que el tamaño máximo de Hola de una copia de seguridad es limitado tooa máximo de 1 TB tal como se describe en la sección "Limitaciones" de hello en este artículo: <https://msdn.microsoft.com/library/dn435916.aspx#limitations>. Si el tamaño de copia de seguridad de hello, a pesar de usar compresión de copia de seguridad de SQL Server supera 1 TB de tamaño, Hola funcionalidad descrita en el capítulo [SQL Server 2012 SP1 CU3 y versiones anteriores] [ dbms-guide-5.5.2] en este documento debe toobe utiliza.
 
-[En la documentación relacionada](https://msdn.microsoft.com/library/dn449492.aspx) donde se describe el proceso de restauración de las bases de datos a partir de copias de seguridad en el almacén de blobs de Azure, se recomienda no llevar a cabo la restauración directamente desde el almacén de blobs de Azure si el tamaño de las copias de seguridad es superior a 25 GB. La recomendación de este artículo se basa simplemente en las consideraciones de rendimiento y no en las restricciones funcionales. Por lo tanto, pueden aplicarse distintas condiciones en cada caso.
+[Documentación relacionada con](https://msdn.microsoft.com/library/dn449492.aspx) que describen la restauración de Hola de bases de datos de copias de seguridad en el almacén de blobs de Azure recomienda no toorestore directamente desde el almacén de blobs de Azure si las copias de seguridad de hello es > 25 GB. recomendación de Hello en este artículo simplemente se basa en las consideraciones de rendimiento y no debido a restricciones de toofunctional. Por lo tanto, pueden aplicarse distintas condiciones en cada caso.
 
 Puede encontrar documentación sobre cómo configurar y utilizar este tipo de copia de seguridad en [este](https://msdn.microsoft.com/library/dn466438.aspx) tutorial.
 
-[Aquí puede](https://msdn.microsoft.com/library/dn435916.aspx)consultar un ejemplo de secuencia de pasos.
+Un ejemplo de hello secuencia de pasos que se puede leer [aquí](https://msdn.microsoft.com/library/dn435916.aspx).
 
-Al automatizar las copias de seguridad, la prioridad es asegurarse de que los blobs de cada copia de seguridad se denominen de forma distinta. De lo contrario, se sobrescribirán y se romperá la cadena.
+Automatizar las copias de seguridad, es de toomake mayor importancia seguro de que los BLOB de Hola para cada copia de seguridad tienen nombres diferentes. De lo contrario, se sobrescribirán y se interrumpe la cadena de restauración de Hola.
 
-Para no mezclar elementos entre los 3 tipos de copias de seguridad diferentes, se recomienda crear distintos contenedores en la cuenta de almacenamiento utilizada para las copias de seguridad. Los contenedores podrían ser solo por tipo de máquina virtual o por tipo de copia de seguridad. El esquema podría ser similar al siguiente:
+En orden no toomix las cosas entre los distintos tipos de copias de seguridad de hello 3, es aconsejable toocreate diferentes contenedores cuenta de almacenamiento de hello usada para las copias de seguridad. contenedores de Hello podrían ser por VM solo o por tipo de copia de seguridad y la máquina virtual. Hola esquema podría verse como:
 
- ![Uso de copias de seguridad de SQL Server 2012 en blobs de Microsoft Azure Storage: contenedores diferentes en distintas cuentas de almacenamiento][dbms-guide-figure-500]
+ ![Usar copias de seguridad de SQL Server 2012 tooMicrosoft BLOB de almacenamiento de Azure – contenedores diferentes en la cuenta de almacenamiento independiente][dbms-guide-figure-500]
 
-En el ejemplo anterior, las copias de seguridad no se realizarían en la misma cuenta de almacenamiento donde se implementan las máquinas virtuales. Sería en una nueva cuenta de almacenamiento creada específicamente para las copias de seguridad. En las cuentas de almacenamiento, habría diferentes contenedores creados con una matriz del tipo de copia de seguridad y el nombre de la máquina virtual. Gracias a esta segmentación, se podrán administrar las copias de seguridad de las diferentes máquinas virtuales de manera más sencilla.
+En el ejemplo de Hola anteriormente, hello las copias de seguridad no se realizará en el mismo almacenamiento de información de la cuenta donde hello de Hola se implementan máquinas virtuales. Sería una nueva cuenta de almacenamiento específicamente para las copias de seguridad de Hola. Dentro de las cuentas de almacenamiento de hello, habría diferentes contenedores creados con una matriz de tipo hello de hello y copia de seguridad de nombre de máquina virtual. Dicha segmentación le resultará más fáciles tooadministrate hello las copias de seguridad de hello diferentes máquinas virtuales.
 
-Los blobs en el que se escriben directamente las copias de seguridad no cuentan para el número de VHD de una máquina virtual. Por lo tanto, se podría maximizar la cantidad máxima de VHD montados de la SKU de máquina virtual específico del archivo de datos y de registro de transacciones, así como seguir ejecutando una copia de seguridad en un contenedor de almacenamiento.
+BLOBs de Hola se escriben directamente hello las copias de seguridad, no se agregan toohello recuento de hello discos duros virtuales de una máquina virtual. Por lo tanto, uno podría maximizar máximo de Hola de VHD montados de hello determinado VM SKU para datos de Hola y archivo de registro de transacciones y todavía ejecutar una copia de seguridad en un contenedor de almacenamiento.
 
 #### <a name="f9071eff-9d72-4f47-9da4-1852d782087b"></a>SQL Server 2012 SP1 CU3 y versiones anteriores
-El primer paso que se debe realizar para conseguir que una copia de seguridad se realice directamente en Almacenamiento de Azure es descargar el archivo .msi en [este](https://www.microsoft.com/download/details.aspx?id=40740) artículo de Microsoft Knowledge Base.
+Hola primer paso que debe realizar en orden tooachieve una copia de seguridad directamente frente al almacenamiento de Azure sería toodownload Hola msi que está vinculado demasiado[esto](https://www.microsoft.com/download/details.aspx?id=40740) artículo KBA.
 
-Descargue la documentación y el archivo de instalación para arquitecturas x64. El archivo instalará un programa llamado: "Herramienta de copia de seguridad de Microsoft SQL Server en Microsoft Azure". Lea detenidamente la documentación del producto.  Básicamente, la herramienta funciona de la siguiente manera:
+Descargue el archivo de instalación de hello x64 y documentación de Hola. archivo Hello va a instalar un programa llamado: 'Copia de seguridad de Microsoft SQL Server tooMicrosoft herramienta de Azure'. Leer documentación de Hola de producto de hello exhaustivamente.  herramienta de Hello funciona básicamente de hello siguiente forma:
 
-* Desde SQL Server, se define una ubicación de disco para la copia de seguridad de SQL Server (no utilice la unidad D:\ para este fin).
-* La herramienta permitirá definir reglas que se pueden usar para dirigir diferentes tipos de copias de seguridad a distintos contenedores de almacenamiento de Azure.
-* Una vez que se hayan definido las reglas, la herramienta redirigirá la secuencia de escritura de la copia de seguridad a uno de los VHD y discos de la ubicación de almacenamiento de Azure que se definió anteriormente.
-* La herramienta dejará un archivo de código auxiliar de un tamaño reducido (muy pocos kB) en el VHD o disco definido para la copia de seguridad de SQL Server. **Este archivo debe mantenerse en la ubicación de almacenamiento, ya que es necesario para volver a realizar la restauración desde el almacenamiento de Azure.**
-  * Si ha perdido el archivo de código auxiliar (por ejemplo, tras la pérdida de los medios de almacenamiento que contienen dicho archivo) y ha elegido la opción de realizar las copias de seguridad en una cuenta de almacenamiento de Microsoft Azure, puede recuperar el archivo de código auxiliar mediante el almacenamiento de Microsoft Azure descargándolo desde el contenedor de almacenamiento donde se colocó. Después, debe colocar el archivo de código auxiliar en una carpeta de la máquina local donde se haya configurado la herramienta para detectar el mismo contenedor y cargarse en él con la misma contraseña de cifrado si se empleó cifrado con la regla original.
+* De hello lado de SQL Server, se define una ubicación de disco de copia de seguridad de SQL Server de hello (no use la unidad D:\ de Hola para esto).
+* Hola herramienta le permitirá toodefine reglas que pueden ser usado toodirect diferentes tipos de contenedores de almacenamiento de Azure de toodifferent de las copias de seguridad.
+* Una vez que las reglas de hello, herramienta de hello redirigirá secuencia de escritura de Hola de hello tooone copia de seguridad de los discos duros virtuales/discos de hello toohello ubicación de almacenamiento de Azure que se definió anteriormente.
+* Hola herramienta dejará un pequeño archivo stub de unos pocos KB de tamaño en hello VHD/disco que se ha definido para hello SQL Server copia de seguridad. **Este archivo debe dejarse en la ubicación de almacenamiento de Hola, ya que es necesario toorestore nuevo desde el almacenamiento de Azure.**
+  * Si ha perdido el archivo de código auxiliar de hello (por ejemplo, debido a la pérdida Hola del medio de almacenamiento que contiene el archivo de código auxiliar de hello) y ha elegido la opción de Hola de copia de seguridad tooa cuenta de almacenamiento de Azure de Microsoft, puede recuperar el archivo de código auxiliar de Hola a través del almacenamiento de Azure de Microsoft por descargarlo del contenedor de almacenamiento de hello en el que se coloca. A continuación debería colocar el archivo de código auxiliar de hello en una carpeta en el equipo local de Hola donde hello herramienta es configurado toohello toodetect y la carga mismo contenedor con hello misma contraseña de cifrado si se usa el cifrado con la regla original Hola.
 
-Es decir, el esquema tal y como se describió anteriormente para las versiones más recientes de SQL Server puede colocarse también para las versiones de SQL Server que no pueden redirigirse directamente a una ubicación de almacenamiento de Azure.
+Esto significa que el esquema de hello tal y como se describió anteriormente para las versiones más recientes de SQL Server se puede colocar en su lugar, así como para las versiones de SQL Server que no se permite una dirección directa de una ubicación de almacenamiento de Azure.
 
-Este método no debe usarse con las versiones más recientes de SQL Server que admiten copias de seguridad nativas en Almacenamiento de Azure. Las excepciones se producen cuando las limitaciones de la copia de seguridad nativa en Azure bloquean la ejecución del proceso de copia de seguridad nativa en Azure.
+Este método no debe usarse con las versiones más recientes de SQL Server que admiten copias de seguridad nativas en Almacenamiento de Azure. Las excepciones están donde las limitaciones de copia de seguridad nativa de hello en Azure están bloqueando la ejecución de copia de seguridad nativa en Azure.
 
-#### <a name="other-possibilities-to-backup-sql-server-databases"></a>Otras posibilidades para realizar copias de seguridad de bases de datos de SQL Server
-Otras posibilidades realizar copias de seguridad de bases de datos consisten en asociar VHD adicionales a una máquina virtual que se utilice para almacenar las copias de seguridad. En este caso, tendría que asegurarse de que los VHD no se estén ejecutando por completo. Si lo están haciendo, necesitaría desmontar el VHD y "archivarlo" y remplazarlo por un nuevo VHD vacío. Si va a tomar esta alternativa, le recomendamos mantener estos VHD en cuentas de almacenamiento de Azure independientes de las de los VHD con los archivos de base de datos.
+#### <a name="other-possibilities-toobackup-sql-server-databases"></a>Otras bases de datos de SQL Server de toobackup de posibilidades
+Otras bases de datos de toobackup posibilidades es tooa de discos duros virtuales adicional tooattach VM que usan las copias de seguridad de toostore en. En tal caso necesitaría toomake seguro de que ese Hola discos duros virtuales no se ejecutan completa. Si ese es el caso de hello, necesitaría toounmount Hola VHD y por lo tanto toospeak 'archivo' y reemplácelo por un nuevo VHD vacío. Si dejan de funcionar esa ruta de acceso, es conveniente tookeep estos discos duros virtuales en diferentes cuentas de almacenamiento de Azure de Hola que Hola discos duros virtuales con archivos de base de datos de Hola.
 
-Una segunda posibilidad consiste en usar una máquina virtual de gran tamaño que puede tener muchos VHD asociados. Por ejemplo, D14 con 32 VHD. Utilice espacios de almacenamiento para crear un entorno flexible donde puede crear recursos compartidos que se utilicen como destinos de copia de seguridad de los diferentes servidores de DBMS.
+Una segunda posibilidad es toouse una máquina virtual grande que puede tener muchos discos duros virtuales conectados. Por ejemplo, D14 con 32 VHD. Utilice toobuild de espacios de almacenamiento un entorno flexible donde puede crear recursos compartidos que se utilizan, a continuación, como destinos de copia de seguridad para distintos servidores DBMS Hola.
 
 También puede consultar algunos procedimientos recomendados [aquí](https://blogs.msdn.com/b/sqlcat/archive/2015/02/26/large-sql-server-database-backup-on-an-azure-vm-and-archiving.aspx) .
 
 #### <a name="performance-considerations-for-backupsrestores"></a>Consideraciones de rendimiento sobre copias de seguridad y restauraciones
-Como en las implementaciones sin sistema operativo, el rendimiento de las copias de seguridad y las restauraciones depende de cuántos volúmenes puedan leerse en paralelo y el rendimiento que estos volúmenes puedan tener. Además, el consumo de CPU que se emplea en la compresión de copias de seguridad puede desempeñar un papel importante en las máquinas virtuales con solo 8 subprocesos de CPU como máximo. Por lo tanto, se pueden asumir los siguientes puntos:
+Como en las implementaciones sin sistema operativo, rendimiento de la copia de seguridad/restauración depende de cuántos volúmenes pueden leerse en paralelo y qué rendimiento Hola de estos volúmenes podría ser. Además, Hola consumo de CPU utilizado por la compresión de copia de seguridad puede desempeñan un papel importante en las máquinas virtuales con solo los subprocesos de CPU de too8. Por lo tanto, se pueden asumir los siguientes puntos:
 
-* Cuantos menos VHD se utilicen para almacenar los dispositivos de las bases de datos, menor será el rendimiento general de lectura.
-* Cuantos menos subprocesos de CPU haya en la VM, mayor será el impacto de la compresión de copias de seguridad.
-* Cuantos menos destinos (blobs o VHD) en los que escribir la copia de seguridad haya, menor será el rendimiento.
-* Cuanto menos tamaño tenga la máquina virtual, menor será la cuota de rendimiento de almacenamiento para realizar operaciones de escritura y lectura en el almacenamiento de Azure. Con independencia de si las copias de seguridad se almacenan directamente en Blob de Azure o en VHD que se almacenan de nuevo en Blobs de Azure.
+* Hello menos Hola número de discos duros virtuales utiliza archivos de datos de toostore hello, Hola Hola cuanto menor sea el rendimiento global en la lectura.
+* Hola menor número de Hola de subprocesos de CPU en hello VM, Hola más graves repercusiones de Hola de compresión de copia de seguridad.
+* Hello menos toowrite destinos (BLOB o VHD) Hola copia de seguridad en, Hola menor rendimiento Hola.
+* Hola Hola menor tamaño de máquina virtual, Hola menor Hola rendimiento cuota de almacenamiento escribir y leer desde el almacenamiento de Azure. Independientemente de si las copias de seguridad de Hola se almacenan directamente en el Blob de Azure o si se almacenan en discos duros virtuales que nuevo se almacenan en Blobs de Azure.
 
-Cuando se usa un blob de Microsoft Azure Storage como destino de copia de seguridad en las versiones más recientes, solo podrá designar una dirección URL de destino para cada copia de seguridad específica.
+Cuando se usa un BLOB de almacenamiento de Microsoft Azure como destino de copia de seguridad de hello en las versiones más recientes, están restringidas toodesignating solo una dirección URL de destino para cada copia de seguridad específica.
 
-No obstante, al utilizar la Herramienta de copia de seguridad de Microsoft SQL Server en Microsoft Azure en las versiones anteriores, puede definir más de un destino de archivo. Con más de un destino, puede escalar la copia de seguridad y el rendimiento de esta operación será mayor. De esta forma, se realizarían copias de seguridad de varios archivos y de la cuenta de almacenamiento de Azure. En nuestras pruebas, pudimos alcanzar definitivamente el rendimiento deseado con las extensiones de copia de seguridad implementadas en SQL Server 2012 SP1 CU4 mediante el uso de varios destinos de archivos. Asimismo, no se produce el bloqueo del límite de 1 TB propio de la copia de seguridad nativa en Azure.
+Pero cuando se usa hello 'copia de seguridad de Microsoft SQL Server tooMicrosoft herramienta de Azure' en las versiones anteriores, puede definir más de un destino de archivo. Con más de un destino, puede escalar la copia de seguridad de Hola y Hola rendimiento de copia de seguridad de hello es mayor. A continuación, esto resultaría en varios archivos así como en hello cuenta de almacenamiento de Azure. En nuestras pruebas, mediante varios destinos de archivo puede lograr un rendimiento Hola lo que se podría lograr con las extensiones de copia de seguridad de hello definitivamente implementadas desde SQL Server 2012 SP1 CU4 en. También no estén bloqueado por límite de 1TB de hello como en la copia de seguridad nativa de hello en Azure.
 
-Sin embargo, tenga en cuenta que el rendimiento también depende de la ubicación de la cuenta de almacenamiento de Azure que utilice para la copia de seguridad. Como recomendación, podría ubicar la cuenta de almacenamiento en una región distinta que donde se ejecutan las máquinas virtuales. Por ejemplo, ejecutaría la configuración de máquina virtual en Europa Occidental, pero colocaría la cuenta de almacenamiento que utiliza para realizar la copia de seguridad en Europa del Norte. Sin duda, esto afectará al rendimiento de la copia de seguridad y es probable que no se obtenga un rendimiento de 150 MB/s como parece ser posible en aquellos casos donde el almacenamiento de destino y las máquinas virtuales se ejecutan en el mismo centro de datos regional.
+Sin embargo, tenga en cuenta, rendimiento de hello también es dependiente de ubicación de Hola de hello cuenta de almacenamiento de Azure que use para copia de seguridad de Hola. Una idea podría ser la cuenta de almacenamiento de hello toolocate en una región diferente de hello en que las máquinas virtuales se ejecutan. Por ejemplo, podría ejecutar la configuración de máquina virtual de hello en Europa occidental, pero colocar Hola cuenta de almacenamiento que usa tooback contra en Norte de Europa. Que por supuesto, tendrá efecto en el rendimiento de copia de seguridad de Hola o toogenerate no es probable que un rendimiento de 150MB/s como parece toobe posible en casos donde Hola almacenamiento de destino y Hola máquinas virtuales se ejecutan en hello mismo centro de datos regional.
 
 #### <a name="managing-backup-blobs"></a>Gestión de blobs de copia de seguridad
-Para administrar las copias de seguridad por su cuenta, tendrá que cumplir un requisito. Puesto que se espera que van a crearse muchos blobs mediante la ejecución de copias de seguridad del registro de transacciones, la administración de esos blobs puede sobrecargar fácilmente el Portal de Azure. Por lo tanto, se recomienda utilizar un explorador de almacenamiento de Azure. Hay disponibles algunos muy buenos que pueden contribuir a administrar una cuenta de almacenamiento de Azure.
+Hay un copias de seguridad de requisito toomanage Hola por su cuenta. Puesto que la expectativa de hello es que se creará muchos blobs mediante la ejecución de las copias de seguridad del registro de transacciones con frecuencia, administración de esos blobs puede fácilmente sobrecargar Hola Portal de Azure. Por lo tanto, es recomendable tooleverage un explorador de almacenamiento de Azure. Hay varias buenas noticias disponibles los que pueden ayudar a toomanage una cuenta de almacenamiento de Azure
 
 * Microsoft Visual Studio con Azure SDK instalado (<https://azure.microsoft.com/downloads/>)
 * Explorador de Microsoft Azure Storage (<https://azure.microsoft.com/downloads/>)
@@ -723,99 +723,99 @@ Para administrar las copias de seguridad por su cuenta, tendrá que cumplir un r
 
 [comment]: <> (Todavía no se admite en ARM)
 [comment]: <> (#### Azure VM backup)
-[comment]: <> (Se puede efectuar una copa de seguridad de las máquinas virtuales dentro del sistema SAP mediante la funcionalidad de copia de seguridad de máquinas virtuales de Azure. La funcionalidad de copia de seguridad de máquina virtual de Azure se introdujo a principios de 2015; se trata de un método estándar para realizar copias de seguridad de una máquina virtual completa en Azure. Azure Backup almacena las copias de seguridad en Azure y permite volver a restaurarlas.)
-[comment]: <> (También se pueden realizar copias de seguridad de las máquinas virtuales que ejecutan bases de datos de forma coherente si los sistemas de DBMS admiten el Servicio de instantáneas de volumen de Windows VSS <https://msdn.microsoft.com/library/windows/desktop/bb968832.aspx> como, por ejemplo, hace SQL Server. Por tanto, usar la funcionalidad de copia de seguridad de máquina virtual de Azure podría ser una forma de obtener una copia de seguridad de una base de datos de SAP que puede restaurarse. Sin embargo, tenga en cuenta que no se pueden realizar restauraciones de bases de datos a un momento dado con esta funcionalidad. Por lo tanto, se recomienda realizar copias de seguridad de las bases de datos con la funcionalidad del DBMS en lugar de confiar en la copia de seguridad de máquinas virtuales de Azure.)
-[comment]: <> (Para familiarizarse con la copia de seguridad de la máquina virtual de Azure, comience aquí: <https://azure.microsoft.com/documentation/services/backup/>)
+[comment]: <> (Pueden que las máquinas virtuales de hello sistema SAP se copia mediante la funcionalidad de copia de seguridad de máquina Virtual de Azure. Copia de seguridad de máquina Virtual de Azure se introdujo al principio de año de hello 2015 y al mismo tiempo es un método estándar toobackup una máquina virtual completa en Azure. Copia de seguridad de Azure almacena las copias de seguridad de hello en Azure y permite una restauración de una máquina virtual de nuevo.)
+[comment]: <> (Máquinas virtuales de las bases de datos de ejecución pueden ser copia de seguridad de forma coherente si admite de sistemas DBMS Hola Hola Windows VSS Volume Shadow Copy Service < https://msdn.microsoft.com/library/windows/desktop/bb968832.aspx> como SQL Server. Por lo mediante copia de seguridad de máquina virtual de Azure puede ser un tooa de tooget de manera que pueda restaurar copia de seguridad de una base de datos SAP. Sin embargo, tenga en cuenta que no se pueden realizar restauraciones de bases de datos a un momento dado con esta funcionalidad. Por lo tanto, la recomendación de hello es tooperform copias de seguridad de bases de datos con la funcionalidad DBMS en lugar de depender de copia de seguridad de máquina virtual de Azure.)
+[comment]: <> (tooget familiarizado con copia de seguridad de máquina Virtual de Azure, empiece aquí < https://azure.microsoft.com/documentation/services/backup/>)
 
-### <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Uso de imágenes de SQL Server fuera de Microsoft Azure Marketplace
-Microsoft ofrece en Azure Marketplace máquinas virtuales que ya contienen versiones de SQL Server. Para los clientes de SAP que requieran licencias de SQL Server y Windows, podría tratarse de una oportunidad para cubrir la necesidad de licencias activando las máquinas virtuales con SQL Server ya está instalado. Para poder utilizar dichas imágenes para SAP, deben tenerse en cuenta las siguientes consideraciones:
+### <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Usar una imagen de SQL Server fuera de hello Microsoft Azure Marketplace
+Microsoft ofrece VM en hello Azure Marketplace que ya contienen versiones de SQL Server. Para los clientes de SAP que requieren licencias para SQL Server y Windows, esto podría ser una necesidad de Hola de portada de oportunidad toobasically de licencias al activar máquinas virtuales con SQL Server ya instalado. En orden toouse este tipo de imágenes para SAP, Hola después consideraciones necesita toobe realizado:
 
-* Las versiones de SQL Server que no son evaluación incurren en costes más elevados que simplemente una máquina virtual exclusivamente con Windows implementada desde Azure Marketplace. Consulte los siguientes artículos para comparar los precios: <https://azure.microsoft.com/pricing/details/virtual-machines/> y <https://azure.microsoft.com/pricing/details/virtual-machines/#Sql>.
+* versiones de Hello SQL Server no son evaluación adquieren costos mayores que simplemente una VM 'Solo de Windows' implementada de Azure Marketplace. Consulte estos artículos toocompare: <https://azure.microsoft.com/pricing/details/virtual-machines/> y <https://azure.microsoft.com/pricing/details/virtual-machines/#Sql>.
 * Solo se pueden usar las versiones de SQL Server compatibles con SAP, como SQL Server 2012.
-* La intercalación de la instancia de SQL Server que está instalada en las máquinas virtuales que se ofrecen en Azure Marketplace no es la que requiere SAP NetWeaver para ejecutar la instancia de SQL Server. Puede cambiar la intercalación, aunque debe seguir las instrucciones de la sección que encontrará a continuación.
+* intercalación de Hola Hola instancia de SQL Server que se instala en máquinas virtuales de Hola que se ofrecen en hello Azure Marketplace no es intercalación Hola SAP NetWeaver requiere toorun de instancia de SQL Server de Hola. Puede cambiar la intercalación de hello aunque con instrucciones Hola Hola pasos de la sección.
 
-#### <a name="changing-the-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>Modificación de la intercalación de SQL Server de una máquina virtual de Windows o SQL Server
-Puesto que las imágenes de SQL Server en Azure Marketplace no están configuradas para usar la intercalación necesaria para las aplicaciones de SAP NetWeaver, debe modificarse inmediatamente después de llevar a cabo la implementación. Para SQL Server 2012, este procedimiento puede realizarse siguiendo estos pasos en cuanto se haya implementado la máquina virtual y un administrador puede iniciar sesión en la máquina virtual implementada:
+#### <a name="changing-hello-sql-server-collation-of-a-microsoft-windowssql-server-vm"></a>Cambiar Hola intercalación de SQL Server de una máquina virtual de Microsoft Windows y SQL Server
+Puesto que las imágenes de SQL Server de hello en hello Azure Marketplace no se configuran de intercalación de hello toouse y es necesario para las aplicaciones de SAP NetWeaver, debe toobe cambia inmediatamente después de la implementación de Hola. Para SQL Server 2012, esto puede hacerse con hello lo siguiente en cuanto hello máquina virtual se ha implementado y un administrador puede toolog en hello implementa VM:
 
 * Abra una ventana de comandos de Windows como administrador.
-* Cambie el directorio a C:\Archivos de programa\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Ejecute el comando: Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2.   
-  * `<local_admin_account_name`> es la cuenta que se definió como cuenta de administrador al implementar la máquina virtual por primera vez por medio de la galería.
+* Cambiar directorio de hello tooC:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
+* Ejecutar el comando hello: Setup.exe /QUIET/Action = REBUILDDATABASE/instancename = MSSQLSERVER /SQLSYSADMINACCOUNTS =`<local_admin_account_name`>/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+  * `<local_admin_account_name`> es la cuenta de hello que se definió como cuenta de administrador de hello al implementar hello VM para hello primera vez a través de la Galería de Hola.
 
-Este proceso solo debe llevar unos minutos. Para asegurarse de que obtiene el resultado correcto, realice los pasos siguientes:
+proceso de Hello solo debería tardar unos minutos. En orden toomake seguro si Hola paso terminó con el resultado correcto de hello, lleve a cabo Hola pasos:
 
 * Abra SQL Server Management Studio.
 * Abra una ventana de consulta.
-* Ejecute el comando sp_helpsort en la base de datos maestra de SQL Server.
+* Ejecute hello comando sp_helpsort en la base de datos maestra de hello SQL Server.
 
-El resultado deberá ser similar al que se muestra a continuación:
+resultado de Hello deseado debe ser similar:
 
     Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
 
-Si no obtiene lo mismo, DETENGA la implementación de SAP e investigue por qué el comando de instalación no funcionó como se esperaba. **NO** se admite la implementación de aplicaciones de SAP NetWeaver en la instancia de SQL Server con páginas de códigos de SQL Server distintas de la mencionada antes.
+Si este no es el resultado de hello, DETENGA la implementación de SAP e investigue por qué comando de instalación de hello no funcionaron según lo previsto. Implementación de aplicaciones de SAP NetWeaver en la instancia de SQL Server con distintas páginas de códigos de SQL Server de Hola mencionada anteriormente es **no** compatible.
 
 ### <a name="sql-server-high-availability-for-sap-in-azure"></a>Alta disponibilidad de SQL Server para SAP en Azure
-Tal y como se mencionó anteriormente en este documento, no hay ninguna posibilidad de crear un almacenamiento compartido que sea necesario para utilizar la funcionalidad de alta disponibilidad de SQL Server más antigua. Esta funcionalidad instala 2 o más instancias de SQL Server en un clúster de conmutación por error de Windows Server (WSFC) utilizando un disco compartido para las bases de datos de usuario (y, al final, tempdb). Se trata del método estándar de alta disponibilidad que también es compatible con SAP. Dado que Azure no admite el almacenamiento compartido, no se pueden realizar configuraciones de alta disponibilidad de SQL Server con una configuración de clúster de disco compartido. Sin embargo, podemos seguir utilizando muchos otros métodos de alta disponibilidad, que se describen en las secciones siguientes.
+Como se mencionó anteriormente en este documento, no hay ningún almacenamiento de toocreate compartido posibilidad que es necesario para el uso de Hola de funcionalidad de alta disponibilidad de SQL Server más antigua de Hola. Esta funcionalidad instala dos o más instancias de SQL Server en un clúster de conmutación por error de servidor de Windows (WSFC) con un disco compartido para las bases de datos de usuario de hello (y finalmente tempdb). Se trata de método de hello mucho tiempo estándar de alta disponibilidad que también es compatible con SAP. Dado que Azure no admite el almacenamiento compartido, no se pueden realizar configuraciones de alta disponibilidad de SQL Server con una configuración de clúster de disco compartido. Sin embargo, muchos otros métodos de alta disponibilidad sigue siendo posible y se describen en las secciones siguientes de Hola.
 
-[comment]: <> (El artículo sigue refiriéndose a ASM)
-[comment]: <> (Antes de leer las distintas tecnologías específicas de alta disponibilidad que se pueden usar con SQL Server en Azure, hay un documento muy bueno que proporciona más información y punteros [aquí][virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions])
+[comment]: <> (Artículo sigue siendo tooASM de referencia)
+[comment]: <> (Antes de leer tecnologías de hello específicas distintas de alta disponibilidad utilizables para SQL Server en Azure, hay un excelente documento que proporciona más detalles y punteros [[[[aquí] Virtual-Machines-SQL-Server-High-Availability-and-Disaster-Recovery-Solutions])
 
 #### <a name="sql-server-log-shipping"></a>Trasvase de registros de SQL Server
-Uno de los métodos de alta disponibilidad (HA) consiste en trasvasar los registros de SQL Server. Si las máquinas virtuales que participan en la configuración de alta disponibilidad tienen una resolución de nombres correcta, no habrá ningún problema y la configuración de Azure no será diferente a cualquier otra realizada de forma local. No se recomienda depender exclusivamente de la resolución de direcciones IP. En lo que respecta a la configuración de trasvase de registros y sus principios, consulte esta documentación:
+Uno de los métodos de Hola de alta disponibilidad (HA) es el trasvase de registros de SQL Server. Si las máquinas virtuales de hello participa en la configuración de alta disponibilidad de hello tienen funciona la resolución de nombres, no hay ningún problema y el programa de instalación de hello en Azure no será diferente de cualquier configuración que se hace de forma local. No se recomienda toorely en sólo la resolución de IP. En lo que respecta toosetting seguridad de trasvase de registros y principios de hello alrededor de trasvase de registros, consulte en esta documentación:
 
 <https://technet.microsoft.com/library/ms187103.aspx>
 
-Para poder lograr realmente la alta disponibilidad, hay que implementar las máquinas virtuales que estén en una configuración de trasvase de registros que, a su vez, se encuentre en el mismo conjunto de disponibilidad de Azure.
+En orden tooreally lograr cualquier alta disponibilidad, es necesario toodeploy Hola máquinas virtuales que están dentro de este tipo una toobe de configuración de trasvase de registros dentro de Hola mismo conjunto de disponibilidad de Azure.
 
 #### <a name="database-mirroring"></a>Creación de reflejo de la base de datos
-La funcionalidad de creación de reflejo de la base de datos, que es compatible con SAP (consulte la nota de SAP [965908]), se basa en la definición de un asociado de conmutación por error en la cadena de conexión de SAP. Para los casos entre locales, asumimos que las 2 máquinas virtuales están en el mismo dominio y que las 2 instancias de SQL Server que se están ejecutando en el contexto de usuario son también los usuarios de dominio, así como que tendrán los privilegios suficientes en las 2 instancias de SQL Server. Por lo tanto, el proceso configuración de la creación de reflejo de la base de datos de Azure es el mismo en una configuración o instalación local típica.
+Creación de reflejo de base de datos compatible con SAP (consulte la nota de SAP [965908]) se basa en la definición de un asociado de conmutación por error en la cadena de conexión de SAP Hola. Para los casos de hello entre entornos, suponemos que Hola dos máquinas virtuales están en hello mismo dominio y que se ejecuten instancias de SQL Server de hello dos de contexto de usuario de hello en son los usuarios de dominio y dispone de suficientes privilegios en instancias de SQL Server de hello dos implicados. Por lo tanto, el programa de instalación de Hola de creación de reflejo de base de datos de Azure no se diferencia entre una instalación típica de local/configuración.
 
-Al igual que con las implementaciones exclusivas en la nube, el método más fácil es tener otra configuración de dominio en Azure con el fin de albergar esas máquinas virtuales de DBMS (e, idealmente, las máquinas virtuales de SAP específicas) dentro de un dominio.
+Como de las implementaciones que solo en la nube, el método más sencillo de Hola es toohave otro dominio de la instalación en Azure toohave esas VM de DBMS (y VM de SAP dedicadas idealmente) dentro de un dominio.
 
-Si un dominio no es posible, también se pueden usar certificados para los puntos de conexión de reflejo de la base de datos, como se describe aquí: <https://technet.microsoft.com/library/ms191477.aspx>.
+Si un dominio no es posible, uno puede usar certificados para base de datos de hello extremos de creación de reflejo tal y como se describe aquí: <https://technet.microsoft.com/library/ms191477.aspx>
 
-Se puede encontrar un tutorial para la configuración del reflejo de base de datos en Azure aquí: <https://technet.microsoft.com/library/ms189852.aspx>.
+Un tutorial tooset telefónico Database Mirroring en Azure puede encontrarse aquí: <https://technet.microsoft.com/library/ms189852.aspx>
 
 #### <a name="alwayson"></a>AlwaysOn
-Como AlwaysOn es compatible con un entorno de SAP local (consulte la nota de SAP [1772688]), se puede usar en combinación con SAP en Azure. El hecho de que no pueda crear discos compartidos en Azure no significa que no se pueda crear una configuración AlwaysOn de clúster de conmutación por error de Windows Server (WSFC) entre diferentes máquinas virtuales. Tan solo significa que no tiene la posibilidad de usar un disco compartido como un cuórum en la configuración del clúster. Por lo tanto, puede crear una configuración AlwaysOn de WSFC en Azure y simplemente no seleccionar el tipo de cuórum que utiliza el disco compartido. El entorno de Azure en el que se han implementado esas máquinas virtuales debe resolver las máquinas virtuales por nombre y estas deben encontrarse en el mismo dominio. Lo mismo ocurre con las implementaciones entre locales y exclusivas de Azure. Hay algunas consideraciones especiales respecto a implementar el agente de escucha de grupo de disponibilidad de SQL Server (no debe confundirse con el conjunto de disponibilidad de Azure), ya que Azure en este momento no puede crear un objeto AD y DNS como en las implementaciones locales. Por lo tanto, hay que realizar otros pasos de instalación para solucionar el comportamiento específico de Azure.
+Como AlwaysOn es compatible con SAP local (vea la nota de SAP [1772688]), es compatible toobe utilizado en combinación con SAP en Azure. Hola hecho de que no pueda toocreate compartido discos en Azure no significa que uno no puede crear una configuración de clúster de conmutación por error de Windows Server (WSFC) de AlwaysOn entre diferentes máquinas virtuales. Sólo significa que no tiene Hola posibilidad toouse un disco compartido como un quórum en configuración de clúster de Hola. Por lo tanto, puede crear una configuración de AlwaysOn WSFC en Azure y simplemente no seleccionar tipo de quórum de hello, que utiliza el disco compartido. Hello entorno Azure esas máquinas virtuales se implementan en se debe resolver Hola máquinas virtuales por su nombre y hello las máquinas virtuales debe estar en hello mismo dominio. Lo mismo ocurre con las implementaciones entre locales y exclusivas de Azure. Hay algunas consideraciones especiales respecto a implementar Hola escucha de grupo de disponibilidad de SQL Server (no toobe confundirse con hello conjunto de disponibilidad de Azure) puesto que Azure no permite en este momento toosimply crear un objeto AD/DNS como sea posible en local. Por lo tanto, algunos pasos de instalación diferente son necesarios tooovercome Hola un comportamiento específico de Azure.
 
 Estas son algunas de las consideraciones que hay que tener en cuenta al usar un agente de escucha de grupo de disponibilidad:
 
-* Solo se puede usar un agente de escucha del grupo de disponibilidad con Windows Server 2012 o Windows Server 2012 R2 como SO invitado de la máquina virtual. Para Windows Server 2012 debe asegurarse de que se aplica esta revisión: <https://support.microsoft.com/kb/2854082>.
-* Esta revisión no está disponible para Windows Server 2008 R2 y AlwaysOn tendría que usarse de la misma manera que la funcionalidad de creación de reflejo de base de datos especificando un asociado de conmutación por error en la cadena de conexiones (se realiza mediante el parámetro de SAP default.pfl dbs/mss/server; consulte la nota de SAP [965908]).
-* Cuando se utiliza un agente de escucha de grupo de disponibilidad, las máquinas virtuales de la base de datos tienen que estar conectadas a un equilibrador de carga específico. La funcionalidad de resolución de nombres de las implementaciones exclusivas en la nube precisaría que todas las máquinas virtuales de un sistema SAP (servidores de aplicaciones, el servidor de DBMS y el servidor ASCS) se encuentren en la misma red virtual, o bien que se realizara un mantenimiento del archivo etc\host en una capa de aplicación de SAP para obtener resueltos los nombres de las máquinas virtuales de SQL Server. Para evitar que Azure asigne nuevas direcciones IP en casos donde ambas máquinas virtuales se apaguen accidentalmente, se deben asignar direcciones IP estáticas a las interfaces de red de esas máquinas virtuales en la configuración AlwaysOn (el proceso definición de una dirección IP estática se describe en [este][virtual-networks-reserved-private-ip] artículo).
+* Uso de un agente de escucha del grupo de disponibilidad solo es posible con Windows Server 2012 o Windows Server 2012 R2 como sistema operativo invitado de VM de Hola. Para Windows Server 2012 necesita toomake seguro de que se aplique esta revisión: <https://support.microsoft.com/kb/2854082>
+* Para Windows Server 2008 R2 esta revisión no existe y AlwaysOn tendría toobe usa Hola igual manera que la creación de reflejo de base de datos mediante la especificación de un asociado de conmutación por error en la cadena de conexión de hello (mediante Hola SAP default.pfl parámetro dbs/mss/server: consulte la nota de SAP [965908]).
+* Cuando usa un agente de escucha del grupo de disponibilidad, las máquinas virtuales de base de datos de hello necesario toobe conectado tooa dedicado equilibrador de carga. La resolución de nombres en las implementaciones que solo nube requeriría en todas las máquinas virtuales de un sistema SAP (servidores de aplicaciones, servidor DBMS y (A) servidor SCS) están en Hola misma red virtual o requeriría de un mantenimiento de hello SAP capa de aplicación del archivo etc\host de hello en orden tooget Hola nombres de las VM de VM de SQL Server de hello resuelto. En orden tooavoid que Azure asigne nuevas direcciones IP en casos donde ambas máquinas virtuales a propósito están cerrados, se deben asignar direcciones IP estáticas toohello interfaces de red de esas máquinas virtuales en la configuración de AlwaysOn hello (definición de una dirección IP estática se describe en [esto] [ virtual-networks-reserved-private-ip] artículo)
 
 [comment]: <> (Blogs anteriores)
-[comment]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>, <https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>)
-* Hay que realizar algunos pasos especiales al crear la configuración del clúster WSFC: el clúster necesita una dirección IP especial, ya la funcionalidad actual de Azure asignaría el nombre del clúster a la misma dirección IP que el nodo donde se ha creado dicho clúster. Es decir, se debe realizar un paso manual para asignar una dirección IP diferente a la del clúster.
-* El agente de escucha de grupo de disponibilidad se va a crear en Azure con los puntos de conexión TCP/IP asignados a las máquinas virtuales que ejecutan las réplicas principales y secundarias del grupo de disponibilidad.
-* Puede que haya que proteger estos puntos de conexión con ACL.
+[comment]: <> (&lt;https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx&gt;, &lt;https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx&gt;)
+* Hay pasos especiales necesarios cuando la creación de la configuración de clúster WSFC Hola donde clúster Hola necesita una dirección IP especial asignada, ya que Azure con su funcionalidad actual podría asignar el nombre del clúster Hola Hola la misma dirección IP que el clúster de Hola Hola nodos se crea en. Esto significa que un paso manual debe ser realizada tooassign otro clúster de toohello de dirección IP.
+* Hola agente de escucha del grupo de disponibilidad va toobe creado en Azure con los puntos de conexión de TCP/IP que se asignan a las máquinas virtuales de toohello ejecutan Hola réplicas principales y secundarias del grupo de disponibilidad de Hola.
+* Puede haber una necesidad toosecure estos extremos con ACL.
 
 [comment]: <> (Blog antiguo PENDIENTE)
-[comment]: <> (Los pasos detallados y las necesidades de instalar una configuración AlwaysOn en Azure se realizan de mejor manera cuando se sigue el tutorial disponible [aquí][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups])
-[comment]: <> (La configuración AlwaysOn preconfigurada a través de la galería de Azure <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
+[comment]: <> (Hola pasos detallados y la necesidad de instalar una configuración de AlwaysOn en Azure se realizan de mejor manera cuando se lleva a través de hello tutorial disponible [here][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups])
+[comment]: <> (Preconfigurado AlwaysOn el programa de instalación a través de la Galería de Azure Hola < https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx>)
 [comment]: <> (La creación de un agente de escucha del grupo de disponibilidad se describe mejor en [este][virtual-machines-windows-classic-ps-sql-int-listener] tutorial)
 [comment]: <> (Los puntos de conexión de red de protección con ACL se explican mejor aquí:)
-[comment]: <> (*    <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>)
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx> )
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>)  
-[comment]: <> (*    <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>)
+[comment]: <> (*    &lt;https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/&gt;)
+[comment]: <> (*    &lt;https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx&gt; )
+[comment]: <> (*    &lt;https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx&gt;)  
+[comment]: <> (*    &lt;https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx&gt;)
 
-Es posible implementar un grupo de disponibilidad AlwaysOn de SQL Server en distintas regiones de Azure también. Esta funcionalidad aprovechará la conectividad de red virtual a red virtual de Azure ([más información][virtual-networks-configure-vnet-to-vnet-connection]).
+Es posible toodeploy un grupo de disponibilidad AlwaysOn de SQL Server a través de diferentes regiones de Azure también. Esta funcionalidad aprovechan la conectividad de hello Azure VNet a Vnet ([detalles más][virtual-networks-configure-vnet-to-vnet-connection]).
 
 [comment]: <> (Blog antiguo PENDIENTE)
-[comment]: <> (La configuración de los grupos de disponibilidad AlwaysOn de SQL Server en tal escenario se describe aquí: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.)
+[comment]: <> (instalación de Hola de grupos de disponibilidad AlwaysOn de SQL Server en este escenario se describe aquí: < https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>.)
 
 #### <a name="summary-on-sql-server-high-availability-in-azure"></a>Resumen de alta disponibilidad de SQL Server en Azure
-Como el Azure Storage está protegiendo el contenido, hay una razón menos para insistir en el uso de una imagen de espera activa. Es decir, el escenario de alta disponibilidad solo tiene que protegerse contra los siguientes casos:
+Dados los hechos de Hola que el almacenamiento de Azure es proteger el contenido de hello, hay una menor tooinsist motivo en una imagen de reserva activa. Esto significa que el escenario de alta disponibilidad necesita tooonly protegerse contra Hola casos siguientes:
 
-* La no disponibilidad de la máquina virtual como un conjunto debido a tareas de mantenimiento en el clúster del servidor de Azure u otros motivos
-* Problemas de software en la instancia de SQL Server
+* Falta de disponibilidad de hello VM como un todo debido toomaintenance en clúster de servidores de hello en Azure u otras razones
+* Problemas de software en la instancia de SQL Server de Hola
 * Protección contra el error manual donde se eliminan los datos y se necesita realizar una recuperación a un momento dado
 
-Al analizar las tecnologías que se ajustan a los requisitos, se puede argumentar que los dos primeros casos se pueden cubrir mediante la funcionalidad de creación de reflejo de base de datos o AlwaysOn, mientras que el tercer caso solo se puede abordar con el trasvase de registros.
+Examinando las tecnologías de asociación puede argumentar que los primeros dos casos de Hola pueden estar cubiertos por la creación de reflejo de base de datos o AlwaysOn, mientras que el tercer caso de hello solo puede cubrir mediante el trasvase de registros.
 
-Tendrá que equilibrar la configuración más compleja de AlwaysOn, en comparación con la creación de reflejo de base de datos, con las ventajas de AlwaysOn. Estas ventajas son las siguientes:
+Necesitará toobalance Hola instalación más compleja de AlwaysOn, tooDatabase comparado de creación de reflejo, con las ventajas de Hola de AlwaysOn. Estas ventajas son las siguientes:
 
 * Réplicas secundarias legibles
 * Copias de seguridad de las réplicas secundarias
@@ -823,80 +823,80 @@ Tendrá que equilibrar la configuración más compleja de AlwaysOn, en comparaci
 * Más de una réplica secundaria legible
 
 ### <a name="9053f720-6f3b-4483-904d-15dc54141e30"></a>Resumen general de SQL Server para SAP en Azure
-En esta guía se ofrecen muchas recomendaciones: le sugerimos que la lea más de una vez antes de planear la implementación de Azure. En general, asegúrese de seguir las 10 principales pautas específicas de DBMS en Azure:
+En esta guía se ofrecen muchas recomendaciones: le sugerimos que la lea más de una vez antes de planear la implementación de Azure. En general, no obstante, ser seguro hello toofollow superiores DBMS generales diez en puntos concretos de Azure:
 
 [comment]: <> (2.3 higher throughput than what? ¿Que un disco duro virtual?)
-1. Utilice la versión de DBMS más reciente, como SQL Server 2014, que presenta la mayoría de las ventajas de Azure. Para SQL Server, se trata de SQL Server 2012 SP1 CU4, que incluiría la característica de copia de seguridad en el almacenamiento de Azure. Sin embargo, para usarse con SAP recomendamos, como mínimo, SQL Server 2014 SP1 CU1 o SQL Server 2012 SP2 y la CU más reciente.
-2. Planee cuidadosamente su infraestructura de sistema SAP en Azure para equilibrar el diseño del archivo de datos y las restricciones de Azure:
-   * No disponga de un número de VHD demasiado elevado, solo el suficiente para asegurarse de que puede alcanzar los IOPS necesarios.
+1. Usar Hola última versión DBMS, como SQL Server 2014, que tiene Hola mayoría de las ventajas de Azure. Para SQL Server, se trata de SQL Server 2012 SP1 CU4 que incluiría la característica de Hola de copia de seguridad del almacenamiento de Azure. Sin embargo, junto con SAP le recomendamos al menos hello o SQL Server 2012 SP2 y SQL Server 2014 SP1 CU1 CU más reciente.
+2. Planee cuidadosamente su panorama del sistema SAP en el diseño del archivo de datos de Azure toobalance hello y las restricciones de Azure:
+   * No tiene demasiados discos duros virtuales, pero tiene suficiente tooensure puede alcanzar sus IOPS necesarias.
    * Recuerde que los valores de E/S también están limitados por cuenta de Azure Storage y que las cuentas de Storage están limitadas en cada suscripción de Azure ([más información][azure-subscription-service-limits]).
-   * Si necesita obtener un mayor rendimiento, solo cree secciones en los VHD.
-3. Nunca instale software o coloque los archivos que requieren persistencia en la unidad D:\, ya que no es permanente y todos los datos que albergue se perderán tras reiniciar Windows.
+   * Solo seccione a través de los discos duros virtuales si necesita tooachieve un mayor rendimiento.
+3. No instalar nunca software o ponga todos los archivos que se requieren la persistencia en hello unidad D:\ según sea no es permanente y nada en esta unidad se perderá en un reinicio de Windows.
 4. No utilice el almacenamiento en caché de VHD de Azure para el almacenamiento estándar de Azure.
 5. No utilice cuentas de almacenamiento con replicación geográfica de Azure.  Use la redundancia local para las cargas de trabajo de DBMS.
-6. Utilice la solución de alta disponibilidad o recuperación ante desastres de su proveedor de DBMS para replicar datos de base de datos.
+6. Usar datos de base de datos de la solución de su proveedor DBMS HA/DR de tooreplicate.
 7. Use siempre la resolución de nombres, no confíe exclusivamente en las direcciones IP.
-8. Use el nivel de compresión de base de datos más elevado posible. Para SQL Server es la compresión de página.
-9. Tenga cuidado al utilizar imágenes de SQL Server de Azure Marketplace. Si lo hace, debe cambiar la intercalación de la instancia antes de instalar cualquier sistema SAP NetWeaver en ella.
-10. Instale y configure la funcionalidad de supervisión de hosts de SAP para Azure tal y como se describe en la [Guía de implementación][deployment-guide].
+8. Use la compresión de base de datos más alto de hello posibles. Para SQL Server es la compresión de página.
+9. Tenga cuidado al usar imágenes de SQL Server de hello Azure Marketplace. Si usas Hola SQL Server uno, debe cambiar la intercalación de la instancia de hello antes de instalar cualquier sistema SAP NetWeaver en él.
+10. Instalar y configurar Hola supervisión de Host de SAP para Azure como se describe en [Guía de implementación][deployment-guide].
 
-## <a name="specifics-to-sap-ase-on-windows"></a>Características específicas de SAP ASE en Windows
-Desde Microsoft Azure puede migrar fácilmente sus aplicaciones de SAP ASE a máquinas virtuales de Azure. SAP ASE en una máquina virtual permite reducir el coste total de propiedad de implementación, administración y mantenimiento de aplicaciones empresariales al migrarlas fácilmente a Microsoft Azure. Con SAP ASE en una máquina virtual de Azure, los administradores y los desarrolladores pueden seguir usando las mismas herramientas de desarrollo y administración que se encuentran disponibles de forma local.
+## <a name="specifics-toosap-ase-on-windows"></a>Detalles tooSAP ASE en Windows
+A partir de Microsoft Azure, puede migrar fácilmente su tooAzure de aplicaciones SAP ASE máquinas virtuales existente. SAP ASE en una máquina Virtual permite tooreduce Hola costo total de propiedad de implementación, administración y mantenimiento de aplicaciones empresariales al migrar fácilmente estas tooMicrosoft aplicaciones Azure. Con SAP ASE en una máquina Virtual de Azure, los desarrolladores y administradores la pueden seguir usando Hola mismas herramientas de desarrollo y administración que están disponibles en local.
 
-Hay un Acuerdo de Nivel de Servicio para Azure Virtual Machines que puede encontrarse aquí: <https://azure.microsoft.com/support/legal/sla>.
+Hay un SLA para hello máquinas virtuales de Azure que puede encontrarse aquí: <https://azure.microsoft.com/support/legal/sla>
 
-Garantizamos que las máquinas virtuales de Microsoft Azure hospedadas funcionarán muy bien en comparación con otras ofertas de virtualización de nube pública, aunque los resultados individuales pueden variar. Los números de SAPS de tamaño de SAP de las distintas SKU para máquinas virtuales certificadas por SAP se proporcionarán en una nota de SAP independiente [1928533].
+Se está seguros de que Microsoft Azure máquinas virtuales hospedadas realizará muy bien en las ofertas de virtualización de nube pública de comparación tooother, pero los resultados individuales pueden variar. Ajustar el tamaño de los números de SAPS de hello diferentes SAP certificado SKU de la máquina virtual se proporcionará en una nota de SAP independiente de SAP [1928533].
 
-Se aplican instrucciones y recomendaciones sobre el uso del almacenamiento de Azure, implementación de máquinas virtuales de SAP o supervisión de SAP a las implementaciones de SAP ASE en conjunto con aplicaciones de SAP, como se indica en los primeros cuatro capítulos de este documento.
+Las instrucciones y las recomendaciones de uso de toohello de tener en cuenta de almacenamiento de Azure, la implementación de máquinas virtuales de SAP o la supervisión de SAP se aplican toodeployments de SAP ASE junto con las aplicaciones de SAP como se indica a lo largo de hello primeros cuatro capítulos de este documento.
 
 ### <a name="sap-ase-version-support"></a>Compatibilidad de versiones de SAP ASE
-Actualmente, SAP admite la versión 16.0 de SAP ASE para poder utilizarse con productos de SAP Business Suite. Todas las actualizaciones para el servidor SAP ASE o los controladores ODBC y JDBC que se utilizarán con productos de SAP Business Suite se proporcionan únicamente a través de SAP Service Marketplace: <https://support.sap.com/swdc>.
+Actualmente, SAP admite la versión 16.0 de SAP ASE para poder utilizarse con productos de SAP Business Suite. Todas las actualizaciones para el servidor de SAP ASE o toobe de controladores JDBC y ODBC utiliza con SAP Business Suite productos se proporcionan únicamente a través de Hola SAP Service Marketplace en: <https://support.sap.com/swdc>.
 
-En el caso de las instalaciones realizadas de forma local, no descargue las actualizaciones del servidor de SAP ASE ni de los controladores JDBC y ODBC directamente desde los sitios web de Sybase. Para obtener más información sobre las revisiones que pueden utilizarse con los productos de SAP Business Suite en el entorno local y en máquinas virtuales de Azure, consulte las siguientes notas de SAP:
+Como para las instalaciones locales, descargar las actualizaciones para el servidor de SAP ASE de Hola o hello JDBC y controladores ODBC directamente desde sitios Web de Sybase. Para obtener información detallada sobre las revisiones que se pueden usar con los productos de SAP Business Suite en locales y máquinas virtuales de Azure vea Hola siguiendo las notas de SAP:
 
 * [1590719]
 * [1973241]
 
-Encontrará información general sobre la ejecución de SAP Business Suite en SAP ASE en el [SCN](https://scn.sap.com/community/ase)
+Información general sobre la ejecución de SAP Business Suite en SAP ASE puede encontrarse en hello [SCN](https://scn.sap.com/community/ase)
 
 ### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Instrucciones de configuración de SAP ASE para SAP relacionadas con las instalaciones de SAP ASE en máquinas virtuales de Azure
-#### <a name="structure-of-the-sap-ase-deployment"></a>Estructura de la implementación de SAP ASE
-Según la descripción general, los archivos ejecutables de SAP ASE se deben ubicar o instalar en la unidad del sistema del VHD base de la máquina virtual (unidad C:\)). Normalmente, la mayoría de las bases de datos de herramientas y sistemas SAP ASE no se aprovechan realmente bien mediante las cargas de trabajo de SAP NetWeaver. Por lo tanto, las bases de datos de herramientas y sistemas (master, model, saptools, sybmgmtdb, sybsystemdb) pueden permanecer en la unidad C:\.
+#### <a name="structure-of-hello-sap-ase-deployment"></a>Estructura de hello SAP ASE implementación
+Con arreglo a la descripción general de hello, se encuentra o se instala en unidad del sistema Hola de disco duro virtual base de la máquina virtual de hello ejecutables de SAP ASE (la unidad c:\). Normalmente, la mayoría de hello SAP ASE herramientas del sistema ni las bases de datos no realmente aprovecha rígida cargas de trabajo de SAP NetWeaver. Hola, por tanto, sistema y las bases de datos de herramientas (master, model, saptools, sybmgmtdb, sybsystemdb) pueden permanecer en hello C:\drive.
 
-Una excepción puede ser la base de datos temporal que contiene todas las tablas de trabajo y temporales que SAP ASE creó, que, en el caso de algunos SAP ERP y todas las cargas de trabajo de BW, podría requerir un mayor volumen de datos o de operaciones de E/S que no quepan en el VHD base de la máquina virtual original (unidad c:\).
+Una excepción podría ser Hola base de datos temporal que contiene todas las tablas de trabajo y las tablas temporales creadas por SAP ASE, que en el caso de algunos SAP ERP y todas las cargas de trabajo de BW podría requerir mayor volumen de datos o volumen de operaciones de E/S que no cabe en hello original VHD de base de la máquina virtual (la unidad c:\).
 
-Según la versión de SAPInst/SWPM utilizada para instalar el sistema, la base de datos puede contener los siguientes elementos:
+Función hello versión de SAPInst/SWPM utiliza sistema de hello tooinstall, base de datos de hello podría contener:
 
 * Una única tempdb de SAP ASE que se crea al instalar SAP ASE
-* Una tempdb de SAP ASE creada al instalar SAP ASE y un saptempdb adicional creado en la rutina de instalación de SAP
-* Una tempdb de SAP ASE creada al instalar SAP ASE y una tempdb adicional que se creó manualmente (por ejemplo, según la nota de SAP [1752266]) para cumplir los requisitos de tempdb específicos de ERP/BW
+* Una tempdb de SAP ASE creado mediante la instalación de SAP ASE y un saptempdb adicional creados por hello rutina de instalación de SAP
+* Una tempdb de SAP ASE creado mediante la instalación de SAP ASE y un tempdb adicional que se ha creado manualmente (por ejemplo, después de la nota de SAP [1752266]) requisitos de toomeet ERP/BW tempdb específico
 
-En el caso de ERP específica o todas las cargas de trabajo de BW tiene sentido, en relación con el rendimiento, para mantener los dispositivos de tempdb de tempdb además creado (por SWPM o manualmente) en una unidad distinta C:\. Si no existe ninguna tempdb adicional, se recomienda crear una (nota de SAP [1752266]).
+En el caso de ERP específica o todas las cargas de trabajo de BW tiene sentido, en tooperformance de tener en cuenta, dispositivos de tempdb tookeep Hola de hello además crean tempdb (SWPM o manualmente) en una unidad distinta C:\. Si no existe ningún tempdb adicional, se recomienda toocreate uno (Nota de SAP [1752266]).
 
-En estos sistemas, se deben seguir estos pasos para la tempdb que se creó de forma adicional:
+Para este tipo hello sistemas se deben realizar los pasos siguientes para hello además creado tempdb:
 
-* Mueva el primer dispositivo de tempdb al primero de la base de datos de SAP.
-* Agregue dispositivos de tempdb a cada uno de los VHD que contengan un dispositivo de archivos de la base de datos de SAP.
+* Mover Hola primera tempdb toohello primer dispositivo de base de datos SAP de Hola
+* Agregar tooeach de dispositivos de tempdb de discos duros virtuales que contiene un dispositivo de base de datos SAP de Hola Hola
 
-Esta configuración permite que tempdb consuma más espacio que el que la unidad del sistema puede proporcionar. Como referencia, se pueden comprobar los tamaños de los dispositivos de tempdb en los sistemas existentes que se ejecutan de forma local. De lo contrario, dicha configuración admitiría los números de IOPS en la tempdb, que no se pueden proporcionar con la unidad del sistema. Reiteramos que los sistemas que se ejecutan de forma local pueden utilizarse para supervisar la carga de trabajo de E/S en tempdb.
+Esta tooeither de tempdb de configuración permite consumir más espacio de unidad del sistema hello es capaz de tooprovide. Como referencia se pueden comprobar los tamaños de dispositivo de tempdb de hello en los sistemas existentes que se ejecutan de forma local. O bien, dicha configuración permitiría a números de IOPS frente a tempdb que no se pueden proporcionar con la unidad del sistema Hola. Vuelva a sistemas que se ejecutan en local pueden toomonitor usa E/S cargas de trabajo en tempdb.
 
-Nunca coloque dispositivos de SAP ASE en la unidad D:\ de la máquina virtual. Esto también se aplica a la base de datos tempdb, aunque los objetos que se conserven en ella sean solo temporales.
+Nunca colocar los dispositivos de SAP ASE en hello unidad D:\ de hello máquina virtual. Esto también aplica toohello tempdb, incluso si los objetos de hello mantienen en tempdb Hola solo son temporales.
 
 #### <a name="impact-of-database-compression"></a>Impacto de la compresión de las bases de datos
-En configuraciones donde el ancho de banda de E/S puede convertirse en un factor de limitación, todas las medidas que reduzca el número de IOPS podrían ayudar a ajustar la carga de trabajo que se puede ejecutar en un escenario de IaaS como Azure. Por lo tanto, se recomienda encarecidamente asegurarse de emplear la compresión de SAP ASE antes de cargar una base de datos existente de SAP en Azure.
+En configuraciones donde el ancho de banda de E/S puede convertirse en un factor restrictivo, todas las medidas que reduzca las IOPS podrían ayudar a cargas de trabajo de toostretch Hola puede ejecutar en un escenario IaaS como Azure. Por lo tanto, se recomienda encarecidamente toomake seguro de que se use la compresión de SAP ASE antes de cargar una tooAzure de base de datos SAP existente.
 
-La recomendación de realizar la compresión antes de realizar esta carga en Azure si no se implementó antes responde a diversos motivos:
+compresión de Hello recomendación tooperform antes de cargar tooAzure si ya no está implementado viene dada por varias razones:
 
-* La cantidad de datos que se cargarán en Azure es menor.
-* La duración de la ejecución de la compresión es menor, suponiendo que se pueda utilizar un hardware más eficaz con más capacidad de CPU, un mayor ancho de banda de E/S o una latencia de E/S menor en el entorno local.
-* Si se utilizan tamaños de base de datos más pequeños, se incurriría en menos costes de asignación de disco.
+* cantidad de Hola de tooAzure toobe carga de datos es inferior
+* duración de Hola de ejecución de la compresión de hello es más corta, suponiendo que uno puede utilizar hardware más fuerte con más CPU o mayor ancho de banda de E/S o menos latencia de E/S en local
+* Los tamaños de base de datos más pequeños podrían provocar los costos que no requiere herramientas para la asignación de disco
 
-La compresión de datos y de LOB funciona en una máquina virtual hospedada en máquinas virtuales de Azure del mismo modo a como lo hace en un entorno local. Para más información sobre cómo comprobar si ya se está usando compresión en una base de datos de SAP ASE existente, consulte la nota de SAP [1750510].
+La compresión de datos y de LOB funciona en una máquina virtual hospedada en máquinas virtuales de Azure del mismo modo a como lo hace en un entorno local. Para obtener más detalles sobre cómo usar toocheck si ya está en la compresión en un ASE de SAP existente base de datos Compruebe la nota de SAP [1750510].
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Uso de DBACockpit para supervisar instancias de base de datos
-En el caso de sistemas SAP que usan SAP ASE como plataforma de bases de datos, se puede acceder a DBACockpit mediante ventanas integradas en exploradores en transacciones de DBACockpit o de Webdynpro. Sin embargo, la funcionalidad completa de las actividades de supervisión y administración de bases de datos únicamente está disponible en la implementación de Webdynpro de DBACockpit.
+#### <a name="using-dbacockpit-toomonitor-database-instances"></a>Uso de instancias de base de datos de DBACockpit toomonitor
+Para los sistemas SAP que usan SAP ASE como plataforma de base de datos, es accesible como ventanas de explorador integrado en transacciones DBACockpit o como Webdynpro hello DBACockpit. Sin embargo Hola toda la funcionalidad de supervisión y administrar base de datos de Hola está disponible en la implementación de Webdynpro Hola de hello DBACockpit.
 
-Al igual que en el caso de los sistemas locales, es preciso seguir varios pasos para habilitar toda la funcionalidad de SAP NetWeaver que usa la implementación de Webdynpro de DBACockpit. Siga las indicaciones de la nota de SAP [1245200] para habilitar el uso de los recursos de Webdynpro y generar los necesarios. Las instrucciones de las notas anteriores también lo ayudarán a configurar el administrador de comunicación de Internet (ICM) y los puertos que se utilizarán para las conexiones http y https. La configuración de http predeterminada tiene el siguiente aspecto:
+Como con local sistemas que tienen varios pasos necesario tooenable utilizada por la implementación de Webdynpro Hola de hello DBACockpit toda la funcionalidad de SAP NetWeaver. Siga la nota de SAP [1245200] tooenable Hola uso de webdynpros y generar Hola los necesarios. Cuando las instrucciones siguientes de Hola Hola anteriormente notas con que también configurará Hola Administrador de comunicación de Internet (icm) junto Hola toobe de puertos que se utilizan para las conexiones http y https. configuración predeterminada de Hola para http tiene el siguiente aspecto:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 >
@@ -904,7 +904,7 @@ Al igual que en el caso de los sistemas locales, es preciso seguir varios pasos 
 >
 >
 
-y los vínculos generados en la transacción de DBACockpit tendrán un aspecto similar al siguiente:
+y los vínculos de hello generados en transacciones DBACockpit tendrá un aspecto similar toothis:
 
 > https://`<fullyqualifiedhostname`>:44300/sap/bc/webdynpro/sap/dba_cockpit
 >
@@ -912,17 +912,17 @@ y los vínculos generados en la transacción de DBACockpit tendrán un aspecto s
 >
 >
 
-Dependiendo de si la máquina virtual de Azure que hospeda el sistema SAP se conecta de sitio a sitio, con varios sitios o mediante ExpressRoute (implementación entre locales) y en función de cómo lo haga, debe asegurarse de que ese ICM está usando un nombre de host completo que se puede resolver en el equipo desde el que está intentando abrir DBACockpit. Consulte la nota de SAP [773830] para conocer el modo en que ICM determina el nombre de host completo según los parámetros de perfil y, si es necesario, defina específicamente el parámetro icm/host_name_full.
+En función de si y cómo Hola Hola de host de máquina Virtual de Azure sistema SAP está conectado a través de sitio a sitio, varios sitios o ExpressRoute (implementación entre locales) necesita toomake seguro de que ICM está usando un nombre de host completo que se puede resolver en hello equipo que va a probar tooopen Hola DBACockpit desde. Vea la nota de SAP [773830] toounderstand cómo determina ICM Hola nombre de host completo según los parámetros de perfil y parámetro de conjunto icm/host_name_full explícitamente si es necesario.
 
-Si implementó la máquina virtual en un escenario solo de nube sin conectividad en varios entornos entre locales y Azure, debe definir una dirección IP pública y un valor de domainlabel. El formato del nombre DNS público de la máquina virtual tendrá un aspecto similar al siguiente:
+Si ha implementado Hola VM en un escenario solo en la nube sin conectividad entre entornos entre local y Azure, deberá toodefine una dirección IP pública y un domainlabel. formato de Hola de nombre DNS público de Hola de hello VM, a continuación, tendrá un aspecto similar al siguiente:
 
-> `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
+> `<custom domainlabel`&gt;.`<azure region`&gt;.cloudapp.azure.com
 >
 >
 
-Encontrará más detalles relacionados con el nombre DNS [aquí][virtual-machines-azurerm-versus-azuresm].
+Obtener más detalles relacionados con puede encontrarse el nombre DNS de toohello [aquí][virtual-machines-azurerm-versus-azuresm].
 
-El ajuste del parámetro de perfil de SAP icm/host_name_full con el nombre DNS del vínculo de la máquina virtual de Azure puede tener este aspecto:
+Hola SAP perfil parámetro icm/host_name_full toohello nombre DNS del vínculo de Hola de hello Azure VM puede ser similar de la configuración:
 
 > https://mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 >
@@ -930,18 +930,18 @@ El ajuste del parámetro de perfil de SAP icm/host_name_full con el nombre DNS d
 >
 >
 
-En ese caso, debe asegurarse de lo siguiente:
+En este caso necesita toomake olvide:
 
-* Agregar reglas de entrada al grupo de seguridad de red en el Portal de Azure para los puertos TCP/IP que se utilizan en la comunicación con el ICM
-* Agregar reglas de entrada a la configuración del Firewall de Windows para los puertos TCP/IP que se utilizan en la comunicación con el ICM
+* Agregar reglas de entrada toohello grupo de seguridad de red en hello Portal de Azure para los puertos TCP/IP de hello usa toocommunicate con ICM
+* Agregue una configuración de Firewall de Windows de las reglas de entrada toohello para hello toocommunicate de puertos que usa TCP/IP con hello ICM
 
-Para importar de forma automatizada todas las correcciones disponibles, se recomienda aplicar periódicamente la colección de correcciones de la nota de SAP correspondiente a su versión de SAP:
+Para importa automáticamente de todas las correcciones disponibles, se recomienda tooperiodically aplicar versión SAP de hello corrección colección nota de SAP tooyour aplicables:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Encontrará más información sobre DBA Cockpit para SAP ASE en las siguientes notas de SAP:
+Encontrará más información acerca de la cabina de DBA para SAP ASE Hola siguiendo las notas de SAP:
 
 * [1605680]
 * [1757924]
@@ -953,103 +953,103 @@ Encontrará más información sobre DBA Cockpit para SAP ASE en las siguientes n
 * [1956005]
 
 #### <a name="backuprecovery-considerations-for-sap-ase"></a>Consideraciones de copia de seguridad y recuperación para SAP ASE
-Al implementar SAP ASE en Azure, debe revisar la metodología de copia de seguridad. Incluso si el sistema no es productivo, se debe realizar periódicamente la copia de seguridad de la base de datos de SAP que hospeda SAP ASE. Como Azure Storage mantiene tres imágenes, una copia de seguridad es menos importante para compensar un bloqueo de almacenamiento. La razón principal para el mantenimiento de un plan de copia de seguridad y restauración correcto es que puede compensar errores lógicos o manuales gracias a la capacidad de recuperación a un momento dado. El objetivo es usar las copias de seguridad para restaurar la base de datos a un momento dado o utilizar las copias de seguridad de Azure para propagar otro sistema mediante la copia de la base de datos existente. Por ejemplo, podría transferir archivos desde una configuración de SAP de 2 niveles a una configuración de sistema de 3 niveles del mismo sistema mediante la restauración de una copia de seguridad.
+Al implementar SAP ASE en Azure, debe revisar la metodología de copia de seguridad. Incluso si el sistema de hello no es un sistema productivo, base de datos SAP de hello hospeda SAP ASE debe hacer copia periódicamente. Puesto que el almacenamiento de Azure mantiene tres imágenes, una copia de seguridad ahora es menos importante en sentido toocompensating un bloqueo de almacenamiento. Hello razón principal para el mantenimiento de un plan de copia de seguridad y restauración correcta es mayor que compensar los errores lógicos/manuales al proporcionar capacidades de recuperación de tiempo. Por lo que el objetivo de hello es tooeither usar copias de seguridad toorestore Hola base de datos nuevo tooa determinado punto en tiempo o toouse Hola copias de seguridad en Azure tooseed otro sistema mediante la copia de base de datos existente de Hola. Por ejemplo, podría transferir desde una instalación de sistema de 3 niveles 2 niveles SAP configuración tooa de hello mismo sistema mediante la restauración de una copia de seguridad.
 
-La realización de copias de seguridad y restauraciones de bases de datos de Azure funciona del mismo modo que en entornos locales. Consulte las notas de SAP
+Copia de seguridad y restaurar una base de datos en Azure funciona Hola misma manera que lo hace en local. Consulte las notas de SAP
 
 * [1588316]
 * [1585981]
 
-para obtener más información sobre la creación de configuraciones de volcado y la programación de copias de seguridad. Dependiendo de su estrategia y sus necesidades, puede configurar la base de datos y los volcados de registro en disco en uno de los VHD existentes o agregar un VHD adicional para la copia de seguridad.  Para reducir el riesgo de pérdida de datos si se produce un error, se recomienda usar un VHD en el que no se encuentre ningún dispositivo de la base de datos.
+para obtener más información sobre la creación de configuraciones de volcado y la programación de copias de seguridad. Según las necesidades que se puede configurar y estrategia de base de datos y registro de volcados de memoria toodisk en uno de hello existente discos duros virtuales o agregar un disco duro virtual adicional para copia de seguridad de Hola.  riesgo de pérdida de datos en caso de error es Hola que tooreduce recomienda toouse un disco duro virtual donde no se encuentra ningún dispositivo de base de datos.
 
-Además de compresión de datos y de LOB, SAP ASE también ofrece compresión de copias de seguridad. Para que los volcados de bases de datos y registros ocupen menos espacio, se recomienda usar la compresión de copias de seguridad. Consulte la nota de SAP [1588316] para más información. Este tipo de compresión también es fundamental para reducir la cantidad de datos que se transfieren si planea descargar copias de seguridad o VHD que contengan volcados de copias de seguridad de la máquina virtual de Azure en el entorno local.
+Además de compresión de datos y de LOB, SAP ASE también ofrece compresión de copias de seguridad. toooccupy menos espacio con la base de datos de Hola y de registro de volcados de memoria, se recomienda la compresión de copia de seguridad de toouse. Consulte la nota de SAP [1588316] para más información. Comprimir copia de seguridad de hello también es fundamental tooreduce cantidad de Hola de toobe de datos transferido si tiene previsto copias de seguridad de toodownload o discos duros virtuales que contiene la copia de seguridad volcados de hello local tooon de máquina Virtual de Azure.
 
 No utilice la unidad D:\ como destino de los volcados de bases de datos o registros.
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Consideraciones de rendimiento sobre copias de seguridad / restauraciones
-Como en las implementaciones sin sistema operativo, el rendimiento de las copias de seguridad y las restauraciones depende de cuántos volúmenes puedan leerse en paralelo y el rendimiento que estos volúmenes puedan tener. Además, el consumo de CPU que se emplea en la compresión de copias de seguridad puede desempeñar un papel importante en las máquinas virtuales con solo 8 subprocesos de CPU como máximo. Por lo tanto, se pueden asumir los siguientes puntos:
+#### <a name="performance-considerations-for-backupsrestores"></a>Consideraciones de rendimiento sobre copias de seguridad y restauraciones
+Como en las implementaciones sin sistema operativo, rendimiento de la copia de seguridad/restauración depende de cuántos volúmenes pueden leerse en paralelo y qué rendimiento Hola de estos volúmenes podría ser. Además, Hola consumo de CPU utilizado por la compresión de copia de seguridad puede desempeñan un papel importante en las máquinas virtuales con solo los subprocesos de CPU de too8. Por lo tanto, se pueden asumir los siguientes puntos:
 
-* Cuantos menos VHD se utilicen para almacenar los dispositivos de las bases de datos, menor será el rendimiento general de lectura.
-* Cuantos menos subprocesos de CPU haya en la máquina virtual, mayor será el impacto en la compresión de copias de seguridad.
-* Cuantos menos destinos (directorios de sección, VHD, etc.) en los que escribir la copia de seguridad haya, menor será el rendimiento.
+* Hello menos Hola número de discos duros virtuales utilizar dispositivos de base de datos de toostore hello, hello Hola cuanto menor sea el rendimiento global en la lectura
+* Hola menor número de Hola de subprocesos de CPU en hello VM, Hola más graves repercusiones de Hola de compresión de copia de seguridad
+* Hola de copia de seguridad en Hello menos toowrite destinos (directorios de Stripe, discos duros virtuales), Hola menor rendimiento Hola
 
-Para aumentar la cantidad de destinos en los que escribir, existen dos opciones que se pueden usar o combinar según sus necesidades:
+número de hello tooincrease de destinos toowrite toothere son dos opciones que pueden ser usar/combinan según sus necesidades:
 
-* Seccionar el volumen de destino de la copia de seguridad en varios VHD montados con el fin de mejorar el rendimiento de IOPS en ese volumen seccionado
-* Crear una configuración de volcado en el nivel de SAP ASE que utilice más de un directorio de destino en el que escribir el volcado
+* Creación de bandas volumen de destino de copia de seguridad de hello en varios discos duros virtuales montados en el rendimiento IOPS de orden tooimprove hello en ese volumen seccionado
+* Crear una configuración de volcado en nivel de SAP ASE que usa más de un destino directory toowrite Hola volcado de memoria para
 
-Anteriormente ya se trató en esta guía la sección de un volumen en varios VHD montados. Para más información sobre el uso de varios directorios en la configuración de volcado de SAP ASE, consulte la documentación sobre el procedimiento almacenado sp_config_dump que se utiliza para crear la configuración de volcado en [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp).
+Anteriormente ya se trató en esta guía la sección de un volumen en varios VHD montados. Para obtener más información sobre el uso de varios directorios en la configuración de volcado de memoria de SAP ASE hello, consulte la documentación de toohello en sp_config_dump de procedimiento almacenado que es configuración de volcado de memoria de hello toocreate usado en hello [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Recuperación ante desastres con máquinas virtuales de Azure
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Replicación de datos con el servidor de replicación SAP Sybase
-Con el servidor de replicación SAP Sybase (SRS), SAP ASE proporciona una solución de espera semiactiva para transferir las transacciones de la base de datos a una ubicación distante de manera asincrónica.
+Con hello ASE de SAP de servidor de replicación de Sybase (SRS) de SAP proporciona una ubicación solución en espera semiactiva tootransfer base de datos las transacciones tooa está lejos de la forma asincrónica.
 
-La instalación y la actividad de SRS se desarrollan funcionalmente igual de bien en una máquina virtual hospedada en servicios de máquina virtual de Azure que en el entorno local.
+instalación de Hola y el funcionamiento de SRS funciona así funcionalmente en una máquina virtual hospedada en servicios de máquinas virtuales de Azure que lo hace en local.
 
 Se ha previsto incluir ASE HADR a través de SAP Replication Server en una de las próximas versiones. Se someterá a pruebas con las plataformas de Microsoft Azure y se publicará para estas mismas en cuanto esté disponible.
 
-## <a name="specifics-to-sap-ase-on-linux"></a>Detalles de SAP ASE en Linux
-Desde Microsoft Azure puede migrar fácilmente sus aplicaciones de SAP ASE a máquinas virtuales de Azure. SAP ASE en una máquina virtual permite reducir el coste total de propiedad de implementación, administración y mantenimiento de aplicaciones empresariales al migrarlas fácilmente a Microsoft Azure. Con SAP ASE en una máquina virtual de Azure, los administradores y los desarrolladores pueden seguir usando las mismas herramientas de desarrollo y administración que se encuentran disponibles de forma local.
+## <a name="specifics-toosap-ase-on-linux"></a>Detalles tooSAP ASE en Linux
+A partir de Microsoft Azure, puede migrar fácilmente su tooAzure de aplicaciones SAP ASE máquinas virtuales existente. SAP ASE en una máquina Virtual permite tooreduce Hola costo total de propiedad de implementación, administración y mantenimiento de aplicaciones empresariales al migrar fácilmente estas tooMicrosoft aplicaciones Azure. Con SAP ASE en una máquina Virtual de Azure, los desarrolladores y administradores la pueden seguir usando Hola mismas herramientas de desarrollo y administración que están disponibles en local.
 
-Para implementar máquinas virtuales de Azure es importante conocer los Acuerdos de Nivel de Servicio oficiales que puede encontrar aquí: <https://azure.microsoft.com/support/legal/sla>.
+Para implementar máquinas virtuales de Azure es importante tooknow Hola SLA oficiales que encontrará aquí: <https://azure.microsoft.com/support/legal/sla>
 
 En la nota de SAP [1928533], se proporcionará información de tamaño de SAP y una lista de SKU para máquinas virtuales certificada por SAP. Se pueden encontrar documentos adicionales sobre el ajuste de tamaño de SAP para máquinas virtuales de Azure aquí <http://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> y aquí <http://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>.
 
-Se aplican instrucciones y recomendaciones sobre el uso del almacenamiento de Azure, implementación de máquinas virtuales de SAP o supervisión de SAP a las implementaciones de SAP ASE en conjunto con aplicaciones de SAP, como se indica en los primeros cuatro capítulos de este documento.
+Las instrucciones y las recomendaciones de uso de toohello de tener en cuenta de almacenamiento de Azure, la implementación de máquinas virtuales de SAP o la supervisión de SAP se aplican toodeployments de SAP ASE junto con las aplicaciones de SAP como se indica a lo largo de hello primeros cuatro capítulos de este documento.
 
-Las dos siguientes notas de SAP incluyen información general acerca de ASE en Linux y ASE en la nube:
+Hello siguientes notas SAP dos incluyen información general sobre ASE en Linux y ASE en hello en la nube:
 
 * [2134316]
 * [1941500]
 
 ### <a name="sap-ase-version-support"></a>Compatibilidad de versiones de SAP ASE
-Actualmente, SAP admite la versión 16.0 de SAP ASE para poder utilizarse con productos de SAP Business Suite. Todas las actualizaciones para el servidor SAP ASE o los controladores ODBC y JDBC que se utilizarán con productos de SAP Business Suite se proporcionan únicamente a través de SAP Service Marketplace: <https://support.sap.com/swdc>.
+Actualmente, SAP admite la versión 16.0 de SAP ASE para poder utilizarse con productos de SAP Business Suite. Todas las actualizaciones para el servidor de SAP ASE o toobe de controladores JDBC y ODBC utiliza con SAP Business Suite productos se proporcionan únicamente a través de Hola SAP Service Marketplace en: <https://support.sap.com/swdc>.
 
-En el caso de las instalaciones realizadas de forma local, no descargue las actualizaciones del servidor de SAP ASE ni de los controladores JDBC y ODBC directamente desde los sitios web de Sybase. Para obtener más información sobre las revisiones que pueden utilizarse con los productos de SAP Business Suite en el entorno local y en máquinas virtuales de Azure, consulte las siguientes notas de SAP:
+Como para las instalaciones locales, descargar las actualizaciones para el servidor de SAP ASE de Hola o hello JDBC y controladores ODBC directamente desde sitios Web de Sybase. Para obtener información detallada sobre las revisiones que se pueden usar con los productos de SAP Business Suite en locales y máquinas virtuales de Azure vea Hola siguiendo las notas de SAP:
 
 * [1590719]
 * [1973241]
 
-Encontrará información general sobre la ejecución de SAP Business Suite en SAP ASE en el [SCN](https://scn.sap.com/community/ase)
+Información general sobre la ejecución de SAP Business Suite en SAP ASE puede encontrarse en hello [SCN](https://scn.sap.com/community/ase)
 
 ### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Instrucciones de configuración de SAP ASE para SAP relacionadas con las instalaciones de SAP ASE en máquinas virtuales de Azure
-#### <a name="structure-of-the-sap-ase-deployment"></a>Estructura de la implementación de SAP ASE
-Según la descripción general, los archivos ejecutables de SAP ASE se deben ubicar o instalar en el sistema de archivos raíz de la máquina virtual (/sybase). Normalmente, la mayoría de las bases de datos de herramientas y sistemas SAP ASE no se aprovechan realmente bien mediante las cargas de trabajo de SAP NetWeaver. Por lo tanto, las bases de datos de herramientas y sistemas (master, model, saptools, sybmgmtdb, sybsystemdb) pueden permanecer en el sistema de archivos raíz.
+#### <a name="structure-of-hello-sap-ase-deployment"></a>Estructura de hello SAP ASE implementación
+Con arreglo a la descripción general de hello, archivos ejecutables de SAP ASE se deben encontrar o instalados en el sistema de archivos de raíz de Hola de hello VM (/sybase). Normalmente, la mayoría de hello SAP ASE herramientas del sistema ni las bases de datos no realmente aprovecha rígida cargas de trabajo de SAP NetWeaver. Hola, por tanto, sistema y las bases de datos de herramientas (master, model, saptools, sybmgmtdb, sybsystemdb) pueden permanecer en el sistema de archivos de raíz de hello así.
 
-Una excepción puede ser la base de datos temporal que contiene todas las tablas de trabajo y temporales que SAP ASE creó, que, en el caso de algunos SAP ERP y todas las cargas de trabajo de BW, podría requerir un mayor volumen de datos o de operaciones de E/S que no quepan en el disco del sistema operativo de la máquina virtual original.
+Una excepción podría ser Hola base de datos temporal que contiene todas las tablas de trabajo y las tablas temporales creadas por SAP ASE, que en el caso de algunos SAP ERP y todas las cargas de trabajo de BW podría requerir mayor volumen de datos o volumen de operaciones de E/S que no cabe en hello original Disco del sistema operativo de la máquina virtual.
 
-Según la versión de SAPInst/SWPM utilizada para instalar el sistema, la base de datos puede contener los siguientes elementos:
+Función hello versión de SAPInst/SWPM utiliza sistema de hello tooinstall, base de datos de hello podría contener:
 
 * Una única tempdb de SAP ASE que se crea al instalar SAP ASE
-* Una tempdb de SAP ASE creada al instalar SAP ASE y un saptempdb adicional creado en la rutina de instalación de SAP
-* Una tempdb de SAP ASE creada al instalar SAP ASE y una tempdb adicional que se creó manualmente (por ejemplo, según la nota de SAP [1752266]) para cumplir los requisitos de tempdb específicos de ERP/BW
+* Una tempdb de SAP ASE creado mediante la instalación de SAP ASE y un saptempdb adicional creados por hello rutina de instalación de SAP
+* Una tempdb de SAP ASE creado mediante la instalación de SAP ASE y un tempdb adicional que se ha creado manualmente (por ejemplo, después de la nota de SAP [1752266]) requisitos de toomeet ERP/BW tempdb específico
 
-Tiene sentido en el caso de todas las cargas de trabajo de BW o una específica de ERP en cuanto a rendimiento, para mantener los dispositivos de tempdb de las tempdb que se crearon de forma adicional (mediante SWPM o manualmente) en un sistema de archivos distinto que se puede representar mediante un disco de datos de Azure único o un RAID de Linux que abarque varios discos de datos de Azure. Si no existe ninguna tempdb adicional, se recomienda crear una (nota de SAP [1752266]).
+En el caso de ERP específica o todas las cargas de trabajo de BW tiene sentido, en tooperformance de tener en cuenta, dispositivos de tempdb tookeep Hola de hello además crean tempdb (SWPM o manualmente) en un sistema de archivos independiente que puede representarse mediante un disco de datos de Azure único o una RAID de Linux expansión de varios discos de datos de Azure. Si no existe ningún tempdb adicional, se recomienda toocreate uno (Nota de SAP [1752266]).
 
-En estos sistemas, se deben seguir estos pasos para la tempdb que se creó de forma adicional:
+Para este tipo hello sistemas se deben realizar los pasos siguientes para hello además creado tempdb:
 
-* Traslade el primer directorio de tempdb al primer sistema de archivos de la base de datos de SAP.
-* Agregue directorios de tempdb a cada uno de los VHD que contengan un sistema de archivos de la base de datos de SAP.
+* Mover Hola primera tempdb directory toohello primer sistema de archivos de base de datos SAP de Hola
+* Agregar tooeach de directorios de tempdb de discos duros virtuales que contiene un sistema de archivos de base de datos SAP de Hola Hola
 
-Esta configuración permite que tempdb consuma más espacio que el que la unidad del sistema puede proporcionar. Como referencia, se pueden comprobar los tamaños de los directorios de tempdb en los sistemas existentes que se ejecutan de forma local. De lo contrario, dicha configuración admitiría los números de IOPS en la tempdb, que no se pueden proporcionar con la unidad del sistema. Reiteramos que los sistemas que se ejecutan de forma local pueden utilizarse para supervisar la carga de trabajo de E/S en tempdb.
+Esta tooeither de tempdb de configuración permite consumir más espacio de unidad del sistema hello es capaz de tooprovide. Como referencia se pueden comprobar los tamaños de directorios de tempdb de hello en los sistemas existentes que se ejecutan de forma local. O bien, dicha configuración permitiría a números de IOPS frente a tempdb que no se pueden proporcionar con la unidad del sistema Hola. Vuelva a sistemas que se ejecutan en local pueden toomonitor usa E/S cargas de trabajo en tempdb.
 
-Nunca coloque ningún directorio de SAP ASE en las rutas /mnt ni /mnt/resource de la máquina virtual. Esto también se aplica a la tempdb (incluso si los objetos que se mantiene en tempdb son solo temporales) porque tanto /mnt como /mnt/resource son espacios temporales de máquina virtual de Azure predeterminados. Encontrará más información sobre el espacio temporal de máquina virtual de Azure en [este artículo][virtual-machines-linux-how-to-attach-disk].
+Nunca colocar los directorios de SAP ASE en/mnt o/mnt/Resource de hello máquina virtual. Esto también aplica toohello tempdb, incluso si objetos Hola mantienen en tempdb Hola solo son temporales porque/mnt o/mnt/Resource es un espacio temporal de máquina virtual de Azure predeterminado que no es persistente. Pueden encontrar más detalles acerca de hello espacio temporal de máquina virtual de Azure en [este artículo][virtual-machines-linux-how-to-attach-disk]
 
 #### <a name="impact-of-database-compression"></a>Impacto de la compresión de las bases de datos
-En configuraciones donde el ancho de banda de E/S puede convertirse en un factor de limitación, todas las medidas que reduzca el número de IOPS podrían ayudar a ajustar la carga de trabajo que se puede ejecutar en un escenario de IaaS como Azure. Por lo tanto, se recomienda encarecidamente asegurarse de emplear la compresión de SAP ASE antes de cargar una base de datos existente de SAP en Azure.
+En configuraciones donde el ancho de banda de E/S puede convertirse en un factor restrictivo, todas las medidas que reduzca las IOPS podrían ayudar a cargas de trabajo de toostretch Hola puede ejecutar en un escenario IaaS como Azure. Por lo tanto, se recomienda encarecidamente toomake seguro de que se use la compresión de SAP ASE antes de cargar una tooAzure de base de datos SAP existente.
 
-La recomendación de realizar la compresión antes de realizar esta carga en Azure si no se implementó antes responde a diversos motivos:
+compresión de Hello recomendación tooperform antes de cargar tooAzure si ya no está implementado viene dada por varias razones:
 
-* La cantidad de datos que se cargarán en Azure es menor.
-* La duración de la ejecución de la compresión es menor, suponiendo que se pueda utilizar un hardware más eficaz con más capacidad de CPU, un mayor ancho de banda de E/S o una latencia de E/S menor en el entorno local.
-* Si se utilizan tamaños de base de datos más pequeños, se incurriría en menos costes de asignación de disco.
+* cantidad de Hola de tooAzure toobe carga de datos es inferior
+* duración de Hola de ejecución de la compresión de hello es más corta, suponiendo que uno puede utilizar hardware más fuerte con más CPU o mayor ancho de banda de E/S o menos latencia de E/S en local
+* Los tamaños de base de datos más pequeños podrían provocar los costos que no requiere herramientas para la asignación de disco
 
-La compresión de datos y de LOB funciona en una máquina virtual hospedada en máquinas virtuales de Azure del mismo modo a como lo hace en un entorno local. Para más información sobre cómo comprobar si ya se está usando compresión en una base de datos de SAP ASE existente, consulte la nota de SAP [1750510]. Consulte también la nota de SAP [2121797] para más información sobre la compresión de bases de datos.
+La compresión de datos y de LOB funciona en una máquina virtual hospedada en máquinas virtuales de Azure del mismo modo a como lo hace en un entorno local. Para obtener más detalles sobre cómo usar toocheck si ya está en la compresión en un ASE de SAP existente base de datos Compruebe la nota de SAP [1750510]. Consulte también la nota de SAP [2121797] para más información sobre la compresión de bases de datos.
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Uso de DBACockpit para supervisar instancias de base de datos
-En el caso de sistemas SAP que usan SAP ASE como plataforma de bases de datos, se puede acceder a DBACockpit mediante ventanas integradas en exploradores en transacciones de DBACockpit o de Webdynpro. Sin embargo, la funcionalidad completa de las actividades de supervisión y administración de bases de datos únicamente está disponible en la implementación de Webdynpro de DBACockpit.
+#### <a name="using-dbacockpit-toomonitor-database-instances"></a>Uso de instancias de base de datos de DBACockpit toomonitor
+Para los sistemas SAP que usan SAP ASE como plataforma de base de datos, es accesible como ventanas de explorador integrado en transacciones DBACockpit o como Webdynpro hello DBACockpit. Sin embargo Hola toda la funcionalidad de supervisión y administrar base de datos de Hola está disponible en la implementación de Webdynpro Hola de hello DBACockpit.
 
-Al igual que en el caso de los sistemas locales, es preciso seguir varios pasos para habilitar toda la funcionalidad de SAP NetWeaver que usa la implementación de Webdynpro de DBACockpit. Siga las indicaciones de la nota de SAP [1245200] para habilitar el uso de los recursos de Webdynpro y generar los necesarios. Las instrucciones de las notas anteriores también lo ayudarán a configurar el administrador de comunicación de Internet (ICM) y los puertos que se utilizarán para las conexiones http y https. La configuración de http predeterminada tiene el siguiente aspecto:
+Como con local sistemas que tienen varios pasos necesario tooenable utilizada por la implementación de Webdynpro Hola de hello DBACockpit toda la funcionalidad de SAP NetWeaver. Siga la nota de SAP [1245200] tooenable Hola uso de webdynpros y generar Hola los necesarios. Cuando las instrucciones siguientes de Hola Hola anteriormente notas con que también configurará Hola Administrador de comunicación de Internet (icm) junto Hola toobe de puertos que se utilizan para las conexiones http y https. configuración predeterminada de Hola para http tiene el siguiente aspecto:
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 >
@@ -1057,7 +1057,7 @@ Al igual que en el caso de los sistemas locales, es preciso seguir varios pasos 
 >
 >
 
-y los vínculos generados en la transacción de DBACockpit tendrán un aspecto similar al siguiente:
+y los vínculos de hello generados en transacciones DBACockpit tendrá un aspecto similar toothis:
 
 > https://`<fullyqualifiedhostname`>:44300/sap/bc/webdynpro/sap/dba_cockpit
 >
@@ -1065,17 +1065,17 @@ y los vínculos generados en la transacción de DBACockpit tendrán un aspecto s
 >
 >
 
-Dependiendo de si la máquina virtual de Azure que hospeda el sistema SAP se conecta de sitio a sitio, con varios sitios o mediante ExpressRoute (implementación entre locales) y en función de cómo lo haga, debe asegurarse de que ese ICM está usando un nombre de host completo que se puede resolver en el equipo desde el que está intentando abrir DBACockpit. Consulte la nota de SAP [773830] para conocer el modo en que ICM determina el nombre de host completo según los parámetros de perfil y, si es necesario, defina específicamente el parámetro icm/host_name_full.
+En función de si y cómo Hola Hola de host de máquina Virtual de Azure sistema SAP está conectado a través de sitio a sitio, varios sitios o ExpressRoute (implementación entre locales) necesita toomake seguro de que ICM está usando un nombre de host completo que se puede resolver en hello equipo que va a probar tooopen Hola DBACockpit desde. Vea la nota de SAP [773830] toounderstand cómo determina ICM Hola nombre de host completo según los parámetros de perfil y parámetro de conjunto icm/host_name_full explícitamente si es necesario.
 
-Si implementó la máquina virtual en un escenario solo de nube sin conectividad en varios entornos entre locales y Azure, debe definir una dirección IP pública y un valor de domainlabel. El formato del nombre DNS público de la máquina virtual tendrá un aspecto similar al siguiente:
+Si ha implementado Hola VM en un escenario solo en la nube sin conectividad entre entornos entre local y Azure, deberá toodefine una dirección IP pública y un domainlabel. formato de Hola de nombre DNS público de Hola de hello VM, a continuación, tendrá un aspecto similar al siguiente:
 
-> `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
+> `<custom domainlabel`&gt;.`<azure region`&gt;.cloudapp.azure.com
 >
 >
 
-Encontrará más detalles relacionados con el nombre DNS [aquí][virtual-machines-azurerm-versus-azuresm].
+Obtener más detalles relacionados con puede encontrarse el nombre DNS de toohello [aquí][virtual-machines-azurerm-versus-azuresm].
 
-El ajuste del parámetro de perfil de SAP icm/host_name_full con el nombre DNS del vínculo de la máquina virtual de Azure puede tener este aspecto:
+Hola SAP perfil parámetro icm/host_name_full toohello nombre DNS del vínculo de Hola de hello Azure VM puede ser similar de la configuración:
 
 > https://mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 >
@@ -1083,18 +1083,18 @@ El ajuste del parámetro de perfil de SAP icm/host_name_full con el nombre DNS d
 >
 >
 
-En ese caso, debe asegurarse de lo siguiente:
+En este caso necesita toomake olvide:
 
-* Agregar reglas de entrada al grupo de seguridad de red en el Portal de Azure para los puertos TCP/IP que se utilizan en la comunicación con el ICM
-* Agregar reglas de entrada a la configuración del Firewall de Windows para los puertos TCP/IP que se utilizan en la comunicación con el ICM
+* Agregar reglas de entrada toohello grupo de seguridad de red en hello Portal de Azure para los puertos TCP/IP de hello usa toocommunicate con ICM
+* Agregue una configuración de Firewall de Windows de las reglas de entrada toohello para hello toocommunicate de puertos que usa TCP/IP con hello ICM
 
-Para importar de forma automatizada todas las correcciones disponibles, se recomienda aplicar periódicamente la colección de correcciones de la nota de SAP correspondiente a su versión de SAP:
+Para importa automáticamente de todas las correcciones disponibles, se recomienda tooperiodically aplicar versión SAP de hello corrección colección nota de SAP tooyour aplicables:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Encontrará más información sobre DBA Cockpit para SAP ASE en las siguientes notas de SAP:
+Encontrará más información acerca de la cabina de DBA para SAP ASE Hola siguiendo las notas de SAP:
 
 * [1605680]
 * [1757924]
@@ -1106,54 +1106,54 @@ Encontrará más información sobre DBA Cockpit para SAP ASE en las siguientes n
 * [1956005]
 
 #### <a name="backuprecovery-considerations-for-sap-ase"></a>Consideraciones de copia de seguridad y recuperación para SAP ASE
-Al implementar SAP ASE en Azure, debe revisar la metodología de copia de seguridad. Incluso si el sistema no es productivo, se debe realizar periódicamente la copia de seguridad de la base de datos de SAP que hospeda SAP ASE. Como Azure Storage mantiene tres imágenes, una copia de seguridad es menos importante para compensar un bloqueo de almacenamiento. La razón principal para el mantenimiento de un plan de copia de seguridad y restauración correcto es que puede compensar errores lógicos o manuales gracias a la capacidad de recuperación a un momento dado. El objetivo es usar las copias de seguridad para restaurar la base de datos a un momento dado o utilizar las copias de seguridad de Azure para propagar otro sistema mediante la copia de la base de datos existente. Por ejemplo, podría transferir archivos desde una configuración de SAP de 2 niveles a una configuración de sistema de 3 niveles del mismo sistema mediante la restauración de una copia de seguridad.
+Al implementar SAP ASE en Azure, debe revisar la metodología de copia de seguridad. Incluso si el sistema de hello no es un sistema productivo, base de datos SAP de hello hospeda SAP ASE debe hacer copia periódicamente. Puesto que el almacenamiento de Azure mantiene tres imágenes, una copia de seguridad ahora es menos importante en sentido toocompensating un bloqueo de almacenamiento. Hello razón principal para el mantenimiento de un plan de copia de seguridad y restauración correcta es mayor que compensar los errores lógicos/manuales al proporcionar capacidades de recuperación de tiempo. Por lo que el objetivo de hello es tooeither usar copias de seguridad toorestore Hola base de datos nuevo tooa determinado punto en tiempo o toouse Hola copias de seguridad en Azure tooseed otro sistema mediante la copia de base de datos existente de Hola. Por ejemplo, podría transferir desde una instalación de sistema de 3 niveles 2 niveles SAP configuración tooa de hello mismo sistema mediante la restauración de una copia de seguridad.
 
-La realización de copias de seguridad y restauraciones de bases de datos de Azure funciona del mismo modo que en entornos locales. Consulte las notas de SAP
+Copia de seguridad y restaurar una base de datos en Azure funciona Hola misma manera que lo hace en local. Consulte las notas de SAP
 
 * [1588316]
 * [1585981]
 
-para obtener más información sobre la creación de configuraciones de volcado y la programación de copias de seguridad. Dependiendo de su estrategia y sus necesidades, puede configurar la base de datos y los volcados de registro en disco en uno de los VHD existentes o agregar un VHD adicional para la copia de seguridad.  Para reducir el riesgo de pérdidas de datos si se produce un error, se recomienda usar un VHD donde no haya directorios ni archivos de bases de datos.
+para obtener más información sobre la creación de configuraciones de volcado y la programación de copias de seguridad. Según las necesidades que se puede configurar y estrategia de base de datos y registro de volcados de memoria toodisk en uno de hello existente discos duros virtuales o agregar un disco duro virtual adicional para copia de seguridad de Hola.  riesgo de pérdida de datos en caso de error es Hola que tooreduce recomienda toouse un disco duro virtual donde no se encuentra ningún directorio o archivo de base de datos.
 
-Además de compresión de datos y de LOB, SAP ASE también ofrece compresión de copias de seguridad. Para que los volcados de bases de datos y registros ocupen menos espacio, se recomienda usar la compresión de copias de seguridad. Consulte la nota de SAP [1588316] para más información. Este tipo de compresión también es fundamental para reducir la cantidad de datos que se transfieren si planea descargar copias de seguridad o VHD que contengan volcados de copias de seguridad de la máquina virtual de Azure en el entorno local.
+Además de compresión de datos y de LOB, SAP ASE también ofrece compresión de copias de seguridad. toooccupy menos espacio con la base de datos de Hola y de registro de volcados de memoria, se recomienda la compresión de copia de seguridad de toouse. Consulte la nota de SAP [1588316] para más información. Comprimir copia de seguridad de hello también es fundamental tooreduce cantidad de Hola de toobe de datos transferido si tiene previsto copias de seguridad de toodownload o discos duros virtuales que contiene la copia de seguridad volcados de hello local tooon de máquina Virtual de Azure.
 
-No use el espacio temporal /mnt ni /mnt/Resource de máquina virtual de Azure como destino de volcados de registro o de bases de datos.
+No use/mnt espacio temporal de máquina virtual de Azure de Hola o/mnt/Resource como destino de volcado de memoria de base de datos o de registro.
 
 #### <a name="performance-considerations-for-backupsrestores"></a>Consideraciones de rendimiento sobre copias de seguridad y restauraciones
-Como en las implementaciones sin sistema operativo, el rendimiento de las copias de seguridad y las restauraciones depende de cuántos volúmenes puedan leerse en paralelo y el rendimiento que estos volúmenes puedan tener. Además, el consumo de CPU que se emplea en la compresión de copias de seguridad puede desempeñar un papel importante en las máquinas virtuales con solo 8 subprocesos de CPU como máximo. Por lo tanto, se pueden asumir los siguientes puntos:
+Como en las implementaciones sin sistema operativo, rendimiento de la copia de seguridad/restauración depende de cuántos volúmenes pueden leerse en paralelo y qué rendimiento Hola de estos volúmenes podría ser. Además, Hola consumo de CPU utilizado por la compresión de copia de seguridad puede desempeñan un papel importante en las máquinas virtuales con solo los subprocesos de CPU de too8. Por lo tanto, se pueden asumir los siguientes puntos:
 
-* Cuantos menos VHD se utilicen para almacenar los dispositivos de las bases de datos, menor será el rendimiento general de lectura.
-* Cuantos menos subprocesos de CPU haya en la máquina virtual, mayor será el impacto en la compresión de copias de seguridad.
-* Cuantos menos destinos (RAID de software Linux, VHD) en los que escribir la copia de seguridad haya, menor será el rendimiento.
+* Hello menos Hola número de discos duros virtuales utilizar dispositivos de base de datos de toostore hello, hello Hola cuanto menor sea el rendimiento global en la lectura
+* Hola menor número de Hola de subprocesos de CPU en hello VM, Hola más graves repercusiones de Hola de compresión de copia de seguridad
+* Hola de copia de seguridad en Hello menos toowrite destinos (Linux software RAID, discos duros virtuales), Hola menor rendimiento Hola
 
-Para aumentar la cantidad de destinos en los que escribir, existen dos opciones que se pueden usar o combinar según sus necesidades:
+número de hello tooincrease de destinos toowrite toothere son dos opciones que pueden ser usar/combinan según sus necesidades:
 
-* Seccionar el volumen de destino de la copia de seguridad en varios VHD montados con el fin de mejorar el rendimiento de IOPS en ese volumen seccionado
-* Crear una configuración de volcado en el nivel de SAP ASE que utilice más de un directorio de destino en el que escribir el volcado
+* Creación de bandas volumen de destino de copia de seguridad de hello en varios discos duros virtuales montados en el rendimiento IOPS de orden tooimprove hello en ese volumen seccionado
+* Crear una configuración de volcado en nivel de SAP ASE que usa más de un destino directory toowrite Hola volcado de memoria para
 
-Anteriormente ya se trató en esta guía la sección de un volumen en varios VHD montados. Para más información sobre el uso de varios directorios en la configuración de volcado de SAP ASE, consulte la documentación sobre el procedimiento almacenado sp_config_dump que se utiliza para crear la configuración de volcado en [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp).
+Anteriormente ya se trató en esta guía la sección de un volumen en varios VHD montados. Para obtener más información sobre el uso de varios directorios en la configuración de volcado de memoria de SAP ASE hello, consulte la documentación de toohello en sp_config_dump de procedimiento almacenado que es configuración de volcado de memoria de hello toocreate usado en hello [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp).
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Recuperación ante desastres con máquinas virtuales de Azure
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Replicación de datos con el servidor de replicación SAP Sybase
-Con el servidor de replicación SAP Sybase (SRS), SAP ASE proporciona una solución de espera semiactiva para transferir las transacciones de la base de datos a una ubicación distante de manera asincrónica.
+Con hello ASE de SAP de servidor de replicación de Sybase (SRS) de SAP proporciona una ubicación solución en espera semiactiva tootransfer base de datos las transacciones tooa está lejos de la forma asincrónica.
 
-La instalación y la actividad de SRS se desarrollan funcionalmente igual de bien en una máquina virtual hospedada en servicios de máquina virtual de Azure que en el entorno local.
+instalación de Hola y el funcionamiento de SRS funciona así funcionalmente en una máquina virtual hospedada en servicios de máquinas virtuales de Azure que lo hace en local.
 
-En este momento no se admite ASE HADR a través de SAP Replication Server. Es posible que más adelante se realicen pruebas con las plataformas de Microsoft Azure y se publiquen para ellas.
+En este momento no se admite ASE HADR a través de SAP Replication Server. Puede probar con y publicado para plataformas de Microsoft Azure en hello futuras.
 
-## <a name="specifics-to-oracle-database-on-windows"></a>Detalles de la base de datos de Oracle en Windows
-Desde mediados de 2013, el software de Oracle es compatible con Oracle para ejecutarse en Microsoft Windows Hyper-V y Azure. Lea este artículo para más información sobre la compatibilidad general de Windows Hyper-V y Azure Oracle: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces>.
+## <a name="specifics-toooracle-database-on-windows"></a>Detalles tooOracle base de datos en Windows
+Desde mediados de 2013, el software de Oracle es compatible con toorun de Oracle en Microsoft Windows Hyper-V y Azure. Lea este artículo tooget obtener más detalles sobre la compatibilidad general de Hola de Windows Hyper-V y Azure Oracle: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces>
 
-A partir de esta compatibilidad general, también se admite el escenario concreto en el que las aplicaciones de SAP aprovechen las bases de datos de Oracle. Los detalles se mencionan en esta parte del documento.
+Después de la compatibilidad general de hello, escenario específico de Hola de aplicaciones de SAP que aprovechan las bases de datos de Oracle se admite también. Se denominan los detalles en esta parte del documento de Hola.
 
 ### <a name="oracle-version-support"></a>Compatibilidad de versiones de Oracle
-Todos los detalles sobre las versiones de Oracle y las versiones de SO correspondientes que se admiten para ejecutar SAP en Oracle en máquinas virtuales de Azure se encuentran en la nota de SAP [2039619]
+Todos los detalles acerca de las versiones de Oracle y las versiones correspondientes de sistema operativo que se admiten para ejecutar SAP en Oracle en máquinas virtuales de Azure puede encontrarse en hello después de la nota de SAP [2039619]
 
 Se puede encontrar información general sobre la ejecución de SAP Business Suite en Oracle en SCN: <https://scn.sap.com/community/oracle>.
 
 ### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Instrucciones de configuración de Oracle para instalaciones de SAP en máquinas virtuales de Azure
 #### <a name="storage-configuration"></a>Configuración de almacenamiento
-Solo se admiten versiones de Oracle de solo una versión que usen discos con formato NTFS. Todos los archivos de las bases de datos se deben almacenar en el sistema de archivos NTFS basado en discos VHD. Estos discos duros virtuales están montados en la máquina virtual de Azure y se basan en el almacenamiento de blob en páginas de Azure (<https://msdn.microsoft.com/library/azure/ee691964.aspx>).
+Solo se admiten versiones de Oracle de solo una versión que usen discos con formato NTFS. Todos los archivos de base de datos deben almacenarse en el sistema de archivos NTFS de hello en función de los discos VHD. Estos discos duros virtuales están montado toohello máquina virtual de Azure y se basan en el almacenamiento de blobs de página de Azure (<https://msdn.microsoft.com/library/azure/ee691964.aspx>).
 Las unidades de red o los recursos compartidos remotos como los servicios de archivos de Azure:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
@@ -1161,78 +1161,78 @@ Las unidades de red o los recursos compartidos remotos como los servicios de arc
 
 **NO** son compatibles con los archivos de bases de datos de Oracle.
 
-Si usa discos duros virtuales de Azure basado en el almacenamiento de blobs en páginas de Azure, las declaraciones realizadas en este documento en el capítulo [Almacenamiento en caché de máquinas virtuales y VHD][dbms-guide-2.1] y [Microsoft Azure Storage][dbms-guide-2.3] también se refieren a las implementaciones con la base de datos de Oracle.
+Usar discos duros virtuales de Azure basado en almacenamiento de blobs de página de Azure, hello las instrucciones realizadas en este documento en el capítulo [almacenamiento en caché para las máquinas virtuales y discos duros virtuales] [ dbms-guide-2.1] y [almacenamiento de Microsoft Azure] [ dbms-guide-2.3] aplicar toodeployments con hello base de datos de Oracle.
 
-Como se explicó anteriormente en la parte general del documento, existen cuotas en el rendimiento IOPS para VHD de Azure. Las cuotas exactas varían según el tipo de máquina virtual que se utilice. Dispone de una lista con los tipos de máquina virtual y sus cuotas [aquí][virtual-machines-sizes].
+Como se explicó anteriormente en "parte general del documento de Hola" Hola, existen cuotas en el rendimiento IOPS para discos duros virtuales de Azure. las cuotas de Hello exacto se según el tipo de máquina virtual de hello usan. Dispone de una lista con los tipos de máquina virtual y sus cuotas [aquí][virtual-machines-sizes].
 
-Para identificar los tipos de máquina virtual de Azure admitidos, consulte la nota de SAP [1928533]
+tooidentify Hola admite tipos de VM de Azure, consulte la nota tooSAP [1928533]
 
-Mientras la cuota actual de IOPS por disco cumpla los requisitos, se pueden almacenar todos los archivos de base de datos en un solo VHD de Azure montado.
+Como la cuota de IOPS actual de Hola por disco cumple los requisitos de hello, es posible toostore todos los archivos de base de datos de hello en una sola monta el VHD de Azure.
 
-Si necesita más IOPS, se recomienda encarecidamente utilizar bloques de almacenamiento de Windows (solo disponibles en Windows Server 2012 y versiones posteriores) o crear secciones de Windows para Windows 2008 R2 a fin de crear un dispositivo lógico de gran tamaño en varios discos VHD montados. Consulte también el capítulo [RAID de software][dbms-guide-2.2] de este documento. Este enfoque simplifica la sobrecarga de administración para administrar el espacio en disco y evita el esfuerzo de distribuir archivos manualmente en varios VHD montados.
+Si se requieren más de IOPS, se recomienda encarecidamente toouse ventana Storage Pools (solo disponible en Windows Server 2012 y versiones posteriores) o la creación de bandas para Windows 2008 R2 toocreate un dispositivo lógico grande en varios discos VHD montados de Windows. Consulte también el capítulo [RAID de software][dbms-guide-2.2] de este documento. Este enfoque simplifica el espacio en disco Hola Hola administración toomanage sobrecarga y evita el esfuerzo de hello toomanually distribuir archivos a través de varios discos duros virtuales montados.
 
 #### <a name="backup--restore"></a>Copia de seguridad y restauración
-Para utilizar la funcionalidad de copia de seguridad y restauración, las SAP BR*Tools para Oracle se admiten del mismo modo que en los sistemas operativos Windows Server y Hyper-V estándares. También se admite Oracle Recovery Manager (RMAN) para las copias de seguridad en discos y las restauraciones desde discos.
+Para copia de seguridad o restaurar la funcionalidad, Hola SAP BR * Tools para Oracle se admite en Hola mismo forma como en Hyper-V y sistemas operativos Windows Server estándar. Oracle Recovery Manager (RMAN) también se admite para toodisk de las copias de seguridad y restauración desde el disco.
 
 #### <a name="high-availability"></a>Alta disponibilidad
-[comment]: <> (el vínculo hace referencia a ASM)
+[comment]: <> (vínculo hace referencia tooASM)
 Oracle Data Guard se admite con fines de alta disponibilidad y recuperación ante desastres. Encontrará los detalles en [esta][virtual-machines-windows-classic-configure-oracle-data-guard] documentación.
 
 #### <a name="other"></a>Otros
-Todos los demás temas generales, como los conjuntos de disponibilidad de Azure o la supervisión de SAP, se aplican como se describen en los tres primeros capítulos de este documento para implementaciones de máquinas virtuales también con la base de datos de Oracle.
+Todos los demás temas generales como conjuntos de disponibilidad de Azure y SAP supervisión de aplicaciones se aplican tal como se describe en hello tres primeros capítulos de este documento para las implementaciones de máquinas virtuales con hello base de datos de Oracle.
 
-## <a name="specifics-for-the-sap-maxdb-database-on-windows"></a>Detalles de la base de datos SAP MaxDB en Windows
+## <a name="specifics-for-hello-sap-maxdb-database-on-windows"></a>Características específicas para la base de datos de SAP MaxDB en Windows hello
 ### <a name="sap-maxdb-version-support"></a>Compatibilidad de versiones de SAP MaxDB
-SAP actualmente admite SAP MaxDB versión 7.9 para su uso con productos basados en SAP NetWeaver en Azure. Todas las actualizaciones del servidor SAP MaxDB o de los controladores ODBC y JDBC que se utilizarán con productos basados en SAP NetWeaver se proporcionan únicamente a través de SAP Service Marketplace en <https://support.sap.com/swdc>.
+SAP actualmente admite SAP MaxDB versión 7.9 para su uso con productos basados en SAP NetWeaver en Azure. Todas las actualizaciones para el servidor de SAP MaxDB o toobe de controladores JDBC y ODBC utiliza con productos basados en SAP NetWeaver se proporcionan únicamente a través de hello SAP Service Marketplace en <https://support.sap.com/swdc>.
 Se puede encontrar información general sobre la ejecución de SAP NetWeaver en SAP MaxDB en <https://scn.sap.com/community/maxdb>.
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Versiones de Microsoft Windows y tipos de máquina virtual de Azure admitidos para SAP MaxDB DBMS
-Para obtener la versión compatible de Microsoft Windows para SAP MaxDB DBMS en Azure, consulte:
+toofind Hola admite la versión de Microsoft Windows para SAP MaxDB DBMS en Azure, vea:
 
 * [Matriz de disponibilidad de productos (PAM) SAP][sap-pam]
 * Nota de SAP [1928533]
 
-Se recomienda encarecidamente utilizar la versión más reciente del sistema operativo Microsoft Windows (Microsoft Windows 2012 R2 en el momento en el que se escribe este artículo).
+Se recomienda encarecidamente la versión más reciente de hello toouse del sistema operativo de hello Microsoft Windows, que es Microsoft Windows 2012 R2.
 
 ### <a name="available-sap-maxdb-documentation"></a>Documentación de SAP MaxDB disponible
-Encontrará la lista de la documentación de SAP MaxDB actualizada en la nota de SAP [767598]
+Encontrará la lista de hello actualizado de documentación de SAP MaxDB Hola después de la nota de SAP [767598 ]
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Instrucciones de configuración de SAP MaxDB para instalaciones de SAP en máquinas virtuales de Azure
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Configuración de almacenamiento
-Los procedimientos recomendados de almacenamiento de Azure para SAP MaxDB siguen las recomendaciones generales mencionadas en el capítulo [Estructura de una implementación de RDBMS][dbms-guide-2].
+Prácticas recomendadas de almacenamiento de Azure para SAP MaxDB siguen las recomendaciones generales Hola mencionadas en el capítulo [estructura de una implementación de RDBMS][dbms-guide-2].
 
 > [!IMPORTANT]
-> Al igual que otras bases de datos, SAP MaxDB también dispone de archivos de datos y de registro. Sin embargo, en la terminología de SAP MaxDB el término correcto es "volumen" (no "archivo"). Por ejemplo, existen volúmenes de datos y de registro de SAP MaxDB. No los confunda con los volúmenes de disco del sistema operativo.
+> Al igual que otras bases de datos, SAP MaxDB también dispone de archivos de datos y de registro. Sin embargo, en la terminología de SAP MaxDB término correcto de hello es "volumen" (no "archivo"). Por ejemplo, existen volúmenes de datos y de registro de SAP MaxDB. No los confunda con los volúmenes de disco del sistema operativo.
 >
 >
 
 En resumen, deberá hacer lo siguiente:
 
-* Establecer la cuenta de almacenamiento de Azure que contiene los volúmenes de registros y datos de SAP MaxDB (es decir, archivos) en **Almacenamiento con redundancia local (LRS)** como se indica en el capítulo [Microsoft Azure Storage][dbms-guide-2.3].
-* Separar la ruta de acceso de E/S para los volúmenes (es decir, archivos) de datos de SAP MaxDB desde la ruta de acceso de E/S para los volúmenes (de nuevo, archivos) de registro. Esto significa que los volúmenes de datos de SAP MaxDB han de estar instalados en una unidad lógica y que los volúmenes de registro de MaxDB de SAP deben estar instalados en otra.
-* Establecer la caché de archivos adecuada para cada blob de Azure en función de si la utiliza para volúmenes de datos o registros de SAP MaxDB y de si se usa almacenamiento estándar o Azure Premium Storage, tal como se describe en el capítulo [Almacenamiento en caché de máquinas virtuales][dbms-guide-2.1].
-* Mientras la cuota actual de IOPS por disco cumpla los requisitos, se pueden almacenar todos los volúmenes de datos en un solo VHD de Azure montado y también almacenar todos los volúmenes de registro de bases de datos en otro VHD único de Azure montado.
-* Si necesita más IOPS o espacio, se recomienda encarecidamente utilizar bloques de almacenamiento de Microsoft Windows (solo disponibles en Microsoft Windows Server 2012 y versiones posteriores) o la creación de bandas de Microsoft Windows para Microsoft Windows 2008 R2 a fin de crear un dispositivo lógico de gran tamaño en varios discos VHD montados. Consulte también el capítulo [RAID de software][dbms-guide-2.2] de este documento. Este enfoque simplifica la sobrecarga de administración para administrar el espacio en disco y evita el esfuerzo de distribuir archivos manualmente en varios VHD montados.
-* Para los requisitos de IOPS más exigentes, puede usar el almacenamiento Premium de Azure, disponible en las series de máquinas virtuales DS y GS.
+* Establecer la cuenta de almacenamiento de Azure de Hola que contiene volúmenes de datos y de registro a los MaxDB de SAP hello (es decir, archivos) demasiado**almacenamiento redundante Local (LRS)** según se haya especificado en el capítulo [almacenamiento de Microsoft Azure] [ dbms-guide-2.3].
+* Ruta de acceso de E/S de hello independiente para volúmenes de datos de SAP MaxDB (es decir, archivos) de la ruta de acceso de E/S de Hola para volúmenes de registro (es decir, archivos). Esto significa que los volúmenes de datos de SAP MaxDB (es decir, archivos) tienen toobe instalado en una unidad lógica y los volúmenes de registro de SAP MaxDB (es decir, archivos) tienen toobe instalado en otra unidad lógica.
+* Establecer Hola adecuadamente los archivos de caché para cada blob de Azure, dependiendo de si se usa para los volúmenes de datos o de registro de SAP MaxDB (es decir, archivos) y si se usa el estándar de Azure o almacenamiento de Azure Premium, tal como se describe en el capítulo [almacenamiento en caché para las máquinas virtuales] [ dbms-guide-2.1].
+* Como la cuota de IOPS actual de Hola por disco cumple los requisitos de hello, es posible toostore todos los volúmenes de datos de hello en un solo VHD montados de Azure y también almacenan todos los volúmenes de registro de base de datos en otro VHD de Azure montada único.
+* Si se necesitan más IOPS o espacio, se recomienda encarecidamente toouse Microsoft ventana Storage Pools (solo disponible en Microsoft Windows Server 2012 y versiones posteriores) o Microsoft Windows creación de bandas para Microsoft Windows 2008 R2 toocreate un dispositivo lógico de gran tamaño a través de varios discos VHD montados. Consulte también el capítulo [RAID de software][dbms-guide-2.2] de este documento. Este enfoque simplifica el espacio en disco Hola Hola administración toomanage sobrecarga y evita el trabajo de Hola de distribuir manualmente archivos entre varios discos duros virtuales montados.
+* Para los requisitos de e/s por segundo más altos de hello, puede usar el almacenamiento de Azure Premium, que está disponible en la serie DS y GS-series las máquinas virtuales.
 
 ![Configuración de referencia de máquinas virtuales IaaS de Azure para SAP MaxDB DBMS][dbms-guide-figure-600]
 
 #### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Copia de seguridad y restauración
-Al implementar SAP MaxDB en Azure, debe revisar la metodología de copias de seguridad. Incluso si el sistema no es productivo, se debe realizar periódicamente la copia de seguridad de la base de datos de SAP que hospeda SAP MaxDB. Puesto que Azure Storage guarda tres imágenes, ahora una copia de seguridad tiene menos relevancia en cuanto a la protección del sistema contra errores de almacenamiento y más relevancia en cuanto a errores operativos o administrativos. La razón principal para el mantenimiento de un plan de copia de seguridad y restauración correcto es que puede compensar errores lógicos o manuales gracias a la capacidad de recuperación a un momento dado. Por tanto, el propósito es usar copias de seguridad para restaurar la base de datos a un momento dado o utilizar las copias de seguridad de Azure para propagar otro sistema mediante la copia de la base de datos existente. Por ejemplo, podría transferir archivos desde una configuración de SAP de 2 niveles a una configuración de sistema de 3 niveles del mismo sistema mediante la restauración de una copia de seguridad.
+Al implementar SAP MaxDB en Azure, debe revisar la metodología de copias de seguridad. Incluso si el sistema de hello no es un sistema productivo, base de datos SAP de hello hospeda MaxDB de SAP debe hacer copia periódicamente. Puesto que Azure Storage guarda tres imágenes, ahora una copia de seguridad tiene menos relevancia en cuanto a la protección del sistema contra errores de almacenamiento y más relevancia en cuanto a errores operativos o administrativos. Hello razón principal para mantener una copia de seguridad correcta y el plan de restauración es por lo que puede compensar errores lógicos o manuales al proporcionar capacidades de recuperación a un punto en el momento. Por lo que es el objetivo de hello tooeither utilice copias de seguridad toorestore Hola base de datos tooa determinado punto en tiempo o toouse Hola copias de seguridad en Azure tooseed otro sistema mediante la copia de base de datos existente de Hola. Por ejemplo, podría transferir desde una instalación de sistema de 3 niveles 2 niveles SAP configuración tooa de hello mismo sistema mediante la restauración de una copia de seguridad.
 
-La realización de copias de seguridad y restauraciones de una base de datos de Azure funciona del mismo modo que para sistemas locales, por lo que puede usar herramientas estándar de copia de seguridad y restauración de SAP MaxDB, que se describen en uno de los documentos de SAP MaxDB enumerados en la nota de SAP [767598].
+Copia de seguridad y restaurar una base de datos en hello Azure funciona la misma manera que lo hace para sistemas locales, por lo que puede usar MaxDB de SAP estándar herramientas, que se describen en uno de los documentos de documentación de SAP MaxDB Hola de copia de seguridad/restauración aparecen en la nota de SAP [767598 ].
 
 #### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Consideraciones de rendimiento para copias de seguridad y restauraciones
-Como en las implementaciones sin sistema operativo, el rendimiento de las copias de seguridad y las restauraciones depende de cuántos volúmenes puedan leerse en paralelo y del rendimiento de estos volúmenes. Además, el consumo de CPU que se emplea en la compresión de copias de seguridad puede desempeñar un papel importante en las máquinas virtuales con 8 subprocesos de CPU como máximo. Por lo tanto, se pueden asumir los siguientes puntos:
+Como en las implementaciones sin sistema operativo, el rendimiento de copia de seguridad y restauración es depende de cuántos volúmenes pueden leerse en paralelo y Hola rendimiento de esos volúmenes. Además, Hola consumo de CPU utilizado por la compresión de copia de seguridad puede desempeñar un papel importante en las máquinas virtuales con too8 subprocesos de CPU. Por lo tanto, se pueden asumir los siguientes puntos:
 
-* Cuantos menos VHD se utilicen para almacenar los dispositivos de las bases de datos, menor será el rendimiento general de lectura.
-* Cuantos menos subprocesos de CPU haya en la máquina virtual, mayor será el impacto en la compresión de copias de seguridad.
-* Cuantos menos destinos (directorios de sección, VHD, etc.) en los que escribir la copia de seguridad haya, menor será el rendimiento.
+* Hola menor número de Hola de dispositivos de base de datos de VHD en uso toostore hello, Hola Hola general menor rendimiento de lectura
+* Hola menor número de Hola de subprocesos de CPU en hello VM, Hola más graves repercusiones de Hola de compresión de copia de seguridad
+* Hola menos destinos (directorios de Stripe, discos duros virtuales) toowrite Hola copia de seguridad, menor rendimiento de Hola Hola
 
-Para aumentar la cantidad de destinos en los que escribir, existen dos opciones a las que puede recurrir (puede que de forma combinada) según sus necesidades:
+número de hello tooincrease de destino es toowrite a, hay dos opciones que puede utilizar, posiblemente en combinación, dependiendo de sus necesidades:
 
 * Dedicar volúmenes distintos a copias de seguridad
-* Seccionar el volumen de destino de la copia de seguridad en varios VHD montados con el fin de mejorar el rendimiento de IOPS en ese volumen de disco seccionado
+* Creación de bandas volumen de destino de copia de seguridad de hello en varios discos duros virtuales montados en el rendimiento IOPS de orden tooimprove hello en ese volumen de discos con bandas
 * Disponer de dispositivos de discos lógicos dedicados distintos para:
   * Volúmenes (archivos) de copia de seguridad de SAP MaxDB
   * Volúmenes de datos de SAP MaxDB
@@ -1241,8 +1241,8 @@ Para aumentar la cantidad de destinos en los que escribir, existen dos opciones 
 Ya se trató en el capítulo [RAID de software][dbms-guide-2.2] de este documento la sección de un volumen en varios discos duros virtuales montados.
 
 #### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Otros
-Todos los demás temas generales, como los conjuntos de disponibilidad de Azure o la supervisión de SAP, se aplican como se describen en los tres primeros capítulos de este documento para implementaciones de máquinas virtuales con la base de datos de SAP MaxDB.
-Otras configuraciones específicas de SAP MaxDB son transparentes para las máquinas virtuales de Azure y se describen en distintos documentos de la nota de SAP [767598] y en estas otras notas:
+También se aplican todos los demás temas generales como la supervisión de conjuntos de disponibilidad de Azure o SAP como se describe en hello tres primeros capítulos de este documento para las implementaciones de máquinas virtuales con la base de datos de SAP MaxDB Hola.
+Otra configuración específica de SAP MaxDB son máquinas virtuales tooAzure transparente y se describen en distintos documentos aparecen en la nota de SAP [767598 ] y en estas notas SAP:
 
 * [826037]
 * [1139904]
@@ -1253,39 +1253,39 @@ Otras configuraciones específicas de SAP MaxDB son transparentes para las máqu
 La versión mínima de SAP liveCache que las máquinas virtuales de Azure admiten es **SAP LC/LCAPPS 10.0 SP 25**, incluida **liveCache 7.9.08.31** y **LCA-Build 25**, publicadas en **EhP 2 para SAP SCM 7.0** y en versiones posteriores.
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Versiones de Microsoft Windows y tipos de máquina virtual de Azure admitidos para SAP liveCache DBMS
-Para obtener la versión compatible de Microsoft Windows para SAP liveCache en Azure, consulte:
+versión de Microsoft Windows hello admite toofind para liveCache SAP en Azure, vea:
 
 * [Matriz de disponibilidad de productos (PAM) SAP][sap-pam]
 * Nota de SAP [1928533]
 
-Se recomienda encarecidamente utilizar la versión más reciente del sistema operativo Microsoft Windows (Microsoft Windows 2012 R2 en el momento en el que se escribe este artículo).
+Se recomienda encarecidamente la versión más reciente de hello toouse del sistema operativo de hello Microsoft Windows, que es Microsoft Windows 2012 R2.
 
 ### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Instrucciones de configuración de SAP liveCache para instalaciones de SAP en máquinas virtuales de Azure
 #### <a name="recommended-azure-vm-types"></a>Tipos de máquina virtual de Azure recomendadas
-Puesto que SAP liveCache es una aplicación que realiza cálculos de grandes proporciones, la cantidad y la velocidad de CPU y RAM influyen en gran medida en el rendimiento de SAP liveCache.
+Como SAP liveCache es una aplicación que realiza cálculos muy grandes, cantidad de Hola y velocidad de CPU y RAM tiene una influencia importante en el rendimiento de liveCache SAP.
 
-En el caso de los tipos de máquina virtual de Azure compatibles con SAP (nota de SAP [1928533]), todos los recursos de CPU virtuales asignados a la máquina virtual cuentan con el respaldo de los recursos de CPU físicos dedicados del hipervisor. No existe aprovisionamiento en exceso (y, por tanto, tampoco existe competencia por los recursos de CPU).
+Para los tipos de máquina virtual de Azure Hola compatibles con SAP (Nota de SAP [1928533]), todos los recursos de CPU virtuales asignan toohello VM están respaldados por recursos dedicados de CPU físicos de hipervisor de Hola. No existe aprovisionamiento en exceso (y, por tanto, tampoco existe competencia por los recursos de CPU).
 
-Asimismo, para todos los tipos de versión de máquina virtual de Azure compatibles con SAP, la memoria de la máquina virtual se asigna al 100 % a la memoria física; por ejemplo, no se recurre al aprovisionamiento en exceso (exceso de compromiso).
+De forma similar, para todos los tipos de instancia virtual de Azure compatibles con SAP, memoria VM de hello es memoria física asignada de 100% toohello – en exceso (compromiso), por ejemplo, no se utiliza.
 
-Desde esta perspectiva, se recomienda encarecidamente utilizar las nuevas series D o DS de máquina virtual de Azure (junto con el almacenamiento Premium de Azure), que disponen de procesadores un 60 % más rápidos que la serie A. En el caso de las cargas de RAM y CPU más exigentes, puede utilizar las series G y GS de máquinas virtuales (junto con el almacenamiento Premium de Azure) con la familia de procesadores E5 v3 más recientes de Intel® Xeon®, que ofrecen el doble de memoria y cuatro veces más almacenamiento en unidad de estado sólido (SSD) que las series D y DS.
+Desde esta perspectiva se recomienda encarecidamente toouse Hola nueva serie D o la máquina virtual de Azure de la serie DS (en combinación con el almacenamiento de Azure Premium) tipo, porque tienen procesadores más rápidos de 60% de Hola una serie. Para la carga máxima de memoria RAM y CPU de hello, puede usar serie G y máquinas virtuales de GS-series (en combinación con el almacenamiento de Azure Premium) con un procesador más reciente de Intel® Xeon® de hello E5 v3 familia, que tiene dos veces de memoria hello y cuatro veces Hola estado sólido almacenamiento en disco (SSD) de hello D / DS-series.
 
 #### <a name="storage-configuration"></a>Configuración de almacenamiento
-Puesto que SAP liveCache se basa en la tecnología SAP MaxDB, todos los procedimientos recomendados de Azure Storage que se mencionan con relación a SAP MaxDB en el capítulo [Configuración de almacenamiento][dbms-guide-8.4.1] también se pueden aplicar a SAP liveCache.
+Como liveCache SAP se basa en tecnología de SAP MaxDB, todos Hola almacenamiento de Azure prácticas recomendadas mencionadas para SAP MaxDB en el capítulo [configuración de almacenamiento] [ dbms-guide-8.4.1] también son válidas para SAP liveCache.
 
 #### <a name="dedicated-azure-vm-for-livecache"></a>Máquina virtual de Azure dedicada para liveCache
-Dado que SAP liveCache emplea una potencia de cálculo sumamente intensiva, se recomienda encarecidamente implementarla en una máquina virtual de Azure dedicada para obtener resultados productivos.
+Como SAP liveCache usa de forma intensiva potencia de cálculo, para el uso productivo se recomienda encarecidamente toodeploy en una máquina Virtual de Azure dedicado.
 
 ![Máquina virtual de Azure dedicada para liveCache para un caso de uso productivo][dbms-guide-figure-700]
 
 #### <a name="backup-and-restore"></a>Copia de seguridad y restauración
-Las copias de seguridad y las restauraciones, incluidas las consideraciones acerca del rendimiento, ya se describen en los capítulos pertinentes de SAP MaxDB [Copia de seguridad y restauración][dbms-guide-8.4.2] y [Consideraciones de rendimiento para copias de seguridad y restauraciones][dbms-guide-8.4.3].
+Copia de seguridad y restauración, incluidas las consideraciones de rendimiento, ya se describe en capítulos de SAP MaxDB relevantes hello [de copia de seguridad y restauración] [ dbms-guide-8.4.2] y [consideraciones de rendimiento de copia de seguridad y restaurar][dbms-guide-8.4.3].
 
 #### <a name="other"></a>Otros
-Todos los demás temas generales ya se describen en [este][dbms-guide-8.4.4] capítulo correspondiente de SAP MaxDB.
+Ya se describen todos los demás temas generales en hello pertinentes de SAP de MaxDB [esto] [ dbms-guide-8.4.4] capítulo.
 
-## <a name="specifics-for-the-sap-content-server-on-windows"></a>Detalles de SAP Content Server en Windows
-El servidor SAP Content Server es un componente independiente basado en servidor para almacenar contenido como documentos electrónicos en formatos diferentes. SAP Content Server se ofrece para el desarrollo de tecnología y se concibe para su uso en varias aplicaciones con cualquier aplicación de SAP. Se instala en un sistema independiente. Su contenido más habitual es material de aprendizaje y documentación de dibujos técnicos de Knowledge Warehouse que se crean en el sistema de administración de documentos de mySAP PLM.
+## <a name="specifics-for-hello-sap-content-server-on-windows"></a>Características específicas para el servidor de contenido de SAP en Windows hello
+Hola servidor de contenido de SAP es un contenido de toostore componente independiente basado en servidor, como documentos electrónicos en formatos diferentes. Hola servidor de contenido de SAP proporcionada por el desarrollo de la tecnología y es toobe usa todas las aplicaciones para las aplicaciones de SAP. Se instala en un sistema independiente. Contenido típico es aprendizaje material y la documentación del almacén de información o dibujos técnicos que se origina en hello mySAP PLM sistema de administración de documentos.
 
 ### <a name="sap-content-server-version-support"></a>Compatibilidad de versiones de SAP Content Server
 SAP actualmente admite:
@@ -1294,107 +1294,107 @@ SAP actualmente admite:
 * **SAP MaxDB versión 7.9**
 * **Microsoft IIS (Internet Information Server) versión 8.0 (y versiones posterior)**
 
-Se recomienda encarecidamente utilizar la versión más reciente de SAP Content Server, que en el momento de la creación de este documento es la **6.50 SP4**, y la versión más reciente de **Microsoft IIS 8.5**.
+Se recomienda encarecidamente versión más reciente de hello toouse del servidor de contenido de SAP, lo cual en tiempo de presentación de la escritura de este documento es **6.50 SP4**y la versión más reciente de Hola de **Microsoft IIS 8.5**.
 
-Compruebe las últimas versiones compatibles de SAP Content Server y Microsoft IIS en [Matriz de disponibilidad de productos (PAM) SAP][sap-pam].
+Compruebe hello más reciente admitido versiones de servidor de contenido de SAP y Microsoft IIS en hello [matriz de disponibilidad de producto (PAM) de SAP][sap-pam].
 
 ### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Tipos de máquina virtual de Azure y Microsoft Windows admitidos con SAP Content Server
-Para conocer la versión de Windows compatible con SAP Content Server en Azure, consulte:
+toofind out versión admitida de Windows para el servidor de contenido de SAP en Azure, vea:
 
 * [Matriz de disponibilidad de productos (PAM) SAP][sap-pam]
 * Nota de SAP [1928533]
 
-Se recomienda encarecidamente utilizar la versión más reciente de Microsoft Windows, que en el momento de creación de este documento es **Windows Server 2012 R2**.
+Se recomienda encarecidamente versión más reciente de hello toouse de Microsoft Windows, lo cual en tiempo de presentación de la escritura de este documento es **Windows Server 2012 R2**.
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Instrucciones de configuración de SAP Content Server para las instalaciones de SAP en máquinas virtuales de Azure
 #### <a name="storage-configuration"></a>Configuración de almacenamiento
-Si configura SAP Content Server para almacenar archivos en la base de datos de SAP MaxDB, todos los procedimientos recomendados de Azure Storage que se mencionan con relación a SAP MaxDB en el capítulo [Configuración de almacenamiento][dbms-guide-8.4.1] también se pueden aplicar en el caso de SAP Content Server.
+Si configura los archivos de toostore de servidor de contenido de SAP en base de datos de SAP MaxDB hello, el almacenamiento de Azure todos los mejores prácticas recomendación mencionado para SAP MaxDB en el capítulo [configuración de almacenamiento] [ dbms-guide-8.4.1] también son válido para el escenario de servidor de contenido de SAP de Hola.
 
-Si configura SAP Content Server para almacenar archivos en el sistema de archivos, se recomienda usar una unidad lógica exclusiva. El uso de espacios de almacenamiento también permite aumentar el tamaño del disco lógico y el rendimiento de E/S, como se describe en el capítulo [RAID de software][dbms-guide-2.2].
+Si configura los archivos de toostore de servidor de contenido de SAP en el sistema de archivos de hello, es recomendable toouse una unidad lógica exclusiva. Uso de espacios de almacenamiento permite tooalso aumente el tamaño de disco lógico y el rendimiento de e/s por segundo, como se describe en el capítulo [RAID de Software][dbms-guide-2.2].
 
 #### <a name="sap-content-server-location"></a>Ubicación de SAP Content Server
-SAP Content Server se debe implementar en la misma región de Azure y de red virtual de Azure en la que se implementó el sistema SAP. Puede elegir si desea implementar los componentes de SAP Content Server en una máquina virtual de Azure dedicada o en la misma máquina virtual en la que se ejecuta el sistema SAP.
+Servidor de contenido de SAP tiene toobe implementado en hello misma región de Azure y red virtual de Azure donde se implementa Hola sistema SAP. Son toodecide libre si desea que la misma máquina virtual que se ejecuta el sistema SAP de Hola Hola a toodeploy componentes de servidor de contenido de SAP en una VM de Azure dedicada o en.
 
 ![Máquina virtual de Azure dedicada para SAP Content Server][dbms-guide-figure-800]
 
 #### <a name="sap-cache-server-location"></a>Ubicación del SAP Cache Server
-El servidor SAP Cache Server es un componente adicional basado en servidores que proporciona acceso a documentos (en la memoria caché) en entornos locales. SAP Cache Server almacena en la caché los documentos de SAP Content Server. De este modo se optimiza el tráfico de red cuando los documentos se tienen que recuperar más de una vez desde distintas ubicaciones. Por lo general, SAP Cache Server debe encontrarse físicamente cerca del cliente que accede a este servidor.
+Hola servidor de caché de SAP es un componente basado en servidor adicional tooprovide obtienen acceso a too(cached) documentos localmente. Hola servidor de caché de SAP se almacena en memoria caché los documentos de Hola de un servidor de contenido de SAP. Se trata de tráfico de red de toooptimize si los documentos tienen toobe más de una vez recuperado desde distintas ubicaciones. por regla general Hello es que ese servidor de caché de SAP de hello tiene toobe toohello físicamente cerrar cliente que tiene acceso a Hola servidor de caché de SAP.
 
 Dispone de dos opciones:
 
-1. **El cliente es un sistema SAP de back-end** Si se configura un sistema SAP de back-end para acceder a SAP Content Server, dicho sistema SAP será un cliente. Puesto que el sistema SAP y SAP Content Server se implementan en la misma región de Azure –en el mismo centro de datos de Azure–, ambos se encuentran físicamente próximos entre sí. Por lo tanto, no hace falta disponer de un SAP Content Server dedicado. Los clientes de interfaz de usuario de SAP (SAP GUI o un explorador web) acceden directamente al sistema SAP y este recupera los documentos desde SAP Content Server.
-2. **El cliente es un explorador web local** SAP Content Server puede configurarse para acceder a él directamente mediante un explorador web. En este caso, un explorador web que se ejecute de forma local es un cliente de SAP Content Server. Se coloca un centro de datos local y el de Azure en diferentes ubicaciones físicas (lo ideal es que se encuentren próximos entre sí). Su centro de datos local se conecta a Azure a través del VPN de sitio a sitio o ExpressRoute de Azure. Aunque ambas opciones ofrecen conexión de red VPN segura a Azure, la conexión de red de sitio a sitio no ofrece un acuerdo de nivel de servicio de latencia y ancho de banda de red entre el centro de datos local y el de Azure. Para agilizar el acceso a los documentos, puede realizar una de las siguientes acciones:
-   1. Instalar el servidor de caché de SAP de forma local, cerca del explorador web local (opción de [esta][dbms-guide-900-sap-cache-server-on-premises] ilustración)
+1. **Cliente es un sistema SAP de back-end** si un sistema SAP de back-end está configurado tooaccess servidor de contenido de SAP, dicho sistema SAP es un cliente. Como el sistema SAP y el servidor de contenido de SAP se implementan en hello misma región de Azure: Hola mismo centro de datos de Azure: son físicamente cerrar tooeach otro. Por lo tanto, no hay ningún toohave necesidad de un servidor de caché dedicado de SAP. Hola de acceso de clientes (Explorador de GUI de SAP o web) de interfaz de usuario de SAP sistema SAP directamente y hello SAP sistema recupera documentos de hello servidor de contenido de SAP.
+2. **Cliente es un explorador de web local** Hola servidor de contenido de SAP puede ser configurado toobe hello web explorador obtener acceso directamente. En este caso, un explorador web que se ejecutan en local es un cliente de hello servidor de contenido de SAP. Centro de datos local y el centro de datos de Azure se colocan en diferentes ubicaciones físicas (lo ideal es que cerrar tooeach otros). El centro de datos local es tooAzure conectado a través de Azure VPN de sitio a sitio o ExpressRoute. Aunque ambas opciones ofrecen tooAzure de conexión de red VPN segura, conexión de red de sitio a sitio no ofrece un SLA de ancho de banda y la latencia de red entre el centro de datos de hello en local y Hola centro de datos de Azure. toospeed la toodocuments de acceso, puede hacer uno de hello siguientes:
+   1. Instalar servidor de caché de SAP locales, cierre el Explorador de web local toohello (opción [esto] [ dbms-guide-900-sap-cache-server-on-premises] figura)
    2. Configurar ExpressRoute de Azure, que ofrece una conexión de red dedicada de alta velocidad y baja latencia entre el centro de datos local y el centro de datos de Azure.
 
-![Opción de instalar el servidor de caché de SAP de forma local][dbms-guide-figure-900]
+![Opción tooinstall el servidor de caché de SAP local][dbms-guide-figure-900]
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Copia de seguridad y restauración
-Si configura SAP Content Server para almacenar archivos en la base de datos de SAP MaxDB, las consideraciones acerca del rendimiento y de procedimiento de copia de seguridad y restauración ya se describieron en los capítulos de SAP MaxDB [Copia de seguridad y restauración][dbms-guide-8.4.2] y [Consideraciones de rendimiento para copias de seguridad y restauraciones][dbms-guide-8.4.3].
+Si configura toostore los archivos del servidor de contenido de SAP hello en la base de datos de SAP MaxDB hello, consideraciones de procedimiento y el rendimiento de copia de seguridad/restauración Hola ya se describen en el capítulo de SAP MaxDB [de copia de seguridad y restauración] [ dbms-guide-8.4.2] y el capítulo [consideraciones de rendimiento de copia de seguridad y restauración][dbms-guide-8.4.3].
 
-Si configura SAP Content Server para almacenar archivos en el sistema de archivos, una opción es ejecutar de forma manual la copia de seguridad o la restauración de toda la estructura de archivos donde se encuentran los documentos. Al igual que las copias de seguridad y las restauraciones de SAP MaxDB, se recomienda disponer de un volumen de disco dedicado para realizar copias de seguridad.
+Si configura toostore los archivos del servidor de contenido de SAP hello en el sistema de archivos de hello, una opción es tooexecute manual copia de seguridad y restauración de estructura de archivo completo de Hola donde se encuentran los documentos de Hola. TooSAP similar MaxDB copia de seguridad/restauración, es recomendable toohave un volumen de disco dedicado para el propósito de copia de seguridad.
 
 #### <a name="other"></a>Otros
-Otras configuraciones específicas de SAP Content Server son transparentes para máquinas virtuales de Azure y se describen en diversos documentos y notas de SAP:
+Otras opciones específicas del servidor de contenido de SAP son máquinas virtuales tooAzure transparente y se describen en varios documentos y las notas de SAP:
 
 * <https://service.sap.com/contentserver>
 * Nota de SAP [1619726]  
 
-## <a name="specifics-to-ibm-db2-for-luw-on-windows"></a>Detalles de IBM DB2 para LUW en Windows
-Con Microsoft Azure, puede migrar fácilmente la aplicación SAP existente que se ejecuta en IBM DB2 para Linux, UNIX y Windows (LUW) a máquinas virtuales de Azure. Con SAP en IBM DB2 para LUW, los administradores y los desarrolladores pueden seguir usando las mismas herramientas de desarrollo y administración, disponibles de forma local.
-Se puede encontrar información general sobre la ejecución de SAP Business Suite en IBM DB2 para LUW en SAP Community Network: <https://scn.sap.com/community/db2-for-linux-unix-windows>.
+## <a name="specifics-tooibm-db2-for-luw-on-windows"></a>Detalles tooIBM DB2 para LUW en Windows
+Con Microsoft Azure, puede migrar fácilmente la aplicación SAP existente que se ejecuta en IBM DB2 para las máquinas virtuales de tooAzure Linux, UNIX y Windows (LUW). Con SAP en IBM DB2 para LUW, programadores y administradores la pueden seguir usando Hola mismas herramientas de desarrollo y administración que están disponibles en local.
+Información general sobre la ejecución de SAP Business Suite en IBM DB2 para LUW puede encontrarse en Hola red de comunidad de SAP (SCN) en <https://scn.sap.com/community/db2-for-linux-unix-windows>.
 
 Para más información y actualizaciones de SAP en DB2 para LUW en Azure, consulte la nota de SAP [2233094].
 
 ### <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 para Linux, UNIX y compatibilidad de versiones de Windows
 SAP en IBM DB2 para LUW en los servicios de máquina virtual de Microsoft Azure es compatible a partir de la versión 10.5 de DB2.
 
-Para más información de los tipos de máquina virtual de Azure y los productos de SAP compatibles, consulte la nota de SAP [1928533].
+Para obtener información sobre productos SAP y tipos de VM de Azure, consulte tooSAP Nota [1928533].
 
 ### <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Instrucciones de configuración de IBM DB2 para Linux, UNIX y Windows para instalaciones de SAP en máquinas virtuales de Azure
 #### <a name="storage-configuration"></a>Configuración de almacenamiento
-Todos los archivos de las bases de datos se deben almacenar en el sistema de archivos NTFS basado en discos VHD. Estos discos duros virtuales están montados en la máquina virtual de Azure y se basan en el almacenamiento de blob en páginas de Azure (<https://msdn.microsoft.com/library/azure/ee691964.aspx>).
-**NINGÚN** tipo de unidad de red o recurso compartido remoto, como los siguientes servicios de archivos de Azure, es compatible con archivos de bases de datos:
+Todos los archivos de base de datos deben almacenarse en el sistema de archivos NTFS de hello en función de los discos VHD. Estos discos duros virtuales son toohello montada VM de Azure y se basan en el almacenamiento de blobs de página de Azure (<https://msdn.microsoft.com/library/azure/ee691964.aspx>).
+Cualquier tipo de unidades de red o recursos compartidos remotos como Hola después de servicios de archivos de Azure es **no** admite archivos de base de datos:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-Si usa discos duros virtuales de Azure basados en el almacenamiento de blobs en páginas de Azure, las declaraciones realizadas en este documento en el capítulo [Estructura de una implementación de RDBMS][dbms-guide-2] también se aplican a las implementaciones de IBM DB2 para bases de datos LUW.
+Si usas discos duros virtuales de Azure basado en almacenamiento de blobs de página de Azure, hello las instrucciones realizadas en este documento en el capítulo [estructura de una implementación de RDBMS] [ dbms-guide-2] también se aplican toodeployments con hello IBM DB2 para LUW Base de datos.
 
-Como se explicó anteriormente en la parte general del documento, existen cuotas en el rendimiento IOPS para VHD de Azure. Las cuotas exactas varían según el tipo de máquina virtual que se utilice. Dispone de una lista con los tipos de máquina virtual y sus cuotas [aquí][virtual-machines-sizes].
+Como se explicó anteriormente en "parte general del documento de Hola" Hola, existen cuotas en el rendimiento IOPS para discos duros virtuales de Azure. las cuotas exacto de Hola dependen de Hola VM tipo utilizado. Dispone de una lista con los tipos de máquina virtual y sus cuotas [aquí][virtual-machines-sizes].
 
-Mientras la cuota actual de IOPS por disco sea suficiente, se pueden almacenar todos los archivos de base de datos en un solo VHD de Azure montado.
+Como Hola actual cuota IOPS por disco es suficiente, es posible toostore en que Hola a todos los archivos de base de datos una sola monta VHD de Azure.
 
-Para conocer las consideraciones de rendimiento, consulte también el capítulo "Data Safety and Performance Considerations for Database Directories" (Consideraciones de seguridad y rendimiento de directorios de bases de datos) en las guías de instalación de SAP.
+Para obtener un rendimiento consideraciones aludir toochapter "seguridad y rendimiento consideraciones para la base de datos de directorios de datos" en guías de instalación de SAP.
 
-También puede usar grupos de almacenamiento de Windows (solo disponibles en Windows Server 2012 y versiones posteriores) o crear secciones de Windows para Windows 2008 R2, como se describe en el capítulo [RAID de software][dbms-guide-2.2] de este documento, para crear un dispositivo lógico de gran tamaño en varios discos VHD montados.
-Para los discos que contienen rutas de acceso de almacenamiento de DB2 para directorios sapdata y saptmp, debe especificar un tamaño de sector de disco físico de 512 kB. Si usa bloques de almacenamiento de Windows, debe crearlos manualmente en la interfaz de la línea de comandos con el parámetro "-LogicalSectorSizeDefault". Para más información, consulte <https://technet.microsoft.com/library/hh848689.aspx>.
+Como alternativa, puede usar grupos de almacenamiento de Windows (solo disponible en Windows Server 2012 y versiones posteriores) o creación de bandas de Windows para Windows 2008 R2 como se describe en el capítulo [RAID de Software] [ dbms-guide-2.2] de este documento toocreate una gran dispositivo lógico a través de varios discos VHD montados.
+En los discos de Hola que contiene las rutas de acceso de almacenamiento de hello DB2 para los directorios de SAP y saptmp, debe especificar un tamaño de sector de disco físico de 512 KB. Al utilizar grupos de almacenamiento de Windows, debe crear Hola grupos de almacenamiento manualmente a través de la interfaz de línea de comandos mediante el parámetro hello "-LogicalSectorSizeDefault". Para más información, consulte <https://technet.microsoft.com/library/hh848689.aspx>.
 
 #### <a name="backuprestore"></a>Copia de seguridad y restauración
-La funcionalidad de copia de seguridad y restauración para IBM DB2 para LUW es compatible del mismo modo que en los sistemas operativos Windows Server y Hyper-V estándares.
+funcionalidad de copia de seguridad/restauración de Hello en IBM DB2 para LUW se admite en Hola igual forma que en Hyper-V y sistemas operativos Windows Server estándar.
 
 Debe asegurarse de seguir una estrategia establecida de copias de seguridad de bases de datos válida.
 
-Como en las implementaciones sin sistema operativo, el rendimiento de las copias de seguridad y las restauraciones depende de cuántos volúmenes puedan leerse en paralelo y el rendimiento que estos volúmenes puedan tener. Además, el consumo de CPU que se emplea en la compresión de copias de seguridad puede desempeñar un papel importante en las máquinas virtuales con solo 8 subprocesos de CPU como máximo. Por lo tanto, se pueden asumir los siguientes puntos:
+Como en las implementaciones sin sistema operativo, rendimiento de la copia de seguridad/restauración depende de cuántos volúmenes pueden leerse en paralelo y podría ser qué rendimiento Hola de esos volúmenes. Además, Hola consumo de CPU utilizado por la compresión de copia de seguridad puede desempeñan un papel importante en las máquinas virtuales con solo los subprocesos de CPU de too8. Por lo tanto, se pueden asumir los siguientes puntos:
 
-* Cuantos menos VHD se utilicen para almacenar los dispositivos de las bases de datos, menor será el rendimiento general de lectura.
-* Cuantos menos subprocesos de CPU haya en la máquina virtual, mayor será el impacto en la compresión de copias de seguridad.
-* Cuantos menos destinos (directorios de sección, VHD, etc.) en los que escribir la copia de seguridad haya, menor será el rendimiento.
+* Hello menos Hola número de discos duros virtuales utilizar dispositivos de base de datos de toostore hello, hello Hola cuanto menor sea el rendimiento global en la lectura
+* Hola menor número de Hola de subprocesos de CPU en hello VM, Hola más graves repercusiones de Hola de compresión de copia de seguridad
+* Hola menos destinos (directorios de Stripe, discos duros virtuales) toowrite Hola copia de seguridad, menor rendimiento de Hola Hola
 
-Para aumentar la cantidad de destinos en los que escribir, existen dos opciones que se pueden usar o combinar según sus necesidades:
+número de Hola de tooincrease de toowrite de destinos para, dos opciones pueden ser usar/combinan según sus necesidades:
 
-* Seccionar el volumen de destino de la copia de seguridad en varios VHD montados con el fin de mejorar el rendimiento de IOPS en ese volumen seccionado
-* Uso de más de un directorio de destino en el que escribir copias de seguridad
+* Creación de bandas volumen de destino de copia de seguridad de hello en varios discos duros virtuales montados en el rendimiento IOPS de orden tooimprove hello en ese volumen seccionado
+* Con más de un destino directory toowrite Hola copia de seguridad para
 
 #### <a name="high-availability-and-disaster-recovery"></a>Alta disponibilidad y recuperación ante desastres
 Microsoft Cluster Server (MSCS) no es compatible.
 
-La alta disponibilidad y la recuperación ante desastres (HADR) de DB2 sí son compatibles. Si las máquinas virtuales de la configuración de alta disponibilidad tienen una resolución de nombres correcta, la configuración de Azure no será diferente a cualquier otra realizada de forma local. No se recomienda depender exclusivamente de la resolución de direcciones IP.
+La alta disponibilidad y la recuperación ante desastres (HADR) de DB2 sí son compatibles. Si dispone de máquinas virtuales de Hola de configuración de alta disponibilidad de hello funciona la resolución de nombres, el programa de instalación de hello en Azure no es diferente de cualquier instalación que se hace de forma local. No se recomienda toorely en sólo la resolución de IP.
 
-No utilice la replicación geográfica de Tienda de Azure. Para más información, consulte los capítulos [Microsoft Azure Storage][dbms-guide-2.3] y [Alta disponibilidad y recuperación ante desastres con máquinas virtuales de Azure][dbms-guide-3].
+No utilice la replicación geográfica de Tienda de Azure. Para obtener más información, consulte toochapter [almacenamiento de Microsoft Azure] [ dbms-guide-2.3] y el capítulo [alta disponibilidad y recuperación ante desastres con máquinas virtuales de Azure] [ dbms-guide-3].
 
 #### <a name="other"></a>Otros
-Todos los demás temas generales, como los conjuntos de disponibilidad de Azure o la supervisión de SAP, se aplican como se describen en los tres primeros capítulos de este documento para implementaciones de máquinas virtuales también con IBM DB2 para LUW.
+Todos los demás temas generales como conjuntos de disponibilidad de Azure y SAP supervisión de aplicaciones se aplican tal como se describe en hello tres primeros capítulos de este documento para las implementaciones de máquinas virtuales con IBM DB2 para LUW así.
 
-Consulte también el capítulo [Resumen general de SQL Server para SAP en Azure][dbms-guide-5.8].
+Consulte también toochapter [generales de SQL Server para SAP en Azure resumen][dbms-guide-5.8].

@@ -1,6 +1,6 @@
 ---
-title: "Varias direcciones IP para máquinas virtuales de Azure - Plantilla | Microsoft Azure"
-description: "Aprenda a asignar varias direcciones IP a una máquina virtual con una plantilla de Azure Resource Manager."
+title: "aaaMultiple las direcciones IP para máquinas virtuales de Azure - plantilla | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooassign varias direcciones IP de máquina virtual de tooa usando una plantilla de Azure Resource Manager."
 documentationcenter: 
 author: jimdial
 manager: timlt
@@ -14,89 +14,89 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
-ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e7660257b2d5c7da4b8b86771abe51a2c5012fa9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Asignación de varias direcciones IP a máquinas virtuales con una plantilla de Azure Resource Manager
+# <a name="assign-multiple-ip-addresses-toovirtual-machines-using-an-azure-resource-manager-template"></a>Asignar varias direcciones IP máquinas toovirtual usando una plantilla de Azure Resource Manager
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-En este artículo se describe cómo crear una máquina virtual con el modelo de implementación de Azure Resource Manager mediante una plantilla de Resource Manager. No se pueden asignar varias direcciones IP públicas y privadas a la misma NIC al implementar una máquina virtual a través del modelo de implementación clásica. Para información acerca de los modelos de implementación de Azure, lea el artículo [Understand deployment models](../resource-manager-deployment-model.md) (Descripción de los modelos de implementación).
+Este artículo explica cómo toocreate una máquina virtual (VM) a través de la implementación de Azure Resource Manager Hola modelo utilizando una plantilla de administrador de recursos. Varias direcciones IP públicas y privadas no se puede asignar toohello misma NIC al implementar una máquina virtual a través del modelo de implementación clásica de Hola. más información acerca de los modelos de implementación de Azure, lea hello toolearn [comprender los modelos de implementación](../resource-manager-deployment-model.md) artículo.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name="template-description"></a>Descripción de la plantilla
 
-La implementación de una plantilla le permite crear rápida y coherentemente recursos de Azure con valores de configuración diferentes. Lea el artículo [Tutorial de la plantilla de Resource Manager](../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-network%2ftoc.json) si no está familiarizado con las plantillas de Azure Resource Manager. La plantilla [Implementación de una máquina virtual con varias direcciones IP](https://azure.microsoft.com/resources/templates/101-vm-multiple-ipconfig) se utiliza en este artículo.
+Implementación de una plantilla permite tooquickly y sistemáticamente crear recursos de Azure con los valores de configuración diferente. Hola de lectura [tutorial de la plantilla de administrador de recursos](../azure-resource-manager/resource-manager-template-walkthrough.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artículo si no está familiarizado con las plantillas de Azure Resource Manager. Hola [implementar una máquina virtual con varias direcciones IP](https://azure.microsoft.com/resources/templates/101-vm-multiple-ipconfig) plantilla se utiliza en este artículo.
 
-<a name="resources"></a>La implementación de la plantilla crea los siguientes recursos:
+<a name="resources"></a>Plantilla de implementación Hola crea Hola recursos siguientes:
 
 |Recurso|Nombre|Descripción|
 |---|---|---|
-|Interfaz de red|*myNic1*|Las tres configuraciones IP que se describe en la sección de escenario de este artículo se crean y se asignan a esta NIC.|
-|Recurso de direcciones IP públicas|Se crean dos: *myPublicIP* y *myPublicIP2*|Estos recursos son direcciones IP públicas estáticas asignadas y se asignan a las configuraciones IP *IPConfig-1* y *2 IPConfig* descritas en el escenario.|
+|Interfaz de red|*myNic1*|tres configuraciones de IP Hola que se describe en la sección de escenario de Hola de este artículo se crean y se asignan toothis NIC.|
+|Recurso de direcciones IP públicas|Se crean dos: *myPublicIP* y *myPublicIP2*|Estos recursos se asignan direcciones IP públicas estáticas y se asignan toohello *IPConfig-1* y *2 IPConfig* configuraciones IP descritas en hello escenario.|
 |máquina virtual|*myVM1*|Una máquina virtual DS3 estándar.|
 |Red virtual|*myVNet1*|Una red virtual con una subred con el nombre *mySubnet*.|
-|Cuenta de almacenamiento|Único en la implementación|Una cuenta de almacenamiento.|
+|Cuenta de almacenamiento|Implementación de toohello único|Una cuenta de almacenamiento.|
 
-<a name="parameters"></a>Al implementar la plantilla, debe especificar los valores para los parámetros siguientes:
+<a name="parameters"></a>Al implementar la plantilla de hello, debe especificar valores para hello parámetros siguientes:
 
 |Nombre|Descripción|
 |---|---|
-|adminUsername|Nombre de usuario de administrador. El nombre de usuario debe cumplir con los [requisitos de nombre de usuario de Azure](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-|adminPassword|Contraseña de administrador: la contraseña de administrador debe cumplir con los [requisitos de contraseña de Azure](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-|dnsLabelPrefix|Nombre DNS para PublicIPAddressName1. El nombre DNS se resolverá como una de las direcciones IP públicas asignadas a la máquina virtual. El nombre debe ser único dentro de la región de Azure (ubicación) en la que crea la máquina virtual.|
-|dnsLabelPrefix1|Nombre DNS para PublicIPAddressName2. El nombre DNS se resolverá como una de las direcciones IP públicas asignadas a la máquina virtual. El nombre debe ser único dentro de la región de Azure (ubicación) en la que crea la máquina virtual.|
-|OSVersion|La versión de Windows o Linux para la máquina virtual. El sistema operativo es una imagen totalmente revisada de la versión de Windows o Linux determinada seleccionada.|
-|imagePublisher|El publicador de la imagen de Windows o Linux para la máquina virtual seleccionada.|
-|imageOffer|La imagen de Windows o Linux para la máquina virtual seleccionada.|
+|adminUsername|Nombre de usuario de administrador. nombre de usuario de Hello debe cumplir con [requisitos de nombre de usuario Azure](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
+|adminPassword|Contraseña de administrador contraseña Hola debe cumplir con [requisitos de contraseña de Azure](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+|dnsLabelPrefix|Nombre DNS para PublicIPAddressName1. nombre DNS de Hello resolverá tooone de direcciones IP públicas Hola asignado toohello máquina virtual. Hello nombre debe ser único dentro de hello Azure región (ubicación) crear Hola VM en.|
+|dnsLabelPrefix1|Nombre DNS para PublicIPAddressName2. nombre DNS de Hello resolverá tooone de direcciones IP públicas Hola asignado toohello máquina virtual. Hello nombre debe ser único dentro de hello Azure región (ubicación) crear Hola VM en.|
+|OSVersion|versión de Windows o Linux de Hola para hello máquina virtual. sistema operativo de Hello es una imagen totalmente revisada de hello dado la versión de Windows o Linux seleccionado.|
+|imagePublisher|publicador de imagen de Windows o Linux de Hola para hello seleccionado máquina virtual.|
+|imageOffer|imagen de Windows o Linux de Hola para hello selecciona máquina virtual.|
 
-Cada uno de los recursos implementados por la plantilla se configura con varias configuraciones predeterminadas. Puede ver estos valores a través de cualquiera de los métodos siguientes:
+Cada uno de los recursos de hello implementados por plantilla de Hola se configura con varias configuraciones predeterminadas. Puede ver estos valores a través de cualquiera de los siguientes métodos de hello:
 
-- **Ver la plantilla en GitHub:** si está familiarizado con las plantillas, puede ver la configuración dentro de la [plantilla](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json).
-- **Ver la configuración después de implementar:** si no está familiarizado con las plantillas, puede implementar la plantilla mediante pasos de una de las secciones siguientes y, a continuación, ver la configuración después de la implementación.
+- **Plantilla de vista de hello en GitHub:** si está familiarizado con las plantillas, puede ver configuración de Hola Hola [plantilla](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json).
+- **Ver la configuración de hello después de implementar:** si no está familiarizado con las plantillas, puede implementar la plantilla de hello mediante pasos de una de las siguientes secciones de Hola y, a continuación, ver configuración de Hola después de la implementación.
 
-Puede usar Azure Portal, PowerShell o la interfaz de la línea de comandos (CLI) de Azure para implementar la plantilla. Todos los métodos generan el mismo resultado. Para implementar la plantilla, complete los pasos en una de las siguientes secciones:
+Puede usar Hola portal de Azure, PowerShell o plantilla de hello toodeploy de hello Azure interfaz de línea de comandos (CLI). Todos los métodos generan Hola mismo resultado. plantilla de hello toodeploy, Hola completa los pasos en una de las siguientes secciones de hello:
 
-## <a name="deploy-using-the-azure-portal"></a>Implementación mediante Azure Portal
+## <a name="deploy-using-hello-azure-portal"></a>La implementación con hello portal de Azure
 
-Para implementar la plantilla mediante Azure Portal, complete los siguientes pasos:
+plantilla de Hola de toodeploy con hello portal de Azure, Hola completa siguiendo los pasos:
 
-1. Modifique la plantilla, si lo desea. La plantilla implementa los recursos y la configuración que aparece en la sección [recursos](#resources) de este artículo. Para obtener más información sobre las plantillas y cómo crearlas, lea el artículo [Creación de plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-2. Implemente la plantilla con uno de los métodos siguientes:
-    - **Seleccionar la plantilla en el portal:** complete los pasos descritos en el artículo [Implementación de recursos desde plantilla personalizada](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template). Elija la plantilla preexistente denominada *101-vm-varios-ipconfig*.
-    - **Directamente:** haga clic en el botón siguiente para abrir la plantilla directamente en el portal:<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+1. Modificar plantilla de hello, si lo desea. plantilla de Hello implementa recursos hello y configuración indicada en hello [recursos](#resources) sección de este artículo. toolearn más acerca de las plantillas y cómo tooauthor usarlas, lea la sección hello [plantillas del Administrador de recursos de Azure de creación](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json)artículo.
+2. Implementar la plantilla de hello con uno de los siguientes métodos de hello:
+    - **Plantilla de SELECT hello en el portal de Hola:** Hola completa los pasos de hello [implementar los recursos de plantilla personalizada](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template) artículo. Elegir plantilla preexistente Hola denominado *101-vm-varios-ipconfig*.
+    - **Directamente:** haga clic en hello sigue botón tooopen Hola template directamente en el portal de hello:<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-multiple-ipconfig%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-Independientemente del método que elija, deberá suministrar valores para los [parámetros](#parameters) enumerados anteriormente en este artículo. Una vez que se implemente la máquina virtual, conéctese a ella y agregue las direcciones IP privadas al sistema operativo que implementó completando los pasos en la sección [Incorporación de direcciones IP a un sistema operativo de la máquina virtual](#os-config) de este artículo. No agregue las direcciones IP públicas al sistema operativo.
+Independientemente del método hello elija, necesitará toosupply valores para hello [parámetros](#parameters) enumeradas anteriormente en este artículo. Después de implementa Hola VM, toohello VM se conectan y agregar pasos Hola privada IP direcciones toohello sistema operativo implementado siguiendo Hola Hola [sistema operativo de la VM de tooa las direcciones IP agregar](#os-config) sección de este artículo. No agregue el sistema de operativo para toohello el público direcciones IP Hola.
 
 ## <a name="deploy-using-powershell"></a>Implementación mediante PowerShell
 
-Para implementar la plantilla mediante PowerShell, complete los siguientes pasos:
+plantilla de hello toodeploy con PowerShell, Hola completa pasos:
 
-1. Implemente la plantilla siguiendo los pasos descritos en el artículo [Implementación de una plantilla con PowerShell](../azure-resource-manager/resource-group-template-deploy-cli.md). El artículo describe varias opciones para la implementación de una plantilla. Si decide implementar con `-TemplateUri parameter`, e identificador URI de esta plantilla es *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Si decide implementar con el parámetro `-TemplateFile`, copie el contenido del [archivo de plantilla](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) desde GitHub en un nuevo archivo en su equipo. Modifique el contenido de la plantilla, si lo desea. La plantilla implementa los recursos y la configuración que aparece en la sección [recursos](#resources) de este artículo. Para más información sobre las plantillas y cómo crearlas, lea el artículo [Creación de plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+1. Plantilla de hello implementar siguiendo los pasos de Hola Hola [implementar una plantilla con PowerShell](../azure-resource-manager/resource-group-template-deploy-cli.md) artículo. artículo de Hola describen varias opciones para la implementación de una plantilla. Si elige toodeploy con hello `-TemplateUri parameter`, Hola URI para esta plantilla es *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Si elige toodeploy con hello `-TemplateFile` parámetro, copie el contenido de Hola de hello [archivo de plantilla](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) desde GitHub en un nuevo archivo en su equipo. Modificar el contenido de la plantilla de hello, si lo desea. plantilla de Hello implementa recursos hello y configuración indicada en hello [recursos](#resources) sección de este artículo. toolearn más acerca de las plantillas y cómo tooauthor usarlas, lea la sección hello [plantillas del Administrador de recursos de Azure de creación ](../azure-resource-manager/resource-group-authoring-templates.md)artículo.
 
-    Independientemente de la opción que elija para la implementación de la plantilla, debe proporcionar valores para los valores de parámetro que se enumeran en la sección [parámetros](#parameters) de este artículo. Si decide proporcionar parámetros mediante un archivo de parámetros, copie el contenido del [archivo de parámetros](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) de GitHub en un nuevo archivo en el equipo. Modifique los valores en el archivo. Use el archivo que creó como valor para el parámetro `-TemplateParameterFile`.
+    Independientemente de que elija toodeploy Hola plantilla con la opción de hello, debe suministrar valores para los valores de parámetro hello enumerados en hello [parámetros](#parameters) sección de este artículo. Si decide que los parámetros de toosupply mediante un archivo de parámetros, copie el contenido de Hola de hello [archivo de parámetros](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) desde GitHub en un nuevo archivo en el equipo. Modificar valores de hello en el archivo hello. Utilizar el archivo de Hola que creó como valor de Hola para hello `-TemplateParameterFile` parámetro.
 
-    Para determinar los valores válidos para los parámetros de OSVersion, ImagePublisher e imageOffer, complete los pasos del artículo sobre [navegación y selección de imágenes de la máquina virtual de Windows](../virtual-machines/windows/cli-ps-findimage.md).
+    valores válidos de toodetermine Hola OSVersion, ImagePublisher y parámetros de imageOffer, Hola completa los pasos de hello [navegue y seleccione artículo de imágenes de máquina virtual de Windows](../virtual-machines/windows/cli-ps-findimage.md) artículo.
 
     >[!TIP]
-    >Si no está seguro de si dnslabelprefix está disponible, escriba el comando `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` para averiguarlo. Si está disponible, el comando devolverá `True`.
+    >Si no está seguro de si está disponible un dnslabelprefix, escriba Hola `Test-AzureRmDnsAvailability -DomainNameLabel <name-you-want-to-use> -Location <location>` toofind comando out. Si está disponible, el comando de hello devolverá `True`.
 
-2. Una vez que se implemente la máquina virtual, conéctese a ella y agregue las direcciones IP privadas al sistema operativo que implementó completando los pasos en la sección [Incorporación de direcciones IP a un sistema operativo de la máquina virtual](#os-config) de este artículo. No agregue las direcciones IP públicas al sistema operativo.
+2. Después de implementa Hola VM, toohello VM se conectan y agregar pasos Hola privada IP direcciones toohello sistema operativo implementado siguiendo Hola Hola [sistema operativo de la VM de tooa las direcciones IP agregar](#os-config) sección de este artículo. No agregue el sistema de operativo para toohello el público direcciones IP Hola.
 
-## <a name="deploy-using-the-azure-cli"></a>Implementación mediante la CLI de Azure
+## <a name="deploy-using-hello-azure-cli"></a>La implementación con hello CLI de Azure
 
-Para implementar la plantilla mediante la CLI de Azure 1.0, complete los siguientes pasos:
+plantilla de hello toodeploy con hello Azure CLI 1.0, Hola completa siguiendo los pasos:
 
-1. Implemente la plantilla siguiendo los pasos descritos en el artículo [Implementación de una plantilla con la CLI de Azure](../azure-resource-manager/resource-group-template-deploy-cli.md). El artículo describe varias opciones para la implementación de una plantilla. Si decide implementar con `--template-uri` (-f), e identificador URI de esta plantilla es *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Si decide implementar con el parámetro `--template-file` (-f), copie el contenido del [archivo de plantilla](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) desde GitHub en un nuevo archivo en su equipo. Modifique el contenido de la plantilla, si lo desea. La plantilla implementa los recursos y la configuración que aparece en la sección [recursos](#resources) de este artículo. Para más información sobre las plantillas y cómo crearlas, lea el artículo [Creación de plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+1. Plantilla de hello implementar siguiendo los pasos de Hola Hola [implementar una plantilla con hello Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) artículo. artículo de Hola describen varias opciones para implementar la plantilla de Hola. Si elige toodeploy con hello `--template-uri` (-f), Hola URI para esta plantilla es *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Si elige toodeploy con hello `--template-file` (-f) parámetro, copie el contenido de Hola de hello [archivo de plantilla](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) desde GitHub en un nuevo archivo en su equipo. Modificar el contenido de la plantilla de hello, si lo desea. plantilla de Hello implementa recursos hello y configuración indicada en hello [recursos](#resources) sección de este artículo. toolearn más acerca de las plantillas y cómo tooauthor usarlas, lea la sección hello [plantillas del Administrador de recursos de Azure de creación ](../azure-resource-manager/resource-group-authoring-templates.md)artículo.
 
-    Independientemente de la opción que elija para la implementación de la plantilla, debe proporcionar valores para los valores de parámetro que se enumeran en la sección [parámetros](#parameters) de este artículo. Si decide proporcionar parámetros mediante un archivo de parámetros, copie el contenido del [archivo de parámetros](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) de GitHub en un nuevo archivo en el equipo. Modifique los valores en el archivo. Use el archivo que creó como valor para el parámetro `--parameters-file` (-e).
+    Independientemente de que elija toodeploy Hola plantilla con la opción de hello, debe suministrar valores para los valores de parámetro hello enumerados en hello [parámetros](#parameters) sección de este artículo. Si decide que los parámetros de toosupply mediante un archivo de parámetros, copie el contenido de Hola de hello [archivo de parámetros](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) desde GitHub en un nuevo archivo en el equipo. Modificar valores de hello en el archivo hello. Utilizar el archivo de Hola que creó como valor de Hola para hello `--parameters-file` (-e) parámetro.
 
-    Para determinar los valores válidos para los parámetros de OSVersion, ImagePublisher e imageOffer, complete los pasos del artículo sobre [navegación y selección de imágenes de la máquina virtual de Windows](../virtual-machines/windows/cli-ps-findimage.md).
+    valores válidos de toodetermine Hola OSVersion, ImagePublisher y parámetros de imageOffer, Hola completa los pasos de hello [navegue y seleccione artículo de imágenes de máquina virtual de Windows](../virtual-machines/windows/cli-ps-findimage.md) artículo.
 
-2. Una vez que se implemente la máquina virtual, conéctese a ella y agregue las direcciones IP privadas al sistema operativo que implementó completando los pasos en la sección [Incorporación de direcciones IP a un sistema operativo de la máquina virtual](#os-config) de este artículo. No agregue las direcciones IP públicas al sistema operativo.
+2. Después de implementa Hola VM, toohello VM se conectan y agregar pasos Hola privada IP direcciones toohello sistema operativo implementado siguiendo Hola Hola [sistema operativo de la VM de tooa las direcciones IP agregar](#os-config) sección de este artículo. No agregue el sistema de operativo para toohello el público direcciones IP Hola.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

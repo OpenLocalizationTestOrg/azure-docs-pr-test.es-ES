@@ -1,5 +1,5 @@
 ---
-title: "Introducción a Web Apps | Microsoft Docs"
+title: "información general de aplicaciones de aaaWeb | Documentos de Microsoft"
 description: "Contenido de introducción a las aplicaciones Web de portal de Azure de la Ayuda"
 services: app-service
 author: sewatson
@@ -8,19 +8,19 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: e48c591b94d7f132c49d4cda805bcf4cbd2e7d98
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 57d194a3013c7ad14a75691f3e6a366c218e8367
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="web-apps-documentation"></a>Documentación de Web Apps
 
-Azure Web Apps le permite compilar y hospedar aplicaciones web en el lenguaje de programación que prefiera sin tener que administrar la infraestructura. Ofrece escalado automático y alta disponibilidad, es compatible con Windows y Linux, y permite implementaciones automatizadas desde GitHub, Visual Studio Team Services o cualquier repositorio Git. Aprenda a usar Azure Web Apps con nuestros inicios rápidos, tutoriales y ejemplos.
+Las aplicaciones Web de Azure permite toobuild y host de aplicaciones web en el lenguaje de su elección de programación sin tener que administrar la infraestructura de Hola. Ofrece escalado automático y alta disponibilidad, es compatible con Windows y Linux, y permite implementaciones automatizadas desde GitHub, Visual Studio Team Services o cualquier repositorio Git. Obtenga información acerca de cómo toouse aplicaciones Web de Azure con nuestros tutoriales rápidos, tutoriales y ejemplos.
 
 ## <a name="5-minute-quickstarts"></a>Inicios rápidos en 5 minutos
 
-Aprenda a implementar la primera aplicación en la nube mediante Web Apps:
+Obtenga información acerca de cómo toodeploy su primer toohello de aplicación en la nube con las aplicaciones Web:
 
 - [.NET](/azure/app-service-web/app-service-web-get-started-dotnet)
 - [Node.js](/azure/app-service-web/app-service-web-get-started-nodejs)
@@ -31,11 +31,11 @@ Aprenda a implementar la primera aplicación en la nube mediante Web Apps:
 
 ## <a name="step-by-step-tutorials"></a>Tutoriales detallados
 
-Aprenda a implementar, administrar y supervisar aplicaciones web seguras en Azure.
+Obtenga información acerca de cómo toodeploy, administrar y supervisar aplicaciones web seguras en Azure.
 
 - Creación de una aplicación mediante [.NET con Azure SQL DB](/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase) o [Node.js con MongoDB](/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app)
-- [Asignar un dominio personalizado existente a la aplicación](/azure/app-service-web/app-service-web-tutorial-custom-domain)
-- [Enlace de un certificado SSL existente a la aplicación](/azure/app-service-web/app-service-web-tutorial-custom-SSL)
+- [Asignar una aplicación existente de tooyour de dominio personalizado](/azure/app-service-web/app-service-web-tutorial-custom-domain)
+- [Enlazar una aplicación de tooyour de certificado SSL existente](/azure/app-service-web/app-service-web-tutorial-custom-SSL)
 
 ## <a name="free-pluralsight-video-training"></a>Vídeo gratuito de aprendizaje de PluralSight
 
@@ -44,12 +44,12 @@ Aprenda a implementar, administrar y supervisar aplicaciones web seguras en Azur
 
 ## <a name="samples"></a>Muestras
 
-Busque scripts para administrar las tareas más habituales.
+Buscar secuencias de comandos toomanage las tareas comunes.
 
 - [CLI de Azure](/azure/app-service-web/app-service-cli-sample)
 - [Azure PowerShell](/azure/app-service-web/app-service-powershell-samples)
 
 ## <a name="more"></a>Más
 
-- [Visite la documentación para obtener más información](/azure/app-service-web/index)
+- [Visite toolearn documentación más](/azure/app-service-web/index)
 - [Obtenga información acerca de todos los servicios de Azure](https://aka.ms/j3wr7y)

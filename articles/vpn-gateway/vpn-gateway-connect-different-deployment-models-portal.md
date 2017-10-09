@@ -1,6 +1,6 @@
 ---
-title: "Conexión de redes virtuales clásicas a redes virtuales de Azure Resource Manager: portal | Microsoft Docs"
-description: "Aprenda a crear una conexión VPN entre redes virtuales clásicas y redes de Resource Manager mediante la Puerta de enlace de VPN y el portal"
+title: "Conectar redes virtuales clásicas tooAzure VNets el Administrador de recursos: Portal | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate una conexión VPN entre clásico redes virtuales y VNets el Administrador de recursos mediante la puerta de enlace VPN y el portal de Hola"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-ms.openlocfilehash: 1b7b67ec28986b7c20b3e990e3565265f74c28e6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bef63b4e829335b2e1a9434a35ebfe33b4fd7373
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Conexión de redes virtuales a partir de diferentes modelos de implementación con el portal
+# <a name="connect-virtual-networks-from-different-deployment-models-using-hello-portal"></a>Conectar redes virtuales de diferentes modelos de implementación mediante el portal de Hola
 
-Este artículo muestra cómo conectar redes virtuales clásicas a redes virtuales de Resource Manager para permitir que los recursos que se encuentran en modelos de implementación independientes se comuniquen entre sí. En los pasos de este artículo se usa fundamentalmente Azure Portal, pero también se puede crear esta configuración con PowerShell si se selecciona el artículo en esta lista.
+Este artículo muestra cómo tooconnect clásico redes virtuales tooResource Manager VNets tooallow Hola recursos ubicados en hello toocommunicate de modelos de implementación independiente entre sí. pasos de Hello en este artículo usan principalmente Hola portal de Azure, pero también puede crear esta configuración con PowerShell Hola seleccionando artículo Hola de esta lista.
 
 > [!div class="op_single_selector"]
 > * [Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -31,19 +31,19 @@ Este artículo muestra cómo conectar redes virtuales clásicas a redes virtuale
 > 
 > 
 
-La conexión de una red virtual clásica a una red virtual de Resource Manager es similar a la conexión de una red virtual a una ubicación de sitio local. Ambos tipos de conectividad usan una puerta de enlace de VPN para proporcionar un túnel seguro con IPsec/IKE. Puede crear una conexión entre redes virtuales que estén en diferentes suscripciones y en diferentes regiones. También puede conectar redes virtuales que tengan ya conexiones a redes locales, siempre que la puerta de enlace con la que se hayan configurado sea dinámica o basada en ruta. Para más información acerca de las conexiones de red virtual a red virtual, consulte [P+F sobre conexiones de red virtual a red virtual](#faq) al final de este artículo. 
+Conectar un tooa de red virtual clásica VNet el Administrador de recursos es similar tooconnecting una ubicación de sitio de red virtual tooan local. Ambos tipos de conectividad usan un tooprovide de puerta de enlace VPN un túnel seguro mediante IPsec/IKE. Puede crear una conexión entre redes virtuales que estén en diferentes suscripciones y en diferentes regiones. También puede conectar redes virtuales que ya tengan redes locales tooon de conexiones, siempre que sea de puerta de enlace de Hola que les ha configurado dinámica o basadas en enrutamiento. Para obtener más información acerca de las conexiones de red virtual a red virtual, vea hello [P+F de red virtual a red virtual](#faq) final Hola de este artículo. 
 
-Si las redes virtuales están en la misma región, es posible que quiera conectarlas mediante emparejamiento de VNET. El emparejamiento de VNET no usa VPN Gateway. Para más información, consulte [Emparejamiento de VNET](../virtual-network/virtual-network-peering-overview.md). 
+Si sus redes virtuales están en hello misma región, puede que desee tooinstead considerar realizar la conexión con el intercambio de tráfico de red virtual. El emparejamiento de VNET no usa VPN Gateway. Para más información, consulte [Emparejamiento de VNET](../virtual-network/virtual-network-peering-overview.md). 
 
 ### <a name="prerequisites"></a>Requisitos previos
 
-* En estos pasos se presume que ya se crearon ambas redes virtuales. Si usa este artículo como ejercicio y no tiene redes virtuales, los pasos incluyen vínculos que le ayudarán a crearlas.
-* Compruebe que los intervalos de direcciones de las redes virtuales no se superponen entre sí ni con alguno de los intervalos de otras conexiones con las que puedan estar conectadas las puertas de enlace.
-* Instale los cmdlets de PowerShell más recientes para Resource Manager y Service Management (clásico). En este artículo se usan Azure Portal y PowerShell. PowerShell es necesario para crear la conexión desde la red virtual clásica a la red virtual de Resource Manager. Para más información, vea [Instalación y configuración de Azure PowerShell](/powershell/azure/overview). 
+* En estos pasos se presume que ya se crearon ambas redes virtuales. Si está utilizando este artículo como un ejercicio y no tiene redes virtuales, hay vínculos en hello pasos toohelp puede crearlas.
+* Compruebe que los intervalos de direcciones de Hola para hello que redes virtuales no se superponen entre sí, o se superponen con ninguno de hello intervalos para otras conexiones que hello las puertas de enlace pueden estar conectados a.
+* Instalar cmdlets de PowerShell más recientes de hello para el Administrador de recursos y administración de servicios (clásico). En este artículo, utilizamos Hola portal de Azure y PowerShell. PowerShell es necesario toocreate Hola conexión de hello toohello clásico de red virtual VNet el Administrador de recursos. Para obtener más información, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview). 
 
 ### <a name="values"></a>Configuración de ejemplo
 
-Puede usar estos valores para crear un entorno de prueba o hacer referencia a ellos para comprender mejor los ejemplos de este artículo.
+Puede usar estos toocreate valores un entorno de prueba, o consulte toothem toobetter comprender los ejemplos de hello en este artículo.
 
 **Red virtual clásica**
 
@@ -72,74 +72,74 @@ Nombre de conexión = RMtoClassic
 
 ### <a name="connection-overview"></a>Información general sobre la conexión
 
-Para esta configuración se crea una conexión de puerta de enlace VPN a través de un túnel VPN de IPsec/IKE entre las redes virtuales. Asegúrese de que ninguno de los intervalos de red virtual se superponga con otro o con cualquiera de las redes locales a las que se conectan.
+Para esta configuración, crea una conexión de puerta de enlace VPN a través de un túnel VPN de IPsec/IKE entre redes virtuales de Hola. Asegúrese de que ninguno de los intervalos de red virtual se superponen entre sí o con cualquiera de las redes locales de Hola que se conectan.
 
-En la tabla siguiente se muestra un ejemplo de cómo se definen los sitios locales y las redes virtuales de ejemplo:
+Hello tabla siguiente muestra un ejemplo de cómo se definen el ejemplo hello redes virtuales y sitios locales:
 
-| Virtual Network | Espacio de direcciones | Region | Se conecta a un sitio de red local |
+| Virtual Network | Espacio de direcciones | Region | Se conecta el sitio de red toolocal |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |Oeste de EE. UU. | RMVNetLocal (192.168.0.0/16) |
 | RMVNet | (192.168.0.0/16) |Este de EE. UU. |ClassicVNetLocal (10.0.0.0/24) |
 
-## <a name="classicvnet"></a>1. Configuración de la red virtual clásica
+## <a name="classicvnet"></a>1. Configurar opciones de red virtual clásicas de Hola
 
-En esta sección se creará la red local (sitio local) y la puerta de enlace de la red virtual para la red virtual clásica. Si no tiene una red virtual clásica y lleva a cabo estos pasos como ejercicio, puede crear una red virtual según [este artículo](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) y los valores de configuración de [ejemplo](#values) indicados anteriormente.
+En esta sección, creará Hola local (sitio local) de red y puerta de enlace de red virtual de hello para la red virtual clásica. Si no tiene una red virtual clásica y se ejecutan estos pasos como un ejercicio, puede crear una red virtual mediante [este artículo](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) hello y [ejemplo](#values) valores de configuración anteriores.
 
-Al usar el portal para crear una red virtual clásica, debe ir a la hoja de la red virtual siguiendo los pasos siguientes; en caso contrario, no aparece la opción para crear una red virtual clásica:
+Cuando se usa Hola portal toocreate una red virtual clásica, debe navegar toohello hoja de red virtual mediante Hola siguiendo los pasos, en caso contrario, no aparece Hola opción toocreate una red virtual clásica:
 
-1. Haga clic en "+" para abrir la hoja "Nuevo".
-2. En el campo "Buscar en el Marketplace", escriba "Red virtual". Si en su lugar, selecciona Redes -> Red virtual, no obtendrá la opción para crear una red virtual clásica.
-3. En la lista de resultados, busque "Red virtual" y haga clic en él para abrir la hoja Red virtual. 
-4. En la hoja de la red virtual, seleccione "Clásica" para crear una red virtual clásica. 
+1. Haga clic en hello '+' hoja 'New' de tooopen Hola.
+2. En campo de hello 'Busque en marketplace hello', escriba 'Red Virtual'. Si en su lugar, seleccione las redes -> red Virtual, no podrá obtener Hola opción toocreate una red virtual clásica.
+3. Busque 'Red Virtual' de hello devuelve la lista y haga clic en hoja de red Virtual de tooopen Hola. 
+4. En la hoja de la red virtual de hello, seleccione 'Clásica' toocreate una red virtual clásica. 
 
-Si ya tiene una red virtual con una puerta de enlace VPN, compruebe que la puerta de enlace sea dinámica. Si es estática, primero debe eliminar la puerta de enlace VPN y luego continuar.
+Si ya tiene una red virtual con una puerta de enlace VPN, compruebe que esa puerta de enlace de hello es dinámico. Si es estático, primero debe eliminar la puerta de enlace VPN de Hola y continuar.
 
-Las capturas de pantalla se proporcionan a modo de ejemplo. Asegúrese de reemplazar los valores por los suyos o use los valores de [ejemplo](#values).
+Las capturas de pantalla se proporcionan a modo de ejemplo. Ser seguro tooreplace valores de hello con su propia o utilizar hello [ejemplo](#values) valores.
 
-### <a name="part-1---configure-the-local-site"></a>Parte 1: configuración del sitio local
+### <a name="part-1---configure-hello-local-site"></a>Parte 1: configurar el sitio local de Hola
 
-Abra [Azure Portal](https://ms.portal.azure.com) e inicie sesión con su cuenta de Azure.
+Abra hello [portal de Azure](https://ms.portal.azure.com) e inicie sesión con su cuenta de Azure.
 
-1. Vaya a **Todos los recursos** y ubique **ClassicVNet** en la lista.
-2. En la hoja **Información general**, en la sección **Conexiones VPN**, haga clic en el gráfico **Puerta de enlace** para crear una puerta de enlace.
+1. Navegue demasiado**todos los recursos** y busque hello **ClassicVNet** en la lista de Hola.
+2. En hello **Introducción** hoja en hello **conexiones VPN** sección, haga clic en hello **puerta de enlace** toocreate gráfico una puerta de enlace.
 
     ![Configurar una puerta de enlace VPN](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Configurar una puerta de enlace VPN")
-3. En la hoja **Nueva conexión VPN**, para **Tipo de conexión**, seleccione **De sitio a sitio**.
-4. En **Sitio local**, haga clic en **Configurar los valores obligatorios**. Con esto se abre la hoja **Sitio local**.
-5. En la hoja **Sitio Local**, cree un nombre para hacer referencia a la red virtual de Resource Manager. Por ejemplo, "RMVNetLocal".
-6. Si la puerta de enlace VPN para la red virtual de Resource Manager ya tiene una dirección IP pública, use el valor para el campo **Dirección IP de la VPN Gateway**. Si lleva a cabo estos pasos como ejercicio o todavía no tiene una puerta de enlace de red virtual para la red virtual de Resource Manager, puede inventar una dirección IP de marcador de posición. Asegúrese de que la dirección IP de marcador de posición utiliza un formato válido. Más adelante, reemplaza la dirección IP de marcador de posición por la dirección IP pública de la puerta de enlace de red virtual de Resource Manager.
-7. Para **Client Address Space** (Espacio de direcciones de clientes), use los valores de los espacios de direcciones IP de red virtual para la red virtual de Resource Manager. Este valor se usa para especificar los espacios de direcciones a fin de enrutar a la red virtual de Resource Manager.
-8. Haga clic en **Aceptar** para guardar los valores y volver a la hoja **Nueva conexión VPN**.
+3. En hello **conexión VPN nueva** hoja, para **tipo de conexión**, seleccione **sitio a sitio**.
+4. En **Sitio local**, haga clic en **Configurar los valores obligatorios**. Se abrirá hello **sitio Local** hoja.
+5. En hello **sitio Local** hoja, crear un toohello de toorefer VNet el Administrador de recursos de nombre. Por ejemplo, "RMVNetLocal".
+6. Si la puerta de enlace VPN de Hola para hello VNet el Administrador de recursos ya tiene una dirección IP pública, utilice el valor de Hola para hello **dirección IP de puerta de enlace VPN** campo. Si lleva a cabo estos pasos como ejercicio o todavía no tiene una puerta de enlace de red virtual para la red virtual de Resource Manager, puede inventar una dirección IP de marcador de posición. Asegúrese de que la dirección IP de marcador de posición de hello usa un formato válido. Más adelante, reemplace dirección IP de marcador de posición de hello con dirección IP pública de puerta de enlace de red virtual de administrador de recursos de Hola Hola.
+7. Para **espacio de direcciones de cliente**, utilice valores de hello para espacios de direcciones IP de red virtual de Hola para hello VNet el Administrador de recursos. Esta configuración es toospecify usado Hola dirección espacios tooroute toohello el Administrador de recursos red virtual.
+8. Haga clic en **Aceptar** toosave Hola valores y devuelven toohello **conexión VPN nueva** hoja.
 
-### <a name="part-2---create-the-virtual-network-gateway"></a>Parte 2: creación de la puerta de enlace de la red virtual
+### <a name="part-2---create-hello-virtual-network-gateway"></a>Parte 2: crear la puerta de enlace de red virtual de Hola
 
-1. En la hoja **Nueva conexión VPN**, seleccione la casilla **Crear puerta de enlace inmediatamente** y haga clic en **Configuración de puerta de enlace opcional** para abrir la hoja **Configuración de puerta de enlace**. 
+1. En hello **conexión VPN nueva** hoja, seleccione hello **crear inmediatamente la puerta de enlace** casilla de verificación y haga clic en **configuración opcional de la puerta de enlace** tooopen hello  **Configuración de puerta de enlace** hoja. 
 
     ![Abrir hoja de configuración de puerta de enlace](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Abrir hoja de configuración de puerta de enlace")
-2. Haga clic en **Subred: Configurar los valores obligatorios** para abrir la hoja **Agregar subred**. El **nombre** ya está configurado con valor requerido **GatewaySubnet**.
-3. **Intervalo de direcciones** hace referencia al intervalo para la subred de puerta de enlace. Si bien puede crear una subred de puerta de enlace con un intervalo de direcciones de /29 (3 direcciones), se recomienda crear una subred de puerta de enlace que incluya más direcciones IP. Esto permitirá configuraciones futuras que puedan requerir más direcciones IP disponibles. Si es posible, utilice /27 o /28. Si usa estos pasos como ejercicio, puede hacer referencia a los valores de [ejemplo](#values). Haga clic en **Aceptar** para crear la subred de puerta de enlace.
-4. En la hoja **Configuración de puerta de enlace**, **Tamaño** hace referencia a la SKU de puerta de enlace. Seleccione la SKU de puerta de enlace para la puerta de enlace VPN.
-5. Compruebe que el **Tipo de enrutamiento** sea **Dinámico** y haga clic en **Aceptar** para volver a la hoja **Nueva conexión VPN**.
-6. En la hoja **Nueva conexión VPN**, haga clic en **Aceptar** para empezar a crear la puerta de enlace VPN. Una puerta de enlace VPN puede tardar hasta 45 minutos en completarse.
+2. Haga clic en **subred - configurar los valores obligatorios** tooopen hello **Agregar subred** hoja. Hola **nombre** ya está configurado con el valor de hello necesario **GatewaySubnet**.
+3. Hola **intervalo de direcciones** hace referencia toohello intervalo de subred de puerta de enlace de Hola. Si bien puede crear una subred de puerta de enlace con un intervalo de direcciones de /29 (3 direcciones), se recomienda crear una subred de puerta de enlace que incluya más direcciones IP. Esto permitirá configuraciones futuras que puedan requerir más direcciones IP disponibles. Si es posible, utilice /27 o /28. Si está siguiendo estos pasos como un ejercicio, puede consultar toohello [ejemplo](#values) valores. Haga clic en **Aceptar** subred de puerta de enlace de toocreate Hola.
+4. En hello **configuración de puerta de enlace** hoja, **tamaño** hace referencia a la puerta de enlace de toohello SKU. Seleccione la puerta de enlace Hola SKU para la puerta de enlace VPN.
+5. Comprobar hello **tipo de enrutamiento** es **dinámica**, a continuación, haga clic en **Aceptar** tooreturn toohello **conexión VPN nueva** hoja.
+6. En hello **conexión VPN nueva** hoja, haga clic en **Aceptar** toobegin crear la puerta de enlace VPN. Crear una puerta de enlace VPN puede tardar hasta too45 minutos toocomplete.
 
-### <a name="ip"></a>Parte 3: copia de la dirección IP pública de la puerta de enlace de la red virtual
+### <a name="ip"></a>Parte 3: puerta de enlace de red virtual de hello copia la dirección IP pública
 
-Una vez que se haya creado la puerta de enlace de la red virtual, puede ver la dirección IP de la puerta de enlace. 
+Una vez creada la puerta de enlace de red virtual de hello, puede ver la dirección IP de puerta de enlace de Hola. 
 
-1. Desplácese a la red virtual clásica y haga clic en **Información general**.
-2. Haga clic en **Conexiones VPN** para abrir la hoja de conexiones. En la hoja de conexiones VPN, puede ver la dirección IP pública. Se trata de la dirección IP pública asignada a la puerta de enlace de red virtual. 
-3. Escriba o copie la dirección IP. Se usa en pasos posteriores al trabajar con las opciones de configuración de puerta de enlace de red local de Resource Manager. También puede ver el estado de las conexiones de puerta de enlace. Observe que el sitio de red local que creó aparece como "Conectando". El estado cambiará una vez creadas las conexiones.
-4. Cierre la hoja después de copiar la dirección IP de puerta de enlace.
+1. Navegue tooyour clásico red virtual y haga clic en **Introducción**.
+2. Haga clic en **conexiones VPN** hoja de conexiones VPN de tooopen Hola. En la hoja de conexiones de VPN de hello, puede ver la dirección IP pública Hola. Se trata de una dirección IP pública de hello asignada tooyour puerta de enlace de red virtual. 
+3. Escriba o copie la dirección IP de Hola. Se usa en pasos posteriores al trabajar con las opciones de configuración de puerta de enlace de red local de Resource Manager. También puede ver el estado de Hola de las conexiones de puerta de enlace. Sitio de red local de hello aviso que creó aparece como 'Conectar'. estado de Hello cambiará después de crear las conexiones.
+4. Cierre la hoja de hello después de copiar la dirección IP de puerta de enlace de Hola.
 
-## <a name="rmvnet"></a>2. Configuración de redes virtuales de Resource Manager
+## <a name="rmvnet"></a>2. Configurar opciones de red virtual del Administrador de recursos de Hola
 
-En esta sección se crea la puerta de enlace de red virtual y la puerta de enlace de red local para la red de Resource Manager. Si no tiene una red virtual de Resource Manager y lleva a cabo estos pasos como ejercicio, puede crear una red virtual según [este artículo](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) y los valores de configuración de [ejemplo](#values) indicados anteriormente.
+En esta sección, creará puerta de enlace de red virtual de Hola y puerta de enlace de red local de hello de la VNet del Administrador de recursos. Si no tiene un administrador de recursos de VNet y se ejecutan estos pasos como un ejercicio, puede crear una red virtual mediante [este artículo](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) hello y [ejemplo](#values) valores de configuración anteriores.
 
-Las capturas de pantalla se proporcionan a modo de ejemplo. Asegúrese de reemplazar los valores por los suyos o use los valores de [ejemplo](#values).
+Las capturas de pantalla se proporcionan a modo de ejemplo. Ser seguro tooreplace valores de hello con su propia o utilizar hello [ejemplo](#values) valores.
 
 ### <a name="part-1---create-a-gateway-subnet"></a>Parte 1: creación de una subred de la puerta de enlace
 
-Antes de crear una puerta de enlace de red virtual, primero deberá crear una subred de puerta de enlace. Cree una subred de puerta de enlace con un recuento CIDR de /28 o mayor. (/27, /26, etc.)
+Antes de crear una puerta de enlace de red virtual, primero debe subred de puerta de enlace de toocreate Hola. Cree una subred de puerta de enlace con un recuento CIDR de /28 o mayor. (/27, /26, etc.)
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -151,59 +151,59 @@ Antes de crear una puerta de enlace de red virtual, primero deberá crear una su
 
 ### <a name="createlng"></a>Parte 3: creación de una puerta de enlace de la red local
 
-La puerta de enlace de red local especifica el intervalo de direcciones y la dirección IP pública asociados a la red virtual clásica y su puerta de enlace de red virtual.
+puerta de enlace de red local de Hello especifica el intervalo de direcciones de Hola y dirección IP pública de hello asociada a la red virtual clásica y su puerta de enlace de red virtual.
 
-Si lleva a cabo estos pasos como ejercicio, haga referencia a esta configuración:
+Si está realizando estos pasos como un ejercicio, consulte Configuración de toothese:
 
-| Virtual Network | Espacio de direcciones | Region | Se conecta a un sitio de red local |Dirección IP pública de puerta de enlace|
+| Virtual Network | Espacio de direcciones | Region | Se conecta el sitio de red toolocal |Dirección IP pública de puerta de enlace|
 |:--- |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |Oeste de EE. UU. | RMVNetLocal (192.168.0.0/16) |La dirección IP pública que se asigna a la puerta de enlace ClassicVNet|
-| RMVNet | (192.168.0.0/16) |Este de EE. UU. |ClassicVNetLocal (10.0.0.0/24) |La dirección IP pública que se asigna a la puerta de enlace RMVNet.|
+| ClassicVNet |(10.0.0.0/24) |Oeste de EE. UU. | RMVNetLocal (192.168.0.0/16) |Hola dirección IP pública que se asigna la puerta de enlace de toohello ClassicVNet|
+| RMVNet | (192.168.0.0/16) |Este de EE. UU. |ClassicVNetLocal (10.0.0.0/24) |dirección IP pública que se asigna la puerta de enlace de toohello RMVNet Hola.|
 
 [!INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 
-## <a name="modifylng"></a>3. Modificación de la configuración del sitio local de la red virtual clásica
+## <a name="modifylng"></a>3. Modificar configuración del sitio local de red virtual clásica de Hola
 
-En esta sección se reemplaza la dirección IP de marcador de posición que usó al especificar la configuración del sitio local con la dirección IP de puerta de enlace VPN de Resource Manager. Esta sección utiliza los cmdlets de PowerShell (SM) clásicos.
+En esta sección, reemplace dirección IP de marcador de posición de Hola que usó al especificar la configuración de sitio local de hello, con hello dirección IP de puerta de enlace de VPN de administrador de recursos. Esta sección utiliza Hola clásicos cmdlets de PowerShell (SM).
 
-1. En Azure Portal, vaya a la red virtual clásica.
-2. En la hoja de la red virtual, haga clic en **Información general**.
-3. En la sección **Conexiones VPN**, haga clic en el nombre del sitio local en el gráfico.
+1. Hola portal de Azure, navegue toohello de red virtual clásica.
+2. En la hoja de hello para la red virtual, haga clic en **Introducción**.
+3. Hola **conexiones VPN** sección, haga clic en nombre de Hola de su sitio local en el gráfico de Hola.
 
     ![Conexiones VPN](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "Conexiones VPN")
-4. En la hoja **Conexiones VPN de sitio a sitio**, haga clic en el nombre del sitio.
+4. En hello **conexiones VPN de sitio a sitio** hoja, haga clic en nombre de hello del sitio de Hola.
 
     ![Nombre del sitio](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Nombre del sitio local")
-5. En la hoja de conexión para el sitio local, haga clic en el nombre del sitio local para abrir la hoja **Sitio local**.
+5. En la hoja de conexión de hello para el sitio local, haga clic en nombre de Hola de Hola Hola de tooopen de sitio local **sitio Local** hoja.
 
     ![Abrir sitio local](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Abrir sitio local")
-6. En la hoja **Sitio local**, reemplace la **dirección IP de puerta de enlace VPN** por la dirección IP de la puerta de enlace de Resource Manager.
+6. En hello **sitio Local** hoja, replace hello **dirección IP de puerta de enlace VPN** con la dirección IP de Hola de puerta de enlace de hello Administrador de recursos.
 
     ![Dirección IP de puerta de enlace](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Dirección IP de puerta de enlace")
-7. Haga clic en **Aceptar** para actualizar la dirección IP.
+7. Haga clic en **Aceptar** dirección IP de tooupdate Hola.
 
-## <a name="RMtoclassic"></a>4. Creación de conexión de red virtual de Resource Manager a red virtual clásica
+## <a name="RMtoclassic"></a>4. Crear conexiones de administrador de recursos tooclassic
 
-En estos pasos se configura la conexión desde la red virtual de Resource Manager a la red virtual clásica con Azure Portal.
+En estos pasos, configurar conexión Hola de hello VNet Administrador de recursos del uso de red virtual clásica toohello Hola portal de Azure.
 
-1. En **Todos los recursos**, ubique la puerta de enlace de red local. En el ejemplo, la puerta de enlace de red local es **ClassicVNetLocal**.
-2. Haga clic en **Configuración** y compruebe que el valor de dirección IP es la puerta de enlace VPN para la red virtual clásica. Actualice si es necesario y, luego, haga clic en **Guardar**. Cierre la hoja.
-3. En **Todos los recursos**, haga clic en la puerta de enlace de red local.
-4. Haga clic en **Conexiones** para abrir la hoja Conexiones.
-5. En la hoja **Conexiones**, haga clic en **+** para agregar una conexión.
-6. En la hoja **Agregar conexión**, asigne un nombre a la conexión. Por ejemplo, "RMtoClassic".
+1. En **todos los recursos**, busque la puerta de enlace de red local de Hola. En nuestro ejemplo, es la puerta de enlace de red local de hello **ClassicVNetLocal**.
+2. Haga clic en **configuración** y compruebe que el valor de dirección IP de hello es puerta de enlace VPN de Hola para hello clásico red virtual. Actualice si es necesario y, luego, haga clic en **Guardar**. Hoja de hello cerrar.
+3. En **todos los recursos**, haga clic en puerta de enlace de red local de Hola.
+4. Haga clic en **conexiones** hoja de tooopen hello las conexiones.
+5. En hello **conexiones** hoja, haga clic en  **+**  tooadd una conexión.
+6. En hello **Agregar conexión** hoja, nombre de la conexión Hola. Por ejemplo, "RMtoClassic".
 7. En esta hoja ya está seleccionada la opción **De sitio a sitio**.
-8. Seleccione la puerta de enlace de red virtual que desea asociar con este sitio.
-9. Cree una **clave compartida**. Esta clave se usa también en la conexión que crea desde la red virtual clásica a la red virtual de Resource Manager. Puede generar la clave o inventar una. En el ejemplo usamos "abc123", pero puede (y debe) usar un valor más complejo.
-10. Haga clic en **Aceptar** para crear la conexión.
+8. Seleccione Hola de puerta de enlace de red virtual que desea tooassociate con este sitio.
+9. Cree una **clave compartida**. Esta clave también se utiliza en la conexión de Hola que se crea desde toohello de red virtual clásica de hello VNet el Administrador de recursos. Puede generar clave de Hola o forman uno. En el ejemplo usamos "abc123", pero puede (y debe) usar un valor más complejo.
+10. Haga clic en **Aceptar** conexión de hello toocreate.
 
-##<a name="classictoRM"></a>5. Creación de conexión de red virtual clásica a red virtual de Resource Manager
+##<a name="classictoRM"></a>5. Crear tooResource clásico de connection Manager
 
-En estos pasos se configura la conexión desde la red virtual clásica a la red virtual de Resource Manager. Estos pasos requieren PowerShell. Esta conexión no se puede crear en el portal. Asegúrese de que ha descargado e instalado los cmdlets de PowerShell tanto del modelo clásico (SM) como del modelo de Resource Manager (RM).
+En estos pasos, configura conexión de Hola de hello toohello clásico de red virtual VNet el Administrador de recursos. Estos pasos requieren PowerShell. No se puede crear esta conexión en el portal de Hola. Asegúrese de que ha descargado e instalado Hola clásico (SM) y cmdlets de PowerShell del Administrador de recursos (RM).
 
-### <a name="1-connect-to-your-azure-account"></a>1. Conexión a la cuenta de Azure
+### <a name="1-connect-tooyour-azure-account"></a>1. Conectar tooyour cuenta de Azure
 
-Abra la consola de PowerShell con derechos elevados e inicie sesión en la cuenta de Azure. El siguiente cmdlet pide las credenciales de inicio de sesión de la cuenta de Azure. Después de iniciar la sesión, se descarga la configuración de la cuenta para que esté disponible para Azure PowerShell.
+Abra la consola de PowerShell de hello con derechos elevados e inicie sesión tooyour cuenta de Azure. Hello siguiente cmdlet le pide las credenciales de inicio de sesión de Hola para su cuenta de Azure. Después de iniciar sesión, la configuración de su cuenta se descarga para que estén disponible tooAzure PowerShell.
 
 ```powershell
 Login-AzureRmAccount
@@ -215,40 +215,40 @@ Si tiene más de una suscripción de Azure, obtenga una lista de todas ellas.
 Get-AzureRmSubscription
 ```
 
-Especifique la suscripción que desea usar. 
+Especifique que desea toouse de suscripción de Hola. 
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionName "Name of subscription"
 ```
 
-Agregue la cuenta de Azure para usar los cmdlets clásicos de PowerShell (SM). Para ello puede utilizar el siguiente comando:
+Agregue los cuenta de Azure toouse Hola clásico los cmdlets de PowerShell (SM). toodo por lo tanto, puede usar Hola siguiente comando:
 
 ```powershell
 Add-AzureAccount
 ```
 
-### <a name="2-view-the-network-configuration-file-values"></a>2. Visualización de los valores de archivo de configuración de red
+### <a name="2-view-hello-network-configuration-file-values"></a>2. Ver valores de archivo de configuración de red de Hola
 
-Cuando crea una red virtual en Azure Portal, el nombre completo que Azure usa no aparece en Azure Portal. Por ejemplo, una red virtual que parece llamarse "ClassicVNet" en Azure Portal puede que tenga un nombre mucho más largo en el archivo de configuración de la red. El nombre podría ser similar al siguiente: "Group ClassicRG ClassicVNet". En estos pasos se descarga el archivo de configuración de red y se ven los valores.
+Cuando se crea una red virtual en hello portal de Azure, nombre completo de Hola que utiliza Azure no está visible en hello portal de Azure. Por ejemplo, una red virtual que aparece toobe denominado 'ClassicVNet' Hola portal de Azure puede tener un nombre mucho más tiempo en el archivo de configuración de red de Hola. Hello nombre podría ser similar: 'Grupo ClassicRG ClassicVNet'. En estos pasos, descargue Hola red archivo y ver Hola valores de configuración.
 
-Cree un directorio en el equipo y, a continuación, exporte el archivo de configuración de red al directorio. En este ejemplo, se exporta el archivo de configuración de red a C:\AzureNet.
+Cree un directorio en el equipo y, a continuación, exportar el directorio de toohello de archivo de configuración de red de Hola. En este ejemplo, el archivo de configuración de red de hello es tooC:\AzureNet exportado.
 
 ```powershell
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-Abra el archivo con un editor de texto y consulte el nombre de la red virtual clásica. Use los nombres que aparecen en el archivo de configuración de red cuando ejecute los cmdlets de PowerShell.
+Abra el archivo hello con un nombre de hello del editor y la vista de texto para la red virtual clásica. Utilice nombres de hello en el archivo de configuración de red de hello al ejecutar los cmdlets de PowerShell.
 
 - Los nombres de las redes virtuales aparecen como **VirtualNetworkSite name =**
 - Los nombres de los sitios aparecen como **LocalNetworkSite name=**
 
-### <a name="3-create-the-connection"></a>3. Creación de la conexión
+### <a name="3-create-hello-connection"></a>3. Crear conexiones de Hola
 
-Establezca la clave compartida y cree la conexión desde la red virtual clásica a la red virtual de Resource Manager. No se puede establecer la clave compartida mediante el portal. Asegúrese de ejecutar estos pasos mientras la sesión esté iniciada con la versión clásica de los cmdlets de PowerShell. Para ello, use **Add-AzureAccount**. De lo contrario, no podrá establecer '-AzureVNetGatewayKey'.
+Configurar la clave compartida de Hola y crear la conexión de Hola de hello toohello clásico de red virtual VNet el Administrador de recursos. No se puede establecer una clave compartida hello mediante el portal de Hola. Asegúrese de que se ejecute estos pasos mientras haya iniciado sesión con la versión clásica de Hola de hello cmdlets de PowerShell. por lo tanto, use toodo **Add-AzureAccount**. En caso contrario, no será capaz de tooset hello '-AzureVNetGatewayKey'.
 
-- En este ejemplo, **-VNetName** es el nombre de la red virtual clásica tal como se encuentra en el archivo de configuración de red. 
-- **-LocalNetworkSiteName** es el nombre que especificó para el sitio local, según se encontró en el archivo de configuración de red.
-- **-SharedKey** es un valor que se puede generar y especificar. En este ejemplo, hemos utilizado *abc123* pero puede generar algo más complejo. Lo importante es que el valor que especifique aquí debe ser el mismo que el que se especificó al crear la conexión entre la red virtual de Resource Manager y la red virtual clásica.
+- En este ejemplo, **- VNetName** es el nombre de Hola de hello clásico red virtual como se encuentra en el archivo de configuración de red. 
+- Hola **- LocalNetworkSiteName** se encuentra especificado para el sitio local de hello, como el nombre de hello en el archivo de configuración de red.
+- Hola **- SharedKey** es un valor que se generan y se especifica. En este ejemplo, hemos utilizado *abc123* pero puede generar algo más complejo. Hola importante que es ese valor de Hola que especifique aquí debe ser Hola que mismo valor que especificó al crear la conexión de administrador de recursos tooclassic.
 
 ```powershell
 Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
@@ -257,13 +257,13 @@ Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `
 
 ##<a name="verify"></a>6. Comprobación de las conexiones
 
-Puede comprobar las conexiones mediante Azure Portal o PowerShell. Al comprobar, es posible que necesite esperar un minuto o dos mientras se crea la conexión. Cuando una conexión se realiza correctamente, el estado de conectividad cambia de "Conectando" a "Conectado".
+Puede comprobar que las conexiones mediante el uso de Hola portal de Azure o PowerShell. Al comprobar, puede que necesite toowait un minuto o dos tal y como se va a crear la conexión de Hola. Cuando una conexión se realiza correctamente, el estado de conectividad de hello cambia de 'Conectar' too'Connected'.
 
-### <a name="to-verify-the-connection-from-your-classic-vnet-to-your-resource-manager-vnet"></a>Comprobación de la conexión de la red virtual clásica a la red virtual de Resource Manager
+### <a name="tooverify-hello-connection-from-your-classic-vnet-tooyour-resource-manager-vnet"></a>conexión de hello tooverify desde su tooyour clásico de red virtual VNet el Administrador de recursos
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
-###<a name="to-verify-the-connection-from-your-resource-manager-vnet-to-your-classic-vnet"></a>Comprobación de la conexión de la red virtual de Resource Manager a la red virtual clásica
+###<a name="tooverify-hello-connection-from-your-resource-manager-vnet-tooyour-classic-vnet"></a>conexión de hello tooverify desde el Administrador de recursos VNet tooyour red virtual clásica
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

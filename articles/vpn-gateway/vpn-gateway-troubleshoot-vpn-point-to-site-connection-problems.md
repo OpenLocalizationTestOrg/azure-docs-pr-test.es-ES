@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de conexión de punto a sitio de Azure | Microsoft Docs"
-description: "Obtenga información sobre cómo solucionar problemas de conexión de punto a sitio."
+title: "problemas de conexión de aaaTroubleshoot point-to-site Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tootroubleshoot problemas de conexión de punto a sitio."
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
-ms.openlocfilehash: de37c8ffd47a2b8e201d18e3a20b5325d528ad59
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 98d66074be62ad8c7153a903f69cb0d01f988cd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Solución de problemas: conexión de punto a sitio de Azure
 
@@ -28,52 +28,52 @@ En este artículo se enumeran problemas comunes de conexión de punto a sitio qu
 
 ### <a name="symptom"></a>Síntoma
 
-Al intentar conectar a una red virtual de Azure mediante el cliente de VPN, aparece el mensaje de error siguiente:
+Cuando intente tooconnect tooan red virtual de Azure mediante el uso de cliente VPN de hello, recibirá Hola mensaje de error siguiente:
 
 **No se encuentra un certificado que se puede usar con este protocolo de autenticación extendido. (Error 798)**
 
 ### <a name="cause"></a>Causa
 
-Este problema se produce si el certificado de cliente no está en **Certificados - Usuario actual\Personal\Certificados**.
+Este problema se produce si no está presente en el certificado de cliente hello **certificados - actual\Personal\Certificados**.
 
 ### <a name="solution"></a>Solución
 
-Asegúrese de que el certificado de cliente está instalado en la siguiente ubicación del almacén de certificados (Certmgr.msc):
+Asegúrese de que ese certificado de cliente de Hola se instala en hello ubicación Hola o almacén de certificados (Certmgr.msc) siguiente:
  
 **Certificados - Usuario actual\Personal\Certificados**
 
-Para más información sobre cómo instalar el certificado de cliente, consulte [Generación y exportación de certificados para conexiones de punto a sitio](vpn-gateway-certificates-point-to-site.md).
+Para obtener más información acerca de cómo tooinstall Hola certificado de cliente, consulte [generar y exportar certificados para las conexiones point-to-site](vpn-gateway-certificates-point-to-site.md).
 
 > [!NOTE]
-> Al importar el certificado de cliente, no seleccione la opción **Habilitar la protección de clave privada de alta seguridad**.
+> Cuando se importa el certificado de cliente de hello, no seleccione hello **Habilitar protección segura de clave privada** opción.
 
-## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>Error de cliente de VPN: no se esperaba el mensaje recibido o tiene un formato incorrecto
+## <a name="vpn-client-error-hello-message-received-was-unexpected-or-badly-formatted"></a>Error del cliente VPN: se ha recibido el mensaje de saludo con formato incorrecto o inesperado
 
 ### <a name="symptom"></a>Síntoma
 
-Al intentar conectar a una red virtual de Azure mediante el cliente de VPN, aparece el mensaje de error siguiente:
+Cuando intente tooconnect tooan red virtual de Azure mediante el uso de cliente VPN de hello, recibirá Hola mensaje de error siguiente:
 
-**Mensaje recibido inesperado o con formato incorrecto. (Error 0x80090326)**
+**mensaje de Hola recibido fue inesperado o con formato incorrecto. (Error 0x80090326)**
 
 ### <a name="cause"></a>Causa
 
-Este problema se produce si la clave pública del certificado raíz no se carga a la puerta de enlace VPN de Azure. También se puede producir si la clave está dañada o expiró.
+Este problema se produce si la clave pública del certificado de raíz hello no se cargará en la puerta de enlace de VPN de Azure de Hola. También puede producirse si la clave de hello está dañado o caducado.
 
 ### <a name="solution"></a>Solución
 
-Para resolver este problema, compruebe el estado del certificado raíz en Azure Portal para ver si se revocó. Si no se ha revocado, pruebe a eliminar el certificado raíz y a volver a cargarlo. Para más información, vea [Crear certificados](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
+tooresolve este problema, comprobar el estado de Hola de raíz de hello certificados en hello Azure toosee portal si se ha revocado. Si no se revoque, intente reupload y un certificado de raíz de toodelete Hola. Para más información, vea [Crear certificados](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
 
 ## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>Error de cliente de VPN: una cadena de certificados se ha procesado pero ha finalizado 
 
 ### <a name="symptom"></a>Síntoma 
 
-Al intentar conectar a una red virtual de Azure mediante el cliente de VPN, aparece el mensaje de error siguiente:
+Cuando intente tooconnect tooan red virtual de Azure mediante el uso de cliente VPN de hello, recibirá Hola mensaje de error siguiente:
 
-**Se ha procesado una cadena de certificados, pero termina en un certificado raíz en el que el proveedor de confianza no confía**
+**Una cadena de certificados ha procesado pero termina en un certificado raíz que no es de confianza para proveedor de confianza de Hola.**
 
 ### <a name="solution"></a>Solución
 
-1. Asegúrese de que los certificados siguientes están en la ubicación correcta:
+1. Asegúrese de que ese Hola siguientes certificados están en la ubicación correcta de hello:
 
     | Certificate | La ubicación |
     | ------------- | ------------- |
@@ -81,13 +81,13 @@ Al intentar conectar a una red virtual de Azure mediante el cliente de VPN, apar
     | Azuregateway-*GUID*.cloudapp.net  | Usuario actual\Entidades de certificación raíz de confianza|
     | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Equipo local\Entidades de certificación raíz de confianza|
 
-2. Si los certificados ya están en la ubicación, pruebe a eliminarlos y a volver a instalarlos. El certificado **azuregateway-*GUID*.cloudapp.net** se encuentra en el paquete de configuración del cliente de VPN descargado de Azure Portal. Puede usar archivadores de archivos para extraer los archivos del paquete.
+2. Si los certificados de hello ya están en la ubicación de hello, intente toodelete certificados de Hola y vuelva a instalarlos. Hola  **azuregateway -*GUID*. cloudapp.net** certificado está en el paquete de configuración de cliente VPN de Hola que descargó desde Hola portal de Azure. Puede usar archivadores tooextract Hola archivos del paquete de saludo.
 
 ## <a name="file-download-error-target-uri-is-not-specified"></a>Error en la descarga del archivo. No se ha especificado el URI de destino
 
 ### <a name="symptom"></a>Síntoma
 
-Aparece el siguiente mensaje de error:
+Recepción Hola mensaje de error siguiente:
 
 **Error en la descarga del archivo. No se ha especificado el URI de destino.**
 
@@ -97,56 +97,56 @@ Este problema se produce debido a un tipo de puerta de enlace incorrecto.
 
 ### <a name="solution"></a>Solución
 
-El tipo de puerta de enlace de la VPN debe ser **VPN** y el tipo de VPN **RouteBased**.
+debe ser el tipo de puerta de enlace VPN de Hola **VPN**, y debe ser Hola tipo VPN **RouteBased**.
 
 ## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>Error de cliente de VPN: error de script personalizado de VPN de Azure 
 
 ### <a name="symptom"></a>Síntoma
 
-Al intentar conectar a una red virtual de Azure mediante el cliente de VPN, aparece el mensaje de error siguiente:
+Cuando intente tooconnect tooan red virtual de Azure mediante el uso de cliente VPN de hello, recibirá Hola mensaje de error siguiente:
 
-**Error de script personalizado (para actualizar la tabla de enrutamiento). (Error 8007026f)**
+**Secuencia de comandos personalizada (enrutamiento de la tabla tooupdate) no se pudo. (Error 8007026f)**
 
 ### <a name="cause"></a>Causa
 
-Este problema puede producirse si está intentando abrir la conexión VPN de sitio a punto mediante un acceso directo.
+Este problema puede producirse si está tratando de conexión de VPN de sitio a punto de hello tooopen mediante un acceso directo.
 
 ### <a name="solution"></a>Solución 
 
-Abra el paquete VPN directamente en lugar de hacerlo desde el acceso directo.
+Abra el paquete VPN de hello directamente en lugar de abrirlo en acceso directo de Hola.
 
-## <a name="cannot-install-the-vpn-client"></a>No se puede instalar el cliente de VPN
+## <a name="cannot-install-hello-vpn-client"></a>No se puede instalar el cliente VPN de Hola
 
 ### <a name="cause"></a>Causa 
 
-Es necesario que un certificado adicional confíe en la puerta de enlace de la VPN de la red virtual. El certificado está incluido en el paquete de configuración del cliente de VPN que se genera desde Azure Portal.
+Un certificado adicional es necesario tootrust puerta de enlace VPN de hello para la red virtual. certificado de Hola se incluye en el paquete de configuración de cliente VPN de Hola que se genera a partir de hello portal de Azure.
 
 ### <a name="solution"></a>Solución
 
-Extraiga el paquete de configuración del cliente de VPN y busque el archivo .cer. Para instalar el certificado, siga estos pasos:
+Extraer el paquete de configuración de cliente VPN de Hola y busque el archivo .cer de Hola. Hola tooinstall certificados, siga estos pasos:
 
 1. Abra mmc.exe.
-2. Agregue el complemento **Certificados**.
-3. Seleccione la cuenta **Equipo** del equipo local.
-4. Haga clic con el botón derecho en el nodo **Entidades de certificación raíz de confianza**. Haga clic en **All-Task** > **Import** (Importar) y vaya al archivo .cer que extrajo del paquete de configuración del cliente de VPN.
-5. Reinicie el equipo. 
-6. Intente instalar el cliente de VPN.
+2. Agregar hello **certificados** complemento.
+3. Seleccione hello **equipo** de la cuenta de equipo local Hola.
+4. Menú contextual hello **entidades de certificación raíz de confianza** nodo. Haga clic en **All-Task** > **importación**y examinar toohello CER ha extraído del paquete de configuración de cliente VPN de Hola.
+5. Reinicie el equipo de Hola. 
+6. Pruebe el cliente VPN de hello tooinstall.
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Error de Azure Portal: error al guardar la puerta de enlace de la VPN y los datos no son válidos
+## <a name="azure-portal-error-failed-toosave-hello-vpn-gateway-and-hello-data-is-invalid"></a>Error de portal de Azure: error de puerta de enlace VPN toosave Hola y Hola datos no son válidos
 
 ### <a name="symptom"></a>Síntoma
 
-Al intentar guardar los cambios de la puerta de enlace de la VPN en Azure Portal, aparece el mensaje de error siguiente:
+Al probar cambios de hello toosave para puerta de enlace VPN de Hola Hola portal de Azure, recibirá Hola mensaje de error siguiente:
 
-**Error al guardar la puerta de enlace de red &lt;*nombre de puerta de enlace*&gt;. Los datos del certificado &lt;*identificador de certificado*&gt; no son válidos.**
+**Puerta de enlace de red virtual de error toosave &lt;* nombre de puerta de enlace*&gt;. Los datos del certificado &lt;*identificador de certificado*&gt; no son válidos.**
 
 ### <a name="cause"></a>Causa 
 
-Este problema puede producirse si la clave pública del certificado raíz que se ha cargado contiene un carácter no válido, por ejemplo, un espacio.
+Este problema puede producirse si Hola raíz certificado clave pública que ha cargado contiene un carácter no válido, como un espacio.
 
 ### <a name="solution"></a>Solución
 
-Asegúrese de que los datos del certificado no contienen caracteres no válidos como saltos de línea (retornos de carro). El valor completo debe estar en una línea larga. El siguiente texto es un ejemplo del certificado:
+Asegúrese de que los datos de hello en el certificado de hello no contienen caracteres no válidos, como los saltos de línea (retorno de carro). valor de Hello completo debe ser una línea larga. Hola después de texto es un ejemplo de certificado de hello:
 
     -----BEGIN CERTIFICATE-----
     MIIC5zCCAc+gAwIBAgIQFSwsLuUrCIdHwI3hzJbdBjANBgkqhkiG9w0BAQsFADAW
@@ -167,91 +167,91 @@ Asegúrese de que los datos del certificado no contienen caracteres no válidos 
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Error de Azure Portal: error al guardar la puerta de enlace de la VPN y el nombre del recurso no es válido
+## <a name="azure-portal-error-failed-toosave-hello-vpn-gateway-and-hello-resource-name-is-invalid"></a>Error de portal de Azure: error de puerta de enlace VPN toosave Hola y Hola nombre de recurso no es válido
 
 ### <a name="symptom"></a>Síntoma
 
-Al intentar guardar los cambios de la puerta de enlace de la VPN en Azure Portal, aparece el mensaje de error siguiente: 
+Al probar cambios de hello toosave para puerta de enlace VPN de Hola Hola portal de Azure, recibirá Hola mensaje de error siguiente: 
 
-**Error al guardar la puerta de enlace de red &lt;*nombre de puerta de enlace*&gt;. El nombre del recurso &lt;*nombre del certificado que intenta cargar*&gt; no es válido**.
+**Puerta de enlace de red virtual de error toosave &lt;* nombre de puerta de enlace*&gt;. Nombre del recurso &lt; *nombre del certificado intentas tooupload* &gt; es válida **.
 
 ### <a name="cause"></a>Causa
 
-Este problema se produce porque el nombre del certificado contiene un carácter no válido, como un espacio. 
+Este problema se produce porque el nombre hello del certificado de hello contiene un carácter no válido, como un espacio. 
 
 ## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Error de Azure Portal: error de descarga de archivo de paquete de VPN 503
 
 ### <a name="symptom"></a>Síntoma
 
-Al intentar descargar el paquete de configuración del cliente de VPN, aparece el mensaje de error siguiente:
+Al probar el paquete de configuración de cliente VPN de toodownload hello, recibirá Hola mensaje de error siguiente:
 
-**No se pudo descargar el archivo. Detalles del error: error 503. El servidor está ocupado.**
+**Error al archivo de hello toodownload. Detalles del error: error 503. Hola servidor está ocupado.**
  
 ### <a name="solution"></a>Solución
 
-Este error puede deberse a un problema de red temporal. Vuelva a intentar descargar el paquete VPN pasados unos minutos.
+Este error puede deberse a un problema de red temporal. Paquete de VPN de hello toodownload vuelva a intentar tras unos minutos.
 
-## <a name="azure-vpn-gateway-upgrade-all-p2s-clients-are-unable-to-connect"></a>Actualización de puerta de enlace de la VPN de Azure: todos los clientes de punto a sitio no se pueden conectar
+## <a name="azure-vpn-gateway-upgrade-all-p2s-clients-are-unable-tooconnect"></a>Actualización de puerta de enlace VPN de Azure: P2S todos los clientes son tooconnect no se puede
 
 ### <a name="cause"></a>Causa
 
-Si el certificado cubre más del 50 por ciento durante su vigencia, se deshace.
+Si el certificado de hello es más del 50 por ciento a través de su duración, se deshaga certificado Hola.
 
 ### <a name="solution"></a>Solución
 
-Para resolver este problema, cree y redistribuya los nuevos certificados a los clientes de VPN. 
+tooresolve este problema, cree y redistribuir los clientes VPN de toohello de nuevos certificados. 
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Demasiados clientes de VPN conectados a la vez
 
-Para cada puerta de enlace de la VPN, el número máximo de conexiones permitidas es 128. Puede ver el número total de clientes conectados en Azure Portal.
+Para cada puerta de enlace VPN, el número máximo de Hola de conexiones permitidas es 128. Puede ver el número total de Hola de clientes conectados en hello portal de Azure.
 
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>La VPN de punto a sitio agrega de forma incorrecta una ruta para 10.0.0.0/8 a la tabla de enrutamiento
+## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-toohello-route-table"></a>Point-to-site VPN incorrectamente agrega una ruta para una tabla de rutas toohello 10.0.0.0/8
 
 ### <a name="symptom"></a>Síntoma
 
-Al marcar la conexión VPN en el cliente de punto a sitio, el cliente de VPN no debe agregar una ruta hacia la red virtual de Azure. La aplicación auxiliar de IP debe agregar una ruta para la subred de los clientes de VPN. 
+Al marcar la conexión VPN en el cliente de point-to-site Hola Hola, cliente VPN de Hola debe agregar una ruta hacia Hola red virtual de Azure. servicio auxiliar IP de Hello debe agregar una ruta para subred Hola Hola de clientes de VPN. 
 
-El intervalo de cliente de VPN pertenece a una subred más pequeña de 10.0.0.0/8, como 10.0.12.0/24. En lugar de una ruta para 10.0.12.0/24, se agrega una ruta para 10.0.0.0/8 con una prioridad más alta. 
+Hola intervalo de cliente VPN pertenece tooa subred más pequeño de 10.0.0.0/8, como 10.0.12.0/24. En lugar de una ruta para 10.0.12.0/24, se agrega una ruta para 10.0.0.0/8 con una prioridad más alta. 
 
-Esta ruta incorrecta interrumpe la conectividad con otras redes locales que pueden pertenecer a otra subred del intervalo 10.0.0.0/8, por ejemplo, 10.50.0.0/24, que no tienen una ruta concreta definida. 
+Esta ruta incorrecta interrumpe la conectividad con otras redes locales que es posible que pertenezca tooanother subred dentro de intervalo de 10.0.0.0/8 hello, como 10.50.0.0/24, que no tienen una ruta específica definida. 
 
 ### <a name="cause"></a>Causa
 
-Este comportamiento es así por diseño para los clientes Windows. Cuando el cliente usa el protocolo PPP IPCP, obtiene la dirección IP de la interfaz de túnel del servidor (la puerta de enlace de la VPN en este caso). Pero debido a una limitación del protocolo, el cliente no tiene la máscara de subred. Dado que no hay ninguna otra manera de obtenerla, el cliente intenta adivinar la máscara de subred en función de la clase de la dirección IP de la interfaz de túnel. 
+Este comportamiento es así por diseño para los clientes Windows. Si el cliente de hello usa el protocolo PPP IPCP de hello, que obtiene dirección IP de hello para la interfaz de túnel de hello del servidor de hello (Hola puerta de enlace VPN en este caso). Sin embargo, debido a una limitación en el protocolo de Hola, cliente hello no tiene máscara de subred de Hola. Porque no hay ningún otro tooget de manera, cliente hello intenta tooguess máscara de subred de hello en función de la clase hello de dirección IP de la interfaz de túnel de Hola. 
 
-Por lo tanto, se agrega una ruta en función de la siguiente asignación estática: 
+Por lo tanto, se agrega una ruta en función de hello después de asignación estática: 
 
-Si la dirección pertenece a la clase A --> se aplica /8
+Si la dirección pertenece A tooclass--> Aplicar prefijo/8
 
-Si la dirección pertenece a la clase B --> se aplica /16
+Si la dirección pertenece tooclass--> B aplicar /16
 
-Si la dirección pertenece a la clase C --> se aplica /24
+Si la dirección pertenece tooclass C--> aplicar /24
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>El cliente de VPN no puede acceder a recursos compartidos de archivos de red
 
 ### <a name="symptom"></a>Síntoma
 
-El cliente de VPN se ha conectado a la red virtual de Azure, pero no puede acceder a recursos compartidos de red.
+cliente VPN de Hola ha conectado toohello red virtual de Azure. Sin embargo, el cliente de hello no puede tener acceso a recursos compartidos de red.
 
 ### <a name="cause"></a>Causa
 
-El protocolo SMB se usa para el acceso a recursos compartidos de archivos. Cuando se inicia la conexión, el cliente de VPN agrega las credenciales de sesión y se produce el error. Una vez establecida la conexión, el cliente se ve obligado a usar las credenciales almacenadas en caché para la autenticación Kerberos. Este proceso inicia consultas al Centro de distribución de claves (un controlador de dominio) para obtener un token. Como el cliente se conecta desde Internet, es posible que no pueda alcanzar el controlador de dominio. Por lo tanto, el cliente no pueden conmutar por error desde Kerberos a NTLM. 
+Hola protocolo SMB se utiliza para el acceso de recurso compartido de archivos. Cuando se inicia la conexión de Hola, cliente VPN de hello agrega credenciales de la sesión de Hola y Hola produzcan. Una vez establecida la conexión de Hola, cliente de Hola se ve obligado a credenciales almacenadas en caché toouse hello para la autenticación Kerberos. Este proceso inicia consultas toohello Key Distribution Center (un controlador de dominio) tooget un token. Porque Hola cliente se conecta desde Hola Internet, no sea controlador de dominio pueda tooreach Hola. Por lo tanto, cliente hello no puede conmutar por error de Kerberos tooNTLM. 
 
-El único momento en que el cliente debe escribir una credencial es cuando tiene un certificado válido (con SAN=UPN) emitido por el dominio al que está unido. El cliente también debe estar conectado físicamente a la red de dominios. En este caso, el cliente intenta usar el certificado y llega al controlador de dominio. Luego, el Centro de distribución de claves devuelve un error "KDC_ERR_C_PRINCIPAL_UNKNOWN". El cliente se ve forzado a conmutar por error a NTLM. 
+Hola solo tiempo ese cliente Hola se recibirá un mensaje para una credencial es cuando tiene un certificado válido (con SAN = UPN) emitido por hello toowhich de dominio se ha unido. cliente de Hello también debe estar conectada físicamente toohello red de dominio. En este caso, el cliente de Hola intenta certificado de hello toouse y llega toohello controlador de dominio. A continuación, Hola Key Distribution Center devuelve un error de "KDC_ERR_C_PRINCIPAL_UNKNOWN". cliente de Hello es forzada toofail sobre tooNTLM. 
 
 ### <a name="solution"></a>Solución
 
-Para solucionar el problema, deshabilite el almacenamiento en caché de credenciales de dominio desde la subclave del Registro siguiente: 
+toowork sobre el problema de hello, deshabilitar Hola almacenamiento en caché de credenciales de dominio de la siguiente subclave del registro de hello: 
 
-    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\DisableDomainCreds - Set the value to 1 
+    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\DisableDomainCreds - Set hello value too1 
 
 
-## <a name="cannot-find-the-point-to-site-vpn-connection-in-windows-after-reinstalling-the-vpn-client"></a>No se puede encontrar la conexión VPN de punto a sitio en Windows después de volver a instalar el cliente de VPN
+## <a name="cannot-find-hello-point-to-site-vpn-connection-in-windows-after-reinstalling-hello-vpn-client"></a>No se puede encontrar la conexión de hello point-to-site VPN en Windows después de reinstalar el cliente VPN de Hola
 
 ### <a name="symptom"></a>Síntoma
 
-Se quita la conexión VPN de punto a sitio y luego se vuelve a instalar el cliente de VPN. En esta situación, la conexión VPN no se configura correctamente. No se ve la conexión VPN en el valor **Conexiones de red** de Windows.
+Quitar la conexión de hello point-to-site VPN y, a continuación, vuelva a instalar el cliente VPN de Hola. En esta situación, Hola conexión VPN no está configurado correctamente. No ve la conexión de VPN de Hola Hola **las conexiones de red** configuración de Windows.
 
 ### <a name="solution"></a>Solución
 
-Para resolver el problema, elimine los archivos de configuración antiguos del cliente de VPN de **C:\Usuarios\Nombre de usuario\AppData\Roaming\Microsoft\Network\Connections** y luego vuelva a ejecutar el instalador del cliente de VPN.
+problema de hello tooresolve, delete Hola antiguo VPN cliente archivos de configuración de **C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections**, y, a continuación, vuelva a ejecutar el instalador del cliente VPN Hola.
