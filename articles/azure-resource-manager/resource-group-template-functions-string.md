@@ -1,6 +1,6 @@
 ---
-title: 'Funciones de la plantilla de Azure Resource Manager: cadena | Microsoft Docs'
-description: Describe las funciones para usar en una plantilla de Azure Resource Manager para trabajar con cadenas.
+title: funciones de plantilla de administrador de recursos de aaaAzure - cadena | Documentos de Microsoft
+description: Describe hello toouse de funciones en un toowork de plantilla de Azure Resource Manager con cadenas.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3e5c9ca546629f782a3d722b49f5fbaf5147e823
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 27f7f6a52cbe4e9915718184433e92ca92999346
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funciones de cadena para las plantillas de Azure Resource Manager
 
-El Administrador de recursos ofrece las siguientes funciones para trabajar con cadenas:
+Administrador de recursos proporciona Hola siguientes funciones para trabajar con cadenas:
 
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
@@ -59,21 +59,21 @@ El Administrador de recursos ofrece las siguientes funciones para trabajar con c
 ## <a name="base64"></a>base64
 `base64(inputString)`
 
-Devuelve la representación de base64 de la cadena de entrada.
+Devuelve Hola representación base64 de la cadena de entrada de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| inputString |Sí |string |Valor que se va a devolver como una representación de base64. |
+| inputString |Sí |cadena |Hola tooreturn de valor como una representación base64. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una cadena que contiene la representación en base64.
+Una cadena que contiene la representación en forma de hello en base64.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo utilizar la función de base64.
+Hola de ejemplo siguiente muestra cómo toouse Hola función base64.
 
 ```json
 {
@@ -112,7 +112,7 @@ En el ejemplo siguiente se muestra cómo utilizar la función de base64.
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -125,13 +125,13 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="base64tojson"></a>base64ToJson
 `base64tojson`
 
-Convierte una representación en base64 a un objeto JSON.
+Convierte un objeto JSON de base64 representación tooa.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| base64Value |Sí |string |La representación en base64 para convertir en un objeto JSON. |
+| base64Value |Sí |cadena |Hola base64 representación tooconvert tooa JSON en com. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -139,7 +139,7 @@ Un objeto JSON.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se utiliza la función base64ToJson para convertir un valor base64:
+Hello en el ejemplo siguiente se utiliza hello base64ToJson función tooconvert un valor base64:
 
 ```json
 {
@@ -178,7 +178,7 @@ En el ejemplo siguiente se utiliza la función base64ToJson para convertir un va
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -191,21 +191,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="base64tostring"></a>base64ToString
 `base64ToString(base64Value)`
 
-Convierte una representación en base64 en una cadena.
+Convierte una cadena de tooa de representación base64.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| base64Value |Sí |cadena |La representación en base64 para convertir en una cadena. |
+| base64Value |Sí |cadena |cadena de Hello base64 representación tooconvert tooa. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una cadena del valor convertido de base64.
+Convertir de una cadena de hello valor base64.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se utiliza la función base64ToString para convertir un valor base64:
+Hello en el ejemplo siguiente se utiliza hello base64ToString función tooconvert un valor base64:
 
 ```json
 {
@@ -244,7 +244,7 @@ En el ejemplo siguiente se utiliza la función base64ToString para convertir un 
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -259,13 +259,13 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="concat"></a>concat
 `concat (arg1, arg2, arg3, ...)`
 
-Combina varios valores de cadena y devuelve la cadena concatenada, o combina varias matrices y devuelve la matriz concatenada.
+Combina varios valores de cadena y devuelve la cadena concatenada de hello, o combina varias matrices y devuelve la matriz de hello concatenado.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |cadena o matriz |El primer valor para la concatenación. |
+| arg1 |Sí |cadena o matriz |primer valor de Hello para la concatenación. |
 | argumentos adicionales |No |cadena |Valores adicionales en orden secuencial para la concatenación. |
 
 ### <a name="return-value"></a>Valor devuelto
@@ -273,7 +273,7 @@ Una cadena o matriz de valores concatenados.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo combinar dos valores de cadena y devolver una cadena concatenada.
+Hola de ejemplo siguiente muestra cómo toocombine dos valores de cadena y devolver una cadena concatenada.
 
 ```json
 {
@@ -295,13 +295,13 @@ En el ejemplo siguiente se muestra cómo combinar dos valores de cadena y devolv
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
-En el ejemplo siguiente se muestra cómo combinar dos matrices.
+Hola de ejemplo siguiente muestra cómo toocombine dos matrices.
 
 ```json
 {
@@ -336,7 +336,7 @@ En el ejemplo siguiente se muestra cómo combinar dos matrices.
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -353,16 +353,16 @@ Comprueba si una matriz contiene un valor, un objeto contiene una clave o una ca
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| container |Sí |matriz, objeto o cadena |El valor que contiene el valor para buscar. |
-| itemToFind |Sí |cadena o entero |El valor para buscar. |
+| container |Sí |matriz, objeto o cadena |valor de Hola que contiene Hola valor toofind. |
+| itemToFind |Sí |cadena o entero |Hola toofind de valor. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-**True** si el elemento se encuentra; en caso contrario, **False**.
+**True** si Hola elemento se encuentra; en caso contrario, **False**.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo utilizar contains con diferentes tipos:
+Hello en el ejemplo siguiente se muestra cómo toouse contiene con tipos diferentes:
 
 ```json
 {
@@ -413,7 +413,7 @@ En el ejemplo siguiente se muestra cómo utilizar contains con diferentes tipos:
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -429,13 +429,13 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="datauri"></a>dataUri
 `dataUri(stringToConvert)`
 
-Convierte un valor en un identificador URI de datos.
+Convierte el valor tooa datos URI.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Sí |cadena |El valor para convertir en un identificador URI de datos. |
+| stringToConvert |Sí |cadena |Hola valor tooconvert tooa URI de datos. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -443,7 +443,7 @@ Una cadena con formato de identificador URI de datos.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se convierte un valor en un identificador URI de datos, y se convierte un identificador URI de datos en una cadena:
+Hola ejemplo siguiente convierte datos tooa valor URI y convierte una cadena URI tooa de datos:
 
 ```json
 {
@@ -473,7 +473,7 @@ En el ejemplo siguiente se convierte un valor en un identificador URI de datos, 
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -485,21 +485,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="datauritostring"></a>dataUriToString
 `dataUriToString(dataUriToConvert)`
 
-Convierte un valor con formato de identificador URI de datos en una cadena.
+Convierte un URI de datos con formato de cadena del valor tooa.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Sí |cadena |El valor del identificador URI para convertir. |
+| dataUriToConvert |Sí |cadena |valor de los datos de Hello URI tooconvert. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una cadena que contiene el valor convertido.
+Una cadena que contiene Hola valor convertido.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se convierte un valor en un identificador URI de datos, y se convierte un identificador URI de datos en una cadena:
+Hola ejemplo siguiente convierte datos tooa valor URI y convierte una cadena URI tooa de datos:
 
 ```json
 {
@@ -529,7 +529,7 @@ En el ejemplo siguiente se convierte un valor en un identificador URI de datos, 
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -547,15 +547,15 @@ Determina si una matriz, un objeto o una cadena están vacíos.
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Sí |matriz, objeto o cadena |El valor para comprobar si está vacío. |
+| itemToTest |Sí |matriz, objeto o cadena |Hola toocheck valor si está vacía. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Devuelve **True** si el valor está vacío; en caso contrario, **False**.
+Devuelve **True** si el valor de hello está vacía; en caso contrario, **False**.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se comprueba si una matriz, un objeto y una cadena están vacíos.
+Hola siguiente ejemplo comprueba si una matriz, el objeto y la cadena están vacías.
 
 ```json
 {
@@ -594,7 +594,7 @@ En el ejemplo siguiente se comprueba si una matriz, un objeto y una cadena está
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -607,22 +607,22 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="endswith"></a>endsWith
 `endsWith(stringToSearch, stringToFind)`
 
-Determina si una cadena termina con un valor. La comparación distingue entre mayúsculas y minúsculas.
+Determina si una cadena termina con un valor. comparación de Hello distingue entre mayúsculas y minúsculas.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Sí |cadena |El valor que contiene el elemento para buscar. |
-| stringToFind |Sí |string |El valor para buscar. |
+| stringToSearch |Sí |cadena |valor de Hola que contiene Hola elemento toofind. |
+| stringToFind |Sí |cadena |Hola toofind de valor. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-**True** si el último carácter o caracteres de la cadena coinciden con el valor; en caso contrario, **False**.
+**True** si último carácter de Hola o caracteres de la cadena de hello coincide con el valor de hello; en caso contrario, **False**.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo utilizar las funciones startsWith y endsWith:
+Hola de ejemplo siguiente muestra cómo toouse Hola startsWith y endsWith funciones:
 
 ```json
 {
@@ -658,7 +658,7 @@ En el ejemplo siguiente se muestra cómo utilizar las funciones startsWith y end
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -674,21 +674,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="first"></a>first
 `first(arg1)`
 
-Devuelve el primer carácter de la cadena o el primer elemento de la matriz.
+Devuelve Hola primer carácter de la cadena de Hola o el primer elemento de matriz de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz o cadena |El valor para recuperar el primer elemento o carácter. |
+| arg1 |Sí |matriz o cadena |Hola valor tooretrieve Hola primer elemento o carácter. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una cadena del primer carácter, o el tipo (cadena, entero, matriz u objeto) del primer elemento en una matriz.
+Cadena del primer carácter de Hola o tipo hello (string, int, matriz u objeto) del primer elemento de hello en una matriz.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo utilizar la primera función con una matriz y una cadena.
+Hello en el ejemplo siguiente se muestra cómo toouse Hola primera función con una matriz y una cadena.
 
 ```json
 {
@@ -715,7 +715,7 @@ En el ejemplo siguiente se muestra cómo utilizar la primera función con una ma
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -727,22 +727,22 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="indexof"></a>indexOf
 `indexOf(stringToSearch, stringToFind)`
 
-Devuelve la primera posición de un valor dentro de una cadena. La comparación distingue entre mayúsculas y minúsculas.
+Devuelve Hola primera posición de un valor dentro de una cadena. comparación de Hello distingue entre mayúsculas y minúsculas.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Sí |cadena |El valor que contiene el elemento para buscar. |
-| stringToFind |Sí |string |El valor para buscar. |
+| stringToSearch |Sí |cadena |valor de Hola que contiene Hola elemento toofind. |
+| stringToFind |Sí |cadena |Hola toofind de valor. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Un entero que representa la posición del elemento que se va a buscar. El valor está basado en cero. Si no se encuentra el elemento, se devuelve -1.
+Un entero que representa la posición de Hola de hello elemento toofind. valor de Hello está basado en cero. Si no se encuentra el elemento de hello, se devuelve -1.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo utilizar las funciones indexOf y lastIndexOf:
+Hola de ejemplo siguiente muestra cómo toouse Hola indexOf y lastIndexOf funciones:
 
 ```json
 {
@@ -774,7 +774,7 @@ En el ejemplo siguiente se muestra cómo utilizar las funciones indexOf y lastIn
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -789,21 +789,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="last"></a>last
 `last (arg1)`
 
-Devuelve el último carácter de la cadena, o el último elemento de la matriz.
+Devuelve el último carácter de la cadena de Hola o último elemento de matriz de Hola de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz o cadena |El valor para recuperar el último elemento o carácter. |
+| arg1 |Sí |matriz o cadena |Hola value tooretrieve Hola última (elemento) o carácter. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una cadena del último carácter, o el tipo (cadena, entero, matriz u objeto) del último elemento de una matriz.
+Cadena del último carácter de Hola o tipo hello (string, int, matriz u objeto) del último elemento de hello en una matriz.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo utilizar la última función con una matriz y una cadena.
+Hello en el ejemplo siguiente se muestra cómo toouse Hola última función con una matriz y una cadena.
 
 ```json
 {
@@ -830,7 +830,7 @@ En el ejemplo siguiente se muestra cómo utilizar la última función con una ma
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -842,22 +842,22 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="lastindexof"></a>lastIndexOf
 `lastIndexOf(stringToSearch, stringToFind)`
 
-Devuelve la última posición de un valor dentro de una cadena. La comparación distingue entre mayúsculas y minúsculas.
+Devuelve Hola última posición de un valor dentro de una cadena. comparación de Hello distingue entre mayúsculas y minúsculas.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Sí |cadena |El valor que contiene el elemento para buscar. |
-| stringToFind |Sí |string |El valor para buscar. |
+| stringToSearch |Sí |cadena |valor de Hola que contiene Hola elemento toofind. |
+| stringToFind |Sí |cadena |Hola toofind de valor. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Un entero que representa la última posición del elemento que se va a buscar. El valor está basado en cero. Si no se encuentra el elemento, se devuelve -1.
+Un entero que representa la última posición de Hola de hello elemento toofind. valor de Hello está basado en cero. Si no se encuentra el elemento de hello, se devuelve -1.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo utilizar las funciones indexOf y lastIndexOf:
+Hola de ejemplo siguiente muestra cómo toouse Hola indexOf y lastIndexOf funciones:
 
 ```json
 {
@@ -889,7 +889,7 @@ En el ejemplo siguiente se muestra cómo utilizar las funciones indexOf y lastIn
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -904,13 +904,13 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="length"></a>length
 `length(string)`
 
-Devuelve el número de caracteres de una cadena, o elementos de una matriz.
+Devuelve el número de Hola de caracteres en una cadena o elementos de una matriz.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz o cadena |La matriz que se usará para obtener el número de elementos, o la cadena que se usará para obtener el número de caracteres. |
+| arg1 |Sí |matriz o cadena |Hola toouse de matriz para obtener el número de Hola de elementos u Hola toouse de cadena para obtener el número de Hola de caracteres. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -918,7 +918,7 @@ Un entero.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo utilizar length con una matriz y una cadena:
+Hola siguiente ejemplo se muestra cómo toouse longitud con una matriz y la cadena:
 
 ```json
 {
@@ -952,7 +952,7 @@ En el ejemplo siguiente se muestra cómo utilizar length con una matriz y una ca
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -964,25 +964,25 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="padleft"></a>padLeft
 `padLeft(valueToPad, totalLength, paddingCharacter)`
 
-Devuelve una cadena alineada a la derecha agregando caracteres a la izquierda hasta alcanzar la longitud total especificada.
+Devuelve una cadena alineada a la derecha agregando caracteres toohello izquierda hasta alcanzar la longitud total especificada Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Sí |cadena o entero |Valor que se va a alinear a la derecha. |
-| totalLength |Sí |int |El número total de caracteres de la cadena devuelta. |
-| paddingCharacter |No |carácter individual |El carácter que se va a usar para el relleno a la izquierda hasta alcanza la longitud total. El valor predeterminado es un espacio. |
+| valueToPad |Sí |cadena o entero |Hola valor tooright-alinear. |
+| totalLength |Sí |int |número total de Hola de caracteres de hello devuelve la cadena. |
+| paddingCharacter |No |carácter individual |Hola toouse de caracteres de relleno izquierda hasta alcanza la longitud total de Hola. valor predeterminado de Hello es un espacio. |
 
-Si la cadena original es mayor que el número de caracteres que se va a rellenar, no se agrega ningún carácter.
+Si cadena original hello es mayor que el número de Hola de toopad caracteres, no se agrega ningún carácter.
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una cadena con al menos el número de caracteres especificados.
+Una cadena con Hola mínimo número de caracteres especificados.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo rellenar el valor del parámetro proporcionado por el usuario agregando el carácter cero hasta que alcance el número total de caracteres. 
+Hola de ejemplo siguiente muestra cómo toopad Hola valor del parámetro proporcionado por el usuario mediante la adición de hello carácter cero hasta que alcanza el número total de Hola de caracteres. 
 
 ```json
 {
@@ -1004,7 +1004,7 @@ En el ejemplo siguiente se muestra cómo rellenar el valor del parámetro propor
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1021,17 +1021,17 @@ Devuelve una nueva cadena con todas las instancias de una cadena reemplazadas po
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| originalString |Sí |cadena |Valor que tiene todas las instancias de una cadena reemplazadas por otra cadena. |
-| oldString |Sí |cadena |Cadena que se va a quitar de la cadena original. |
-| newString |Sí |cadena |La cadena que se va a agregar en lugar de la cadena eliminada. |
+| originalString |Sí |cadena |valor de Hola que tiene todas las instancias de una cadena que se reemplaza por otra cadena. |
+| oldString |Sí |cadena |cadena de Hello toobe quitado de la cadena original Hola. |
+| newString |Sí |cadena |Hola tooadd de cadena en lugar de hello quita la cadena. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una cadena con los caracteres reemplazados.
+Una cadena con hello reemplaza caracteres.
 
 ### <a name="examples"></a>Ejemplos
 
-El ejemplo siguiente muestra cómo quitar todos los guiones de la cadena proporcionada por el usuario y cómo reemplazar parte de la cadena por otra cadena.
+Hola de ejemplo siguiente muestra cómo tooremove todos los guiones de cadena proporcionado por el usuario de Hola y cómo tooreplace parte del programa Hola de cadena con otra cadena.
 
 ```json
 {
@@ -1057,7 +1057,7 @@ El ejemplo siguiente muestra cómo quitar todos los guiones de la cadena proporc
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1069,14 +1069,14 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="skip"></a>skip
 `skip(originalValue, numberToSkip)`
 
-Devuelve una cadena con todos los caracteres después del número especificado de caracteres, o una matriz con todos los elementos después del número especificado de elementos.
+Devuelve una cadena con todos los caracteres de hello después Hola un número especificado de caracteres o una matriz con todos los elementos de hello después Hola un número especificado de elementos.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| originalValue |Sí |matriz o cadena |La matriz o cadena que se usará para la omisión. |
-| numberToSkip |Sí |int |El número de elementos o caracteres que se van a omitir. Si este valor es 0 o un valor inferior, se devuelven todos los elementos o caracteres del valor. Si es mayor que la longitud de la matriz o la cadena, se devuelve una matriz o cadena vacía. |
+| originalValue |Sí |matriz o cadena |Hola toouse de matriz o de cadena para pasar por alto. |
+| numberToSkip |Sí |int |número de Hola de tooskip elementos o caracteres. Si este valor es 0 o menos, todos los elementos de Hola o se devuelven los caracteres en valor de Hola. Si es mayor que la longitud de cadena o matriz de Hola Hola, se devuelve una matriz vacía o una cadena. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -1084,7 +1084,7 @@ Una matriz o cadena.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se omite el número especificado de elementos de la matriz, y el número especificado de caracteres de la cadena.
+Hola siguiendo el ejemplo omite Hola número especificado de elementos de matriz de Hola y Hola especifica el número de caracteres en una cadena.
 
 ```json
 {
@@ -1126,7 +1126,7 @@ En el ejemplo siguiente se omite el número especificado de elementos de la matr
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1138,14 +1138,14 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="split"></a>split
 `split(inputString, delimiter)`
 
-Devuelve una matriz de cadenas que contiene las subcadenas de la cadena de entrada que están delimitadas por los delimitadores especificados.
+Devuelve una matriz de cadenas que contiene las subcadenas de Hola Hola la cadena de entrada que está delimitadas por hello Especifica delimitadores.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| inputString |Sí |cadena |La cadena que se va a dividir. |
-| delimiter |Sí |cadena o matriz de cadenas |Delimitador que se utilizará para dividir la cadena. |
+| inputString |Sí |cadena |Hola toosplit de cadena. |
+| delimiter |Sí |cadena o matriz de cadenas |Hola toouse delimitador para dividir la cadena de Hola. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -1153,7 +1153,7 @@ Una matriz de cadenas.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se divide la cadena de entrada con una coma, y con una coma o un punto y coma.
+Hello en el ejemplo siguiente se divide Hola la cadena de entrada con una coma y con una coma o un punto y coma.
 
 ```json
 {
@@ -1186,7 +1186,7 @@ En el ejemplo siguiente se divide la cadena de entrada con una coma, y con una c
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1198,22 +1198,22 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="startswith"></a>startsWith
 `startsWith(stringToSearch, stringToFind)`
 
-Determina si una cadena empieza con un valor. La comparación distingue entre mayúsculas y minúsculas.
+Determina si una cadena empieza con un valor. comparación de Hello distingue entre mayúsculas y minúsculas.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Sí |cadena |El valor que contiene el elemento para buscar. |
-| stringToFind |Sí |string |El valor para buscar. |
+| stringToSearch |Sí |cadena |valor de Hola que contiene Hola elemento toofind. |
+| stringToFind |Sí |cadena |Hola toofind de valor. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-**True** si el primer carácter o caracteres de la cadena coinciden con el valor; en caso contrario, **False**.
+**True** si Hola primer carácter o caracteres de la cadena de hello coincide con el valor de hello; en caso contrario, **False**.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo utilizar las funciones startsWith y endsWith:
+Hola de ejemplo siguiente muestra cómo toouse Hola startsWith y endsWith funciones:
 
 ```json
 {
@@ -1249,7 +1249,7 @@ En el ejemplo siguiente se muestra cómo utilizar las funciones startsWith y end
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1265,21 +1265,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="string"></a>cadena
 `string(valueToConvert)`
 
-Convierte el valor especificado en cadena.
+Hola convierte especificado tooa cadena del valor.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Sí | Cualquiera |El valor que se convierte en cadena. Se puede convertir cualquier tipo de valor, incluidos objetos y matrices. |
+| valueToConvert |Sí | Cualquiera |Hola valor tooconvert toostring. Se puede convertir cualquier tipo de valor, incluidos objetos y matrices. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Cadena del valor convertido.
+Una cadena de hello valor convertido.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo convertir distintos tipos de valores en cadenas:
+Hola de ejemplo siguiente muestra cómo tooconvert distintos tipos de valores toostrings:
 
 ```json
 {
@@ -1324,7 +1324,7 @@ En el ejemplo siguiente se muestra cómo convertir distintos tipos de valores en
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1337,23 +1337,23 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="substring"></a>substring
 `substring(stringToParse, startIndex, length)`
 
-Devuelve una subcadena que empieza en la posición de carácter especificada y que contiene el número especificado de caracteres.
+Devuelve una subcadena que comienza en hello especificado posición de carácter y contiene Hola del número de caracteres especificado.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Sí |cadena |La cadena original desde la que se extrae la subcadena. |
-| startIndex |No |int |La posición de carácter inicial basado en cero de la subcadena. |
-| length |No |int |El número de caracteres de la subcadena. Debe hacer referencia a una ubicación dentro de la cadena. |
+| stringToParse |Sí |cadena |cadena original de Hola desde qué Hola se extrae la subcadena. |
+| startIndex |No |int |Hola basado en cero posición de carácter inicial de la subcadena de Hola. |
+| length |No |int |número de Hola de caracteres de la subcadena de Hola. Debe hacer referencia tooa ubicación dentro de la cadena de Hola. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Subcadena.
+subcadena de Hola.
 
 ### <a name="remarks"></a>Comentarios
 
-La función genera un error cuando la subcadena supera el final de la cadena. En el ejemplo siguiente se produce el error "Los parámetros index y length deben hacer referencia a una ubicación dentro de la cadena. Parámetro index: '0'; parámetro length: '11'; longitud del parámetro string: '10'.
+se produce un error en la función Hello cuando subsecuencia de Hola se extiende más allá del final de Hola de cadena de Hola. se produce un error en la siguiente ejemplo de Hola con hello error "parámetros de índice y la longitud de hello deben hacer referencia tooa ubicación dentro de la cadena de Hola. Hola parámetro index: '0', Hola parámetro length: Hola '11', longitud del parámetro de cadena de hello: '10'. ".
 
 ```json
 "parameters": {
@@ -1366,7 +1366,7 @@ La función genera un error cuando la subcadena supera el final de la cadena. En
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se extrae una subcadena de un parámetro.
+Hola de ejemplo siguiente extrae una subcadena de un parámetro.
 
 ```json
 {
@@ -1388,7 +1388,7 @@ En el ejemplo siguiente se extrae una subcadena de un parámetro.
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1400,14 +1400,14 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="take"></a>take
 `take(originalValue, numberToTake)`
 
-Devuelve una cadena con el número especificado de caracteres desde el inicio de la cadena, o una matriz con el número especificado de elementos desde el inicio de la matriz.
+Devuelve una cadena con hello número especificado de caracteres desde el principio de Hola de Hola cadena o una matriz con hello un número especificado de elementos desde el principio de Hola de matriz de Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| originalValue |Sí |matriz o cadena |La matriz o cadena de la que se van a tomar los elementos. |
-| numberToTake |Sí |int |El número de elementos o caracteres que se van a tomar. Si este valor es 0 o un valor inferior, se devolverá una matriz o cadena vacía. Si es mayor que la longitud de la matriz o cadena especificada, se devuelven todos los elementos de la matriz o cadena. |
+| originalValue |Sí |matriz o cadena |Hola array o string tootake Hola elementos. |
+| numberToTake |Sí |int |número de Hola de tootake elementos o caracteres. Si este valor es 0 o un valor inferior, se devolverá una matriz o cadena vacía. Si es mayor que la longitud de Hola de hello con cadena o una matriz, se devuelven todos los elementos de hello en la matriz de Hola o de cadena. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -1415,7 +1415,7 @@ Una matriz o cadena.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se toma el número especificado de elementos de la matriz y de caracteres de la cadena.
+Hola siguiendo el ejemplo hello de toma un número especificado de elementos de matriz de Hola y los caracteres de una cadena.
 
 ```json
 {
@@ -1457,7 +1457,7 @@ En el ejemplo siguiente se toma el número especificado de elementos de la matri
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1469,21 +1469,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="tolower"></a>toLower
 `toLower(stringToChange)`
 
-Convierte la cadena especificada a minúsculas.
+Hola convierte especificado case de toolower la cadena.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Sí |string |Valor que se va a convertir a minúsculas. |
+| stringToChange |Sí |cadena |caso de Hello valor tooconvert toolower. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Cadena convertida a minúsculas.
+cadena de Hello convertida toolower caso.
 
 ### <a name="examples"></a>Ejemplos
 
-En el siguiente ejemplo se convierte un valor de parámetro a minúsculas y a mayúsculas.
+Hola siguiente ejemplo convierte un caso de toolower del valor de parámetro y el caso de tooupper.
 
 ```json
 {
@@ -1509,7 +1509,7 @@ En el siguiente ejemplo se convierte un valor de parámetro a minúsculas y a ma
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1521,21 +1521,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="toupper"></a>toUpper
 `toUpper(stringToChange)`
 
-Convierte la cadena especificada a mayúsculas.
+Hola convierte especificado case de tooupper la cadena.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Sí |cadena |Valor que se va a convertir a mayúsculas. |
+| stringToChange |Sí |cadena |caso de Hello valor tooconvert tooupper. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Cadena convertida a mayúsculas.
+cadena de Hello convertida tooupper caso.
 
 ### <a name="examples"></a>Ejemplos
 
-En el siguiente ejemplo se convierte un valor de parámetro a minúsculas y a mayúsculas.
+Hola siguiente ejemplo convierte un caso de toolower del valor de parámetro y el caso de tooupper.
 
 ```json
 {
@@ -1561,7 +1561,7 @@ En el siguiente ejemplo se convierte un valor de parámetro a minúsculas y a ma
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1573,21 +1573,21 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="trim"></a>trim
 `trim (stringToTrim)`
 
-Quita todos los caracteres de espacio en blanco iniciales y finales de la cadena especificada.
+Quita todas las iniciales y finales de caracteres de espacio en blanco de Hola la cadena especificada.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Sí |cadena |Valor que se recortará. |
+| stringToTrim |Sí |cadena |Hola tootrim de valor. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Cadena sin caracteres de espacio en blanco iniciales ni finales.
+cadena de Hello sin caracteres de espacio en blanco iniciales y finales.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se recortan los caracteres de espacio en blanco del parámetro.
+Hello en el ejemplo siguiente se recorta caracteres de espacio en blanco de Hola de parámetro hello.
 
 ```json
 {
@@ -1609,7 +1609,7 @@ En el ejemplo siguiente se recortan los caracteres de espacio en blanco del par�
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1620,44 +1620,44 @@ La salida del ejemplo anterior con los valores predeterminados es:
 ## <a name="uniquestring"></a>uniqueString
 `uniqueString (baseString, ...)`
 
-Crea una cadena de hash determinista basada en los valores proporcionados como parámetros. 
+Crea una cadena de hash determinista basada en valores de hello proporcionados como parámetros. 
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| baseString |Sí |string |Valor utilizado en la función hash para crear una cadena única. |
-| parámetros adicionales según sea necesario |No |cadena |Puede agregar tantas cadenas como necesite para crear el valor que especifica el nivel de unicidad. |
+| baseString |Sí |cadena |valor de Hello usa en hello hash función toocreate una cadena única. |
+| parámetros adicionales según sea necesario |No |cadena |Puede agregar tantos cadenas como valor de hello toocreate necesaria que especifica el nivel de unicidad Hola. |
 
 ### <a name="remarks"></a>Comentarios
 
-Esta función es útil cuando se debe crear un nombre único para un recurso. Proporciona valores de parámetros que limitan el ámbito de unicidad del resultado. Puede especificar si el nombre es único para la suscripción, el grupo de recursos o la implementación. 
+Esta función es útil cuando es necesario toocreate un nombre único para un recurso. Se proporcionan valores de parámetro que limitan el ámbito de Hola de unicidad de resultado de hello. Puede especificar si el nombre de hello es único hacia abajo toosubscription, el grupo de recursos o la implementación. 
 
-El valor devuelto no es una cadena aleatoria, sino que es el resultado de una función hash. El valor devuelto tiene 13 caracteres. Debe ser único globalmente. Puede que desee combinar el valor con un prefijo de su convención de nomenclatura para crear un nombre que sea más fácil de reconocer. En el ejemplo siguiente se muestra el formato del valor devuelto. El valor real varía según los parámetros proporcionados.
+Hola devuelve el valor no es una cadena aleatoria, pero en su lugar Hola resultado de una función hash. Hola devuelve el valor es 13 caracteres. Debe ser único globalmente. Puede que desee valor de hello toocombine con un prefijo de su toocreate de convención de nomenclatura un nombre que sea significativo. Hello en el ejemplo siguiente se muestra formato Hola de hello devolvió el valor. valor real de Hello varía según el saludo de los parámetros proporcionado.
 
     tcvhiyu5h2o5o
 
-En los ejemplos siguientes se muestra cómo utilizar uniqueString a fin de crear un valor único para niveles de uso común.
+Hello en los ejemplos siguientes muestra cómo toouse uniqueString toocreate un único valor de frecuencia niveles usados.
 
-Único basado en la suscripción
+Toosubscription de ámbito único
 
 ```json
 "[uniqueString(subscription().subscriptionId)]"
 ```
 
-Único basado en el grupo de recursos
+Grupo de tooresource ámbito único
 
 ```json
 "[uniqueString(resourceGroup().id)]"
 ```
 
-Único basado en la implementación de un grupo de recursos
+Toodeployment de ámbito único para un grupo de recursos
 
 ```json
 "[uniqueString(resourceGroup().id, deployment().name)]"
 ```
 
-En el ejemplo siguiente se muestra cómo crear un nombre único para una cuenta de almacenamiento basada en el grupo de recursos. Dentro del grupo de recursos, el nombre no es único si crea de la misma manera.
+Hola de ejemplo siguiente muestra cómo se toocreate un nombre único para una cuenta de almacenamiento basada en el grupo de recursos. Dentro del grupo de recursos de hello, nombre de hello no es único si construyó Hola igual.
 
 ```json
 "resources": [{ 
@@ -1672,7 +1672,7 @@ Cadena que contiene 13 caracteres.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se devuelven los resultados de uniquestring:
+Hola ejemplo siguiente devuelve los resultados de uniquestring:
 
 ```json
 {
@@ -1697,30 +1697,30 @@ En el ejemplo siguiente se devuelven los resultados de uniquestring:
 ## <a name="uri"></a>uri
 `uri (baseUri, relativeUri)`
 
-Crea un URI absoluto mediante la combinación de la cadena de relativeUri y baseUri.
+Crea un URI absoluto combinando baseUri hello y cadena de relativeUri Hola.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| baseUri |Sí |cadena |La cadena de uri base. |
-| relativeUri |Sí |string |La cadena de uri relativo que se agregará a la cadena de uri base. |
+| baseUri |Sí |cadena |cadena de uri base Hola. |
+| relativeUri |Sí |cadena |Hola uri relativo tooadd toohello uri base cadena. |
 
-El valor del parámetro **baseUri** puede incluir un archivo específico, pero al construir el identificador URI, solo se usa la ruta de acceso base. Por ejemplo, al pasar `http://contoso.com/resources/azuredeploy.json` como parámetro baseUri, se obtiene como resultado un identificador URI base de `http://contoso.com/resources/`.
+Hola valor para hello **baseUri** parámetro puede incluir un archivo específico, pero solo Hola ruta de acceso base se utiliza para crear Hola URI. Por ejemplo, si se pasa `http://contoso.com/resources/azuredeploy.json` como Hola baseUri parámetro da como resultado un identificador URI base del `http://contoso.com/resources/`.
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una cadena que representa el identificador URI absoluto para los valores base y relativos.
+Una cadena que representa Hola URI absoluto para valores de hello base y relativo.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo construir un vínculo a una plantilla anidada en función del valor de la plantilla principal.
+Hola de ejemplo siguiente muestra cómo tooconstruct una plantilla anidada de vínculo tooa con valor Hola de plantilla de hello principal.
 
 ```json
 "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 ```
 
-En el ejemplo siguiente se muestra cómo usar uri, uriComponent y uriComponentToString:
+Hola siguiente ejemplo se muestra cómo toouse uri, componente y uriComponentToString:
 
 ```json
 {
@@ -1749,7 +1749,7 @@ En el ejemplo siguiente se muestra cómo usar uri, uriComponent y uriComponentTo
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1768,15 +1768,15 @@ Codifica un identificador URI.
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Sí |string |El valor para codificar. |
+| stringToEncode |Sí |cadena |Hola tooencode de valor. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una cadena del valor codificado por el identificador URI.
+Una cadena de hello URI había codificado valor.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo usar uri, uriComponent y uriComponentToString:
+Hola siguiente ejemplo se muestra cómo toouse uri, componente y uriComponentToString:
 
 ```json
 {
@@ -1805,7 +1805,7 @@ En el ejemplo siguiente se muestra cómo usar uri, uriComponent y uriComponentTo
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1825,7 +1825,7 @@ Devuelve una cadena del valor codificado por el identificador URI.
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Sí |cadena |El valor codificado por el identificador URI para convertir en una cadena. |
+| uriEncodedString |Sí |cadena |Hola URI había codificado valor tooconvert tooa cadena. |
 
 ### <a name="return-value"></a>Valor devuelto
 
@@ -1833,7 +1833,7 @@ Una cadena descodificada del valor codificado por el identificador URI.
 
 ### <a name="examples"></a>Ejemplos
 
-En el ejemplo siguiente se muestra cómo usar uri, uriComponent y uriComponentToString:
+Hola siguiente ejemplo se muestra cómo toouse uri, componente y uriComponentToString:
 
 ```json
 {
@@ -1862,7 +1862,7 @@ En el ejemplo siguiente se muestra cómo usar uri, uriComponent y uriComponentTo
 }
 ```
 
-La salida del ejemplo anterior con los valores predeterminados es:
+Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -1872,8 +1872,8 @@ La salida del ejemplo anterior con los valores predeterminados es:
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener una descripción de las secciones de una plantilla de Azure Resource Manager, vea [Creación de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
-* Para combinar varias plantillas, vea [Uso de plantillas vinculadas con Azure Resource Manager](resource-group-linked-templates.md).
-* Para iterar una cantidad de veces específica al crear un tipo de recurso, vea [Creación de varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
-* Para saber cómo implementar la plantilla que creó, consulte [Implementación de una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
+* Para obtener una descripción de las secciones de hello en una plantilla de Azure Resource Manager, consulte [plantillas del Administrador de recursos de Azure de creación](resource-group-authoring-templates.md).
+* toomerge varias plantillas, consulte [mediante plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).
+* tooiterate un número especificado de veces al crear un tipo de recurso, vea [crear varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
+* toosee cómo toodeploy plantilla de Hola que haya creado, vea [implementar una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
 

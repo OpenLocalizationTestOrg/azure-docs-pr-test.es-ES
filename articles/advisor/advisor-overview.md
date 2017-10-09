@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure Advisor | Microsoft Docs"
-description: Utilice Azure Advisor para optimizar las implementaciones de Azure.
+title: aaaIntroduction tooAzure Advisor | Documentos de Microsoft
+description: Utilice Azure Advisor toooptimize las implementaciones de Azure.
 services: advisor
 documentationcenter: NA
 author: kumudd
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 35678142550f9f887562f311a5e7d9516495cf53
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5d796fc06366221efdb6f1bda39ab3fb676abfd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-azure-advisor"></a>Introducción a Azure Advisor
+# <a name="introduction-tooazure-advisor"></a>Introducción tooAzure Advisor
 
-Obtenga información sobre Azure Advisor y sus funcionalidades clave, y obtenga respuesta a las preguntas más frecuentes.
+Obtenga información sobre el Asistente de Azure y sus capacidades claves así como toofrequently respuestas preguntas más frecuentes.
 
 ## <a name="what-is-advisor"></a>¿Qué es Advisor?
-Advisor es un consultor personalizado en la nube que lo ayuda a seguir procedimientos recomendados para optimizar las implementaciones de Azure. Analiza la configuración de recursos y la telemetría de uso, y recomienda soluciones que pueden ayudar a mejoran la rentabilidad, el rendimiento, la alta disponibilidad y la seguridad de los recursos de Azure.
+Advisor es un consultor personalizado en la nube que le ayudará a seguir toooptimize de prácticas recomendada las implementaciones de Azure. Analiza la telemetría de uso y la configuración de recursos y, a continuación, recomienda soluciones que pueden ayudar a mejoran la rentabilidad hello, rendimiento, alta disponibilidad y seguridad de los recursos de Azure.
 
 Con Advisor, puede:
 * Obtener sugerencias de procedimientos recomendados proactivas, prácticas y personalizadas, 
-* Mejorar el rendimiento, la seguridad y la alta disponibilidad de los recursos, al mismo tiempo que identifica oportunidades para reducir el gasto general de Azure, y
+* Mejorar el rendimiento de hello, seguridad y alta disponibilidad de los recursos a medida que identifique tooreduce oportunidades gasto general Azure.
 * Obtener recomendaciones con acciones propuestas en línea.
 
-Puede acceder a Advisor mediante [Azure Portal](https://aka.ms/azureadvisordashboard). Inicie sesión en [Azure Portal](https://portal.azure.com), seleccione **Examinar** y desplácese a **Azure Advisor**. El panel de Advisor muestra recomendaciones personalizadas de la suscripción seleccionada. 
+Puede tener acceso a asesor a través de hello [portal de Azure](https://aka.ms/azureadvisordashboard). Inicie sesión en toohello [portal](https://portal.azure.com), seleccione **examinar**y, a continuación, desplácese demasiado**Asistente de Azure**. panel de Asistente de Hello muestra recomendaciones personalizadas para una suscripción seleccionada. 
 
-Las recomendaciones se dividen en cuatro categorías: 
+recomendaciones de Hola se dividen en cuatro categorías: 
 
-* **Alta disponibilidad**: lo ayuda a garantizar y mejorar la continuidad de las aplicaciones empresariales críticas. Para obtener más información, consulte las [recomendaciones sobre alta disponibilidad de Advisor](advisor-high-availability-recommendations.md).
+* **Alta disponibilidad**: tooensure y mejorar la continuidad de Hola de las aplicaciones empresariales críticas. Para obtener más información, consulte las [recomendaciones sobre alta disponibilidad de Advisor](advisor-high-availability-recommendations.md).
 
-* **Seguridad**: lo ayuda a detectar amenazas y vulnerabilidades que podrían dar lugar a infracciones de seguridad. Para obtener más información, consulte las [recomendaciones sobre seguridad de Advisor](advisor-security-recommendations.md).
+* **Seguridad**: toodetect amenazas y vulnerabilidades que podrían dar lugar a infracciones de toosecurity. Para obtener más información, consulte las [recomendaciones sobre seguridad de Advisor](advisor-security-recommendations.md).
 
-* **Rendimiento**: lo ayuda a mejorar la velocidad de las aplicaciones. Para obtener más información, consulte las [recomendaciones sobre rendimiento de Advisor](advisor-performance-recommendations.md).
+* **Rendimiento**: velocidad de hello tooimprove de las aplicaciones. Para obtener más información, consulte las [recomendaciones sobre rendimiento de Advisor](advisor-performance-recommendations.md).
 
-* **Costo**: lo ayuda a optimizar y reducir el gasto general de Azure. Para obtener más información, consulte las [recomendaciones sobre el costo de Advisor](advisor-cost-recommendations.md).
+* **Costo**: toooptimize y reducir la Azure general dedican. Para obtener más información, consulte las [recomendaciones sobre el costo de Advisor](advisor-cost-recommendations.md).
 
   ![Tipos de recomendaciones de Advisor](./media/advisor-overview/advisor-all-tab-examples.png)
 
 > [!NOTE]
-> Para acceder a las recomendaciones de Advisor, primero debe *registrar su suscripción* en dicha solución. Una suscripción se registra cuando el *propietario de esta* inicia el panel de Advisor y hace clic en el botón **Obtener recomendaciones**. Esta operación *solo se realiza una vez*. Una vez registrada la suscripción, puede acceder a las recomendaciones de Advisor como *Propietario*, *Contribuidor* o *Lector* para una suscripción, un grupo de recursos o un recurso concreto.
+> tooaccess las recomendaciones del asistente, primero debe *registrar su suscripción* con el asistente. Una suscripción se registra cuando un *suscripción propietario* inicia Hola Hola de panel y hace clic en el asistente **obtener recomendaciones** botón. Esta operación *solo se realiza una vez*. Después de registra la suscripción de hello, puede tener acceso a las recomendaciones del asistente como *propietario*, *colaborador*, o *lector* para una suscripción de un grupo de recursos, o recurso específico.
 
-Puede hacer clic en una recomendación para saber más sobre ella. También puede aprender más sobre las acciones que puede llevar a cabo para aprovechar las ventajas de una oportunidad o resolver un problema. 
+Puede hacer clic en un toolearn de recomendación más sobre él. También puede obtener información sobre las acciones que puede realizar tootake ventaja de una oportunidad o resolver un problema. 
 
-Advisor ofrece recomendaciones con acciones insertadas o vínculos de documentación. Al hacer clic en una acción insertada, se inicia un "viaje de usuario guiado" para implementarla. Al hacer clic en un vínculo de documentación, se le remite a documentación que describe cómo llevar a cabo la acción de forma manual. 
+Advisor ofrece recomendaciones con acciones insertadas o vínculos de documentación. Al hacer clic en una acción en línea le guiará por una tooimplement "viaje de usuario interactiva" se. Al hacer clic en un vínculo de documentación señala toodocumentation que describe cómo implementar la acción de hello toomanually. 
 
-Advisor actualiza las recomendaciones cada hora. Si no desea realizar de inmediato una acción basada en una recomendación, puede posponerla durante un período de tiempo o descartarla. 
+Advisor actualiza las recomendaciones cada hora. Si no tiene la intención de una acción inmediata tootake en una recomendación, puede posponer durante un período de tiempo especificado o descartarla. 
 
 ## <a name="frequently-asked-questions"></a>Preguntas más frecuentes
 
 ### <a name="how-do-i-access-advisor"></a>¿Cómo se accede a Advisor?
-Puede acceder a Advisor mediante [Azure Portal](https://aka.ms/azureadvisordashboard). Inicie sesión en [Azure Portal](https://portal.azure.com), seleccione **Examinar** y desplácese a **Azure Advisor**. El panel de Advisor muestra recomendaciones personalizadas de la suscripción seleccionada. 
+Puede tener acceso a asesor a través de hello [portal de Azure](https://aka.ms/azureadvisordashboard). Inicie sesión en toohello [portal](https://portal.azure.com), seleccione **examinar**y, a continuación, desplácese demasiado**Asistente de Azure**. panel de Asistente de Hello muestra recomendaciones personalizadas para una suscripción seleccionada. 
 
-También puede ver las recomendaciones de Advisor a través de la hoja de recursos de la máquina virtual. Seleccione una máquina virtual y después desplácese a las recomendaciones de Advisor en el menú. 
+También puede ver las recomendaciones del asistente a través de la hoja de recursos de máquina virtual de Hola. Elige una máquina virtual y, a continuación, desplácese tooAdvisor recomendaciones en el menú de Hola. 
 
-### <a name="what-permissions-do-i-need-to-access-advisor"></a>¿Qué permisos son necesarios para acceder a Advisor?
+### <a name="what-permissions-do-i-need-tooaccess-advisor"></a>¿Qué permisos necesito tooaccess Advisor?
 
-Para acceder a las recomendaciones de Advisor, primero debe *registrar su suscripción* en dicha solución. Una suscripción se registra cuando el *propietario de esta* inicia el panel de Advisor y hace clic en el botón **Obtener recomendaciones**. Esta operación *solo se realiza una vez*. Una vez registrada la suscripción, puede acceder a las recomendaciones de Advisor como *Propietario*, *Contribuidor* o *Lector* para una suscripción, un grupo de recursos o un recurso concreto.
+tooaccess las recomendaciones del asistente, primero debe *registrar su suscripción* con el asistente. Una suscripción se registra cuando un *suscripción propietario* inicia Hola Hola de panel y hace clic en el asistente **obtener recomendaciones** botón. Esta operación *solo se realiza una vez*. Después de registra la suscripción de hello, puede tener acceso a las recomendaciones del asistente como *propietario*, *colaborador*, o *lector* para una suscripción de un grupo de recursos, o recurso específico.
 
 ### <a name="how-often-are-advisor-recommendations-updated"></a>¿Con qué frecuencia se actualizan las recomendaciones de Advisor?
 
@@ -76,11 +76,11 @@ Advisor proporciona recomendaciones para máquinas virtuales, conjuntos de dispo
 
 ### <a name="can-i-snooze-or-dismiss-a-recommendation"></a>¿Se puede posponer o descartar una recomendación?
 
-Para posponer o descartar una recomendación, haga clic en el botón o vínculo **Snooze** (Posponer). Puede especificar un tiempo de posposición o seleccionar **Never** (Nunca) para descartar la recomendación.
+toosnooze o descartar una recomendación, haga clic en hello **posponer** botón o vínculo. Puede especificar un tiempo de posposición período o seleccione **nunca** toodismiss Hola recomendación.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para aprender más sobre las recomendaciones de Advisor, consulte:
+toolearn más información acerca de las recomendaciones del asistente, vea:
 
 * [Introducción a Advisor](advisor-get-started.md)
 * [Recomendaciones sobre alta disponibilidad de Advisor](advisor-high-availability-recommendations.md)

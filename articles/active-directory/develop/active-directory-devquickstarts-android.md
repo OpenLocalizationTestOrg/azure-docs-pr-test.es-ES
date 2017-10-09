@@ -1,6 +1,6 @@
 ---
-title: "Introducción a Azure AD Android | Microsoft Docs"
-description: "Cómo crear una aplicación Android que se integra con Azure AD para el inicio de sesión y llama a las API protegidas de Azure AD mediante OAuth."
+title: "aaaAzure AD Android Introducción | Documentos de Microsoft"
+description: "¿Cómo toobuild una aplicación Android que se integra con Azure AD para inicio de sesión y llamadas a Azure AD había protegido API mediante OAuth."
 services: active-directory
 documentationcenter: android
 author: danieldobalian
@@ -15,107 +15,107 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 746cad19093fd2a1ad23ddd9412394f8d9da331c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1aedc8ff60874b405a182a4ccbfb2c8b4d9d3704
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-azure-ad-into-an-android-app"></a>Integración de Azure AD en una aplicación Android
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 > [!TIP]
-> Pruebe la versión preliminar de nuestro nuevo [portal para desarrolladores](https://identity.microsoft.com/Docs/Android), que le ayudará a empezar a trabajar con Azure AD en tan solo unos minutos. El portal para desarrolladores lo guiará a través del proceso de registro de una aplicación y de integración de Azure AD en el código. Cuando haya terminado, tendrá una aplicación sencilla que podrá autenticar a los usuarios del inquilino, así como un back-end con capacidad para aceptar tokens y realizar validaciones.
+> Probar la versión preliminar de Hola de nuestra nueva [portal para desarrolladores de](https://identity.microsoft.com/Docs/Android), que le ayudará a ponerse a trabajar con Azure AD en tan solo unos minutos. portal para desarrolladores de Hello le guiará a través del proceso de Hola de registrar una aplicación y la integración de Azure AD en el código. Cuando haya terminado, tendrá una aplicación sencilla que podrá autenticar a los usuarios del inquilino, así como un back-end con capacidad para aceptar tokens y realizar validaciones.
 >
 >
 
-Si está desarrollando una aplicación de escritorio, Azure Active Directory (Azure AD) le facilita la autenticación de los usuarios mediante sus cuentas de Active Directory locales. También permite a la aplicación consumir con seguridad cualquier API web protegida por Azure AD, como las API de Office 365 o la API de Azure.
+Si está desarrollando una aplicación de escritorio, Azure Active Directory (Azure AD) hace simple y sencillo para tooauthenticate los usuarios mediante sus cuentas de Active Directory local. También permite que su aplicación toosecurely consumir cualquier web API protegida por Azure AD, como Hola API de Office 365 u Hola API de Azure.
 
-Para los clientes de Android que necesitan tener acceso a recursos protegidos, Azure AD proporciona la Biblioteca de autenticación de Active Directory (ADAL). El único propósito de ADAL es facilitar a su aplicación la obtención de tokens de acceso. Para demostrar lo fácil que es, crearemos una aplicación Android de lista de tareas pendientes que permita realizar lo siguiente:
+Para los clientes de Android que necesitan recursos tooaccess protegido, Azure AD proporciona Hola biblioteca de autenticación de Active Directory (ADAL). Hola único propósito de AAL es toomake más sencilla para los tokens de acceso de tooget de su aplicación. toodemonstrate lo fácil es, vamos a crear una aplicación Android lista de tareas que:
 
-* Obtener tokens de acceso para llamar a la API de lista de tareas pendientes utilizando el [protocolo de autenticación OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+* Obtiene acceso a los tokens para llamar a una API de la lista de tareas mediante el uso de hello [protocolo de autenticación de OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 * Obtener listas de tareas pendientes de un usuario.
 * Desconectar a los usuarios.
 
-Para comenzar, necesitará a un inquilino de Azure AD en el que pueda crear usuarios y registrar una aplicación. Si aún no tiene un inquilino, [descubra cómo conseguir uno](active-directory-howto-tenant.md).
+tooget iniciado, necesita a un inquilino de Azure AD en el que puede crear usuarios y registrar una aplicación. Si aún no tiene un inquilino, [Obtenga información acerca de cómo tooget uno](active-directory-howto-tenant.md).
 
-## <a name="step-1-download-and-run-the-nodejs-rest-api-todo-sample-server"></a>Paso 1: descargue y ejecute el servidor de ejemplos TODO de la API de REST de Node.js
-Este servidor de ejemplos TODO de la API de REST de Node.js está escrito específicamente para que funcione con nuestro ejemplo existente para crear una API de REST To-Do de un solo inquilino para Azure AD. Se trata de un requisito previo para el Inicio rápido.
+## <a name="step-1-download-and-run-hello-nodejs-rest-api-todo-sample-server"></a>Paso 1: Descargue y ejecute el servidor de ejemplo de Hola tareas de API de REST de Node.js
+ejemplo de Hola a tareas de API de REST de Node.js se escribe específicamente toowork en nuestro ejemplo existente para la creación de un API de REST de tareas pendientes de único inquilino para Azure AD. Se trata de un requisito previo para hello inicio rápido.
 
-Para obtener información sobre cómo configurarlo, consulte los ejemplos existentes en [Servicio de API de REST de ejemplo de Microsoft Azure Active Directory para Node.js](active-directory-devquickstarts-webapi-nodejs.md).
+Para obtener información sobre cómo tooset este proceso, consulte nuestros ejemplos existentes en [Microsoft Azure Active Directory REST API de servicio de ejemplo para Node.js](active-directory-devquickstarts-webapi-nodejs.md).
 
 
 ## <a name="step-2-register-your-web-api-with-your-azure-ad-tenant"></a>Paso 2: registre la API web con el inquilino de Azure AD
 Active Directory permite agregar dos tipos de aplicaciones:
 
-- API web que ofrecen servicios a los usuarios
-- Aplicaciones (que se ejecutan en la Web o en un dispositivo) que tienen acceso a esas API web
+- Las API que ofrecen servicios toousers Web
+- Aplicaciones (se ejecutan en web de Hola o en un dispositivo) que tienen acceso a los que las API web
 
-En este paso, va a registrar la API web que se ejecuta localmente para probar este ejemplo. Normalmente, esta API web es un servicio de REST que ofrece la funcionalidad a la que desea que acceda una aplicación. Azure AD puede ayudar a proteger cualquier punto de conexión.
+En este paso, que se está registrando hello web API que se ejecutan localmente para probar este ejemplo. Normalmente, esta API web es un servicio REST que es una funcionalidad de oferta que desea que un tooaccess de aplicación. Azure AD puede ayudar a proteger cualquier punto de conexión.
 
-Aquí suponemos que va a registrar la API de REST TODO mencionada anteriormente. No obstante, este procedimiento este procedimiento sirve para cualquier API web que desee que Azure Active Directory ayude a proteger.
+Suponemos que está registrando Hola API de REST de tareas hace referencia a versiones anteriores. Pero esto funciona para cualquier API web en la que desea proteger toohelp de Active Directory de Azure.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. En la barra superior, haga clic en su cuenta. En la lista **Directorio**, elija el inquilino de Azure AD donde desea registrar la aplicación.
-3. Haga clic en **Más servicios** en el panel izquierdo y seleccione **Azure Active Directory**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. En la barra superior de hello, haga clic en su cuenta. Hola **Directory** elija inquilino hello Azure AD en el que desea tooregister la aplicación.
+3. Haga clic en **más servicios** en Hola panel izquierdo y, a continuación, seleccione **Azure Active Directory**.
 4. Haga clic en **Registros de aplicaciones** y seleccione **Agregar**.
-5. Escriba un nombre descriptivo para la aplicación (por ejemplo, **TodoListService**), seleccione **Aplicación web y/o API web** y haga clic en **Siguiente**.
-6. Para la URL de inicio de sesión, escriba la dirección URL base para el ejemplo. De manera predeterminada, será `https://localhost:8080`.
-7. Haga clic en **Aceptar** para completar el registro.
-8. Mientras sigue en Azure Portal, vaya a la página de la aplicación, busque el valor del id. de aplicación y cópielo. Lo necesitará más adelante cuando configure la aplicación.
-9. En la página **Configuración** -> **Propiedades**, actualice la aplicación del URI del identificador de aplicación y escriba `https://<your_tenant_name>/TodoListService`. Reemplace `<your_tenant_name>` por el nombre de su inquilino de Azure AD.
+5. Escriba un nombre descriptivo para la aplicación hello (por ejemplo, **TodoListService**), seleccione **aplicación Web o API Web**y haga clic en **siguiente**.
+6. Hola inicio de sesión en la dirección URL, escriba URL base Hola de ejemplo de Hola. De manera predeterminada, será `https://localhost:8080`.
+7. Haga clic en **Aceptar** registro de hello toocomplete.
+8. Mientras se encuentra en hello portal de Azure, ir a página de aplicación tooyour, buscar el valor de identificador de aplicación hello y cópiela. Lo necesitará más adelante cuando configure la aplicación.
+9. De hello **configuración** -> **propiedades** página, actualizar la aplicación hello URI del Id.: Introduzca `https://<your_tenant_name>/TodoListService`. Reemplace `<your_tenant_name>` por nombre de hello del inquilino de Azure AD.
 
-## <a name="step-3-register-the-sample-android-native-client-application"></a>Paso 3: registre la aplicación de cliente nativo de Android de ejemplo
-Debe registrar la aplicación web en este ejemplo. Esto permite a su aplicación comunicarse con la recién registrada API web. Azure AD rechazará incluso que la aplicación pueda solicitar el inicio de sesión, a menos que esté registrada. Eso forma parte de la seguridad del modelo.
+## <a name="step-3-register-hello-sample-android-native-client-application"></a>Paso 3: Registrar aplicación de Android Native Client de ejemplo de Hola
+Debe registrar la aplicación web en este ejemplo. Esto permite que su toocommunicate de aplicación con API web recién registrado de Hola. Azure AD rechazará tooeven permitir su tooask de aplicación para inicio de sesión a menos que se registra. Que forma parte de la seguridad de hello del modelo de Hola.
 
-Aquí suponemos que va a registrar la aplicación de ejemplo mencionada anteriormente. No obstante, este procedimiento sirve para cualquier aplicación que esté desarrollando.
+Suponemos que está registrando la aplicación de ejemplo de Hola mencionado anteriormente. No obstante, este procedimiento sirve para cualquier aplicación que esté desarrollando.
 
 > [!NOTE]
-> Es posible que se pregunte por qué poner una aplicación y una API web en un mismo inquilino. Como posiblemente haya intuido, puede crear una aplicación con acceso a una API externa registrada en Azure AD desde otro inquilino. Si lo hace, se pedirá a los clientes que acepten el uso de la API en la aplicación. La Biblioteca de autenticación de Active Directory para iOS se encarga de este consentimiento por usted. A medida que exploremos características más avanzadas, verá que se trata de una parte importante del trabajo necesario para tener acceso al conjunto de API de Microsoft desde Azure y Office, así como cualquier otro proveedor de servicios. Por ahora, como ha registrado su API web y la aplicación en el mismo inquilino, no verá ninguna petición de consentimiento. Este suele ser el caso si va a desarrollar una aplicación solo para que la use su propia empresa.
+> Es posible que se pregunte por qué poner una aplicación y una API web en un mismo inquilino. Como posiblemente haya intuido, puede crear una aplicación con acceso a una API externa registrada en Azure AD desde otro inquilino. Si lo hace, sus clientes podrán solicita tooconsent toohello uso de hello API en la aplicación hello. La Biblioteca de autenticación de Active Directory para iOS se encarga de este consentimiento por usted. A medida que exploramos características más avanzadas, verá que se trata de una parte importante del conjunto de hello trabajo tooaccess necesarios Hola de APIs de Microsoft de Azure y Office, así como cualquier otro proveedor de servicio. Por ahora, ya ha registrado su API web y la aplicación sometida a Hola mismo inquilino, no verá las peticiones de consentimiento. Esto suele ser el caso de hello si está desarrollando una aplicación solo para su propio toouse de empresa.
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. En la barra superior, haga clic en su cuenta. En la lista **Directorio**, elija el inquilino de Azure AD donde desea registrar la aplicación.
-3. Haga clic en **Más servicios** en el panel izquierdo y seleccione **Azure Active Directory**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. En la barra superior de hello, haga clic en su cuenta. Hola **Directory** elija inquilino hello Azure AD en el que desea tooregister la aplicación.
+3. Haga clic en **más servicios** en Hola panel izquierdo y, a continuación, seleccione **Azure Active Directory**.
 4. Haga clic en **Registros de aplicaciones** y seleccione **Agregar**.
-5. Escriba un nombre descriptivo para la aplicación (por ejemplo **TodoListClient-Android**), seleccione **Aplicación de cliente nativo** y haga clic en **Siguiente**.
-6. Para el URI de redirección, escriba `http://TodoListClient`. Haga clic en **Finalizar**
-7. En la página de la aplicación, busque el valor de identificador de la aplicación y cópielo. Lo necesitará más adelante cuando configure la aplicación.
-8. En la página **Configuración**, seleccione **Permisos necesarios** y, a continuación, **Agregar**.  Busque y seleccione TodoListService y agregue el permiso **Access TodoListService** en **Permisos delegados**; luego, haga clic en **Listo**.
+5. Escriba un nombre descriptivo para la aplicación hello (por ejemplo, **TodoListClient Android**), seleccione **aplicación cliente nativa**y haga clic en **siguiente**.
+6. URI de redireccionamiento para hello, escriba `http://TodoListClient`. Haga clic en **Finalizar**
+7. Página de aplicación Hola, buscar el valor de identificador de aplicación hello y cópiela. Lo necesitará más adelante cuando configure la aplicación.
+8. De hello **configuración** página, seleccione **permisos necesarios** y seleccione **agregar**.  Busque y seleccione TodoListService, agregue hello **acceso TodoListService** permiso en **permisos delegados**y haga clic en **realiza**.
 
-Para compilar con Maven, puede utilizar pom.xml en el nivel superior:
+toobuild con Maven, puede usar pom.xml en el nivel superior de hello:
 
 1. Clone este repositorio en el directorio que desee:
 
   `$ git clone git@github.com:AzureADSamples/NativeClient-Android.git`  
-2. Siga los pasos descritos en los [requisitos previos para configurar el entorno Maven para Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android).
-3. Configure el emulador con SDK 19.
-4. Vaya a la carpeta raíz donde ha clonado el repositorio.
+2. Siga los pasos de Hola Hola [tooset de requisitos previos del entorno de Maven para Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android/wiki/Setting-up-maven-environment-for-Android).
+3. Configurar el emulador de hello con SDK 19.
+4. Vaya a carpeta de raíz de toohello donde clonó repositorio Hola.
 5. Ejecute este comando: `mvn clean install`
-6. Cambie el directorio al ejemplo de inicio rápido: `cd samples\hello`
+6. Cambiar directorio toohello inicio rápido muestra de Hola a:`cd samples\hello`
 7. Ejecute este comando: `mvn android:deploy android:run`
 
-   La aplicación debería iniciarse.
-8. Escriba las credenciales del usuario de prueba para probarlas.
+   Debería ver la aplicación a partir de Hola.
+8. Escriba tootry de credenciales de usuario de prueba.
 
-Los paquetes JAR se enviarán junto con el paquete AAR.
+Se van a enviar paquetes JAR junto a paquetes de saludo AAR.
 
-## <a name="step-4-download-the-android-adal-and-add-it-to-your-eclipse-workspace"></a>Paso 4: descargue ADAL de Android y agréguelo al área de trabajo de Eclipse
-Ahora tiene varias opciones para usar ADAL en el proyecto Android:
+## <a name="step-4-download-hello-android-adal-and-add-it-tooyour-eclipse-workspace"></a>Paso 4: Descargar Hola Android AAL y agregar área de trabajo de Eclipse tooyour
+Que hemos hecho fácil para toohave varias opciones toouse ADAL en el proyecto de Android:
 
-* Puede usar el código fuente para importar esta biblioteca en Eclipse y vincularla a la aplicación.
-* Si utiliza Android Studio, puede usar el formato de paquete AAR y hacer referencia a los archivos binarios.
+* Puede usar esta biblioteca de tooimport de código de origen de hello en Eclipse y vínculo tooyour una aplicación.
+* Si usa Android Studio, puede usar Hola AAR paquete formato y referencia Hola archivos binarios.
 
 ### <a name="option-1-source-zip"></a>Opción 1: origen a través de ZIP
-Para descargar una copia del código fuente, haga clic en **Descargar ZIP** en el lado derecho de la página. También puede [descargarla desde GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android/archive/v1.0.9.tar.gz).
+toodownload una copia del código fuente de hello, haga clic en **Download ZIP** en hello derecha de la página de Hola. También puede [descargarla desde GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android/archive/v1.0.9.tar.gz).
 
 ### <a name="option-2-source-via-git"></a>Opción 2: origen a través de Git
-Para obtener el código fuente del SDK mediante Git, escriba:
+código de origen de hello tooget de hello SDK mediante Git, escriba:
 
     git clone git@github.com:AzureAD/azure-activedirectory-library-for-android.git
     cd ./azure-activedirectory-library-for-android/src
 
 ### <a name="option-3-binaries-via-gradle"></a>Opción 3: binarios a través de Gradle
-Puede obtener los archivos binarios desde el repositorio central de Maven. El paquete AAR puede incluirse de la siguiente forma en el proyecto en Android Studio:
+Puede obtener los archivos binarios de Hola de repositorio central de hello Maven. paquete de AAR Hola se puede incluir los siguientes en el proyecto en Android Studio:
 
 ```gradle
 repositories {
@@ -136,7 +136,7 @@ dependencies {
 ```
 
 ### <a name="option-4-aar-via-maven"></a>Opción 4: AAR a través de Maven
-Si utiliza el complemento M2Eclipse, puede especificar la dependencia en el archivo pom.xml:
+Si usas hello M2Eclipse complemento, puede especificar dependencias de hello en el archivo pom.xml:
 
 ```xml
 <dependency>
@@ -148,13 +148,13 @@ Si utiliza el complemento M2Eclipse, puede especificar la dependencia en el arch
 ```
 
 
-### <a name="option-5-jar-package-inside-the-libs-folder"></a>Opción 5: paquete JAR dentro de la carpeta libs
-Puede obtener el archivo JAR desde el repositorio de Maven y colocarlo en la carpeta **libs** del proyecto. También deberá copiar los recursos necesarios en el proyecto, ya que los paquetes JAR no los incluyen.
+### <a name="option-5-jar-package-inside-hello-libs-folder"></a>Opción 5: Paquete JAR dentro de la carpeta de bibliotecas de Hola
+Puede obtener archivo JAR de hello de repositorio de Maven hello y colóquelo en hello **bibliotecas** carpeta del proyecto. Necesita toocopy Hola requiere recursos tooyour project, porque no incluyen paquetes de saludo JAR.
 
-## <a name="step-5-add-references-to-android-adal-to-your-project"></a>Paso 5: agregue referencias a ADAL de Android en el proyecto
-1. Agregue una referencia al proyecto y especifíquela como una biblioteca de Android. Si no está seguro de cómo hacerlo, puede obtener más información en el [sitio de Android Studio](http://developer.android.com/tools/projects/projects-eclipse.html).
-2. Agregue la dependencia de proyecto para la depuración en la configuración del proyecto.
-3. Actualice el archivo del proyecto AndroidManifest.xml para incluir:
+## <a name="step-5-add-references-tooandroid-adal-tooyour-project"></a>Paso 5: Agregar proyecto de referencias tooAndroid tooyour ADAL
+1. Agregue una referencia de proyecto de tooyour y especificarla como una biblioteca de Android. Si no está seguro cómo toodo esto, puede obtener más información sobre hello [sitio Android Studio](http://developer.android.com/tools/projects/projects-eclipse.html).
+2. Agregar dependencia de proyecto de hello para la depuración en la configuración del proyecto.
+3. Actualizar tooinclude de archivo AndroidManifest.xml del proyecto:
 
         <uses-permission android:name="android.permission.INTERNET" />
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -172,11 +172,11 @@ Puede obtener el archivo JAR desde el repositorio de Maven y colocarlo en la car
             ....
         <application/>
 
-4. Cree una instancia de AuthenticationContext en la actividad principal. Los detalles de esta llamada quedan fuera del ámbito de este tema, pero puede empezar a trabajar examinando el [ejemplo del cliente nativo de Android](https://github.com/AzureADSamples/NativeClient-Android). En el ejemplo siguiente, SharedPreferences es la memoria caché predeterminada y Authority se presenta con el formato de `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`:
+4. Cree una instancia de AuthenticationContext en la actividad principal. detalles de Hola de esta llamada son más allá del ámbito de Hola de este tema, pero puede empezar a trabajar examinando hello [ejemplo de Android Native Client](https://github.com/AzureADSamples/NativeClient-Android). En el siguiente ejemplo de Hola, SharedPreferences es la memoria caché predeterminada de Hola y entidad está en forma de Hola de `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`:
 
     `mContext = new AuthenticationContext(MainActivity.this, authority, true); // mContext is a field in your activity`
 
-5. Copie este bloque de código para controlar el final de AuthenticationActivity después de que el usuario escriba las credenciales y reciba el código de autorización:
+5. Copie este extremo de Hola de toohandle de bloque de código de AuthenticationActivity después de usuario de hello escribe las credenciales y recibe un código de autorización:
 
         @Override
          protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -186,7 +186,7 @@ Puede obtener el archivo JAR desde el repositorio de Maven y colocarlo en la car
              }
          }
 
-6. Para solicitar un token, defina una devolución de llamada:
+6. tooask para un token, defina una devolución de llamada:
 
         private AuthenticationCallback<AuthenticationResult> callback = new AuthenticationCallback<AuthenticationResult>() {
 
@@ -223,91 +223,91 @@ Puede obtener el archivo JAR desde el repositorio de Maven y colocarlo en la car
     `mContext.acquireToken(MainActivity.this, resource, clientId, redirect, user_loginhint, PromptBehavior.Auto, "",
                    callback);`
 
-A continuación, se proporciona una explicación de los parámetros:
+Aquí se muestra una explicación de los parámetros de hello:
 
-* Hay que especificar *resource*, que es el recurso al que está intentando acceder.
+* *recursos* es necesaria y recursos de Hola que está tratando de tooaccess.
 * *clientid* es necesario. Su valor procede de Azure AD.
-* No es necesario que se proporcione *RedirectUri* para la llamada a acquireToken. Se puede configurar como el nombre del paquete.
-* *PromptBehavior* ayuda a pedir las credenciales para omitir la memoria caché y la cookie.
-* Se llamará a *callback* una vez que se intercambie el código de autorización para un token. La devolución de llamada tiene un objeto de AuthenticationResult que tiene acceso al token, fecha de caducidad e información sobre el token del identificador.
-* *acquireTokenSilent* es opcional. Puede llamarlo para controlar el almacenamiento en caché y la actualización del token. También proporciona la versión de sincronización. Acepta *userId* como parámetro.
+* *RedirectUri* no es necesario toobe proporcionada para la llamada de acquireToken Hola. Se puede configurar como el nombre del paquete.
+* *PromptBehavior* le ayuda a tooask para caché de credenciales tooskip hello y cookies.
+* *devolución de llamada* se llama después de código de autorización de Hola se intercambia para un token. La devolución de llamada tiene un objeto de AuthenticationResult que tiene acceso al token, fecha de caducidad e información sobre el token del identificador.
+* *acquireTokenSilent* es opcional. Puede llamarlo toohandle almacenamiento en caché y la actualización del token. También proporciona la versión de sincronización de Hola. Acepta *userId* como parámetro.
 
         mContext.acquireTokenSilent(resource, clientid, userId, callback );
 
-Con este procedimiento, debe contar con todo lo necesario para lograr una integración correcta con Azure Active Directory. Para obtener más ejemplos de este trabajo, visite el repositorio AzureADSamples/ en GitHub.
+Mediante el uso de este tutorial, debe tener lo que necesita toosuccessfully integrar con Azure Active Directory. Para obtener más ejemplos de este trabajo, visite hello AzureADSamples / repositorio en GitHub.
 
 ## <a name="important-information"></a>Información importante
 ### <a name="customization"></a>Personalización
-Los recursos de la aplicación pueden sobrescribir a los recursos del proyecto de la biblioteca. Esto sucede cuando la aplicación se está generando. Por este motivo, puede personalizar el diseño de la actividad de autenticación del modo que desee. Asegúrese de conservar el identificador de los controles que use ADAL (WebView).
+Los recursos de la aplicación pueden sobrescribir a los recursos del proyecto de la biblioteca. Esto sucede cuando la aplicación se está generando. Por este motivo, puede personalizar la autenticación actividad diseño Hola que quieras. Ser seguro tookeep Hola ID de controles de Hola que AAL usa (WebView).
 
 ### <a name="broker"></a>Agente
-La aplicación de portal de empresa de Microsoft Intune proporciona el componente del agente. La cuenta se crea en el administrador de cuentas. El tipo de cuenta es "com.microsoft.workaccount". El administrador de cuentas únicamente permite una sola cuenta SSO. Después de completar el desafío del dispositivo para una de las aplicaciones, creará una cookie de SSO para el usuario.
+aplicación de Portal de empresa de Microsoft Intune Hello proporciona componentes de broker de Hola. se crea la cuenta de Hello en el Administrador de cuentas. tipo de cuenta de Hello es "com.microsoft.workaccount." El administrador de cuentas únicamente permite una sola cuenta SSO. Crea una cookie SSO para el usuario Hola después de completar el desafío de dispositivo de Hola para una de las aplicaciones de Hola.
 
-ADAL usará la cuenta del agente si en este autenticador hay creada una cuenta de usuario y decide no omitirla. Puede omitir el usuario del agente mediante:
+AAL usa la cuenta del agente de Hola si se crea una cuenta de usuario en este autenticador y elige no tooskip lo. Puede omitir el usuario de broker de hello con:
 
    `AuthenticationSettings.Instance.setSkipBroker(true);`
 
-Debe registrar un RedirectUri especial para el uso del agente. RedirectUri tiene el formato `msauth://packagename/Base64UrlencodedSignature`. Puede obtener un RedirectUri para su aplicación mediante el script brokerRedirectPrint.ps1. También puede usar la llamada de API mContext.getBrokerRedirectUri. La firma está relacionada con los certificados de firma.
+Deberá tooregister un RedirectUri especial para el uso de broker. RedirectUri está en formato de Hola de `msauth://packagename/Base64UrlencodedSignature`. Puede obtener su RedirectUri de la aplicación mediante brokerRedirectPrint.ps1 de script de Hola u Hola API llamada mContext.getBrokerRedirectUri. firma de Hello es relacionado tooyour certificados de firma.
 
-El modelo de agente actual es para un usuario. AuthenticationContext proporciona un método de API para obtener el usuario del agente.
+modelo de broker actual Hello es para un usuario. AuthenticationContext proporciona el usuario de broker de hello API método tooget Hola.
 
    `String brokerAccount =  mContext.getBrokerUser(); //Broker user is returned if account is valid.`
 
-El manifiesto de aplicación debe tener los siguientes permisos para usar cuentas del administrador de cuentas. Para más información, consulte la [información del administrador de cuentas en el sitio de Android](http://developer.android.com/reference/android/accounts/AccountManager.html).
+El manifiesto de aplicación debe tener Hola siguiendo las cuentas de administrador de cuentas de toouse de permisos. Para obtener más información, vea hello [información del Administrador de cuentas en el sitio de Android hello](http://developer.android.com/reference/android/accounts/AccountManager.html).
 
 * GET_ACCOUNTS
 * USE_CREDENTIALS
 * MANAGE_ACCOUNTS
 
 ### <a name="authority-url-and-ad-fs"></a>AD FS y URL de la autoridad
-Active Directory Federation Services (AD FS) no se reconoce como STS de producción, por lo que debe desactivar el descubrimiento de la instancia y pasar el valor "false" al constructor de AuthenticationContext.
+Los servicios de federación de Active Directory (AD FS) no se reconoce como producción STS, por lo que necesita tooturn de detección de instancia y pase el valor false en el constructor de AuthenticationContext Hola.
 
-La dirección URL de la autoridad necesita la instancia de STS y un [nombre de inquilino](https://login.microsoftonline.com/yourtenant.onmicrosoft.com).
+dirección URL de la entidad emisora de Hello necesita una instancia de STS y un [nombre del inquilino](https://login.microsoftonline.com/yourtenant.onmicrosoft.com).
 
 ### <a name="querying-cache-items"></a>Consulta de los elementos en caché
-ADAL proporciona memoria caché predeterminada en SharedPreferences con algunas características sencillas para hacer consultas sobre los elementos en caché. Puede obtener la memoria caché actual de AuthenticationContext mediante:
+ADAL proporciona memoria caché predeterminada en SharedPreferences con algunas características sencillas para hacer consultas sobre los elementos en caché. Puede obtener de caché actual Hola de AuthenticationContext mediante:
 
     ITokenCacheStore cache = mContext.getCache();
 
-También puede proporcionar su implementación de la memoria caché, si desea personalizarla.
+También puede proporcionar la implementación de la memoria caché, si desea que toocustomize lo.
 
     mContext = new AuthenticationContext(MainActivity.this, authority, true, yourCache);
 
 ### <a name="prompt-behavior"></a>Comportamiento de la petición
-ADAL permite especificar el comportamiento de la petición. PromptBehavior.Auto mostrará la interfaz de usuario si el token de actualización no es válido y se necesitan credenciales de usuario. PromptBehavior.Always omitirá el uso de la memoria caché y mostrará siempre la interfaz de usuario.
+AAL proporciona un comportamiento de solicitud de toospecify de opción. PromptBehavior.Auto mostrará Hola interfaz de usuario si no es válido el token de actualización de Hola y se necesitan credenciales de usuario. PromptBehavior.Always se omita el uso de la memoria caché de Hola y mostrar siempre Hola interfaz de usuario.
 
 ### <a name="silent-token-request-from-cache-and-refresh"></a>Solicitud de token silenciosa desde la memoria caché y actualización
-Una solicitud de token silenciosa no utiliza la interfaz de usuario emergente ni requiere una actividad. Devuelve un token de la memoria caché si está disponible. Si el token ha caducado, este método intenta actualizarlo. Si el token de actualización está caducado o falla por cualquier motivo, devuelve AuthenticationException.
+Una solicitud de token silenciosa no utiliza Hola emergente de la interfaz de usuario y no requiere una actividad. Devuelve un token de caché de hello si está disponible. Si expira el token de hello, este método intenta toorefresh lo. Si el token de actualización de hello está caducado o no correctamente, devuelve AuthenticationException.
 
     Future<AuthenticationResult> result = mContext.acquireTokenSilent(resource, clientid, userId, callback );
 
-También puede hacer una llamada de sincronización con este método. Puede establecer null para la devolución de llamada o usar acquireTokenSilentSync.
+También puede hacer una llamada de sincronización con este método. Puede establecer toocallback null o usar acquireTokenSilentSync.
 
 ### <a name="diagnostics"></a>Diagnóstico
-Estas son las principales fuentes de información para diagnosticar problemas:
+Estas son las principales fuentes de Hola de información para diagnosticar problemas:
 
 * Excepciones
 * Registros
 * Seguimientos de red
 
-Tenga en cuenta que los identificadores de correlación son fundamentales para el diagnóstico en la biblioteca. Puede establecer los identificadores de correlación sujetos a solicitud si desea establecer una correlación de ADAL con otras operaciones en el código. Si no establece un identificador de correlación, ADAL generará uno aleatorio. A continuación, todos los mensajes de registro y llamadas de red se marcarán con el identificador de correlación. El identificador generado automáticamente se modifica con cada solicitud.
+Tenga en cuenta que los identificadores de correlación son diagnósticos toohello central en la biblioteca de Hola. Puede establecer los identificadores de correlación en cada solicitud si desea toocorrelate una ADAL solicitar con otras operaciones en el código. Si no establece un identificador de correlación, ADAL generará uno aleatorio. Todos los mensajes de registro y llamadas de red, a continuación, se mostrarán con el identificador de correlación de Hola. Hola autogenerado Id. los cambios en cada solicitud.
 
 #### <a name="exceptions"></a>Excepciones
-Las excepciones son el primer diagnóstico. Intentamos ofrecerle mensajes de error útiles. Si encuentra alguno que no sea útil, genere un caso y háganoslo saber. Proporcione también información sobre el dispositivo, por ejemplo, el modelo y el número de SDK.
+Las excepciones son Hola primero diagnóstico. Intentamos tooprovide mensajes de error útiles. Si encuentra alguno que no sea útil, genere un caso y háganoslo saber. Proporcione también información sobre el dispositivo, por ejemplo, el modelo y el número de SDK.
 
 #### <a name="logs"></a>Registros
-Puede configurar la biblioteca para que genere mensajes de registro que podrá utilizar para diagnosticar problemas. Configure el registro mediante la siguiente llamada para configurar una devolución de llamada que ADAL usará para entregar los mensajes de registro a medida que se generen.
+Puede configurar Hola biblioteca toogenerate mensajes de registro que se puede usar toohelp diagnosticar problemas. Configurar el registro realizar Hola siguiente llamada a tooconfigure que AAL utilizará toohand desactivar cada mensaje del registro cuando se genera una devolución de llamada.
 
     Logger.getInstance().setExternalLogger(new ILogger() {
         @Override
         public void Log(String tag, String message, String additionalMessage, LogLevel level, ADALError errorCode) {
         ...
-        // You can write this to log file depending on level or error code.
+        // You can write this toolog file depending on level or error code.
         writeToLogFile(getApplicationContext(), tag +":" + message + "-" + additionalMessage);
         }
     }
 
-Los mensajes pueden escribirse en un archivo de registro personalizado, tal como se muestra en el siguiente código. Por desgracia, no hay ninguna manera estándar de obtener los registros de un dispositivo. Hay algunos servicios que pueden ayudar con esta tarea. También puede "inventar" sus propios métodos, como enviar el archivo a un servidor.
+Se pueden escribir mensajes tooa archivo de registro personalizado, como se muestra en el siguiente código de hello. Por desgracia, no hay ninguna manera estándar de obtener los registros de un dispositivo. Hay algunos servicios que pueden ayudar con esta tarea. También puede inventar su propio, como servidor de tooa de archivo hello envío.
 
     private syncronized void writeToLogFile(Context ctx, String msg) {
        File directory = ctx.getDir(ctx.getPackageName(), Context.MODE_PRIVATE);
@@ -319,55 +319,55 @@ Los mensajes pueden escribirse en un archivo de registro personalizado, tal como
        osw.close();
     }
 
-Estos son los niveles de registro:
+Estos son los niveles de registro de hello:
 * Error (excepciones)
 * Warn (advertencia)
 * Info (información)
 * Verbose (más detalles)
 
-El nivel de registro se define de la siguiente forma:
+Establecer el nivel de registro de hello similar al siguiente:
 
     Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
 
- Todos los mensajes de registro se envían a logcat, además de las devoluciones de llamada de registro personalizadas.
-Es posible obtener un registro a un archivo de logcat como se indica a continuación:
+ Todos los mensajes de registro se envían toologcat, en las devoluciones de llamada de adición tooany registro personalizado.
+Puede obtener un archivo de registro de tooa desde logcat como se indica a continuación:
 
     adb logcat > "C:\logmsg\logfile.txt"
 
- Para más información acerca de los comandos de adb, consulte la [información de logcat en el sitio de Android](https://developer.android.com/tools/debugging/debugging-log.html#startingLogcat).
+ Para obtener más información acerca de los comandos de adb, vea hello [logcat información en el sitio de Android hello](https://developer.android.com/tools/debugging/debugging-log.html#startingLogcat).
 
 #### <a name="network-traces"></a>Seguimientos de red
-Puede usar varias herramientas para capturar el tráfico HTTP que genera ADAL.  Esto es muy útil si está familiarizado con el protocolo OAuth o si necesita proporcionar información de diagnóstico a Microsoft o a otros canales de soporte técnico.
+Puede utilizar diversas herramientas toocapture Hola tráfico HTTP que genera AAL.  Esto es muy útil si está familiarizado con el protocolo OAuth Hola o si necesita tooprovide información de diagnóstico tooMicrosoft u otros canales de soporte técnico.
 
-Fiddler es la herramienta de seguimiento de HTTP más sencilla. Utilice los vínculos siguientes para configurarla para que registre correctamente el tráfico de red de ADAL. Para que una herramienta de seguimiento como Fiddler o Charles surta efecto, debe configurarla para registrar tráfico SSL sin cifrar.  
+Fiddler es la herramienta de seguimiento de HTTP más sencilla de Hola. Siguientes de Hola de uso vínculos tooset, configúrelo toocorrectly registro AAL tráfico de red. Para obtener una herramienta de seguimiento como Fiddler o Charles toobe útil, debe configurarlo toorecord sin cifrar el tráfico SSL.  
 
 > [!NOTE]
-> Los seguimientos generados de esta manera pueden contener información altamente privilegiada, como tokens de acceso, nombres de usuario y contraseñas. Si utiliza cuentas de producción, no comparta esta información con terceras partes. Si necesita transmitir el seguimiento a alguien para obtener soporte técnico, reproduzca el problema con una cuenta temporal con nombres de usuario y contraseñas que no le importe compartir.
+> Los seguimientos generados de esta manera pueden contener información altamente privilegiada, como tokens de acceso, nombres de usuario y contraseñas. Si utiliza cuentas de producción, no comparta esta información con terceras partes. Si necesita toosupply un toosomeone de seguimiento en la compatibilidad de orden tooget, reproduzca el problema de hello mediante una cuenta temporal con nombres de usuario y contraseñas que no le importa de uso compartido.
 
-* En el sitio web de Telerik, consulte cómo [configurar Fiddler para Android](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid).
+* Desde el sitio Web de Telerik hello: [configuración de seguridad de Fiddler para Android](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid)
 * En GitHub, consulte cómo [configurar reglas de Fiddler para ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/How-to-listen-to-httpUrlConnection-in-Android-app-from-Fiddler).
 
 ### <a name="dialog-mode"></a>Modo de diálogo
-El método acquireToken sin actividad es compatible con el modo de cuadro de diálogo.
+método de acquireToken de Hello sin actividad es compatible con un símbolo del sistema del cuadro de diálogo.
 
 ### <a name="encryption"></a>Cifrado
-ADAL cifra los tokens y los almacena en SharedPreferences de forma predeterminada. Puede consultar la clase StorageHelper para ver los detalles. Android introdujo el almacenamiento seguro de claves privadas AndroidKeyStore 4.3 (API18). ADAL lo utiliza para API 18 y las versiones posteriores. Si desea usar ADAL para las versiones inferiores de SDK, deberá proporcionar una clave secreta en AuthenticationSettings.INSTANCE.setSecretKey.
+AAL cifra los tokens de Hola y almacén en SharedPreferences de forma predeterminada. Puede buscar en los detalles de Hola Hola StorageHelper clase toosee. Android introdujo el almacenamiento seguro de claves privadas AndroidKeyStore 4.3 (API18). ADAL lo utiliza para API 18 y las versiones posteriores. Si desea toouse AAL para las versiones inferiores de SDK, deberá tooprovide una clave secreta en AuthenticationSettings.INSTANCE.setSecretKey.
 
 ### <a name="oauth2-bearer-challenge"></a>Desafío de portador de Oauth2
-La clase AuthenticationParameters proporciona funcionalidad para obtener el authorization_uri a partir del desafío de portador de OAuth2.
+Hola AuthenticationParameters clase proporciona funcionalidad tooget authorization_uri de hello desafío de portador de OAuth2.
 
 ### <a name="session-cookies-in-webview"></a>Cookies de sesión en WebView
-Android WebView no elimina las cookies de sesión después de cerrar la aplicación. Esto puede controlarse mediante el siguiente código de ejemplo:
+Android WebView no borra las cookies de sesión después de cerrar la aplicación hello. Esto puede controlarse mediante el siguiente código de ejemplo:
 
     CookieSyncManager.createInstance(getApplicationContext());
     CookieManager cookieManager = CookieManager.getInstance();
     cookieManager.removeSessionCookie();
     CookieSyncManager.getInstance().sync();
 
-Para más información acerca de las cookies, consulte la [información sobre CookieSyncManager en el sitio de Android](http://developer.android.com/reference/android/webkit/CookieSyncManager.html).
+Para obtener más información acerca de las cookies, consulte hello [CookieSyncManager información en el sitio de Android hello](http://developer.android.com/reference/android/webkit/CookieSyncManager.html).
 
 ### <a name="resource-overrides"></a>Reemplazos de recursos
-La biblioteca de ADAL incluye cadenas en inglés para mensajes de ProgressDialog. La aplicación debe sobrescribirlas si desea ver las cadenas traducidas.
+biblioteca ADAL de Hello incluye cadenas en inglés para los mensajes de ProgressDialog. La aplicación debe sobrescribirlas si desea ver las cadenas traducidas.
 
      <string name="app_loading">Loading...</string>
      <string name="broker_processing">Broker is processing</string>
@@ -378,9 +378,9 @@ La biblioteca de ADAL incluye cadenas en inglés para mensajes de ProgressDialog
      <string name="http_auth_dialog_cancel">Cancel</string>
 
 ### <a name="ntlm-dialog-box"></a>Cuadro de diálogo NTLM
-La versión 1.1.0 de ADAL admite el cuadro de diálogo NTLM que se procesa a través del evento onReceivedHttpAuthRequest desde WebViewClient. Puede personalizar el diseño y las cadenas del cuadro de diálogo.
+AAL versión 1.1.0 admite un cuadro de diálogo NTLM que se procesa a través de eventos de hello onReceivedHttpAuthRequest desde WebViewClient. Puede personalizar el diseño de Hola y cadenas para el cuadro de diálogo de Hola.
 
 ### <a name="cross-app-sso"></a>SSO entre aplicaciones
-Obtenga información sobre la [Habilitación de SSO entre aplicaciones en Android mediante ADAL](active-directory-sso-android.md).  
+Obtenga información acerca de [cómo tooenable SSO de aplicación cruzado en Android mediante el uso de ADAL](active-directory-sso-android.md).  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

@@ -1,6 +1,6 @@
 ---
-title: Plantillas de producto de Azure API Management | Microsoft Docs
-description: "Aprenda a personalizar el contenido de las páginas de producto en el portal para desarrolladores de Azure API Management."
+title: "plantillas de aaaProduct en la administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo las páginas toocustomize contenido de Hola de producto de hello en el portal para desarrolladores de hello administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9ddbb9860b437cb3e7334bdf5891f2fba1cffb76
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 60600299287aad87f9b621782ab5ceb866601d03
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="product-templates-in-azure-api-management"></a>Plantillas de producto en Azure API Management
-Azure API Management le ofrece la posibilidad de personalizar el contenido de las páginas del portal para desarrolladores mediante un conjunto de plantillas que configuran su contenido. Por medio de la sintaxis [DotLiquid](http://dotliquidmarkup.org/) y el editor que prefiera, como [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) (DotLiquid para diseñadores), y un conjunto proporcionado de [recursos de cadena](api-management-template-resources.md#strings), [recursos de glifo](api-management-template-resources.md#glyphs) y [controles de página](api-management-page-controls.md) localizados, puede disponer de una gran flexibilidad para configurar el contenido de las páginas como considere oportuno mediante estas plantillas.  
+Administración de API de Azure proporciona que Hola contenido de hello toocustomize de capacidad de páginas del portal para desarrolladores con un conjunto de plantillas que configure su contenido. Usar [DotLiquid](http://dotliquidmarkup.org/) editor hello y sintaxis de su elección, como [DotLiquid a los diseñadores](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), o cambie de tamaño un conjunto proporcionado de [los recursos de cadena](api-management-template-resources.md#strings), [ Recursos de glifo](api-management-template-resources.md#glyphs), y [página controles](api-management-page-controls.md), tienen contenido de gran flexibilidad tooconfigure Hola de páginas de Hola como considere oportuno mediante estas plantillas.  
   
- Las plantillas de esta sección le permiten personalizar el contenido de las páginas de producto en el portal para desarrolladores.  
+ las plantillas de Hello en esta sección permiten contenido de hello toocustomize de páginas de producto de hello en el portal para desarrolladores de Hola.  
   
 -   [Product list](#ProductList)  
   
 -   [Producto](#Product)  
   
 > [!NOTE]
->  En la siguiente documentación se incluyen plantillas predeterminadas de ejemplo; sin embargo, están sujetas a cambios debido a mejoras continuas. Puede ver las plantillas predeterminadas en vivo en el portal para desarrolladores; para ello, vaya hasta a las plantillas individuales que desee. Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Plantillas predeterminadas de ejemplo se incluyen en hello siguiendo documentación, pero están toochange asunto debido toocontinuous mejoras. Puede ver plantillas de hello predeterminado en vivo en el portal para desarrolladores de hello desplazándose plantillas individuales toohello deseado. Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="ProductList"></a> Product list  
- La plantilla **Product list** le permite personalizar el cuerpo de la página de lista de productos en el portal para desarrolladores.  
+ Hola **lista de productos** plantilla permite cuerpo de hello toocustomize de página de lista de productos de hello en el portal para desarrolladores de Hola.  
   
  ![Products list](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
   
@@ -66,7 +66,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ### <a name="controls"></a>Controles  
- La plantilla `Product list` puede usar los siguientes [controles de página](api-management-page-controls.md).  
+ Hola `Product list` plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -76,9 +76,9 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
   
 |Propiedad|Escriba|Descripción|  
 |--------------|----------|-----------------|  
-|Paginación|Entidad [Paging](api-management-template-data-model-reference.md#Paging).|La información de paginación de la colección de productos.|  
-|Filtros|Entidad [Filtering](api-management-template-data-model-reference.md#Filtering).|La información de filtrado de la página de lista de productos.|  
-|Productos|Colección de entidades de [producto](api-management-template-data-model-reference.md#Product).|Los productos visibles para el usuario actual.|  
+|Paginación|Entidad [Paging](api-management-template-data-model-reference.md#Paging).|información de paginación de Hello para la colección de productos de Hola.|  
+|Filtros|Entidad [Filtering](api-management-template-data-model-reference.md#Filtering).|Hola filtrado de información para la página lista de productos de Hola.|  
+|Productos|Colección de entidades de [producto](api-management-template-data-model-reference.md#Product).|Hola productos toohello visible el usuario actual.|  
   
 ### <a name="sample-template-data"></a>Ejemplo de datos de plantilla  
   
@@ -99,7 +99,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
         {  
             "Id": "56f9445ffaf7560049060001",  
             "Title": "Starter",  
-            "Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "Description": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "Terms": "",  
             "ProductState": 1,  
             "AllowMultipleSubscriptions": false,  
@@ -108,7 +108,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
         {  
             "Id": "56f9445ffaf7560049060002",  
             "Title": "Unlimited",  
-            "Description": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "Description": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "Terms": null,  
             "ProductState": 1,  
             "AllowMultipleSubscriptions": false,  
@@ -119,7 +119,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ##  <a name="Product"></a> Product  
- La plantilla **Product list** le permite personalizar el cuerpo de la página de producto en el portal para desarrolladores.  
+ Hola **producto** plantilla permite cuerpo de hello toocustomize de página del producto hello en el portal para desarrolladores de Hola.  
   
  ![Página de producto del portal para desarrolladores](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
@@ -193,7 +193,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ### <a name="controls"></a>Controles  
- La plantilla `Product list` puede usar los siguientes [controles de página](api-management-page-controls.md).  
+ Hola `Product list` plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).  
   
 -   [subscribe-button](api-management-page-controls.md#subscribe-button)  
   
@@ -201,17 +201,17 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
   
 |Propiedad|Escriba|Descripción|  
 |--------------|----------|-----------------|  
-|Producto|[Producto](api-management-template-data-model-reference.md#Product)|El producto especificado.|  
-|IsDeveloperSubscribed|boolean|Si el usuario actual está suscrito a este producto.|  
-|SubscriptionState|número|El estado de la suscripción. Los estados posibles son:<br /><br /> -   `0 - suspended`: la suscripción está bloqueada y el suscriptor no puede llamar a ninguna API del producto.<br />-   `1 - active`: la suscripción está activa.<br />-   `2 - expired`: la suscripción ha alcanzado su fecha de expiración y se ha desactivado.<br />-   `3 - submitted`: el desarrollador ha realizado una solicitud de suscripción, pero esta aún no se ha aprobado ni rechazado.<br />-   `4 - rejected`: un administrador ha rechazado la solicitud de suscripción.<br />-   `5 - cancelled`: el desarrollador o el administrador han cancelado la suscripción.|  
+|Producto|[Producto](api-management-template-data-model-reference.md#Product)|producto de Hello especificado.|  
+|IsDeveloperSubscribed|boolean|Si el usuario actual de hello es producto toothis suscrito.|  
+|SubscriptionState|número|estado de Hola de suscripción de Hola. Los estados posibles son:<br /><br /> -   `0 - suspended`: Hola suscripción está bloqueada y suscriptor hello no puede llamar a las API del producto de Hola.<br />-   `1 - active`: Hola suscripción está activa.<br />-   `2 - expired`– suscripción Hola alcanza su fecha de expiración y se ha desactivado.<br />-   `3 - submitted`: solicitud de suscripción de Hola se ha realizado por el desarrollador de hello, pero ha aún no aprobado o rechazados.<br />-   `4 - rejected`: un administrador ha denegado la solicitud de suscripción de Hola.<br />-   `5 - cancelled`: se ha cancelado la suscripción Hola programador de Hola o el administrador.|  
 |límites|array|Esta propiedad está en desuso y no debe utilizarse.|  
 |DelegatedSubscriptionEnabled|boolean|Si la [delegación](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) está habilitada para esta suscripción.|  
-|DelegatedSubscriptionUrl|string|Si la delegación está habilitada, la dirección URL de la suscripción delegada.|  
-|IsAgreed|boolean|Si el producto tiene términos, si el usuario actual ha aceptado los términos.|  
-|Suscripciones|Colección de entidades de [resumen de suscripción](api-management-template-data-model-reference.md#SubscriptionSummary).|Las suscripciones al producto.|  
-|Apis|Colección de entidades de [API](api-management-template-data-model-reference.md#API).|Las API de este producto.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|boolean|Si el usuario actual es apto para suscribirse a este producto en relación con el límite de suscripción.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|Si el usuario actual es apto para suscribirse a este producto en relación con que se permitan o no varias suscripciones.|  
+|DelegatedSubscriptionUrl|cadena|Si se permite la delegación, Hola había delegada dirección URL de la suscripción.|  
+|IsAgreed|boolean|Si el producto de hello tiene términos, si ha acordado usuario actual de hello toohello términos.|  
+|Suscripciones|Colección de entidades de [resumen de suscripción](api-management-template-data-model-reference.md#SubscriptionSummary).|producto de toohello de Hello las suscripciones.|  
+|Apis|Colección de entidades [API](api-management-template-data-model-reference.md#API).|Hola API en este producto.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|boolean|Si el usuario actual de hello es elegible toosubscribe toothis producto con un límite de suscripción toohello de tener en cuenta.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|Si el usuario actual de hello es elegible toosubscribe toothis producto con suscripciones de toomultiple de tener en cuenta que se permiten o no.|  
   
 ### <a name="sample-template-data"></a>Ejemplo de datos de plantilla  
   
@@ -220,7 +220,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
     "Product": {  
         "Id": "56f9445ffaf7560049060001",  
         "Title": "Starter",  
-        "Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+        "Description": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
         "Terms": "",  
         "ProductState": 1,  
         "AllowMultipleSubscriptions": false,  
@@ -258,4 +258,4 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](api-management-developer-portal-templates.md).
+Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](api-management-developer-portal-templates.md).

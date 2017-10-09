@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Asana | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Asana."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Asana."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,63 +14,63 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeedes
-ms.openlocfilehash: a2f0cecb93cc382bcfd710c44eb70f80ae67f9b6
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 9ac35dedc809b2b3dfb461d92a5afb066ccdedde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Tutorial: Integración de Azure Active Directory con Asana
 
-En este tutorial, obtendrá información sobre cómo integrar Asana con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate Asana con Azure Active Directory (Azure AD).
 
-Integrar Asana con Azure AD le proporciona las siguientes ventajas:
+Integración Asana con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a Asana.
-- Puede permitir que los usuarios inicien sesión automáticamente en Asana (inicio de sesión único) con sus cuentas de Azure AD.
-- Puede administrar las cuentas en una sola ubicación central: Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooAsana
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooAsana (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con Asana, se necesitan los siguientes elementos:
+integración de Azure AD con Asana tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Asana
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede [obtener una versión de prueba durante un mes](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Adición de Asana desde la galería
+1. Agregar Asana desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-asana-from-the-gallery"></a>Adición de Asana desde la galería
-Para configurar la integración de Asana en Azure AD, es preciso agregar Asana desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-asana-from-hello-gallery"></a>Agregar Asana desde la Galería de Hola
+integración de hello tooconfigure de Asana en Azure AD, deberá tooadd Asana de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Asana desde la galería, realice los pasos siguientes:**
+**tooadd Asana de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
-    ![Botón Azure Active Directory][1]
+    ![botón de Hello Azure Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
-    ![Hoja Aplicaciones empresariales][2]
+    ![hoja de aplicaciones de empresa de Hola][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
-    ![Botón Nueva aplicación][3]
+    ![botón de nueva aplicación Hola][3]
 
-4. En el cuadro de búsqueda, escriba **Asana**, seleccione **Asana** en el panel de resultados y haga clic en el botón **Agregar** para agregar la aplicación.
+4. En el cuadro de búsqueda de hello, escriba **Asana**, seleccione **Asana** desde el panel de resultados, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-asana-tutorial/tutorial_asana_addfromgallery.png)
 
@@ -78,98 +78,98 @@ Para configurar la integración de Asana en Azure AD, es preciso agregar Asana d
 
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Asana con un usuario de prueba denominado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Asana para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Asana.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Asana es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Asana debe toobe establecido.
 
-Para establecer la relación de vínculo, en Asana, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.
+En Asana, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con Asana, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con Asana, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configure-azure-ad-single-sign-on)**: para permitir que los usuarios utilicen esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#create-an-azure-ad-test-user)**: para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de Asana](#create-an-asana-test-user)**: para tener un homólogo de Britta Simon en Asana que esté vinculado a la representación de ella en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assign-the-azure-ad-test-user)**: para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Prueba del inicio de sesión único](#test-single-sign-on)**: para comprobar si la configuración funciona.
+1. **[Configurar Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#create-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba Asana](#create-an-asana-test-user)**  -toohave un equivalente de Britta Simon en Asana que es la representación toohello vinculado Azure AD del usuario.
+4. **[Asignar el usuario de prueba de hello Azure AD](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Probar el inicio de sesión único](#test-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en la aplicación Asana.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación Asana.
 
-**Para configurar el inicio de sesión único de Azure AD con Asana, realice los pasos siguientes:**
+**inicio de sesión único en Azure AD tooconfigure con Asana, realizar Hola pasos:**
 
-1. En Azure Portal, en la página de integración de la aplicación **Asana**, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **Asana** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Cuadro de diálogo Inicio de sesión único](./media/active-directory-saas-asana-tutorial/tutorial_asana_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de Asana**, lleve a cabo los pasos siguientes:
+3. En hello **Asana dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Información de dominio y direcciones URL de inicio de sesión único de Asana](./media/active-directory-saas-asana-tutorial/tutorial_asana_url.png)
 
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba la dirección URL: `https://app.asana.com/`.
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba la dirección URL:`https://app.asana.com/`
 
-    b. En el cuadro de texto **Identificador**, escriba el valor: `https://app.asana.com/`
+    b. Hola **identificador** cuadro de texto, el valor de tipo:`https://app.asana.com/`
  
-4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
 
-    ![Vínculo de descarga del certificado](./media/active-directory-saas-asana-tutorial/tutorial_asana_certificate.png)
+    ![vínculo de descarga del certificado de Hola](./media/active-directory-saas-asana-tutorial/tutorial_asana_certificate.png)
     
 5. Haga clic en el botón **Guardar** .
 
     ![Botón Guardar de Configuración de inicio de sesión único](./media/active-directory-saas-asana-tutorial/tutorial_general_400.png)
 
-6. En la sección **Configuración de Asana**, haga clic en **Configurar Asana** para abrir la ventana **Configurar inicio de sesión**. Copie la **dirección URL de servicio de inicio de sesión único de SAML** de la sección **Referencia rápida**.
+6. En hello **Asana configuración** sección, haga clic en **configurar Asana** tooopen **configurar inicio de sesión** ventana. Hola copia **SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
 
     ![Configuración de Asana](./media/active-directory-saas-asana-tutorial/tutorial_asana_configure.png) 
 
-7. En una ventana de explorador diferente, inicie sesión en su aplicación de Asana como administrador. Para configurar SSO en Asana, acceda a la configuración del área de trabajo haciendo clic en el nombre del área de trabajo en la esquina superior derecha de la pantalla. Después, haga clic en la **configuración del \<nombre del área de trabajo\>**. 
+7. En otra ventana del explorador, inicio de sesión tooyour Asana aplicación. tooconfigure SSO en Asana, configuración de área de trabajo de hello acceso haciendo clic en el nombre del área de trabajo de hello en hello superior derecho de pantalla de bienvenida. Después, haga clic en la **configuración del \<nombre del área de trabajo\>**. 
    
     ![Configuración de SSO de Asana](./media/active-directory-saas-asana-tutorial/tutorial_asana_09.png)
 
-8. En la ventana **Organization settings** (Configuración de la organización), haga clic en **Administration** (Administración). Después, haga clic en **Members must log in via SAML** (Los miembros deben iniciar sesión mediante SAML) para habilitar la configuración de SSO. Lleve a cabo los siguiente pasos:
+8. En hello **configuración de la organización** ventana, haga clic en **administración**. A continuación, haga clic en **miembros deben iniciar sesión mediante SAMP** configuración de SSO de tooenable Hola. Hola realizar Hola pasos:
    
     ![Definición de la configuración de la organización de inicio de sesión único](./media/active-directory-saas-asana-tutorial/tutorial_asana_10.png)  
 
-     a. En el cuadro de texto **Sign-in page URL** (Dirección URL de la página de inicio de sesión), pegue la **SAML Single Sign-On Service URL** (Dirección URL del servicio de inicio de sesión único de SAML).
+     a. Hola **URL de la página de inicio de sesión** cuadro de texto, pegue hello **SAML Single Sign-On dirección URL del servicio**.
 
-     b. Haga clic con el botón derecho en el certificado descargado de Azure Portal y después abra el archivo de certificado con el Bloc de notas o el editor de texto que prefiera. Copie el contenido entre el título inicial y final del certificado y péguelo en el cuadro de texto **Certificado X.509**.
+     b. Haga clic en certificado de hello descargado del portal de Azure, a continuación, abrir archivo de certificado de hello mediante el Bloc de notas o el editor de texto preferido. Copiar el contenido entre Hola Hola comenzar y Hola título del certificado final y péguelo en hello **certificado X.509** cuadro de texto.
 
-9. Haga clic en **Guardar**. Vaya a la [guía de Asana para configurar el SSO](https://asana.com/guide/help/premium/authentication#gl-saml) si necesita más ayuda.
+9. Haga clic en **Guardar**. Vaya demasiado[Asana guía para configurar SSO](https://asana.com/guide/help/premium/authentication#gl-saml) si necesita más ayuda.
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones en [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
 
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de prueba de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
-    ![Botón Azure Active Directory](./media/active-directory-saas-asana-tutorial/create_aaduser_01.png) 
+    ![botón de Hello Azure Active Directory](./media/active-directory-saas-asana-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
-    ![Vínculos "Usuarios y grupos" y "Todos los usuarios"](./media/active-directory-saas-asana-tutorial/create_aaduser_02.png) 
+    ![Hola "Usuarios y grupos" y "Todos los usuarios" vínculos](./media/active-directory-saas-asana-tutorial/create_aaduser_02.png) 
 
-3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-asana-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
-    ![Botón Agregar](./media/active-directory-saas-asana-tutorial/create_aaduser_04.png) 
+    ![botón de agregar Hola](./media/active-directory-saas-asana-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
@@ -177,39 +177,39 @@ El objetivo de esta sección es crear un usuario de prueba en Azure Portal llama
 
 En esta sección, creará un usuario llamado Britta Simon en Asana.
 
-1. En **Asana**, vaya a la sección **Teams** (Equipos) en el panel izquierdo. Haga clic en el botón de signo más. 
+1. En **Asana**, vaya toohello **equipos** sección en el panel izquierdo de Hola. Botón de signo más haga clic en Hola. 
    
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-asana-tutorial/tutorial_asana_12.png) 
 
-2. Escriba el correo electrónico britta.simon@contoso.com en el cuadro de texto y, después, seleccione **Invitar**.
+2. Escriba el correo electrónico de hello britta.simon@contoso.com en Hola cuadro de texto y, a continuación, seleccione **invitar a**.
 
-3. Haga clic en **Enviar invitación**. El nuevo usuario recibirá un correo electrónico en su cuenta de correo electrónico. Tendrá que crear y validar la cuenta.
+3. Haga clic en **Enviar invitación**. Hola nuevo usuario recibirá un correo electrónico en su cuenta de correo electrónico. Necesitará toocreate y validar la cuenta de hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
 
-En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Asana.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooAsana.
 
-![Asignación del rol de usuario][200]
+![Asigne el rol de usuario de Hola][200]
 
-**Para asignar Britta Simon a Asana, realice los pasos siguientes:**
+**tooassign Britta Simon tooAsana, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **Asana**.
+2. En la lista de aplicaciones de hello, seleccione **Asana**.
 
-    ![Vínculo a Asana en la lista de aplicaciones](./media/active-directory-saas-asana-tutorial/tutorial_asana_app.png) 
+    ![vínculo de Asana Hello en la lista de aplicaciones de Hola](./media/active-directory-saas-asana-tutorial/tutorial_asana_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
-    ![Vínculo "Usuarios y grupos"][202]
+    ![vínculo de "Usuarios y grupos" Hello][202]
 
 4. Haga clic en el botón **Agregar**. Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.
 
-    ![Panel Agregar asignación][203]
+    ![panel de agregar asignación de Hola][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -217,13 +217,13 @@ En esta sección, habilitará a Britta Simon para que use el inicio de sesión �
     
 ### <a name="test-single-sign-on"></a>Prueba de inicio de sesión único
 
-El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD.
+objetivo de Hola de esta sección es tootest el inicio de sesión único en Azure AD.
 
-Vaya a la página de inicio de sesión de Asana. En el cuadro de texto Email address (Dirección de correo electrónico), escriba la dirección de correo electrónico britta.simon@contoso.com. Deje el cuadro de texto de contraseña en blanco y, después, haga clic en **Iniciar sesión**. Se le redirigirá a la página de inicio de sesión de Azure AD. Complete sus credenciales de Azure AD. Ya ha iniciado sesión en Asana.
+Ir a página de inicio de sesión de tooAsana. En el cuadro de texto de dirección de correo electrónico de hello, Insertar dirección de correo electrónico de hello britta.simon@contoso.com. Deje el cuadro de texto de hello contraseña en blanco y, a continuación, haga clic en **inicio de sesión**. Es posible que la página de inicio de sesión de tooAzure redirigida AD. Complete sus credenciales de Azure AD. Ya ha iniciado sesión en Asana.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

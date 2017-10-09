@@ -1,5 +1,5 @@
 ---
-title: "Enlaces de tablas externas de Azure Functions (versión preliminar) | Microsoft Docs"
+title: "enlace de tabla externa de las funciones de aaaAzure (versión preliminar) | Documentos de Microsoft"
 description: Uso de enlaces de tablas externas en Azure Functions
 services: functions
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 716438e5ea490f6716999813112305499dbe61a8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bf19d7d377232edc91087d5f4110602bb82c67ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Enlaces de tablas externas de Azure Functions (versión preliminar)
-Este artículo muestra cómo manipular los datos tabulares de proveedores de SaaS (por ejemplo, Sharepoint y Dynamics) dentro de la función con enlaces integrados. Azure Functions admite enlaces de entrada y salida para tablas externas.
+Este artículo se muestra cómo toomanipulate datos tabulares en proveedores de SaaS (por ejemplo, Sharepoint, Dynamics) dentro de la función con enlaces integrados. Azure Functions admite enlaces de entrada y salida para tablas externas.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="api-connections"></a>Conexiones de API
 
-Los enlaces de tabla aprovechan las conexiones externas de API para autenticarse con proveedores de SaaS de terceros. 
+Enlaces de tabla aprovechan externo tooauthenticate de conexiones de API con los proveedores de SaaS 3rd. 
 
-Al asignar un enlace, puede crear una nueva conexión de API o usar una conexión de API existente dentro del mismo grupo de recursos
+Al asignar un enlace puede crear una nueva conexión de API o usar una conexión de API existente dentro de hello mismo grupo de recursos
 
 ### <a name="supported-api-connections-tables"></a>Conexiones de API compatibles (tablas)
 
@@ -62,14 +62,14 @@ Al asignar un enlace, puede crear una nueva conexión de API o usar una conexió
 1. Escenario `Experimental`  >  `ExternalTable-CSharp` plantilla > Creación de una nueva `External Table connection` 
  ![Elección de una plantilla d entrada de tabla](./media/functions-bindings-storage-table/create-template-table.jpg)
 1. Elección del proveedor de SaaS > elección/creación de una conexión ![Configuración de la conexión de SaaS](./media/functions-bindings-storage-table/authorize-API-connection.jpg)
-1. Selección de la conexión de API > creación de la función ![Creación de la función de tabla](./media/functions-bindings-storage-table/table-template-options.jpg)
+1. Seleccione la conexión de API > Crear función hello ![crear función de tabla](./media/functions-bindings-storage-table/table-template-options.jpg)
 1. Selección de `Integrate` > `External Table`
-    1. Configure la conexión para utilizar la tabla de destino. Esta configuración dependerá en gran parte de los proveedores de SaaS. Se señalan a continuación en [configuración del origen de datos](#datasourcesettings)
+    1. Configurar Hola conexión toouse la tabla de destino. Esta configuración dependerá en gran parte de los proveedores de SaaS. Se señalan a continuación en [configuración del origen de datos](#datasourcesettings)
 ![Configurar tabla](./media/functions-bindings-storage-table/configure-API-connection.jpg)
 
 ## <a name="usage"></a>Uso
 
-En este ejemplo, se conecta a una tabla denominada "Contacto" con columnas Id, LastName y FirstName. El código muestra las entidades de contacto en la tabla y registra los nombres y apellidos.
+En este ejemplo se conecta con el nombre "Contacto" con Id., LastName y FirstName columnas de tabla de tooa. código de Hello enumera las entidades de contacto de Hola de tabla de Hola y Hola de registros de nombres y apellidos.
 
 ### <a name="bindings"></a>Enlaces
 ```json
@@ -95,9 +95,9 @@ En este ejemplo, se conecta a una tabla denominada "Contacto" con columnas Id, L
 ```
 `entityId` debe estar vacío para los enlaces de tabla.
 
-`ConnectionAppSettingsKey` identifica la configuración de aplicación que almacena la cadena de conexión de API. La configuración de la aplicación se crea automáticamente cuando se agrega una conexión de API en la interfaz de usuario integrada.
+`ConnectionAppSettingsKey`identifica la configuración de la aplicación hello que almacena la cadena de conexión de API de Hola. Hello configuración de la aplicación se crea automáticamente cuando se agrega una API conexión Hola integrar la interfaz de usuario.
 
-Un conector tabular proporciona conjuntos de datos, y cada conjunto de datos contiene tablas. El nombre del conjunto de datos predeterminado es "default". Los títulos de un conjunto de datos y una tabla en varios proveedores de SaaS se enumeran a continuación:
+Un conector tabular proporciona conjuntos de datos, y cada conjunto de datos contiene tablas. Hola Hola predeterminada del conjunto de datos se denomina "predeterminado". títulos de Hola para un conjunto de datos y una tabla en varios proveedores de SaaS se enumeran a continuación:
 
 |Conector|Dataset|Tabla|
 |:-----|:---|:---| 
@@ -107,7 +107,7 @@ Un conector tabular proporciona conjuntos de datos, y cada conjunto de datos con
 |**Excel**|Archivo de Excel|Hoja 
 
 <!--
-See the language-specific sample that copies the input file to the output file.
+See hello language-specific sample that copies hello input file toohello output file.
 
 * [C#](#incsharp)
 * [Node.js](#innodejs)
@@ -125,7 +125,7 @@ using System;
 using Microsoft.Azure.ApiHub;
 
 //Variable name must match column type
-//Variable type is dynamically bound to the incoming data
+//Variable type is dynamically bound toohello incoming data
 public class Contact
 {
     public string Id { get; set; }
@@ -135,7 +135,7 @@ public class Contact
 
 public static async Task Run(string input, ITable<Contact> table, TraceWriter log)
 {
-    //Iterate over every value in the source table
+    //Iterate over every value in hello source table
     ContinuationToken continuationToken = null;
     do
     {   
@@ -172,7 +172,7 @@ module.exports = function(context) {
 
 ### <a name="sql-server"></a>SQL Server
 
-El script para crear y rellenar la tabla Contact se encuentra a continuación. dataSetName es el "valor predeterminado".
+Hola toocreate de secuencia de comandos y rellenar tabla Contact de hello está por debajo. dataSetName es el "valor predeterminado".
 
 ```sql
 CREATE TABLE Contact
@@ -192,7 +192,7 @@ GO
 ```
 
 ### <a name="google-sheets"></a>Hojas de cálculo de Google
-En Google Docs, cree una hoja de cálculo con una hoja de cálculo denominada `Contact`. El conector no puede usar el nombre para mostrar de la hoja de cálculo. El nombre interno (en negrita) tiene que usarse como dataSetName, por ejemplo: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`** Agregar los nombres de columna `Id`, `LastName`, `FirstName` a la primera fila, y luego completar los datos en las filas siguientes.
+En Google Docs, cree una hoja de cálculo con una hoja de cálculo denominada `Contact`. Conector de Hello no puede usar el nombre para mostrar hello hoja de cálculo. nombre interno de Hello (en negrita) necesita toobe usará como dataSetName, por ejemplo: `docs.google.com/spreadsheets/d/`  **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**  agregar nombres de columna de hello `Id`, `LastName`, `FirstName` toohello primera fila, a continuación, rellenar los datos en filas siguientes.
 
 ### <a name="salesforce"></a>Salesforce
 dataSetName es el "valor predeterminado".

@@ -1,6 +1,6 @@
 ---
-title: Descarga de herramientas de Azure Stack desde GitHub | Microsoft Docs
-description: Aprenda a descargar las herramientas necesarias para trabajar con Azure Stack.
+title: aaaDownload pila de Azure tools desde GitHub | Documentos de Microsoft
+description: "Obtenga información acerca de cómo las herramientas de toodownload necesario toowork con la pila de Azure."
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: sngun
-ms.openlocfilehash: 589d2ea1ffed9f8ac82793132d9c91efcc60a5fe
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a88c97b0ef1dd70e63771f0607cc07ec7a00b533
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Descarga de herramientas de Azure Stack desde GitHub
 
-AzureStack-Tools es un repositorio de GitHub que hospeda módulos de PowerShell que puede usar para administrar e implementar recursos en Azure Stack. Puede descargar y usar estos módulos de PowerShell para Azure Stack Development Kit, o para un cliente externo basado en Windows, si va a establecer la conectividad VPN. Para obtener estas herramientas, clone el repositorio de GitHub o descargue la carpeta AzureStack-Tools. 
+Herramientas de AzureStack es un repositorio de GitHub que hospeda módulos de PowerShell que puede usar toomanage e implementar recursos tooAzure pila. Puede descargar y usar a estos módulos toohello Kit de desarrollo de pila de Azure o tooa basados en windows externo cliente de PowerShell si tiene previsto tooestablish conectividad VPN. tooobtain estas herramientas, clonar el repositorio de GitHub de Hola o hello AzureStack herramientas carpeta de descarga. 
 
-Para clonar el repositorio, descargue [Git](https://git-scm.com/download/win) para Windows, abra una ventana del símbolo del sistema y ejecute el siguiente script:
+repositorio de hello tooclone, descargue [Git](https://git-scm.com/download/win) para Windows, abra una ventana del símbolo del sistema y ejecute la siguiente secuencia de comandos de hello:
 
 ```PowerShell
-# Change directory to the root directory 
+# Change directory toohello root directory 
 cd \
 
-# clone the repository
+# clone hello repository
 git clone https://github.com/Azure/AzureStack-Tools.git --recursive
 
-# Change to the tools directory
+# Change toohello tools directory
 cd AzureStack-Tools
 ```
 
-Para descargar la carpeta de herramientas, ejecute el script siguiente:
+carpeta de herramientas en hello toodownload, ejecute la siguiente secuencia de comandos de hello:
 
 ```PowerShell
-# Change directory to the root directory 
+# Change directory toohello root directory 
 cd \
 
-# Download the tools archive
+# Download hello tools archive
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip
 
-# Expand the downloaded files
+# Expand hello downloaded files
 expand-archive master.zip `
   -DestinationPath . `
   -Force
 
-# Change to the tools directory
+# Change toohello tools directory
 cd AzureStack-Tools-master
 
 ```
 
-## <a name="functionalities-provided-by-the-modules"></a>Funcionalidades proporcionadas por los módulos
+## <a name="functionalities-provided-by-hello-modules"></a>Funcionalidades proporcionadas por módulos de Hola
 
-El repositorio AzureStack-Tools contiene los módulos de PowerShell que admiten las siguientes funcionalidades para Azure Stack:  
+repositorio de Hello AzureStack-Tools contiene los módulos de PowerShell que admiten Hola siga funcionalidades para la pila de Azure:  
 
 | Funcionalidad | Descripción | ¿Quién puede usar este módulo? |
 | --- | --- | --- |
-| [Funcionalidades en la nube](azure-stack-validate-templates.md) | Utilice este módulo para obtener las funcionalidades en la nube de una nube. Por ejemplo, con este módulo, puede obtener funcionalidades en la nube como la versión de API, los recursos de Azure Resource Manager, las extensiones de VM, etc. para las nubes de Azure Stack y Azure. | Los administradores de nube y los usuarios. |
-| [Administración de procesos de Azure Stack](azure-stack-add-vm-image.md) | Utilice este módulo para agregar o quitar una imagen de máquina virtual desde el marketplace de Azure Stack. | Administradores de la nube. |
-| [Administración de la infraestructura de Azure Stack](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | Utilice este módulo para administrar las actualizaciones, las alertas, las máquinas virtuales de infraestructura de Azure Stack, etcétera. |  Administradores de la nube.|
-| [Directiva de Resource Manager para Azure Stack](azure-stack-policy-module.md) | Utilice este módulo para configurar una suscripción de Azure o un grupo de recursos de Azure con la misma disponibilidad de servicios y control de versiones que Azure Stack. | Los usuarios y administradores de nube |
-| [Registro con Azure](azure-stack-register.md) | Utilice este módulo para registrar la instancia de Azure Stack Development Kit. Después del registro, puede descargar los elementos de marketplace de Azure y usarlos en Azure Stack. | Administradores de nube |
-| [Implementación de Azure Stack](azure-stack-run-powershell-script.md) | Utilice este módulo para preparar el equipo host de Azure Stack para implementar y volver a implementar con la imagen de disco duro virtual (VHD) de Azure Stack. | Administradores de la nube. |
-| [Conexión a Azure Stack](azure-stack-connect-powershell.md) | Utilice este módulo para conectarse a una instancia de Azure Stack a través de PowerShell y configurar la conectividad VPN a Azure Stack. | Los usuarios y administradores de nube |
-| [Administración de servicios de Azure Stack](azure-stack-create-offer.md) | Administradores de pila Azure pueden usar este módulo para crear una oferta de inquilino de forma predeterminada con una cuota de ilimitado a través de servicios de proceso, almacenamiento, red y el almacén de claves.   | Administradores de la nube.|
-| [Validador de plantilla](azure-stack-validate-templates.md) | Utilice este módulo para comprobar si una plantilla nueva o existente puede implementarse en Azure Stack. | Los usuarios y administradores de nube |
+| [Funcionalidades en la nube](azure-stack-validate-templates.md) | Utilice este capacidades de módulo tooget hello en la nube de una nube. Por ejemplo, puede obtener capacidades de la nube de hello como versión de API, los recursos de Azure Resource Manager, etc. de extensiones de máquina virtual para la pila de Azure y Azure nubes mediante este módulo. | Usuarios y administradores de la nube. |
+| [Administración de procesos de Azure Stack](azure-stack-add-vm-image.md) | Use este módulo tooadd o quitar una imagen de VM de marketplace de Azure pila Hola. | Administradores de la nube. |
+| [Administración de la infraestructura de Azure Stack](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | Use esta infraestructura de Azure pila módulo toomanage máquinas virtuales, alertas, actualizaciones etcetera. |  Administradores de la nube.|
+| [Directiva de Resource Manager para Azure Stack](azure-stack-policy-module.md) | Utilice este tooconfigure módulo una suscripción de Azure o grupo de un recurso de Azure con hello mismo control de versiones y el servicio de disponibilidad como la pila de Azure. | Usuarios y administradores de la nube |
+| [Registro con Azure](azure-stack-register.md) | Utilice este módulo tooregister la instancia del kit de desarrollo con Azure. Después de registrar, puede descargar los elementos de marketplace de Hola de Azure y usarlos en la pila de Azure. | Administradores de nube |
+| [Implementación de Azure Stack](azure-stack-run-powershell-script.md) | Utilice este toodeploy del equipo de host de módulo tooprepare hello Azure pila y volver a implementar mediante hello Disk(VHD) de disco duro Virtual de Azure pila imagen. | Administradores de la nube. |
+| [Pila de conexión tooAzure](azure-stack-connect-powershell.md) | Utilice esta instancia de Azure pila módulo tooconnect tooan a través de PowerShell y tooconfigure tooAzure de conectividad VPN pila. | Usuarios y administradores de la nube |
+| [Administración de servicios de Azure Stack](azure-stack-create-offer.md) | Azure administradores de pila pueden usar este toocreate módulo ofrecen un inquilino de forma predeterminada con una cuota de ilimitado a través de servicios de proceso, almacenamiento, red y el almacén de claves.   | Administradores de la nube.|
+| [Validador de plantilla](azure-stack-validate-templates.md) | Use este módulo tooverify si una plantilla nueva o existente puede ser implementado tooAzure pila. | Usuarios y administradores de la nube |
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Configuración del entorno de PowerShell del usuario de Azure Stack](azure-stack-powershell-configure-user.md)   
-* [Conexión a Azure Stack Development Kit a través de una VPN](azure-stack-connect-azure-stack.md)  
+* [Configurar el entorno de PowerShell del usuario de hello pila de Azure](azure-stack-powershell-configure-user.md)   
+* [Conectar tooAzure Kit de desarrollo de pila a través de una VPN](azure-stack-connect-azure-stack.md)  

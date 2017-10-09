@@ -1,6 +1,6 @@
 ---
-title: Consideraciones de seguridad y privacidad de Cloud App Discovery | Microsoft Docs
-description: En este tema se describen las consideraciones de seguridad y privacidad relacionadas Cloud App Discovery.
+title: "aaaCloud aplicación detección consideraciones de seguridad y privacidad | Documentos de Microsoft"
+description: Este tema describe la seguridad de Hola y privacidad consideraciones relacionadas tooCloud App Discovery.
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,68 +14,68 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 1510b7a91d7eea4d16d781299bc9948da4324c51
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 33659e85bd2cf4294e443512e69a85401f7c53f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Consideraciones de seguridad y privacidad de Cloud App Discovery
-Microsoft se compromete a proteger su privacidad y sus datos, al tiempo que ofrece software y servicios que le ayudan a administrar la seguridad de su organización.  
-Reconocemos que cuando confía sus datos a otros usuarios, esa confianza requiere rigurosas inversiones en ingeniería de seguridad y pericia para soportarla.
-Microsoft cumple estrictas instrucciones de seguridad y cumplimiento de normas, desde prácticas de ciclo de vida en el desarrollo de software hasta la operación de un servicio.  
+Microsoft está comprometido tooprotecting su privacidad y los datos, al tiempo que ofrece software y los servicios que le ayuden a administrar la seguridad de Hola de su organización.  
+Reconocemos que cuando confía sus datos tooothers, esa confianza requiere inversiones en ingeniería de seguridad rigurosa y tooback conocimientos sobre él.
+Microsoft adhiere a las directrices de seguridad y cumplimiento de normas de toostrict de software segura desarrollo del ciclo de vida prácticas toooperating un servicio.  
  La seguridad y la protección de los datos son prioritarias en Microsoft.
 
 En este tema se explica cómo se recopilan, procesan y protegen los datos dentro de Cloud App Discovery de Azure Active Directory.
 
 ## <a name="overview"></a>Información general
 Cloud App Discovery es una característica de Azure AD y se hospeda en Microsoft Azure.  
-Cloud App Discovery Endpoint Agent se usa para recopilar datos de detección de aplicaciones de máquinas administradas por TI.  
-Los datos recopilados se envían de forma segura sobre un canal cifrado al servicio Cloud App Discovery de Azure AD.  
-Después, los datos de Cloud App Discovery de una organización pasan a estar visibles en el Portal de Azure. 
+agente de extremo de Cloud App Discovery de Hello es toocollect usa datos de detección de aplicación desde equipos de TI administrados.  
+Hello los datos recopilados se envían de forma segura a través de un servicio de Azure AD Cloud App Discovery toohello de canal cifrado.  
+Hola datos de Cloud App Discovery de una organización, a continuación, es visible en hello portal de Azure. 
 
 ![Funcionamiento de Cloud App Discovery](./media/active-directory-cloudappdiscovery-security-and-privacy-considerations/cad01.png) 
 
-En las siguientes secciones se describe el flujo de información y cómo se protege en su desplazamiento desde la organización hasta el servicio Cloud App Discovery y, por último, al portal de Cloud App Discovery.
+Hello las secciones siguientes siguen Hola flujo de información y describen cómo se protege a medida que se mueven desde el servicio de Cloud App Discovery de toohello de organización y, en última instancia, el portal de Cloud App Discovery toohello.
 
 ## <a name="collecting-data-from-your-organization"></a>Recopilación de datos de su organización
-A fin de poder usar la característica Cloud App Discovery de Azure Active Directory para obtener información sobre las aplicaciones que usan los empleados de su organización, primero deberá implementar Cloud App Discovery Endpoint Agent de Azure AD en las máquinas de su organización.
+En aplicación de nube detección característica tooget información de orden toouse Azure Active Directory sobre Hola aplicaciones usadas los empleados de su organización, debe toofirst implementar hello Azure AD Cloud App Discovery endpoint agent toomachines en su organización.
 
-Los administradores del inquilino de Azure Active Directory (o su delegado) pueden descargar el paquete de instalación del agente desde el portal de Azure. El agente se puede instalar manualmente o se puede instalar en varias máquinas de la organización mediante SCCM o la directiva de grupo.
+Los administradores del inquilino de Azure Active Directory hello (o su delegado) pueden descargar el paquete de instalación del agente de Hola de hello portal de Azure. agente de Hello puede manualmente instalado o instalarse en varios equipos en la organización de hello mediante SCCM o la directiva de grupo.
 
 Para obtener más instrucciones sobre las opciones de implementación, consulte la [Guía de implementación de directivas de grupo de Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx).
 
 
-### <a name="data-collected-by-the-agent"></a>Datos recopilados por el agente
-La información descrita en esta lista la recopila el agente cuando se realiza una conexión a una aplicación web. La información solo se recopila para aquellas aplicaciones que el administrador ha configurado para detección.  
-Puede editar la lista de aplicaciones en la nube que el agente supervisa a través de la hoja Cloud App Discovery en Microsoft [Azure Portal](https://portal.azure.com/), en **Configuración**->**Recopilación de datos**->**Lista de recopilación de aplicaciones**. Para obtener más información, consulte [Introducción a Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
+### <a name="data-collected-by-hello-agent"></a>Datos recopilados por el agente de Hola
+Cuando se realiza una conexión tooa aplicación Web, se recopila información de Hola que se describen en la siguiente lista de hello agente Hola. Hello información se recopila solo para aquellas aplicaciones que Administrador de hello ha configurado para la detección.  
+Puede editar lista de Hola de las aplicaciones de nube que Hola monitores de agente a través de la hoja de Cloud App Discovery de Hola Hola Microsoft [portal de Azure](https://portal.azure.com/), en **configuración**->**datos Colección**->**lista de la colección de aplicaciones**. Para obtener más información, consulte [Introducción a Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
 
 
 **Información de categoría**: información de usuario  
 **Descripción**:  
-El nombre de usuario de Windows del proceso que realizó una solicitud a la aplicación web de destino (por ejemplo: DOMINIO\nombre de usuario), así como el identificador de seguridad de Windows (SID) del usuario.
+nombre de usuario de Windows Hello del proceso de hello realizados por una aplicación Web de destino de solicitud toohello (p. ej.: dominio ombre de usuario), así como el identificador de seguridad de Windows (SID) del usuario de Hola Hola.
 
 **Categoría de información**: información de proceso  
 **Descripción**:  
-el nombre del proceso que realizó la solicitud a la aplicación web de destino (por ejemplo: "iexplore.exe").
+nombre de Hello del proceso de Hola que realizan la aplicación Web de hello solicitud toohello destino (p. ej.: "iexplore.exe")
 
 **Categoría de información**: información de la máquina  
 **Descripción**:  
-el nombre NetBIOS de la máquina en la que está instalado el agente.
+nombre de NetBIOS de máquina de Hello en qué Hola agente está instalado.
 
 **Categoría de información**: información de tráfico de aplicaciones  
 **Descripción**: 
 
-La siguiente información de conexión:
+Hola siguiendo la información de conexión:
 
-* Las direcciones IP de origen (equipo local) y de destino, y los números de puerto.
-* La dirección IP pública de la organización a través de la cual sale la solicitud.
-* La hora de la solicitud.
-* El volumen de tráfico enviado y recibido.
-* La versión de IP (4 o 6).
-* Solo para las conexiones TLS: el nombre de host de destino de la extensión de Indicación de nombre de servidor o del certificado de servidor.
+* origen de Hello (equipo local) y direcciones IP de destino y números de puerto
+* dirección IP pública de Hola de organización de Hola a través de qué Hola solicitud sale.
+* tiempo de saludo de solicitud de Hola
+* volumen de Hola de tráfico enviados y recibidos
+* versión IP de Hello (4 o 6)
+* Para las conexiones TLS sólo: nombre de host de destino de hello del certificado de servidor de Hola o de extensiones de indicación de nombre de servidor de Hola.
 
-La siguiente información de HTTP:
+Hola la siguiente información de HTTP:
 
 * Método (GET, POST, etc.).
 * Protocolo (HTTP/1.1, etc.).
@@ -86,77 +86,77 @@ La siguiente información de HTTP:
 * Información de dirección URL del origen de referencia (sin incluir la cadena de consulta).
 
 > [!NOTE]
-> La información HTTP anterior se recopila para todas las conexiones no cifradas.
-> Para las conexiones TLS, esta información solo se captura cuando está activada la inspección en profundidad en el portal. El valor es ‘ON’ (activado) de forma predeterminada.
+> Hola información HTTP anterior se recopila para todas las conexiones no cifradas.
+> Para las conexiones TLS, esta información se captura solo cuando hello 'Inspección profunda' esté activada en el portal de Hola. saludo es 'ON' de forma predeterminada.
 > Para obtener más información, vea a continuación y consulte [Introducción a Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
 > 
 > 
 
-Además de los datos que el agente recopila sobre la actividad de red, también recopila información anónima sobre la configuración del software y el hardware, los informes de errores e información sobre cómo se utiliza el agente.
+Además toohello datos que el agente Hola recopila acerca de la actividad de red de hello, también recopila información anónima sobre la configuración de hardware y software de hello, informes de errores y obtener información acerca de cómo se utiliza el agente de Hola.
 
 
-### <a name="how-the-agent-works"></a>Cómo funciona el agente
-La instalación del agente incluye dos componentes:
+### <a name="how-hello-agent-works"></a>Cómo funciona el agente de Hola
+instalación del agente Hola incluye dos componentes:
 
 * Un componente de modo de usuario
 * Un componente de controlador de modo kernel (controlador de Plataforma de filtrado de Windows)
 
-Cuando se instala por primera vez, el agente almacena un certificado de confianza específico del equipo en la máquina que después usa para establecer una conexión segura con el servicio Cloud App Discovery.  
-Periódicamente, el agente recupera la configuración de directiva del servicio Cloud App Discovery en esta conexión segura.  
-La directiva incluye información sobre qué aplicaciones en la nube se deben supervisar y si la actualización automática debe estar habilitada, entre otras cosas.
+Cuando se instala por primera vez agente Hola almacena un certificado de confianza específicas del equipo en la máquina de Hola donde, a continuación, utiliza tooestablish una conexión segura con el servicio de Cloud App Discovery de Hola.  
+agente Hola periódicamente recupera la configuración de directiva de hello servicio Cloud App Discovery a través de esta conexión segura.  
+Directiva de Hello incluye información sobre qué toomonitor de aplicaciones de nube y si la actualización automática debe habilitarse, entre otras cosas.
 
-A medida que el tráfico web se envía y se recibe en la máquina desde Internet Explorer y Chrome, Cloud App Discovery Agent lo analiza y extrae los metadatos relevantes (consulte la sección **Datos recopilados por el agente** anterior).  
-Cada minuto, el agente carga los metadatos recopilados en el servicio Cloud App Discovery a través de un canal cifrado.
+Como el tráfico Web se enviados y recibido en la máquina de Hola desde Internet Explorer y Chrome, agente de Cloud App Discovery de hello analiza el tráfico de Hola y extrae Hola metadatos relevantes (vea hello **datos recopilados por el agente de hello** sección la parte superior).  
+Cada minuto, agente de hello carga Hola recopilan metadatos toohello servicio Cloud App Discovery a través de un canal cifrado.
 
-El componente de controlador intercepta el tráfico cifrado y se inserta en la secuencia cifrada. Puede obtener más detalles en la sección **Interceptación de datos de conexiones cifradas (inspección en profundidad)** posterior.
+intercepta de componente de controlador de Hola Hola tráfico no cifrado y se inserta en la secuencia cifrada Hola. Para obtener más detalles en hello **interceptar datos de las conexiones cifradas (la inspección en profundidad)** sección más adelante.
 
 ### <a name="respecting-user-privacy"></a>Respeto de la privacidad de los usuarios
-Nuestro objetivo es proporcionar a los administradores las herramientas necesarias para establecer un equilibrio entre la óptica detallada en el uso de las aplicaciones y la privacidad de los usuarios que sea apropiado para su organización. Para ello, proporcionamos los siguientes botones en la página de configuración del portal:
+Nuestro objetivo es tooprovide administradores Hola herramientas tooset Hola equilibrio entre la óptica detallada en privacidad de uso y de usuario de aplicación según corresponda para su organización. final de toothat, proporcionamos Hola siguientes botones en la página de configuración de Hola Hola Portal:
 
-* **Recopilación de datos**: los administradores pueden especificar de qué aplicaciones o categorías de aplicaciones quieren obtener datos de detección.
-* **Inspección en profundidad**: los administradores pueden elegir especificar si el agente recopilará el tráfico HTTP para las conexiones SSL/TLS (lo que se conoce como **'Inspección en profundidad'**). Puede obtener más información al respecto en la siguiente sección.
-* **Opciones de consentimiento**: los administradores pueden usar el portal de Cloud App Discovery para elegir si se notifica a los usuarios la recopilación de datos por el agente y si se pide al usuario que dé su consentimiento antes de que el agente comience a recopilar datos de los usuarios.
+* **Recopilación de datos**: los administradores pueden elegir toospecify qué aplicaciones o categorías de la aplicación en la que quiere tooget detección datos.
+* **La inspección en profundidad**: los administradores puede elegir toospecify si el agente de hello recopile tráfico HTTP para conexiones SSL/TLS (también conocido como **'Inspección profunda'**). Más información sobre esto en la sección siguiente Hola.
+* **Opciones de consentimiento**: los administradores pueden usar Hola Cloud App Discovery portal toochoose si los usuarios toonotify Hola de recopilación de datos por agente hello, y si el usuario de toorequire dar su consentimiento antes de que el agente de hello empieza a recopilar datos de usuario.
 
-Cloud App Discovery Endpoint Agent solo recopila la información que se describe en la sección **Datos recopilados por el agente** anterior.
+agente de punto de conexión de Hello Cloud App Discovery solo recopila información de hello descrito en hello **datos recopilados por el agente de hello** sección anterior.
 
 ### <a name="intercepting-data-from-encrypted-connections-deep-inspection"></a>Interceptación de datos de conexiones cifradas (inspección en profundidad)
-Como mencionamos anteriormente, los administradores pueden configurar el agente para que supervise datos de conexiones cifradas ('inspección en profundidad'). TLS ([Seguridad de la capa de transporte](https://msdn.microsoft.com/library/windows/desktop/aa380516%28v=vs.85%29.aspx)) es uno de los protocolos más comunes que se usan hoy en día en Internet. Al cifrar la comunicación con TLS, un cliente puede establecer un canal de comunicación seguro y privado con un servidor web. TLS proporciona una protección esencial para pasar las credenciales de autenticación y evitar la revelación de información confidencial.
+Como mencionamos anteriormente, los administradores pueden configurar datos de toomonitor de agente de saludo de conexiones cifradas ('inspección profunda'). TLS ([Transport Layer Security](https://msdn.microsoft.com/library/windows/desktop/aa380516%28v=vs.85%29.aspx)) es uno de hello protocolos más comunes en uso en hello Internet hoy en día. Al cifrar la comunicación con TLS, un cliente puede establecer un canal de comunicación segura y privada con un servidor web; TLS proporciona una protección esencial para pasar las credenciales de autenticación y evitar la divulgación de Hola de información confidencial.
 
-Si bien el canal cifrado seguro de extremo a extremo que proporciona TLS permite una protección importante de la privacidad y la seguridad, con frecuencia el protocolo se usa de forma indebida con fines malintencionados. Tanto es así que, de hecho, ese TLS se conoce a menudo como “protocolo de omisión de firewall universal”. La raíz del problema es que la mayoría de los firewalls no son capaces de inspeccionar la comunicación TLS porque los datos de la capa de aplicación están cifrados con SSL. Sabiendo esto, los atacantes aprovechan con frecuencia TLS para entregar cargas malintencionadas a un usuario seguro de que incluso los firewalls de capa de aplicación más inteligentes son completamente ciegos a TLS y simplemente deben retransmitir la comunicación TLS entre los hosts. Con frecuencia, los usuarios finales aprovechan TLS para omitir los controles de acceso aplicados por sus firewalls y servidores proxy corporativos, y lo usan para conectarse a servidores proxy públicos y para la tunelización de protocolos no TLS a través del firewall que, de lo contrario, podrían ser bloqueados por la directiva.
+Mientras hello-to-end segura canal cifrado TLS proporcionada habilita la protección de la privacidad y seguridad importantes, a menudo es abusen del protocolo de hello con fines malintencionados o malintencionadas. Sea tan por lo tanto, de hecho, que a menudo es TLS conocen tooas Hola "omisión de firewall universal protocolo". raíz Hola de problema de hello es que la mayoría de los servidores de seguridad son comunicación TLS de tooinspect no se puede porque los datos de la capa de aplicación de hello está cifrados con SSL. Sabiendo esto, los atacantes aprovechan con frecuencia usuario de tooa TLS toodeliver cargas malintencionado segura de que incluso hello más capas de la aplicación los firewalls inteligentes son completamente oculta tooTLS y simplemente deben transmitir la comunicación TLS entre hosts. Con frecuencia, los usuarios finales aprovechar controles de acceso de toobypass TLS aplicados sus servidores proxy, usar a tooconnect toopublic proxy y firewalls corporativos y para protocolos no TLS a través de firewall de Hola que en caso contrario, puede estar bloqueado por la directiva de túnel.
 
-La inspección en profundidad permite a Cloud App Discovery Agent actuar como un intermediario de confianza. Cuando se realiza una solicitud de cliente para tener acceso a un recurso protegido HTTPS, el controlador de Endpoint Agent intercepta la conexión y establece una nueva conexión con el servidor de destino que recupera su certificado SSL en nombre del cliente. El agente verifica que el certificado sea de confianza (al comprobar que no está revocado y realizar otras comprobaciones de certificado) y, en caso afirmativo, Endpoint Agent copia la información del certificado de servidor y crea su propio certificado de servidor, conocido como certificado de interceptación, con esta información. Endpoint Agent firma el certificado de interceptación sobre la marcha con un certificado raíz, que está instalado en el almacén de certificados de confianza de Windows. Este certificado raíz autofirmado está marcado como no exportable y se agrega a la ACL para los administradores. Está pensado para no salir nunca de la máquina en la que se creó. Cuando la aplicación de cliente del usuario final recibe el certificado de interceptación, confía en él porque puede validar correctamente la cadena de certificados hasta el certificado raíz. Este proceso resulta casi transparente desde el punto de vista del usuario final con algunas salvedades que se describen a continuación.
+La inspección en profundidad permite tooact de agente de Cloud App Discovery de hello como una confianza man-in-the-middle. Cuando se realiza una solicitud de cliente tooaccess HTTPS al recurso protegido, controlador de agente de punto de conexión de hello intercepta conexión hello y establece un tooretrieves de servidor de destino de nueva conexión toohello su propio certificado SSL en nombre del cliente de Hola. agente de Hello, a continuación, comprueba que Hola certificado puede ser de confianza (mediante la comprobación de que no se ha revocado y realizar otras comprobaciones de certificado), y si se superan estos, hello agente de punto de conexión, a continuación, copia la información de Hola de certificado de servidor de Hola y crea su propio certificado de servidor, conocido como un certificado de interceptación--con esa información. certificado de intercepción de Hello está firmada marcha por agente de punto de conexión de hello con un certificado raíz, que está instalado en el almacén de certificados de confianza de Windows hello. Este certificado raíz autofirmado está marcada como no exportable y es ACL tenía tooadministrators. Es toonever previsto deje Hola máquina en la que se creó. Cuando la aplicación de cliente de saludo del usuario final reciba el certificado de interceptación de hello, confíe en él porque correctamente puede validar la cadena de certificados de hello todos los certificados de raíz de toohello de manera Hola. Este proceso resulta casi transparente desde el punto de vista del usuario final con algunas salvedades que se describen a continuación.
 
-Al habilitar la inspección en profundidad, Cloud App Discovery Endpoint Agent puede descifrar e inspeccionar las comunicaciones cifradas con TLS, lo que permite al servicio reducir el ruido y proporcionar información detallada sobre el uso de las aplicaciones en la nube cifradas.
+Habilitando la inspección en profundidad, Hola Cloud App Discovery Endpoint Agent puede descifrar e inspeccionar las comunicaciones de TLS cifrados, permitiendo ruido de tooreduce de servicio de Hola y proporcionan información sobre el uso de Hola de aplicaciones en la nube Hola cifrado.
 
 #### <a name="a-word-of-caution"></a>Unas palabras de advertencia
-Antes de activar una inspección en profundidad, se recomienda encarecidamente que comunique sus intenciones a los departamentos de Recursos Humanos y jurídico y obtenga su consentimiento. La inspección de las comunicaciones cifradas privadas del usuario final pueden ser un asunto delicado, por razones obvias. Antes de poner en marcha en producción la inspección en profundidad, asegúrese de que se han actualizado las directivas de seguridad corporativa y de uso aceptable para indicar que se inspeccionará la comunicación cifrada. La notificación a los usuarios y la exención de sitios que se consideran confidenciales (por ejemplo, sitios médicos y bancarios) puede ser también necesario si configura Cloud App Discovery para supervisarlos. Según lo comentado anteriormente, los administradores pueden usar el portal de Cloud App Discovery para elegir si se notifica a los usuarios la recopilación de datos por el agente y si se pide al usuario que dé su consentimiento antes de que el agente comience a recopilar datos de los usuarios.
+Antes de activar la inspección en profundidad, se recomienda encarecidamente que se comunican sus intenciones tooyour legal y departamentos de recursos humanos y obtener su consentimiento. La inspección de las comunicaciones cifradas privadas del usuario final pueden ser un asunto delicado, por razones obvias. Antes de una producción puesta en servicio de la inspección en profundidad, asegúrese de que la seguridad de la empresa y se han actualizado las directivas de uso aceptable se inspeccionará tooindicate que la comunicación cifrada. Notificación al usuario y exención de sitios considera confidencial (por ejemplo, operaciones bancarias y médicas) también pueden ser necesarios si configura Cloud App Discovery toomonitor ellos. Tal y como se mencionó anteriormente, los administradores pueden usar Hola Cloud App Discovery portal toochoose si los usuarios de toonotify Hola de recopilación de datos por agente hello, y si el usuario de toorequire dar su consentimiento antes de que el agente de hello empieza a recopilar datos de usuario.
 
 ### <a name="known-issues-and-drawbacks"></a>Desventajas y problemas conocidos
-Hay algunos casos en los que la interceptación de TLS puede afectar a la experiencia del usuario final:
+Hay algunos casos donde interceptación de TLS puede afectar la experiencia del usuario final hello:
 
-* Los certificados de validación extendida (EV) muestran la barra de direcciones del explorador web en verde para que sirva de indicación visual de que está visitando un sitio web de confianza. La inspección de TLS no puede duplicar la EV en el certificado que emite al cliente, por lo que los sitios web que usen certificados EV funcionarán normalmente pero la barra de direcciones no se mostrará en verde.  
-* La asignación de claves públicas (también conocida como asignación de certificados) está diseñada para ayudar a los usuarios a protegerse de ataques de tipo " Man-in-the-middle" y falsas entidades de certificación. Cuando el certificado raíz para un sitio asignado no coincide con el de una entidad de certificación válida conocida, el explorador rechaza la conexión con un error. Puesto que la interceptación de TLS es, de hecho, un ataque de tipo «Man in the middle», se producirá un error en estas conexiones.
-* Si los usuarios hacen clic en el icono de candado de la barra de direcciones del explorador para inspeccionar la información del sitio, no podrán ver una cadena que termina en la entidad de certificación usada para firmar el certificado del sitio web, sino que verán una cadena de certificados que termina en el almacén de certificados de confianza de Windows.
+* Los certificados de validación (EV) extendida representan la barra de direcciones de Hola de hello web explorador verde tooact como una pista visual que está visitando un sitio web de confianza. Inspección TLS no puede duplicar EV certificado Hola emite a toohello cliente, por lo que los sitios web que usan certificados de validación Extendida funcionarán normalmente pero barra de direcciones de hello no mostrará verde.  
+* Anclaje de clave pública (también conocido como certificado de anclaje) están diseñadas toohelp proteger a los usuarios frente a ataques de man-in-the-middle y no autorizados entidades emisoras de certificados. Cuando el certificado de raíz de Hola para un sitio anclado no coincide con uno de hello conocida buena CA, Explorador de hello rechaza la conexión de hello con un error. Puesto que la interceptación de TLS es, de hecho, un ataque de tipo «Man in the middle», se producirá un error en estas conexiones.
+* Si los usuarios haga clic en el icono de candado de hello en hello explorador dirección barra Explorador tooinspect Hola información del sitio, no verán una cadena termina en la entidad emisora de certificados de hello usa certificado de sitio Web de toosign hello, pero en su lugar, una cadena de certificados termina con Hola Windows almacén de certificados de confianza.
 
-Para reducir la aparición de estos problemas, realizamos un seguimiento de los servicios en la nube y las aplicaciones de cliente conocidas que usan la validación extendida o la asignación de claves públicas e indicamos a Endpoint Agent que evite interceptar las conexiones afectadas. No obstante, incluso en estos casos seguirá recibiendo informes sobre el uso de estas aplicaciones en la nube y el volumen de datos que se transfiere, pero como no se inspeccionan en profundidad, no habrá detalles disponibles acerca de cómo se usan las aplicaciones.
+repeticiones de hello tooreduce de estos problemas, es realizar un seguimiento de servicios en la nube y aplicaciones cliente conocida toouse extendidos validación o anclaje de clave pública y dar instrucciones a Hola Endpoint Agent tooavoid interceptando conexiones afectadas. Incluso en estos casos, sin embargo, seguirá recibiendo informes de uso de Hola de estas aplicaciones en la nube y el volumen de Hola de datos que se transfieren, pero puesto que no son profundos inspeccionar, no hay detalles acerca de cómo se usan aplicaciones de hello estará disponibles.
 
-## <a name="sending-data-to-cloud-app-discovery"></a>Envío de datos a Cloud App Discovery
-Una vez que el agente ha recopilado los datos, estos se almacenan en caché en la máquina durante un máximo de un minuto o hasta que los datos en caché alcanzan un tamaño de 5 MB. Después se comprimen y se envían a través de una conexión segura al servicio Cloud App Discovery.
+## <a name="sending-data-toocloud-app-discovery"></a>Enviar datos tooCloud App Discovery
+Una vez que haya recopilado los metadatos por agente hello, se almacena en caché en la máquina de Hola para tooone minuto o hasta Hola datos almacenados en caché alcanzan un tamaño de 5MB. A continuación, se comprimen y envían a través de un servicio de Cloud App Discovery toohello de conexión segura.
 
-Si el agente no puede comunicarse con el servicio Cloud App Discovery por algún motivo, los datos recopilados se almacenan en una caché de archivos local a la que solo pueden acceder usuarios con privilegios en la máquina (por ejemplo, el grupo Administradores).  
-El agente intenta reenviar automáticamente los metadatos almacenados en caché hasta que el servicio Cloud App Discovery los recibe correctamente.
+Si Hola agente no se puede toocommunicate con hello servicio Cloud App Discovery por algún motivo, hello metadatos recopilados se almacenan en una caché de archivos local que sólo puede tener acceso a los usuarios con privilegios en la máquina de hello (por ejemplo, el grupo de administradores de hello).  
+agente de Hello automáticamente intentos tooresend Hola metadatos que están almacenados hasta que se recibieron correctamente por servicio de Cloud App Discovery de Hola.
 
-## <a name="receiving-the-data-at-the-service-end"></a>Recepción de los datos en el extremo del servicio
-Los agentes se autentican en el servicio Cloud App Discovery con el certificado de autenticación de cliente específico de la máquina que se mencionó anteriormente, y reenvía los datos a través de un canal cifrado.  
-La canalización de análisis del servicio Cloud App Discovery procesa los metadatos de cada cliente por separado realizando particiones lógicas de los mismos en todas las etapas de dicha canalización.
-Los datos analizados conforman los distintos informes del portal.
+## <a name="receiving-hello-data-at-hello-service-end"></a>Recibir datos de hello en extremo de servicio de Hola
+agentes de Hello autenticar toohello Cloud App Discovery servicio mediante el certificado de autenticación de cliente específico de máquina de hello mencionada anteriormente y reenvía los datos a través de un canal cifrado.  
+análisis del servicio de Cloud App Discovery de Hello canalización metadatos de procesos para cada cliente por separado realizando particiones lógicas a través de todas las fases de canalización de análisis de Hola.
+Hola analiza metadatos unidades Hola varios informes en el portal de Hola.
 
-Los datos no procesados y los metadatos analizados se almacenan durante 180 días. Además, los clientes pueden optar por capturar los metadatos analizados en una cuenta de almacenamiento de blobs de Azure de su preferencia.
-Esto es útil para realizar análisis sin conexión de los metadatos y para conservar los datos más tiempo.
+Hola metadatos sin procesar y metadatos Hola analizado se almacenan para los días de too180. Además, los clientes pueden elegir toocapture Hola analizan metadatos en una cuenta de almacenamiento de blobs de Azure de su elección.
+Esto es útil para análisis sin conexión de metadatos, así como más retención de datos de Hola.
 
-## <a name="accessing-the-data-using-the-azure-portal"></a>Acceso a los datos mediante el portal de Azure
-Con el fin de proteger los datos recopilados, de forma predeterminada, solo los administradores globales del inquilino tienen acceso a la característica Cloud App Discovery en el portal de Azure.  
-Sin embargo, los administradores pueden optar por delegar este acceso a otros usuarios o grupos.
+## <a name="accessing-hello-data-using-hello-azure-portal"></a>Acceso a datos de hello con hello portal de Azure
+En un esfuerzo de metadatos de la hello tookeep recopilan seguro, de forma predeterminada sólo los administradores globales del inquilino de hello tienen acceso toohello Cloud App Discovery característica Hola portal de Azure.  
+Sin embargo, los administradores pueden elegir toodelegate esta tooother de acceso de los usuarios o grupos.
 
 > [!NOTE]
 > Para obtener más información, consulte [Introducción a Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
@@ -164,7 +164,7 @@ Sin embargo, los administradores pueden optar por delegar este acceso a otros us
 > 
 
 
-Cualquier usuario que acceda a los datos del portal debe tener una licencia de Azure AD Premium.
+Los datos de usuario al tener acceso al hello en el portal de hello, deben tener licencia con una licencia de Azure AD Premium.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [¿Cómo puedo detectar aplicaciones en la nube no sancionadas que se usan dentro de mi organización?](active-directory-cloudappdiscovery-whatis.md)

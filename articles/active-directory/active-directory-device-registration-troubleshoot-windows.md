@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de registro automático de equipos unidos a un dominio Azure AD para Windows 10 y Windows Server 2016 | Microsoft Docs"
-description: "Solución de problemas de registro automático de equipos unidos a un dominio Azure AD para Windows 10 y Windows Server 2016."
+title: "equipos Unidos de aaaTroubleshooting Hola el registro automático de dominio de Azure AD para Windows 10 y Windows Server 2016 | Documentos de Microsoft"
+description: "Solución de problemas de registro automático de Hola de dominio de Azure AD los equipos Unidos para Windows 10 y Windows Server 2016."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,22 +14,22 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5b7f95f302f716d9221b5fae59aa2df5c956a524
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3795323ce9392368b412b3e1208868431e59a74b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad--windows-10-and-windows-server-2016"></a>Solución de problemas de registro automático de equipos unidos a un dominio en Azure AD: Windows 10 y Windows Server 2016
+# <a name="troubleshooting-auto-registration-of-domain-joined-computers-tooazure-ad--windows-10-and-windows-server-2016"></a>Solución de problemas de registro automático de dominio unido equipos tooAzure AD – Windows 10 y Windows Server 2016
 
-Este tema es aplicable a los siguientes clientes:
+Este tema es aplicable toohello después de los clientes:
 
 -   Windows 10
 -   Windows Server 2016
 
-Para otros clientes Windows, vea [Solución de problemas de registro automático de equipos unidos a un dominio en Azure AD para clientes de nivel inferior de Windows](active-directory-device-registration-troubleshoot-windows-legacy.md).
+Para otros clientes de Windows, vea [solución de problemas de registro automático de dominio unido equipos tooAzure AD para clientes de nivel inferior de Windows](active-directory-device-registration-troubleshoot-windows-legacy.md).
 
-En este tema se supone que ha configurado el registro automático de dispositivos unidos a un dominio como se describe en [Configuración del registro automático de dispositivos unidos a un dominio de Windows con Azure Active Directory](active-directory-device-registration-get-started.md) para admitir los escenarios siguientes:
+En este tema se da por supuesto que ha configurado el registro automático de dispositivos Unidos a un dominio como se ha descrito en se describe en [cómo tooconfigure el registro automático de Windows Unidos a dominios dispositivos con Azure Active Directory](active-directory-device-registration-get-started.md) Hola de toosupport los escenarios siguientes:
 
 - [Acceso condicional basado en dispositivos](active-directory-conditional-access-automatic-device-registration-setup.md)
 
@@ -38,16 +38,16 @@ En este tema se supone que ha configurado el registro automático de dispositivo
 - [Windows Hello para empresas](active-directory-azureadjoin-passport-deployment.md)
 
 
-En este documento se proporcionan instrucciones sobre cómo resolver problemas potenciales. 
+Este documento proporciona instrucciones para solucionar problemas sobre cómo tooresolve posibles problemas. 
 
-El registro se admite en la actualización de noviembre de 2015 de Windows 10 y en versiones posteriores.  
-Se recomienda usar la Actualización de aniversario para habilitar los escenarios anteriores.
+Hello el registro se admite en Windows hello actualizar 10 de noviembre de 2015 y versiones posteriores.  
+Se recomienda usar actualización de aniversario de Hola para habilitar escenarios de hello anteriores.
 
-## <a name="step-1-retrieve-the-registration-status"></a>Paso 1: Recuperar el estado del registro 
+## <a name="step-1-retrieve-hello-registration-status"></a>Paso 1: Recuperar el estado de registro de hello 
 
-**Para recuperar el estado del registro:**
+**estado de registro de hello tooretrieve:**
 
-1. Abra el símbolo del sistema como administrador.
+1. Abra el símbolo del sistema de hello como administrador.
 
 2. Escriba **dsregcmd /status**
 
@@ -57,7 +57,7 @@ Se recomienda usar la Actualización de aniversario para habilitar los escenario
     | Device State                                                         |  +----------------------------------------------------------------------+
     
         AzureAdJoined : YES
-     EnterpriseJoined : NO DeviceId : 5820fbe9-60c8-43b0-bb11-44aee233e4e7 Thumbprint : B753A6679CE720451921302CA873794D94C6204A KeyContainerId : bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider : Microsoft Platform Crypto Provider TpmProtected : YES KeySignTest: : MUST Run elevated to test.
+     EnterpriseJoined: Ningún Id. de dispositivo: huella digital de 5820fbe9-60c8-43b0-bb11-44aee233e4e7: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: TpmProtected de proveedor de cifrado de la plataforma de Microsoft: Sí KeySignTest:: debe ejecutar con permisos elevados tootest.
                   Idp : login.windows.net TenantId : 72b988bf-86f1-41af-91ab-2d7cd011db47 TenantName : Contoso AuthCodeUrl : https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize AccessTokenUrl : https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token MdmUrl : https://enrollment.manage-beta.microsoft.com/EnrollmentServer/Discovery.svc MdmTouUrl : https://portal.manage-beta.microsoft.com/TermsOfUse.aspx dmComplianceUrl : https://portal.manage-beta.microsoft.com/?portalAction=Compliance SettingsUrl : eyJVcmlzIjpbImh0dHBzOi8va2FpbGFuaS5vbmUubWljcm9zb2Z0LmNvbS8iLCJodHRwczovL2thaWxhbmkxLm9uZS5taWNyb3NvZnQuY29tLyJdfQ== JoinSrvVersion : 1.0 JoinSrvUrl : https://enterpriseregistration.windows.net/EnrollmentServer/device/ JoinSrvId : urn:ms-drs:enterpriseregistration.windows.net KeySrvVersion : 1.0 KeySrvUrl : https://enterpriseregistration.windows.net/EnrollmentServer/key/ KeySrvId : urn:ms-drs:enterpriseregistration.windows.net DomainJoined : YES DomainName : CONTOSO
     
     +----------------------------------------------------------------------+
@@ -71,53 +71,53 @@ Se recomienda usar la Actualización de aniversario para habilitar los escenario
 
 
 
-## <a name="step-2-evaluate-the-registration-status"></a>Paso 2: Evaluar el estado del registro 
+## <a name="step-2-evaluate-hello-registration-status"></a>Paso 2: Evaluar el estado de registro de hello 
 
-Revise los siguientes campos y asegúrese de que tengan los valores esperados:
+Revise Hola después de campos y asegúrese de que tienen valores de hello esperados:
 
 ### <a name="azureadjoined--yes"></a>AzureAdJoined : YES  
 
-En este campo se muestra si el dispositivo está registrado en Azure AD. Si el valor se muestra como "NO", el registro no ha terminado. 
+Este campo muestra si el dispositivo de hello está registrado con Azure AD. Si el valor de Hola se muestra como "NO", el registro no ha terminado. 
 
 **Causas posibles:**
 
-- Error de autenticación del equipo para el registro.
+- Error de autenticación del equipo de hello para el registro.
 
-- Hay un servidor proxy HTTP en la organización que el equipo no puede detectar.
+- Hay un proxy HTTP en la organización de Hola que no se puede detectar por equipo Hola
 
-- El equipo no puede llegar a Azure AD para la autenticación o a DRS de Azure para el registro.
+- equipo de Hello no puede establecer comunicación con Azure AD para la autenticación o DRS de Azure para el registro
 
-- Es posible que el equipo no esté en la red interna de la organización o en una VPN con conexión directa a una implementación local del controlador de dominio de AD.
+- Hello equipo no esté en la red interna de la organización de Hola o en VPN con la línea de visión directa tooan controlador de dominio de AD local.
 
-- Si el equipo tiene un TPM, su estado puede ser incorrecto.
+- Si el equipo de hello tiene un TPM, puede estar en mal estado.
 
-- Puede haber un error de configuración en los servicios indicados en el documento anterior que necesita volver a verificar. Los ejemplos comunes son:
+- Puede haber un error de configuración en los servicios indicados en el documento de Hola que necesitará tooverify nuevo. Los ejemplos comunes son:
 
     - El servidor de federación no tiene habilitados los puntos de conexión de WS-Trust.
 
     - Es posible que el servidor de federación no pueda permitir la autenticación de entrada de equipos de la red mediante la autenticación integrada de Windows.
 
-    - No hay ningún objeto de punto de conexión de servicio que haga referencia a su nombre de dominio comprobado en Azure AD en el bosque de AD al que pertenece el equipo.
+    - No hay ningún objeto de punto de conexión de servicio que señala el nombre de dominio verificado de tooyour en Azure AD en bosque de AD de Hola que pertenece el equipo de Hola a
 
 ---
 
 ### <a name="domainjoined--yes"></a>DomainJoined : YES  
 
-Este campo muestra si el dispositivo está unido o no a una implementación local de Active Directory. Si el valor se muestra como **NO**, el dispositivo no se puede registrar automáticamente en Azure AD. Primero compruebe que el dispositivo está unido a una implementación local de Active Directory antes de registrarlo en Azure AD. Si desea unir el equipo a Azure AD directamente, vaya a la información sobre las funcionalidades de la unión a Azure Active Directory.
+Este campo muestra si el dispositivo de hello es tooan unido a Active Directory local o no. Si el valor de hello muestra como **n**, dispositivo hello no se registran automáticamente con Azure AD. Comprobar primero que toohello de combinaciones de dispositivo de hello en Active Directory local antes de que se puede registrar con Azure AD. Si desea unir el equipo tooAzure AD de hello directamente, vaya tooLearn acerca de las capacidades de Azure Active Directory Join.
 
 ---
 
 ### <a name="workplacejoined--no"></a>WorkplaceJoined : NO  
 
-En este campo se muestra si el dispositivo está registrado en Azure AD, pero como un dispositivo personal (marcado como “Unido al área de trabajo”). Si este valor debería aparecer como "NO" para un equipo unido a un dominio registrado en Azure AD, pero se muestra como YES, significa que se ha agregado una cuenta profesional o educativa antes de que el equipo termine el registro. En este caso, la cuenta se ignora si se usa la versión Actualización de aniversario de Windows 10 (1607 cuando se ejecuta el comando WinVer en la ventaja “Ejecutar” o una ventana del símbolo del sistema).
+Este campo muestra si el dispositivo de hello está registrado con Azure AD, sino como un dispositivo personal (marcado como 'Unido al área de trabajo'). Si este valor debería aparecer como "NO" para un equipo unido a un dominio registrado con Azure AD, sin embargo si muestra como Sí significa que una cuenta profesional o educativa fue agregado toohello anterior equipo al completarse el registro. En este caso la cuenta de hello se omitirá si utiliza la versión de actualización de aniversario de Hola de Windows 10 (1607 cuando ejecuta el comando WinVer de hello en Hola "Run" ventana o una ventana de símbolo del sistema).
 
 ---
 
 ### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet : YES y AzureADPrt : YES
   
-En estos campos se muestra que el usuario se ha autenticado correctamente en Azure AD al iniciar sesión en el dispositivo. Si aparece “NO”, las causas posibles son:
+Estos campos muestran que autentica correctamente ese usuario hello tooAzure AD tras iniciar sesión en el dispositivo toohello. Si muestra "NO" siguiente hello las causas posibles es:
 
-- Clave de almacenamiento incorrecta (STK) en TPM asociada con el dispositivo tras el registro (comprobar KeySignTest mientras se ejecuta con privilegios elevados).
+- Clave de almacenamiento incorrecto (STK) de TPM asociado Hola dispositivo tras el registro (comprobación de Hola KeySignTest mientras se ejecuta con privilegios elevados).
 
 - Id. de inicio de sesión alternativo
 
@@ -125,4 +125,4 @@ En estos campos se muestra que el usuario se ha autenticado correctamente en Azu
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información, vea [Preguntas más frecuentes sobre el registro automático de dispositivos](active-directory-device-registration-faq.md) 
+Para obtener más información, vea hello [registro automático de dispositivos preguntas más frecuentes](active-directory-device-registration-faq.md) 

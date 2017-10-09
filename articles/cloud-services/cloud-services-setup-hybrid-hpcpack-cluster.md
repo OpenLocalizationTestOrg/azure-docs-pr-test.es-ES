@@ -1,6 +1,6 @@
 ---
-title: "Configuración de un clúster híbrido de HPC Pack en Azure | Microsoft Docs"
-description: "Obtenga información acerca de cómo usar Microsoft HPC Pack y Azure para configurar un pequeño clúster híbrido de informática de alto rendimiento (HPC)"
+title: "clúster de aaaSet la híbrida de HPC Pack en Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toouse Microsoft HPC Pack y Azure tooset una copia de seguridad un pequeño, híbrida alto rendimiento informático () clúster de HPC"
 services: cloud-services
 documentationcenter: 
 author: dlepow
@@ -15,258 +15,258 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: danlep
-ms.openlocfilehash: f6dc9657e64160be1e68a7356863b53131e9b3c3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5ad30d78dcd0c6a95d2a61f25015232edab3563c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>Configuración de un clúster híbrido de informática de alto rendimiento (HPC) con nodos de proceso de Azure a petición y Microsoft HPC Pack
-Use Microsoft HPC Pack 2012 R2 y Azure para configurar un pequeño clúster híbrido de informática de alto rendimiento (HPC). El clúster que se muestra en el artículo consta del nodo principal de un HPC Pack local y algunos nodos de ejecución que se implementan a petición en un servicio en la nube de Azure. A continuación, podrá ejecutar trabajos informáticos en el clúster híbrido.
+Use Microsoft HPC Pack 2012 R2 y Azure tooset seguridad un pequeño, híbrida informática de alto rendimiento clúster (HPC). clúster de Hello mostrado en este artículo está formado por un nodo principal de HPC Pack local y algunos nodos implementar a petición en un Azure servicio en la nube de proceso. A continuación, puede ejecutar trabajos de proceso en clúster híbrido de Hola.
 
 ![Clúster híbrido de HPC][Overview] 
 
-Este tutorial muestra un enfoque, en ocasiones denominado clúster "ráfaga en la nube", para usar recursos de escalables y a petición a fin de ejecutar aplicaciones informáticas que consumen numerosos recursos.
+Este tutorial muestra un enfoque suele llamar clúster "ráfaga toohello en la nube," aplicaciones de proceso intensivo de toorun toouse escalable, en la demanda de recursos de Azure.
 
-En este tutorial se supone que no cuenta con experiencia previa con los clústeres informáticos o con HPC Pack. Únicamente está destinado a ayudarle a implementar un clúster de proceso híbrido rápidamente con fines de demostración. Para más información y conocer los pasos que se deben dar para implementar un clúster de HPC Pack híbrido a gran escala en un entorno de producción o para usar HPC Pack 2016, consulte las [instrucciones detalladas](http://go.microsoft.com/fwlink/p/?LinkID=200493). Para otros escenarios de HPC Pack, incluida la implementación automatizada de clústeres en máquinas virtuales de Azure, consulte [Opciones de clúster de HPC con Microsoft HPC Pack en Azure](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+En este tutorial se supone que no cuenta con experiencia previa con los clústeres informáticos o con HPC Pack. Está previsto toohelp solo implementar un clúster de cálculo híbrido rápidamente con fines de demostración. Para las consideraciones y toodeploy pasos clúster HPC Pack híbrido a mayor escala en un entorno de producción o toouse HPC Pack 2016, vea hello [obtener instrucciones detalladas](http://go.microsoft.com/fwlink/p/?LinkID=200493). Para otros escenarios de HPC Pack, incluida la implementación automatizada de clústeres en máquinas virtuales de Azure, consulte [Opciones de clúster de HPC con Microsoft HPC Pack en Azure](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="prerequisites"></a>Requisitos previos
 * **Suscripción de Azure** : si no tiene ninguna, puede crear una [cuenta gratuita](https://azure.microsoft.com/free/) en un par de minutos.
-* **Un equipo local que ejecute Windows Server 2012 R2 o Windows Server 2012**. Use este equipo como el nodo principal del clúster de HPC. Si todavía no tiene Windows Server, puede descargar e instalar una [versión de evaluación](https://www.microsoft.com/evalcenter/evaluate-windows-server-2012-r2).
+* **Un equipo local que ejecuta Windows Server 2012 R2 o Windows Server 2012** -usar este equipo como nodo principal de Hola Hola del clúster de HPC. Si todavía no tiene Windows Server, puede descargar e instalar una [versión de evaluación](https://www.microsoft.com/evalcenter/evaluate-windows-server-2012-r2).
   
-  * El equipo debe estar unido a un dominio de Active Directory. Para realizar pruebas, puede configurar el equipo del nodo principal como controlador de dominio. Para agregar el rol del servidor de Active Directory Domain Services y promover el equipo del nodo principal como controlador de dominio, consulte la documentación de Windows Server.
-  * Para admitir HPC Pack, el sistema operativo debe estar instalado en uno de estos idiomas: inglés, japonés o chino (simplificado).
+  * equipo de Hello debe ser tooan Unidos a un dominio de Active Directory. Para fines de prueba, puede configurar el equipo del nodo principal de Hola como un controlador de dominio. tooadd Hola rol de servidor Servicios de dominio de Active Directory y promocionar el equipo del nodo principal Hola como un controlador de dominio, consulte la documentación de Hola para Windows Server.
+  * toosupport HPC Pack, sistema operativo de hello debe instalarse en uno de estos idiomas: inglés, japonés o chino (simplificado).
   * Compruebe que estén instaladas las actualizaciones importantes y esenciales.
-* **HPC Pack 2012 R2** - [Descargue](http://go.microsoft.com/fwlink/p/?linkid=328024) el paquete de instalación completo de la última versión gratis y copie los archivos en el equipo del nodo principal. Elija los archivos de instalación que tengan el mismo idioma que su instalación de Windows Server.
+* **HPC Pack 2012 R2** - [descargar](http://go.microsoft.com/fwlink/p/?linkid=328024) paquete de instalación de hello para la versión más reciente de hello libre de cargo y copia Hola archivos toohello equipo del nodo principal. Elija archivos de instalación de hello mismo idioma que la instalación de Windows Server.
 
     >[!NOTE]
-    > Si desea usar HPC Pack 2016, en lugar de HPC Pack 2012 R2, se necesita configuración adicional. Consulte las [instrucciones detalladas](http://go.microsoft.com/fwlink/p/?LinkID=200493).
+    > Si desea toouse HPC Pack 2016 en lugar de HPC Pack 2012 R2, se necesita configuración adicional. Vea hello [obtener instrucciones detalladas](http://go.microsoft.com/fwlink/p/?LinkID=200493).
     > 
-* **Cuenta de dominio**. Esta cuenta se debe configurar con permisos de administrador local en el nodo principal para instalar HPC Pack.
-* **Conectividad TCP en el puerto 443** desde el nodo principal a Azure.
+* **Cuenta de dominio** -se debe configurar esta cuenta con permisos de administrador local en el nodo principal de hello tooinstall HPC Pack.
+* **Conectividad TCP en el puerto 443** de hello tooAzure de nodo principal.
 
-## <a name="install-hpc-pack-on-the-head-node"></a>Instalación de HPC Pack en el nodo principal
-En primer lugar, debe instalar Microsoft HPC Pack en un equipo local con Windows Server. Este equipo se convierte en el nodo principal del clúster.
+## <a name="install-hpc-pack-on-hello-head-node"></a>Instalar HPC Pack en el nodo principal de Hola
+En primer lugar, debe instalar Microsoft HPC Pack en un equipo local con Windows Server. Este equipo se convierte en del nodo principal del clúster de Hola Hola.
 
-1. Inicie sesión en el nodo principal usando una cuenta de dominio que tenga permisos de administrador local.
+1. Inicie sesión en el nodo principal de toohello con una cuenta de dominio que tenga permisos de administrador local.
 
-2. Inicie el asistente de instalación de HPC Pack ejecutando el archivo Setup.exe desde los archivos de instalación de HPC Pack.
+2. Iniciar Hola Asistente para la instalación de HPC Pack ejecutando Setup.exe desde archivos de instalación de HPC Pack Hola.
 
-3. En la pantalla de **instalación de HPC Pack 2012 R2**, haga clic en **Nueva instalación o agregar características a una instalación existente**.
+3. En hello **el programa de instalación de HPC Pack 2012 R2** pantalla, haga clic en **nueva instalación o agregar nuevas características de instalación de existente tooan**.
 
     ![Instalación de HPC Pack 2012][install_hpc1]
 
-4. En la página **Contrato de usuario de software de Microsoft**, haga clic en **Siguiente**.
+4. En hello **página del acuerdo de usuario de Software de Microsoft**, haga clic en **siguiente**.
 
-5. En la página **Seleccionar tipo de instalación**, haga clic en **Crear un clúster de HPC creando un nodo principal** y, a continuación, haga clic en **Siguiente**.
+5. En hello **Seleccionar tipo de instalación** página, haga clic en **crear un nuevo clúster HPC mediante la creación de un nodo principal**y, a continuación, haga clic en **siguiente**.
 
-6. El asistente ejecuta varias pruebas de preinstalación. Haga clic en **Siguiente** on the **Installation Rules** si se pasan todas las pruebas. Si no, revise la información proporcionada y realice los cambios necesarios en su entorno. A continuación, ejecute las pruebas de nuevo o, si fuera necesario, vuelva a iniciar el asistente de instalación.
-7. En la página **Configuración de la base de datos de HPC**, asegúrese de haber seleccionado **Nodo principal** en todas las bases de datos de HPC y, a continuación, haga clic en **Siguiente**. 
+6. Asistente de Hello ejecuta varias pruebas previas a la instalación. Haga clic en **siguiente** en hello **reglas de instalación** página si se superan todas las pruebas. En caso contrario, revise la información de hello proporcionada y realice los cambios necesarios en su entorno. A continuación, ejecutar pruebas de hello nuevo o si es necesario iniciar Hola Asistente para la instalación de nuevo.
+7. En hello **configuración de base de datos de HPC** página, asegúrese de que **nodo principal** está seleccionada para todas las bases de datos HPC y, a continuación, haga clic en **siguiente**. 
 
     ![Configuración de la base de datos][install_hpc4]
 
-8. Acepte las opciones seleccionadas de forma predeterminada en las páginas restantes del asistente. En la página **Instalar componentes** requeridos, haga clic en **Instalar**.
+8. Aceptar selecciones de predeterminado en hello las páginas restantes del Asistente para saludo. En hello **instalar los componentes necesarios** página, haga clic en **instalar**.
    
-    ![Instalar][install_hpc6]
+    ![Instalación][install_hpc6]
 
-9. Cuando finalice la instalación, desactive **Iniciar Administrador de clústeres de HPC** y, a continuación, haga clic en **Finalizar**. (El Administrador de clústeres HPC se inicia en un paso posterior).
+9. Una vez finalizada la instalación de hello, desactive la opción **iniciar el Administrador de clúster de HPC** y, a continuación, haga clic en **finalizar**. (El Administrador de clústeres HPC se inicia en un paso posterior).
    
     ![Finalizar][install_hpc7]
 
-## <a name="prepare-the-azure-subscription"></a>Preparación de la suscripción de Azure
-Lleve a cabo estos pasos en [Azure Portal](https://portal.azure.com) con la suscripción de Azure. Una vez que complete estos pasos, puede implementar los nodos de Azure desde el nodo principal local. 
+## <a name="prepare-hello-azure-subscription"></a>Preparar Hola suscripción de Azure
+Realizar Hola siguiendo los pasos de hello [portal de Azure](https://portal.azure.com) con su suscripción de Azure. Después de completar estos pasos, puede implementar nodos de Azure desde el nodo principal de hello en local. 
   
   > [!NOTE]
-  > Anote también el Id. de la suscripción de Azure, ya que lo necesitará más adelante. Busque el identificador en las **suscripciones** del portal.
+  > Anote también el Id. de la suscripción de Azure, ya que lo necesitará más adelante. Encuentra el Id. de hello en **suscripciones** en el portal de Hola.
   > 
 
-### <a name="upload-the-default-management-certificate"></a>Cargar el certificado de administración predeterminado
-HPC Pack instala un certificado autofirmado en el nodo principal, llamado Default Microsoft HPC Azure Management, que podrá cargar como certificado de administración de Azure. Este certificado se proporciona para pruebas y las implementaciones de prueba de concepto para proteger la conexión entre el nodo principal y Azure.
+### <a name="upload-hello-default-management-certificate"></a>Cargar certificado predeterminado de administración de Hola
+HPC Pack se instala un certificado autofirmado en el nodo principal de hello, denominado certificado de administración de Azure de HPC de Microsoft predeterminado hello, que puede cargar como un certificado de administración de Azure. Este certificado se proporciona para pruebas y conexión de las implementaciones de prueba de concepto toosecure Hola entre hello Azure y el nodo principal.
 
-1. En el equipo del nodo principal, inicie sesión en [Azure Portal](https://portal.azure.com).
+1. Desde el equipo de nodo principal de hello, inicie sesión en toohello [portal de Azure](https://portal.azure.com).
 
 2. Haga clic en **Suscripciones** > *nombre_de_la_suscripción*.
 
-3. Haga clic en **Certificados de administración** > **Cargar**.4. Busque el archivo C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer en el nodo principal. Luego, haga clic en **Cargar**.
+3. Haga clic en **Certificados de administración** > **Cargar**.4. Busque en el nodo principal de Hola para hello archivo C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer. Luego, haga clic en **Cargar**.
 
    
-El certificado **Administración de HPC de Azure predeterminado** aparece en la lista de certificados de administración.
+Hola **administración de Azure de HPC predeterminado** certificado aparece en la lista de Hola de certificados de administración.
 
 ### <a name="create-an-azure-cloud-service"></a>Crear un servicio en la nube de Azure
 > [!NOTE]
-> Para conseguir un mejor rendimiento, cree el servicio en la nube y (en un paso posterior) la cuenta de almacenamiento en la misma región geográfica.
+> Para obtener el mejor rendimiento, crear servicio en la nube hello y cuenta de almacenamiento de hello (en un paso posterior) en hello misma región geográfica.
 > 
 > 
 
-1. En el portal, haga clic en **Servicios en la nube (clásico)** > **+Agregar**.
+1. En el portal de hello, haga clic en **servicios (clásico) en la nube** > **+ agregar**.
 
-2.  Escriba un nombre DNS para el servicio, elija un grupo de recursos y una ubicación y, luego, haga clic en **Crear**.
+2.  Escriba un nombre DNS para el servicio de hello, elija un grupo de recursos y una ubicación y, a continuación, haga clic en **crear**.
 
 
 ### <a name="create-an-azure-storage-account"></a>Creación de una cuenta de Azure Storage
-1. En el portal, haga clic en **Cuentas de almacenamiento (clásico)** > **+Agregar**.
+1. En el portal de hello, haga clic en **cuentas de almacenamiento (clásica)** > **+ agregar**.
 
-2. Escriba un nombre para la cuenta y seleccione el modelo de implementación **clásica**.
+2. Escriba un nombre para la cuenta de hello y seleccione hello **clásico** modelo de implementación.
 
 3. Elija un grupo de recursos y una ubicación y deje los valores predeterminados de las demás opciones. A continuación, haga clic en **Crear**.
 
-## <a name="configure-the-head-node"></a>Configuración del nodo principal
-Para usar el administrador de clústeres de HPC para implementar nodos de Azure y enviar trabajos, primero debe seguir los pasos necesarios para configurar el clúster.
+## <a name="configure-hello-head-node"></a>Configurar el nodo principal de Hola
+Administrador de clústeres HPC toodeploy toouse nodos de Azure y los trabajos de toosubmit, en primer lugar realizar algunos pasos de configuración de clúster necesarios.
 
-1. En el nodo principal, inicie el administrador de clústeres de HPC. Si aparece el cuadro de diálogo **Select Head Node** (Seleccionar nodo principal), haga clic en **Local Computer** (Equipo local). Aparecerá la **lista de tareas pendientes de implementación** .
+1. En el nodo principal de hello, inicie el Administrador de clúster de HPC. Si hello **Seleccionar nodo principal** aparece el cuadro de diálogo, haga clic en **equipo Local**. Hola **lista de tareas de implementación** aparece.
 
 2. En **Tareas de implementación necesarias**, haga clic en **Configurar la red**.
    
     ![Configuración de la red][config_hpc2]
 
-3. En el Asistente para configuración de red, seleccione **Todos los nodos solo en una red empresarial** (topología 5). Esta configuración de red es la más sencilla para fines de demostración.
+3. En el Asistente para configuración de red de hello, seleccione **todos los nodos solo en una red empresarial** (topología 5). Esta configuración de red es más sencillo para fines de demostración de hello.
    
     ![Topología 5][config_hpc3]
    
-4. Haga clic en **Siguiente** para aceptar los valores predeterminados de las páginas restantes del asistente. A continuación, en la pestaña **Revisar**, haga clic en **Configurar** para completar la configuración de red.
+4. Haga clic en **siguiente** tooaccept valores predeterminados Hola restantes páginas del Asistente para saludo. A continuación, en hello **revisión** , haga clic en **configurar** configuración de red de toocomplete Hola.
 
-5. En la **lista de tareas pendientes de implementación**, haga clic en **Proporcionar credenciales de instalación**.
+5. Hola **lista de tareas de implementación**, haga clic en **proporcione las credenciales de instalación**.
 
-6. En el cuadro de diálogo **Credenciales de instalación** , escriba las credenciales de la cuenta de dominio que ha usado para instalar HPC Pack. y, a continuación, haga clic en **Aceptar**. 
+6. Hola **credenciales de instalación** cuadro de diálogo, escriba hello las credenciales de cuenta de dominio de Hola que usa tooinstall HPC Pack. y, a continuación, haga clic en **Aceptar**. 
    
     ![Credenciales de instalación][config_hpc6]
    
-7. En la **lista de tareas pendientes de implementación**, haga clic en **Configurar la nomenclatura de los nuevos nodos**.
+7. Hola **lista de tareas de implementación**, haga clic en **configurar Hola denominación de nuevos nodos**.
 
-8. En el cuadro de diálogo **Especificar serie de nomenclatura de nodos**, acepte la serie de nomenclatura predeterminada y haga clic en **Aceptar**. Complete este paso incluso si se asigna automáticamente un nombre a los nodos de Azure que agrega en este tutorial.
+8. Hola **especificar serie de nombres de nodo** diálogo cuadro, acepte el predeterminado de hello nomenclatura serie y haga clic en **Aceptar**. Complete este paso, aunque hello nodos de Azure que agregue en este tutorial se asignan automáticamente.
    
     ![Nomenclatura de nodos][config_hpc8]
    
-9. En la **lista de tareas pendientes de implementación**, haga clic en **Crear una plantilla de nodo**. Más adelante en el tutorial usará la plantilla de nodo para agregar nodos de Azure al clúster.
+9. Hola **lista de tareas de implementación**, haga clic en **crear una plantilla de nodo**. Más adelante en el tutorial de hello, usar clúster de toohello Hola nodos plantilla tooadd nodos de Azure.
 
-10. En el asistente de creación de plantillas de nodo, siga estos pasos:
+10. En Hola Asistente Crear plantilla de nodo, haga lo Hola siguientes:
     
-    a. En la página **Elegir el tipo de plantilla de nodo**, haga clic en la **plantilla de nodo de Microsoft Azure** y, luego, haga clic en **Siguiente**.
+    a. En hello **Elegir tipo de plantilla de nodo** página, haga clic en **plantilla de nodo de Windows Azure**y, a continuación, haga clic en **siguiente**.
     
     ![Plantilla de nodo][config_hpc10]
     
-    b. Haga clic en **Siguiente** para aceptar el nombre de plantilla predeterminado.
+    b. Haga clic en **siguiente** nombre de plantilla predeterminado de tooaccept Hola.
     
-    c. En la página **Proporcionar información de suscripción** , especifique su identificador de suscripción de Azure (disponible en la información de cuenta de Azure). Luego, en **Certificado de administración**, busque **Default Microsoft HPC Azure Management**. A continuación, haga clic en **Siguiente**.
+    c. En hello **proporcionan información de suscripción** página, escriba el identificador de suscripción de Azure (está disponible en la información de cuenta de Azure). Luego, en **Certificado de administración**, busque **Default Microsoft HPC Azure Management**. A continuación, haga clic en **Siguiente**.
     
     ![Plantilla de nodo][config_hpc12]
     
-    d. En la pagina **Proporcionar información del servicio** , seleccione el servicio en la nube y la cuenta de almacenamiento que ha creado en el paso anterior. A continuación, haga clic en **Siguiente**.
+    d. En hello **proporcionar información del servicio** página, servicio de nube seleccione hello y cuenta de almacenamiento de Hola que creó en el paso anterior. A continuación, haga clic en **Siguiente**.
     
     ![Plantilla de nodo][config_hpc13]
     
-    e. Haga clic en **Siguiente** para aceptar los valores predeterminados de las páginas restantes del asistente. A continuación, en la pestaña **Revisar**, haga clic en **Crear** para crear la plantilla de nodo.
+    e. Haga clic en **siguiente** tooaccept valores predeterminados Hola restantes páginas del Asistente para saludo. A continuación, en hello **revisión** , haga clic en **crear** plantilla de nodo de toocreate Hola.
     
     > [!NOTE]
-    > De forma predeterminada, la plantilla de nodo de Azure incluye la configuración para que pueda iniciar (aprovisionar) y detener los nodos manualmente con el Administrador de clústeres HPC. También puede configurar una programación para iniciar y detener los nodos de Azure automáticamente.
+    > De forma predeterminada, Hola nodos de Azure plantilla incluyen la configuración para toostart (aprovisionar) y los nodos de hello detener manualmente, mediante el Administrador de clúster de HPC. Opcionalmente, puede configurar una programación toostart y detener Hola automáticamente los nodos de Azure.
     > 
     > 
 
-## <a name="add-azure-nodes-to-the-cluster"></a>Incorporación de nodos de Azure al clúster
-Ahora use la plantilla de nodo para agregar nodos de Azure al clúster. Al agregar los nodos al clúster, su información de configuración se almacena para que pueda iniciarlos (aprovisionarlos) en cualquier momento en el servicio en la nube. Su suscripción solo se carga para los nodos de Azure después de que las instancias se ejecuten en el servicio en la nube.
+## <a name="add-azure-nodes-toohello-cluster"></a>Agregar nodos de Azure toohello clúster
+Ahora use clúster de toohello Hola nodos plantilla tooadd nodos de Azure. Agregar clúster de hello nodos toohello almacena su información de configuración para que pueda iniciar (aprovisionar) usarlas en cualquier momento en el servicio de nube de Hola. Su suscripción solo obtiene cobra por nodos de Azure después de que se ejecutan instancias de Hola Hola del servicio en nube.
 
-Siga estos pasos para agregar dos nodos pequeños.
+Siga estos pasos tooadd dos pequeños los nodos.
 
 1. En el Administrador de clústeres HPC, haga clic en **Administración de nodos** (llamada **Administración de recursos** en versiones recientes de HPC Pack) > **Agregar nodo**.
    
     ![Agregar nodo][add_node1]
 
-2. En el Asistente para agregar nodo, en la página **Select Deployment Method** (Seleccionar método de implementación), haga clic en **Add Windows Azure nodes** (Agregar nodos de Microsoft Azure) y, a continuación, en **Siguiente**.
+2. En Hola Asistente para agregar nodos, en hello **Seleccionar método de implementación** página, haga clic en **nodos de agregar Windows Azure**y, a continuación, haga clic en **siguiente**.
    
     ![Agregar un nodo de Azure][add_node1_1]
 
-3. En la página **Especificar nodos nuevos**, seleccione la plantilla de nodo de Azure que creó anteriormente (llamada de manera predeterminada **Default AzureNode Template**). A continuación, especifique **2** nodos de tamaño **pequeño** y, a continuación, haga clic en **Siguiente**.
+3. En hello **especificar nuevos nodos** página, plantilla de nodo de Azure Hola select que creó anteriormente (llamado de forma predeterminada **plantilla predeterminada de AzureNode**). A continuación, especifique **2** nodos de tamaño **pequeño** y, a continuación, haga clic en **Siguiente**.
    
     ![Especificar los nodos][add_node2]
    
-4. En la página **Finalización del asistente para agregar nodos**, haga clic en **Finalizar**.
+4. En hello **finalización Hola Asistente para agregar nodos** página, haga clic en **finalizar**.
     
-     Ahora aparecerán dos nodos llamados **AzureCN-0001** y **AzureCN-0002** en el administrador de clústeres de HPC. Ambos tienen el estado **No implementado** .
+     Ahora aparecerán dos nodos llamados **AzureCN-0001** y **AzureCN-0002** en el administrador de clústeres de HPC. Ambos están en hello **no implementado** estado.
    
     ![Nodos agregados][add_node3]
 
-## <a name="start-the-azure-nodes"></a>Inicio de los nodos de Azure
-Cuando quiera usar los recursos del clúster de Azure, use el administrador de clústeres de HPC para iniciar (aprovisionar) los nodos de Azure y conectarlos a la red.
+## <a name="start-hello-azure-nodes"></a>Iniciar Hola nodos de Azure
+Si desea toouse recursos de clúster de hello en Azure, use el Administrador de clústeres de HPC toostart (aprovisionar) Hola nodos de Azure y ponen en línea.
 
-1. En el Administrador de clústeres HPC, haga clic en **Administración de nodos** (llamada **Administración de recursos** en versiones recientes de HPC Pack) y seleccione los nodos de Azure.
+1. Haga clic en Administrador de clústeres de HPC, **administración de nodos** (denominado **administración de recursos** en las versiones actuales de HPC Pack), y seleccione Hola nodos de Azure.
 
 2. Haga clic en **Inicio** y, luego, en **Aceptar**.
    
    ![Iniciar los nodos][add_node4]
    
-    Los nodos pasan al estado **Aprovisionamiento** . Consulte el registro de aprovisionamiento para realizar el seguimiento del progreso de aprovisionamiento.
+    nodos de Hello transición toohello **Provisioning** estado. Hola de vista aprovisionamiento Hola de tootrack registro aprovisionamiento de progreso.
    
     ![Aprovisionar nodos][add_node6]
 
-3. Después de unos minutos, los nodos de Azure terminan de aprovisionarse y pasan al estado **Sin conexión** . En este estado, las instancias de rol se ejecutan pero todavía no pueden aceptar trabajos de clúster.
+3. Después de unos minutos, hello nodos de Azure finalizar el aprovisionamiento y se encuentran en hello **Offline** estado. En este estado, instancias de rol de hello están ejecutando pero aún no pueden aceptar trabajos del clúster.
 
-4. Para confirmar que las instancias de rol se ejecutan, en Azure Portal, haga clic en **Servicios en la nube (clásico)** > *nombre_del_servicio_en_la_nube*.
+4. tooconfirm que Hola instancias de rol se está ejecutando, Hola portal de Azure, haga clic en **servicios en la nube (clásico)** > *your_cloud_service_name*.
    
-   Debería ver dos instancias (nodos) de **HpcWorkerRole** en ejecución en el servicio. HPC Pack también implementa automáticamente dos instancias **HpcProxy** (tamaño medio) para controlar la comunicación entre el nodo principal y Azure.
+   Debería ver dos **HpcWorkerRole** instancias (nodos) que se ejecutan en el servicio de Hola. HPC Pack automáticamente también implementa dos **HpcProxy** instancias de comunicación de toohandle (tamaño medio) entre el nodo principal de Hola y Azure.
 
    ![Instancias en ejecución][view_instances1]
 
-5. Para conectar los nodos de Azure y que ejecuten los trabajos de clúster, seleccione los nodos, haga clic con el botón secundario y, a continuación, haga clic en **Poner en línea**.
+5. nodos de Azure de hello toobring toorun en línea clúster trabajos, seleccione Hola nodos, menú contextual y, a continuación, haga clic en **poner en conexión**.
    
     ![Nodos desconectados][add_node7]
    
-    El administrador de clústeres de HPC indica que los nodos están en estado **En línea** .
+    Administrador de clústeres HPC indica que los nodos de hello en hello **Online** estado.
 
-## <a name="run-a-command-across-the-cluster"></a>Ejecución de un comando en el clúster
-Para comprobar la instalación, use el comando **clusrun** de HPC Pack para ejecutar un comando o una aplicación en uno o varios nodos del clúster. Por ejemplo, use **clusrun** para obtener la configuración IP de los nodos de Azure.
+## <a name="run-a-command-across-hello-cluster"></a>Ejecutar un comando en el clúster de Hola
+instalación de hello toocheck, use Hola HPC Pack **clusrun** comando toorun un comando o una aplicación en uno o más nodos del clúster. Como ejemplo sencillo, use **clusrun** tooget configuración de IP Hola Hola nodos de Azure.
 
-1. En el nodo principal, abra un símbolo del sistema como administrador.
+1. En el nodo principal de hello, abra un símbolo del sistema como administrador.
 
-2. Escriba el siguiente comando: 
+2. Escriba el siguiente comando de hello:
    
     `clusrun /nodes:azurecn* ipconfig`
 
-3. Si se le solicita, escriba la contraseña de administrador del clúster. Debería ver un resultado del comando similar al siguiente.
+3. Si se le solicita, escriba la contraseña de administrador del clúster. Debería ver la salida del comando siguiente de toohello similar.
    
     ![clusrun][clusrun1]
 
 ## <a name="run-a-test-job"></a>Ejecución de un trabajo de prueba
-Ahora, envíe un trabajo de prueba que se ejecute en el clúster híbrido. Este ejemplo es un trabajo simple de barrido paramétrico (un tipo de cálculo intrínsecamente paralelo). En este ejemplo se ejecutan subtareas que agregan un entero a sí mismo con el comando **set /a** . Todos los nodos del clúster contribuyen a finalizar las subtareas para enteros del 1 al 100.
+Ahora, envíe un trabajo de prueba que se ejecuta en el clúster de hello híbrido. Este ejemplo es un trabajo simple de barrido paramétrico (un tipo de cálculo intrínsecamente paralelo). En este ejemplo se ejecuta subtareas que agregar una tooitself entero mediante hello **establecer /a** comando. Todos los nodos Hola Hola clúster contribuyen toofinishing Hola subtareas para números enteros de 1 too100.
 
 1. En el Administrador de clústeres HPC, haga clic en **Administración de trabajos** > **Nuevo trabajo de barrido paramétrico**.
    
     ![Nuevo trabajo][test_job1]
 
-2. En el cuadro de diálogo **Nuevo trabajo de barrido paramétrico**, en la **línea de comandos**, escriba `set /a *+*` (sobrescribiendo la línea de comandos predeterminada que aparezca). Deje los valores predeterminados para el resto de la configuración y, a continuación, haga clic en **Enviar** para enviar el trabajo.
+2. Hola **nuevo trabajo de barrido paramétrico** cuadro de diálogo **línea de comandos**, tipo `set /a *+*` (sobrescribiendo la línea de comandos de hello predeterminada que aparece). Deje los valores predeterminados para hello restantes de la configuración y, a continuación, haga clic en **enviar** trabajo de hello toosubmit.
    
     ![Barrido paramétrico][param_sweep1]
 
-3. Cuando termine el trabajo, haga doble clic en el trabajo **Mi tarea de barrido** .
+3. Cuando finaliza el trabajo de hello, haga doble clic en hello **mi tarea de barrido** trabajo.
 
-4. Haga clic en **Ver tareas**y, a continuación, haga clic en una subtarea para ver la salida calculada de dicha subtarea.
+4. Haga clic en **tareas vista**y, a continuación, haga clic en una salida de hello calculado tooview subtarea de esa subtarea.
    
     ![Resultados de la tarea][view_job361]
 
-5. Para ver qué nodo ha realizado el cálculo en esa subtarea, haga clic en **Nodos asignados**. (Su clúster podría mostrar un nombre de nodo diferente).
+5. toosee qué nodo realiza el cálculo de hello esa subtarea, haga clic en **asignar nodos**. (Su clúster podría mostrar un nombre de nodo diferente).
    
     ![Resultados de la tarea][view_job362]
 
-## <a name="stop-the-azure-nodes"></a>Detención de los nodos de Azure
-Después de probar el clúster, detenga los nodos de Azure e impida que se produzcan cargas innecesarias en la cuenta. Este paso detiene el servicio en la nube y quitan las instancias de rol de Azure.
+## <a name="stop-hello-azure-nodes"></a>Detener Hola nodos de Azure
+Después de probar clúster hello, detener tooyour cuenta de hello nodos de Azure tooavoid cobros innecesarios. Este paso detiene el servicio de nube de Hola y quite instancias de rol de Azure de Hola.
 
 1. En el Administrador de clústeres HPC, en **Administración de nodos** (llamada **Administración de recursos** en versiones anteriores de HPC Pack), seleccione los dos nodos de Azure. Luego, haga clic en **Detener**.
    
     ![Detener los nodos][stop_node1]
 
-2. En el cuadro de diálogo **Stop Windows Azure nodes** (Detener nodos de Microsoft Azure), haga clic en **Detener**. 
+2. Hola **nodos detener Windows Azure** cuadro de diálogo, haga clic en **detener**. 
    
-3. Los nodos pasan al estado **En detención** . Después de unos minutos, el administrador de clústeres de HPC indica que los nodos tienen el estado **No implementado**.
+3. nodos de Hello transición toohello **detener** estado. Después de unos minutos, el Administrador de clústeres de HPC muestra que son nodos de hello **no implementado**.
    
     ![Nodos no implementados][stop_node4]
 
-4. Para confirmar que las instancias de rol ya no se ejecutan en Azure, en Azure Portal, haga clic en **Servicios en la nube (clásico)** > *nombre_del_servicio_en_la_nube*. No se implementa instancias en el entorno de producción. 
+4. Hola a tooconfirm que instancias de rol de hello ya no se ejecutan en Azure, en haga clic en de portal, Azure **servicios (clásico) en la nube** > *your_cloud_service_name*. No hay instancias se implementan en el entorno de producción de hello. 
    
-    Con esto finaliza el tutorial.
+    Con esto finaliza el tutorial de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Explore la documentación correspondiente a [HPC Pack](https://technet.microsoft.com/library/cc514029).
-* Para configurar una implementación híbrida de clústeres HPC Pack a mayor escala, consulte [Irrupción en instancias de rol de trabajo de Azure con Microsoft HPC Pack](http://go.microsoft.com/fwlink/p/?LinkID=200493).
-* Para ver otras formas de crear un clúster HPC Pack en Azure como, por ejemplo, el uso de plantillas de Azure Resource Manager, consulte [Opciones de clúster HPC con Microsoft HPC Pack en Azure](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Examinar la documentación de Hola para [HPC Pack](https://technet.microsoft.com/library/cc514029).
+* Consulte tooset de una implementación de clúster de HPC Pack a mayor escala, híbrida [tooAzure instancias de rol de trabajo con Microsoft HPC Pack en ráfagas](http://go.microsoft.com/fwlink/p/?LinkID=200493).
+* Para otro toocreate de formas de un clúster de HPC Pack en Azure, incluido con plantillas de Azure Resource Manager, consulte [opciones de clúster HPC con Microsoft HPC Pack en Azure](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 [Overview]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png

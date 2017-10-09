@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: billmath
-ms.openlocfilehash: 6acbc347d7b187a6aac603dd05cf95c6aba54475
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 56cfb2c4f4afc7d46c926a392ae6ec01e96224d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Inicio de sesión del usuario con la autenticación de paso a través de Azure Active Directory
 
 ## <a name="what-is-azure-active-directory-pass-through-authentication"></a>¿Qué es la autenticación de paso a través de Azure Active Directory?
 
-La autenticación de paso a través de Azure Active Directory (Azure AD) permite a los usuarios iniciar sesión en aplicaciones basadas en la nube y locales con las mismas contraseñas. Esta característica proporciona a los usuarios una mejor experiencia (una contraseña menos que recordar) y reduce los costos del departamento de soporte técnico de TI dado que es menos probable que olviden cómo iniciar sesión. Cuando los usuarios inician sesión con Azure AD, esta característica valida sus contraseñas directamente con la instancia de Active Directory local.
+Autenticación de paso a través de Azure Active Directory (Azure AD) permite la toosign usuarios tooboth en local y aplicaciones basadas en la nube mediante Hola mismas contraseñas. Esta característica proporciona a los usuarios una mejor experiencia - uno menos tooremember de contraseña y reduce los costos del departamento de soporte técnico de TI ya que los usuarios son menos probable tooforget cómo toosign en. Cuando los usuarios inician sesión con Azure AD, esta característica valida sus contraseñas directamente con la instancia de Active Directory local.
 
-Esta característica es una alternativa a la [sincronización de hash de contraseña de Azure AD](active-directory-aadconnectsync-implement-password-synchronization.md), que proporciona la misma ventaja de autenticación en la nube a las organizaciones. Sin embargo, las directivas de seguridad y cumplimiento de ciertas organizaciones no les permiten enviar las contraseñas de los usuarios, ni siquiera en forma de hash, fuera de sus límites internos. La autenticación de paso a través es la solución adecuada para estas organizaciones.
+Esta característica es una alternativa demasiado[sincronización de Hash de contraseña de Azure AD](active-directory-aadconnectsync-implement-password-synchronization.md), lo que proporciona Hola mismo beneficio de tooorganizations de autenticación de nube. Sin embargo, las directivas de seguridad y cumplimiento de ciertas organizaciones no permiten estas organizaciones las contraseñas de los usuarios de toosend, incluso en un formulario con algoritmo hash, fuera de sus límites internos. Este tipo de autenticación es la solución adecuada de hello estas organizaciones.
 
 ![Autenticación de paso a través de Azure AD](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 
-Puede combinar la autenticación de paso a través con la característica de [inicio de sesión único de conexión directa](active-directory-aadconnect-sso.md) (SSO). De esta manera, cuando los usuarios accedan a las aplicaciones en sus máquinas corporativas dentro de la red de la empresa, no tendrán que escribir la contraseña para iniciar sesión.
+Puede combinar la autenticación de paso a través con hello [perfecta Single Sign-On](active-directory-aadconnect-sso.md) característica. Este modo, cuando los usuarios tienen acceso a las aplicaciones en sus equipos corporativos dentro de la red corporativa, no deben tootype en su toosign contraseñas en.
 
 >[!IMPORTANT]
 >La autenticación de paso a través de Azure AD se encuentra actualmente en versión preliminar.
@@ -38,38 +38,38 @@ Puede combinar la autenticación de paso a través con la característica de [in
 ## <a name="key-benefits-of-using-azure-ad-pass-through-authentication"></a>Principales ventajas del uso de la autenticación de paso a través de Azure AD
 
 - *Mejor experiencia del usuario*
-  - Los usuarios usan las mismas contraseñas para iniciar sesión tanto en las aplicaciones basadas en la nube como en las locales.
-  - Los usuarios dedican menos tiempo a hablar con el departamento de soporte técnico de TI para que resuelvan problemas relacionados con las contraseñas.
-  - Los usuarios pueden realizar las tareas de [administración de contraseñas de autoservicio](../active-directory-passwords-overview.md) en la nube.
-- *Es fácil de implementar y administrar*
+  - Los usuarios utilizan Hola mismo toosign contraseñas en local y las aplicaciones basadas en la nube.
+  - Los usuarios dedican menos tiempo a hablar toohello soporte técnico de TI para resolver problemas relacionados con la contraseña.
+  - Los usuarios pueden completar [administración de contraseñas de autoservicio](../active-directory-passwords-overview.md) tareas en la nube de Hola.
+- *Toodeploy fácil & Administrar*
   - No se requieren complejas implementaciones locales ni la configuración de la red.
-  - Solo necesita instalar en local un agente ligero.
-  - Sin sobrecarga de administración. El agente recibe automáticamente las mejoras y las correcciones de errores.
+  - Necesita solo un toobe ligera agente había instalado de forma local.
+  - Sin sobrecarga de administración. agente de Hello recibe automáticamente mejoras y correcciones de errores.
 - *Protección*
-  - Las contraseñas locales nunca se almacenan en la nube.
-  - El agente solo realiza conexiones salientes desde dentro de la red. Por lo tanto, no es necesario instalar el agente en una red perimetral, también conocida como DMZ.
+  - Contraseñas locales nunca se almacenan en la nube de Hola en cualquier formato.
+  - agente de Hello solo realiza conexiones salientes desde dentro de la red. Por lo tanto, no hay ningún agente de Hola de tooinstall de requisito en una red perimetral, también conocida como una red Perimetral.
   - Protege las cuentas de usuario al trabajar sin problemas con [directivas de acceso condicional de Azure AD](../active-directory-conditional-access-azure-portal.md), incluida Multi-Factor Authentication (MFA), y al [filtrar ataques de contraseña por fuerza bruta](active-directory-aadconnect-pass-through-authentication-smart-lockout.md).
 - *Alta disponibilidad*
-  - Se pueden instalar agentes adicionales en varios servidores locales para lograr una alta disponibilidad de las solicitudes de inicio de sesión.
+  - Agentes adicionales se pueden instalar en varios local servidores tooprovide alta disponibilidad de las solicitudes de inicio de sesión.
 
 ## <a name="feature-highlights"></a>Características destacadas
 
 - Admite el inicio de sesión de usuario en todas las aplicaciones basadas en explorador web y en las aplicaciones cliente de Microsoft Office que usan la [autenticación moderna](https://aka.ms/modernauthga).
-- Los nombres de usuario de inicio de sesión pueden ser el predeterminado local (`userPrincipalName`) u otro atributo (conocido como `Alternate ID`) configurado en Azure AD Connect.
-- La característica funciona sin problemas con características de [acceso condicional](../active-directory-conditional-access.md), como Multi-Factor Authentication (MFA), para ayudar a proteger a los usuarios.
+- Nombres de usuario de inicio de sesión pueden ser cualquier nombre de usuario de hello local predeterminado (`userPrincipalName`) o de otro atributo configurado en Azure AD Connect (conocido como `Alternate ID`).
+- característica de Hello funciona sin problemas con [acceso condicional](../active-directory-conditional-access.md) características como la autenticación multifactor (MFA) toohelp proteger a los usuarios.
 - Se admiten entornos de varios bosques si hay relaciones de confianza de bosque entre los bosques de AD y si el enrutamiento de sufijos de nombre está configurado correctamente.
-- Es una característica gratuita y no es necesario usar ninguna versión de pago de Azure AD para usarla.
+- Es una característica gratuita y no necesita ninguna edición de pagada de Azure AD toouse lo.
 - Puede habilitarse a través de [Azure AD Connect](active-directory-aadconnect.md).
-- Usa un agente local ligero que escucha las solicitudes de validación de contraseña y las responde.
+- Utiliza a un agente local ligera que escucha y responde las solicitudes de validación de toopassword.
 - La instalación de varios agentes proporciona una alta disponibilidad de las solicitudes de inicio de sesión.
-- [Protege](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) las cuentas locales frente a ataques de contraseña por fuerza bruta en la nube.
+- Se [protege](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) ataques de contraseña en la nube de Hola por fuerza las cuentas local frente a ataques.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- [**Inicio rápido** ](active-directory-aadconnect-pass-through-authentication-quick-start.md): desarrollo y ejecución de la autenticación de paso a través de Azure AD.
+- [**Inicio rápido**](active-directory-aadconnect-pass-through-authentication-quick-start.md): desarrollo y ejecución de la autenticación de paso a través de Azure AD.
 - [**Limitaciones actuales**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): esta funcionalidad actualmente está en su versión preliminar. Obtenga información sobre los escenarios que se admiten y los que no.
-- [**Profundización técnica** ](active-directory-aadconnect-pass-through-authentication-how-it-works.md): descripción del funcionamiento de esta característica.
-- [**Preguntas más frecuentes**](active-directory-aadconnect-pass-through-authentication-faq.md): obtenga respuestas a las preguntas más frecuentes.
-- [**Solución de problemas**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): aprenda a resolver problemas comunes de esta característica.
+- [**Profundización técnica**](active-directory-aadconnect-pass-through-authentication-how-it-works.md): descripción del funcionamiento de esta característica.
+- [**Preguntas más frecuentes** ](active-directory-aadconnect-pass-through-authentication-faq.md) -responde toofrequently preguntas más frecuentes.
+- [**Solucionar problemas de** ](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) -Obtenga información acerca de cómo emite tooresolve común con la característica de Hola.
 - [**SSO de conexión directa de Azure AD**](active-directory-aadconnect-sso.md): obtenga más información sobre esta característica complementaria.
-- [**UserVoice** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): para rellenar solicitudes de características nuevas.
+- [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): para rellenar solicitudes de características nuevas.

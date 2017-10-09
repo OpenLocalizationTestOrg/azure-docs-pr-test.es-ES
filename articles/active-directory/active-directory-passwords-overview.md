@@ -1,5 +1,5 @@
 ---
-title: "Información general sobre el autoservicio de restablecimiento de contraseña | Microsoft Docs"
+title: "información general de restablecimiento de contraseña de autoservicio de aaaAzure AD | Documentos de Microsoft"
 description: "¿Para qué puede servir el autoservicio de restablecimiento de contraseña de Azure AD en una organización?"
 services: active-directory
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 3903c53b78e61b380bb812a9d3ade694655b5afb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0efc291b1eeec0b7ae33ff5a7d9ed38e70c8be6d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>Autoservicio de restablecimiento de contraseña de Azure AD para profesionales de TI
+# <a name="azure-ad-self-service-password-reset-for-hello-it-professional"></a>Restablecimiento de contraseña de autoservicio de Azure AD para hello profesional de TI
 
-La palabra "autoservicio" está de moda entre muchos departamentos de TI de todo el mundo, que se utiliza con diferentes significados. El mercado está atestado de productos que le permiten administrar los grupos locales, las contraseñas o los perfiles de usuario en la nube o a nivel local.
+"Autoservicio" es una palabra de moda producida alrededor dentro de muchos de los departamentos de TI a través de hello world con distintos significados. mercado Hola se congestiona con productos que le permiten grupos locales de toomanage, contraseñas o perfiles de usuario de nube de Hola o de forma local.
 
 El autoservicio de restablecimiento de contraseña (SSPR) de Azure Active Directory (Azure AD) se diferencia de otros servicios por la facilidad de uso e implementación. El autoservicio de restablecimiento de contraseña de Azure AD combina un conjunto de funcionalidades que:
 
-* Permiten a los usuarios administrar su propia contraseña
+* Permitir la toomanage a los usuarios su contraseña
   * Desde cualquier dispositivo
   * En cualquier ubicación
   * En cualquier momento
@@ -37,17 +37,17 @@ Si está listo, puede comenzar a utilizar SSPR de Azure AD con la [guía de inic
 
 ## <a name="what-is-possible"></a>Lo que es posible
 
-* El **cambio de la contraseña de autoservicio** permite a los usuarios finales o administradores cambiar sus contraseñas sin ayuda del administrador.
-* El **desbloqueo de cuentas de autoservicio** permite a los usuarios finales desbloquear su propia cuenta sin ayuda del administrador.
-* El **Autoservicio de restablecimiento de contraseña** permite a los usuarios finales o administradores restablecer sus contraseñas sin ayuda del administrador. El Autoservicio de restablecimiento de contraseña requiere Azure AD Premium o Básico; véase [Ediciones de Azure Active Directory](active-directory-editions.md).
-* El **restablecimiento de contraseña iniciado por el administrador** permite a un administrador restablecer la contraseña de un usuario final o de otro administrador desde [Azure Portal](https://docs.microsoft.com/azure/azure-portal-overview).
+* **Cambio de contraseña de autoservicio** permite a los usuarios finales o los administradores toochange sus contraseñas sin ayuda del administrador
+* **Desbloqueo de cuentas de autoservicio** permite toounlock de los usuarios finales de su propia cuenta sin ayuda del administrador
+* **Restablecimiento de contraseña de autoservicio** permite a los usuarios finales o los administradores tooreset sus contraseñas automáticamente sin ayuda del administrador. El Autoservicio de restablecimiento de contraseña requiere Azure AD Premium o Básico; véase [Ediciones de Azure Active Directory](active-directory-editions.md).
+* **Restablecer la contraseña de administrador inició** permite que un administrador tooreset contraseña de un usuario final o de otro administrador de hello [portal de Azure](https://docs.microsoft.com/azure/azure-portal-overview)
 * Los **informes de actividad de administración de contraseñas** proporcionan a los administradores perspectivas sobre una actividad de registro y restablecimiento de contraseña en su organización; véase [informes de administración](active-directory-passwords-reporting.md).
-* La **escritura diferida de contraseñas** permite la administración de contraseñas locales desde la nube, por lo que todos los escenarios anteriores pueden realizarse por los usuarios sincronizados con contraseña o federados, o en nombre de ellos. La escritura diferida de contraseñas requiere [Azure AD Premium](active-directory-get-started-premium.md).
+* **Escritura diferida de contraseñas** permite la administración de contraseñas locales desde la nube de Hola para federado precedente de hello todos los escenarios pueden realizarse por, o en nombre de hello, o los usuarios sincronizados con contraseña. La escritura diferida de contraseñas requiere [Azure AD Premium](active-directory-get-started-premium.md).
 
 ## <a name="why-choose-azure-ad-self-service-password-reset"></a>Por qué elegir el autoservicio de restablecimiento de contraseñas de Azure AD
 
 * **Reducir los costos**: el restablecimiento de contraseñas con asistencia de un servicio y departamento de soporte técnico normalmente supone el 20 % del gasto en TI de una organización.
-* **Mejorar experiencias de usuarios finales** y **reducir el volumen del departamento de soporte técnico**: los usuarios finales pueden resolver sus propios problemas con las contraseñas de inmediato sin necesidad de llamar a un departamento de soporte técnico ni de abrir una solicitud de soporte técnico.
+* **Mejorar la experiencia del usuario final** y **reducir el volumen del departamento de soporte técnico** proporcionando final usuarios Hola power tooresolve sus propios problemas de contraseña a la vez sin llamar a un departamento de soporte técnico o abrir una solicitud de soporte técnico.
 * **Impulsar la movilidad**: los usuarios pueden restablecer sus contraseñas desde cualquier lugar en que se encuentren.
 
 ## <a name="azure-ad-self-service-password-reset-availability"></a>Disponibilidad de autoservicio de restablecimiento de contraseña de Azure AD
@@ -56,22 +56,22 @@ El autoservicio de restablecimiento de contraseña de Azure AD está disponible 
 
 * **Azure AD Gratis**: los administradores que están solo en la nube pueden restablecer sus propias contraseñas.
 * **Azure AD Básico** o cualquier **suscripción de pago de Office 365**: los usuarios y administradores que están solo en la nube pueden restablecer sus propias contraseñas.
-* **Azure AD Premium**: cualquier usuario o administrador, incluidos los que están solo en la nube, los federados o los usuarios sincronizados con contraseña, pueden restablecer sus propias contraseñas. Algunas contraseñas locales requieren que la escritura diferida de contraseñas esté habilitada.
+* **Azure AD Premium**: cualquier usuario o administrador, incluidos los que están solo en la nube, los federados o los usuarios sincronizados con contraseña, pueden restablecer sus propias contraseñas. Contraseñas locales requieren toobe de reescritura de contraseña habilitada.
 
-## <a name="azure-ad-self-service-password-reset-a-sum-of-the-parts"></a>El autoservicio de restablecimiento de contraseña de Azure AD, una suma de las partes
+## <a name="azure-ad-self-service-password-reset-a-sum-of-hello-parts"></a>Restablecimiento de contraseña de autoservicio de Azure AD, una suma de las partes de Hola
 
-El autoservicio de restablecimiento de contraseña de Azure AD consta de los siguientes componentes:
+Contraseña de autoservicio de restablecimiento en Azure AD se compone de Hola de los componentes siguientes:
 
-* **Portal de configuración de administración de contraseñas**: aquí puede controlar opciones para la administración de contraseñas en el inquilino a través de Azure Portal.
+* **Portal de configuración de administración de contraseñas** donde puede controlar opciones para la administración de contraseñas en el inquilino a través de hello portal de Azure
 * **Portal de registro de restablecimiento de contraseñas**: aquí los usuarios pueden registrarse automáticamente para el restablecimiento de contraseñas.
-* **Portal de restablecimiento de contraseñas**: aquí los usuarios pueden restablecer su contraseña mediante los desafíos definidos por el administrador y las respuestas que los usuarios han proporcionado.
+* **Portal de restablecimiento de contraseña** ha proporcionado donde los usuarios pueden restablecer su contraseña con desafíos de hello definidos por el Administrador de Hola y Hola responde a los usuarios
 * **Portal de cambio de contraseñas de usuario**: aquí los usuarios pueden cambiar sus propias contraseñas si escriben su contraseña anterior y proporcionan una contraseña nueva.
-* **Informes de administración de contraseñas**: aquí los administradores pueden ver y analizar los informes de actividad de contraseñas de los inquilinos en Azure Portal.
-* **Escritura diferida de contraseñas en entornos locales mediante Azure AD Connect**: permite habilitar la administración de usuarios sincronizados locales, federados o con contraseñas desde la nube.
+* **Informes de administración de contraseñas** informa de que los administradores pueden ver y analizar la actividad de la contraseña de sus inquilinos Hola portal de Azure
+* **Contraseña reescritura tooon locales mediante Azure AD Connect** permite la administración del tooenable, de, federado local, o los usuarios de la nube de hello sincronizados con contraseña
 
 ## <a name="azure-ad-pricing-sla-updates-and-roadmap"></a>Precios, SLA, actualizaciones y hoja de ruta de Azure AD
 
-Se puede consultar más información sobre estos temas en las páginas siguientes.
+Más detalles acerca de estos temas pueden encontrarse en hello después de páginas
 
 * [**Detalles de precios de Azure AD**](https://azure.microsoft.com/pricing/details/active-directory/)
 * [**Precios de Office 365**](https://products.office.com/compare-all-microsoft-office-products?tab=2)
@@ -82,15 +82,15 @@ Se puede consultar más información sobre estos temas en las páginas siguiente
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Los vínculos siguientes proporcionan información adicional sobre el restablecimiento de contraseñas con Azure AD:
+Hola siguientes vínculos proporciona más información sobre el uso de Azure AD de restablecimiento de contraseña
 
 * [**Inicio rápido**](active-directory-passwords-getting-started.md): preparativos para el autoservicio de administración de contraseñas de Azure AD 
 * [**Licencias**](active-directory-passwords-licensing.md): configuración de licencias de Azure AD
-* [**Datos**](active-directory-passwords-data.md): información sobre los datos necesarios y cómo se usan para administrar contraseñas
-* [**Implementación**](active-directory-passwords-best-practices.md): planee e implemente SSPR en sus usuarios mediante las instrucciones que se encuentran aquí.
-* [**Personalización**](active-directory-passwords-customize.md): personalización de la experiencia de SSPR para la empresa
+* [**Datos** ](active-directory-passwords-data.md) : comprender los datos de Hola que es necesarios y cómo se utiliza para la administración de contraseñas
+* [**Implementación** ](active-directory-passwords-best-practices.md) -planear e implementar a los usuarios de Autoservicio tooyour usando la orientación de hello encontrar aquí
+* [**Personalizar** ](active-directory-passwords-customize.md) -personalizar Hola apariencia y funcionamiento del programa Hola a la experiencia de Autoservicio de su empresa.
 * [**Informes**](active-directory-passwords-reporting.md): detectan si los usuarios acceden a la funcionalidad de SSPR, cuándo lo hacen y dónde.
-* [**Profundización técnica**](active-directory-passwords-how-it-works.md): conozca lo que hay detrás para comprender cómo funciona.
-* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? : respuestas a las preguntas que siempre se ha hecho.
-* [**Solución de problemas**](active-directory-passwords-troubleshoot.md): información para resolver problemas habituales de SSPR
+* [**Profundización técnica** ](active-directory-passwords-how-it-works.md) -ir detrás de hello cortina toounderstand cómo funciona
+* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? -Responde tooquestions siempre deseara tooask
+* [**Solucionar problemas de** ](active-directory-passwords-troubleshoot.md) -Obtenga información acerca de cómo problemas comunes de tooresolve que vemos con SSPR
 

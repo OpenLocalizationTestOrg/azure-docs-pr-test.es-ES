@@ -1,76 +1,59 @@
 ---
-title: "Lección 13 del tutorial de Analysis Services: Implementación | Microsoft Docs"
-description: "Se describe cómo implementar el proyecto del tutorial en Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 07/17/2017
-ms.author: owend
-ms.openlocfilehash: 70dbf5786262f75199270aa8009e03b9b48b8559
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
-ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+título: aaa "lección tutorial de Analysis Services de Azure 13: implementar | Descripción de Microsoft Docs": describe cómo del proyecto tutorial de hello toodeploy tooAzure Analysis Services.
+servicios: documentationcenter de analysis services: '' autor: minewiskan manager: erikre editor: '' etiquetas: ''
+
+MS.AssetId: ms.service: ms.devlang de analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 17/07/2017 ms.author: owend
 ---
 # <a name="lesson-13-deploy"></a>Lección 13: Implementación
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-En esta lección, configurará propiedades de implementación. Para ello, especificará un servidor de Azure Analysis Services en el que realizar la implementación y un nombre para el modelo. A continuación, implementará el modelo en esa instancia. Después de implementa el modelo, los usuarios pueden conectarse a él mediante una aplicación cliente de generación de informes. Para más información, consulte [Deploy to Azure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-deploy) (Implementación en Azure Analysis Services).  
+En esta lección, configurará propiedades de implementación; especificar un tooand de toodeploy de servidor de Analysis Services de Azure un nombre para el modelo de Hola. A continuación, implemente instancia toothat de hello modelo. Después de implementa el modelo, los usuarios pueden conectarse tooit mediante el uso de una aplicación de cliente de informes. más información, consulte toolearn [implementar tooAzure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-deploy).  
   
-Tiempo estimado para completar esta lección: **5 minutos**  
+Estimado toocomplete de tiempo en esta lección: **5 minutos**  
   
 ## <a name="prerequisites"></a>Requisitos previos  
-Este tema forma parte de un tutorial de modelado tabular, que se debe completar en orden. Antes de realizar las tareas de esta lección, debe haber completado la lección anterior: [Lección 12: Análisis en Excel](../tutorials/aas-lesson-12-analyze-in-excel.md).  
+Este tema forma parte de un tutorial de modelado tabular, que se debe completar en orden. Antes de realizar tareas de hello en esta lección, debe haber completado la lección anterior hello: [lección 12: analizar en Excel](../tutorials/aas-lesson-12-analyze-in-excel.md).  
 
 > [!IMPORTANT]  
-> Debe tener [permisos de administrador](../analysis-services-server-admins.md) en el servidor remoto de Analysis Services para poder implementarla.  
+> Debe tener [permisos de administrador](../analysis-services-server-admins.md) en hello remoto Analysis Services server toodeploy en orden tooit.  
 
 > [!IMPORTANT]  
-> Si instaló la base de datos de ejemplo AdventureWorksDW2014 en un servidor local de SQL y va a implementar el modelo en un servidor de Azure Analysis Services, se requiere una [puerta de enlace de datos local](../analysis-services-gateway.md).
+> Si instaló la base de datos de ejemplo de Hola AdventureWorksDW2014 en un servidor local de SQL, y va a implementar el servidor de Analysis Services de Azure de modelo tooan, un [puerta de enlace de datos local](../analysis-services-gateway.md) es necesario.
   
-## <a name="deploy-the-model"></a>Implementación del modelo  
+## <a name="deploy-hello-model"></a>Implementar el modelo de Hola  
   
-#### <a name="to-configure-deployment-properties"></a>Para configurar las propiedades de implementación, siga estos pasos:  
+#### <a name="tooconfigure-deployment-properties"></a>propiedades de implementación de tooconfigure  
 
   
-1.  En **el Explorador de soluciones**, haga clic con el botón derecho en el proyecto **AW Internet Sales** y luego haga clic en **Propiedades**.  
+1.  En **el Explorador de soluciones**, contextual hello **AW Internet Sales** del proyecto y, a continuación, haga clic en **propiedades**.  
   
-2.  En el cuadro de diálogo **AW Internet Sales Property Pages**, en **Servidor de implementación**, en la propiedad **Servidor**, escriba el nombre completo de un servidor.  
+2.  Hola **páginas de propiedades de ventas de Internet de AW** cuadro de diálogo **el servidor de implementación**, Hola **Server** propiedad, escriba servidor completo de Hola.  
 
     ![aas-lesson13-deploy-property](../tutorials/media/aas-lesson13-deploy-property.png)
   
-3.  En la propiedad **Base de datos**, escriba **Adventure Works Internet Sales**.  
+3.  Hola **base de datos** propiedad, escriba **Adventure Works Internet Sales**.  
   
-4.  En la propiedad **Nombre del modelo**, escriba **Adventure Works Internet Sales Model**.  
+4.  Hola **nombre del modelo** propiedad, escriba **Adventure Works Internet Sales Model**.  
   
 5.  Compruebe sus selecciones y, a continuación, haga clic en **Aceptar**.  
   
-#### <a name="to-deploy-the-adventure-works-internet-sales"></a>Para implementar Adventure Works Internet Sales, siga estos pasos:
+#### <a name="toodeploy-hello-adventure-works-internet-sales"></a>Hola toodeploy Adventure Works Internet Sales
   
-1.  En el **Explorador de soluciones**, haga clic con el botón derecho en el **proyecto AW Internet Sales** > **Compilar**.  
+1.  En **el Explorador de soluciones**, contextual hello **AW Internet Sales** proyecto > **generar**.  
 
-2.  Haga clic con el botón derecho en el **proyecto AW Internet Sales** > **Implementar**.
+2.  Menú contextual hello **AW Internet Sales** proyecto > **implementar**.
 
-    Al realizar la implementación en Azure Analysis Services, puede que se le pida que escriba su contraseña. Escriba su cuenta profesional y la contraseña, por ejemplo nancy@adventureworks.com. Esta cuenta debe estar en Administradores en el servidor.
+    Al implementar tooAzure Analysis Services, puede ser solicitada tooenter su cuenta. Escriba su cuenta profesional y la contraseña, por ejemplo nancy@adventureworks.com. Esta cuenta debe ser de administradores en el servidor de Hola.
   
-    Aparece el cuadro de diálogo Implementar y muestra el estado de implementación de los metadatos y cada tabla incluida en el modelo.  
+    cuadro de diálogo implementar Hola aparece y muestra el estado de implementación de Hola de metadatos de Hola y cada tabla incluida en el modelo de Hola.  
     
     ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
 3. Cuando la implementación finalice correctamente, siga adelante y haga clic en **Cerrar**.  
   
 ## <a name="conclusion"></a>Conclusión  
-¡Enhorabuena! Ha terminado de crear e implementar el primer modelo tabular de Analysis Services. Este tutorial le ha ayudado a completar las tareas más comunes en la creación de un modelo tabular. Ahora que el modelo Adventure Works Internet Sales está implementado, puede usar SQL Server Management Studio para administrarlo; cree scripts de proceso y un plan de copia de seguridad. Ahora los usuarios pueden conectarse también al modelo mediante una aplicación cliente de generación de informes, como Microsoft Excel o Power BI.  
+¡Enhorabuena! Ha terminado de crear e implementar el primer modelo tabular de Analysis Services. Este tutorial ha ayudado a ayudará a completar las tareas más comunes de hello en la creación de un modelo tabular. Ahora que se implementa el modelo de ventas por Internet de Adventure Works, puede utilizar el modelo de SQL Server Management Studio toomanage Hola; crear secuencias de comandos de proceso y un plan de copia de seguridad. Los usuarios pueden conectarse ahora también modelo toohello mediante una aplicación de cliente de informes como Microsoft Excel o Power BI.  
 
 ![aas-lesson13-ssms](../tutorials/media/aas-lesson13-ssms.png)
   

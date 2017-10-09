@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Mindflash | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Mindflash."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Mindflash."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,113 +13,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 90de7b6a82d88f9407a35fbfebe8a652928d76cd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a1bc327ea3867287103acbb64d30f0a8d7d4c5e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Tutorial: Integración de Azure Active Directory con Mindflash
 
-En este tutorial, obtendrá información sobre cómo integrar Mindflash con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá cómo toointegrate Mindflash con Azure Active Directory (Azure AD).
 
-La integración de Mindflash con Azure AD proporciona las siguientes ventajas:
+Integración de Mindflash con Azure AD proporciona Hola siguientes ventajas:
 
-- Puede controlar en Azure AD quién tiene acceso a Mindflash
-- Puede permitir que los usuarios inicien sesión automáticamente en Mindflash (inicio de sesión único) con sus cuentas de Azure AD
-- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+- Puede controlar en Azure AD que tenga acceso tooMindflash
+- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooMindflash (Single Sign-On) con sus cuentas de Azure AD
+- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
 
-Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para configurar la integración de Azure AD con Mindflash, necesita los siguientes elementos:
+integración de Azure AD con Mindflash tooconfigure, necesita Hola siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para inicio de sesión único en Mindflash
 
 > [!NOTE]
-> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
+> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
 
-Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
+pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
 
-1. Incorporación de Mindflash desde la galería
+1. Agregar Mindflash desde la Galería de Hola
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-mindflash-from-the-gallery"></a>Incorporación de Mindflash desde la galería
-Para configurar la integración de Mindflash en Azure AD, será preciso que agregue Mindflash desde la galería a la lista de aplicaciones SaaS administradas.
+## <a name="adding-mindflash-from-hello-gallery"></a>Agregar Mindflash desde la Galería de Hola
+integración de hello tooconfigure de Mindflash en Azure AD, deberá tooadd Mindflash de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
 
-**Para agregar Mindflash desde la galería, realice los pasos siguientes:**
+**tooadd Mindflash de galería de hello, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
+1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
 
     ![Active Directory][1]
 
-2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
+2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
+3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda, escriba **Mindflash**.
+4. En el cuadro de búsqueda de hello, escriba **Mindflash**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_search.png)
 
-5. En el panel de resultados, seleccione **Mindflash** y, luego, haga clic en el botón **Agregar** para agregar la aplicación.
+5. En el panel de resultados de hello, seleccione **Mindflash**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con Mindflash con un usuario de prueba llamado "Britta Simon".
 
-Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Mindflash para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Mindflash.
+Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Mindflash es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Mindflash debe toobe establecido.
 
-En Mindflash, para establecer la relación de vínculo, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.
+En Mindflash, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
 
-Para configurar y probar el inicio de sesión único de Azure AD con Mindflash, es preciso completar los siguientes bloques de creación:
+tooconfigure y prueba de inicio de sesión único en Azure AD con Mindflash, deberá hello toocomplete después de bloques de creación:
 
-1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
-2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
-3. **[Creación de un usuario de prueba de Mindflash](#creating-a-mindflash-test-user)**: para tener un homólogo de Britta Simon en Mindflash vinculado a la representación del usuario en Azure AD.
-4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
+1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
+2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
+3. **[Crear un usuario de prueba de Mindflash](#creating-a-mindflash-test-user)**  -toohave un equivalente de Britta Simon en Mindflash que es la representación toohello vinculado Azure AD del usuario.
+4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
+5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación Mindflash.
+En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Mindflash.
 
-**Para configurar el inicio de sesión único de Azure AD con Mindflash, realice los pasos siguientes:**
+**inicio de sesión único en Azure AD tooconfigure con Mindflash, siga Hola pasos:**
 
-1. En Azure Portal, en la página de integración de la aplicación **Mindflash**, haga clic en **Inicio de sesión único**.
+1. En el portal de Azure, en Hola Hola **Mindflash** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_samlbase.png)
 
-3. En la sección **Dominio y direcciones URL de Mindflash**, lleve a cabo los pasos siguientes:
+3. En hello **Mindflash dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_url.png)
 
-    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.mindflash.com`.
+    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.mindflash.com`
 
-    b. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.mindflash.com`
+    b. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.mindflash.com`
 
     > [!NOTE] 
-    > Estos valores no son reales. Debe actualizarlos con la dirección URL y el identificador reales de inicio de sesión. Póngase en contacto con el [equipo de soporte técnico de Mindflash](https://www.mindflash.com/contact/) para obtener estos valores. 
+    > Estos valores no son reales. Actualizar estos valores con hello real de dirección URL de inicio de sesión y el identificador. Póngase en contacto con [equipo de soporte técnico de Mindflash cliente](https://www.mindflash.com/contact/) tooget estos valores. 
  
 
 
-4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo de metadatos en el equipo.
+4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo de metadatos de hello en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_certificate.png) 
 
@@ -127,90 +127,90 @@ En esta sección, habilitará el inicio de sesión único de Azure AD en Azure P
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-mindflash-tutorial/tutorial_general_400.png)
 
-6. Para configurar el inicio de sesión único en **Mindflash**, necesita enviar el archivo **XML de metadatos** descargado al [equipo de soporte técnico de Mindflash](https://www.mindflash.com/contact/).
+6. inicio de sesión único en tooconfigure en **Mindflash** lado, necesita hello toosend descargado **Metadata XML** demasiado[equipo de soporte técnico de Mindflash](https://www.mindflash.com/contact/).
 
 > [!TIP]
-> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
+objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
 
 ![Creación de un usuario de Azure AD][100]
 
-**Siga estos pasos para crear un usuario de prueba en Azure AD:**
+**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
 
-1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
+1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-mindflash-tutorial/create_aaduser_01.png) 
 
-2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-mindflash-tutorial/create_aaduser_02.png) 
 
-3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-mindflash-tutorial/create_aaduser_03.png) 
 
-4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-mindflash-tutorial/create_aaduser_04.png) 
 
-    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
+    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
 
-    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
+    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-mindflash-test-user"></a>Creación de un usuario de prueba de Mindflash
 
-Para permitir que los usuarios de Azure AD inicien sesión en Mindflash, deben aprovisionarse en Mindflash. En el caso de Mindflash, el aprovisionamiento es una tarea manual.
+En orden tooenable toolog de los usuarios de Azure AD en Mindflash, se les deben aprovisionar en Mindflash. En caso de hello de Mindflash, el aprovisionamiento es una tarea manual.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Para aprovisionar cuentas de usuario, realice estos pasos:
+### <a name="tooprovision-a-user-accounts-perform-hello-following-steps"></a>tooprovision una cuenta de usuario, realizar Hola lo siguiente:
 
-1. Inicie sesión como administrador en el sitio de la compañía de **Mindflash** .
+1. Inicie sesión en tooyour **Mindflash** sitio de la empresa como administrador.
 
-2. Vaya a **Administrar usuarios**.
+2. Vaya demasiado**administrar usuarios**.
    
     ![Administración de usuarios](./media/active-directory-saas-mindflash-tutorial/ic787140.png "Administración de usuarios")
 
-3. Haga clic en **Agregar usuarios** y luego en **Nuevo**.
+3. Haga clic en hello **agregar usuarios**y, a continuación, haga clic en **nuevo**.
 
-4. En la sección **Agregar usuarios nuevos**, lleve a cabo los siguientes pasos para la cuenta de Azure AD válida que desea aprovisionar:
+4. Hola **agregar usuarios nuevos** sección, lleve a cabo Hola siguiendo los pasos de un Azure válida que desee tooprovision de cuenta de AD:
    
     ![Agregar nuevos usuarios](./media/active-directory-saas-mindflash-tutorial/ic787141.png "Agregar nuevos usuarios")
    
-    a. En el cuadro de texto **First name** (Nombre), escriba el **nombre** del usuario, en este caso **Britta**.
+    a. Hola **nombre** cuadro de texto, tipo **nombre** del usuario de hello como **Bárbara**.
 
-    b. En el cuadro de texto **Last name** (Apellidos), escriba los **apellidos** del usuario, en este caso **Simon**.
+    b. Hola **apellidos** cuadro de texto, tipo **apellidos** del usuario de hello como **Simon**.
     
-    c. En el cuadro de texto **Email** (Correo electrónico), escriba la **dirección de correo electrónico** del usuario, en este caso **BrittaSimon@contoso.com**.
+    c. Hola **correo electrónico** cuadro de texto, tipo **dirección de correo electrónico** del usuario de hello como  **BrittaSimon@contoso.com** .
 
     b. Haga clic en **Agregar**.
 
 >[!NOTE]
->Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de Mindflash ofrecida por Mindflash para aprovisionar cuentas de usuario de AAD. 
+>Puede usar cualquier otra Mindflash usuario cuenta herramienta de creación o las API proporcionadas por Mindflash tooprovision cuentas de usuario AAD. 
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
 
-En esta sección, concederá acceso a Britta Simon a Mindflash para que use el inicio de sesión único de Azure.
+En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooMindflash.
 
 ![Asignar usuario][200] 
 
-**Para asignar el usuario Britta Simon a Mindflash, realice los pasos siguientes:**
+**tooassign Britta Simon tooMindflash, lleve a cabo Hola pasos:**
 
-1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
+1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones, seleccione **Mindflash**.
+2. En la lista de aplicaciones de hello, seleccione **Mindflash**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_app.png) 
 
-3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
+3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -218,7 +218,7 @@ En esta sección, concederá acceso a Britta Simon a Mindflash para que use el i
 
     ![Asignar usuario][203]
 
-5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
+5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -226,14 +226,14 @@ En esta sección, concederá acceso a Britta Simon a Mindflash para que use el i
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
+En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
 
-Al hacer clic en el icono de Mindflash en el panel de acceso, debería entrar en la página de inicio de sesión de la aplicación Mindflash.
-Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Al hacer clic en icono de Mindflash Hola Hola Panel de acceso, deberá obtener la página de inicio de sesión de aplicación de Mindflash.
+Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

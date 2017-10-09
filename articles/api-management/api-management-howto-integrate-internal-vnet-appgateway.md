@@ -1,6 +1,6 @@
 ---
-title: Uso de Azure API Management en una red virtual con Application Gateway | Microsoft Docs
-description: Aprenda a instalar y configurar Azure API Management en una red virtual interna con Application Gateway (WAF) como front-end.
+title: "aaaHow toouse administración de API de Azure en red Virtual con la puerta de enlace de aplicaciones | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toosetup y configurar la administración de API de Azure en red Virtual interna con aplicación de puerta de enlace (WAFS) como front-end"
 services: api-management
 documentationcenter: 
 author: solankisamir
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2017
 ms.author: sasolank
-ms.openlocfilehash: 8131ded6b74e9c544bf70b1a4659ed07e5def04d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 74303a2ee8a10db633ab1740ec7267728eacb473
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integración de API Management en una red virtual interna con Application Gateway 
 
-##<a name="overview"> </a> Información general
+##<a name="overview"></a> Información general
  
-El servicio API Management se puede configurar en una red virtual en un modo interno que hace que esta sea accesible únicamente desde dentro de la red virtual. Azure Application Gateway es un servicio de PAAS que proporciona un equilibrador de carga de nivel 7. Actúa como un servicio de proxy inverso y proporciona entre su oferta un firewall de aplicaciones web (WAF).
+Hola servicio de administración de API se puede configurar en una red Virtual en modo interno que hace que sea accesible únicamente desde dentro de hello red Virtual. Azure Application Gateway es un servicio de PAAS que proporciona un equilibrador de carga de nivel 7. Actúa como un servicio de proxy inverso y proporciona entre su oferta un firewall de aplicaciones web (WAF).
 
-La combinación de una instancia de API Management aprovisionada en una red virtual interna con el front-end de Application Gateway permite los siguientes escenarios:
+Combinar aprovisionado en una red virtual interna con front-end de hello puerta de enlace de aplicaciones de administración de API permite Hola los escenarios siguientes:
 
-* Utilizar el mismo recurso de API Management para su uso por los consumidores internos y los consumidores externos.
+* Use Hola mismo recurso de administración de API para su uso por los consumidores internos y externo a los consumidores.
 * Utilizar un único recurso de API Management y tener definido un subconjunto de API en API Management disponible para los consumidores externos.
-* Proporcionar una solución de llave en mano para activar y desactivar el acceso a API Management desde la red Internet pública. 
+* Proporcionar una manera de preparada tooswitch acceso tooAPI administración de hello Internet pública y desactivar. 
 
-##<a name="scenario"> </a> Escenario
-En este artículo se explica cómo usar un único servicio de API Management para los consumidores tanto internos como externos y hacer que actúe como un único servidor de front-end para las API locales y en la nube. También verá cómo exponer solo un subconjunto de las API (resaltado en verde en el ejemplo) para permitir su uso externo, usando para ello la funcionalidad PathBasedRouting disponible en Application Gateway.
+##<a name="scenario"></a> Escenario
+En este artículo se tratan cómo toouse una única API de administración de servicio para los consumidores tanto internos como externos y hacer que actúe como un único servidor front-end para ambos local y las API en la nube. También verá cómo tooexpose solo un subconjunto de las API (en el ejemplo de Hola que están resaltados en verde) para su uso externo con funcionalidad de PathBasedRouting de hello disponible en la puerta de enlace de aplicaciones.
 
-En el primer ejemplo de la configuración, todas las API se administran únicamente desde dentro de la red virtual. Los consumidores internos (resaltados en color naranja) pueden tener acceso a todas las API internas y externas. El tráfico nunca se envía a Internet y se entrega un alto rendimiento a través de circuitos Express Route.
+En el ejemplo de Hola primero el programa de instalación se administran todas las API sólo desde dentro de la red Virtual. Los consumidores internos (resaltados en color naranja) pueden tener acceso a todas las API internas y externas. Tráfico no sale nunca tooInternet que se entrega un alto rendimiento a través de circuitos Expressroute.
 
 ![ruta de dirección URL](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"> </a> Antes de empezar
+## <a name="before-you-begin"></a> Antes de empezar
 
-1. Instale la versión más reciente de los cmdlets de Azure PowerShell mediante el Instalador de plataforma web. Puede descargar e instalar la versión más reciente desde la sección **Windows PowerShell** de la página [Descargas](https://azure.microsoft.com/downloads/).
+1. Instalar versión más reciente de Hola de cmdlets de PowerShell de Azure de hello mediante Hola instalador de plataforma Web. Puede descargar e instalar la versión más reciente de Hola de hello **Windows PowerShell** sección de hello [página de descargas](https://azure.microsoft.com/downloads/).
 2. Cree una red virtual y subredes independientes para API Management y Application Gateway. 
-3. Si desea crear un servidor DNS personalizado para la red virtual, debe hacerlo antes de iniciar la implementación. Vuelva a comprobar que funciona asegurando que la máquina virtual creada en una subred nueva de la red virtual puede resolver y acceder a todos los puntos de conexión de servicio de Azure.
+3. Si tiene previsto toocreate un servidor DNS personalizado para hello red Virtual, debe hacerlo antes de iniciar la implementación de Hola. Vuelve a revisar funciona que garantiza una máquina virtual creada en una subred nueva en hello red Virtual puede resolver y acceder a todos los extremos de servicio de Azure.
 
-## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>¿Qué se necesita para crear una integración entre API Management y Application Gateway?
+## <a name="what-is-required-toocreate-an-integration-between-api-management-and-application-gateway"></a>¿Qué es necesario toocreate una integración entre administración de API y la puerta de enlace de aplicaciones?
 
-* **Grupo de servidores de back-end:** se trata de la dirección IP virtual interna del servicio API Management.
-* **Configuración del grupo de servidores back-end:** cada grupo tiene una configuración en la que se incluye el puerto, el protocolo y la afinidad basada en cookies. Estos valores se aplican a todos los servidores del grupo.
-* **Puerto front-end:** es el puerto público que se abre en la puerta de enlace de aplicaciones. El tráfico que llega se redirige a uno de los servidores back-end.
-* **Agente de escucha** : tiene un puerto front-end, un protocolo (Http o Https, estos valores distinguen mayúsculas de minúsculas) y el nombre del certificado SSL (si se configura la descarga de SSL).
-* **Regla:** la regla enlaza un agente de escucha con un grupo de servidor back-end.
-* **Sondeo de mantenimiento personalizado:** Application Gateway, de forma predeterminada, usa sondeos basados en direcciones IP para determinar cuáles son los servidores de BackendAddressPool que están activos. El servicio API Management responde solo a las solicitudes que tienen el encabezado de host correcto, por lo tanto, los sondeos predeterminados no podrán completarse. Es necesario definir el sondeo de mantenimiento personalizado para ayudar a la puerta de enlace de aplicaciones a determinar que el servicio está activo y debe reenviar las solicitudes.
-* **Certificado de dominio personalizado:** para tener acceso a API Management desde Internet, debe crear una asignación de CNAME del nombre de host en el nombre DNS de front-end de Application Gateway. Esto garantiza que el encabezado de nombre de host y el certificado enviados a Application Gateway que se reenvían a API Management pueden ser reconocidos como válidos por APIM.
+* **Grupo de servidores de back-end:** se trata de dirección IP virtual interna del Hola de hello servicio de administración de API.
+* **Configuración del grupo de servidores back-end:** cada grupo tiene una configuración en la que se incluye el puerto, el protocolo y la afinidad basada en cookies. Estos valores son servidores tooall aplicados en el grupo de Hola.
+* **Puerto front-end:** es Hola puerto público que se abre en la puerta de enlace de aplicaciones de Hola. Tráfico alcanzando obtiene tooone redirigida de hello servidores back-end.
+* **Agente de escucha:** agente de escucha de hello tiene un puerto front-end, un protocolo (Http o Https, estos valores distinguen mayúsculas de minúsculas) y el nombre del certificado SSL hello (si se descarga la configuración de SSL).
+* **Regla:** regla Hola enlaza un grupo de servidor back-end de tooa de agente de escucha.
+* **Sondeo de estado personalizado:** puerta de enlace de la aplicación, de forma predeterminada, usa toofigure de sondeos basados en direcciones IP a qué servidores en hello BackendAddressPool están activas. Hola servicio de administración de API sólo responde toorequests que tienen el encabezado de host correcto de hello, por lo tanto, un error Hola predeterminado sondeos. Un sondeo de estado personalizado necesita toobe definido puerta de enlace de aplicaciones de toohelp determinar que el servicio de Hola esté activo, y deben reenviar las solicitudes.
+* **Certificado de dominio personalizado:** tooaccess administración de API de hello necesita toocreate una asignación de CNAME de su nombre DNS front-end de nombre de host toohello puerta de enlace de aplicaciones de internet. Esto garantiza que, encabezado de nombre de host de Hola y el certificado enviado tooApplication puerta de enlace que se reenvía a tooAPI administración sea una que APIM pueda reconocer como válido.
 
-## <a name="overview-steps"> </a> Pasos necesarios para integrar API Management y Application Gateway 
+## <a name="overview-steps"></a> Pasos necesarios para integrar API Management y Application Gateway 
 
-1. Cree un grupo de recursos para el Administrador de recursos.
-2. Cree una red virtual, una subred y una IP pública para Application Gateway. Cree otra subred para API Management.
-3. Cree un servicio API Management en la subred de la red virtual creada anteriormente y asegúrese de que usa el modo interno.
-4. Configure el nombre de dominio personalizado del servicio API Management.
+1. Cree un grupo de recursos para Resource Manager.
+2. Crear una red Virtual, subred y dirección IP pública para hello Application Gateway. Cree otra subred para API Management.
+3. Crear un servicio de administración de API dentro de la subred de red virtual de hello creado anteriormente y asegúrese de que se utiliza el modo de hello interno.
+4. Configurar nombre de dominio personalizado de Hola Hola servicio de administración de API.
 5. Cree un objeto de configuración de Application Gateway.
 6. Cree un recurso de Application Gateway.
-7. Cree un CNAME del nombre DNS público de Application Gateway en el nombre de host de proxy de API Management.
+7. Crear un CNAME de nombre DNS público de hello del nombre del servidor proxy de administración de API de hello Application Gateway toohello.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Creación de un grupo de recursos para el Administrador de recursos
 
-Asegúrese de que está usando la versión más reciente de Azure PowerShell. Hay más información disponible en [Uso de Windows PowerShell con Resource Manager](../powershell-azure-resource-manager.md).
+Asegúrese de que está utilizando la versión más reciente de Hola de PowerShell de Azure. Hay más información disponible en [Uso de Windows PowerShell con Resource Manager](../powershell-azure-resource-manager.md).
 
 ### <a name="step-1"></a>Paso 1
 
-Inicie sesión en Azure.
+Inicie sesión en tooAzure
 
 ```powershell
 Login-AzureRmAccount
@@ -81,7 +81,7 @@ Autentíquese con sus credenciales.<BR>
 
 ### <a name="step-2"></a>Paso 2
 
-Compruebe las suscripciones para la cuenta y selecciónela.
+Compruebe las suscripciones de hello para la cuenta de hello y selecciónelo.
 
 ```powershell
 Get-AzureRmSubscription -Subscriptionid "GUID of subscription" | Select-AzureRmSubscription
@@ -94,15 +94,15 @@ Cree un grupo de recursos (omita este paso si usa uno existente).
 ```powershell
 New-AzureRmResourceGroup -Name "apim-appGw-RG" -Location "West US"
 ```
-El Administrador de recursos de Azure requiere que todos los grupos de recursos especifiquen una ubicación. Esta se utiliza como ubicación predeterminada para los recursos de ese grupo de recursos. Asegúrese de que todos los comandos para crear una puerta de enlace de aplicaciones usan el mismo grupo de recursos.
+Azure Resource Manager requiere que todos los grupos de recursos especifiquen una ubicación. Esto se utiliza como ubicación predeterminada de Hola para recursos de ese grupo de recursos. Asegúrese de que todos los comandos toocreate un Hola de uso de puerta de enlace de aplicación mismo grupo de recursos.
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Creación de una red virtual y una subred para la puerta de enlace de aplicaciones
+## <a name="create-a-virtual-network-and-a-subnet-for-hello-application-gateway"></a>Crear una red Virtual y una subred de puerta de enlace de aplicación Hola
 
-En el ejemplo siguiente se muestra cómo crear una red virtual con Resource Manager:
+Hola de ejemplo siguiente muestra cómo Hola a toocreate una red Virtual con el Administrador de recursos.
 
 ### <a name="step-1"></a>Paso 1
 
-Asigne el intervalo de direcciones 10.0.0.0/24 a la variable subnet que se va a usar para Application Gateway al crear la red virtual.
+Asignar la subred Hola dirección intervalo 10.0.0.0/24 toohello variable toobe usará para puerta de enlace de aplicaciones mientras se crea una red Virtual.
 
 ```powershell
 $appgatewaysubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim01" -AddressPrefix "10.0.0.0/24"
@@ -110,7 +110,7 @@ $appgatewaysubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim01" -Addres
 
 ### <a name="step-2"></a>Paso 2
 
-Asigne el intervalo de direcciones 10.0.1.0/24 a la variable subnet que se va a usar para API Management al crear la red virtual.
+Asignar la subred Hola dirección intervalo 10.0.1.0/24 toohello variable toobe usará para la administración de API mientras se crea una red Virtual.
 
 ```powershell
 $apimsubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10.0.1.0/24"
@@ -118,7 +118,7 @@ $apimsubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefi
 
 ### <a name="step-3"></a>Paso 3
 
-Cree una red virtual denominada **appgwvnet** en el grupo de recursos **apim-appGw-RG** para la región Oeste de EE. UU. con el prefijo 10.0.0.0/16 y las subredes 10.0.0.0/24 y 10.0.1.0/24.
+Crear una red Virtual denominado **appgwvnet** en grupo de recursos **apim-appGw-RG** para región de oeste de Estados Unidos de hello mediante Hola prefijo 10.0.0.0/16 con subredes 10.0.0.0/24 y 10.0.1.0/24.
 
 ```powershell
 $vnet = New-AzureRmVirtualNetwork -Name "appgwvnet" -ResourceGroupName "apim-appGw-RG" -Location "West US" -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
@@ -126,7 +126,7 @@ $vnet = New-AzureRmVirtualNetwork -Name "appgwvnet" -ResourceGroupName "apim-app
 
 ### <a name="step-4"></a>Paso 4
 
-Asigne una variable de subred para los pasos siguientes.
+Asignar una variable de subred para los pasos siguientes Hola
 
 ```powershell
 $appgatewaysubnetdata=$vnet.Subnets[0]
@@ -134,56 +134,56 @@ $apimsubnetdata=$vnet.Subnets[1]
 ```
 ## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Cree un servicio de API Management dentro de una red virtual configurada en modo interno.
 
-En el ejemplo siguiente se muestra cómo crear un servicio de API Management en una red virtual configurada únicamente para el acceso interno.
+Hello en el ejemplo siguiente se muestra cómo toocreate un servicio de administración de API en una red virtual configurado para el acceso interno solo.
 
 ### <a name="step-1"></a>Paso 1
-Cree un objeto de red virtual de API Management con la subred $apimsubnetdata creada anteriormente.
+Cree un objeto de red Virtual de administración de API con la subred de hello $apimsubnetdata creado anteriormente.
 
 ```powershell
 $apimVirtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "West US" -SubnetResourceId $apimsubnetdata.Id
 ```
 ### <a name="step-2"></a>Paso 2
-Cree un servicio de API Management dentro de la red virtual.
+Crear un servicio de administración de API dentro de hello red Virtual.
 
 ```powershell
 $apimService = New-AzureRmApiManagement -ResourceGroupName "apim-appGw-RG" -Location "West US" -Name "ContosoApi" -Organization "Contoso" -AdminEmail "admin@contoso.com" -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
-Cuando el comando anterior se complete con éxito, consulte [la configuración de DNS necesaria para tener acceso al servicio de API Management en una red virtual interna](api-management-using-with-internal-vnet.md#apim-dns-configuration) para tener acceso a él.
+Después de hello por encima del comando se ejecuta correctamente, consulte demasiado[tooaccess servicio de administración de API de red virtual interna requiere una configuración de DNS](api-management-using-with-internal-vnet.md#apim-dns-configuration) tooaccess lo.
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Configuración de un nombre de dominio personalizado en API Management
 
 ### <a name="step-1"></a>Paso 1
-Cargue el certificado con clave privada para el dominio. En este ejemplo es `*.contoso.net`. 
+Cargar Hola certificado con clave privada para el dominio de Hola. En este ejemplo es `*.contoso.net`. 
 
 ```powershell
-$certUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName "apim-appGw-RG" -Name "ContosoApi" -HostnameType "Proxy" -PfxPath <full path to .pfx file> -PfxPassword <password for certificate file> -PassThru
+$certUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName "apim-appGw-RG" -Name "ContosoApi" -HostnameType "Proxy" -PfxPath <full path too.pfx file> -PfxPassword <password for certificate file> -PassThru
 ```
 
 ### <a name="step-2"></a>Paso 2
-Una vez cargado el certificado, cree un objeto de configuración de nombre de host para el proxy con el nombre de host de `api.contoso.net`, ya que el certificado de ejemplo proporciona la autoridad para el dominio `*.contoso.net`. 
+Una vez cargado el certificado de hello, crear un objeto de configuración de nombre de host para el proxy de hello con un nombre de host de `api.contoso.net`, tal y como certificado de ejemplo de Hola proporciona autoridad para hello `*.contoso.net` dominio. 
 
 ```powershell
 $proxyHostnameConfig = New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint $certUploadResult.Thumbprint -Hostname "api.contoso.net"
 $result = Set-AzureRmApiManagementHostnames -Name "ContosoApi" -ResourceGroupName "apim-appGw-RG" -ProxyHostnameConfiguration $proxyHostnameConfig
 ```
 
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Creación de una dirección IP pública para la configuración del front-end
+## <a name="create-a-public-ip-address-for-hello-front-end-configuration"></a>Crear una dirección IP pública para la configuración de front-end de Hola
 
-Cree un recurso IP público **publicIP01** en el grupo de recursos **apim-appGw-RG** para la región Oeste de EE. UU.
+Crear un recurso IP público **publicIP01** en grupo de recursos **apim-appGw-RG** de región del oeste de Estados Unidos de Hola.
 
 ```powershell
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -name "publicIP01" -location "West US" -AllocationMethod Dynamic
 ```
 
-Se asigna una dirección IP a la puerta de enlace de aplicaciones cuando se inicia el servicio.
+Una dirección IP se asigna la puerta de enlace de toohello aplicación cuando se inicia el servicio de Hola.
 
 ## <a name="create-application-gateway-configuration"></a>Creación de una configuración de puerta de enlace de aplicaciones
 
-Se deben haber definido todos los elementos de configuración antes de crear la puerta de enlace de aplicaciones. En los pasos siguientes, se crean los elementos de configuración necesarios para un recurso de puerta de enlace de aplicaciones.
+Todos los elementos de configuración deben estar configurados antes de crear la puerta de enlace de aplicaciones de Hola. Hello pasos siguientes crean Hola elementos de configuración que son necesarios para un recurso de puerta de enlace de la aplicación.
 
 ### <a name="step-1"></a>Paso 1
 
-Cree una configuración de IP de puerta de enlace de aplicaciones denominada **gatewayIP01**. Cuando se inicia Application Gateway, elige una dirección IP de la subred configurada y redirige el tráfico de red a las direcciones IP en el grupo IP de back-end. Tenga en cuenta que cada instancia toma una dirección IP.
+Cree una configuración de IP de puerta de enlace de aplicaciones denominada **gatewayIP01**. Cuando se inicia la puerta de enlace de aplicaciones, toma una dirección IP de subred Hola configurado y enrutar las direcciones IP de toohello de tráfico de red en el grupo de direcciones IP de back-end de Hola. Tenga en cuenta que cada instancia toma una dirección IP.
 
 ```powershell
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
@@ -191,14 +191,14 @@ $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name "gatewayIP01" -S
 
 ### <a name="step-2"></a>Paso 2
 
-Configure el puerto IP de front-end para el punto de conexión de IP pública. Este puerto es el puerto al que se conectan los usuarios finales.
+Configurar puerto IP front-end de hello para el punto de conexión IP pública Hola. Este puerto es Hola que se conectan a los usuarios finales a.
 
 ```powershell
 $fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "port01"  -Port 443
 ```
 ### <a name="step-3"></a>Paso 3
 
-Configuración de la dirección IP de front-end con el punto de conexión de IP pública
+Configurar IP de front-end de hello con punto de conexión IP pública.
 
 ```powershell
 $fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -PublicIPAddress $publicip
@@ -206,15 +206,15 @@ $fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -
 
 ### <a name="step-4"></a>Paso 4
 
-Configure el certificado para Application Gateway, usado para descifrar y volver a cifrar el tráfico que pasa por ella.
+Configurar certificado Hola de puerta de enlace de aplicaciones, hello usa toodecrypt y volver a cifrar el tráfico de hello pasan a través.
 
 ```powershell
-$cert = New-AzureRmApplicationGatewaySslCertificate -Name "cert01" -CertificateFile <full path to .pfx file> -Password <password for certificate file>
+$cert = New-AzureRmApplicationGatewaySslCertificate -Name "cert01" -CertificateFile <full path too.pfx file> -Password <password for certificate file>
 ```
 
 ### <a name="step-5"></a>Paso 5
 
-Cree el agente de escucha HTTP para Application Gateway. Asigne la configuración IP de front-end, el puerto y el certificado SSL que se usarán.
+Crear Agente de escucha HTTP de Hola para hello Application Gateway. Asignar configuración de IP de front-end de hello, puerto y tooit del certificado ssl.
 
 ```powershell
 $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert
@@ -222,10 +222,10 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protoc
 
 ### <a name="step-6"></a>Paso 6
 
-Cree un sondeo personalizado para el punto de conexión de dominio del proxy `ContosoApi` del servicio de API Management. La ruta de acceso `/status-0123456789abcdef` es un punto de conexión de mantenimiento predeterminado hospedado en todos los servicios de API Management. Establezca `api.contoso.net` como un nombre de host de sondeo personalizado para protegerlo con el certificado SSL.
+Crear un servicio de administración de API de sondeo personalizado toohello `ContosoApi` extremo proxy de dominio. ruta de acceso de Hello `/status-0123456789abcdef` es un extremo de estado predeterminado hospedado en todos los servicios de administración de API de Hola. Establecer `api.contoso.net` como un toosecure de nombre de host de sondeo personalizado con el certificado SSL.
 
 > [!NOTE]
-> El nombre de host `contosoapi.azure-api.net` es el nombre de host de proxy predeterminado configurado cuando se crea un servicio denominado `contosoapi` en el ámbito público de Azure. 
+> Hola hostname `contosoapi.azure-api.net` es el nombre de host de hello predeterminado proxy configurado cuando un servicio denominado `contosoapi` se crea en Azure pública. 
 > 
 
 ```powershell
@@ -234,15 +234,15 @@ $apimprobe = New-AzureRmApplicationGatewayProbeConfig -Name "apimproxyprobe" -Pr
 
 ### <a name="step-7"></a>Paso 7
 
-Cargue el certificado que se usará en los recursos del grupo de back-end habilitado para SSL. Este es el mismo certificado que ha proporcionado en el paso 4 anterior.
+Cargar certificado de hello toobe usado en los recursos de grupo habilitado para SSL de back-end de Hola. Se trata de hello mismo certificado que proporciona en el paso 4 anterior.
 
 ```powershell
-$authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile <full path to .cer file>
+$authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile <full path too.cer file>
 ```
 
 ### <a name="step-8"></a>Paso 8
 
-Configure las opciones de back-end HTTP para Application Gateway. Esto incluye el establecimiento de un límite de tiempo de espera para la solicitud de back-end después del cual se cancela. Este valor es distinto del tiempo de espera del sondeo.
+La configuración de back-end HTTP de hello Application Gateway. Esto incluye el establecimiento de un límite de tiempo de espera para la solicitud de back-end después del cual se cancela. Este valor es diferente de tiempo de espera de sondeo de Hola.
 
 ```powershell
 $apimPoolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "apimPoolSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimprobe -AuthenticationCertificates $authcert -RequestTimeout 180
@@ -250,7 +250,7 @@ $apimPoolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "apimP
 
 ### <a name="step-9"></a>Paso 9:
 
-Configure el grupo de direcciones IP de back-end denominado **apimbackend** con dirección IP virtual interna para el servicio de API Management creado anteriormente.
+Configurar un grupo de direcciones IP de back-end denominado **apimbackend** con dirección IP virtual interna Hola dirección del servicio de administración de API de Hola creada anteriormente.
 
 ```powershell
 $apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.StaticIPs[0]
@@ -258,21 +258,21 @@ $apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "a
 
 ### <a name="step-10"></a>Paso 10
 
-Cree una configuración para un back-end ficticio (inexistente). Las solicitudes a las rutas de acceso de API que no se desean exponer desde API Management a través de Application Gateway llegarán a este back-end y se devolverá un error 404.
+Cree una configuración para un back-end ficticio (inexistente). Rutas de acceso de solicitudes tooAPI que deseamos tooexpose de la API de administración a través de puerta de enlace de aplicaciones se alcanza este back-end y se devolverá 404.
 
-Defina la configuración HTTP para el back-end ficticio.
+Configurar opciones de HTTP de back-end ficticio de Hola.
 
 ```powershell
 $dummyBackendSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "dummySetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-Configure un back-end ficticio **dummyBackendPool**, que señale a una dirección FQDN **dummybackend.com**. Esta dirección FQDN no existe en la red virtual.
+Configurar un back-end ficticio **dummyBackendPool**, que señala la dirección de FQDN tooa **dummybackend.com**. Esta dirección FQDN no existe en la red virtual de Hola.
 
 ```powershell
 $dummyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "dummyBackendPool" -BackendFqdns "dummybackend.com"
 ```
 
-Cree una configuración de regla que Application Gateway utilice de forma predeterminada y que señale al back-end inexistente **dummybackend.com** en la red virtual.
+Crear una regla de configuración que Hola puerta de enlace de aplicación utilizará de forma predeterminada que señala el back-end de toohello inexistente **dummybackend.com** Hola red Virtual.
 
 ```powershell
 $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistentapis" -Paths "/*" -BackendAddressPool $dummyBackendPool -BackendHttpSettings $dummyBackendSetting
@@ -280,25 +280,25 @@ $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistenta
 
 ### <a name="step-11"></a>Paso 11
 
-Configuración de rutas de acceso de reglas de URL para los grupos de back-end Esto permite seleccionar solo algunas de las API en API Management para que se expongan al público. Por ejemplo, en el caso de encontrar `Echo API` (/echo/), `Calculator API` (/calc/), etc., haga que solo `Echo API` resulte accesible desde Internet. 
+Configurar rutas de acceso de regla de dirección URL para grupos de back-end de Hola. Esto permite seleccionar solo algunas de hello las API de administración de API para que se va a exponen toohello público. Por ejemplo, en el caso de encontrar `Echo API` (/echo/), `Calculator API` (/calc/), etc., haga que solo `Echo API` resulte accesible desde Internet. 
 
-En el ejemplo siguiente se crea una regla sencilla para la ruta de acceso "/echo/" que enruta el tráfico al back-end "apimProxyBackendPool".
+Hello en el ejemplo siguiente se crea una regla sencilla para hello "/ eco /" ruta de acceso enrutamiento tráfico toohello back-end "apimProxyBackendPool".
 
 ```powershell
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
 ```
 
-Si la ruta de acceso no coincide con las reglas de ruta de acceso que se desean habilitar desde API Management, la configuración de asignación de ruta de acceso de regla también configura un grupo de direcciones de back-end predeterminado llamado **dummyBackendPool**. Por ejemplo, http://api.contoso.net/calc/* dirige a **dummyBackendPool**, ya que es el grupo predeterminado para el tráfico no coincidente.
+Si no coincide con la ruta de acceso de Hola queremos tooenable de la administración de API, configuración de mapa de ruta de acceso también configura un grupo de direcciones de back-end de manera predeterminada con el nombre de regla de Hola de reglas de ruta de acceso de hello **dummyBackendPool**. Por ejemplo, http://api.contoso.net/calc/ * va demasiado**dummyBackendPool** tal y como se define como grupo predeterminado de hello para el tráfico no coincidente.
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting
 ```
 
-El paso anterior garantiza que solo se permiten las solicitudes para la ruta de acceso "/echo" a través de Application Gateway. Las solicitudes a otras API configuradas en API Management generarán errores 404 desde Application Gateway cuando se tiene acceso a ellas desde Internet. 
+Hola encima paso garantiza que sólo las solicitudes de ruta de acceso de Hola "/ echo" se permiten a través de hello Application Gateway. Tooother solicitudes que API configuradas en administración de API producirá 404 errores de puerta de enlace de aplicaciones cuando se tiene acceso desde Internet Hola. 
 
 ### <a name="step-12"></a>Paso 12
 
-Cree una configuración de regla para que Application Gateway use el enrutamiento basado en la ruta de acceso de la dirección URL.
+Cree una configuración de regla para hello Application Gateway toouse basado en ruta enrutamiento de direcciones URL.
 
 ```powershell
 $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
@@ -306,7 +306,7 @@ $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleTyp
 
 ### <a name="step-13"></a>Paso 13
 
-Configure el número de instancias y el tamaño de Application Gateway. Aquí usamos [WAFS SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) para aumentar la seguridad de los recursos de API Management.
+Configurar el número de Hola de instancias y el tamaño de hello Application Gateway. Aquí usamos hello [WAFS SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) para aumentar la seguridad del programa Hola a recursos de administración de API.
 
 ```powershell
 $sku = New-AzureRmApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -314,37 +314,37 @@ $sku = New-AzureRmApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity
 
 ### <a name="step-14"></a>Paso 14
 
-Configuración de WAFS para que esté en modo "Prevención".
+Configurar WAFS toobe en modo de "Prevención".
 ```powershell
 $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-## <a name="create-application-gateway"></a>Creación de la puerta de enlace de aplicaciones
+## <a name="create-application-gateway"></a>Creación de una puerta de enlace de aplicaciones
 
-Cree una instancia de Application Gateway con todos los objetos de configuración de los pasos anteriores.
+Crear una puerta de enlace de la aplicación con todos los objetos de configuración de Hola de hello pasos anteriores.
 
 ```powershell
 $appgw = New-AzureRmApplicationGateway -Name $applicationGatewayName -ResourceGroupName $resourceGroupName  -Location $location -BackendAddressPools $apimProxyBackendPool, $dummyBackendPool -BackendHttpSettingsCollection $apimPoolSetting, $dummyBackendSetting  -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert -AuthenticationCertificates $authcert -Probes $apimprobe
 ```
 
-## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>Aplicación de un CNAME al nombre de host del proxy de API Management para el nombre DNS público del recurso de Application Gateway
+## <a name="cname-hello-api-management-proxy-hostname-toohello-public-dns-name-of-hello-application-gateway-resource"></a>CNAME Hola administración de API proxy hostname toohello nombre DNS público del programa Hola a recursos de la puerta de enlace de aplicaciones
 
-Una vez creada la puerta de enlace, el siguiente paso es configurar el front-end para la comunicación. Cuando se utiliza una dirección IP pública, Application Gateway requiere un nombre DNS asignado dinámicamente, que puede no ser fácil de usar. 
+Una vez creada la puerta de enlace de hello, Hola siguiente paso es front-end de Hola de tooconfigure para la comunicación. Cuando se usa una IP pública, puerta de enlace de aplicación requiere un nombre DNS asignado dinámicamente, que no puede ser fácil toouse. 
 
-El nombre DNS de Application Gateway se debe utilizar para crear un registro CNAME, que apunta el nombre de host del proxy (por ejemplo, `api.contoso.net` en los ejemplos anteriores) a este nombre de DNS. Para configurar el registro IP CNAME de front-end, recupere los detalles de Application Gateway y su nombre DNS o IP asociados mediante el elemento PublicIPAddress. No se recomienda el uso de registros A, ya que la VIP puede cambiar al reiniciarse la puerta de enlace.
+Hello nombre DNS de la puerta de enlace de aplicaciones debe ser toocreate usa un registro CNAME que señala el nombre de host de hello APIM proxy (por ejemplo, `api.contoso.net` en los ejemplos de hello anteriores) toothis nombre DNS. front-end de tooconfigure Hola un registro CNAME de IP, recuperar detalles de Hola de Hola puerta de enlace de aplicación y su nombre IP/DNS asociado usando el elemento de hello PublicIPAddress. no se recomienda el uso de Hola de registros de un puesto que puede cambiar Hola VIP en el reinicio de puerta de enlace.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -Name "publicIP01"
 ```
 
-##<a name="summary"> </a>Resumen
-El servicio Azure API Management configurado en una red virtual proporciona una interfaz de puerta de enlace única para todas las API configuradas, independientemente de si están hospedadas en local o en la nube. La integración de Application Gateway con API Management proporciona la flexibilidad de habilitar de manera selectiva API determinadas para que estén accesibles en Internet, así como la provisión de un firewall de aplicación web como front-end para la instancia de API Management.
+##<a name="summary"></a>Resumen
+Administración de API de Azure configurado en una red virtual proporciona una interfaz de puerta de enlace único para todas las API configuradas, independientemente de si están hospedados en local o en la nube de Hola. Integración de puerta de enlace de aplicaciones con la API de administración proporciona la flexibilidad de Hola de habilitación selectiva determinado toobe API accesible en Internet de hello, así como proporcionar un servidor de aplicaciones Web como una instancia de administración de API de tooyour de front-end.
 
-##<a name="next-steps"> </a> Pasos siguientes
+##<a name="next-steps"></a> Pasos siguientes
 * Obtenga más información sobre Azure Application Gateway.
   * [Introducción a Puerta de enlace de aplicaciones](../application-gateway/application-gateway-introduction.md)
   * [Firewall de aplicaciones web de Application Gateway](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
   * [Application Gateway mediante enrutamiento basado en rutas de acceso](../application-gateway/application-gateway-create-url-route-arm-ps.md)
 * Más información acerca de API Management y redes virtuales
-  * [El uso de API Management solo está disponible en la red virtual](api-management-using-with-internal-vnet.md)
+  * [Utilizando la API de administración disponibles solo en hello red virtual](api-management-using-with-internal-vnet.md)
   * [Usar Azure API Management con redes virtuales](api-management-using-with-vnet.md)

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Salesforce | Microsoft Docs"
-description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Salesforce."
+description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Salesforce."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,96 +13,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: a573a7ef79e28c50ae0923849a88f88af40f21be
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a916be8dbf0b4c6173cda873936a53cd1f3ff12b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-configuring-salesforce-for-automatic-user-provisioning"></a>Tutorial: Configuración de Salesforce para aprovisionar a los usuarios automáticamente
 
-El objetivo de este tutorial es mostrar los pasos que debe realizar en Salesforce y Azure AD para aprovisionar y cancelar automáticamente el aprovisionamiento de cuentas de usuario de Azure AD para Salesforce.
+objetivo de Hola de este tutorial es tooshow Hola pasos necesarios tooperform en Salesforce y Azure AD tooautomatically aprovisionar y eliminación de aprovisionar cuentas de usuario de Azure AD tooSalesforce.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
+escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
 
 *   Un inquilino de Azure Active Directory.
 *   Debe tener un inquilino válido para Salesforce for Work o Salesforce for Education. Puede usar una cuenta de prueba gratuita de cualquiera de los servicios.
 *   Una cuenta de usuario de Salesforce con permisos de administrador de equipo
 
-## <a name="assigning-users-to-salesforce"></a>Asignación de usuarios a Salesforce
+## <a name="assigning-users-toosalesforce"></a>Asignar usuarios tooSalesforce
 
-Azure Active Directory usa un concepto que se denomina "asignaciones" para determinar qué usuarios deben recibir acceso a determinadas aplicaciones. En el contexto del aprovisionamiento automático de cuentas de usuario, solo se sincronizarán los usuarios y grupos que se han "asignado" a una aplicación de Azure AD.
+Azure Active Directory utiliza un concepto que se denomina toodetermine "asignaciones" que los usuarios deben recibir acceso tooselected aplicaciones. En el contexto de Hola de aprovisionamiento de cuentas de usuario automática, se sincroniza solo los usuarios de Hola y grupos que se han "asignados" tooan aplicación en Azure AD.
 
-Antes de configurar y habilitar el servicio de aprovisionamiento, debe decidir qué usuarios o grupos de Azure AD representan a los usuarios que necesitan acceso a la aplicación Salesforce. Una vez decidido, puede asignar estos usuarios a la aplicación Salesforce siguiendo estas instrucciones:
+Antes de configurar y habilitar el aprovisionamiento del servicio de hello, necesita toodecide qué usuarios o grupos de usuarios de Azure AD representan Hola que necesitan tener acceso a la aplicación de Salesforce tooyour. Una vez decidido, puede asignar estos usuarios de la aplicación de Salesforce tooyour siguiendo las instrucciones de hello aquí:
 
-[Asignar un usuario o grupo a una aplicación empresarial](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Asignar un usuario o grupo tooan su aplicación empresarial](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-salesforce"></a>Sugerencias importantes para asignar usuarios a Salesforce
+### <a name="important-tips-for-assigning-users-toosalesforce"></a>Sugerencias importantes para asignar usuarios tooSalesforce
 
-*   Se recomienda asignar un único usuario de Azure AD a Salesforce para probar la configuración de aprovisionamiento. Más tarde, se pueden asignar otros usuarios o grupos.
+*   Se recomienda que un único usuario de Azure AD se asigna tooSalesforce tootest Hola aprovisionamiento de configuración. Más tarde, se pueden asignar otros usuarios o grupos.
 
-*  Al asignar a un usuario a Salesforce, debe seleccionar un rol de usuario válido. El rol "Acceso predeterminado" no funciona con el aprovisionamiento.
+*  Al asignar una tooSalesforce de usuario, debe seleccionar un rol de usuario válido. rol de "Acceso predeterminado" Hello no funciona para el aprovisionamiento
 
     > [!NOTE]
-    > Esta aplicación importa roles personalizados desde Salesforce como parte del proceso de aprovisionamiento, que el cliente puede seleccionar al asignar usuarios.
+    > Esta aplicación importa roles personalizados de Salesforce como parte del proceso, el cliente que Hola puede tooselect al asignar a los usuarios de aprovisionamiento de Hola
 
 ## <a name="enable-automated-user-provisioning"></a>Habilitación del aprovisionamiento automático de usuarios
 
-Esta sección le guía por los pasos necesarios para conectar la API de aprovisionamiento de cuentas de usuario de Salesforce, así como para configurar el servicio de aprovisionamiento con el fin de crear, actualizar y deshabilitar cuentas de usuario asignadas de Salesforce en función de la asignación de grupos y usuarios en Azure AD.
+Esta sección le guía a través de conexión de API de aprovisionamiento de cuentas de usuario de su tooSalesforce de Azure AD y configurar hello toocreate de servicio de aprovisionamiento, actualizar y deshabilitar cuentas de usuario asignado en Salesforce en función de asignación de usuario y de grupo en Azure AD .
 
 >[!Tip]
->También puede decidir habilitar el inicio de sesión único basado en SAML para Salesforce siguiendo las instrucciones de [Azure Portal](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
+>También puede elegir tooenabled basado en SAML Single Sign-On para Salesforce, siguiendo las instrucciones de hello proporcionadas en [portal de Azure](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Para configurar el aprovisionamiento automático de cuentas de usuario, siga estos pasos:
+### <a name="tooconfigure-automatic-user-account-provisioning"></a>tooconfigure aprovisionamiento de cuentas de usuario automática:
 
-El objetivo de esta sección es describir cómo habilitar el aprovisionamiento de cuentas de usuario de Active Directory para Salesforce.
+objetivo de Hola de esta sección es toooutline cómo tooenable el aprovisionamiento de usuarios de usuario de Active Directory cuentas tooSalesforce.
 
-1. En [Azure Portal](https://portal.azure.com), vaya a la sección **Azure Active Directory > Aplicaciones empresariales > Todas las aplicaciones**.
+1. Hola [portal de Azure](https://portal.azure.com), examinar toohello **Azure Active Directory > aplicaciones empresariales > todas las aplicaciones** sección.
 
-2. Si ya ha configurado Salesforce para el inicio de sesión único, busque la instancia de Salesforce mediante el campo de búsqueda. En caso contrario, seleccione **Agregar** y busque **Salesforce** en la galería de aplicaciones. Seleccione Salesforce en los resultados de búsqueda y agréguelo a la lista de aplicaciones.
+2. Si ya has configurado Salesforce para inicio de sesión único, busque la instancia de Salesforce con el campo de búsqueda de Hola. En caso contrario, seleccione **agregar** y busque **Salesforce** en Galería de aplicaciones de Hola. Seleccione Salesforce en resultados de búsqueda de Hola y agregarlo a tooyour lista de aplicaciones.
 
-3. Seleccione la instancia de Salesforce y, después, seleccione la pestaña **Aprovisionamiento**.
+3. Seleccione la instancia de Salesforce, a continuación, seleccione hello **Provisioning** ficha.
 
-4. Establezca el **modo de aprovisionamiento** en **Automático**. 
+4. Conjunto hello **modo de aprovisionamiento** demasiado**automática**. 
 ![Aprovisionamiento](./media/active-directory-saas-salesforce-provisioning-tutorial/provisioning.png)
 
-5. En la sección **Credenciales de administrador**, proporcione los siguientes valores de configuración:
+5. En hello **las credenciales de administrador** sección, proporcione Hola siguientes opciones de configuración:
    
-    a. Como **nombre de usuario del administrador**, escriba un nombre de cuenta de espacio de Salesforce que tenga asignado el perfil **Administrador del sistema** en Salesforce.com.
+    a. Hola **nombre de usuario administrador** cuadro de texto, tipo de una división de ventas de nombre de cuenta que ha Hola **administrador del sistema** perfil asignado en Salesforce.com.
    
-    b. En el cuadro de texto **Contraseña de administrador**, escriba la contraseña de esta cuenta.
+    b. Hola **contraseña de administrador** cuadro de texto, escriba la contraseña de Hola para esta cuenta.
 
-6. Para obtener el token de seguridad de Salesforce, abra una nueva pestaña e inicie sesión en la misma cuenta de administrador de Salesforce. En la esquina superior derecha de la página, haga clic en su nombre y, a continuación, haga clic en **Mi configuración**.
+6. tooget su token de seguridad de Salesforce, abra una nueva pestaña e inicie sesión en hello misma cuenta de administrador de Salesforce. En hello esquina superior derecha de la página de hello, haga clic en su nombre y, a continuación, haga clic en **My Settings**.
 
      ![Habilitar el aprovisionamiento automático de usuarios](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-my-settings.png "Habilitar aprovisionamiento automático de usuarios")
-7. En el panel de navegación izquierdo, haga clic en **Personal** para expandir la sección relacionada y haga clic en **Reset My Security Token** (Restablecer mi token de seguridad).
+7. En el panel de navegación izquierdo de hello, haga clic en **Personal** tooexpand Hola sección relacionada y, a continuación, haga clic en **restablecer mi Token de seguridad**.
   
     ![Habilitar el aprovisionamiento automático de usuarios](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-personal-reset.png "Habilitar aprovisionamiento automático de usuarios")
-8. En la página **Reset My Security Token** (Restablecer mi token de seguridad), haga clic en el botón **Reset Security Token** (Restablecer token de seguridad).
+8. En hello **restablecer mi Token de seguridad** página, haga clic en **restablecer Token de seguridad** botón.
 
     ![Habilitar el aprovisionamiento automático de usuarios](./media/active-directory-saas-salesforce-provisioning-tutorial/sf-reset-token.png "Habilitar aprovisionamiento automático de usuarios")
-9. Compruebe la bandeja de entrada de correo electrónico asociada a esta cuenta de administrador. Busque un correo electrónico de Salesforce.com que contenga el nuevo token de seguridad.
-10. Copie el token, vaya a la ventana de Azure AD y péguelo en el campo **Socket Token** (Token de socket).
+9. Compruebe la Bandeja de entrada de correo electrónico de hello asociado con esta cuenta de administrador. Busque un correo electrónico de Salesforce.com que contiene el token de seguridad nuevo Hola.
+10. Copiar Hola token, vaya tooyour ventana de Azure AD y pegarlos en hello **Socket Token** campo.
 
-11. En Azure Portal, haga clic en **Probar conexión** para asegurarse de que Azure AD puede conectarse a la aplicación Salesforce.
+11. Hola portal de Azure, haga clic en **Probar conexión** tooensure Azure AD puede conectarse a la aplicación de Salesforce tooyour.
 
-12. Escriba la dirección de correo electrónico de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en el campo **Correo electrónico de notificación** y active la casilla que aparece a continuación.
+12. Hola **correo electrónico de notificación** , escriba la dirección de correo electrónico de Hola de una persona o grupo que debe recibir notificaciones de error de aprovisionamiento y comprobar Hola casilla incluida a continuación.
 
 13. Haga clic en **Guardar**.  
     
-14.  En la sección Asignaciones, seleccione **Synchronize Azure Active Directory Users to** (Sincronizar usuarios de Azure Active Directory con Salesforce).
+14.  En la sección asignaciones de hello, seleccione **tooSalesforce sincronizar Azure usuarios de Active Directory.**
 
-15. En la sección **Attribute Mappings** (Asignaciones de atributos), revise los atributos de usuario que se sincronizarán entre Azure AD y Salesforce. Tenga en cuenta que los atributos seleccionados como propiedades de **Coincidencia** se usarán para buscar coincidencias con las cuentas de usuario de Salesforce con el objetivo de realizar operaciones de actualización. Seleccione el botón Guardar para confirmar los cambios.
+15. Hola **asignaciones de atributos** sección, revise los atributos de usuario de Hola que se sincronizan desde tooSalesforce de Azure AD. Tenga en cuenta que Hola atributos seleccionados como **coincidencia** propiedades son cuentas de usuario del hello toomatch usado en Salesforce para las operaciones de actualización. Seleccione toocommit de botón de hello guardar los cambios.
 
-16. Para habilitar el servicio de aprovisionamiento de Azure AD para Salesforce, cambie el **estado de aprovisionamiento** a **Activado** en la sección Configuración.
+16. tooenable Hola servicio de aprovisionamiento de Azure AD para Salesforce, cambio hello **estado de aprovisionamiento** demasiado**en** en hello sección de configuración
 
 17. Haga clic en **Guardar**.
 
-Esta acción inicia la sincronización inicial de todos los usuarios y grupos asignados a Salesforce en la sección Usuarios y grupos. Tenga en cuenta que la sincronización inicial tardará más tiempo en realizarse que las posteriores, que se producen aproximadamente cada 20 minutos si se está ejecutando el servicio. Puede usar la sección **Detalles de sincronización** para supervisar el progreso y seguir los vínculos a los informes de actividad de aprovisionamiento, donde se describen todas las acciones que ha llevado a cabo el servicio de aprovisionamiento en la aplicación de Salesforce.
+Esto inicia la sincronización inicial de Hola de todos los usuarios y grupos asignados tooSalesforce Hola a los usuarios y la sección de grupos. Tenga en cuenta que la sincronización inicial Hola toma tooperform más que las sincronizaciones posteriores, que se producen aproximadamente cada 20 minutos mientras se ejecuta el servicio de Hola. Puede usar hello **detalles de sincronización** sección toomonitor progreso y siga los informes de actividad del tooprovisioning vínculos, que describen todas las acciones realizadas por hello aprovisionamiento del servicio en la aplicación de Salesforce.
 
-Ahora puede crear una cuenta de prueba. Espere 20 minutos para comprobar que la cuenta se ha sincronizado con Salesforce.
+Ahora puede crear una cuenta de prueba. Espere a que los minutos de too20 tooverify que cuenta Hola se ha había sincronizado tooSalesforce.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

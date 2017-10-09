@@ -1,6 +1,6 @@
 ---
-title: "Metadatos de federación de Azure AD | Microsoft Docs"
-description: "En este artículo se describe el documento de metadatos de federación que Azure Active Directory publica para los servicios que aceptan tokens de este directorio."
+title: "aaaAzure AD metadatos de federación | Documentos de Microsoft"
+description: "Este artículo describe el documento de metadatos de federación de hello Azure Active Directory publica para los servicios que aceptan tokens de Azure Active Directory."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,41 +15,41 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ecafb02a6ac13d1c3cd1fe77ef710cd8525e32b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 23535bcd5eeb3e9b2e17d89a9b0420fc98bd3895
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="federation-metadata"></a>Metadatos de federación
-Azure Active Directory (Azure AD) publica un documento de metadatos de federación para los servicios que están configurados para aceptar los tokens de seguridad que emite Azure AD. El formato del documento de metadatos de federación se describe en la [versión 1.2 del lenguaje de federación de servicios web (WS-Federation)](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), que amplía los [metadatos del lenguaje de marcado de aserción de seguridad (SAML) de la versión 2.0 de OASIS](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+Azure Active Directory (Azure AD) publica un documento de metadatos de federación para servicios que es configuran tokens de seguridad de hello tooaccept que emite Azure AD. formato de documento de metadatos de federación Hello se describe una Hola [lenguaje de federación de servicios Web (WS-Federation) versión 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), que extiende [metadatos de lenguaje de marcado de aserción de seguridad (SAML) de OASIS Hola V2.0](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 
 ## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>Puntos de conexión de metadatos específicos e independientes del inquilino
 Azure AD publica los extremos específicos del inquilino e independientes del inquilino.
 
-Los extremos específicos del inquilino están diseñados para un inquilino determinado. Los metadatos de federación específicos del inquilino incluyen información sobre el inquilino, incluida la información sobre el emisor y el extremo específica del inquilino. Las aplicaciones que restringen el acceso a un solo inquilino utilizan extremos específicos del inquilino.
+Los extremos específicos del inquilino están diseñados para un inquilino determinado. metadatos de federación específicos del inquilino de Hello incluyen información sobre el inquilino de hello, incluyendo emisor específico del inquilino y la información de punto de conexión. Las aplicaciones que restringen el inquilino único de acceso tooa utilizar extremos específicos del inquilino.
 
-Los extremos independientes del inquilino proporcionan información que es común a todos los inquilinos de Azure AD. Esta información se aplica a los inquilinos hospedados en *login.windows.net* y se comparte entre ellos. Los extremos independientes del inquilino se recomiendan para aplicaciones de varios inquilinos, ya que no están asociados a ningún inquilino en particular.
+Extremos independientes del inquilino proporcionan información que es común inquilinos de Azure AD tooall. Esta información aplica tootenants hospedado en *login.microsoftonline.com* y se comparte entre los inquilinos. Los extremos independientes del inquilino se recomiendan para aplicaciones de varios inquilinos, ya que no están asociados a ningún inquilino en particular.
 
 ## <a name="federation-metadata-endpoints"></a>Puntos de conexión de metadatos de federación
 Azure AD publica los metadatos de federación en `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.
 
-En el caso de los **puntos de conexión específicos del inquilino**, el `TenantDomainName` puede ser uno de los siguientes tipos:
+Para **extremos específicos del inquilino**, hello `TenantDomainName` puede ser uno de los siguientes tipos de hello:
 
 * Un nombre de dominio registrado de un inquilino de Azure AD, como `contoso.onmicrosoft.com`.
-* El identificador de inquilino inmutable, como `72f988bf-86f1-41af-91ab-2d7cd011db45`.
+* Hola inmutable inquilino Id. del dominio de hello, como `72f988bf-86f1-41af-91ab-2d7cd011db45`.
 
-En el caso de los **puntos de conexión independientes del inquilino**, `TenantDomainName` es `common`. En este documento se indica que los elementos de metadatos de federación que son comunes a todos los inquilinos de Azure AD son los únicos que se hospedan en login.microsoftonline.com.
+Para **extremos independientes del inquilino**, hello `TenantDomainName` es `common`. Este documento enumera únicamente elementos de metadatos de federación de Hola que son inquilinos de Azure AD tooall comunes que se hospedan en login.microsoftonline.com.
 
-Por ejemplo, un punto de conexión específico del inquilino podría ser `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. El punto de conexión independiente del inquilino es [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Puede ver el documento de metadatos de federación al escribir esta dirección URL en un explorador.
+Por ejemplo, un punto de conexión específico del inquilino podría ser `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. es el extremo independiente del inquilino de Hello [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Puede ver el documento de metadatos de federación de hello escribiendo esta dirección URL en un explorador.
 
 ## <a name="contents-of-federation-metadata"></a>Contenido de los metadatos de federación
-La siguiente sección proporciona la información necesaria para los servicios que consumen los tokens emitidos por Azure AD.
+Hello siguiente sección proporciona información necesaria para los servicios que consumen los tokens de hello emitidos por Azure AD.
 
 ### <a name="entity-id"></a>El identificador de entidad
-El elemento `EntityDescriptor` contiene un atributo `EntityID`. El valor del atributo `EntityID` representa al emisor; es decir, al servicio de token de seguridad (STS) que emitió el token. Es importante validar al emisor cuando reciba un token.
+Hola `EntityDescriptor` elemento contiene un `EntityID` atributo. Hola valo hello `EntityID` atributo representa el emisor de hello, es decir, Hola del token de seguridad (STS) de servicio ese token emitido Hola. Es importante toovalidate emisor de hello cuando reciba un token.
 
-Los metadatos siguientes muestran un ejemplo de un elemento `EntityDescriptor` específico del inquilino con un elemento `EntityID`.
+Hello metadatos siguientes muestran un ejemplo específico del inquilino `EntityDescriptor` elemento con un `EntityID` elemento.
 
 ```
 <EntityDescriptor
@@ -57,9 +57,9 @@ xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
 ID="_b827a749-cfcb-46b3-ab8b-9f6d14a1294b"
 entityID="https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db45/">
 ```
-Puede reemplazar el identificador de inquilino del punto de conexión independiente del inquilino por el suyo para crear un valor `EntityID` específico del cliente. El valor resultante será el mismo que el emisor del token. Esta estrategia permite a una aplicación de varios inquilinos validar al emisor de un inquilino determinado.
+Puede reemplazar Id. de inquilino Hola extremo independiente del inquilino de hello con su toocreate de Id. de inquilino específico de inquilino `EntityID` valor. se Hola valor resultante de Hello igual Hola emisor del token. Hola estrategia permite que un emisor de hello toovalidate de aplicación de varios inquilinos para un inquilino determinado.
 
-Los metadatos siguientes muestran un ejemplo de un elemento `EntityID` independiente del inquilino. Tenga en cuenta que `{tenant}` es un literal, no un marcador de posición.
+Hello metadatos siguientes muestran un ejemplo independientes del inquilino `EntityID` elemento. Tenga en cuenta que hello `{tenant}` es un literal, no un marcador de posición.
 
 ```
 <EntityDescriptor
@@ -69,11 +69,11 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>Certificados de firma de tokens
-Cuando un servicio recibe un token emitido por un inquilino de Azure AD, la firma del token debe validarse con una clave de firma que se publica en el documento de metadatos de federación. Los metadatos de federación incluyen la parte pública de los certificados que utilizan los inquilinos para la firma de tokens. Los bytes sin formato del certificado aparecen en el elemento `KeyDescriptor` . El certificado de la firma del token es válido para la firma solo cuando el valor del atributo `use` es `signing`.
+Cuando un servicio recibe un token emitido por un inquilino de Azure AD, hello firma de token de hello debe validarse con una clave de firma que se publica en el documento de metadatos de federación de Hola. los metadatos de federación de Hello incluyen parte pública de Hola de certificados de Hola que usan los inquilinos de Hola para firmar los tokens. bytes sin procesar del certificado Hola aparecen en hello `KeyDescriptor` elemento. certificado de firma de token de Hello es válido para solo firma Hola al valor de hello `use` atributo es `signing`.
 
-Un documento de metadatos de federación que haya publicado Azure AD puede tener varias claves de firma, como en aquellos casos en que Azure AD se está preparando para actualizar el certificado de firma. Cuando un documento de metadatos de federación incluye más de un certificado, un servicio que está validando los tokens debe admitir todos los certificados del documento.
+Un documento de metadatos de federación publicado por Azure AD puede tener varias claves de firmas, como cuando Azure AD está preparando hello tooupdate certificado de firma. Cuando un documento de metadatos de federación incluye más de un certificado, un servicio que se está validando los tokens de hello debe admitir todos los certificados en el documento de Hola.
 
-Los metadatos siguientes muestran un ejemplo del elemento `KeyDescriptor` con una clave de firma.
+Hello metadatos siguientes muestran un ejemplo `KeyDescriptor` elemento con una clave de firma.
 
 ```
 <KeyDescriptor use="signing">
@@ -87,29 +87,29 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 </KeyDescriptor>
   ```
 
-El elemento `KeyDescriptor` aparece en dos lugares en el documento de metadatos de federación: en la sección específica de WS-Federation y de SAML. Los certificados publicados en ambas secciones serán el mismo.
+Hola `KeyDescriptor` elemento aparece en dos lugares en el documento de metadatos de federación de hello; en la sección específica de WS-Federation de Hola y Hola específica de SAML. certificados de Hello publicados en ambas secciones se se Hola mismo.
 
-En la sección específica de WS-Federation, un lector de metadatos de WS-Federation leería los certificados de un elemento `RoleDescriptor` con el tipo `SecurityTokenServiceType`.
+En la sección Hola específica de WS-Federation, un lector de metadatos de WS-Federation leería los certificados de Hola de un `RoleDescriptor` elemento con hello `SecurityTokenServiceType` tipo.
 
-Los metadatos siguientes muestran un ejemplo del elemento `RoleDescriptor` .
+Hello metadatos siguientes muestran un ejemplo `RoleDescriptor` elemento.
 
 ```
 <RoleDescriptor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fed="http://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="http://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
-En la sección específica de SAML, un lector de metadatos de WS-Federation leería los certificados de un elemento `IDPSSODescriptor` .
+En la sección Hola específica de SAML, un lector de metadatos de WS-Federation leería los certificados de Hola de un `IDPSSODescriptor` elemento.
 
-Los metadatos siguientes muestran un ejemplo del elemento `IDPSSODescriptor` .
+Hello metadatos siguientes muestran un ejemplo `IDPSSODescriptor` elemento.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
 ```
-No existen diferencias en el formato de los certificados específicos del inquilino e independientes del inquilino.
+No hay ninguna diferencia en formato de Hola de certificados específicos del inquilino e independientes del inquilino.
 
 ### <a name="ws-federation-endpoint-url"></a>Dirección URL del punto de conexión de WS-Federation
-Los metadatos de federación incluyen la dirección URL que utiliza Azure AD para el inicio de sesión único y el cierre de sesión único en el protocolo WS-Federation. Este punto de conexión aparece en el elemento `PassiveRequestorEndpoint` .
+metadatos de federación de Hello incluyen hello dirección URL que es Azure AD usa para el inicio de sesión único y cierre de sesión de protocolo WS-Federation único. Este punto de conexión aparece en hello `PassiveRequestorEndpoint` elemento.
 
-Los metadatos siguientes muestran un ejemplo del elemento `PassiveRequestorEndpoint` de un punto de conexión específico del inquilino.
+Hello metadatos siguientes muestran un ejemplo `PassiveRequestorEndpoint` elemento para un extremo específico del inquilino.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -120,7 +120,7 @@ https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db45/wsfed
 </EndpointReference>
 </fed:PassiveRequestorEndpoint>
 ```
-Para el extremo independiente del inquilino, la dirección URL de WS-Federation aparece en el extremo de WS-Federation, como se muestra en el ejemplo siguiente.
+Para el extremo independiente del inquilino de hello, Hola URL de WS-Federation aparece en extremo Hola WS-Federation, tal y como se muestra en el siguiente ejemplo de Hola.
 
 ```
 <fed:PassiveRequestorEndpoint>
@@ -133,11 +133,11 @@ https://login.microsoftonline.com/common/wsfed
 ```
 
 ### <a name="saml-protocol-endpoint-url"></a>Dirección URL del punto de conexión de protocolo SAML
-Los metadatos de federación incluyen la dirección URL que utiliza Azure AD para el inicio de sesión único y el cierre de sesión único en el protocolo SAML 2.0. Estos puntos de conexión aparecen en el elemento `IDPSSODescriptor` .
+metadatos de federación de Hello incluyen dirección URL de Hola que Azure AD usa para el inicio de sesión único y cierre de sesión en el protocolo SAML 2.0 único. Estos extremos aparecen en hello `IDPSSODescriptor` elemento.
 
-Las direcciones URL de inicio y cierre de sesión se muestran en los elementos `SingleSignOnService` y `SingleLogoutService`.
+Hola, inicio de sesión y cierre de sesión, direcciones URL aparecen en hello `SingleSignOnService` y `SingleLogoutService` elementos.
 
-Los metadatos siguientes muestran un ejemplo de `PassiveResistorEndpoint` para un punto de conexión específico del inquilino.
+Hello metadatos siguientes muestran un ejemplo `PassiveResistorEndpoint` para un extremo específico del inquilino.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -147,7 +147,7 @@ Los metadatos siguientes muestran un ejemplo de `PassiveResistorEndpoint` para u
   </IDPSSODescriptor>
 ```
 
-Del mismo modo, los extremos comunes del protocolo SAML 2.0 se publican en los metadatos de federación independientes del inquilino, tal como se muestra en el ejemplo siguiente.
+De igual forma extremos de Hola para puntos de conexión de protocolo de SAML 2.0 comunes de Hola se publican en los metadatos de federación independientes del inquilino de hello, tal y como se muestra en el siguiente ejemplo de Hola.
 
 ```
 <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

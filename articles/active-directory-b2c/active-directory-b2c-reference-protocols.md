@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: protocolos de autenticación | Microsoft Docs"
-description: "Creación de aplicaciones directamente mediante los protocolos que admite Azure Active Directory B2C"
+description: "¿Cómo toobuild aplicaciones directamente con Hola protocolos que son compatibles con Azure Active Directory B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
@@ -14,69 +14,69 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-ms.openlocfilehash: 8e7e7bc7633370057f8dc596ad04a3f1d796a7d2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8fa4cbebe711841d410b3ae43b78f893c06d9b63
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # Azure AD B2C: protocolos de autenticación
-Azure Active Directory B2C (Azure AD B2C) proporciona identidad como servicio para sus aplicaciones gracias a la compatibilidad con dos protocolos estándar del sector: OpenID Connect y OAuth 2.0. Aunque el servicio cumple con la norma, pueden existir diferencias sutiles entre dos implementaciones cualesquiera de estos protocolos. 
+Azure Active Directory B2C (Azure AD B2C) proporciona identidad como servicio para sus aplicaciones gracias a la compatibilidad con dos protocolos estándar del sector: OpenID Connect y OAuth 2.0. servicio de Hello es compatible con los estándares, pero las dos implementaciones de estos protocolos pueden tener diferencias sutiles. 
 
-La información de esta guía es útil si el código se escribe mediante el envío y el control directo de solicitudes HTTP, en lugar de usar una biblioteca de código abierto. Se recomienda que lea esta página antes de profundizar en los detalles de cada protocolo específico. Pero si ya está familiarizado con Azure AD B2C, puede ir directamente a [las guías de referencia de protocolo](#protocols).
+información de Hello en esta guía es útil si se escribe el código directamente enviando y controlar las solicitudes HTTP, en lugar de utilizar una biblioteca de código abierto. Se recomienda que lea esta página antes de profundizar en los detalles de Hola de cada protocolo específico. Pero si ya está familiarizado con Azure AD B2C, puede ir directamente demasiado[Hola guías de referencia de protocolo](#protocols).
 
-<!-- TODO: Need link to libraries above -->
+<!-- TODO: Need link toolibraries above -->
 
-## Conceptos básicos
-Todas las aplicaciones que usen Azure AD B2C deben estar registrada en su directorio B2C del [Portal de Azure](https://portal.azure.com). El proceso de registro de la aplicación recopila y asigna algunos valores a la aplicación:
+## conceptos básicos de Hola
+Todas las aplicaciones que usa Azure AD B2C necesita toobe registrada en su directorio B2C Hola [portal de Azure](https://portal.azure.com). proceso de registro de aplicación Hola recopila y asigna unos valores tooyour aplicación:
 
 * Un **identificador de la aplicación** que identifica la aplicación de forma única.
-* Un **URI de redirección** o un **identificador de paquete** que pueda usarse para devolver las respuestas a la aplicación.
-* Algunos otros valores específicos de cada escenario. Para obtener más información, consulte [Cómo registrar la aplicación](active-directory-b2c-app-registration.md).
+* A **URI de redireccionamiento** o **identificador de paquete** que pueden ser utilizados toodirect respuestas tooyour back-app.
+* Algunos otros valores específicos de cada escenario. Para obtener más información, consulte [cómo tooregister la aplicación](active-directory-b2c-app-registration.md).
 
-Una vez registrada, la aplicación se comunica con Azure Active Directory (Azure AD) mediante el envío de solicitudes al punto de conexión:
+Después de registrar la aplicación, se comunica con Azure Active Directory (Azure AD) mediante el envío de solicitudes toohello extremo:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-En casi todos los flujos de OAuth y OpenID Connect hay cuatro partes implicadas en el intercambio:
+En casi todos los flujos de OAuth y OpenID Connect, están implicadas en exchange Hola cuatro partes:
 
 ![Funciones de OAuth 2.0](./media/active-directory-b2c-reference-protocols/protocols_roles.png)
 
-* El **servidor de autorización** es el punto de conexión de Azure AD. Controla de manera segura todo lo relacionado con el acceso y la información de usuario. También controla las relaciones de confianza entre las partes de un flujo. Es responsable de garantizar la identidad del usuario, conceder y revocar el acceso a los recursos y emitir tokens. También es conocido como proveedor de identidades.
+* Hola **servidor de autorización** es el punto de conexión de hello Azure AD. Forma segura controla información toouser nada relacionadas y acceso. También administra las relaciones de confianza de hello entre partes de hello en un flujo. Es responsable de comprobar la identidad del usuario de hello, conceder y revocar el acceso tooresources y emisión de tokens. También se denomina es proveedor de identidades de Hola.
 
-* El **propietario del recurso** suele ser el usuario final. Es la parte que posee los datos y tiene la capacidad de permitir que terceros tengan acceso a esos datos o recursos.
+* Hola **propietario del recurso** es normalmente el usuario final de Hola. Es parte de Hola que posee datos hello y tiene Hola power tooallow terceros tooaccess esos datos o recurso.
 
-* El **cliente OAuth** es su aplicación. Se identifica mediante su identificador de aplicación. Suele ser la entidad con la que interactúan los usuarios finales. También solicita tokens del servidor de autorizaciones. El propietario del recurso debe conceder al cliente el permiso para tener acceso al recurso.
+* Hola **cliente OAuth** es la aplicación. Se identifica mediante su identificador de aplicación. Normalmente es parte de Hola que los usuarios finales interactúan con. Asimismo, solicita tokens Hola servidor de autorización. debe conceder el propietario del recurso de Hola Hola cliente permiso tooaccess Hola recursos.
 
-* El **servidor de recursos** es el lugar en que residen el recurso o los datos. Confía en el servidor de autorizaciones para autenticar y autorizar de forma segura al cliente OAuth. También usa tokens de acceso de portador para asegurarse de que se puede conceder el acceso a un recurso.
+* Hola **servidor de recursos** es donde residen el recurso de Hola o datos. Confianzas de autorización de hello toosecurely servidor autenticar y autorizar el cliente de OAuth de Hola. También se utiliza acceso de portador tooensure de símbolos (tokens) que tienen acceso a recursos de tooa puede concederse.
 
 ## Directivas
-Puede decirse que las directivas de Azure AD B2C son las características más importantes del servicio. Azure AD B2C amplía los protocolos estándar de OAuth 2.0 y OpenID Connect mediante la introducción de las directivas. Estas permiten que Azure AD B2C realice tareas que van más allá de la mera autenticación y autorización. 
+Sin duda, las directivas de Azure AD B2C son características más importantes de hello del servicio de Hola. Azure AD B2C amplía protocolos estándar de OAuth 2.0 y OpenID Connect Hola introduciendo las directivas. Estos permiten tooperform de Azure AD B2C mucho más sencillo de autenticación y autorización. 
 
 Las directivas describen por completo las experiencias de identidad del consumidor como el registro, el inicio de sesión y la edición de perfil. Las directivas se pueden definir en una interfaz de usuario administrativa. Se pueden ejecutar mediante un parámetro de consulta especial en solicitudes de autenticación de HTTP. 
 
-Las directivas no son una característica estándar de OAuth 2.0 y OpenID Connect, así que debe dedicar tiempo a entenderlas. Para más información, consulte [Versión preliminar de Azure Active Directory B2C: marco de directiva extensible](active-directory-b2c-reference-policies.md).
+Las directivas no son características estándares de OAuth 2.0 y OpenID Connect, por lo que debe tomar Hola tiempo toounderstand ellos. Para obtener más información, vea hello [Guía de referencia de directiva de Azure AD B2C](active-directory-b2c-reference-policies.md).
 
 ## Tokens
-La implementación de Azure AD B2C de OAuth 2.0 y OpenID Connect hace un uso generalizado de tokens de portador, incluidos los representados como tokens web JSON (JWT). Un token de portador es un token de seguridad ligero que concede al "portador" acceso a un recurso protegido.
+implementación de Azure AD B2C Hola de OAuth 2.0 y OpenID Connect hace uso masivo de tokens portadores, incluidos tokens de portador que se representan como tokens de web JSON (Jwt). Un token de portador es un token de seguridad ligero que concede Hola tooa de "portador" acceso al recurso protegido.
 
-El "portador" es cualquier parte que pueda presentar el token. Para que una parte pueda recibir un token de portador, es necesario que Azure AD la autentique previamente. Pero si no se realizan los pasos necesarios para proteger el token durante la transmisión y el almacenamiento, puede ser interceptado y usado por usuarios no previstos.
+portador de Hello es cualquier entidad que puede presentar el token de Hola. Para que una parte pueda recibir un token de portador, es necesario que Azure AD la autentique previamente. Pero si Hola necesario no se toman medidas toosecure Hola símbolo (token) de transmisión y el almacenamiento, se puede interceptar y utilizado por una entidad no deseada.
 
 Algunos tokens de seguridad tienen mecanismos integrados que impiden que partes no autorizadas puedan usarlos, pero los tokens de portador no disponen de este mecanismo. Deberán ser transportados en un canal seguro, como la seguridad de la capa de transporte (HTTPS). 
 
-Si un token de portador se transmite fuera de un canal seguro, un usuario malintencionado puede utilizar un ataque de tipo "man in the middle" para adquirir el token y usarlo para obtener acceso sin autorización a un recurso protegido. Los mismos principios de seguridad se aplican cuando los tokens de portador se almacenan o guardan en caché para su uso posterior. Asegúrate siempre de que la aplicación transmite y almacena los tokens de portador de manera segura.
+Si se transmite un token de portador fuera de un canal seguro, un usuario malintencionado puede usar un token de ataque de man-in-the-middle tooacquire hello y usar recursos de tooa protegido del acceso de toogain no autorizado. Hola mismos principios de seguridad que se aplican cuando se almacena tokens de portador o se almacena en caché para su uso posterior. Asegúrate siempre de que la aplicación transmite y almacena los tokens de portador de manera segura.
 
 Para ver más consideraciones de seguridad relativas a los tokens de portador, consulte la [sección 5 de RFC 6750](http://tools.ietf.org/html/rfc6750).
 
-En [Azure AD B2C: referencia de tokens](active-directory-b2c-reference-tokens.md) encontrará más información sobre los distintos tipos de tokens que se usan en Azure AD B2C.
+Para obtener más información acerca de los tipos diferentes de hello de tokens que se usan en Azure AD B2C están disponibles en [Hola referencia del token de Azure AD](active-directory-b2c-reference-tokens.md).
 
 ## Protocolos
-Cuando esté listo para revisar algunas solicitudes de ejemplo, puede comenzar con uno de los siguientes tutoriales. Cada uno de ellos corresponde a un escenario de autenticación determinado. Si necesita ayuda para determinar qué flujo es el más apropiado en su caso, consulte [los tipos de aplicaciones que puede compilar con Azure AD B2C](active-directory-b2c-apps.md).
+Cuando esté listo tooreview algunos ejemplos solicita, puede empezar con uno de los tutoriales de Hola. Cada uno de ellos corresponde tooa escenario de autenticación determinado. Si necesita ayuda para determinar qué flujo es adecuado para usted, visite [Hola tipos de aplicaciones puede crear mediante el uso de Azure AD B2C](active-directory-b2c-apps.md).
 
 * [Creación de aplicaciones móviles nativas mediante OAuth 2.0](active-directory-b2c-reference-oauth-code.md)
 * [Creación de aplicaciones web mediante OpenID Connect](active-directory-b2c-reference-oidc.md)
-* [Creación de aplicaciones de una sola página con el flujo implícito de OAuth 2.0](active-directory-b2c-reference-spa.md)
+* [Crear aplicaciones de página con flujo implícito hello OAuth 2.0](active-directory-b2c-reference-spa.md)
 

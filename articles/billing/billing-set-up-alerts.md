@@ -1,5 +1,5 @@
 ---
-title: "Configuración de alertas de crédito o facturación para las suscripciones de Azure | Microsoft Docs"
+title: "aaaSet las alertas de crédito o de facturación para las suscripciones de Azure | Documentos de Microsoft"
 description: "Describe cómo puede configurar alertas en su factura de Azure para que pueda evitar sorpresas de facturación."
 keywords: "alerta de crédito, alerta de facturación"
 services: 
@@ -17,46 +17,46 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: vikdesai
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a1b579fdde831fdc3afa0a2aee4c24890216ed1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 711b9c72c59874792b0e229cdc5ec0fa517c24c1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Configuración de alertas de crédito o facturación para las suscripciones de Microsoft Azure
-Si es el administrador de cuenta de una suscripción a Azure, puede utilizar el servicio de alertas de facturación de Azure para crear alertas de facturación personalizadas que le ayudarán a supervisar y administrar la actividad de facturación de las cuentas de Azure.
+Si le hello Administrador de cuenta para una suscripción de Azure, puede usar hello Azure facturación servicio de alertas de facturación toocreate personalizado las alertas que le ayudan a supervisar y administrar la actividad de facturación para las cuentas de Azure.
 
-Este servicio está en versión preliminar, por lo que primero debe habilitarlo en la página Características de vista previa.
+Este servicio está en vista previa, por lo que necesita tooenable, en la página de características de vista previa de hello en primer lugar.
 
-## <a name="set-the-alert-threshold-and-email-recipients"></a>Establecimiento de los destinatarios de correo electrónico y del umbral de alerta
-1. Visite [la página Características de vista previa](https://account.windowsazure.com/PreviewFeatures) y habilite **Billing Alert Service** (Servicio de alertas de facturación).
+## <a name="set-hello-alert-threshold-and-email-recipients"></a>Configurar destinatarios de umbral y el correo electrónico de alerta Hola
+1. Visite [página de características de vista previa de hello](https://account.windowsazure.com/PreviewFeatures) y habilitar **servicio de alertas de facturación**.
 
-1. Después de recibir la confirmación de correo electrónico de que el servicio de facturación está activado para su suscripción, visite [la página de suscripciones](https://account.windowsazure.com/Subscriptions) en el portal de cuentas. Haga clic en la suscripción que desea supervisar y después haga clic en **Alertas**.
+1. Después de recibir la confirmación por correo electrónico de Hola que está activado el servicio de facturación de Hola para su suscripción, visite [página de suscripciones de hello](https://account.windowsazure.com/Subscriptions) en portal de cuentas de Hola. Haga clic en hello suscripción que desee toomonitor y, a continuación, haga clic en **alertas**.
 
-    ![Captura de pantalla de la vista de suscripciones del Centro de cuentas de Azure, con las alertas resaltadas][Image1]
+    ![Captura de pantalla de vista de suscripciones de hello del centro de cuentas de Azure, con las alertas destacadas][Image1]
 
-2. Luego, haga clic en **Agregar alerta** para crear la primera alerta. Puede configurar un total de cinco alertas de facturación por suscripción, con un umbral diferente y hasta dos destinatarios de correo electrónico para cada alerta.
+2. A continuación, haga clic en **Agregar alerta** toocreate primera vez. Puede establecer un total de cinco alertas de facturación por suscripción, con un umbral diferente e instalación tootwo destinatarios de correo electrónico para cada alerta.
 
-    ![Captura de pantalla de la vista Alertas, donde puede agregar alertas][Image2]
+    ![Vista de alertas de captura de pantalla de hello, donde puede agregar alerta][Image2]
 
-3. Cuando agregue una alerta, asígnele un nombre único, elija un umbral de gasto y elija las direcciones de correo electrónico a las que se enviarán las alertas. Al configurar el umbral, podrá elegir un **Total de facturación** o un **Crédito monetario** desde la lista **Alerta** lista. Para el total de facturación, se enviará una alerta cuando el gasto de la suscripción supere el umbral. Para un crédito monetario, se enviará una alerta cuando los créditos monetarios caigan por debajo del límite. Normalmente, los créditos monetarios se aplican a las suscripciones Evaluación gratuita y Visual Studio.
+3. Cuando se agrega una alerta, asígnele un nombre único, elija un umbral de gasto y elija Hola direcciones de correo electrónico donde se envían las alertas. Al configurar el umbral de hello, puede elegir un **Total de facturación** o un **un crédito monetario** de hello **alerta para** lista. Para obtener un total de facturación, se envía una alerta cuando el gasto de la suscripción supera el umbral de Hola. Para un crédito monetario, se envía una alerta cuando los créditos monetarios caen por debajo del límite de Hola. Créditos monetarios normalmente son aplicables a las suscripciones de prueba y Visual Studio tooFree.
 
-    ![Captura de pantalla de la vista de adición de alerta, donde puede configurar destinatarios][Image3]
+    ![Captura de pantalla de la vista de alerta suma hello, donde puede configurar los destinatarios][Image3]
 
-Azure admite cualquier dirección de correo electrónico pero no comprueba que la dirección de correo electrónico funcione. Por lo tanto, revise si hay errores ortográficos.
+Azure admite cualquier dirección de correo electrónico pero no comprobar que la dirección de correo electrónico de hello funcione, así que revise si hay errores ortográficos.
 
 ## <a name="check-on-your-alerts"></a>Comprobación de las alertas
-Después de configurar las alertas, el centro de cuentas enumera y muestra cuántas más se pueden configurar. Para cada alerta, se mostrará la fecha y la hora de envío, si es una alerta de total de facturación o de crédito monetario, así como el límite configurado. El formato de fecha y hora es de 24 horas según el horario universal coordinado (UTC) y la fecha tiene el formato aaaa-mm-dd. Haga clic en el signo más de una alerta de la lista para modificarla o haga clic en la papelera para eliminarla.
+Después de configurar las alertas, Hola centro de cuentas enumera y muestra cuántas más puede configurar. Para cada alerta, verá Hola límite de fecha y hora de envío, si se trata de una alerta para el Total de facturación o un crédito monetario y Hola que configurar. formato de fecha y hora de Hello es 24 horas horario Universal coordinado (UTC) y fecha de hello es el formato aaaa-mm-dd. Haga clic en hello más firmarlo de una alerta en hello lista tooedit o haga clic en hello-Papelera toodelete lo.
 
 ## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>Alertas de facturación para los clientes del Contrato Enterprise (EA)
-Los clientes EA pueden obtener alertas para cada departamento con una inscripción estableciendo cuotas de gastos. Consulte [Department Spending Quotas](https://ea.azure.com/helpdocs/departmentSpendingQuotas) (Cuotas de gastos de departamento) en el portal EA para empezar a trabajar.
+Los clientes EA pueden obtener alertas para cada departamento con una inscripción estableciendo cuotas de gastos. Vea [las cuotas de gastos de departamento](https://ea.azure.com/helpdocs/departmentSpendingQuotas) en hello EA portal tooget iniciado.
 
 ## <a name="learn-more-about-azure-cost-management"></a>Más información sobre la administración de costos de Azure
-- Calcule los costos mediante la [calculadora de precios](https://azure.microsoft.com/pricing/calculator/), la [calculadora de costo total de propiedad](https://aka.ms/azure-tco-calculator) y cuando agregue un servicio.
+- Estimar los costos mediante hello [Calculadora de precios](https://azure.microsoft.com/pricing/calculator/), [costo total de calculadora de propiedad](https://aka.ms/azure-tco-calculator), y cuando se agrega un servicio.
 - [Revise el uso y los costos con regularidad en Azure Portal](billing-getting-started.md#costs).
 - Active las [recomendaciones sobre el costo de Azure Advisor](../advisor/advisor-cost-recommendations.md).
 
-Para obtener información, consulte [Introducción a la administración de costes y facturación de Azure](billing-getting-started.md).
+más información, consulte toolearn [instrucciones para la administración de Azure costo](billing-getting-started.md).
 
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png 
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png

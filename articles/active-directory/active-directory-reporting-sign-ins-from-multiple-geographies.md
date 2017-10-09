@@ -1,6 +1,6 @@
 ---
-title: "Inicios de sesión desde varias ubicaciones geográficas"
-description: "Informe que señala usuarios en los que dos inicios de sesión parecían originarse en distintas regiones y, por el tiempo transcurrido entre inicios de sesión, resultaba imposible que el usuario viajase entre dichas regiones."
+title: "aaaSign ins desde varias zonas geográficas"
+description: "Un informe que indique a los usuarios cuando dos inicios de sesión parecía toooriginate de diferentes regiones y la hora de hello entre Hola inicios de sesión que hace imposible Hola usuario toohave viajado entre esas regiones."
 services: active-directory
 documentationcenter: 
 author: SSalahAhmed
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-ms.openlocfilehash: 1de57f64692ade442f9ef8d1e3b587ffee35d7cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f7c2e9589558476f36f6ae319f807f151b6144e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sign-ins-from-multiple-geographies"></a>Inicios de sesión desde varias ubicaciones geográficas
-En este informe se incluyen inicios de sesión correctos de un usuario en los que parece que dos inicios de sesión se originaron desde distintas regiones y que, según el tiempo transcurrido entre ellos, parece imposible que el usuario haya viajado entre dichas regiones. Entre las posibles causas se incluyen las siguientes:
+Este informe incluye inicios de sesión correctos de un usuario, donde dos inicios de sesión parecía toooriginate de otras regiones y tiempo de hello entre inicios de sesión de hello hace imposible Hola usuario toohave viajado entre esas regiones. Entre las posibles causas se incluyen las siguientes:
 
 * El usuario comparte su contraseña con otros usuarios.
-* El usuario usa un escritorio remoto para iniciar un navegador web para el inicio de sesión.
-* Un hacker inició sesión en la cuenta de un usuario desde un país diferente.
+* Usuario está utilizando un toolaunch de escritorio remoto un explorador web para el inicio de sesión
+* Un hacker inició sesión en toohello cuenta de un usuario desde otro país diferente
 * El usuario está utilizando un proxy o una VPN.
-* El usuario ha iniciado sesión desde varios dispositivos al mismo tiempo, como un equipo de escritorio y un teléfono móvil, y la dirección IP del teléfono móvil es poco común.
+* Usuario ha iniciado sesión en desde varios dispositivos en hello al mismo tiempo, como un equipo de escritorio y un teléfono móvil y Hola IP dirección del teléfono móvil de hello es poco común.
 
-Los resultados de este informe mostrarán los eventos de inicio de sesión correctos, así como el tiempo transcurrido entre ellos, las regiones de donde parecían provenir y el tiempo de viaje estimado entre dichas regiones. El tiempo de viaje mostrado constituye solo una estimación y puede diferir del tiempo de viaje real entre las ubicaciones.
+Los resultados de este informe mostrará Hola eventos de inicio de sesión correctos, así como tiempo de hello entre Hola inicios de sesión, Hola regiones donde inicios de sesión de hello parecía toooriginate desde y Hola estimado tiempo de viaje entre esas regiones. tiempo de viaje Hola mostrado es sólo una estimación y puede ser diferente de tiempo de viaje real Hola entre ubicaciones de Hola.
 
 ![Inicios de sesión desde varias ubicaciones geográficas](./media/active-directory-reporting-sign-ins-from-multiple-geographies/signInsFromMultipleGeographies.PNG)
 

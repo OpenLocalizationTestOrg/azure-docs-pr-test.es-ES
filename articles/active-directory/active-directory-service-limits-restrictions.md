@@ -1,6 +1,6 @@
 ---
-title: "Restricciones y límites del servicio Azure Active Directory"
-description: "Restricciones de uso y otros límites de servicio para el servicio Azure Active Directory"
+title: "restricciones y límites de servicio de Active Directory aaaAzure"
+description: "Restricciones de uso y otros límites de servicio para hello servicio Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 05/08/2017
 ms.author: curtand
 ms.custom: aaddev
-ms.openlocfilehash: 100cfb213917854b0bfbaccdd46ea625d721c59c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3971cb40ed53d6e0c11f124f334d1dc6a2cdf769
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Restricciones y límites del servicio Azure AD
-Este artículo contiene las restricciones de uso y otros límites de servicio para el servicio Azure Active Directory (Azure AD). Si está buscando el conjunto completo de límites del servicio de Microsoft Azure, consulte [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../azure-subscription-service-limits.md).
+Este artículo contiene las restricciones de uso de Hola y otros límites de servicio para hello servicio Azure Active Directory (Azure AD). Si está buscando el conjunto completo de Hola de límites de servicio de Microsoft Azure, consulte [suscripción de Azure y límites de servicio, cuotas y restricciones](../azure-subscription-service-limits.md).
 
 [!INCLUDE [AAD-service-limits](../../includes/active-directory-service-limits-include.md)]
 

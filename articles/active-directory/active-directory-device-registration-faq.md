@@ -1,5 +1,5 @@
 ---
-title: "Preguntas más frecuentes sobre el registro automático de dispositivos de Azure Active Directory | Microsoft Docs"
+title: "aaaAzure registro automático de dispositivos de Active Directory preguntas más frecuentes | Documentos de Microsoft"
 description: "Preguntas más frecuentes sobre el registro automático de dispositivos con Azure Active Directory."
 services: active-directory
 documentationcenter: 
@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 29751239ae2a26cd7b07ddd0d8a8e706d4056b68
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ba7f113fd3bc310def001a1f44d938b0be71dba8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-automatic-device-registration-faq"></a>Preguntas más frecuentes sobre el registro automático de dispositivos de Azure Active Directory
 
-**P: He registrado el dispositivo hace poco. ¿Por qué no puedo ver el dispositivo en la información del usuario en Azure Portal?**
+**P: ¿puedo registrar dispositivo Hola recientemente. ¿Por qué no puedo ver dispositivo hello en mi información de usuario en hello portal de Azure?**
 
-**R:** Los dispositivos Windows 10 unidos a un dominio mediante el registro automático de dispositivos no aparecen en la información del USUARIO.
-Debe usar PowerShell para ver todos los dispositivos. 
+**R:** dispositivos Windows 10 que están unidos al dominio con el registro automático de dispositivos no se muestran en la información de usuario de Hola.
+Debe toouse PowerShell toosee todos los dispositivos. 
 
-Solo los dispositivos siguientes aparecen en la información del USUARIO:
+Solo hello dispositivos siguientes aparecen en información de usuario de hello:
 
 - Todos los dispositivos personales que no están unidos a una empresa 
 - Todos los dispositivos que no tengan Windows 10 / Windows Server 2016 
@@ -35,38 +35,38 @@ Solo los dispositivos siguientes aparecen en la información del USUARIO:
 
 ---
 
-**P: ¿Por qué no puedo ver en Azure Portal todos los dispositivos registrados en Azure Active Directory?** 
+**P: ¿por qué no puedo ver todos los dispositivos de hello registrados en Azure Active Directory en hello portal de Azure?** 
 
-**R:** Actualmente, no hay ninguna forma de ver todos los dispositivos registrados en Azure Portal. Puede usar Azure PowerShell para buscar todos los dispositivos. Para más información, vea el cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0).
+**R:** actualmente no hay ninguna manera toosee todos los dispositivos registrados en hello portal de Azure. Puede usar Azure PowerShell toofind todos los dispositivos. Para obtener más información, vea hello [MsolDevice Get](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet.
 
 --- 
 
-**P: ¿Cómo puedo saber cuál es el estado de registro del dispositivo del cliente?**
+**P: ¿Cómo puedo saber qué estado de registro del dispositivo de Hola de cliente hello es?**
 
-**R:** El estado de registro del dispositivo depende de:
+**R:** depende de estado de registro del dispositivo de hello:
 
-- De qué dispositivo se trata
+- ¿Qué dispositivo Hola
 - Cómo se ha registrado 
-- Los detalles relacionados con él 
+- Los detalles relacionados con tooit. 
  
 
 ---
 
-**P: ¿Por qué aún aparece registrado un dispositivo que ya he eliminado de Azure Portal o con Windows PowerShell?**
+**P: ¿por qué es un dispositivo que he eliminado en hello Azure portal o mediante Windows PowerShell siguen apareciendo como está registrado?**
 
-**R:** Se debe al diseño. El dispositivo no puede acceder a los recursos en la nube. Si desea quitar el dispositivo y registrarlo de nuevo, es necesario realizar una acción manual en el dispositivo. 
+**R:** Se debe al diseño. dispositivo de Hello no tendrá acceso tooresources en la nube de Hola. Si desea tooremove Hola dispositivo y vuelva a registrar, una acción manual debe ser toobe realizada en los dispositivos de Hola. 
 
 Para dispositivos Windows 10 y Windows Server 2016 unidos a un dominio AD local:
 
-1.  Abra el símbolo del sistema como administrador.
+1.  Abra el símbolo del sistema de hello como administrador.
 
 2.  Escriba `dsregcmd.exe /debug /leave`
 
-3.  Cierre la sesión y luego iníciela para desencadenar la tarea programada que registra de nuevo el dispositivo. 
+3.  Cierre la sesión e inicie sesión tarea programada de tootrigger Hola que registra el dispositivo de Hola de nuevo. 
 
 Para otras plataformas de Windows unidas a un dominio AD local:
 
-1.  Abra el símbolo del sistema como administrador.
+1.  Abra el símbolo del sistema de hello como administrador.
 2.  Escriba `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
 3.  Escriba `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
 
@@ -76,78 +76,78 @@ Para otras plataformas de Windows unidas a un dominio AD local:
 
 **R:**
 
--   Para Windows 10 y Windows Server 2016, si se dan varios intentos para desunir y volver a unir el mismo dispositivo, pueden aparecer entradas duplicadas. 
+-   Para Windows 10 y Windows Server 2016, si son varios intentos toounjoin y vuelva a unir hello mismo dispositivo, puede haber entradas duplicadas. 
 
--   Si ha usado Agregar cuenta profesional o educativa, cada usuario de Windows que usa Agregar cuenta profesional o educativa creará un nuevo registro de dispositivo con el mismo nombre de dispositivo.
+-   Si ha usado Agregar cuenta profesional o educativa, cada usuario de windows que usa Agregar cuenta profesional o educativa creará un nuevo registro de dispositivo con hello mismo nombre de dispositivo.
 
--   Otras plataformas de Windows unidas a un dominio AD local con el registro automático crearán un nuevo registro de dispositivo con el mismo nombre de dispositivo para cada usuario del dominio registrado en el dispositivo. 
+-   Otras plataformas de Windows que están en las instalaciones con el registro automático unido a un dominio de AD creará un nuevo registro de dispositivo con hello mismo nombre de dispositivo para cada usuario de dominio que inicie sesión en el dispositivo de Hola. 
 
--   Una máquina AADJ que se ha borrado, se ha vuelto a instalar y se ha vuelto a unir con el mismo nombre, aparece como otro registro con el mismo nombre de dispositivo.
+-   Una máquina AADJ que se borró, volver a instalar y volver a unirse con hello mismo nombre, se mostrarán como otro registro con hello mismo nombre de dispositivo.
 
 ---
 
-**P: ¿Por qué puede un usuario tener acceso a recursos desde un dispositivo que he deshabilitado en Azure Portal?**
+**P: ¿por qué puede un usuario tener acceso a recursos desde un dispositivo que he deshabilitado en hello portal de Azure?**
 
-**R:** Una revocación puede tardar hasta una hora en aplicarse.
+**R:** puede tardar hasta hora tooan para un toobe revoke aplicado.
 
 >[!Note] 
->Para dispositivos perdidos, se recomienda borrar el dispositivo para asegurarse de que los usuarios no pueden acceder a él. Para más información, vea [Inscribir dispositivos para administrarlos en Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>Para dispositivos perdidos, se recomienda borrar Hola dispositivo tooensure que los usuarios no pueden tener acceso a dispositivo Hola. Para más información, vea [Inscribir dispositivos para administrarlos en Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 
 ---
 
 **P: ¿Por qué mis usuarios ven un mensaje que indica que no pueden acceder desde aquí?**
 
-**R:** Si ha configurado determinadas reglas de acceso condicional para requerir un estado de dispositivo específico y el dispositivo no cumple los criterios, a los usuarios se les bloquea y ven este mensaje. Evalúe las reglas y asegúrese de que el dispositivo pueda cumplir los criterios para evitar ese mensaje.
+**R:** si ha configurado determinado toorequire de reglas de acceso condicional un estado de dispositivo específico y Hola dispositivo no cumple los criterios de hello, los usuarios están bloqueados y verá este mensaje. Por favor, evaluar reglas de Hola y asegúrese de que el dispositivo hello es capaz de toomeet Hola criterios tooavoid este mensaje.
 
 ---
 
 
-**P: Puedo ver el registro del dispositivo en la información del USUARIO en Azure Portal y puedo ver el estado como registrado en el cliente. ¿He establecido la configuración correctamente para utilizar el acceso condicional?**
+**P: ¿puedo ver registro de dispositivo de hello en información de usuario de Hola Hola portal de Azure y puede ver el estado de hello como está registrado en el cliente de Hola. ¿He establecido la configuración correctamente para utilizar el acceso condicional?**
 
-**R:** El registro del dispositivo (Id. de dispositivo) y el estado que aparece en Azure Portal deben coincidir con el cliente y cumplir todos los criterios de evaluación establecidos para el acceso condicional. Para más información, vea [Introducción al Registro de dispositivos de Azure Active Directory](active-directory-device-registration.md).
+**R:** registro hello de dispositivo (deviceID) y el estado en el portal de Azure Hola deben coincidir con el cliente de Hola y se cumplen los criterios de evaluación de acceso condicional. Para más información, vea [Introducción al Registro de dispositivos de Azure Active Directory](active-directory-device-registration.md).
 
 ---
 
-**P: ¿Por qué me aparece el mensaje “El nombre de usuario o la contraseña no son correctos” para un dispositivo que ya he unido a Azure AD?**
+**P: ¿por qué obtengo un mensaje de "nombre de usuario o contraseña es incorrecta" para un dispositivo recién he unido tooAzure AD?**
 
 **R:** Las razones comunes para este escenario son:
 
 - Las credenciales de usuario ya no son válidas.
 
-- El equipo no puede comunicarse con Azure Active Directory. Compruebe si existen errores de conectividad de red.
+- El equipo es no se puede toocommunicate con Azure Active Directory. Compruebe si existen errores de conectividad de red.
 
-- No se han cumplido los requisitos previos para Azure AD Join. Asegúrese de que haya seguido los pasos para la [Ampliación de las capacidades de nube a dispositivos de Windows 10 a través de Azure Active Directory Join](active-directory-azureadjoin-overview.md).  
+- no se cumplieron los requisitos previos de Azure AD Join Hola. Asegúrese de que ha seguido los pasos de Hola para [extender nube dispositivos de tooWindows 10 capacidades a través de Azure Active Directory Join](active-directory-azureadjoin-overview.md).  
 
-- Los inicios de sesión federados requieren que el servidor de federación admita un punto de conexión activo de WS-Trust. 
+- Los inicios de sesión federados requiere su toosupport de servidor de federación un punto de conexión activo de WS-Trust. 
 
 ---
 
-**P: ¿Por qué me aparece un cuadro de diálogo que indica que se ha producido un error cuando intento unir mi equipo?**
+**P: ¿por qué veo un saludo "¡vaya!... se produjo un error!" cuando intento del cuadro de diálogo unir su PC?**
 
 **R:** Es el resultado de configurar la inscripción de Azure Active Directory con Intune. Para más información, vea [Configurar la administración de dispositivos Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
 
 ---
 
-**P: ¿Por qué se produce un error al intentar unir mi equipo a pesar de que no he obtenido información sobre el error?**
+**P: ¿por qué mi toojoin intento producirá un error en un equipo aunque no aparece ninguna información de errores?**
 
-**R:** Puede deberse a que el usuario ha iniciado sesión en el dispositivo con la cuenta de administrador integrada. Cree una cuenta local distinta antes de usar Azure Active Directory Join para completar la instalación. 
-
----
-
-**P: ¿Dónde puedo encontrar instrucciones para la configuración de registro automático de dispositivos?**
-
-**R:** Para ver instrucciones detalladas, consulte [Configuración del registro automático de dispositivos unidos a un dominio de Windows con Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+**R:** una causa probable es que ese usuario Hola se registra en el dispositivo toohello con cuenta de administrador integrada de Hola. Cree una cuenta local diferente antes de usar el programa de instalación de Azure Active Directory Join toocomplete Hola. 
 
 ---
 
-**P: ¿Dónde puedo encontrar información para solucionar problemas con el registro automático de dispositivos?**
+**P: ¿dónde puedo encontrar instrucciones para el programa de instalación de Hola de registro automático de dispositivos?**
+
+**R:** para obtener instrucciones detalladas, consulte [cómo tooconfigure el registro automático de Windows Unidos a dominios dispositivos con Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md)
+
+---
+
+**P: ¿dónde puedo encontrar solución de problemas de información sobre el registro de hello automático de dispositivos?**
 
 **R:** Para consultar información sobre solución de problemas, vea:
 
-- [Solución de problemas de registro automático de equipos unidos a un dominio en Azure AD: Windows 10 y Windows Server 2016](active-directory-device-registration-troubleshoot-windows.md)
+- [Solución de problemas de registro automático de dominio unido equipos tooAzure AD – Windows 10 y Windows Server 2016](active-directory-device-registration-troubleshoot-windows.md)
 
-- [Solución de problemas de registro automático de equipos unidos a un dominio en Azure AD para clientes de nivel inferior de Windows](active-directory-device-registration-troubleshoot-windows-legacy.md)
+- [Solución de problemas de registro automático de dominio unido equipos tooAzure AD para clientes de nivel inferior de Windows](active-directory-device-registration-troubleshoot-windows-legacy.md)
  
 ---
 

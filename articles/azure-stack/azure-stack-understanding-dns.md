@@ -1,5 +1,5 @@
 ---
-title: "Información acerca de DNS en Azure Stack | Microsoft Docs"
+title: aaaUnderstanding DNS en la pila de Azure | Documentos de Microsoft
 description: "Información acerca de las características y funcionalidades de DNS en Azure Stack"
 services: azure-stack
 documentationcenter: 
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: scottnap
-ms.openlocfilehash: 2a19b435777ba848835dcd90a1ebb8a0cbcb0e9b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f60128cf98af8e98ac2bc87172b54132ed06cd8a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Presentación de iDNS para Azure Stack
 ================================
 
-iDNS es una característica de Azure Stack que permite resolver nombres DNS externos (por ejemplo, http://www.bing.com).
-También permite registrar los nombres de redes virtuales internas. Al hacerlo, puede resolver las máquinas virtuales en la misma red virtual por nombre, en lugar de por dirección IP, sin tener que especificar entradas del servidor DNS personalizadas.
+IDN es una característica de pila de Azure que permite tooresolve de nombres DNS externos (por ejemplo, http://www.bing.com).
+También permite nombres de red virtual interna tooregister. Al hacerlo, puede resolver las máquinas virtuales en hello misma red virtual por nombre en lugar de IP de direcciones, sin necesidad de entradas de servidor DNS personalizadas tooprovide.
 
 Es algo con lo que siempre ha contado Azure, pero ahora también está disponible en Windows Server 2016 y Azure Stack.
 
 ## <a name="what-does-idns-do"></a>¿Para qué sirve iDNS?
-Con iDNS en Azure Stack, dispone de las siguientes funcionalidades sin tener que especificar entradas del servidor DNS personalizadas.
+Con IDN en la pila de Azure, obtendrá Hola siguientes capacidades, sin necesidad de entradas de servidor DNS personalizadas toospecify.
 
 * Servicios de resolución de nombres Compartir los servicios de resolución de nombres DNS compartidos para las cargas de trabajo del inquilino.
-* Servicio DNS autoritativo para la resolución de nombres y el registro DNS en la red virtual del inquilino.
-* Servicio DNS recursivo para la resolución de los nombres de Internet de las máquinas virtuales de los inquilinos. Los inquilinos ya no se necesitan especificar entradas de DNS personalizadas para resolver nombres de Internet (por ejemplo, www.bing.com).
+* Servicio DNS autoritativo para la resolución de nombres y el registro DNS en la red virtual del inquilino de Hola.
+* Servicio DNS recursivo para la resolución de los nombres de Internet de las máquinas virtuales de los inquilinos. Los inquilinos ya no necesitan toospecify DNS entradas tooresolve Internet nombres personalizados (por ejemplo, www.bing.com).
 
-Si lo desea, puede traer su propio DNS y utilizar servidores DNS personalizados. Pero si solo desea poder resolver nombres de DNS de Internet y conectarse a otras máquinas virtuales de la misma red virtual, aunque no especifique nada funcionará correctamente.
+Si lo desea, puede traer su propio DNS y utilizar servidores DNS personalizados. Pero ahora, si simplemente desea nombres de DNS de Internet pueda tooresolve toobe y ser capaz de tooconnect tooother máquinas virtuales Hola misma red virtual, no necesita toospecify nada y funcionarán correctamente.
 
 ## <a name="what-does-idns-not-do"></a>¿Qué es lo que iDNS no hace?
-Lo que iDNS no permite hacer es crear un registro DNS para un nombre que se pueda resolver desde fuera de la red virtual.
+Qué IDN no permite toodo es crear un registro DNS para un nombre que se pueda resolver desde la red virtual externa Hola.
 
-En Azure, tiene la opción de especificar una etiqueta de nombre DNS que se puede asociar con una dirección IP pública. Puede elegir la etiqueta (prefijo), pero Azure elige el sufijo, que depende de la región en la que crea la dirección IP pública.
+En Azure, tiene la opción de Hola de especificar una etiqueta de nombre DNS que se puede asociar con una dirección IP pública. Puede elegir la etiqueta de hello (prefijo), pero Azure elige sufijo hello, que se basa en la región de hello en el que crear la dirección IP pública Hola.
 
 ![Captura de pantalla de etiqueta de nombre DNS](media/azure-stack-understanding-dns-in-tp2/image3.png)
 
-En la imagen anterior, Azure creará un registro "A" en DNS para la etiqueta de nombre DNS especificada en la zona **westus.cloudapp.azure.com**. De forma conjunta, el prefijo y el sufijo constituyen un dominio nombre completo (FQDN) que se pueda resolver desde cualquier lugar de la red Internet pública.
+En la imagen anterior de hello, Azure creará un registro "A" en DNS para la etiqueta de nombre DNS de hello especificado en la zona de hello **westus.cloudapp.azure.com**. El sufijo hello y prefijo juntas componen un dominio nombre completo (FQDN) que se puede resolver desde cualquier lugar en Hola Internet pública.
 
-Azure Stack solo admite iDNS para el registro de nombres interno, por lo que no puede hacer lo siguiente:
+Azure pila solo admite IDN para el registro de nombres interna, por lo que no es posible Hola después.
 
 * Crear un registro DNS en una zona DNS hospedada existente (por ejemplo, local.azurestack.external).
 * Crear una zona DNS (como Contoso.com).
 * Crear un registro en su propia zona DNS personalizada.
-* Admitir la compra de nombres de dominio.
+* Admite la compra de Hola de nombres de dominio.
 

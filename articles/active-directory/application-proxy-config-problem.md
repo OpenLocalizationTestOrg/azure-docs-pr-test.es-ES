@@ -1,6 +1,6 @@
 ---
-title: "Problema al crear una aplicación de proxy de aplicación | Microsoft Docs"
-description: "Cómo solucionar los problemas que surgen al crear aplicaciones de proxy de aplicación en el portal de administración de Azure AD"
+title: "crear una aplicación de Proxy de aplicación de aaaProblem | Documentos de Microsoft"
+description: "¿Cómo tootroubleshoot problemas de creación de aplicaciones de Proxy de aplicación de portal de administración de AD de Azure de Hola"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,39 +13,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fe56f56162ba7186f1b660a5b44fcef38f1dee9d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 24fab83c38a49a9e5754854acf2f9711e374e559
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>Problema al crear una aplicación de proxy de aplicación 
 
-A continuación, se muestran algunos de los problemas habituales a los que se enfrentan los usuarios cuando crean una aplicación de proxy de aplicación.
+A continuación son algunos de los problemas comunes de Hola se enfrentan los usuarios cuando se crea una nueva aplicación de proxy de aplicación.
 
 ## <a name="recommended-documents"></a>Documentos recomendados 
 
-Para más información sobre la creación de una aplicación de proxy de aplicación mediante el portal de administración, consulte [Publicación de aplicaciones mediante el proxy de aplicación de Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
+toolearn más acerca de cómo crear una aplicación de Proxy de aplicación a través de hello Portal de administración, consulte [publicar aplicaciones mediante el Proxy de aplicación de Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
 
-Si está siguiendo los pasos de ese documento y obtiene un error al crear la aplicación, consulte los detalles del error para obtener información y sugerencias para corregir la aplicación. La mayoría de los mensajes de error incluyen una sugerencia de corrección. 
+Si está siguiendo los pasos de hello en ese documento y obtiene un error al crear la aplicación hello, vea los detalles del error Hola para obtener información y sugerencias sobre cómo toofix Hola aplicación. La mayoría de los mensajes de error incluyen una sugerencia de corrección. 
 
-## <a name="specific-things-to-check"></a>Aspectos específicos que comprobar
+## <a name="specific-things-toocheck"></a>Toocheck acciones específicas
 
-Para evitar errores habituales, compruebe que:
+tooavoid los errores comunes, compruebe que:
 
--   Sea un administrador con permiso para crear una aplicación de proxy de aplicación;
+-   Es un administrador con permiso toocreate una aplicación de Proxy de aplicación
 
--   La dirección URL interna sea única;
+-   dirección URL interna de Hello es único
 
--   La dirección URL externa sea única;
+-   dirección URL externa de Hello es única
 
--   Las direcciones URL empiecen por http o https y terminen en "/";
+-   Hola direcciones URL de inicio con http o https y terminar con un "/"
 
--   La dirección URL debe ser un nombre de dominio y no una dirección IP.
+-   dirección URL de Hello debe ser un nombre de dominio y no una dirección IP
 
-El mensaje de error debería aparecer en la esquina superior derecha cuando cree la aplicación. También puede seleccionar el icono de notificación para ver los mensajes de error.
+mensaje de error de Hello debe aparecer en la esquina superior derecha de hello cuando se crea la aplicación hello. También puede seleccionar los mensajes de error de hello notificación icono toosee Hola.
 
    ![Mensaje de notificación](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Habilitación del proxy de aplicación en Azure Portal](active-directory-application-proxy-enable.md)
+[Habilita el Proxy de aplicación en hello portal de Azure](active-directory-application-proxy-enable.md)

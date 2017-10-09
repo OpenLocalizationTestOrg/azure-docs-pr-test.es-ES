@@ -1,6 +1,6 @@
 ---
-title: "Introducción a DNS de Azure con Azure Portal | Microsoft Docs"
-description: "Obtenga información sobre cómo crear una zona y un registro DNS en Azure DNS. Esta es una guía paso a paso para crear y administrar su primera zona y su primer registro DNS con Azure Portal."
+title: aaaGet iniciado en el DNS de Azure mediante Hola portal de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate un DNS zona y este registro de DNS de Azure. Esto es una guía paso a paso toocreate y administrar la primera zona DNS y el registro mediante Hola portal de Azure."
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.openlocfilehash: 93b24e3d9fbb3fbb3ea995271fd63d1e82eb9c9e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5cea01d840d794001cccac64defed8b329d948db
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-azure-dns-using-the-azure-portal"></a>Introducción a DNS de Azure con Azure Portal
+# <a name="get-started-with-azure-dns-using-hello-azure-portal"></a>Introducción a DNS de Azure con hello portal de Azure
 
 > [!div class="op_single_selector"]
 > * [Portal de Azure](dns-getstarted-portal.md)
@@ -29,77 +29,77 @@ ms.lasthandoff: 07/11/2017
 > * [CLI de Azure 1.0](dns-getstarted-cli-nodejs.md)
 > * [CLI de Azure 2.0](dns-getstarted-cli.md)
 
-Este artículo lo guiará por los pasos necesarios para crear su primera zona y su primer registro DNS con Azure Portal. También puede llevar a cabo estos pasos con Azure PowerShell o la CLI de Azure multiplataforma.
+Este artículo le guiará a través de hello pasos toocreate la primera zona DNS y el registro mediante Hola portal de Azure. También puede realizar estos pasos con Azure PowerShell u Hola CLI de Azure entre plataformas.
 
-Una zona DNS se usa para hospedar los registros DNS de un dominio concreto. Para iniciar el hospedaje de su dominio en DNS de Azure, debe crear una zona DNS para ese nombre de dominio. Cada registro DNS del dominio se crea luego en esta zona DNS. Finalmente, para publicar la zona DNS en Internet, debe configurar los servidores de nombres para el dominio. En los procedimientos siguientes se describen todos estos pasos.
+Una zona DNS es toohost usado Hola registros DNS para un dominio en particular. toostart hospedaje de su dominio de DNS de Azure, necesita toocreate una zona DNS para ese nombre de dominio. Cada registro DNS del dominio se crea luego en esta zona DNS. Por último, toopublish su DNS de la zona toohello Internet, necesitará servidores de nombres de hello tooconfigure para dominio de Hola. Cada uno de estos pasos se describe en hello pasos.
 
 ## <a name="create-a-dns-zone"></a>Creación de una zona DNS
 
-1. Inicie sesión en el Portal de Azure.
-2. En el menú Concentrador, haga clic en **Nuevo > Redes >** y, luego, en **Zona DNS** para abrir la hoja Crear zona DNS.
+1. Inicie sesión en toohello portal de Azure
+2. En el menú del concentrador hello, haga clic en y haga clic en **nuevo > redes >** y, a continuación, haga clic en **zona DNS** hoja de zona de DNS crear de tooopen Hola.
 
     ![Zona DNS](./media/dns-getstarted-portal/openzone650.png)
 
-4. En la hoja **Crear zona DNS**, escriba los valores siguientes y haga clic en **Crear**:
+4. En hello **zona DNS crear** escriba Hola después valores hoja, haga clic en **crear**:
 
 
    | **Configuración** | **Valor** | **Detalles** |
    |---|---|---|
-   |**Name**|contoso.com|El nombre de la zona DNS|
-   |**Suscripción**|[Su suscripción]|Seleccione la suscripción en la que se creará la zona DNS.|
-   |**Grupos de recursos**|**Crear nuevo:** contosoDNSRG|Cree un grupo de recursos. El nombre del grupo de recursos debe ser único dentro de la suscripción seleccionada. Para más información sobre los grupos de recursos, lea el artículo [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
+   |**Name**|contoso.com|nombre de Hola de zona DNS de Hola|
+   |**Suscripción**|[Su suscripción]|Seleccione una zona DNS de suscripción toocreate hello en.|
+   |**Grupos de recursos**|**Crear nuevo:** contosoDNSRG|Cree un grupo de recursos. nombre de grupo de recursos de Hello debe ser único dentro de la suscripción de Hola que ha seleccionado. más información acerca de los grupos de recursos, leer hello toolearn [el Administrador de recursos](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) artículo de información general.|
    |**Ubicación**|Oeste de EE. UU.||
 
 > [!NOTE]
-> El grupo de recursos se refiere a la ubicación del grupo de recursos y no tiene efecto alguno sobre la zona DNS. La ubicación de la zona DNS siempre es "global" y no se muestra.
+> grupo de recursos de Hello hace referencia la ubicación de toohello Hola del grupo de recursos y no tiene ningún efecto en la zona DNS de Hola. ubicación de la zona DNS Hola siempre es "global" y no se muestra.
 
 ## <a name="create-a-dns-record"></a>Creación de un registro de DNS
 
-En el ejemplo siguiente, se le guiará a través del proceso de creación de un registro A. Para crear otros tipos de registros y modificar los que ya existan, consulte [Administración de registros y conjuntos de registros DNS mediante Azure Portal](dns-operations-recordsets-portal.md). 
+Hello en el ejemplo siguiente se le guiará por el proceso de Hola de nueva creación de registro "A". Para otros tipos de registro y toomodify los registros existentes, consulte [registros administrar DNS y los conjuntos de registros mediante el uso de Hola portal de Azure](dns-operations-recordsets-portal.md). 
 
-1. Con la zona DNS creada, en el panel **Favoritos** de Azure Portal, haga clic en **Todos los recursos**. Haga clic en la zona DNS **contoso.com** en la hoja Todos los recursos. Si la suscripción que seleccionó ya tiene varios recursos en ella, puede escribir **contoso.com** en el cuadro **Filtrar por nombre...** para acceder fácilmente a la zona DNS.
+1. Con hello crea zona DNS, en el portal de Azure hello **favoritos** panel, haga clic en **todos los recursos**. Haga clic en hello **contoso.com** de la zona DNS en hello todos los módulos de recursos. Si la suscripción de Hola que ha seleccionado ya tiene varios recursos en ella, puede escribir **contoso.com** en hello **filtrar por nombre...** cuadro tooeasily tener acceso a la zona de DNS de Hola.
 
-1. En la parte superior de la hoja **Zona DNS**, seleccione **+ Conjunto de registros** para abrir la hoja **Agregar conjunto de registros**.
+1. En parte superior de Hola de hello **zona DNS** hoja, seleccione **+ grabar conjunto** tooopen hello **Agregar conjunto de registros** hoja.
 
-1. En la hoja **Agregar conjunto de registros**, escriba los valores siguientes y haga clic en **Aceptar**. En este ejemplo, va a crear un registro A.
+1. En hello **Agregar conjunto de registros** hoja, escriba Hola después de valores y haga clic en **Aceptar**. En este ejemplo, va a crear un registro A.
 
    |**Configuración** | **Valor** | **Detalles** |
    |---|---|---|
-   |**Name**|www|Nombre del registro|
-   |**Tipo**|Una | El tipo de registro DNS que se va a crear, los valores aceptables son A, AAAA, CNAME, MX, NS, SRV, TXT y PTR.  Para más información sobre los tipos de registro, visite [Información general sobre zonas y registros de DNS](dns-zones-records.md)|
-   |**TTL**|1|Período de vida de la solicitud DNS.|
+   |**Name**|www|Nombre del registro de hello|
+   |**Tipo**|Una | Tipo de toocreate de registro de DNS, los valores aceptables son A, AAAA, CNAME, MX, NS, SRV, TXT y PTR.  Para más información sobre los tipos de registro, visite [Información general sobre zonas y registros de DNS](dns-zones-records.md)|
+   |**TTL**|1|Período de vida de la solicitud DNS de Hola.|
    |**Unidad de TTL**|Horas|Medición de tiempo para el valor de TTL.|
-   |**Dirección IP**|ipAddressValue| Este valor es la dirección IP que resuelve el registro DNS.|
+   |**Dirección IP**|ipAddressValue| Este valor es la dirección IP de Hola Hola DNS resuelve.|
 
 ## <a name="view-records"></a>Visualización de los registros
 
-En la parte inferior de la hoja Zona DNS, puede consultar los registros correspondientes a la zona DNS. Debería ver los registros SOA y DNS predeterminados, que se crean en cada zona, además de todos los nuevos que haya creado.
+En la parte inferior de Hola de hoja de zona DNS de hello, puede ver registros de hello para la zona DNS de Hola. Se deben ver registros DNS y SOA de predeterminado de hello, que se crean en cada zona, además de todos los registros nuevos que haya creado.
 
 ![zona](./media/dns-getstarted-portal/viewzone500.png)
 
 
 ## <a name="update-name-servers"></a>Actualización de los servidores de nombres
 
-Una vez haya comprobado que la zona y los registros DNS se han configurado correctamente, tiene que configurar el nombre de dominio para usar los servidores de nombres DNS de Azure. De esta forma, otros usuarios en Internet podrán encontrar los registros DNS.
+Una vez haya satisface que la zona DNS y los registros se han configurado correctamente, necesita tooconfigure su nombre de dominio toouse servidores de nombres DNS de Azure Hola. Esto permite a otros usuarios Hola Internet toofind los registros DNS.
 
-Los servidores de nombres de su zona se proporcionan en Azure Portal:
+servidores de nombres de Hello para la zona se proporcionan en hello portal de Azure:
 
 ![zona](./media/dns-getstarted-portal/viewzonens500.png)
 
-Estos servidores de nombres deben configurarse con el registrador de nombres de dominio (donde adquirió el nombre de dominio). El registrador ofrece la opción de configurar los servidores de nombres para el dominio. Si quiere obtener más información, consulte [Delegación del dominio en DNS de Azure](dns-domain-delegation.md).
+Estos servidores de nombres deben configurarse con el registrador de nombres de dominio de hello (que adquirió nombre de dominio de hello). El registrador ofrece Hola opción tooset los servidores de nombres de hello para el dominio de Hola. Para obtener más información, consulte [delegar su tooAzure de dominio DNS](dns-domain-delegation.md).
 
 ## <a name="delete-all-resources"></a>Eliminación de todos los recursos
 
-Para eliminar todos los recursos creados en este artículo, complete los pasos siguientes:
+toodelete todos los recursos que se crean en este artículo, Hola completa pasos:
 
-1. En el panel **Favoritos** de Azure Portal, haga clic en **Todos los recursos**. Haga clic en el grupo de recursos **MyResourceGroup** en la hoja Todos los recursos. Si la suscripción que seleccionó ya tiene varios recursos en ella, escriba **MyResourceGroup** en el cuadro **Filtrar por nombre...** para acceder fácilmente al grupo de recursos.
-1. En la hoja **MyResourceGroup**, haga clic en el botón **Eliminar**.
-1. El portal requiere que escriba el nombre del grupo de recursos para confirmar que desea eliminarlo. Haga clic en **Eliminar**, escriba *MyResourceGroup* para el nombre de grupo de recursos y haga clic en **Eliminar**. Al eliminarse un grupo de recursos, se eliminan todos los recursos que contiene, por lo que siempre debe asegurarse de comprobar su contenido antes de eliminarlo. El portal elimina todos los recursos incluidos en el grupo de recursos y, después, el grupo de recursos en sí. Este proceso tarda varios minutos.
+1. En el portal de Azure hello **favoritos** panel, haga clic en **todos los recursos**. Haga clic en hello **MyResourceGroup** grupo de recursos en hello todos los módulos de recursos. Si la suscripción de Hola que ha seleccionado ya tiene varios recursos en ella, puede escribir **MyResourceGroup** en hello **filtrar por nombre...** grupo de recursos de cuadro tooeasily acceso Hola.
+1. Hola **MyResourceGroup** hoja, haga clic en hello **eliminar** botón.
+1. Hello portal requiere tootype Hola nombre del tooconfirm de grupo de recursos de Hola que desea que toodelete lo. Haga clic en **eliminar**, tipo *MyResourceGroup* nombre de grupo de recursos de hello, a continuación, haga clic en **eliminar**. Al eliminar un grupo de recursos eliminan todos los recursos en el grupo de recursos de hello, por lo que siempre puede tooconfirm seguro de contenido de Hola de un grupo de recursos antes de eliminarlo. portal de Hello elimina todos los recursos incluidos en el grupo de recursos de hello, a continuación, elimina el grupo de recursos de hello propio. Este proceso tarda varios minutos.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Azure DNS, lea [Introducción a DNS de Azure](dns-overview.md).
+toolearn más información acerca de DNS de Azure, consulte [Introducción a DNS de Azure](dns-overview.md).
 
-Para aprender a administrar registros DNS en Azure DNS, consulte [Administración de registros y conjuntos de registros DNS mediante Azure Portal](dns-operations-recordsets-portal.md).
+toolearn más información acerca de la administración de registros DNS en DNS de Azure, consulte [registros administrar DNS y los conjuntos de registros mediante el uso de Hola portal de Azure](dns-operations-recordsets-portal.md).
 

@@ -1,5 +1,5 @@
 ---
-title: "Comunicación con cualquier punto de conexión a través de HTTP: Azure Logic Apps | Microsoft Docs"
+title: "aaaCommunicate con cualquier punto de conexión a través de HTTP - Azure Logic Apps | Documentos de Microsoft"
 description: "Creación de aplicaciones lógicas que se comuniquen con cualquier punto de conexión a través de HTTP"
 services: logic-apps
 author: jeffhollan
@@ -15,39 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: d422a07a27ffa62a673bd2d471ae4fc837251dee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9793601839437a2b880bdb81e15881270cacc963
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-http-action"></a>Introducción a la acción HTTP
+# <a name="get-started-with-hello-http-action"></a>Empezar a trabajar con hello acción HTTP
 
-Con la acción HTTP, puede ampliar los flujos de trabajo de su organización y comunicarse con cualquier punto de conexión a través de HTTP.
+Con hello acción HTTP, puede ampliar los flujos de trabajo para su organización y punto de conexión de tooany se comunican a través de HTTP.
 
 Puede:
 
 * Cree flujos de trabajo de aplicaciones lógicas que se activen (desencadenador) cuando un sitio web que administre deje de funcionar.
-* Comuníquese con cualquier punto de conexión por HTTP para ampliar los flujos de trabajo a otros servicios.
+* Comunicarse el punto de conexión de tooany en otros servicios a través de HTTP tooextend los flujos de trabajo.
 
-Para empezar a usar la acción HTTP en una aplicación lógica, consulte [Creación de una nueva aplicación lógica mediante la conexión de servicios de SaaS](../logic-apps/logic-apps-create-a-logic-app.md).
+tooget se hayan iniciado mediante la acción de hello HTTP en una aplicación de lógica, consulte [crear una aplicación de lógica](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="use-the-http-trigger"></a>Uso del desencadenador HTTP
-Un desencadenador es un evento que se puede utilizar para iniciar el flujo de trabajo definido en una aplicación lógica. [Más información sobre los desencadenadores](connectors-overview.md).
+## <a name="use-hello-http-trigger"></a>Utilice el desencadenador de hello HTTP
+Un desencadenador es un evento que puede ser el flujo de trabajo hello toostart utilizado que se define en una aplicación de lógica. [Más información sobre los desencadenadores](connectors-overview.md).
 
-Esta es una secuencia de ejemplo de cómo configurar un desencadenador HTTP en el diseñador de aplicaciones lógicas.
+Aquí es una secuencia de ejemplo de cómo desencadenar tooset seguridad Hola HTTP Hola diseñador la lógica de aplicación.
 
-1. Agregue el desencadenador HTTP a la aplicación lógica.
-2. Rellene los parámetros para el punto de conexión HTTP que desee sondear.
-3. Modifique el intervalo de periodicidad de la frecuencia con que se debe sondear.
+1. Agregar desencadenador HTTP de hello en la aplicación lógica.
+2. Completar parámetros de Hola de punto de conexión de hello HTTP que desea toopoll.
+3. Modificar el intervalo de periodicidad de hello en la frecuencia con debería realizar el sondeo.
 
-   Ahora se activa la aplicación lógica con cualquier contenido que se devuelva durante cada comprobación.
+   aplicación de la lógica de Hello ahora se desencadena con cualquier contenido que se devuelve durante cada comprobación.
 
    ![Desencadenador HTTP](./media/connectors-native-http/using-trigger.png)
 
-### <a name="how-the-http-trigger-works"></a>Funcionamiento del desencadenador HTTP
+### <a name="how-hello-http-trigger-works"></a>Cómo funciona el desencadenador de hello HTTP
 
-El desencadenador HTTP realiza una llamada a un punto de conexión HTTP en un intervalo periódico. De forma predeterminada, cualquier código de respuesta HTTP inferior a 300 hace que se ejecute una aplicación lógica. Para especificar si se debe activar la aplicación lógica, puede editarla en la vista de código y agregar una condición que se examine después de la llamada HTTP. Este es un ejemplo de desencadenador HTTP que se activa cada vez que el código de estado devuelto es mayor o igual que `400`.
+desencadenador de Hello HTTP envía un punto de conexión de llamada tooHTTP en un intervalo periódico. De forma predeterminada, cualquier código de respuesta HTTP que es inferior a 300 hace un toorun de aplicación lógica. toospecify si debería desencadenar la aplicación de la lógica de hello, puede editar aplicación de lógica de hello en la vista de código y agregar una condición que se evalúa como después de hello llamada HTTP. Este es un ejemplo de un desencadenador HTTP que se desencadena cuando Hola devolvió el código de estado es mayor o igual a demasiado`400`.
 
 ```javascript
 "Http":
@@ -72,57 +72,57 @@ El desencadenador HTTP realiza una llamada a un punto de conexión HTTP en un in
 }
 ```
 
-Los detalles completos acerca de los parámetros de desencadenador HTTP están disponibles en [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger).
+Encuentran los detalles completos acerca de los parámetros de desencadenador de hello HTTP en [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger).
 
-## <a name="use-the-http-action"></a>Uso de la acción HTTP
+## <a name="use-hello-http-action"></a>Use la acción Hola HTTP
 
-Una acción es una operación que se lleva a cabo mediante el flujo de trabajo definido en una aplicación lógica. 
-[Más información sobre las acciones](connectors-overview.md).
+Una acción es una operación que se lleva a cabo por flujo de trabajo de Hola que se define en una aplicación de lógica. 
+[Más información acerca de las acciones](connectors-overview.md).
 
 1. Elija **Nuevo paso** > **Agregar una acción**.
-3. En el cuadro de búsqueda de acciones, escriba **http** para mostrar las acciones HTTP.
+3. En el cuadro de búsqueda de la acción de hello, escriba **http** acciones de hello HTTP toolist.
    
-    ![Selección de la acción de HTTP](./media/connectors-native-http/using-action-1.png)
+    ![Seleccione la acción de hello HTTP](./media/connectors-native-http/using-action-1.png)
 
-4. Agregue los parámetros necesarios para la llamada HTTP.
+4. Agregue los parámetros necesarios para la llamada de hello HTTP.
    
-    ![Finalización de la acción de HTTP](./media/connectors-native-http/using-action-2.png)
+    ![Hola completa acción HTTP](./media/connectors-native-http/using-action-2.png)
 
-5. En la barra de herramientas del diseñador, haga clic en **Guardar**. La aplicación lógica se guarda y publica (activa) al mismo tiempo.
+5. En la barra de herramientas del diseñador hello, haga clic en **guardar**. La aplicación lógica se guardó y publicó (activada) en hello mismo tiempo.
 
 ## <a name="http-trigger"></a>Desencadenador HTTP
-Aquí se muestran los detalles del desencadenador que admite este conector. El conector HTTP tiene un desencadenador.
+A continuación encontrará los detalles de Hola de desencadenador de hello admitido por este conector. conector HTTP de Hello tiene un desencadenador.
 
 | Desencadenador | Description |
 | --- | --- |
-| http |Realiza una llamada HTTP y devuelve el contenido de la respuesta. |
+| HTTP |Realiza una llamada HTTP y devuelve el contenido de la respuesta de Hola. |
 
 ## <a name="http-action"></a>Acción HTTP
-Aquí se muestran los detalles de la acción que admite este conector. El conector HTTP tiene una acción posible.
+A continuación encontrará los detalles de hello para la acción de hello admitido por este conector. Conector de Hello HTTP tiene una acción posible.
 
 | Acción | Description |
 | --- | --- |
-| http |Realiza una llamada HTTP y devuelve el contenido de la respuesta. |
+| HTTP |Realiza una llamada HTTP y devuelve el contenido de la respuesta de Hola. |
 
 ## <a name="http-details"></a>Detalles HTTP
-Las tablas siguientes describen los campos de entrada obligatorios y opcionales para la acción y los detalles de salida correspondientes asociados a su uso.
+Hello en las tablas siguientes se describen Hola necesarios y campos de entrada opcionales para acción de Hola y detalles salida correspondientes Hola que están asociados con el uso de la acción de Hola.
 
 #### <a name="http-request"></a>Solicitud HTTP
-Los siguientes son los campos de entrada para la acción que realiza una solicitud de salida HTTP.
+los siguientes Hola son campos de entrada para la acción de hello, que realiza una solicitud de salida HTTP.
 Un * significa que es un campo obligatorio.
 
 | Nombre para mostrar | Nombre de propiedad | Description |
 | --- | --- | --- |
-| Método* |estático |El verbo HTTP que se usará |
-| URI* |uri |El identificador URI de la solicitud HTTP |
-| Encabezados |Encabezados |Objeto JSON de los encabezados HTTP que incluir |
-| Cuerpo |Cuerpo |Cuerpo de la solicitud HTTP |
-| Autenticación |Autenticación |Detalles en la sección [Autenticación](#authentication) |
+| Método* |estático |Hola HTTP verbo toouse |
+| URI* |uri |Hola URI de solicitud de hello HTTP |
+| Encabezados |encabezados |Un objeto JSON de tooinclude de encabezados HTTP |
+| Cuerpo |body |Hola cuerpo de solicitud HTTP |
+| Autenticación |Autenticación |Detalles de hello [autenticación](#authentication) sección |
 
 <br>
 
 #### <a name="output-details"></a>Detalles de salida
-Los detalles de la salida de la respuesta HTTP son los siguientes.
+siguiente Hola es detalles de salida de respuesta HTTP Hola.
 
 | Nombre de propiedad | Tipo de datos | Description |
 | --- | --- | --- |
@@ -131,7 +131,7 @@ Los detalles de la salida de la respuesta HTTP son los siguientes.
 | Código de estado |int |Código de estado HTTP |
 
 ## <a name="authentication"></a>Autenticación
-Logic Apps permite utilizar diferentes tipos de autenticación en los puntos de conexión HTTP. Esta autenticación se puede usar con los conectores **HTTP**, **[HTTP + Swagger](connectors-native-http-swagger.md)** y **[HTTP Webhook](connectors-native-webhook.md)**. Los siguientes tipos de autenticación pueden configurarse:
+característica de las aplicaciones lógicas de Hello permite a toouse diferentes tipos de autenticación en los extremos HTTP. Puede usar este procedimiento de autenticación con hello **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, y  **[HTTP Webhook](connectors-native-webhook.md)**  conectores. Hola siguientes tipos de autenticación es configurable:
 
 * [Autenticación básica](#basic-authentication)
 * [Autenticación de certificados de clientes](#client-certificate-authentication)
@@ -139,18 +139,18 @@ Logic Apps permite utilizar diferentes tipos de autenticación en los puntos de 
 
 #### <a name="basic-authentication"></a>Autenticación básica
 
-Se requiere el siguiente objeto de autenticación para la autenticación básica.
+Hola después el objeto de autenticación es necesario para la autenticación básica.
 Un * significa que es un campo obligatorio.
 
 | Nombre de propiedad | Tipo de datos | Description |
 | --- | --- | --- |
 | Type* |type |Tipo de autenticación (debe ser `Basic` para la autenticación básica) |
-| Username* |nombre de usuario |Nombre de usuario que se va a autenticar |
-| Password* |contraseña |Contraseña para autenticar. |
+| Username* |nombre de usuario |Tooauthenticate de nombre de usuario |
+| Password* |Contraseña |Contraseña tooauthenticate |
 
 > [!TIP]
-> Si quiere usar una contraseña que no se pueda recuperar de la definición, use un parámetro `securestring` y la  
-> [función de definición de flujo de trabajo](http://aka.ms/logicappdocs) `@parameters()`.
+> Si desea toouse una contraseña que no se puede recuperar de la definición de hello, use un `securestring` hello y parámetro `@parameters()`  
+>  [función de la definición de flujo de trabajo](http://aka.ms/logicappdocs).
 
 Por ejemplo:
 
@@ -164,17 +164,17 @@ Por ejemplo:
 
 #### <a name="client-certificate-authentication"></a>Autenticación de certificados de clientes
 
-Se requiere el siguiente objeto de autenticación para la autenticación de certificados de clientes. Un * significa que es un campo obligatorio.
+Hello es necesario siguiente objeto de autenticación para la autenticación de certificado de cliente. Un * significa que es un campo obligatorio.
 
 | Nombre de propiedad | Tipo de datos | Description |
 | --- | --- | --- |
-| Type* |type |El tipo de autenticación (debe ser `ClientCertificate` para los certificados de cliente SSL) |
-| PFX* |pfx |El contenido codificado en base 64 del archivo de intercambio de información personal (PFX) |
-| Password* |contraseña |La contraseña para acceder al archivo PFX |
+| Type* |type |tipo de autenticación de Hola (debe ser `ClientCertificate` para los certificados de cliente SSL) |
+| PFX* |pfx |contenido de Hello con codificación Base64 del archivo de intercambio de información Personal (PFX) Hola |
+| Password* |Contraseña |Hola contraseña tooaccess Hola archivo PFX |
 
 > [!TIP]
-> Para usar un parámetro que no se pueda leer en la definición después de guardar la aplicación lógica puede usar un parámetro `securestring` y la  
-> [función de definición de flujo de trabajo](http://aka.ms/logicappdocs) `@parameters()`.
+> toouse un parámetro que no se puede leer en la definición de hello después de guardar la aplicación de la lógica de hello, puede usar un `securestring` hello y parámetro `@parameters()`  
+>  [función de la definición de flujo de trabajo](http://aka.ms/logicappdocs).
 
 Por ejemplo:
 
@@ -187,18 +187,18 @@ Por ejemplo:
 ```
 
 #### <a name="azure-ad-oauth-authentication"></a>Autenticación de OAuth de Azure AD
-Se requiere el siguiente objeto de autenticación para la autenticación de OAuth de Azure AD. Un * significa que es un campo obligatorio.
+Hola después el objeto de autenticación es necesario para la autenticación de OAuth de Azure AD. Un * significa que es un campo obligatorio.
 
 | Nombre de propiedad | Tipo de datos | Description |
 | --- | --- | --- |
-| Type* |type |El tipo de autenticación (debe ser `ActiveDirectoryOAuth` para la autenticación de OAuth de Azure AD) |
-| Tenant* |tenant |Identificador del inquilino de Azure AD. |
-| Audience* |audience |Recurso para cuyo uso solicita autorización. Por ejemplo: `https://management.core.windows.net/` |
-| Client ID* |clientId |Identificador de cliente para la aplicación de Azure AD |
-| Secret* |secret |El secreto del cliente que solicita el token |
+| Type* |type |tipo de autenticación de Hola (debe ser `ActiveDirectoryOAuth` para Azure AD OAuth) |
+| Tenant* |tenant |identificador del inquilino Hello para el inquilino de hello Azure AD |
+| Audience* |audience |recurso de Hola que está solicitando toouse de autorización. Por ejemplo: `https://management.core.windows.net/` |
+| Client ID* |clientId |Hola identificador de cliente de la aplicación hello Azure AD |
+| Secret* |secret |secreto de Hola Hola del cliente de que solicita el token de Hola |
 
 > [!TIP]
-> Puede usar un parámetro `securestring` y la [función de definición de flujo de trabajo](http://aka.ms/logicappdocs) `@parameters()` para usar un parámetro que no se pueda leer en la definición después de guardarse.
+> Puede usar un `securestring` hello y parámetro `@parameters()` [función de la definición de flujo de trabajo](http://aka.ms/logicappdocs) toouse un parámetro que no se puede leer en la definición de hello después de guardar.
 > 
 > 
 
@@ -215,5 +215,5 @@ Por ejemplo:
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora, pruebe la plataforma y [cree una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md). Puede explorar los demás conectores disponibles en Logic Apps consultando nuestra [lista de API](apis-list.md).
+Ahora, pruebe plataforma hello y [crear una aplicación de lógica](../logic-apps/logic-apps-create-a-logic-app.md). Puede explorar Hola otros conectores disponibles en las aplicaciones lógicas examinando nuestro [lista de las API](apis-list.md).
 

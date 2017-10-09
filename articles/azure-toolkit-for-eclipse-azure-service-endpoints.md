@@ -1,6 +1,6 @@
 ---
-title: "Puntos de conexión de servicio de Azure"
-description: "Describe la configuración del punto de conexión del servicio de Azure en kit de herramientas de Azure para Eclipse."
+title: aaaAzure los extremos de servicio
+description: "Describe la configuración de extremo de servicio de Azure de hello en hello Azure Toolkit for Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,57 +14,57 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 6059c292c2687f1bf3d9be04c03aaaaf6adde945
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 357aa56409a894719077f2c8f302575c8ebb6883
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-service-endpoints"></a>Puntos de conexión de servicio de Azure
-Los puntos de conexión de servicio determinan si la aplicación se implementa y se administra en la plataforma global de Azure, es operada en Azure por medio de 21Vianet en China o en una plataforma privada de Azure. El cuadro de diálogo **Extremos de servicio** permite especificar qué puntos de conexión de servicio quiere usar. Para abrir el cuadro de diálogo **Extremos de servicio**, en Eclipse, haga clic en **Ventana**, en **Preferencias**, expanda **Azure** y luego haga clic en **Extremos de servicio**. Al establecer el campo **Conjunto activo** se determinan qué puntos de conexión de servicio de Azure se usarán para los proyectos de Azure en el área de trabajo actual.
+Los puntos de conexión de servicio de Azure determinan que si la aplicación está implementada tooand administrado por la plataforma global de Azure hello, Azure operado por 21Vianet en China o una privada plataforma Windows Azure. Hola **los extremos de servicio** cuadro de diálogo permite toospecify que desea toouse de los extremos del servicio. Hola tooopen **los extremos de servicio** cuadro de diálogo, en Eclipse, haga clic en **ventana**, haga clic en **preferencias**, expanda **Azure**y, a continuación, haga clic en **Los extremos del servicio**. Hola configuración **conjunto Active** campo determina qué servicio de Azure extremos se utilizarán para hello Azure proyectos en el área de trabajo actual.
 
-Lo siguiente muestra el cuadro de diálogo **Extremos de servicio** .
+siguiente Hello muestra hello **los extremos de servicio** cuadro de diálogo.
 
 ![][ic719493]
 
-## <a name="to-set-the-service-endpoints"></a>Para establecer los puntos de conexión del servicio
-En el cuadro de diálogo **Extremos de servicio** , realice una de las siguientes acciones:
+## <a name="tooset-hello-service-endpoints"></a>extremos de servicio de hello tooset
+Hola **los extremos de servicio** cuadro de diálogo, realice una de hello siguientes acciones:
 
-* Si quiere usar la plataforma de Azure global, en la lista desplegable **Conjunto activo**, seleccione **windowsazure.com** y haga clic en **Aceptar**.
+* Si desea toouse Hola plataforma global de Azure, de hello **conjunto Active** lista desplegable, seleccione **windowsazure.com** y haga clic en **Aceptar**.
 
-* Si quiere usar Azure operado por 21Vianet en China, en la lista desplegable **Conjunto activo**, seleccione **windowsazure.cn (China)** y haga clic en **Aceptar**.
+* Si desea toouse Azure operado por 21Vianet en China, de hello **conjunto Active** lista desplegable, seleccione **windowsazure.cn (China)** y haga clic en **Aceptar**.
 
-* Si quiere usar una plataforma de Azure privada:
+* Si desea que toouse una plataforma de Azure privada:
 
   1. Haga clic en **Editar**.
 
-  2. Se abre un cuadro de diálogo en el que se le informa de que se cerrará el cuadro de diálogo **Extremos de servicio** y de que se abrirá el archivo de conjuntos de preferencias. Haga clic en **Aceptar**.
+  2. Se abre un cuadro de diálogo, que le informa de que hello **los extremos de servicio** cuadro de diálogo se cerrará y se abrirá el archivo de conjuntos de preferencias de hello. Haga clic en **Aceptar**.
 
-  3. En el archivo preferencesets.xml, cree un nuevo elemento `preferenceset` . Para este elemento nuevo, cree los atributos `name`, `blob`, `management`, `portalURL` y `publishsettings` y agregue valores para ellos que se correspondan a su plataforma de Azure privada. Puede usar los valores ofrecidos para los elementos `preferenceset` existentes como plantillas. **Nota**: el valor usado para el atributo `blob` debe contener el texto "blob" en la dirección URL.
+  3. En el archivo de hello preferencesets.xml, cree un nuevo `preferenceset` elemento. Para este nuevo elemento, crear `name`, `blob`, `management`, `portalURL` y `publishsettings` atributos y agrégueles valores correspondientes de la plataforma de Azure privada tooyour. Puede utilizar valores de hello proporcionados Hola existentes `preferenceset` elementos como plantillas. **Tenga en cuenta**: Hola valor utilizado para hello `blob` atributo debe contener texto hello "blob" en la dirección URL de Hola.
 
   4. Guarde y cierre preferencesets.xml.
 
-  5. Vuelva a abrir el cuadro de diálogo **Extremos de servicio** .
+  5. Vuelva a abrir hello **los extremos de servicio** cuadro de diálogo.
 
-  6. En la lista desplegable **Conjunto activo**, seleccione el conjunto activo que ha creado y haga clic en **Aceptar**.
+  6. De hello **conjunto Active** lista desplegable, seleccione Hola activo establecido que creó y haga clic en **Aceptar**.
 
-  7. Cuando haya creado su elemento `preferenceset` de la plataforma de Azure privada, para cambiar sus valores asignados, haga clic en el botón **Editar** del cuadro de diálogo **Punto de conexión de servicios**. También puede crear varios elementos `preferenceset` de la plataforma de Azure privada, si así lo desea.
+  7. Una vez que ha creado su plataforma de Azure privada `preferenceset` elemento, puede cambiar Hola valores asignados tooit haciendo clic en hello **editar** botón en hello **punto de conexión de servicios** cuadro de diálogo. También puede crear varios elementos `preferenceset` de la plataforma de Azure privada, si así lo desea.
 
 ## <a name="see-also"></a>Otras referencias
 [kit de herramientas de Azure para Eclipse][Azure Toolkit for Eclipse]
 
-[Instalación del Kit de herramientas de Azure para Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Instalar hello Azure Toolkit for Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
 [Creación de una aplicación Hola a todos para Azure en Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-Para obtener más información sobre el uso de Azure con Java, vea el [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
+Para obtener más información acerca del uso de Azure con Java, vea hello [Centro para desarrolladores de Java de Azure][Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 

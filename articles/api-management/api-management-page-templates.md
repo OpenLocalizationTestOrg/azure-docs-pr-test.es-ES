@@ -1,6 +1,6 @@
 ---
-title: "Plantillas de página en Azure API Management | Microsoft Docs"
-description: "Aprenda a personalizar el contenido de las páginas del portal para desarrolladores mediante un conjunto de plantillas en Azure API Management."
+title: "plantillas de aaaPage en la administración de API de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocustomize Hola contenido de páginas del portal para desarrolladores con un conjunto de plantillas en la administración de API de Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f9ef37a694bce786b6acaa428df83f0cb23c2dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 84bd971ad4bcacfdd36c2ebbe05b16063f2a547b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="page-templates-in-azure-api-management"></a>Plantillas de página en Azure API Management
-Azure API Management le ofrece la posibilidad de personalizar el contenido de las páginas del portal para desarrolladores mediante un conjunto de plantillas que configuran su contenido. Por medio de la sintaxis [DotLiquid](http://dotliquidmarkup.org/) y el editor que prefiera, como [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) (DotLiquid para diseñadores), y un conjunto proporcionado de [recursos de cadena](api-management-template-resources.md#strings), [recursos de glifo](api-management-template-resources.md#glyphs) y [controles de página](api-management-page-controls.md) localizados, puede disponer de una gran flexibilidad para configurar el contenido de las páginas como considere oportuno mediante estas plantillas.  
+Administración de API de Azure proporciona que Hola contenido de hello toocustomize de capacidad de páginas del portal para desarrolladores con un conjunto de plantillas que configure su contenido. Usar [DotLiquid](http://dotliquidmarkup.org/) editor hello y sintaxis de su elección, como [DotLiquid a los diseñadores](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), o cambie de tamaño un conjunto proporcionado de [los recursos de cadena](api-management-template-resources.md#strings), [ Recursos de glifo](api-management-template-resources.md#glyphs), y [página controles](api-management-page-controls.md), tienen contenido de gran flexibilidad tooconfigure Hola de páginas de Hola como considere oportuno mediante estas plantillas.  
   
- Las plantillas de esta sección le permiten personalizar el contenido de las páginas de inicio de sesión, registro y página no encontrada del portal para desarrolladores.  
+ Hola las plantillas de esta sección le permiten contenido de hello toocustomize de Hola de inicio de sesión, inicio de sesión una y página no encontrada páginas en el portal para desarrolladores de Hola.  
   
 -   [Sign in](#SignIn)  
   
@@ -32,10 +32,10 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 -   [Page not found](#PageNotFound)  
   
 > [!NOTE]
->  En la siguiente documentación se incluyen plantillas predeterminadas de ejemplo; sin embargo, están sujetas a cambios debido a mejoras continuas. Puede ver las plantillas predeterminadas en vivo en el portal para desarrolladores; para ello, vaya hasta a las plantillas individuales que desee. Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Plantillas predeterminadas de ejemplo se incluyen en hello siguiendo documentación, pero están toochange asunto debido toocontinuous mejoras. Puede ver plantillas de hello predeterminado en vivo en el portal para desarrolladores de hello desplazándose plantillas individuales toohello deseado. Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="SignIn"></a> Sign in  
- La plantilla **sign in** le permite personalizar la página de inicio de sesión en el portal para desarrolladores.  
+ Hola **iniciar sesión en** plantilla permite el inicio de sesión de toocustomize hello en la página de portal para desarrolladores de Hola.  
   
  ![Página de inicio de sesión](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de inicio de sesión de APIM")  
   
@@ -96,7 +96,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ### <a name="controls"></a>Controles  
- Esta plantilla puede usar los siguientes [controles de página](api-management-page-controls.md).  
+ Esta plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).  
   
 -   [basic-signin](api-management-page-controls.md#basic-signin)  
   
@@ -134,7 +134,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ##  <a name="SignUp"></a> Sign up  
- La plantilla **sign up** le permite personalizar la página de registro en el portal para desarrolladores.  
+ Hola **registrarse** plantilla permite hello toocustomize página de registro en el portal para desarrolladores de Hola.  
   
  ![Página de registro](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de la página de registro de APIM")  
   
@@ -155,7 +155,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ### <a name="controls"></a>Controles  
- Esta plantilla puede usar los siguientes [controles de página](api-management-page-controls.md).  
+ Esta plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).  
   
 -   [sign-up](api-management-page-controls.md#sign-up)  
   
@@ -182,7 +182,7 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```  
   
 ##  <a name="PageNotFound"></a> Page not found  
- La plantilla **page not found** le permite personalizar la página de página no encontrada en el portal para desarrolladores.  
+ Hola **página no encontrada** plantilla permite toocustomize Hola página no encontrada página en el portal para desarrolladores de Hola.  
   
  ![Página no encontrada](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "Plantillas del portal para desarrolladores de página no encontrada de APIM")  
   
@@ -225,11 +225,11 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
   
 |Propiedad|Escriba|Descripción|  
 |--------------|----------|-----------------|  
-|referenceCode|string|Código generado si esta página se mostró como resultado de un error interno.|  
-|errorCode|string|Código generado si esta página se mostró como resultado de un error interno.|  
-|emailBody|string|Cuerpo de correo electrónico generado si esta página se mostró como resultado de un error interno.|  
-|requestedUrl|string|La dirección URL solicitada cuando no se encontró la página.|  
-|referrerUrl|string|La dirección URL de origen de referencia a la dirección URL solicitada.|  
+|referenceCode|cadena|Código generado si esta página se muestra como resultado de hello de un error interno.|  
+|errorCode|cadena|Código generado si esta página se muestra como resultado de hello de un error interno.|  
+|emailBody|cadena|Cuerpo generado si esta página se muestra como resultado de hello de un error interno del correo electrónico.|  
+|requestedUrl|cadena|dirección URL de Hello solicitada cuando no se encontró la página de Hola.|  
+|referrerUrl|cadena|Hola referrer URL toohello la dirección URL solicitada.|  
   
 ### <a name="sample-template-data"></a>Ejemplo de datos de plantilla  
   
@@ -244,4 +244,4 @@ Azure API Management le ofrece la posibilidad de personalizar el contenido de la
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](api-management-developer-portal-templates.md).
+Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](api-management-developer-portal-templates.md).

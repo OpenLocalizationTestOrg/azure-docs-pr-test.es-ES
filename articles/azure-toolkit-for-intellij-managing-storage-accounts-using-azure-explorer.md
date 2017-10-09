@@ -1,6 +1,6 @@
 ---
-title: "Administración de cuentas de almacenamiento mediante Azure Explorer para IntelliJ | Microsoft Docs"
-description: "Obtenga información sobre cómo administrar las cuentas de Azure Storage mediante Azure Explorer para IntelliJ."
+title: las cuentas de almacenamiento de aaaManage mediante el uso de hello Azure explorador para IntelliJ | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toomanage cuentas de su almacenamiento de Azure mediante hello Azure explorador para IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: a1b56cc2751fc43a1ad6917eca77eec460f26694
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b094bdcd2fa2782cb12b67c96ac406fbe4c1aa3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-storage-accounts-by-using-the-azure-explorer-for-intellij"></a>Administración de cuentas de almacenamiento mediante Azure Explorer para IntelliJ
+# <a name="manage-storage-accounts-by-using-hello-azure-explorer-for-intellij"></a>Administrar cuentas de almacenamiento mediante hello Azure explorador para IntelliJ
 
-Azure Explorer, que forma parte del kit de herramientas de Azure para IntelliJ, proporciona a los desarrolladores de Java una solución fácil de usar para la administración de cuentas de almacenamiento en su cuenta de Azure desde el entorno de desarrollo integrado de IntelliJ (IDE).
+Hola Explorador de Azure, que forma parte de hello Azure Toolkit for IntelliJ, proporciona a los desarrolladores de Java con una solución fácil de usar para administrar las cuentas de almacenamiento en su cuenta de Azure desde dentro del entorno de desarrollo integrado de hello IntelliJ (IDE).
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
@@ -30,76 +30,76 @@ Azure Explorer, que forma parte del kit de herramientas de Azure para IntelliJ, 
 
 ## <a name="create-a-storage-account-in-intellij"></a>Creación de una cuenta de almacenamiento en IntelliJ
 
-Para crear una cuenta de almacenamiento con Azure Explorer, haga lo siguiente:
+toocreate una cuenta de almacenamiento mediante el uso de hello Azure explorador, Hola siguientes:
 
-1. Inicie sesión en su cuenta de Azure siguiendo los pasos del artículo [Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse]. 
+1. Inicie sesión en tooyour cuenta de Azure mediante hello [instrucciones de inicio de sesión para hello Azure Toolkit for Eclipse]. 
 
-2. En la vista de **Azure Explorer**, expanda el nodo **Azure**, haga clic con el botón derecho en **Cuentas de almacenamiento** y, después, haga clic en **Crear cuenta de almacenamiento**.
+2. Hola **explorador Azure** , expanda hello **Azure** nodo, haga clic en **cuentas de almacenamiento**y, a continuación, haga clic en **crear cuenta de almacenamiento**.
 
    ![Comando Crear cuenta de almacenamiento][CS01]
 
-3. En el cuadro de diálogo**Crear cuenta de almacenamiento**, especifique las siguientes opciones:
+3. Hola **crear cuenta de almacenamiento** diálogo cuadro, especifique Hola siguientes opciones:
 
    ![Cuadro de diálogo Crear nueva cuenta de almacenamiento][CS02]
 
-   * **Nombre**: especifica el nombre para la nueva cuenta de almacenamiento.
+   * **Nombre**: especifica el nombre de Hola Hola nueva cuenta de almacenamiento.
 
-   * **Tipo de cuenta**: especifica el tipo de cuenta de almacenamiento que se va a crear, por ejemplo, "Blob Storage". Para más información, consulte [Acerca de las cuentas de almacenamiento de Azure]. 
+   * **Tipo de cuenta**: especifica el tipo de saludo de toocreate de cuenta de almacenamiento (por ejemplo, "almacenamiento de blobs"). Para más información, consulte [Acerca de las cuentas de almacenamiento de Azure]. 
 
-   * **Rendimiento**: especifica la oferta de cuenta de almacenamiento que quiere usar del publicador seleccionado; por ejemplo, "Premium". Para obtener más información, consulte [Objetivos de escalabilidad y rendimiento de Azure Storage]. 
+   * **Rendimiento**: especifica la cuenta de almacenamiento toouse de la oferta de publicador seleccionado de hello (por ejemplo, "Premium"). Para obtener más información, consulte [Objetivos de escalabilidad y rendimiento de Azure Storage]. 
 
-   * **Replicación**: especifica la replicación para la cuenta de almacenamiento; por ejemplo, en "Redundancia de zona". Para obtener más información, vea el artículo de [replicación de Azure Storage]. 
+   * **Replicación**: especifica la replicación Hola Hola cuenta de almacenamiento (por ejemplo, "con redundancia de zona"). Para más información, consulte el artículo sobre la [replicación de Azure Storage]. 
 
-   * **Suscripción**: especifica la suscripción de Azure que quiere usar para la nueva cuenta de almacenamiento.
+   * **Suscripción**: especifica la suscripción de Azure que quiere toouse de nueva cuenta de almacenamiento Hola Hola.
 
-   * **Ubicación**: especifica la ubicación donde se creará la cuenta de almacenamiento; por ejemplo, "oeste de EE. UU.".
+   * **Ubicación**: especifica la ubicación de Hola donde se creará la cuenta de almacenamiento (por ejemplo, "West US").
 
-   * **Grupo de recursos**: especifica el grupo de recursos para su máquina virtual. Seleccione una de las siguientes opciones:
-      * **Crear nuevo**: especifica que quiere crear un nuevo grupo de recursos.
+   * **Grupo de recursos**: especifica el grupo de recursos de hello para la máquina virtual. Seleccione una de las siguientes opciones de hello:
+      * **Cree una nueva**: Especifica que desea toocreate un nuevo grupo de recursos.
       * **Usar existente**: especifica que se va a elegir de una lista de grupos de recursos asociados a la cuenta de Azure.
 
-4. Cuando haya especificado todas las opciones anteriores, haga clic en **Aceptar**.
+4. Cuando se ha especificado todas Hola anterior opciones, haga clic en **Aceptar**.
 
 ## <a name="create-a-storage-container-in-intellij"></a>Creación de un contenedor de almacenamiento en IntelliJ
 
-Para crear un contenedor de almacenamiento con Azure Explorer, haga lo siguiente:
+toocreate un contenedor de almacenamiento mediante el uso de hello Azure explorador, Hola siguientes:
 
-1. En la vista de Azure Explorer, haga clic con el botón derecho en la cuenta de almacenamiento donde quiera crear un contenedor y, después, haga clic en **Crear contenedor de blobs**.
+1. En hello Azure del explorador, haga clic en cuenta de almacenamiento de Hola donde desee toocreate un contenedor y, a continuación, haga clic en **crear contenedor de blob**.
 
    ![Comando Crear contenedor de blobs][CC01]
 
-2. En el cuadro de diálogo **Crear contenedor de blobs**, especifique el nombre para el contenedor y, después, haga clic en **Aceptar**. Para obtener más información sobre la nomenclatura de contenedores de almacenamiento, vea [Asignar nombres y hacer referencia a contenedores, blobs y metadatos].
+2. Hola **crear contenedor de blob** cuadro de diálogo, especifique el nombre de hello para el contenedor y, a continuación, haga clic en **Aceptar**. Para más información sobre la nomenclatura de contenedores de almacenamiento, consulte [Asignar nombres y hacer referencia a contenedores, blobs y metadatos].
 
    ![Cuadro de diálogo Crear contenedor de almacenamiento][CC02]
 
 ## <a name="delete-a-storage-container-in-intellij"></a>Eliminación de un contenedor de almacenamiento en IntelliJ
 
-Para eliminar un contenedor de almacenamiento mediante Azure Explorer, siga estos pasos:
+toodelete un contenedor de almacenamiento mediante el uso de hello Azure explorador, Hola siguientes:
 
-1. En la vista de Azure Explorer, haga clic con el botón derecho en el contenedor de almacenamiento y, después, haga clic en **Eliminar**.
+1. Hola Azure del explorador, haga clic en el contenedor de almacenamiento de hello y, a continuación, haga clic en **eliminar**.
 
    ![Comando Eliminar contenedor de almacenamiento][DC01]
 
-2. En la ventana confirmación, haga clic en **Sí**.
+2. En la ventana de confirmación de hello, haga clic en **Sí**.
 
    ![Ventana de confirmación Eliminar contenedor de almacenamiento][DC02]
 
 ## <a name="delete-a-storage-account-in-intellij"></a>Eliminación de una cuenta de almacenamiento en IntelliJ
 
-Para crear una cuenta de almacenamiento con Azure Explorer, haga lo siguiente:
+toodelete una cuenta de almacenamiento mediante el uso de hello Azure explorador, Hola siguientes:
 
-1. En la vista de **Azure Explorer**, haga clic con el botón derecho en la cuenta de almacenamiento y seleccione **Eliminar**.
+1. Hola **explorador Azure** ver, haga clic en la cuenta de almacenamiento de hello y, a continuación, seleccione **eliminar**.
 
    ![Menú Eliminar cuenta de almacenamiento][DS01]
 
-2. En la ventana confirmación, haga clic en **Sí**.
+2. En la ventana de confirmación de hello, haga clic en **Sí**.
 
    ![Ventana de confirmación Eliminar cuenta de almacenamiento][DS02]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información sobre las cuentas de Azure Storage, tamaños y precios, vea los siguientes recursos:
+Para obtener más información acerca de las cuentas de almacenamiento de Azure, tamaños y precios, vea Hola recursos siguientes:
 
-* [Introducción a Microsoft Azure Storage]
+* [Introducción tooMicrosoft almacenamiento de Azure]
 * [Acerca de las cuentas de almacenamiento de Azure]
 * Tamaños de cuentas de Azure Storage
   * [Tamaños de las cuentas de almacenamiento de Windows en Azure]
@@ -108,17 +108,17 @@ Para obtener más información sobre las cuentas de Azure Storage, tamaños y pr
   * [Precios de cuentas de almacenamiento de Windows]
   * [Precios de cuentas de almacenamiento de Linux]
 
-Para obtener más información sobre los kits de herramientas de Azure para los IDE de Java, consulte los siguientes vínculos:
+Para obtener más información acerca de los kits de herramientas de Azure para Java IDE, vea Hola recursos siguientes:
 
 * [Kit de herramientas de Azure para Eclipse]
-  * [Novedades del kit de herramientas de Azure para Eclipse]
-  * [Instalación del Kit de herramientas de Azure para Eclipse]
-  * [Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse]
+  * [Novedades de hello Azure Toolkit for Eclipse]
+  * [Instalar hello Azure Toolkit for Eclipse]
+  * [instrucciones de inicio de sesión para hello Azure Toolkit for Eclipse]
   * [Creación de una aplicación web Hello World para Azure en Eclipse]
 * [Kit de herramientas de Azure para IntelliJ]
-  * [Novedades del kit de herramientas de Azure para IntelliJ]
-  * [Instalación del kit de herramientas de Azure para IntelliJ]
-  * [Instrucciones de inicio de sesión del kit de herramientas de Azure para IntelliJ]
+  * [Novedades de hello Azure Toolkit for IntelliJ]
+  * [Instalación hello Azure Toolkit for IntelliJ]
+  * [Instrucciones de inicio de sesión para hello Azure Toolkit para IntelliJ]
   * [Creación de una aplicación web Hello World para Azure en IntelliJ]
 
 Para obtener más información sobre el uso de Azure con Java, vea el [Centro para desarrolladores de Java de Azure] y la página de [herramientas de Java para Visual Studio Team Services].
@@ -129,17 +129,17 @@ Para obtener más información sobre el uso de Azure con Java, vea el [Centro pa
 [Kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij.md
 [Creación de una aplicación web Hello World para Azure en Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Creación de una aplicación web Hello World para Azure en IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Instalación del Kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Instalación del kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Instrucciones de inicio de sesión del kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Instrucciones de inicio de sesión del kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[Novedades del kit de herramientas de Azure para Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
-[Novedades del kit de herramientas de Azure para IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+[Instalar hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Instalación hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[instrucciones de inicio de sesión para hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Instrucciones de inicio de sesión para hello Azure Toolkit para IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Novedades de hello Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Novedades de hello Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Centro para desarrolladores de Java de Azure]: https://azure.microsoft.com/develop/java/
 [herramientas de Java para Visual Studio Team Services]: https://java.visualstudio.com/
 
-[Introducción a Microsoft Azure Storage]: /azure/storage/storage-introduction
+[Introducción tooMicrosoft almacenamiento de Azure]: /azure/storage/storage-introduction
 [Acerca de las cuentas de almacenamiento de Azure]: /azure/storage/storage-create-storage-account
 [replicación de Azure Storage]: /azure/storage/storage-redundancy
 [Objetivos de escalabilidad y rendimiento de Azure Storage]: /azure/storage/storage-scalability-targets

@@ -1,6 +1,6 @@
 ---
-title: "Adición de un usuario de colaboración B2B de Azure Active Directory a un rol | Microsoft Docs"
-description: "Adición de un usuario invitado a un rol en Azure Active Directory"
+title: "función de aaaAdd un B2B de Azure Active Directory colaboración usuario tooa | Documentos de Microsoft"
+description: Agregar un rol de tooa de usuario de invitado de Azure Active Directory
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -16,15 +16,15 @@ ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e816349ea971c997f655b4d51672dba666bc3e89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ccc58a0c8ecc73f8e79a8d827efdc0ff93846a96
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Conceda permisos a los usuarios de organizaciones asociadas en el inquilino de Azure Active Directory
+# <a name="grant-permissions-toousers-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Conceder permisos toousers de organizaciones de socios comerciales en el inquilino de Azure Active Directory
 
-Los usuarios de colaboración B2B de Azure Active Directory (Azure AD) se agregan como usuarios invitados al directorio y los permisos de invitado del directorio están restringidos de forma predeterminada. Asimismo, su empresa puede necesitar algunos usuarios invitados para cubrir más roles con privilegios en su organización. Para respaldar la definición de roles de privilegios más elevados, se pueden agregar usuarios invitados a los roles que desee, según las necesidades de su organización.
+Los usuarios de colaboración B2B de Active Directory (Azure AD) Azure se agregan como directorio de toohello de invitado a los usuarios y permisos de invitado en el directorio de hello están restringidos de forma predeterminada. Su empresa necesite algunos roles de privilegio mayor invitado toofill de los usuarios de su organización. toosupport definir roles de privilegio mayor, los usuarios invitados pueden ser funciones de agregado tooany que desee, en función de las necesidades de su organización.
 
 ## <a name="default-role"></a>Rol predeterminado
 

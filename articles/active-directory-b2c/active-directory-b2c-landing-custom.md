@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 5/06/2017
 ms.author: parakhj
-ms.openlocfilehash: cb7a9f01e43d41eb7315cb37a41e69f044ce5566
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 28a39f282488b81fc9e2ab7841b5f2cb4cd58715
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C: Registro e inicio de sesión de los consumidores en sus aplicaciones mediante directivas personalizadas
-Las directivas personalizadas son archivos de configuración que definen el comportamiento del inquilino de Azure AD B2C. Un desarrollador de identidades puede editarlas completamente para completar un número casi ilimitado de tareas.
+Las directivas personalizadas son archivos de configuración que definen el comportamiento de Hola de su inquilino de Azure AD B2C. Se pueden editar totalmente por un toocomplete de desarrollador de identidad un número casi ilimitado de tareas.
 
-## <a name="how-to-articles"></a>Artículos de procedimientos
-Aprenda a usar determinadas características de Azure Active Directory B2C:
+## <a name="how-tooarticles"></a>Cómo tooarticles
+Obtenga información acerca de cómo toouse determinadas características de Azure Active Directory B2C:
 
 * [Introducción](active-directory-b2c-overview-custom.md)
 * Configurar proveedores de OIDC como [Azure AD](active-directory-b2c-setup-aad-custom.md)
@@ -39,7 +39,7 @@ Aprenda a usar determinadas características de Azure Active Directory B2C:
 * Solucionar problemas [recopilando registros con Application Insights](active-directory-b2c-troubleshoot-custom.md)
 
 ## <a name="whats-new"></a>Novedades
-Vuelva a esta sección a menudo para conocer los cambios futuros en Azure Active Directory B2C. También enviaremos tweets acerca de las actualizaciones mediante @AzureAD.
+Vuelva a comprobar a menudo toolearn sobre cambios futuros toohello Azure Active Directory B2C. También enviaremos tweets acerca de las actualizaciones mediante @AzureAD.
 
 
 

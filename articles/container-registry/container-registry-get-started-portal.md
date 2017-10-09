@@ -1,6 +1,6 @@
 ---
-title: "Creación de un registro privado de Docker: Azure Portal | Microsoft Docs"
-description: "Introducción a la creación y la administración de registros de contenedor privados de Docker mediante Azure Portal"
+title: registro Docker privada aaaCreate - portal de Azure | Documentos de Microsoft
+description: Empezar a crear y administrar registros de contenedor de Docker privados con hello portal de Azure
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -17,55 +17,55 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fbbb56d775ee96c9a44363a4e41d4fc3c630582
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 40f3ce44fea26e5fbeca865c9da6df55c2df9511
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-private-docker-container-registry-using-the-azure-portal"></a>Creación de un registro de contenedor privado de Docker con Azure Portal
-Use Azure Portal para crear un registro de contenedor y administrar su configuración. También puede crear y administrar registros de contenedor mediante los [comandos de la CLI de Azure 2.0](container-registry-get-started-azure-cli.md), [Azure PowerShell](container-registry-get-started-powershell.md) o mediante programación con la [API de REST](https://go.microsoft.com/fwlink/p/?linkid=834376) de Container Registry.
+# <a name="create-a-private-docker-container-registry-using-hello-azure-portal"></a>Crear un registro de contenedor de Docker privado mediante Hola portal de Azure
+Usar hello toocreate portal Azure un registro de contenedor y administrar su configuración. También puede crear y administrar registros de contenedor con hello [comandos de CLI de Azure 2.0](container-registry-get-started-azure-cli.md), [Azure PowerShell](container-registry-get-started-powershell.md) o mediante programación con registro de contenedor de hello [API de REST](https://go.microsoft.com/fwlink/p/?linkid=834376).
 
-Para más información sobre el entorno y los conceptos, consulte [la información general](container-registry-intro.md).
+En el fondo y conceptos, vea [Hola información general sobre](container-registry-intro.md).
 
 ## <a name="create-a-container-registry"></a>Creación de un registro de contenedor
-1. En [Azure Portal](https://portal.azure.com), haga clic **+ Nuevo**.
-2. Busque en el Marketplace **Azure Container Registry**.
+1. Hola [portal de Azure](https://portal.azure.com), haga clic en **+ nuevo**.
+2. Busque en marketplace Hola para **registro de contenedor de Azure**.
 3. Seleccione **Azure Container Registry**, con el publicador **Microsoft**.
     ![Servicio Container Registry en Azure Marketplace](./media/container-registry-get-started-portal/container-registry-marketplace.png)
-4. Haga clic en **Crear**. Aparece la hoja **Azure Container Registry**.
+4. Haga clic en **Crear**. Hola **registro de contenedor de Azure** aparece hoja.
 
     ![Configuración de Container Registry](./media/container-registry-get-started-portal/container-registry-settings.png)
-5. En la hoja **Azure Container Registry**, escriba la siguiente información. Cuando haya terminado, haga clic en **Crear**.
+5. Hola **registro de contenedor de Azure** hoja, escriba Hola siguiente información. Cuando haya terminado, haga clic en **Crear**.
 
-    a. **Nombre del registro**: un nombre de dominio de nivel superior único global para el registro específico. En este ejemplo, el nombre del registro es *myRegistry01*, pero puede sustituirlo por un nombre único de su elección. El nombre puede contener solo letras y números.
+    a. **Nombre del registro**: un nombre de dominio de nivel superior único global para el registro específico. En este ejemplo, es el nombre del registro de hello *myRegistry01*, pero sustituir un nombre único de su elección. Hola nombre puede contener sólo letras y números.
 
-    b. **Grupo de recursos**: seleccione un [grupo de recursos](../azure-resource-manager/resource-group-overview.md#resource-groups) existente o escriba el nombre para crear uno.
+    b. **Grupo de recursos**: seleccione una existente [grupo de recursos](../azure-resource-manager/resource-group-overview.md#resource-groups) o nombre de tipo hello para uno nuevo.
 
-    c. **Ubicación**: seleccione una ubicación para el centro de datos de Azure en la que el servicio esté [disponible](https://azure.microsoft.com/regions/services/) como, por ejemplo, **centro-sur de EE. UU**.
+    c. **Ubicación**: seleccione la ubicación de centro de datos Azure donde es el servicio de hello [disponibles](https://azure.microsoft.com/regions/services/), como **Ee.uu. Central sur**.
 
-    d. **Usuario administrador**: si lo desea, habilite un usuario administrador para acceder al registro. Puede cambiar esta configuración después de crear el registro.
+    d. **El usuario administrador**: si lo desea, habilitar un registro de hello de tooaccess de usuario de administrador. Puede cambiar esta configuración después de crear el registro de hello.
 
       > [!IMPORTANT]
-      > Además de proporcionar acceso a través de una cuenta de usuario de administrador, los registros de contenedor admiten la autenticación respaldada por entidades de servicio de Azure Active Directory. Para más información y otras consideraciones, consulte [Authenticate with the container registry](container-registry-authentication.md) (Autenticación con el registro de contenedor).
+      > Además de acceso tooproviding a través de una cuenta de usuario de administrador, los registros de contenedor admiten la autenticación respaldada por entidades de servicio de Azure Active Directory. Para más información y otras consideraciones, consulte [Authenticate with the container registry](container-registry-authentication.md) (Autenticación con el registro de contenedor).
       >
 
-    e. **Cuenta de almacenamiento**: use la configuración predeterminada para crear una [cuenta de almacenamiento](../storage/common/storage-introduction.md) o seleccione una cuenta de almacenamiento existente en la misma ubicación. Premium Storage no se admite actualmente.
+    e. **Cuenta de almacenamiento**: usar Hola predeterminada configuración toocreate una [cuenta de almacenamiento](../storage/common/storage-introduction.md), o seleccione una cuenta de almacenamiento existente en hello misma ubicación. Premium Storage no se admite actualmente.
 
 ## <a name="manage-registry-settings"></a>Administración de la configuración del registro
-Después de crear el registro, busque la configuración de este iniciando la hoja **Registros de contenedor** del portal. Por ejemplo, necesitará la configuración para iniciar sesión en el registro, o puede que desee habilitar o deshabilitar el usuario administrador.
+Después de crear el registro de hello, buscar Hola configuración del registro a partir de hello **registros de contenedor** hoja en el portal de Hola. Por ejemplo, tendrá que toolog de configuración de hello en el registro de tooyour, o puede tener tooenable o deshabilitar al usuario de administrador de Hola.
 
-1. En la hoja **Registros de contenedor**, haga clic en el nombre del registro.
+1. En hello **registros de contenedor** hoja, haga clic en nombre de Hola de seguridad del registro.
 
     ![Hoja Registro de contenedor](./media/container-registry-get-started-portal/container-registry-blade.png)
-2. Para administrar la configuración de acceso, haga clic en **Clave de acceso**.
+2. Haga clic en configuración de acceso de toomanage, **clave de acceso**.
 
     ![Acceso al registro de contenedor](./media/container-registry-get-started-portal/container-registry-access.png)
-3. Tenga en cuenta la siguiente configuración:
+3. Tenga en cuenta Hola después de configuración:
 
-   * **Servidor de inicio de sesión**: el nombre completo que usa para iniciar sesión en el registro. En este ejemplo, es `myregistry01.azurecr.io`.
-   * **Usuario administrador**: elija habilitar o deshabilitar la cuenta de usuario administrador del registro.
-   * **Nombre de usuario** y **contraseña**: las credenciales de la cuenta de usuario administrador (si está habilitado) que puede usar para iniciar sesión en el registro. Si lo desea, puede volver a generar la contraseña. Se crean dos contraseñas para que pueda mantener las conexiones en el registro mediante una contraseña mientras vuelve a generar la contraseña de la otra. Para autenticarse con una entidad de servicio en su lugar, consulte [Autenticación con un registro de contenedor privado de Docker](container-registry-authentication.md).
+   * **Servidor de inicio de sesión** -nombre completo de hello usar toolog en el registro de toohello. En este ejemplo, es `myregistry01.azurecr.io`.
+   * **El usuario administrador** : alternar tooenable o deshabilitar la cuenta de usuario de administrador del registro de hello.
+   * **Nombre de usuario** y **contraseña** -Hola credenciales de cuenta de usuario de administrador de hello (si está habilitado) puede usar toolog en el registro de toohello. Si lo desea, puede volver a generar contraseñas de Hola. Se crean dos contraseñas para que pueda mantener registro toohello de conexiones mediante el uso de una contraseña mientras regenera Hola otra contraseña. tooauthenticate con una entidad de servicio en su lugar, vea [autenticar con un registro de contenedor de Docker privado](container-registry-authentication.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Insertar la primera imagen mediante la CLI de Docker](container-registry-get-started-docker-cli.md)
+* [Insertar la primera imagen con hello CLI de Docker](container-registry-get-started-docker-cli.md)

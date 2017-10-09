@@ -1,83 +1,66 @@
 ---
-title: "Lección 2 del tutorial de Azure Analysis Services: Obtención de datos | Microsoft Docs"
-description: "Describe cómo obtener e importar datos en el proyecto del tutorial de Azure Analysis Services."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 06/01/2017
-ms.author: owend
-ms.openlocfilehash: e77de4b9a74b528fa8a7ce86424fc14628b2cacc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+título: aaa "lección de Azure Analysis Services tutorial 2: obtener datos | Descripción de Microsoft Docs": describe cómo tooget e importar datos en Hola proyecto tutorial de Analysis Services de Azure. servicios: documentationcenter de analysis services: '' autor: minewiskan manager: erikre editor: '' etiquetas: ''
+
+MS.AssetId: ms.service: ms.devlang de analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 01/06/2017 ms.author: owend
 ---
+
 # <a name="lesson-2-get-data"></a>Lección 2: Obtención de datos
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-En esta lección, usará Obtención de datos en SSDT para conectarse a la base de datos de ejemplo AdventureWorksDW2014, seleccionar datos, obtener una vista previa, filtrar e importar en el área de trabajo del modelo.  
+En esta lección, usa obtener datos de la base de datos de ejemplo de tooconnect toohello AdventureWorksDW2014 SSDT, seleccione datos, vista previa y filtrar y, a continuación, importar el área de trabajo del modelo.  
   
 Al usar Obtención de datos, puede importar datos de diversos de orígenes: Azure SQL Database, Oracle, Sybase, fuente OData, Teradata, archivos y mucho más. También puede consultar datos mediante una expresión de fórmula de Power Query M.
   
-Tiempo estimado para completar esta lección: **10 minutos**  
+Estimado toocomplete de tiempo en esta lección: **10 minutos**  
   
 ## <a name="prerequisites"></a>Requisitos previos  
-Este tema forma parte de un tutorial de modelado tabular, que se debe completar en orden. Antes de realizar las tareas de esta lección, debe haber completado la lección anterior: [Lección 1: Creación de un proyecto de modelo tabular](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
+Este tema forma parte de un tutorial de modelado tabular, que se debe completar en orden. Antes de realizar tareas de hello en esta lección, debe haber completado la lección anterior hello: [lección 1: crear un nuevo proyecto de modelo tabular](../tutorials/aas-lesson-1-create-a-new-tabular-model-project.md).  
   
 ## <a name="create-a-connection"></a>Crear una conexión  
   
-#### <a name="to-create-a-connection-to-the-adventureworksdw2014-database"></a>Para crear una conexión a la base de datos AdventureWorksDW2014  
+#### <a name="toocreate-a-connection-toohello-adventureworksdw2014-database"></a>una base de datos de conexión toohello AdventureWorksDW2014 toocreate  
   
 1.  En el Explorador de modelos tabulares, haga clic con el botón derecho en **Orígenes de datos** > **Importar desde el origen de datos**.  
   
-    De este modo se inicia Obtención de datos, que le guiará por el proceso de conexión a un origen de datos. Si no ve el Explorador de modelos tabulares, en el **Explorador de soluciones**, haga doble clic en **Model.bim** para abrir el modelo en el diseñador. 
+    Esto inicia obtener datos, que le guiará por el origen de datos de conexión tooa. Si no ve el Explorador de modelos tabulares, en **el Explorador de soluciones**, haga doble clic en **Model.bim** tooopen modelo de hello en el Diseñador de Hola. 
     
     ![aas-lesson2-getdata](../tutorials/media/aas-lesson2-getdata.png)
   
 2.  En Obtención de datos, haga clic en **Base de datos** > **Base de datos de SQL Server** > **Conectar**.  
   
-3.  En el cuadro de diálogo **Base de datos de SQL Server**, en **Servidor**, escriba el nombre del servidor en el que ha instalado la base de datos AdventureWorksDW2014 y haga clic en **Conectar**.  
+3.  Hola **base de datos de SQL Server** cuadro de diálogo, en **Server**, escriba nombre de saludo del servidor de Hola donde instaló la base de datos de hello AdventureWorksDW2014 y, a continuación, haga clic en **conectar**.  
 
-4.  Cuando se le pida que escriba las credenciales, debe especificar las credenciales que Analysis Services usa para conectarse al origen de datos al importar y procesar datos. En **Modo de suplantación**, seleccione **Suplantar cuenta**, escriba las credenciales y haga clic en **Conectar**. Se recomienda que use una cuenta cuya contraseña no expire.
+4.  Cuando se le solicite credenciales tooenter, necesita credenciales de hello toospecify Analysis Services utiliza el origen de datos de toohello tooconnect al importar y procesar datos. En **Modo de suplantación**, seleccione **Suplantar cuenta**, escriba las credenciales y haga clic en **Conectar**. Se recomienda que usar una cuenta que no expire contraseña Hola.
 
     ![aas-lesson2-account](../tutorials/media/aas-lesson2-account.png)
   
     > [!NOTE]  
-    > El uso de una cuenta de usuario y contraseña de Windows proporciona el método más seguro de conectarse a un origen de datos.
+    > Mediante una cuenta de usuario de Windows y una contraseña proporciona el método más seguro de hello conexión tooa del origen de datos.
   
-5.  En el navegador, seleccione la base de datos **AdventureWorksDW2014** y haga clic en **Aceptar**. De este modo, se crea la conexión con la base de datos. 
+5.  En el navegador, seleccione hello **AdventureWorksDW2014** la base de datos y, a continuación, haga clic en **Aceptar**. Esto crea la base de datos de hello conexión toohello. 
   
-6.  En el navegador, active la casilla de las tablas siguientes: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** y **FactInternetSales**.  
+6.  En el navegador, seleccione Hola casilla de verificación de hello las tablas siguientes: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**,  **DimProductCategory**, **DimProductSubcategory**, y **FactInternetSales**.  
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-Después de hacer clic en Aceptar, se abre el Editor de consultas. En la sección siguiente, seleccione solo los datos que desea importar.
+Después de hacer clic en Aceptar, se abre el Editor de consultas. En la siguiente sección hello, seleccione solo los datos de Hola que desea tooimport.
 
   
-## <a name="filter-the-table-data"></a>Filtrar los datos de tabla  
-Las tablas de la base de datos de ejemplo AdventureWorksDW2014 contienen datos que no es necesario incluir en el modelo. Siempre que sea posible, le interesa filtrar los datos que no son necesarios para ahorrar el espacio en memoria que usa el modelo. Filtre algunas de las columnas de las tablas, de modo que no se importen en la base de datos del área de trabajo o en la base de datos del modelo una vez que se haya implementado. 
+## <a name="filter-hello-table-data"></a>Filtrar datos de la tabla de Hola  
+Tablas de base de datos de ejemplo de Hola AdventureWorksDW2014 tienen datos que no es necesario tooinclude en el modelo. Cuando sea posible, desea toofilter espacio de datos innecesarios toosave en la memoria utilizada por el modelo de Hola. Filtra algunas de las columnas de Hola de tablas por lo que no está importados en la base de datos de área de trabajo de Hola o base de datos de modelo de hello después de que se haya implementado. 
   
-#### <a name="to-filter-the-table-data-before-importing"></a>Para filtrar los datos de la tabla antes de importar  
+#### <a name="toofilter-hello-table-data-before-importing"></a>datos de la tabla toofilter Hola antes de importar  
   
-1.  En el Editor de consultas, seleccione la tabla **DimCustomer**. Aparece una vista de la tabla DimCustomer en el origen de datos (la base de datos de ejemplo AdventureWorksDWQ2014). 
+1.  En el Editor de consultas, seleccione hello **DimCustomer** tabla. Aparece una vista de tabla de DimCustomer hello en el origen de datos de hello (la base de datos de ejemplo AdventureWorksDWQ2014). 
   
 2.  Seleccione al mismo tiempo (Ctrl+clic) **SpanishEducation**, **FrenchEducation**, **SpanishOccupation**, **FrenchOccupation**, haga clic con el botón derecho y, después, haga clic en **Quitar columnas**. 
 
     ![aas-lesson2-remove-columns](../tutorials/media/aas-lesson2-remove-columns.png)
   
-    Dado que los valores de estas columnas no son pertinentes para el análisis de ventas por Internet, no es necesario importar estas columnas. Si elimina las columnas innecesarias, el modelo será más pequeño y eficaz.  
+    Puesto que los valores de hello para estas columnas no son relevantes tooInternet análisis de ventas, no hay necesidad de tooimport estas columnas. Si elimina las columnas innecesarias, el modelo será más pequeño y eficaz.  
   
-4.  Elimine las siguientes columnas de cada tabla para filtrar las tablas restantes:  
+4.  Filtrar Hola restantes tablas mediante la eliminación de hello después de las columnas de cada tabla:  
     
     **DimDate**
     
@@ -134,12 +117,12 @@ Las tablas de la base de datos de ejemplo AdventureWorksDW2014 contienen datos q
       |**DueDateKey**|  
       |**ShipDateKey**|   
   
-## <a name="Import"></a>Importar las tablas y los datos de columna seleccionados  
-Ahora que ha obtenido una vista previa y ha filtrado los datos innecesarios, puede importar los datos que quiera. El asistente importa los datos de las tablas junto con las relaciones entre las tablas. Se crean nuevas tablas y columnas en el modelo y no se importan los datos filtrados.  
+## <a name="Import"></a>Importar datos de las columnas y las tablas de hello seleccionado  
+Ahora que ha obtenido una vista previa y filtran los datos innecesarios, puede importar el resto de Hola de datos de Hola que desea. Asistente de Hello importa datos de la tabla de hello junto con las relaciones entre tablas. Las nuevas tablas y columnas se crean en el modelo de Hola y datos que filtró no se importará.  
   
-#### <a name="to-import-the-selected-tables-and-column-data"></a>Para importar las tablas y los datos de columna seleccionados  
+#### <a name="tooimport-hello-selected-tables-and-column-data"></a>Hola tooimport seleccionado tablas y los datos de columna  
   
-1.  Revise lo que ha seleccionado. Si todo es correcto, haga clic en **Importar**. En el cuadro de diálogo Procesamiento de datos se muestra el estado de los datos que se van a importar del origen de datos en la base de datos del área de trabajo.
+1.  Revise lo que ha seleccionado. Si todo es correcto, haga clic en **Importar**. cuadro de diálogo de procesamiento de datos de Hello muestra estado Hola de datos que se va a importar desde el origen de datos en la base de datos del área de trabajo.
   
     ![aas-lesson2-success](../tutorials/media/aas-lesson2-success.png) 
   
@@ -147,9 +130,9 @@ Ahora que ha obtenido una vista previa y ha filtrado los datos innecesarios, pue
 
   
 ## <a name="save-your-model-project"></a>Guardar el proyecto de modelo  
-Es importante que guarde con frecuencia el proyecto de modelo.  
+Es importante toofrequently guardar el proyecto de modelo.  
   
-#### <a name="to-save-the-model-project"></a>Para guardar el proyecto de modelo  
+#### <a name="toosave-hello-model-project"></a>proyecto de modelos de hello toosave  
   
 -   Haga clic en **Archivo** > **Guardar todo**.  
   

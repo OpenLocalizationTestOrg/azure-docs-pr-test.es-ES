@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas: faltan datos en los registros de actividad de Azure Active Directory descargados | Microsoft Docs"
-description: "Proporciona una solución para los datos que faltan en los registros de actividad de Azure Active Directory descargados."
+title: "Solución de problemas: Los datos que faltan en hello descargan registros de actividad de Azure Active Directory | Documentos de Microsoft"
+description: "Proporciona datos toomissing resolución en los registros de actividad de Azure Active Directory descargados."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,30 +15,30 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3d56f89035da4d1a0074256b165663f81fc2b01e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 027b70e6efc570f81d3c836f50ee52aaa89be71a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="i-cant-find-any-data-in-the-azure-active-directory-activity-logs-i-have-downloaded"></a>No encuentro datos en los registros de actividad de Azure Active Directory que he descargado
+# <a name="i-cant-find-any-data-in-hello-azure-active-directory-activity-logs-i-have-downloaded"></a>No se encuentra ningún dato en los registros de actividad de Azure Active Directory Hola que he descargado
 
 
 ## <a name="symptoms"></a>Síntomas
 
-Descargue los registros de actividad (auditoría o inicios de sesión) y no veo todos los registros del tiempo que elegí. ¿Por qué? 
+Descargar los registros de actividad de hello (auditoría o inicios de sesión) y no veo todos los registros de Hola por vez Hola que deseaba. ¿Por qué? 
 
  ![Informes](./media/active-directory-reporting-troubleshoot-missing-data-download/01.png)
  
 
 ## <a name="cause"></a>Causa
 
-Al descargar los registros de actividad en Azure Portal, limitamos la escala a 120 000 registros, ordenados por antigüedad. 
+Al descargar los registros de actividad de hello portal de Azure, limitamos Hola escala too120K registros ordenados más reciente. 
 
 ## <a name="resolution"></a>Resolución
 
-Puede sacar provecho de la [API de creación de informes de Azure AD](active-directory-reporting-api-getting-started.md) para capturar hasta un millones de registros en cualquier momento dado. Nuestro enfoque recomendado es ejecutar de forma programada un script que llame a las API de creación de informes para capturar registros de forma incremental durante un período de tiempo (p. ej., a diario o semanalmente).
+Puede aprovechar [API de informes de Azure AD](active-directory-reporting-api-getting-started.md) toofetch tooa millones de registros en un momento determinado. Nuestro enfoque recomendado es toorun una secuencia de comandos según una programación que llama Hola informes API toofetch registra de forma incremental durante un período de tiempo (p. ej., diaria o semanal).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Consulte [Preguntas más frecuentes sobre informes de Azure Active Directory](active-directory-reporting-faq.md).
+Vea hello [Azure Active Directory reporting preguntas más frecuentes sobre](active-directory-reporting-faq.md).
 

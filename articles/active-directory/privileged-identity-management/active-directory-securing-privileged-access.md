@@ -1,6 +1,6 @@
 ---
-title: "Protección del acceso con privilegios en Azure AD | Microsoft Docs"
-description: Un tema que explica los enfoques para proteger el acceso con privilegios en Azure, Azure Active Directory y Microsoft Online Services.
+title: aaaSecuring acceso con privilegios en Azure AD | Documentos de Microsoft
+description: Un tema que explica Hola enfoques para proteger el acceso con privilegios en Azure, Azure Active Directory y Microsoft Online Services.
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: acd1c11cecfa37f607fe5d82a76a40647093f43f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 694835dc5c41640673dbd996d44b0d1f217220de
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Protección del acceso con privilegios en Azure AD
-La protección del acceso con privilegios es un primer paso esencial para ayudar a proteger los activos empresariales en las organizaciones modernas. Las cuentas con privilegios son cuentas que administran los sistemas de TI. Estas cuentas son el objetivo de los ciberatacantes ya que les proporcionan acceso a los datos y los sistemas de una organización. Para proteger el acceso con privilegios, debe aislar las cuentas y los sistemas del riesgo de exposición a usuarios malintencionados.
+Proteger con privilegios de acceso es un primer paso fundamental toohelp proteger los activos de negocio de una organización moderna. Las cuentas con privilegios son cuentas que administran los sistemas de TI. Ciberatacantes dirigidas a los datos y sistemas de estas cuentas toogain acceso tooan la organización. acceso con privilegios toosecure, debe aislar las cuentas de Hola y sistemas de riesgo de Hola de exponen usuario malintencionado tooa.
 
-Cada vez más usuarios disfrutan del acceso con privilegios mediante los servicios en la nube. Por ejemplo, los administradores globales de Office 365, los administradores de suscripciones de Azure y los usuarios que tienen acceso administrativo en máquinas virtuales o en aplicaciones de SaaS.
+Más usuarios están iniciando tooget con privilegios de acceso a través de servicios en la nube. Por ejemplo, los administradores globales de Office 365, los administradores de suscripciones de Azure y los usuarios que tienen acceso administrativo en máquinas virtuales o en aplicaciones de SaaS.
 
 Microsoft recomienda seguir este plan a la hora de [proteger el acceso con privilegios](https://technet.microsoft.com/library/mt631194.aspx).
 
-Para los clientes que usan Azure Active Directory, Office 365 u otros servicios y aplicaciones de Microsoft, estos principios se aplican tanto si las cuentas de usuario se administran y autentican en Active Directory como en Azure Active Directory. En las secciones siguientes se proporciona más información sobre las características de Azure AD que respaldan la protección del acceso con privilegios.
+Para los clientes que usan Azure Active Directory, Office 365 u otros servicios y aplicaciones de Microsoft, estos principios se aplican tanto si las cuentas de usuario se administran y autentican en Active Directory como en Azure Active Directory. Hello las secciones siguientes proporcionan más información sobre toosupport de características de Azure AD proteger el acceso con privilegios.
 
 ## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
-Para aumentar la seguridad de la autenticación de administrador, debe exigir la verificación en dos pasos antes de conceder privilegios. La verificación en dos pasos es un método para comprobar quién es el que requiere usar más de un nombre de usuario y contraseña. Proporciona una segunda capa de seguridad a los inicios de sesión y transacciones de los usuarios.
+seguridad de hello tooincrease de autenticación de administrador, debe requerir verificacion antes de conceder privilegios. Verificación en dos pasos es un método para comprobar quién es que requiere el uso de Hola de algo más que un nombre de usuario y una contraseña. Proporciona una segunda capa de inicios de sesión de seguridad toouser y las transacciones.
 
-Azure Multi-Factor Authentication (MFA) es una solución de verificación en dos pasos, que ayuda a proteger el acceso a los datos y las aplicaciones, además de satisfacer la demanda de los usuarios de un proceso de inicio de sesión simple. Ofrece autenticación segura mediante una gama de opciones de verificación sencillas, que incluyen:
+Azure la autenticación multifactor (MFA) es la solución de verificación en dos pasos de Microsoft, lo que ayuda a proteger toodata de acceso y las aplicaciones al tiempo que satisface la demanda de los usuarios de un proceso de inicio de sesión simple. Ofrece autenticación segura mediante una gama de opciones de verificación sencillas, que incluyen:
 
 - llamadas de teléfono
 - mensajes de texto
@@ -41,26 +41,26 @@ Azure Multi-Factor Authentication (MFA) es una solución de verificación en dos
 - códigos de verificación de aplicación móvil
 - tokens OATH de terceros
 
-Para obtener información general sobre cómo funciona Azure Multi-Factor Authentication, vea el siguiente vídeo:
+Para obtener información general de cómo funciona la autenticación multifactor Azure vea Hola después de vídeo:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Windows-Azure-Multi-Factor-Authentication/player]
 
 Para más información, consulte [MFA for Office 365 and MFA for Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/)(MFA para Office 365 y MFA para Azure).
 
 ## <a name="time-bound-privileges"></a>Privilegios de tiempo limitado
-Algunas organizaciones pueden encontrarse con que tienen demasiados usuarios en roles con privilegios elevados. Un usuario podría haberse agregado al rol de una determinada actividad, por ejemplo, registrarse en un servicio, pero luego no usar esos privilegios con frecuencia.
+Algunas organizaciones pueden encontrarse con que tienen demasiados usuarios en roles con privilegios elevados. Un usuario puede haber agregado toohello rol para una actividad determinada, como toosign un servicio, pero no usa esos privilegios con frecuencia posteriormente.
 
-Para reducir el tiempo de exposición de los privilegios y aumentar la visibilidad de su uso, limite a los usuarios a tomar solo esos privilegios "Just in Time" (JIT) cuando necesiten realizar una tarea. Para Azure Active Directory y Microsoft Online Services, puede usar [Privileged Identity Management (PIM) de Azure AD](http://aka.ms/AzurePIM).
+tiempo de exposición de hello toolower de privilegios y aumentar la visibilidad de su uso, tooonly de los usuarios de límite tome en sus privilegios "justo a tiempo" (JIT), cuando los necesitan tooperform una tarea. Para Azure Active Directory y Microsoft Online Services, puede usar [Privileged Identity Management (PIM) de Azure AD](http://aka.ms/AzurePIM).
 
 ![Panel de PIM][2]
 
 ## <a name="attack-detection"></a>Detección de ataques
-[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) proporciona una vista consolidada en eventos de riesgo y posibles puntos vulnerables que afectan a las identidades de su organización. En función de los eventos de riesgo, Identity Protection calcula un nivel de riesgo del usuario para cada usuario, lo que le permite configurar las directivas basadas en riesgos para proteger automáticamente las identidades de su organización. Estas directivas, junto con otros controles de acceso condicional proporcionados por Azure Active Directory y EMS, pueden bloquear automáticamente al usuario u ofrecer sugerencias que incluyen restablecimientos de contraseña y cumplimiento de la autenticación multifactor.
+[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) proporciona una vista consolidada en eventos de riesgo y posibles puntos vulnerables que afectan a las identidades de su organización. Según los eventos de riesgo, Identity Protection calcula un nivel de riesgo de usuario para cada usuario, lo que le tooconfigure riesgo las directivas basadas en tooautomatically proteger Hola identidades de su organización. Estas directivas, junto con otros controles de acceso condicional proporcionadas por Azure Active Directory y EMS, automáticamente se pueden bloquear usuario Hola u ofrece sugerencias que incluyen los restablecimientos de contraseña y la aplicación de la autenticación multifactor.
 
 ![Azure AD Identity Protection][3]
 
 ## <a name="conditional-access"></a>Acceso condicional
-Con el control de acceso condicional, Azure Active Directory comprueba las condiciones específicas que elige al autenticar a un usuario, antes de permitirle el acceso a una aplicación. Si se cumplen las condiciones, el usuario queda autenticado y se le permite el acceso a la aplicación.
+Con control de acceso condicional, Azure Active Directory comprueba las condiciones específicas de Hola que elija al autenticar un usuario, antes de permitir el acceso tooan aplicación. Una vez que se cumplen estas condiciones, usuario de hello es autenticado y acceso toohello aplicación permitida.
 
 ![Configuración de reglas de acceso condicional con MFA][4]
 
@@ -70,7 +70,7 @@ Con el control de acceso condicional, Azure Active Directory comprueba las condi
 * Habilitación de [Azure AD Identity Protection](../active-directory-identityprotection.md)
 * Habilitación de los [controles de acceso condicional](../active-directory-conditional-access.md)
 
-Para más información sobre la creación de un plan de seguridad completo, consulte la sección sobre responsabilidades del cliente y plan de acción en el documento [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer) (Seguridad de Microsoft Cloud para los arquitectos de empresa). Para más información sobre cómo interactuar con los servicios de Microsoft para que le ayuden con alguno de estos temas, póngase en contacto con su representante de Microsoft o visite nuestra [página de soluciones de ciberseguridad](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Para obtener más información sobre la creación de un plan de seguridad completa, consulte la sección "responsabilidades del cliente y guía básica de" Hola Hola [Microsoft Cloud Security para arquitectos empresariales](http://aka.ms/securecustomer) documento. Para obtener más información sobre emprendan tooassist de servicios de Microsoft con cualquiera de estos temas, póngase en contacto con su representante de Microsoft o visite nuestra [página de soluciones de ciberseguridad](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 <!--Image references-->
 [1]: ../media/active-directory-privileged-identity-management-configure/Search_PIM.png

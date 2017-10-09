@@ -1,6 +1,6 @@
 ---
-title: "Creación de un grupo para usuarios de Azure Active Directory | Microsoft Docs"
-description: Procedimiento para crear un grupo en Azure Active Directory y agregar miembros al grupo
+title: aaaCreate un grupo de usuarios de Active Directory de Azure | Documentos de Microsoft
+description: "¿Cómo toocreate un grupo en Azure Active Directory y agregue el grupo de miembros toohello"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d3d37761a9fdf9bd9801396d45f2fcd47efb0be
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: fc583a7f02ce50e7f3b2c8f97a9c032a3e2dc33a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Creación de un grupo y adición de miembros en Azure Active Directory
 > [!div class="op_single_selector"]
@@ -29,25 +29,25 @@ ms.lasthandoff: 08/18/2017
 >
 >
 
-En este artículo se explica cómo crear y rellenar un nuevo grupo en Azure Active Directory. Use un grupo para realizar tareas de administración, como asignar licencias o permisos a un número de usuarios o dispositivos a la vez.
+Este artículo se explica cómo toocreate y rellenar un nuevo grupo en Azure Active Directory. Utilice una tarea de administración de grupo tooperform como la asignación de licencias o permisos tooa número de usuarios o dispositivos a la vez.
 
 ## <a name="how-do-i-create-a-group"></a>¿Cómo se crea un grupo?
-1. Inicie sesión en [Azure Portal](https://portal.azure.com) con una cuenta que tenga el rol de administrador global en el directorio.
-2. Seleccione **Más servicios**, escriba **Usuarios** y grupos en el cuadro de texto y, después, presione **Entrar**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+2. Seleccione **más servicios**, escriba **usuarios y grupos** en Hola cuadro de texto y, a continuación, seleccione **ENTRAR**.
 
    ![Apertura de Administración de usuarios](./media/active-directory-groups-create-azure-portal/search-user-management.png)
-3. En la hoja **Usuarios y grupos**, seleccione **Todos los grupos**.
+3. En hello **usuarios y grupos** hoja, seleccione **todos los grupos de**.
 
-   ![Apertura de la hoja Grupos](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
-4. En la hoja **Usuarios y grupos - Todos los grupos**, seleccione el comando **Agregar**.
+   ![Hoja de apertura Hola grupos](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
+4. En hello **a los usuarios y grupos: todos los grupos de** hoja, seleccione hello **agregar** comando.
 
-   ![Selección del comando Agregar](./media/active-directory-groups-create-azure-portal/add-group-command.png)
-5. En la hoja **Grupo** , agregue un nombre y una descripción para el nuevo grupo.
-6. Para seleccionar los miembros que se agregarán al grupo, seleccione **Asignado** en el cuadro **Membership type** (Tipo de pertenencia a grupos) y luego seleccione **Miembros**. Para obtener más información sobre cómo administrar la pertenencia de un grupo de forma dinámica, consulte el artículo sobre el [uso de atributos para crear reglas avanzadas de pertenencias a grupo](active-directory-groups-dynamic-membership-azure-portal.md).
+   ![Al seleccionar el comando Add Hola](./media/active-directory-groups-create-azure-portal/add-group-command.png)
+5. En hello **grupo** hoja, agregue un nombre y una descripción para el grupo de Hola.
+6. tooselect tooadd toohello grupo de miembros, seleccione **asignado** en hello **tipo de pertenencia** cuadro y, a continuación, seleccione **miembros**. Para obtener más información acerca de cómo toomanage Hola pertenencia de un grupo de forma dinámica, consulte [utilizando atributos toocreate reglas de pertenencia a grupos avanzadas](active-directory-groups-dynamic-membership-azure-portal.md).
 
-   ![Selección de miembros para agregar](./media/active-directory-groups-create-azure-portal/select-members.png)
-7. En la hoja **Miembros**, seleccione uno o varios usuarios o dispositivos que quiera agregar al grupo y, luego, haga clic en el botón **Seleccionar** situado en la parte inferior de la hoja para agregarlos. El cuadro **Usuario** filtra la visualización en función de si coincide lo que ha escrito con cualquier parte del nombre de un usuario o dispositivo. No se aceptan caracteres comodín en el cuadro.
-8. Cuando termine de agregar miembros al grupo, seleccione **Crear** en la hoja **Grupo**.    
+   ![Seleccionar miembros tooadd](./media/active-directory-groups-create-azure-portal/select-members.png)
+7. En hello **miembros** hoja, seleccione uno o más usuarios o dispositivos grupo de toohello tooadd y seleccione hello **seleccione** situado en la parte inferior de Hola de hello hoja tooadd les toohello grupo. Hola **usuario** cuadro filtra Hola presentación de acuerdo con la parte de un nombre de usuario o dispositivo tooany de entrada de búsqueda de coincidencias. No se aceptan caracteres comodín en el cuadro.
+8. Cuando termine de agregar el grupo de miembros toohello, seleccione **crear** en hello **grupo** hoja.    
 
    ![Creación de la confirmación de grupo](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
 

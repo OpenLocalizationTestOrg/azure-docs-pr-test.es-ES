@@ -1,6 +1,6 @@
 ---
-title: "Cambio de la información de perfil de la cuenta de Azure | Microsoft Docs"
-description: "Describe cómo cambiar el perfil de la cuenta de Azure y proporciona respuestas a preguntas frecuentes, por ejemplo, por qué no se puede cambiar el país en el Centro de cuentas de Azure"
+title: "aaaChange información de perfil de la cuenta de Azure | Documentos de Microsoft"
+description: "Describe cómo perfil de hello toochange de su cuenta de Azure y respuestas Hola preguntas comunes, por ejemplo, ¿por qué no se puede cambiar país Hola centro de cuentas de Azure"
 services: 
 documentationcenter: 
 author: genlin
@@ -16,40 +16,40 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0927b6a7f8c6bf29541e8014e82702ea8dc58bd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a323ef4b62615f68697057adacb0b60732da9306
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Cambio de la información de perfil de la cuenta de Azure, como el correo electrónico, la dirección y el número de teléfono de contacto
-Microsoft usa la dirección de correo electrónico del perfil del Administrador de cuenta para notificar actualizaciones importantes para la suscripción relacionadas con la facturación. Se recomienda que especifique una dirección de correo electrónico de contacto que consulte periódicamente.
+dirección de correo electrónico en el perfil del Administrador de la cuenta de hello Hello se utiliza una forma toonotify de Microsoft acerca de actualizaciones importantes relacionadas con la facturación acerca de la suscripción de Hola. Se recomienda que especifique una dirección de correo electrónico de contacto que consulte periódicamente.
 
-## <a name="how-to-change-your-profile-information"></a>Cómo cambiar la información de perfil
-1. Inicie sesión en el [Centro de cuentas de Azure](https://account.windowsazure.com/) como Administrador de cuenta y haga clic en **Perfil**. 
-2. Seleccione el botón **Editar detalles** y actualice la información de **perfil**.
+## <a name="how-toochange-your-profile-information"></a>¿Cómo toochange la información del perfil
+1. Inicie sesión en toohello [centro de cuentas de Azure](https://account.windowsazure.com/) como administrador de la cuenta de hello y, a continuación, haga clic en **perfil**. 
+2. Seleccione hello **editar detalles** y, a continuación, actualice hello **perfil** información.
 
    ![Perfil](./media/billing-how-to-change-azure-account-profile/profile.png)
 
 ## <a name="frequently-asked-questions"></a>Preguntas más frecuentes
-### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-owner-email-address-associated-with-my-account"></a>¿Se pueden enviar notificaciones a una dirección de correo electrónico diferente de la dirección de correo electrónico del propietario de la cuenta asociada a mi cuenta?
-Sí. La dirección de correo electrónico de la cuenta obtiene notificaciones importantes de todas las suscripciones de ella. Se recomienda que especifique una dirección de correo electrónico de contacto que el Administrador de cuenta consulte periódicamente.
+### <a name="can-notifications-be-sent-tooa-different-email-address-other-than-hello-account-owner-email-address-associated-with-my-account"></a>¿Las notificaciones pueden enviarse tooa dirección de correo electrónico diferente que no sea la dirección de correo electrónico de propietario de la cuenta de hello asociado con mi cuenta?
+Sí. dirección de correo electrónico de Hello en la cuenta de hello obtiene notificaciones importantes acerca de todas las suscripciones de hello en la cuenta de hello. Por lo que es recomendable que especifique una dirección de correo electrónico de contacto que Hola Administrador de la cuenta se comprueba con regularidad.
 
-### <a name="can-i-change-the-account-administrator-email-address-in-my-profile"></a>¿Puedo cambiar la dirección de correo electrónico del Administrador de cuenta en mi perfil?
-Sí. El Administrador de cuenta es la persona que configuró la cuenta de Azure y que recibe notificaciones de correo electrónico importantes sobre todas las suscripciones de la cuenta. Se recomienda que especifique una dirección de correo electrónico de contacto que el Administrador de cuenta consulte periódicamente.
+### <a name="can-i-change-hello-account-administrator-email-address-in-my-profile"></a>¿Puedo cambiar Hola dirección de correo electrónico del Administrador de la cuenta en mi perfil?
+Sí. Hola, Administrador de la cuenta es persona de Hola que configurar Hola cuenta de Azure y quién recibe notificaciones de correo electrónico importantes acerca de todas las suscripciones de hello en la cuenta de hello. Es recomendable que especifique una dirección de correo electrónico de contacto que Hola Administrador de la cuenta se comprueba con regularidad.
 
 ### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>Si actualizo el correo electrónico del perfil, ¿también se actualiza la dirección de correo electrónico de inicio de sesión?
-No. Si actualiza la dirección de correo electrónico del perfil, no se actualiza la dirección de correo electrónico de inicio de sesión. Para cambiar la dirección de correo electrónico de inicio de sesión, tendrá que transferir la propiedad de la cuenta.
+No. Actualizando la dirección de correo electrónico del perfil de hello no actualiza la dirección de correo electrónico de inicio de sesión. toochange dirección de correo electrónico su inicio de sesión, tendrá la propiedad tootransfer de cuenta de hello.
 
 ### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>Si actualizo la dirección del perfil, ¿se actualiza también la dirección de facturación de la tarjeta de crédito?
-Obtenga información sobre cómo actualizar la información de facturación en [Cambio de la tarjeta de crédito usada para pagar una suscripción de Azure](billing-how-to-change-credit-card.md).
+Obtenga información acerca de cómo tooupdate al ver la información de facturación [cambiar hello toopay de tarjeta de crédito utilizada para una suscripción de Azure](billing-how-to-change-credit-card.md).
 
-### <a name="why-cant-i-update-the-country"></a>¿Por qué no puedo actualizar el país?
-Debido a limitaciones técnicas, no se puede cambiar el país de una cuenta existente. Sin embargo, puede crear una cuenta en el país deseado y después ponerse en contacto con el soporte técnico de Azure para migrar los servicios a esa cuenta.
+### <a name="why-cant-i-update-hello-country"></a>¿Por qué no puedo actualizar país Hola?
+Debido a las limitaciones técnicas, no podemos cambiar el país de hello en una cuenta existente. Sin embargo, puede crear una cuenta en país de hello deseado y, a continuación, póngase en contacto con soporte técnico de Azure toomigrate su cuenta de toothat de servicios.
 
-### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>¿Qué dirección de correo electrónico usa la característica de vista previa Alertas de facturación de Azure?
-Recibirá notificaciones de alerta en la dirección de correo electrónico que agregue cuando se registre para recibir las alertas. La dirección de correo electrónico utilizada para las alertas es independiente de la del administrador de cuenta. Para obtener más información, consulte [Configurar alertas de facturación para las suscripciones de Microsoft Azure](billing-set-up-alerts.md).
+### <a name="what-email-address-does-hello-azure-billing-alerts-preview-feature-use"></a>¿Qué dirección de correo electrónico Hola uso de características de vista previa de las alertas de facturación de Azure?
+Recibir notificaciones de alerta en la dirección de correo electrónico de hello que agregar cuando se registra para las alertas de Hola. dirección de correo electrónico de Hello utilizado para las alertas de hello es independiente de hello dirección de correo electrónico del Administrador de la cuenta. Para obtener más información, consulte [Configurar alertas de facturación para las suscripciones de Microsoft Azure](billing-set-up-alerts.md).
 
 ## <a name="need-help-contact-support"></a>¿Necesita ayuda? Póngase en contacto con el servicio de soporte técnico.
-Si sigue necesitando ayuda, [póngase en contacto con el servicio de soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para resolver el problema rápidamente. 
+Si aún necesita ayuda, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rápidamente para solucionar el problema. 
 

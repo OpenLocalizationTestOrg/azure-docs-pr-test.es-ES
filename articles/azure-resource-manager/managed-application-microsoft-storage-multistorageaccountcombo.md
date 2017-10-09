@@ -1,6 +1,6 @@
 ---
-title: Elemento de interfaz de usuario MultiStorageAccountCombo de aplicaciones administradas de Azure | Microsoft Docs
-description: Describe el elemento de la interfaz de usuario Microsoft.Storage.MultiStorageAccountCombo para aplicaciones administradas de Azure
+title: "elemento de interfaz de usuario de MultiStorageAccountCombo de aplicación administrado aaaAzure | Documentos de Microsoft"
+description: Describe Hola elemento de interfaz de usuario de Microsoft.Storage.MultiStorageAccountCombo para administrar aplicaciones de Azure
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 27843b116d949899e4eae65f342324f77ebca70b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 765be145b61c3dbf0a035a7a00aa18eee464a3eb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Elemento de la interfaz de usuario Microsoft.Storage.MultiStorageAccountCombo
 Un grupo de controles para crear varias cuentas de almacenamiento con nombres que comienzan con un prefijo común. Use este elemento al [crear una aplicación administrada de Azure](managed-application-publishing.md).
@@ -52,12 +52,12 @@ Un grupo de controles para crear varias cuentas de almacenamiento con nombres qu
 ```
 
 ## <a name="remarks"></a>Comentarios
-- El valor de `defaultValue.prefix` se concatena con uno o varios números enteros para generar la secuencia de nombres de cuenta de almacenamiento. Por ejemplo, si `defaultValue.prefix` es **foobar** y `count` es **2**, se generan los nombres de cuenta de almacenamiento **foobar1** y **foobar2**. La unicidad de los nombres de cuenta de almacenamiento generados se valida automáticamente.
-- Los nombres de cuenta de almacenamiento se generan lexicográficamente en función de `count`. Por ejemplo, si `count` es 10, los nombres de cuenta de almacenamiento terminan en enteros de 2 dígitos (01, 02, 03, etc.).
-- El valor predeterminado de `defaultValue.prefix` es **null**, mientras que el de `defaultValue.type` es **Premium_LRS**.
+- Hola valor para `defaultValue.prefix` se concatena con uno o más números enteros toogenerate hello secuencia de nombres de cuenta de almacenamiento. Por ejemplo, si `defaultValue.prefix` es **foobar** y `count` es **2**, se generan los nombres de cuenta de almacenamiento **foobar1** y **foobar2**. La unicidad de los nombres de cuenta de almacenamiento generados se valida automáticamente.
+- nombres de cuenta de almacenamiento de Hola se generan según lexicográficamente `count`. Por ejemplo, si `count` es 10, a continuación, los nombres de cuenta de almacenamiento Hola terminar con enteros de 2 dígitos (01, 02, 03, etcetera.).
+- Hola valor predeterminado de `defaultValue.prefix` es **null**y para `defaultValue.type` es **Premium_LRS**.
 - Los tipos no especificados en `constraints.allowedTypes` está oculto, mientras que los tipos no especificado en `constraints.excludedTypes` se muestran.
 Tanto `constraints.allowedTypes` como `constraints.excludedTypes` son opcionales, pero no se pueden usar simultáneamente.
-- Además de para generar nombres de cuenta de almacenamiento, `count` se usa para establecer el multiplicador apropiado para el elemento. Admite un valor estático, como **2**, o un valor dinámico de otro elemento, como `[steps('step1').storageAccountCount]`. El valor predeterminado es **1**.
+- En los nombres de cuenta de almacenamiento de toogenerating adición, `count` es tooset usado el multiplicador apropiado para el elemento de saludo. Admite un valor estático, como **2**, o un valor dinámico de otro elemento, como `[steps('step1').storageAccountCount]`. es el valor predeterminado de Hello **1**.
 
 ## <a name="sample-output"></a>Salida de ejemplo
 ```json
@@ -70,6 +70,6 @@ Tanto `constraints.allowedTypes` como `constraints.excludedTypes` son opcionales
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para una introducción a las aplicaciones administradas, consulte la [introducción a las aplicaciones administradas de Azure](managed-application-overview.md).
-* Para ver una introducción sobre la creación de definiciones de interfaz de usuario, consulte [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Para una aplicación de toomanaged introducción, consulte [Introducción a la aplicación administrada de Azure](managed-application-overview.md).
+* Para obtener definiciones una interfaz de usuario de toocreating de introducción, vea [Introducción a CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Para ver una descripción de las propiedades comunes de los elementos de interfaz de usuario, consulte [Elementos CreateUiDefinition](managed-application-createuidefinition-elements.md).

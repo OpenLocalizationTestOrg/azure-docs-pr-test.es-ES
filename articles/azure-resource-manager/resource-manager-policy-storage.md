@@ -1,6 +1,6 @@
 ---
-title: Directivas de recursos de Azure para cuentas de almacenamiento | Microsoft Docs
-description: "Se describen las directivas de Azure Resource Manager para administrar la implementación de cuentas de almacenamiento."
+title: las directivas de recursos de aaaAzure las cuentas de almacenamiento | Documentos de Microsoft
+description: "Describe las directivas del Administrador de recursos de Azure para administrar la implementación de Hola de cuentas de almacenamiento."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6612ee61f5c50e743241b92030660cea7ae7094d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d37fc4bcf7cdec71b0e14f6231fc138bfb6a7893
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="apply-resource-policies-to-storage-accounts"></a>Aplicación de directivas de recursos a cuentas de almacenamiento
-En este tema se muestran varias [directivas de recursos](resource-manager-policy.md) que puede aplicar a cuentas de Azure Storage. Estas directivas garantizan la coherencia de las cuentas de almacenamiento implementada en la organización. 
+# <a name="apply-resource-policies-toostorage-accounts"></a>Aplicar las cuentas toostorage de directivas de recursos
+En este tema se muestra varios [las directivas de recursos](resource-manager-policy.md) puede aplicar tooAzure cuentas de almacenamiento. Estas directivas garantizan la coherencia hello las cuentas de almacenamiento implementada en su organización. 
 
 ## <a name="define-permitted-storage-account-types"></a>Definición de tipos de cuenta de almacenamiento permitidos
 
-La siguiente directiva restringe qué [tipos de cuenta de almacenamiento](../storage/common/storage-redundancy.md) se pueden implementar:
+Hello siguiente directiva restringe que [tipos de cuenta de almacenamiento](../storage/common/storage-redundancy.md) pueden implementarse:
 
 ```json
 {
@@ -52,11 +52,11 @@ La siguiente directiva restringe qué [tipos de cuenta de almacenamiento](../sto
 }
 ```
 
-Una regla de directiva similar con un parámetro para aceptar las SKU permitidas está disponible como una definición de directiva integrada. La directiva integrada tiene el identificador de recurso `/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1`. 
+Una regla de directiva similar con un parámetro para aceptar Hola permitida SKU está disponible como una definición de directiva integrado. directiva integrada Hello tiene un identificador de recurso Hola de `/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1`. 
 
 ## <a name="define-permitted-access-tier"></a>Definición del nivel de acceso permitido
 
-La siguiente directiva especifica el tipo de [nivel de acceso](../storage/blobs/storage-blob-storage-tiers.md) que se puede especificar para las cuentas de almacenamiento:
+Hello siguiente directiva especifica tipo hello de [nivel de acceso a](../storage/blobs/storage-blob-storage-tiers.md) que se puede especificar las cuentas de almacenamiento:
 
 ```json
 {
@@ -86,7 +86,7 @@ La siguiente directiva especifica el tipo de [nivel de acceso](../storage/blobs/
 
 ## <a name="ensure-encryption-is-enabled"></a>Comprobación de que esté habilitado el cifrado
 
-La siguiente directiva requiere que todas las cuentas de almacenamiento habiliten el [cifrado del servicio Storage](../storage/common/storage-service-encryption.md):
+Hello directiva siguiente requiere que todos los tooenable de cuentas de almacenamiento [cifrado del servicio de almacenamiento](../storage/common/storage-service-encryption.md):
 
 ```json
 {
@@ -110,9 +110,9 @@ La siguiente directiva requiere que todas las cuentas de almacenamiento habilite
 }
 ```
 
-Esta regla de directiva también está disponible como una definición de directiva integrada con el identificador de recurso `/providers/Microsoft.Authorization/policyDefinitions/7c5a74bf-ae94-4a74-8fcf-644d1e0e6e6f`.
+Esta regla de directiva también está disponible como una definición de directiva integrado con el Id. de recurso de Hola de `/providers/Microsoft.Authorization/policyDefinitions/7c5a74bf-ae94-4a74-8fcf-644d1e0e6e6f`.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Después de definir una regla de directiva (como se muestra en los ejemplos anteriores), debe crear la definición de directiva y asignarla a un ámbito. El ámbito puede ser una suscripción, un grupo de recursos o un recurso. Para asignar directivas a través del portal, consulte [Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md) (Uso de Azure Portal para asignar y administrar directivas de recursos). Para asignar directivas a través de la API de REST, PowerShell o la CLI de Azure, consulte [Assign and manage policies through script](resource-manager-policy-create-assign.md) (Asignación y administración de directivas a través de scripts). 
-* Para obtener instrucciones sobre cómo las empresas pueden utilizar Resource Manager para administrar eficazmente las suscripciones, vea [Scaffold empresarial de Azure: Gobierno de suscripción prescriptivo](resource-manager-subscription-governance.md).
+* Después de definir una regla de directiva (como se muestra en hello anteriores ejemplos), se necesita la definición de la directiva de toocreate hello y se asigna tooa ámbito. Hola ámbito puede ser una suscripción, el grupo de recursos o el recurso. directivas de tooassign a través del portal de hello, vea [tooassign portal de Azure de uso y administrar las directivas de recursos](resource-manager-policy-portal.md). directivas de tooassign a través de la API de REST, PowerShell o CLI de Azure, consulte [asignar y administrar las directivas a través de la secuencia de comandos](resource-manager-policy-create-assign.md). 
+* Para obtener instrucciones sobre cómo las empresas pueden usar el Administrador de recursos tooeffectively administrar suscripciones, vea [scaffold Azure enterprise - regulador prescriptiva suscripción](resource-manager-subscription-governance.md).
 

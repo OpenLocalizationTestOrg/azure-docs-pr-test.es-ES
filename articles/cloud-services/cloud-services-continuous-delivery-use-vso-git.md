@@ -1,6 +1,6 @@
 ---
-title: Entrega continua con Git y Visual Studio Team Services en Azure | Microsoft Docs
-description: "Aprenda a configurar los proyectos de equipo de Visual Studio Team Services para usar Git para que se compilen y se implementen automáticamente en la característica aplicación web de Servicio de aplicaciones de Azure o en los servicios en la nube."
+title: entrega aaaContinuous con Git y Visual Studio Team Services en Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooconfigure su Visual Studio Team Services proyectos de equipo de toouse Git tooautomatically compilar e implementar la característica de la aplicación Web de toohello en los servicios en la nube o de servicio de aplicaciones de Azure."
 services: cloud-services
 documentationcenter: .net
 author: mlearned
@@ -14,178 +14,178 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: mlearned
-ms.openlocfilehash: f4f5f231536bc381d17898ff2c592be821168a65
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 936c42194f45be55597a77f9a3a6deb4480ed94b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="continuous-delivery-to-azure-using-visual-studio-team-services-and-git"></a>Entrega continua a Azure con Visual Studio Team Services y Git
-Puede usar proyectos de equipo de Visual Studio Team Services para hospedar en un repositorio Git el código fuente, y compilarlo e implementarlo automáticamente en aplicaciones web o servicios en la nube de Azure cada vez que se inserta una confirmación en el repositorio.
+# <a name="continuous-delivery-tooazure-using-visual-studio-team-services-and-git"></a>TooAzure la entrega continua con Visual Studio Team Services y Git
+Puede usar toohost de proyectos de equipo de Visual Studio Team Services un repositorio Git para el código fuente y automáticamente de compilación e implementar tooAzure las aplicaciones web o servicios en la nube siempre que realice una inserción un repositorio de toohello de confirmación.
 
-Necesitará Visual Studio 2013 y tener instalado el SDK de Azure. Si aún no tiene Visual Studio 2013, descárguelo; para ello, haga clic en el vínculo **Empezar de forma gratuita**[en www.visualstudio.com](http://www.visualstudio.com). Instale el SDK de Azure desde [aquí](http://go.microsoft.com/fwlink/?LinkId=239540).
+Necesitará Visual Studio 2013 y hello Azure SDK instalado. Si ya no tiene Visual Studio 2013, descárguelo eligiendo hello **empiece de forma gratuita** vincular en [www.visualstudio.com](http://www.visualstudio.com). Instalación hello Azure SDK desde [aquí](http://go.microsoft.com/fwlink/?LinkId=239540).
 
 > [!NOTE]
-> Necesita una cuenta de Visual Studio Team Services para completar este tutorial: puede [abrir una cuenta de Visual Studio Team Services de forma gratuita](http://go.microsoft.com/fwlink/p/?LinkId=512979).
+> Necesita un toocomplete de cuenta de Visual Studio Team Services este tutorial: puede [abrir una cuenta de Visual Studio Team Services gratis](http://go.microsoft.com/fwlink/p/?LinkId=512979).
 > 
 > 
 
-Para configurar un servicio en la nube que se compile e implemente automáticamente en Azure con Visual Studio Team Services, siga los pasos que aparecen a continuación:
+tooset seguridad un tooautomatically de servicio de nube compilar e implementar tooAzure mediante el uso de Visual Studio Team Services, siga estos pasos.
 
 ## <a name="1-create-a-git-repository"></a>1: Creación de un repositorio Git
-1. Si no tiene una cuenta de Visual Studio Team Services, puede obtenerla [aquí](http://go.microsoft.com/fwlink/?LinkId=397665). Cuando cree un proyecto de equipo, elija Git como el sistema de control de código fuente. Siga las instrucciones para conectar Visual Studio al proyecto de equipo.
-2. En **Team Explorer**, haga clic en el vínculo **Clonar este repositorio**.
+1. Si no tiene una cuenta de Visual Studio Team Services, puede obtenerla [aquí](http://go.microsoft.com/fwlink/?LinkId=397665). Cuando cree un proyecto de equipo, elija Git como el sistema de control de código fuente. Siga el proyecto de equipo de hello instrucciones tooconnect Visual Studio tooyour.
+2. En **Team Explorer**, elija hello **clonar este repositorio** vínculo.
    
     ![][3]
-3. Especifique la ubicación de la copia local y elija el botón **Clonar** .
+3. Especificar ubicación de Hola de copia local de hello y, a continuación, elija hello **clon** botón.
 
-## <a name="2-create-a-project-and-commit-it-to-the-repository"></a>2: Creación de un proyecto y su confirmación en el repositorio
-1. En **Team Explorer**, en la sección **Soluciones**, elija el vínculo **Nuevo** para crear un nuevo proyecto en el repositorio local.
+## <a name="2-create-a-project-and-commit-it-toohello-repository"></a>2: crear un proyecto y confirmar toohello repositorio
+1. En **Team Explorer**, Hola **soluciones** sección, elija hello **New** vincular toocreate un proyecto nuevo en el repositorio local de Hola.
    
     ![][4]
-2. Puede implementar una aplicación web o un servicio en la nube (aplicación de Azure) siguiendo los pasos que se ofrecen en este tutorial. Cree un proyecto nuevo de Servicio en la nube de Azure o un proyecto nuevo de MVC de ASP.NET. Asegúrese de que el proyecto tiene como destino .NET Framework 4, o cualquier versión posterior. Si va a crear un proyecto de servicio en la nube, agregue un rol web y un rol de trabajo de ASP.NET MVC.
-   Si desea crear una aplicación web, seleccione la plantilla de proyecto de **aplicación web ASP.NET** y, a continuación, **MVC**. Para obtener más información, consulte [Creación de una aplicación web ASP.NET en el Servicio de aplicaciones de Azure](../app-service-web/app-service-web-get-started-dotnet.md) .
-3. Abra el menú contextual de la solución y elija **Confirmar**.
+2. Puede implementar una aplicación web o un servicio de nube (aplicación de Azure) por hello siguiente los pasos de este tutorial. Cree un proyecto nuevo de Servicio en la nube de Azure o un proyecto nuevo de MVC de ASP.NET. Asegúrese de que el destino del proyecto de Hola Hola .NET Framework 4 o posterior. Si va a crear un proyecto de servicio en la nube, agregue un rol web y un rol de trabajo de ASP.NET MVC.
+   Si desea toocreate una aplicación web, elija hello **aplicación Web ASP.NET** plantilla de proyecto y, a continuación, elija **MVC**. Para obtener más información, consulte [Creación de una aplicación web ASP.NET en el Servicio de aplicaciones de Azure](../app-service-web/app-service-web-get-started-dotnet.md) .
+3. Abra el acceso directo de hello para la solución de Hola y elija **confirmar**.
    
     ![][7]
-4. Si es la primera vez que usa Git en Visual Studio Team Services, deberá proporcionar alguna información que le identifique en Git. En el área **Cambios pendientes** de **Team Explorer**, escriba su nombre de usuario y dirección de correo electrónico. Escriba un comentario para la confirmación y, a continuación, pulse el botón **Confirmar** .
+4. Si se trata de hello primera vez que se ha usado Git en Visual Studio Team Services, necesitará tooprovide algunos tooidentify información por sí mismo en Git. Hola **cambios pendientes** área no cliente de **Team Explorer**, escriba el nombre de usuario y dirección de correo electrónico. Escriba un comentario para la confirmación de hello y, a continuación, elija hello **confirmación** botón.
    
     ![][8]
-5. Tenga en cuenta las opciones para incluir o excluir cambios concretos al realizar la protección. Si los cambios que desea están excluidos, elija **Incluir todos**.
-6. Ahora ha confirmado los cambios en la copia local del repositorio. A continuación, sincronice dichos cambios con el servidor, para lo que debe elegir el vínculo **Sincronizar** .
+5. Tenga en cuenta tooinclude de opciones de Hola o excluir cambios específicos cuando protegen. Si cambia de Hola quiere que se excluyen, elija **incluyen todos los**.
+6. Ha ahora Hola confirma los cambios en una copia local del repositorio de Hola. A continuación, sincroniza esos cambios con el servidor de hello eligiendo hello **sincronización** vínculo.
 
-## <a name="3-connect-the-project-to-azure"></a>3: Conexión del proyecto a Azure
-1. Ahora que tiene un repositorio Git en Visual Studio Team Services con código fuente, está en disposición de conectarlo a Azure.  En el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885), seleccione el servicio en la nube o la aplicación web, o bien cree unos nuevos haciendo clic en el icono + situado en la parte inferior izquierda y seleccionando **Servicio en la nube** o **Aplicación web** y, a continuación, **Creación rápida**.
+## <a name="3-connect-hello-project-tooazure"></a>3: conectar Hola proyecto tooAzure
+1. Ahora que tiene un repositorio de Git en Visual Studio Team Services con algún código fuente en ella, está listo tooconnect su tooAzure de repositorio de git.  Hola [portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885), seleccione la aplicación web o servicio de nube, o cree uno nuevo eligiendo Hola + situado en inferior izquierda de Hola y elegir **servicio de nube** o **Web App**y, a continuación, **creación rápida**.
    
     ![][9]
-2. Para servicios en la nube, elija el vínculo **Configurar publicación con Visual Studio Team Services** . Para aplicaciones web, elija el vínculo **Configurar implementación desde control de código fuente** .
+2. Servicios de nube, elija hello **configurar la publicación con Visual Studio Team Services** vínculo. Para las aplicaciones web, elija hello **configurar implementación desde control de código fuente** vínculo.
    
     ![][10]
-3. En el asistente, escriba el nombre de la cuenta de Visual Studio Team Services en el cuadro de texto y elija el vínculo **Autorizar ahora** . Puede que se le solicite que inicie sesión.
+3. En el Asistente de hello, escriba el nombre de hello de la cuenta de Visual Studio Team Services en el cuadro de texto de Hola y elija hello **autorizar ahora** vínculo. Toosign en que se le pida.
    
     ![][11]
-4. En el cuadro de diálogo emergente **Solicitud de conexión**, elija **Aceptar** para autorizar a Azure a que configure el proyecto del equipo en Visual Studio Team Services.
+4. Hola **solicitud de conexión** cuadro de diálogo emergente, elija **Accept** tooauthorize tooconfigure Azure su equipo de proyecto en Visual Studio Team Services.
    
     ![][12]
-5. Si la autorización se realiza correctamente, verá una lista desplegable que contiene los proyectos del equipo de Visual Studio Team Services.  Seleccione el nombre del proyecto de equipo que ha creado en los pasos anteriores y presione el botón de la marca de verificación del asistente.
+5. Si la autorización se realiza correctamente, verá una lista desplegable que contiene los proyectos del equipo de Visual Studio Team Services.  Seleccionar nombre de hello del proyecto de equipo que creó en los pasos anteriores de Hola y elija el botón de marca de verificación del Asistente de Hola.
    
     ![][13]
    
-    La próxima vez que inserte una confirmación en el repositorio, Visual Studio Team Services creará e implementará su proyecto en Azure.
+    Hola próxima vez que se insertará un repositorio de tooyour de confirmación, Visual Studio Team Services compilará e implementará el proyecto tooAzure.
 
 ## <a name="4-trigger-a-rebuild-and-redeploy-your-project"></a>4: Desencadenamiento de una recompilación y nueva implementación del proyecto
-1. En Visual Studio, abra un archivo y cámbielo. Por ejemplo, cambie el archivo `_Layout.cshtml` de la carpeta Views\\Shared de un rol web de MVC.
+1. En Visual Studio, abra un archivo y cámbielo. Por ejemplo, cambie el archivo hello `_Layout.cshtml` en vistas de hello\\carpeta compartida en un rol web MVC.
    
     ![][17]
-2. Edite el texto del pie de página del sitio y guarde el archivo.
+2. Editar texto de pie de página de hello para el sitio de Hola y guarde el archivo hello.
    
     ![][18]
-3. En el **Explorador de soluciones**, abra el menú contextual del nodo de la solución, nodo del proyecto o archivo que cambió y elija **Confirmar**.
+3. En **el Explorador de soluciones**, abra el menú contextual de Hola para hello nodo de la solución, el nodo del proyecto u Hola de archivos que se modificó y, a continuación, elija **confirmar**.
 4. Escriba un comentario y elija **Confirmar**.
    
     ![][20]
-5. Elija el vínculo **Sincronizar** .
+5. Elija hello **sincronización** vínculo.
    
     ![][38]
-6. Elija el vínculo **Insertar** para insertar la confirmación en el repositorio en Visual Studio Team Services. (También puede usar el botón **Sincronizar** para copiar las confirmaciones en el repositorio. La diferencia es que **Sincronizar** también extrae los últimos cambios del repositorio).
+6. Elija hello **Push** vincular toopush el repositorio de toohello de confirmación en Visual Studio Team Services. (También puede usar hello **sincronización** botón toocopy el repositorio de toohello confirmaciones. Hola diferencia es que **sincronización** también extrae Hola cambios más recientes desde el repositorio de Hola.)
    
     ![][39]
-7. Presione el botón **Inicio** para volver a la página principal de **Team Explorer**.
+7. Elija hello **principal** botón tooreturn toohello **Team Explorer** página principal.
    
     ![][21]
-8. Elija **Compilaciones** para ver las compilaciones en curso.
+8. Elija **compilaciones** tooview Hola se basa en curso.
    
     ![][22]
    
     **Team Explorer** indica que se ha desencadenado una compilación para su protección.
    
     ![][23]
-9. Para ver un registro detallado del progreso de la compilación, haga doble clic en el nombre de la compilación en curso.
-10. Mientras la compilación está en curso, eche un vistazo a la definición de compilación que se creó al vincular a Azure con el asistente.  Abra el menú contextual de la definición de la compilación y elija **Editar definición de compilación**.
+9. tooview un registro detallado que Hola compilación progresa, haga doble clic en nombre de Hola de compilación de hello en curso.
+10. Mientras compilación Hola está en curso, eche un vistazo en la definición de compilación de Hola que se creó cuando se usa Hola Asistente toolink tooAzure.  Abra el menú contextual de Hola de definición de compilación de Hola y elija **Editar definición de compilación**.
     
     ![][25]
-11. En la pestaña **Desencadenador** , verá que la definición de compilación está configurada para compilar en cada protección de forma predeterminada. (Para un servicio en la nube, Visual Studio Team Services compila e implementa automáticamente la bifurcación principal en el entorno de ensayo. Aún así, tendrá que realizar un paso manual para implementar en el sitio activo. En el caso de una aplicación web que no tenga un entorno de ensayo, la bifurcación principal se implementa directamente en el sitio activo.
+11. Hola **desencadenador** pestaña, verá que definición de compilación de Hola se establece toobuild en cada en el repositorio, de forma predeterminada. (Para un servicio de nube, Visual Studio Team Services genera e implementa Hola bifurcación principal toohello automáticamente, el entorno de ensayo. Todavía tiene toodo un sitio de paso manual toodeploy toohello en vivo. Para una aplicación web que no tiene el entorno de ensayo, se implementa la bifurcación principal de hello directamente toohello live sitio.
     
     ![][26]
-12. En la pestaña **Proceso** , puede ver que el entorno de implementación está configurado con el nombre del servicio en la nube o de la aplicación web.
+12. Hola **proceso** ficha, puede ver el entorno de implementación de Hola se establece toohello nombre de la aplicación web o servicio de nube.
     
      ![][27]
-13. Especifique los valores para las propiedades si desea que sean diferentes de los predeterminados. Las propiedades de la publicación de Azure se encuentran en la sección **Implementación** y es posible que también sea necesario definir los parámetros de MSBuild. Por ejemplo, en un proyecto de servicio en la nube, para especificar una configuración del servicio que no sea "Nube", establezca los parámetros de MSbuild en `/p:TargetProfile=[YourProfile]`, donde *[YourProfile]* se ajusta a un archivo de configuración de servicio con un nombre como ServiceConfiguration.*YourProfile*.cscfg.
+13. Si quiere que los valores diferentes a los valores predeterminados de hello, especifique valores para propiedades de Hola. Hello propiedades para la publicación de Azure están en hello **implementación** sección y también puede tener parámetros de MSBuild tooset. Por ejemplo, en un proyecto de servicio de nube, toospecify una configuración del servicio distinto de "Nube", establezca demasiado parámetros de MSbuild hello`/p:TargetProfile=[YourProfile]` donde *[YourProfile]* coincide con un archivo de configuración de servicio con un nombre como ServiceConfiguration. *YourProfile*.cscfg.
     
-     En la tabla siguiente se muestran las propiedades disponibles en la sección **Implementación** :
+     Hello tabla siguiente muestran las propiedades disponibles Hola Hola **implementación** sección:
     
     | Propiedad | Valor predeterminado |
     | --- | --- |
     | Permitir certificados que no son de confianza |Si el valor es false, los certificados SSL deben estar firmados por una entidad de certificación raíz. |
-    | Permitir actualización |Permite actualizar una implementación existente en lugar de crear una nueva. Conserva la dirección IP. |
+    | Permitir actualización |Permite Hola implementación tooupdate una implementación existente en lugar de crear uno nuevo. Conserva la dirección IP de Hola. |
     | No eliminar |Si el valor es true, no sobrescriba una implementación no relacionada existente (la actualización está permitida). |
-    | Ruta de acceso a la configuración de implementación |La ruta de acceso al archivo .pubxml de una aplicación web, en relación con la carpeta raíz del repositorio. Se ignora para los servicios en la nube. |
-    | Entorno de implementación de SharePoint |La misma que el nombre de servicio. |
-    | Entorno de implementación de Azure |El nombre de la aplicación web o del servicio en la nube. |
+    | Ruta de acceso tooDeployment configuración |Hola ruta tooyour .pubxml archivo para una aplicación web, toohello relativa de carpeta de raíz del repositorio de Hola. Se ignora para los servicios en la nube. |
+    | Entorno de implementación de SharePoint |Hola igual que el nombre del servicio de Hola. |
+    | Entorno de implementación de Azure |Hola aplicación o en la nube nombre de servicio web. |
 14. Llegados a este punto, la compilación debería haber finalizado correctamente.
     
      ![][28]
-15. Si se hace doble clic en el nombre de la compilación, Visual Studio muestra un **Resumen de la compilación**en el que se incluyen los resultados de las pruebas de los proyectos de pruebas unitarias asociados.
+15. Si hace doble clic en nombre de la compilación de hello, Visual Studio muestra un **resumen de la compilación**, incluidos los resultados de pruebas de asociados proyectos de prueba unitaria.
     
      ![][29]
-16. En el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885)puede ver la implementación asociada en la pestaña **Implementaciones** , al seleccionar el entorno de ensayo.
+16. Hola [portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885), puede ver implementación Hola asociado en hello **implementaciones** pestaña cuando se selecciona Hola entorno de ensayo.
     
      ![][30]
-17. Vaya a la dirección URL del sitio. Para una aplicación web, elija el botón **Examinar** en el portal. Para un servicio en la nube, elija la dirección URL de la sección **Vista rápida** de la página **Panel** que muestra el entorno de ensayo.
+17. Examinar dirección URL del sitio tooyour. Para una aplicación web, sólo tiene que elegir hello **examinar** botón en hello portal. Para un servicio de nube, elija dirección URL de Hola Hola **vista rápida** sección de hello **panel** página que muestra el entorno de ensayo de Hola.
     
-    Las implementaciones de la integración continua para los servicios en la nube se publican de forma predeterminada en el entorno de ensayo. Puede cambiarlo si configura la propiedad **Entorno del servicio de nube alternativo** en **Producción**. Aquí es donde se encuentra la URL del sitio en la página del panel del servicio en la nube.
+    Las implementaciones de integración continua para servicios en la nube están publicados toohello el entorno de ensayo de forma predeterminada. Puede cambiar esta configuración hello **entorno del servicio de nube alternativo** propiedad demasiado**producción**. Aquí es donde es la dirección URL del sitio de hello en la página del panel del servicio de nube de Hola.
     
     ![][31]
     
-    Se abrirá una nueva pestaña del explorador para mostrar el sitio que se está ejecutando.
+    Una nueva pestaña de explorador abrirá el sitio de la ejecución de tooreveal.
     
     ![][32]
-18. Si realiza otros cambios en el proyecto, activará más compilaciones y acumulará varias implementaciones. La última de ellas marcada como Activa.
+18. Si realiza otros cambios tooyour proyecto, desencadenador más se compila y se acumularán varias implementaciones. Hola más reciente uno está marcado como activo.
     
     ![][33]
 
 ## <a name="5-redeploy-an-earlier-build"></a>5: Nueva implementación de una compilación anterior
-Este paso es opcional. En el Portal de Azure clásico, elija una implementación anterior y pulse **Volver a implementar** para devolver el sitio a una protección anterior. Tenga en cuenta que esto desencadenará una nueva compilación en TFS y creará una nueva entrada en el historial de implementaciones.
+Este paso es opcional. En Hola portal de Azure clásico, elija una implementación anterior y elija **volver a implementar** toorewind su tooan de sitio anteriormente en el repositorio. Tenga en cuenta que esto desencadenará una nueva compilación en TFS y creará una nueva entrada en el historial de implementaciones.
 
 ![][34]
 
-## <a name="6-change-the-production-deployment"></a>6: Cambio de la implementación de producción
-Cuando esté listo, puede promover el entorno de ensayo al de producción, para lo que debe elegir **Intercambiar** en el Portal de Azure clásico. El entorno de ensayo recién implementado se promueve a Producción y el anterior entorno de Producción, si lo hubiera, pasa a entorno de ensayo. La implementación activa puede ser diferente para los entornos de producción y ensayo, pero el historial de implementación de las compilaciones recientes es el mismo independientemente del entorno.
+## <a name="6-change-hello-production-deployment"></a>6: cambiar la implementación de producción de hello
+Cuando esté listo, puede promover Hola ensayo toohello entorno de producción eligiendo **intercambiar** Hola portal de Azure clásico. entorno de ensayo de Hello recién implementado es tooProduction promocionada y entorno de producción de hello anterior, si existe, se convierte en un entorno de ensayo. Hola implementación activa puede ser diferente para entornos de ensayo y producción de hello, pero el historial de implementación de Hola de compilaciones recientes es Hola igual independientemente del entorno.
 
 ![][35]
 
 ## <a name="7-deploy-from-a-working-branch"></a>7: Implementación desde una bifurcación de trabajo.
-Cuando usa Git, realiza cambios habitualmente en una bifurcación de trabajo y la integra en la bifurcación principal cuando el trabajo de desarrollo alcanza una fecha de finalización. Durante la fase de desarrollo de un proyecto, querrá compilar e implementar la bifurcación de trabajo en Azure.
+Al usar Git, normalmente realizar cambios en una bifurcación de trabajo e integrar en la bifurcación principal de hello cuando el desarrollo de su alcance un estado finalizado. Durante la fase de desarrollo de Hola de un proyecto, podrá desea toobuild e implementar tooAzure de bifurcación de trabajo de Hola.
 
-1. En **Team Explorer**, elija el botón **Inicio** y, a continuación, el botón **Bifurcaciones**.
+1. En **Team Explorer**, elija hello **inicio** botón y, a continuación, elija hello **bifurcaciones** botón.
    
     ![][40]
-2. Haga clic en el vínculo **Nueva bifurcación** .
+2. Elija hello **nueva bifurcación** vínculo.
    
     ![][41]
-3. Escriba el nombre de la bifurcación, por ejemplo "trabajo", y elija **Crear bifurcación**. De esta forma se crea una nueva bifurcación local.
+3. Especificar nombre de saludo de la bifurcación de hello, como "trabajando" y elegir **crear la bifurcación**. De esta forma se crea una nueva bifurcación local.
    
     ![][42]
-4. Publique la bifurcación. Elija el nombre de la bifurcación en **Bifurcaciones no publicadas** y elija **Publicar**.
+4. Publicar bifurcación Hola. Elija el nombre de rama hello en **bifurcaciones se anuló la publicación**y elija **publicar**.
    
     ![][44]
-5. De manera predeterminada, solo los cambios realizados en la bifurcación principal activan una compilación continua. Para configurar la compilación continua en una bifurcación de trabajo, elija la página **Compilaciones** de **Team Explorer** y elija **Editar definición de compilación**.
-6. Abra la pestaña **Configuración de origen** . En **Bifurcaciones supervisadas para compilaciones de integración continua y graduales**, elija **Haga clic aquí para agregar una nueva fila**.
+5. De forma predeterminada, solo cambia el desencadenador de bifurcación principal toohello una compilación continua. tooset una compilación continua de una bifurcación de trabajo, elija hello **compilaciones** página **Team Explorer**y elija **Editar definición de compilación**.
+6. Abra hello **configuración del origen de** ficha. En **supervisan ramas para la integración continua y compilación**, elija **haga clic aquí tooadd una nueva fila**.
    
     ![][47]
-7. Especifique la bifurcación que ha creado, por ejemplo refs/heads/working.
+7. Especificar la rama de hello que haya creado, tales como refs o cabezales de trabajo.
    
     ![][48]
-8. Realice un cambio en el código, abra el menú contextual del archivo modificado y elija **Confirmar**.
+8. Realizar un cambio en el código de hello, menú contextual abierto Hola Hola cambiado archivo y, a continuación, elija **confirmar**.
    
     ![][43]
-9. Haga clic en el vínculo **Confirmaciones no sincronizadas** y elija el botón **Sincronizar** o el vínculo **Insertar** para copiar los cambios en la copia de la bifurcación de trabajo en Visual Studio Team Services.
+9. Elija hello **confirmaciones no sincronizadas** de vínculo y elija hello **sincronización** botón o hello **Push** hello toocopy de vínculo cambia toohello copia de rama de trabajo de hello en Visual Studio Servicios del equipo.
    
    ![][45]
-10. Vaya a la vista **Compilaciones** y busque la compilación que se acaba de desencadenar para la bifurcación de trabajo.
+10. Navegue toohello **compilaciones** ver y buscar compilación Hola que simplemente se obtuvo desencadena de rama de trabajo de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para ver más sugerencias sobre el uso de Git con Visual Studio Team Services, consulte [Desarrollo y uso compartido del código de Git con Visual Studio](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs-2017) y para más información sobre el uso de un repositorio de Git no administrado por Visual Studio Team Services para publicar en Azure, consulte [Implementación continua en Azure App Service](../app-service-web/app-service-continuous-deployment.md). Para obtener más información sobre Visual Studio Team Services, consulte [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
+toolearn más sugerencias sobre cómo usar Git con Visual Studio Team Services, consulte [desarrollar y compartir su código de Git con Visual Studio](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs-2017) y para obtener información sobre el uso de un repositorio Git que no está administrado por toopublish de Visual Studio Team Services tooAzure, consulte [tooAzure servicio de aplicaciones de la implementación continua](../app-service-web/app-service-continuous-deployment.md). Para obtener más información sobre Visual Studio Team Services, consulte [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG
