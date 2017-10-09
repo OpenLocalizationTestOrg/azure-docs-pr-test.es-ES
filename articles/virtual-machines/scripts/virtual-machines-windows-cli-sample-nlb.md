@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de script de la CLI de Azure: creación de una máquina virtual Windows Server 2016 con NLB | Microsoft Docs"
+title: "Ejemplo de secuencia de comandos de CLI - aaaAzure crear una máquina virtual de Windows Server 2016 con NLB | Documentos de Microsoft"
 description: "Ejemplo de script de la CLI de Azure: creación de una máquina virtual Windows Server 2016 con NLB"
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 916204d2b94868057b824feee7b7d032c66382f3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aaaac0c2cc32ce0cac21417926399d848bd6fa09
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Equilibrio de la carga de tráfico entre máquinas virtuales de alta disponibilidad
 
-Este ejemplo de script crea todo lo necesario para ejecutar varias máquinas virtuales Ubuntu configuradas con valores de alta disponibilidad y equilibrio de carga. Después de ejecutar el script, tendrá tres máquinas virtuales unidas en un conjunto de disponibilidad de Azure y accesibles mediante Azure Load Balancer.
+Este ejemplo de secuencia de comandos crea todo lo necesario toorun varias máquinas virtuales de Ubuntu configurado en una alta disponibilidad y de carga equilibrada de configuración. Después de ejecutar script de Hola, tendrá tres máquinas virtuales, tooan Unidos a un conjunto de disponibilidad de Azure y es accesible a través de un equilibrador de carga de Azure.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -31,11 +31,11 @@ Este ejemplo de script crea todo lo necesario para ejecutar varias máquinas vir
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-windows-vm-nlb.sh "Creación rápida de una máquina virtual")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-windows-vm-nlb.sh "Quick Create VM")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Ejecute el siguiente comando para quitar el grupo de recursos, la máquina virtual y todos los recursos relacionados.
+Ejecute hello después el grupo de recursos de comando tooremove hello, la VM y todos ellos relacionados con recursos.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -43,7 +43,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear un grupo de recursos, una máquina virtual, un conjunto de disponibilidad, un equilibrador de carga y todos los recursos relacionados. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script utiliza Hola después comandos toocreate un grupo de recursos, máquina virtual, conjunto de disponibilidad, equilibrador de carga y todos los recursos relacionados. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
@@ -51,18 +51,18 @@ Este script usa los siguientes comandos para crear un grupo de recursos, una má
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) | Crea una red virtual y una subred de Azure. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) | Crea una dirección IP pública con una dirección IP estática y un nombre DNS asociado. |
 | [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#create) | Crea un equilibrador de carga de red de Azure (NLB). |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | Crea un sondeo de NLB. Se utiliza una prueba de NLB para supervisar cada máquina virtual en el conjunto de NLB. Si alguna máquina virtual deja de estar accesible, el tráfico no se enruta a la máquina virtual. |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Crea una regla de NLB. En este ejemplo, se crea una regla para el puerto 80. Según va llegando el tráfico HTTP a NLB, se enruta al puerto 80 de una de las máquinas virtuales del conjunto de NLB. |
-| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) | Crea una regla de traducción de direcciones de red (NAT) de NLB.  Las reglas de NAT asignan un puerto de NLB a un puerto en una máquina virtual. En este ejemplo, se crea una regla NAT para el tráfico SSH para cada máquina virtual del conjunto de NLB.  |
-| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) | Crea un grupo de seguridad de red (NSG), que es un límite de seguridad entre Internet y la máquina virtual. |
-| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) | Crea una regla de NSG para permitir el tráfico entrante. En este ejemplo, el puerto 22 está abierto al tráfico SSH. |
-| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) | Crea una tarjeta de máquina virtual y la conecta con la red virtual, la subred y el NSG. |
-| [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Crea un conjunto de disponibilidad. Los conjuntos de disponibilidad garantizan la disponibilidad de las aplicaciones al repartir las máquinas virtuales entre los recursos físicos, de forma que si se produce un error, el conjunto no se verá afectado en su totalidad. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Crea la máquina virtual y la conecta con la tarjeta de red, la red virtual, la subred y el NSG. Este comando también especifica la imagen de máquina virtual que se usará, y las credenciales administrativas.  |
+| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | Crea un sondeo de NLB. Una prueba de NLB es toomonitor usado en cada máquina virtual en el conjunto NLB de Hola. Si ninguna máquina virtual deja de estar accesible, el tráfico no es toohello enrutado máquina virtual. |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Crea una regla de NLB. En este ejemplo, se crea una regla para el puerto 80. Como el tráfico HTTP llega al Hola NLB, es tooport enrutado 80 una de las máquinas virtuales de hello en el conjunto NLB de Hola. |
+| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) | Crea una regla de traducción de direcciones de red (NAT) de NLB.  Las reglas NAT asignan un puerto de hello puerto tooa NLB en una máquina virtual. En este ejemplo, se crea una regla NAT para SSH tráfico tooeach VM en el conjunto NLB de Hola.  |
+| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) | Crea un grupo de seguridad de red (NSG), que es un límite de seguridad entre Hola internet y hello las máquinas virtuales. |
+| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) | Crea un tooallow de regla NSG el tráfico entrante. En este ejemplo, el puerto 22 está abierto al tráfico SSH. |
+| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) | Crea una tarjeta de red virtual y lo adjunta toohello de red virtual, subred y NSG. |
+| [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | Crea un conjunto de disponibilidad. Conjuntos de disponibilidad de garantizan la disponibilidad de las aplicaciones repartir hello las máquinas virtuales entre recursos físicos de forma que si se produce el error, no se realiza el conjunto completo de Hola. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | Crea la máquina virtual de Hola y lo conecta toohello tarjeta de red, red virtual, subred y NSG. Este comando también especifica toobe de imagen de máquina virtual de hello usa y credenciales administrativas.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | Elimina un grupo de recursos, incluidos todos los recursos anidados. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de scripts de la CLI de máquina virtual en la [documentación sobre máquinas virtuales Windows de Azure](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ejemplos de secuencias de comandos CLI de máquina virtual adicional pueden encontrarse en hello [documentación de la máquina virtual de Windows Azure](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

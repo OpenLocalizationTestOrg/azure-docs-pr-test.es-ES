@@ -1,5 +1,5 @@
 ---
-title: "Uso de instantáneas incrementales para copia de seguridad y recuperación de discos no administrados de máquinas virtuales Windows de Azure | Microsoft Docs"
+title: "aaaUse instantáneas incrementales para copia de seguridad y recuperación de discos de máquina virtual de Windows Azure no administrados | Documentos de Microsoft"
 description: "Creación de una solución personalizada para copia de seguridad y recuperación de discos de máquinas virtuales Windows de Azure mediante instantáneas incrementales."
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: aungoo
-ms.openlocfilehash: aea91f4d402e88d74cc1917efe1b368c458f1322
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2ad2fdcf1144ba134ba0eb1c0c7ecabffd1bc38f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

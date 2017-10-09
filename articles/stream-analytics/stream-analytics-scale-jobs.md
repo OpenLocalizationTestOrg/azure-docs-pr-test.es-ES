@@ -1,6 +1,6 @@
 ---
-title: Escalar los trabajos de Stream Analytics para incrementar el rendimiento | Microsoft Docs
-description: "Aprenda a escalar los trabajos de Análisis de transmisiones mediante la configuración de particiones de entrada, la optimización de la definición de consulta y el ajuste de las unidades de streaming del trabajo."
+title: "rendimiento de tooincrease de trabajos de análisis de transmisiones de aaaScale | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooscale los trabajos de análisis de transmisiones por configurar particiones de entrada, la definición de la consulta de hello para la optimización y la configuración del trabajo unidades de streaming."
 keywords: "datos de streaming, procesamiento de datos de streaming, optimización del análisis"
 services: stream-analytics
 documentationcenter: 
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/22/2017
 ms.author: jeffstok
-ms.openlocfilehash: ab894976c72ea3785d7f58e51b3dd64511e1e8e3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4ba8f6b2f8bfebd52cfa07696b501b42cda21f75
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="scale-azure-stream-analytics-jobs-to-increase-stream-data-processing-throughput"></a>Escalado de trabajos de Análisis de transmisiones de Azure para incrementar el rendimiento de procesamiento de flujo de datos
-En este artículo se muestra cómo ajustar una consulta de Stream Analytics para aumentar la capacidad de procesamiento de trabajos de Stream Analytics. Aprenda a escalar los trabajos de Stream Analytics mediante la configuración de particiones de entrada, el ajuste de la definición de consulta y el cálculo y establecimiento de las *unidades de streaming* (SU) del trabajo. 
+# <a name="scale-azure-stream-analytics-jobs-tooincrease-stream-data-processing-throughput"></a>Rendimiento de procesamiento de datos de escala análisis de transmisiones de Azure trabajos tooincrease stream
+Este artículo muestra cómo tootune un análisis de transmisiones de consultar el rendimiento tooincrease para trabajos de análisis de transmisión por secuencias. Obtener información sobre cómo trabajos tooscale análisis de transmisiones mediante la configuración de particiones de entrada, definición de la consulta de análisis de optimización hello y calcular y la configuración del trabajo *unidades de streaming* (SUs). 
 
-## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>¿Cuáles son las partes de un trabajo de Análisis de transmisiones?
-Una definición de trabajo de Análisis de transmisiones incluye entradas, una consulta y la salida. Las entradas proceden del lugar en el cual el trabajo lee el flujo de datos. La consulta se usa para transformar el flujo de entrada de datos y la salida es el lugar al que el trabajo envía los resultados.  
+## <a name="what-are-hello-parts-of-a-stream-analytics-job"></a>¿Qué partes de Hola de un trabajo de análisis de transmisiones?
+Una definición de trabajo de Análisis de transmisiones incluye entradas, una consulta y la salida. Las entradas son donde trabajo Hola lee el flujo de datos de Hola de. consulta Hello es flujo de entrada de datos de hello tootransform usado, y salida de hello es donde trabajo Hola envía los resultados del trabajo de Hola a.  
 
-Un trabajo requiere al menos un origen de entrada de streaming de datos. El origen de entrada del flujo de datos puede almacenarse en un centro de eventos de Azure o en Azure Blob Storage. Para más información, vea [¿Qué es Azure Stream Analytics?](stream-analytics-introduction.md) e [Introducción al uso de Azure Stream Analytics: detección de fraudes en tiempo real](stream-analytics-real-time-fraud-detection.md).
+Un trabajo requiere al menos un origen de entrada de streaming de datos. Hello origen de entrada de flujo de datos puede almacenarse en un centro de eventos de Azure o en el almacenamiento de blobs de Azure. Para obtener más información, consulte [Introducción tooAzure análisis de transmisiones](stream-analytics-introduction.md) y [Introducción al uso de análisis de transmisiones de Azure](stream-analytics-real-time-fraud-detection.md).
 
 ## <a name="partitions-in-event-hubs-and-azure-storage"></a>Particiones en Event Hubs y Azure Storage
-El escalado de un trabajo de Stream Analytics aprovecha las particiones en la entrada o la salida. La creación de particiones permite dividir los datos en subconjuntos en función de una clave de partición. Un proceso que consume los datos (por ejemplo, un trabajo de Stream Analytics) puede consumir y escribir diferentes particiones en paralelo, lo que aumenta la capacidad de procesamiento. Si trabaja con Stream Analytics, puede aprovechar las ventajas de las particiones en Event Hubs y Blob Storage. 
+Ajuste de escala en un trabajo de análisis de transmisiones aprovecha las ventajas de las particiones de hello entrada o salida. La creación de particiones permite dividir los datos en subconjuntos en función de una clave de partición. Un proceso que consume datos de hello (por ejemplo, un trabajo de análisis de transmisión por secuencias) puede consumir y escribir diferentes particiones en paralelo, lo que aumenta el rendimiento. Si trabaja con Stream Analytics, puede aprovechar las ventajas de las particiones en Event Hubs y Blob Storage. 
 
-Para más información sobre las particiones, vea los siguientes artículos:
+Para obtener más información acerca de las particiones, vea Hola siguientes artículos:
 
 * [Información general de las características de Event Hubs](../event-hubs/event-hubs-features.md#partitions)
 * [Creación de particiones de datos](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning#partitioning-azure-blob-storage)
 
 
 ## <a name="streaming-units-sus"></a>Unidades de streaming (SU)
-Las unidades de streaming (SU) representan los recursos y la capacidad informática que se necesitan para ejecutar un trabajo de Azure Stream Analytics. Las SU proporcionan una forma de describir la capacidad de procesamiento del evento relativo en función de una medida que combina la CPU, la memoria y las tasas de lectura y escritura. Cada unidad de streaming corresponde aproximadamente a 1 MB por segundo de capacidad de procesamiento. 
+Transmisión por secuencias unidades (SUs) representan Hola recursos y capacidad de ejecución que son necesarios en orden tooexecute un trabajo de análisis de transmisiones de Azure. SUs proporcionan una manera toodescribe Hola relativa de eventos basándose en una medición mezclada de CPU, memoria, la capacidad de procesamiento y se leen y escriben las tasas. Cada SU corresponde tooroughly 1 MB/segundo de rendimiento. 
 
-La elección del número de unidades de streaming que se necesitan para un trabajo en concreto depende de la configuración de particiones para las entradas y de la consulta definida para el trabajo. Puede seleccionar como máximo su cuota en unidades de streaming para un trabajo. De manera predeterminada, cada suscripción de Azure tiene una cuota máxima de 50 unidades de streaming en todos los trabajos de análisis de una región específica. Para aumentar las unidades de streaming de sus suscripciones, contacte con [Soporte técnico de Microsoft](http://support.microsoft.com). Los valores válidos para unidades de streaming por trabajo son 1, 3, 6 y más en incrementos de 6.
+Elegir SUs cuántos son necesarios para un trabajo determinado depende en configuración de la partición de Hola para las entradas de Hola y de consulta de hello definida para el trabajo de Hola. Puede seleccionar una cuota de tooyour en SUs para un trabajo. De forma predeterminada, cada suscripción de Azure tiene una cuota de seguridad de SUs too50 para todos los trabajos de análisis de hello en una región específica. tooincrease SUs para las suscripciones más allá de esta cuota, póngase en contacto con [Microsoft Support](http://support.microsoft.com). Los valores válidos para unidades de streaming por trabajo son 1, 3, 6 y más en incrementos de 6.
 
 ## <a name="embarrassingly-parallel-jobs"></a>Trabajos embarazosamente paralelos
-Un trabajo *embarazosamente paralelo* es el escenario más escalable que tenemos en Azure Stream Analytics. Conecta una partición de la entrada en una instancia de la consulta a una partición de la salida. Este paralelismo tiene los siguientes requisitos:
+Un *embarazosamente paralelas* trabajo es el escenario más escalable Hola tenemos en análisis de transmisiones de Azure. Se conecta a una partición de la instancia de entrada tooone Hola de partición de tooone Hola consulta de salida de hello. Este paralelismo tiene Hola según los requisitos:
 
-1. Si la lógica de la consulta depende de la misma clave que procesa la misma instancia de consulta, ha de asegurarse de que los eventos vayan a la misma partición de la entrada. En Event Hubs, esto significa que los datos del evento deben tener establecido el valor **PartitionKey**. También puede usar remitentes con particiones. En Blob Storage, esto significa que los eventos se envían a la misma carpeta de partición. Si la lógica de consulta no requiere que la misma instancia de consulta procese la misma clave, puede ignorar este requisito. Un ejemplo de esta lógica sería una sencilla consulta select-project-filter.  
+1. Si la lógica de la consulta depende de hello misma clave que se va a procesar por hello misma consulta instancia, debe asegurarse de que los eventos de hello van toohello misma partición de los datos especificados. Los centros de eventos, esto significa que los datos de eventos de hello deben tener hello **PartitionKey** valor establecido. También puede usar remitentes con particiones. Para el almacenamiento de blobs, esto significa que se envían eventos de hello toohello carpeta de la misma partición. Si la lógica de la consulta no requiere Hola misma clave toobe procesado por hello misma consulta instancia, puede pasar por alto este requisito. Un ejemplo de esta lógica sería una sencilla consulta select-project-filter.  
 
-2. Una vez dispuestos los datos en la salida, hay que asegurarse de que la consulta está particionada. Esto requiere el uso de **Partition By** en todos los pasos. Se pueden usar varios pasos, pero todos deben particionarse con la misma clave. Actualmente, la clave de partición debe establecerse en **PartitionId** para que el trabajo sea totalmente paralelo.  
+2. Una vez que se distribuyen los datos de hello en lado de entrada de hello, debe asegurarse de que la consulta tiene particiones. Para ello, deberá toouse **Partition By** en todos los pasos de Hola. Se permiten varios pasos, pero todas ellas deben tener particiones por hello misma clave. Actualmente, se debe establecer Hola particiones clave demasiado**PartitionId** en orden para hello trabajo toobe totalmente paralela.  
 
-3. Solo Event Hubs y Blob Storage admiten en este momento salidas con particiones. En la salida de Event Hubs, debe configurar la clave de partición para que sea **PartitionId**. En la salida de Blob Storage, no tiene que hacer nada.  
+3. Solo Event Hubs y Blob Storage admiten en este momento salidas con particiones. Para la salida del concentrador de eventos, debe configurar toobe clave de partición de hello **PartitionId**. Para la salida de almacenamiento de blobs, no tiene toodo nada.  
 
-4. El número de particiones de entrada debe ser igual al número de particiones de salida. La salida de Blob Storage no admite en este momento la creación de particiones. Pero no importa, porque hereda el esquema de partición de la consulta ascendente. Vea ejemplos de valores de partición que permiten un trabajo totalmente paralelo:  
+4. número de Hola de particiones de entrada debe ser igual a número Hola de particiones de salida. La salida de Blob Storage no admite en este momento la creación de particiones. Pero no importa, porque hereda Hola esquema de consulta de nivel superior de Hola de particiones. Vea ejemplos de valores de partición que permiten un trabajo totalmente paralelo:  
 
    * Ocho particiones de entrada de Event Hubs y ocho particiones de salida de Event Hubs
    * Ocho particiones de entrada de Event Hubs y salida de Blob Storage  
    * Ocho particiones de entrada de Blob Storage y salida de Blob Storage  
    * Ocho particiones de entrada de Blob Storage y ocho particiones de salida de Event Hubs  
 
-En las siguientes secciones se describen algunos escenarios de ejemplo que son embarazosamente paralelos.
+Hello las secciones siguientes describen algunos escenarios de ejemplo que son embarazosamente paralelas.
 
 ### <a name="simple-query"></a>Consulta sencilla
 
@@ -72,7 +72,7 @@ Consulta:
     FROM Input1 Partition By PartitionId
     WHERE TollBoothId > 100
 
-Esta consulta es un filtro sencillo. Por consiguiente, no hay que preocuparse por crear particiones en la entrada que se envía al centro de eventos. Observe que la consulta incluye **Partition By PartitionId**, por lo que cumple el requisito 2 de antes. En cuanto a la salida, es preciso configurar la salida del centro de eventos en el trabajo para que el la clave de partición se establezca en **PartitionId**. Una última comprobación consiste en asegurarse de que el número de particiones de entrada es igual al número de particiones de salida.
+Esta consulta es un filtro sencillo. Por lo tanto, no es necesario tooworry acerca de las particiones de entrada de Hola que se están enviando toohello concentrador de eventos. Tenga en cuenta que consultan Hola incluye **partición por PartitionId**, por lo que cumple el requisito #2 de antes. Para la salida de hello, necesitamos salida del concentrador de eventos tooconfigure hello en el conjunto de claves de la partición de Hola de hello trabajo toohave demasiado**PartitionId**. Una última comprobación es toomake asegurarse de que el número de Hola de particiones de entrada es igual toohello número de particiones de salida.
 
 ### <a name="query-with-a-grouping-key"></a>Consulta con una clave de agrupación
 
@@ -85,7 +85,7 @@ Consulta:
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-Esta consulta tiene una clave de agrupación. Por lo tanto, es preciso que la misma clave se procese en la misma instancia de consulta, lo que significa que deben enviarse eventos al centro de eventos de manera particionada. ¿Pero qué clave debe usarse? **PartitionId** es un concepto de lógica de trabajos. La clave que realmente importa es **TollBoothId**, por lo que el valor **PartitionKey** de los datos de evento debe ser **TollBoothId**. Esto se hace en esta consulta estableciendo **Partition By** en **PartitionId**. Puesto que la salida es Blob Storage, no hay que preocuparse en configurar un valor de clave de partición, como estipula el requisito 4.
+Esta consulta tiene una clave de agrupación. Por lo tanto, Hola mismo toobe necesidades clave procesado por hello misma consulta instancias, lo que significa que los eventos se deben enviar toohello concentrador de eventos de manera con particiones. ¿Pero qué clave debe usarse? **PartitionId** es un concepto de lógica de trabajos. clave Hola nos preocupamos por realmente es **TollBoothId**, tan Hola **PartitionKey** debe ser el valor de los datos de evento de hello **TollBoothId**. Para ello en la consulta de hello estableciendo **Partition By** demasiado**PartitionId**. Puesto que la salida de hello es el almacenamiento de blobs, no es necesario tooworry acerca de cómo configurar un valor de clave de partición, según el requisito #4.
 
 ### <a name="multi-step-query-with-a-grouping-key"></a>Consulta de varios pasos con una clave de agrupación
 * Entrada: Event Hubs con ocho particiones
@@ -103,17 +103,17 @@ Consulta:
     FROM Step1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-Esta consulta tiene una clave de agrupación, por lo que es necesario que la misma instancia de procese la misma clave. Se puede usar la misma estrategia que en el ejemplo anterior. En este caso, la consulta tiene varios pasos. ¿Cada paso tiene **Partition By PartitionId**? Sí, por lo que la consulta cumple el requisito 3. En cuanto a la salida, es necesario establecer la clave de partición en **PartitionId**, tal y como se ha explicado antes. También puede verse que tiene el mismo número de particiones que la entrada.
+Esta consulta tiene una clave de agrupación, Hola así mismo toobe necesidades clave procesado por hello misma instancia de consulta. Podemos usar Hola misma estrategia como en el ejemplo anterior de Hola. En este caso, la consulta de hello tiene varios pasos. ¿Cada paso tiene **Partition By PartitionId**? Sí, por lo que la consulta de hello cumple el requisito #3. Para la salida de hello, necesitamos clave de partición de hello tooset demasiado**PartitionId**, tal y como se explicó anteriormente. También podemos ver que tiene Hola mismo número de particiones como entrada de Hola.
 
 ## <a name="example-scenarios-that-are-not-embarrassingly-parallel"></a>Escenarios de ejemplo que *no* son embarazosamente paralelos
 
-En la sección anterior, se han mostrado algunos escenarios embarazosamente paralelos. En esta sección se describen escenarios en los que no se cumplen todos los requisitos para que sean embarazosamente paralelos. 
+En la sección anterior de hello, mostramos algunos escenarios embarazosamente paralelas. En esta sección, se tratan los escenarios que no cumplen todos los requisitos toobe de hello embarazosamente paralelas. 
 
 ### <a name="mismatched-partition-count"></a>Recuento de particiones no coincidente
 * Entrada: Event Hubs con ocho particiones
 * Salida: Event Hubs con 32 particiones
 
-En este caso, no importa cuál es la consulta. Si el recuento de particiones de entrada no coincide con el recuento de particiones de salida, la topología no es embarazosamente paralela.
+En este caso, no importa qué consulta hello es. Si el recuento de particiones de entrada de hello no coincide con recuento de particiones de salida de hello, topología hello no embarazosamente paralela.
 
 ### <a name="not-using-event-hubs-or-blob-storage-as-output"></a>No se usa Event Hubs ni Blob Storage como salida
 * Entrada: Event Hubs con ocho particiones
@@ -137,15 +137,15 @@ Consulta:
     FROM Step1 Partition By TollBoothId
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 
-Como puede ver, el segundo paso utiliza **TollBoothId** como clave de partición. Este paso no es igual al primer paso y, por tanto, hay que seguir un orden aleatorio. 
+Como puede ver, Hola segundo paso utiliza **TollBoothId** como Hola clave de partición. Este paso es Hola mismo no como primer paso de hello y, por lo tanto, requiere nos toodo un orden aleatorio. 
 
-Los ejemplos anteriores muestran algunos trabajos de Stream Analytics que se ajustan (o no) a una topología embarazosamente paralela. Si se ajustan, tienen posibilidades de alcanzar la escala máxima. En el caso de los trabajos que no se ajustan a uno de estos perfiles, habrá una guía de escalado disponible en futuras actualizaciones. Por ahora, use la guía general en las siguientes secciones.
+Hello ejemplos anteriores muestran algunos trabajos de análisis de transmisiones que se ajustan demasiado (o no) en una topología embarazosamente paralela. Si cumple, tienen el potencial de Hola para maximizar su alcance. En el caso de los trabajos que no se ajustan a uno de estos perfiles, habrá una guía de escalado disponible en futuras actualizaciones. Por ahora, use instrucciones generales de Hola de hello las secciones siguientes.
 
-## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>Cálculo de las unidades máximas de streaming para un trabajo
-El número total de unidades de streaming que se puede utilizar en un trabajo de Stream Analytics depende del número de pasos de la consulta definida para el trabajo y del número de particiones para cada paso.
+## <a name="calculate-hello-maximum-streaming-units-of-a-job"></a>Calcular la capacidad máxima de transmisión por secuencias Hola de un trabajo
+número total de Hola de unidades de streaming que puede usarse en un trabajo de análisis de transmisiones depende de número de Hola de pasos en la consulta de hello definido para el trabajo de Hola y el número de Hola de particiones para cada paso.
 
 ### <a name="steps-in-a-query"></a>Pasos de una consulta
-Una consulta puede tener uno o varios pasos. Cada paso es una subconsulta definida mediante la palabra clave **WITH**. La consulta que queda al margen de la palabra clave **WITH** (una sola consulta) también se cuenta como un paso; por ejemplo, la instrucción **SELECT** de la consulta siguiente:
+Una consulta puede tener uno o varios pasos. Cada paso es una subconsulta definida por hello **WITH** palabra clave. consulta de Hola que está fuera de hello **WITH** palabra clave (sólo una consulta) también se considera como un paso, como hello **seleccione** instrucción Hola después de consulta:
 
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
@@ -160,54 +160,54 @@ Una consulta puede tener uno o varios pasos. Cada paso es una subconsulta defini
 Esta consulta tiene dos pasos.
 
 > [!NOTE]
-> Esta consulta se analiza con más detalle más adelante en el artículo.
+> Esta consulta se explica con más detalle más adelante en el artículo de Hola.
 >  
 
 ### <a name="partition-a-step"></a>Posicionamiento de un paso
-El particionamiento de un paso requiere las siguientes condiciones:
+Un paso de creación de particiones requiere Hola condiciones siguientes:
 
-* El origen de entrada debe tener particiones. 
-* La instrucción **SELECT** de la consulta debe leer desde un origen de entrada particionada.
-* La consulta comprendida en el paso debe incluir la palabra clave **Partition By**.
+* origen de entrada de Hello debe estar particionado. 
+* Hola **seleccione** debe leer la instrucción de consulta de Hola desde un origen de entrada con particiones.
+* consulta de Hello en el paso de Hola debe tener hello **Partition By** palabra clave.
 
-Cuando una consulta está particionada, los eventos de entrada se procesan y agregan en grupos de particiones independientes, y se generan eventos de salida para cada uno de los grupos. Si quiere usar un agregado combinado, debe crear un segundo paso sin particionar que agregar.
+Cuando una consulta tiene particiones, los eventos de entrada de hello son grupos de procesado y se agregan en partición independiente y salidas de eventos se generan para cada uno de los grupos de Hola. Si desea un agregado combinado, debe crear un segundo tooaggregate paso sin particiones.
 
-### <a name="calculate-the-max-streaming-units-for-a-job"></a>Cálculo de las unidades máximas de streaming para un trabajo
-Todos los pasos sin particiones juntos pueden escalarse hasta seis unidades de streaming (SU) para un trabajo de Stream Analytics. Para agregar unidades de streaming, un paso debe estar particionado. Cada partición puede tener seis unidades de streaming.
+### <a name="calculate-hello-max-streaming-units-for-a-job"></a>Calcular el número máximo de hello unidades para un trabajo de streaming
+Juntos, todos los pasos de particiones no pueden escalar un toosix unidades (SUs) para un trabajo de análisis de transmisiones de streaming. deben estar particionados SUs tooadd, un paso. Cada partición puede tener seis unidades de streaming.
 
 <table border="1">
-<tr><th>Consultar</th><th>Número máximo de unidades de streaming del trabajo</th></td>
+<tr><th>Consultar</th><th>SUs máximo para el trabajo de Hola</th></td>
 
 <tr><td>
 <ul>
-<li>La consulta contiene un solo paso.</li>
-<li>El paso no está particionado.</li>
+<li>consulta de Hello contiene un solo paso.</li>
+<li>paso de Hello no tiene particiones.</li>
 </ul>
 </td>
 <td>6</td></tr>
 
 <tr><td>
 <ul>
-<li>La secuencia de datos de entrada está particionada en tres.</li>
-<li>La consulta contiene un solo paso.</li>
-<li>El paso está particionado.</li>
+<li>flujo de datos de entrada de Hola se particiona por 3.</li>
+<li>consulta de Hello contiene un solo paso.</li>
+<li>paso de Hello tiene particiones.</li>
 </ul>
 </td>
 <td>18</td></tr>
 
 <tr><td>
 <ul>
-<li>La consulta contiene dos pasos.</li>
-<li>Ninguno de los pasos está particionado.</li>
+<li>consulta de Hello incluye dos pasos.</li>
+<li>Ninguno de los pasos de hello tiene particiones.</li>
 </ul>
 </td>
 <td>6</td></tr>
 
 <tr><td>
 <ul>
-<li>La secuencia de datos de entrada está particionada en tres.</li>
-<li>La consulta contiene dos pasos. El paso de entrada tiene particiones y el segundo paso no.</li>
-<li>La instrucción <strong>SELECT</strong> se lee de la entrada particionada.</li>
+<li>flujo de datos de entrada de Hola se particiona por 3.</li>
+<li>consulta de Hello incluye dos pasos. paso de entrada de Hola se divide y no es el segundo paso de Hola.</li>
+<li>Hola <strong>seleccione</strong> instrucción lee de la entrada de hello con particiones.</li>
 </ul>
 </td>
 <td>24 (18 para los pasos particionados y 6 para los pasos no particionados)</td></tr>
@@ -215,21 +215,21 @@ Todos los pasos sin particiones juntos pueden escalarse hasta seis unidades de s
 
 ### <a name="examples-of-scaling"></a>Ejemplos de escalado
 
-La siguiente consulta calcula el número de vehículos que pasan por una estación de peaje con tres cabinas de peaje en una ventana temporal de tres minutos. Esta consulta se puede escalar hasta seis unidades de streaming.
+Hello siguiente consulta calcula Hola número de automóviles dentro de una ventana de tres minutos que se va a través de una estación de peaje que tiene tres casetas de cuota. Esta consulta se puede ampliar SUs toosix.
 
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-Para usar más unidades de streaming en la consulta, el flujo de datos de entrada y la consulta deben estar particionados. Dado que la partición del flujo de datos está establecida en 3, la siguiente consulta modificada puede escalarse hasta 18 unidades de streaming:
+toouse más SUs para Hola consulta, ambos Hola flujo de datos de entrada y consulta de hello debe estar particionado. Como partición de flujo de datos de Hola se establece too3, hello siguiente consulta modificada se puede ampliar SUs too18:
 
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 
-Cuando una consulta está particionada, se procesan los eventos de entrada y se agregan en grupos de particiones independientes. También se generan eventos de salida para cada uno de los grupos. La creación de particiones puede ocasionar algunos resultados inesperados cuando el campo **GROUP BY** no es la clave de partición del flujo de datos de entrada. Por ejemplo, el campo **TollBoothId** de la consulta anterior no es la clave de partición de **Input1**. El resultado es que los datos de la cabina de peaje 1 se pueden distribuir en varias particiones.
+Cuando una consulta tiene particiones, los eventos de entrada de Hola se procesan y se agregan en grupos de partición independiente. También se genera el evento de salida para cada uno de los grupos de Hola. Creación de particiones puede provocar algunos resultados inesperados cuando hello **GROUP BY** campo no es de clave de partición de hello en el flujo de datos de entrada de Hola. Por ejemplo, hello **TollBoothId** campo de consulta anterior hello no es clave de partición de Hola de **Entrada1**. resultado de Hello es ese hello datos entre cabinas #1 pueden propagarse en varias particiones.
 
-Cada una de las particiones de **Input1** se procesará por separado en Stream Analytics. Por consiguiente, se crearán varios registros de recuento de vehículos para la misma cabina en la misma ventana de saltos de tamaño constante. Si la clave de partición de entrada no se puede cambiar, este problema se puede solucionar agregando un paso adicional sin particiones, como en el ejemplo siguiente:
+Cada uno de hello **Entrada1** particiones se procesarán por separado mediante análisis de transmisiones. Como resultado, varios registros de recuento de automóvil Hola para Hola mismo cabinas Hola se creará la misma ventana de saltos de tamaño constante. Si no se puede cambiar la clave de partición de entrada de hello, puede solucionar este problema mediante la adición de un paso de partición que no es, como en el siguiente ejemplo de Hola:
 
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
@@ -241,42 +241,42 @@ Cada una de las particiones de **Input1** se procesará por separado en Stream A
     FROM Step1
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 
-Esta consulta se puede escalar hasta 24 unidades de streaming.
+Esta consulta puede ser SUs too24 escalado.
 
 > [!NOTE]
-> Si va a combinar dos flujos de datos, asegúrese de que estén particionados mediante la clave de partición de la columna que usa para realizar las combinaciones. Asegúrese también de que tiene el mismo número de particiones en ambos flujos de datos.
+> Si va a unir dos flujos, asegúrese de que secuencias Hola se dividen en particiones por clave de partición de Hola de columna de Hola que usar toocreate Hola combinaciones. También asegúrese de que dispone de hello mismo número de particiones en ambas secuencias.
 > 
 > 
 
 ## <a name="configure-stream-analytics-streaming-units"></a>Configuración de las unidades de streaming de Stream Analytics
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. En la lista de recursos, busque el trabajo de Stream Analytics que quiere escalar y ábralo.
-3. En la hoja del trabajo, en **Configurar**, haga clic en **Escala**.
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. En lista de Hola de recursos, busque el trabajo de análisis de transmisiones de Hola que desee tooscale y, a continuación, vuelva a abrirlo.
+3. Hola trabajo hoja, en **configurar**, haga clic en **escala**.
 
     ![Configuración del trabajo de Stream Analytics en Azure Portal][img.stream.analytics.preview.portal.settings.scale]
 
-4. Use el control deslizante para establecer las unidades de streaming del trabajo. Tenga en cuenta que está limitado a la configuración de unidades de streaming específica.
+4. Use Hola control deslizante tooset Hola SUs trabajo Hola. Observe que son valores de SU toospecific limitado.
 
 
 ## <a name="monitor-job-performance"></a>Supervisión del rendimiento del trabajo
-Mediante Azure Portal, puede realizar el seguimiento de la capacidad de procesamiento de un trabajo:
+Con hello portal de Azure, puede seguir el rendimiento de un trabajo hello:
 
 ![Trabajos de supervisión de Análisis de transmisiones de Azure][img.stream.analytics.monitor.job]
 
-Calcule la capacidad de procesamiento esperada de la carga de trabajo. Si la capacidad de procesamiento es inferior a la esperada, ajuste la partición de entrada, ajuste la consulta y agregue unidades de streaming al trabajo.
+Calcular el rendimiento de hello esperada de carga de trabajo de Hola. Si el rendimiento de hello es inferior a lo esperado, optimizar partición entrada hello, optimizar la consulta de Hola y agregar SUs tooyour trabajo.
 
 
-## <a name="visualize-stream-analytics-throughput-at-scale-the-raspberry-pi-scenario"></a>Visualización de la capacidad de procesamiento de Stream Analytics a escala: escenario de Raspberry Pi
-Para ayudarle a comprender cómo se escalan los trabajos de Stream Analytics, se ha realizado un experimento basado en un dispositivo Raspberry Pi. Este experimento permite ver los efectos sobre la capacidad de procesamiento de varias unidades de streaming y particiones.
+## <a name="visualize-stream-analytics-throughput-at-scale-hello-raspberry-pi-scenario"></a>Visualizar el rendimiento de análisis de transmisiones a escala: escenario de frambuesa Pi Hola
+toohelp que comprender cómo escalar trabajos de análisis de transmisiones, se ha realizado un experimento basado en la entrada desde un dispositivo de frambuesa Pi. Este experimento nos permite ver el efecto de hello en el rendimiento de varias particiones y unidades de transmisión por secuencias.
 
-En este escenario, el dispositivo envía datos de sensores (clientes) a un centro de eventos. Stream Analytics procesa los datos y envía una alerta o estadísticas como salida a otro centro de procesamiento. 
+En este escenario, el dispositivo de hello envía concentrador de eventos de tooan de sensor datos (clientes). Análisis de transmisión por secuencias procesa los datos de Hola y envía una alerta o estadísticas como un concentrador de eventos de tooanother de salida. 
 
-El cliente envía los datos del sensor en formato JSON. La salida de datos también está en formato JSON. Los datos tienen este aspecto:
+cliente de Hello envía los datos de sensor en formato JSON. salida de datos de Hello también está en formato JSON. datos de Hello tiene el siguiente aspecto:
 
     {"devicetime":"2014-12-11T02:24:56.8850110Z","hmdt":42.7,"temp":72.6,"prss":98187.75,"lght":0.38,"dspl":"R-PI Olivier's Office"}
 
-La siguiente consulta se utiliza para enviar una alerta cuando se apaga una luz:
+Hola después de consulta es toosend usa una alerta cuando se desactiva una luz:
 
     SELECT AVG(lght),
      "LightOff" as AlertText
@@ -287,9 +287,9 @@ La siguiente consulta se utiliza para enviar una alerta cuando se apaga una luz:
 
 ### <a name="measure-throughput"></a>Medición de la capacidad de procesamiento
 
-En este contexto, la capacidad de procesamiento es la cantidad de datos de entrada que procesa Stream Analytics en una cantidad fija de tiempo. (Se mide durante 10 minutos). Para conseguir la mejor capacidad de procesamiento de los datos de entrada, tanto la entrada de flujo de datos como la consulta se han particionado. También se incluye **COUNT()** en la consulta para medir el número de eventos de entrada procesados. Para asegurarse de que el trabajo no está esperando simplemente a que lleguen los eventos de entrada, cada partición del centro de eventos de entrada se ha cargado previamente con aproximadamente 300 MB.
+En este contexto, el rendimiento es la cantidad de Hola de datos de entrada procesados por el análisis de transmisiones en una cantidad fija de tiempo. (Se mide durante 10 minutos). tooachieve Hola mejor procesamiento de rendimiento para hello los datos de entrada, ambos Hola flujo entrada y consulta Hola se divide en particiones. Hemos incluido **COUNT()** en hello consulta toomeasure se han procesado la cantidad de eventos de entrada. trabajo de hello seguro toomake no estaba esperando simplemente toocome de eventos de entrada, cada partición del concentrador de eventos de entrada de Hola se haya cargado previamente con unos 300 MB de datos de entrada.
 
-La siguiente tabla muestra los resultados se observan al aumentar el número de unidades de streaming y los correspondientes recuentos de particiones en Event Hubs.  
+Hello tabla siguiente muestra los resultados de hello que vimos cuando aumentamos número Hola de unidades de streaming y recuentos de partición correspondiente hello en los centros de eventos.  
 
 <table border="1">
 <tr><th>Particiones de entrada</th><th>Particiones de salida</th><th>Unidades de streaming</th><th>Capacidad de procesamiento sostenida
@@ -332,7 +332,7 @@ La siguiente tabla muestra los resultados se observan al aumentar el número de 
 </tr>
 </table>
 
-Y en el gráfico siguiente se muestra una visualización de la relación entre unidades de streaming y capacidad de procesamiento.
+Y hello gráfico siguiente muestra una visualización de relación de hello entre SUs y rendimiento.
 
 ![IMG.Stream.Analytics.perfgraph][img.stream.analytics.perfgraph]
 
@@ -340,8 +340,8 @@ Y en el gráfico siguiente se muestra una visualización de la relación entre u
 Para obtener ayuda adicional, pruebe nuestro [foro de Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Introducción a Azure Stream Analytics](stream-analytics-introduction.md)
-* [Introducción al uso de Análisis de transmisiones de Azure](stream-analytics-real-time-fraud-detection.md)
+* [Introducción tooAzure análisis de transmisiones](stream-analytics-introduction.md)
+* [Introducción al uso de Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Referencia del lenguaje de consulta de Análisis de transmisiones de Azure](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referencia de API de REST de administración de Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

@@ -1,5 +1,5 @@
 ---
-title: "Opciones de resolución de nombres DNS para máquinas virtuales Linux en Azure"
+title: "aaaDNS opciones de resolución de nombres para las máquinas virtuales de Linux en Azure"
 description: "Escenarios de resolución de nombres DNS para máquinas virtuales Linux en IaaS de Azure, incluidos los servicios DNS proporcionados y el servidor DNS externo híbrido y Bring Your Own DNS."
 services: virtual-machines
 documentationcenter: na
@@ -14,128 +14,128 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: cc06ee9305b4d3034154a0825c1aea53fe446f80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7df2320b6f6b42b479bf4070ea60fe5770a78a41
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opciones de resolución de nombres DNS para máquinas virtuales Linux en Azure
-Azure proporciona resolución de nombres DNS de forma predeterminada para todas las máquinas virtuales de una única red virtual. Puede implementar su propia solución de resolución de nombre DNS si configura sus propios servicios DNS en las máquinas virtuales hospedadas de Azure. Los siguientes escenarios deberían ayudarle a elegir cuál funciona mejor para su situación.
+Azure proporciona resolución de nombres DNS de forma predeterminada para todas las máquinas virtuales de una única red virtual. Puede implementar su propia solución de resolución de nombre DNS si configura sus propios servicios DNS en las máquinas virtuales hospedadas de Azure. Hello siguientes escenarios deben ayudarle a elegir Hola uno que funciona para su situación.
 
 * [Resolución de nombres que proporciona Azure](#azure-provided-name-resolution)
 * [Resolución de nombres mediante su propio servidor DNS](#name-resolution-using-your-own-dns-server)
 
-El tipo de resolución de nombres que use dependerá de cómo se comuniquen las máquinas virtuales y las instancias de rol entre sí.
+tipo Hello de resolución de nombres que utilice depende de cómo las máquinas virtuales y las instancias de rol necesitan toocommunicate entre sí.
 
-En la siguiente tabla se muestran los escenarios y las soluciones de resolución de nombre correspondientes:
+Hello tabla siguiente muestra escenarios y soluciones de resolución de nombre correspondientes:
 
 | **Escenario** | **Solución** | **Sufijo** |
 | --- | --- | --- |
-| Resolución de nombres entre instancias de rol o máquinas virtuales de la misma red virtual |[Resolución de nombres que proporciona Azure](#azure-provided-name-resolution) |El nombre de host o el nombre de dominio completo (FQDN) |
+| Resolución de nombres entre instancias de rol o máquinas virtuales en hello misma red virtual |[Resolución de nombres que proporciona Azure](#azure-provided-name-resolution) |El nombre de host o el nombre de dominio completo (FQDN) |
 | Resolución de nombres entre instancias de rol o máquinas virtuales de redes virtuales diferentes |Servidores DNS administrados por el cliente que reenvían consultas entre redes virtuales para la resolución mediante Azure (proxy DNS). Consulte [Resolución de nombres mediante su propio servidor DNS](#name-resolution-using-your-own-dns-server). |Solo FQDN |
 | Resolución de nombres de servicios y de equipos locales desde instancias de rol o máquinas virtuales en Azure |Servidores DNS administrados por el cliente (por ejemplo, controlador de dominio local, controlador de dominio de solo lectura local o un DNS secundario sincronizado mediante transferencias de zona). Consulte [Resolución de nombres mediante su propio servidor DNS](#name-resolution-using-your-own-dns-server). |Solo FQDN |
-| Resolución de nombres de host de Azure desde equipos locales |Reenvío de consultas a un servidor proxy DNS administrado por el cliente en la red virtual correspondiente. El servidor proxy reenvía consultas a Azure para resolverlas. Consulte [Resolución de nombres mediante su propio servidor DNS](#name-resolution-using-your-own-dns-server). |Solo FQDN |
+| Resolución de nombres de host de Azure desde equipos locales |Reenviar consultas tooa administrada por el cliente DNS servidor proxy en la red virtual de hello correspondiente. servidor proxy de Hello reenvía tooAzure de consultas para la resolución. Consulte [Resolución de nombres mediante su propio servidor DNS](#name-resolution-using-your-own-dns-server). |Solo FQDN |
 | DNS inverso para direcciones IP internas |[Resolución de nombres mediante su propio servidor DNS](#name-resolution-using-your-own-dns-server) |N/D |
 
 ## <a name="name-resolution-that-azure-provides"></a>Resolución de nombres que proporciona Azure
-Junto con la resolución de nombres DNS públicos, Azure proporciona resolución de nombres interna para máquinas virtuales e instancias de rol que se encuentren en la misma red virtual. En las redes virtuales basadas en Azure Resource Manager, el sufijo DNS es coherente en toda la red virtual. El FQDN no es necesario. Los nombres DNS pueden asignarse tanto a tarjetas de interfaz de red (NIC) como a máquinas virtuales. Aunque la resolución de nombres que proporciona Azure no necesita ningún tipo de configuración, no es la opción adecuada para todos los escenarios de implementación, tal y como se mostró en la tabla anterior.
+Junto con la resolución de nombres DNS públicos, Azure proporciona resolución de nombres interna para máquinas virtuales e instancias de rol que se encuentran en Hola misma red virtual. En redes virtuales que se basan en el Administrador de recursos de Azure, sufijo DNS de hello es coherente a través de la red virtual de hello; Hola FQDN no es necesaria. Los nombres DNS pueden asignarse tooboth tarjetas de interfaz de red (NIC) y máquinas virtuales. Aunque la resolución de nombres Hola que proporciona Azure no requiere ninguna configuración, no es Hola opción adecuada para todos los escenarios de implementación, tal como se muestra en la tabla anterior de Hola.
 
 ### <a name="features-and-considerations"></a>Características y consideraciones
 **Características**
 
-* No es necesario realizar configuración alguna para usar la resolución de nombres proporcionada por Azure.
-* El servicio de resolución de nombres que proporciona Azure tiene una alta disponibilidad. No es necesario crear clústeres de sus propios servidores DNS ni administrarlos.
-* El servicio de resolución de nombres proporcionado por Azure puede usarse junto con sus propios servidores DNS para resolver nombres de host tanto de Azure como locales.
-* Se proporciona resolución de nombres entre las máquinas virtuales en redes virtuales sin necesidad de FQDN.
+* Toouse requiere la resolución de nombres que proporciona Azure no es ninguna configuración.
+* servicio de resolución de nombres de Hola que proporciona Azure está altamente disponible. No necesita toocreate y administrar clústeres de sus propios servidores DNS.
+* servicio de resolución de nombres de Hola que proporciona Azure puede utilizarse junto con su propios tooresolve de servidores DNS locales y los nombres de host de Azure.
+* Se proporciona resolución de nombres entre máquinas virtuales en redes virtuales sin necesidad de hello FQDN.
 * Puede usar los nombres de host que describan mejor las implementaciones, en lugar de trabajar con nombres generados automáticamente.
 
 **Consideraciones:**
 
-* No se puede modificar el sufijo DNS creado por Azure.
+* no se puede modificar el sufijo DNS de Hola que Azure crea.
 * No se pueden registrar manualmente los registros propios.
 * No se admiten ni WINS ni NetBIOS.
 * Los nombres de host deben ser compatibles con DNS.
     Los nombres solamente pueden contener caracteres 0-9, a-z y "-", y no pueden comenzar ni terminar por "-". Consulte la sección 2 de RFC 3696.
-* El tráfico de consultas de DNS está limitado en cada máquina virtual. La limitación no debería afectar a la mayoría de las aplicaciones.  Si se observa una limitación de solicitudes, asegúrese de que está habilitado el almacenamiento en caché del lado cliente.  Para obtener más información, consulte [Obtención del máximo partido de la resolución de nombres de Azure](#getting-the-most-from-name-resolution-that-azure-provides).
+* El tráfico de consultas de DNS está limitado en cada máquina virtual. La limitación no debería afectar a la mayoría de las aplicaciones.  Si se observa una limitación de solicitudes, asegúrese de que está habilitado el almacenamiento en caché del lado cliente.  Para obtener más información, consulte [obtener la mayoría de resolución de nombres que proporciona Azure hello](#getting-the-most-from-name-resolution-that-azure-provides).
 
-### <a name="getting-the-most-from-name-resolution-that-azure-provides"></a>Obtención del máximo partido de la resolución de nombres de Azure
+### <a name="getting-hello-most-from-name-resolution-that-azure-provides"></a>Obtener la mayoría de resolución de nombres que proporciona Azure Hola
 **Almacenamiento en caché del lado cliente:**
 
-Algunas consultas de DNS no se envían a través de la red. El almacenamiento en caché del lado cliente ayuda a reducir la latencia y mejorar la resistencia a las incoherencias de la red mediante la resolución de consultas de DNS periódicas desde una caché local. Los registros DNS contienen un período de vida (TTL) que permite a la caché almacenar el registro durante tanto tiempo como sea posible sin afectar a la actualización de los registros. Por ello, la caché del cliente es adecuada para la mayoría de las situaciones.
+Algunas consultas DNS no se envían a través de red de Hola. Almacenamiento en caché de cliente le ayuda a reducir la latencia y mejorar las incoherencias de toonetwork de resistencia al resolver las consultas DNS periódicas desde una memoria caché local. Los registros DNS contienen un período de vida (TTL), lo que permite el registro de hello caché toostore Hola tanto como sea posible sin afectar a la actualización del registro. Por ello, la caché del cliente es adecuada para la mayoría de las situaciones.
 
-Algunas distribuciones de Linux no incluyen el almacenamiento en caché de forma predeterminada. Se recomienda agregar una caché a cada máquina virtual Linux una vez comprobado que no exista ya una caché local.
+Algunas distribuciones de Linux no incluyen el almacenamiento en caché de forma predeterminada. Se recomienda agregar una máquina virtual de Linux de tooeach de memoria caché después de comprobar que no hay una memoria caché local ya.
 
-Hay disponibles varios paquetes de almacenamiento en caché DNS, como dnsmasq. Estos son los pasos que hay que seguir para instalar dnsmasq en las distribuciones más habituales:
+Hay disponibles varios paquetes de almacenamiento en caché DNS, como dnsmasq. Estos son Hola pasos tooinstall dnsmasq en distribuciones de hello más comunes:
 
 **Ubuntu (usa resolvconf)**
-  * Instale el paquete dnsmasq ("sudo apt-get install dnsmasq").
+  * Instalar paquetes de saludo dnsmasq ("sudo instalación apt get dnsmasq").
 
 **SUSE (usa netconf)**:
-1. Instale el paquete dnsmasq ("sudo zypper install dnsmasq").
-2. Habilite el servicio de dnsmasq ("systemctl enable dnsmasq.service").
-3. Inicie el servicio de dnsmasq ("systemctl start dnsmasq.service").
-4. Edite "/etc/sysconfig/network/config" y cambie NETCONFIG_DNS_FORWARDER="" por "dnsmasq".
-5. Actualice resolv.conf ("netconfig update") para establecer la memoria caché como la resolución DNS local.
+1. Instalar paquetes de saludo dnsmasq ("sudo zypper install dnsmasq").
+2. Habilitar hello dnsmasq servicio ("systemctl enable dnsmasq.service").
+3. Iniciar servicio de hello dnsmasq ("systemctl inicio dnsmasq.service").
+4. Editar "/ etcetera/sysconfig/red/config" y cambiar NETCONFIG_DNS_FORWARDER = "" demasiado "dnsmasq".
+5. Actualizar resolv.conf ("actualización de netconfig") tooset Hola caché como Hola a resolución DNS local.
 
 **CentOS de Rogue Wave Software (anteriormente OpenLogic; usa NetworkManager)**
-1. Instale el paquete dnsmasq ("sudo yum install dnsmasq").
-2. Habilite el servicio de dnsmasq ("systemctl enable dnsmasq.service").
-3. Inicie el servicio de dnsmasq ("systemctl start dnsmasq.service").
-4. Agregue "prepend domain-name-servers 127.0.0.1;" a "/etc/dhclient-eth0.conf".
-5. Reinicie el servicio de red ("service network restart") para establecer la caché como la resolución DNS local.
+1. Instalar paquetes de saludo dnsmasq ("sudo yum install dnsmasq").
+2. Habilitar hello dnsmasq servicio ("systemctl enable dnsmasq.service").
+3. Iniciar servicio de hello dnsmasq ("systemctl inicio dnsmasq.service").
+4. Agregar "anteponer servidores de nombres de dominio 127.0.0.1;" too"/etc/dhclient-eth0.conf".
+5. Reinicie caché de Hola de tooset ("reinicio de red de servicio") del servicio de la red hello como Hola a resolución DNS local
 
 > [!NOTE]
-> : El paquete "dnsmasq" es solo una de las muchas cachés DNS disponibles para Linux. Antes de usarlo, compruebe su idoneidad para sus necesidades y asegúrese de que no haya instalada ninguna otra memoria caché.
+> : paquete de 'dnsmasq' hello es solo una de hello muchos DNS almacena en caché que están disponibles para Linux. Antes de usarlo, compruebe su idoneidad para sus necesidades y asegúrese de que no haya instalada ninguna otra memoria caché.
 >
 >
 
 **Reintentos del cliente:**
 
-DNS es principalmente un protocolo UDP. Dado que el protocolo UDP no garantiza la entrega de mensajes, es el propio protocolo DNS el que controla la lógica de reintento. Cada cliente DNS (sistema operativo) puede presentar una lógica de reintento diferente en función de la preferencia del creador:
+DNS es principalmente un protocolo UDP. Dado que Hola protocolo UDP no garantiza la entrega de mensajes, Hola propio protocolo DNS controla lógica de reintento. Cada cliente DNS (sistema operativo) puede ofrecer una lógica de reintento diferentes según la preferencia del creador de hello:
 
 * Los sistemas operativos Windows realizan un reintento tras un segundo y después tras otros dos, cuatro y otros cuatro segundos.
-* El programa de instalación predeterminado de Linux lo intenta después de cinco segundos.  Se recomienda cambiar esta opción para reintentarlo cinco veces a intervalos de un segundo.  
+* Hola reintentos del programa de instalación de Linux de manera predeterminada después de cinco segundos.  Debe cambiar este tooretry cinco veces en intervalos de un segundo.  
 
-Para comprobar la configuración actual en una máquina virtual Linux, vaya a "cat /etc/resolv.conf" y busque la línea "options", por ejemplo:
+toocheck Hola configuración actual en una máquina virtual de Linux, 'cat /etc/resolv.conf' y busque en línea de hello 'options', por ejemplo:
 
     options timeout:1 attempts:5
 
-El archivo resolv.conf es autogenerado y no se debe editar. Los pasos específicos para agregar la línea "options" varían según la distribución:
+archivo de Hello resolv.conf generado automáticamente y no debe editarse. Hola pasos concretos que agregar hello 'options' línea varían según la distribución:
 
 **Ubuntu** (usa resolvconf)
-1. Agregue la línea de opciones a "/ etc/resolveconf/resolv.conf.d/head".
-2. Ejecute "resolvconf -u" para efectuar la actualización.
+1. Agregar Hola opciones línea too'/etc/resolveconf/resolv.conf.d/head'.
+2. Ejecute 'resolvconf -u' tooupdate.
 
 **SUSE** (usa netconf)
-1. Agregue "timeout:1 attempts:5" al parámetro NETCONFIG_DNS_RESOLVER_OPTIONS="" en "/etc/sysconfig/network/config".
-2. Ejecute "netconfig update" para efectuar la actualización.
+1. Agregue 'timeout:1 intentos: 5' toohello NETCONFIG_DNS_RESOLVER_OPTIONS = "" parámetro en '/ etcetera/sysconfig/red/config'.
+2. Ejecute tooupdate 'netconfig update'.
 
 **CentOS de Rogue Wave Software (anteriormente OpenLogic)** (usa NetworkManager)
-1. Agregue "echo "options timeout:1 attempts:5"" a "/etc/NetworkManager/dispatcher.d/11-dhclient".
-2. Ejecute "service network restart" para efectuar la actualización.
+1. Agregar too'/etc/NetworkManager/dispatcher.d/11-dhclient "eco" opciones timeout:1 intentos: 5"" '.
+2. Ejecute tooupdate 'reinicio de la red de servicio'.
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>Resolución de nombres mediante su propio servidor DNS
-Puede que sus necesidades de resolución de nombres se escapen a las posibilidades de las características de Azure. Por ejemplo, puede necesitar resolución DNS entre redes virtuales. Para resolver este tipo de escenarios, puede usar sus propios servidores DNS.  
+Sus necesidades de resolución de nombres pueden ir más allá de las características de Hola que proporciona Azure. Por ejemplo, puede necesitar resolución DNS entre redes virtuales. toocover este escenario, puede utilizar sus propios servidores DNS.  
 
-Los servidores DNS de una red virtual pueden reenviar consultas de DNS a resoluciones recursivas de Azure para resolver los nombres de host que se encuentren en la misma red virtual. Por ejemplo, un servidor DNS que se ejecute en Azure puede responder a consultas de DNS de sus propios archivos de zonas DNS y reenviar todas las demás consultas a Azure. Esta funcionalidad permite a la máquina virtual detectar tanto las entradas de los archivos de zona como los nombres de host proporcionados por Azure (a través del reenviador). El acceso a las resoluciones recursivas de Azure se proporciona a través de la IP virtual 168.63.129.16.
+Los servidores DNS de DNS reenviar consultas a toorecursive resoluciones de nombres de host de Azure tooresolve un puede red virtual que se encuentran en Hola misma red virtual. Por ejemplo, un servidor DNS que se ejecuta en Azure puede responder consultas tooDNS para su propio DNS archivos de la zona y reenvían todos los demás tooAzure de las consultas. Esta funcionalidad permite toosee de máquinas virtuales tanto las entradas de los archivos de zona y los nombres de host que Azure proporciona (a través de reenviador de hello). Solucionadores de recursiva toohello de acceso de Azure se proporciona a través de la dirección IP virtual de hello 168.63.129.16.
 
-El reenvío de DNS también habilita la resolución DNS entre redes virtuales y permite que las máquinas locales resuelvan los nombres de host que proporciona Azure. Para resolver el nombre de host de una máquina virtual, la máquina virtual del servidor DNS debe residir en la misma red virtual y debe configurarse para desviar consultas de nombre de host a Azure. Dado que el sufijo DNS es diferente en cada red virtual, puede usar las reglas de desvío condicional para enviar consultas de DNS a la red virtual correcta para su resolución. En la imagen siguiente se muestran dos redes virtuales y una red local que está realizando resolución DNS entre redes virtuales con este método:
+El reenvío de DNS también habilita la resolución DNS entre redes virtuales y permite que los nombres de host de tooresolve local de máquinas que proporciona Azure. tooresolve nombre de host de una máquina virtual, máquina virtual de hello DNS server debe residir en Hola misma red virtual y ser tooAzure de consultas de nombre de host tooforward configurado. Como sufijo DNS de hello es diferente en cada red virtual, puede utilizar el reenvío condicional reglas toosend DNS consulta toohello corregir una red virtual para la resolución. Hello siguiente imagen muestra dos redes virtuales y una red local realizar la resolución DNS entre redes virtuales con este método:
 
 ![Resolución DNS entre redes virtuales](./media/azure-dns/inter-vnet-dns.png)
 
-Cuando se usa la resolución de nombres proporcionada por Azure, el sufijo DNS interno se proporciona a cada máquina virtual mediante DHCP. Cuando usa su propia solución de resolución de nombres, no se proporciona este sufijo a las máquinas virtuales puesto que interfiere en otras arquitecturas DNS. Para hacer referencia a máquinas mediante FQDN, o para configurar el sufijo en las máquinas virtuales, este puede determinarse mediante PowerShell o la API:
+Cuando se utiliza la resolución de nombres que proporciona Azure, sufijo DNS interno de Hola se proporciona tooeach virtual machine mediante DHCP. Cuando se usa su propia solución de resolución de nombre, este sufijo no es máquinas toovirtual proporcionado porque sufijo Hola interfiere con otras arquitecturas DNS. toorefer toomachines por FQDN o tooconfigure sufijo hello en sus máquinas virtuales, puede usar PowerShell o hello sufijo Hola de API toodetermine:
 
-* Para aquellas redes virtuales administradas por Azure Resource Manager, el sufijo está disponible a través del recurso de [tarjeta de interfaz de red](https://msdn.microsoft.com/library/azure/mt163668.aspx). También puede ejecutar el comando `azure network public-ip show <resource group> <pip name>` para mostrar los datos de la IP pública, entre los que se incluye el FQDN de la NIC.
+* Para redes virtuales que están administradas por el Administrador de recursos de Azure, está disponible a través de hello sufijo hello [tarjeta de interfaz de red](https://msdn.microsoft.com/library/azure/mt163668.aspx) recursos. También puede ejecutar hello `azure network public-ip show <resource group> <pip name>` comando detalles de hello toodisplay del IP pública, que incluye Hola FQDN de hello NIC.
 
-Si el reenvío de consultas a Azure no satisface sus necesidades, debe proporcionar su propia solución de DNS.  La solución DNS debe:
+Si el reenvío de las consultas tooAzure no se ajusta a sus necesidades, deberá tooprovide su propia solución DNS.  La solución DNS debe:
 
-* Proporcionar la resolución adecuada de nombres de host, por ejemplo, mediante [DDNS](../../virtual-network/virtual-networks-name-resolution-ddns.md). Si usa DDNS, puede necesitar deshabilitar la limpieza de registros DNS. Las concesiones DHCP de Azure son muy largas y la limpieza puede eliminar registros DNS de forma prematura.
-* Proporcionar la resolución recursiva adecuada para permitir la resolución de nombres de dominio externos.
-* Estar accesible (TCP y UDP en el puerto 53) desde los clientes a los que sirve y poder acceder a Internet.
-* Tener protección contra el acceso desde Internet para mitigar las amenazas que suponen agentes externos.
+* Proporcionar la resolución adecuada de nombres de host, por ejemplo, mediante [DDNS](../../virtual-network/virtual-networks-name-resolution-ddns.md). Si usas DDNS, tendrá que la limpieza de registros DNS de toodisable. Las concesiones DHCP de Azure son muy largas y la limpieza puede eliminar registros DNS de forma prematura.
+* Proporcionar resolución recursiva adecuado de tooallow de resolución de nombres de dominio externos.
+* Estar accesible (TCP y UDP en el puerto 53) de los clientes de hello atienda y estar hello tooaccess capaz de Internet.
+* Protegerse contra el acceso hello toomitigate las amenazas de Internet que suponen los agentes externos.
 
 > [!NOTE]
-> Para conseguir un rendimiento óptimo, al usar máquinas virtuales en servidores DNS de Azure, deshabilite IPv6 y asigne una [Dirección IP pública a nivel de instancia](../../virtual-network/virtual-networks-instance-level-public-ip.md) a cada máquina virtual de servidor DNS.  
+> Para obtener el mejor rendimiento, cuando se usa máquinas virtuales en los servidores DNS de Azure, deshabilitar IPv6 y asignar un [IP pública a nivel de instancia](../../virtual-network/virtual-networks-instance-level-public-ip.md) tooeach DNS servidor virtual machine.  
 >
 >

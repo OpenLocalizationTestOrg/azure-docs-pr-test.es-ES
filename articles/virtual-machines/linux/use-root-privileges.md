@@ -1,6 +1,6 @@
 ---
-title: "Uso de privilegios raíz en máquinas virtuales Linux | Microsoft Docs"
-description: "Aprenda a usar privilegios raíz en una máquina virtual de Linux en Azure."
+title: "privilegios de raíz de aaaUse en máquinas virtuales de Linux | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo los privilegios de toouse raíz en una máquina virtual de Linux en Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: dc39db1f5fecffb60499a5420bfe72850e2fffd9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9411588c5fd0c86c4c73b3e44fbb56ab150013d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-root-privileges-on-linux-virtual-machines-in-azure"></a>Uso de privilegios raíz en máquinas virtuales con Linux en Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-De forma predeterminada, el usuario `root` está deshabilitado en las máquinas virtuales Linux en Azure. Los usuarios pueden ejecutar comandos con privilegios elevados mediante el comando `sudo` . Sin embargo, la experiencia puede variar dependiendo de la manera en que se aprovisionó el sistema.
+De forma predeterminada, Hola `root` usuario está deshabilitado en las máquinas virtuales de Linux en Azure. Los usuarios pueden ejecutar comandos con privilegios elevados mediante el uso de hello `sudo` comando. Sin embargo, la experiencia de Hola puede variar dependiendo de cómo se haya proporcionado el sistema Hola.
 
-1. **Clave SSH y contraseña o solo contraseña**: la máquina virtual se aprovisionó con un certificado (archivo `.CER`) o una clave SSH, además de una contraseña, o solo un nombre de usuario y una contraseña. En este caso `sudo` solicitará la contraseña del usuario antes de ejecutar el comando.
-2. **Solo clave SSH**: la máquina virtual se aprovisionó con un certificado (archivo `.cer`, `.pem` o `.pub`) o una clave SSH, pero sin contraseña.  En este caso `sudo` **no** solicitará la contraseña del usuario antes de ejecutar el comando.
+1. **Clave SSH y contraseña OR solo** -máquina virtual de Hola se haya proporcionado con un certificado (`.CER` archivo) o clave SSH, así como una contraseña, o simplemente un nombre de usuario y una contraseña. En este caso `sudo` solicitará contraseña del usuario de hello antes de ejecutar el comando de Hola.
+2. **La clave SSH** -máquina virtual de Hola se haya proporcionado con un certificado (`.cer`, `.pem`, o `.pub` archivo) o clave SSH, pero no hay ninguna contraseña.  En este caso `sudo` **no** solicitar una contraseña de usuario de hello antes de ejecutar el comando de Hola.
 
 ## <a name="ssh-key-and-password-or-password-only"></a>Clave SSH y contraseña o solo contraseña
-Inicie sesión en la máquina virtual Linux usando la autenticación de clave SSH o contraseña y, a continuación, ejecute los comandos usando `sudo`, por ejemplo:
+Inicie sesión en la máquina virtual de Linux de hello mediante la autenticación de clave o contraseña SSH, a continuación, ejecutar comandos mediante `sudo`, por ejemplo:
 
     # sudo <command>
     [sudo] password for azureuser:
 
-En este caso, se le solicitará al usuario una contraseña. Después de escribir la contraseña, `sudo` ejecutará el comando con los privilegios `root`.
+En este caso usuario Hola le pedirá una contraseña. Después de escribir la contraseña de hello `sudo` se ejecutará el comando hello con `root` privilegios.
 
-También puede habilitar sudo sin contraseña, si edita el archivo `/etc/sudoers.d/waagent` , por ejemplo:
+También puede habilitar sudo passwordless mediante la edición de hello `/etc/sudoers.d/waagent` de archivos, por ejemplo:
 
     #/etc/sudoers.d/waagent
     azureuser ALL = (ALL) NOPASSWD: ALL
 
-Este cambio permitirá que el usuario "azureuser" use sudo sin contraseña.
+Este cambio permitirá passwordless sudo usuario Hola "azureuser".
 
 ## <a name="ssh-key-only"></a>Solo clave SSH
-Inicie sesión en la máquina virtual Linux usando la autenticación de clave SSH y, a continuación, ejecute los comandos usando `sudo`, por ejemplo:
+Inicie sesión en la máquina virtual de Linux de hello mediante la autenticación de clave SSH y vuelva a ejecutar comandos mediante `sudo`, por ejemplo:
 
     # sudo <command>
 
-En este caso **no** se solicitará la contraseña al usuario. Después de presionar `<enter>`, `sudo` ejecutará el comando con privilegios `root`.
+En este caso le usuario hello **no** se le solicite una contraseña. Después de presionar `<enter>`, `sudo` se ejecutará el comando hello con `root` privilegios.
 

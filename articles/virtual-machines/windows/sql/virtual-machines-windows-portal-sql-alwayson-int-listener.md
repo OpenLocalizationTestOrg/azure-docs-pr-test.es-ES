@@ -1,5 +1,5 @@
 ---
-title: "Creación del agente de escucha de grupo de disponibilidad de SQL Server en Azure Virtual Machines | Microsoft Docs"
+title: "aaaCreate un agente de escucha de grupo de disponibilidad de SQL Server en máquinas virtuales de Azure | Documentos de Microsoft"
 description: Instrucciones paso a paso para crear un agente de escucha en un grupo de disponibilidad AlwaysOn para SQL Server en Azure Virtual Machines
 services: virtual-machines
 documentationcenter: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/01/2017
 ms.author: mikeray
-ms.openlocfilehash: 09fed7e785708d4afe64905de973becc188181d7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c6a44dc5c7c18b572c2bf5772b4651b7210aacbd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Configuración de un equilibrador de carga para un grupo de disponibilidad AlwaysOn en Azure
-En este artículo se explica cómo puede crear un equilibrador de carga para un grupo de disponibilidad de SQL Server AlwaysOn en instancias de Azure Virtual Machines que se ejecutan con Azure Resource Manager. Cuando las instancias de SQL Server están implementadas en máquinas virtuales de Azure, los grupos de disponibilidad necesitan un equilibrador de carga. El equilibrador de carga almacena la dirección IP del agente de escucha del grupo de disponibilidad. Si un grupo de disponibilidad abarca varias regiones, cada región necesitará su propio equilibrador de carga.
+Este artículo explica cómo un equilibrador de carga para un grupo de disponibilidad AlwaysOn de SQL Server en Azure virtual toocreate máquinas que se ejecutan con el Administrador de recursos de Azure. Un grupo de disponibilidad requiere un equilibrador de carga cuando hay instancias de SQL Server de hello en máquinas virtuales de Azure. equilibrador de carga de Hello almacena la dirección IP de hello para el agente de escucha del grupo de disponibilidad de Hola. Si un grupo de disponibilidad abarca varias regiones, cada región necesitará su propio equilibrador de carga.
 
-Para completar esta tarea, debe tener un grupo de disponibilidad de SQL Server implementado en instancias de Azure Virtual Machines que se estén ejecutando con Resource Manager. Las dos máquinas virtuales de SQL Server deben pertenecer al mismo conjunto de disponibilidad. Puede usar la [plantilla de Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) para crear automáticamente el grupo de disponibilidad en Resource Manager. Esta plantilla crea automáticamente un equilibrador de carga interno. 
+toocomplete esta tarea, deberá toohave un grupo de disponibilidad de SQL Server implementado en máquinas virtuales de Azure que se ejecutan con el Administrador de recursos. Las máquinas virtuales de SQL Server debe pertenecer toohello mismo conjunto de disponibilidad. Puede usar hello [plantilla Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) tooautomatically crear grupo de disponibilidad de hello en el Administrador de recursos. Esta plantilla crea automáticamente un equilibrador de carga interno. 
 
 Si lo prefiere, puede [configurar manualmente un grupo de disponibilidad](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md).
 
@@ -34,83 +34,83 @@ Temas relacionados:
 * [Configuración de Grupos de disponibilidad AlwaysOn en la máquina virtual de Azure (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)   
 * [Configuración de una conexión entre dos redes virtuales mediante Azure Resource Manager y PowerShell](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
-A lo largo de este artículo, va a crear y configurar un equilibrador de carga en Azure Portal. Una vez hecho esto, configurará el clúster para que utilice la dirección IP del equilibrador de carga para el agente de escucha del grupo de disponibilidad.
+A la vez a través de este artículo, cree y configure un equilibrador de carga en hello portal de Azure. Una vez completado el proceso de hello, configure hello toouse Hola dirección IP del equilibrador de carga de hello para el agente de escucha del grupo de disponibilidad de Hola.
 
-## <a name="create-and-configure-the-load-balancer-in-the-azure-portal"></a>Creación y configuración del equilibrador de carga en el Portal de Azure
-En esta parte de la tarea, haga lo siguiente:
+## <a name="create-and-configure-hello-load-balancer-in-hello-azure-portal"></a>Cree y configure el equilibrador de carga de Hola Hola portal de Azure
+En esta parte de la tarea hello, Hola siguientes:
 
-1. En Azure Portal, cree el equilibrador de carga y configure la dirección IP.
-2. Configure el grupo back-end.
-3. Cree el sondeo. 
-4. Configure las reglas de equilibrio de carga.
+1. Hola portal de Azure, crear equilibrador de carga de Hola y configurar la dirección IP de Hola.
+2. Configurar grupo de back-end de Hola.
+3. Crear el sondeo de Hola. 
+4. Establecer reglas de equilibrio de carga de Hola.
 
 > [!NOTE]
-> Si las instancias de SQL Server se encuentran en varios grupos de recursos y regiones, realice cada paso dos veces, una vez en cada grupo de recursos.
+> Si son instancias de SQL Server de hello en varios grupos de recursos y regiones, realizar cada paso dos veces, una vez en cada grupo de recursos.
 > 
 > 
 
-### <a name="step-1-create-the-load-balancer-and-configure-the-ip-address"></a>Paso 1: Creación del equilibrador de carga y configuración de la dirección IP
-En primer lugar, cree el equilibrador de carga. 
+### <a name="step-1-create-hello-load-balancer-and-configure-hello-ip-address"></a>Paso 1: Crear el equilibrador de carga de Hola y configurar la dirección IP de Hola
+En primer lugar, cree el equilibrador de carga de Hola. 
 
-1. En el Portal de Azure, abra el grupo de recursos que contiene las máquinas virtuales de SQL Server. 
+1. Hola portal de Azure, abra el grupo de recursos de Hola que contiene máquinas virtuales de SQL Server de Hola. 
 
-2. En el grupo de recursos, haga clic en **Agregar**.
+2. En el grupo de recursos de hello, haga clic en **agregar**.
 
-3. Busque el **equilibrador de carga** y, a continuación, en los resultados de la búsqueda, seleccione el **equilibrador de carga** publicado por **Microsoft**.
+3. Busque **equilibrador de carga** y, a continuación, en resultados de búsqueda de hello, seleccione **equilibrador de carga**, que se publica mediante **Microsoft**.
 
-4. En la hoja **Load Balancer**, haga clic en **Crear**.
+4. En hello **equilibrador de carga** hoja, haga clic en **crear**.
 
-5. En el cuadro de diálogo **Crear equilibrador de carga**, configure el equilibrador de carga tal y como se explica a continuación:
+5. Hola **equilibrador de carga de crear** diálogo cuadro, configure el equilibrador de carga de hello como sigue:
 
    | Configuración | Valor |
    | --- | --- |
-   | **Name** |Nombre de texto que representa el equilibrador de carga; Por ejemplo, **sqlLB**. |
-   | **Tipo** |**Interno**: la mayoría de las implementaciones usa un equilibrador de carga interno que permite a las aplicaciones dentro de la misma red virtual conectarse al grupo de disponibilidad.  </br> **Externo**: permite que las aplicaciones se conecten al grupo de disponibilidad a través de una conexión a Internet pública. |
-   | **Red virtual** |Seleccione la red virtual en la que se encuentran las instancias de SQL Server. |
-   | **Subred** |Seleccione la subred en la que se encuentran las instancias de SQL Server. |
+   | **Name** |Un nombre de texto que representa el equilibrador de carga de Hola. Por ejemplo, **sqlLB**. |
+   | **Tipo** |**Interno**: mayoría de implementaciones de usa un equilibrador de carga interno, que permite a las aplicaciones dentro de hello mismo grupo de disponibilidad de red virtual tooconnect toohello.  </br> **Externo**: permite el grupo de disponibilidad de aplicaciones tooconnect toohello a través de una conexión a Internet pública. |
+   | **Red virtual** |Seleccione Hola red virtual que Hola aceptadas de SQL Server se encuentran en. |
+   | **Subred** |Seleccione subred Hola que son instancias de SQL Server de hello en. |
    | **Asignación de dirección IP** |**Estática** |
-   | **Dirección IP privada** |Especifique una dirección IP disponible de la subred. Utilícela cuando cree un agente de escucha en el clúster. Más adelante en este mismo artículo, hay un script de PowerShell en el que tendrá que utilizar esta dirección para la variable `$ILBIP`. |
-   | **Suscripción** |Si tiene varias suscripciones, puede aparecer este campo. Seleccione la suscripción que quiere asociar con este recurso. Normalmente, será la misma suscripción que se utiliza con todos los recursos del grupo de disponibilidad. |
-   | **Grupos de recursos** |Seleccione el grupo de recursos en el que se encuentran las instancias de SQL Server. |
-   | **Ubicación** |Seleccione la ubicación de Azure en la que se encuentran las instancias de SQL Server. |
+   | **Dirección IP privada** |Especifique una dirección IP disponible de la subred de Hola. Use esta dirección IP cuando se crea un agente de escucha en el clúster de Hola. En un script de PowerShell, más adelante en este artículo, use esta dirección para hello `$ILBIP` variable. |
+   | **Suscripción** |Si tiene varias suscripciones, puede aparecer este campo. Seleccione la suscripción de Hola que desea tooassociate con este recurso. Normalmente se Hola a misma suscripción como todos los recursos de Hola Hola grupo de disponibilidad. |
+   | **Grupos de recursos** |Seleccione el grupo de recursos de Hola que son instancias de SQL Server de hello en. |
+   | **Ubicación** |Seleccione hello ubicación de Azure que son instancias de SQL Server de hello en. |
 
 6. Haga clic en **Crear**. 
 
-Azure crea el equilibrador de carga. El equilibrador de carga pertenece a una red, una subred, una ubicación y un grupo de recursos específicos. Cuando Azure haya completado la tarea, compruebe la configuración del equilibrador de carga en Azure. 
+Azure crea equilibrador de carga de Hola. equilibrador de carga de Hello pertenece tooa de red específicas, subred, grupo de recursos y ubicación. Una vez Azure complete la tarea de hello, compruebe la configuración de equilibrador de carga de hello en Azure. 
 
-### <a name="step-2-configure-the-back-end-pool"></a>Paso 2: Configuración del grupo back-end
-En Azure, el grupo de direcciones de back-end se denomina *grupo de back-end*. En este caso, el grupo de back-end contiene las direcciones de las dos instancias de SQL Server del grupo de disponibilidad. 
+### <a name="step-2-configure-hello-back-end-pool"></a>Paso 2: Configurar grupo de back-end de Hola
+Llamadas Azure Hola grupo de direcciones de back-end *grupo back-end*. En este caso, el grupo de back-end de hello es direcciones Hola Hola dos instancias de SQL Server en el grupo de disponibilidad. 
 
-1. En el grupo de recursos, haga clic en el equilibrador de carga que ha creado. 
+1. En el grupo de recursos, haga clic en el equilibrador de carga de Hola que ha creado. 
 
 2. En **Configuración**, haga clic en **Grupos de back-end**.
 
-3. En **Grupos de back-end**, haga clic en **Agregar** para crear un grupo de direcciones de back-end. 
+3. En **grupos back-end**, haga clic en **agregar** toocreate un grupo de direcciones de back-end. 
 
-4. En **Agregar grupo back-end** en **Nombre**, especifique un nombre para el grupo de back-end.
+4. En **Agregar grupo back-end**, en **nombre**, escriba un nombre para el grupo de back-end de Hola.
 
 5. En **Máquinas virtuales**, haga clic en **+ Agregar una máquina virtual**. 
 
-6. En **Elegir máquinas virtuales**, haga clic en **Elegir un conjunto de disponibilidad** y especifique el conjunto de disponibilidad al que pertenecen las máquinas virtuales de SQL Server.
+6. En **elegir máquinas virtuales**, haga clic en **elegir un conjunto de disponibilidad**y, a continuación, especifique el conjunto de disponibilidad de Hola que máquinas virtuales de SQL Server de hello pertenecen a.
 
-7. Después de elegir el conjunto de disponibilidad, haga clic en **Elegir máquinas virtuales**, seleccione las dos máquinas virtuales que hospedan las instancias de SQL Server en el grupo de disponibilidad y, finalmente, haga clic en **Seleccionar**. 
+7. Una vez que haya elegido el conjunto de disponibilidad de hello, haga clic en **elegir máquinas virtuales de hello**, seleccione Hola dos máquinas virtuales que hospedan instancias de SQL Server de hello en grupo de disponibilidad de hello y, a continuación, haga clic en **seleccione**. 
 
-8. Haga clic en **Aceptar** para cerrar las hojas **Elegir máquinas virtuales** y **Agregar grupo back-end**. 
+8. Haga clic en **Aceptar** tooclose hojas de Hola para **elegir máquinas virtuales**, y **Agregar grupo back-end**. 
 
-Azure actualiza la configuración del grupo de direcciones de back-end. Ahora, el conjunto de disponibilidad tiene un grupo de dos instancias de SQL Server.
+Azure actualiza la configuración de hello para el grupo de direcciones de back-end de Hola. Ahora, el conjunto de disponibilidad tiene un grupo de dos instancias de SQL Server.
 
 ### <a name="step-3-create-a-probe"></a>Paso 3: Elaboración de un sondeo
-Este sondeo establece el modo en que Azure va a comprobar cuál de las instancias de SQL Server es el propietario actual del agente de escucha del grupo de disponibilidad. Azure analiza el servició con arreglo a la dirección IP de un puerto que estableció al crear el sondeo.
+sondeo de Hello define cómo Azure comprueba que Hola instancias de SQL Server posee actualmente el agente de escucha del grupo de disponibilidad de Hola. Servicio de hello en función de la dirección IP de hello en un puerto que define al crear el sondeo de hello las comprobaciones de Azure.
 
-1. En la hoja **Configuración** del equilibrador de carga, haga clic en **Sondeos de estado**. 
+1. Equilibrador de carga en hello **configuración** hoja, haga clic en **sondeos de estado**. 
 
-2. En la hoja **Sondeos de estado**, haga clic en **Agregar**.
+2. En hello **sondeos de estado** hoja, haga clic en **agregar**.
 
-3. Configure el sondeo en la hoja **Agregar sondeo** . Utilice los valores siguientes para configurar el sondeo.
+3. Configurar el sondeo de hello en hello **agregar sondeo** hoja. Hola de uso después de sondeo de hello tooconfigure de valores:
 
    | Configuración | Valor |
    | --- | --- |
-   | **Name** |Nombre de texto que representa el sondeo. Por ejemplo, **SQLAlwaysOnEndPointProbe**. |
+   | **Name** |Un nombre de texto que representa el sondeo de Hola. Por ejemplo, **SQLAlwaysOnEndPointProbe**. |
    | **Protocolo** |**TCP** |
    | **Puerto** |Puede usar cualquier puerto que esté disponible. Por ejemplo, *59999*. |
    | **Intervalo** |*5* |
@@ -119,156 +119,156 @@ Este sondeo establece el modo en que Azure va a comprobar cuál de las instancia
 4.  Haga clic en **Aceptar**. 
 
 > [!NOTE]
-> Asegúrese de que el puerto especificado esté abierto en el firewall de las dos instancias de SQL Server. En estas dos instancias, es necesario definir una regla de entrada para el puerto TCP. Consulte [Agregar o editar regla de firewall](http://technet.microsoft.com/library/cc753558.aspx) para obtener más información. 
+> Asegúrese de que especifica el puerto de hello está abierto en firewall de Hola de las dos instancias de SQL Server. Ambas instancias requieren una regla de entrada para el puerto TCP que usa hello. Consulte [Agregar o editar regla de firewall](http://technet.microsoft.com/library/cc753558.aspx) para más información. 
 > 
 > 
 
-Azure crea el sondeo y, a continuación, lo usa para comprobar qué instancia de SQL Server tiene el agente de escucha del grupo de disponibilidad.
+Azure crea Hola sondeo y, a continuación, usa tootest qué instancia de SQL Server tiene el agente de escucha de hello para el grupo de disponibilidad de Hola.
 
-### <a name="step-4-set-the-load-balancing-rules"></a>Paso 4: Configuración de las reglas de equilibrio de carga
-Las reglas de equilibrio de carga determinan cómo el equilibrador de carga enruta el tráfico a las instancias de SQL Server. En este equilibrador de carga, habilite Direct Server Return, ya que solo una de las dos instancias de SQL Server puede ser el propietario del recurso del agente de escucha del grupo de disponibilidad simultáneamente.
+### <a name="step-4-set-hello-load-balancing-rules"></a>Paso 4: Configurar reglas de equilibrio de carga de Hola
+reglas de equilibrio de carga de Hello configurar cómo equilibrador de carga de hello enruta instancias de SQL Server toohello de tráfico. Para este equilibrador de carga, habilitar a direct server devuelto porque solo uno de dos instancias de SQL Server Hola pertenece recurso de agente de escucha de grupo de disponibilidad de Hola a la vez.
 
-1. En la hoja **Configuración** del equilibrador de carga, haga clic en **Reglas de equilibrio de carga**. 
+1. Equilibrador de carga en hello **configuración** hoja, haga clic en **reglas de equilibrio de carga**. 
 
-2. En la hoja **Reglas de equilibrio de carga**, haga clic en **Agregar**.
+2. En hello **reglas de equilibrio de carga** hoja, haga clic en **agregar**.
 
-3. Utilice la hoja **Add load balancing rules** (Agregar reglas de equilibrio de carga) para configurar la regla de equilibrio de carga. Use la configuración siguiente: 
+3. En hello **reglas de equilibrio de carga de agregar** hoja, configurar la regla de equilibrio de carga de Hola. Usar hello después de configuración: 
 
    | Configuración | Valor |
    | --- | --- |
-   | **Name** |Nombre de texto que representa las reglas de equilibrio de carga. Por ejemplo, **SQLAlwaysOnEndPointListener**. |
+   | **Name** |Un nombre de texto que representa las reglas de equilibrio de carga de Hola. Por ejemplo, **SQLAlwaysOnEndPointListener**. |
    | **Protocolo** |**TCP** |
    | **Puerto** |*1433* |
    | **Puerto back-end** |*1433*. Este valor se ignorará porque la regla usa **IP flotante (Direct Server Return)**. |
-   | **Sondeo** |Utilice el nombre del sondeo que creó para este equilibrador de carga. |
+   | **Sondeo** |Usar el nombre de Hola de sondeo de Hola que creó para este equilibrador de carga. |
    | **Persistencia de la sesión** |**None** |
    | **Tiempo de espera de inactividad (minutos)** |*4* |
    | **IP flotante (Direct Server Return)** |**Enabled** |
 
    > [!NOTE]
-   > Tal vez necesite desplazarse hacia abajo en la hoja para ver todas las opciones.
+   > Es posible que tenga tooscroll hacia abajo Hola hoja tooview todas las configuraciones de Hola.
    > 
 
 4. Haga clic en **Aceptar**. 
-5. Azure configura la regla de equilibrio de carga. Ahora, el equilibrador de carga está configurado para enrutar el tráfico a la instancia de SQL Server que hospeda el agente de escucha del grupo de disponibilidad. 
+5. Azure configura la regla de equilibrio de carga de Hola. Ahora equilibrador de carga de hello es tooroute configurado tráfico toohello SQL instancia del servidor que hospeda el agente de escucha de hello para el grupo de disponibilidad de Hola. 
 
-En este punto, el grupo de recursos dispone de un equilibrador de carga que se conecta con las dos máquinas de SQL Server. El equilibrador de carga también contiene una dirección IP del agente de escucha del grupo de disponibilidad de SQL Server AlwaysOn, por lo que cualquier máquina puede responder a las solicitudes de los grupos de disponibilidad.
+En este momento, grupo de recursos de hello tiene un equilibrador de carga que se conecta tooboth máquinas de SQL Server. equilibrador de carga de Hello también contiene una dirección IP de hello SQL Server Always On disponibilidad escucha de grupo, por lo que cualquier máquina puede responder toorequests para grupos de disponibilidad de Hola.
 
 > [!NOTE]
-> Si las instancias de SQL Server se encuentran en dos regiones diferentes, repita los pasos en la otra región. Cada una de las regiones necesita su propio equilibrador de carga. 
+> Si las instancias de SQL Server se encuentran en dos regiones independientes, repita los pasos de Hola Hola otra región. Cada una de las regiones necesita su propio equilibrador de carga. 
 > 
 > 
 
-## <a name="configure-the-cluster-to-use-the-load-balancer-ip-address"></a>Configure el clúster para que utilice la dirección IP del equilibrador de carga.
-El siguiente paso consiste en configurar el agente de escucha del clúster y conectarlo. Haga lo siguiente: 
+## <a name="configure-hello-cluster-toouse-hello-load-balancer-ip-address"></a>Configurar la dirección IP del equilibrador de carga de hello clúster toouse Hola
+paso siguiente Hello es agente de escucha de tooconfigure hello en clúster de Hola y ponga Hola el agente de escucha en línea. Hola siguientes: 
 
-1. Cree el agente de escucha del grupo de disponibilidad en el clúster de conmutación por error. 
+1. Crear Agente de escucha del grupo de disponibilidad de hello en clúster de conmutación por error de Hola. 
 
-2. Conecte el agente de escucha.
+2. Ponga el agente de escucha de hello en línea.
 
-### <a name="step-5-create-the-availability-group-listener-on-the-failover-cluster"></a>Paso 5: Creación del agente de escucha del grupo de disponibilidad en el clúster de conmutación por error
-En este paso, se crea manualmente el agente de escucha del grupo de disponibilidad en el Administrador de clústeres de conmutación por error y SQL Server Management Studio.
+### <a name="step-5-create-hello-availability-group-listener-on-hello-failover-cluster"></a>Paso 5: Crear el agente de escucha del grupo de disponibilidad de hello en clúster de conmutación por error de Hola
+En este paso, se crea manualmente el agente de escucha del grupo de disponibilidad de hello en el Administrador de clústeres de conmutación por error y SQL Server Management Studio.
 
 [!INCLUDE [ag-listener-configure](../../../../includes/virtual-machines-ag-listener-configure.md)]
 
-### <a name="verify-the-configuration-of-the-listener"></a>Comprobación de la configuración del agente de escucha
+### <a name="verify-hello-configuration-of-hello-listener"></a>Comprobar la configuración de Hola de agente de escucha de Hola
 
-Si los recursos y las dependencias de clúster están configurados correctamente, tendría que ver el agente de escucha en SQL Server Management Studio. Haga lo siguiente para establecer el puerto de escucha:
+Si las dependencias y los recursos de clúster de hello estén configuradas correctamente, debe ser capaz de tooview agente de escucha hello en SQL Server Management Studio. tooset Hola puerto de escucha, Hola siguientes:
 
-1. Abra SQL Server Management Studio y conéctese a la réplica principal.
+1. Inicie SQL Server Management Studio y, a continuación, conecte toohello de réplica principal.
 
-2. Vaya a **Alta disponibilidad de AlwaysOn** > **Grupos de disponibilidad** > **Agentes de escucha del grupo de disponibilidad**.  
-    Ahora tienes que ver el nombre del agente de escucha que creaste en el Administrador de clústeres de conmutación por error. 
+2. Vaya demasiado**alta disponibilidad de AlwaysOn** > **grupos de disponibilidad** > **los agentes de escucha del grupo de disponibilidad**.  
+    Ahora debería ver el nombre de agente de escucha de Hola que creó en el Administrador de clústeres de conmutación por error. 
 
-3. Haga clic con el botón derecho en el nombre del agente de escucha y luego en **Propiedades**.
+3. Haga clic en nombre de agente de escucha de hello y, a continuación, haga clic en **propiedades**.
 
-4. En el cuadro **Puerto**, especifique el número de puerto del agente de escucha del grupo de disponibilidad mediante el valor $EndpointPort que ha establecido antes (1433 era el valor predeterminado) y haga clic en **Aceptar**.
+4. Hola **puerto** , especifique el número de puerto de hello para el agente de escucha del grupo de disponibilidad de hello mediante el uso de hello $EndpointPort que usó anteriormente (1433 pasaba Hola valor predeterminado) y, a continuación, haga clic en **Aceptar**.
 
 Ahora tiene un grupo de disponibilidad en máquinas virtuales de Azure que se ejecutan con el modelo de Resource Manager. 
 
-## <a name="test-the-connection-to-the-listener"></a>Comprobación de la conexión con el agente de escucha
-Pruebe la conexión haciendo lo siguiente:
+## <a name="test-hello-connection-toohello-listener"></a>El agente de escucha de prueba Hola conexión toohello
+Probar la conexión de hello haciendo Hola siguiente:
 
-1. Conéctese con RDP a una instancia de SQL Server que esté en la misma red virtual, pero que no sea la propietaria de la réplica. Este servidor puede ser otra instancia de SQL Server del clúster.
+1. Instancia de SQL Server tooa RDP que se encuentra en hello mismo virtual de red, pero no no réplica Hola propio. Este servidor puede ser Hola otra instancia SQL Server en clúster de Hola.
 
-2. Use la utilidad **sqlcmd** para probar la conexión. Por ejemplo, el siguiente script establece una conexión **sqlcmd** con la réplica principal a través del agente de escucha utilizando la autenticación de Windows:
+2. Use **sqlcmd** conexión de utilidad tootest Hola. Por ejemplo, Establece la siguiente secuencia de comandos de hello un **sqlcmd** réplica principal de conexión toohello a través de agente de escucha de hello con autenticación de Windows:
    
         sqlcmd -S <listenerName> -E
 
-La conexión SQLCMD se establece automáticamente con la instancia de SQL Server en la que se hospede la réplica principal. 
+Hola conexión SQLCMD conecta automáticamente toohello instancia de SQL Server que hospeda la réplica principal de Hola. 
 
 ## <a name="create-an-ip-address-for-an-additional-availability-group"></a>Creación de una dirección IP para un grupo de disponibilidad adicional
 
-Cada grupo de disponibilidad usa un agente de escucha independiente. Cada agente de escucha tiene su propia dirección IP. Use el mismo equilibrador de carga para contener la dirección IP de los agentes de escucha adicionales. Después de crear un grupo de disponibilidad, agregue la dirección IP al equilibrador de carga y luego configure el agente de escucha.
+Cada grupo de disponibilidad usa un agente de escucha independiente. Cada agente de escucha tiene su propia dirección IP. Use Hola misma dirección IP de hello toohold de equilibrador de carga para agentes de escucha adicionales. Después de crear un grupo de disponibilidad, agregar equilibrador de carga de toohello de dirección IP de hello y, a continuación, configure el agente de escucha de Hola.
 
-Para agregar una dirección IP a un equilibrador de carga con el portal de Azure, haga lo siguiente:
+tooadd un equilibrador de carga de tooa de dirección IP con hello portal de Azure, Hola siguientes:
 
-1. En Azure Portal, abra el grupo de recursos que contiene el equilibrador de carga y haga clic en él. 
+1. En hello portal de Azure, abra el grupo de recursos de Hola que contiene el equilibrador de carga de hello y, a continuación, haga clic en el equilibrador de carga de Hola. 
 
 2. En **Configuración**, haga clic en **Grupo de direcciones IP de front-end** y, después, en **Agregar**. 
 
-3. En **Agregar dirección IP de front-end**, asigne un nombre para el front-end. 
+3. En **agregar dirección IP de front-end**, asigne un nombre de front-end de Hola. 
 
-4. Compruebe que la **red Virtual** y la **subred** sean las mismas que en las instancias de SQL Server.
+4. Compruebe que hello **red Virtual** hello y **subred** se Hola igual Hola instancias de SQL Server.
 
-5. Establezca la dirección IP del agente de escucha. 
+5. Establecer la dirección IP de hello para el agente de escucha de Hola. 
    
    >[!TIP]
-   >Puede configurar la dirección IP como estática y escribir una dirección que no se use actualmente en la subred. También puede configurar la dirección IP como dinámica y guardar el nuevo grupo de direcciones IP de front-end. Al hacerlo, Azure Portal asigna automáticamente una dirección IP disponible al grupo. Luego puede volver a abrir el grupo de direcciones IP de front-end y cambiar la asignación a estática. 
+   >Puede establecer toostatic de dirección IP de Hola y escriba una dirección que no se utiliza actualmente en la subred de Hola. Como alternativa, puede establecer toodynamic de dirección IP de Hola y guardar el nuevo grupo de IP front-end Hola. Al hacerlo, Hola portal de Azure asigna automáticamente un grupo de toohello de direcciones IP disponible. A continuación, puede volver a abrir el grupo de direcciones IP de front-end de Hola y cambiar Hola asignación toostatic. 
 
-6. Guarde la dirección IP del agente de escucha. 
+6. Guarde la dirección IP de hello para el agente de escucha de Hola. 
 
-7. Agregue un sondeo de estado mediante las siguientes opciones:
+7. Agregar un sondeo de estado mediante Hola después de configuración:
 
    |Configuración |Valor
    |:-----|:----
-   |**Name** |Un nombre para identificar el sondeo.
+   |**Name** |Un sondeo de hello tooidentify de nombre.
    |**Protocolo** |TCP
-   |**Puerto** |Un puerto TCP sin usar, que debe estar disponible en todas las máquinas virtuales. No se puede usar para ningún otro fin. Dos agentes de escucha no pueden usar el mismo puerto de sondeo. 
-   |**Intervalo** |Cantidad de tiempo entre los intentos de sondeo. Use el valor predeterminado (5).
-   |**Umbral incorrecto** |El número de umbrales consecutivos que deben generar un error antes de que se considere que una máquina virtual tiene un estado incorrecto.
+   |**Puerto** |Un puerto TCP sin usar, que debe estar disponible en todas las máquinas virtuales. No se puede usar para ningún otro fin. No hay dos agentes de escucha pueden usar Hola mismo puerto de sondeo. 
+   |**Intervalo** |Hola intervalo de tiempo entre el sondeo de los intentos. Usar valor predeterminado es hello (5).
+   |**Umbral incorrecto** |número de Hola de umbrales consecutivos que deben fallar antes de una máquina virtual se considera incorrecto.
 
-8. Haga clic en **Aceptar** para guardar el sondeo. 
+8. Haga clic en **Aceptar** sondeo de hello toosave. 
 
 9. Cree una regla de equilibrio de carga. Haga clic en **Reglas de equilibrio de carga** y luego haga clic en **Agregar**.
 
-10. Configure la nueva regla de equilibrio de carga con los siguientes valores:
+10. Configurar Hola nuevo equilibrio de carga regla mediante el uso de hello después de configuración:
 
    |Configuración |Valor
    |:-----|:----
-   |**Name** |Un nombre para identificar la regla de equilibrio de carga. 
-   |**Frontend IP address** (Dirección IP de front-end) |Seleccione la dirección IP que creó. 
+   |**Name** |Un saludo de tooidentify nombre cargar la regla de equilibrio. 
+   |**Frontend IP address** (Dirección IP de front-end) |Seleccione la dirección IP de Hola que creó. 
    |**Protocolo** |TCP
-   |**Puerto** |Use el puerto que usan las instancias de SQL Server. Una instancia predeterminada usa el puerto 1433, a menos que lo haya modificado. 
-   |**Puerto back-end** |Use el mismo valor que en **Puerto**.
-   |**Grupo de back-end** |El grupo que contiene las máquinas virtuales con las instancias de SQL Server. 
-   |**Sondeo de estado** |Elija el sondeo que creó.
+   |**Puerto** |Usar el puerto de Hola que usan instancias de SQL Server de Hola. Una instancia predeterminada usa el puerto 1433, a menos que lo haya modificado. 
+   |**Puerto back-end** |Hola uso mismo valor que **puerto**.
+   |**Grupo de back-end** |grupo de Hola que contiene máquinas virtuales de hello con instancias de SQL Server de Hola. 
+   |**Sondeo de estado** |Elija el sondeo de Hola que creó.
    |**Persistencia de la sesión** |None
    |**Tiempo de espera de inactividad (minutos)** |Valor predeterminado (4)
    |**IP flotante (Direct Server Return)** | habilitado
 
-### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Configuración del grupo de disponibilidad para usar la nueva dirección IP
+### <a name="configure-hello-availability-group-toouse-hello-new-ip-address"></a>Configurar Hola disponibilidad toouse Hola nueva dirección IP del grupo
 
-Para terminar de configurar el clúster, repita los pasos realizados cuando creó el primer grupo de disponibilidad. Es decir, configure el [clúster para usar la nueva dirección IP](#configure-the-cluster-to-use-the-load-balancer-ip-address). 
+toofinish configuración de clúster de hello, pasos de repetición Hola que seguir cuando realiza el primer grupo de disponibilidad Hola. Es decir, configure hello [Hola de toouse nueva dirección IP del clúster](#configure-the-cluster-to-use-the-load-balancer-ip-address). 
 
-Después de haber agregado una dirección IP para el agente de escucha, configure el grupo de disponibilidad adicional. Para ello, haga lo siguiente: 
+Después de haber agregado una dirección IP para el agente de escucha de hello, configurar grupo de disponibilidad adicional de hello haciendo Hola siguiente: 
 
-1. Compruebe que el puerto de sondeo de la nueva dirección IP esté abierto en ambas máquinas virtuales SQL Server. 
+1. Compruebe que el puerto de sondeo de Hola para nuevas direcciones IP Hola está abierto en ambas máquinas virtuales de SQL Server. 
 
-2. [En el Administrador de clústeres, agregue el punto de acceso cliente](#addcap).
+2. [En el Administrador de clústeres, agregue el punto de acceso de cliente de hello](#addcap).
 
-3. [Configurar el recurso IP para el grupo de disponibilidad](#congroup).
+3. [Configurar recurso IP de hello para el grupo de disponibilidad de hello](#congroup).
 
    >[!IMPORTANT]
-   >Cuando cree la dirección IP, use la dirección IP que agregó al equilibrador de carga.  
+   >Cuando se crea la dirección IP de hello, use la dirección IP de Hola que agregó toohello equilibrador de carga.  
 
-4. [Haga que el recurso del grupo de disponibilidad de SQL Server dependa del punto de acceso cliente](#dependencyGroup).
+4. [Asegúrese de recurso de grupo de disponibilidad de SQL Server de hello depende del punto de acceso de cliente de hello](#dependencyGroup).
 
-5. [Hacer que el recurso de punto de acceso cliente dependa de la dirección IP](#listname).
+5. [Hacer que el acceso de cliente de hello elija recursos depende de la dirección IP de hello](#listname).
  
-6. [Establezca los parámetros de clúster en PowerShell](#setparam).
+6. [Establecer parámetros de clúster de hello en PowerShell](#setparam).
 
-Después de configurar el grupo de disponibilidad para usar la nueva dirección IP, configure la conexión al agente de escucha. 
+Después de configurar Hola disponibilidad toouse Hola nueva dirección IP del grupo, configure el agente de escucha de hello conexión toohello. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 

@@ -1,6 +1,6 @@
 ---
-title: "Desconexión de un disco de una máquina virtual Windows | Microsoft Docs"
-description: "Obtenga información acerca de cómo desconectar un disco de una máquina virtual de Azure creada mediante el modelo de implementación clásica."
+title: "aaaDetach un disco de una máquina virtual de Windows | Documentos de Microsoft"
+description: "Obtenga información acerca de un disco de una máquina virtual en Azure con el modelo de implementación clásica de hello toodetach."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: cynthn
-ms.openlocfilehash: 650c7e10150b95a6ad7cd455746f7c1d77b9b34c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6f4fda46b13ec83aed6051dd3c6459a9979de131
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-detach-a-disk-from-a-windows-virtual-machine"></a>Desacoplamiento de un disco de una máquina virtual de Windows
+# <a name="how-toodetach-a-disk-from-a-windows-virtual-machine"></a>¿Cómo toodetach un disco de una máquina virtual de Windows
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y la clásica](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Para más información sobre cómo desconectar un disco mediante el modelo de Resource Manager, consulte [aquí](../../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y la clásica](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Para obtener información acerca de cómo Hola a toodetach un disco mediante el Administrador de recursos del modelo, consulte [aquí](../../virtual-machines-windows-detach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [howto-detach-disk-windows-linux](../../../../includes/howto-detach-disk-windows-linux.md)]
 
 ## <a name="additional-resources"></a>Recursos adicionales
 [Acerca de los discos y los discos duros virtuales para máquinas virtuales](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Acoplamiento de un disco de datos a una máquina virtual de Windows](attach-disk.md)
+[Cómo tooattach datos de un disco de máquina virtual de Windows tooa](attach-disk.md)

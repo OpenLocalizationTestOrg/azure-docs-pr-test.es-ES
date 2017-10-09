@@ -1,6 +1,6 @@
 ---
-title: Componentes de hardware de la serie StorSimple 8000 y su estado | Microsoft Docs
-description: "Aprenda a supervisar los componentes de hardware del dispositivo StorSimple a través del servicio StorSimple Device Manager."
+title: aaaStorSimple 8000 componentes de hardware de la serie y el estado | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toomonitor Hola componentes de hardware del dispositivo de StorSimple a través del servicio Administrador de dispositivos de StorSimple Hola."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,136 +14,136 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 90724099842eac513c39dccf113ad1c0a63983f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 85b398e4b1a6b8921792b8945331325940082eb2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>Usar el servicio StorSimple Device Manager para supervisar componentes y estados de hardware
+# <a name="use-hello-storsimple-device-manager-service-toomonitor-hardware-components-and-status"></a>Utilizar componentes de hardware de toomonitor de servicio de administrador de dispositivos de StorSimple de Hola y estado
 ## <a name="overview"></a>Información general
-En este artículo se describen los distintos componentes físicos y lógicos en el dispositivo de la serie StorSimple 8000 local. También se explica cómo supervisar el estado de los componentes del dispositivo mediante la hoja **Estado y mantenimiento de hardware** del servicio StorSimple Device Manager.
+Este artículo describe Hola distintos componentes físicos y lógicos en el dispositivo local de la serie StorSimple 8000. También se explica cómo toomonitor Hola estado del componente de dispositivo mediante el uso de hello **estado de hardware y estado** hoja Hola servicio Administrador de dispositivos de StorSimple.
 
-En la hoja **Estado y mantenimiento de hardware** aparece el estado del hardware de todos los componentes del dispositivo StorSimple.
+Hola **estado de hardware y estado** hoja muestra el estado de hardware de Hola de todos los componentes del dispositivo de StorSimple Hola.
 
-En la lista de componentes para 8100, se describen tres secciones:
+En la lista de Hola de componentes para 8100, hay tres secciones que describen:
 
-* **Componentes compartidos** : no forman parte de los controladores, como las unidades de disco, el revestimiento, los componentes del PCM y la temperatura del PCM, la tensión de línea y los sensores de corriente de línea.
-* **Componentes del Controlador 0** : componentes que residen en el Controlador 0, por ejemplo, el controlador, el ampliador y el conector de SAS, los sensores de temperatura del controlador y las diversas interfaces de red.
-* **Componentes del Controlador 1** : componentes que constituyen el Controlador 1, similares a los detallados en el Controlador 0.
+* **Componentes compartidos** : estos no son parte de controladores de hello, como unidades de disco, alojamiento, componentes PCM y temperatura PCM, tensión de línea y sensores de corriente de línea.
+* **Componentes del controlador 0** : componentes de Hola que residen en el controlador 0, por ejemplo, el controlador, expansor y conector SAS, sensores de temperatura del controlador y Hola varias interfaces de red.
+* **Componentes del controlador 1** : Hola componentes que constituyen el controlador 1, similar toothose detallado en el controlador 0.
 
-Un dispositivo 8600 tiene componentes adicionales que se corresponden con el revestimiento de un grupo extendido de discos (EBOD). En la lista de componentes, hay cinco secciones. De estas, hay tres que contienen los componentes en el revestimiento principal y son idénticas a las que se describen para 8100. Hay dos secciones adicionales para el revestimiento de EBOD que describen lo siguiente:
+Un dispositivo 8600 tiene componentes adicionales que se corresponden toohello alojamiento extendido grupo de discos (EBOD). En la lista de Hola de componentes, hay cinco secciones. De estos, hay tres secciones que contienen componentes de hello en el alojamiento principal de Hola y son idéntico toohello las descritas para 8100. Hay dos secciones adicionales para hello alojamiento de EBOD que describen:
 
-* **Componentes del Controlador 0 de EBOD** : componentes que residen en el revestimiento 0 de EBOD, como el controlador de EBOD, el ampliador y el conector de SAS y los sensores de temperatura del controlador.
-* **Componentes del Controlador 1 de EBOD** : componentes que constituyen el revestimiento 1 de EBOD, similares a los detallados en el revestimiento 0 de EBOD.
-* **Componentes compartidos del revestimiento de EBOD** : componentes presentes en el revestimiento de EBOD y el PCM que no forman parte del controlador de EBOD.
+* **Componentes del controlador de EBOD 0** : Hola componentes que residen en el alojamiento de EBOD 0, tales como controlador EBOD hello, sensores de temperatura de expansor y conector y controlador SAS.
+* **Componentes de 1 del controlador de EBOD** : Hola componentes que constituyen el alojamiento de EBOD 1, toothose similar detallados en el alojamiento de EBOD 0.
+* **Componentes compartidos de alojamiento EBOD** : componentes de hello presentes en el alojamiento de EBOD hello y PCM que no forman parte del controlador de EBOD Hola.
 
 > [!NOTE]
-> **El estado del hardware no está disponible para StorSimple Cloud Appliance (8010/8020).**
+> **estado de hardware de Hello no está disponible para un dispositivo de nube de StorSimple (8010/8020).**
 
 
-## <a name="monitor-the-hardware-status"></a>Supervisión del estado del hardware
-Realice los pasos siguientes para ver el estado de hardware de un componente del dispositivo:
+## <a name="monitor-hello-hardware-status"></a>Supervisar el estado del hardware Hola
+Lleve a cabo Hola después de estado de hardware de pasos tooview Hola de un componente de dispositivo:
 
-1. Vaya a **Dispositivos**y seleccione un dispositivo de StorSimple concreto. Vaya a **Supervisar > Mantenimiento de hardware**.
+1. Navegue demasiado**dispositivos**, seleccione un dispositivo de StorSimple específico. Vaya demasiado**Monitor > estado del Hardware**.
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
-2. Busque la sección **Componentes de hardware** y elija entre los componentes disponibles. Simplemente haga clic en la etiqueta del componente para expandir la lista y ver el estado de los distintos componentes del dispositivo. Consulte la [lista detallada de componentes del gabinete principal](#component-list-for-primary-enclosure-of-storsimple-device) y la [lista detallada de componentes del receptáculo EBOD](#component-list-for-ebod-enclosure-of-storsimple-device).
+2. Busque hello **componentes de Hardware** sección y elija una de los componentes disponibles de Hola. Simplemente haga clic en lista de hello componentes etiqueta tooexpand hello y ver estado de Hola de hello diversos componentes del dispositivo. Vea hello [lista de componentes detallados para el alojamiento principal hello](#component-list-for-primary-enclosure-of-storsimple-device) hello y [lista de componentes detallados para hello alojamiento de EBOD](#component-list-for-ebod-enclosure-of-storsimple-device).
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
-3. Use el siguiente código de colores para interpretar el estado de los componentes:
+3. Usar hello siguiendo el estado del componente de hello toointerpret del esquema de codificación de color:
    
    * **Marca de verificación verde**: denota un componente correcto con estado **OK**.
    * **Amarillo**: denota un componente degradado en estado de **Advertencia**.
    * **Signo de exclamación rojo**: denota un componente erróneo que tiene un estado de **Error**.
    * **Blanco con texto negro** : denota un componente que no está presente.
    
-   La captura de pantalla siguiente muestra un dispositivo que tiene componentes en estados **OK**, **Advertencia** y **Error**.
+   Hello captura de pantalla siguiente muestra un dispositivo que tiene componentes de **Aceptar**, **advertencia**, y **error** estado.
        
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
-   Al expandir la **lista de componentes compartidos**, podemos ver que la NVRAM y el clúster están degradados.
+   Hola expansión **lista de componentes compartidos**, podemos ver ese clúster NVRAM y Hola Hola se degradan.
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
-   Al expandir la lista de **componentes del controlador 1**, podemos ver que el nodo de clúster generó un error.  
+   Hola expansión **componentes del controlador 1** lista, podemos ver error ese nodo de clúster Hola.  
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. Si se encuentra un componente que no está en estado **Correcto** , póngase en contacto con el soporte técnico de Microsoft. Si las alertas están habilitadas en el dispositivo, recibirá una alerta por correo electrónico. Si necesita reemplazar un componente de hardware con errores, consulte la [Reemplazo de los componentes de hardware de StorSimple](storsimple-hardware-component-replacement.md).
+4. Si se encuentra un componente que no está en estado **Correcto** , póngase en contacto con el soporte técnico de Microsoft. Si las alertas están habilitadas en el dispositivo, recibirá una alerta por correo electrónico. Si necesita tooreplace un componente de hardware con errores, consulte [sustitución de componentes de hardware de StorSimple](storsimple-hardware-component-replacement.md).
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Lista de componentes de la caja principal del dispositivo StorSimple
-En la tabla siguiente se describen los componentes físicos y lógicos que contiene la caja principal (presente en las series 8100 y 8600) del dispositivo StorSimple local.
+Hello tabla siguiente se describe Hola componentes físicos y lógicos contenidos en hello alojamiento principal (presente en 8100 y 8600) del dispositivo de StorSimple local.
 
 | Componente | Módulo | Tipo | Ubicación | ¿Unidad reemplazable en campo (FRU)? | Description |
 | --- | --- | --- | --- | --- | --- |
-| Unidad en la ranura [0-11] |Unidades de disco |Física |Compartido |Sí |Hay una línea preesnte para cada una de las unidades SSD o HDD en el revestimiento principal. |
-| Sensor de temperatura ambiente |Revestimiento |Física |Compartido |No |Mide la temperatura del chasis. |
-| Sensor de temperatura de plano medio |Revestimiento |Física |Compartido |No |Mide la temperatura del plano medio. |
-| Alarma audible |Revestimiento |Física |Compartido |No |Indica si el subsistema de alarma audible del chasis es funcional. |
-| Revestimiento |Revestimiento |Física |Compartido |Sí |Indica la presencia de un chasis. |
-| Configuración del revestimiento |Revestimiento |Física |Compartido |No |Hace referencia al panel frontal del chasis. |
-| Sensores de voltaje de línea |PCM |Física |Compartido |No |En numerosos sensores de tensión de línea se muestra el estado, que indica si la tensión medida está dentro de la tolerancia. |
-| Sensores de corriente de línea |PCM |Física |Compartido |No |En numerosos sensores de corriente de línea se muestra el estado, que indica si la corriente medida está dentro de la tolerancia. |
-| Sensores de temperatura en el PCM |PCM |Física |Compartido |No |En numerosos sensores de temperatura como los sensores Inlet y Hotspot se muestra el estado, que indica si la temperatura medida está dentro de la tolerancia. |
-| Fuente de alimentación [0-1] |PCM |Física |Compartido |Sí |Hay una línea presente para cada fuente de alimentación en las dos PCM situadas en la parte posterior del dispositivo. |
-| Refrigeración [0-1] |PCM |Física |Compartido |Sí |Hay una línea presente para cada uno de los cuatro ventiladores de refrigeración que residen en los dos PCM. |
-| Batería [0-1] |PCM |Física |Compartido |Sí |Hay una línea presente para cada uno de los módulos de batería de reserva que están alojados en el PCM. |
-| Metis |N/D |Lógicos |Compartido |N/D |Muestra el estado de las baterías: si necesitan recargarse o se acercan al fin de ciclo de vida. |
-| Clúster |N/D |Lógicos |Compartido |N/D |Muestra el estado del clúster que se crea entre los dos módulos de controlador integrados. |
-| Nodo de clúster |N/D |Lógicos |Compartido |N/D |Indica el estado del controlador como parte del clúster. |
-| Quórum de clúster |N/D |Lógicos | |N/D |Indica la presencia de la pertenencia al disco de mayoría en el grupo de almacenamiento de la unidad de disco duro. |
-| Espacio de datos de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |El espacio de almacenamiento que se usa para los datos en el grupo de almacenamiento de la unidad de disco duro (HDD). |
-| Espacio de administración de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |El espacio reservado en el grupo de almacenamiento de la unidad de disco duro para tareas de administración. |
-| Espacio de quórum de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |El espacio reservado en el grupo de almacenamiento de la unidad de disco duro para el quórum del clúster. |
-| Espacio de reemplazo de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |El espacio reservado en el grupo de almacenamiento de la unidad de disco duro para el reemplazo del controlador. |
-| Espacio de datos de la unidad de estado sólido |N/D |Lógicos |Compartido |N/D |El espacio de almacenamiento para los datos en el grupo de almacenamiento de la unidad de estado sólido (SSD). |
-| Espacio de NVRAM de la unidad de estado sólido |N/D |Lógicos |Compartido |N/D |El espacio de almacenamiento en el grupo de almacenamiento de la unidad de estado sólido dedicado para la lógica NVRAM. |
-| Grupo de almacenamiento de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |Muestra el estado del grupo de almacenamiento lógico que se crea desde las unidades de disco duro del dispositivo. |
-| Grupo de almacenamiento de la unidad de estado sólido |N/D |Lógicos |Compartido |N/D |Muestra el estado del grupo de almacenamiento lógico que se crea desde las unidades de estado sólido del dispositivo. |
-| Controller [0-1] [estado] |E/S |Física |Controller |Sí |Muestra el estado del controlador y si está en modo activo o en espera dentro del chasis. |
-| Sensores de temperatura en el controlador |E/S |Física |Controller |No |En numerosos sensores de temperatura como los sensores del módulo de E/S, de temperatura de la CPU, de DIMM y de PCI se muestra el estado, que indica si la temperatura se encuentra dentro de la tolerancia. |
-| Ampliador SAS |E/S |Física |Controller |No |Indica el estado del ampliador del SCSI acoplado en serie (SAS), que se usa para conectar el almacenamiento integrado al controlador. |
-| Conector SAS [0-1] |E/S |Física |Controller |No |Indica el estado de cada conector SAS, que se usa para conectar el almacenamiento integrado al ampliador SAS. |
-| Interconexión de plano medio de SBB |E/S |Física |Controller |No |Indica el estado del conector de plano medio, que se usa para conectar cada controlador al plano medio. |
-| Núcleo del procesador |E/S |Física |Controller |No |Indica el estado de los núcleos del procesador en cada controlador. |
-| Potencia de la electrónica del revestimiento |E/S |Física |Controller |No |Indica el estado del sistema de alimentación que usa el revestimiento. |
-| Diagnóstico de la electrónica del revestimiento |E/S |Física |Controller |No |Indica el estado de los subsistemas de diagnóstico que proporciona el controlador. |
-| Controlador de administración de placa base (BMC) |E/S |Física |Controller |No |Indica el estado del controlador de administración de placa base (BMC), que es un procesador de servicios especializado que supervisa el dispositivo de hardware a través de sensores y se comunica con el administrador del sistema a través de una conexión independiente. |
-| Ethernet |E/S |Física |Controller |No |Indica el estado de cada una de las interfaces de red, es decir, la administración y los puertos de datos proporcionados en el controlador. |
-| NVRAM |E/S |Física |Controller |No |Indica el estado de la NVRAM, una memoria de acceso aleatorio no volátil respaldada por la batería que sirve para conservar la información crítica para la aplicación en caso de error de alimentación. |
+| Unidad en la ranura [0-11] |Unidades de disco |Física |Compartido |Sí |Se presenta una línea para cada uno de hello SSD o unidades de hello HDD de alojamiento principal Hola. |
+| Sensor de temperatura ambiente |Revestimiento |Física |Compartido |No |Medidas Hola temperatura dentro del chasis de Hola. |
+| Sensor de temperatura de plano medio |Revestimiento |Física |Compartido |No |Medidas Hola temperatura del plano intermedio Hola. |
+| Alarma audible |Revestimiento |Física |Compartido |No |Indica si el subsistema de alarma audible hello en el chasis de hello es funcional. |
+| Revestimiento |Revestimiento |Física |Compartido |Sí |Indica la presencia de Hola de un chasis. |
+| Configuración del revestimiento |Revestimiento |Física |Compartido |No |Se refiere toohello panel frontal del chasis de Hola. |
+| Sensores de voltaje de línea |PCM |Física |Compartido |No |Diversos sensores de voltaje de línea tienen muestran su estado, que indica si se mide Hola voltaje está dentro de la tolerancia. |
+| Sensores de corriente de línea |PCM |Física |Compartido |No |Numerosos sensores de corriente de línea tienen muestran su estado, lo que indica si hello corriente medida se encuentra dentro de la tolerancia. |
+| Sensores de temperatura en el PCM |PCM |Física |Compartido |No |Diversos sensores de temperatura, como sensores de entrada y zona activa muestran su estado, que indica si Hola mide la temperatura es dentro de la tolerancia. |
+| Fuente de alimentación [0-1] |PCM |Física |Compartido |Sí |Se presenta una línea para cada una de las fuentes de alimentación de Hola Hola dos PCM ubicados en hello parte posterior del dispositivo de Hola. |
+| Refrigeración [0-1] |PCM |Física |Compartido |Sí |Se presenta una línea para cada uno de hello cuatro ventiladores de refrigeración que residen en hello dos PCM. |
+| Batería [0-1] |PCM |Física |Compartido |Sí |Se presenta una línea para cada uno de los módulos de batería de reserva de Hola que estén colocados en hello PCM. |
+| Metis |N/D |Lógicos |Compartido |N/D |Muestra el estado de Hola de baterías de hello: si necesitan cargarse y están llegando al final de ciclo de vida. |
+| Clúster |N/D |Lógicos |Compartido |N/D |Muestra Hola estado del clúster entre dos módulos de controlador integrados Hola Hola que se crea. |
+| Nodo de clúster |N/D |Lógicos |Compartido |N/D |Indica el estado de Hola de controlador de hello como parte del clúster de Hola. |
+| Quórum de clúster |N/D |Lógicos | |N/D |Indica la presencia de Hola de pertenencia de disco de mayoría Hola Hola bloque de almacenamiento de disco duro. |
+| Espacio de datos de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |espacio de almacenamiento de Hola que se usa para los datos en bloque de almacenamiento de hello unidad de disco duro (HDD). |
+| Espacio de administración de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |reserva de espacio de Hola Hola grupo de almacenamiento del HDD para tareas de administración. |
+| Espacio de quórum de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |reserva de espacio de Hola Hola bloque de almacenamiento de disco duro de quórum de clúster. |
+| Espacio de reemplazo de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |reserva de espacio de Hola Hola bloque de almacenamiento HDD de reemplazo de controlador. |
+| Espacio de datos de la unidad de estado sólido |N/D |Lógicos |Compartido |N/D |espacio de almacenamiento de Hello utilizado para los datos en bloque de almacenamiento de hello estado sólido (SSD) de la unidad. |
+| Espacio de NVRAM de la unidad de estado sólido |N/D |Lógicos |Compartido |N/D |espacio de almacenamiento de Hola Hola bloque de almacenamiento SSD dedicado para la lógica de NVRAM. |
+| Grupo de almacenamiento de la unidad de disco duro |N/D |Lógicos |Compartido |N/D |Muestra Hola estado Hola lógica del grupo de almacenamiento que se crea desde los dispositivos HDD. |
+| Grupo de almacenamiento de la unidad de estado sólido |N/D |Lógicos |Compartido |N/D |Muestra Hola estado Hola lógica del grupo de almacenamiento que se crea a partir de SSD de dispositivo. |
+| Controller [0-1] [estado] |E/S |Física |Controller |Sí |Muestra el estado de Hola de controlador de hello, y si está en modo activo o en espera en el chasis de Hola. |
+| Sensores de temperatura en el controlador |E/S |Física |Controller |No |Diversos sensores de temperatura, como módulo de E/S, la temperatura de la CPU sensores DIMM y PCIe tengan muestran su estado, que indica si se permite o no Hola temperatura se encuentra dentro de la tolerancia. |
+| Ampliador SAS |E/S |Física |Controller |No |Indica el estado de Hola de hello serie adjunto SCSI (SAS) Ampliador, que es usado tooconnect Hola almacenamiento integrado toohello controlador. |
+| Conector SAS [0-1] |E/S |Física |Controller |No |Indica el estado de Hola de cada conector SAS, que es usado tooconnect integrada almacenamiento toohello SAS expansor. |
+| Interconexión de plano medio de SBB |E/S |Física |Controller |No |Indica estado Hola de conector de plano intermedio hello, que es usado tooconnect cada plano intermedio toohello de controlador. |
+| Núcleo del procesador |E/S |Física |Controller |No |Indica el estado de Hola Hola de núcleos de procesador de cada controlador. |
+| Potencia de la electrónica del revestimiento |E/S |Física |Controller |No |Indica el estado de saludo del sistema de alimentación de hello usada por el alojamiento de Hola. |
+| Diagnóstico de la electrónica del revestimiento |E/S |Física |Controller |No |Indica el estado de Hola de subsistemas de diagnóstico de hello proporcionado por el controlador de Hola. |
+| Controlador de administración de placa base (BMC) |E/S |Física |Controller |No |Indica el estado de saludo del controlador de administración de placa base de hello (BMC), que es un procesador de servicios especializado que supervisa el dispositivo de hardware de Hola a través de sensores y se comunica con el administrador del sistema hello mediante una conexión independiente. |
+| Ethernet |E/S |Física |Controller |No |Indica el estado de Hola de cada una de las interfaces de red de hello, es decir, administración de Hola y puertos de datos proporcionados en el controlador de Hola. |
+| NVRAM |E/S |Física |Controller |No |Indica el estado de Hola de NVRAM, una memoria de acceso aleatorio no volátil respaldada por batería Hola que sirve de información crítica para la aplicación de tooretain en caso de hello de corte de suministro eléctrico. |
 
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Lista de componentes de la caja EBOD del dispositivo StorSimple
-En la tabla siguiente se describen los componentes físicos y lógicos que contiene la caja EBOD (presente solo en la serie 8600) del dispositivo StorSimple local.
+Hello tabla siguiente se describe Hola componentes físicos y lógicos contenidos en hello alojamiento de EBOD (solo está presente en el modelo 8600) del dispositivo de StorSimple local.
 
 | Componente | Módulo | Tipo | Ubicación | ¿FRU? | Description |
 | --- | --- | --- | --- | --- | --- |
-| Unidad en la ranura [0-11] |Unidades de disco |Física |Compartido |Sí |Hay una línea presente para cada una de las unidades HDD en el revestimiento de EBOD. |
-| Sensor de temperatura ambiente |Revestimiento |Física |Compartido |No |Mide la temperatura del chasis. |
-| Sensor de temperatura de plano medio |Revestimiento |Física |Compartido |No |Mide la temperatura del plano medio. |
-| Alarma audible |Revestimiento |Física |Compartido |No |Indica si el subsistema de alarma audible del chasis es funcional. |
-| Revestimiento |Revestimiento |Física |Compartido |Sí |Indica la presencia de un chasis. |
-| Configuración del revestimiento |Revestimiento |Física |Compartido |No |Hace referencia al OPS o panel frontal del chasis. |
-| Sensores de voltaje de línea |PCM |Física |Compartido |No |En numerosos sensores de tensión de línea se muestra el estado, que indica si la tensión medida está dentro de la tolerancia. |
-| Sensores de corriente de línea |PCM |Física |Compartido |No |En numerosos sensores de corriente de línea se muestra el estado, que indica si la corriente medida está dentro de la tolerancia. |
-| Sensores de temperatura en el PCM |PCM |Física |Compartido |No |En numerosos sensores de temperatura como los sensores Inlet y Hotspot se muestra el estado, que indica si la temperatura medida está dentro de la tolerancia. |
-| Fuente de alimentación [0-1] |PCM |Física |Compartido |Sí |Hay una línea presente para cada fuente de alimentación en las dos PCM situadas en la parte posterior del dispositivo. |
-| Refrigeración [0-1] |PCM |Física |Compartido |Sí |Hay una línea presente para cada uno de los cuatro ventiladores de refrigeración que residen en los dos PCM. |
-| Almacenamiento local [HDD] |N/D |Lógicos |Compartido |N/D |Muestra el estado del grupo de almacenamiento lógico que se crea desde las unidades de disco duro del dispositivo. |
-| Controller [0-1] [estado] |E/S |Física |Controller |Sí |Muestra el estado de los controladores en el módulo EBOD. |
-| Sensores de temperatura en el EBOD |E/S |Física |Controller |No |En numerosos sensores de temperatura de cada controlador se muestra el estado, que indica si la temperatura está dentro de la tolerancia. |
-| Ampliador SAS |E/S |Física |Controller |No |Indica el estado del ampliador SAS, que se usa para conectar el almacenamiento integrado al controlador. |
-| Conector SAS [0-2] |E/S |Física |Controller |No |Indica el estado de cada conector SAS, que se usa para conectar el almacenamiento integrado al ampliador SAS. |
-| Interconexión de plano medio de SBB |E/S |Física |Controller |No |Indica el estado del conector de plano medio, que se usa para conectar cada controlador al plano medio. |
-| Potencia de la electrónica del revestimiento |E/S |Física |Controller |No |Indica el estado del sistema de alimentación que usa el revestimiento. |
-| Diagnóstico de la electrónica del revestimiento |E/S |Física |Controller |No |Indica el estado de los subsistemas de diagnóstico que proporciona el controlador. |
-| Conexión al controlador del dispositivo |E/S |Física |Controller |No |Indica el estado de la conexión entre el módulo de E/S de EBOD y el controlador del dispositivo. |
+| Unidad en la ranura [0-11] |Unidades de disco |Física |Compartido |Sí |Se presenta una línea para cada uno de hello que las unidades de disco duro en la parte delantera de Hola de hello alojamiento de EBOD. |
+| Sensor de temperatura ambiente |Revestimiento |Física |Compartido |No |Medidas Hola temperatura dentro del chasis de Hola. |
+| Sensor de temperatura de plano medio |Revestimiento |Física |Compartido |No |Medidas Hola temperatura del plano intermedio Hola. |
+| Alarma audible |Revestimiento |Física |Compartido |No |Indica si el subsistema de alarma audible hello en el chasis de hello es funcional. |
+| Revestimiento |Revestimiento |Física |Compartido |Sí |Indica la presencia de Hola de un chasis. |
+| Configuración del revestimiento |Revestimiento |Física |Compartido |No |Se refiere toohello OPS u Hola el panel frontal del chasis de Hola. |
+| Sensores de voltaje de línea |PCM |Física |Compartido |No |Diversos sensores de voltaje de línea tienen muestran su estado, que indica si se mide Hola voltaje está dentro de la tolerancia. |
+| Sensores de corriente de línea |PCM |Física |Compartido |No |Numerosos sensores de corriente de línea tienen muestran su estado, lo que indica si hello corriente medida se encuentra dentro de la tolerancia. |
+| Sensores de temperatura en el PCM |PCM |Física |Compartido |No |Diversos sensores de temperatura, como sensores de entrada y zona activa muestran su estado, lo que indica si Hola mide la temperatura es dentro de la tolerancia. |
+| Fuente de alimentación [0-1] |PCM |Física |Compartido |Sí |Se presenta una línea para cada una de las fuentes de alimentación de Hola Hola dos PCM ubicados en hello parte posterior del dispositivo de Hola. |
+| Refrigeración [0-1] |PCM |Física |Compartido |Sí |Se presenta una línea para cada uno de hello cuatro ventiladores de refrigeración que residen en hello dos PCM. |
+| Almacenamiento local [HDD] |N/D |Lógicos |Compartido |N/D |Muestra Hola estado Hola lógica del grupo de almacenamiento que se crea desde los dispositivos HDD. |
+| Controller [0-1] [estado] |E/S |Física |Controller |Sí |Muestra Hola estado de los controladores de hello en el módulo EBOD Hola. |
+| Sensores de temperatura en el EBOD |E/S |Física |Controller |No |Diversos sensores de temperatura de cada controlador tienen muestran su estado, que indica si la temperatura Hola se encuentra dentro de la tolerancia. |
+| Ampliador SAS |E/S |Física |Controller |No |Indica el estado de saludo del Ampliador SAS de hello, que es usado tooconnect Hola almacenamiento integrado toohello controlador. |
+| Conector SAS [0-2] |E/S |Física |Controller |No |Indica el estado de Hola de cada conector SAS, que es usado tooconnect integrada almacenamiento toohello SAS expansor. |
+| Interconexión de plano medio de SBB |E/S |Física |Controller |No |Indica estado Hola de conector de plano intermedio hello, que es usado tooconnect cada plano intermedio toohello de controlador. |
+| Potencia de la electrónica del revestimiento |E/S |Física |Controller |No |Indica el estado de saludo del sistema de alimentación de hello usada por el alojamiento de Hola. |
+| Diagnóstico de la electrónica del revestimiento |E/S |Física |Controller |No |Indica el estado de Hola de subsistemas de diagnóstico de hello proporcionado por el controlador de Hola. |
+| Controlador de conexión toodevice |E/S |Física |Controller |No |Indica el estado de Hola de conexión de hello entre el módulo de E/S EBOD Hola y el controlador de dispositivo de Hola. |
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para utilizar el servicio StorSimple Device Manager para administrar el dispositivo, vaya a [Uso del servicio StorSimple Device Manager para administrar el dispositivo StorSimple](storsimple-8000-manager-service-administration.md).
-* Si necesita solucionar problemas de un componente del dispositivo que tiene un estado degradado o con error, vea [Indicadores de supervisión de StorSimple](storsimple-monitoring-indicators.md).
-* Para reemplazar un componente de hardware con errores, vea [Reemplazo de los componentes de hardware de StorSimple](storsimple-hardware-component-replacement.md).
-* Si sigue teniendo problemas con el dispositivo, [póngase en contacto con el servicio de soporte técnico de Microsoft](storsimple-8000-contact-microsoft-support.md).
+* toouse Hola a tooadminister de servicio de administrador de dispositivos de StorSimple el dispositivo, vaya demasiado[uso Hola tooadminister de servicio de administrador de dispositivos de StorSimple el dispositivo StorSimple](storsimple-8000-manager-service-administration.md).
+* Si necesita tootroubleshoot un componente de dispositivo que tiene un estado degradado o con error, consulte demasiado[StorSimple supervisar los indicadores](storsimple-monitoring-indicators.md).
+* tooreplace un componente de hardware con errores, vea [sustitución de componentes de hardware de StorSimple](storsimple-hardware-component-replacement.md).
+* Si continúa tooexperience problemas del dispositivo, [póngase en contacto con Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 

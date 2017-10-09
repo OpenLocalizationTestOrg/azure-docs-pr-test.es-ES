@@ -1,6 +1,6 @@
 ---
-title: "Cambio de un conjunto de disponibilidad de máquina virtual | Microsoft Docs"
-description: "Aprenda a cambiar un conjunto de disponibilidad para sus máquinas virtuales mediante Azure Portal o Azure PowerShell con el modelo de implementación de Resource Manager."
+title: "aaaChange un conjunto de disponibilidad de las máquinas virtuales | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo establece la disponibilidad de hello toochange para sus máquinas virtuales mediante Azure PowerShell y modelo de implementación del Administrador de recursos de Hola."
 keywords: 
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,19 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: drewm
-ms.openlocfilehash: d1daa01191480eaeb81727416b2134b00c698dc3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3b1cc010a6d4c4883f2e34da9cfca4372aec92cb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="change-the-availability-set-for-a-windows-vm"></a>Cambio del conjunto de disponibilidad de una máquina virtual Windows
-En los pasos siguientes se describe cómo cambiar el conjunto de disponibilidad de una máquina virtual con Azure PowerShell. Una máquina virtual solo puede agregarse a un conjunto de disponibilidad cuando se crea. Para poder cambiar el conjunto de disponibilidad, debe eliminar la máquina virtual y volver a crearla. 
+# <a name="change-hello-availability-set-for-a-windows-vm"></a>Cambiar la disponibilidad de hello establecido para una VM de Windows
+Hola pasos describe cómo toochange Hola conjunto de disponibilidad de una máquina virtual mediante PowerShell de Azure. Solo pueden agregarse disponibilidad tooan establecer cuando se crea una máquina virtual. En el conjunto de disponibilidad de orden toochange hello, toodelete es necesario y, a continuación, vuelva a crear la máquina virtual de Hola. 
 
-## <a name="change-the-availability-set-using-powershell"></a>Cambio del conjunto de disponibilidad con PowerShell
-1. Obtenga la siguiente información importante de la máquina virtual que se va a modificar.
+## <a name="change-hello-availability-set-using-powershell"></a>Cambiar la disponibilidad de hello establecen a través de PowerShell
+1. Capturar Hola siguientes detalles de la clave de hello VM toobe modificado.
    
-    Nombre de la máquina virtual
+    Nombre del programa Hola a máquinas virtuales
    
     ```powershell
     $vm = Get-AzureRmVM -ResourceGroupName <Name-of-resource-group> -Name <name-of-VM>
@@ -41,7 +41,7 @@ En los pasos siguientes se describe cómo cambiar el conjunto de disponibilidad 
     $vm.HardwareProfile.VmSize
     ```
    
-    Interfaz de red principal de la red y las interfaces de red opcional si existen en la máquina virtual
+    Interfaz de red principal de la red y las interfaces de red opcional si existen en hello VM
    
     ```powershell
     $vm.NetworkProfile.NetworkInterfaces[0].Id
@@ -67,17 +67,17 @@ En los pasos siguientes se describe cómo cambiar el conjunto de disponibilidad 
     ```powershell
     $vm.Extensions
     ```
-2. Elimine la máquina virtual sin eliminar los discos o las interfaces de red.
+2. Eliminar Hola VM sin eliminar ninguno de los discos de Hola o interfaces de red de Hola.
    
     ```powershell
     Remove-AzureRmVM -ResourceGroupName <resourceGroupName> -Name <vmName> 
     ```
-3. Si todavía no existe, cree el conjunto de disponibilidad.
+3. Crear disponibilidad Hola establecer si aún no existe
    
     ```powershell
     New-AzureRmAvailabilitySet -ResourceGroupName <resourceGroupName> -Name <availabilitySetName> -Location "<location>" 
     ```
-4. Vuelva a crear la máquina virtual con el nuevo conjunto de disponibilidad.
+4. Volver a crear Hola máquina virtual con el nuevo conjunto de disponibilidad Hola
    
     ```powershell
     $vm2 = New-AzureRmVMConfig -VMName <VM-name> -VMSize <vm-size> -AvailabilitySetId <availability-set-id>
@@ -88,10 +88,10 @@ En los pasos siguientes se describe cómo cambiar el conjunto de disponibilidad 
    
     New-AzureRmVM -ResourceGroupName <resourceGroupName> -Location <location> -VM <vmConfig>
     ``` 
-5. Agregue discos de datos y extensiones. Para más información, vea [Cómo conectar un disco de datos administrado a una VM con Windows en Azure Portal](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) y [Extensiones en Plantillas de Resource Manager](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions). Los discos de datos y las extensiones pueden agregarse a la máquina virtual mediante PowerShell o la CLI de Azure.
+5. Agregue discos de datos y extensiones. Para obtener más información, consulte [tooVM de conectar el disco de datos](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) y [extensiones en las plantillas de administrador de recursos](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#extensions). Discos de datos y las extensiones se pueden agregar toohello máquina virtual con PowerShell o CLI de Azure.
 
 ## <a name="example-script"></a>Script de ejemplo
-El script siguiente proporciona un ejemplo de recopilación de la información necesaria: se elimina la máquina virtual original y, luego, se vuelve a crear en un nuevo conjunto de disponibilidad.
+Hello script siguiente proporciona un ejemplo de recopilación de información de hello necesario, eliminar Hola VM original y, a continuación, volver a crear un nuevo conjunto de disponibilidad.
 
 ```powershell
     #set variables
@@ -103,7 +103,7 @@ El script siguiente proporciona un ejemplo de recopilación de la información n
     #Get VM Details
     $OriginalVM = get-azurermvm -ResourceGroupName $rg -Name $vmName
 
-    #Output VM details to file
+    #Output VM details toofile
     "VM Name: " | Out-File -FilePath $outFile 
     $OriginalVM.Name | Out-File -FilePath $outFile -Append
 
@@ -127,7 +127,7 @@ El script siguiente proporciona un ejemplo de recopilación de la información n
     $OriginalVM.StorageProfile.DataDisks | Out-File -FilePath $outFile -Append
     }
 
-    #Remove the original VM
+    #Remove hello original VM
     Remove-AzureRmVM -ResourceGroupName $rg -Name $vmName
 
     #Create new availability set if it does not exist
@@ -136,7 +136,7 @@ El script siguiente proporciona un ejemplo de recopilación de la información n
     $availset = New-AzureRmAvailabilitySet -ResourceGroupName $rg -Name $newAvailSetName -Location $OriginalVM.Location
     }
 
-    #Create the basic configuration for the replacement VM
+    #Create hello basic configuration for hello replacement VM
     $newVM = New-AzureRmVMConfig -VMName $OriginalVM.Name -VMSize $OriginalVM.HardwareProfile.VmSize -AvailabilitySetId $availSet.Id
     Set-AzureRmVMOSDisk -VM $NewVM -VhdUri $OriginalVM.StorageProfile.OsDisk.Vhd.Uri  -Name $OriginalVM.Name -CreateOption Attach -Windows
 
@@ -150,10 +150,10 @@ El script siguiente proporciona un ejemplo de recopilación de la información n
         Add-AzureRmVMNetworkInterface -VM $NewVM -Id $nic
     }
 
-    #Create the VM
+    #Create hello VM
     New-AzureRmVM -ResourceGroupName $rg -Location $OriginalVM.Location -VM $NewVM -DisableBginfoExtension
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Agregue almacenamiento adicional a la máquina virtual mediante la adición de un [disco de datos](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)adicional.
+Agregar almacenamiento adicional tooyour VM agregando más [disco de datos](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

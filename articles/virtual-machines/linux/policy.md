@@ -1,6 +1,6 @@
 ---
-title: "Aplicación de seguridad con directivas en máquinas virtuales Linux en Azure | Microsoft Docs"
-description: "Aplicación de una directiva a una máquina virtual Linux de Azure Resource Manager"
+title: "seguridad de aaaEnforce con las directivas en máquinas virtuales de Linux en Azure | Documentos de Microsoft"
+description: "¿Cómo tooapply una máquina Virtual de Azure Resource Manager Linux tooan de directiva"
 services: virtual-machines-linux
 documentationcenter: 
 author: singhkays
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: singhkay
-ms.openlocfilehash: 58eaab4fa03afc1e6a5e38bef691cce62a921ea9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5abd0c937578aba7e72b62c65b4eef9a9737aa2a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Aplicación de directivas a máquinas virtuales con Linux con Azure Resource Manager
-Mediante las directivas, una organización puede aplicar varias convenciones y reglas en toda la empresa. La aplicación del comportamiento deseado puede ayudar a reducir el riesgo a la vez que se contribuye al éxito de la organización. En este artículo, describimos cómo puede usar las directivas de Azure Resource Manager para definir el comportamiento deseado para las máquinas virtuales de su organización.
+# <a name="apply-policies-toolinux-vms-with-azure-resource-manager"></a>Aplicar directivas tooLinux máquinas virtuales con el Administrador de recursos de Azure
+Mediante el uso de directivas, una organización puede aplicar varias reglas de empresa de Hola y convenciones. Cumplimiento del comportamiento deseado de Hola puede ayudar a mitigar el riesgo mientras contribuye éxito de toohello de organización de Hola. En este artículo se describe cómo puede utilizar comportamiento de Azure Resource Manager directivas toodefine Hola deseado para las máquinas virtuales de su organización.
 
-Para obtener una introducción a las directivas, vea [Uso de directivas para administrar los recursos y controlar el acceso](../../azure-resource-manager/resource-manager-policy.md).
+Para una toopolicies introducción, consulte [recursos toomanage de directiva de uso y controlar el acceso](../../azure-resource-manager/resource-manager-policy.md).
 
 ## <a name="permitted-virtual-machines"></a>Máquinas virtuales permitidas
-Para asegurarse de que las máquinas virtuales de la organización son compatibles con una aplicación, puede restringir los sistemas operativos permitidos. En este ejemplo de directiva siguiente, permitirá que se creen solo máquinas virtuales Ubuntu 14.04.2-LTS.
+tooensure que las máquinas virtuales para su organización son compatibles con una aplicación, puede restringir Hola permitida sistemas operativos. Hola siguiente ejemplo de directiva, permitir solo Ubuntu 14.04.2-LTS las máquinas virtuales toobe creado.
 
 ```json
 {
@@ -79,7 +79,7 @@ Para asegurarse de que las máquinas virtuales de la organización son compatibl
 }
 ```
 
-Use un carácter comodín para modificar la directiva anterior para permitir cualquier imagen de Ubuntu LTS: 
+Use un Hola de toomodify comodín anterior directiva tooallow cualquier imagen Ubuntu LTS: 
 
 ```json
 {
@@ -92,7 +92,7 @@ Para obtener información sobre los campos de directiva, vea [Alias de directiva
 
 ## <a name="managed-disks"></a>Discos administrados
 
-Para requerir el uso de discos administrados, use la siguiente directiva:
+toorequire Hola uso de discos administrados, Hola de uso después de la directiva:
 
 ```json
 {
@@ -140,9 +140,9 @@ Para requerir el uso de discos administrados, use la siguiente directiva:
 
 ## <a name="images-for-virtual-machines"></a>Imágenes para las máquinas virtuales
 
-Por motivos de seguridad, puede obligar a que solo las imágenes personalizadas aprobadas se puedan implementar en su entorno. Puede especificar el grupo de recursos que contiene las imágenes aprobadas o las imágenes aprobadas específicas.
+Por motivos de seguridad, puede obligar a que solo las imágenes personalizadas aprobadas se puedan implementar en su entorno. Puede especificar el grupo de recursos de Hola que contiene imágenes de hello aprobado, o imágenes aprobadas específico de Hola.
 
-En el ejemplo siguiente se requieren imágenes de un grupo de recursos aprobado:
+Hola siguiente ejemplo requiere imágenes desde un grupo de recursos aprobados:
 
 ```json
 {
@@ -169,7 +169,7 @@ En el ejemplo siguiente se requieren imágenes de un grupo de recursos aprobado:
 } 
 ```
 
-En el ejemplo siguiente se especifican los identificadores de las imágenes aprobadas:
+Hello en el ejemplo siguiente se especifica la imagen de hello aprobado identificadores:
 
 ```json
 {
@@ -180,7 +180,7 @@ En el ejemplo siguiente se especifican los identificadores de las imágenes apro
 
 ## <a name="virtual-machine-extensions"></a>Extensiones de máquina virtual
 
-Puede que desee prohibir el uso de ciertos tipos de extensiones. Por ejemplo, una extensión puede no ser compatible con determinadas imágenes personalizadas de máquina virtual. En el ejemplo siguiente se muestra cómo bloquear una extensión específica. Utiliza el anunciante y el tipo para determinar qué extensiones se van a bloquear.
+Puede que desee tooforbid uso de ciertos tipos de extensiones. Por ejemplo, una extensión puede no ser compatible con determinadas imágenes personalizadas de máquina virtual. Hola siguiente ejemplo se muestra cómo tooblock una extensión específica. Usa toodetermine publicador y tipo que tooblock de extensión.
 
 ```json
 {
@@ -209,6 +209,6 @@ Puede que desee prohibir el uso de ciertos tipos de extensiones. Por ejemplo, un
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Después de definir una regla de directiva (como se muestra en los ejemplos anteriores), debe crear la definición de directiva y asignarla a un ámbito. El ámbito puede ser una suscripción, un grupo de recursos o un recurso. Para asignar directivas a través del portal, consulte [Use Azure portal to assign and manage resource policies](../../azure-resource-manager/resource-manager-policy-portal.md) (Uso de Azure Portal para asignar y administrar directivas de recursos). Para asignar directivas a través de la API de REST, PowerShell o la CLI de Azure, consulte [Assign and manage policies through script](../../azure-resource-manager/resource-manager-policy-create-assign.md) (Asignación y administración de directivas a través de scripts).
-* Para obtener una introducción a las directivas de recursos, consulte [Uso de directivas para administrar los recursos y controlar el acceso](../../azure-resource-manager/resource-manager-policy.md).
-* Para obtener instrucciones sobre cómo las empresas pueden utilizar Resource Manager para administrar eficazmente las suscripciones, vea [Scaffold empresarial de Azure: Gobierno de suscripción prescriptivo](../../azure-resource-manager/resource-manager-subscription-governance.md).
+* Después de definir una regla de directiva (como se muestra en hello anteriores ejemplos), se necesita la definición de la directiva de toocreate hello y se asigna tooa ámbito. Hola ámbito puede ser una suscripción, el grupo de recursos o el recurso. directivas de tooassign a través del portal de hello, vea [tooassign portal de Azure de uso y administrar las directivas de recursos](../../azure-resource-manager/resource-manager-policy-portal.md). directivas de tooassign a través de la API de REST, PowerShell o CLI de Azure, consulte [asignar y administrar las directivas a través de la secuencia de comandos](../../azure-resource-manager/resource-manager-policy-create-assign.md).
+* Una directivas tooresource de introducción, consulte [información general de directivas de recursos](../../azure-resource-manager/resource-manager-policy.md).
+* Para obtener instrucciones sobre cómo las empresas pueden usar el Administrador de recursos tooeffectively administrar suscripciones, vea [scaffold Azure enterprise - regulador prescriptiva suscripción](../../azure-resource-manager/resource-manager-subscription-governance.md).

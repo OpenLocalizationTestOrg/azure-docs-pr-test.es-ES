@@ -1,6 +1,6 @@
 ---
-title: "Cifrado de discos en una máquina virtual de Windows en Azure | Microsoft Docs"
-description: "Cómo cifrar discos virtuales en una máquina virtual de Windows para mejorar la seguridad Azure PowerShell"
+title: "aaaEncrypt discos en una máquina virtual de Windows en Azure | Documentos de Microsoft"
+description: "¿Cómo tooencrypt discos virtuales en una máquina virtual de Windows para mejorar la seguridad con Azure PowerShell"
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/10/2017
 ms.author: iainfou
-ms.openlocfilehash: 98b42b252a601af090579e3939f3c7ab91c3803b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 77c42a67cb57a9dc5fe3159fce0be75e3a965be5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>Cómo cifrar discos virtuales en una máquina virtual de Windows
-Para mejorar la seguridad y el cumplimiento de las máquinas virtuales, se pueden cifrar los discos virtuales en Azure. Los discos se cifran mediante claves criptográficas que están protegidas en Azure Key Vault. Estas claves criptográficas se pueden controlar y se puede auditar su uso. En este artículo se detalla cómo cifrar los discos virtuales en una máquina virtual de Windows con Azure PowerShell. También se puede [cifrar una máquina virtual de Linux mediante la CLI 2.0 de Azure](../linux/encrypt-disks.md).
+# <a name="how-tooencrypt-virtual-disks-on-a-windows-vm"></a>¿Cómo tooencrypt discos virtuales en una máquina virtual de Windows
+Para mejorar la seguridad y el cumplimiento de las máquinas virtuales, se pueden cifrar los discos virtuales en Azure. Los discos se cifran mediante claves criptográficas que están protegidas en Azure Key Vault. Estas claves criptográficas se pueden controlar y se puede auditar su uso. Este artículo detalles de cómo tooencrypt discos virtuales en una máquina virtual de Windows con PowerShell de Azure. También puede [cifrar una VM de Linux con hello Azure CLI 2.0](../linux/encrypt-disks.md).
 
 ## <a name="overview-of-disk-encryption"></a>Introducción al cifrado de discos
-Los discos virtuales en máquinas virtuales de Windows se cifran en reposo mediante BitLocker. El cifrado de los discos virtuales en Azure no conlleva ningún cargo. Las claves criptográficas se almacenan en Azure Key Vault con protección de software, o puede importar o generar las claves en módulos de seguridad de hardware (HSM) certificados conforme a las normas FIPS 140-2 de nivel 2. Las claves criptográficas se usan para cifrar y descifrar los discos virtuales conectados a la máquina virtual. Estas claves criptográficas se pueden controlar y se puede auditar su uso. Como las máquinas virtuales se encienden y se apagan, una entidad de servicio de Azure Active Directory proporciona un mecanismos seguro para la emisión de estas claves criptográficas.
+Los discos virtuales en máquinas virtuales de Windows se cifran en reposo mediante BitLocker. El cifrado de los discos virtuales en Azure no conlleva ningún cargo. Las claves criptográficas se almacenan en el almacén de claves de Azure mediante la protección de software, o puede importar o generar las claves en módulos de seguridad de Hardware (HSM) de certificados tooFIPS estándares de 140-2 nivel 2. Estas claves criptográficas son tooencrypt usado y descifrar los discos virtuales conectados tooyour máquina virtual. Estas claves criptográficas se pueden controlar y se puede auditar su uso. Como las máquinas virtuales se encienden y se apagan, una entidad de servicio de Azure Active Directory proporciona un mecanismos seguro para la emisión de estas claves criptográficas.
 
-El proceso para cifrar una máquina virtual es el siguiente:
+proceso de Hola para cifrar una máquina virtual es como sigue:
 
 1. Cree una clave criptográfica en Azure Key Vault.
-2. Configure la clave criptográfica para poder utilizarla para el cifrado de discos.
-3. Para leer la clave criptográfica de Azure Key Vault, cree una entidad de servicio de Azure Active Directory con los permisos adecuados.
-4. Emita el comando para cifrar los discos virtuales y especifique la entidad de servicio de Azure Active Directory y la clave criptográfica adecuada que se deberá usar.
-5. La entidad de servicio de Azure Active Directory solicita la clave criptográfica necesaria a Azure Key Vault.
-6. Los discos virtuales se cifran con la clave criptográfica proporcionada.
+2. Configurar el número de toobe criptográficos clave de hello utilizable para el cifrado de discos.
+3. clave criptográfica de hello tooread de hello almacén de claves de Azure, cree un servicio de Azure Active Directory principal con los permisos adecuados de Hola.
+4. Emitir Hola comando tooencrypt los discos virtuales, especificación de entidad de servicio de Azure Active Directory de Hola y adecuado toobe clave criptográfica utilizado.
+5. solicitudes de entidad de seguridad de servicio de Azure Active Directory de Hola Hola requiere la clave criptográfica de almacén de claves de Azure.
+6. discos virtuales de Hola se cifran mediante la clave criptográfica de hello proporcionado.
 
 ## <a name="encryption-process"></a>Proceso de cifrado
-El cifrado de discos utiliza los siguientes componentes adicionales:
+Cifrado del disco se basa en hello adicionales de los componentes siguientes:
 
-* **Azure Key Vault**: se usa para proteger las claves criptográficas y los secretos usados para el proceso de cifrado y descifrado de discos. 
-  * Si ya existe un almacén de Azure Key Vault, puede utilizarlo. No es necesario dedicar un almacén de Key Vault para el cifrado de discos.
-  * Para separar los límites administrativos y la visibilidad de las claves, puede crear un almacén de Key Vault dedicado.
-* **Azure Active Directory**: controla el intercambio seguro de las claves cifradas necesarias y la autenticación para las acciones solicitadas. 
+* **Almacén de claves de Azure** -utilizar claves criptográficas toosafeguard y secretos usados para el proceso de cifrado y descifrado de hello del disco. 
+  * Si ya existe un almacén de Azure Key Vault, puede utilizarlo. No es necesario toodedicate los discos de tooencrypting de almacén de claves.
+  * límites administrativos tooseparate y visibilidad de clave, puede crear un almacén de claves dedicado.
+* **Azure Active Directory** : Hola de identificadores de intercambio seguro de claves cifradas necesarias y autenticación para solicitado acciones. 
   * Normalmente, puede usar un almacén existente de Azure Active Directory para hospedar la aplicación.
-  * La entidad de servicio proporciona un mecanismo seguro para solicitar y recibir las claves criptográficas correspondientes. No está desarrollando una aplicación real que se integrará con Azure Active Directory.
+  * entidad de servicio de Hello proporciona un mecanismo de seguridad toorequest y emitir claves criptográficas de hello adecuado. No está desarrollando una aplicación real que se integrará con Azure Active Directory.
 
 ## <a name="requirements-and-limitations"></a>Requisitos y limitaciones
 Requisitos y escenarios admitidos para el cifrado de discos:
@@ -53,22 +53,22 @@ Requisitos y escenarios admitidos para el cifrado de discos:
 * Habilitación del cifrado en máquinas virtuales de Windows existentes en Azure.
 * Habilitación del cifrado en máquinas virtuales de Windows configuradas mediante Espacios de almacenamiento.
 * Deshabilitación del cifrado en las unidades de datos y del sistema operativo en máquinas virtuales de Windows.
-* Todos los recursos (por ejemplo: almacén de Key Vault, cuenta de almacenamiento, máquina virtual, etc.) deben pertenecer a la misma región y suscripción de Azure.
+* Todos los recursos (por ejemplo, el almacén de claves, la cuenta de almacenamiento y VM) deben estar en hello misma región de Azure y la suscripción.
 * Nivel estándar de máquinas virtuales, como las máquinas virtuales de la serie A, D, DS, G y GS.
 
-El cifrado del disco no se admite actualmente en los siguientes escenarios:
+Cifrado del disco no se admite actualmente en hello los escenarios siguientes:
 
 * Máquina s virtuales de nivel básico
-* Máquinas virtuales creadas con el modelo de implementación clásica.
-* Actualización de las claves criptográficas en una máquina virtual ya cifrada.
+* Máquinas virtuales creadas mediante el modelo de implementación de hello clásico.
+* Actualizar las claves criptográficas de hello en una máquina virtual ya se ha cifrado.
 * Integración con el Servicio de administración de claves local.
 
 ## <a name="create-azure-key-vault-and-keys"></a>Creación de Azure Key Vault y claves
-Antes de empezar, asegúrese de tener instalada la versión más reciente del módulo de Azure PowerShell. Para más información, vea [Instalación y configuración de Azure PowerShell](/powershell/azure/overview). En todos los ejemplos de comandos, reemplace todos los parámetros de ejemplo por sus propios nombres, ubicaciones y valores de clave. Los siguientes ejemplos usan una convención de *myResourceGroup*, *myKeyVault*, *myVM*, etc.
+Antes de empezar, asegúrese de que esa versión más reciente de Hola de Hola se ha instalado el módulo de PowerShell de Azure. Para obtener más información, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview). A lo largo de los ejemplos de comandos de hello, reemplace todos los parámetros de ejemplo con sus propios nombres, la ubicación y los valores de clave. Hello en los ejemplos siguientes utilizan una convención de *myResourceGroup*, *myKeyVault*, *myVM*, etcetera.
 
-El primer paso es crear un almacén de Azure Key Vault para almacenar las claves criptográficas. Azure Key Vault puede almacenar claves, secretos o contraseñas que permiten su implementación segura en las aplicaciones y los servicios. Para el cifrado de discos virtuales, se crea un Key Vault para almacenar una clave criptográfica que se usa para cifrar o descifrar los discos virtuales. 
+primer paso de Hello es un almacén de claves de Azure toostore toocreate las claves criptográficas. Almacén de claves de Azure puede almacenar secretos, claves o contraseñas que permiten toosecurely implementan en sus aplicaciones y servicios. Para el cifrado de disco virtual, crear un almacén de claves toostore una clave criptográfica que es usado tooencrypt o descifrar los discos virtuales. 
 
-Habilite el proveedor Azure Key Vault dentro de la suscripción de Azure con [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider) y, a continuación, cree un grupo de recursos con [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). En el ejemplo siguiente, se crea un grupo de recursos denominado *myResourceGroup* en la ubicación del *este de EE. UU.*:
+Habilitar el proveedor de almacén de claves de Azure de hello dentro de su suscripción de Azure con [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider), a continuación, cree un grupo de recursos con [AzureRmResourceGroup nuevo](/powershell/module/azurerm.resources/new-azurermresourcegroup). Hello en el ejemplo siguiente se crea un nombre de grupo de recursos *myResourceGroup* en hello *UU* ubicación:
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -78,7 +78,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"
 New-AzureRmResourceGroup -Location $location -Name $rgName
 ```
 
-El almacén de Azure Key Vault que contiene las claves criptográficas y los recursos de proceso asociados, como el almacenamiento y la propia máquina virtual, debe residir en la misma región. Cree una instancia de Azure Key Vault con [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) y habilite Key Vault para usarlo con el cifrado de discos. Especifique un nombre de Key Vault único para *keyVaultName* de la siguiente manera:
+Hola almacén de claves de Azure que lo contiene hello las claves criptográfico y proceso asociado recursos como almacenamiento y Hola propia máquina virtual deben residir en Hola misma región. Crear un almacén de claves de Azure con [AzureRmKeyVault New](/powershell/module/azurerm.keyvault/new-azurermkeyvault) y habilitar Hola el almacén de claves para su uso con el cifrado del disco. Especifique un nombre de Key Vault único para *keyVaultName* de la siguiente manera:
 
 ```powershell
 $keyVaultName = "myUniqueKeyVaultName"
@@ -88,9 +88,9 @@ New-AzureRmKeyVault -Location $location `
     -EnabledForDiskEncryption
 ```
 
-Puede almacenar las claves criptográficas mediante software o protección del modelo de seguridad de hardware (HSM). Para usar HSM se necesita un almacén premium de Key Vault. La creación de un almacén premium de Key Vault conlleva un coste, frente al almacén estándar de Key Vault, que almacena las claves protegidas por software. Para crear un Key Vault premium, en el paso anterior agregue los parámetros *-Sku "Premium"*. En el ejemplo siguiente se usa claves protegidas por software ya que hemos creado un almacén de Key Vault estándar. 
+Puede almacenar las claves criptográficas mediante software o protección del modelo de seguridad de hardware (HSM). Para usar HSM se necesita un almacén premium de Key Vault. Hay un costo adicional toocreating una prima el almacén de claves en lugar de almacén de claves estándar que almacena las claves protegidas por software. toocreate un almacén de claves, premium Hola anterior paso Agregar hello *- Sku "Premium"* parámetros. Hello en el ejemplo siguiente se usa claves protegidas por software ya que hemos creado un almacén de claves estándar. 
 
-En ambos modelos de protección, la plataforma Windows Azure debe tener acceso para solicitar las claves criptográficas cuando la máquina virtual arranca para descifrar los discos virtuales. Cree una clave criptográfica en la instancia de Key Vault con [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey). En el ejemplo siguiente se crea una clave llamada *myKey*:
+Para los dos modelos de protección, Hola plataforma Windows Azure debe toobe concede acceso toorequest hello las claves criptográficas cuando Hola VM arranca discos virtuales de toodecrypt Hola. Cree una clave criptográfica en la instancia de Key Vault con [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey). Hello en el ejemplo siguiente se crea una clave denominada *myKey*:
 
 ```powershell
 Add-AzureKeyVaultKey -VaultName $keyVaultName `
@@ -99,10 +99,10 @@ Add-AzureKeyVaultKey -VaultName $keyVaultName `
 ```
 
 
-## <a name="create-the-azure-active-directory-service-principal"></a>Creación de la entidad de servicio de Azure Active Directory
-Cuando los discos virtuales se cifran o descifran, se especifica una cuenta para controlar la autenticación y el intercambio de claves criptográficas desde Key Vault. Esta cuenta, una entidad de servicio de Azure Active Directory, permite que la plataforma de Azure solicite las claves criptográficas correspondientes en nombre de la máquina virtual. Su suscripción dispone de una instancia de Azure Active Directory predeterminada, aunque muchas organizaciones tienen directorios de Azure Active Directory dedicados.
+## <a name="create-hello-azure-active-directory-service-principal"></a>Crear Hola entidad de servicio de Azure Active Directory
+Cuando los discos virtuales se cifrada o descifrados, especifique una autenticación de cuentas de hello toohandle e intercambio de claves criptográficas del almacén de claves. Esta cuenta, una entidad de seguridad de servicio de Active Directory de Azure, permite toorequest de la plataforma Windows Azure de Hola Hola adecuada las claves criptográficas en nombre de VM de Hola. Su suscripción dispone de una instancia de Azure Active Directory predeterminada, aunque muchas organizaciones tienen directorios de Azure Active Directory dedicados.
 
-Cree una entidad de seguridad de servicio en Azure Active Directory con [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal). Para especificar una contraseña segura, siga las [Restricciones y directivas de contraseñas en Azure Active Directory](../../active-directory/active-directory-passwords-policy.md):
+Cree una entidad de seguridad de servicio en Azure Active Directory con [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal). toospecify una contraseña segura, siga hello [restricciones y directivas de contraseña en Azure Active Directory](../../active-directory/active-directory-passwords-policy.md):
 
 ```powershell
 $appName = "My App"
@@ -114,7 +114,7 @@ $app = New-AzureRmADApplication -DisplayName $appName `
 New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
 ```
 
-Para cifrar o descifrar los discos virtuales correctamente, debe establecer los permisos de la clave criptográfica que se almacena en Key Vault para que permitan que la entidad de servicio de Azure Active Directory lea las claves. Establezca los permisos en Key Vault con [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy):
+toosuccessfully cifrar o descifrar los discos virtuales, permisos de clave cifrado de hello almacenados en el almacén de claves deben ser conjunto toopermit hello Azure Active Directory service principal tooread Hola claves. Establezca los permisos en Key Vault con [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy):
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName $keyvaultName `
@@ -125,7 +125,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $keyvaultName `
 
 
 ## <a name="create-virtual-machine"></a>Create virtual machine
-Para probar el proceso de cifrado, se va a crear una máquina virtual. En el ejemplo siguiente se crea una máquina virtual llamada *myVM* mediante una imagen de *Windows Server 2016 Datacenter*:
+tootest Hola proceso de cifrado, vamos a crear una máquina virtual. Hello en el ejemplo siguiente se crea una máquina virtual denominada *myVM* con un *Windows Server 2016 Datacenter* imagen:
 
 ```powershell
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
@@ -178,14 +178,14 @@ New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vmConfig
 
 
 ## <a name="encrypt-virtual-machine"></a>Cifrado de máquina virtual
-Para cifrar los discos virtuales, reúna todos los componentes anteriores:
+discos virtuales de tooencrypt hello, reúne todos los componentes anteriores de hello:
 
-1. Especifique la entidad de servicio de Azure Active Directory y la contraseña.
-2. Especifique el almacén de Key Vault donde se almacenarán los metadatos de los discos cifrados.
-3. Especifique las claves criptográficas que se utilizarán para el cifrado y descifrado.
-4. Especifique si desea cifrar el disco del sistema operativo, los discos de datos o todos.
+1. Especificar Hola entidad de servicio de Azure Active Directory y una contraseña.
+2. Especificar Hola el almacén de claves toostore Hola metadatos para los discos cifrados.
+3. Especifique hello toouse de claves criptográficas para hello real cifrado y descifrado.
+4. Especifique si desea que tooencrypt disco de SO hello, discos de datos de Hola o todos.
 
-Cifre la VM con [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) mediante la clave de Azure Key Vault y las credenciales de entidad de seguridad de servicio de Azure Active Directory. En el ejemplo siguiente se recupera toda la información de clave y después se cifra la máquina virtual denominada *myVM*:
+Cifrar la máquina virtual con [AzureRmVMDiskEncryptionExtension conjunto](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) con clave de almacén de claves de Azure de Hola y las credenciales principales de servicio de Azure Active Directory. Hello en el ejemplo siguiente se recupera toda la información clave hello, a continuación, cifra Hola máquina virtual denominada *myVM*:
 
 ```powershell
 $keyVault = Get-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $rgName;
@@ -203,13 +203,13 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgName `
     -KeyEncryptionKeyVaultId $keyVaultResourceId
 ```
 
-Acepte el mensaje para continuar con el cifrado de la máquina virtual. La VM se reinicia durante el proceso. Una vez que finalice el proceso de cifrado y se reinicie la máquina virtual, revise el estado del cifrado con [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus):
+Aceptar hello toocontinue símbolo del sistema con el cifrado de la máquina virtual de Hola. Hola VM se reinicia durante el proceso de Hola. Una vez que se complete el proceso de cifrado de Hola y Hola máquina virtual se reinicie, revisar el estado de cifrado de hello con [AzureRmVmDiskEncryptionStatus Get](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus):
 
 ```powershell
 Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $rgName -VMName $vmName
 ```
 
-La salida es similar a la del ejemplo siguiente:
+Hola de salida es similar toohello siguiente ejemplo:
 
 ```powershell
 OsVolumeEncrypted          : Encrypted
@@ -220,4 +220,4 @@ ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Para más información sobre cómo administrar Azure Key Vault, vea [Configuración de Key Vault para máquinas virtuales en Azure Resource Manager](key-vault-setup.md).
-* Para obtener más información acerca del cifrado de discos, por ejemplo, cómo preparar una máquina virtual personalizada cifrada para cargar en Azure, consulte [Azure Disk Encryption](../../security/azure-security-disk-encryption.md).
+* Para obtener más información acerca del cifrado de disco, como preparar una tooAzure tooupload personalizado cifrado de VM, consulte [cifrado del disco de Azure](../../security/azure-security-disk-encryption.md).

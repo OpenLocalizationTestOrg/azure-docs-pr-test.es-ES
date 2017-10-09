@@ -1,6 +1,6 @@
 ---
-title: "Selección de nombres de usuario para Linux | Microsoft Docs"
-description: "Aprenda a seleccionar nombres de usuario para una máquina virtual de Linux en Azure."
+title: aaaSelecting nombres de usuario de Linux | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooselect usuario asigna un nombre para una máquina virtual de Linux en Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: szarkos
@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: 1874d72e5f88816036667932371ff28704d186c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c65e2ac46f40bb8c9d74cccbaf248a070c0fa6cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="selecting-user-names-for-linux-on-azure"></a>Selección de nombres de usuario para Linux en Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Cuando aprovisiona una máquina virtual con Linux en Azure, debe especificar el nombre de un usuario no raíz que más adelante pueda usar para iniciar sesión en la máquina virtual. Puede elegir el nombre del nuevo usuario o, si el aprovisionamiento es a través del Portal de Azure clásico, puede aceptar el nombre predeterminado "azureuser".
+Cuando aprovisiona una máquina virtual de Linux en Azure debe especificar nombre de Hola de un usuario no es de raíz que posteriormente, puede usar toolog en hello VM. Puede elegir nombre Hola de nuevo usuario de hello, o si el aprovisionamiento a través de Hola portal de Azure clásico puede aceptar predeterminado Hola nombre "azureuser".
 
-En la mayoría de los casos, este usuario no existirá en la imagen base y se creará durante el proceso de aprovisionamiento. Si el usuario ya existe en la imagen de máquina virtual base, el agente Linux de Azure configura simplemente la contraseña (o la clave SSH) para ese usuario de acuerdo con la información especificada al crear la máquina virtual.
+En la mayoría de los casos, este usuario no existe en la imagen base hello y se creará durante el proceso de aprovisionamiento de Hola. Si el usuario Hola existe en la imagen de máquina virtual base hello, a continuación, Hola Linux de Azure agente simplemente configura contraseña Hola o clave SSH para ese usuario basándose en información de Hola que especificó al crear Hola máquina virtual.
 
-**Sin embargo**, Linux define un conjunto de nombres de usuario que no se deben usar al crear usuarios nuevos. El proceso de aprovisionamiento generará un **error** si trata de aprovisionar una máquina virtual Linux con un usuario del sistema existente, que se define como un usuario con UID 0-99. Un ejemplo típico es el usuario `root` , que tiene el UID de 0.
+**Sin embargo**, Linux define un conjunto de nombres de usuario que no se deben usar al crear usuarios nuevos. Hola will del proceso de aprovisionamiento **producirá un error** si intentas tooprovision una VM de Linux con un usuario de sistema existente, que se define como un usuario con UID 0 y 99. Un ejemplo típico es hello `root` usuario, que tiene el UID 0.
 
 * Consulte también: [Base estándar de Linux - Intervalos de identificadores de usuarios](http://refspecs.linuxfoundation.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/uidrange.html)
 
-A continuación encontrará una lista de usuarios de sistema integrados comunes para CentOS y Ubuntu que se debe intentar no usar al aprovisionar una máquina virtual Linux en Azure. Esta lista es solo un ejemplo, consulte la documentación de su distribución para asegurarse de que el nombre de usuario que elija no entra en conflicto con un usuario existente del sistema.
+Hola aquí te mostramos una lista de usuarios de sistema integradas comunes para CentOS y Ubuntu debe evitar el uso de al aprovisionar una máquina virtual de Linux en Azure. Esta lista es sólo un ejemplo, consulte toohello documentación para su distribución tooensure ese nombre de usuario de Hola que elija no entra en conflicto con un usuario del sistema existente.
 
 ## <a name="centos"></a>CentOS
 * abrt

@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de acceso de aplicaciones en una máquina virtual Windows en Azure | Microsoft Docs"
-description: "Use estos pasos detallados de solución de problemas para aislar problemas de conexión a aplicaciones que se ejecutan en máquinas virtuales Windows en Azure."
+title: "aaaTroubleshoot acceso a la aplicación de máquina virtual de Windows en Azure | Documentos de Microsoft"
+description: "Use estos problemas de tooisolate detallada de los pasos para solucionar problemas en conexión tooapplications que se ejecutan en máquinas virtuales de Windows en Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 05/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 5e9f54a666799147cee8d8b5af5fd8aa3bac1780
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2705999bbc73a1883bb3d9ead18b4ba7ba911f42
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshoot-access-to-an-application-running-on-a-windows-virtual-machine-in-azure"></a>Solución de problemas de acceso a una aplicación que se ejecuta en una máquina virtual Windows en Azure
+# <a name="troubleshoot-access-tooan-application-running-on-a-windows-virtual-machine-in-azure"></a>Solucionar problemas de acceso tooan aplicación que se ejecuta en una máquina virtual de Windows en Azure
 [!INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../../includes/virtual-machines-common-troubleshoot-app-connection.md)]
 

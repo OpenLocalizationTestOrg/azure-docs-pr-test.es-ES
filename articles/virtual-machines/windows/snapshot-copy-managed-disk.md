@@ -1,6 +1,6 @@
 ---
-title: "Creación de una copia de un disco administrado de Azure para copia de seguridad | Microsoft Docs"
-description: "Obtenga información sobre cómo crear una copia de un disco administrado de Azure que se usará para copias de seguridad o solucionar problemas del disco."
+title: aaaCreate una copia de un disco administrado de Azure para copia de seguridad | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate una copia de un toouse de disco administrado de Azure para volver arriba o hacia la solución de problemas de disco emite."
 documentationcenter: 
 author: cwatson-cat
 manager: timlt
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/9/2017
 ms.author: cwatson
-ms.openlocfilehash: a7527b12f4f0d2b45713a0c0109d81ff51293fd8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2f33dbbee624bcd813f3c7c3e3401072d0933714
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>Creación de una copia de un VHD almacenado como un disco administrado de Azure mediante instantáneas administradas
-Cree una instantánea de un disco administrado para copias de seguridad o cree un disco administrado a partir de la instantánea y conéctelo a una máquina virtual de prueba para fines de solución de problemas. Una instantánea administrada es una copia completa a partir de un momento específico de un disco administrado de VM. Crea una copia de solo lectura del VHD y, de forma predeterminada, se almacena como un Disco administrado estándar. Para más información sobre Managed Disks, consulte [Azure Managed Disks overview](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Introducción a Azure Managed Disks).
+Crear una instantánea de un disco administrado para copia de seguridad o crear un disco administrado desde la instantánea de Hola y adjuntarlo tootroubleshoot de máquina virtual de prueba tooa. Una instantánea administrada es una copia completa a partir de un momento específico de un disco administrado de VM. Crea una copia de solo lectura del VHD y, de forma predeterminada, se almacena como un Disco administrado estándar. Para más información sobre Managed Disks, consulte [Azure Managed Disks overview](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Introducción a Azure Managed Disks).
 
 Para información sobre los precios, consulte [Precios de Azure Storage](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
 ## <a name="before-you-begin"></a>Antes de empezar
-Si usa PowerShell, asegúrese de que tiene la versión más reciente del módulo de PowerShell AzureRM.Compute. Ejecute el siguiente comando para instalarla.
+Si se usa PowerShell, asegúrese de que tiene versión más reciente de Hola de hello módulo AzureRM.Compute PowerShell. Ejecutar Hola siguientes tooinstall de comando.
 
 ```
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
 Para más información, consulte [Azure PowerShell Versioning](/powershell/azure/overview) (Control de versiones de Azure PowerShell).
 
-## <a name="copy-the-vhd-with-a-snapshot"></a>Copia del VHD con una instantánea
-Use Azure Portal o PowerShell para crear una instantánea del disco administrado.
+## <a name="copy-hello-vhd-with-a-snapshot"></a>Copiar Hola VHD con una instantánea
+Usar Hola portal de Azure o PowerShell tootake una instantánea de hello disco administrado.
 
-### <a name="use-azure-portal-to-take-a-snapshot"></a>Uso de Azure Portal para crear una instantánea 
+### <a name="use-azure-portal-tootake-a-snapshot"></a>Usar tootake portal Azure una instantánea 
 
-1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
-2. En la parte superior izquierda, haga clic en **Nuevo** y busque **instantánea**.
-3. En la hoja Instantánea, haga clic en **Crear**.
-4. Escriba un **nombre** para la instantánea.
-5. Seleccione un valor de [Grupo de recursos](../../azure-resource-manager/resource-group-overview.md#resource-groups) existente o escriba el nombre para crear uno. 
+1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+2. A partir de la parte superior izquierda de hello, haga clic en **New** y busque **instantánea**.
+3. En la hoja de la instantánea de hello, haga clic en **crear**.
+4. Escriba un **nombre** para instantáneas de Hola.
+5. Seleccione una existente [grupo de recursos](../../azure-resource-manager/resource-group-overview.md#resource-groups) o nombre de tipo hello para uno nuevo. 
 6. Seleccione una ubicación del centro de datos de Azure.  
-7. Como **disco de origen**, seleccione el disco administrado para la instantánea.
-8. Seleccione el **tipo de cuenta** que se usará para almacenar la instantánea. Se recomienda **Standard_LRS**, a menos que necesite almacenarla en un disco de alto rendimiento.
+7. Para **el disco de origen**, seleccione Hola toosnapshot administrado por disco.
+8. Seleccione hello **tipo de cuenta** instantánea de toouse toostore Hola. Se recomienda **Standard_LRS**, a menos que necesite almacenarla en un disco de alto rendimiento.
 9. Haga clic en **Crear**.
 
-### <a name="use-powershell-to-take-a-snapshot"></a>Uso de PowerShell para crear una instantánea
-Los pasos siguientes le muestran cómo obtener el disco VHD que se copiará, crear las configuraciones de instantánea y crear una instantánea del disco con el cmdlet New-AzureRmSnapshot<!--Add link to cmdlet when available-->. 
+### <a name="use-powershell-tootake-a-snapshot"></a>Usar PowerShell tootake una instantánea
+Hello pasos siguientes muestran cómo tooget Hola VHD disco toobe copiar, crear Hola configuraciones de instantáneas y tomar una instantánea del disco de hello utilizando el cmdlet New-AzureRmSnapshot Hola<!--Add link toocmdlet when available-->. 
 
 1. Configure algunos parámetros. 
 
@@ -59,27 +59,27 @@ $location = 'southeastasia'
 $dataDiskName = 'ContosoMD_datadisk1' 
 $snapshotName = 'ContosoMD_datadisk1_snapshot1'  
 ```
-  Reemplace los valores de parámetro:
-  -  "myResourceGroup", con el grupo de recursos de la VM.
-  -  "southeastasia", con la ubicación geográfica en la que desea almacenar la instantánea administrada. <!---How do you look these up? -->
-  -  "ContosoMD_datadisk1", con el nombre del disco VHD que desea copiar.
-  -  "ContosoMD_datadisk1_snapshot1", con el nombre que desea usar para la instantánea nueva.
+  Reemplace los valores de parámetro hello:
+  -  "myResourceGroup" con el grupo de recursos de la máquina virtual de Hola.
+  -  "southeastasia" con la ubicación geográfica de Hola donde desea que la instantánea administrados almacenados. <!---How do you look these up? -->
+  -  "ContosoMD_datadisk1" con el nombre de Hola de disco del disco duro virtual de Hola que desea toocopy.
+  -  Nombre de "ContosoMD_datadisk1_snapshot1" con hello desea toouse para la nueva instantánea de Hola.
 
-2. Obtenga el disco VHD que se copiará.
+2. Obtener toobe de disco VHD Hola copiado.
 
  ```powershell
 $disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName -DiskName $dataDiskName 
 ```
-3. Cree las configuraciones de la instantánea. 
+3. Crear configuraciones de instantáneas de Hola. 
 
  ```powershell
 $snapshot =  New-AzureRmSnapshotConfig -SourceUri $disk.Id -CreateOption Copy -Location $location 
 ```
-4. Tome la instantánea.
+4. Tomar instantánea de Hola.
 
  ```powershell
 New-AzureRmSnapshot -Snapshot $snapshot -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName 
 ```
-Si tiene previsto utilizar la instantánea para crear un disco administrado y conectarle una VM que precisa de un alto rendimiento, use el parámetro `-AccountType Premium_LRS` con el comando New-AzureRmSnapshot. El parámetro crea la instantánea para que se almacene como disco administrado Premium. Managed Disks Premium son más costosos que los Estándar. Por lo tanto, asegúrese de que realmente necesita discos Premium antes de usar el parámetro.
+Si piensa toouse Hola instantánea toocreate un disco administrado y adjuntar una máquina virtual que necesita toobe alto rendimiento, use el parámetro hello `-AccountType Premium_LRS` con el comando hello AzureRmSnapshot de nuevo. parámetro Hello crea instantáneas de Hola para que se almacena como un disco de Premium administrados. Managed Disks Premium son más costosos que los Estándar. Por lo tanto, asegúrese de que realmente necesita discos Premium antes de usar el parámetro.
 
 

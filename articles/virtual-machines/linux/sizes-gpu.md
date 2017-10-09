@@ -1,6 +1,6 @@
 ---
-title: "Tamaños de las máquinas virtuales Linux en Azure: GPU | Microsoft Docs"
-description: "Enumera los tamaños diferentes optimizados para GPU disponibles para las máquinas virtuales Linux en Azure."
+title: "tamaños de VM de Linux aaaAzure - GPU | Documentos de Microsoft"
+description: "Muestra los tamaños GPU con optimización para diferentes de hello disponibles para máquinas virtuales de Linux en Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 5c9bf89feba519147b07f2810fe4da882664e89e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e98f720499be37df4048aeb513aa4f6b187b7335
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="gpu-linux-vm-sizes"></a>Tamaño de máquinas virtuales optimizados para GPU Linux
 
@@ -34,7 +34,7 @@ Para los pasos de instalación y verificación de controladores, consulte [el pr
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* No se recomienda instalar X Server u otros sistemas que usan el controlador nouveau en máquinas virtuales Ubuntu NC. Antes de instalar controladores de GPU NVIDIA, debe deshabilitar al controlador nouveau.  
+* No se recomienda instalar X server u otros sistemas que usan el controlador de estilo nouveau de hello en máquinas virtuales de NC Ubuntu. Antes de instalar controladores de GPU NVIDIA, necesita controladores de estilo nouveau hello toodisable.  
 
 ## <a name="other-sizes"></a>Otros tamaños
 - [Uso general](sizes-general.md)

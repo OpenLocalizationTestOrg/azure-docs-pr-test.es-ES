@@ -1,6 +1,6 @@
 ---
-title: Eventos programados para VM Windows en Azure| Microsoft Docs
-description: "Eventos programados mediante el servicio Azure Metadata para las máquinas virtuales Windows."
+title: "aaaScheduled eventos para máquinas virtuales de Windows en Azure | Documentos de Microsoft"
+description: "Eventos programados utilizando el servicio de metadatos de Azure de Hola para en las máquinas virtuales de Windows."
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: 
 author: zivraf
@@ -15,62 +15,62 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 7198fa8d1a512d10ca7022078aa2ea7bde3a4c02
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c9f5f332a5d77e8d54d1ae8bdaadafc1a14f3b77
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-windows-vms"></a>Servicio Azure Metadata: eventos programados (versión preliminar) para VM Windows
 
 > [!NOTE] 
-> Las versiones preliminares están a su disposición con la condición de que acepte los términos de uso. Para obtener más información, consulte [Términos de uso complementarios de las Versiones Preliminares de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Las vistas previas se realizan tooyou disponible en condición Hola acepta toohello términos de uso. Para obtener más información, consulte [Términos de uso complementarios de las Versiones Preliminares de Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-Scheduled Events es uno de los subservicios de Azure Metadata Service. Se encarga de mostrar información relacionada con eventos próximos (por ejemplo, un reinicio) para que la aplicación pueda prepararse para ellos y limitar las interrupciones. Está disponible para todos los tipos de máquina virtual de Azure, incluso para IaaS y PaaS. Scheduled Events permite que la máquina virtual tenga tiempo para realizar tareas de prevención y minimizar el efecto de un evento. 
+Eventos programados es uno de los subservicios de hello en hello Azure metadatos de servicio. Se encarga de mostrar información relacionada con eventos próximos (por ejemplo, un reinicio) para que la aplicación pueda prepararse para ellos y limitar las interrupciones. Está disponible para todos los tipos de máquina virtual de Azure, incluso para IaaS y PaaS. Eventos programados ofrece a las tareas de máquina Virtual tiempo tooperform preventivas efecto de hello toominimize de un evento. 
 
 Scheduled Events está disponible para máquinas virtuales Linux y Windows. Para más información acerca de Scheduled Events en Linux, consulte [Scheduled Events para máquinas virtuales Linux](../windows/scheduled-events.md).
 
 ## <a name="why-scheduled-events"></a>¿Por qué Scheduled Events?
 
-Con Scheduled Events, puede tomar medidas para limitar el impacto del mantenimiento iniciado por la plataforma o de las acciones iniciadas por usuarios en el servicio. 
+Con los eventos programados, puede tomar medidas impacto de hello toolimit de mantenimiento de la plataforma intiated o las acciones iniciadas por el usuario en su servicio. 
 
-Las cargas de trabajo de varias instancias, que usan técnicas de replicación para mantener el estado, pueden ser vulnerables a las interrupciones que se producen en varias instancias. Esas interrupciones pueden dar lugar a tareas costosas (por ejemplo, volver a elaborar los índices) o, incluso, a una pérdida de las réplicas. 
+Las cargas de trabajo de varias instancias, que utilizan el estado de replicación técnicas toomaintain, pueden ser vulnerable toooutages sucediendo en varias instancias. Esas interrupciones pueden dar lugar a tareas costosas (por ejemplo, volver a elaborar los índices) o, incluso, a una pérdida de las réplicas. 
 
-En muchos otros casos, la disponibilidad global de los servicios puede mejorarse realizando una secuencia de apagado estable, por ejemplo, completando transacciones en curso (o cancelándolas), reasignando tareas a otras máquinas virtuales del clúster (conmutación por error manual) o eliminando la máquina virtual de un grupo de equilibradores de carga de red. 
+En muchos casos, hello general disponibilidad del servicio se puede mejorar mediante la realización de una secuencia de cierre como transacciones en curso se completan (o canceladas), reasignar tareas tooother máquinas virtuales en clúster de hello (conmutación por error manual), o quitar Hola Máquina virtual de un grupo de equilibradores de carga de red. 
 
-Hay casos en los que notificar a un administrador sobre un evento próximo o registrar dicho evento puede mejorar el mantenimiento de las aplicaciones hospedadas en la nube.
+Hay casos donde notificando a un administrador sobre un evento próximo o registrar un evento de este tipo ayudará a mejorar la capacidad de servicio de Hola de las aplicaciones hospedadas en la nube de Hola.
 
-Azure Metadata Service muestra Eventos programados en los siguientes casos de uso:
+Casos de uso de Azure Metadata Service superficies programado los eventos en los siguientes hello:
 -   Mantenimiento iniciado por la plataforma (por ejemplo, la implementación del SO del host)
 -   Llamadas iniciadas por el usuario (por ejemplo, si el usuario reinicia una VM o la vuelve a implementar)
 
 
-## <a name="the-basics"></a>Conceptos básicos  
+## <a name="hello-basics"></a>conceptos básicos de Hola  
 
-Azure Metadata Service expone información sobre la ejecución de máquinas virtuales mediante un punto de conexión de REST accesible desde la propia máquina virtual. La información se encuentra disponible a través de una dirección IP no enrutable, de modo que no se expone fuera de la máquina virtual.
+Servicio de metadatos de Azure expone información acerca de cómo ejecutar máquinas virtuales con un extremo de REST accesible desde dentro de hello máquina virtual. información de Hello está disponible a través de una dirección IP no enrutables para que no se expone fuera Hola máquina virtual.
 
 ### <a name="scope"></a>Scope
-Los eventos programados se presentan a todas las máquinas virtuales en un servicio en la nube o a todas las máquinas virtuales en un conjunto de disponibilidad. Por ello, debería revisar el campo `Resources` del evento para identificar cuáles son las máquinas virtuales que se verán afectadas. 
+Eventos programados son tooall apareció máquinas virtuales en un servicio de nube o tooall máquinas virtuales en un conjunto de disponibilidad. Como resultado, debe comprobar hello `Resources` campo Hola evento tooidentify que las máquinas virtuales van toobe afectado. 
 
-### <a name="discovering-the-endpoint"></a>Detección del punto de conexión
-Al crear una máquina virtual dentro de una red virtual (VNet), Metadata Service está disponible desde una dirección IP no enrutable (`169.254.169.254`).
-Si la máquina virtual no se crea dentro de una red virtual (lo habitual para servicios en la nube y VM clásicas), se necesita una lógica adicional para detectar el punto de conexión que vaya a usarse. Consulte esta muestra para obtener información sobre cómo [descubrir el punto de conexión de host](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
+### <a name="discovering-hello-endpoint"></a>Detección de punto de conexión de Hola
+En el caso de hello donde se crea una máquina Virtual en una red Virtual (VNet), está disponible en una dirección IP no enrutables estática, servicio de metadatos de hello `169.254.169.254`.
+Si Hola Máquina Virtual no se crea dentro de una red Virtual, de los casos Hola predeterminados para los servicios de nube y máquinas virtuales de clásicas, lógica adicional es necesario toodiscover Hola extremo toouse. Consulte cómo demasiado toothis ejemplo toolearn[detectar el extremo de host de hello](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 
 ### <a name="versioning"></a>Control de versiones 
-El servicio de metadatos de instancia tiene versiones. Las versiones son obligatorias y la versión actual es la `2017-03-01`.
+Hola servicio de metadatos de instancia tiene una versión. Versiones son obligatorias y la versión actual de hello es `2017-03-01`.
 
 > [!NOTE] 
-> Las versiones preliminares de eventos programados compatibles {más reciente} como la versión de api. Este formato ya no es compatible y dejará de utilizarse en el futuro.
+> Versiones anteriores de vista previa de los eventos programados formando Hola api-version {más reciente}. Este formato ya no se admite y dejará de utilizarse en hello futuras.
 
 ### <a name="using-headers"></a>Uso de encabezados
-Al realizar consultas a Metadata Service, debe proporcionar el encabezado `Metadata: true` para asegurarse de que la solicitud no se haya redirigido de manera involuntaria.
+Al consultar Hola Metadata Service, debe proporcionar encabezado de hello `Metadata: true` solicitud de hello tooensure no se ha redirigido involuntariamente.
 
 ### <a name="enabling-scheduled-events"></a>Habilitación de eventos programados
-La primera vez que efectúe una solicitud de eventos programados, Azure habilita de manera implícita la característica en la máquina virtual. Como resultado, debe esperar una respuesta diferida de hasta dos minutos en la primera llamada.
+Hello primera vez que se realiza una solicitud para los eventos programados, Azure implícitamente habilita Hola característica en la máquina Virtual. Como resultado, debe esperar una respuesta diferida en la primera llamada de seguridad tootwo minutos.
 
 ### <a name="user-initiated-maintenance"></a>Mantenimiento iniciado por el usuario
-El mantenimiento de máquina virtual iniciado por el usuario a través de Azure Portal, API, CLI o PowerShell da lugar a un evento programado. Esto permite probar la lógica de preparación de mantenimiento en su aplicación. Asimismo, permite a su aplicación prepararse para el mantenimiento iniciado por el usuario.
+Mantenimiento de máquinas virtuales a través de hello portal de Azure, API, CLI, iniciada por el usuario o PowerShell da como resultado un evento programado. Esto le permite lógica de preparación de mantenimiento de tootest hello en la aplicación y permite la tooprepare de aplicación para el mantenimiento iniciada por el usuario.
 
 Si se reinicia una máquina virtual, se programa un evento con el tipo `Reboot`. Si vuelve a implementar una máquina virtual, se programa un evento con el tipo `Redeploy`.
 
@@ -80,17 +80,17 @@ Si se reinicia una máquina virtual, se programa un evento con el tipo `Reboot`.
 > [!NOTE] 
 > Actualmente no se puede configurar ningún mantenimiento iniciado por el usuario que dé lugar a eventos programados. Está planeado que esta capacidad de configuración se lance en el futuro.
 
-## <a name="using-the-api"></a>Uso de la API
+## <a name="using-hello-api"></a>Uso de API de Hola
 
 ### <a name="query-for-events"></a>Consulta de eventos
-Puede consultar los eventos programados; para ello, simplemente haga la siguiente llamada:
+Puede consultar para los eventos programados basta con realizar Hola siguiente llamada:
 
 ```
 curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01
 ```
 
 Una respuesta contiene una matriz de eventos programados. Una matriz vacía significa que actualmente no hay eventos programados.
-En caso de que haya eventos programados, la respuesta contiene una matriz de eventos: 
+En caso de hello donde hay eventos programados, respuesta de hello contiene una matriz de eventos: 
 ```
 {
     "DocumentIncarnation": {IncarnationID},
@@ -111,14 +111,14 @@ En caso de que haya eventos programados, la respuesta contiene una matriz de eve
 |Propiedad  |  Descripción |
 | - | - |
 | EventId | Es un identificador único global del evento. <br><br> Ejemplo: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Es el impacto causado por el evento. <br><br> Valores: <br><ul><li> `Freeze`: la máquina virtual está programada para pausarse durante unos segundos. La CPU entra en estado de suspensión, pero esto no afecta a la memoria, a los archivos abiertos ni a las conexiones de red. <li>`Reboot`: la máquina virtual está programada para reiniciarse (se borrará la memoria no persistente). <li>`Redeploy`: la máquina virtual está programada para moverse a otro nodo (los discos efímeros se pierden). |
+| EventType | Es el impacto causado por el evento. <br><br> Valores: <br><ul><li> `Freeze`: Hola Máquina Virtual es toopause programada para algunos segundos. Hola CPU está suspendido, pero no hay ningún impacto en la memoria, los archivos abiertos o conexiones de red. <li>`Reboot`: Hola Máquina Virtual está programada para reiniciar el sistema (memoria no persistente se pierde). <li>`Redeploy`: Hola Máquina Virtual está programada toomove tooanother nodo (discos efímeros se pierden). |
 | ResourceType | Es el tipo de recurso al que afecta este evento. <br><br> Valores: <ul><li>`VirtualMachine`|
-| Recursos| Es la lista de recursos a la que afecta este evento. Se garantiza que contenga máquinas de un [dominio de actualización](manage-availability.md) como máximo, pero puede no contener todas las máquinas en el dominio. <br><br> Ejemplo: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| Estado de evento | Es el estado de este evento. <br><br> Valores: <ul><li>`Scheduled`: este evento está programado para iniciarse después de la hora especificada en la propiedad `NotBefore`.<li>`Started`: este evento se ha iniciado.</ul> Nunca se proporcionan `Completed` ni ningún estado similar; el evento ya no se devolverá cuando finalice.
+| Recursos| Es la lista de recursos a la que afecta este evento. Esto se garantiza toocontain máquinas a lo sumo una [Actualizar dominio](manage-availability.md), pero no puede contener todas las máquinas de hello UD. <br><br> Ejemplo: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Estado de evento | Es el estado de este evento. <br><br> Valores: <ul><li>`Scheduled`: Este evento es toostart programada tarde Hola especificado en hello `NotBefore` propiedad.<li>`Started`: este evento se ha iniciado.</ul> Ya no `Completed` o alguna vez se proporciona una situación similar; eventos Hola ya no se devolverá cuando se completa el evento Hola.
 | NotBefore| Hora a partir de la que puede iniciarse este evento. <br><br> Ejemplo: <br><ul><li> 2016-09-19T18:29:47Z  |
 
 ### <a name="event-scheduling"></a>Programación de eventos
-Cada evento se programa una cantidad mínima de tiempo en el futuro en función del tipo de evento. Este tiempo se refleja en la propiedad `NotBefore` de un evento. 
+Cada evento se programa una cantidad mínima de tiempo en hello futuras según el tipo de evento. Este tiempo se refleja en la propiedad `NotBefore` de un evento. 
 
 |EventType  | Minimum Notice |
 | - | - |
@@ -128,22 +128,22 @@ Cada evento se programa una cantidad mínima de tiempo en el futuro en función 
 
 ### <a name="starting-an-event"></a>Inicio de un evento 
 
-Una vez que se haya enterado de un evento próximo y que haya completado la lógica para un apagado estable, puede aprobar el evento pendiente mediante una llamada de `POST` a Metadata Service con `EventId`. Esta indica a Azure que puede acortar el tiempo de notificación mínimo (cuando sea posible). 
+Una vez haya aprendido de próximos eventos y completado su lógica de cierre correcto, puede aprobar eventos pendientes de hello realizando una `POST` llamar al servicio de metadatos de toohello con hello `EventId`. Esto indica tooAzure que puede reducir notificación mínima Hola tiempo (cuando sea posible). 
 
 ```
 curl -H Metadata:true -X POST -d '{"DocumentIncarnation":"5", "StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-03-01
 ```
 
 > [!NOTE] 
-> Reconocer un evento permite a este continuar para todos sus elementos `Resources`, no solo para la máquina virtual que lo reconoce. Por tanto, puede optar por elegir un líder para que coordine el reconocimiento. Este puede ser tan sencillo como la propia máquina del campo `Resources`.
+> Confirmación de un evento permite Hola evento tooproceed para todos los `Resources` en el caso de hello, no solo Hola máquina virtual que reconoce el evento Hola. Por lo tanto, puede elegir tooelect una confirmación de líder toocoordinate hello, que puede ser tan simple como máquina primera Hola Hola `Resources` campo.
 
 
 ## <a name="powershell-sample"></a>Ejemplo de PowerShell 
 
-En el siguiente ejemplo se realiza una consulta a Metadata Service para eventos programados y se aprueban todos los eventos pendientes.
+Hola consultas de ejemplo siguientes Hola servicio de metadatos para los eventos programados y aprueba cada evento pendiente.
 
 ```PowerShell
-# How to get scheduled events 
+# How tooget scheduled events 
 function GetScheduledEvents($uri)
 {
     $scheduledEvents = Invoke-RestMethod -Headers @{"Metadata"="true"} -URI $uri -Method get
@@ -152,19 +152,19 @@ function GetScheduledEvents($uri)
     return $scheduledEvents
 }
 
-# How to approve a scheduled event
+# How tooapprove a scheduled event
 function ApproveScheduledEvent($eventId, $docIncarnation, $uri)
 {    
-    # Create the Scheduled Events Approval Document
+    # Create hello Scheduled Events Approval Document
     $startRequests = [array]@{"EventId" = $eventId}
     $scheduledEventsApproval = @{"StartRequests" = $startRequests; "DocumentIncarnation" = $docIncarnation} 
     
-    # Convert to JSON string
+    # Convert tooJSON string
     $approvalString = ConvertTo-Json $scheduledEventsApproval
 
-    Write-Host "Approving with the following: `n" $approvalString
+    Write-Host "Approving with hello following: `n" $approvalString
 
-    # Post approval string to scheduled events endpoint
+    # Post approval string tooscheduled events endpoint
     Invoke-RestMethod -Uri $uri -Headers @{"Metadata"="true"} -Method POST -Body $approvalString
 }
 
@@ -175,7 +175,7 @@ function HandleScheduledEvents($scheduledEvents)
 
 ######### Sample Scheduled Events Interaction #########
 
-# Set up the scheduled events URI for a VNET-enabled VM
+# Set up hello scheduled events URI for a VNET-enabled VM
 $localHostIP = "169.254.169.254"
 $scheduledEventURI = 'http://{0}/metadata/scheduledevents?api-version=2017-03-01' -f $localHostIP 
 
@@ -200,7 +200,7 @@ foreach($event in $scheduledEvents.Events)
 
 ## <a name="c-sample"></a>Ejemplo de C\# 
 
-El siguiente ejemplo corresponde a un cliente sencillo que se comunica con Metadata Service.
+Hello en el ejemplo siguiente es de un cliente que se comunica con el servicio de metadatos de Hola.
 
 ```csharp
 public class ScheduledEventsClient
@@ -208,7 +208,7 @@ public class ScheduledEventsClient
     private readonly string scheduledEventsEndpoint;
     private readonly string defaultIpAddress = "169.254.169.254"; 
 
-    // Set up the scheduled events URI for a VNET-enabled VM
+    // Set up hello scheduled events URI for a VNET-enabled VM
     public ScheduledEventsClient()
     {
         scheduledEventsEndpoint = string.Format("http://{0}/metadata/scheduledevents?api-version=2017-03-01", defaultIpAddress);
@@ -237,7 +237,7 @@ public class ScheduledEventsClient
 }
 ```
 
-Scheduled Events puede representarse mediante las siguientes estructuras de datos:
+Eventos programados se pueden representar utilizando Hola siguiendo las estructuras de datos:
 
 ```csharp
 public class ScheduledEventsDocument
@@ -274,7 +274,7 @@ public class StartRequest
 }
 ```
 
-En el siguiente ejemplo se realiza una consulta a Metadata Service para eventos programados y se aprueban todos los eventos pendientes.
+Hola consultas de ejemplo siguientes Hola servicio de metadatos para los eventos programados y aprueba cada evento pendiente.
 
 ```csharp
 public class Program
@@ -293,7 +293,7 @@ public class Program
             HandleEvents(scheduledEventsDocument.Events);
 
             // Wait for user response
-            Console.WriteLine("Press Enter to approve executing events\n");
+            Console.WriteLine("Press Enter tooapprove executing events\n");
             Console.ReadLine();
 
             // Approve events
@@ -317,7 +317,7 @@ public class Program
                 client.ApproveScheduledEvents(approveEventsJsonDocument);
             }
 
-            Console.WriteLine("Complete. Press enter to repeat\n\n");
+            Console.WriteLine("Complete. Press enter toorepeat\n\n");
             Console.ReadLine();
             Console.Clear();
         }
@@ -332,7 +332,7 @@ public class Program
 
 ## <a name="python-sample"></a>Ejemplo de Python 
 
-En el siguiente ejemplo se realiza una consulta a Metadata Service para eventos programados y se aprueban todos los eventos pendientes.
+Hola consultas de ejemplo siguientes Hola servicio de metadatos para los eventos programados y aprueba cada evento pendiente.
 
 ```python
 #!/usr/bin/python
@@ -376,6 +376,6 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>Pasos siguientes 
 
-- En [Instance Metadata Service](instance-metadata-service.md) (Servicio Instance Metadata), puede obtener más información sobre las API disponibles.
+- Obtener más información acerca de la API a disposición de Hola Hola [servicio de metadatos de la instancia](instance-metadata-service.md).
 - Obtenga información sobre cómo realizar [el mantenimiento planeado para máquinas virtuales Windows en Azure](planned-maintenance.md).
 

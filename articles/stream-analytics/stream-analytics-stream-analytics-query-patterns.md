@@ -1,5 +1,5 @@
 ---
-title: Ejemplos de consulta para patrones de uso comunes de Stream Analytics | Microsoft Docs
+title: "ejemplos de patrones de uso comunes de análisis de transmisiones los aaaQuery | Documentos de Microsoft"
 description: Patrones de consulta comunes de Azure Stream Analytics
 keywords: ejemplos de consultas
 services: stream-analytics
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/08/2017
 ms.author: jenniehubbard
-ms.openlocfilehash: a00855c200b3fb365073bad4c5773b02c4c2c7fe
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c8f7a8ac661eaf0281f4140b02c42141b73040fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Ejemplos de consulta para patrones de uso comunes de Stream Analytics
 ## <a name="introduction"></a>Introducción
-Las consultas de Azure Stream Analytics se expresan en un lenguaje de consulta similar a SQL. Estas consultas se documentan en la guía [Referencia de lenguaje de consulta de Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx). En este artículo se describen las soluciones para varios patrones de consulta comunes basados en situaciones del mundo real. Es un trabajo en curso y continúa actualizándose con nuevos patrones de forma continuada.
+Las consultas de Azure Stream Analytics se expresan en un lenguaje de consulta similar a SQL. Estas consultas se documentan en hello [referencia del lenguaje de consulta de análisis de transmisiones](https://msdn.microsoft.com/library/azure/dn834998.aspx) guía. Este patrones de consulta común de artículo se describen las soluciones tooseveral, basándose en situaciones del mundo real. Es un trabajo en curso y continúa toobe actualizada con nuevos patrones de forma continuada.
 
 ## <a name="query-example-convert-data-types"></a>Ejemplo de consulta: conversión de tipos de datos
-**Descripción**: defina los tipos de propiedades en el flujo de entrada.
-Por ejemplo, el peso del vehículo se incorpora al flujo de entrada como cadena y se debe convertir en **INT** para realizar la operación **SUM**.
+**Descripción**: definir tipos de Hola de propiedades en el flujo de entrada de Hola.
+Por ejemplo, hello automóvil procede en el flujo de entrada de hello como cadenas y la importancia de necesita toobe convertir demasiado**INT** tooperform **suma** , configúrelo.
 
 **Entrada**:
 
@@ -53,11 +53,11 @@ Por ejemplo, el peso del vehículo se incorpora al flujo de entrada como cadena 
         Make,
         TumblingWindow(second, 10)
 
-**Explicación**: use una instrucción **CAST** en el campo **Weight** (Peso) para especificar su tipo de datos. Vea la lista de tipos de datos admitidos en [Data types (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx) [Tipos de datos (Azure Stream Analytics)].
+**Explicación**: Use un **conversión** instrucción Hola **peso** campo toospecify su tipo de datos. Ver lista de Hola de tipos de datos compatibles en [tipos de datos (análisis de transmisiones de Azure)](https://msdn.microsoft.com/library/azure/dn835065.aspx).
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Ejemplo de consulta: uso de Like/Not like para realizar la coincidencia de patrones
-**Descripción**: compruebe que el valor de un campo del evento coincide con un patrón determinado.
-Por ejemplo, compruebe que el resultado devuelve las matrículas que empiezan por A y terminan en nueve.
+## <a name="query-example-use-likenot-like-toodo-pattern-matching"></a>Ejemplo de consulta: usan Like o Not like toodo coincidencia de patrones
+**Descripción**: Compruebe que el valor de un campo en el evento Hola coincide con un patrón determinado.
+Por ejemplo, compruebe que el resultado de hello devuelve platos de licencia que comience con una letra y terminar por 9.
 
 **Entrada**:
 
@@ -83,11 +83,11 @@ Por ejemplo, compruebe que el resultado devuelve las matrículas que empiezan po
     WHERE
         LicensePlate LIKE 'A%9'
 
-**Explicación**: use la instrucción **LIKE** para comprobar el valor del campo **LicensePlate**. Debe comenzar con una A, seguida de cualquier cadena de ceros o más caracteres y terminar en nueve. 
+**Explicación**: Hola de uso **como** Hola de instrucción toocheck **LicensePlate** valor del campo. Debe comenzar con una A, seguida de cualquier cadena de ceros o más caracteres y terminar en nueve. 
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Ejemplo de consulta: especificación de la lógica para los distintos casos/valores (instrucciones CASE)
 **Descripción**: proporcione un cálculo diferente para un campo en función de un criterio concreto.
-Por ejemplo, proporcione una descripción de cadena para el número de vehículos que han pasado de la misma marca, con un caso especial para 1.
+Por ejemplo, proporcione una descripción de cadena para automóviles cuántos de hello igual que pasan, con un caso especial de 1.
 
 **Entrada**:
 
@@ -118,11 +118,11 @@ Por ejemplo, proporcione una descripción de cadena para el número de vehículo
         Make,
         TumblingWindow(second, 10)
 
-**Explicación**: la cláusula **CASE** permite proporcionar un cálculo diferente en función de criterios determinados (en nuestro caso, el número de automóviles en la ventana de agregado).
+**Explicación**: Hola **caso** cláusula nos permite tooprovide un cálculo diferentes, en función de algunos criterios (en nuestro caso, el recuento de Hola de automóviles hello en la ventana agregado de hello).
 
-## <a name="query-example-send-data-to-multiple-outputs"></a>Ejemplo de consulta: envío de datos a varias salidas
-**Descripción**: envíe datos a varios destinos de salida desde un único trabajo.
-Por ejemplo, analice los datos para una alerta de umbral y archive todos los eventos en Blob Storage.
+## <a name="query-example-send-data-toomultiple-outputs"></a>Ejemplo de consulta: enviar datos toomultiple genera
+**Descripción**: enviar datos toomultiple destinos desde un único trabajo de salida.
+Por ejemplo, analizar los datos de una alerta basadas en umbrales y todos los eventos tooblob almacenamiento de archivo.
 
 **Entrada**:
 
@@ -173,11 +173,11 @@ Por ejemplo, analice los datos para una alerta de umbral y archive todos los eve
     HAVING
         [Count] >= 3
 
-**Explicación**: la cláusula **INTO** indica a Stream Analytics en cuál de las salidas se escribirán los datos de esta instrucción.
-La primera consulta es una transferencia de los datos que se recibe en una salida que denominamos **ArchiveOutput**.
-La segunda consulta hace una agregación y un filtrado simples y envía los resultados a un sistema de alertas descendente.
+**Explicación**: Hola **INTO** cláusula indica el análisis de transmisiones que de hello genera toowrite Hola datos toofrom esta instrucción.
+Hola primera consulta es un acceso directo de datos de saludo se recibió una salida tooan que se denomina **ArchiveOutput**.
+segunda consulta de Hello realiza algunas agregaciones simples y filtrado y lo envía resultados hello tooa sistema de alertas siguen en la cadena.
 
-Tenga en cuenta que también puede reutilizar los resultados de las expresiones de tabla comunes (CTE), como las instrucciones **WITH**, en varias instrucciones de salida. Esta opción ofrece el beneficio adicional de la apertura de algunos lectores para el origen de entrada.
+Tenga en cuenta que también puede reutilizar los resultados de Hola de expresiones de tabla común (CTE) de hello (como **WITH** instrucciones) en varias instrucciones de salida. Esta opción se Hola ventaja adicional de abrir el origen de entrada de toohello de lectores menos.
 Por ejemplo: 
 
     WITH AllRedCars AS (
@@ -192,8 +192,8 @@ Por ejemplo:
     SELECT * INTO ToyotaOutput FROM AllRedCars WHERE Make = 'Toyota'
 
 ## <a name="query-example-count-unique-values"></a>Ejemplo de consulta: recuento de valores únicos
-**Descripción**: cuente el número de valores de campo únicos que aparecen en el flujo durante una ventana de tiempo determinada.
-Por ejemplo, ¿cuántas marcas de vehículos únicas pasan a través de la cabina de peaje en un intervalo de dos segundos?
+**Descripción**: contar Hola número único de valores de campo que aparecen en la secuencia de hello dentro de un período de tiempo.
+Por ejemplo, ¿cuántos único hace que sea de automóviles que se pasan a través de la cabina de peaje hello en una ventana de 2 segundos?
 
 **Entrada**:
 
@@ -225,11 +225,11 @@ GROUP BY
 
 
 **Explicación:**
-** COUNT(DISTINCT Make)** devuelve la cantidad de valores distintos de la columna **Make** dentro de una ventana de tiempo.
+**COUNT (DISTINCT hacer)** devuelve Hola número de valores distintos en hello **realizar** columna dentro de un período de tiempo.
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>Ejemplo de consulta: determinar si un valor ha cambiado
-**Descripción**: busque un valor anterior para determinar si es diferente del valor actual.
-Por ejemplo, ¿el vehículo anterior de la autopista de peaje es de la misma marca que el actual?
+**Descripción**: examine un toodetermine valor anterior si es diferente del valor actual de Hola.
+¿Por ejemplo, está automóvil anterior hello en Hola Hola de carreteras de peaje que misma marca como car actual Hola?
 
 **Entrada**:
 
@@ -254,10 +254,10 @@ Por ejemplo, ¿el vehículo anterior de la autopista de peaje es de la misma mar
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 
-**Explicación**: use **LAG** para revisar en el flujo de entrada de un evento anterior y obtener el valor **Marca**. A continuación, compárelo con el de la **marca** del evento actual y genere la salida del evento si son distintos.
+**Explicación**: Use **LAG** toopeek en hello secuencia un evento nuevo de entrada y obtener hello **realizar** valor. A continuación, compárela toohello **realizar** el valor en hello actual y evento salida Hola si son diferentes.
 
-## <a name="query-example-find-the-first-event-in-a-window"></a>Ejemplo de consulta: búsqueda del primer evento en una ventana
-**Descripción**: ¿desea buscar el primer vehículo en un intervalo de cada diez minutos?
+## <a name="query-example-find-hello-first-event-in-a-window"></a>Ejemplo de consulta: primer evento de Hola de búsqueda en una ventana
+**Descripción**: primer coche de Hola de búsqueda en cada intervalo de 10 minutos.
 
 **Entrada**:
 
@@ -289,7 +289,7 @@ Por ejemplo, ¿el vehículo anterior de la autopista de peaje es de la misma mar
     WHERE 
         IsFirst(minute, 10) = 1
 
-Ahora se va a cambiar el problema y se va a buscar el primer vehículo de una marca concreta en un intervalo de cada diez minutos.
+Ahora vamos a hacer el cambio Hola problema y buscar Hola primer coche de una determinada en cada intervalo de 10 minutos.
 
 | LicensePlate | Asegúrese | Hora |
 | --- | --- | --- |
@@ -310,8 +310,8 @@ Ahora se va a cambiar el problema y se va a buscar el primer vehículo de una ma
     WHERE 
         IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
 
-## <a name="query-example-find-the-last-event-in-a-window"></a>Ejemplo de consulta: búsqueda del último evento en una ventana
-**Descripción**: busque el último vehículo en un intervalo de cada diez minutos.
+## <a name="query-example-find-hello-last-event-in-a-window"></a>Ejemplo de consulta: último evento de Hola de búsqueda en una ventana
+**Descripción**: último automóvil de Hola de búsqueda en cada intervalo de 10 minutos.
 
 **Entrada**:
 
@@ -353,11 +353,11 @@ Ahora se va a cambiar el problema y se va a buscar el primer vehículo de una ma
         ON DATEDIFF(minute, Input, LastInWindow) BETWEEN 0 AND 10
         AND Input.Time = LastInWindow.LastEventTime
 
-**Explicación**: hay dos pasos en la consulta. El primero consiste en buscar la última marca de tiempo en ventanas de diez minutos. El segundo paso combina los resultados de la primera consulta con el flujo original para buscar eventos que coinciden con las últimas marcas de tiempo en cada ventana. 
+**Explicación**: hay dos pasos en la consulta de Hola. Hola primera busca una hello más reciente marca de tiempo en las ventanas de 10 minutos. las combinaciones de Hello segundo paso Hola resultados de Hola la primera consulta con hello original flujo toofind Hola eventos que coinciden con marcas de tiempo último hello en cada ventana. 
 
-## <a name="query-example-detect-the-absence-of-events"></a>Ejemplo de consulta: detectar la ausencia de eventos
+## <a name="query-example-detect-hello-absence-of-events"></a>Ejemplo de consulta: detectar Hola ausencia de eventos
 **Descripción**: compruebe que un flujo no tiene ningún valor que cumpla un criterio determinado.
-Por ejemplo, ¿han entrado dos vehículos consecutivos de la misma marca en la autopista de peaje durante los últimos noventa segundos?
+¿Por ejemplo, han 2 automóviles consecutivas de la misma marca de hello escrito carreteras de peaje hello en hello últimos 90 segundos?
 
 **Entrada**:
 
@@ -387,10 +387,10 @@ Por ejemplo, ¿han entrado dos vehículos consecutivos de la misma marca en la a
     WHERE
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 
-**Explicación**: use **LAG** para revisar en el flujo de entrada de un evento anterior y obtener el valor **Marca**. Compárelo con el valor **MARCA** del evento actual y después genere la salida del evento en caso de que los valores sean los mismos. También puede usar **LAG** para obtener datos sobre el vehículo anterior.
+**Explicación**: Use **LAG** toopeek en hello secuencia un evento nuevo de entrada y obtener hello **realizar** valor. Comparar toohello **realizar** valor en el evento actual hello y, a continuación, evento de Hola de salida si están Hola igual. También puede usar **LAG** tooget datos acerca de automóvil anterior Hola.
 
-## <a name="query-example-detect-the-duration-between-events"></a>Ejemplo de consulta: detección de la duración entre eventos
-**Descripción**: busque la duración de un evento determinado. Por ejemplo, dada una secuencia de clics de web, determine el tiempo invertido en una característica.
+## <a name="query-example-detect-hello-duration-between-events"></a>Ejemplo de consulta: detectar Hola duración del intervalo entre eventos
+**Descripción**: buscar duración Hola de un evento determinado. Por ejemplo, dada una secuencia de clics de web, determine tiempo de hello invertido en una característica.
 
 **Entrada**:  
 
@@ -415,11 +415,11 @@ Por ejemplo, ¿han entrado dos vehículos consecutivos de la misma marca en la a
         Event = 'end'
 ````
 
-**Explicación**: use la función **LAST** para recuperar el último valor **TIME** en el que el tipo de evento era **Start**. La función **LAST** usa **PARTITION BY [user]** para indicar que el resultado se calcula por usuario único. La consulta tiene un umbral máximo de una hora para el intervalo de tiempo entre eventos **Start** y **Stop**, pero se puede configurar según sea necesario **(LIMIT DURATION(hour, 1)**.
+**Explicación**: Hola de uso **última** función hello tooretrieve última **tiempo** valor al tipo de evento de hello era **iniciar**. Hola **última** función utiliza **PARTITION BY [user]** tooindicate que Hola resultado se calcula por usuario único. consulta de Hello tiene un umbral máximo de 1 hora de diferencia de tiempo de hello entre **iniciar** y **detener** eventos, pero se puede configurar según sea necesario **(límite DURATION(hour, 1)**.
 
-## <a name="query-example-detect-the-duration-of-a-condition"></a>Ejemplo de consulta: detección de la duración de una condición
+## <a name="query-example-detect-hello-duration-of-a-condition"></a>Ejemplo de consulta: detectar una condición de tiempo que dure Hola
 **Descripción**: averigüe la duración de una condición.
-Por ejemplo, supongamos que, por error, todos los vehículos tienen un peso incorrecto (por encima de 20 000 libras). Queremos calcular la duración del error.
+Por ejemplo, supongamos que, por error, todos los vehículos tienen un peso incorrecto (por encima de 20 000 libras). Queremos que la duración de hello toocompute de los errores de Hola.
 
 **Entrada**:
 
@@ -461,11 +461,11 @@ Por ejemplo, supongamos que, por error, todos los vehículos tienen un peso inco
         AND previousWeight > 20000
 ````
 
-**Explicación**: use **LAG** para ver el flujo de entrada que se produjo durante veinticuatro horas y busque instancias donde**StartFault** y **StopFault** superan el peso de <20 000.
+**Explicación**: Use **LAG** instancias de flujo de entrada de hello tooview durante 24 horas y buscar dónde **StartFault** y **StopFault** se extienden por hello peso < 20000.
 
 ## <a name="query-example-fill-missing-values"></a>Ejemplo de consulta: rellenar los valores que faltan
-**Descripción**: para la transmisión de eventos con valores que faltan, genere una transmisión de eventos con intervalos regulares.
-Por ejemplo, genere un evento cada cinco segundos que notifique el punto de datos visto más recientemente.
+**Descripción**: para el flujo de Hola de eventos que tienen valores que faltan, generar un flujo de eventos con intervalos regulares.
+Por ejemplo, generar un evento cada 5 segundos que indica el punto de datos de hello visto más recientemente.
 
 **Entrada**:
 
@@ -503,15 +503,15 @@ Por ejemplo, genere un evento cada cinco segundos que notifique el punto de dato
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 
 
-**Explicación**: esta consulta genera eventos cada cinco segundos y genera como resultado el último evento que se recibió anteriormente. La duración de la [ventana de salto](https://msdn.microsoft.com/library/dn835041.aspx "ventana de salto - Azure Stream Analytics") determina hasta cuándo se remontará la consulta para encontrar el evento más reciente (en este ejemplo, trescientos segundos).
+**Explicación**: esta consulta genera eventos de cada 5 segundos y salidas Hola último evento que se recibió anteriormente. Hola [Hopping ventana](https://msdn.microsoft.com/library/dn835041.aspx "Hopping ventana: análisis de transmisiones de Azure") duración determina hasta qué punto Hola atrás consulta presenta un aspecto toofind evento más reciente de hello (300 segundos en este ejemplo).
 
 ## <a name="get-help"></a>Obtener ayuda
 Para obtener ayuda adicional, pruebe nuestro [foro de Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Introducción a Azure Stream Analytics](stream-analytics-introduction.md)
+* [Introducción tooAzure análisis de transmisiones](stream-analytics-introduction.md)
 * [Introducción al uso de Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Escalación de trabajos de Azure Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referencia del lenguaje de consulta de Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Escalación de trabajos de Análisis de transmisiones de Azure](stream-analytics-scale-jobs.md)
+* [Referencia del lenguaje de consulta de Análisis de transmisiones de Azure](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referencia de API de REST de administración de Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

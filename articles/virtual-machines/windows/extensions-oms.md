@@ -1,6 +1,6 @@
 ---
-title: "Extensión de máquina virtual de Azure y OMS para Windows | Microsoft Docs"
-description: "Implemente el agente de OMS en la máquina virtual Windows con una extensión de máquina virtual."
+title: "extensión de máquina virtual de Azure para Windows aaaOMS | Documentos de Microsoft"
+description: "Implementar el agente de OMS de hello en la máquina virtual de Windows con una extensión de máquina virtual."
 services: virtual-machines-windows
 documentationcenter: 
 author: neilpeterson
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: nepeters
-ms.openlocfilehash: d933f488fdda0c1d37892be65f2712cf0eb5694e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3000f66c0acdec1d1fad2125b8c6b72a92b1ec92
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="oms-virtual-machine-extension-for-windows"></a>Extensión de máquina virtual de OMS para Windows
 
-Operations Management Suite (OMS) proporciona funcionalidades de corrección de alertas, supervisión y envío de alertas a todos los recursos locales y en la nube. Microsoft, como editor de la extensión de máquina virtual del agente de OMS para Windows, es quien presta los servicios de soporte técnico para esta solución. La extensión instala al agente de OMS en máquinas virtuales de Azure e inscribe dichas máquinas virtuales en un área de trabajo de OMS existente. En este documento se especifican las plataformas compatibles, configuraciones y opciones de implementación de la extensión de máquina virtual de OMS para Windows.
+Operations Management Suite (OMS) proporciona funcionalidades de corrección de alertas, supervisión y envío de alertas a todos los recursos locales y en la nube. extensión de máquina virtual de agente de OMS para Windows Hello se publica y compatible con Microsoft. extensión de Hello instala el agente OMS de hello en máquinas virtuales de Azure e inscribe máquinas virtuales en un área de trabajo OMS existente. Este Hola de detalles de documento admite plataformas, configuraciones y opciones de implementación para hello extensión de máquina virtual OMS para Windows.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 ### <a name="operating-system"></a>Sistema operativos
-La extensión del agente de OMS para Windows se puede ejecutar en las versiones Windows Server 2008 R2, 2012, 2012 R2 y 2016.
+Hola extensión del agente de OMS para Windows se pueden ejecutar en Windows Server 2008 R2, 2012, 2012 R2 y 2016 libera.
 
 ### <a name="internet-connectivity"></a>Conectividad de Internet
-La extensión del agente de OMS para Windows requiere que la máquina virtual de destino esté conectada a Internet. 
+extensión del agente de OMS para Windows Hello requiere esa máquina virtual de destino de hello es toohello conectado internet. 
 
 ## <a name="extension-schema"></a>Esquema de extensión
 
-El siguiente JSON muestra el esquema para la extensión del agente de OMS. La extensión requiere el identificador y la clave del área de trabajo de OMS de destino, que se pueden encontrar en el portal de OMS. Como la clave del área de trabajo debe tratarse como datos confidenciales, debe almacenarse en una configuración protegida. Los datos de configuración protegida de la extensión de VM de Azure están cifrados y solo se descifran en la máquina virtual de destino. Tenga en cuenta que **workspaceId** y **workspaceKey** distinguen mayúsculas de minúsculas.
+Hello JSON siguiente muestra esquema Hola Hola extensión del agente de OMS. extensión de Hello requiere Hola área de trabajo área de trabajo y el identificador de clave de área de trabajo OMS de destino de hello, estos pueden encontrarse en el portal de OMS Hola. Porque la clave de área de trabajo de hello debe tratarse como datos confidenciales, se deben almacenar en una configuración protegida. Datos de configuración de extensión protegido de VM de Azure cifrados y solo descifrados en la máquina virtual de destino de Hola. Tenga en cuenta que **workspaceId** y **workspaceKey** distinguen mayúsculas de minúsculas.
 
 ```json
 {
@@ -73,11 +73,11 @@ El siguiente JSON muestra el esquema para la extensión del agente de OMS. La ex
 
 ## <a name="template-deployment"></a>Implementación de plantilla
 
-Las extensiones de VM de Azure pueden implementarse con plantillas de Azure Resource Manager. El esquema JSON detallado en la sección anterior se puede usar en una plantilla de Azure Resource Manager para ejecutar el agente de OMS durante la implementación de una plantilla de Azure Resource Manager. Puede encontrar una plantilla de ejemplo que incluye la extensión de VM del agente de OMS en la [Galería de inicio rápido de Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
+Las extensiones de VM de Azure pueden implementarse con plantillas de Azure Resource Manager. esquema JSON de Hello detallado en la sección anterior de hello puede usarse en un hello toorun de plantilla de Azure Resource Manager extensión del agente de OMS durante la implementación de plantilla Azure Resource Manager. Una plantilla de ejemplo que incluye la extensión de máquina virtual de agente de OMS de hello puede encontrarse en hello [Galería de inicio rápido de Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
-El JSON de una extensión de máquina virtual puede estar anidada en el recurso de máquina virtual, o colocada en la raíz o un nivel superior de una plantilla JSON de Resource Manager. La colocación de la plantilla JSON afecta al valor del nombre y tipo del recurso. Para obtener más información, consulte el artículo sobre cómo [establecer el nombre y el tipo de recursos secundarios](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+Hola JSON para una extensión de máquina virtual puede anidada dentro de recurso de la máquina virtual de hello, o se coloca en la raíz de Hola o de nivel superior de una plantilla JSON del Administrador de recursos. selección de ubicación de Hola de hello JSON afecta al valor de Hola de nombre de recurso de Hola y el tipo. Para obtener más información, consulte el artículo sobre cómo [establecer el nombre y el tipo de recursos secundarios](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-En el siguiente ejemplo se da por supuesto que la extensión OMS está anidada dentro de los recursos de máquina virtual. Cuando se anidan los recursos de extensión, la plantilla JSON se coloca en el objeto `"resources": []` de la máquina virtual.
+Hello en el ejemplo siguiente se supone extensión OMS Hola está anidada dentro de recurso de la máquina virtual de Hola. Cuando se anidan los recursos de extensión de hello, Hola JSON se coloca en hello `"resources": []` objeto de máquina virtual de Hola.
 
 
 ```json
@@ -104,7 +104,7 @@ En el siguiente ejemplo se da por supuesto que la extensión OMS está anidada d
 }
 ```
 
-Al colocar la plantilla JSON de la extensión en la raíz de la plantilla, el nombre de recurso incluye una referencia a la máquina virtual principal, y el tipo refleja la configuración anidada. 
+Al colocar extensión Hola JSON en raíz de Hola de plantilla de hello, el nombre del recurso de hello incluye una máquina virtual de referencia toohello primario, y tipo hello refleja configuración anidados Hola. 
 
 ```json
 {
@@ -132,7 +132,7 @@ Al colocar la plantilla JSON de la extensión en la raíz de la plantilla, el no
 
 ## <a name="powershell-deployment"></a>Implementación de PowerShell
 
-El comando `Set-AzureRmVMExtension` puede utilizarse para implementar la extensión de máquina virtual del agente de OMS en una máquina virtual existente. Antes de ejecutar el comando, las configuraciones públicas y privadas deben estar almacenadas en una tabla hash de PowerShell. 
+Hola `Set-AzureRmVMExtension` comando puede ser usado toodeploy Hola agente de OMS máquina virtual extensión tooan máquina virtual existente. Antes de ejecutar el comando de hello, configuraciones públicas y privadas de hello necesitan toobe almacenado en una tabla de hash de PowerShell. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
@@ -149,17 +149,17 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
     -Location WestUS ` 
 ```
 
-## <a name="troubleshoot-and-support"></a>Solución de problemas y soporte técnico
+## <a name="troubleshoot-and-support"></a>Solución de problemas y asistencia
 
 ### <a name="troubleshoot"></a>Solución de problemas
 
-Los datos sobre el estado de las implementaciones de extensiones pueden recuperarse desde Azure Portal y mediante el módulo Azure PowerShell. Para ver el estado de implementación de las extensiones de una VM determinada, ejecute el comando siguiente con el módulo de Azure PowerShell.
+Datos acerca del estado de Hola de implementaciones de extensión se pueden recuperar desde Hola portal de Azure y mediante el módulo de PowerShell de Azure de Hola. estado de implementación de hello toosee de extensiones para una máquina virtual determinada, Hola ejecución sigue usando el comando Hola módulo Azure PowerShell.
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
-El resultado de la ejecución de las extensiones se registra en los archivos que se encuentran en el siguiente directorio:
+Ejecución de la extensión de salida es posterior a toofiles registrados se encuentra en hello directorio:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\
@@ -167,4 +167,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>Soporte técnico
 
-Si necesita más ayuda con cualquier aspecto de este artículo, puede ponerse en contacto con los expertos de Azure en los [foros de MSDN Azure o Stack Overflow](https://azure.microsoft.com/en-us/support/forums/). Como alternativa, puede registrar un incidente de soporte técnico de Azure. Vaya al [sitio de soporte técnico de Azure](https://azure.microsoft.com/en-us/support/options/) y seleccione Obtener soporte. Para obtener información sobre el uso del soporte técnico, lea las [Preguntas más frecuentes de soporte técnico de Microsoft Azure](https://azure.microsoft.com/en-us/support/faq/).
+Si necesita más ayuda en cualquier momento en este artículo, puede ponerse en contacto con hello Azure expertos en hello [foros de Azure de MSDN y el desbordamiento de la pila](https://azure.microsoft.com/en-us/support/forums/). Como alternativa, puede registrar un incidente de soporte técnico de Azure. Vaya toohello [sitio de soporte técnico de Azure](https://azure.microsoft.com/en-us/support/options/) y seleccione la obtención de soporte técnico. Para obtener información acerca del uso de soporte técnico de Azure, lea hello [P+F de soporte de Microsoft Azure](https://azure.microsoft.com/en-us/support/faq/).

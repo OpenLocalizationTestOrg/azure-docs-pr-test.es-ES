@@ -1,6 +1,6 @@
 ---
-title: "Implementación de marcos de aplicaciones en máquinas virtuales Windows en Azure | Microsoft Docs"
-description: "Cree marcos de aplicaciones conocidas en máquinas virtuales Windows mediante el uso de las plantillas de Azure Resource Manager para instalar Active Directory, Docker y mucho más."
+title: "marcos de aplicaciones de aaaDeploy en máquinas virtuales de Windows Azure | Documentos de Microsoft"
+description: "Cree marcos de aplicaciones populares en máquinas virtuales de Windows con tooinstall de plantillas de administrador de recursos de Azure Active Directory, Docker y mucho más."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: dlepow
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 275342413c6f4a9efc7a056bdc80b6489536576f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cfc7f044cca36b7743d9acc25a27e2d589e866c7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-popular-application-frameworks-on-windows-using-azure-resource-manager-templates"></a>Implementación de marcos de aplicaciones conocidos en Windows mediante plantillas de Azure Resource Manager 
 
-Las cargas de trabajo suelen necesitar muchos recursos para funcionar acorde al diseño. Las plantillas del Administrador de recursos de Azure hacen que esto sea posible no solo para definir cómo se configuran las aplicaciones, sino también para saber cómo se implementan los recursos para admitir las aplicaciones configuradas. En este artículo se presentan las plantillas más populares de la galería y se proporciona información para usar el Portal de Azure, la CLI de Azure o PowerShell para implementarlas.
+Las cargas de trabajo suelen requieran muchos toofunction de recursos según toodesign. Plantillas posibilita toonot solo el Administrador de recursos Azure definen cómo se configuran las aplicaciones, pero también son de qué recursos de hello implementa aplicaciones toosupport configurado. Este artículo presenta toohello plantillas más populares en la Galería de Hola y ofrece información sobre el uso de Hola portal de Azure, Azure CLI o PowerShell toodeploy ellos.
 
 [!INCLUDE [virtual-machines-common-app-frameworks](../../../includes/virtual-machines-common-app-frameworks.md)]
 

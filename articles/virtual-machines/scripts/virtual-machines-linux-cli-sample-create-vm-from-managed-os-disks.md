@@ -1,5 +1,5 @@
 ---
-title: "Script de CLI de Azure de ejemplo: creación de una máquina virtual conectando un disco administrado como disco del SO | Microsoft Docs"
+title: "Ejemplo de secuencia de comandos de CLI - aaaAzure crear una máquina virtual si se adjunta un disco como disco del sistema operativo administrado | Documentos de Microsoft"
 description: "Script de CLI de Azure de ejemplo: creación de una máquina virtual conectando un disco administrado como disco del SO"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 18eefee869b243b35d4426c226eff5f48cd490a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 71fc5c6a577c64b913cfa35e99b2b9b75dea0c31
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Creación de una máquina virtual con un disco del SO administrado mediante la CLI
 
@@ -35,11 +35,11 @@ Este script crea una máquina virtual conectando un disco administrado como disc
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-attach-existing-managed-os-disk/create-vm-attach-existing-managed-os-disk.sh "Creación de una máquina virtual desde un disco administrado")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-attach-existing-managed-os-disk/create-vm-attach-existing-managed-os-disk.sh "Create VM from a managed disk")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Ejecute el siguiente comando para quitar el grupo de recursos, la máquina virtual y todos los recursos relacionados.
+Ejecute hello después el grupo de recursos de comando tooremove hello, la VM y todos ellos relacionados con recursos.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -47,14 +47,14 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para obtener las propiedades del disco administrado, conectar un disco administrado a una nueva máquina virtual y crear una máquina virtual. Cada elemento de la tabla incluye vínculos a la documentación específica del comando.
+Este script utiliza Hola comandos tooget administrado disco propiedades siguientes, adjuntar un disco administrado tooa nueva máquina virtual y cree una máquina virtual. Cada elemento de la documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk#show) | Obtiene propiedades del disco administrado mediante el nombre del disco y el nombre del grupo de recursos. La propiedad de identificador se utiliza para conectar un disco administrado a una nueva máquina virtual |
+| [az disk show](https://docs.microsoft.com/cli/azure/disk#show) | Obtiene propiedades del disco administrado mediante el nombre del disco y el nombre del grupo de recursos. Propiedad ID es tooattach usa un disco administrado tooa nueva máquina virtual |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#create) | Crea una máquina virtual con un disco del SO administrado. |
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de scripts de la CLI de máquina virtual en la [documentación sobre máquinas virtuales Linux de Azure](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ejemplos de secuencias de comandos CLI de máquina virtual adicional pueden encontrarse en hello [documentación de Azure VM de Linux](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -1,6 +1,6 @@
 ---
-title: "Solución de problemas de activación de máquinas virtuales de Windows en Azure | Microsoft Docs"
-description: "Ofrece los pasos de solución de problemas para resolver problemas de activación de máquinas virtuales de Windows en Azure"
+title: "aaaTroubleshoot problemas de activación de máquina virtual de Windows en Azure | Documentos de Microsoft"
+description: "Proporciona Hola solucionar pasos para solucionar problemas de activación de máquina virtual de Windows en Azure"
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: 
 author: genlin
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: genli
-ms.openlocfilehash: 77ef396e0bf75fab56bda2e76516b481d018c5b9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4ebdac66166e80dcd68cd9e2931b30a29ac01eef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Solución de problemas de activación de máquinas virtuales Windows de Azure
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Si tiene algún problema al activar una máquina virtual (VM) Windows de Azure que se crea a partir de una imagen personalizada, puede usar la información proporcionada en este documento para solucionar el problema. 
+Si tienes algún problema al activar la máquina de virtual de Windows Azure (VM) que se crea a partir de una imagen personalizada, puede usar información de hello proporcionada en este problema de hello tootroubleshoot de documento. 
 
 ## <a name="symptom"></a>Síntoma
 
-Al intentar activar una VM Windows de Azure, recibe un mensaje de error similar al del ejemplo siguiente:
+Cuando intente tooactivate una VM de Windows Azure, recibirá un error mensaje es similar a Hola según muestra:
 
-**Error: 0xC004F074 The Software LicensingService reported that the computer could not be activated. No Key ManagementService (KMS) could be contacted. Please see the Application Event Log for additional information.** (Error: 0xC004F074 El Servicio de licencias de software ha notificado que el servicio no se ha podido activar. No se ha podido establecer contacto con ningún Servicio de administración de claves (KMS). Vea el registro de eventos de la aplicación para obtener información adicional).
+**Error: Hola 0xC004F074 LicensingService de Software informó de que ese equipo hello no se pudo activar. No Key ManagementService (KMS) could be contacted. Vea Hola registro de eventos de aplicación para obtener información adicional.**
 
 ## <a name="cause"></a>Causa
-Por lo general, los problemas de activación de máquinas virtuales de Azure se producen si la VM de Windows no está configurada con la clave de instalación de cliente KMS apropiada o la tiene un problema de conectividad con el servicio de KMS de Azure (kms.core.windows.net, puerto 1668). 
+Por lo general, problemas de activación de la máquina virtual de Azure ocurrir si Hola VM de Windows no está configurada de utilizando Hola correspondiente clave de configuración de cliente KMS u Hola VM de Windows tiene un toohello de problema de conectividad servicio de KMS de Azure (kms.core.windows.net, puerto 1668). 
 
 ## <a name="solution"></a>Solución
 
 >[!NOTE]
->Si usa una VPN de sitio a sitio y tunelización forzada, vea [Use Azure custom routes to enable KMS activation with forced tunneling](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) (Uso de rutas personalizadas de Azure para permitir la activación de KMS con tunelización forzada). 
+>Si está usando una VPN de sitio a sitio y forzar el túnel, vea [Use Azure personalizado enruta tooenable activación de KMS con la tunelización forzada](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
 >
->Si usa ExpressRoute y tiene una ruta predeterminada publica, vea [Azure VM may fail to activate over ExpressRoute](http://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx) (Es posible que la máquina virtual de Azure no se pueda activar por ExpressRoute).
+>Si usas ExpressRoute y tiene una ruta predeterminada publica, vea [máquina virtual de Azure puede conmutar por error tooactivate ExpressRoute](http://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>Paso 1 Configuración de la clave de instalación de cliente KMS adecuada (para Windows Server 2016 y Windows Server 2012 R2)
+### <a name="step-1-configure-hello-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>Paso 1 Configurar Hola clave KMS apropiada cliente el programa de instalación (para Windows Server 2016 y Windows Server 2012 R2)
 
-En el caso de máquinas creadas a partir de una imagen personalizada de Windows Server 2016 o Windows Server 2012 R2, hay que configurar la clave de instalación de cliente KMS adecuada para la VM.
+Para hello máquina virtual que se crea a partir de una imagen personalizada de Windows Server 2016 o Windows Server 2012 R2, debe configurar Hola clave KMS apropiada cliente el programa de instalación para hello máquina virtual.
 
-Este paso no se aplica a Windows 2012 o Windows 2008 R2. Usa la característica Automation Virtual Machine Activation (AVMA), que solo es compatible con Windows Server 2016 y Windows Server 2012 R2.
+Este paso no aplica tooWindows 2012 o Windows 2008 R2. Usa la característica de activación de automatización de la máquina Virtual (AVMA) de hello, que solo es compatible con Windows Server 2016 y Windows Server 2012 R2.
 
-1. Ejecute **slmgr.vbs /dlv** en un símbolo del sistema con privilegios elevados. Compruebe el valor de Descripción en la salida y determine si se ha creado desde el canal comercial (RETAIL) o desde soportes de licencia por volumen (VOLUME_KMSCLIENT):
+1. Ejecute **slmgr.vbs /dlv** en un símbolo del sistema con privilegios elevados. Compruebe Hola valor de descripción en la salida de hello y, a continuación, determine si se creó desde comercial (canal MINORISTA) o medios de licencias por volumen (VOLUME_KMSCLIENT):
   
     ```
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Si **slmgr.vbs /dlv** muestra el canal RETAIL, ejecute los siguientes comandos para establecer la [clave de instalación de cliente KMS](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) de la versión de Windows Server que se usa y haga que vuelva a intentar la activación: 
+2. Si **slmgr.vbs /dlv** muestra canal MINORISTA, ejecute hello después Hola de comandos tooset [clave de configuración de cliente KMS](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) para la versión de Hola de Windows Server se utiliza y obligarlo tooretry activación: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -62,63 +62,63 @@ Este paso no se aplica a Windows 2012 o Windows 2008 R2. Usa la característica 
     cscript c:\windows\system32\slmgr.vbs /ato
      ```
 
-    Por ejemplo, para Windows Server 2016 Datacenter, debe ejecutar el siguiente comando:
+    Por ejemplo, para Windows Server 2016 Datacenter, ejecutaría Hola siguiente comando:
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
     ```
 
-### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Paso 2 Comprobación de la conectividad entre la VM y el servicio KMS de Azure
+### <a name="step-2-verify-hello-connectivity-between-hello-vm-and-azure-kms-service"></a>Paso 2 Compruebe la conectividad de hello entre Hola VM y el servicio de KMS de Azure
 
-1. Descargue la herramienta [Psping](http:/technet.microsoft.com/en-us/sysinternals/jj729731.aspx) y extráigala en una carpeta local en la VM que no se activa. 
+1. Descargue y extraiga hello [Psping](http:/technet.microsoft.com/en-us/sysinternals/jj729731.aspx) carpeta local de herramienta tooa Hola VM que no lo activa. 
 
-2. Vaya a Inicio, busque en Windows PowerShell, haga clic con el botón derecho en Windows PowerShell y seleccione Ejecutar como administrador.
+2. Paso tooStart, buscar en Windows PowerShell, haga clic en Windows PowerShell y, a continuación, seleccione Ejecutar como administrador.
 
-3. Asegúrese de que la VM está configurada para usar el servidor de KMS de Azure correcto. Para ello, ejecute el siguiente comando:
+3. Asegúrese de que ese hello en la que máquina virtual está configurado el servidor de KMS de Azure correcta de toouse Hola. toodo esto, ejecute el siguiente comando:
   
     ```
     iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
     kms.core.windows.net:1688
     ```
-    El comando debe devolver: Key Management Service machine name set to kms.core.windows.net:1688 successfully (El nombre de máquina del servicio de administración de claves se estableció correctamente en kms.core.windows.net:1688).
+    Hola comando debe devolver: nombre del equipo de servicio de administración de claves establece tookms.core.windows.net:1688 correctamente.
 
-4. Compruebe con Psping que dispone de conectividad con el servidor de KMS. Vaya a la carpeta en la que extrajo la descarga de Pstools.zip y ejecute lo siguiente:
+4. Comprobar mediante Psping que dispone de conectividad toohello KMS servidor. Cambiar carpeta toohello donde extrajo descarga Pstools.zip de hello y, a continuación, ejecute el siguiente de hello:
   
     ```
     \psping.exe kms.core.windows.net:1688
     ```
   
-  En la penúltima línea, asegúrese de que aparece: Enviados = 4, Recibidos = 4, Perdidos = 0 (0 % de pérdida).
+  En línea de segundo al último de Hola de salida de hello, asegúrese de que ve: enviados = 4, recibidos = 4, perdidos = 0 (0% perdidos).
 
-  Si el valor de perdidos es mayor que 0 (cero), la máquina virtual no tiene conectividad con el servidor de KMS server. En este caso, si la VM está en una red virtual y tiene especificado un servidor DNS personalizado, debe asegurarse de que el servidor DNS es capaz de resolver kms.core.windows.net. También puede cambiar el servidor DNS a uno que pueda resolver kms.core.windows.net.
+  Si pierde es mayor que 0 (cero), Hola VM no tiene servidor KMS de toohello de conectividad. En esta situación, si hello máquina virtual está en una red virtual y se un servidor DNS personalizado especificado, debe asegurarse de que ese servidor DNS es capaz de tooresolve kms.core.windows.net. O bien, cambiar Hola DNS server tooone que resolver kms.core.windows.net.
 
   Tenga en cuenta que si quita todos los servidores DNS de una red virtual, las máquinas virtuales usan el servicio DNS interno de Azure. Este servicio pude resolver kms.core.windows.net.
   
-Compruebe también que firewall de invitado no está configurado de manera que bloquee los intentos de activación.
+Compruebe también que firewall de invitado hello no se configuró de forma que bloquearía los intentos de activación.
 
-5. Después de comprobar la conectividad correcta con kms.core.windows.net, ejecute el siguiente comando en un símbolo del sistema de Windows PowerShell con privilegios elevados. Este comando intenta la activación varias veces.
+5. Después de comprobar la conectividad correcta tookms.core.windows.net, ejecute hello siguiente comando en ese símbolo del sistema con privilegios elevados de Windows PowerShell. Este comando intenta la activación varias veces.
 
     ```
     1..12 | % { iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
     ```
 
-Una activación correcta devuelve información similar a la siguiente:
+Una activación correcta devuelve información similar a Hola siguiente:
 
 **Activación de Windows(R), ServerDatacenter edition (12345678-1234-1234-1234-12345678) … El producto se activó correctamente.**
 
 ## <a name="faq"></a>P+F 
 
-### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>He creado Windows Server 2016 desde Azure Marketplace. ¿Tengo que configurar la clave KMS para activar Windows Server 2016? 
+### <a name="i-created-hello-windows-server-2016-from-azure-marketplace-do-i-need-tooconfigure-kms-key-for-activating-hello-windows-server-2016"></a>He creado Hola Windows Server 2016 de Azure Marketplace. ¿Es necesario tooconfigure clave KMS para activar Hola Windows Server 2016? 
  
-No. La imagen de Azure Marketplace ya tiene configurada la clave de instalación de cliente KMS apropiada. 
+No. imagen de Hello en Azure Marketplace tiene Hola clave KMS apropiada cliente el programa de instalación ya configurado. 
 
-### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>¿La activación de Windows funciona siempre igual sin importar que la VM use la Ventaja de uso híbrido (HUB) de Azure? 
+### <a name="does-windows-activation-work-hello-same-way-regardless-if-hello-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>¿Trabajo de activación de Windows hello misma forma independientemente si Hola VM está usando Azure híbrida uso beneficio (centro) o no? 
  
 Sí. 
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>¿Qué sucede si el período de activación de Windows expira? 
  
-Cuando el período de gracia ha expirado y Windows no está activado todavía, Windows Server 2008 R2 y las versiones posteriores de Windows mostrarán notificaciones adicionales sobre la activación. El fondo de pantalla del escritorio permanece negro y Windows Update solo instalará las actualizaciones críticas y de seguridad, pero no las actualizaciones opcionales. Vea la sección de notificaciones en la parte inferior de la página [Licensing Conditions](http://technet.microsoft.com/en-us/library/ff793403.aspx) (Condiciones de licencias).   
+Cuando ha expirado el período de gracia de Hola y Windows no está activado todavía, Windows Server 2008 R2 y versiones posteriores de Windows mostrará notificaciones adicionales sobre la activación. papel tapiz del escritorio Hola permanece negro y Windows Update se instalará la seguridad y actualizaciones críticas únicamente, pero las actualizaciones opcionales no. Vea las notificaciones de hello sección final Hola de hello [condiciones de licencias](http://technet.microsoft.com/en-us/library/ff793403.aspx) página.   
 
 ## <a name="need-help-contact-support"></a>¿Necesita ayuda? Póngase en contacto con el servicio de soporte técnico.
-Si sigue necesitando ayuda, [póngase en contacto con el servicio de soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para resolver el problema rápidamente.
+Si aún necesita ayuda, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rápidamente para solucionar el problema.

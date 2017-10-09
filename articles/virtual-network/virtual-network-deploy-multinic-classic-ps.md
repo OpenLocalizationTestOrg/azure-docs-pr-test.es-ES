@@ -1,6 +1,6 @@
 ---
-title: "Creación de una máquina virtual (clásica) con varias NIC (Azure PowerShell) | Microsoft Docs"
-description: "Obtenga información sobre cómo crear una máquina virtual (clásica) con varias NIC mediante PowerShell."
+title: "aaaCreate una máquina virtual (clásica) con varias NIC - PowerShell de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo toocreate una máquina virtual (clásica) con varias NIC con PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,42 +16,42 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 923d4817d96399fc423b0a89cbf88f8d397f1af0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 90c967929bb418042c3fb7079e0f69246faac53c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Crear una VM (clásica) con varias NIC mediante PowerShell
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
-Puede crear máquinas virtuales (VM) en Azure y asociar varias interfaces de red (NIC) a cada una de las máquinas virtuales. Varias NIC permiten la separación de tipos de tráfico a través de las NIC. Por ejemplo, una NIC podría comunicarse con Internet, mientras que la otra solo se comunica con los recursos internos no conectados a Internet. La capacidad de separar el tráfico de red a través de varias NIC es necesaria para muchos dispositivos virtuales de red, como la entrega de aplicaciones y soluciones para la optimización de WAN.
+Puede crear máquinas virtuales (VM) en Azure y conectar múltiples tooeach (NIC) de interfaces de red de las máquinas virtuales. Varias NIC permiten la separación de tipos de tráfico a través de las NIC. Por ejemplo, una que NIC puede comunicarse con hello Internet, mientras que otra solo se comunica con los recursos internos no conectado toohello Internet. tráfico de red de Hello capacidad tooseparate entre varios NIC es necesario para muchos dispositivos virtuales red, por ejemplo, la entrega de aplicaciones y soluciones de optimización de la WAN.
 
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../resource-manager-deployment-model.md). Este artículo trata del modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Obtenga información sobre cómo realizar estos pasos con el [modelo de implementación de Resource Manager](virtual-network-deploy-multinic-arm-ps.md).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../resource-manager-deployment-model.md). Este artículo incluye el uso de modelo de implementación clásica de Hola. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Obtenga información acerca de cómo tooperform estos pasos con hello [modelo de implementación del Administrador de recursos](virtual-network-deploy-multinic-arm-ps.md).
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-En los pasos siguientes se usa un grupo de recursos denominado *IaaSStory* para los servidores web y un grupo de recursos denominado *IaaSStory-BackEnd* para los servidores de base de datos.
+Hello pasos siguientes utiliza un grupo de recursos denominado *IaaSStory* para servidores WEB de Hola y un grupo de recursos denominado *IaaSStory-back-end* para servidores de Hola DB.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Antes de crear los servidores de base de datos, necesita crear el grupo de recursos *IaaSStory* con todos los recursos necesarios para este escenario. Para crear estos recursos, complete los pasos siguientes. Cree una red virtual siguiendo los pasos del artículo [Create a virtual network (Crear una red virtual)](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Para poder crear Hola servidores de base de datos, necesita hello toocreate *IaaSStory* grupo de recursos con todos los recursos necesarios de Hola para este escenario. toocreate Hola a estos recursos, completados los pasos que siguen. Crear una red virtual, siga los pasos de Hola Hola [crear una red virtual](virtual-networks-create-vnet-classic-netcfg-ps.md) artículo.
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-the-back-end-vms"></a>Crear las máquinas virtuales back-end
-Las máquinas virtuales back-end dependen de la creación de los siguientes recursos:
+## <a name="create-hello-back-end-vms"></a>Crear máquinas virtuales de back-end de Hola
+Hola que dependen de las máquinas virtuales de back-end durante la creación de hello de hello recursos siguientes:
 
-* **Subred de back-end**. Los servidores de bases de datos formarán parte de una subred independiente para separar el tráfico. El siguiente script debe tener su subred en una red virtual denominada *WTestVnet*.
-* **Cuenta de almacenamiento en discos de datos**. Para mejorar el rendimiento, los discos de datos en los servidores de base de datos usarán la tecnología de unidad de estado sólido (SSD), que requiere una cuenta de almacenamiento Premium. Asegúrese de que la ubicación de Azure que implementa admita el almacenamiento Premium.
-* **Conjunto de disponibilidad**. Todos los servidores de base de datos se agregarán al conjunto de disponibilidad único para asegurarse de que al menos una de las máquinas virtuales está activa y ejecutándose durante el mantenimiento.
+* **Subred de back-end**. servidores de base de datos de Hello va a formar parte de una subred independiente, toosegregate tráfico. script de Hola siguiente espera este tooexist de subred en una red virtual denominada *WTestVnet*.
+* **Cuenta de almacenamiento en discos de datos**. Para mejorar el rendimiento, los discos de datos de hello en los servidores de base de datos de hello usará la tecnología de estado sólido (SSD) de la unidad, que requiere una cuenta de almacenamiento premium. Asegúrese de hello seguro implementar almacenamiento premium de toosupport de ubicación de Azure.
+* **Conjunto de disponibilidad**. Todos los servidores de base de datos se agregarán tooa único conjunto de disponibilidad, tooensure al menos una de las máquinas virtuales de hello está en funcionamiento durante el mantenimiento.
 
 ### <a name="step-1---start-your-script"></a>Paso 1: inicio del script
-Puede descargar el script de PowerShell completo que ha usado [aquí](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Siga los pasos siguientes para cambiar el script para que funcione en su entorno.
+Puede descargar Hola script completo de PowerShell usa [aquí](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1). Siga los pasos de hello debajo toochange Hola script toowork en su entorno.
 
-1. Cambie los valores de las variables siguientes en función de su grupo de recursos existente implementado anteriormente en [Requisitos previos](#Prerequisites).
+1. Cambiar valores de hello de hello las variables siguientes basadas en el grupo de recursos existente implementado anteriormente en [requisitos previos](#Prerequisites).
 
     ```powershell
     $location              = "West US"
@@ -59,7 +59,7 @@ Puede descargar el script de PowerShell completo que ha usado [aquí](https://ra
     $backendSubnetName     = "BackEnd"
     ```
 
-2. Cambie los valores de las variables siguientes según los valores que desee usar para la implementación back-end.
+2. Cambiar los valores de hello de hello las variables siguientes basadas en valores de hello desea toouse para la implementación de back-end.
 
     ```powershell
     $backendCSName         = "IaaSStory-Backend"
@@ -74,7 +74,7 @@ Puede descargar el script de PowerShell completo que ha usado [aquí](https://ra
     ```
 
 ### <a name="step-2---create-necessary-resources-for-your-vms"></a>Paso 2: creación de los recursos necesarios para las máquinas virtuales
-Necesita crear un servicio en la nube y una cuenta de almacenamiento para los discos de datos de todas las VM. Asimismo, también debe especificar una imagen y una cuenta de administrador local para las máquinas virtuales. Para crear estos recursos, complete los siguientes pasos:
+Deberá toocreate un nuevo servicio de nube y un almacenamiento de cuenta para los discos de datos de Hola para todas las máquinas virtuales. También necesitará toospecify una imagen y una cuenta de administrador local para hello las máquinas virtuales. toocreate estos recursos, completar Hola lo siguiente:
 
 1. Cree un nuevo servicio en la nube.
 
@@ -88,7 +88,7 @@ Necesita crear un servicio en la nube y una cuenta de almacenamiento para los di
     New-AzureStorageAccount -StorageAccountName $prmStorageAccountName `
     -Location $location -Type Premium_LRS
     ```
-3. Establezca la cuenta de almacenamiento creada anteriormente como la cuenta de almacenamiento actual para la suscripción.
+3. Conjunto de la cuenta de almacenamiento Hola creada anteriormente como cuenta de almacenamiento actual de Hola para su suscripción.
 
     ```powershell
     $subscription = Get-AzureSubscription | where {$_.IsCurrent -eq $true}  
@@ -96,7 +96,7 @@ Necesita crear un servicio en la nube y una cuenta de almacenamiento para los di
     -CurrentStorageAccountName $prmStorageAccountName
     ```
 
-4. Seleccione una imagen para la máquina virtual.
+4. Seleccione una imagen para hello máquina virtual.
 
     ```powershell
     $image = Get-AzureVMImage `
@@ -105,22 +105,22 @@ Necesita crear un servicio en la nube y una cuenta de almacenamiento para los di
     | select -ExpandProperty ImageName -First 1
     ```
 
-5. Establezca las credenciales de la cuenta de administrador local
+5. Establecer las credenciales de cuenta de administrador local de Hola.
 
     ```powershell
     $cred = Get-Credential -Message "Enter username and password for local admin account"
     ```
 
 ### <a name="step-3---create-vms"></a>Paso 3: crear máquinas virtuales
-Debe usar un bucle para crear tantas máquinas virtuales como desee y así poder crear las NIC y las máquinas virtuales dentro del bucle. Para crear las NIC y las máquinas virtuales, realice los siguientes pasos.
+Deberá toouse un bucle toocreate tal y como muchas máquinas virtuales como desee y crear Hola necesarios NIC y las máquinas virtuales en el bucle de Hola. Hola toocreate NIC y las máquinas virtuales, ejecute hello pasos.
 
-1. Inicie un bucle `for` para repetir los comandos que se usarán para crear una máquina virtual y dos NIC tantas veces como sea necesario, según el valor de la variable `$numberOfVMs`.
+1. Iniciar un `for` Hola de bucle toorepeat comandos toocreate una máquina virtual y dos NIC como tantas veces como sea necesario, basados en el valor de Hola de hello `$numberOfVMs` variable.
 
     ```powershell
     for ($suffixNumber = 1; $suffixNumber -le $numberOfVMs; $suffixNumber++){
     ```
 
-2. Cree un objeto `VMConfig` especificando la imagen, el tamaño y el conjunto de disponibilidad para la máquina virtual.
+2. Crear un `VMConfig` objeto que especifica la imagen de hello, el tamaño y el conjunto de disponibilidad para VM Hola.
 
     ```powershell
     $vmName = $vmNamePrefix + $suffixNumber
@@ -130,7 +130,7 @@ Debe usar un bucle para crear tantas máquinas virtuales como desee y así poder
         -AvailabilitySetName $avSetName
     ```
 
-3. Aprovisione la máquina virtual como una máquina virtual de Windows.
+3. Hola aprovisionar máquinas virtuales como una máquina virtual de Windows.
 
     ```powershell
     Add-AzureProvisioningConfig -VM $vmConfig -Windows `
@@ -138,7 +138,7 @@ Debe usar un bucle para crear tantas máquinas virtuales como desee y así poder
         -Password $cred.GetNetworkCredential().Password
     ```
 
-4. Establezca la NIC predeterminada y asígnela a una dirección IP estática.
+4. Establezca el valor predeterminado de hello NIC y asignar una dirección IP estática.
 
     ```powershell
     Set-AzureSubnet         -SubnetNames $backendSubnetName -VM $vmConfig
@@ -154,7 +154,7 @@ Debe usar un bucle para crear tantas máquinas virtuales como desee y así poder
     -VM $vmConfig
     ```
 
-6. Cree dos discos de datos para cada máquina virtual.
+6. Crear discos de toodata para cada máquina virtual.
 
     ```powershell
     $dataDisk1Name = $vmName + "-" + $dataDiskSuffix + "-1"    
@@ -170,7 +170,7 @@ Debe usar un bucle para crear tantas máquinas virtuales como desee y así poder
     -LUN 1
     ```
 
-7. Cree cada máquina virtual y finalice el bucle.
+7. Crear cada máquina virtual y al final Hola bucle.
 
     ```powershell
     New-AzureVM -VM $vmConfig `
@@ -180,10 +180,10 @@ Debe usar un bucle para crear tantas máquinas virtuales como desee y así poder
     }
     ```
 
-### <a name="step-4---run-the-script"></a>Paso 4: ejecución del script
-Ahora que descargó y cambió el script según sus necesidades, ejecute el script para crear las máquinas virtuales de la base de datos de back-end con varias NIC.
+### <a name="step-4---run-hello-script"></a>Paso 4: secuencia de comandos de ejecución Hola
+Ahora que has descargado y cambiaron el script de Hola según sus necesidades, ejecución secuencia de comandos de base de datos de back-end de hello toocreate máquinas virtuales con varias NIC.
 
-1. Guarde el script y ejecútelo desde el símbolo del sistema **PowerShell** o desde **PowerShell ISE**. Verá el resultado inicial, tal como se muestra a continuación.
+1. Guardar el script y ejecútelo desde hello **PowerShell** símbolo del sistema, o **PowerShell ISE**. Verá Hola iniciales de salida, tal y como se muestra a continuación.
 
         OperationDescription    OperationId                          OperationStatus
 
@@ -191,7 +191,7 @@ Ahora que descargó y cambió el script según sus necesidades, ejecute el scrip
         New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         
         WARNING: No deployment found in service: 'IaaSStory-Backend'.
-2. Rellene la información necesaria cuando le soliciten las credenciales y haga clic en **Aceptar**. Se devuelve el resultado siguiente.
+2. Rellene la información de hello necesaria en el símbolo del sistema de hello las credenciales y haga clic en **Aceptar**. se devuelve la salida de Hello siguiente.
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded

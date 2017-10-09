@@ -1,6 +1,6 @@
 ---
-title: "Creación de un cuaderno de Jupyter/IPython Notebook | Microsoft Docs"
-description: "Obtenga información sobre cómo implementar Jupyter/IPhyton Notebook en una máquina virtual de Linux creada con el modelo de implementación del administrador de recursos en Azure."
+title: aaaCreate un bloc de notas de IPython/Jupyter | Documentos de Microsoft
+description: "Obtenga información acerca de cómo se crea toodeploy Hola Bloc de notas de IPython/Jupyter en una máquina virtual Linux con el modelo de implementación de administrador de recursos de hello en Azure."
 services: virtual-machines-linux
 documentationcenter: python
 author: crwilcox
@@ -16,42 +16,42 @@ ms.topic: article
 ms.date: 11/10/2015
 ms.author: crwilcox
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5940190822cd5c5b78ea0e8f5c8695608d351d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7f2e45a8ba95163ebfb0f10babc91a2b3fd9390
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-an-azure-vm-installing-jupyter-and-running-a-jupyter-notebook-on-azure"></a>Creación de una máquina virtual de Azure, e instalación y ejecución de cuadernos de Jupyter Notebook en Azure
-El [proyecto Jupyter](http://jupyter.org), anteriormente conocido como el [proyecto IPython](http://ipython.org), proporciona una colección de herramientas para la informática científica mediante eficaces shells interactivos que combinan la ejecución de código con la creación de documentos informáticos activos. Estos archivos del bloc de notas pueden contener texto arbitrario, fórmulas matemáticas, código de entrada, resultados, gráficos, vídeos y cualquier otra clase de contenido multimedia que pueda mostrar cualquier explorador web moderno. Independientemente de si no tiene experiencia con Python y desea aprender en un entorno entretenido e interactivo, o bien desea realizar informática técnica o en paralelo, Jupyter Notebook es una excelente elección.
+Hola [Jupyter proyecto](http://jupyter.org), Hola anteriormente [IPython proyecto](http://ipython.org), proporciona una colección de herramientas para informática científica con eficaces shells interactivos que combinan la ejecución de código con la creación de hello de un documento de cálculo activo. Estos archivos del bloc de notas pueden contener texto arbitrario, fórmulas matemáticas, código de entrada, resultados, gráficos, vídeos y cualquier otra clase de contenido multimedia que pueda mostrar cualquier explorador web moderno. Si el usuario está absolutamente nueva tooPython y desea toolearn en un divertido, entorno interactivo o realice algunas grave paralelo/técnico informática, hello Jupyter Notebook es una excelente opción.
 
-![Captura de pantalla](./media/jupyter-notebook/ipy-notebook-spectral.png) Uso de los paquetes SciPy y Matplotlib para analizar la estructura de una grabación de sonido.
+![Captura de pantalla de](./media/jupyter-notebook/ipy-notebook-spectral.png) utilizando SciPy y Matplotlib paquetes tooanalyze Hola la estructura de una grabación de sonido.
 
 ## <a name="jupyter-two-ways-azure-notebooks-or-custom-deployment"></a>Dos formas de Jupyter: Azure Notebooks o implementación personalizada
-Azure ofrece un servicio que puede usar para [comenzar rápidamente a usar Jupyter ](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx).  Si utiliza el servicio de Azure Notebook, puede obtener acceso fácilmente a la interfaz accesible desde la Web de Jupyter a los recursos informáticos escalables con toda la potencia de Python y sus diversas bibliotecas.  Debido a que el servicio administra la instalación, los usuarios pueden obtener acceso a estos recursos sin necesidad de que el usuario los administre y configure.
+Azure proporciona un servicio que puede usar demasiado[comenzar rápidamente a usar Jupyter ](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx).  Mediante el uso de hello servicio de Azure Bloc de notas, puede obtener fácilmente interfaz web accesible del tooJupyter de acceso a los recursos de cálculo escalables con toda la eficacia de Hola de Python y sus muchas bibliotecas.  Puesto que la instalación de Hola se controla mediante el servicio de hello, los usuarios pueden acceder a estos recursos sin necesidad de hello para la administración y configuración por usuario de Hola.
 
-Si el servicio de cuaderno no sirve en el escenario en cuestión, siga leyendo este artículo, que mostrará cómo implementar Jupyter Notebook en Microsoft Azure, mediante máquinas virtuales de Linux.
+Si el servicio de Bloc de notas de hello no funciona para su escenario continuar tooread este artículo que se le mostrará cómo toodeploy Hola Jupyter Notebook en Microsoft Azure, usando máquinas virtuales (VM) en Linux.
 
 [!INCLUDE [create-account-and-vms-note](../../../includes/create-account-and-vms-note.md)]
 
 ## <a name="create-and-configure-a-vm-on-azure"></a>Creación y configuración de una máquina virtual en Azure
-El primer paso es crear una máquina virtual (VM) que se ejecute en Azure.
-Esta máquina virtual consiste en un sistema operativo completo en la nube y se usará para ejecutar Jupyter Notebook. Azure es capaz de ejecutar máquinas virtuales de Linux y Windows y abarcaremos la configuración de Jupyter en ambos tipos de máquinas virtuales.
+primer paso de Hello es toocreate una máquina virtual (VM) que se ejecuta en Azure.
+Esta máquina virtual es un sistema operativo completo en la nube de Hola y se usará para ejecutar hello Jupyter Notebook. Es capaz de ejecutar máquinas virtuales Linux y Windows Azure y se explicará el programa de instalación de Hola de Jupyter en ambos tipos de máquinas virtuales.
 
 ### <a name="create-a-linux-vm-and-open-a-port-for-jupyter"></a>Crear una máquina virtual de Linux y abrir un puerto para Jupyter
-Siga las instrucciones que aparecen [aquí][portal-vm-linux] para crear una máquina virtual de la distribución *Ubuntu*. En este tutorial se usa Ubuntu Server 14.04 LTS. Asumiremos que el nombre de usuario es *azureuser*.
+Siga las instrucciones de hello proporcionadas [aquí] [ portal-vm-linux] toocreate una máquina virtual de hello *Ubuntu* distribución. En este tutorial se usa Ubuntu Server 14.04 LTS. Supondremos que el nombre de usuario de hello *azureuser*.
 
-Una vez que se implementa la máquina virtual, es necesario abrir una regla de seguridad en el grupo de seguridad de red.  En Azure Portal, vaya a **Grupos de seguridad de red** y abra la pestaña del grupo de seguridad que corresponde a la máquina virtual. Debe agregar una regla de seguridad de entrada con la configuración siguiente: **TCP** para el protocolo, **\*** para el puerto de origen (público) y **9999** para el puerto de destino (privado).
+Después de que implementa la máquina virtual de hello necesitamos tooopen de una regla de seguridad en el grupo de seguridad de red de Hola.  Desde Hola portal de Azure, vaya demasiado**grupos de seguridad de red** y pestaña abierta Hola Hola de grupo de seguridad correspondiente tooyour VM. Necesita tooadd una regla de seguridad de entrada con hello después de configuración: **TCP** para el protocolo de hello,  **\***  para el puerto de origen (público) hello y **9999** para puerto de destino (privado) de Hola.
 
 ![Instantánea](./media/jupyter-notebook/azure-add-endpoint.png)
 
-En el grupo de seguridad de red, haga clic en **Interfaces de red** y anote la **dirección IP pública**, la necesitará para conectarse a la máquina virtual en el paso siguiente.
+Mientras que en el grupo de seguridad de red, haga clic en **Interfaces de red** Nota hello y **dirección IP pública** porque será necesaria tooconnect tooyour VM en el paso siguiente Hola.
 
-## <a name="install-required-software-on-the-vm"></a>Instalación del software necesario en la máquina virtual
-Para ejecutar Jupyter Notebook en nuestra máquina virtual, primero debemos instalar Jupyter y sus dependencias. Conéctese a la máquina virtual de Linux con SSH y el par de nombre de usuario/contraseña que eligió cuando creó la máquina virtual. En este tutorial, se usará PuTTY y se conectará desde Windows.
+## <a name="install-required-software-on-hello-vm"></a>Instalar el software necesario en hello VM
+toorun Hola Jupyter Notebook en la máquina virtual, se deben instalar primero Jupyter y sus dependencias. Conectar máquinas virtuales de linux tooyour mediante ssh y Hola de par de nombre de usuario y contraseña de Hola que eligió al crear máquinas virtuales. En este tutorial, se usará PuTTY y se conectará desde Windows.
 
 ### <a name="installing-jupyter-on-ubuntu"></a>Instalación de Jupyter en Ubuntu
-Instale Anaconda, una popular distribución de Python para ciencia de datos, desde uno de los vínculos proporcionados por [Continuum Analytics](https://www.continuum.io/downloads).  En el momento de redactar este documento, los vínculos que aparecen a continuación son las versiones más actualizadas.
+Instalar Anaconda, una distribución de python de ciencia de datos muy popular, mediante uno de los vínculos de hello proporcionados a partir de [Continuum Analytics](https://www.continuum.io/downloads).  Redactar Hola de este documento, Hola vínculos siguientes son hello más seguridad toodate versiones.
 
 #### <a name="anaconda-installs-for-linux"></a>Instalaciones de Anaconda para Linux
 <table>
@@ -90,7 +90,7 @@ Como ejemplo, se trata de cómo puede instalar Anaconda en Ubuntu
     cd ..
     rm -rf anaconda/
 
-    # Update Jupyter to the latest install and generate its config file
+    # Update Jupyter toohello latest install and generate its config file
     sudo /anaconda3/bin/conda install jupyter -y
     /anaconda3/bin/jupyter-notebook --generate-config
 
@@ -98,35 +98,35 @@ Como ejemplo, se trata de cómo puede instalar Anaconda en Ubuntu
 ![Instantánea](./media/jupyter-notebook/anaconda-install.png)
 
 ### <a name="configuring-jupyter-and-using-ssl"></a>Configuración de Jupyter y uso de SSL
-Después de la instalación, necesitamos un momento para configurar los archivos de configuración de Jupyter. Si experimenta problemas con la configuración de Jupyter, puede resultar útil consultar la [documentación de Jupyter para ejecutar un servidor de Notebook](http://jupyter-notebook.readthedocs.org/en/latest/public_server.html).
+Después de instalar necesitamos tootake una archivos de configuración de momento toosetup Hola para Jupyter. Si experimenta problemas con la configuración de Jupyter puede ser útil toolook en hello [Jupyter documentación para ejecutar un servidor de Bloc de notas](http://jupyter-notebook.readthedocs.org/en/latest/public_server.html).
 
-A continuación, mediante el comando `cd` , cámbiese al directorio del perfil para crear nuestro certificado SSL y modifique el archivo de configuración de perfiles.
+Siguiente se `cd` toohello perfil directory toocreate nuestro certificado SSL y editar el archivo de configuración de perfiles de Hola.
 
-En Linux, use el comando siguiente.
+En Linux usar hello siguiente comando.
 
     cd ~/.jupyter
 
-Utilice el comando siguiente para crear el certificado SSL (Linux y Windows).
+Usar hello después de certificado SSL de Hola de comando toocreate (Linux y Windows).
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-Tenga en cuenta que como estamos creando un certificado SSL autofirmado, al conectarse al bloc de notas el explorador le mostrará una advertencia de seguridad.  En un uso de producción a largo plazo, querrá utilizar un certificado correctamente firmado asociado a la organización.  Como la administración de certificados va más allá del ámbito de esta demostración, de momento nos ceñiremos a un certificado autofirmado.
+Tenga en cuenta que puesto que vamos a crear un certificado SSL autofirmado, cuando se conecta el Bloc de notas toohello el explorador le proporcionará una advertencia de seguridad.  Para su uso en producción a largo plazo, deberá toouse un certificado debidamente firmado asociado a su organización.  Puesto que la administración de certificados está más allá del ámbito de Hola de esta demostración, se quedará certificado autofirmado tooa por ahora.
 
-Además de utilizar un certificado, también debe proporcionar una contraseña para proteger el bloc de notas de un uso no autorizado.  Por motivos de seguridad, Jupyter usa contraseñas cifradas en su archivo de configuración, por lo que deberá cifrar primero la contraseña.  IPython proporciona una utilidad para hacerlo; en el símbolo del sistema ejecute el comando siguiente.
+Además toousing un certificado, también debe proporcionar una contraseña tooprotect del Bloc de notas de uso no autorizado.  Por motivos de seguridad Jupyter utiliza contraseñas cifradas en su archivo de configuración, por lo que necesitará tooencrypt su contraseña en primer lugar.  IPython proporciona un toodo utilidad en un símbolo del sistema ejecute hello siguiente comando.
 
     /anaconda3/bin/python -c "import IPython;print(IPython.lib.passwd())"
 
-Se le solicitará una contraseña y su confirmación y, luego, se imprimirá la contraseña. Anótela para el paso siguiente.
+Esto le solicitará una contraseña y la confirmación y, a continuación, imprimirá la contraseña de Hola. Tenga en cuenta esto para hello siguiendo el paso.
 
     Enter password:
     Verify password:
-    sha1:b86e933199ad:a02e9592e59723da722.. (elided the rest for security)
+    sha1:b86e933199ad:a02e9592e59723da722.. (elided hello rest for security)
 
-A continuación, editaremos el archivo de configuración del perfil, que es el archivo `jupyter_notebook_config.py` del directorio en que se encuentra.  Observe que es posible que este archivo no exista. Si es así, simplemente créelo.  Estearchivo tiene varios campos que, de manera predeterminada, se convierten en comentario.  Puede abrir este archivo con el editor de texto que prefiera y debe asegurase de que al menos tiene el contenido siguiente. **Asegúrese de reemplazar c.NotebookApp.password en la configuración por sha1 del paso anterior**.
+A continuación, se modificará el archivo de configuración del perfil de hello, que es el `jupyter_notebook_config.py` archivo directorio Hola se encuentra en.  Tenga en cuenta que este archivo no exista, basta con crear, si ese es el caso de hello.  Estearchivo tiene varios campos que, de manera predeterminada, se convierten en comentario.  Puede abrir este archivo con cualquier editor de texto de su gusto, y debe asegurarse de que al menos se Hola después de contenido. **Ser seguro tooreplace hello c.NotebookApp.password en la configuración de hello con sha1 Hola del paso anterior hello**.
 
     c = get_config()
 
-    # You must give the path to the certificate file.
+    # You must give hello path toohello certificate file.
     c.NotebookApp.certfile = u'/home/azureuser/.jupyter/mycert.pem'
 
     # Create your own password as indicated above
@@ -138,50 +138,50 @@ A continuación, editaremos el archivo de configuración del perfil, que es el a
     c.NotebookApp.port = 9999
     c.NotebookApp.open_browser = False
 
-### <a name="run-the-jupyter-notebook"></a>Ejecutar Jupyter Notebook
-En este momento, estamos preparados para iniciar Jupyter Notebook. Para ello, vaya al directorio en el que desea almacenar los cuadernos e inicie el servidor Jupyter Notebook con el comando siguiente.
+### <a name="run-hello-jupyter-notebook"></a>Ejecute hello Jupyter Notebook
+En este momento se está listo toostart hello Jupyter Notebook. toodo, navegue toohello directory desee toostore blocs de notas y comenzar a servidor de Jupyter Notebook Hola con hello siguiente comando.
 
     /anaconda3/bin/jupyter-notebook
 
-Ahora debería poder tener acceso a Jupyter Notebook en la dirección `https://[PUBLIC-IP-ADDRESS]:9999`.
+Ahora debería ser capaz de tooaccess su Jupyter Notebook en la dirección de hello `https://[PUBLIC-IP-ADDRESS]:9999`.
 
-La primera vez que se accede a un cuaderno, la página de inicio de sesión pide una contraseña. Y una vez que haya iniciado sesión, verá el "panel de control de Jupyter Notebook", que es el centro de control para todas las operaciones del cuaderno.  Desde esta página se pueden crear cuadernos nuevos y abrir los existentes.
+Al acceder primero el Bloc de notas, página de inicio de sesión de hello solicita la contraseña. Y una vez que inicie sesión, verá el saludo "Jupyter Notebook panel", que es el centro de ontrol para todas las operaciones de Bloc de notas.  Desde esta página se pueden crear cuadernos nuevos y abrir los existentes.
 
 ![Instantánea](./media/jupyter-notebook/jupyter-tree-view.png)
 
-### <a name="using-the-jupyter-notebook"></a>Uso de Jupyter Notebook
-Si hace clic en el botón **Nuevo** , verá que se abre la página siguiente.
+### <a name="using-hello-jupyter-notebook"></a>Uso de hello Jupyter Notebook
+Si hace clic en hello **New** botón, verá Hola después de la página inicial.
 
 ![Instantánea](./media/jupyter-notebook/jupyter-untitled-notebook.png)
 
-El área marcada con el mensaje `In []:` es el área de entrada y ahí puede escribir cualquier código Python válido, que se ejecutará cuando presione `Shift-Enter` o haga clic en el icono "Play" (el triángulo que apunta a la derecha en la barra de herramientas).
+área de Hello marcados con un `In []:` símbolo del sistema es el área de entrada de hello, aquí puede escribir cualquier código Python válido y se ejecutará cuando se alcance `Shift-Enter` o haga clic en el icono "Reproducir" hello (Hola triángulo hacia la derecha en la barra de herramientas de hello).
 
 ## <a name="a-powerful-paradigm-live-computational-documents-with-rich-media"></a>Los documentos informáticos activos con medios enriquecidos son un potente paradigma.
-El propio cuaderno le resultará muy familiar a cualquiera que haya utilizado Python y un procesador de textos, ya que, en cierto modo, es una mezcla de ambas cosas: permite ejecutar bloques de código de Python, pero también permite conservar notas y cualquier otro texto cambiando el estilo de una celda de "Code" a "Markdown" con el menú desplegable de la barra de herramientas.
+Bloc de notas de Hello propio se sentirá muy natural tooanyone que ha usado Python y un procesador de textos, porque es en cierto modo una combinación de ambos: puede ejecutar bloques de código de Python, pero también puede mantener notas y cualquier otro texto cambiando demasiado estilo de hello de una celda de "Código" "Ma rkdown"mediante el menú desplegable de hello en la barra de herramientas.
 
 Jupyter es mucho más que un simple procesador de texto, debido a que permite combinar informática y medios enriquecidos (texto, gráficos, vídeo y prácticamente todos los elementos que se pueden mostrar en un explorador web moderno). Puede combinar texto, código, vídeos, etc.
 
 ![Instantánea](./media/jupyter-notebook/jupyter-editing-experience.png)
 
-Y con la potencia de las gran cantidad de excelentes bibliotecas de Python para la informática técnica y científica, en la siguiente captura de pantalla, se puede realizar un cálculo simple con la misma facilidad que un análisis de red complejo, todo ello en un único entorno.
+Y la potencia de Hola de muchas bibliotecas excelente de Python para la informática científicos y técnicos, Hola siguiente captura de pantalla, se puede realizar un cálculo simple con hello mismo facilitar como un análisis de red compleja, todo ello en un entorno.
 
-Este paradigma de combinar la potencia de la web moderna con la informática activa ofrece muchas posibilidades, y es perfectamente adecuado para la nube; el bloc de notas se puede usar:
+Este paradigma de mezcla potencia de Hola de web moderna Hola con cálculo en vivo ofrece muchas posibilidades y es ideal para la nube de hello; se puede utilizar Hola Bloc de notas:
 
-* Como bloc de dictado de cálculo para registrar el trabajo de exploración sobre un problema.
-* Para compartir resultados con compañeros, ya sea en forma de cálculo "activo" o en formatos para impresión (HTML, PDF),
-* Para distribuir y presentar materiales de formación dinámicos que impliquen cálculos, con el fin de que los estudiantes puedan experimentar inmediatamente con el código real, modificarlo y volver a ejecutarlo de manera interactiva.
-* Para proporcionar "documentos ejecutables" que presentan los resultados de la investigación de manera que otras puedan reproducirlos, validarlos y ampliarlos inmediatamente.
-* Como plataforma de informática de colaboración: varios usuarios pueden iniciar sesión en el mismo servidor de IPython Notebook para compartir una sesión de cálculo dinámica.
+* Como una exploración toorecord de Bloc de notas de cálculo del trabajo en un problema.
+* el resultado es tooshare con compañeros, ya sea en forma de cálculo 'activo' o en copia impresa formatos (HTML, PDF).
+* toodistribute y presente materiales teaching en vivo que implican el cálculo, por tanto, los alumnos inmediatamente pueden experimentar con el código real de hello, modificarlo y volver a ejecutan de forma interactiva.
+* tooprovide "ejecutable del producto" que presentan los resultados de Hola de investigación de forma que puede reproducir inmediatamente, validar y ampliado por otras personas.
+* Como plataforma de informática en colaboración: varios usuarios pueden iniciar sesión en toothe mismo servidor de Bloc de notas tooshare una sesión de cálculo activa.
 
-Si va al [repositorio][repository] de código fuente de IPython, encontrará un directorio completo con ejemplos de cuadernos que se pueden descargar para experimentar en su propia máquina virtual de Jupyter de Azure.  Solo tiene que descargar los archivos `.ipynb` desde el sitio y cargarlos en el panel de la máquina virtual del bloc de notas de Azure (o descargarlos directamente en la máquina virtual).
+Si se dejan de código fuente de toohello IPython [repositorio][repository], encontrará todo un directorio con ejemplos de Bloc de notas que se pueden descargar y, a continuación, experimentar con en su propia máquina virtual Jupyter de Azure.  Simplemente descargue hello `.ipynb` archivos de Hola de sitio y cargarlos en el panel de saludo de la máquina virtual de Azure del Bloc de notas (o descargarlos directamente en hello VM).
 
 ## <a name="conclusion"></a>Conclusión
-Jupyter Notebook brinda una sólida interfaz para tener acceso de manera interactiva a la potencia del ecosistema Python en Azure.  Abarca una amplia variedad de casos de uso que incluye la exploración simple y el aprendizaje de Python, análisis de datos y visualización, simulación e informática en paralelo. Los documentos de Notebook resultantes contienen un registro completo de los cálculos que se realizan y que se pueden compartir con otros usuarios de Jupyter.  Jupyter Notebook se puede usar como aplicación local, pero es perfectamente adecuado para implementaciones de nube en Azure.
+Hola Jupyter Notebook proporciona una interfaz eficaz para tener acceso a power Hola del ecosistema de Python de hello en Azure de forma interactiva.  Abarca una amplia variedad de casos de uso que incluye la exploración simple y el aprendizaje de Python, análisis de datos y visualización, simulación e informática en paralelo. documentos de Bloc de notas de Hello resultantes contienen un registro completo de los cálculos de Hola que se llevan a cabo y se puede compartir con otros usuarios de Jupyter.  Hola Jupyter Notebook puede utilizarse como una aplicación local, pero es especialmente adecuado para las implementaciones de nube en Azure
 
-Las características centrales de Jupyter también está disponibles en Visual Studio mediante [Python Tools para Visual Studio][Python Tools for Visual Studio] (PTVS). PTVS es un complemento gratuito y de código abiertode Microsoft que convierte a Visual Studio unentorno de desarrollo avanzado de Python, que incluye un editor avanzado con la integración de IntelliSense, depuración,creación de perfiles y la informática en paralelo.
+las características básicas de Hola de Jupyter también están disponibles dentro de Visual Studio a través de la [Python Tools para Visual Studio] [ Python Tools for Visual Studio] (PTVS). PTVS es un complemento gratuito y de código abiertode Microsoft que convierte a Visual Studio unentorno de desarrollo avanzado de Python, que incluye un editor avanzado con la integración de IntelliSense, depuración,creación de perfiles y la informática en paralelo.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más información, vea el [Centro para desarrolladores de Python](/develop/python/).
+Para obtener más información, vea hello [Centro para desarrolladores de Python](/develop/python/).
 
 [portal-vm-linux]: https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
 [repository]: https://github.com/ipython/ipython

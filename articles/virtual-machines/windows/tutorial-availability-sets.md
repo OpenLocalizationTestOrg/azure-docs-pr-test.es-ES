@@ -1,6 +1,6 @@
 ---
-title: "Tutorial de conjuntos de disponibilidad para máquinas virtuales de Windows en Azure | Microsoft Docs"
-description: "Obtenga información sobre los conjuntos de disponibilidad para máquinas virtuales de Windows en Azure."
+title: "aaaAvailability establece el tutorial para máquinas virtuales de Windows en Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de hello disponibilidad conjuntos para máquinas virtuales de Windows en Azure."
 documentationcenter: 
 services: virtual-machines-windows
 author: cynthn
@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d918362106ef93cf47620e0018d363cd510884b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 853775c5f126dd815c1933f9d71d2274a75ea661
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-availability-sets"></a>Cómo usar conjuntos de disponibilidad
+# <a name="how-toouse-availability-sets"></a>¿Cómo se establece toouse disponibilidad
 
-En este tutorial, obtendrá información sobre cómo aumentar la disponibilidad y confiabilidad de las soluciones de máquina virtual en Azure mediante una funcionalidad denominada "conjuntos de disponibilidad". Los conjuntos de disponibilidad garantizan que las máquinas virtuales implementadas en Azure se distribuyan entre varios clústeres de hardware aislados. De este modo, se asegura de que, si se produce un error de hardware o software en Azure, solo un subconjunto de las máquinas virtuales se verá afectado, y que la solución estará disponible y en funcionamiento para los clientes. 
+En este tutorial, obtendrá información sobre cómo la disponibilidad de hello tooincrease y la confiabilidad de las soluciones de la máquina Virtual en Azure con una capacidad de llamar conjuntos de disponibilidad. Conjuntos de disponibilidad Asegúrese de que las máquinas virtuales se implementan en Azure se distribuyen entre varios clústeres de hardware aislados de Hola. Esto garantiza que, si se produce un error de hardware o software dentro de Azure, solo un subjuego de las máquinas virtuales se verán afectado y que la solución general permanecerá disponible y en funcionamiento desde la perspectiva de Hola de los clientes de usarlo. 
 
 En este tutorial, aprenderá a:
 
@@ -33,19 +33,19 @@ En este tutorial, aprenderá a:
 > * Crear una máquina virtual en un conjunto de disponibilidad
 > * Comprobar los tamaños de máquina virtual disponibles
 
-Para realizar este tutorial es necesaria la versión 3.6 del módulo de Azure PowerShell, o cualquier versión posterior. Ejecute ` Get-Module -ListAvailable AzureRM` para encontrar la versión. Si necesita actualizarla, consulte [Instalación del módulo de Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Este tutorial requiere hello Azure PowerShell versión 3.6 o posterior del módulo. Ejecutar ` Get-Module -ListAvailable AzureRM` toofind versión de Hola. Si necesita tooupgrade, consulte [módulo instalar Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="availability-set-overview"></a>Información general sobre conjuntos de disponibilidad
 
-Un conjunto de disponibilidad es una funcionalidad de agrupación lógica que puede usar en Azure para asegurarse de que los recursos de máquina virtual que coloque en dicho conjunto de disponibilidad estén aislados entre sí cuando se implementen en un centro de datos de Azure. Azure garantiza que las máquinas virtuales colocados en un conjunto de disponibilidad se ejecuten en varios servidores físicos, grupos de proceso, unidades de almacenamiento y conmutadores de red. De este modo, se garantiza que si se produce un error de hardware o software de Azure, solo un subconjunto de las máquinas virtuales se verá afectado, y que la aplicación se mantendrá actualizada y seguirá estando disponible para los clientes. Usar conjuntos de disponibilidad es una funcionalidad fundamental que debe tener en cuenta para crear soluciones en la nube confiables.
+Un conjunto de disponibilidad es una capacidad de agrupación lógica que puede usar en Azure tooensure que los recursos de máquina virtual de Hola que se coloca dentro de él están aislados entre sí cuando se implementan en un centro de datos de Azure. Azure garantiza que las máquinas virtuales se coloca dentro de un conjunto de disponibilidad que se ejecute en varios servidores físicos de hello, proceso racks, unidades de almacenamiento y conmutadores de red. Esto garantiza que en caso de hello de un error hardware o software de Azure, solo un subconjunto de las máquinas virtuales se verán afectado, y la aplicación global se mantienen actualizados y continuar a toobe tooyour disponibles clientes. Usar conjuntos de disponibilidad es una capacidad fundamental tooleverage cuando desee que las soluciones de nube confiable toobuild.
 
-Veamos una solución basada en máquina virtual típica en la podría haber 4 servidores web front-end y usar 2 máquinas virtuales de back-end que hospedan una base de datos. Con Azure, desea definir 2 conjuntos de disponibilidad antes de implementar las máquinas virtuales: un conjunto de disponibilidad para el nivel de "web" y otro para el nivel de "base de datos". Al crear una máquina virtual, podrá especificar el conjunto de disponibilidad como un parámetro en el comando az vm create, y Azure garantizará automáticamente que las máquinas virtuales que cree en el conjunto de disponibilidad estén aisladas en varios recursos de hardware físico. Esto significa que si el hardware físico que está ejecutando una de sus máquinas virtuales del servidor web o del servidor de base de datos tiene un problema, sabrá que las demás instancias de las máquinas virtuales del servidor de base de datos y del servidor web seguirán ejecutándose correctamente porque están en un hardware diferente.
+Veamos una solución basada en máquina virtual típica en la podría haber 4 servidores web front-end y usar 2 máquinas virtuales de back-end que hospedan una base de datos. Con Azure, desearía toodefine dos conjuntos de disponibilidad antes de implementar las máquinas virtuales: conjunto de disponibilidad de uno para la capa de "web" de Hola y un conjunto de disponibilidad de nivel de "database" Hola. Cuando se crea una nueva máquina virtual, a continuación, puede especificar el conjunto como una máquina virtual de parámetro toohello az crear comandos y Azure automáticamente asegurará de que hello las máquinas virtuales que cree en hello disponible de la disponibilidad de hello conjunto están aislados entre varios recursos de hardware físico. Esto significa que si el hardware físico de Hola que uno de su servidor Web o máquinas virtuales del servidor de base de datos se ejecuta en tiene un problema, sabe que Hola otras instancias de servidor Web y máquinas virtuales de la base de datos seguirá ejecutándose correctamente porque están en un hardware diferente.
 
-Siempre debe utilizar los conjuntos de disponibilidad cuando quiera implementar soluciones basadas en máquinas virtuales confiables en Azure.
+Debe utilizar siempre los conjuntos de disponibilidad cuando se desean toodeploy las soluciones basadas en VM confiables dentro de Azure.
 
 ## <a name="create-an-availability-set"></a>Crear un conjunto de disponibilidad
 
-Puede crear un conjunto de disponibilidad con [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset). En este ejemplo, se establece el número de dominios de actualización y error en *2* para el conjunto de disponibilidad denominado *myAvailabilitySet* en el grupo de recursos *myResourceGroupAvailability*.
+Puede crear un conjunto de disponibilidad con [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset). En este ejemplo, establecemos ambos en número de dominios de actualización y error en hello *2* para el conjunto con nombre de la disponibilidad de hello *myAvailabilitySet* en hello *myResourceGroupAvailability*grupo de recursos.
 
 Cree un grupo de recursos.
 
@@ -66,20 +66,20 @@ New-AzureRmAvailabilitySet `
 
 ## <a name="create-vms-inside-an-availability-set"></a>Creación de VM dentro de un conjunto de disponibilidad
 
-Las máquinas virtuales deben crearse en el conjunto de disponibilidad para asegurarse de que se distribuyan correctamente en el hardware. No se puede agregar una máquina virtual existente a un conjunto de disponibilidad después de crearla. 
+Las máquinas virtuales deben toobe creado dentro de hello disponibilidad conjunto toomake seguro de que se distribuyen correctamente a través de hardware de Hola. No se puede agregar un grupo de disponibilidad de tooan VM establecer después de crearlo. 
 
-El hardware de una ubicación está dividido en varios dominios de actualización y de error. Un **dominio de actualización** es un grupo de máquinas virtuales y hardware físico subyacente que se pueden reiniciar al mismo tiempo. Las máquinas virtuales en el mismo **dominio de error** comparten un almacenamiento común, así como una fuente de alimentación y un conmutador de red comunes. 
+hardware de Hello en una ubicación se divide en toomultiple actualizar dominios y dominios de error. Un **Actualizar dominio** es un grupo de máquinas virtuales y el hardware físico subyacente que puede reiniciarse en hello mismo tiempo. Máquinas virtuales en el mismo Hola **dominio de error** comparten un almacenamiento común, así como un conmutador de origen y de red común de energía. 
 
-Cuando se crea una VM mediante [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig), se especifica el conjunto de disponibilidad mediante el parámetro `-AvailabilitySetId` para especificar el identificador del conjunto de disponibilidad.
+Cuando se crea una máquina virtual mediante la configuración mediante [New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) especificar Hola conjunto de disponibilidad mediante hello `-AvailabilitySetId` Id. del parámetro toospecify Hola Hola del conjunto de disponibilidad.
 
-Cree 2 VM con [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) en el conjunto de disponibilidad.
+Crear 2 máquinas virtuales con [AzureRmVM New](/powershell/module/azurerm.compute/new-azurermvm) en conjunto de disponibilidad de Hola.
 
 ```powershell
 $availabilitySet = Get-AzureRmAvailabilitySet `
     -ResourceGroupName myResourceGroupAvailability `
     -Name myAvailabilitySet
 
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+$cred = Get-Credential -Message "Enter a username and password for hello virtual machine."
 
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
     -Name mySubnet `
@@ -125,7 +125,7 @@ for ($i=1; $i -le 2; $i++)
         -PublicIpAddressId $pip.Id `
         -NetworkSecurityGroupId $nsg.Id
 
-   # Here is where we specify the availability set
+   # Here is where we specify hello availability set
    $vm = New-AzureRmVMConfig `
         -VMName myVM$i `
         -VMSize Standard_D1 `
@@ -158,11 +158,11 @@ for ($i=1; $i -le 2; $i++)
 
 ```
 
-Se tarda unos minutos en crear y configurar ambas VM. Cuando se acabe, tendrá 2 máquinas virtuales distribuidas en el hardware subyacente. 
+Toma toocreate unos minutos y configurar las máquinas virtuales. Cuando termine, tendrá 2 máquinas virtuales que se distribuyen a través de hello subyacente de hardware. 
 
 ## <a name="check-for-available-vm-sizes"></a>Comprobación de los tamaños de VM disponibles 
 
-Se pueden agregar más máquinas virtuales al conjunto de disponibilidad posteriormente, pero debe saber qué tamaños de máquina virtual están disponibles en el hardware. Use [Get-AzureRMVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) para enumerar todos los tamaños disponibles en el clúster de hardware para el conjunto de disponibilidad.
+Puede agregar más máquinas virtuales toohello conjunto de disponibilidad posteriormente, pero necesita tooknow qué tamaños de máquinas virtuales están disponibles en el hardware de Hola. Use [AzureRMVMSize Get](/powershell/module/azurerm.compute/get-azurermvmsize) toolist todos los tamaños disponibles de hello en hardware de Hola de clúster para el conjunto de disponibilidad de Hola.
 
 ```powershell
 Get-AzureRmVMSize `
@@ -179,7 +179,7 @@ En este tutorial, ha aprendido cómo:
 > * Crear una máquina virtual en un conjunto de disponibilidad
 > * Comprobar los tamaños de máquina virtual disponibles
 
-Avance al siguiente tutorial para informarse sobre los conjuntos de escalado de máquinas virtuales.
+Avanzar toohello toolearn de tutorial siguiente sobre conjuntos de escalas de máquina virtual.
 
 > [!div class="nextstepaction"]
 > [Creación de un conjunto de escalado de máquinas virtuales](tutorial-create-vmss.md)

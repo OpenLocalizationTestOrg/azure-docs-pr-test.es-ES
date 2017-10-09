@@ -1,6 +1,6 @@
 ---
-title: "Instalación y configuración de Terraform para aprovisionar máquinas virtuales y otras infraestructuras en Azure | Microsoft Docs"
-description: "Obtenga información sobre cómo instalar y configurar Terraform para crear recursos de Azure"
+title: "aaaInstall o configurar las máquinas virtuales de Terraform tooprovision y otras infraestructuras de Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo tooinstall y configurar Terraform toocreate Azure recursos"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: echuvyrov
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: 1f26bccf279ebb61fbf77767186d0435e4f4ba40
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 803f51a6f5357417b96264ba713791408f9935b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Instalación y configuración de Terraform para aprovisionar máquinas virtuales y otras infraestructuras en Azure 
-En este artículo se describen los pasos necesarios para instalar y configurar Terraform para aprovisionar recursos, tales como máquinas virtuales, en Azure. Obtendrá información sobre cómo crear y usar credenciales de Azure para habilitar Terraform para aprovisionar recursos en la nube de forma segura.
+# <a name="install-and-configure-terraform-tooprovision-vms-and-other-infrastructure-into-azure"></a>Instalar y configurar las máquinas virtuales de Terraform tooprovision y otras infraestructuras en Azure 
+Este artículo describe tooinstall de pasos necesarios de Hola y configure Terraform tooprovision recursos como máquinas virtuales en Azure. Obtendrá información sobre cómo toocreate y use Azure credenciales tooenable Terraform tooprovision recursos en la nube de forma segura.
 
-HashiCorp Terraform proporciona una manera fácil de definir e implementar infraestructura en la nube mediante un lenguaje de plantillas personalizadas denominado lenguaje de configuración de HashiCorp (HCL). Este lenguaje personalizado es [fácil de escribir y fácil de entender](terraform-create-complete-vm.md). Además, mediante el comando `terraform plan`, puede visualizar los cambios en la infraestructura antes de confirmarlos. Siga estos pasos para empezar a usar Terraform con Azure.
+HashiCorp Terraform proporciona una manera sencilla de toodefine e implementar la infraestructura de nube mediante un lenguaje de plantillas personalizadas denominado lenguaje de configuración de HashiCorp (HCL). Este lenguaje personalizado es [toowrite sencillo y fácil toounderstand](terraform-create-complete-vm.md). Además, mediante el uso de hello `terraform plan` de comandos, puede visualizar tooyour infraestructura de hello cambios antes de confirmarlos. Siga estos toostart pasos mediante Terraform con Azure.
 
 ## <a name="install-terraform"></a>Instalar Terraform
-Para instalar Terraform, [descargue](https://www.terraform.io/downloads.html) el paquete apropiado para su sistema operativo en un directorio de instalación independiente. La descarga contiene un único archivo ejecutable, para el que también debe definir una ruta de acceso global. Para obtener instrucciones sobre cómo establecer la ruta de acceso en Linux y Mac, vaya a [esta página web](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux). Para obtener instrucciones sobre cómo establecer la ruta de acceso en Windows, vaya a [esta página web](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows). Para comprobar la instalación, ejecute el comando `terraform`. Debería ver una lista de opciones disponibles de Terraform como salida.
+tooinstall Terraform, [descargar](https://www.terraform.io/downloads.html) paquete Hola adecuado para su sistema operativo en un directorio de instalación independiente. descarga de Hello contiene un solo archivo ejecutable para el que también debe definir una ruta de acceso global. Para obtener instrucciones sobre cómo tooset Hola ruta de acceso en Linux y Mac, vaya demasiado[esta página Web](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux). Para obtener instrucciones sobre cómo tooset Hola ruta de acceso en Windows, vaya demasiado[esta página Web](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows). tooverify la instalación, ejecute hello `terraform` comando. Debería ver una lista de opciones disponibles de Terraform como salida.
 
-A continuación, debe permitir el acceso de Terraform a su suscripción de Azure para realizar el aprovisionamiento de infraestructuras.
+A continuación, deberá tooallow Terraform acceso tooyour suscripción de Azure tooperform aprovisionamiento de la infraestructura.
 
-## <a name="set-up-terraform-access-to-azure"></a>Configurar el acceso de Terraform a Azure
-Para habilitar Terraform para aprovisionar recursos en Azure, debe crear dos entidades en Azure Active Directory (Azure AD): una aplicación de Azure AD y una entidad de servicio de Azure AD. Seguidamente, los identificadores de estas entidades se usan en los scripts de Terraform. La entidad de servicio es una instancia local de una aplicación de Azure AD global. Una entidad de servicio permite el control de acceso local granular a los recursos globales.
+## <a name="set-up-terraform-access-tooazure"></a>Configurar Terraform acceso tooAzure
+tooenable Terraform tooprovision recursos en Azure, necesita toocreate dos entidades en Azure Active Directory (Azure AD): una aplicación de Azure AD y una entidad de seguridad de servicio de Azure AD. Seguidamente, los identificadores de estas entidades se usan en los scripts de Terraform. La entidad de servicio es una instancia local de una aplicación de Azure AD global. Una entidad de servicio permite recursos de tooglobal de control de acceso local específico.
 
-Hay varias maneras de crear una aplicación de Azure AD y una entidad de servicio de Azure AD. La forma más sencilla y rápida hoy en día es usar la CLI de Azure 2.0, que [puede descargar e instalar en Windows, Linux o Mac](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli). También puede usar PowerShell o la CLI de Azure 1.0 para crear la infraestructura de seguridad necesaria. Las instrucciones siguientes muestran cómo configurar Terraform para Azure mediante el uso de todos estos métodos.
+Hay varias toocreate formas una aplicación de Azure AD y una entidad de seguridad de servicio de Azure AD. Hola más rápido y sencillo cierto hoy en día es toouse 2.0 de CLI de Azure, que [puede descargar e instalar en Windows, Linux o Mac](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli). También puede utilizar la infraestructura de seguridad necesarios de hello toocreate PowerShell o CLI de Azure 1.0. instrucciones de Hello siguientes muestran cómo tooconfigure Terraform de Azure mediante el uso de todos estos enfoques.
 
 ### <a name="use-azure-cli-20-for-windows-linux-or-mac-users"></a>Usar la CLI de Azure 2.0 (para usuarios de Windows, Linux o Mac) 
-Después de descargar e instalar la [CLI de Azure 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli), inicie sesión para administrar su suscripción de Azure con el comando siguiente:
+Después de descargar e instalar hello [CLI de Azure 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli), inicie sesión en tooadminister su suscripción de Azure mediante la emisión de hello siguiente comando:
 
 ```
 az login
 ```
 
 >[!NOTE]
->Si usa las nubes de China, Alemania o Government, primero debe configurar la CLI de Azure para trabajar con dicha nube. Para ello, ejecute lo siguiente:
+>Si usas Hola China, Azure en Alemania o nubes de Azure Government, necesita toofirst configurar hello Azure CLI toowork con esa nube. Puede hacerlo ejecutando Hola siguiente:
 
 ```
 az cloud set --name AzureChinaCloud|AzureGermanCloud|AzureUSGovernment
 ```
 
-Si tiene varias suscripciones de Azure, se devuelven sus detalles mediante el comando `az login`. Establezca la variable de entorno `SUBSCRIPTION_ID` para almacenar el valor devuelto del campo `id` de la suscripción que quiere usar. 
+Si tiene varias suscripciones de Azure, se devuelven sus detalles por hello `az login` comando. Conjunto hello `SUBSCRIPTION_ID` devuelve el valor de hello toohold variables de entorno del programa Hola a `id` campo de la suscripción de hello desea toouse. 
 
-Establezca la suscripción que quiere usar para esta sesión.
+Establecer la suscripción de Hola que quiere toouse de esta sesión.
 
 ```
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-Consulte la cuenta para obtener los valores de los identificadores de suscripción e inquilino.
+Id. de suscripción de hello cuenta tooget Hola de consulta y valores de Id. de inquilino.
 
 ```
 az account show --query "{subscriptionId:id, tenantId:tenantId}"
@@ -70,9 +70,9 @@ A continuación, cree credenciales separadas para Terraform.
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-Se devuelven el valor de appId, password, sp_name y tenant. Anote el valor de appId y password.
+Se devuelven el valor de appId, password, sp_name y tenant. Tome nota de appId de hello y una contraseña.
 
-Para confirmar las credenciales (la entidad de servicio), abra un nuevo shell y ejecute los comandos siguientes. Sustituya los valores devueltos de sp_name, password y tenant:
+tooconfirm sus credenciales (entidad de servicio), abra un nuevo shell y ejecute hello siga los comandos. Hola de sustitución devuelve valores para sp_name, la contraseña y el inquilino:
 
 ```
 az login --service-principal -u SP_NAME -p PASSWORD --tenant TENANT
@@ -80,40 +80,40 @@ az vm list-sizes --location westus
 ```
 
 ### <a name="use-powershell-for-windows-users"></a>Usar PowerShell (para usuarios de Windows) 
-Para usar un equipo Windows para escribir y ejecutar los scripts de Terraform, y usar PowerShell para las tareas de configuración, configure el equipo con las herramientas adecuadas de PowerShell. 
+toouse Windows toowrite del equipo y ejecutar su Terraform secuencias de comandos y toouse PowerShell para tareas de configuración, configurar la máquina con herramientas de PowerShell de hello adecuadas. 
 
-1. Instale las herramientas de PowerShell siguiendo los pasos descritos en [Install and configure Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps) (Instalar y configurar Azure PowerShell). 
+1. Instalar herramientas de PowerShell siguiendo los pasos de hello en [instalar y configurar Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps). 
 
-2. Descargue y ejecute el script [azure-setup.ps1](https://github.com/echuvyrov/terraform101/blob/master/azureSetup.ps1) desde la consola de PowerShell.
+2. Descargar y ejecutar hello [secuencia de comandos de azure setup.ps1](https://github.com/echuvyrov/terraform101/blob/master/azureSetup.ps1) desde la consola de PowerShell de Hola.
 
-3. Para ejecutar el script azure-setup.ps1, descárguelo y ejecute el comando `./azure-setup.ps1 setup` desde la consola de PowerShell. Después, inicie sesión con su suscripción de Azure con privilegios administrativos.
+3. secuencia de comandos toorun hello setup.ps1 de azure, descargarla y ejecutar hello `./azure-setup.ps1 setup` comando desde la consola de PowerShell de Hola. A continuación, inicie sesión en tooyour suscripción de Azure con privilegios administrativos.
 
 4. Proporcione un nombre de aplicación (una cadena arbitraria, obligatoria) cuando se le solicite. Opcionalmente, proporcione una contraseña segura cuando se le solicite. Si no proporciona una contraseña, se genera una contraseña segura automáticamente con las bibliotecas de seguridad de .NET.
 
 ### <a name="use-azure-cli-10-for-linux-or-mac-users"></a>Usar la CLI de Azure 1.0 (para usuarios de Linux o Mac)
-Para empezar a trabajar con Terraform en equipos Linux o Mac con la CLI de Azure 1.0, instale las bibliotecas adecuadas en el equipo.  
+tooget iniciados con Terraform en máquinas de Linux o Mac con 1.0 de CLI de Azure, instale Hola bibliotecas adecuadas en su equipo.  
 
-1. Instale las herramientas xPlat de la CLI de Azure siguiendo los pasos descritos en [Instalación de la CLI de Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+1. Instalar las herramientas CLI de Azure xPlat siguiendo los pasos de hello en [instalar Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-2. Descargue e instale un procesador JSON siguiendo las instrucciones de [Download jq](https://stedolan.github.io/jq/download/) (Descargar jq).
+2. Descargar e instalar un procesador JSON siguiendo las instrucciones de hello en [descargar jq](https://stedolan.github.io/jq/download/).
 
-3. Descargue y ejecute el script de Bash [azure-setup.sh](https://github.com/mitchellh/packer/blob/master/contrib/azure-setup.sh) desde la consola.
+3. Descargar y ejecutar hello [secuencia de comandos de azure setup.sh](https://github.com/mitchellh/packer/blob/master/contrib/azure-setup.sh) bash script desde la consola de Hola.
 
-4. Para ejecutar el script azure-setup.sh, descárguelo y ejecute el comando `./azure-setup setup` desde la consola. Después, inicie sesión con su suscripción de Azure con privilegios administrativos.
+4. secuencia de comandos toorun hello setup.sh de azure, descargarla y ejecutar hello `./azure-setup setup` comando desde la consola de Hola. A continuación, inicie sesión en tooyour suscripción de Azure con privilegios administrativos.
  
 5. Proporcione un nombre de aplicación (una cadena arbitraria, obligatoria) cuando se le solicite. Opcionalmente, proporcione una contraseña segura cuando se le solicite. Si no proporciona una contraseña, se genera una contraseña segura automáticamente con las bibliotecas de seguridad de .NET.
 
-Todos los scripts anteriores crean una aplicación y una entidad de servicio de Azure AD. La entidad de servicio obtiene acceso de nivel de colaborador o propietario en la suscripción. Debido al nivel alto de acceso concedido, debe proteger siempre la información de seguridad generada por los scripts. Anote los cuatro elementos de información de seguridad que proporcionan los scripts: appId, password, subscription_id y tenant_id.
+Todos los scripts anteriores Hola crean una aplicación de Azure AD y el servicio principal. Hola service principal obtiene un colaborador o acceso de nivel de propietario de la suscripción de Hola. Debido a Hola alto nivel de acceso concedido, siempre debería proteger la información de seguridad de hello generado por los scripts. Anote los cuatro elementos de información de seguridad que proporcionan los scripts: appId, password, subscription_id y tenant_id.
 
 ## <a name="set-environment-variables"></a>Establecimiento de variables de entorno
-Después de crear y configurar una entidad de servicio de Azure AD, debe notificar a Terraform el identificador de inquilino, identificador de suscripción, identificador de cliente y secreto de cliente que se van a usar. Para ello, inserte esos valores en los scripts de Terraform, tal y como se describe en [Creación de una infraestructura básica de Azure mediante Terraform](terraform-create-complete-vm.md). Como alternativa, puede establecer las siguientes variables de entorno (y así evitar insertar en el repositorio o compartir las credenciales accidentalmente):
+Después de crear y configurar una entidad de seguridad de servicio de Azure AD, necesita toolet Terraform saber Id. de inquilino de hello, Id. de suscripción, Id. de cliente y toouse secreto de cliente. Para ello, inserte esos valores en los scripts de Terraform, tal y como se describe en [Creación de una infraestructura básica de Azure mediante Terraform](terraform-create-complete-vm.md). Como alternativa, puede establecer Hola después de las variables de entorno (y, por tanto, evitar accidentalmente proteger o compartir sus credenciales):
 
 - ARM_SUBSCRIPTION_ID
 - ARM_CLIENT_ID
 - ARM_CLIENT_SECRET
 - ARM_TENANT_ID
 
-Puede usar este script de shell de ejemplo para establecer esas variables:
+Puede usar este tooset de secuencia de comandos de shell de ejemplo esas variables:
 
 ```
 #!/bin/sh
@@ -124,7 +124,7 @@ export ARM_CLIENT_SECRET=your_password
 export ARM_TENANT_ID=your_tenant_id
 ```
 
-Además, si usa Terraform con Azure Government, Azure Alemania o Azure China, debe establecer la variable de entorno adecuadamente.
+Además, si utiliza Terraform con Azure en China, o bien administración pública de Azure o Azure en Alemania, deberá variable de entorno tooset Hola adecuadamente.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ya ha instalado Terraform y configurado las credenciales de Azure para poder iniciar la implementación de la infraestructura en su suscripción de Azure. Ahora, obtenga información acerca de cómo [Crear infraestructura con Terraform](terraform-create-complete-vm.md).
+Ya ha instalado Terraform y configurado las credenciales de Azure para poder iniciar la implementación de la infraestructura en su suscripción de Azure. A continuación, obtenga información acerca de cómo demasiado[crear infraestructura con Terraform](terraform-create-complete-vm.md).

@@ -1,6 +1,6 @@
 ---
-title: "Implementación de máquinas virtuales Linux en una red existente con la CLI de Azure 1.0 | Microsoft Docs"
-description: "Implementación de una máquina virtual Linux en una red virtual existente mediante la CLI de Azure 1.0"
+title: "aaaDeploy máquinas virtuales de Linux en la red existente con 1.0 de CLI de Azure | Documentos de Microsoft"
+description: "¿Cómo toodeploy una VM de Linux en una red Virtual existente mediante Hola 1.0 de CLI de Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,34 +15,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 767a3f7cadba6b1e71e5a8f5995a9db090e419dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e660f1563d386efc7788bd236f8b067145ea09bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-deploy-a-linux-virtual-machine-into-an-existing-azure-virtual-network-with-the-azure-cli-10"></a>Implementación de una máquina virtual Linux en una red virtual de Azure existente mediante la CLI de Azure 1.0
+# <a name="how-toodeploy-a-linux-virtual-machine-into-an-existing-azure-virtual-network-with-hello-azure-cli-10"></a>¿Cómo toodeploy una máquina virtual de Linux en una red Virtual de Azure existente con hello Azure CLI 1.0
 
-En este artículo se muestra cómo usar la CLI de Azure 1.0 para implementar una máquina virtual (VM) en una red virtual (VNet) existente. Los requisitos son:
+Este artículo muestra cómo toodeploy toouse 1.0 de CLI de Azure una máquina virtual (VM) en una red Virtual (VNet). Hola requisitos son:
 
 - [una cuenta de Azure](https://azure.microsoft.com/pricing/free-trial/);
 - [archivos de clave SSH pública y privada](mac-create-ssh-keys.md).
 
 
-## <a name="cli-versions-to-complete-the-task"></a>Versiones de la CLI para completar la tarea
-Puede completar la tarea mediante una de las siguientes versiones de la CLI:
+## <a name="cli-versions-toocomplete-hello-task"></a>Tarea CLI versiones toocomplete hello
+Puede completar la tarea hello mediante uno de hello después de las versiones CLI:
 
-- [CLI de Azure 1.0](#quick-commands): la CLI para los modelos de implementación clásico y de Resource Manager (este artículo)
-- [CLI de Azure 2.0](deploy-linux-vm-into-existing-vnet-using-cli.md): la CLI de última generación para el modelo de implementación de administración de recursos
+- [Azure 1.0 de CLI](#quick-commands) – nuestro CLI para hello clásico y recursos administración modelos de implementación (en este artículo)
+- [Azure 2.0 CLI](deploy-linux-vm-into-existing-vnet-using-cli.md) -nuestro CLI de próxima generación para el modelo de implementación de administración de recursos de Hola
 
 
 ## <a name="quick-commands"></a>Comandos rápidos
 
-Si necesita realizar rápidamente la tarea, en la siguiente sección se detallan los comandos necesarios. Se puede encontrar información más detallada y contexto para cada paso en el resto del documento, [comenzando aquí](deploy-linux-vm-into-existing-vnet-using-cli.md#detailed-walkthrough).
+Si necesita tooquickly realizar la tarea hello, Hola pasos de la sección detalles comandos Hola necesarios. Obtener más información y el contexto de cada paso se encuentran rest Hola de documento de hello, [a partir de aquí](deploy-linux-vm-into-existing-vnet-using-cli.md#detailed-walkthrough).
 
 Requisitos previos: grupo de recursos, red virtual, NSG con SSH entrante, subred. Reemplace los ejemplos por su propia configuración.
 
-### <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Implementación de la máquina virtual en la infraestructura de la red virtual
+### <a name="deploy-hello-vm-into-hello-virtual-network-infrastructure"></a>Implementar Hola VM en la infraestructura de red virtual de Hola
 
 ```azurecli
 azure vm create myVM \
@@ -61,19 +61,19 @@ azure vm create myVM \
 
 ## <a name="detailed-walkthrough"></a>Tutorial detallado
 
-Los recursos de Azure, como las redes virtuales y los grupos de seguridad de red, deben ser recursos estáticos y de larga duración que se implementen en raras ocasiones. Una vez que se ha implementado una red virtual, se puede volver a utilizar con nuevas implementaciones sin efectos adversos para la infraestructura. Imagine que una red virtual es un conmutador de red de hardware tradicional. No sería preciso configurar un conmutador nuevo en cada implementación. Con una red virtual configurada correctamente, podemos seguir implementando nuevos servidores en esa red virtual una y otra vez con pocos, en caso de que haya, cambios necesarios durante la vida útil de la red virtual.
+Activos de Azure como Hola redes virtuales y grupos de seguridad de red deben ser estáticos y larga duración recursos que rara vez se implementan. Una vez que se ha implementado una red virtual, se puede reutilizar con nuevas implementaciones sin ninguna infraestructura de toohello afectará de forma negativa. Imagine que una red virtual es un conmutador de red de hardware tradicional. No tendrá tooconfigure hardware completamente nuevo cambiar con cada implementación. Con una red virtual configurada correctamente, puede seguir el toodeploy nuevos servidores en esa red virtual una y otra vez con pocos, si lo hay, cambios necesarios durante la vigencia de Hola de hello red virtual.
 
-## <a name="create-the-resource-group"></a>Creación del grupo de recursos
+## <a name="create-hello-resource-group"></a>Crear grupo de recursos de Hola
 
-En primer lugar, creará un grupo de recursos para organizar todo lo que vaya a crear en este tutorial. Para más información sobre los grupos de recursos, consulte [Información general de Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+En primer lugar, cree una tooorganize de grupo de recursos todo lo que cree en este tutorial. Para más información sobre los grupos de recursos, consulte [Información general de Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 ```azurecli
 azure group create myResourceGroup --location eastus
 ```
 
-## <a name="create-the-vnet"></a>Crear la red virtual
+## <a name="create-hello-vnet"></a>Crear red virtual de hello
 
-El primer paso es crear una red virtual en la que iniciar las máquinas virtuales. La red virtual contiene una subred para este tutorial. Para más información, consulte [Creación de una red virtual usando la CLI de Azure](../../virtual-network/virtual-networks-create-vnet-arm-cli.md).
+Hola primer paso es toobuild Hola a las máquinas virtuales en un toolaunch de red virtual. Hola red virtual contiene una subred para este tutorial. Para obtener más información sobre redes virtuales de Azure, consulte [crear una red virtual mediante el uso de hello CLI de Azure](../../virtual-network/virtual-networks-create-vnet-arm-cli.md)
 
 ```azurecli
 azure network vnet create myVNet \
@@ -82,9 +82,9 @@ azure network vnet create myVNet \
     --location eastus
 ```
 
-## <a name="create-the-network-security-group"></a>Creación del grupo de seguridad de red
+## <a name="create-hello-network-security-group"></a>Crear grupo de seguridad de red de Hola
 
-La subred se crea detrás de un grupo de seguridad de red existente, de modo que cree primero el grupo de seguridad de red y después la subred. Los grupos de seguridad de red de Azure equivalen a un firewall en el nivel de red. Para más información sobre los grupos de seguridad de red de Azure, consulte [Creación de grupos de seguridad de red en la CLI de Azure](../../virtual-network/virtual-networks-create-nsg-arm-cli.md).
+subred de Hola se compila detrás de un grupo de seguridad de red existente por lo que crear grupo de seguridad de red de hello antes de subred Hola. Grupos de seguridad de red de Azure son firewall tooa equivalente en la capa de red Hola. Para obtener más información sobre los grupos de seguridad de red de Azure, vea [cómo grupos de seguridad de red de toocreate Hola CLI de Azure](../../virtual-network/virtual-networks-create-nsg-arm-cli.md)
 
 ```azurecli
 azure network nsg create myNetworkSecurityGroup \
@@ -94,7 +94,7 @@ azure network nsg create myNetworkSecurityGroup \
 
 ## <a name="add-an-inbound-ssh-allow-rule"></a>Agregar regla de permiso de SSH entrante
 
-La máquina virtual debe tener acceso desde Internet por lo que es necesario una regla que permita que el tráfico entrante en el puerto 22 pase por la red y vaya al puerto 22 de la máquina virtual.
+Hola VM necesita acceso de hello internet para que una regla que permita el puerto de entrada 22 tráfico toobe pasa a través de la red de hello tooport 22 en hello VM es necesario.
 
 ```azurecli
 azure network nsg rule create inboundSSH \
@@ -110,9 +110,9 @@ azure network nsg rule create inboundSSH \
     --destination-port-range 22
 ```
 
-## <a name="add-a-subnet-to-the-vnet"></a>Agregar una subred a la red virtual
+## <a name="add-a-subnet-toohello-vnet"></a>Agregar una red virtual de toohello de subred
 
-Las máquinas virtuales dentro de la red virtual deben estar ubicadas en una subred. Cada red virtual puede tener varias subredes. Cree la subred y asóciela con el grupo de seguridad de red.
+Las máquinas virtuales de hello red virtual deben estar ubicadas en una subred. Cada red virtual puede tener varias subredes. Crear una subred de Hola y asocie al grupo de seguridad de red de Hola.
 
 ```azurecli
 azure network vnet subnet create mySubNet \
@@ -122,12 +122,12 @@ azure network vnet subnet create mySubNet \
     --network-security-group-name myNetworkSecurityGroup
 ```
 
-La subred se agrega ahora dentro de la red virtual asociada con la regla y el grupo de seguridad de red.
+Hola subred ahora se agregaron dentro de la red virtual de Hola y asociado a la regla y el grupo de seguridad de red de Hola.
 
 
-## <a name="add-a-vnic-to-the-subnet"></a>Incorporación de un VNic a la subred
+## <a name="add-a-vnic-toohello-subnet"></a>Agregar una subred de toohello VNic
 
-Las tarjetas de interfaz de red virtual (VNics) son importantes porque las puede reutilizar conectándolas a diferentes máquinas virtuales. En este enfoque la vNic se mantiene como recurso estático mientras que las máquinas virtuales pueden ser temporales. Cree una VNic y asóciela a la subred que creó en el paso anterior.
+Tarjetas de red virtual (VNics) son importantes tal y como se puede reutilizar conectándolos toodifferent las máquinas virtuales. Este enfoque conserva Hola VNic como un recurso estático mientras hello las máquinas virtuales puede ser temporal. Cree un VNic y asociarla a la subred de hello creado en el paso anterior de Hola.
 
 ```azurecli
 azure network nic create myVNic \
@@ -137,11 +137,11 @@ azure network nic create myVNic \
     --subnet-name mySubNet
 ```
 
-## <a name="deploy-the-vm-into-the-vnet-and-nsg"></a>Implemente la máquina virtual en la red virtual y el grupo de seguridad de red
+## <a name="deploy-hello-vm-into-hello-vnet-and-nsg"></a>Implementar Hola VM en la red virtual de Hola y NSG
 
-Ahora tiene una red virtual y una subred dentro de ella, además de un grupo de seguridad de red que sirve para proteger la subred al bloquear todo el tráfico de entrada, excepto el del puerto 22 para SSH. Ahora se puede implementar la máquina virtual dentro de esta infraestructura de red existente.
+Ahora tiene una red virtual y subred dentro de esa red virtual y un grupo de seguridad de red actúan de subred de hello tooprotect bloqueando todo el tráfico entrante excepto el puerto 22 de SSH. Hola VM ahora pueden implementarse dentro de esta infraestructura de red existente.
 
-Mediante la CLI de Azure y el comando `azure vm create`, se implementa la máquina virtual Linux en el grupo de recursos de Azure, la red virtual, la subred y la VNic ya existentes. Para más información sobre el uso de la CLI para implementar una máquina virtual completa, consulte [Creación de un entorno de Linux completo mediante la CLI de Azure](create-cli-complete.md)
+Mediante Hola CLI de Azure y Hola `azure vm create` comando hello Linux VM está implementado toohello grupo de recursos de Azure, red virtual, subred y VNic existentes. Para obtener más información sobre el uso de hello CLI toodeploy una máquina virtual completa, consulte [crear un entorno completo de Linux mediante Hola CLI de Azure](create-cli-complete.md)
 
 ```azurecli
 azure vm create myVM \
@@ -157,10 +157,10 @@ azure vm create myVM \
     --nic-name myVNic
 ```
 
-Por medio de marcadores de CLI para llamar a los recursos existentes, se indica a Azure que implemente la máquina virtual dentro de la red existente. Una vez que se ha implementado una red virtual y una subred, estas pueden dejarse como recursos estáticos o permanentes dentro de su región de Azure.  
+Mediante el uso de hello CLI marcas toocall recursos existentes, indicar hello toodeploy Azure VM dentro de la red existente Hola. Una vez que se ha implementado una red virtual y una subred, estas pueden dejarse como recursos estáticos o permanentes dentro de su región de Azure.  
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Uso de una plantilla de Azure Resource Manager para crear una implementación específica](../windows/cli-deploy-templates.md)
+* [Usar un toocreate de plantilla una implementación específica de Azure Resource Manager](../windows/cli-deploy-templates.md)
 * [Creación de un entorno personalizado para una máquina virtual Linux mediante el uso de comandos de la CLI de Azure directamente](create-cli-complete.md)
 * [Implementación y administración de máquinas virtuales con plantillas de Azure Resource Manager y la CLI de Azure](create-ssh-secured-vm-from-template.md)

@@ -1,5 +1,5 @@
 ---
-title: Uso de PowerShell para administrar Traffic Manager en Azure | Microsoft Docs
+title: aaaUsing PowerShell toomanage Traffic Manager de Azure | Documentos de Microsoft
 description: Uso de PowerShell para Traffic Manager con Azure Resource Manager
 services: traffic-manager
 documentationcenter: na
@@ -13,65 +13,65 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1cd7bd7e32c96398d72c7cd3b51e2b456d60f01d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 018c37db63beb82fdad54cfd7e13ab3cb645723a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-powershell-to-manage-traffic-manager"></a>Uso de PowerShell para administrar Traffic Manager
+# <a name="using-powershell-toomanage-traffic-manager"></a>Usar PowerShell toomanage Traffic Manager
 
-Azure Resource Manager es la interfaz de administración de servicios preferida en Azure. Los perfiles de Traffic Manager se pueden administrar mediante las herramientas y las API basadas en Azure Resource Manager.
+Administrador de recursos de Azure es la interfaz de administración preferido de hello de servicios de Azure. Los perfiles de Traffic Manager se pueden administrar mediante las herramientas y las API basadas en Azure Resource Manager.
 
 ## <a name="resource-model"></a>Modelo de recursos
 
-El Administrador de tráfico de Azure se configura con una colección de valores denominada perfil del Administrador de tráfico. Este perfil contiene la configuración de DNS, la de enrutamiento del tráfico, la de supervisión de puntos de conexión y una lista de los puntos de conexión de servicio a los que se enruta el tráfico.
+El Administrador de tráfico de Azure se configura con una colección de valores denominada perfil del Administrador de tráfico. Este perfil contiene la configuración de DNS, la configuración de enrutamiento de tráfico, punto de conexión de configuración de supervisión, y se enruta una lista de tráfico de toowhich de puntos de conexión de servicio.
 
-Cada perfil de Traffic Manager se representa mediante un recurso de tipo "TrafficManagerProfiles". En el nivel de la API de REST, el URI de cada perfil es el siguiente:
+Cada perfil de Traffic Manager se representa mediante un recurso de tipo "TrafficManagerProfiles". En el nivel de API de REST de Hola Hola URI para cada perfil es el siguiente:
 
     https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
 
 ## <a name="setting-up-azure-powershell"></a>Configuración de Azure PowerShell
 
-En estas instrucciones se usa PowerShell para Microsoft Azure. En el siguiente artículo se explica cómo instalar y configurar Azure PowerShell.
+En estas instrucciones se usa PowerShell para Microsoft Azure. Hello siguiente artículo se explica cómo tooinstall y configurar Azure PowerShell.
 
-* [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview)
+* [¿Cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview)
 
-En los ejemplos de este artículo se da por supuesto que ya tiene un grupo de recursos. Puede crear uno mediante el siguiente comando:
+ejemplos de Hello en este artículo se supone que tiene un grupo de recursos existente. Puede crear un grupo de recursos mediante Hola siguiente comando:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyRG -Location "West US"
 ```
 
 > [!NOTE]
-> Azure Resource Manager requiere que todos los grupos de recursos cuenten con una ubicación. Esta se utiliza como predeterminada para los recursos que se crean en ese grupo de recursos. Sin embargo, puesto que los recursos del perfil de Traffic Manager son globales y no regionales, la elección de la ubicación del grupo de recursos no afecta a Azure Traffic Manager.
+> Azure Resource Manager requiere que todos los grupos de recursos cuenten con una ubicación. Esta ubicación se utiliza como valor predeterminado de Hola para recursos creados en ese grupo de recursos. Sin embargo, puesto que los recursos de perfil de Traffic Manager son globales, no regionales, Hola elección de ubicación del grupo de recursos tiene ningún impacto en Azure Traffic Manager.
 
 ## <a name="create-a-traffic-manager-profile"></a>Creación de un perfil del Administrador de tráfico
 
-Para crear un perfil de Traffic Manager, use el cmdlet `New-AzureRmTrafficManagerProfile`:
+toocreate un perfil de Traffic Manager, use hello `New-AzureRmTrafficManagerProfile` cmdlet:
 
 ```powershell
 $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName contoso -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
 ```
 
-En la siguiente tabla se describen los parámetros:
+Hello en la tabla siguiente describe los parámetros de hello:
 
 | Parámetro | Descripción |
 | --- | --- |
-| Nombre |Nombre del recurso del perfil de Traffic Manager. Los perfiles del mismo grupo de recursos deben tener nombres únicos. Este nombre es independiente del nombre DNS que se utiliza para las consultas de DNS. |
-| ResourceGroupName |Nombre del grupo de recursos que contiene el recurso de perfil. |
-| TrafficRoutingMethod |Especifica el método de enrutamiento del tráfico que se usa para determinar qué punto de conexión se devuelve en respuesta a una consulta de DNS. Los valores posibles son "Performance", "Weighted" o "Priority". |
-| RelativeDnsName |Especifica la parte correspondiente al nombre de host del nombre DNS proporcionado por este perfil de Traffic Manager. Este valor se combina con el nombre de dominio DNS usado por Azure Traffic Manager para formar el nombre de dominio completo (FQDN) del perfil. Por ejemplo, con el valor "contoso", se obtiene "contoso.trafficmanager.net". |
-| TTL |Especifica el período de vida (TTL) de DNS, en segundos. Este TTL informa a las resoluciones DNS locales y a los clientes DNS de cuánto tiempo se guardan en memoria caché las respuestas DNS proporcionadas por este perfil de Traffic Manager. |
-| MonitorProtocol |Especifica el protocolo que se va a usar para supervisar el estado de los puntos de conexión. Los valores posibles son "HTTP" y "HTTPS". |
-| MonitorPort |Especifica el puerto TCP usado para supervisar el estado de los puntos de conexión. |
-| MonitorPath |Especifica la ruta de acceso relativa al nombre de dominio de punto de conexión usado para sondear el estado del punto de conexión. |
+| Nombre |nombre de recurso de Hola para hello recursos de perfil de Traffic Manager. Perfiles en hello mismo grupo de recursos debe tener nombres únicos. Este nombre es independiente de nombre DNS de hello usado para las consultas DNS. |
+| ResourceGroupName |nombre de Hola de hello grupo contenedor Hola perfil recurso. |
+| TrafficRoutingMethod |Especifica Hola enrutamiento de tráfico usa el método toodetermine qué extremo se devuelve como respuesta una consulta DNS. Los valores posibles son "Performance", "Weighted" o "Priority". |
+| RelativeDnsName |Especifica la parte hostname de Hola Hola del nombre de DNS proporcionada por este perfil de Traffic Manager. Este valor se combina con el nombre de dominio DNS de hello utilizada Azure Traffic Manager tooform Hola nombre de dominio completo (FQDN) del perfil de Hola. Por ejemplo, el valor de Hola de "contoso" se convierte en 'contoso.trafficmanager.net'. |
+| TTL |Especifica Hola DNS Time-to-Live (TTL), en segundos. Este TTL informa a los solucionadores de DNS Local hello y los clientes DNS cuánto toocache las respuestas DNS para este perfil de Traffic Manager. |
+| MonitorProtocol |Especifica el estado del extremo de hello protocolo toouse toomonitor. Los valores posibles son "HTTP" y "HTTPS". |
+| MonitorPort |Especifica Hola el puerto TCP utilizado toomonitor estado del extremo. |
+| MonitorPath |Especifica el nombre de dominio de punto de conexión de hello ruta de acceso relativa toohello utiliza tooprobe mantenimiento del extremo. |
 
-El cmdlet crea un perfil de Traffic Manager en Azure y devuelve un objeto de perfil correspondiente a PowerShell. El perfil aún no contiene puntos de conexión. Para más información sobre cómo agregar puntos de conexión a un perfil de Traffic Manager, consulte [Incorporación de puntos de conexión de Traffic Manager](#adding-traffic-manager-endpoints).
+Hola cmdlet crea un perfil de Traffic Manager en Azure y devuelve un tooPowerShell de objeto de perfil correspondiente. En este momento, el perfil de hello no contiene ningún punto de conexión. Para obtener más información acerca de cómo agregar perfil de Traffic Manager tooa de puntos de conexión, vea [agregar extremos de Traffic Manager](#adding-traffic-manager-endpoints).
 
 ## <a name="get-a-traffic-manager-profile"></a>Obtención de un perfil del Administrador de tráfico
 
-Para recuperar un objeto del perfil de Traffic Manager existente, use el cmdlet `Get-AzureRmTrafficManagerProfle`:
+tooretrieve un objeto de perfil de Traffic Manager existente, use hello `Get-AzureRmTrafficManagerProfle` cmdlet:
 
 ```powershell
 $profile = Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
@@ -83,13 +83,13 @@ Este cmdlet devuelve un objeto del perfil del Administrador de tráfico.
 
 Para modificar perfiles de Traffic Manager, se sigue un proceso de tres pasos:
 
-1. Recupere el perfil mediante `Get-AzureRmTrafficManagerProfile` o use el devuelto por `New-AzureRmTrafficManagerProfile`.
-2. Modifique el perfil. Puede agregar y quitar puntos de conexión o cambiar los parámetros del perfil o el punto de conexión. Estos cambios son operaciones fuera de línea. Solo cambia el objeto el objeto local en memoria que representa el perfil.
-3. Confirme los cambios mediante el cmdlet `Set-AzureRmTrafficManagerProfile`.
+1. Recuperar Hola perfil mediante `Get-AzureRmTrafficManagerProfile` o usar perfil Hola devuelto por `New-AzureRmTrafficManagerProfile`.
+2. Modificar perfil Hola. Puede agregar y quitar puntos de conexión o cambiar los parámetros del perfil o el punto de conexión. Estos cambios son operaciones fuera de línea. Objeto local de hello en la memoria que representa el perfil de hello sólo va a cambiar.
+3. Confirmar cambios mediante hello `Set-AzureRmTrafficManagerProfile` cmdlet.
 
-Se pueden cambiar todas las propiedades del perfil, excepto RelativeDnsName para el perfil. Para cambiar RelativeDnsName, debe eliminar el perfil y crear uno con un nombre diferente.
+Todas las propiedades de perfil pueden cambiarse excepto RelativeDnsName del perfil de hello. toochange Hola RelativeDnsName, debe eliminar el perfil y un nuevo perfil con un nombre nuevo.
 
-En el ejemplo siguiente se muestra cómo cambiar el TTL del perfil:
+Hola siguiente ejemplo muestra cómo toochange Hola TTL del perfil:
 
 ```powershell
 $profile = Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
@@ -101,30 +101,30 @@ Existen tres tipos de puntos de conexión de Administrador de tráfico:
 
 1. Los **puntos de conexión de Azure** son servicios hospedados en Azure.
 2. Los **puntos de conexión externos** son servicios hospedados fuera de Azure.
-3. Los **puntos de conexión anidados** se usan para construir jerarquías anidadas de perfiles de Traffic Manager. Los puntos de conexión anidados hacen posibles configuraciones avanzadas de enrutamiento del tráfico para aplicaciones complejas.
+3. **Anidar extremos** son jerarquías de tooconstruct uso anidado de perfiles de Traffic Manager. Los puntos de conexión anidados hacen posibles configuraciones avanzadas de enrutamiento del tráfico para aplicaciones complejas.
 
 En los tres casos, se pueden agregar puntos de conexión de dos maneras:
 
-1. Mediante el proceso de tres pasos descrito antes. La ventaja de este método es que se pueden realizar varios cambios en el punto de conexión en una sola actualización.
-2. Con el cmdlet New-AzureRmTrafficManagerEndpoint. Este cmdlet agrega un punto de conexión a un perfil de Traffic Manager existente en una sola operación.
+1. Mediante el proceso de tres pasos descrito antes. ventaja de Hola de este método es que pueden realizarse varios cambios de punto de conexión en una única actualización.
+2. Usando el cmdlet New-AzureRmTrafficManagerEndpoint de Hola. Este cmdlet agrega un perfil de Traffic Manager de punto de conexión tooan existente en una sola operación.
 
 ## <a name="adding-azure-endpoints"></a>Adición de puntos de conexión de Azure
 
 Los puntos de conexión de Azure hacen referencia a servicios hospedados en Azure. Se admiten dos tipos de puntos de conexión de Azure:
 
 1. Aplicaciones web de Azure 
-2. Recursos de PublicIpAddress de Azure (que pueden estar asociados a un equilibrador de carga o a una NIC de máquina virtual). PublicIpAddress debe tener un nombre DNS asignado para usarse en Traffic Manager.
+2. Recursos de Azure PublicIpAddress (que pueden ser tooa adjunto de equilibrador de carga o una máquina virtual de NIC). Hola PublicIpAddress debe tener un nombre DNS asignado toobe utilizado en el Administrador de tráfico.
 
 En cada caso:
 
-* El servicio se especifica mediante el parámetro '"targetResourceId" de `Add-AzureRmTrafficManagerEndpointConfig` o `New-AzureRmTrafficManagerEndpoint`.
-* Los parámetros "Target" y "EndpointLocation" están implícitos en TargetResourceId.
-* Especificar el valor de 'Weight' es opcional. La ponderación solo se usa si el perfil está configurado para usar el método de enrutamiento del tráfico "Weighted". En caso contrario, se pasan por alto. Si se especifica, el valor debe ser un número entre 1 y 1000. El valor predeterminado es 1.
-* Especificar el valor de 'Priority' es opcional. Las prioridades solo se usan si el perfil está configurado para usar el método de enrutamiento del tráfico "Priority". En caso contrario, se pasan por alto. Los valores válidos son de 1 a 1000; los valores más bajos indican una prioridad más alta. Si se especifica para un punto de conexión, se debe especificar para todos los puntos de conexión. Si se omite, se aplican los valores predeterminados a partir de "1" en el orden en que se indican los puntos de conexión.
+* servicio de Hola se especifica mediante hello 'elemento targetResourceId' parámetro de `Add-AzureRmTrafficManagerEndpointConfig` o `New-AzureRmTrafficManagerEndpoint`.
+* Hello 'Target' y 'EndpointLocation' están implícito en el elemento TargetResourceId Hola.
+* Especificar hello 'Weight' es opcional. Pesos solo se usan si el perfil de hello es el método de enrutamiento del tráfico de toouse configurado hello 'Weighted'. En caso contrario, se pasan por alto. Si se especifica, el valor de hello debe ser un número entre 1 y 1000. valor predeterminado de Hello es '1'.
+* Hola especificando 'Priority' es opcional. Las prioridades se usan solo si el perfil de hello es el método de enrutamiento del tráfico de toouse configurado hello 'Priority'. En caso contrario, se pasan por alto. Los valores válidos son de 1 too1000 con valores más bajos que indica una prioridad más alta. Si se especifica para un punto de conexión, se debe especificar para todos los puntos de conexión. Si se omite, los valores predeterminados a partir de '1' se aplican en orden de Hola que se enumeran los puntos de conexión de Hola.
 
 ### <a name="example-1-adding-web-app-endpoints-using-add-azurermtrafficmanagerendpointconfig"></a>Ejemplo 1: Incorporación de puntos de conexión de aplicación web mediante `Add-AzureRmTrafficManagerEndpointConfig`
 
-En este ejemplo, se crea un perfil de Traffic Manager y se agregan dos puntos de conexión de aplicación web mediante el cmdlet `Add-AzureRmTrafficManagerEndpointConfig`.
+En este ejemplo, se crea un perfil de Traffic Manager y agregue dos extremos de aplicación Web con hello `Add-AzureRmTrafficManagerEndpointConfig` cmdlet.
 
 ```powershell
 $profile = New-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -136,7 +136,7 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 ### <a name="example-2-adding-a-publicipaddress-endpoint-using-new-azurermtrafficmanagerendpoint"></a>Ejemplo 2: Incorporación de un punto de conexión de publicIpAddress mediante `New-AzureRmTrafficManagerEndpoint`
 
-En este ejemplo, se agrega un recurso de dirección IP pública al perfil de Traffic Manager. La dirección IP pública debe tener un nombre DNS configurado y puede enlazarse a la NIC de una máquina virtual o a un equilibrador de carga.
+En este ejemplo, un recurso de dirección IP público se agrega toohello perfil de Traffic Manager. la dirección IP pública Hola debe tener un nombre DNS configurado y puede estar enlazado cualquier NIC de un equilibrador de carga de la máquina virtual o tooa toohello.
 
 ```powershell
 $ip = Get-AzureRmPublicIpAddress -Name MyPublicIP -ResourceGroupName MyRG
@@ -145,17 +145,17 @@ New-AzureRmTrafficManagerEndpoint -Name MyIpEndpoint -ProfileName MyProfile -Res
 
 ## <a name="adding-external-endpoints"></a>Adición de puntos de conexión externos
 
-Administrador de tráfico usa los puntos de conexión externos para dirigir el tráfico a los servicios hospedados fuera de Azure. Al igual que en el caso de los puntos de conexión de Azure, los puntos de conexión externos se pueden agregar mediante `Add-AzureRmTrafficManagerEndpointConfig` seguido de `Set-AzureRmTrafficManagerProfile` o `New-AzureRMTrafficManagerEndpoint`.
+El tráfico Manager usa extremos externos toodirect tráfico tooservices hospedado fuera de Azure. Al igual que en el caso de los puntos de conexión de Azure, los puntos de conexión externos se pueden agregar mediante `Add-AzureRmTrafficManagerEndpointConfig` seguido de `Set-AzureRmTrafficManagerProfile` o `New-AzureRMTrafficManagerEndpoint`.
 
 Cuando se especifican puntos de conexión externos:
 
-* Se debe especificar el nombre de dominio del punto de conexión con el parámetro Target.
-* Si se usa el método de enrutamiento del tráfico "Performance", se necesita "EndpointLocation". De lo contrario, es opcional. El valor debe ser un [nombre de región de Azure válido](https://azure.microsoft.com/regions/).
-* Los parámetros "Weight" y "Priority" son opcionales.
+* nombre de dominio de punto de conexión de Hello debe especificarse con el parámetro de 'Target' hello
+* Si se utiliza el método de enrutamiento de tráfico 'Rendimiento' hello, hello 'EndpointLocation' es necesario. De lo contrario, es opcional. Hola valor debe ser un [nombre de la región de Azure válida](https://azure.microsoft.com/regions/).
+* Hola 'Peso' y 'Priority' es opcional.
 
 ### <a name="example-1-adding-external-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Ejemplo 1: Incorporación de puntos de conexión externos mediante `Add-AzureRmTrafficManagerEndpointConfig` y `Set-AzureRmTrafficManagerProfile`
 
-En este ejemplo, se crea un perfil de Traffic Manager, se agregan dos puntos de conexión externos y se confirman los cambios.
+En este ejemplo, se crea un perfil de Traffic Manager, agregar dos extremos externos y confirmar los cambios de Hola.
 
 ```powershell
 $profile = New-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG -TrafficRoutingMethod Performance -RelativeDnsName myapp -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -166,7 +166,7 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 
 ### <a name="example-2-adding-external-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Ejemplo 2: Incorporación de puntos de conexión externos mediante `New-AzureRmTrafficManagerEndpoint`
 
-En este ejemplo, se agrega un punto de conexión externo a un perfil existente. El perfil se especifica mediante los nombres del grupo de recursos y del perfil.
+En este ejemplo, se agrega un perfil existente de tooan de extremo externo. perfil de Hola se especifica utilizando nombres de grupos de recursos y perfil Hola.
 
 ```powershell
 New-AzureRmTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -ResourceGroupName MyRG -Type ExternalEndpoints -Target app-eu.contoso.com -EndpointStatus Enabled
@@ -174,18 +174,18 @@ New-AzureRmTrafficManagerEndpoint -Name eu-endpoint -ProfileName MyProfile -Reso
 
 ## <a name="adding-nested-endpoints"></a>Adición de puntos de conexión "Anidados"
 
-Cada perfil del Administrador de tráfico especifica un único método de enrutamiento del tráfico. No obstante, hay escenarios en que se requiere un enrutamiento del tráfico más sofisticado que el proporcionado mediante un único perfil de Traffic Manager. Puede anidar perfiles de Traffic Manager para combinar las ventajas de más de un método de enrutamiento del tráfico. Los perfiles anidados permiten invalidar el comportamiento predeterminado de Traffic Manager para admitir implementaciones de aplicaciones más grandes y complejas. Para ejemplos más detallados, consulte [Perfiles anidados de Traffic Manager](traffic-manager-nested-profiles.md).
+Cada perfil del Administrador de tráfico especifica un único método de enrutamiento del tráfico. Sin embargo, hay escenarios que requieren el enrutamiento del tráfico más sofisticadas de hello enrutamiento proporcionada por un solo perfil de Traffic Manager. Puede anidar ventajas de hello toocombine de los perfiles de Traffic Manager de más de un método de enrutamiento de tráfico. Perfiles anidados permiten toooverride Hola predeterminado Traffic Manager comportamiento toosupport mayor y las implementaciones de aplicaciones más complejas. Para ejemplos más detallados, consulte [Perfiles anidados de Traffic Manager](traffic-manager-nested-profiles.md).
 
-Los puntos de conexión anidados se configuran en el perfil primario, utilizando un tipo de punto de conexión específico: 'NestedEndpoints'. Cuando se especifican puntos de conexión anidados:
+Extremos anidados se configuran en el perfil de hello primaria, con un tipo de punto de conexión concreto, 'NestedEndpoints'. Cuando se especifican puntos de conexión anidados:
 
-* El punto de conexión se debe especificar con el parámetro "targetResourceId".
-* Si se usa el método de enrutamiento del tráfico "Performance", se necesita "EndpointLocation". De lo contrario, es opcional. El valor debe ser un [nombre de región de Azure válido](http://azure.microsoft.com/regions/).
-* Los parámetros Weight y Priority son opcionales en cuanto a los puntos de conexión de Azure.
-* El parámetro "MinChildEndpoints" es opcional. El valor predeterminado es 1. Si el número de puntos de conexión disponibles se encuentra por debajo de este umbral, el perfil primario considera que dicho perfil está "degradado" y desvía el tráfico a los demás puntos de conexión del perfil primario.
+* punto de conexión de Hello debe especificarse con el parámetro de 'elemento targetResourceId' hello
+* Si se utiliza el método de enrutamiento de tráfico 'Rendimiento' hello, hello 'EndpointLocation' es necesario. De lo contrario, es opcional. Hola valor debe ser un [nombre de la región de Azure válida](http://azure.microsoft.com/regions/).
+* Hola 'Peso' y 'Priority' es opcional, como para los extremos de Azure.
+* parámetro de 'MinChildEndpoints' Hello es opcional. valor predeterminado de Hello es '1'. Si número Hola de puntos de conexión disponibles cae por debajo del umbral, perfil principal de hello considera perfil secundario de hello 'Degradado' y desvía tráfico toohello otros extremos en el perfil de hello primario.
 
 ### <a name="example-1-adding-nested-endpoints-using-add-azurermtrafficmanagerendpointconfig-and-set-azurermtrafficmanagerprofile"></a>Ejemplo 1: Incorporación de puntos de conexión anidados mediante `Add-AzureRmTrafficManagerEndpointConfig` y `Set-AzureRmTrafficManagerProfile`
 
-En este ejemplo, se crean un perfil primario y otro secundario de Traffic Manager, se agrega el secundario como punto de conexión anidado al primario y se confirman los cambios.
+En este ejemplo, se crear primarias y secundarias de Traffic Manager nuevos perfiles, agrega a secundario hello como elemento primario toohello anidadas de punto de conexión y confirmar los cambios de Hola.
 
 ```powershell
 $child = New-AzureRmTrafficManagerProfile -Name child -ResourceGroupName MyRG -TrafficRoutingMethod Priority -RelativeDnsName child -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
@@ -194,11 +194,11 @@ Add-AzureRmTrafficManagerEndpointConfig -EndpointName child-endpoint -TrafficMan
 Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 ```
 
-Por brevedad, en este ejemplo, no se han agregado otros puntos de conexión al perfil primario ni al secundario.
+Por razones de brevedad en este ejemplo, no se ha agregado los otros extremos toohello secundarias o primarias perfiles.
 
 ### <a name="example-2-adding-nested-endpoints-using-new-azurermtrafficmanagerendpoint"></a>Ejemplo 2: Incorporación de puntos de conexión anidados mediante `New-AzureRmTrafficManagerEndpoint`
 
-En este ejemplo, agregamos un perfil secundario existente como punto de conexión anidado a un perfil primario existente. El perfil se especifica mediante los nombres del grupo de recursos y del perfil.
+En este ejemplo, agregamos un perfil secundario existente como un perfil de primario de extremo anidada tooan existente. perfil de Hola se especifica utilizando nombres de grupos de recursos y perfil Hola.
 
 ```powershell
 $child = Get-AzureRmTrafficManagerEndpoint -Name child -ResourceGroupName MyRG
@@ -207,14 +207,14 @@ New-AzureRmTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -Reso
 
 ## <a name="update-a-traffic-manager-endpoint"></a>Actualización de un punto de conexión de Administrador de tráfico
 
-Hay dos maneras de actualizar un punto de conexión del Administrador de tráfico existente:
+Hay dos tooupdate formas un punto de conexión de administrador de tráfico existente:
 
-1. Obtenga el perfil de Traffic Manager mediante `Get-AzureRmTrafficManagerProfile`, actualice las propiedades de punto de conexión en el perfil y confirme los cambios con `Set-AzureRmTrafficManagerProfile`. Este método tiene la ventaja de poder actualizar más de un punto de conexión en una sola operación.
-2. Obtenga el perfil de Traffic Manager mediante `Get-AzureRmTrafficManagerEndpoint`, actualice las propiedades de punto de conexión y confirme los cambios con `Set-AzureRmTrafficManagerEndpoint`. Este método es más sencillo, ya que no requiere la indexación de la matriz de puntos de conexión en el perfil.
+1. Obtener perfil de Traffic Manager de hello mediante `Get-AzureRmTrafficManagerProfile`, actualizar las propiedades de punto de conexión de hello en el perfil de Hola y confirmar los cambios de hello mediante `Set-AzureRmTrafficManagerProfile`. Este método tiene la ventaja de Hola de ser tooupdate capaz de más de un punto de conexión en una sola operación.
+2. Obtener el punto de conexión de administrador de tráfico de hello mediante `Get-AzureRmTrafficManagerEndpoint`, actualizar las propiedades de punto de conexión de Hola y confirmar los cambios de hello mediante `Set-AzureRmTrafficManagerEndpoint`. Este método es más sencillo, ya que no requieren la indización en la matriz de puntos de conexión de hello en el perfil de Hola.
 
 ### <a name="example-1-updating-endpoints-using-get-azurermtrafficmanagerprofile-and-set-azurermtrafficmanagerprofile"></a>Ejemplo 1: Actualización de puntos de conexión mediante `Get-AzureRmTrafficManagerProfile` y `Set-AzureRmTrafficManagerProfile`
 
-En este ejemplo, se va a modificar la prioridad de dos puntos de conexión en un perfil existente.
+En este ejemplo, se modifique la prioridad de hello en dos puntos de conexión dentro de un perfil existente.
 
 ```powershell
 $profile = Get-AzureRmTrafficManagerProfile -Name myprofile -ResourceGroupName MyRG
@@ -225,7 +225,7 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profile
 
 ### <a name="example-2-updating-an-endpoint-using-get-azurermtrafficmanagerendpoint-and-set-azurermtrafficmanagerendpoint"></a>Ejemplo 2: Actualización de un punto de conexión mediante `Get-AzureRmTrafficManagerEndpoint` y `Set-AzureRmTrafficManagerEndpoint`
 
-En este ejemplo, se modifica la ponderación de un solo punto de conexión en un perfil existente.
+En este ejemplo, se modifique el peso de Hola de un solo punto de conexión en un perfil existente.
 
 ```powershell
 $endpoint = Get-AzureRmTrafficManagerEndpoint -Name myendpoint -ProfileName myprofile -ResourceGroupName MyRG -Type ExternalEndpoints
@@ -235,65 +235,65 @@ Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 
 ## <a name="enabling-and-disabling-endpoints-and-profiles"></a>Habilitación y deshabilitación de puntos de conexión y perfiles
 
-Administrador de tráfico permite que se habiliten y deshabiliten puntos de conexión individuales, además de permitir la habilitación y deshabilitación de perfiles completos.
-Estos cambios pueden realizarse mediante la obtención, actualización o configuración los recursos del perfil o del punto de conexión. Para facilitar estas operaciones comunes, también se admiten a través de cmdlets dedicados.
+Traffic Manager permite extremos individuales toobe habilitados y deshabilitados, además de permitir la habilitación y deshabilitación de perfiles completos.
+Estos cambios pueden realizarse por los recursos de extremo o un perfil de hello obtener/actualizar/configuración. toostreamline estas operaciones comunes, también se admiten a través de los cmdlets dedicados.
 
 ### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>Ejemplo 1: Habilitación y deshabilitación de un perfil de Administrador de tráfico
 
-Para habilitar un perfil de Traffic Manager, use `Enable-AzureRmTrafficManagerProfile`. El perfil se puede especificar mediante un objeto de perfil. El objeto de perfil se puede pasar a través de la canalización o mediante el parámetro "-TrafficManagerProfile". En este ejemplo, se especifica el perfil mediante el nombre del grupo de recursos y del perfil.
+tooenable un perfil de Traffic Manager, use `Enable-AzureRmTrafficManagerProfile`. perfil de Hello puede especificarse mediante un objeto de perfil. Hello objeto de perfil se puede pasar a través de la canalización de Hola o mediante el uso de hello '-TrafficManagerProfile' parámetro. En este ejemplo, especificamos perfil Hola por nombre de grupo de recursos y perfil Hola.
 
 ```powershell
 Enable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-Para deshabilitar un perfil de Traffic Manager:
+toodisable un perfil de Traffic Manager:
 
 ```powershell
 Disable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
-El cmdlet Disable-AzureRmTrafficManagerProfile solicita confirmación. Se puede suprimir este mensaje con el parámetro "-Force".
+Hola Disable-AzureRmTrafficManagerProfile cmdlet pide confirmación. Este mensaje se puede suprimir con hello '-Force' parámetro.
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Ejemplo 2: Habilitación y deshabilitación de un punto de conexión de Administrador de tráfico
 
-Para habilitar un punto de conexión de Traffic Manager, use `Enable-AzureRmTrafficManagerEndpoint`. Hay dos maneras de especificar el punto de conexión.
+usar un punto de conexión de administrador de tráfico, tooenable `Enable-AzureRmTrafficManagerEndpoint`. Hay el punto de conexión de dos maneras toospecify Hola
 
-1. Mediante un objeto TrafficManagerEndpoint pasado a través de la canalización o con el parámetro "-TrafficManagerEndpoint"
-2. Mediante el nombre del punto de conexión, el tipo de punto de conexión, el nombre del perfil y el nombre del grupo de recursos:
+1. Mediante un objeto TrafficManagerEndpoint pasado a través de la canalización de Hola o con hello '-TrafficManagerEndpoint' parámetro
+2. Uso de nombre de punto de conexión de hello, tipo de extremo, nombre del perfil y el nombre del grupo de recursos:
 
 ```powershell
 Enable-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
-De forma similar, para deshabilitar un punto de conexión de Administrador de tráfico:
+Toodisable del mismo modo, un punto de conexión de administrador de tráfico:
 
 ```powershell
 Disable-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG -Force
 ```
 
-Al igual que con `Disable-AzureRmTrafficManagerProfile`, el cmdlet `Disable-AzureRmTrafficManagerEndpoint` solicita confirmación. Se puede suprimir este mensaje con el parámetro "-Force".
+Al igual que con `Disable-AzureRmTrafficManagerProfile`, hello `Disable-AzureRmTrafficManagerEndpoint` cmdlet pide confirmación. Este mensaje se puede suprimir con hello '-Force' parámetro.
 
 ## <a name="delete-a-traffic-manager-endpoint"></a>Eliminación de un punto de conexión de Administrador de tráfico
 
-Para quitar puntos de conexión individuales, use el cmdlet `Remove-AzureRmTrafficManagerEndpoint`:
+tooremove extremos individuales, utilice hello `Remove-AzureRmTrafficManagerEndpoint` cmdlet:
 
 ```powershell
 Remove-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
-Este cmdlet solicita confirmación. Se puede suprimir este mensaje con el parámetro "-Force".
+Este cmdlet solicita confirmación. Este mensaje se puede suprimir con hello '-Force' parámetro.
 
 ## <a name="delete-a-traffic-manager-profile"></a>Eliminación de un perfil del Administrador de tráfico
 
-Para eliminar un perfil de Traffic Manager, use el cmdlet `Remove-AzureRmTrafficManagerProfile`, especificando el nombre del perfil y el del grupo de recursos:
+toodelete un perfil de Traffic Manager, use hello `Remove-AzureRmTrafficManagerProfile` cmdlet, especificar los nombres de grupo de recursos y perfil de hello:
 
 ```powershell
 Remove-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG [-Force]
 ```
 
-Este cmdlet solicita confirmación. Se puede suprimir este mensaje con el parámetro "-Force".
+Este cmdlet solicita confirmación. Este mensaje se puede suprimir con hello '-Force' parámetro.
 
-El perfil que se va a eliminar también se puede especificar con un objeto de perfil:
+Hola perfil toobe elimina también puede especificarse mediante un objeto de perfil:
 
 ```powershell
 $profile = Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG

@@ -1,6 +1,6 @@
 ---
-title: Copia de seguridad automatizada para SQL Server 2014 en Azure Virtual Machines | Microsoft Docs
-description: "Se explica la característica Copia de seguridad automatizada para SQL Server 2014 en máquinas virtuales que se ejecutan en Azure. Este artículo trata exactamente sobre las máquinas virtuales que usan Resource Manager."
+title: "aaaAutomated copia de seguridad de SQL Server 2014 máquinas virtuales de Azure | Documentos de Microsoft"
+description: "Explica la característica de copia de seguridad automatizada de Hola para 2014 VM de SQL Server que se ejecuta en Azure. Este artículo es específico tooVMs mediante Hola, Administrador de recursos."
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/05/2017
 ms.author: jroth
-ms.openlocfilehash: 91aab896dd5f06c950ee0ed8f36cc6a953d91611
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c6803d8ef9f80e44a2f87918d87e099f1b562483
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Copia de seguridad automatizada para SQL Server 2014 en Azure Virtual Machines (Resource Manager)
 
@@ -27,12 +27,12 @@ ms.lasthandoff: 07/11/2017
 > * [SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
 > * [SQL Server 2016](virtual-machines-windows-sql-automated-backup-v2.md)
 
-Copia de seguridad automatizada configura automáticamente [Copia de seguridad administrada para Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) para todas las bases de datos existentes y nuevas en una máquina virtual de Azure que ejecuta SQL Server 2014 Standard y Enterprise. Esto le permite configurar copias de seguridad de datos normales que utilizan el almacenamiento de blobs de Azure. Copia de seguridad automatizada se basa en la [Extensión Agente de IaaS de SQL Server](virtual-machines-windows-sql-server-agent-extension.md).
+Copia de seguridad automatizada configura automáticamente [tooMicrosoft de copia de seguridad administrada Azure](https://msdn.microsoft.com/library/dn449496.aspx) para todas las bases de datos nuevas y existentes en una VM de Azure que ejecuta SQL Server 2014 Standard o Enterprise. Esto le permite las copias de seguridad de base de datos normal de tooconfigure que utilizan el almacenamiento de blobs de Azure duradero. Copia de seguridad automatizada depende de hello [extensión del agente de IaaS de SQL Server](virtual-machines-windows-sql-server-agent-extension.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para utilizar Copia de seguridad automatizada, tenga en cuenta los siguientes requisitos previos:
+toouse copia de seguridad automatizada, considere la posibilidad de hello siguiendo los requisitos previos:
 
 **Sistema operativo**:
 
@@ -46,12 +46,12 @@ Para utilizar Copia de seguridad automatizada, tenga en cuenta los siguientes re
 - SQL Server 2014 Enterprise
 
 > [!IMPORTANT]
-> Copia de seguridad automatizada funciona con SQL Server 2014. Si usa SQL Server 2016, puede usar Copia de seguridad automatizada v2 para hacer copias de seguridad de las bases de datos. Para obtener más información, vea [Copia de seguridad automatizada v2 para SQL Server 2016 en Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
+> Copia de seguridad automatizada funciona con SQL Server 2014. Si usas SQL Server 2016, puede usar copia de seguridad automatizada v2 tooback seguridad de las bases de datos. Para obtener más información, vea [Copia de seguridad automatizada v2 para SQL Server 2016 en Azure Virtual Machines](virtual-machines-windows-sql-automated-backup-v2.md).
 
 **Configuración de base de datos**:
 
-- Las bases de datos de destino deben utilizar el modelo de recuperación completa. Para obtener más información sobre el impacto del modelo de recuperación completa en las copias de seguridad, vea [Copia de seguridad en el modelo de recuperación completa](https://technet.microsoft.com/library/ms190217.aspx).
-- Las bases de datos de destino deben estar en la instancia predeterminada de SQL Server. La extensión de IaaS de SQL Server no admite instancias con nombre.
+- Las bases de datos de destino deben usar el modelo de recuperación completa de Hola. Para obtener más información sobre las repercusiones de Hola Hola completa del modelo de recuperación en copias de seguridad, consulte [Hola de copia de seguridad en el modelo de recuperación completa](https://technet.microsoft.com/library/ms190217.aspx).
+- Las bases de datos de destino deben estar en la instancia de SQL Server predeterminada de Hola. Hola extensión de IaaS de SQL Server no admite instancias con nombre.
 
 **Modelo de implementación de Azure**:
 
@@ -59,63 +59,63 @@ Para utilizar Copia de seguridad automatizada, tenga en cuenta los siguientes re
 
 **Azure PowerShell**:
 
-- [Instale los comandos de Azure PowerShell más recientes](/powershell/azure/overview) si planea configurar Copia de seguridad automatizada con PowerShell.
+- [Instalar los comandos de PowerShell de Azure más recientes de hello](/powershell/azure/overview) si tiene previsto tooconfigure copia de seguridad automatizada con PowerShell.
 
 > [!NOTE]
-> Copia de seguridad automatizada se basa en la Extensión Agente de IaaS de SQL Server. Las imágenes actuales de la galería de máquinas virtuales de SQL agregan esta extensión de manera predeterminada. Para más información, consulte la [extensión Agente de IaaS de SQL Server](virtual-machines-windows-sql-server-agent-extension.md).
+> Copia de seguridad automatizada se basa en hello extensión del agente de IaaS de SQL Server. Las imágenes actuales de la galería de máquinas virtuales de SQL agregan esta extensión de manera predeterminada. Para más información, consulte la [extensión Agente de IaaS de SQL Server](virtual-machines-windows-sql-server-agent-extension.md).
 
 ## <a name="settings"></a>Settings
 
-En la siguiente tabla se describen las opciones que pueden configurarse para Copia de seguridad automatizada. Los pasos de configuración reales varían si usa Azure Portal o comandos de Windows PowerShell de Azure.
+Hello siguiente tabla describe las opciones de Hola que se pueden configurar para copia de seguridad automatizada. pasos de configuración real de Hello varían dependiendo de si utiliza Hola portal de Azure o comandos de PowerShell de Windows Azure.
 
 | Configuración | Intervalo (valor predeterminado) | Descripción |
 | --- | --- | --- |
 | **Copia de seguridad automatizada** | Habilitar/deshabilitar (deshabilitado) | Habilita o deshabilita la copia de seguridad automatizada para una máquina virtual de Azure que ejecuta SQL Server 2014 Standard o Enterprise. |
-| **Período de retención** | 1-30 días (30 días) | El número de días para retener una copia de seguridad. |
-| **Storage Account** | Cuenta de Azure Storage | Una cuenta de Azure Storage que usar para almacenar archivos de Copia de seguridad automatizada en Blob Storage. Se crea un contenedor en esta ubicación para guardar todos los archivos de copia de seguridad. La convención de nomenclatura del archivo de copia de seguridad incluye la fecha, la hora y el nombre de máquina. |
-| **Cifrado** | Habilitar/deshabilitar (deshabilitado) | Habilita o deshabilita el cifrado. Cuando se habilita el cifrado, los certificados usados para restaurar la copia de seguridad se ubican en la cuenta de almacenamiento especificada en el mismo contenedor `automaticbackup` con la misma convención de nomenclatura. Si la contraseña cambia, se genera un nuevo certificado con esa contraseña, pero el certificado antiguo permanece para restaurar copias de seguridad anteriores. |
-| **Password** | Texto de contraseña | Una contraseña para claves de cifrado. Esto solo es necesario si se habilita el cifrado. Para restaurar una copia de seguridad cifrada, debe disponer de la contraseña correcta y del certificado relacionado que se usó en el momento en el que se realizó la copia de seguridad. |
+| **Período de retención** | 1-30 días (30 días) | número de Hola de días tooretain una copia de seguridad. |
+| **Storage Account** | Cuenta de almacenamiento de Azure | Un toouse de la cuenta de almacenamiento de Azure para almacenar los archivos de copia de seguridad automatizada en almacenamiento de blobs. Se crea un contenedor en esta ubicación toostore todos los archivos de copia de seguridad. archivo de copia de seguridad de Hello convención de nomenclatura incluye Hola fecha, hora y nombre de la máquina. |
+| **Cifrado** | Habilitar/deshabilitar (deshabilitado) | Habilita o deshabilita el cifrado. Cuando está habilitado el cifrado, copia de seguridad de hello certificados usados toorestore Hola se encuentran en hello especificado cuenta de almacenamiento en hello mismo `automaticbackup` contenedor mediante Hola la misma convención de nomenclatura. Si cambia la contraseña de hello, se genera un nuevo certificado con esa contraseña, pero los certificados antiguos Hola permanecen toorestore copias de seguridad anteriores. |
+| **Password** | Texto de contraseña | Una contraseña para claves de cifrado. Esto solo es necesario si se habilita el cifrado. En orden toorestore una copia de seguridad cifrada, debe tener contraseña correcta de Hola y el certificado relacionado que se usaron en tiempo de Hola se realizó la copia de seguridad de Hola. |
 
-## <a name="configuration-in-the-portal"></a>Configuración en el Portal
+## <a name="configuration-in-hello-portal"></a>Configuración de hello Portal
 
-Puede usar Azure Portal para configurar Copia de seguridad automatizada durante el aprovisionamiento o para las máquinas virtuales existentes de SQL Server 2014.
+Puede usar hello tooconfigure portal Azure copia de seguridad automatizada durante el aprovisionamiento o para SQL Server 2014 las máquinas virtuales existentes.
 
 ### <a name="new-vms"></a>Nuevas máquinas virtuales
 
-Utilice Azure Portal para configurar la opción Copia de seguridad automatizada cuando cree una nueva máquina virtual con SQL Server 2014 en el modelo de implementación de Resource Manager.
+Usar hello tooconfigure portal Azure copia de seguridad automatizada al crear una nueva máquina Virtual de SQL Server 2014 en el modelo de implementación del Administrador de recursos de Hola.
 
-En la hoja **Configuración de SQL Server**, seleccione **Copia de seguridad automatizada**. La siguiente captura de pantalla de Azure Portal muestra la hoja **Copia de seguridad automatizada de SQL** .
+Hola **configuración de SQL Server** hoja, seleccione **copia de seguridad automatizada**. Hello siguiente captura de pantalla de portal Azure muestra hello **copia de seguridad automatizada de SQL** hoja.
 
 ![Configuración de Copia de seguridad automatizada de SQL en Azure Portal](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 
-Para conocer el contexto, consulte el tema completo en [Aprovisionamiento de una máquina virtual de SQL Server en Azure Portal](virtual-machines-windows-portal-sql-server-provision.md).
+Para el contexto, vea el tema completo de hello en [aprovisionar una máquina virtual de SQL Server en Azure](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Máquinas virtuales existentes
 
-Para las máquinas virtuales de SQL Server existentes, seleccione su máquina virtual de SQL Server. Después, seleccione la sección **Configuración de SQL Server** de la hoja **Configuración**.
+Para las máquinas virtuales de SQL Server existentes, seleccione su máquina virtual de SQL Server. A continuación, seleccione hello **configuración de SQL Server** sección de hello **configuración** hoja.
 
 ![Copia de seguridad automatizada de SQL para máquinas virtuales existentes](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
-En la hoja **Configuración de SQL Server**, haga clic en el botón **Editar** de la sección Copia de seguridad automatizada.
+Hola **configuración de SQL Server** hoja, haga clic en hello **editar** botón Hola automatizada sección copia de seguridad.
 
 ![Configuración de Copia de seguridad automatizada de SQL para máquinas virtuales existentes](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-configuration.png)
 
-Cuando termine, haga clic en el botón **Aceptar** situado en la parte inferior de la hoja **Configuración de SQL Server** para guardar los cambios.
+Cuando termine, haga clic en hello **Aceptar** botón en la parte inferior de Hola de hello **configuración de SQL Server** toosave hoja los cambios.
 
-Si habilita Copia de seguridad automatizada por primera vez, Azure configura el Agente de IaaS de SQL Server en segundo plano. Durante este tiempo, es posible que Azure Portal no muestre que se ha configurado Copia de seguridad automatizada. Espere unos minutos hasta que el agente se instale y configure. Después, Azure Portal mostrará la nueva configuración.
+Si va a habilitar copia de seguridad automatizada para hello primera vez, Azure configura Hola agente de IaaS de SQL Server en segundo plano de Hola. Durante este tiempo, Hola portal de Azure es posible que no muestre que está configurada la copia de seguridad automatizada. Espere unos minutos para hello toobe de agente instalado, configurado. Después de ese hello Azure portal reflejará nueva configuración de Hola.
 
 > [!NOTE]
 > También puede usar una plantilla para configurar Copia de seguridad automatizada. Para más información, consulte [la plantilla de inicio rápido de Azure para Copia de seguridad automatizada](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autobackup-update).
 
 ## <a name="configuration-with-powershell"></a>Configuración con PowerShell
 
-Puede usar PowerShell para configurar Copia de seguridad automatizada. Antes de comenzar:
+Puede usar PowerShell tooconfigure copia de seguridad automatizada. Antes de comenzar:
 
-- [Descargue e instale la última versión de Azure PowerShell](http://aka.ms/webpi-azps).
-- Abra Windows PowerShell y asócielo con su cuenta. Puede hacerlo siguiendo los pasos descritos en la sección [Configuración de su suscripción](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-ps-sql-create#configure-your-subscription) del tema sobre aprovisionamiento.
+- [Descargue e instale Hola más reciente de PowerShell de Azure](http://aka.ms/webpi-azps).
+- Abra Windows PowerShell y asócielo con su cuenta. Puede hacerlo siguiendo los pasos de Hola Hola [configurar su suscripción](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-ps-sql-create#configure-your-subscription) sección de hello aprovisionamiento tema.
 
-### <a name="install-the-sql-iaas-extension"></a>Instalación de la extensión IaaS de SQL Server
-Si se aprovisiona una máquina virtual con SQL Server desde Azure Portal, la extensión IaaS de SQL Server también debe estar instalada. Puede determinar si está instalada para la VM llamando al comando **Get-AzureRmVM** y examinando la propiedad **Extensiones**.
+### <a name="install-hello-sql-iaas-extension"></a>Instalar Hola extensión de IaaS de SQL
+Si se aprovisiona una máquina virtual de SQL Server de hello portal de Azure, ya debe instalarse Hola extensión de IaaS de SQL Server. Puede determinar si se instaló para la máquina virtual mediante una llamada a **Get AzureRmVM** comando y el examen de hello **extensiones** propiedad.
 
 ```powershell
 $vmname = "vmname"
@@ -124,9 +124,9 @@ $resourcegroupname = "resourcegroupname"
 (Get-AzureRmVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions
 ```
 
-Si la extensión del agente IaaS de SQL Server está instalada, debe aparecer como "SqlIaaSAgent" o "SQLIaaSExtension". **ProvisioningState** para la extensión también debería aparecer como “Correcto”.
+Si Hola extensión del agente de IaaS de SQL Server está instalado, verá que aparece como "SqlIaaSAgent" o "SQLIaaSExtension". **Estado de aprovisionamiento** para extensión de hello también debería mostrar "Correcto".
 
-Si no está instalada o no se ha podido aprovisionar, puede instalarla con el comando siguiente. Además del grupo de recursos y del nombre de VM, también debe especificar la región (**$region**) en que se encuentra dicha VM.
+Si no está instalado o no se pudo toobe aprovisionado, puede instalarlo con el siguiente comando de Hola. En suma toohello VM nombre del grupo de recursos, también debe especificar la región de hello (**$region**) que la máquina virtual se encuentra en.
 
 ```powershell
 $region = “EASTUS2”
@@ -137,13 +137,13 @@ Set-AzureRmVMSqlServerExtension -VMName $vmname `
 
 ### <a id="verifysettings"></a> Verificación de la configuración actual
 
-Si ha habilitado la copia de seguridad automatizada durante el aprovisionamiento, puede usar PowerShell para comprobar la configuración actual. Ejecute el comando **Get-AzureRmVMSqlServerExtension** y examine la propiedad **AutoBackupSettings**:
+Si habilita la copia de seguridad automatizada durante el aprovisionamiento, puede usar PowerShell toocheck la configuración actual. Ejecute hello **Get AzureRmVMSqlServerExtension** comando y examine hello **AutoBackupSettings** propiedad:
 
 ```powershell
 (Get-AzureRmVMSqlServerExtension -VMName $vmname -ResourceGroupName $resourcegroupname).AutoBackupSettings
 ```
 
-Debería obtener una salida similar a la siguiente:
+Debería obtener siguiente toohello similar de salida:
 
 ```
 Enable                      : False
@@ -160,15 +160,15 @@ FullBackupWindowHours       :
 LogBackupFrequency          : 
 ```
 
-Si la salida muestra que la opción **Habilitar** está establecida en **False**, tiene que habilitar la copia de seguridad automatizada. Lo bueno es que habilita y configura la copia de seguridad automatizada de la misma manera. Vea la sección siguiente para leer esta información.
+Si el resultado muestra que **habilitar** se establece demasiado**False**, tendrá que tooenable la copia de seguridad automatizada. Hello buenas noticias son que habilitar y configurar la copia de seguridad automatizada en hello igual. Consulte la sección siguiente de hello esta información.
 
 > [!NOTE] 
-> Si comprueba la configuración inmediatamente después de realizar un cambio, es posible que obtenga los valores de configuración anteriores. Espere unos minutos y compruebe la configuración de nuevo para asegurarse de que se hayan aplicado los cambios.
+> Si comprobar la configuración de hello inmediatamente después de realizar un cambio, es posible que se pondrá en contacto valores de configuración anteriores Hola. Espere unos minutos y compruebe la configuración de hello nuevo toomake seguro de que se han aplicado los cambios.
 
 ### <a name="configure-automated-backup"></a>Configurar Copia de seguridad automatizada
-Puede usar PowerShell para habilitar la copia de seguridad automatizada, así como para modificar su configuración y comportamiento en cualquier momento.
+Puede usar PowerShell tooenable copia de seguridad automatizada, así como toomodify su configuración y el comportamiento en cualquier momento.
 
-En primer lugar, seleccione o cree una cuenta de almacenamiento para los archivos de copia de seguridad. El script siguiente selecciona una cuenta de almacenamiento o la crea si no existe.
+En primer lugar, seleccione o cree una cuenta de almacenamiento para hello archivos de copia de seguridad. Hello secuencia de comandos siguiente selecciona una cuenta de almacenamiento o lo crea si no existe.
 
 ```powershell
 $storage_accountname = “yourstorageaccount”
@@ -184,7 +184,7 @@ If (-Not $storage)
 > [!NOTE]
 > Copia de seguridad automatizada no permite almacenar las copias de seguridad en Premium Storage, pero pueden realizar copias de seguridad de discos de VM que usan Premium Storage.
 
-Luego use el comando **New-AzureRmVMSqlServerAutoBackupConfig** para habilitar y configurar los valores de Copia de seguridad automatizada para almacenar copias de seguridad en la cuenta de Azure Storage. En este ejemplo, las copias de seguridad están configuradas para que se conserven durante 10 días. El segundo comando, **Set-AzureRmVMSqlServerExtension**, actualiza la VM de Azure especificada con esta configuración.
+A continuación, usar hello **New-AzureRmVMSqlServerAutoBackupConfig** tooenable de comandos y configurar copias de seguridad toostore configuración de copia de seguridad automatizada de Hola Hola cuenta de almacenamiento de Azure. En este ejemplo, las copias de seguridad de Hola se establecen toobe conserva de 10 días. Hola segundo comando **AzureRmVMSqlServerExtension conjunto**, Hola actualizaciones especificado VM de Azure con esta configuración.
 
 ```powershell
 $autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
@@ -195,12 +195,12 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-La instalación y configuración del agente de Iaas de SQL Server puede tardar algunos minutos.
+Podría tardar varios tooinstall minutos y configure Hola agente de IaaS de SQL Server.
 
 > [!NOTE]
-> Hay otras opciones de **New-AzureRmVMSqlServerAutoBackupConfig** que solo se aplican a SQL Server 2016 y a Copia de seguridad automatizada v2. SQL Server 2014 no es compatible con las siguientes opciones: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**, **FullBackupStartHour**, **FullBackupWindowInHours** y **LogBackupFrequencyInMinutes**. Si intenta configurar estas opciones en una máquina virtual de SQL Server 2014, no hay ningún error, pero no se aplica la configuración. Si quiere usar estas opciones en una máquina virtual de SQL Server 2016, vea [Copia de seguridad automatizada v2 para Azure Virtual Machines con SQL Server 2016 (Resource Manager)](virtual-machines-windows-sql-automated-backup-v2.md).
+> Hay otras opciones para **AzureRmVMSqlServerAutoBackupConfig New** que aplican solo tooSQL Server 2016 y copia de seguridad automatizada v2. SQL Server 2014 no admite Hola después de configuración: **BackupSystemDbs**, **BackupScheduleType**, **FullBackupFrequency**,  **FullBackupStartHour**, **FullBackupWindowInHours**, y **LogBackupFrequencyInMinutes**. Si intentas tooconfigure esta configuración en una máquina virtual de SQL Server 2014, no hay ningún error, pero no se aplica la configuración de Hola. Si desea toouse esta configuración en una máquina virtual de SQL Server 2016, consulte [v2 de copia de seguridad automatizada SQL Server 2016 máquinas virtuales de Azure](virtual-machines-windows-sql-automated-backup-v2.md).
 
-Para habilitar el cifrado, modifique el script anterior para pasar el parámetro **EnableEncryption** junto con una contraseña (cadena segura) para el parámetro **CertificatePassword**. El siguiente script habilita la configuración de Copia de seguridad automatizada en el ejemplo anterior y agrega cifrado.
+cifrado de tooenable, modificar Hola Hola de toopass de secuencia de comandos anterior **EnableEncryption** parámetro junto con una contraseña (cadena segura) para hello **CertificatePassword** parámetro. Hola siguiente script habilita la configuración de copia de seguridad automatizada de hello en el ejemplo anterior de Hola y agrega el cifrado.
 
 ```powershell
 $password = "P@ssw0rd"
@@ -215,11 +215,11 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-Para confirmar que se ha aplicado la configuración, [verifique la configuración de Copia de seguridad automatizada](#verifysettings).
+tooconfirm su configuración se aplica, [comprobar la configuración de copia de seguridad automatizada de hello](#verifysettings).
 
 ### <a name="disable-automated-backup"></a>Deshabilitar Copia de seguridad automatizada
 
-Para deshabilitar Copia de seguridad automatizada, ejecute el mismo script sin el parámetro **-Enable** en el comando **New-AzureRmVMSqlServerAutoBackupConfig**. La ausencia del parámetro **-Enable** indica al comando que deshabilite la característica. Al igual que la instalación, la deshabilitación de Copia de seguridad automatizada puede tardar algunos minutos.
+toodisable copia de seguridad automatizada, ejecución Hola mismo script sin hello **-habilitar** parámetro toohello **AzureRmVMSqlServerAutoBackupConfig New** comando. Hola ausencia de hello **-habilitar** característica de parámetro señales Hola comando toodisable Hola. Al igual que con la instalación, puede tardar varios minutos toodisable copia de seguridad automatizada.
 
 ```powershell
 $autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -ResourceGroupName $storage_resourcegroupname
@@ -230,7 +230,7 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 ### <a name="example-script"></a>Script de ejemplo
 
-El script siguiente proporciona un conjunto de variables que se pueden personalizar para habilitar y configurar Copia de seguridad automatizada para la VM. En su caso, debe personalizar el script en función de sus requisitos. Por ejemplo, debe realizar cambios si desea deshabilitar la copia de seguridad de bases de datos del sistema o habilitar el cifrado.
+Hello siguiente script proporciona un conjunto de variables que puede personalizar tooenable y configurar copia de seguridad automatizada para la máquina virtual. En su caso, tendrá que secuencia de comandos de toocustomize Hola según sus requisitos. Por ejemplo, podría tener cambios toomake si deseara copia de seguridad de toodisable Hola de bases de datos del sistema o habilitar el cifrado.
 
 ```powershell
 $vmname = "yourvmname"
@@ -240,13 +240,13 @@ $storage_accountname = “storageaccountname”
 $storage_resourcegroupname = $resourcegroupname
 $retentionperiod = 10
 
-# ResourceGroupName is the resource group which is hosting the VM where you are deploying the SQL IaaS Extension
+# ResourceGroupName is hello resource group which is hosting hello VM where you are deploying hello SQL IaaS Extension
 
 Set-AzureRmVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region
 
-# Creates/use a storage account to store the backups
+# Creates/use a storage account toostore hello backups
 
 $storage = Get-AzureRmStorageAccount -ResourceGroupName $resourcegroupname `
     -Name $storage_accountname -ErrorAction SilentlyContinue
@@ -260,7 +260,7 @@ $autobackupconfig = New-AzureRmVMSqlServerAutoBackupConfig -Enable `
     -RetentionPeriodInDays $retentionperiod -StorageContext $storage.Context `
     -ResourceGroupName $storage_resourcegroupname
 
-# Apply the Automated Backup settings to the VM
+# Apply hello Automated Backup settings toohello VM
 
 Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
@@ -268,9 +268,9 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Copia de seguridad automatizada configura Copia de seguridad administrada en máquinas virtuales de Azure. Por lo tanto, es importante [revisar la documentación de la Copia de seguridad administrada](https://msdn.microsoft.com/library/dn449496.aspx) para comprender el comportamiento y las implicaciones.
+Copia de seguridad automatizada configura Copia de seguridad administrada en máquinas virtuales de Azure. Por lo que es importante[revisar la documentación de Hola para copia de seguridad administrada](https://msdn.microsoft.com/library/dn449496.aspx) toounderstand Hola comportamiento e implicaciones.
 
-Puede encontrar directrices adicionales sobre la copia de seguridad y la restauración para SQL Server en máquinas virtuales de Azure en el siguiente tema: [Copias de seguridad y restauración para SQL Server en Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
+Puede encontrar la copia de seguridad adicional y restaurar guía para SQL Server en máquinas virtuales de Azure en hello tema siguiente: [de copia de seguridad y restauración para SQL Server en máquinas virtuales Azure](virtual-machines-windows-sql-backup-recovery.md).
 
 Para más información acerca de otras tareas de automatización disponibles, consulte la [extensión Agente de IaaS de SQL Server](virtual-machines-windows-sql-server-agent-extension.md).
 

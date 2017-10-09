@@ -1,6 +1,6 @@
 ---
-title: "Creación de una máquina virtual Linux en Azure con varias NIC | Microsoft Docs"
-description: "Aprenda a crear una máquina virtual Linux con varias NIC conectadas a ella mediante la CLI de Azure 2.0 o las plantillas de Resource Manager."
+title: una VM de Linux en Azure con varias NIC aaaCreate | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocreate una VM de Linux con varias NIC había conectado tooit mediante plantillas de hello Azure CLI 2.0 o administrador de recursos."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 8a2931e462079c101c91497d459d7d3126234244
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2723405914777a5dce4354d4f5d8413e357f58e7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Cómo crear una máquina virtual Linux en Azure con red varias tarjetas de interfaz de red
-Puede crear una máquina virtual (VM) en Azure que tenga asociadas varias interfaces de red virtual (NIC). Un escenario común es tener distintas subredes para la conectividad front-end y back-end o una red dedicada a una solución de supervisión o copia de seguridad. En este artículo describe cómo crear una máquina virtual con varias NIC asociadas a ella y cómo agregar o quitar las NIC de una máquina virtual existente. Para más información, lo que incluye cómo crear varias NIC dentro de sus propios scripts de Bash, lea más sobre la [implementación de máquinas virtuales con varias NIC](../../virtual-network/virtual-network-deploy-multinic-arm-cli.md). Diferentes [tamaños de máquina virtual](sizes.md) admiten un número distinto de NIC, así que ajuste el tamaño de su máquina virtual teniendo esto en cuenta.
+# <a name="how-toocreate-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>¿Cómo toocreate una máquina virtual de Linux en Azure con red varias tarjetas de interfaz
+Puede crear una máquina virtual (VM) de Azure que tiene varios tooit de interfaces (NIC) que están conectados de red virtual. Un escenario común es toohave subredes diferentes para la conectividad de front-end y back-end o una red dedicada tooa supervisión o una solución de copia de seguridad. Este artículo se detalla cómo toocreate una máquina virtual con varias NIC conectado tooit y cómo NIC tooadd o quitar de una máquina virtual existente. Para obtener información detallada, incluyendo cómo toocreate varios NIC dentro de su propio Bash secuencias de comandos, obtenga más información sobre [implementar máquinas virtuales de varias NIC](../../virtual-network/virtual-network-deploy-multinic-arm-cli.md). Diferentes [tamaños de máquina virtual](sizes.md) admiten un número distinto de NIC, así que ajuste el tamaño de su máquina virtual teniendo esto en cuenta.
 
-En este artículo se describe cómo crear una máquina virtual con varias NIC con la CLI de Azure 2.0. También puede llevar a cabo estos pasos con la [CLI de Azure 1.0](multiple-nics-nodejs.md).
+Este artículo detalla cómo toocreate una VM con varias NIC con Hola 2.0 de CLI de Azure. También puede realizar estos pasos con hello [Azure CLI 1.0](multiple-nics-nodejs.md).
 
 
 ## <a name="create-supporting-resources"></a>Creación de recursos de apoyo
-Instale la última versión de la [CLI de Azure 2.0](/cli/azure/install-az-cli2) e inicie sesión en una cuenta de Azure con [az login](/cli/azure/#login).
+Hola de instalación más reciente [CLI de Azure 2.0](/cli/azure/install-az-cli2) e inicie sesión con cuenta de Azure de tooan [inicio de sesión de az](/cli/azure/#login).
 
-En los ejemplos siguientes, reemplace los nombres de parámetros de ejemplo por los suyos propios. Los nombres de parámetro de ejemplo incluyen *myResourceGroup*, *mystorageaccount* y *myVM*.
+En hello en los ejemplos siguientes, reemplace los nombres de parámetros de ejemplo con sus propios valores. Los nombres de parámetro de ejemplo incluyen *myResourceGroup*, *mystorageaccount* y *myVM*.
 
-En primer lugar, cree un grupo de recursos con [az group create](/cli/azure/group#create). En el ejemplo siguiente, se crea un grupo de recursos denominado *myResourceGroup* en la ubicación *eastus*:
+En primer lugar, cree un grupo de recursos con [az group create](/cli/azure/group#create). Hello en el ejemplo siguiente se crea un grupo de recursos denominado *myResourceGroup* en hello *eastus* ubicación:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Cree la red virtual con [az network vnet create](/cli/azure/network/vnet#create). En el ejemplo siguiente se crea una red virtual denominada *myVnet* y una subred *mySubnetFrontEnd*:
+Crear red virtual de hello con [crear red virtual de red az](/cli/azure/network/vnet#create). Hello en el ejemplo siguiente se crea una red virtual denominada *myVnet* y subred denominada *mySubnetFrontEnd*:
 
 ```azurecli
 az network vnet create \
@@ -48,7 +48,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-Cree una subred para el tráfico de back-end con [az network vnet subnet create](/cli/azure/network/vnet/subnet#create). En el ejemplo siguiente se crea una subred denominada *mySubnetBackEnd*:
+Crear una subred para el tráfico de back-end de hello con [crear subredes de red virtual de red az](/cli/azure/network/vnet/subnet#create). Hello en el ejemplo siguiente se crea una subred denominada *mySubnetBackEnd*:
 
 ```azurecli
 az network vnet subnet create \
@@ -58,7 +58,7 @@ az network vnet subnet create \
     --address-prefix 192.168.2.0/24
 ```
 
-Cree un grupo de seguridad de red con [az network nsg create](/cli/azure/network/nsg#create). En el ejemplo siguiente se crea un grupo de seguridad de red denominado *myNetworkSecurityGroup*:
+Cree un grupo de seguridad de red con [az network nsg create](/cli/azure/network/nsg#create). Hello en el ejemplo siguiente se crea un grupo de seguridad de red denominado *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -67,7 +67,7 @@ az network nsg create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>Creación y configuración de varias NIC
-Creación de dos NIC con [az network nic create](/cli/azure/network/nic#create). En el ejemplo siguiente se crean dos NIC, denominadas *myNic1* y *myNic2*, conectadas al grupo de seguridad de red, con una NIC conectada con cada subred:
+Creación de dos NIC con [az network nic create](/cli/azure/network/nic#create). Hello en el ejemplo siguiente se crea dos NIC, denominadas *myNic1* y *myNic2*conectados grupo de seguridad de red de hello, con una NIC conectan tooeach subred:
 
 ```azurecli
 az network nic create \
@@ -84,10 +84,10 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="create-a-vm-and-attach-the-nics"></a>Creación de una máquina virtual y conexión de las NIC
-Cuando cree la máquina virtual, especifique las NIC creadas con `--nics`. También debe tener cuidado al seleccionar el tamaño de la máquina virtual. Existen límites para el número total de NIC que se pueden agregar a una máquina virtual. Más información sobre los [tamaños de máquina virtual Linux](sizes.md). 
+## <a name="create-a-vm-and-attach-hello-nics"></a>Crear una máquina virtual y adjuntar Hola NIC
+Cuando creas Hola de máquina virtual, especifique Hola NIC creadas con `--nics`. También debe tootake cuidado al seleccionar Hola tamaño de máquina virtual. No hay límite para el número total de Hola de NIC que se puede agregar tooa VM. Más información sobre los [tamaños de máquina virtual Linux](sizes.md). 
 
-Cree la máquina virtual con [az vm create](/cli/azure/vm#create). En el ejemplo siguiente se crea una máquina virtual denominada *myVM*:
+Cree la máquina virtual con [az vm create](/cli/azure/vm#create). Hello en el ejemplo siguiente se crea una máquina virtual denominada *myVM*:
 
 ```azurecli
 az vm create \
@@ -100,10 +100,10 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
-## <a name="add-a-nic-to-a-vm"></a>Adición de una NIC a una máquina virtual
-Los pasos anteriores crean una máquina virtual con varias NIC. También puede agregar varias NIC a una máquina virtual existente con la versión 2.0 de la CLI de Azure. 
+## <a name="add-a-nic-tooa-vm"></a>Agregar un tooa NIC virtual
+los pasos anteriores de Hello crean una máquina virtual con varias NIC. También puede agregar tooan NIC existente VM con hello 2.0 de CLI de Azure. 
 
-Cree otra NIC con [az network nic create](/cli/azure/network/nic#create). En el ejemplo siguiente se crea una NIC denominada *myNic3* conectada a la subred de back-end y al grupo de seguridad de red creado en los pasos anteriores:
+Cree otra NIC con [az network nic create](/cli/azure/network/nic#create). Hello en el ejemplo siguiente se crea una NIC denominada *myNic3* conectado toohello subred de back-end y el grupo de seguridad de red creado en los pasos anteriores de hello:
 
 ```azurecli
 az network nic create \
@@ -114,13 +114,13 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Para agregar una NIC a una máquina virtual existente, en primer lugar desasigne la máquina virtual con [az vm deallocate](/cli/azure/vm#deallocate). En el ejemplo siguiente se desasigna la máquina virtual denominada *myVM*:
+tooadd una NIC tooan VM existente, primero desasignar Hola VM con [az vm desasignar](/cli/azure/vm#deallocate). Hello en el ejemplo siguiente se desasigna Hola máquina virtual denominada *myVM*:
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Agregue la NIC con [az vm nic add](/cli/azure/vm/nic#add). En el ejemplo siguiente se agrega *myNic3* a *myVM*:
+Agregar Hola NIC con [agregar nic de vm az](/cli/azure/vm/nic#add). Agrega Hello en el ejemplo siguiente se *myNic3* demasiado*myVM*:
 
 ```azurecli
 az vm nic add \
@@ -129,20 +129,20 @@ az vm nic add \
     --nics myNic3
 ```
 
-Inicie la máquina virtual con [az vm start](/cli/azure/vm#start):
+Iniciar Hola VM con [inicio de vm az](/cli/azure/vm#start):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="remove-a-nic-from-a-vm"></a>Eliminación de una NIC de una máquina virtual
-Para quitar una NIC de una máquina virtual existente, en primer lugar desasigne la máquina virtual con [az vm deallocate](/cli/azure/vm#deallocate). En el ejemplo siguiente se desasigna la máquina virtual denominada *myVM*:
+tooremove una NIC de una máquina virtual existente, en primer lugar desasignar Hola VM con [cancelar la asignación de máquina virtual az](/cli/azure/vm#deallocate). Hello en el ejemplo siguiente se desasigna Hola máquina virtual denominada *myVM*:
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Quite la NIC con [az vm nic remove](/cli/azure/vm/nic#remove). En el ejemplo siguiente se quita *myNic3* de *myVM*:
+Quitar Hola NIC con [az vm nic quitar](/cli/azure/vm/nic#remove). Quita de Hello en el ejemplo siguiente se *myNic3* de *myVM*:
 
 ```azurecli
 az vm nic remove \
@@ -151,7 +151,7 @@ az vm nic remove \
     --nics myNic3
 ```
 
-Inicie la máquina virtual con [az vm start](/cli/azure/vm#start):
+Iniciar Hola VM con [inicio de vm az](/cli/azure/vm#start):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
@@ -159,7 +159,7 @@ az vm start --resource-group myResourceGroup --name myVM
 
 
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>Creación de varias NIC con plantillas de Resource Manager
-Las plantillas de Azure Resource Manager emplean archivos JSON declarativos para definir el entorno. Puede leer la [introducción a Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Las plantillas de Resource Manager ofrecen una manera de crear varias instancias de un recurso durante la implementación; por ejemplo, se pueden crear varias NIC. Utilizará el comando *copy* para especificar el número de instancias que se crearán:
+Plantillas de administrador de recursos de Azure utilizan declarativa toodefine de archivos JSON en su entorno. Puede leer la [introducción a Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Plantillas del Administrador de recursos proporcionan una manera toocreate varias instancias de un recurso durante la implementación, como la creación de varias NIC. Usa *copia* número de hello toospecify de toocreate de instancias:
 
 ```json
 "copy": {
@@ -170,7 +170,7 @@ Las plantillas de Azure Resource Manager emplean archivos JSON declarativos para
 
 Más información sobre la [creación de varias instancias mediante *copia*](../../resource-group-create-multiple.md). 
 
-También puede utilizar `copyIndex()` para anexar un número a un nombre de recurso, lo que le permite crear `myNic1`, `myNic2`, etc. A continuación se muestra un ejemplo de cómo anexar el valor de índice:
+También puede usar un `copyIndex()` toothen anexar un nombre de recurso tooa número, que le permite toocreate `myNic1`, `myNic2`, etc. Hola continuación muestra un ejemplo de anexar el valor de índice de hello:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -179,4 +179,4 @@ También puede utilizar `copyIndex()` para anexar un número a un nombre de recu
 Puede leer un ejemplo completo de [cómo crear varias NIC con plantillas de Resource Manager](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Revise los [tamaños de máquina virtual Linux](sizes.md) al intentar crear una máquina virtual con varias NIC. Preste atención al número máximo de NIC que admite cada tamaño de máquina virtual. 
+Revisión [tamaños de VM de Linux](sizes.md) al tratar de toocreating una máquina virtual con varias NIC. Pagar el número máximo de toohello de atención de NIC es compatible con el tamaño de cada máquina virtual. 

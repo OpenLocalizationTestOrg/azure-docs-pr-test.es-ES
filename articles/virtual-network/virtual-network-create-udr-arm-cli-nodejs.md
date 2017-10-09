@@ -1,6 +1,6 @@
 ---
-title: Control del enrutamiento y las aplicaciones virtuales con la CLI de Azure 1.0 | Microsoft Docs
-description: "Obtenga información sobre cómo controlar el enrutamiento y las aplicaciones virtuales con la CLI de Azure 1.0."
+title: dispositivos de enrutamiento y virtual aaaControl utilizando Hola 1.0 de CLI de Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toocontrol dispositivos de enrutamiento y virtual utilizando Hola 1.0 de CLI de Azure."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2017
 ms.author: jdial
-ms.openlocfilehash: 5f21bc7a4fcd9507ea9d6b2b752a2328a7b834f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1c8a552d949521fa554880c00405e65fa47a8162
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-user-defined-routes-udr-using-the-azure-cli-10"></a>Creación de rutas definidas por el usuario (UDR) en la CLI de Azure 1.0
+# <a name="create-user-defined-routes-udr-using-hello-azure-cli-10"></a>Crear rutas definidas por el usuario (UDR) mediante Hola 1.0 de CLI de Azure
 
 > [!div class="op_single_selector"]
 > * [PowerShell](virtual-network-create-udr-arm-ps.md)
@@ -29,27 +29,27 @@ ms.lasthandoff: 07/11/2017
 > * [PowerShell (clásico)](virtual-network-create-udr-classic-ps.md)
 > * [CLI (clásico)](virtual-network-create-udr-classic-cli.md)
 
-Cree aplicaciones virtuales y enrutamiento personalizado con la CLI de Azure.
+Creación de una ruta personalizada y aparatos virtuales mediante Hola CLI de Azure.
 
-## <a name="cli-versions-to-complete-the-task"></a>Versiones de la CLI para completar la tarea 
+## <a name="cli-versions-toocomplete-hello-task"></a>Tarea CLI versiones toocomplete hello 
 
-Puede completar la tarea mediante una de las siguientes versiones de la CLI: 
+Puede completar la tarea hello mediante uno de hello después de las versiones CLI: 
 
-- [CLI de Azure 1.0](#Create-the-UDR-for-the-front-end-subnet): la CLI para los modelos de implementación clásico y de Resource Manager (este artículo)
-- [CLI de Azure 2.0](virtual-network-create-udr-arm-cli.md): la CLI de última generación para el modelo de implementación de administración de recursos 
+- [Azure 1.0 de CLI](#Create-the-UDR-for-the-front-end-subnet) – nuestro CLI para hello clásico y recursos administración modelos de implementación (en este artículo)
+- [Azure 2.0 CLI](virtual-network-create-udr-arm-cli.md) -nuestro CLI de próxima generación para el modelo de implementación de administración de recursos de Hola 
 
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
-En los siguientes comandos de CLI de Azure de ejemplo se presupone que ya se ha creado un entorno simple según el escenario anterior. Si desea ejecutar los comandos tal y como aparecen en este documento, cree primero el entorno de prueba mediante la implementación de [esta plantilla](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), haga clic en **Implementar en Azure**, reemplace los valores de parámetro predeterminados si es necesario y siga las instrucciones del portal.
+comandos de CLI de Azure de ejemplo de Hola a continuación esperan un entorno simple ya creado basándose en el escenario de hello anterior. Si desea toorun comandos de hello, que se muestran en este documento, en primer lugar crear entorno de prueba de hello implementando [esta plantilla](http://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR-Before), haga clic en **implementar tooAzure**, reemplace los valores de parámetros predeterminados de Hola Si fuera necesario y siga las instrucciones de hello en Hola portal.
 
 
-## <a name="create-the-udr-for-the-front-end-subnet"></a>Creación de la ruta definida por el usuario para la subred front-end
-Para crear la tabla de rutas y la ruta necesaria para la subred front-end según el escenario anterior, siga estos pasos.
+## <a name="create-hello-udr-for-hello-front-end-subnet"></a>Crear hello UDR para la subred de front-end de Hola
+tabla de rutas de hello toocreate y ruta necesarios para una subred de front-end de hello basándose en el escenario de hello anterior, siga los pasos de hello siguientes.
 
-1. Ejecute el comando siguiente para crear una tabla de rutas para la subred front-end:
+1. Ejecute hello después comando toocreate una tabla de rutas de subred de front-end de hello:
 
     ```azurecli
     azure network route-table create -g TestRG -n UDR-FrontEnd -l uswest
@@ -71,10 +71,10 @@ Para crear la tabla de rutas y la ruta necesaria para la subred front-end según
    
     Parámetros:
    
-   * **-g (o --resource-group)**. Nombre del grupo de recursos donde se creará el UDR. En este escenario, *TestRG*.
-   * **-l (o --location)**. Región de Azure donde se creará el UDR nuevo. En este escenario, *TestRG*.
-   * **-n (or --name)**. Nombre del UDR nuevo. En este escenario, *UDR-FrontEnd*.
-2. Ejecute el comando siguiente para crear una ruta en la tabla de rutas para enviar todo el tráfico destinado a la subred back-end (192.168.2.0/24) a la VM **FW1** (192.168.0.4):
+   * **-g (o --resource-group)**. Nombre del grupo de recursos de Hola donde se creará hello UDR. En este escenario, *TestRG*.
+   * **-l (o --location)**. Región de Azure donde hello UDR nuevo se creará. En este escenario, *TestRG*.
+   * **-n (o --name)**. Nombre de hello UDR nuevo. En este escenario, *UDR-FrontEnd*.
+2. Ejecute hello después comando toocreate una ruta en toosend de tabla de ruta de hello todo el tráfico destinado toohello subred de back-end (192.168.2.0/24) toohello **FW1** VM (192.168.0.4):
 
     ```azurecli
     azure network route-table route create -g TestRG -r UDR-FrontEnd -n RouteToBackEnd -a 192.168.2.0/24 -y VirtualAppliance -p 192.168.0.4
@@ -97,11 +97,11 @@ Para crear la tabla de rutas y la ruta necesaria para la subred front-end según
    
     Parámetros:
    
-   * **-r (o --route-table-name)**. Nombre de la tabla de rutas a la que se agregará la ruta. En este escenario, *UDR-FrontEnd*.
-   * **-a (o --address-prefix)**. Prefijo de dirección de la subred a la que se destinan los paquetes. En este escenario, *192.168.2.0/24*.
+   * **-r (o --route-table-name)**. Nombre de tabla de rutas de Hola donde se agregará la ruta de Hola. En este escenario, *UDR-FrontEnd*.
+   * **-a (o --address-prefix)**. Prefijo de dirección de subred de Hola donde los paquetes destinados a. En este escenario, *192.168.2.0/24*.
    * **-y (o --next-hop-type)**. Tipo de objeto al que se enviará el tráfico. Los valores posibles son *VirtualAppliance*, *VirtualNetworkGateway*, *VNETLocal*, *Internet* o *None*.
    * **-p (o --next-hop-ip-address**). Dirección IP para el próximo salto. En este escenario, *192.168.0.4*.
-3. Ejecute el comando siguiente para asociar la tabla de rutas que se ha creado anteriormente a la subred **FrontEnd**:
+3. Siguiente ejecución Hola comando tabla de rutas de hello tooassociate creada anteriormente con hello **front-end** subred:
 
     ```azurecli
     azure network vnet subnet set -g TestRG -e TestVNet -n FrontEnd -r UDR-FrontEnd
@@ -110,10 +110,10 @@ Para crear la tabla de rutas y la ruta necesaria para la subred front-end según
     Salida:
    
         info:    Executing command network vnet subnet set
-        info:    Looking up the subnet "FrontEnd"
+        info:    Looking up hello subnet "FrontEnd"
         info:    Looking up route table "UDR-FrontEnd"
         info:    Setting subnet "FrontEnd"
-        info:    Looking up the subnet "FrontEnd"
+        info:    Looking up hello subnet "FrontEnd"
         data:    Id                              : /subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/
         virtualNetworks/TestVNet/subnets/FrontEnd
         data:    Type                            : Microsoft.Network/virtualNetworks/subnets
@@ -133,33 +133,33 @@ Para crear la tabla de rutas y la ruta necesaria para la subred front-end según
    
     Parámetros:
    
-   * **-e (o --vnet-name)**. Nombre de la red virtual donde se encuentra la subred. En este escenario, *TestVNet*.
+   * **-e (o --vnet-name)**. Nombre de red virtual donde se encuentra la subred de Hola Hola. En este escenario, *TestVNet*.
 
-## <a name="create-the-udr-for-the-back-end-subnet"></a>Creación de la ruta definida por el usuario para la subred back-end
-Para crear la tabla de rutas y la ruta necesaria para la subred back-end según el escenario anterior, siga los siguientes pasos:
+## <a name="create-hello-udr-for-hello-back-end-subnet"></a>Crear hello UDR de subred de back-end de Hola
+Hola toocreate tabla de rutas y necesarios para la subred de back-end de hello en función de hello escenario anterior, Hola completa siguiendo los pasos de ruta:
 
-1. Ejecute el comando siguiente para crear una tabla de rutas para la subred back-end:
+1. Ejecute hello después comando toocreate una tabla de rutas de subred de back-end de hello:
 
     ```azurecli
     azure network route-table create -g TestRG -n UDR-BackEnd -l westus
     ```
 
-2. Ejecute el comando siguiente para crear una ruta en la tabla de rutas para enviar todo el tráfico destinado a la subred front-end (192.168.1.0/24) a la VM **FW1** (192.168.0.4):
+2. Ejecute hello después comando toocreate una ruta en toosend de tabla de ruta de hello todo el tráfico destinado toohello subred front-end (192.168.1.0/24) toohello **FW1** VM (192.168.0.4):
 
     ```azurecli
     azure network route-table route create -g TestRG -r UDR-BackEnd -n RouteToFrontEnd -a 192.168.1.0/24 -y VirtualAppliance -p 192.168.0.4
     ```
 
-3. Ejecute el comando siguiente para asociar la tabla de rutas a la subred **BackEnd**:
+3. Ejecución hello después de la tabla de rutas de comando tooassociate Hola con hello **back-end** subred:
 
     ```azurecli
     azure network vnet subnet set -g TestRG -e TestVNet -n BackEnd -r UDR-BackEnd
     ```
 
 ## <a name="enable-ip-forwarding-on-fw1"></a>Habilitación del reenvío IP en FW1
-Para habilitar el reenvío IP en la NIC que ha usado **FW1**, siga los pasos siguientes:
+reenvío de IP tooenable Hola NIC que se utiliza por **FW1**completa Hola lo siguiente:
 
-1. Ejecute el comando siguiente y observe el valor de **Habilitar reenvío IP**. Se debe establecer en *false*.
+1. Ejecutar comando de Hola que sigue y observe el valor de Hola para **reenvío IP habilitar**. Se debe establecer demasiado*false*.
 
     ```azurecli
     azure network nic show -g TestRG -n NICFW1
@@ -168,7 +168,7 @@ Para habilitar el reenvío IP en la NIC que ha usado **FW1**, siga los pasos sig
     Salida:
    
         info:    Executing command network nic show
-        info:    Looking up the network interface "NICFW1"
+        info:    Looking up hello network interface "NICFW1"
         data:    Id                              : /subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/
         networkInterfaces/NICFW1
         data:    Name                            : NICFW1
@@ -191,7 +191,7 @@ Para habilitar el reenvío IP en la NIC que ha usado **FW1**, siga los pasos sig
         virtualNetworks/TestVNet/subnets/DMZ
         data:    
         info:    network nic show command OK
-2. Ejecute el comando siguiente para habilitar el reenvío IP:
+2. Ejecute hello después de reenvío de IP de tooenable de comando:
 
     ```azurecli
     azure network nic set -g TestRG -n NICFW1 -f true
@@ -200,9 +200,9 @@ Para habilitar el reenvío IP en la NIC que ha usado **FW1**, siga los pasos sig
     Salida:
    
         info:    Executing command network nic set
-        info:    Looking up the network interface "NICFW1"
+        info:    Looking up hello network interface "NICFW1"
         info:    Updating network interface "NICFW1"
-        info:    Looking up the network interface "NICFW1"
+        info:    Looking up hello network interface "NICFW1"
         data:    Id                              : /subscriptions/[Subscription Id]/resourceGroups/TestRG/providers/Microsoft.Network/
         networkInterfaces/NICFW1
         data:    Name                            : NICFW1

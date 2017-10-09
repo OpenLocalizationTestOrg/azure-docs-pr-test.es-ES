@@ -1,6 +1,6 @@
 ---
-title: "Diferentes formas de crear una máquina virtual Linux en Azure | Microsoft Azure"
-description: "Conozca las distintas formas de crear una máquina virtual Linux en Azure, y obtenga vínculos a herramientas y tutoriales para cada método."
+title: aaaDifferent formas toocreate una VM de Linux en Azure | Microsoft Azure
+description: "Obtenga información acerca de maneras diferentes de hello toocreate una máquina virtual de Linux en Azure, incluidos los vínculos tootools y tutoriales para cada método."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: b2f93579eb1c7a69d0dbd1b0ef112aed9b2168c3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 250e92c063c87a8c1279097dc2264777d95478d7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="different-ways-to-create-a-linux-vm"></a>Diferentes formas de crear una máquina virtual Linux
-En Azure, tiene la flexibilidad crear una máquina virtual Linux con las herramientas y los flujos de trabajo que le resulten cómodos. En este artículo se resumen estas diferencias y se ofrecen ejemplos para crear máquinas virtuales Linux, que incluyen la CLI de Azure 2.0. También puede ver las opciones de creación que se incluye en la [CLI de Azure 1.0](creation-choices-nodejs.md).
+# <a name="different-ways-toocreate-a-linux-vm"></a>Diferentes maneras toocreate una VM de Linux
+Tiene flexibilidad de hello en Azure toocreate una máquina virtual de Linux (VM) con herramientas y flujos de trabajo tooyou cómodo. En este artículo se resume estas diferencias y ejemplos para crear las máquinas virtuales de Linux, incluidas Hola 2.0 de CLI de Azure. También puede ver las opciones de creación incluido hello [Azure CLI 1.0](creation-choices-nodejs.md).
 
-La [CLI de Azure 2.0](/cli/azure/install-az-cli2) se puede usar en distintas plataformas mediante un paquete de npm, paquetes proporcionados por la distribución o un contenedor de Docker. Instale la compilación más apropiada para su entorno e inicie sesión en una cuenta de Azure mediante [az login](/cli/azure/#login)
+Hola [CLI de Azure 2.0](/cli/azure/install-az-cli2) está disponible en las distintas plataformas a través de un paquete de npm, paquetes suministrados por la distribución o el contenedor de Docker. Instale Hola build más adecuada para su entorno e inicie sesión con cuenta de Azure de tooan [inicio de sesión de az](/cli/azure/#login)
 
-* [Creación de una máquina virtual Linux con la CLI de Azure 2.0](quick-create-cli.md)
+* [Crear una VM de Linux con hello 2.0 de CLI de Azure](quick-create-cli.md)
   
   * Cree un grupo de recursos con [az group create](/cli/azure/group#create) llamado *myResourceGroup*: 
    
@@ -34,7 +34,7 @@ La [CLI de Azure 2.0](/cli/azure/install-az-cli2) se puede usar en distintas pla
     az group create --name myResourceGroup --location eastus
     ```
     
-  * Cree una máquina virtual con [az vm create](/cli/azure/vm#create) llamada *myVM* mediante la imagen más reciente de *UbuntuLTS* y genere claves SSH si no existen en *~/.ssh*:
+  * Crear una máquina virtual con [crear vm az](/cli/azure/vm#create) denominado *myVM* utilizando Hola más reciente *UbuntuLTS* de la imagen y generar claves SSH si aún no existen en *~/.ssh*:
 
     ```azurecli
     az vm create \
@@ -46,7 +46,7 @@ La [CLI de Azure 2.0](/cli/azure/install-az-cli2) se puede usar en distintas pla
 
 * [Creación de una máquina virtual Linux mediante una plantilla de Azure](create-ssh-secured-vm-from-template.md)
   
-  * En el ejemplo siguiente se usa [az group deployment create](/cli/azure/group/deployment#create) para crear una máquina virtual mediante una plantilla almacenada en GitHub:
+  * Hello siguiente ejemplo se utiliza [Crear implementación de grupo az](/cli/azure/group/deployment#create) toocreate una máquina virtual desde una plantilla almacenada en GitHub:
     
     ```azurecli
     az group deployment create --resource-group myResourceGroup \ 
@@ -58,17 +58,17 @@ La [CLI de Azure 2.0](/cli/azure/install-az-cli2) se puede usar en distintas pla
 * [Creación de una aplicación de equilibrio de carga y alta disponibilidad en varias máquinas virtuales Linux](tutorial-load-balancer.md)
 
 
-## <a name="azure-portal"></a>Portal de Azure
-[Azure Portal](https://portal.azure.com) le permite crear rápidamente una máquina virtual porque no hay nada que instalar en el sistema. Use el Portal de Azure para crear la máquina virtual:
+## <a name="azure-portal"></a>Azure Portal
+Hola [portal de Azure](https://portal.azure.com) permite tooquickly crear una máquina virtual porque no hay nada tooinstall en el sistema. Use Hola toocreate portal Azure Hola VM:
 
-* [Creación de una máquina virtual Linux en Azure mediante el Portal](quick-create-portal.md) 
+* [Crear una VM de Linux con hello portal de Azure](quick-create-portal.md) 
 
 
 ## <a name="operating-system-and-image-choices"></a>Sistema operativo y opciones de imagen
-Al crear una máquina virtual, elija una imagen basada en el sistema operativo que desee ejecutar. Azure y sus socios ofrecen muchas imágenes, algunas de las cuales incluyen aplicaciones y herramientas preinstaladas. O bien, cargue una de sus propias imágenes (consulte [la siguiente sección](#use-your-own-image)).
+Al crear una máquina virtual, puede elegir una imagen basada en hello desea toorun de sistema operativo. Azure y sus socios ofrecen muchas imágenes, algunas de las cuales incluyen aplicaciones y herramientas preinstaladas. O bien, cargue uno de sus propias imágenes (consulte [Hola después de la sección](#use-your-own-image)).
 
 ### <a name="azure-images"></a>Imágenes de Azure
-Los comandos de [az vm image](/cli/azure/vm/image) se usan para ver lo que hay disponible por publicador, versión de distribución y compilaciones.
+Hola de uso [imagen de máquina virtual az](/cli/azure/vm/image) comandos toosee lo que está disponible por publicador, versión de distribución y las compilaciones.
 
 Lista de publicadores disponibles:
 
@@ -94,9 +94,9 @@ Lista de todas las imágenes disponibles para una versión determinada:
 az vm image list --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS --location eastus
 ```
 
-Consulte [Selección de imágenes de máquinas virtuales con la CLI de Azure](cli-ps-findimage.md)para ver ejemplos sobre cómo buscar y usar las imágenes disponibles.
+Para obtener más ejemplos sobre cómo examinar y utilizar imágenes disponibles, vea [navegue y seleccione las imágenes de máquina virtual de Azure con hello Azure CLI](cli-ps-findimage.md).
 
-El comando [az vm create](/cli/azure/vm#create) tiene alias que se pueden usar para acceder rápidamente a las distribuciones más comunes y a sus versiones más recientes. Usar alias es más fácil que tener que especificar el publicador, la oferta, el SKU y la versión cada vez que cree una máquina virtual:
+Hola [crear vm az](/cli/azure/vm#create) comando tiene el alias que se puede utilizar acceso tooquickly Hola distribuciones más comunes y sus versiones más recientes. Uso de alias suele ser más rápido que especifica el publicador de hello, oferta, SKU y versión cada vez que cree una máquina virtual:
 
 | Alias | Publicador | Oferta | SKU | Versión |
 |:--- |:--- |:--- |:--- |:--- |
@@ -109,13 +109,13 @@ El comando [az vm create](/cli/azure/vm#create) tiene alias que se pueden usar p
 | UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |más reciente |
 
 ### <a name="use-your-own-image"></a>Uso de su propia imagen
-Si necesita realizar cambios personalizados específicos, use una imagen basada en una máquina virtual de Azure existente; para ello, capture esa máquina virtual. También puede cargar una imagen creada de forma local. Para más información sobre las distribuciones compatibles y cómo usar sus propias imágenes, consulte los artículos siguientes:
+Si necesita realizar cambios personalizados específicos, use una imagen basada en una máquina virtual de Azure existente; para ello, capture esa máquina virtual. También puede cargar una imagen creada de forma local. Para obtener más información sobre las distribuciones compatibles y cómo toouse sus propias imágenes, vea Hola siguientes artículos:
 
 * [Distribuciones aprobadas por Azure](endorsed-distros.md)
 * [Información para las distribuciones no aprobadas](create-upload-generic.md)
-* [Creación de una imagen a partir de una máquina virtual de Azure existente](tutorial-custom-images.md)
+* [¿Cómo toocreate una imagen de una máquina virtual de Azure existente](tutorial-custom-images.md).
   
-  * Comandos de ejemplo de inicio rápido para crear una imagen a partir de una máquina virtual de Azure existente:
+  * Inicio rápido de comandos de ejemplo toocreate una imagen de una máquina virtual de Azure existente:
     
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -124,6 +124,6 @@ Si necesita realizar cambios personalizados específicos, use una imagen basada 
     ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Cree una máquina virtual Linux desde la [CLI](quick-create-cli.md), desde el [portal](quick-create-portal.md) o mediante una [plantilla de Azure Resource Manager](../windows/cli-deploy-templates.md).
+* Crear una VM de Linux con hello [CLI](quick-create-cli.md), de hello [portal](quick-create-portal.md), o mediante un [plantilla de Azure Resource Manager](../windows/cli-deploy-templates.md).
 * Después de crear una máquina virtual Linux, [aprenda sobre los discos y el almacenamiento de Azure](tutorial-manage-disks.md).
-* Pasos rápidos para [restablecer una contraseña o las claves SSH y administrar usuarios](using-vmaccess-extension.md)
+* Los pasos demasiado rápido[restablecer una contraseña o claves SSH y administrar los usuarios](using-vmaccess-extension.md).

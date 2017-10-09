@@ -1,6 +1,6 @@
 ---
-title: "Conexión de un disco a una VM de Linux en Azure | Microsoft Docs"
-description: "Aprenda a conectar un disco de datos a una máquina virtual Linux mediante el modelo de implementación clásica y a inicializar el disco para que esté preparado para su uso."
+title: aaaAttach un tooa de disco Linux VM en Azure | Documentos de Microsoft
+description: "Obtenga información acerca de cómo tooattach datos de un disco tooa Linux VM mediante la implementación de hello clásico modelo e inicializar disco Hola para que esté preparada para su uso"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,51 +15,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c76d8479ac2b522d2b6df658cd28f242473f30ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>Acoplamiento de un disco de datos a una máquina virtual Linux
+# <a name="how-tooattach-a-data-disk-tooa-linux-virtual-machine"></a>¿Cómo tooAttach una máquina Virtual Linux tooa de disco de datos
 > [!IMPORTANT] 
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Consulte cómo [conectar un disco de datos mediante el modelo de implementación de Resource Manager](../add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Vea cómo demasiado[conectar un disco de datos mediante el modelo de implementación del Administrador de recursos de hello](../add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Puede acoplar tanto discos vacíos como discos que contengan datos a las máquinas virtuales de Azure. Ambos tipos de discos son archivos .vhd que residen en una cuenta de almacenamiento de Azure. Como sucede al agregar cualquier disco a una máquina Linux, después de acoplarlo, debe inicializarlo y formatearlo para que esté listo para su uso. En este artículo se detalla cómo acoplar discos vacíos y discos que ya contengan datos a las máquinas virtuales, así como la forma de inicializar y formatear un disco nuevo.
+Puede adjuntar discos vacíos y los discos que contienen datos tooyour máquinas virtuales de Azure. Ambos tipos de discos son archivos .vhd que residen en una cuenta de almacenamiento de Azure. Como con la adición de cualquier equipo de Linux tooa de disco, después de conectar el disco de hello es necesario tooinitialize y darle formato para que esté preparada para su uso. Este artículo se detallan adjuntar discos vacíos y los discos que ya contiene datos tooyour máquinas virtuales, así como la toothen inicializar y formatear un disco nuevo.
 
 > [!NOTE]
-> Es recomendable utilizar uno o varios discos independientes para almacenar los datos de una máquina virtual. Al crear una máquina virtual de Azure, esta cuenta con un disco para el sistema operativo y un disco temporal. **No utilice el disco temporal para almacenar datos permanentes.** Como señala su nombre, esta ofrece únicamente almacenamiento temporal. No ofrece redundancia o copias de seguridad porque no reside en el almacenamiento de Azure.
-> El Agente de Linux de Azure normalmente administra el disco temporal, y este se monta automáticamente en **/mnt/resource** (o **/mnt** en las imágenes de Ubuntu). Por otro lado, el kernel de Linux podría denominar al disco de datos de forma similar a `/dev/sdc`, y los usuarios necesitan crear particiones, dar formato y montar ese recurso. Consulte la [Guía de usuario del Agente de Linux de Azure][Agent] para obtener más información.
+> Es una mejor toouse práctica uno o más separados toostore de discos de datos de una máquina virtual. Al crear una máquina virtual de Azure, esta cuenta con un disco para el sistema operativo y un disco temporal. **No utilice datos persistentes de hello disco temporal toostore.** Como indica el nombre de hello, proporciona solo el almacenamiento temporal. No ofrece redundancia o copias de seguridad porque no reside en el almacenamiento de Azure.
+> disco temporal de Hola se suele estar a cargo Hola agente Linux de Azure y monta automáticamente demasiado**/mnt/resource** (o **/mnt** en Ubuntu imágenes). En Hola otro lado, un disco de datos podría denominarse kernel de Linux Hola algo parecido a `/dev/sdc`, y deberá toopartition, dar formato y montar este recurso. Vea hello [Guía de usuario de agente de Linux de Azure] [ Agent] para obtener más información.
 > 
 > 
 
 [!INCLUDE [howto-attach-disk-windows-linux](../../../../includes/howto-attach-disk-linux.md)]
 
 ## <a name="initialize-a-new-data-disk-in-linux"></a>un nuevo disco de datos en Linux
-1. SSH en la máquina virtual. Para obtener más información, consulte [Inicio de sesión en una máquina virtual Linux][Logon].
-2. A continuación deberá buscar el identificador de dispositivo para inicializar el disco de datos. Existen dos formas de hacerlo:
+1. SSH tooyour máquina virtual. Para obtener más información, consulte [cómo toolog en la máquina virtual de tooa ejecutan Linux][Logon].
+2. A continuación debe identificador de dispositivo de hello toofind para tooinitialize de disco de datos de Hola. Hay dos toodo de maneras que:
    
-    (a) Busque con grep dispositivos SCSI en los registros, como se muestra en el siguiente comando:
+    a) registros de Grep para los dispositivos SCSI en hello, como se muestra en el siguiente comando de hello:
    
     ```bash
     sudo grep SCSI /var/log/messages
     ```
    
-    Para las distribuciones de Ubuntu recientes, puede que necesite usar `sudo grep SCSI /var/log/syslog` porque el inicio de sesión en `/var/log/messages` puede deshabilitarse de forma predeterminada.
+    Para distribuciones de Ubuntu recientes, puede que necesite toouse `sudo grep SCSI /var/log/syslog` porque registro demasiado`/var/log/messages` pueden deshabilitarse de forma predeterminada.
    
-    Puede buscar el identificador del último disco de datos conectado en los mensajes que se muestran.
+    Puede encontrar el identificador de Hola Hola última del disco de datos que se agregó en los mensajes de saludo que se muestran.
    
-    ![Obtener mensajes de disco](./media/attach-disk/scsidisklog.png)
+    ![Obtener mensajes de Hola disco](./media/attach-disk/scsidisklog.png)
    
     OR
    
-    b) Use el comando `lsscsi` para conocer el identificador de dispositivo. `lsscsi` puede instalarse mediante `yum install lsscsi` (en distribuciones basadas en Red Hat) o mediante `apt-get install lsscsi` (en distribuciones basadas en Debian). Puede encontrar el disco que busca por su *lun* o **número de unidad lógica**. Por ejemplo, el *lun* de los discos que conectó puede verse fácilmente en `azure vm disk list <virtual-machine>`, de la manera siguiente:
+    b) Hola usar `lsscsi` toofind comando out Id. de dispositivo de Hola. `lsscsi` pueden instalarse, ya sea `yum install lsscsi` (Red Hat según las distribuciones) o `apt-get install lsscsi` (Debian según las distribuciones). Se puede encontrar un disco de Hola que está buscando por su *lun* o **número de unidad lógica**. Por ejemplo, hello *lun* para discos de hello adjuntó pueden verse fácilmente desde `azure vm disk list <virtual-machine>` como:
 
     ```azurecli
     azure vm disk list myVM
     ```
 
-    La salida será similar a la siguiente:
+    salida de Hello es siguiente de toohello similar:
 
     ```azurecli
     info:    Executing command vm disk list
@@ -73,7 +73,7 @@ Puede acoplar tanto discos vacíos como discos que contengan datos a las máquin
     info:    vm disk list command OK
     ```
    
-    Compare estos datos con la salida de `lsscsi` para la misma máquina virtual de ejemplo:
+    Comparar estos datos con salida de hello de `lsscsi` Hola mismo ejemplo máquina virtual:
    
     ```bash
     [1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
@@ -82,32 +82,32 @@ Puede acoplar tanto discos vacíos como discos que contengan datos a las máquin
     [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc
     ```
    
-    El último número de la tupla en cada fila es el *lun*. Vea `man lsscsi` para obtener más información.
-3. En el símbolo del sistema, escriba el siguiente comando para crear el dispositivo:
+    último número de Hola de tupla de hello en cada fila es hello *lun*. Vea `man lsscsi` para obtener más información.
+3. En el símbolo del sistema de hello, escriba lo siguiente Hola comando toocreate el dispositivo:
    
     ```bash
     sudo fdisk /dev/sdc
     ```
 
-4. Cuando se le solicite, escriba  **n**  para crear una partición.
+4. Cuando se le solicite, escriba  **n**  toocreate una partición.
 
     ![Crear dispositivo](./media/attach-disk/fdisknewpartition.png)
 
-5. Cuando se le solicite, escriba **p** para que la partición sea la partición principal. Escriba **1** para que sea la primera partición y, a continuación, escriba "enter" para aceptar el valor predeterminado para el cilindro. En algunos sistemas, puede mostrar los valores predeterminados del primer sector y el último sector, en lugar del cilindro. Puede aceptar estos valores predeterminados.
+5. Cuando se le solicite, escriba **p** toomake Hola Hola principal de particiones. Tipo de **1** toomake Hola primera partición y, a continuación, escriba escriba el valor predeterminado de tooaccept Hola para cilindro de Hola. En algunos sistemas, puede mostrar primero los valores predeterminados de Hola de Hola y Hola sectores último, en lugar de los cilindros Hola. Puede elegir tooaccept estos valores predeterminados.
 
     ![Crear partición](./media/attach-disk/fdisknewpartdetails.png)
 
 
-6. Escriba **p** para ver los detalles del disco en el que se va a crear la partición.
+6. Tipo de **p** detalles de hello toosee acerca del disco de Hola se particiona.
 
     ![Enumerar la información del disco](./media/attach-disk/fdiskpartitiondetails.png)
 
 
-7. Escriba **w** para escribir la configuración del disco.
+7. Tipo de **w** toowrite la configuración de Hola de discos de Hola.
 
-    ![Escribir los cambios del disco](./media/attach-disk/fdiskwritedisk.png)
+    ![Escribir los cambios de disco Hola](./media/attach-disk/fdiskwritedisk.png)
 
-8. Ahora puede crear el sistema de archivos en la nueva partición. Anexe el número de partición al id. de dispositivo (en el ejemplo siguiente, `/dev/sdc1`). En el ejemplo siguiente se crea una partición de ext4 en /dev/sdc1:
+8. Ahora puede crear sistema de archivos de hello en la nueva partición de Hola. Anexar Hola número toohello dispositivo Id. de partición (en el siguiente ejemplo de Hola `/dev/sdc1`). Hello en el ejemplo siguiente se crea una partición de ext4 en /dev/sdc1:
    
     ```bash
     sudo mkfs -t ext4 /dev/sdc1
@@ -116,33 +116,33 @@ Puede acoplar tanto discos vacíos como discos que contengan datos a las máquin
     ![Crear sistema de archivos](./media/attach-disk/mkfsext4.png)
    
    > [!NOTE]
-   > Los sistemas SUSE Linux Enterprise 11 únicamente admiten acceso de solo lectura a sistemas de archivos ext4. Para estos sistemas, es recomendable dar formato al nuevo sistema de archivos como ext3 en vez de ext4.
+   > Los sistemas SUSE Linux Enterprise 11 únicamente admiten acceso de solo lectura a sistemas de archivos ext4. Para estos sistemas, se recomienda tooformat Hola nuevo sistema de archivos como ext3 en lugar de ext4.
 
-9. Cree un directorio para montar el nuevo sistema de archivos como se indica a continuación:
+9. Realice un directorio toomount Hola nuevo sistema de archivos, como se indica a continuación:
    
     ```bash
     sudo mkdir /datadrive
     ```
 
-10. Por último, se puede montar la unidad como se indica a continuación:
+10. Por último, se puede montar unidad hello, como se indica a continuación:
    
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
    
-    El disco de datos está ahora listo para usarse como **/datadrive**.
+    disco de datos de Hello ya está listo toouse como **/datadrive**.
    
-    ![Crear el directorio y montar el disco](./media/attach-disk/mkdirandmount.png)
+    ![Crear disco de Hola de directorio y montaje Hola](./media/attach-disk/mkdirandmount.png)
 
-11. Agregue la nueva unidad a /etc/fstab:
+11. Agregue Hola nueva unidad demasiado/etcetera/fstab:
    
-    Para asegurarse de que la unidad se vuelve a montar automáticamente después de reiniciar, debe agregarse al archivo /etc/fstab. Además, se recomienda encarecidamente que se use el UUID (identificador único global) en /etc/fstab para hacer referencia a la unidad en lugar de solo el nombre del dispositivo (es decir, /dev/sdc1). El uso de UUID evita que el disco incorrecto se monte en una ubicación determinada si el sistema operativo detecta un error de disco durante el inicio y el resto de discos de datos se asignan a esos id. de dispositivo. Para buscar el UUID de la unidad nueva, puede usar la utilidad **blkid**:
+    unidad de hello tooensure se vuelven a montar automáticamente después de reiniciar el equipo debe ser agregado toohello/etc/fstab archivo. Además, se recomienda que Hola UUID (identificador único universalmente de) se utiliza en/etc/fstab toorefer toohello unidad en lugar de simplemente Hola nombre del dispositivo (es decir, /dev/sdc1). Uso de hello UUID evita está montada tooa ubicación dada si Hola SO detecta un error de disco durante el arranque y los discos de datos restantes, a continuación, que se va a asignaron los identificadores de dispositivo de disco incorrecta Hola. toofind Hola UUID de la nueva unidad de hello, puede usar hello **blkid** utilidad:
    
     ```bash
     sudo -i blkid
     ```
    
-    La salida es similar a la siguiente:
+    salida de Hello tiene un aspecto similar toohello siguiente ejemplo:
    
     ```bash
     /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -151,59 +151,59 @@ Puede acoplar tanto discos vacíos como discos que contengan datos a las máquin
     ```
 
     > [!NOTE]
-    > La edición incorrecta del archivo **/etc/fstab** puede tener como resultado un sistema que no se pueda arrancar. Si no está seguro, consulte la documentación de distribución para obtener información sobre cómo editar correctamente ese archivo. También se recomienda realizar una copia de seguridad del archivo /etc/fstab antes de editarlo.
+    > Edición incorrectamente hello **/etcetera/fstab** archivo podría provocar un reinicio del sistema. Si no está seguro, consulte la documentación de la distribución de toohello para obtener información sobre cómo tooproperly editar este archivo. También se recomienda que se crea una copia de seguridad del archivo/etc/fstab de hello antes de modificarla.
 
-    Después, abra el archivo **/etc/fstab** en un editor de texto:
+    A continuación, abra hello **/etcetera/fstab** archivo en un editor de texto:
 
     ```bash
     sudo vi /etc/fstab
     ```
 
-    En este ejemplo, usamos el valor de UUID para el nuevo dispositivo **/dev/sdc1** que se ha creado en los pasos anteriores y el punto de montaje **/datadrive**. Agregue la siguiente línea al final del archivo **/etc/fstab** :
+    En este ejemplo, utilizamos Hola UUID valor para hello nueva **/dev/sdc1** dispositivo que se creó en los pasos anteriores de Hola y el punto de montaje de hello **/datadrive**. Agregar Hola siguiente línea toohello final de hello **/etcetera/fstab** archivo:
 
     ```sh
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
     ```
 
-    O bien, en sistemas basados en SUSE Linux, es posible que tenga que utilizar un formato ligeramente diferente:
+    O bien, en sistemas basados en SuSE Linux que necesite toouse un formato ligeramente diferente:
 
     ```sh
     /dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext3   defaults,nofail   1   2
     ```
 
     > [!NOTE]
-    > La opción `nofail` garantiza que la máquina virtual se inicia incluso si el sistema de archivos está dañado o el disco no existe al arrancar. Sin esta opción, puede encontrarse con el comportamiento que se describe en [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) (No se puede conectar mediante SSH a una máquina virtual Linux debido a errores de FSTAB).
+    > Hola `nofail` opción garantiza que Hola VM inicie aunque Hola filesystem está dañado o disco hello no existe en tiempo de arranque. Sin esta opción, se puede encontrar un comportamiento tal y como se describe en [no SSH tooLinux VM debido a errores de tooFSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/).
 
-    Ahora puede probar que el sistema de archivos está correctamente montado desmontando y volviendo a montar el sistema de archivos; es decir, usando el punto de montaje `/datadrive` creado en los pasos anteriores:
+    Ahora puede probar que el sistema de archivos de hello está montado correctamente al desmontar y, a continuación, vuelva a montar el sistema de archivos de hello, es decir, con el punto de montaje del ejemplo de Hola `/datadrive` creado en hello los pasos anteriores:
 
     ```bash
     sudo umount /datadrive
     sudo mount /datadrive
     ```
 
-    Si el comando `mount` genera un error, compruebe la sintaxis correcta del archivo /etc/fstab. Si se crean particiones o unidades de datos adicionales, especifíquelas también en /etc/fstab por separado.
+    Si hello `mount` comando produce un error, compruebe Hola/etcetera/fstab archivo para ver la sintaxis correcta. Si se crean particiones o unidades de datos adicionales, especifíquelas también en /etc/fstab por separado.
 
-    Haga se pueda escribir en la unidad mediante este comando:
+    Asegúrese de unidad de hello grabable mediante este comando:
 
     ```bash
     sudo chmod go+w /datadrive
     ```
 
     > [!NOTE]
-    > Posteriormente, la eliminación de un disco de datos sin editar fstab podría provocar un error en el inicio de la máquina virtual. Si ocurre habitualmente, la mayoría de distribuciones proporcionan las opciones de fstab `nofail` o `nobootwait` que permite que el sistema se inicie incluso si el disco no se monta al arrancar. Consulte la documentación de su distribución para obtener más información sobre estos parámetros.
+    > Quitar posteriormente un disco de datos sin necesidad de editar fstab podría producir Hola VM toofail tooboot. Si se trata de un hecho frecuente, mayoría de las distribuciones proporciona cualquier hello `nofail` o `nobootwait` fstab opciones que permiten una tooboot sistema aunque hello tiene un error toomount al arrancar el sistema. Consulte la documentación de su distribución para obtener más información sobre estos parámetros.
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Compatibilidad de TRIM/UNMAP con Linux en Azure
-Algunos kernels de Linux admiten operaciones TRIM/UNMAP para descartar bloques no usados del disco. Estas operaciones son especialmente útiles en el almacenamiento estándar para informar a Azure de que las páginas eliminadas ya no son válidas y se pueden descartar. El descarte de páginas puede suponer un ahorro de dinero si crea archivos grandes y, a continuación, los elimina.
+Algunos los kernels de Linux admiten TRIM y UNMAP operaciones toodiscard los bloques sin utilizar en el disco de Hola. Estas operaciones son sobre todo útiles en almacenamiento estándar tooinform Azure que elimina páginas ya no son válidos y se pueden descartar. El descarte de páginas puede suponer un ahorro de dinero si crea archivos grandes y, a continuación, los elimina.
 
-Hay dos maneras de habilitar la compatibilidad con TRIM en su máquina virtual Linux. Como es habitual, consulte la documentación de distribución para ver el enfoque recomendado:
+Hay dos maneras tooenable TRIM se admiten en la VM de Linux. Como es habitual, consulte la distribución de hello enfoque recomendado:
 
-* Use la opción de montaje `discard` en `/etc/fstab`, por ejemplo:
+* Hola de uso `discard` montar opción en `/etc/fstab`, por ejemplo:
 
     ```sh
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
 
-* En algunos casos, la opción `discard` podría tener afectar al rendimiento. Como alternativa, puede ejecutar el comando `fstrim` manualmente desde la línea de comandos o agregarlo a su crontab para ejecutar con regularidad:
+* En algunos Hola casos `discard` opción podría tener implicaciones de rendimiento. Como alternativa, puede ejecutar hello `fstrim` comando manualmente desde la línea de comandos de hello, o agréguela tooyour crontab toorun con regularidad:
   
     **Ubuntu**
   
@@ -223,11 +223,11 @@ Hay dos maneras de habilitar la compatibilidad con TRIM en su máquina virtual L
 [!INCLUDE [virtual-machines-linux-lunzero](../../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Puede leer más sobre el uso de la máquina virtual con Linux en los siguientes artículos:
+Puede leer más sobre el uso de la VM de Linux en hello siguientes artículos:
 
-* [Inicio de sesión en una máquina virtual con Linux][Logon]
-* [Desconexión de un disco de una máquina virtual de Linux](detach-disk.md)
-* [Comandos CLI de Azure en modo de Administración de servicios de Azure (asm)](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [¿Cómo toolog en la máquina virtual de tooa ejecutan Linux][Logon]
+* [¿Cómo toodetach un disco de una máquina virtual Linux](detach-disk.md)
+* [Usar Hola CLI de Azure con modelo de implementación de hello clásico](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Configuración de RAID en una máquina virtual Linux en Azure](../configure-raid.md)
 * [Configuración del LVM en una máquina virtual Linux en Azure](../configure-lvm.md)
 

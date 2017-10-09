@@ -1,6 +1,6 @@
 ---
-title: StorSimple serie 8000 como destino de copia de seguridad con Veeam | Microsoft Docs
-description: "Describe la configuración del destino de copia de seguridad de StorSimple con Veeam."
+title: aaaStorSimple 8000 series como destino de copia de seguridad con Veeam | Documentos de Microsoft
+description: "Describe la configuración de destino de copia de seguridad de StorSimple Hola con Veeam."
 services: storsimple
 documentationcenter: 
 author: harshakirank
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-ms.openlocfilehash: 828cae6c2a0f00e03b6d24a2bd23f87ddad7b7c8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 74a4af307fab430942f94b3e28f514a9abce227b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple como destino de copia de seguridad con Veeam
 
 ## <a name="overview"></a>Información general
 
-Azure StorSimple es una solución de almacenamiento en nube híbrida de Microsoft. StorSimple aborda las complejidades del crecimiento exponencial de datos mediante una cuenta Azure Storage como una extensión de la solución local y la organización en capas automática de datos en almacenamiento local y almacenamiento en nube.
+Azure StorSimple es una solución de almacenamiento en nube híbrida de Microsoft. StorSimple direcciones complejidades Hola de crecimiento exponencial de los datos con una cuenta de almacenamiento de Azure como una extensión de la solución local de Hola y apilar automáticamente datos a través de un almacenamiento local y el almacenamiento en nube.
 
-En este artículo se describen la integración de StorSimple con Veeam y los procedimientos recomendados para la integración de ambas soluciones. También se ofrecen recomendaciones sobre cómo configurar Veeam para que se integre perfectamente con StorSimple. Nos remitimos a los procedimientos recomendados, los arquitectos de copias de seguridad y los administradores en cuanto a la mejor manera de configurar Veeam con el objetivo de cumplir los requisitos de copia de seguridad individual y los Acuerdos de Nivel de Servicio (SLA).
+En este artículo se describen la integración de StorSimple con Veeam y los procedimientos recomendados para la integración de ambas soluciones. También le ofrecemos recomendaciones sobre cómo integrar tooset seguridad Veeam toobest con StorSimple. Se aplazan tooVeeam mejores prácticas, arquitectos de copia de seguridad y los administradores de hello tooset de manera mejor los requisitos de copia de seguridad individuales de Veeam toomeet y contratos de nivel de servicio (SLA).
 
-Aunque se muestran tanto los pasos de configuración como los conceptos clave, este artículo no es una guía detallada de configuración o instalación. Se supone que la infraestructura y los componentes básicos funcionan perfectamente y están listos para admitir los conceptos que se describen.
+Aunque se muestran tanto los pasos de configuración como los conceptos clave, este artículo no es una guía detallada de configuración o instalación. Suponemos que infraestructura y los componentes básicos de hello están en condiciones de funcionamiento y toosupport listo conceptos de Hola que describimos.
 
 ### <a name="who-should-read-this"></a>¿A quiénes está dirigido este documento?
 
-La información de este artículo será de especial utilidad para administradores de copia de seguridad, administradores de almacenamiento y arquitectos de almacenamiento con conocimientos de almacenamiento, Windows Server 2012 R2, Ethernet, servicios en la nube y Veeam.
+información de Hello en este artículo será más útiles toobackup, los administradores de almacenamiento, arquitectos y administradores almacenamiento que tienen conocimientos de almacenamiento, Windows Server 2012 R2, Ethernet, servicios en la nube y Veeam.
 
 ### <a name="supported-versions"></a>Versiones compatibles
 
@@ -44,50 +44,50 @@ La información de este artículo será de especial utilidad para administradore
 
 StorSimple es una buena elección para un destino de copia de seguridad porque:
 
--   Proporciona almacenamiento local estándar que las aplicaciones de copia de seguridad pueden usar con el fin de proporcionar un destino de copias de seguridad rápidas sin realizar ningún cambio. También puede usar StorSimple para la restauración rápida de copias de seguridad recientes.
--   Sus niveles en la nube se integran perfectamente con una cuenta de almacenamiento en nube de Azure para usar Azure Storage de forma rentable.
+-   Proporciona almacenamiento estándar, local para las aplicaciones de copia de seguridad toouse como destino de copia de seguridad rápida, sin realizar ningún cambio. También puede usar StorSimple para la restauración rápida de copias de seguridad recientes.
+-   Su nube niveles se integra perfectamente con una toouse de cuenta de almacenamiento de Azure en la nube rentable de almacenamiento de Azure.
 -   Proporciona automáticamente almacenamiento externo para la recuperación ante desastres.
 
 
 ## <a name="key-concepts"></a>Conceptos clave
 
-Al igual que con cualquier solución de almacenamiento, para que sea un éxito son fundamentales una evaluación minuciosa del rendimiento del almacenamiento de la solución, los SLA, la tasa de cambio y las necesidades de aumento de capacidad. La idea principal es que mediante la introducción de un nivel de nube, los tiempos de acceso y el rendimiento en la nube juegan un papel fundamental en la capacidad de StorSimple para hacer su trabajo.
+Al igual que con cualquier solución de almacenamiento, una evaluación minuciosa de rendimiento de almacenamiento de la solución de hello, SLA, tasa de cambio y las necesidades de crecimiento de capacidad es toosuccess críticos. idea principal Hello es que introduciendo un nivel en la nube, los tiempos de acceso y capacidad de proceso en la nube toohello desempeña un papel fundamental en cuanto a capacidad de Hola de StorSimple toodo su trabajo.
 
-StorSimple está diseñado para proporcionar almacenamiento a las aplicaciones que funcionan en un conjunto de datos activo bien definido (datos activos). En este modelo, el conjunto de datos activo se almacena en las capas locales y el conjunto de datos no activos o archivados restantes está en capas en la nube. Este modelo se representa en la siguiente ilustración. La línea verde casi plana representa los datos almacenados en los niveles locales del dispositivo de StorSimple. La línea roja representa la cantidad total de datos almacenados en la solución de StorSimple a través de todos los niveles. El espacio entre la línea verde plana y la curva exponencial roja representa la cantidad total de datos almacenados en la nube.
+StorSimple está diseñado tooprovide tooapplications de almacenamiento que operan en un espacio de trabajo bien definido de datos (datos activos). En este modelo, espacio de trabajo de Hola de datos se almacena en capas locales de Hola y Hola restante no laborables/frío/archivado de conjunto de datos es toohello en capas en la nube. Este modelo se representa en hello figura siguiente. línea Hello casi plano verde representa datos de hello almacenados en capas locales de hello de dispositivo de StorSimple de Hola. Hello línea roja representa Hola cantidad total de datos almacenados en solución StorSimple de Hola a todos los niveles. espacio Hola entre línea hello plano verde y curva exponencial rojo de hello representa la cantidad total de Hola de los datos almacenados en la nube de Hola.
 
 **Niveles de StorSimple**
 ![Diagrama de niveles de Storsimple](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
-Con esta arquitectura en mente, StorSimple es ideal para operar como destino de copia de seguridad. Puede usar StorSimple para:
+Con esta arquitectura en mente, encontrará que StorSimple es ideal toooperate como un destino de copia de seguridad. Puede usar StorSimple para:
 
--   Realizar las restauraciones más frecuentes desde el conjunto de datos activo local.
--   Usar la nube para la recuperación ante desastres fuera del sitio y para datos antiguos, donde las restauraciones son menos frecuentes.
+-   Realice las restauraciones más frecuentes de espacio de trabajo local Hola de datos.
+-   Usar en la nube hello para la recuperación de desastres de fuera del sitio y los datos más antiguos, donde restauraciones son menos frecuentes.
 
 ## <a name="storsimple-benefits"></a>Ventajas de StorSimple
 
-StorSimple ofrece una solución local que se integra perfectamente con Microsoft Azure, para lo que saca provecho del acceso ininterrumpido al almacenamiento local y en la nube.
+StorSimple ofrece una solución local que se integra perfectamente con Microsoft Azure, aprovechando las ventajas de sin problemas a tooon desde la oficina y almacenamiento en nube.
 
-StorSimple usa niveles automáticos entre el dispositivo local, que tiene almacenamiento SCSI conectado en serie (SAS) y en dispositivo en estado sólido (SSD), y Azure Storage. Los niveles automáticos conservan los datos de acceso frecuente en local, en los niveles SAS y SSD. Mueve los datos de acceso poco frecuente a Azure Storage.
+StorSimple usa niveles automática entre dispositivos locales de hello, que tiene el dispositivo de estado sólido (SSD) y conectada en serie de almacenamiento SCSI (SAS) y el almacenamiento de Azure. Automática mantiene apilar frecuencia de acceso a datos locales, en los niveles SSD y SAS de Hola. Mueve los datos que se accede con poca frecuencia tooAzure almacenamiento.
 
 StorSimple ofrece las siguientes ventajas:
 
--   Algoritmos de desduplicación y compresión únicos que usan la nube para lograr unos niveles de desduplicación sin precedentes
+-   Algoritmos de desduplicación y la compresión únicos que usan niveles de desduplicación sin precedentes de tooachieve de hello en la nube
 -   Alta disponibilidad
 -   Replicación geográfica mediante el uso de la replicación geográfica de Azure
 -   Integración de Azure
--   Cifrado de datos en la nube
+-   Cifrado de datos en la nube de Hola
 -   Mejor recuperación ante desastres y cumplimiento normativo
 
-Aunque StorSimple presenta dos escenarios de implementación principales (destino de copia de seguridad principal y secundario), es fundamentalmente un dispositivo de almacenamiento de bloques sin formato. StorSimple realiza toda la compresión y desduplicación. Envía y recupera datos perfectamente entre la nube y el sistema de archivos y de la aplicación.
+Aunque StorSimple presenta dos escenarios de implementación principales (destino de copia de seguridad principal y secundario), es fundamentalmente un dispositivo de almacenamiento de bloques sin formato. StorSimple Hola compresión y desduplicación. Sin problemas, envía y recupera los datos entre la nube de Hola y aplicación hello y el sistema de archivos.
 
-Para obtener más información sobre StorSimple, consulte [Serie StorSimple 8000: una solución de almacenamiento en la nube híbrida](storsimple-overview.md). También puede consultar las [especificaciones técnicas para Serie StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Para obtener más información sobre StorSimple, consulte [Serie StorSimple 8000: una solución de almacenamiento en la nube híbrida](storsimple-overview.md). Además, puede revisar hello [especificaciones técnicas de la serie StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > El uso del dispositivo StorSimple como destino de copia de seguridad es compatible solo con StorSimple 8000 Update 3 y versiones posteriores.
 
 ## <a name="architecture-overview"></a>Introducción a la arquitectura
 
-Las tablas siguientes muestran la guía inicial de la relación entre el modelo del dispositivo y la arquitectura.
+Hello en las tablas siguientes muestran instrucciones inicial de arquitectura del modelo de dispositivo de Hola.
 
 **Capacidades de StorSimple para el almacenamiento local y en la nube**
 
@@ -102,71 +102,71 @@ Las tablas siguientes muestran la guía inicial de la relación entre el modelo 
 
 | Escenario de copia de seguridad  | Capacidad de almacenamiento local  | Capacidad de almacenamiento en la nube  |
 |---|---|---|
-| Copia de seguridad principal  | Copias de seguridad recientes almacenadas localmente para una recuperación rápida que cumpla el objetivo de punto de recuperación (RPO) | El historial de copias de seguridad (RPO) se ajusta a la capacidad de la nube |
+| Copia de seguridad principal  | Copias de seguridad recientes almacenados en almacenamiento local para el objetivo de punto de recuperación (RPO) de recuperación rápida toomeet | El historial de copias de seguridad (RPO) se ajusta a la capacidad de la nube |
 | Copia de seguridad secundaria | La copia secundaria de los datos de las copias de seguridad se puede almacenar en la capacidad de la nube  | N/D  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple como destino de copia de seguridad principal
 
-En este escenario, los volúmenes de StorSimple se presentan a la aplicación de copia de seguridad como el único repositorio para copias de seguridad. La siguiente ilustración muestra la arquitectura de una solución en la que todas las copias de seguridad usan los volúmenes en capas de StorSimple para las copias de seguridad y las restauraciones.
+En este escenario, los volúmenes de StorSimple se presentan toohello aplicación de copia de seguridad como único repositorio de Hola para copias de seguridad. Hola figura siguiente muestra una arquitectura de la solución en la que todas las copias de seguridad use StorSimple en niveles de volúmenes para las copias de seguridad y restauraciones.
 
 ![Diagrama lógico de StorSimple como destino de copia de seguridad principal](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetlogicaldiagram.png)
 
 ### <a name="primary-target-backup-logical-steps"></a>Pasos lógicos de copias de seguridad en el destino principal
 
-1.  El servidor de copia de seguridad se pone en contacto con el agente de copia de seguridad de destino y este transmite los datos al primero.
-2.  El servidor de copia de seguridad escribe los datos en los volúmenes en capas de StorSimple.
-3.  El servidor de copia de seguridad actualiza la base de datos del catálogo y después finaliza el trabajo de copia de seguridad.
-4.  Un script de instantánea desencadena el administrador de instantáneas en la nube de StorSimple (iniciar o eliminar).
-5.  El servidor de copia de seguridad elimina las copias de seguridad que han expirado en función de lo que establezca una directiva de retención.
+1.  contactos del servidor de copia de seguridad de Hola Hola a agente de copia de seguridad de destino y agente de copia de seguridad de hello transmite el servidor de copia de seguridad de datos toohello.
+2.  servidor de copia de seguridad de Hello escribe datos toohello StorSimple en niveles de volúmenes.
+3.  servidor de copia de seguridad de Hello actualiza la base de datos de catálogo de hello y, a continuación, finalice el trabajo de copia de seguridad de Hola.
+4.  Una secuencia de comandos de instantánea desencadena el Administrador de instantáneas de nube de hello StorSimple (inicio o eliminación).
+5.  servidor de copia de seguridad de Hello elimina expiradas copias de seguridad según una directiva de retención.
 
 ### <a name="primary-target-restore-logical-steps"></a>Pasos lógicos de restauración del destino principal
 
-1.  El servidor de copia de seguridad empieza a restaurar los datos apropiados del repositorio de almacenamiento.
-2.  El agente de copia de seguridad recibe los datos del servidor de copia de seguridad.
-3.  El servidor de copia de seguridad completa el trabajo de restauración.
+1.  servidor de copia de seguridad de Hello inicia restaurar los datos adecuados de Hola de repositorio de almacenamiento de Hola.
+2.  agente de copia de seguridad de Hola recibe los datos de saludo del servidor de copia de seguridad de Hola.
+3.  servidor de copia de seguridad de Hello finaliza el trabajo de restauración de Hola.
 
 ## <a name="storsimple-as-a-secondary-backup-target"></a>StorSimple como destino de copia de seguridad secundario
 
 En este escenario, los volúmenes de StorSimple se utilizan principalmente para la retención o el archivado a largo plazo.
 
-En la siguiente ilustración se muestra una arquitectura en la que las copias de seguridad y restauraciones iniciales tienen como destino un volumen de alto rendimiento. Estas copias de seguridad se realizan y se archivan en un volumen en capas de StorSimple con una programación establecida.
+Hello en la ilustración siguiente se muestra una arquitectura de las copias de seguridad iniciales y restaura el volumen de destino un alto rendimiento. Estas copias de seguridad se copian y archivado tooa StorSimple en niveles de volumen en una programación establecida.
 
-Es importante asignar al volumen de alto rendimiento un tamaño adecuado para que pueda controlar la capacidad de la directiva de retención y los requisitos de rendimiento.
+Es importante toosize su volumen de alto rendimiento, por lo que puede controlar los requisitos de capacidad y rendimiento de la directiva de retención.
 
 ![Diagrama lógico de StorSimple como destino de copia de seguridad secundario](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetlogicaldiagram.png)
 
 ### <a name="secondary-target-backup-logical-steps"></a>Pasos lógicos de copias de seguridad en el destino secundario
 
-1.  El servidor de copia de seguridad se pone en contacto con el agente de copia de seguridad de destino y este transmite los datos al primero.
-2.  El servidor de copia de seguridad escribe datos en el almacenamiento de alto rendimiento.
-3.  El servidor de copia de seguridad actualiza la base de datos del catálogo y después finaliza el trabajo de copia de seguridad.
-4.  El servidor de copia de seguridad copia las copias de seguridad en StorSimple en función de lo que establezca una directiva de retención.
-5.  Un script de instantánea desencadena el administrador de instantáneas en la nube de StorSimple (iniciar o eliminar).
-6.  El servidor de copia de seguridad elimina las copias de seguridad que han expirado en función de lo que establezca una directiva de retención.
+1.  contactos del servidor de copia de seguridad de Hola Hola a agente de copia de seguridad de destino y agente de copia de seguridad de hello transmite el servidor de copia de seguridad de datos toohello.
+2.  servidor de copia de seguridad de Hello escribe almacenamiento de datos toohigh rendimiento.
+3.  servidor de copia de seguridad de Hello actualiza la base de datos de catálogo de hello y, a continuación, finalice el trabajo de copia de seguridad de Hola.
+4.  servidor de copia de seguridad de Hello copia tooStorSimple de copias de seguridad según una directiva de retención.
+5.  Una secuencia de comandos de instantánea desencadena el Administrador de instantáneas de nube de hello StorSimple (inicio o eliminación).
+6.  servidor de copia de seguridad de Hello elimina expiradas copias de seguridad según una directiva de retención.
 
 ### <a name="secondary-target-restore-logical-steps"></a>Pasos lógicos de restauración del destino secundario
 
-1.  El servidor de copia de seguridad empieza a restaurar los datos apropiados del repositorio de almacenamiento.
-2.  El agente de copia de seguridad recibe los datos del servidor de copia de seguridad.
-3.  El servidor de copia de seguridad completa el trabajo de restauración.
+1.  servidor de copia de seguridad de Hello inicia restaurar los datos adecuados de Hola de repositorio de almacenamiento de Hola.
+2.  agente de copia de seguridad de Hola recibe los datos de saludo del servidor de copia de seguridad de Hola.
+3.  servidor de copia de seguridad de Hello finaliza el trabajo de restauración de Hola.
 
-## <a name="deploy-the-solution"></a>Implementación de la solución
+## <a name="deploy-hello-solution"></a>Implementar soluciones de Hola
 
-La implementación de la solución requiere tres pasos:
+Implementar soluciones de hello requiere tres pasos:
 
-1. Preparación de la infraestructura de red
+1. Preparar la infraestructura de red de Hola.
 2. Implementación del dispositivo StorSimple como destino de copia de seguridad
 3. Implementación de Veeam
 
-En las siguientes secciones se detallan cada uno de estos pasos.
+Cada paso se explica con detalle en las secciones siguientes de Hola.
 
-### <a name="set-up-the-network"></a>Configuración de la red
+### <a name="set-up-hello-network"></a>Configurar una red de Hola
 
-Puesto que StorSimple es una solución integrada con la nube de Azure, requiere una conexión activa con la nube de Azure. Esta conexión se utiliza para operaciones tales como instantáneas en la nube, administración de datos y transferencia de metadatos, así como para almacenar en capas datos antiguos con menos acceso en el almacenamiento en la nube de Azure.
+Debido a que StorSimple es una solución que se integra con hello nube de Azure, StorSimple requiere una nube de Azure toohello de conexión activo y en funcionamiento. Esta conexión se usa para operaciones como instantáneas en la nube, la administración de datos y metadatos transferencia y almacenamiento en nube tooAzure datos más antiguos y menos acceso tootier.
 
-Para que la solución funcione de manera óptima, se recomienda seguir estos procedimientos de red recomendados:
+Para hello solución tooperform un rendimiento óptimo, se recomienda que siga estas prácticas recomendadas de red:
 
--   El vínculo que conecta los niveles de StorSimple con Azure debe cumplir sus requisitos de ancho de banda. Esto se logra aplicando el nivel necesario de Calidad de servicio (QoS) a los conmutadores de su infraestructura para que cumplan sus Acuerdos de Nivel de Servicio de RPO y Objetivo de tiempo de recuperación (RTO).
+-   vínculo de Hola que conecta su tooAzure nivel de StorSimple debe cumplir los requisitos de ancho de banda. Lograr esto mediante la aplicación hello necesarios calidad de servicio (QoS) nivel tooyour infraestructura conmutadores toomatch el RPO y recuperación SLA de recuperación (RTO) de tiempo.
 -   Las latencias de acceso máximas de Azure Blob Storage deben rondar los 80 ms.
 
 ### <a name="deploy-storsimple"></a>Implementación de StorSimple
@@ -175,45 +175,45 @@ Para ver instrucciones detalladas para la implementación de StorSimple, consult
 
 ### <a name="deploy-veeam"></a>Implementación de Veeam
 
-Para ver los procedimientos recomendados para la instalación de Veeam, vaya a [Veeam Backup & Replication Best Practices](https://bp.veeam.expert/) (Procedimientos recomendados de copia de seguridad y replicación de Veeam), y lea la guía de usuario en [Veeam Help Center (Technical Documentation)](https://www.veeam.com/documentation-guides-datasheets.html) (Centro de ayuda de Veeam [Documentación técnica]).
+Para Veeam prácticas recomendadas de instalación, consulte [copia de seguridad de Veeam & Replication Best Practices](https://bp.veeam.expert/), y lea la Guía de usuario de hello en [Veeam centro de ayuda (documentación técnica)](https://www.veeam.com/documentation-guides-datasheets.html).
 
-## <a name="set-up-the-solution"></a>Configuración de la solución
+## <a name="set-up-hello-solution"></a>Configurar la solución de Hola
 
-En esta sección se muestran algunos ejemplos de configuración. Las siguientes recomendaciones y ejemplos ilustran la implementación más básica y fundamental. Es posible que esta implementación no se aplique directamente a sus requisitos de copia de seguridad específicos.
+En esta sección se muestran algunos ejemplos de configuración. Hello ejemplos y las recomendaciones siguientes ilustran hello más básica y fundamentales implementación. Esta implementación podría no aplicarse directamente tooyour requisitos de copia de seguridad específicos.
 
 ### <a name="set-up-storsimple"></a>Configuración de StorSimple
 
 | Tareas de implementación de StorSimple  | Comentarios adicionales |
 |---|---|
 | Implementar un dispositivo de StorSimple local. | Versiones compatibles: Update 3 y versiones posteriores. |
-| Active el destino de copia de seguridad. | Utilice estos comandos para activar o desactivar el modo de destino de copia de seguridad y para obtener el estado. Para obtener más información, vaya a [Conectarse de forma remota al dispositivo StorSimple](storsimple-remote-connect.md).</br> Para activar el modo de copia de seguridad: `Set-HCSBackupApplianceMode -enable`. </br> Para desactivar el modo de copia de seguridad: `Set-HCSBackupApplianceMode -disable`. </br> Para obtener el estado actual de la configuración del modo de copia de seguridad: `Get-HCSBackupApplianceMode`. |
-| Cree un contenedor de volúmenes común para el volumen que almacena los datos de copia de seguridad. Todos los datos de un contenedor de volumen se desduplican. | Los contenedores de volúmenes de StorSimple definen dominios de desduplicación.  |
-| Cree volúmenes de StorSimple. | Cree volúmenes cuyos tamaños se ajusten lo máximo posible al uso previsto, ya que el tamaño del volumen afecta a la duración de la instantánea de la nube. Para obtener información sobre cómo cambiar el tamaño de un volumen, consulte las [directivas de retención](#retention-policies).</br> </br> Use los volúmenes en capas de StorSimple y seleccione la casilla **Usar este volumen para los datos de archivo a los que accede con menos frecuencia**. </br> No se admite que solo se usen volúmenes anclados localmente. |
-| Cree una directiva de copia de seguridad de StorSimple única para todos los volúmenes de destino de copia de seguridad. | Una directiva de copia de seguridad de StorSimple define el grupo de coherencia del volumen. |
-| Deshabilite la programación a medida que las instantáneas expiran. | Las instantáneas se desencadenan como operación posterior al procesamiento. |
+| Encienda el destino de copia de seguridad de Hola. | Utilice estos comandos tooturn en o desactivar el modo de destino de copia de seguridad y el estado de tooget. Para obtener más información, consulte [conectarse de forma remota el dispositivo de StorSimple tooa](storsimple-remote-connect.md).</br> tooturn en modo de copia de seguridad: `Set-HCSBackupApplianceMode -enable`. </br> tooturn desactiva el modo de copia de seguridad: `Set-HCSBackupApplianceMode -disable`. </br> estado actual de hello tooget de configuración del modo de copia de seguridad: `Get-HCSBackupApplianceMode`. |
+| Crear un contenedor de volumen común para el volumen que almacena datos de copia de seguridad de saludo. Todos los datos de un contenedor de volumen se desduplican. | Los contenedores de volúmenes de StorSimple definen dominios de desduplicación.  |
+| Cree volúmenes de StorSimple. | Crear volúmenes con tamaños como uso de cierre toohello previsto como sea posible, porque el tamaño del volumen afecta a la hora de duración de la instantánea de nube. Para obtener información acerca de cómo toosize un volumen que conozca [las directivas de retención](#retention-policies).</br> </br> StorSimple de uso en niveles volúmenes y seleccione hello **usar este volumen de datos acceso menos frecuente archivados** casilla de verificación. </br> No se admite que solo se usen volúmenes anclados localmente. |
+| Crear una directiva de copia de seguridad de StorSimple única para todos los volúmenes de destino de copia de seguridad de Hola. | Una directiva de copia de seguridad de StorSimple define el grupo de consistencia de volumen de Hola. |
+| Deshabilitar la programación de hello como las instantáneas de hello expiran. | Las instantáneas se desencadenan como operación posterior al procesamiento. |
 
-### <a name="set-up-the-host-backup-server-storage"></a>Configuración del almacenamiento del servidor de copia de seguridad de host
+### <a name="set-up-hello-host-backup-server-storage"></a>Configurar el almacenamiento de copia de seguridad del servidor de host de Hola
 
-Configure el almacenamiento del servidor de copia de seguridad de host siguiendo estas instrucciones:  
+Configurar el almacenamiento de copia de seguridad del servidor de host de hello según las directrices de toothese:  
 
 - No use volúmenes distribuidos (creados por Windows Disk Management). Los volúmenes distribuidos no son compatibles.
 - Dé formato a los volúmenes mediante NTFS con un tamaño de la unidad de asignación de 64 kB.
-- Asigne los volúmenes de StorSimple directamente en el servidor de Veeam.
+- Asignar los volúmenes de StorSimple Hola directamente toohello Veeam server.
     - Use iSCSI para servidores físicos.
 
 
 ## <a name="best-practices-for-storsimple-and-veeam"></a>Procedimientos recomendados para StorSimple y Veeam
 
-Configure su solución aplicando las instrucciones de las siguientes secciones.
+Configure su solución según las directrices de toohello Hola algunas de las secciones siguientes.
 
 ### <a name="operating-system-best-practices"></a>Procedimientos recomendados para un sistema operativo
 
--   Deshabilite el cifrado y la desduplicación de Windows Server para el sistema de archivos NTFS.
--   Deshabilite la desfragmentación de Windows Server en los volúmenes de StorSimple.
--   Deshabilite la indexación de Windows Server en los volúmenes de StorSimple.
--   Realice una detección de virus en el host de origen (no en los volúmenes de StorSimple).
--   Desactive el [mantenimiento de Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) predeterminado en el Administrador de tareas. Para ello, siga uno de estos pasos:
-    - Desactive el configurador de mantenimiento en el Programador de tareas de Windows.
+-   Deshabilitar el cifrado de Windows Server y desduplicación Hola sistema de archivos NTFS.
+-   Deshabilite la desfragmentación de Windows Server en volúmenes de StorSimple Hola.
+-   Deshabilitar la indización en hello volúmenes de StorSimple de Windows Server.
+-   Ejecute un análisis antivirus en el host de origen de hello (no en relación a los volúmenes de StorSimple Hola).
+-   Desactive la opción predeterminada de hello [mantenimiento de Windows Server](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) en el Administrador de tareas. Hacer esto en uno de hello siguientes maneras:
+    - Desactivar la configuración de mantenimiento de hello en el programador de tareas de Windows.
     - Descargue [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) de Windows Sysinternals. Después de descargar PsExec, ejecute Windows PowerShell como administrador y escriba:
       ```powershell
       psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
@@ -221,31 +221,31 @@ Configure su solución aplicando las instrucciones de las siguientes secciones.
 
 ### <a name="storsimple-best-practices"></a>Procedimientos recomendados para StorSimple
 
--   Asegúrese de que el dispositivo de StorSimple se ha actualizado a [Update 3 o cualquier versión posterior](storsimple-install-update-3.md).
--   Aísle tráfico de iSCSI y de la nube. Use conexiones iSCSI dedicadas para el tráfico entre StorSimple y el servidor de copia de seguridad.
+-   Asegúrese de que ese dispositivo de StorSimple Hola se actualiza también[Update 3 o posterior](storsimple-install-update-3.md).
+-   Aísle tráfico de iSCSI y de la nube. Usar conexiones iSCSI dedicado para el tráfico entre el servidor de copia de seguridad de StorSimple y Hola.
 -   Asegúrese de que su dispositivo de StorSimple sea un destino de copia de seguridad dedicado. No se admiten cargas de trabajo mixtas porque afectan a su RTO y RPO.
 
 ### <a name="veeam-best-practices"></a>Procedimientos recomendados para Veeam
 
--   La base de datos de Veeam debe ser encontrarse en el servidor, no puede residir en un volumen de StorSimple.
--   Para recuperación ante desastres, realice una copia de la base de datos de Veeam en un volumen de StorSimple.
+-   base de datos de Hello Veeam debe ser servidor toohello local y no reside en un volumen de StorSimple.
+-   Recuperación ante desastres, realizar una copia de base de datos de hello Veeam en un volumen de StorSimple.
 -   Para esta solución se admiten copias de seguridad completas e incrementales de Veeam. Se recomienda no usar copias de seguridad sintéticas y diferenciales.
--   Los archivos de datos de copia de seguridad solo deben contener los datos de un trabajo concreto. Por ejemplo, no se permiten anexos de medios entre distintos trabajos.
--   Desactive la comprobación de trabajos. Si es necesaria, se debe programar que se realice una comprobación después del último trabajo de copia de seguridad. Es importante saber que este trabajo afecta a la ventana de copia de seguridad.
+-   Archivos de copia de seguridad de datos deben contener sólo los datos de saludo de un trabajo específico. Por ejemplo, no se permiten anexos de medios entre distintos trabajos.
+-   Desactive la comprobación de trabajos. Si es necesario, se debe programar la comprobación después de trabajo de copia de seguridad más reciente de Hola. Es importante toounderstand que este trabajo afecta a la ventana de copia de seguridad.
 -   Active la asignación previa del soporte físico.
 -   Asegúrese de que está activado el procesamiento en paralelo.
 -   Desactive la compresión.
--   Desactive la desduplicación en el trabajo de copia de seguridad.
--   Establezca la optimización en **LAN Target** (LAN destino).
+-   Desactivar la desduplicación en el trabajo de copia de seguridad de Hola.
+-   Configurar la optimización demasiado**LAN destino**.
 -   Active **Create active full backup** (Crear copia de seguridad completa activa) (cada 2 semanas).
--   En el repositorio de la copia de seguridad, configure **Use per-VM backup files** (Usar archivos de copia de seguridad por VM).
--   En **Use multiple upload streams per job** (Usar varias transmisiones de carga por trabajo), seleccione **8** (se permite un máximo de 16). Suba o baje este número en función del uso de la CPU en el dispositivo de StorSimple.
+-   En el repositorio de copia de seguridad de hello, configure **usar archivos de copia de seguridad por VM**.
+-   Establecer **usar varios flujos de carga por trabajo** demasiado**8** (se permite un máximo de 16). Ajustar este número hacia arriba o hacia abajo en función de uso de CPU en el dispositivo StorSimple Hola.
 
 ## <a name="retention-policies"></a>Directivas de retención
 
-Una de las directivas de retención de copias de seguridad más habituales es Grandfather, Father, and Son (GFS). En una directiva GFS, se realiza una copia de seguridad incremental diaria y se realizan copias de seguridad completas semanales y mensuales. Esta directiva da lugar a seis volúmenes de StorSimple en capas: un volumen contiene las copias de seguridad completas semanales, mensuales y anuales; los otros cinco volúmenes almacenan copias de seguridad incrementales diarias.
+Uno de los tipos de directiva de retención de copia de seguridad más comunes de hello es una directiva de su abuelo y padre, hijo (GFS). En una directiva GFS, se realiza una copia de seguridad incremental diaria y se realizan copias de seguridad completas semanales y mensuales. Este resultados de directivas de StorSimple seis niveles volúmenes: un volumen contiene Hola semanales, mensuales y anuales copias de seguridad completas; Hello otros cinco volúmenes almacenan copias de seguridad incrementales diarias.
 
-En el siguiente ejemplo se usa una rotación de GFS. En dicho ejemplo se dan por supuestos los siguientes hechos:
+En el siguiente ejemplo de Hola, usamos un giro GFS. ejemplo de Hola supone siguiente Hola:
 
 -   Se usan datos no desduplicados o comprimidos.
 -   Cada copia de seguridad completa ocupa 1 TiB.
@@ -254,7 +254,7 @@ En el siguiente ejemplo se usa una rotación de GFS. En dicho ejemplo se dan por
 -   Se conservan doce copias de seguridad mensuales durante un año.
 -   Se conserva una copia de seguridad anual durante diez años.
 
-De acuerdo con los supuestos anteriores, cree un volumen en capas de StorSimple de 26 TiB para las copias de seguridad completas mensuales y anuales. Cree un volumen en capas de StorSimple de 5 TiB para cada una de las copias de seguridad incrementales diarias.
+En función de hello anterior suposiciones, crear un TiB 26 StorSimple en niveles de volumen para hello mensual y anual copias de seguridad completas. Crear un TiB 5 StorSimple en niveles de volumen para cada una de las copias de seguridad diarias Hola incremental.
 
 | Retención de tipo de copia de seguridad | Tamaño (TiB) | Multiplicador de GFS\* | Capacidad total (TiB)  |
 |---|---|---|---|
@@ -264,49 +264,49 @@ De acuerdo con los supuestos anteriores, cree un volumen en capas de StorSimple 
 | Completa anual | 1  | 10 | 10 |
 | Requisito de GFS |   | 38 |   |
 | Cuota adicional  | 4  |   | Requisito de GFS, un total de 42  |
-\* El multiplicador de GFS es el número de copias que es preciso proteger y retener para cumplir los requisitos de las directivas de copia de seguridad.
+\*multiplicador GFS Hello es el número de Hola de copias que necesita tooprotect y conservar toomeet los requisitos de la directiva de copia de seguridad.
 
 ## <a name="set-up-veeam-storage"></a>Configuración del almacenamiento de Veeam
 
-### <a name="to-set-up-veeam-storage"></a>Para configurar el almacenamiento de Veeam
+### <a name="tooset-up-veeam-storage"></a>tooset el almacenamiento de Veeam
 
-1.  En la consola de Veeam Backup and Replication, en **Repository Tools** (Herramientas de repositorio), vaya a **Backup Infrastructure** (Infraestructura de copia de seguridad). Haga clic con el botón derecho en **Backup Repositories** (Repositorios de copia de seguridad) y seleccione **Add Backup Repository** (Agregar repositorio de copia de seguridad).
+1.  En hello Veeam copia de seguridad y la consola de replicación, en **repositorio herramientas**, vaya demasiado**infraestructura de copia de seguridad**. Haga clic con el botón derecho en **Backup Repositories** (Repositorios de copia de seguridad) y seleccione **Add Backup Repository** (Agregar repositorio de copia de seguridad).
 
     ![consola de administración de Veeam, pantalla de repositorio de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  En el cuadro de diálogo **New Backup Repository** (Nuevo repositorio de copia de seguridad), escriba un nombre y una descripción para el repositorio. Seleccione **Siguiente**.
+2.  Hola **nuevo repositorio de copia de seguridad** diálogo cuadro, escriba un nombre y una descripción para el repositorio de Hola. Seleccione **Siguiente**.
 
     ![consola de administración de Veeam, página de nombre y descripción](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Para el tipo, seleccione **Microsoft Windows server**. Seleccione el servidor de Veeam. Seleccione **Siguiente**.
+3.  Para tipo de hello, seleccione **Microsoft Windows server**. Seleccione el servidor de Veeam Hola. Seleccione **Siguiente**.
 
     ![consola de administración de Veeam, selección del tipo de repositorio de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  Para especificar el valor de **Location** (Ubicación), busque y seleccione el volumen. Seleccione la casilla **Limit maximum concurrent tasks to:** (Limitar el número máximo de tareas simultáneas a:) y establezca el valor en **4**. Esto garantiza que solo se procesen cuatro discos virtuales simultáneamente mientras se procesa cada máquina virtual (VM). Seleccione el botón **Advanced** (Opciones avanzadas).
+4.  toospecify **ubicación**, busque y seleccione el volumen de Hola. Seleccione hello **limitar el número máximo de tareas simultáneo a:** hello de conjunto y la casilla de verificación valoran demasiado**4**. Esto garantiza que solo se procesen cuatro discos virtuales simultáneamente mientras se procesa cada máquina virtual (VM). Seleccione hello **avanzadas** botón.
 
     ![consola de administración de Veeam, selección de volumen](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
 
-5.  En el cuadro de diálogo **Storage Compatibility Settings** (Configuración de compatibilidad de almacenamiento), seleccione la casilla **Use per-VM backup files** (Usar por archivo de copia de seguridad de VM).
+5.  Hola **configuración de compatibilidad de almacenamiento** cuadro de diálogo, seleccione hello **usar archivos de copia de seguridad por VM** casilla de verificación.
 
     ![consola de administración de Veeam, configuración de compatibilidad de almacenamiento](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  En el cuadro de diálogo **New Backup Repository** (Nuevo repositorio de copia de seguridad), seleccione la casilla **Enable vPower NFS service on the mount server (recommended)** (Habilitar el servicio vPower NFS en el servidor de montaje [recomendado]). Seleccione **Siguiente**.
+6.  Hola **nuevo repositorio de copia de seguridad** cuadro de diálogo, seleccione hello **habilitar servicios de NFS vPower en servidor de montaje de hello (recomendado)** casilla de verificación. Seleccione **Siguiente**.
 
     ![consola de administración de Veeam, pantalla de repositorio de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
-7.  Revise la configuración y, a continuación, seleccione **Next** (Siguiente).
+7.  Revisar la configuración de hello y, a continuación, seleccione **siguiente**.
 
     ![consola de administración de Veeam, pantalla de repositorio de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage7.png)
 
-    Se agrega un repositorio al servidor de Veeam.
+    Un repositorio se haya agregado toohello Veeam server.
 
 ## <a name="set-up-storsimple-as-a-primary-backup-target"></a>Configuración de StorSimple como destino de copia de seguridad principal
 
 > [!IMPORTANT]
-> La restauración de datos de una copia de seguridad que se ha organizado en niveles en la nube se realiza a la velocidad de la nube.
+> Se produce una restauración de datos desde una copia de seguridad que se ha toohello en capas en la nube a velocidades de nube.
 
-En la ilustración siguiente, se muestra la asignación de un volumen normal a un trabajo de copia de seguridad. En este caso, todas las copias de seguridad semanales se asignan al disco Saturday Full (Completa sábado) y las copias de seguridad incrementales se asignan a los discos Monday-Friday Incremental (Incremental lunes a viernes). Todas las copias de seguridad y restauraciones proceden de un volumen en capas de StorSimple.
+Hello en la ilustración siguiente se muestra hello asignación de un trabajo de copia de seguridad de tooa volumen normal. En este caso, todas las copias de seguridad semanales de hello asignan disco lleno de toohello sábado, y copias de seguridad incrementales de hello asignan discos incremental tooMonday viernes. Hola a todos las copias de seguridad y restauraciones son de un StorSimple en niveles de volumen.
 
 ![Diagrama lógico de la configuración de destino de copia de seguridad principal](./media/storsimple-configure-backup-target-using-veeam/primarybackuptargetdiagram.png)
 
@@ -321,60 +321,60 @@ A continuación se muestra un ejemplo de programación de rotación GFS para cua
 | Anual | Sábado  |   |   |
 
 
-### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Asignación de volúmenes de StorSimple a un trabajo de copia de seguridad de Veeam
+### <a name="assign-storsimple-volumes-tooa-veeam-backup-job"></a>Asignar trabajo de copia de seguridad de Veeam de tooa de volúmenes de StorSimple
 
 Para el escenario de destino de copia de seguridad principal, cree un trabajo diario con el volumen de Veeam StorSimple principal. Para un escenario de destino de copia de seguridad secundaria, cree un trabajo diario mediante almacenamiento conectado directamente (DAS), almacenamiento conectado a red (NAS) o un grupo de discos sin más (JBOD).
 
-#### <a name="to-assign-storsimple-volumes-to-a-veeam-backup-job"></a>Para asignar volúmenes de StorSimple a un trabajo de copia de seguridad de Veeam
+#### <a name="tooassign-storsimple-volumes-tooa-veeam-backup-job"></a>trabajo de copia de seguridad de tooassign StorSimple volúmenes tooa Veeam
 
-1.  En la consola de Veeam Backup and Replication, seleccione **Backup & Replication** (Copia de seguridad y replicación). Haga clic con el botón derecho en **Backup** (Copia de seguridad) y luego seleccione **VMware** o **Hyper-V**, en función del entorno.
+1.  En hello Veeam copia de seguridad y la consola de replicación, seleccione **copia de seguridad y replicación**. Haga clic con el botón derecho en **Backup** (Copia de seguridad) y luego seleccione **VMware** o **Hyper-V**, en función del entorno.
 
     ![consola de administración de Veeam, nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
 
-2.  En el cuadro de diálogo **New Backup Job** (Nuevo trabajo de copia de seguridad), escriba un nombre y una descripción para el trabajo de copia de seguridad.
+2.  Hola **nuevo trabajo de copia de seguridad** diálogo cuadro, escriba un nombre y una descripción para el trabajo de copia de seguridad diaria Hola.
 
     ![consola de administración de Veeam, nueva página de trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
-3.  Seleccione la máquina virtual en la que se va a realizar la copia de seguridad.
+3.  Seleccione hasta un tooback de máquina virtual.
 
     ![consola de administración de Veeam, nueva página de trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
-4.  Seleccione los valores que desee para **Backup proxy** (Proxy de copia de seguridad) y **Backup repository** (Repositorio de copia de seguridad). Seleccione un valor para **Restore points to keep on disk** (Restaurar puntos que se mantienen en disco) según las definiciones de RPO/RTO de su entorno en el almacenamiento conectado localmente. Seleccione **Advanced** (Avanzadas).
+4.  Seleccione los valores de hello que desee para **proxy de copia de seguridad** y **repositorio de copia de seguridad**. Seleccione un valor para **tookeep los puntos de restauración en disco** almacenamiento conectado en según toohello definiciones de RPO y RTO para su entorno de forma local. Seleccione **Advanced** (Avanzadas).
 
     ![consola de administración de Veeam, nueva página de trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
 
-5. En el cuadro de diálogo **Advanced Settings** (Configuración avanzada), en la pestaña **Backup** (Copia de seguridad), seleccione **Incremental**. Compruebe que no esté seleccionada la casilla **Create synthetic full backups periodically** (Crear copias de seguridad completas y sintéticas periódicamente). Seleccione la casilla **Create active full backups periodically** (Crear copias de seguridad completas y activas periódicamente). En **Active full backup** (Copia de seguridad completa y activa), seleccione la casilla **Weekly on selected days** (Semanalmente en los días seleccionados) para el sábado.
+5. Hola **configuración avanzada** cuadro de diálogo de hello **copia de seguridad** ficha, seleccione **Incremental**. Asegúrese de que hello **crear periódicamente copias de seguridad completas sintéticos** casilla de verificación está desactivada. Seleccione hello **crear periódicamente copias de seguridad completas activas** casilla de verificación. En **copia de seguridad completa Active**, seleccione hello **semanal en los días seleccionados** casilla de verificación para el sábado.
 
     ![consola de administración de Veeam, página de configuración avanzada de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. En la pestaña **Storage** (Almacenamiento), compruebe que no esté marcada la casilla **Enable inline data deduplication** (Habilitar la desduplicación de datos en línea). Seleccione la casilla **Exclude swap file blocks** (Excluir bloques de archivos de intercambio) y la casilla **Exclude deleted file blocks** (Excluir bloques de archivos eliminados). Establezca **Compression level** (Nivel de compresión) en **None** (Ninguno). En **Storage optimization** (Optimización de almacenamiento), seleccione **LAN Target** (LAN destino) si desea que el rendimiento sea equilibrado y que haya desduplicación. Seleccione **Aceptar**.
+6. En hello **almacenamiento** ficha, asegúrese de que ese hello **habilitar la desduplicación de datos en línea** casilla de verificación está desactivada. Seleccione hello **bloques de archivo de intercambio de exclusión** casilla de verificación y seleccione hello **excluir elimina bloques de archivo** casilla de verificación. Establecer **nivel de compresión** demasiado**ninguno**. Rendimiento equilibrado y desduplicación, establezca **optimización del almacenamiento** demasiado**destino LAN**. Seleccione **Aceptar**.
 
     ![consola de administración de Veeam, página de configuración avanzada de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
     Para obtener información sobre la configuración de desduplicación y de compresión de Veeam, consulte [Data Compression and Deduplication](https://helpcenter.veeam.com/backup/vsphere/compression_deduplication.html) (Compresión y desduplicación de datos).
 
-7.  En el cuadro de diálogo **Edit Backup Job** (Editar trabajo de copia de seguridad), puede seleccionar la casilla (opcional) **Enable application-aware processing** (Habilitar procesamiento con reconocimiento de la aplicación).
+7.  Hola **Editar trabajo de copia de seguridad** cuadro de diálogo, puede seleccionar hello **Habilitar procesamiento consciente de las aplicaciones** casilla de verificación (opcional).
 
     ![consola de administración de Veeam, página de procesamiento de invitado de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
 
-8.  Configure la programación para que se ejecute una vez al día a una hora que puede especificar.
+8.  Establecer Hola programación toorun una vez al día, a la vez que puede especificar.
 
     ![consola de administración de Veeam, página de programación de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage15.png)
 
 ## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>Configuración de StorSimple como destino de copia de seguridad secundario
 
 > [!NOTE]
-> La restauración de datos de una copia de seguridad que se ha organizado en niveles en la nube se realiza a la velocidad de la nube.
+> Restauraciones de datos desde una copia de seguridad que se ha toohello en capas en la nube se producen a velocidades de nube.
 
-En este modelo, es preciso un soporte físico de almacenamiento (que no sea StorSimple) que actúe como una memoria caché temporal. Por ejemplo, puede usar un volumen de matriz redundante de discos independientes (RAID) para ofrecer espacio, entrada y salida (E y S) y ancho de banda. Se recomienda usar RAID 5, 50 y 10.
+En este modelo, debe tener un tooserve de medios (distintos de StorSimple) de almacenamiento como una memoria caché temporal. Por ejemplo, puede usar una matriz redundante de espacio de tooaccommodate de volumen de discos independientes (RAID), la entrada/salida (E/S) y el ancho de banda. Se recomienda usar RAID 5, 50 y 10.
 
-En la ilustración siguiente aparecen tanto volúmenes locales (en el servidor) para la retención a corto plazo como volúmenes de archivo a largo plazo. En este escenario, todas las copias de seguridad se ejecutan en el volumen RAID local (en el servidor). Estas copias de seguridad se duplican periódicamente y se archivan en un volumen de archivo. Es importante ajustar el tamaño del volumen RAID local (en el servidor) de modo que pueda controlar los requisitos de rendimiento y capacidad de retención a corto plazo.
+Hola figura siguiente muestra el típico volúmenes de local (toohello server) de retención a corto plazo y archivo retención a largo plazo. En este escenario, todas las copias de seguridad se ejecutan en hello local (toohello server) volumen RAID. Estas copias de seguridad periódicamente están duplicados y archivan tooan volumen de archivo. Es importante toosize local (toohello server) volumen RAID, por lo que puede controlar los requisitos de capacidad y rendimiento de retención a corto plazo.
 
 ![Diagrama lógico de StorSimple como destino de copia de seguridad secundario](./media/storsimple-configure-backup-target-using-veeam/secondarybackuptargetdiagram.png)
 
 ### <a name="storsimple-as-a-secondary-backup-target-gfs-example"></a>Ejemplo de GFS de StorSimple como destino de copia de seguridad secundario
 
-En la tabla siguiente se muestra cómo configurar copias de seguridad para que se ejecuten en los discos locales y de StorSimple. Incluye requisitos de capacidad individual y total.
+tabla Hola siguiente muestra cómo tooset una toorun de las copias de seguridad en discos de StorSimple y locales de Hola. Incluye requisitos de capacidad individual y total.
 
 | Tipo de copia de seguridad y retención | Almacenamiento configurado | Tamaño (TiB) | Multiplicador de GFS | Capacidad total \* (TiB) |
 |---|---|---|---|---|
@@ -399,57 +399,57 @@ Programación semanal, mensual y anual de rotación de GFS
 | Mensual | StorSimple mensual |   |   |   |   |   |
 | Anual | StorSimple anual  |   |   |   |   |   |   |
 
-### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Asignación de volúmenes de StorSimple a un trabajo de copia de Veeam
+### <a name="assign-storsimple-volumes-tooa-veeam-copy-job"></a>Asignar el trabajo de copia de Veeam de tooa de volúmenes de StorSimple
 
-#### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>Para asignar volúmenes de StorSimple a un trabajo de copia de Veeam
+#### <a name="tooassign-storsimple-volumes-tooa-veeam-copy-job"></a>trabajo de copia de tooassign StorSimple volúmenes tooa Veeam
 
-1.  En la consola de Veeam Backup and Replication, seleccione **Backup & Replication** (Copia de seguridad y replicación). Haga clic con el botón derecho en **Backup** (Copia de seguridad) y luego seleccione **VMware** o **Hyper-V**, en función del entorno.
+1.  En hello Veeam copia de seguridad y la consola de replicación, seleccione **copia de seguridad y replicación**. Haga clic con el botón derecho en **Backup** (Copia de seguridad) y luego seleccione **VMware** o **Hyper-V**, en función del entorno.
 
     ![consola de administración de Veeam, página de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
-2.  En el cuadro de diálogo **New Backup Copy Job** (Nuevo trabajo de copia de copia de seguridad), escriba un nombre y una descripción para el trabajo.
+2.  Hola **nuevo trabajo de copia de copia de seguridad** diálogo cuadro, escriba un nombre y una descripción para el trabajo de Hola.
 
     ![consola de administración de Veeam, página de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
-3.  Seleccione las máquinas virtuales que desea procesar. Seleccione desde copias de seguridad y después seleccione la copia de seguridad diaria que creó anteriormente.
+3.  Seleccione hello las máquinas virtuales que desee tooprocess. Seleccione desde las copias de seguridad y, a continuación, seleccione Hola copia de seguridad diaria que creó anteriormente.
 
     ![consola de administración de Veeam, página de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage18.png)
 
-4.  Excluya objetos del trabajo de copia de seguridad si fuera necesario.
+4.  Excluir objetos de trabajo de copia de seguridad de hello, si es necesario.
 
-5.  Seleccione el repositorio de copia de seguridad y establezca un valor para **Restore points to keep** (Puntos de restauración que se conservarán). Asegúrese de seleccionar la casilla **Keep the following restore points for archival purposes** (Conservar los siguientes puntos de restauración para fines de archivado). Defina la frecuencia de copia de seguridad y seleccione **Advanced** (Avanzado).
+5.  Seleccione el repositorio de copia de seguridad y establecer un valor para **tookeep los puntos de restauración**. Estar seguro de hello tooselect **siguiente de hello mantener puntos de restauración para archivarlo** casilla de verificación. Definir la frecuencia de copia de seguridad de hello y, a continuación, seleccione **avanzadas**.
 
     ![consola de administración de Veeam, página de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
-6.  Especifique las siguientes opciones avanzadas:
+6.  Especifique la siguiente Hola configuración avanzada:
 
-    * En la pestaña **Maintenance** (Mantenimiento), desactive la protección contra daño en el nivel de almacenamiento.
+    * En hello **mantenimiento** ficha, desactive la opción protección de daño en el nivel de almacenamiento.
 
     ![consola de administración de Veeam, página de configuración avanzada de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
-    * En la pestaña **Storage** (Almacenamiento), asegúrese de que la desduplicación y la compresión están desactivadas.
+    * En hello **almacenamiento** ficha, debe asegurarse de que la desduplicación y compresión están desactivados.
 
     ![consola de administración de Veeam, página de configuración avanzada de nuevo trabajo de copia de seguridad](./media/storsimple-configure-backup-target-using-veeam/veeamimage21.png)
 
-7.  Especifique que la transferencia de datos es directa.
+7.  Especificar que la transferencia de datos de hello es directa.
 
-8.  Defina la programación de la ventana de copia de seguridad según sus necesidades y después finalice al asistente.
+8.  Definir la programación de la ventana de copia de seguridad Hola según las necesidades tooyour y, a continuación, finalice al Asistente de Hola.
 
 Para obtener más información, consulte [Create backup copy jobs](https://helpcenter.veeam.com/backup/hyperv/backup_copy_create.html) (Creación de trabajos de copia de seguridad).
 
 ## <a name="storsimple-cloud-snapshots"></a>Instantáneas de nube de StorSimple
 
-Las instantáneas de nube de StorSimple protegen los datos que residen en su dispositivo de StorSimple. Crear una instantánea en la nube es equivalente al envío de cintas de copia de seguridad locales a una instalación externa. Si utiliza el almacenamiento con redundancia geográfica de Azure, crear una instantánea en la nube es equivalente a enviar las cintas de copia de seguridad a varios sitios. Si necesita restaurar un dispositivo en caso de desastre, puede poner en línea otro dispositivo de StorSimple y realizar una conmutación por error. Después de dicha conmutación, se podría acceder a los datos (a velocidades de nube) desde la instantánea en la nube más reciente.
+Las instantáneas de nube de StorSimple protegen los datos de Hola que reside en el dispositivo StorSimple. Crear una instantánea en la nube es la herramienta de fuera del sitio de tooan de cintas de copia de seguridad local de tooshipping equivalente. Si utiliza el almacenamiento de Azure con redundancia geográfica, crear una instantánea en la nube es toomultiple sitios de tooshipping equivalente cintas de copia de seguridad. Si necesita toorestore un dispositivo después de un desastre, puede poner en línea otro dispositivo de StorSimple y realice una conmutación por error. Después de la conmutación por error de hello, serían los datos de Hola de tooaccess pueda (a velocidades de nube) desde la instantánea más reciente en la nube Hola.
 
-En la sección siguiente se describe cómo crear un script breve para iniciar y eliminar instantáneas en la nube de StorSimple durante el procesamiento posterior a la copia de seguridad.
+Hola siguiente sección describe cómo toocreate una toostart breve secuencia de comandos y delete StorSimple instantáneas en la nube durante el procesamiento posterior a la copia de seguridad.
 
 > [!NOTE]
-> Las instantáneas que se crean manualmente o mediante programación no siguen la directiva de expiración de instantáneas de StorSimple. En otras palabras, se deben eliminar manualmente o mediante programación.
+> Las instantáneas que se crean manualmente o mediante programación no siguen la directiva de expiración de instantáneas de StorSimple de Hola. En otras palabras, se deben eliminar manualmente o mediante programación.
 
 ### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Inicio y eliminación de instantáneas en la nube con un script
 
 > [!NOTE]
-> Evalúe cuidadosamente las repercusiones tanto en lo relativo al cumplimiento como a la retención de datos antes de eliminar una instantánea de StorSimple. Para obtener más información sobre cómo ejecutar un script posterior a la copia de seguridad, consulte la documentación de Veeam.
+> Evalúe cuidadosamente repercusiones de retención de datos y cumplimiento de normas de hello antes de eliminar una instantánea de StorSimple. Para obtener más información acerca de cómo toorun una secuencia de comandos posteriores a la copia de seguridad, consulte la documentación de Veeam de Hola.
 
 
 ### <a name="backup-lifecycle"></a>Ciclo de vida de copia de seguridad
@@ -458,22 +458,22 @@ En la sección siguiente se describe cómo crear un script breve para iniciar y 
 
 ### <a name="requirements"></a>Requisitos
 
--   El servidor que ejecute el script debe tener acceso a los recursos de Azure en la nube.
--   La cuenta de usuario debe tener los permisos necesarios.
--   Debe haber configurada, pero no activada, una directiva de copia de seguridad de StorSimple con los volúmenes de StorSimple asociados.
--   Necesitará el nombre del recurso de StorSimple, la clave de registro, el nombre de dispositivo y el identificador de directiva de copia de seguridad.
+-   servidor de Hola que se ejecuta el script de Hola debe tener acceso a los recursos en la nube tooAzure.
+-   cuenta de usuario de Hello debe tener los permisos necesarios de Hola.
+-   Una directiva de copia de seguridad de StorSimple con hello asociado StorSimple volúmenes deben ser configurados pero no activados.
+-   Necesitará Hola nombre de recursos de StorSimple, clave de registro, nombre de dispositivo e Id. de directiva de copia de seguridad.
 
-### <a name="to-start-or-delete-a-cloud-snapshot"></a>Para iniciar o eliminar una instantánea en la nube
+### <a name="toostart-or-delete-a-cloud-snapshot"></a>toostart o eliminar una instantánea en la nube
 
 1. [Instale Azure PowerShell](/powershell/azure/overview).
 2. [Descargue e importe la configuración de publicación y la información de suscripción](https://msdn.microsoft.com/library/dn385850.aspx).
-3. En el Portal de Azure clásico, obtenga el nombre del recurso y la [clave de registro del servicio StorSimple Manager](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
-4. En el servidor que ejecuta el script, ejecute PowerShell como administrador. Escriba el siguiente comando:
+3. En el portal de Azure clásico de Hola, obtener el nombre de recurso de Hola y [clave de registro para el servicio StorSimple Manager](storsimple-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
+4. En el servidor de Hola que ejecuta el script de Hola, ejecute PowerShell como administrador. Escriba el siguiente comando:
 
     `Get-AzureStorSimpleDeviceBackupPolicy –DeviceName <device name>`
 
-    Fíjese en el identificador de la directiva de copia de seguridad.
-5. En el Bloc de notas, cree un nuevo script de PowerShell mediante el código siguiente.
+    Id. de directiva de copia de seguridad de Hola de nota.
+5. En el Bloc de notas, crear un nuevo script de PowerShell mediante Hola siguiente código.
 
     Copie y pegue este fragmento de código:
     ```powershell
@@ -488,7 +488,7 @@ En la sección siguiente se describe cómo crear un script breve para iniciar y 
     Start-AzureStorSimpleDeviceBackupJob –DeviceName $ApplianceName -BackupType CloudSnapshot -BackupPolicyId <BackupId> -Verbose
     $CompletedSnapshots =@()
     $CompletedSnapshots = Get-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName
-    Write-Host "The Expiration date is " $ExpirationDate
+    Write-Host "hello Expiration date is " $ExpirationDate
     Write-Host
 
     ForEach ($SnapShot in $CompletedSnapshots)
@@ -500,23 +500,23 @@ En la sección siguiente se describe cómo crear un script breve para iniciar y 
             $SnapShotInstanceID = $SnapShot.InstanceId
             Write-Host "This snpashotdate was created on " $SnapshotStartTimeStamp.Date.ToShortDateString()
             Write-Host "Instance ID " $SnapShotInstanceID
-            Write-Host "This snpashotdate is older and needs to be deleted"
+            Write-Host "This snpashotdate is older and needs toobe deleted"
             Write-host "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#"
             Remove-AzureStorSimpleDeviceBackup -DeviceName $ApplianceName -BackupId $SnapShotInstanceID -Force -Verbose
         }
     }
     ```
-6. Para agregar el script a un trabajo de copia de seguridad, edite las opciones avanzadas del trabajo de Veeam.
+6. copia de seguridad de tooadd Hola script tooyour del trabajo, edite el trabajo de Veeam opciones avanzadas.
 
     ![Pestaña de script de configuración avanzada de copia de seguridad de Veeam](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
 
-Se recomienda ejecutar la directiva de copia de seguridad de instantáneas en la nube de StorSimple como script posterior al proceso al final del trabajo de copia de seguridad diaria. Para obtener más información sobre cómo realizar las operaciones de copia de seguridad y restauración en el entorno de aplicaciones de copia de seguridad para ayudarle a cumplir los valores de RPO y RTO, consulte a su arquitecto de copia de seguridad.
+Se recomienda que ejecute la directiva de copia de seguridad de instantáneas de StorSimple en la nube como una secuencia de comandos posteriores al procesamiento final Hola de su trabajo de copia de seguridad diaria. Para obtener más información acerca de cómo tooback seguridad y restauración su toohelp de entorno de aplicación de copia de seguridad que cumple el RPO y el RTO, póngase en contacto con el arquitecto de copia de seguridad.
 
 ## <a name="storsimple-as-a-restore-source"></a>StorSimple como origen de restauración
 
-Las restauraciones desde un dispositivo de StorSimple funcionan como las de cualquier dispositivo de almacenamiento en bloque. Las restauraciones de los datos que están en capas en la nube se producen a velocidades de nube. En el caso de los datos locales, las restauraciones se producen a la velocidad del disco local del dispositivo.
+Las restauraciones desde un dispositivo de StorSimple funcionan como las de cualquier dispositivo de almacenamiento en bloque. Restauraciones de datos que está en la nube en niveles toohello tiene lugar a velocidades de nube. Para los datos locales, restauraciones se producen a velocidad de disco local de hello de dispositivo de Hola.
 
-Con Veeam, logra una recuperación rápida pormenorizada a nivel de archivo a través de StorSimple mediante los exploradores integrados de la consola de Veeam. Use los exploradores de Veeam para recuperar elementos individuales, como mensajes de correo electrónico, objetos de Active Directory y elementos de SharePoint de las copias de seguridad. La recuperación puede realizarse sin que se produzca ninguna interrupción en la máquina virtual local. También puede hacer recuperaciones a partir de un momento específico de Azure SQL Database y bases de datos de Oracle. Veeam y StorSimple facilitan y agilizan el proceso de recuperación a nivel de elemento desde Azure. Para obtener información sobre cómo realizar una restauración, consulte la documentación de Veeam:
+Con Veeam, obtendrá una recuperación rápida granular y nivel de archivo a través de StorSimple a través de vistas de explorador integrado hello en la consola de Veeam Hola. Utilice los elementos Veeam exploradores individuales del toorecover, como mensajes de correo electrónico, los objetos de Active Directory y los elementos de SharePoint desde las copias de seguridad. recuperación de Hello puede realizarse sin interrupciones de máquina virtual local. También puede hacer recuperaciones a partir de un momento específico de Azure SQL Database y bases de datos de Oracle. Veeam y StorSimple facilitar el proceso de Hola de recuperación de nivel de elemento de Azure rápida y sencilla. Para obtener información acerca de cómo tooperform una restauración, consulte la documentación de Veeam de hello:
 
 - Para [Exchange Server](https://www.veeam.com/microsoft-exchange-recovery.html)
 - Para [Active Directory](https://www.veeam.com/microsoft-active-directory-explorer.html)
@@ -530,18 +530,18 @@ Con Veeam, logra una recuperación rápida pormenorizada a nivel de archivo a tr
 > [!NOTE]
 > En los escenarios de destino de copia de seguridad, StorSimple Cloud Appliance no se admite como destino de restauración.
 
-Un desastre puede deberse a una serie de factores. En la tabla siguiente encontrará escenarios comunes de recuperación ante desastres.
+Un desastre puede deberse a una serie de factores. Hello en la tabla siguiente enumera escenarios comunes de recuperación ante desastres.
 
-| Escenario | Impacto | Cómo realizar la recuperación | Notas |
+| Escenario | Impacto | Cómo toorecover | Notas |
 |---|---|---|---|
-| Error de dispositivo de StorSimple | Se interrumpen las operaciones de copia de seguridad y restauración. | Reemplace el dispositivo con error y realice las operaciones de [conmutación por error y recuperación ante desastres de StorSimple](storsimple-device-failover-disaster-recovery.md). | Si es preciso realizar una operación de restauración inmediatamente después de la recuperación del dispositivo, los espacios de trabajo completos se recuperan de la nube al nuevo dispositivo. Todas las operaciones se realizan a velocidades de la nube. Este proceso de examen repetido del índice y el catálogo podría provocar el examen de todos los conjuntos de copia de seguridad y su extracción de la capa de nube a la capa de dispositivo local, lo que podría consumir mucho tiempo. |
-| Error de servidor de Veeam | Se interrumpen las operaciones de copia de seguridad y restauración. | Vuelva a compilar el servidor de copia de seguridad y realice la restauración de la base de datos como se detalla en [Veeam Help Center (Technical Documentation)](https://www.veeam.com/documentation-guides-datasheets.html) [Centro de ayuda de Veeam (documentación técnica)].  | Debe volver a generar o restaurar el servidor de Veeam en el sitio de recuperación ante desastres. Restaure la base de datos al punto más reciente. Si la base de datos de Veeam restaurada no está sincronizada con los trabajos de copia de seguridad más recientes, se requieren la indexación y la catalogación. Este proceso de examen repetido del índice y el catálogo puede provocar el examen de todos los conjuntos de copia de seguridad y su extracción de la capa de nube a la capa de dispositivo local. Esto hace que requiera mucho tiempo. |
-| Error del sitio que da lugar a la pérdida del servidor de copia de seguridad y de StorSimple | Se interrumpen las operaciones de copia de seguridad y restauración. | Restaure primero StorSimple y después Veeam. | Restaure primero StorSimple y después Veeam. Si es preciso realizar una operación de restauración inmediatamente después de la recuperación del dispositivo, los espacios de trabajo completos se recuperan de la nube al nuevo dispositivo. Todas las operaciones se realizan a velocidades de la nube. |
+| Error de dispositivo de StorSimple | Se interrumpen las operaciones de copia de seguridad y restauración. | Reemplace el dispositivo con error de Hola y realizar [StorSimple conmutación por error y recuperación ante desastres](storsimple-device-failover-disaster-recovery.md). | Si necesita tooperform una restauración tras la recuperación de dispositivo, los espacios de trabajo de todos los datos se recuperan de nuevo dispositivo de hello en la nube toohello. Todas las operaciones se realizan a velocidades de la nube. índice de Hola y volver a examinar el proceso de catálogo pueden provocar todos los toobe de conjuntos de copia de seguridad examina y extraerse de hello capa toohello dispositivo local capa de nube, que podría ser un proceso lento. |
+| Error de servidor de Veeam | Se interrumpen las operaciones de copia de seguridad y restauración. | Volver a generar el servidor de copia de seguridad de Hola y realizar la restauración de base de datos como se detalla en [Veeam centro de ayuda (documentación técnica)](https://www.veeam.com/documentation-guides-datasheets.html).  | Debe volver a generar o restaurar hello Veeam servidor en el sitio de recuperación ante desastres de Hola. Hola base de datos toohello más reciente punto de restauración. Si hello base de datos restaurada Veeam no está sincronizada con los trabajos de copia de seguridad más recientes, se requiere la indización y catalogación. Este índice y volver a examinar el proceso de catálogo pueden provocar todos los toobe de conjuntos de copia de seguridad examina y extraerse de la capa de hello nube capa toohello dispositivo local. Esto hace que requiera mucho tiempo. |
+| Error del sitio que resulta en pérdida de saludo del servidor de copia de seguridad de Hola y StorSimple | Se interrumpen las operaciones de copia de seguridad y restauración. | Restaure primero StorSimple y después Veeam. | Restaure primero StorSimple y después Veeam. Si necesita tooperform una restauración tras la recuperación de dispositivo, los espacios de trabajo de datos completa de Hola se recuperan de nuevo dispositivo de hello en la nube toohello. Todas las operaciones se realizan a velocidades de la nube. |
 
 
 ## <a name="references"></a>Referencias
 
-En este artículo se ha hecho referencia a los siguientes documentos:
+Hola después documentos hizo referencia a este artículo:
 
 - [Configurar E/S de múltiples rutas para el dispositivo StorSimple](storsimple-configure-mpio-windows-server.md)
 - [Escenarios de almacenamiento: el aprovisionamiento fino](http://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
@@ -550,5 +550,5 @@ En este artículo se ha hecho referencia a los siguientes documentos:
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Obtenga más información sobre cómo [restaurar a partir de un conjunto de copia de seguridad](storsimple-restore-from-backup-set-u2.md).
-- Obtenga más información sobre cómo realizar [la conmutación por error y la recuperación ante desastres en los dispositivos](storsimple-device-failover-disaster-recovery.md).
+- Más información acerca de cómo demasiado[restauración a partir de un conjunto de copia de seguridad](storsimple-restore-from-backup-set-u2.md).
+- Más información acerca de cómo tooperform [dispositivo conmutación por error y recuperación ante desastres](storsimple-device-failover-disaster-recovery.md).

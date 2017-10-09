@@ -1,5 +1,5 @@
 ---
-title: "Solución de problemas de errores de asignación de una máquina virtual de Windows | Microsoft Docs"
+title: "errores de asignación de máquina virtual de Windows aaaTroubleshooting | Documentos de Microsoft"
 description: "Solución de problemas de errores de asignación al crear, reiniciar o cambiar el tamaño de una VM de Windows en Azure"
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: cjiang
-ms.openlocfilehash: 57925b5a75fd8bcf2a9450025b5dc51eb552353f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0cc75ac60d952d8e4310cebc37654dc4f80857f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-windows-vms-in-azure"></a>Solución de problemas de errores de asignación al crear, reiniciar o cambiar el tamaño de las VM de Windows en Azure
-Cuando se crea una máquina virtual, se reinician las detenidas (desasignadas) o se les cambia el tamaño, Microsoft Azure asigna recursos de proceso a la suscripción. En ocasiones, es posible que reciba errores al realizar estas operaciones, incluso antes de llegar a los límites de la suscripción de Azure. En este artículo se explican las causas de algunos de los errores de asignación más comunes y se sugieren posibles soluciones. La información también puede ser útil si tiene pensado realizar la implementación de sus servicios. También puede [solucionar los errores de asignación al crear, reiniciar o cambiar de tamaño máquinas virtuales Linux en Azure](../linux/allocation-failure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Al crear una máquina virtual, reiniciar máquinas virtuales (desasignadas) detenidas o cambiar el tamaño de una máquina virtual, Microsoft Azure asigna recursos de proceso tooyour suscripción. En ocasiones, puede recibir errores al realizar estas operaciones, incluso antes de llegar a los límites de suscripción de Azure Hola. Este artículo explica causas Hola de algunos de los errores de asignación comunes de Hola y sugiere posibles correcciones. información de Hello también puede resultarle útil cuando planee la implementación de Hola de sus servicios. También puede [solucionar los errores de asignación al crear, reiniciar o cambiar de tamaño máquinas virtuales Linux en Azure](../linux/allocation-failure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-allocation-failure](../../../includes/virtual-machines-common-allocation-failure.md)]
 

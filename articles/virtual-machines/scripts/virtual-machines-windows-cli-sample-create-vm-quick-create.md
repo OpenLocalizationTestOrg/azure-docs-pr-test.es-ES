@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de script de la CLI de Azure: creación rápida de una máquina virtual Windows Server 2016 | Microsoft Docs"
+title: "Ejemplo de secuencia de comandos de CLI - aaaAzure de creación rápida de una máquina virtual de Windows Server 2016 | Documentos de Microsoft"
 description: "Ejemplo de script de la CLI de Azure: creación rápida de una máquina virtual Windows Server 2016"
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rickstercdn
-ms.openlocfilehash: 084518bf7bc1d01c4a146efe3e0b7fe08149ce35
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c736ce9e2ecc9ee75b34f903cad52c9c0ee0707
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Creación rápida de una máquina virtual con la CLI de Azure
+# <a name="quick-create-a-virtual-machine-with-hello-azure-cli"></a>Creación rápida de una máquina virtual con hello CLI de Azure
 
-Este script crea una máquina virtual de Azure donde se ejecuta Windows Server 2016. Después de ejecutar el script, puede acceder a la máquina virtual a través de una conexión al Escritorio remoto.
+Este script crea una máquina virtual de Azure donde se ejecuta Windows Server 2016. Después de ejecutar el script de Hola, puede tener acceso a máquina virtual de Hola a través de una conexión a Escritorio remoto.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -31,11 +31,11 @@ Este script crea una máquina virtual de Azure donde se ejecuta Windows Server 2
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-quick/create-windows-vm-quick.sh "Creación rápida de una máquina virtual")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-quick/create-windows-vm-quick.sh "Quick Create VM")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Ejecute el siguiente comando para quitar el grupo de recursos, la máquina virtual y todos los recursos relacionados.
+Ejecute hello después el grupo de recursos de comando tooremove hello, la VM y todos ellos relacionados con recursos.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -43,16 +43,16 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script usa los siguientes comandos para crear un grupo de recursos, una máquina virtual y todos los recursos relacionados. Cada comando de la tabla crea un vínculo a documentación específica del comando.
+Este script usa Hola después comandos toocreate un grupo de recursos, la máquina virtual, y todos los recursos relacionados. Cada comando de documentación específica de hello tabla vínculos toocommand.
 
 | Comando | Notas |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#create) | Crea la máquina virtual y la conecta con la tarjeta de red, la red virtual, la subred y el grupo de seguridad de red. Este comando también especifica la imagen de máquina virtual que se usará, y las credenciales administrativas.  |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#create) | Crea la máquina virtual de Hola y lo conecta toohello tarjeta de red, red virtual, subred y grupo de seguridad de red. Este comando también especifica toobe de imagen de máquina virtual de hello usa y credenciales administrativas.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | Elimina un grupo de recursos, incluidos todos los recursos anidados. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
+Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de scripts de la CLI de máquina virtual en la [documentación sobre máquinas virtuales Windows de Azure](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ejemplos de secuencias de comandos CLI de máquina virtual adicional pueden encontrarse en hello [documentación de la máquina virtual de Windows Azure](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

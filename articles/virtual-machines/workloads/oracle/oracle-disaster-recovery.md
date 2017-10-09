@@ -1,5 +1,5 @@
 ---
-title: "Introducción a un escenario de recuperación ante desastres de Oracle en el entorno de Azure | Microsoft Docs"
+title: "aaaOverview de un escenario de recuperación ante desastres de Oracle en el entorno de Azure | Documentos de Microsoft"
 description: "Un escenario de recuperación ante desastres para Oracle Database 12c en el entorno de Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/2/2017
 ms.author: rclaus
-ms.openlocfilehash: f17ebb2b74cd7ad872f88483ed7cdb4f239ee069
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1fa69e1ba044b46b27695fec92fd9ca82df796f7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Recuperación ante desastres para Oracle Database 12c en el entorno de Azure
 
@@ -29,71 +29,71 @@ ms.lasthandoff: 08/18/2017
 
 
 ## <a name="goals"></a>Objetivos
-- Diseñar la topología y configuración que satisfacen las necesidades de recuperación ante desastres.
+- Diseñar la topología de Hola y configuración que satisfacen las necesidades de recuperación ante desastres.
 
 ## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>Escenario 1: sitios principal y de recuperación ante desastres en Azure
 
-Un cliente tiene una instalación de base de datos de Oracle en el sitio principal. El sitio de recuperación ante desastres (DR) se encuentra en una región diferente. El cliente utiliza Oracle Data Guard para la recuperación rápida entre estos sitios. El sitio principal tiene también una base de datos secundaria para informes y otros usos. 
+Un cliente tiene un Oracle base de datos establecido seguridad en el sitio principal de Hola. El sitio de recuperación ante desastres (DR) se encuentra en una región diferente. cliente de Hello usa a Oracle Data Guard para la recuperación rápida entre estos sitios. sitio primario de Hello también tiene una base de datos secundaria para los informes y otros usos. 
 
 ### <a name="topology"></a>Topología
 
-A continuación, se muestra un resumen de la configuración de Azure:
+Este es un resumen de hello el programa de instalación de Azure:
 
 - Dos sitios (un sitio principal y un sitio de recuperación ante desastres)
 - Dos redes virtuales
 - Dos bases de datos de Oracle con Data Guard (principal y en espera)
 - Dos bases de datos de Oracle con Golden Gate o Data Guard (solo para el sitio principal)
-- Dos servicios de aplicación, uno en el sitio principal y uno en el sitio de recuperación ante desastres
-- Un *conjunto de disponibilidad* que se usa para la base de datos y el servicio de aplicación en el sitio principal
-- Un Jumpbox en cada sitio, que restringe el acceso a la red privada y solo permite el inicio de sesión al administrador
+- Dos de los servicios de aplicaciones, uno principal y otro en el sitio de recuperación ante desastres de Hola
+- Un *conjunto de disponibilidad,* que se usa para el servicio de base de datos y aplicaciones en el sitio principal de Hola
+- Uno jumpbox en cada sitio, lo que restringe la red privada de acceso toohello y solamente permite el inicio de sesión en un administrador
 - El Jumpbox, el servicio de aplicación, la base de datos y la puerta de enlace de VPN en subredes independientes
 - El grupo de seguridad de red se aplica en las subredes de la aplicación y de base de datos
 
-![Captura de pantalla de la página de la topología de recuperación ante desastres](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Captura de pantalla de página de la topología de hello recuperación ante desastres](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Escenario 2: sitio principal en ubicación local y sitio de recuperación ante desastres en Azure
 
-Un cliente tiene una instalación de base de datos de Oracle en un sitio local (sitio principal). Un sitio de recuperación ante desastres en Azure. Oracle Data Guard se usa para la recuperación rápida entre estos sitios. El sitio principal tiene también una base de datos secundaria para informes y otros usos. 
+Un cliente tiene una instalación de base de datos de Oracle en un sitio local (sitio principal). Un sitio de recuperación ante desastres en Azure. Oracle Data Guard se usa para la recuperación rápida entre estos sitios. sitio primario de Hello también tiene una base de datos secundaria para los informes y otros usos. 
 
 Existen dos enfoques para esta instalación.
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>Enfoque 1: conexiones directas entre el sitio local y Azure, lo que requiere abrir puertos TCP en el firewall 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-hello-firewall"></a>Enfoque 1: Conexiones directas entre local y Azure, la necesidad de abrir los puertos TCP en firewall de Hola 
 
-No se recomiendan las conexiones directas porque exponen los puertos TCP al mundo exterior.
+No se recomienda conexiones directas porque exponen toohello de puertos TCP de hello fuera del mundo.
 
 #### <a name="topology"></a>Topología
 
-A continuación, se muestra un resumen de la configuración de Azure:
+Aquí te mostramos un resumen de hello el programa de instalación de Azure:
 
 - Un sitio de recuperación ante desastres 
 - Una red virtual
 - Una base de datos de Oracle con Data Guard (activo)
-- Un servicio de aplicación en el sitio de recuperación ante desastres
-- Un Jumpbox, que restringe el acceso a la red privada y solo permite el inicio de sesión al administrador
+- Servicio de una aplicación en el sitio de recuperación ante desastres de Hola
+- Uno jumpbox, lo que restringe la red privada de acceso toohello y solamente permite el inicio de sesión en un administrador
 - El Jumpbox, el servicio de aplicación, la base de datos y la puerta de enlace de VPN en subredes independientes
 - El grupo de seguridad de red se aplica en las subredes de la aplicación y de base de datos
-- Una directiva o regla de NSG para permitir el tráfico entrante en el puerto TCP 1521 (o el definido por el usuario)
-- Una directiva o regla de NSG para restringir el acceso a la red virtual solo a la dirección o direcciones IP locales (base de datos o aplicación)
+- El puerto TCP 1521 (o un puerto definido por el usuario) de entrada de un tooallow de directiva o la regla NSG
+- Una NSG o la regla de directiva toorestrict solo Hola IP dirección/direcciones locales (base de datos o aplicación) tooaccess Hola red virtual
 
-![Captura de pantalla de la página de la topología de recuperación ante desastres](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![Captura de pantalla de página de la topología de hello recuperación ante desastres](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>Enfoque 2: VPN de sitio a sitio
 Un mejor enfoque consiste en el uso de una VPN de sitio a sitio. Para más información acerca de cómo configurar una VPN, consulte [Creación de una red virtual con una conexión VPN de sitio a sitio mediante la CLI](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
 
 #### <a name="topology"></a>Topología
 
-A continuación, se muestra un resumen de la configuración de Azure:
+Aquí te mostramos un resumen de hello el programa de instalación de Azure:
 
 - Un sitio de recuperación ante desastres 
 - Una red virtual 
 - Una base de datos de Oracle con Data Guard (activo)
-- Un servicio de aplicación en el sitio de recuperación ante desastres
-- Un Jumpbox, que restringe el acceso a la red privada y solo permite el inicio de sesión al administrador
+- Servicio de una aplicación en el sitio de recuperación ante desastres de Hola
+- Uno jumpbox, lo que restringe la red privada de acceso toohello y solamente permite el inicio de sesión en un administrador
 - El Jumpbox, el servicio de aplicación, la base de datos y la puerta de enlace de VPN se encuentran en subredes independientes
 - El grupo de seguridad de red se aplica en las subredes de la aplicación y de base de datos
 - Conexión VPN de sitio a sitio entre sistemas locales y Azure
 
-![Captura de pantalla de la página de la topología de recuperación ante desastres](./media/oracle-disaster-recovery/oracle_topology_03.png)
+![Captura de pantalla de página de la topología de hello recuperación ante desastres](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
 ## <a name="additional-reading"></a>Lecturas adicionales
 

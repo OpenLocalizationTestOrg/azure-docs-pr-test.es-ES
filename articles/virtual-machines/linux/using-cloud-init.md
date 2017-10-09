@@ -1,6 +1,6 @@
 ---
-title: "Uso de cloud-init para personalizar una máquina virtual Linux | Microsoft Docs"
-description: "Procedimiento para usar cloud-init con el fin de personalizar una máquina virtual Linux con la CLI de Azure 2.0"
+title: aaaUse init de la nube toocustomize una VM de Linux | Documentos de Microsoft
+description: "¿Cómo toouse init de la nube toocustomize una VM de Linux durante la creación con Hola 2.0 de CLI de Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: a7a6daad34525683579e25b9591ed28f2bf29c04
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e7297e162fc73f0da42f195bec2fcbe23b310c1e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-cloud-init-to-customize-a-linux-vm-during-creation"></a>Uso de cloud-init para personalizar una máquina virtual Linux durante la creación
-En este artículo se muestra cómo crear un script de cloud-init para establecer el nombre de host, actualizar los paquetes instalados y administrar cuentas de usuario con la CLI de Azure 2.0. Los scripts de cloud-init se llaman durante la creación de una máquina virtual desde la CLI de Azure. Para obtener información más detallada acerca de la instalación de aplicaciones, la escritura de archivos de configuración y la inserción de claves desde Key Vault, consulte [este tutorial](tutorial-automate-vm-deployment.md). También puede llevar a cabo estos pasos con la [CLI de Azure 1.0](using-cloud-init-nodejs.md).
+# <a name="use-cloud-init-toocustomize-a-linux-vm-during-creation"></a>Usar en la nube init toocustomize una VM Linux durante la creación
+Este artículo muestra cómo toomake una tooset de secuencia de comandos en la nube init Hola hostname, actualizar paquetes instalados y administrar cuentas de usuario con hello 2.0 de CLI de Azure. secuencias de comandos de Hello init de la nube se llama cuando se crea una máquina virtual (VM) de CLI de Azure. Para obtener información más detallada acerca de la instalación de aplicaciones, la escritura de archivos de configuración y la inserción de claves desde Key Vault, consulte [este tutorial](tutorial-automate-vm-deployment.md). También puede realizar estos pasos con hello [Azure CLI 1.0](using-cloud-init-nodejs.md).
 
 ## <a name="quick-commands"></a>Comandos rápidos
-Cree un script cloud-init.txt que establezca el nombre de host, actualice todos los paquetes y agregue un usuario de sudo a Linux.
+Crear una secuencia de comandos de init.txt en la nube que establece el nombre de host de hello, actualiza todos los paquetes y se agrega un tooLinux de usuario de sudo.
 
 ```yaml
 #cloud-config
@@ -40,13 +40,13 @@ users:
       - ssh-rsa AAAAB3<snip>==myAdminUser@myVM
 ```
 
-Cree un grupo de recursos para iniciar máquinas virtuales con [az group create](/cli/azure/group#create). En el ejemplo siguiente se crea el grupo de recursos denominado *myResourceGroup*:
+Crear un toolaunch de grupo de recursos de las máquinas virtuales en con [crear grupo az](/cli/azure/group#create). Hello en el ejemplo siguiente se crea grupo de recursos de hello llamado *myResourceGroup*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Cree una máquina virtual Linux con [az vm create](/cli/azure/vm#create) mediante cloud-init para configurarla durante el inicio con el parámetro `--custom-data`.
+Crear una VM de Linux con [crear vm az](/cli/azure/vm#create) con tooconfigure init de la nube durante el arranque con hello `--custom-data` parámetro.
 
 ```azurecli
 az vm create \
@@ -59,23 +59,23 @@ az vm create \
 ```
 
 ## <a name="detailed-walkthrough"></a>Tutorial detallado
-Cuando inicia una nueva VM de Linux, obtiene una VM Linux estándar con nada personalizado o preparada para sus necesidades. [Cloud-init](https://cloudinit.readthedocs.org) es una forma estándar de insertar un script u opciones de configuración en esa VM Linux cuando arranca por primera vez.
+Cuando inicia una nueva VM de Linux, obtiene una VM Linux estándar con nada personalizado o preparada para sus necesidades. [En la nube init](https://cloudinit.readthedocs.org) es una manera estándar tooinject una secuencia de comandos u opciones de configuración en esa VM de Linux tal y como se está iniciando en hello primera vez.
 
-En Azure hay algunas formas distintas de realizar cambios en una máquina virtual Linux cuando se está implementando o arrancando.
+En Azure, hay varias maneras diferentes toomake cambios en una VM Linux cuando se implementa o arrancar.
 
 * Inserte scripts con cloud-init.
-* Inserte scripts con la [extensión VMAccess](using-vmaccess-extension.md)de Azure.
+* Insertar secuencias de comandos mediante hello Azure [VMAccess extensión](using-vmaccess-extension.md).
 * Una plantilla de Azure con cloud-init.
 * Una plantilla de Azure con [CustomScriptExtention](extensions-customscript.md).
 
-Para insertar scripts en cualquier momento después del arranque:
+secuencias de comandos de tooinject en cualquier momento tras el arranque:
 
-* SSH para ejecutar directamente los comandos.
-* Inserte scripts con la [extensión VMAccess](using-vmaccess-extension.md)de Azure, ya sea de manera imperativa como en una plantilla de Azure.
+* SSH toorun directamente comandos
+* Insertar secuencias de comandos mediante hello Azure [VMAccess extensión](using-vmaccess-extension.md), ya sea de manera imperativa o en una plantilla de Azure
 * Herramientas de administración de la configuración, como Ansible, Salt, Chef y Puppet.
 
 > [!NOTE]
-> La extensión VMAccess ejecuta un script como raíz del mismo modo que podría hacerlo con SSH. Sin embargo, con la extensión de VM se habilitan varias características que Azure ofrece y que pueden ser útiles según el escenario.
+> La VMAccess extensión ejecuta una secuencia de comandos como raíz en hello mismo utilizando SSH puede. Sin embargo, utilizando la extensión de máquina virtual de hello habilita varias características que ofrece Azure que puede ser útiles en función de su escenario.
 
 ## <a name="cloud-init-availability-on-azure-vm-quick-create-image-aliases"></a>Disponibilidad de cloud-init en los alias de imagen de creación rápida de VM de Azure:
 | Alias | Publicador | Oferta | SKU | Versión | Cloud-init |
@@ -87,18 +87,18 @@ Para insertar scripts en cualquier momento después del arranque:
 | RHEL |Redhat |RHEL |7,2 |más reciente |no |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |más reciente |yes |
 
-Trabajamos con nuestros asociados para que cloud-init se incluya y funcione en las imágenes que estos proporcionan a Azure.
+Estamos trabajando con nuestro socios tooget nube-init incluida y estamos trabajando en las imágenes de Hola que proporcionan tooAzure.
 
-## <a name="add-a-cloud-init-script-to-the-vm-creation-with-the-azure-cli"></a>Incorporación de un script de cloud-init al proceso de creación de máquinas virtuales con la CLI de Azure
-Para iniciar un script de cloud-init al crear una VM en Azure, especifique el archivo de cloud-init mediante el modificador `--custom-data` de la CLI de Azure.
+## <a name="add-a-cloud-init-script-toohello-vm-creation-with-hello-azure-cli"></a>Agregar una creación de VM de nube init script toohello con hello CLI de Azure
+toolaunch una secuencia de comandos en la nube init al crear una máquina virtual en Azure, especifique el archivo de init de la nube de hello mediante hello Azure CLI `--custom-data` cambiar.
 
-Cree un grupo de recursos para iniciar máquinas virtuales con [az group create](/cli/azure/group#create). En el ejemplo siguiente se crea el grupo de recursos denominado *myResourceGroup*:
+Crear un toolaunch de grupo de recursos de las máquinas virtuales en con [crear grupo az](/cli/azure/group#create). Hello en el ejemplo siguiente se crea grupo de recursos de hello llamado *myResourceGroup*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Cree una máquina virtual Linux con [az vm create](/cli/azure/vm#create) mediante cloud-init para configurarla durante el inicio.
+Crear una VM de Linux con [crear vm az](/cli/azure/vm#create) con tooconfigure init de la nube durante el arranque.
 
 ```azurecli
 az vm create \
@@ -110,8 +110,8 @@ az vm create \
     --custom-data cloud-init.txt
 ```
 
-## <a name="create-a-cloud-init-script-to-set-the-hostname-of-a-linux-vm"></a>Creación de un script de cloud-init para establecer el nombre de host de una máquina virtual Linux
-Una de las configuraciones más sencillas y más importantes para cualquier VM de Linux sería el nombre de host. Podemos establecer esto fácilmente mediante cloud-init con este script.  
+## <a name="create-a-cloud-init-script-tooset-hello-hostname-of-a-linux-vm"></a>Crear un nombre de host de nube init script tooset Hola de una VM de Linux
+Uno de hello más sencilla y la configuración más importante para las VM de Linux sería el nombre de host de Hola. Podemos establecer esto fácilmente mediante cloud-init con este script.  
 
 ### <a name="example-cloud-init-script-named-cloudconfighostnametxt"></a>Script de cloud-init de ejemplo denominado `cloud_config_hostname.txt`.
 ```yaml
@@ -119,7 +119,7 @@ Una de las configuraciones más sencillas y más importantes para cualquier VM d
 hostname: myservername
 ```
 
-Durante el primer inicio de la máquina virtual, este script de cloud-init establece el nombre de host en *myservername*. Cree una máquina virtual Linux con [az vm create](/cli/azure/vm#create) mediante cloud-init para configurarla durante el inicio.
+Durante el inicio de Hola de hello VM, esta secuencia de comandos en la nube init establece Hola hostname demasiado*myservername*. Crear una VM de Linux con [crear vm az](/cli/azure/vm#create) con tooconfigure init de la nube durante el arranque.
 
 ```azurecli
 az vm create \
@@ -131,7 +131,7 @@ az vm create \
     --custom-data cloud-init.txt
 ```
 
-Inicie sesión y compruebe el nombre de host de la nueva VM.
+Inicio de sesión y comprobar el nombre de host de Hola de hello nueva máquina virtual.
 
 ```bash
 ssh myVM
@@ -140,15 +140,15 @@ myservername
 ```
 
 ## <a name="create-a-cloud-init-script"></a>Creación de un script de cloud-init
-Por seguridad, desea que la VM de Ubuntu se actualice en el primer arranque. Mediante cloud-init podemos hacerlo con el siguiente script, dependiendo de la distribución de Linux que se use.
+Para la seguridad, desea que su tooupdate Ubuntu VM en el primer inicio de Hola. Mediante init en la nube que podemos hacer con hello siga script, en función de distribución de Linux de Hola que usa.
 
-### <a name="example-cloud-init-script-cloudconfigaptupgradetxt-for-the-debian-family"></a>Script de cloud-init de ejemplo `cloud_config_apt_upgrade.txt` para la familia Debian
+### <a name="example-cloud-init-script-cloudconfigaptupgradetxt-for-hello-debian-family"></a>Secuencia de comandos de ejemplo en la nube init `cloud_config_apt_upgrade.txt` para hello Debian familia
 ```yaml
 #cloud-config
 apt_upgrade: true
 ```
 
-Después de iniciarse Linux, se actualizan todos los paquetes instalados a través de **apt-get**. Cree una máquina virtual Linux con [az vm create](/cli/azure/vm#create) mediante cloud-init para configurarla durante el inicio.
+Una vez que ha arrancado Linux, se actualizan todos los paquetes de saludo instalado a través de **apt get**. Crear una VM de Linux con [crear vm az](/cli/azure/vm#create) con tooconfigure init de la nube durante el arranque.
 
 ```azurecli
 az vm create \
@@ -169,13 +169,13 @@ Reading package lists... Done
 Building dependency tree
 Reading state information... Done
 Calculating upgrade... Done
-The following packages have been kept back:
+hello following packages have been kept back:
   linux-generic linux-headers-generic linux-image-generic
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+0 upgraded, 0 newly installed, 0 tooremove and 0 not upgraded.
 ```
 
-## <a name="create-a-cloud-init-script-to-add-a-user-to-linux"></a>Creación de un script de cloud-init para agregar un usuario a Linux
-Una de las primeras tareas en cualquier máquina virtual Linux nueva consiste en agregar un usuario para usted mismo o para evitar el uso de *root*. Las claves SSH son el procedimiento recomendado para la seguridad y la facilidad de uso; además, se agregan al archivo *~/.ssh/authorized_keys* con este script de cloud-init.
+## <a name="create-a-cloud-init-script-tooadd-a-user-toolinux"></a>Crear un tooadd de secuencia de comandos en la nube de inicializar un tooLinux de usuario
+Una de las primeras tareas de Hola en cualquier nueva VM de Linux es un usuario para usted mismo o usar tooavoid tooadd *raíz*. Claves de SSH son una práctica recomendada para la seguridad y facilidad de uso y se agregan toohello *~/.ssh/authorized_keys* archivo con este script init de la nube.
 
 ### <a name="example-cloud-init-script-cloudconfigadduserstxt-for-debian-family"></a>Script de cloud-init de ejemplo `cloud_config_add_users.txt` para la familia Debian
 ```yaml
@@ -189,7 +189,7 @@ users:
       - ssh-rsa AAAAB3<snip>==myAdminUser@myUbuntuVM
 ```
 
-Una vez que se inicia Linux, todos los usuarios de la lista se crean y se agregan al grupo de sudo. Cree una máquina virtual Linux con [az vm create](/cli/azure/vm#create) mediante cloud-init para configurarla durante el inicio.
+Una vez que ha arrancado Linux, todos los usuarios de hello enumerado son toohello creado y agregado sudo grupo. Crear una VM de Linux con [crear vm az](/cli/azure/vm#create) con tooconfigure init de la nube durante el arranque.
 
 ```azurecli
 az vm create \
@@ -201,7 +201,7 @@ az vm create \
     --custom-data cloud_config_add_users.txt
 ```
 
-Inicie sesión y compruebe el usuario recién creado.
+Inicio de sesión y comprobar el usuario Hola recién creado.
 
 ```bash
 ssh myVM
@@ -219,8 +219,8 @@ myCloudInitAddedAdminUser:x:1000:
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Cloud-init se convierte en la manera estándar de modificar la VM Linux en el arranque. Azure también tiene extensiones de VM, que le permiten modificar su VM Linux en el arranque o mientras está en ejecución. Por ejemplo, puede usar la extensión VMAccessExtension de Azure para restablecer SSH o la información del usuario mientras la VM está en ejecución. Con cloud-init, necesitaría reiniciar para restablecer la contraseña.
+Init de la nube se está convirtiendo en una toomodify de manera estándar la VM de Linux en el arranque. Azure también tiene extensiones de máquina virtual, lo que permitirá toomodify su LinuxVM en el arranque o mientras se está ejecutando. Por ejemplo, puede usar hello Azure VMAccessExtension tooreset SSH o información de usuario mientras se está ejecutando Hola máquina virtual. Con init de la nube, necesitará una contraseña de hello tooreset de reinicio.
 
 [Acerca de las características y extensiones de las máquinas virtuales](extensions-features.md)
 
-[Administración de usuarios, SSH y comprobar o reparar discos en máquinas virtuales de Linux de Azure con la extensión VMAccess](using-vmaccess-extension.md)
+[Administrar usuarios, SSH y verificación o reparación de discos sobre el uso de máquinas virtuales de Linux de Azure Hola VMAccess extensión](using-vmaccess-extension.md)

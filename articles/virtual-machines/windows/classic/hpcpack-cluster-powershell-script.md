@@ -1,6 +1,6 @@
 ---
-title: "Script de PowerShell para implementar un clúster de Windows HPC | Microsoft Docs"
-description: "Ejecución de un script de PowerShell para implementar un clúster de HPC Pack 2012 R2 de Windows completo en máquinas virtuales de Azure"
+title: "clúster de Windows HPC aaaPowerShell script toodeploy | Documentos de Microsoft"
+description: "Ejecutar un toodeploy de secuencia de comandos de PowerShell en un clúster de Windows HPC Pack 2012 R2 en máquinas virtuales de Azure"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 85b125ab19671b61d2541af6378c95feb88bf952
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 10ce1e9bc4e98954b955549bd72aaaf6106c69fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Creación de un clúster de proceso de alto rendimiento (HPC) de Windows con el script de implementación de HPC Pack IaaS
-Ejecute el script de PowerShell de implementación de HPC Pack IaaS para implementar un clúster de HPC Pack 2012 R2 completo para cargas de trabajo Windows en máquinas virtuales de Azure. El clúster consta de un nodo principal unido a Active Directory en el que se ejecuta Windows Server y Microsoft HPC Pack, y los recursos de cálculo de Windows adicionales que especifique. Si desea implementar un clúster de HPC Pack en Azure para cargas de trabajo de Linux, consulte [Creación de un clúster de informática de alto rendimiento (HPC) en máquinas virtuales de Linux con el script de implementación de HPC Pack IaaS](../../linux/classic/hpcpack-cluster-powershell-script.md). También puede usar una plantilla del Administrador de recursos de Azure para implementar un clúster de HPC Pack. Para ver ejemplos, consulte [Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/) (Creación de un clúster de HPC) y [Create an HPC cluster with a custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/) (Creación de un clúster de HPC con una imagen de nodo de proceso personalizado).
+# <a name="create-a-windows-high-performance-computing-hpc-cluster-with-hello-hpc-pack-iaas-deployment-script"></a>Crear un clúster de informática de alto rendimiento (HPC) de Windows con script de implementación de IaaS de HPC Pack Hola
+Ejecute toodeploy de secuencia de comandos de PowerShell de hello IaaS de HPC Pack implementación en un clúster de HPC Pack 2012 R2 completando para las cargas de trabajo de Windows en máquinas virtuales de Azure. Hola clúster está formado por un nodo principal unido a Active Directory con Windows Server y Microsoft HPC Pack y especifica los recursos de cálculo de Windows adicionales. Si desea toodeploy un clúster de HPC Pack en Azure para las cargas de trabajo de Linux, consulte [crear un clúster de HPC de Linux con hello script de implementación de IaaS de HPC Pack](../../linux/classic/hpcpack-cluster-powershell-script.md). También puede utilizar un toodeploy de plantilla un clúster de HPC Pack de Azure Resource Manager. Para ver ejemplos, consulte [Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/) (Creación de un clúster de HPC) y [Create an HPC cluster with a custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/) (Creación de un clúster de HPC con una imagen de nodo de proceso personalizado).
 
 > [!IMPORTANT] 
-> El script de PowerShell que se describe en este artículo crea un clúster de Microsoft HPC Pack 2012 R2 en Azure mediante el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos.
-> Además, el script que se describe en este artículo no es compatible con HPC Pack 2016.
+> Hola script de PowerShell descrito en este artículo crea un clúster de Microsoft HPC Pack 2012 R2 en Azure con el modelo de implementación clásica de Hola. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola.
+> Además, script de Hola descrito en este artículo no es compatible con HPC Pack 2016.
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
 ## <a name="example-configuration-files"></a>Archivos de configuración de ejemplo
-En los siguientes ejemplos, sustituya por sus propios valores el nombre o la identificación de la suscripción y los nombres de cuenta y servicio.
+En hello en los ejemplos siguientes, sustitúyalo por sus propios valores para el Id. de suscripción o nombre y los nombres de cuenta y el servicio de Hola.
 
 ### <a name="example-1"></a>Ejemplo 1
-El siguiente archivo de configuración implementa un clúster de HPC Pack que tiene un nodo principal con bases de datos locales y cinco nodos de proceso que ejecutan el sistema operativo Windows Server 2012 R2. Todos los servicios en la nube se crean directamente en la ubicación oeste de EE. UU. El nodo principal actúa como controlador de dominio del bosque de dominio.
+Hello archivo de configuración siguiente implementa un clúster de HPC Pack que tiene cinco nodos de proceso que ejecutan el sistema operativo de Windows Server 2012 R2 de Hola y de un nodo principal con bases de datos locales. Todos los servicios de nube de Hola se crean directamente en hello ubicación oeste de Estados Unidos. nodo principal de Hello actúa como controlador de dominio del bosque de dominio de Hola.
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -71,8 +71,8 @@ El siguiente archivo de configuración implementa un clúster de HPC Pack que ti
 ```
 
 ### <a name="example-2"></a>Ejemplo 2
-El archivo de configuración siguiente implementa un clúster de HPC Pack en un bosque de dominio existente. El clúster tiene un nodo principal con bases de datos locales y 12 nodos de proceso con la extensión de máquina virtual BGInfo aplicada.
-La instalación automática de actualizaciones de Windows está deshabilitada para todas las máquinas virtuales en el bosque de dominio. Todos los servicios en la nube se crean directamente en la ubicación de Este de Asia. Los nodos de proceso se crean en tres servicios en la nube y tres cuentas de almacenamiento: de *MyHPCCN-0001* a *MyHPCCN-0005* en *MyHPCCNService01* y *mycnstorage01*; de *MyHPCCN-0006* a *MyHPCCN0010* en *MyHPCCNService02* y *mycnstorage02*; y de *MyHPCCN-0011* a *MyHPCCN-0012* en *MyHPCCNService03* y *mycnstorage03*). Los nodos de proceso se crean a partir de una imagen privada existente capturada desde un nodo de proceso. El servicio de crecimiento y reducción automático está habilitado con intervalos de crecimiento y reducción predeterminados.
+Hola, el archivo de configuración siguiente implementa un clúster de HPC Pack en un bosque de dominio existente. clúster de Hello tiene 1 nodo principal con bases de datos locales y 12 nodos con hello extensión BGInfo VM aplicada de ejecución.
+Instalación automática de actualizaciones de Windows está deshabilitada para hello todas las máquinas virtuales en el bosque de dominio de Hola. Todos los servicios de nube de Hola se crean directamente en la ubicación de Asia oriental. se crean nodos de proceso de Hello en tres servicios en la nube y tres cuentas de almacenamiento: *MyHPCCN-0001* demasiado*MyHPCCN-0005* en *MyHPCCNService01* y  *mycnstorage01*; *MyHPCCN-0006* demasiado*MyHPCCN0010* en *MyHPCCNService02* y *mycnstorage02*; y  *MyHPCCN-0011* demasiado*MyHPCCN-0012* en *MyHPCCNService03* y *mycnstorage03*). nodos de proceso de Hola se crean a partir de una imagen privada existente que se capturó de un nodo de proceso. aumentar Hello automático y reducir está habilitado el servicio no tiene valor predeterminado aumentar y reducir los intervalos.
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -135,7 +135,7 @@ La instalación automática de actualizaciones de Windows está deshabilitada pa
 ```
 
 ### <a name="example-3"></a>Ejemplo 3
-El archivo de configuración siguiente implementa un clúster de HPC Pack en un bosque de dominio existente. El clúster contiene un nodo principal, un servidor de bases de datos con un disco de datos de 500 GB, dos nodos de agente que ejecutan el sistema operativo Windows Server 2012 R2 y cinco nodos de proceso que ejecutan el sistema operativo Windows Server 2012 R2. El servicio en la nube MyHPCCNService se crea en el grupo de afinidad *MyIBAffinityGroup*, mientras que los restantes servicios en la nube se crean en el grupo de afinidad *MyAffinityGroup*. La API de REST del Programador de trabajos de HPC y el portal web de HPC están habilitados en el nodo principal.
+Hola, el archivo de configuración siguiente implementa un clúster de HPC Pack en un bosque de dominio existente. clúster de Hello contiene un nodo principal, un servidor de base de datos con un disco de datos de 500 GB, dos nodos de agente que ejecutan el sistema operativo de Windows Server 2012 R2 de Hola y cinco nodos de proceso que ejecutan el sistema operativo de Windows Server 2012 R2 de Hola. Hola servicio en la nube MyHPCCNService se crea en el grupo de afinidad de hello *MyIBAffinityGroup*, y otros servicios de nube hello se crean una en el grupo de afinidad de hello *MyAffinityGroup*. Hola API de REST de programador de trabajos de HPC y el portal web de HPC están habilitadas en el nodo principal de Hola.
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -190,7 +190,7 @@ El archivo de configuración siguiente implementa un clúster de HPC Pack en un 
 
 
 ### <a name="example-4"></a>Ejemplo 4
-El archivo de configuración siguiente implementa un clúster de HPC Pack en un bosque de dominio existente. El clúster tiene dos nodos principales con bases de datos locales y se crean dos plantillas de nodo de Azure y tres nodos de Azure de tamaño medio para la plantilla de nodo *AzureTemplate1*de Azure. Se ejecuta un archivo de script en el nodo principal después de configurar este nodo.
+Hola, el archivo de configuración siguiente implementa un clúster de HPC Pack en un bosque de dominio existente. clúster de Hello tiene dos nodos principal con bases de datos locales, se crean dos plantillas de nodo de Azure y se crean tres nodos de Azure Media de tamaño para la plantilla de nodo de Azure *AzureTemplate1*. Un archivo de script se ejecuta en el nodo principal de hello después de configura el nodo principal de Hola.
 
 ```Xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -257,19 +257,19 @@ El archivo de configuración siguiente implementa un clúster de HPC Pack en un 
 ```
 
 ## <a name="troubleshooting"></a>Solución de problemas
-* **Error "La red virtual no existe"**: si ejecuta el script para implementar varios clústeres en Azure simultáneamente con una única suscripción, puede producirse un error de "La red virtual *Nombre de\_red virtual* no existe" en una implementación o varias.
-  Si se produce este error, vuelva a ejecutar el script para la implementación en la que ocurrió el error.
-* **Problemas de acceso a Internet desde la red virtual de Azure** : si crea un clúster con un nuevo controlador de dominio mediante el script de implementación o promueve manualmente una máquina virtual del nodo principal a un controlador de dominio, puede experimentar problemas al conectar las máquinas virtuales a Internet. Este problema puede ocurrir si se configura automáticamente un servidor de reenviador DNS en el controlador de dominio y este servidor de reenviador DNS no se resuelve correctamente.
+* **Error "No existe la red virtual"** -si ejecuta Hola script toodeploy varios clústeres en Azure simultáneamente en una suscripción, pueden producir un error en una o más implementaciones con error de Hola "red virtual *VNet\_nombre* no existe".
+  Si se produce este error, ejecute el script de Hola nuevo para la implementación de hello error.
+* **Problema de tener acceso a Hola Internet desde la red virtual de Azure de Hola** : si crear un clúster con un nuevo controlador de dominio mediante el uso de script de implementación de hello, o promover manualmente un controlador de toodomain de máquina virtual de nodo principal, puede experimentar problemas conectar máquinas virtuales de hello toohello Internet. Este problema puede producirse si un servidor reenviador DNS se configura automáticamente en el controlador de dominio de Hola y este servidor no se puede resolver correctamente.
   
-    Para evitar este problema, inicie sesión en el controlador de dominio y, o bien, quite la configuración de reenviador, o bien, configure un servidor de reenviador DNS válida. Para configurar esta opción, en Administrador del servidor, haga clic **Herramientas** >
-    **DNS** para abrir el Administrador de DNS y, a continuación, haga doble clic en **Reenviadores**.
-* **Problemas de acceso a la red RDMA desde máquinas virtuales de proceso intensivo** : si agrega máquinas virtuales de nodo de agente o de nodo de proceso de Windows Server mediante un tamaño compatible con RDMA, como A8 o A9, puede experimentar problemas para conectar estas máquinas virtuales a la red de aplicación RDMA. Una razón por la que puede ocurrir esto es que la extensión HpcVmDrivers no esté correctamente instalada cuando las máquinas virtuales se agregan al clúster. Por ejemplo, la extensión puede bloquearse en el estado de instalación.
+    toowork resolver este problema, inicie sesión en el controlador de dominio de toohello y cualquier opción de configuración de reenviador de Hola de quitar o configurar un servidor reenviador DNS válido. tooconfigure esta configuración, en el administrador del servidor, haga clic en **herramientas** >
+    **DNS** tooopen Administrador de DNS y, a continuación, haga doble clic en **reenviadores**.
+* **Problema de acceso a la red RDMA desde máquinas virtuales de proceso intensivo** : Si Agregar proceso de Windows Server o nodo de broker de máquinas virtuales con un compatibles con RDMA tamaño como A8 o A9, puede experimentar problemas al conectar esas máquinas virtuales de red toohello RDMA aplicación. Este problema se produce uno de los motivos es si Hola extensión HpcVmDrivers no está instalada correctamente cuando hello las máquinas virtuales se agregan toohello clúster. Por ejemplo, la extensión podría bloquearse en hello estado de instalación.
   
-    Para evitar este problema, compruebe primero el estado de la extensión en las máquinas virtuales. Si la extensión no está instalada correctamente, intente quitar los nodos del clúster de HPC y, a continuación, vuelva a agregarlos. Por ejemplo, puede agregar máquinas virtuales de nodos de proceso mediante la ejecución del script Add-HpcIaaSNode.ps1 en el nodo principal.
+    toowork resolver este problema, el primer estado de Hola de comprobación de extensión de hello en máquinas virtuales de Hola. Si la extensión de hello no está instalada correctamente, intente eliminar nodos de Hola de clúster de HPC de hello y, a continuación, agregar nodos de Hola de nuevo. Por ejemplo, puede agregar máquinas virtuales de nodos de proceso mediante la ejecución de secuencias de comandos de Add-HpcIaaSNode.ps1 hello en el nodo principal de Hola.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Pruebe a ejecutar una carga de trabajo de prueba en el clúster. Para obtener un ejemplo, consulte la [guía de introducción](https://technet.microsoft.com/library/jj884144)de HPC Pack.
-* Para ver un tutorial sobre cómo crear un script de implementación del clúster y ejecutar una carga de trabajo de HPC, consulte [Introducción a un clúster de HPC Pack en Azure para ejecutar cargas de trabajo de Excel y SOA](../../virtual-machines-windows-excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Pruebe las herramientas de HPC Pack para iniciar, detener, agregar y quitar nodos de proceso de un clúster creado. Consulte [Administración de nodos de proceso en un clúster de HPC Pack en Azure](hpcpack-cluster-node-manage.md).
-* Para configurar el envío de trabajos al clúster desde un equipo local, consulte [Envío de trabajos HPC desde un equipo local a un clúster de HPC Pack implementado en Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Intentar ejecutar una carga de trabajo de prueba en clúster de Hola. Para obtener un ejemplo, vea Hola HPC Pack [Guía de introducción](https://technet.microsoft.com/library/jj884144).
+* Para un tutorial tooscript Hola la implementación de clúster y ejecutar una carga de trabajo HPC, vea [empezar a trabajar con un clúster de HPC Pack en cargas de trabajo de Excel y SOA de Azure toorun](../../virtual-machines-windows-excel-cluster-hpcpack.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Intente toostart de herramientas de HPC Pack, detener, agregar y quitar nodos de proceso de un clúster que cree. Consulte [Administración de nodos de proceso en un clúster de HPC Pack en Azure](hpcpack-cluster-node-manage.md).
+* tooget configurar el clúster de toosubmit trabajos toohello desde un equipo local, vea [clúster de trabajos de HPC enviar desde un tooan de equipo local HPC Pack en Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

@@ -1,5 +1,5 @@
 ---
-title: "Máquinas virtuales Windows y redes virtuales de Azure | Microsoft Docs"
+title: "aaaAzure redes virtuales y máquinas virtuales de Windows | Documentos de Microsoft"
 description: "Tutorial: Administración de máquinas virtuales Windows y redes virtuales de Azure con Azure PowerShell"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: c71c07f8ecd123a7e27848ba5043d46e315fcf03
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ed77d9d5873e849fcb2aaf15e41899d7ad8c781a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Administración de máquinas virtuales Windows y redes virtuales de Azure con Azure PowerShell
 
@@ -32,19 +32,19 @@ Las máquinas virtuales de Azure utilizan las redes de Azure para la comunicaci�
 > * Controlar el tráfico de red con grupos de seguridad de red
 > * Ver reglas de tráfico en acción
 
-Para realizar este tutorial es necesaria la versión 3.6 del módulo de Azure PowerShell, o cualquier versión posterior. Ejecute ` Get-Module -ListAvailable AzureRM` para encontrar la versión. Si necesita actualizarla, consulte [Instalación del módulo de Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Este tutorial requiere hello Azure PowerShell versión 3.6 o posterior del módulo. Ejecutar ` Get-Module -ListAvailable AzureRM` toofind versión de Hola. Si necesita tooupgrade, consulte [módulo instalar Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="create-vnet"></a>Creación de una red virtual
 
-Una red virtual es una representación de su propia red en la nube. Una red virtual es un aislamiento lógico de la nube de Azure dedicada a su suscripción. Dentro de una red virtual, hay subredes, reglas para la conectividad a esas subredes y conexiones desde las máquinas virtuales a las subredes.
+Una red virtual es una representación de su propia red en la nube de Hola. Una red virtual es un aislamiento lógico de hello nube de Azure dedicada tooyour suscripción. Dentro de una red virtual, buscar subredes, las reglas para las conexiones desde toohello subredes de hello las máquinas virtuales y subredes de toothose de conectividad.
 
-Para poder crear otros recursos de Azure, tiene que crear un grupo de recursos con [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). En el ejemplo siguiente, se crea un grupo de recursos denominado *myRGNetwork* en la ubicación *EastUS*:
+Para poder crear otros recursos de Azure, necesita toocreate un grupo de recursos con [AzureRmResourceGroup nuevo](/powershell/module/azurerm.resources/new-azurermresourcegroup). Hello en el ejemplo siguiente se crea un grupo de recursos denominado *myRGNetwork* en hello *EastUS* ubicación:
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-Una subred es un recurso secundario de una red virtual que le ayudará a definir segmentos de espacios de direcciones dentro de un bloque CIDR mediante prefijos de direcciones IP. Las NIC pueden agregarse a subredes y conectarse a máquinas virtuales, lo cual le proporciona conectividad a varias cargas de trabajo.
+Una subred es un recurso secundario de una red virtual que le ayudará a definir segmentos de espacios de direcciones dentro de un bloque CIDR mediante prefijos de direcciones IP. Pueden agregarse NIC toosubnets y tooVMs conectados, proporcionar conectividad para diversas cargas de trabajo.
 
 Cree una subred con [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig):
 
@@ -67,7 +67,7 @@ $vnet = New-AzureRmVirtualNetwork `
 
 ## <a name="create-front-end-vm"></a>Creación de una máquina virtual de "front-end"
 
-Una máquina virtual debe tener un interfaz de red virtual (NIC) para comunicarse en una red virtual. A *myFrontendVM* se obtiene acceso desde Internet, por lo que también se necesita una dirección IP pública. 
+Para la toocommunicate de una máquina virtual en una red virtual, se necesita una interfaz de red virtual (NIC). Hola *myFrontendVM* se obtiene acceso desde Hola internet, por lo que también necesita una dirección IP pública. 
 
 Cree una dirección IP pública con [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress):
 
@@ -91,13 +91,13 @@ $frontendNic = New-AzureRmNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-Establezca el nombre de usuario y la contraseña que se necesitan para la cuenta de administrador en la máquina virtual con [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Establecer el nombre de usuario de Hola y la contraseña necesarios para la cuenta de administrador de hello en hello VM con [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Cree las máquinas virtuales con [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig), [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem), [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk), [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) y [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). 
+Crear máquinas virtuales de hello con [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig), [AzureRmVMOperatingSystem conjunto](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem), [conjunto AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk), [AzureRmVMNetworkInterface agregar](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface), y [nueva AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). 
 
 ```powershell
 $frontendVM = New-AzureRmVMConfig `
@@ -133,9 +133,9 @@ New-AzureRmVM `
 
 ## <a name="install-web-server"></a>Instalación del servidor web
 
-Puede instalar IIS en *myFrontendVM* usando una sesión del Escritorio remoto. Debe obtener la dirección IP pública de la máquina virtual para acceder a ella.
+Puede instalar IIS en *myFrontendVM* usando una sesión del Escritorio remoto. Necesitará tooget Hola pública dirección IP de hello tooaccess VM se.
 
-Puede conseguir la dirección IP pública de *myFrontendVM* con [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). En el ejemplo siguiente se obtiene la dirección IP de *myPublicIPAddress* que se ha creado anteriormente:
+Puede obtener la dirección IP pública de Hola de *myFrontendVM* con [AzureRmPublicIPAddress Get](/powershell/module/azurerm.network/get-azurermpublicipaddress). Hello en el ejemplo siguiente se obtiene la dirección IP de Hola para *myPublicIPAddress* creado anteriormente:
 
 ```powershell
 Get-AzureRmPublicIPAddress `
@@ -145,31 +145,31 @@ Get-AzureRmPublicIPAddress `
 
 Tome nota de esta dirección IP para poder usarla en pasos futuros.
 
-Utilice el comando siguiente para crear una sesión del Escritorio remoto con *myFrontendVM*. Reemplace *<publicIPAddress>* por la dirección que haya registrado previamente. Cuando se le solicite, escriba las credenciales usadas al crear la máquina virtual.
+Siguiente Hola de uso del comando toocreate una sesión de escritorio remoto con *myFrontendVM*. Reemplace  *<publicIPAddress>*  con la dirección de Hola que haya grabado previamente. Cuando se le solicite, escriba credenciales de hello utilizadas cuando creó Hola máquina virtual.
 
 ```
 mstsc /v:<publicIpAddress>
 ``` 
 
-Ahora que ha iniciado sesión en *myFrontendVM*, puede usar una sola línea de PowerShell para instalar IIS y habilitar la regla de firewall local para permitir el tráfico web. Abra una ventana de PowerShell y ejecute el siguiente comando:
+Ahora que ha iniciado sesión demasiado*myFrontendVM*, puede utilizar una sola línea de PowerShell tooinstall IIS y permitir el tráfico de web de tooallow de regla de hello firewall local. Abra un símbolo del sistema de PowerShell y ejecute el siguiente comando de hello:
 
-Use [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) para ejecutar la extensión de script personalizado que instala el servidor web de IIS:
+Use [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) extensión de script personalizado de hello toorun que instala el servidor Web IIS de hello:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Ahora puede usar la dirección IP pública para ir a la máquina virtual con el fin de ver el sitio de IIS.
+Ahora puede usar Hola IP dirección toobrowse toohello VM toosee Hola IIS sitio público.
 
 ![Sitio predeterminado de IIS](./media/tutorial-virtual-network/iis.png)
 
 ## <a name="manage-internal-traffic"></a>Administración del tráfico interno
 
-Un grupo de seguridad de red (NSG) contiene una lista de reglas de seguridad que permiten o deniegan el tráfico de red a recursos conectados a una red virtual. Los NSG se pueden asociar a las subredes o a NIC individuales conectados a máquinas virtuales. La apertura o el cierre del acceso a las máquinas virtuales a través de puertos se realiza mediante las reglas de NSG. Al crear *myFrontendVM*, el puerto de entrada 3389 se abrió automáticamente para la conectividad RDP.
+Un grupo de seguridad de red (NSG) contiene una lista de reglas de seguridad que permiten o deniegan tooa de tooresources conectado de tráfico de red red virtual. Los NSG pueden ser toosubnets asociado o NIC individuales adjunta tooVMs. Abrir o cerrar tooVMs de acceso a través de puertos se realiza utilizando las reglas NSG. Al crear *myFrontendVM*, el puerto de entrada 3389 se abrió automáticamente para la conectividad RDP.
 
-La comunicación interna de las máquinas virtuales puede configurarse con un NSG. En esta sección, aprenderá a crear una subred adicional en la red y asignar un NSG a ella para permitir una conexión de *myFrontendVM* a *myBackendVM* en el puerto 1433. Después, la subred se asigna a la máquina virtual cuando se crea.
+La comunicación interna de las máquinas virtuales puede configurarse con un NSG. En esta sección, aprenderá cómo toocreate una subred adicional en Hola de red y asignar una tooallow de tooit NSG una conexión de *myFrontendVM* demasiado*myBackendVM* en el puerto 1433. subred de Hello, a continuación, se asigna toohello VM cuando se crea.
 
-Puede limitar el tráfico interno a *myBackendVM* solo desde *myFrontendVM* creando un NSG para la subred de "back-end". En el ejemplo siguiente se crea una regla NSG denominada *myBackendNSGRule* con [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig):
+Puede limitar el tráfico interno demasiado*myBackendVM* de sólo *myFrontendVM* mediante la creación de un NSG de subred de back-end de Hola. Hello en el ejemplo siguiente se crea una regla NSG denominada *myBackendNSGRule* con [AzureRmNetworkSecurityRuleConfig New](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig):
 
 ```powershell
 $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -195,7 +195,7 @@ $nsgBackend = New-AzureRmNetworkSecurityGroup `
 ```
 ## <a name="add-back-end-subnet"></a>Adición de una subred de "back-end"
 
-Adición de *myBackEndSubnet* a *myVNet* con [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig):
+Agregar *myBackEndSubnet* demasiado*myVNet* con [AzureRmVirtualNetworkSubnetConfig agregar](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig):
 
 ```powershell
 Add-AzureRmVirtualNetworkSubnetConfig `
@@ -211,7 +211,7 @@ $vnet = Get-AzureRmVirtualNetwork `
 
 ## <a name="create-back-end-vm"></a>Creación de la máquina virtual de "back-end"
 
-La manera más fácil de crear la máquina virtual de "back-end "es utilizando una imagen de SQL Server. Con este tutorial solo se crea la máquina virtual con el servidor de base de datos, pero no se proporciona información del acceso a la base de datos.
+Hola Hola de manera más fácil toocreate que VM back-end es mediante una imagen de SQL Server. Este tutorial sólo crea Hola VM con el servidor de base de datos de hello, pero no proporciona información acerca del acceso a la base de datos de Hola.
 
 Creación de *myBackendNic*:
 
@@ -223,7 +223,7 @@ $backendNic = New-AzureRmNetworkInterface `
   -SubnetId $vnet.Subnets[1].Id
 ```
 
-Establezca el nombre de usuario y la contraseña que se necesitan para la cuenta de administrador en la máquina virtual con Get-Credential:
+Establecer el nombre de usuario de Hola y la contraseña necesarios para la cuenta de administrador de hello en hello VM con Get-Credential:
 
 ```powershell
 $cred = Get-Credential
@@ -263,11 +263,11 @@ New-AzureRmVM `
   -VM $backendVM
 ```
 
-La imagen que se utiliza tiene instalado SQL Server, pero no se usa en este tutorial. Se incluye para mostrar cómo se pueden configurar una máquina virtual para controlar el tráfico de web y otra para controlar la administración de bases de datos.
+imagen de Hola que se utiliza tiene instalado SQL Server, pero no se utiliza en este tutorial. Es tooshow incluye también cómo puede configurar el tráfico de web toohandle de una máquina virtual y una administración de base de datos de toohandle de máquina virtual.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, ha creado y protegido redes de Azure cuando están relacionadas con máquinas virtuales. 
+En este tutorial, ha creado y protege las redes de Azure como máquinas toovirtual relacionados. 
 
 > [!div class="checklist"]
 > * Crear una red virtual
@@ -275,7 +275,7 @@ En este tutorial, ha creado y protegido redes de Azure cuando están relacionada
 > * Controlar el tráfico de red con grupos de seguridad de red
 > * Ver reglas de tráfico en acción
 
-Prosiga con el siguiente tutorial para aprender a supervisar la protección de datos en máquinas virtuales mediante Azure Backup. .
+Avanzar toohello toolearn de tutorial siguiente acerca de la supervisión para asegurar datos en máquinas virtuales mediante copia de seguridad de Azure. .
 
 > [!div class="nextstepaction"]
 > [Copia de seguridad de máquinas virtuales Windows en Azure](./tutorial-backup-vms.md)
